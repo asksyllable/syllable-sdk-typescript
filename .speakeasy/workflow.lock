@@ -1,0 +1,26 @@
+speakeasyVersion: 1.419.0
+sources:
+    SyllableSDK-OAS:
+        sourceNamespace: syllable-sdk-oas
+        sourceRevisionDigest: sha256:35f3d4070443692bb4d3f996842645b08f53415078f43f26d1116159dd7acfc5
+        sourceBlobDigest: sha256:ac64055e286324cb27d7d569319e4ff4a4cdd31ec12184b30d49188526000faa
+        tags:
+            - latest
+targets:
+    syllable-sdk:
+        source: SyllableSDK-OAS
+        sourceNamespace: syllable-sdk-oas
+        sourceRevisionDigest: sha256:35f3d4070443692bb4d3f996842645b08f53415078f43f26d1116159dd7acfc5
+        sourceBlobDigest: sha256:ac64055e286324cb27d7d569319e4ff4a4cdd31ec12184b30d49188526000faa
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        SyllableSDK-OAS:
+            inputs:
+                - location: ../docs/openapi.json
+            registry:
+                location: registry.speakeasyapi.dev/syllableai/syllableai/syllable-sdk-oas
+    targets:
+        syllable-sdk:
+            target: typescript
+            source: SyllableSDK-OAS

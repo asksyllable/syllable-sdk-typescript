@@ -1,0 +1,11 @@
+workflowVersion: 1.0.0
+sources:
+    SyllableSDK-OAS:
+        inputs:
+            - location: ../docs/openapi.json
+        registry:
+            location: registry.speakeasyapi.dev/syllableai/syllableai/syllable-sdk-oas
+targets:
+    syllable-sdk:
+        target: typescript
+        source: SyllableSDK-OAS
