@@ -9,11 +9,6 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
     </a>
 </div>
 
-
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/syllableai/syllableai). Delete this section before > publishing to a package manager.
-
 <!-- Start Summary [summary] -->
 ## Summary
 
@@ -124,8 +119,8 @@ run();
 ### [agents](docs/sdks/agents/README.md)
 
 * [list](docs/sdks/agents/README.md#list) - Agent List
-* [create](docs/sdks/agents/README.md#create) - Create Agent
 * [update](docs/sdks/agents/README.md#update) - Update Agent
+* [create](docs/sdks/agents/README.md#create) - Create Agent
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
 
@@ -169,8 +164,8 @@ run();
 ### [greetings](docs/sdks/greetings/README.md)
 
 * [list](docs/sdks/greetings/README.md#list) - Greetings List
-* [create](docs/sdks/greetings/README.md#create) - Create Greeting
 * [update](docs/sdks/greetings/README.md#update) - Update Greeting
+* [create](docs/sdks/greetings/README.md#create) - Create Greeting
 * [getById](docs/sdks/greetings/README.md#getbyid) - Get Greeting By Id
 * [delete](docs/sdks/greetings/README.md#delete) - Delete Greeting
 
@@ -181,8 +176,8 @@ run();
 ### [prompts](docs/sdks/prompts/README.md)
 
 * [list](docs/sdks/prompts/README.md#list) - Prompt List
-* [create](docs/sdks/prompts/README.md#create) - Create Prompt
 * [update](docs/sdks/prompts/README.md#update) - Update Prompt
+* [create](docs/sdks/prompts/README.md#create) - Create Prompt
 * [getById](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 * [delete](docs/sdks/prompts/README.md#delete) - Delete Prompt
 

@@ -31,23 +31,6 @@ export class Greetings extends ClientSDK {
   }
 
   /**
-   * Create Greeting
-   *
-   * @remarks
-   * Create a new greeting
-   */
-  async create(
-    request: components.GreetingCreate,
-    options?: RequestOptions,
-  ): Promise<components.GreetingResponse> {
-    return unwrapAsync(greetingsCreate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update Greeting
    *
    * @remarks
@@ -58,6 +41,23 @@ export class Greetings extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.GreetingResponse> {
     return unwrapAsync(greetingsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Greeting
+   *
+   * @remarks
+   * Create a new greeting
+   */
+  async create(
+    request: components.GreetingCreate,
+    options?: RequestOptions,
+  ): Promise<components.GreetingResponse> {
+    return unwrapAsync(greetingsCreate(
       this,
       request,
       options,
