@@ -1,9 +1,13 @@
 {
   "name": "syllable-sdk",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asksyllable/syllable-sdk-typescript.git"
+  },
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",
