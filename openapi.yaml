@@ -69,7 +69,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "agent_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "agent_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     post:
       tags:
         - "agents"
@@ -94,7 +94,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.create({\n    name: \"<value>\",\n    timezone: \"Antarctica/Rothera\",\n    typeExtra: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "agent_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.create({\n    name: \"<value>\",\n    timezone: \"Antarctica/Rothera\",\n    typeExtra: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "agent_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.create({\n    name: \"<value>\",\n    timezone: \"Antarctica/Rothera\",\n    typeExtra: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     put:
       tags:
         - "agents"
@@ -119,7 +119,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.update({\n    name: \"<value>\",\n    timezone: \"Europe/Tallinn\",\n    typeExtra: {},\n    id: 597129,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "agent_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.update({\n    name: \"<value>\",\n    timezone: \"Europe/Tallinn\",\n    typeExtra: {},\n    id: 597129,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "agent_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.update({\n    name: \"<value>\",\n    timezone: \"Europe/Tallinn\",\n    typeExtra: {},\n    id: 597129,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/agents/{agent_id}":
     get:
       tags:
@@ -147,7 +147,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.getById({\n    agentId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "agent_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.getById({\n    agentId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "agent_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.getById({\n    agentId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     delete:
       tags:
         - "agents"
@@ -180,7 +180,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.delete({\n    agentId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "agent_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.delete({\n    agentId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "agent_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.delete({\n    agentId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/available-targets":
     get:
       tags:
@@ -220,7 +220,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "available_targets", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.availableTargets({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "available_targets", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.availableTargets({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "available_targets", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.availableTargets({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/":
     get:
       tags:
@@ -259,7 +259,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channels_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "channels_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "channels_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/targets":
     get:
       tags:
@@ -340,7 +340,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "channel_targets_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/{channel_id}/targets":
     post:
       tags:
@@ -372,7 +372,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.create({\n    channelId: 134365,\n    channelTargetCreateRequest: {\n      channelId: 486589,\n      channelName: \"<value>\",\n      agentId: 638424,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: true,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "channel_targets_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.create({\n    channelId: 134365,\n    channelTargetCreateRequest: {\n      channelId: 486589,\n      channelName: \"<value>\",\n      agentId: 638424,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: true,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.create({\n    channelId: 134365,\n    channelTargetCreateRequest: {\n      channelId: 486589,\n      channelName: \"<value>\",\n      agentId: 638424,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: true,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/{channel_id}/targets/{target_id}":
     get:
       tags:
@@ -405,7 +405,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.getById({\n    channelId: 931598,\n    targetId: 505057,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "channel_targets_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.getById({\n    channelId: 931598,\n    targetId: 505057,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.getById({\n    channelId: 931598,\n    targetId: 505057,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     put:
       tags:
         - "channels.targets"
@@ -443,7 +443,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channels_target_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.update({\n    channelId: 627690,\n    targetId: 488852,\n    channelTarget: {\n      id: 857478,\n      channelId: 597129,\n      channelName: \"<value>\",\n      agentId: 344620,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: false,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "channels_target_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.update({\n    channelId: 627690,\n    targetId: 488852,\n    channelTarget: {\n      id: 857478,\n      channelId: 597129,\n      channelName: \"<value>\",\n      agentId: 344620,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: false,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "channels_target_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.update({\n    channelId: 627690,\n    targetId: 488852,\n    channelTarget: {\n      id: 857478,\n      channelId: 597129,\n      channelName: \"<value>\",\n      agentId: 344620,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: false,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/{channel_id}":
     delete:
       tags:
@@ -471,7 +471,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channels_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.delete({\n    channelId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "channels_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.delete({\n    channelId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "channels_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.delete({\n    channelId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/chats/messages":
     post:
       tags:
@@ -497,7 +497,7 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "chats_send_message", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.chats.chatsSendMessage({\n    serviceName: \"<value>\",\n    sourceName: \"<value>\",\n    chatId: \"<id>\",\n    agentId: \"<id>\",\n    orgName: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "chats_send_message", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.chats.chatsSendMessage({\n    serviceName: \"<value>\",\n    sourceName: \"<value>\",\n    chatId: \"<id>\",\n    agentId: \"<id>\",\n    orgName: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "chats_send_message", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.chats.chatsSendMessage({\n    serviceName: \"<value>\",\n    sourceName: \"<value>\",\n    chatId: \"<id>\",\n    agentId: \"<id>\",\n    orgName: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/conversations/":
     get:
       tags:
@@ -626,7 +626,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "conversations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "conversations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "conversations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/conversations/{conversation_id}":
     get:
       tags:
@@ -653,7 +653,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "conversation_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.getById({\n    conversationId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "conversation_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.getById({\n    conversationId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "conversation_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.getById({\n    conversationId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/total_call_volume_by_weekday":
     get:
       tags:
@@ -671,7 +671,7 @@ paths:
                 title: "Response Total Call Volume By Weekday"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "total_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.totalCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "total_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.totalCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "total_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.totalCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_total_call_volume_by_hour":
     get:
       tags:
@@ -689,7 +689,7 @@ paths:
                 title: "Response Get Total Call Volume By Hour"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_total_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getTotalCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "get_total_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getTotalCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "get_total_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getTotalCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_weekly_call_volume_by_weekday":
     get:
       tags:
@@ -707,7 +707,7 @@ paths:
                 title: "Response Get Weekly Call Volume By Weekday"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_weekly_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getWeeklyCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "get_weekly_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getWeeklyCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "get_weekly_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getWeeklyCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_daily_call_volume_by_hour":
     get:
       tags:
@@ -725,7 +725,7 @@ paths:
                 title: "Response Get Daily Call Volume By Hour"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_daily_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getDailyCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "get_daily_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getDailyCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "get_daily_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getDailyCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_monthly_call_volume_by_week":
     get:
       tags:
@@ -743,7 +743,7 @@ paths:
                 title: "Response Get Monthly Call Volume By Week"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_monthly_call_volume_by_week", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByWeek();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "get_monthly_call_volume_by_week", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByWeek();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "get_monthly_call_volume_by_week", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByWeek();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_monthly_call_volume_by_day":
     get:
       tags:
@@ -761,7 +761,7 @@ paths:
                 title: "Response Get Monthly Call Volume By Day"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_monthly_call_volume_by_day", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByDay();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "get_monthly_call_volume_by_day", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByDay();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "get_monthly_call_volume_by_day", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByDay();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_session_summary":
     get:
       tags:
@@ -831,7 +831,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "get_session_summary", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionSummary({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "get_session_summary", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionSummary({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "get_session_summary", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionSummary({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_agents":
     get:
       tags:
@@ -849,7 +849,7 @@ paths:
                 title: "Response Get Session Agents"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_session_agents", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionAgents();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "get_session_agents", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionAgents();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "get_session_agents", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionAgents();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/events/":
     get:
       tags:
@@ -926,7 +926,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "events_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.events.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "events_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.events.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "events_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.events.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/greetings/":
     get:
       tags:
@@ -966,7 +966,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "greetings_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "greetings_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     post:
       tags:
         - "greetings"
@@ -991,7 +991,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.create({\n    name: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "greetings_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.create({\n    name: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "greetings_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.create({\n    name: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     put:
       tags:
         - "greetings"
@@ -1016,7 +1016,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.update({\n    name: \"<value>\",\n    text: \"<value>\",\n    id: 857478,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "greetings_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.update({\n    name: \"<value>\",\n    text: \"<value>\",\n    id: 857478,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "greetings_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.update({\n    name: \"<value>\",\n    text: \"<value>\",\n    id: 857478,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/greetings/{greeting_id}":
     get:
       tags:
@@ -1044,7 +1044,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.getById({\n    greetingId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "greetings_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.getById({\n    greetingId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "greetings_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.getById({\n    greetingId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     delete:
       tags:
         - "greetings"
@@ -1077,7 +1077,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.delete({\n    greetingId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "greetings_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.delete({\n    greetingId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "greetings_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.delete({\n    greetingId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/prompts/":
     get:
       tags:
@@ -1125,7 +1125,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "prompts_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "prompts_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     post:
       tags:
         - "prompts"
@@ -1150,7 +1150,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.create({\n    name: \"<value>\",\n    llmConfig: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "prompts_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.create({\n    name: \"<value>\",\n    llmConfig: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "prompts_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.create({\n    name: \"<value>\",\n    llmConfig: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     put:
       tags:
         - "prompts"
@@ -1175,7 +1175,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.update({\n    name: \"<value>\",\n    llmConfig: {},\n    id: 857478,\n    lastUpdated: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "prompts_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.update({\n    name: \"<value>\",\n    llmConfig: {},\n    id: 857478,\n    lastUpdated: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "prompts_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.update({\n    name: \"<value>\",\n    llmConfig: {},\n    id: 857478,\n    lastUpdated: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/prompts/{prompt_id}":
     get:
       tags:
@@ -1203,7 +1203,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.getById({\n    promptId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "prompts_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.getById({\n    promptId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "prompts_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.getById({\n    promptId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     delete:
       tags:
         - "prompts"
@@ -1236,7 +1236,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.delete({\n    promptId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "prompts_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.delete({\n    promptId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "prompts_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.delete({\n    promptId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/sessions/":
     get:
       tags:
@@ -1327,7 +1327,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "sessions_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.sessions.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "sessions_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.sessions.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "sessions_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.sessions.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/tools/":
     get:
       tags:
@@ -1367,7 +1367,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "tool_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "tool_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "tool_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/tools/{tool_name}":
     get:
       tags:
@@ -1395,7 +1395,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "tool_get_by_name", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.getByName({\n    toolName: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "tool_get_by_name", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.getByName({\n    toolName: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "tool_get_by_name", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.getByName({\n    toolName: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/organizations/":
     get:
       tags:
@@ -1414,7 +1414,7 @@ paths:
                 title: "Response Organizations List"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "organizations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.organizations.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}, {"lang": "typescript", "label": "organizations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.organizations.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
+      x-codeSamples: [{"lang": "typescript", "label": "organizations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.organizations.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
 components:
   schemas:
     "Agent":

@@ -21,7 +21,6 @@ workflow:
                 - location: ./openapi.json
             overlays:
                 - location: codeSamples.yaml
-                - location: codeSamples.yaml
             output: openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/syllableai/syllableai/syllable-sdk-oas
