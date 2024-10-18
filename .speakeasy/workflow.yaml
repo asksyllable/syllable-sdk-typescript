@@ -1,14 +1,17 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     SyllableSDK-OAS:
         inputs:
             - location: ./openapi.json
+        overlays:
+            - location: codeSamples.yaml
+        output: openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/syllableai/syllableai/syllable-sdk-oas
 targets:
     syllable-sdk:
         target: typescript
         source: SyllableSDK-OAS
-        publish:
-            npm:
-                token: $npm_token
+        codeSamples:
+            output: codeSamples.yaml

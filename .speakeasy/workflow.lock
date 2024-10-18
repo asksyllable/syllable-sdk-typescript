@@ -1,4 +1,4 @@
-speakeasyVersion: 1.419.0
+speakeasyVersion: 1.419.2
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
@@ -14,13 +14,20 @@ targets:
         sourceBlobDigest: sha256:ac64055e286324cb27d7d569319e4ff4a4cdd31ec12184b30d49188526000faa
 workflow:
     workflowVersion: 1.0.0
+    speakeasyVersion: latest
     sources:
         SyllableSDK-OAS:
             inputs:
-                - location: ../docs/openapi.json
+                - location: ./openapi.json
+            overlays:
+                - location: codeSamples.yaml
+                - location: codeSamples.yaml
+            output: openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/syllableai/syllableai/syllable-sdk-oas
     targets:
         syllable-sdk:
             target: typescript
             source: SyllableSDK-OAS
+            codeSamples:
+                output: codeSamples.yaml

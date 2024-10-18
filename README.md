@@ -119,8 +119,8 @@ run();
 ### [agents](docs/sdks/agents/README.md)
 
 * [list](docs/sdks/agents/README.md#list) - Agent List
-* [update](docs/sdks/agents/README.md#update) - Update Agent
 * [create](docs/sdks/agents/README.md#create) - Create Agent
+* [update](docs/sdks/agents/README.md#update) - Update Agent
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
 
@@ -164,8 +164,8 @@ run();
 ### [greetings](docs/sdks/greetings/README.md)
 
 * [list](docs/sdks/greetings/README.md#list) - Greetings List
-* [update](docs/sdks/greetings/README.md#update) - Update Greeting
 * [create](docs/sdks/greetings/README.md#create) - Create Greeting
+* [update](docs/sdks/greetings/README.md#update) - Update Greeting
 * [getById](docs/sdks/greetings/README.md#getbyid) - Get Greeting By Id
 * [delete](docs/sdks/greetings/README.md#delete) - Delete Greeting
 
@@ -176,8 +176,8 @@ run();
 ### [prompts](docs/sdks/prompts/README.md)
 
 * [list](docs/sdks/prompts/README.md#list) - Prompt List
-* [update](docs/sdks/prompts/README.md#update) - Update Prompt
 * [create](docs/sdks/prompts/README.md#create) - Create Prompt
+* [update](docs/sdks/prompts/README.md#update) - Update Prompt
 * [getById](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 * [delete](docs/sdks/prompts/README.md#delete) - Delete Prompt
 

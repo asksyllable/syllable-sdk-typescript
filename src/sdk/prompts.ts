@@ -31,23 +31,6 @@ export class Prompts extends ClientSDK {
   }
 
   /**
-   * Update Prompt
-   *
-   * @remarks
-   * Update an existing prompt
-   */
-  async update(
-    request: components.Prompt,
-    options?: RequestOptions,
-  ): Promise<components.Prompt> {
-    return unwrapAsync(promptsUpdate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Create Prompt
    *
    * @remarks
@@ -58,6 +41,23 @@ export class Prompts extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.Prompt> {
     return unwrapAsync(promptsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Prompt
+   *
+   * @remarks
+   * Update an existing prompt
+   */
+  async update(
+    request: components.Prompt,
+    options?: RequestOptions,
+  ): Promise<components.Prompt> {
+    return unwrapAsync(promptsUpdate(
       this,
       request,
       options,

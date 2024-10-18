@@ -1,0 +1,844 @@
+overlay: 1.0.0
+info:
+  title: CodeSamples overlay for typescript target
+  version: 0.0.0
+actions:
+  - target: $["paths"]["/api/v1/agents/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: agent_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/agents/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: agent_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.create({
+                name: "<value>",
+                timezone: "Antarctica/Rothera",
+                typeExtra: {},
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/agents/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: agent_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.update({
+                name: "<value>",
+                timezone: "Europe/Tallinn",
+                typeExtra: {},
+                id: 597129,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/agents/{agent_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: agent_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.delete({
+                agentId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/agents/{agent_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: agent_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.getById({
+                agentId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: channels_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/available-targets"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: available_targets
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.availableTargets({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/targets"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: channel_targets_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/{channel_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: channels_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.delete({
+                channelId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: channel_targets_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.create({
+                channelId: 134365,
+                channelTargetCreateRequest: {
+                  channelId: 486589,
+                  channelName: "<value>",
+                  agentId: 638424,
+                  target: "<value>",
+                  targetMode: "<value>",
+                  fallbackTarget: "<value>",
+                  isTest: true,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets/{target_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: channel_targets_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.getById({
+                channelId: 931598,
+                targetId: 505057,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets/{target_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: channels_target_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.update({
+                channelId: 627690,
+                targetId: 488852,
+                channelTarget: {
+                  id: 857478,
+                  channelId: 597129,
+                  channelName: "<value>",
+                  agentId: 344620,
+                  target: "<value>",
+                  targetMode: "<value>",
+                  fallbackTarget: "<value>",
+                  isTest: false,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/chats/messages"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: chats_send_message
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.chats.chatsSendMessage({
+                serviceName: "<value>",
+                sourceName: "<value>",
+                chatId: "<id>",
+                agentId: "<id>",
+                orgName: "<value>",
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/conversations/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: conversations_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.conversations.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/conversations/{conversation_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: conversation_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.conversations.getById({
+                conversationId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/get_agents"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_session_agents
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.getSessionAgents();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/get_daily_call_volume_by_hour"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_daily_call_volume_by_hour
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.getDailyCallVolumeByHour();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_day"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_monthly_call_volume_by_day
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.getMonthlyCallVolumeByDay();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_week"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_monthly_call_volume_by_week
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.getMonthlyCallVolumeByWeek();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/get_session_summary"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_session_summary
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.getSessionSummary({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/get_total_call_volume_by_hour"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_total_call_volume_by_hour
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.getTotalCallVolumeByHour();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/get_weekly_call_volume_by_weekday"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_weekly_call_volume_by_weekday
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.getWeeklyCallVolumeByWeekday();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/total_call_volume_by_weekday"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: total_call_volume_by_weekday
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.totalCallVolumeByWeekday();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/events/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: events_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.events.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/greetings/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: greetings_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.greetings.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/greetings/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: greetings_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.greetings.create({
+                name: "<value>",
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/greetings/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: greetings_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.greetings.update({
+                name: "<value>",
+                text: "<value>",
+                id: 857478,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/greetings/{greeting_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: greetings_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.greetings.delete({
+                greetingId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/greetings/{greeting_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: greetings_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.greetings.getById({
+                greetingId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/organizations/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: organizations_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.list();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: prompts_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: prompts_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.create({
+                name: "<value>",
+                llmConfig: {},
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: prompts_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.update({
+                name: "<value>",
+                llmConfig: {},
+                id: 857478,
+                lastUpdated: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: prompts_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.delete({
+                promptId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: prompts_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.getById({
+                promptId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/sessions/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: sessions_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/tools/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: tool_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/tools/{tool_name}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: tool_get_by_name
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.getByName({
+                toolName: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
