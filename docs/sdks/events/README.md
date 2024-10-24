@@ -73,7 +73,7 @@ run();
 
 ### Response
 
-**Promise\<[components.EventListResponse](../../models/components/eventlistresponse.md)\>**
+**Promise\<[components.ListResponseEvent](../../models/components/listresponseevent.md)\>**
 
 ### Errors
 

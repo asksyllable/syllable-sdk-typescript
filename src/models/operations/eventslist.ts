@@ -4,16 +4,89 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { ClosedEnum } from "../../types/enums.js";
+import * as components from "../components/index.js";
+
+export const EventsListQueryParamOrderBy = {
+  Timestamp: "timestamp",
+  SessionId: "session_id",
+  ConversationId: "conversation_id",
+  Source: "source",
+  SourceId: "source_id",
+  Category: "category",
+  Type: "type",
+  UserId: "user_id",
+  Description: "description",
+  Attributes: "attributes",
+} as const;
+export type EventsListQueryParamOrderBy = ClosedEnum<
+  typeof EventsListQueryParamOrderBy
+>;
+
+export const EventsListQueryParamOrderByDirection = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+export type EventsListQueryParamOrderByDirection = ClosedEnum<
+  typeof EventsListQueryParamOrderByDirection
+>;
 
 export type EventsListRequest = {
-  page?: number | undefined;
+  page?: number | null | undefined;
   limit?: number | undefined;
-  orderBy?: string | null | undefined;
-  type?: string | null | undefined;
-  conversationId?: string | null | undefined;
-  startTime?: Date | null | undefined;
-  endTime?: Date | null | undefined;
+  searchFields?: Array<components.EventProperties> | undefined;
+  searchFieldValues?: Array<string> | undefined;
+  orderBy?: EventsListQueryParamOrderBy | undefined;
+  orderByDirection?: EventsListQueryParamOrderByDirection | undefined;
+  fields?: Array<components.EventProperties> | null | undefined;
+  startDatetime?: string | null | undefined;
+  endDatetime?: string | null | undefined;
 };
+
+/** @internal */
+export const EventsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
+  typeof EventsListQueryParamOrderBy
+> = z.nativeEnum(EventsListQueryParamOrderBy);
+
+/** @internal */
+export const EventsListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
+  typeof EventsListQueryParamOrderBy
+> = EventsListQueryParamOrderBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EventsListQueryParamOrderBy$ {
+  /** @deprecated use `EventsListQueryParamOrderBy$inboundSchema` instead. */
+  export const inboundSchema = EventsListQueryParamOrderBy$inboundSchema;
+  /** @deprecated use `EventsListQueryParamOrderBy$outboundSchema` instead. */
+  export const outboundSchema = EventsListQueryParamOrderBy$outboundSchema;
+}
+
+/** @internal */
+export const EventsListQueryParamOrderByDirection$inboundSchema:
+  z.ZodNativeEnum<typeof EventsListQueryParamOrderByDirection> = z.nativeEnum(
+    EventsListQueryParamOrderByDirection,
+  );
+
+/** @internal */
+export const EventsListQueryParamOrderByDirection$outboundSchema:
+  z.ZodNativeEnum<typeof EventsListQueryParamOrderByDirection> =
+    EventsListQueryParamOrderByDirection$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EventsListQueryParamOrderByDirection$ {
+  /** @deprecated use `EventsListQueryParamOrderByDirection$inboundSchema` instead. */
+  export const inboundSchema =
+    EventsListQueryParamOrderByDirection$inboundSchema;
+  /** @deprecated use `EventsListQueryParamOrderByDirection$outboundSchema` instead. */
+  export const outboundSchema =
+    EventsListQueryParamOrderByDirection$outboundSchema;
+}
 
 /** @internal */
 export const EventsListRequest$inboundSchema: z.ZodType<
@@ -21,35 +94,39 @@ export const EventsListRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  page: z.number().int().default(0),
-  limit: z.number().int().default(100),
-  order_by: z.nullable(z.string()).optional(),
-  type: z.nullable(z.string()).optional(),
-  conversation_id: z.nullable(z.string()).optional(),
-  start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
+  page: z.nullable(z.number().int()).optional(),
+  limit: z.number().int().default(25),
+  search_fields: z.array(components.EventProperties$inboundSchema).optional(),
+  search_field_values: z.array(z.string()).optional(),
+  order_by: EventsListQueryParamOrderBy$inboundSchema.optional(),
+  order_by_direction: EventsListQueryParamOrderByDirection$inboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.EventProperties$inboundSchema))
+    .optional(),
+  start_datetime: z.nullable(z.string()).optional(),
+  end_datetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "search_fields": "searchFields",
+    "search_field_values": "searchFieldValues",
     "order_by": "orderBy",
-    "conversation_id": "conversationId",
-    "start_time": "startTime",
-    "end_time": "endTime",
+    "order_by_direction": "orderByDirection",
+    "start_datetime": "startDatetime",
+    "end_datetime": "endDatetime",
   });
 });
 
 /** @internal */
 export type EventsListRequest$Outbound = {
-  page: number;
+  page?: number | null | undefined;
   limit: number;
-  order_by?: string | null | undefined;
-  type?: string | null | undefined;
-  conversation_id?: string | null | undefined;
-  start_time?: string | null | undefined;
-  end_time?: string | null | undefined;
+  search_fields?: Array<string> | undefined;
+  search_field_values?: Array<string> | undefined;
+  order_by?: string | undefined;
+  order_by_direction?: string | undefined;
+  fields?: Array<string> | null | undefined;
+  start_datetime?: string | null | undefined;
+  end_datetime?: string | null | undefined;
 };
 
 /** @internal */
@@ -58,19 +135,25 @@ export const EventsListRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EventsListRequest
 > = z.object({
-  page: z.number().int().default(0),
-  limit: z.number().int().default(100),
-  orderBy: z.nullable(z.string()).optional(),
-  type: z.nullable(z.string()).optional(),
-  conversationId: z.nullable(z.string()).optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  page: z.nullable(z.number().int()).optional(),
+  limit: z.number().int().default(25),
+  searchFields: z.array(components.EventProperties$outboundSchema).optional(),
+  searchFieldValues: z.array(z.string()).optional(),
+  orderBy: EventsListQueryParamOrderBy$outboundSchema.optional(),
+  orderByDirection: EventsListQueryParamOrderByDirection$outboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.EventProperties$outboundSchema))
+    .optional(),
+  startDatetime: z.nullable(z.string()).optional(),
+  endDatetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    searchFields: "search_fields",
+    searchFieldValues: "search_field_values",
     orderBy: "order_by",
-    conversationId: "conversation_id",
-    startTime: "start_time",
-    endTime: "end_time",
+    orderByDirection: "order_by_direction",
+    startDatetime: "start_datetime",
+    endDatetime: "end_datetime",
   });
 });
 

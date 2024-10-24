@@ -3,11 +3,83 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
+import { ClosedEnum } from "../../types/enums.js";
+import * as components from "../components/index.js";
+
+export const ToolListQueryParamOrderBy = {
+  Id: "id",
+  Name: "name",
+  ServiceName: "service_name",
+  Definition: "definition",
+  ServiceId: "service_id",
+} as const;
+export type ToolListQueryParamOrderBy = ClosedEnum<
+  typeof ToolListQueryParamOrderBy
+>;
+
+export const ToolListQueryParamOrderByDirection = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+export type ToolListQueryParamOrderByDirection = ClosedEnum<
+  typeof ToolListQueryParamOrderByDirection
+>;
 
 export type ToolListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
+  searchFields?: Array<components.ToolProperties> | undefined;
+  searchFieldValues?: Array<string> | undefined;
+  orderBy?: ToolListQueryParamOrderBy | undefined;
+  orderByDirection?: ToolListQueryParamOrderByDirection | undefined;
+  fields?: Array<components.ToolProperties> | null | undefined;
+  startDatetime?: string | null | undefined;
+  endDatetime?: string | null | undefined;
 };
+
+/** @internal */
+export const ToolListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
+  typeof ToolListQueryParamOrderBy
+> = z.nativeEnum(ToolListQueryParamOrderBy);
+
+/** @internal */
+export const ToolListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
+  typeof ToolListQueryParamOrderBy
+> = ToolListQueryParamOrderBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ToolListQueryParamOrderBy$ {
+  /** @deprecated use `ToolListQueryParamOrderBy$inboundSchema` instead. */
+  export const inboundSchema = ToolListQueryParamOrderBy$inboundSchema;
+  /** @deprecated use `ToolListQueryParamOrderBy$outboundSchema` instead. */
+  export const outboundSchema = ToolListQueryParamOrderBy$outboundSchema;
+}
+
+/** @internal */
+export const ToolListQueryParamOrderByDirection$inboundSchema: z.ZodNativeEnum<
+  typeof ToolListQueryParamOrderByDirection
+> = z.nativeEnum(ToolListQueryParamOrderByDirection);
+
+/** @internal */
+export const ToolListQueryParamOrderByDirection$outboundSchema: z.ZodNativeEnum<
+  typeof ToolListQueryParamOrderByDirection
+> = ToolListQueryParamOrderByDirection$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ToolListQueryParamOrderByDirection$ {
+  /** @deprecated use `ToolListQueryParamOrderByDirection$inboundSchema` instead. */
+  export const inboundSchema = ToolListQueryParamOrderByDirection$inboundSchema;
+  /** @deprecated use `ToolListQueryParamOrderByDirection$outboundSchema` instead. */
+  export const outboundSchema =
+    ToolListQueryParamOrderByDirection$outboundSchema;
+}
 
 /** @internal */
 export const ToolListRequest$inboundSchema: z.ZodType<
@@ -16,13 +88,38 @@ export const ToolListRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(-1),
+  limit: z.number().int().default(25),
+  search_fields: z.array(components.ToolProperties$inboundSchema).optional(),
+  search_field_values: z.array(z.string()).optional(),
+  order_by: ToolListQueryParamOrderBy$inboundSchema.optional(),
+  order_by_direction: ToolListQueryParamOrderByDirection$inboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.ToolProperties$inboundSchema))
+    .optional(),
+  start_datetime: z.nullable(z.string()).optional(),
+  end_datetime: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "search_fields": "searchFields",
+    "search_field_values": "searchFieldValues",
+    "order_by": "orderBy",
+    "order_by_direction": "orderByDirection",
+    "start_datetime": "startDatetime",
+    "end_datetime": "endDatetime",
+  });
 });
 
 /** @internal */
 export type ToolListRequest$Outbound = {
   page?: number | null | undefined;
   limit: number;
+  search_fields?: Array<string> | undefined;
+  search_field_values?: Array<string> | undefined;
+  order_by?: string | undefined;
+  order_by_direction?: string | undefined;
+  fields?: Array<string> | null | undefined;
+  start_datetime?: string | null | undefined;
+  end_datetime?: string | null | undefined;
 };
 
 /** @internal */
@@ -32,7 +129,25 @@ export const ToolListRequest$outboundSchema: z.ZodType<
   ToolListRequest
 > = z.object({
   page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(-1),
+  limit: z.number().int().default(25),
+  searchFields: z.array(components.ToolProperties$outboundSchema).optional(),
+  searchFieldValues: z.array(z.string()).optional(),
+  orderBy: ToolListQueryParamOrderBy$outboundSchema.optional(),
+  orderByDirection: ToolListQueryParamOrderByDirection$outboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.ToolProperties$outboundSchema))
+    .optional(),
+  startDatetime: z.nullable(z.string()).optional(),
+  endDatetime: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    searchFields: "search_fields",
+    searchFieldValues: "search_field_values",
+    orderBy: "order_by",
+    orderByDirection: "order_by_direction",
+    startDatetime: "start_datetime",
+    endDatetime: "end_datetime",
+  });
 });
 
 /**

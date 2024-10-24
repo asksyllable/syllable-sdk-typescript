@@ -32,7 +32,7 @@ export async function sessionsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.SessionListResponse,
+    components.ListResponseSession,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -57,15 +57,15 @@ export async function sessionsList(
   const path = pathToFunc("/api/v1/sessions/")();
 
   const query = encodeFormQuery({
-    "channel_service": payload.channel_service,
-    "channel_type": payload.channel_type,
-    "end_time": payload.end_time,
-    "include_legacy": payload.include_legacy,
-    "include_test": payload.include_test,
+    "end_datetime": payload.end_datetime,
+    "fields": payload.fields,
     "limit": payload.limit,
     "order_by": payload.order_by,
+    "order_by_direction": payload.order_by_direction,
     "page": payload.page,
-    "start_time": payload.start_time,
+    "search_field_values": payload.search_field_values,
+    "search_fields": payload.search_fields,
+    "start_datetime": payload.start_datetime,
   });
 
   const headers = new Headers({
@@ -112,7 +112,7 @@ export async function sessionsList(
   };
 
   const [result] = await M.match<
-    components.SessionListResponse,
+    components.ListResponseSession,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -122,7 +122,7 @@ export async function sessionsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.SessionListResponse$inboundSchema),
+    M.json(200, components.ListResponseSession$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

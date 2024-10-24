@@ -4,23 +4,90 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { ClosedEnum } from "../../types/enums.js";
+import * as components from "../components/index.js";
+
+export const ConversationsListQueryParamOrderBy = {
+  Timestamp: "timestamp",
+  AgentType: "agent_type",
+  AgentId: "agent_id",
+  AgentName: "agent_name",
+  PromptId: "prompt_id",
+  PromptName: "prompt_name",
+  CallId: "call_id",
+  Source: "source",
+  Target: "target",
+  IsLegacy: "is_legacy",
+  IsTest: "is_test",
+} as const;
+export type ConversationsListQueryParamOrderBy = ClosedEnum<
+  typeof ConversationsListQueryParamOrderBy
+>;
+
+export const ConversationsListQueryParamOrderByDirection = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+export type ConversationsListQueryParamOrderByDirection = ClosedEnum<
+  typeof ConversationsListQueryParamOrderByDirection
+>;
 
 export type ConversationsListRequest = {
-  page?: number | undefined;
+  page?: number | null | undefined;
   limit?: number | undefined;
-  orderBy?: string | undefined;
-  orderByDirection?: string | undefined;
-  startTime?: string | null | undefined;
-  endTime?: string | null | undefined;
-  agentType?: string | null | undefined;
-  agentId?: string | null | undefined;
-  promptId?: string | null | undefined;
-  callId?: string | null | undefined;
-  source?: string | null | undefined;
-  target?: string | null | undefined;
-  isLegacy?: boolean | null | undefined;
-  isTest?: boolean | null | undefined;
+  searchFields?: Array<components.ConversationProperties> | undefined;
+  searchFieldValues?: Array<string> | undefined;
+  orderBy?: ConversationsListQueryParamOrderBy | undefined;
+  orderByDirection?: ConversationsListQueryParamOrderByDirection | undefined;
+  fields?: Array<components.ConversationProperties> | null | undefined;
+  startDatetime?: string | null | undefined;
+  endDatetime?: string | null | undefined;
 };
+
+/** @internal */
+export const ConversationsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
+  typeof ConversationsListQueryParamOrderBy
+> = z.nativeEnum(ConversationsListQueryParamOrderBy);
+
+/** @internal */
+export const ConversationsListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
+  typeof ConversationsListQueryParamOrderBy
+> = ConversationsListQueryParamOrderBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConversationsListQueryParamOrderBy$ {
+  /** @deprecated use `ConversationsListQueryParamOrderBy$inboundSchema` instead. */
+  export const inboundSchema = ConversationsListQueryParamOrderBy$inboundSchema;
+  /** @deprecated use `ConversationsListQueryParamOrderBy$outboundSchema` instead. */
+  export const outboundSchema =
+    ConversationsListQueryParamOrderBy$outboundSchema;
+}
+
+/** @internal */
+export const ConversationsListQueryParamOrderByDirection$inboundSchema:
+  z.ZodNativeEnum<typeof ConversationsListQueryParamOrderByDirection> = z
+    .nativeEnum(ConversationsListQueryParamOrderByDirection);
+
+/** @internal */
+export const ConversationsListQueryParamOrderByDirection$outboundSchema:
+  z.ZodNativeEnum<typeof ConversationsListQueryParamOrderByDirection> =
+    ConversationsListQueryParamOrderByDirection$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConversationsListQueryParamOrderByDirection$ {
+  /** @deprecated use `ConversationsListQueryParamOrderByDirection$inboundSchema` instead. */
+  export const inboundSchema =
+    ConversationsListQueryParamOrderByDirection$inboundSchema;
+  /** @deprecated use `ConversationsListQueryParamOrderByDirection$outboundSchema` instead. */
+  export const outboundSchema =
+    ConversationsListQueryParamOrderByDirection$outboundSchema;
+}
 
 /** @internal */
 export const ConversationsListRequest$inboundSchema: z.ZodType<
@@ -28,51 +95,40 @@ export const ConversationsListRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  page: z.number().int().default(0),
-  limit: z.number().int().default(100),
-  order_by: z.string().default("timestamp"),
-  order_by_direction: z.string().default("DESC"),
-  start_time: z.nullable(z.string()).optional(),
-  end_time: z.nullable(z.string()).optional(),
-  agent_type: z.nullable(z.string()).optional(),
-  agent_id: z.nullable(z.string()).optional(),
-  prompt_id: z.nullable(z.string()).optional(),
-  call_id: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  target: z.nullable(z.string()).optional(),
-  is_legacy: z.nullable(z.boolean()).optional(),
-  is_test: z.nullable(z.boolean()).optional(),
+  page: z.nullable(z.number().int()).optional(),
+  limit: z.number().int().default(25),
+  search_fields: z.array(components.ConversationProperties$inboundSchema)
+    .optional(),
+  search_field_values: z.array(z.string()).optional(),
+  order_by: ConversationsListQueryParamOrderBy$inboundSchema.optional(),
+  order_by_direction: ConversationsListQueryParamOrderByDirection$inboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.ConversationProperties$inboundSchema))
+    .optional(),
+  start_datetime: z.nullable(z.string()).optional(),
+  end_datetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "search_fields": "searchFields",
+    "search_field_values": "searchFieldValues",
     "order_by": "orderBy",
     "order_by_direction": "orderByDirection",
-    "start_time": "startTime",
-    "end_time": "endTime",
-    "agent_type": "agentType",
-    "agent_id": "agentId",
-    "prompt_id": "promptId",
-    "call_id": "callId",
-    "is_legacy": "isLegacy",
-    "is_test": "isTest",
+    "start_datetime": "startDatetime",
+    "end_datetime": "endDatetime",
   });
 });
 
 /** @internal */
 export type ConversationsListRequest$Outbound = {
-  page: number;
+  page?: number | null | undefined;
   limit: number;
-  order_by: string;
-  order_by_direction: string;
-  start_time?: string | null | undefined;
-  end_time?: string | null | undefined;
-  agent_type?: string | null | undefined;
-  agent_id?: string | null | undefined;
-  prompt_id?: string | null | undefined;
-  call_id?: string | null | undefined;
-  source?: string | null | undefined;
-  target?: string | null | undefined;
-  is_legacy?: boolean | null | undefined;
-  is_test?: boolean | null | undefined;
+  search_fields?: Array<string> | undefined;
+  search_field_values?: Array<string> | undefined;
+  order_by?: string | undefined;
+  order_by_direction?: string | undefined;
+  fields?: Array<string> | null | undefined;
+  start_datetime?: string | null | undefined;
+  end_datetime?: string | null | undefined;
 };
 
 /** @internal */
@@ -81,32 +137,26 @@ export const ConversationsListRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ConversationsListRequest
 > = z.object({
-  page: z.number().int().default(0),
-  limit: z.number().int().default(100),
-  orderBy: z.string().default("timestamp"),
-  orderByDirection: z.string().default("DESC"),
-  startTime: z.nullable(z.string()).optional(),
-  endTime: z.nullable(z.string()).optional(),
-  agentType: z.nullable(z.string()).optional(),
-  agentId: z.nullable(z.string()).optional(),
-  promptId: z.nullable(z.string()).optional(),
-  callId: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  target: z.nullable(z.string()).optional(),
-  isLegacy: z.nullable(z.boolean()).optional(),
-  isTest: z.nullable(z.boolean()).optional(),
+  page: z.nullable(z.number().int()).optional(),
+  limit: z.number().int().default(25),
+  searchFields: z.array(components.ConversationProperties$outboundSchema)
+    .optional(),
+  searchFieldValues: z.array(z.string()).optional(),
+  orderBy: ConversationsListQueryParamOrderBy$outboundSchema.optional(),
+  orderByDirection: ConversationsListQueryParamOrderByDirection$outboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.ConversationProperties$outboundSchema))
+    .optional(),
+  startDatetime: z.nullable(z.string()).optional(),
+  endDatetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    searchFields: "search_fields",
+    searchFieldValues: "search_field_values",
     orderBy: "order_by",
     orderByDirection: "order_by_direction",
-    startTime: "start_time",
-    endTime: "end_time",
-    agentType: "agent_type",
-    agentId: "agent_id",
-    promptId: "prompt_id",
-    callId: "call_id",
-    isLegacy: "is_legacy",
-    isTest: "is_test",
+    startDatetime: "start_datetime",
+    endDatetime: "end_datetime",
   });
 });
 

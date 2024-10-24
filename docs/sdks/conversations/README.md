@@ -74,7 +74,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ConversationListResponse](../../models/components/conversationlistresponse.md)\>**
+**Promise\<[components.ListResponseConversation](../../models/components/listresponseconversation.md)\>**
 
 ### Errors
 

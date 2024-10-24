@@ -73,7 +73,7 @@ run();
 
 ### Response
 
-**Promise\<[components.SessionListResponse](../../models/components/sessionlistresponse.md)\>**
+**Promise\<[components.ListResponseSession](../../models/components/listresponsesession.md)\>**
 
 ### Errors
 

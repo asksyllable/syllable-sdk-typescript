@@ -15,7 +15,7 @@ export class Events extends ClientSDK {
   async list(
     request: operations.EventsListRequest,
     options?: RequestOptions,
-  ): Promise<components.EventListResponse> {
+  ): Promise<components.ListResponseEvent> {
     return unwrapAsync(eventsList(
       this,
       request,

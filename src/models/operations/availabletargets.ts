@@ -3,11 +3,78 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
+import { ClosedEnum } from "../../types/enums.js";
+import * as components from "../components/index.js";
+
+export const QueryParamOrderBy = {
+  ChannelId: "channel_id",
+  ChannelName: "channel_name",
+  Target: "target",
+} as const;
+export type QueryParamOrderBy = ClosedEnum<typeof QueryParamOrderBy>;
+
+export const QueryParamOrderByDirection = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+export type QueryParamOrderByDirection = ClosedEnum<
+  typeof QueryParamOrderByDirection
+>;
 
 export type AvailableTargetsRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
+  searchFields?: Array<components.AvailableTargetProperties> | undefined;
+  searchFieldValues?: Array<string> | undefined;
+  orderBy?: QueryParamOrderBy | undefined;
+  orderByDirection?: QueryParamOrderByDirection | undefined;
+  fields?: Array<components.AvailableTargetProperties> | null | undefined;
+  startDatetime?: string | null | undefined;
+  endDatetime?: string | null | undefined;
 };
+
+/** @internal */
+export const QueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamOrderBy
+> = z.nativeEnum(QueryParamOrderBy);
+
+/** @internal */
+export const QueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamOrderBy
+> = QueryParamOrderBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamOrderBy$ {
+  /** @deprecated use `QueryParamOrderBy$inboundSchema` instead. */
+  export const inboundSchema = QueryParamOrderBy$inboundSchema;
+  /** @deprecated use `QueryParamOrderBy$outboundSchema` instead. */
+  export const outboundSchema = QueryParamOrderBy$outboundSchema;
+}
+
+/** @internal */
+export const QueryParamOrderByDirection$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamOrderByDirection
+> = z.nativeEnum(QueryParamOrderByDirection);
+
+/** @internal */
+export const QueryParamOrderByDirection$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamOrderByDirection
+> = QueryParamOrderByDirection$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamOrderByDirection$ {
+  /** @deprecated use `QueryParamOrderByDirection$inboundSchema` instead. */
+  export const inboundSchema = QueryParamOrderByDirection$inboundSchema;
+  /** @deprecated use `QueryParamOrderByDirection$outboundSchema` instead. */
+  export const outboundSchema = QueryParamOrderByDirection$outboundSchema;
+}
 
 /** @internal */
 export const AvailableTargetsRequest$inboundSchema: z.ZodType<
@@ -16,13 +83,39 @@ export const AvailableTargetsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(-1),
+  limit: z.number().int().default(25),
+  search_fields: z.array(components.AvailableTargetProperties$inboundSchema)
+    .optional(),
+  search_field_values: z.array(z.string()).optional(),
+  order_by: QueryParamOrderBy$inboundSchema.optional(),
+  order_by_direction: QueryParamOrderByDirection$inboundSchema.optional(),
+  fields: z.nullable(
+    z.array(components.AvailableTargetProperties$inboundSchema),
+  ).optional(),
+  start_datetime: z.nullable(z.string()).optional(),
+  end_datetime: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "search_fields": "searchFields",
+    "search_field_values": "searchFieldValues",
+    "order_by": "orderBy",
+    "order_by_direction": "orderByDirection",
+    "start_datetime": "startDatetime",
+    "end_datetime": "endDatetime",
+  });
 });
 
 /** @internal */
 export type AvailableTargetsRequest$Outbound = {
   page?: number | null | undefined;
   limit: number;
+  search_fields?: Array<string> | undefined;
+  search_field_values?: Array<string> | undefined;
+  order_by?: string | undefined;
+  order_by_direction?: string | undefined;
+  fields?: Array<string> | null | undefined;
+  start_datetime?: string | null | undefined;
+  end_datetime?: string | null | undefined;
 };
 
 /** @internal */
@@ -32,7 +125,26 @@ export const AvailableTargetsRequest$outboundSchema: z.ZodType<
   AvailableTargetsRequest
 > = z.object({
   page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(-1),
+  limit: z.number().int().default(25),
+  searchFields: z.array(components.AvailableTargetProperties$outboundSchema)
+    .optional(),
+  searchFieldValues: z.array(z.string()).optional(),
+  orderBy: QueryParamOrderBy$outboundSchema.optional(),
+  orderByDirection: QueryParamOrderByDirection$outboundSchema.optional(),
+  fields: z.nullable(
+    z.array(components.AvailableTargetProperties$outboundSchema),
+  ).optional(),
+  startDatetime: z.nullable(z.string()).optional(),
+  endDatetime: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    searchFields: "search_fields",
+    searchFieldValues: "search_field_values",
+    orderBy: "order_by",
+    orderByDirection: "order_by_direction",
+    startDatetime: "start_datetime",
+    endDatetime: "end_datetime",
+  });
 });
 
 /**

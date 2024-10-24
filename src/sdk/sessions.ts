@@ -15,7 +15,7 @@ export class Sessions extends ClientSDK {
   async list(
     request: operations.SessionsListRequest,
     options?: RequestOptions,
-  ): Promise<components.SessionListResponse> {
+  ): Promise<components.ListResponseSession> {
     return unwrapAsync(sessionsList(
       this,
       request,

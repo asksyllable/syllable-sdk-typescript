@@ -11,12 +11,12 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
-import { Chats } from "./chats.js";
+import { Test } from "./test.js";
 
 export class Agents extends ClientSDK {
-  private _chats?: Chats;
-  get chats(): Chats {
-    return (this._chats ??= new Chats(this._options));
+  private _test?: Test;
+  get test(): Test {
+    return (this._test ??= new Test(this._options));
   }
 
   /**
@@ -28,7 +28,7 @@ export class Agents extends ClientSDK {
   async list(
     request: operations.AgentListRequest,
     options?: RequestOptions,
-  ): Promise<components.AgentListResponse> {
+  ): Promise<components.ListResponseAgent> {
     return unwrapAsync(agentsList(
       this,
       request,
