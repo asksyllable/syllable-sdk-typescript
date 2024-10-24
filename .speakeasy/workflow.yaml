@@ -5,7 +5,8 @@ sources:
         inputs:
             - location: ./openapi.json
         overlays:
-            - location: codeSamples.yaml
+            - location: ./overlay-remove-V1.yaml
+            - location: ./codeSamples.yaml
         output: openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/syllableai/syllableai/syllable-sdk-oas

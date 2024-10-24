@@ -2,7 +2,7 @@ configVersion: 2.0.0
 generation:
   devContainers:
     enabled: true
-    schemaPath: docs/openapi-final.json
+    schemaPath: openapi.yaml
   sdkClassName: SyllableSdk
   maintainOpenAPIOrder: true
   usageSnippets:
