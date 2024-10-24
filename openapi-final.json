@@ -2693,6 +2693,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "type"
         - "llm_config"
         - "id"
         - "last_updated"
@@ -2728,6 +2729,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "type"
         - "llm_config"
       title: "PromptCreate"
       description: "PromptCreate"

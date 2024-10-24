@@ -193,17 +193,3 @@ actions:
   - target: $["paths"]["/api/v1/organizations/"]["get"]["tags"]
     update:
       - "organizations"
-  - target: $["components"]["schemas"]["Prompt"]["required"][*]
-    remove: true
-  - target: $["components"]["schemas"]["Prompt"]["required"]
-    update:
-      - "name"
-      - "llm_config"
-      - "id"
-      - "last_updated"
-  - target: $["components"]["schemas"]["PromptCreate"]["required"][*]
-    remove: true
-  - target: $["components"]["schemas"]["PromptCreate"]["required"]
-    update:
-      - "name"
-      - "llm_config"
