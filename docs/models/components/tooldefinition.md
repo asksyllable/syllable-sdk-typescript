@@ -11,8 +11,7 @@ let value: ToolDefinition = {
   tool: {
     function: {
       name: "<value>",
-      description:
-        "colorfully orientate rally wherever minus runny rough agreeable beneath unlike",
+      description: "yuck supposing friendly serpentine",
       parameters: {},
     },
   },

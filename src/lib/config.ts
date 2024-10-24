@@ -11,7 +11,7 @@ import { Params, pathToFunc } from "./url.js";
  * Contains the list of servers available to the SDK
  */
 export const ServerList = [
-  "http://localhost:8001",
+  "http://127.0.0.1:8001",
 ] as const;
 
 export type SDKOptions = {
@@ -54,7 +54,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.0.2",
-  sdkVersion: "0.0.7",
+  sdkVersion: "0.0.8",
   genVersion: "2.438.15",
-  userAgent: "speakeasy-sdk/typescript 0.0.7 2.438.15 0.0.2 syllable-sdk",
+  userAgent: "speakeasy-sdk/typescript 0.0.8 2.438.15 0.0.2 syllable-sdk",
 } as const;

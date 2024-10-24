@@ -8,7 +8,7 @@ The configuration for an HTTP API call.
 import { HttpEndpoint } from "syllable-sdk/models/components";
 
 let value: HttpEndpoint = {
-  url: "https://jam-packed-tapioca.net/",
+  url: "https://well-to-do-papa.info",
   method: "<value>",
   argumentLocation: "<value>",
 };

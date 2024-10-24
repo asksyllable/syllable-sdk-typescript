@@ -77,7 +77,7 @@ run();
 
 ### Response
 
-**Promise\<[components.AvailableTargetsListResponse](../../models/components/availabletargetslistresponse.md)\>**
+**Promise\<[components.ListResponseAvailableTarget](../../models/components/listresponseavailabletarget.md)\>**
 
 ### Errors
 
@@ -150,7 +150,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTargetListResponse](../../models/components/channeltargetlistresponse.md)\>**
+**Promise\<[components.ListResponseChannelTarget](../../models/components/listresponsechanneltarget.md)\>**
 
 ### Errors
 

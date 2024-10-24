@@ -22,7 +22,7 @@ export class Prompts extends ClientSDK {
   async list(
     request: operations.PromptsListRequest,
     options?: RequestOptions,
-  ): Promise<components.PromptListResponse> {
+  ): Promise<components.ListResponsePrompt> {
     return unwrapAsync(promptsList(
       this,
       request,

@@ -22,7 +22,7 @@ export class Targets extends ClientSDK {
   async availableTargets(
     request: operations.AvailableTargetsRequest,
     options?: RequestOptions,
-  ): Promise<components.AvailableTargetsListResponse> {
+  ): Promise<components.ListResponseAvailableTarget> {
     return unwrapAsync(channelsTargetsAvailableTargets(
       this,
       request,
@@ -36,7 +36,7 @@ export class Targets extends ClientSDK {
   async list(
     request: operations.ChannelTargetsListRequest,
     options?: RequestOptions,
-  ): Promise<components.ChannelTargetListResponse> {
+  ): Promise<components.ListResponseChannelTarget> {
     return unwrapAsync(channelsTargetsList(
       this,
       request,

@@ -77,7 +77,7 @@ run();
 
 ### Response
 
-**Promise\<[components.AgentListResponse](../../models/components/agentlistresponse.md)\>**
+**Promise\<[components.ListResponseAgent](../../models/components/listresponseagent.md)\>**
 
 ### Errors
 
@@ -103,7 +103,12 @@ async function run() {
   const result = await syllableSDK.agents.create({
     name: "<value>",
     timezone: "Antarctica/Rothera",
-    typeExtra: {},
+    type: "<value>",
+    promptId: 486589,
+    customMessageId: 638424,
+    languages: [
+      "<value>",
+    ],
   });
 
   // Handle the result
@@ -131,7 +136,12 @@ async function run() {
   const res = await agentsCreate(syllableSDK, {
     name: "<value>",
     timezone: "Antarctica/Rothera",
-    typeExtra: {},
+    type: "<value>",
+    promptId: 486589,
+    customMessageId: 638424,
+    languages: [
+      "<value>",
+    ],
   });
 
   if (!res.ok) {
@@ -184,7 +194,12 @@ async function run() {
   const result = await syllableSDK.agents.update({
     name: "<value>",
     timezone: "Europe/Tallinn",
-    typeExtra: {},
+    type: "<value>",
+    promptId: 857478,
+    customMessageId: 597129,
+    languages: [
+      "<value>",
+    ],
     id: 597129,
   });
 
@@ -213,7 +228,12 @@ async function run() {
   const res = await agentsUpdate(syllableSDK, {
     name: "<value>",
     timezone: "Europe/Tallinn",
-    typeExtra: {},
+    type: "<value>",
+    promptId: 857478,
+    customMessageId: 597129,
+    languages: [
+      "<value>",
+    ],
     id: 597129,
   });
 

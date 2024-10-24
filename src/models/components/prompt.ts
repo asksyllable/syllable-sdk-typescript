@@ -19,6 +19,10 @@ export type Prompt = {
    * The Prompt name
    */
   name: string;
+  /**
+   * The type of the prompt
+   */
+  type: string;
   context?: string | null | undefined;
   /**
    * The tools for the prompt
@@ -39,6 +43,7 @@ export type Prompt = {
 export const Prompt$inboundSchema: z.ZodType<Prompt, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
+    type: z.string(),
     context: z.nullable(z.string()).optional(),
     tools: z.nullable(z.array(z.string())).optional(),
     llm_config: LlmConfig$inboundSchema,
@@ -54,6 +59,7 @@ export const Prompt$inboundSchema: z.ZodType<Prompt, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Prompt$Outbound = {
   name: string;
+  type: string;
   context?: string | null | undefined;
   tools?: Array<string> | null | undefined;
   llm_config: LlmConfig$Outbound;
@@ -68,6 +74,7 @@ export const Prompt$outboundSchema: z.ZodType<
   Prompt
 > = z.object({
   name: z.string(),
+  type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.nullable(z.array(z.string())).optional(),
   llmConfig: LlmConfig$outboundSchema,

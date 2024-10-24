@@ -9,12 +9,12 @@ let value: ConversationTranscriptionResponse = {
   conversationId: "<id>",
   transcription: [
     {
-      timestamp: new Date("2023-11-02T20:33:57.206Z"),
+      timestamp: new Date("2023-04-26T16:58:27.156Z"),
     },
   ],
   actions: [
     {
-      timestamp: new Date("2023-11-08T03:49:54.674Z"),
+      timestamp: new Date("2024-12-19T06:11:07.571Z"),
     },
   ],
 };

@@ -19,7 +19,7 @@ export class Tools extends ClientSDK {
   async list(
     request: operations.ToolListRequest,
     options?: RequestOptions,
-  ): Promise<components.ToolListResponse> {
+  ): Promise<components.ListResponseSchemasBubblegumV2ToolsTool> {
     return unwrapAsync(toolsList(
       this,
       request,

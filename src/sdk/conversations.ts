@@ -16,7 +16,7 @@ export class Conversations extends ClientSDK {
   async list(
     request: operations.ConversationsListRequest,
     options?: RequestOptions,
-  ): Promise<components.ConversationListResponse> {
+  ): Promise<components.ListResponseConversation> {
     return unwrapAsync(conversationsList(
       this,
       request,

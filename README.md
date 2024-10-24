@@ -124,9 +124,9 @@ run();
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
 
-#### [agents.chats](docs/sdks/chats/README.md)
+#### [agents.test](docs/sdks/test/README.md)
 
-* [chatsSendMessage](docs/sdks/chats/README.md#chatssendmessage) - Send New Message
+* [sendTestMessage](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 
 ### [channels](docs/sdks/channels/README.md)
 
@@ -146,6 +146,14 @@ run();
 * [list](docs/sdks/conversations/README.md#list) - Conversations List
 * [getById](docs/sdks/conversations/README.md#getbyid) - Get Conversation By Id
 
+### [customMessages](docs/sdks/custommessages/README.md)
+
+* [list](docs/sdks/custommessages/README.md#list) - Custom Messages List
+* [create](docs/sdks/custommessages/README.md#create) - Create Custom Message
+* [update](docs/sdks/custommessages/README.md#update) - Update Custom Message
+* [getById](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
+* [delete](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
+
 ### [dashboards](docs/sdks/dashboards/README.md)
 
 * [totalCallVolumeByWeekday](docs/sdks/dashboards/README.md#totalcallvolumebyweekday) - Get Total Call Volume By Weekday
@@ -160,14 +168,6 @@ run();
 ### [events](docs/sdks/events/README.md)
 
 * [list](docs/sdks/events/README.md#list) - Events List
-
-### [greetings](docs/sdks/greetings/README.md)
-
-* [list](docs/sdks/greetings/README.md#list) - Greetings List
-* [create](docs/sdks/greetings/README.md#create) - Create Greeting
-* [update](docs/sdks/greetings/README.md#update) - Update Greeting
-* [getById](docs/sdks/greetings/README.md#getbyid) - Get Greeting By Id
-* [delete](docs/sdks/greetings/README.md#delete) - Delete Greeting
 
 ### [organizations](docs/sdks/organizations/README.md)
 
@@ -209,11 +209,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`agentsChatsChatsSendMessage`](docs/sdks/chats/README.md#chatssendmessage) - Send New Message
 - [`agentsCreate`](docs/sdks/agents/README.md#create) - Create Agent
 - [`agentsDelete`](docs/sdks/agents/README.md#delete) - Delete Agent
 - [`agentsGetById`](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 - [`agentsList`](docs/sdks/agents/README.md#list) - Agent List
+- [`agentsTestSendTestMessage`](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 - [`agentsUpdate`](docs/sdks/agents/README.md#update) - Update Agent
 - [`channelsDelete`](docs/sdks/channels/README.md#delete) - Delete Channel
 - [`channelsList`](docs/sdks/channels/README.md#list) - Get Channels
@@ -224,6 +224,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`channelsTargetsUpdate`](docs/sdks/targets/README.md#update) - Edit Channel Target
 - [`conversationsGetById`](docs/sdks/conversations/README.md#getbyid) - Get Conversation By Id
 - [`conversationsList`](docs/sdks/conversations/README.md#list) - Conversations List
+- [`customMessagesCreate`](docs/sdks/custommessages/README.md#create) - Create Custom Message
+- [`customMessagesDelete`](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
+- [`customMessagesGetById`](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
+- [`customMessagesList`](docs/sdks/custommessages/README.md#list) - Custom Messages List
+- [`customMessagesUpdate`](docs/sdks/custommessages/README.md#update) - Update Custom Message
 - [`dashboardsGetDailyCallVolumeByHour`](docs/sdks/dashboards/README.md#getdailycallvolumebyhour) - Get Daily Call Volume By Hour
 - [`dashboardsGetMonthlyCallVolumeByDay`](docs/sdks/dashboards/README.md#getmonthlycallvolumebyday) - Get Monthly Call Volume By Day
 - [`dashboardsGetMonthlyCallVolumeByWeek`](docs/sdks/dashboards/README.md#getmonthlycallvolumebyweek) - Get Monthly Call Volume By Week
@@ -233,11 +238,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dashboardsGetWeeklyCallVolumeByWeekday`](docs/sdks/dashboards/README.md#getweeklycallvolumebyweekday) - Get Weekly Call Volume By Weekday
 - [`dashboardsTotalCallVolumeByWeekday`](docs/sdks/dashboards/README.md#totalcallvolumebyweekday) - Get Total Call Volume By Weekday
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
-- [`greetingsCreate`](docs/sdks/greetings/README.md#create) - Create Greeting
-- [`greetingsDelete`](docs/sdks/greetings/README.md#delete) - Delete Greeting
-- [`greetingsGetById`](docs/sdks/greetings/README.md#getbyid) - Get Greeting By Id
-- [`greetingsList`](docs/sdks/greetings/README.md#list) - Greetings List
-- [`greetingsUpdate`](docs/sdks/greetings/README.md#update) - Update Greeting
 - [`organizationsList`](docs/sdks/organizations/README.md#list) - Organizations List
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
@@ -393,7 +393,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `http://localhost:8001` | None |
+| 0 | `http://127.0.0.1:8001` | None |
 
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
@@ -423,7 +423,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverURL: "http://localhost:8001",
+  serverURL: "http://127.0.0.1:8001",
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 

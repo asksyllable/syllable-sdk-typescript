@@ -10,7 +10,7 @@ import { SchemasCortexV1ToolsTool } from "syllable-sdk/models/components";
 let value: SchemasCortexV1ToolsTool = {
   function: {
     name: "<value>",
-    description: "even as advanced afterwards coliseum overcooked what unless",
+    description: "but intrepid calculating queasily ha intensely settle",
     parameters: {},
   },
 };

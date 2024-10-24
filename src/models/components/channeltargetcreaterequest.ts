@@ -6,13 +6,13 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 
 export type ChannelTargetCreateRequest = {
-  channelId: number;
+  channelId: number | null;
   channelName: string | null;
   agentId: number | null;
-  target: string;
-  targetMode: string;
+  target: string | null;
+  targetMode: string | null;
   fallbackTarget: string | null;
-  isTest: boolean;
+  isTest: boolean | null;
 };
 
 /** @internal */
@@ -21,13 +21,13 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  channel_id: z.number().int(),
+  channel_id: z.nullable(z.number().int()),
   channel_name: z.nullable(z.string()),
   agent_id: z.nullable(z.number().int()),
-  target: z.string(),
-  target_mode: z.string(),
+  target: z.nullable(z.string()),
+  target_mode: z.nullable(z.string()),
   fallback_target: z.nullable(z.string()),
-  is_test: z.boolean(),
+  is_test: z.nullable(z.boolean()),
 }).transform((v) => {
   return remap$(v, {
     "channel_id": "channelId",
@@ -41,13 +41,13 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ChannelTargetCreateRequest$Outbound = {
-  channel_id: number;
+  channel_id: number | null;
   channel_name: string | null;
   agent_id: number | null;
-  target: string;
-  target_mode: string;
+  target: string | null;
+  target_mode: string | null;
   fallback_target: string | null;
-  is_test: boolean;
+  is_test: boolean | null;
 };
 
 /** @internal */
@@ -56,13 +56,13 @@ export const ChannelTargetCreateRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ChannelTargetCreateRequest
 > = z.object({
-  channelId: z.number().int(),
+  channelId: z.nullable(z.number().int()),
   channelName: z.nullable(z.string()),
   agentId: z.nullable(z.number().int()),
-  target: z.string(),
-  targetMode: z.string(),
+  target: z.nullable(z.string()),
+  targetMode: z.nullable(z.string()),
   fallbackTarget: z.nullable(z.string()),
-  isTest: z.boolean(),
+  isTest: z.nullable(z.boolean()),
 }).transform((v) => {
   return remap$(v, {
     channelId: "channel_id",

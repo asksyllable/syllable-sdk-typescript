@@ -3,11 +3,84 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
+import { ClosedEnum } from "../../types/enums.js";
+import * as components from "../components/index.js";
+
+export const ChannelsListQueryParamOrderBy = {
+  Id: "id",
+  Name: "name",
+  ChannelService: "channel_service",
+  SupportedModes: "supported_modes",
+} as const;
+export type ChannelsListQueryParamOrderBy = ClosedEnum<
+  typeof ChannelsListQueryParamOrderBy
+>;
+
+export const ChannelsListQueryParamOrderByDirection = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+export type ChannelsListQueryParamOrderByDirection = ClosedEnum<
+  typeof ChannelsListQueryParamOrderByDirection
+>;
 
 export type ChannelsListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
+  searchFields?: Array<components.ChannelProperties> | undefined;
+  searchFieldValues?: Array<string> | undefined;
+  orderBy?: ChannelsListQueryParamOrderBy | undefined;
+  orderByDirection?: ChannelsListQueryParamOrderByDirection | undefined;
+  fields?: Array<components.ChannelProperties> | null | undefined;
+  startDatetime?: string | null | undefined;
+  endDatetime?: string | null | undefined;
 };
+
+/** @internal */
+export const ChannelsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
+  typeof ChannelsListQueryParamOrderBy
+> = z.nativeEnum(ChannelsListQueryParamOrderBy);
+
+/** @internal */
+export const ChannelsListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
+  typeof ChannelsListQueryParamOrderBy
+> = ChannelsListQueryParamOrderBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ChannelsListQueryParamOrderBy$ {
+  /** @deprecated use `ChannelsListQueryParamOrderBy$inboundSchema` instead. */
+  export const inboundSchema = ChannelsListQueryParamOrderBy$inboundSchema;
+  /** @deprecated use `ChannelsListQueryParamOrderBy$outboundSchema` instead. */
+  export const outboundSchema = ChannelsListQueryParamOrderBy$outboundSchema;
+}
+
+/** @internal */
+export const ChannelsListQueryParamOrderByDirection$inboundSchema:
+  z.ZodNativeEnum<typeof ChannelsListQueryParamOrderByDirection> = z.nativeEnum(
+    ChannelsListQueryParamOrderByDirection,
+  );
+
+/** @internal */
+export const ChannelsListQueryParamOrderByDirection$outboundSchema:
+  z.ZodNativeEnum<typeof ChannelsListQueryParamOrderByDirection> =
+    ChannelsListQueryParamOrderByDirection$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ChannelsListQueryParamOrderByDirection$ {
+  /** @deprecated use `ChannelsListQueryParamOrderByDirection$inboundSchema` instead. */
+  export const inboundSchema =
+    ChannelsListQueryParamOrderByDirection$inboundSchema;
+  /** @deprecated use `ChannelsListQueryParamOrderByDirection$outboundSchema` instead. */
+  export const outboundSchema =
+    ChannelsListQueryParamOrderByDirection$outboundSchema;
+}
 
 /** @internal */
 export const ChannelsListRequest$inboundSchema: z.ZodType<
@@ -16,13 +89,38 @@ export const ChannelsListRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(-1),
+  limit: z.number().int().default(25),
+  search_fields: z.array(components.ChannelProperties$inboundSchema).optional(),
+  search_field_values: z.array(z.string()).optional(),
+  order_by: ChannelsListQueryParamOrderBy$inboundSchema.optional(),
+  order_by_direction: ChannelsListQueryParamOrderByDirection$inboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.ChannelProperties$inboundSchema))
+    .optional(),
+  start_datetime: z.nullable(z.string()).optional(),
+  end_datetime: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "search_fields": "searchFields",
+    "search_field_values": "searchFieldValues",
+    "order_by": "orderBy",
+    "order_by_direction": "orderByDirection",
+    "start_datetime": "startDatetime",
+    "end_datetime": "endDatetime",
+  });
 });
 
 /** @internal */
 export type ChannelsListRequest$Outbound = {
   page?: number | null | undefined;
   limit: number;
+  search_fields?: Array<string> | undefined;
+  search_field_values?: Array<string> | undefined;
+  order_by?: string | undefined;
+  order_by_direction?: string | undefined;
+  fields?: Array<string> | null | undefined;
+  start_datetime?: string | null | undefined;
+  end_datetime?: string | null | undefined;
 };
 
 /** @internal */
@@ -32,7 +130,25 @@ export const ChannelsListRequest$outboundSchema: z.ZodType<
   ChannelsListRequest
 > = z.object({
   page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(-1),
+  limit: z.number().int().default(25),
+  searchFields: z.array(components.ChannelProperties$outboundSchema).optional(),
+  searchFieldValues: z.array(z.string()).optional(),
+  orderBy: ChannelsListQueryParamOrderBy$outboundSchema.optional(),
+  orderByDirection: ChannelsListQueryParamOrderByDirection$outboundSchema
+    .optional(),
+  fields: z.nullable(z.array(components.ChannelProperties$outboundSchema))
+    .optional(),
+  startDatetime: z.nullable(z.string()).optional(),
+  endDatetime: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    searchFields: "search_fields",
+    searchFieldValues: "search_field_values",
+    orderBy: "order_by",
+    orderByDirection: "order_by_direction",
+    startDatetime: "start_datetime",
+    endDatetime: "end_datetime",
+  });
 });
 
 /**

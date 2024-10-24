@@ -1,0 +1,15 @@
+# ToolProperties
+
+## Example Usage
+
+```typescript
+import { ToolProperties } from "syllable-sdk/models/components";
+
+let value: ToolProperties = "id";
+```
+
+## Values
+
+```typescript
+"id" | "name" | "service_name" | "definition" | "service_id"
+```
