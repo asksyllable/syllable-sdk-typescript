@@ -1,0 +1,209 @@
+overlay: 1.0.0
+info:
+  title: Overlay ./openapi-new.json => ./openapi.json
+  version: 0.0.0
+actions:
+  - target: $["paths"]["/api/v1/agents/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/agents/"]["get"]["tags"]
+    update:
+      - "agents"
+  - target: $["paths"]["/api/v1/agents/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/agents/"]["post"]["tags"]
+    update:
+      - "agents"
+  - target: $["paths"]["/api/v1/agents/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/agents/"]["put"]["tags"]
+    update:
+      - "agents"
+  - target: $["paths"]["/api/v1/agents/{agent_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/agents/{agent_id}"]["get"]["tags"]
+    update:
+      - "agents"
+  - target: $["paths"]["/api/v1/agents/{agent_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/agents/{agent_id}"]["delete"]["tags"]
+    update:
+      - "agents"
+  - target: $["paths"]["/api/v1/channels/available-targets"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/channels/available-targets"]["get"]["tags"]
+    update:
+      - "channels.targets"
+  - target: $["paths"]["/api/v1/channels/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/channels/"]["get"]["tags"]
+    update:
+      - "channels"
+  - target: $["paths"]["/api/v1/channels/targets"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/channels/targets"]["get"]["tags"]
+    update:
+      - "channels.targets"
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets"]["post"]["tags"]
+    update:
+      - "channels.targets"
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets/{target_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets/{target_id}"]["get"]["tags"]
+    update:
+      - "channels.targets"
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets/{target_id}"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/channels/{channel_id}/targets/{target_id}"]["put"]["tags"]
+    update:
+      - "channels.targets"
+  - target: $["paths"]["/api/v1/channels/{channel_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/channels/{channel_id}"]["delete"]["tags"]
+    update:
+      - "channels"
+  - target: $["paths"]["/api/v1/agents/test/messages"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/agents/test/messages"]["post"]["tags"]
+    update:
+      - "agents.test"
+  - target: $["paths"]["/api/v1/conversations/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/conversations/"]["get"]["tags"]
+    update:
+      - "conversations"
+  - target: $["paths"]["/api/v1/conversations/{conversation_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/conversations/{conversation_id}"]["get"]["tags"]
+    update:
+      - "conversations"
+  - target: $["paths"]["/api/v1/dashboards/total_call_volume_by_weekday"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/total_call_volume_by_weekday"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/dashboards/get_total_call_volume_by_hour"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/get_total_call_volume_by_hour"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/dashboards/get_weekly_call_volume_by_weekday"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/get_weekly_call_volume_by_weekday"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/dashboards/get_daily_call_volume_by_hour"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/get_daily_call_volume_by_hour"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_week"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_week"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_day"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_day"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/dashboards/get_session_summary"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/get_session_summary"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/dashboards/get_agents"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/dashboards/get_agents"]["get"]["tags"]
+    update:
+      - "dashboards"
+  - target: $["paths"]["/api/v1/events/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/events/"]["get"]["tags"]
+    update:
+      - "events"
+  - target: $["paths"]["/api/v1/custom_messages/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/custom_messages/"]["get"]["tags"]
+    update:
+      - "custom_messages"
+  - target: $["paths"]["/api/v1/custom_messages/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/custom_messages/"]["post"]["tags"]
+    update:
+      - "custom_messages"
+  - target: $["paths"]["/api/v1/custom_messages/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/custom_messages/"]["put"]["tags"]
+    update:
+      - "custom_messages"
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}"]["get"]["tags"]
+    update:
+      - "custom_messages"
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}"]["delete"]["tags"]
+    update:
+      - "custom_messages"
+  - target: $["paths"]["/api/v1/prompts/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/prompts/"]["get"]["tags"]
+    update:
+      - "prompts"
+  - target: $["paths"]["/api/v1/prompts/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/prompts/"]["post"]["tags"]
+    update:
+      - "prompts"
+  - target: $["paths"]["/api/v1/prompts/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/prompts/"]["put"]["tags"]
+    update:
+      - "prompts"
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}"]["get"]["tags"]
+    update:
+      - "prompts"
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}"]["delete"]["tags"]
+    update:
+      - "prompts"
+  - target: $["paths"]["/api/v1/sessions/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/sessions/"]["get"]["tags"]
+    update:
+      - "sessions"
+  - target: $["paths"]["/api/v1/tools/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/tools/"]["get"]["tags"]
+    update:
+      - "tools"
+  - target: $["paths"]["/api/v1/tools/{tool_name}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/tools/{tool_name}"]["get"]["tags"]
+    update:
+      - "tools"
+  - target: $["paths"]["/api/v1/organizations/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/organizations/"]["get"]["tags"]
+    update:
+      - "organizations"
+  - target: $["components"]["schemas"]["Prompt"]["required"][*]
+    remove: true
+  - target: $["components"]["schemas"]["Prompt"]["required"]
+    update:
+      - "name"
+      - "llm_config"
+      - "id"
+      - "last_updated"
+  - target: $["components"]["schemas"]["PromptCreate"]["required"][*]
+    remove: true
+  - target: $["components"]["schemas"]["PromptCreate"]["required"]
+    update:
+      - "name"
+      - "llm_config"

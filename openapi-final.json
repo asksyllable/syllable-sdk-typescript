@@ -1,0 +1,3081 @@
+openapi: "3.1.0"
+info:
+  title: "SyllableSDK"
+  description: "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI capabilities into your applications. Whether you're building chatbots, virtual assistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Image Recognition**: Identify objects, faces, and scenes in images.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
+  version: "0.0.2"
+servers:
+  - url: "http://127.0.0.1:8001"
+paths:
+  "/api/v1/agents/":
+    get:
+      tags:
+        - "agents"
+      summary: "Agent List"
+      description: "List the existing agents"
+      operationId: "agent_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/AgentProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/AgentProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/AgentProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_Agent_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    post:
+      tags:
+        - "agents"
+      summary: "Create Agent"
+      description: "Create a new agent"
+      operationId: "agent_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/AgentCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Agent"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "agents"
+      summary: "Update Agent"
+      description: "Update an existing agent"
+      operationId: "agent_update"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/Agent"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Agent"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/agents/{agent_id}":
+    get:
+      tags:
+        - "agents"
+      summary: "Get Agent By Id"
+      description: "Get an agent by ID."
+      operationId: "agent_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "agent_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Agent Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Agent"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "agents"
+      summary: "Delete Agent"
+      description: "Delete an agent by ID"
+      operationId: "agent_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "agent_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Agent Id"
+        - name: "reason"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Reason"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/channels/available-targets":
+    get:
+      tags:
+        - "channels.targets"
+      summary: "Available Targets List"
+      description: "List the available phone numbers"
+      operationId: "available_targets"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/AvailableTargetProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_AvailableTarget_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/channels/":
+    get:
+      tags:
+        - "channels"
+      summary: "Get Channels"
+      operationId: "channels_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ChannelProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ChannelProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ChannelProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_Channel_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/channels/targets":
+    get:
+      tags:
+        - "channels.targets"
+      summary: "Get Channel Targets"
+      operationId: "channel_targets_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ChannelTargetProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_ChannelTarget_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/channels/{channel_id}/targets":
+    post:
+      tags:
+        - "channels.targets"
+      summary: "Assign A Channel Target"
+      operationId: "channel_targets_create"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Channel Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ChannelTargetCreateRequest"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/channels/{channel_id}/targets/{target_id}":
+    get:
+      tags:
+        - "channels.targets"
+      summary: "Get A Channel Target"
+      operationId: "channel_targets_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Channel Id"
+        - name: "target_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Target Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "channels.targets"
+      summary: "Edit Channel Target"
+      description: "Update channel target by ID"
+      operationId: "channels_target_update"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Channel Id"
+        - name: "target_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Target Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ChannelTarget"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/channels/{channel_id}":
+    delete:
+      tags:
+        - "channels"
+      summary: "Delete Channel"
+      description: "Delete channel by ID"
+      operationId: "channels_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Channel Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/agents/test/messages":
+    post:
+      tags:
+        - "agents.test"
+      summary: "Send New Message"
+      description: "Send a new message"
+      operationId: "send_test_message"
+      requestBody:
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/TestMessage"}
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/TestMessageResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      security:
+        - APIKeyHeader: []
+  "/api/v1/conversations/":
+    get:
+      tags:
+        - "conversations"
+      summary: "Conversations List"
+      operationId: "conversations_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ConversationProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ConversationProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ConversationProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_Conversation_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/conversations/{conversation_id}":
+    get:
+      tags:
+        - "conversations"
+      summary: "Get Conversation By Id"
+      operationId: "conversation_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "conversation_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Conversation Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ConversationTranscriptionResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/dashboards/total_call_volume_by_weekday":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Total Call Volume By Weekday"
+      description: "Get total call volume by weekday."
+      operationId: "total_call_volume_by_weekday"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Total Call Volume By Weekday"
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/get_total_call_volume_by_hour":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Total Call Volume By Hour"
+      description: "Get total call volume by hour."
+      operationId: "get_total_call_volume_by_hour"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Get Total Call Volume By Hour"
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/get_weekly_call_volume_by_weekday":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Weekly Call Volume By Weekday"
+      description: "Get weekly call volume by weekday."
+      operationId: "get_weekly_call_volume_by_weekday"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Get Weekly Call Volume By Weekday"
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/get_daily_call_volume_by_hour":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Daily Call Volume By Hour"
+      description: "Get daily call volume by hour."
+      operationId: "get_daily_call_volume_by_hour"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Get Daily Call Volume By Hour"
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/get_monthly_call_volume_by_week":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Monthly Call Volume By Week"
+      description: "Get monthly cal volume by week."
+      operationId: "get_monthly_call_volume_by_week"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Get Monthly Call Volume By Week"
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/get_monthly_call_volume_by_day":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Monthly Call Volume By Day"
+      description: "Get monthly call volume by day."
+      operationId: "get_monthly_call_volume_by_day"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Get Monthly Call Volume By Day"
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/get_session_summary":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Session Summary"
+      description: "Get session summary data"
+      operationId: "get_session_summary"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            default: 100
+            title: "Limit"
+        - name: "start_date"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Date"
+        - name: "end_date"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Date"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Order By"
+        - name: "agent_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+              - type: "null"
+            title: "Agent Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Get Session Summary"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/dashboards/get_agents":
+    get:
+      tags:
+        - "dashboards"
+      summary: "Get Agents"
+      description: "Get list of agents for session summary dropdown"
+      operationId: "get_session_agents"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "object"
+                title: "Response Get Session Agents"
+      security:
+        - APIKeyHeader: []
+  "/api/v1/events/":
+    get:
+      tags:
+        - "events"
+      summary: "Events List"
+      operationId: "events_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/EventProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/EventProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/EventProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_Event_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/custom_messages/":
+    get:
+      tags:
+        - "custom_messages"
+      summary: "Custom Messages List"
+      description: "List the existing custom_messages"
+      operationId: "custom_messages_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/CustomMessageProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/CustomMessageProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/CustomMessageProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_CustomMessage_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    post:
+      tags:
+        - "custom_messages"
+      summary: "Create Custom Message"
+      description: "Create a new greeting"
+      operationId: "custom_messages_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/CustomMessageCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CustomMessage"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "custom_messages"
+      summary: "Update Custom Message"
+      description: "Update a greeting"
+      operationId: "custom_messages_update"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/CustomMessage"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CustomMessage"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/custom_messages/{custom_message_id}":
+    get:
+      tags:
+        - "custom_messages"
+      summary: "Get Custom Message By Id"
+      description: "Get the greeting by its ID"
+      operationId: "custom_message_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "custom_message_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Custom Message Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CustomMessage"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "custom_messages"
+      summary: "Delete Custom Message"
+      description: "Delete greeting by ID"
+      operationId: "custom_messages_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "custom_message_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Custom Message Id"
+        - name: "reason"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Reason"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/prompts/":
+    get:
+      tags:
+        - "prompts"
+      summary: "Prompt List"
+      description: "List the existing prompts"
+      operationId: "prompts_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/PromptProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/PromptProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/PromptProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_Prompt_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    post:
+      tags:
+        - "prompts"
+      summary: "Create Prompt"
+      description: "Create a new prompt"
+      operationId: "prompts_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/PromptCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Prompt"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "prompts"
+      summary: "Update Prompt"
+      description: "Update an existing prompt"
+      operationId: "prompts_update"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/Prompt"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Prompt"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/prompts/{prompt_id}":
+    get:
+      tags:
+        - "prompts"
+      summary: "Get Prompt By Id"
+      description: "Get a prompt by ID"
+      operationId: "prompts_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "prompt_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Prompt Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Prompt"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "prompts"
+      summary: "Delete Prompt"
+      description: "Delete an prompt by ID"
+      operationId: "prompts_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "prompt_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Prompt Id"
+        - name: "reason"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Reason"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/sessions/":
+    get:
+      tags:
+        - "sessions"
+      summary: "Sessions List"
+      operationId: "sessions_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/SessionProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/SessionProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/SessionProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_Session_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/tools/":
+    get:
+      tags:
+        - "tools"
+      summary: "Tool List"
+      description: "List the existing agents"
+      operationId: "tool_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ToolProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ToolProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ToolProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_SchemasBubblegumV2ToolsTool_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/tools/{tool_name}":
+    get:
+      tags:
+        - "tools"
+      summary: "Tool Info"
+      description: "Get the details of a specific tool"
+      operationId: "tool_get_by_name"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "tool_name"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Tool Name"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ToolDetailResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/organizations/":
+    get:
+      tags:
+        - "organizations"
+      summary: "Organizations List"
+      description: "List all organizations"
+      operationId: "organizations_list"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                items: {"$ref": "#/components/schemas/Organization"}
+                type: "array"
+                title: "Response Organizations List"
+      security:
+        - APIKeyHeader: []
+components:
+  schemas:
+    "Agent":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "timezone":
+          type: "string"
+          title: "Timezone"
+        "type":
+          type: "string"
+          title: "Type"
+        "prompt_id":
+          type: "integer"
+          title: "Prompt Id"
+        "custom_message_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Custom Message Id"
+        "languages":
+          items:
+            type: "string"
+          type: "array"
+          title: "Languages"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+        "tool_headers":
+          anyOf:
+            - additionalProperties:
+                type: "string"
+              type: "object"
+            - type: "null"
+          title: "Tool Headers"
+        "variables":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Variables"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The Agent ID"
+      type: "object"
+      required:
+        - "name"
+        - "timezone"
+        - "type"
+        - "prompt_id"
+        - "custom_message_id"
+        - "languages"
+        - "id"
+      title: "Agent"
+    "AgentCreate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "timezone":
+          type: "string"
+          title: "Timezone"
+        "type":
+          type: "string"
+          title: "Type"
+        "prompt_id":
+          type: "integer"
+          title: "Prompt Id"
+        "custom_message_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Custom Message Id"
+        "languages":
+          items:
+            type: "string"
+          type: "array"
+          title: "Languages"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+        "tool_headers":
+          anyOf:
+            - additionalProperties:
+                type: "string"
+              type: "object"
+            - type: "null"
+          title: "Tool Headers"
+        "variables":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Variables"
+      type: "object"
+      required:
+        - "name"
+        - "timezone"
+        - "type"
+        - "prompt_id"
+        - "custom_message_id"
+        - "languages"
+      title: "AgentCreate"
+    "AgentProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "type"
+        - "timezone"
+        - "prompt_id"
+        - "custom_message_id"
+        - "languages"
+        - "variables"
+        - "prompt_tool_defaults"
+        - "tool_headers"
+      title: "AgentProperties"
+    "AgentToolDefaults":
+      properties:
+        "tool_name":
+          type: "string"
+          title: "Tool Name"
+        "default_values":
+          items: {"$ref": "#/components/schemas/AgentToolFieldDefault"}
+          type: "array"
+          title: "Default Values"
+      type: "object"
+      required:
+        - "tool_name"
+        - "default_values"
+      title: "AgentToolDefaults"
+    "AgentToolFieldDefault":
+      properties:
+        "field_name":
+          type: "string"
+          title: "Field Name"
+        "default_value":
+          title: "Default Value"
+      type: "object"
+      required:
+        - "field_name"
+        - "default_value"
+      title: "AgentToolFieldDefault"
+    "AvailableTarget":
+      properties:
+        "channel_id":
+          type: "integer"
+          title: "Channel Id"
+        "channel_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Name"
+        "target":
+          type: "string"
+          title: "Target"
+      type: "object"
+      required:
+        - "channel_id"
+        - "channel_name"
+        - "target"
+      title: "AvailableTarget"
+    "AvailableTargetProperties":
+      type: "string"
+      enum:
+        - "channel_id"
+        - "channel_name"
+        - "target"
+      title: "AvailableTargetProperties"
+    "Channel":
+      properties:
+        "id":
+          type: "string"
+          title: "Id"
+        "name":
+          type: "string"
+          title: "Name"
+        "channel_service":
+          type: "string"
+          title: "Channel Service"
+        "supported_modes":
+          type: "string"
+          title: "Supported Modes"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "channel_service"
+        - "supported_modes"
+      title: "Channel"
+    "ChannelProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "channel_service"
+        - "supported_modes"
+      title: "ChannelProperties"
+    "ChannelTarget":
+      properties:
+        "id":
+          type: "integer"
+          title: "Id"
+        "channel_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Channel Id"
+        "channel_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Name"
+        "agent_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Agent Id"
+        "target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target"
+        "target_mode":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target Mode"
+        "fallback_target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Fallback Target"
+        "is_test":
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Is Test"
+      type: "object"
+      required:
+        - "id"
+        - "channel_id"
+        - "channel_name"
+        - "agent_id"
+        - "target"
+        - "target_mode"
+        - "fallback_target"
+        - "is_test"
+      title: "ChannelTarget"
+    "ChannelTargetCreateRequest":
+      properties:
+        "channel_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Channel Id"
+        "channel_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Name"
+        "agent_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Agent Id"
+        "target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target"
+        "target_mode":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target Mode"
+        "fallback_target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Fallback Target"
+        "is_test":
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Is Test"
+      type: "object"
+      required:
+        - "channel_id"
+        - "channel_name"
+        - "agent_id"
+        - "target"
+        - "target_mode"
+        - "fallback_target"
+        - "is_test"
+      title: "ChannelTargetCreateRequest"
+    "ChannelTargetProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "channel_id"
+        - "channel_name"
+        - "agent_id"
+        - "target"
+        - "target_mode"
+        - "fallback_target"
+        - "is_test"
+      title: "ChannelTargetProperties"
+    "Conversation":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "conversation_id":
+          type: "string"
+          title: "Conversation Id"
+        "session_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Session Id"
+        "agent_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Agent Id"
+        "agent_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Agent Name"
+        "agent_type":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Agent Type"
+        "prompt_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Id"
+        "prompt_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Name"
+        "prompt_version":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Version"
+        "call_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Call Id"
+        "source":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source"
+        "target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target"
+        "is_legacy":
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Is Legacy"
+        "is_test":
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Is Test"
+      type: "object"
+      required:
+        - "timestamp"
+        - "conversation_id"
+      title: "Conversation"
+    "ConversationAction":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "tool_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Tool Name"
+        "tool_request":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Tool Request"
+        "tool_result":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Tool Result"
+      type: "object"
+      required:
+        - "timestamp"
+      title: "ConversationAction"
+    "ConversationProperties":
+      type: "string"
+      enum:
+        - "timestamp"
+        - "agent_type"
+        - "agent_id"
+        - "agent_name"
+        - "prompt_id"
+        - "prompt_name"
+        - "call_id"
+        - "source"
+        - "target"
+        - "is_legacy"
+        - "is_test"
+      title: "ConversationProperties"
+    "ConversationText":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "lang":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Lang"
+        "source":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source"
+        "text":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Text"
+      type: "object"
+      required:
+        - "timestamp"
+      title: "ConversationText"
+    "ConversationTranscriptionResponse":
+      properties:
+        "conversation_id":
+          type: "string"
+          title: "Conversation Id"
+        "transcription":
+          items: {"$ref": "#/components/schemas/ConversationText"}
+          type: "array"
+          title: "Transcription"
+        "actions":
+          items: {"$ref": "#/components/schemas/ConversationAction"}
+          type: "array"
+          title: "Actions"
+      type: "object"
+      required:
+        - "conversation_id"
+        - "transcription"
+        - "actions"
+      title: "ConversationTranscriptionResponse"
+    "CustomMessage":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the greeting"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "The text of the greeting"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the greeting"
+        "type":
+          type: "string"
+          title: "Type"
+          default: "greeting"
+      type: "object"
+      required:
+        - "name"
+        - "text"
+        - "id"
+      title: "CustomMessage"
+    "CustomMessageCreate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the greeting"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "The text of the greeting"
+      type: "object"
+      required:
+        - "name"
+        - "text"
+      title: "CustomMessageCreate"
+    "CustomMessageProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "text"
+      title: "CustomMessageProperties"
+    "Defaults":
+      properties:
+        "anyof_schema_1_validator":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Anyof Schema 1 Validator"
+        "anyof_schema_2_validator":
+          anyOf:
+            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
+              type: "object"
+            - type: "null"
+          title: "Anyof Schema 2 Validator"
+        "actual_instance":
+          title: "Actual Instance"
+        "any_of_schemas":
+          items:
+            type: "string"
+          type: "array"
+          uniqueItems: true
+          title: "Any Of Schemas"
+          default: ["object", "Dict[str, ToolParameterDefault]"]
+      type: "object"
+      title: "Defaults"
+      description: "The default values for the parameters of the function/tool call."
+    "Event":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "session_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Session Id"
+        "conversation_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Conversation Id"
+        "source":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source"
+        "source_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source Id"
+        "category":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Category"
+        "type":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Type"
+        "user_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "User Id"
+        "description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+        "attributes":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Attributes"
+      type: "object"
+      required:
+        - "timestamp"
+      title: "Event"
+    "EventProperties":
+      type: "string"
+      enum:
+        - "timestamp"
+        - "session_id"
+        - "conversation_id"
+        - "source"
+        - "source_id"
+        - "category"
+        - "type"
+        - "user_id"
+        - "description"
+        - "attributes"
+      title: "EventProperties"
+    "Function":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the function/tool call."
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the tool."
+        "parameters":
+          type: "object"
+          title: "Parameters"
+          description: "The JSON Schema of parameters of the function/tool call."
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "parameters"
+      title: "Function"
+      description: "A tool definition to be used by the OpenAI API.  See: - https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
+    "HTTPValidationError":
+      properties:
+        "detail":
+          items: {"$ref": "#/components/schemas/ValidationError"}
+          type: "array"
+          title: "Detail"
+      type: "object"
+      title: "HTTPValidationError"
+    "HttpEndpoint":
+      properties:
+        "url":
+          type: "string"
+          title: "Url"
+          description: "The endpoint URL of the external service to call."
+        "method":
+          type: "string"
+          title: "Method"
+          description: "The HTTP method to use for the service call."
+        "argument_location":
+          type: "string"
+          title: "Argument Location"
+          description: "How to pass the arguments to the request."
+      type: "object"
+      required:
+        - "url"
+        - "method"
+        - "argument_location"
+      title: "HttpEndpoint"
+      description: "The configuration for an HTTP API call."
+    "ListResponse_Agent_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Agent"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Agent]"
+    "ListResponse_AvailableTarget_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/AvailableTarget"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[AvailableTarget]"
+    "ListResponse_ChannelTarget_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/ChannelTarget"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[ChannelTarget]"
+    "ListResponse_Channel_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Channel"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Channel]"
+    "ListResponse_Conversation_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Conversation"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Conversation]"
+    "ListResponse_CustomMessage_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/CustomMessage"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[CustomMessage]"
+    "ListResponse_Event_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Event"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Event]"
+    "ListResponse_Prompt_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Prompt"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Prompt]"
+    "ListResponse_SchemasBubblegumV2ToolsTool_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/SchemasBubblegumV2ToolsTool"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[SchemasBubblegumV2ToolsTool]"
+    "ListResponse_Session_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Session"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Session]"
+    "LlmConfig":
+      properties:
+        "provider":
+          anyOf:
+            - {"$ref": "#/components/schemas/Provider"}
+            - type: "null"
+          description: "Provider of the LLM model."
+        "model":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Model"
+          description: "Name of the model. Must match the deployment name in Azure AI Studio."
+          default: "gpt-4o"
+        "version":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Version"
+        "api_version":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Api Version"
+      type: "object"
+      title: "LlmConfig"
+      description: "LlmConfig"
+    "OrderByDirection":
+      type: "string"
+      enum:
+        - "asc"
+        - "desc"
+      title: "OrderByDirection"
+    "Organization":
+      properties:
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The organization ID"
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The organization name"
+        "display_name":
+          type: "string"
+          title: "Display Name"
+          description: "The organization display name"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "display_name"
+      title: "Organization"
+    "Prompt":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The Prompt name"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "The type of the prompt"
+        "context":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Context"
+        "tools":
+          anyOf:
+            - items:
+                type: "string"
+              type: "array"
+            - type: "null"
+          title: "Tools"
+          description: "The tools for the prompt"
+        "llm_config":
+          allOf:
+            - {"$ref": "#/components/schemas/LlmConfig"}
+          description: "The configuration for the language model used by the Cortex API."
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The Prompt ID"
+        "last_updated":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated"
+      type: "object"
+      required:
+        - "name"
+        - "llm_config"
+        - "id"
+        - "last_updated"
+      title: "Prompt"
+      description: "Prompt"
+    "PromptCreate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The Prompt name"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "The type of the prompt"
+        "context":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Context"
+        "tools":
+          anyOf:
+            - items:
+                type: "string"
+              type: "array"
+            - type: "null"
+          title: "Tools"
+          description: "The tools for the prompt"
+        "llm_config":
+          allOf:
+            - {"$ref": "#/components/schemas/LlmConfig"}
+          description: "The configuration for the language model used by the Cortex API."
+      type: "object"
+      required:
+        - "name"
+        - "llm_config"
+      title: "PromptCreate"
+      description: "PromptCreate"
+    "PromptProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "context"
+        - "tools"
+        - "llm_config"
+      title: "PromptProperties"
+    "Provider":
+      type: "string"
+      enum:
+        - "azure_openai"
+        - "openai"
+      title: "Provider"
+      description: "LLM API provider."
+    "SchemasBubblegumV2ToolsTool":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the tool"
+        "definition":
+          anyOf:
+            - {"$ref": "#/components/schemas/ToolDefinition"}
+            - type: "null"
+          description: "The definition of the tool"
+        "service_id":
+          type: "integer"
+          title: "Service Id"
+          description: "The service this tool belongs to"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the tool"
+        "service_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Service Name"
+      type: "object"
+      required:
+        - "name"
+        - "service_id"
+        - "id"
+      title: "SchemasBubblegumV2ToolsTool"
+      description: "SchemasBubblegumV2ToolsTool"
+    "SchemasCortexV1ToolsTool":
+      properties:
+        "type":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Type"
+          description: "Always `function`."
+          default: "function"
+        "function":
+          allOf:
+            - {"$ref": "#/components/schemas/Function"}
+          description: "The tool definition including the JSON Schema of its parameters."
+      type: "object"
+      required:
+        - "function"
+      title: "SchemasCortexV1ToolsTool"
+      description: "A tool definition to be used by the OpenAI API."
+    "Session":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "session_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Session Id"
+        "conversation_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Conversation Id"
+        "channel_manager_service":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Manager Service"
+        "channel_manager_type":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Manager Type"
+        "channel_manager_sid":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Manager Sid"
+        "source":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source"
+        "target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target"
+        "is_legacy":
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Is Legacy"
+        "is_test":
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Is Test"
+      type: "object"
+      required:
+        - "timestamp"
+      title: "Session"
+    "SessionProperties":
+      type: "string"
+      enum:
+        - "timestamp"
+        - "session_id"
+        - "conversation_id"
+        - "channel_manager_service"
+        - "channel_manager_type"
+        - "channel_manager_sid"
+        - "source"
+        - "target"
+        - "is_legacy"
+        - "is_test"
+      title: "SessionProperties"
+    "TestMessage":
+      properties:
+        "service_name":
+          type: "string"
+          title: "Service Name"
+          description: "Name of the service producing the message"
+        "source":
+          type: "string"
+          title: "Source"
+          description: "Name of the source of the message, should identify the user, like an email or username"
+        "text":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Text"
+        "test_id":
+          type: "string"
+          title: "Test Id"
+        "agent_id":
+          type: "string"
+          title: "Agent Id"
+        "org_name":
+          type: "string"
+          title: "Org Name"
+      type: "object"
+      required:
+        - "service_name"
+        - "source"
+        - "test_id"
+        - "agent_id"
+        - "org_name"
+      title: "TestMessage"
+    "TestMessageResponse":
+      properties:
+        "test_id":
+          type: "string"
+          title: "Test Id"
+        "agent_id":
+          type: "string"
+          title: "Agent Id"
+        "text":
+          type: "string"
+          title: "Text"
+        "response":
+          type: "object"
+          title: "Response"
+      type: "object"
+      required:
+        - "test_id"
+        - "agent_id"
+        - "text"
+      title: "TestMessageResponse"
+    "ToolDefinition":
+      properties:
+        "type":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Type"
+        "tool":
+          allOf:
+            - {"$ref": "#/components/schemas/SchemasCortexV1ToolsTool"}
+          description: "The tool definition to be used by the OpenAI API."
+        "endpoint":
+          anyOf:
+            - {"$ref": "#/components/schemas/HttpEndpoint"}
+            - type: "null"
+        "defaults":
+          anyOf:
+            - {"$ref": "#/components/schemas/Defaults"}
+            - type: "null"
+        "result":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Result"
+      type: "object"
+      required:
+        - "tool"
+      title: "ToolDefinition"
+      description: "A tool that can be called from GPT during the conversation.  The tool can result in one of the following actions depending on the `type` field: - `action`:   An `ActionRequest` to return to Bubblegum in `GetResponseResponse`. - `endpoint`:   An HTTP API call to an external tool. Requires the `endpoint` field to be set too. - `context`:   Sets context variables based on the tool arguments, e.g. to change the session language. Only   `language` and `say` context vars are currently supported, but this will be made more generic.  For example, to change the current session language: ``` {   \"type\": \"context\",   \"tool\": {     \"function\": {       \"name\": \"set_language\",       \"parameters\": {         \"language\": {           \"type\": \"string\",           \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"         },         \"message\": {           \"type\": \"string\",           \"description\": \"Inform the caller we're now speaking in the new language.\"         }       }     }   } } ```  If `defaults` is provided, it will be used as the default values for the parameters of the tool call, if GPT doesn't provide them: ``` \"defaults\": {   \"hospital\": \"Queens Hospital\" } ```  Some special \"transform\" handling is supported if the value is a dict with a single `transform` key. The parameter value will be transformed by the given `action` before being used as the default value:  Removing an unwanted parameter: ``` \"defaults\": {   \"hospital\": {     \"transform\": {       \"action\": \"remove\"     }   } } ```  Add custom parameters from other parameters using Python's `format`: ``` \"defaults\": {   \"hello\": {     \"transform\": {       \"format\": \"Hello, {name}!\"     }   } }  Modify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\": ``` {   \"defaults\": {     \"city\": {       \"transform\": {         \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},         \"action\": \"override\",         \"format\": \"The {city}\"       }     }   } } ```"
+    "ToolDetailResponse":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "description":
+          type: "string"
+          title: "Description"
+        "fields":
+          items:
+            type: "string"
+          type: "array"
+          title: "Fields"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "fields"
+      title: "ToolDetailResponse"
+    "ToolParameterDefault":
+      properties:
+        "transform":
+          allOf:
+            - {"$ref": "#/components/schemas/ToolParameterTransform"}
+          description: "The transform to apply to the value before using it as the default."
+      type: "object"
+      required:
+        - "transform"
+      title: "ToolParameterDefault"
+      description: "The default value for a parameter of the tool call."
+    "ToolParameterTransform":
+      properties:
+        "when":
+          anyOf:
+            - {"$ref": "#/components/schemas/ToolParameterTransformCondition"}
+            - type: "null"
+        "action":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Action"
+          description: "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
+          default: "default"
+        "format":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Format"
+      type: "object"
+      title: "ToolParameterTransform"
+      description: "A transform to be applied to the value of a parameter."
+    "ToolParameterTransformCondition":
+      properties:
+        "key":
+          type: "string"
+          title: "Key"
+          description: "The name of the parameter to check."
+        "value":
+          type: "string"
+          title: "Value"
+          description: "The value to check against the parameter."
+        "operator":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Operator"
+      type: "object"
+      required:
+        - "key"
+        - "value"
+      title: "ToolParameterTransformCondition"
+      description: "A condition to be met for a transform to be applied to the value of a parameter."
+    "ToolProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "service_name"
+        - "definition"
+        - "service_id"
+      title: "ToolProperties"
+    "ValidationError":
+      properties:
+        "loc":
+          items:
+            anyOf:
+              - type: "string"
+              - type: "integer"
+          type: "array"
+          title: "Location"
+        "msg":
+          type: "string"
+          title: "Message"
+        "type":
+          type: "string"
+          title: "Error Type"
+      type: "object"
+      required:
+        - "loc"
+        - "msg"
+        - "type"
+      title: "ValidationError"
+  securitySchemes:
+    "APIKeyHeader":
+      type: "apiKey"
+      in: "header"
+      name: "Syllable-API-Key"
+tags:
+  - name: "agents"
+    description: "Operations related to agents"
+  - name: "agents.test"
+    description: "Operations for testing agents with live text"
+  - name: "channels"
+    description: "Operations related to channels"
+  - name: "channels.targets"
+    description: "Operations related to channel targets"
+  - name: "conversations"
+    description: "Operations related to conversations"
+  - name: "custom_messages"
+    description: "Operations related to custom messages"
+  - name: "dashboards"
+    description: "Operations related to system dashboard"
+  - name: "events"
+    description: "Operations related to agent events"
+  - name: "organizations"
+    description: "Operations related to organizations"
+  - name: "prompts"
+    description: "Operations related to prompts"
+  - name: "sessions"
+    description: "Operations related to agent sessions"
+  - name: "tools"
+    description: "Operations related to tools"
+x-speakeasy-name-override: [{"operationId": ".*_list$", "methodNameOverride": "list"}, {"operationId": ".*_create$", "methodNameOverride": "create"}, {"operationId": ".*_update$", "methodNameOverride": "update"}, {"operationId": ".*_delete$", "methodNameOverride": "delete"}, {"operationId": ".*_get_by_id$", "methodNameOverride": "get_by_id"}, {"operationId": ".*_get_by_name$", "methodNameOverride": "get_by_name"}]
