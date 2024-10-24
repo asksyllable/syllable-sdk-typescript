@@ -22,7 +22,7 @@ export class Channels extends ClientSDK {
   async list(
     request: operations.ChannelsListRequest,
     options?: RequestOptions,
-  ): Promise<components.ChannelListResponse> {
+  ): Promise<components.ListResponseChannel> {
     return unwrapAsync(channelsList(
       this,
       request,

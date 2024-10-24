@@ -77,7 +77,7 @@ run();
 
 ### Response
 
-**Promise\<[components.PromptListResponse](../../models/components/promptlistresponse.md)\>**
+**Promise\<[components.ListResponsePrompt](../../models/components/listresponseprompt.md)\>**
 
 ### Errors
 
@@ -102,6 +102,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.prompts.create({
     name: "<value>",
+    type: "<value>",
     llmConfig: {},
   });
 
@@ -129,6 +130,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await promptsCreate(syllableSDK, {
     name: "<value>",
+    type: "<value>",
     llmConfig: {},
   });
 
@@ -181,6 +183,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.prompts.update({
     name: "<value>",
+    type: "<value>",
     llmConfig: {},
     id: 857478,
     lastUpdated: "<value>",
@@ -210,6 +213,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await promptsUpdate(syllableSDK, {
     name: "<value>",
+    type: "<value>",
     llmConfig: {},
     id: 857478,
     lastUpdated: "<value>",

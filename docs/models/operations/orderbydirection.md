@@ -1,0 +1,15 @@
+# OrderByDirection
+
+## Example Usage
+
+```typescript
+import { OrderByDirection } from "syllable-sdk/models/operations";
+
+let value: OrderByDirection = "asc";
+```
+
+## Values
+
+```typescript
+"asc" | "desc"
+```

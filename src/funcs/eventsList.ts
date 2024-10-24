@@ -32,7 +32,7 @@ export async function eventsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.EventListResponse,
+    components.ListResponseEvent,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -57,13 +57,15 @@ export async function eventsList(
   const path = pathToFunc("/api/v1/events/")();
 
   const query = encodeFormQuery({
-    "conversation_id": payload.conversation_id,
-    "end_time": payload.end_time,
+    "end_datetime": payload.end_datetime,
+    "fields": payload.fields,
     "limit": payload.limit,
     "order_by": payload.order_by,
+    "order_by_direction": payload.order_by_direction,
     "page": payload.page,
-    "start_time": payload.start_time,
-    "type": payload.type,
+    "search_field_values": payload.search_field_values,
+    "search_fields": payload.search_fields,
+    "start_datetime": payload.start_datetime,
   });
 
   const headers = new Headers({
@@ -110,7 +112,7 @@ export async function eventsList(
   };
 
   const [result] = await M.match<
-    components.EventListResponse,
+    components.ListResponseEvent,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -120,7 +122,7 @@ export async function eventsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.EventListResponse$inboundSchema),
+    M.json(200, components.ListResponseEvent$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

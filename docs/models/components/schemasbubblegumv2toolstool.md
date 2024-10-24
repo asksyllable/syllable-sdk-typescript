@@ -9,8 +9,8 @@ import { SchemasBubblegumV2ToolsTool } from "syllable-sdk/models/components";
 
 let value: SchemasBubblegumV2ToolsTool = {
   name: "<value>",
-  serviceId: 837945,
-  id: 96098,
+  serviceId: 318569,
+  id: 667411,
 };
 ```
 

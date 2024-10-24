@@ -35,7 +35,7 @@ export async function promptsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.PromptListResponse,
+    components.ListResponsePrompt,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -60,9 +60,15 @@ export async function promptsList(
   const path = pathToFunc("/api/v1/prompts/")();
 
   const query = encodeFormQuery({
-    "filter_name": payload.filter_name,
+    "end_datetime": payload.end_datetime,
+    "fields": payload.fields,
     "limit": payload.limit,
+    "order_by": payload.order_by,
+    "order_by_direction": payload.order_by_direction,
     "page": payload.page,
+    "search_field_values": payload.search_field_values,
+    "search_fields": payload.search_fields,
+    "start_datetime": payload.start_datetime,
   });
 
   const headers = new Headers({
@@ -109,7 +115,7 @@ export async function promptsList(
   };
 
   const [result] = await M.match<
-    components.PromptListResponse,
+    components.ListResponsePrompt,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -119,7 +125,7 @@ export async function promptsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.PromptListResponse$inboundSchema),
+    M.json(200, components.ListResponsePrompt$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

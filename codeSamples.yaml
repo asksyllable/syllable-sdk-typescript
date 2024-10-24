@@ -39,7 +39,12 @@ actions:
               const result = await syllableSDK.agents.create({
                 name: "<value>",
                 timezone: "Antarctica/Rothera",
-                typeExtra: {},
+                type: "<value>",
+                promptId: 638424,
+                customMessageId: 417458,
+                languages: [
+                  "<value>",
+                ],
               });
 
               // Handle the result
@@ -63,8 +68,41 @@ actions:
               const result = await syllableSDK.agents.update({
                 name: "<value>",
                 timezone: "Europe/Tallinn",
-                typeExtra: {},
-                id: 597129,
+                type: "<value>",
+                promptId: 597129,
+                customMessageId: 344620,
+                languages: [
+                  "<value>",
+                  "<value>",
+                  "<value>",
+                ],
+                id: 627690,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/agents/test/messages"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: send_test_message
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.test.sendTestMessage({
+                serviceName: "<value>",
+                source: "<value>",
+                testId: "<id>",
+                agentId: "<id>",
+                orgName: "<value>",
               });
 
               // Handle the result
@@ -286,33 +324,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/chats/messages"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: chats_send_message
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.chats.chatsSendMessage({
-                serviceName: "<value>",
-                sourceName: "<value>",
-                chatId: "<id>",
-                agentId: "<id>",
-                orgName: "<value>",
-                text: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/conversations/"]["get"]
     update:
       x-codeSamples:
@@ -348,6 +359,118 @@ actions:
             async function run() {
               const result = await syllableSDK.conversations.getById({
                 conversationId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/custom_messages/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/custom_messages/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.create({
+                name: "<value>",
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/custom_messages/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.update({
+                name: "<value>",
+                text: "<value>",
+                id: 857478,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.delete({
+                customMessageId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: custom_message_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.getById({
+                customMessageId: 931598,
               });
 
               // Handle the result
@@ -535,118 +658,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/greetings/"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: greetings_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.greetings.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/greetings/"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: greetings_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.greetings.create({
-                name: "<value>",
-                text: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/greetings/"]["put"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: greetings_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.greetings.update({
-                name: "<value>",
-                text: "<value>",
-                id: 857478,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/greetings/{greeting_id}"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: greetings_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.greetings.delete({
-                greetingId: 545907,
-                reason: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/greetings/{greeting_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: greetings_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.greetings.getById({
-                greetingId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/organizations/"]["get"]
     update:
       x-codeSamples:
@@ -702,6 +713,7 @@ actions:
             async function run() {
               const result = await syllableSDK.prompts.create({
                 name: "<value>",
+                type: "<value>",
                 llmConfig: {},
               });
 
@@ -725,6 +737,7 @@ actions:
             async function run() {
               const result = await syllableSDK.prompts.update({
                 name: "<value>",
+                type: "<value>",
                 llmConfig: {},
                 id: 857478,
                 lastUpdated: "<value>",

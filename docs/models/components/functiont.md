@@ -9,7 +9,7 @@ import { FunctionT } from "syllable-sdk/models/components";
 
 let value: FunctionT = {
   name: "<value>",
-  description: "technician inasmuch sympathetically disappointment nor until",
+  description: "overcharge general astride boohoo",
   parameters: {},
 };
 ```

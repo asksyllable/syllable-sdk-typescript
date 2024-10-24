@@ -74,7 +74,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelListResponse](../../models/components/channellistresponse.md)\>**
+**Promise\<[components.ListResponseChannel](../../models/components/listresponsechannel.md)\>**
 
 ### Errors
 

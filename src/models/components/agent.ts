@@ -4,51 +4,30 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
-
-export type TypeExtra = {};
+import {
+  AgentToolDefaults,
+  AgentToolDefaults$inboundSchema,
+  AgentToolDefaults$Outbound,
+  AgentToolDefaults$outboundSchema,
+} from "./agenttooldefaults.js";
 
 export type Variables = {};
 
 export type Agent = {
   name: string;
   timezone: string;
-  typeExtra: TypeExtra;
+  type: string;
+  promptId: number;
+  customMessageId: number | null;
+  languages: Array<string>;
+  promptToolDefaults?: Array<AgentToolDefaults> | undefined;
+  toolHeaders?: { [k: string]: string } | null | undefined;
   variables?: Variables | null | undefined;
   /**
    * The Agent ID
    */
   id: number;
 };
-
-/** @internal */
-export const TypeExtra$inboundSchema: z.ZodType<
-  TypeExtra,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type TypeExtra$Outbound = {};
-
-/** @internal */
-export const TypeExtra$outboundSchema: z.ZodType<
-  TypeExtra$Outbound,
-  z.ZodTypeDef,
-  TypeExtra
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TypeExtra$ {
-  /** @deprecated use `TypeExtra$inboundSchema` instead. */
-  export const inboundSchema = TypeExtra$inboundSchema;
-  /** @deprecated use `TypeExtra$outboundSchema` instead. */
-  export const outboundSchema = TypeExtra$outboundSchema;
-  /** @deprecated use `TypeExtra$Outbound` instead. */
-  export type Outbound = TypeExtra$Outbound;
-}
 
 /** @internal */
 export const Variables$inboundSchema: z.ZodType<
@@ -85,12 +64,20 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
     timezone: z.string(),
-    type_extra: z.lazy(() => TypeExtra$inboundSchema),
+    type: z.string(),
+    prompt_id: z.number().int(),
+    custom_message_id: z.nullable(z.number().int()),
+    languages: z.array(z.string()),
+    prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
+    tool_headers: z.nullable(z.record(z.string())).optional(),
     variables: z.nullable(z.lazy(() => Variables$inboundSchema)).optional(),
     id: z.number().int(),
   }).transform((v) => {
     return remap$(v, {
-      "type_extra": "typeExtra",
+      "prompt_id": "promptId",
+      "custom_message_id": "customMessageId",
+      "prompt_tool_defaults": "promptToolDefaults",
+      "tool_headers": "toolHeaders",
     });
   });
 
@@ -98,7 +85,12 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
 export type Agent$Outbound = {
   name: string;
   timezone: string;
-  type_extra: TypeExtra$Outbound;
+  type: string;
+  prompt_id: number;
+  custom_message_id: number | null;
+  languages: Array<string>;
+  prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
+  tool_headers?: { [k: string]: string } | null | undefined;
   variables?: Variables$Outbound | null | undefined;
   id: number;
 };
@@ -111,12 +103,20 @@ export const Agent$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   timezone: z.string(),
-  typeExtra: z.lazy(() => TypeExtra$outboundSchema),
+  type: z.string(),
+  promptId: z.number().int(),
+  customMessageId: z.nullable(z.number().int()),
+  languages: z.array(z.string()),
+  promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
+  toolHeaders: z.nullable(z.record(z.string())).optional(),
   variables: z.nullable(z.lazy(() => Variables$outboundSchema)).optional(),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
-    typeExtra: "type_extra",
+    promptId: "prompt_id",
+    customMessageId: "custom_message_id",
+    promptToolDefaults: "prompt_tool_defaults",
+    toolHeaders: "tool_headers",
   });
 });
 

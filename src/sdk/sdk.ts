@@ -6,9 +6,9 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Agents } from "./agents.js";
 import { Channels } from "./channels.js";
 import { Conversations } from "./conversations.js";
+import { CustomMessages } from "./custommessages.js";
 import { Dashboards } from "./dashboards.js";
 import { Events } from "./events.js";
-import { Greetings } from "./greetings.js";
 import { Organizations } from "./organizations.js";
 import { Prompts } from "./prompts.js";
 import { Sessions } from "./sessions.js";
@@ -40,9 +40,9 @@ export class SyllableSDK extends ClientSDK {
     return (this._events ??= new Events(this._options));
   }
 
-  private _greetings?: Greetings;
-  get greetings(): Greetings {
-    return (this._greetings ??= new Greetings(this._options));
+  private _customMessages?: CustomMessages;
+  get customMessages(): CustomMessages {
+    return (this._customMessages ??= new CustomMessages(this._options));
   }
 
   private _prompts?: Prompts;

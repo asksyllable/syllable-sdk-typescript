@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 42e5535766bef135340e51d4be9959f0
+  docChecksum: b1f807d456dd5ac85d5be628363bc562
   docVersion: 0.0.2
-  speakeasyVersion: 1.421.1
+  speakeasyVersion: 1.421.2
   generationVersion: 2.438.15
-  releaseVersion: 0.0.7
-  configChecksum: ff778e533bbdbecba04c6f489a878e5e
+  releaseVersion: 0.0.8
+  configChecksum: 40ca19b6d52226468ebe829261cb3a0c
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
 features:
@@ -42,41 +42,49 @@ generatedFiles:
   - docs/lib/utils/retryconfig.md
   - docs/models/components/agent.md
   - docs/models/components/agentcreate.md
-  - docs/models/components/agentcreatetypeextra.md
   - docs/models/components/agentcreatevariables.md
-  - docs/models/components/agentlistresponse.md
+  - docs/models/components/agentproperties.md
+  - docs/models/components/agenttooldefaults.md
+  - docs/models/components/agenttoolfielddefault.md
   - docs/models/components/anyofschema1validator.md
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
-  - docs/models/components/availabletargetslistresponse.md
+  - docs/models/components/availabletargetproperties.md
   - docs/models/components/channel.md
-  - docs/models/components/channellistresponse.md
+  - docs/models/components/channelproperties.md
   - docs/models/components/channeltarget.md
   - docs/models/components/channeltargetcreaterequest.md
-  - docs/models/components/channeltargetlistresponse.md
-  - docs/models/components/chatmessage.md
-  - docs/models/components/chatmessageresponse.md
+  - docs/models/components/channeltargetproperties.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationaction.md
-  - docs/models/components/conversationlistresponse.md
+  - docs/models/components/conversationproperties.md
   - docs/models/components/conversationtext.md
   - docs/models/components/conversationtranscriptionresponse.md
+  - docs/models/components/custommessage.md
+  - docs/models/components/custommessagecreate.md
+  - docs/models/components/custommessageproperties.md
   - docs/models/components/defaults.md
   - docs/models/components/event.md
-  - docs/models/components/eventlistresponse.md
+  - docs/models/components/eventproperties.md
   - docs/models/components/functiont.md
-  - docs/models/components/greeting.md
-  - docs/models/components/greetingcreate.md
-  - docs/models/components/greetinglistresponse.md
-  - docs/models/components/greetingresponse.md
   - docs/models/components/httpendpoint.md
+  - docs/models/components/listresponseagent.md
+  - docs/models/components/listresponseavailabletarget.md
+  - docs/models/components/listresponsechannel.md
+  - docs/models/components/listresponsechanneltarget.md
+  - docs/models/components/listresponseconversation.md
+  - docs/models/components/listresponsecustommessage.md
+  - docs/models/components/listresponseevent.md
+  - docs/models/components/listresponseprompt.md
+  - docs/models/components/listresponseschemasbubblegumv2toolstool.md
+  - docs/models/components/listresponsesession.md
   - docs/models/components/llmconfig.md
   - docs/models/components/loc.md
   - docs/models/components/organization.md
   - docs/models/components/parameterst.md
   - docs/models/components/prompt.md
   - docs/models/components/promptcreate.md
-  - docs/models/components/promptlistresponse.md
+  - docs/models/components/promptproperties.md
   - docs/models/components/provider.md
   - docs/models/components/response.md
   - docs/models/components/result.md
@@ -84,14 +92,15 @@ generatedFiles:
   - docs/models/components/schemascortexv1toolstool.md
   - docs/models/components/security.md
   - docs/models/components/session.md
-  - docs/models/components/sessionlistresponse.md
+  - docs/models/components/sessionproperties.md
+  - docs/models/components/testmessage.md
+  - docs/models/components/testmessageresponse.md
   - docs/models/components/tooldefinition.md
   - docs/models/components/tooldetailresponse.md
-  - docs/models/components/toollistresponse.md
   - docs/models/components/toolparameterdefault.md
   - docs/models/components/toolparametertransform.md
   - docs/models/components/toolparametertransformcondition.md
-  - docs/models/components/typeextra.md
+  - docs/models/components/toolproperties.md
   - docs/models/components/validationerror.md
   - docs/models/components/variables.md
   - docs/models/errors/httpvalidationerror.md
@@ -100,13 +109,26 @@ generatedFiles:
   - docs/models/operations/agentlistrequest.md
   - docs/models/operations/availabletargetsrequest.md
   - docs/models/operations/channelsdeleterequest.md
+  - docs/models/operations/channelslistqueryparamorderby.md
+  - docs/models/operations/channelslistqueryparamorderbydirection.md
   - docs/models/operations/channelslistrequest.md
   - docs/models/operations/channelstargetupdaterequest.md
   - docs/models/operations/channeltargetscreaterequest.md
   - docs/models/operations/channeltargetsgetbyidrequest.md
+  - docs/models/operations/channeltargetslistqueryparamorderby.md
+  - docs/models/operations/channeltargetslistqueryparamorderbydirection.md
   - docs/models/operations/channeltargetslistrequest.md
   - docs/models/operations/conversationgetbyidrequest.md
+  - docs/models/operations/conversationslistqueryparamorderby.md
+  - docs/models/operations/conversationslistqueryparamorderbydirection.md
   - docs/models/operations/conversationslistrequest.md
+  - docs/models/operations/custommessagegetbyidrequest.md
+  - docs/models/operations/custommessagesdeleterequest.md
+  - docs/models/operations/custommessageslistqueryparamorderby.md
+  - docs/models/operations/custommessageslistqueryparamorderbydirection.md
+  - docs/models/operations/custommessageslistrequest.md
+  - docs/models/operations/eventslistqueryparamorderby.md
+  - docs/models/operations/eventslistqueryparamorderbydirection.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/getdailycallvolumebyhourresponsegetdailycallvolumebyhour.md
   - docs/models/operations/getmonthlycallvolumebydayresponsegetmonthlycallvolumebyday.md
@@ -116,37 +138,44 @@ generatedFiles:
   - docs/models/operations/getsessionsummaryresponsegetsessionsummary.md
   - docs/models/operations/gettotalcallvolumebyhourresponsegettotalcallvolumebyhour.md
   - docs/models/operations/getweeklycallvolumebyweekdayresponsegetweeklycallvolumebyweekday.md
-  - docs/models/operations/greetingsdeleterequest.md
-  - docs/models/operations/greetingsgetbyidrequest.md
-  - docs/models/operations/greetingslistrequest.md
+  - docs/models/operations/orderby.md
+  - docs/models/operations/orderbydirection.md
   - docs/models/operations/promptsdeleterequest.md
   - docs/models/operations/promptsgetbyidrequest.md
+  - docs/models/operations/promptslistqueryparamorderby.md
+  - docs/models/operations/promptslistqueryparamorderbydirection.md
   - docs/models/operations/promptslistrequest.md
+  - docs/models/operations/queryparamorderby.md
+  - docs/models/operations/queryparamorderbydirection.md
+  - docs/models/operations/sessionslistqueryparamorderby.md
+  - docs/models/operations/sessionslistqueryparamorderbydirection.md
   - docs/models/operations/sessionslistrequest.md
   - docs/models/operations/toolgetbynamerequest.md
+  - docs/models/operations/toollistqueryparamorderby.md
+  - docs/models/operations/toollistqueryparamorderbydirection.md
   - docs/models/operations/toollistrequest.md
   - docs/models/operations/totalcallvolumebyweekdayresponsetotalcallvolumebyweekday.md
   - docs/sdks/agents/README.md
   - docs/sdks/channels/README.md
-  - docs/sdks/chats/README.md
   - docs/sdks/conversations/README.md
+  - docs/sdks/custommessages/README.md
   - docs/sdks/dashboards/README.md
   - docs/sdks/events/README.md
-  - docs/sdks/greetings/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/prompts/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/syllablesdk/README.md
   - docs/sdks/targets/README.md
+  - docs/sdks/test/README.md
   - docs/sdks/tools/README.md
   - jsr.json
   - package.json
   - src/core.ts
-  - src/funcs/agentsChatsChatsSendMessage.ts
   - src/funcs/agentsCreate.ts
   - src/funcs/agentsDelete.ts
   - src/funcs/agentsGetById.ts
   - src/funcs/agentsList.ts
+  - src/funcs/agentsTestSendTestMessage.ts
   - src/funcs/agentsUpdate.ts
   - src/funcs/channelsDelete.ts
   - src/funcs/channelsList.ts
@@ -157,6 +186,11 @@ generatedFiles:
   - src/funcs/channelsTargetsUpdate.ts
   - src/funcs/conversationsGetById.ts
   - src/funcs/conversationsList.ts
+  - src/funcs/customMessagesCreate.ts
+  - src/funcs/customMessagesDelete.ts
+  - src/funcs/customMessagesGetById.ts
+  - src/funcs/customMessagesList.ts
+  - src/funcs/customMessagesUpdate.ts
   - src/funcs/dashboardsGetDailyCallVolumeByHour.ts
   - src/funcs/dashboardsGetMonthlyCallVolumeByDay.ts
   - src/funcs/dashboardsGetMonthlyCallVolumeByWeek.ts
@@ -166,11 +200,6 @@ generatedFiles:
   - src/funcs/dashboardsGetWeeklyCallVolumeByWeekday.ts
   - src/funcs/dashboardsTotalCallVolumeByWeekday.ts
   - src/funcs/eventsList.ts
-  - src/funcs/greetingsCreate.ts
-  - src/funcs/greetingsDelete.ts
-  - src/funcs/greetingsGetById.ts
-  - src/funcs/greetingsList.ts
-  - src/funcs/greetingsUpdate.ts
   - src/funcs/organizationsList.ts
   - src/funcs/promptsCreate.ts
   - src/funcs/promptsDelete.ts
@@ -202,48 +231,59 @@ generatedFiles:
   - src/lib/url.ts
   - src/models/components/agent.ts
   - src/models/components/agentcreate.ts
-  - src/models/components/agentlistresponse.ts
+  - src/models/components/agentproperties.ts
+  - src/models/components/agenttooldefaults.ts
+  - src/models/components/agenttoolfielddefault.ts
   - src/models/components/availabletarget.ts
-  - src/models/components/availabletargetslistresponse.ts
+  - src/models/components/availabletargetproperties.ts
   - src/models/components/channel.ts
-  - src/models/components/channellistresponse.ts
+  - src/models/components/channelproperties.ts
   - src/models/components/channeltarget.ts
   - src/models/components/channeltargetcreaterequest.ts
-  - src/models/components/channeltargetlistresponse.ts
-  - src/models/components/chatmessage.ts
-  - src/models/components/chatmessageresponse.ts
+  - src/models/components/channeltargetproperties.ts
   - src/models/components/conversation.ts
   - src/models/components/conversationaction.ts
-  - src/models/components/conversationlistresponse.ts
+  - src/models/components/conversationproperties.ts
   - src/models/components/conversationtext.ts
   - src/models/components/conversationtranscriptionresponse.ts
+  - src/models/components/custommessage.ts
+  - src/models/components/custommessagecreate.ts
+  - src/models/components/custommessageproperties.ts
   - src/models/components/defaults.ts
   - src/models/components/event.ts
-  - src/models/components/eventlistresponse.ts
+  - src/models/components/eventproperties.ts
   - src/models/components/function.ts
-  - src/models/components/greeting.ts
-  - src/models/components/greetingcreate.ts
-  - src/models/components/greetinglistresponse.ts
-  - src/models/components/greetingresponse.ts
   - src/models/components/httpendpoint.ts
   - src/models/components/index.ts
+  - src/models/components/listresponseagent.ts
+  - src/models/components/listresponseavailabletarget.ts
+  - src/models/components/listresponsechannel.ts
+  - src/models/components/listresponsechanneltarget.ts
+  - src/models/components/listresponseconversation.ts
+  - src/models/components/listresponsecustommessage.ts
+  - src/models/components/listresponseevent.ts
+  - src/models/components/listresponseprompt.ts
+  - src/models/components/listresponseschemasbubblegumv2toolstool.ts
+  - src/models/components/listresponsesession.ts
   - src/models/components/llmconfig.ts
   - src/models/components/organization.ts
   - src/models/components/prompt.ts
   - src/models/components/promptcreate.ts
-  - src/models/components/promptlistresponse.ts
+  - src/models/components/promptproperties.ts
   - src/models/components/provider.ts
   - src/models/components/schemasbubblegumv2toolstool.ts
   - src/models/components/schemascortexv1toolstool.ts
   - src/models/components/security.ts
   - src/models/components/session.ts
-  - src/models/components/sessionlistresponse.ts
+  - src/models/components/sessionproperties.ts
+  - src/models/components/testmessage.ts
+  - src/models/components/testmessageresponse.ts
   - src/models/components/tooldefinition.ts
   - src/models/components/tooldetailresponse.ts
-  - src/models/components/toollistresponse.ts
   - src/models/components/toolparameterdefault.ts
   - src/models/components/toolparametertransform.ts
   - src/models/components/toolparametertransformcondition.ts
+  - src/models/components/toolproperties.ts
   - src/models/components/validationerror.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/httpvalidationerror.ts
@@ -262,6 +302,9 @@ generatedFiles:
   - src/models/operations/channeltargetslist.ts
   - src/models/operations/conversationgetbyid.ts
   - src/models/operations/conversationslist.ts
+  - src/models/operations/custommessagegetbyid.ts
+  - src/models/operations/custommessagesdelete.ts
+  - src/models/operations/custommessageslist.ts
   - src/models/operations/eventslist.ts
   - src/models/operations/getdailycallvolumebyhour.ts
   - src/models/operations/getmonthlycallvolumebyday.ts
@@ -270,9 +313,6 @@ generatedFiles:
   - src/models/operations/getsessionsummary.ts
   - src/models/operations/gettotalcallvolumebyhour.ts
   - src/models/operations/getweeklycallvolumebyweekday.ts
-  - src/models/operations/greetingsdelete.ts
-  - src/models/operations/greetingsgetbyid.ts
-  - src/models/operations/greetingslist.ts
   - src/models/operations/index.ts
   - src/models/operations/promptsdelete.ts
   - src/models/operations/promptsgetbyid.ts
@@ -283,17 +323,17 @@ generatedFiles:
   - src/models/operations/totalcallvolumebyweekday.ts
   - src/sdk/agents.ts
   - src/sdk/channels.ts
-  - src/sdk/chats.ts
   - src/sdk/conversations.ts
+  - src/sdk/custommessages.ts
   - src/sdk/dashboards.ts
   - src/sdk/events.ts
-  - src/sdk/greetings.ts
   - src/sdk/index.ts
   - src/sdk/organizations.ts
   - src/sdk/prompts.ts
   - src/sdk/sdk.ts
   - src/sdk/sessions.ts
   - src/sdk/targets.ts
+  - src/sdk/test.ts
   - src/sdk/tools.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
@@ -309,23 +349,23 @@ examples:
     speakeasy-default-agent-list:
       responses:
         "200":
-          application/json: {"agents": [{"name": "<value>", "timezone": "Asia/Dili", "id": 678317}, {"name": "<value>", "timezone": "America/Barbados", "id": 229716}, {"name": "<value>", "timezone": "America/Argentina/Salta", "id": 635532}], "count": 639387}
+          application/json: {"items": [{"name": "<value>", "timezone": "Asia/Dili", "type": "<value>", "prompt_id": 678317, "custom_message_id": 177706, "languages": [], "id": 152837}, {"name": "<value>", "timezone": "Asia/Qostanay", "type": "<value>", "prompt_id": 639387, "custom_message_id": 17577, "languages": ["<value>", "<value>"], "id": 86140}, {"name": "<value>", "timezone": "Africa/Kigali", "type": "<value>", "prompt_id": 687960, "custom_message_id": 509883, "languages": ["<value>", "<value>"], "id": 7468}], "page": 54607, "page_size": 367745, "total_pages": 485729, "total_count": 73227}
         "422": {}
   agent_create:
     speakeasy-default-agent-create:
       requestBody:
-        application/json: {"name": "<value>", "timezone": "Antarctica/Rothera"}
+        application/json: {"name": "<value>", "timezone": "Antarctica/Rothera", "type": "<value>", "prompt_id": 486589, "custom_message_id": 638424, "languages": ["<value>"]}
       responses:
         "200":
-          application/json: {"name": "<value>", "timezone": "Asia/Qyzylorda", "id": 417458}
+          application/json: {"name": "<value>", "timezone": "Asia/Qyzylorda", "type": "<value>", "prompt_id": 134365, "custom_message_id": 69025, "languages": ["<value>", "<value>", "<value>"], "id": 417458}
         "422": {}
   agent_update:
     speakeasy-default-agent-update:
       requestBody:
-        application/json: {"name": "<value>", "timezone": "Europe/Tallinn", "id": 597129}
+        application/json: {"name": "<value>", "timezone": "Europe/Tallinn", "type": "<value>", "prompt_id": 857478, "custom_message_id": 597129, "languages": ["<value>"], "id": 597129}
       responses:
         "200":
-          application/json: {"name": "<value>", "timezone": "America/Metlakatla", "id": 991464}
+          application/json: {"name": "<value>", "timezone": "America/Metlakatla", "type": "<value>", "prompt_id": 991464, "custom_message_id": 627690, "languages": ["<value>"], "id": 991464}
         "422": {}
   agent_get_by_id:
     speakeasy-default-agent-get-by-id:
@@ -334,7 +374,7 @@ examples:
           agent_id: 931598
       responses:
         "200":
-          application/json: {"name": "<value>", "timezone": "Asia/Anadyr", "id": 467619}
+          application/json: {"name": "<value>", "timezone": "Asia/Anadyr", "type": "<value>", "prompt_id": 931598, "custom_message_id": 505057, "languages": ["<value>"], "id": 467619}
         "422": {}
   agent_delete:
     speakeasy-default-agent-delete:
@@ -359,7 +399,7 @@ examples:
     speakeasy-default-channels-list:
       responses:
         "200":
-          application/json: {"channels": [{"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}, {"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}, {"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
+          application/json: {"items": [{"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}, {"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}, {"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
         "422": {}
   channels_delete:
     speakeasy-default-channels-delete:
@@ -374,13 +414,13 @@ examples:
     speakeasy-default-available-targets:
       responses:
         "200":
-          application/json: {"targets": [{"channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
+          application/json: {"items": [{"channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
         "422": {}
   channel_targets_list:
     speakeasy-default-channel-targets-list:
       responses:
         "200":
-          application/json: {"targets": [{"id": 547272, "channel_id": 678317, "channel_name": "<value>", "agent_id": 177706, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}, {"id": 152837, "channel_id": 635532, "channel_name": "<value>", "agent_id": 639387, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}, {"id": 718303, "channel_id": 86140, "channel_name": "<value>", "agent_id": 68504, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
+          application/json: {"items": [{"id": 547272, "channel_id": 678317, "channel_name": "<value>", "agent_id": 177706, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}, {"id": 152837, "channel_id": 635532, "channel_name": "<value>", "agent_id": 639387, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}, {"id": 718303, "channel_id": 86140, "channel_name": "<value>", "agent_id": 68504, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
         "422": {}
   channel_targets_create:
     speakeasy-default-channel-targets-create:
@@ -419,7 +459,7 @@ examples:
     speakeasy-default-conversations-list:
       responses:
         "200":
-          application/json: {"conversations": [{"timestamp": "2023-08-23T19:26:20.850Z", "conversation_id": "<id>"}, {"timestamp": "2024-01-14T10:26:00.433Z", "conversation_id": "<id>"}, {"timestamp": "2022-07-14T18:23:27.528Z", "conversation_id": "<id>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z", "conversation_id": "<id>"}, {"timestamp": "2024-01-14T10:26:00.433Z", "conversation_id": "<id>"}, {"timestamp": "2022-07-14T18:23:27.528Z", "conversation_id": "<id>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
         "422": {}
   conversation_get_by_id:
     speakeasy-default-conversation-get-by-id:
@@ -442,7 +482,7 @@ examples:
     speakeasy-default-events-list:
       responses:
         "200":
-          application/json: {"events": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
         "422": {}
   greetings_list:
     speakeasy-default-greetings-list:
@@ -490,23 +530,23 @@ examples:
     speakeasy-default-prompts-list:
       responses:
         "200":
-          application/json: {"prompts": [{"name": "<value>", "id": 547272, "last_updated": "<value>"}, {"name": "<value>", "id": 678317, "last_updated": "<value>"}, {"name": "<value>", "id": 177706, "last_updated": "<value>"}], "filter_name": "<value>", "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"name": "<value>", "type": "<value>", "id": 547272, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "id": 678317, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "id": 177706, "last_updated": "<value>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
         "422": {}
   prompts_create:
     speakeasy-default-prompts-create:
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {"name": "<value>", "type": "<value>"}
       responses:
         "200":
-          application/json: {"name": "<value>", "id": 486589, "last_updated": "<value>"}
+          application/json: {"name": "<value>", "type": "<value>", "id": 486589, "last_updated": "<value>"}
         "422": {}
   prompts_update:
     speakeasy-default-prompts-update:
       requestBody:
-        application/json: {"name": "<value>", "id": 857478, "last_updated": "<value>"}
+        application/json: {"name": "<value>", "type": "<value>", "id": 857478, "last_updated": "<value>"}
       responses:
         "200":
-          application/json: {"name": "<value>", "id": 597129, "last_updated": "<value>"}
+          application/json: {"name": "<value>", "type": "<value>", "id": 597129, "last_updated": "<value>"}
         "422": {}
   prompts_get_by_id:
     speakeasy-default-prompts-get-by-id:
@@ -515,7 +555,7 @@ examples:
           prompt_id: 931598
       responses:
         "200":
-          application/json: {"name": "<value>", "id": 505057, "last_updated": "<value>"}
+          application/json: {"name": "<value>", "type": "<value>", "id": 505057, "last_updated": "<value>"}
         "422": {}
   prompts_delete:
     speakeasy-default-prompts-delete:
@@ -532,13 +572,13 @@ examples:
     speakeasy-default-sessions-list:
       responses:
         "200":
-          application/json: {"sessions": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
         "422": {}
   tool_list:
     speakeasy-default-tool-list:
       responses:
         "200":
-          application/json: {"tools": [{"name": "<value>", "service_id": 547272, "id": 678317}, {"name": "<value>", "service_id": 177706, "id": 229716}, {"name": "<value>", "service_id": 152837, "id": 635532}], "page": 639387, "page_size": 17577, "total_pages": 718303, "total_count": 86140}
+          application/json: {"items": [{"name": "<value>", "service_id": 547272, "id": 678317}, {"name": "<value>", "service_id": 177706, "id": 229716}, {"name": "<value>", "service_id": 152837, "id": 635532}], "page": 639387, "page_size": 17577, "total_pages": 718303, "total_count": 86140}
         "422": {}
   tool_get_by_name:
     speakeasy-default-tool-get-by-name:
@@ -554,3 +594,53 @@ examples:
       responses:
         "200":
           application/json: [{"id": 547272, "name": "<value>", "display_name": "Marie.Fay"}, {"id": 17577, "name": "<value>", "display_name": "Miles_Bernhard"}, {"id": 7468, "name": "<value>", "display_name": "Amparo.Kuhic"}]
+  send_test_message:
+    speakeasy-default-send-test-message:
+      requestBody:
+        application/json: {"service_name": "<value>", "source": "<value>", "test_id": "<id>", "agent_id": "<id>", "org_name": "<value>"}
+      responses:
+        "200":
+          application/json: {"test_id": "<id>", "agent_id": "<id>", "text": "<value>"}
+        "422": {}
+  custom_messages_list:
+    speakeasy-default-custom-messages-list:
+      responses:
+        "200":
+          application/json: {"items": [{"name": "<value>", "text": "<value>", "id": 547272}, {"name": "<value>", "text": "<value>", "id": 678317}, {"name": "<value>", "text": "<value>", "id": 177706}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+        "422": {}
+  custom_messages_create:
+    speakeasy-default-custom-messages-create:
+      requestBody:
+        application/json: {"name": "<value>", "text": "<value>"}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "text": "<value>", "id": 486589}
+        "422": {}
+  custom_messages_update:
+    speakeasy-default-custom-messages-update:
+      requestBody:
+        application/json: {"name": "<value>", "text": "<value>", "id": 857478}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "text": "<value>", "id": 597129}
+        "422": {}
+  custom_message_get_by_id:
+    speakeasy-default-custom-message-get-by-id:
+      parameters:
+        path:
+          custom_message_id: 931598
+      responses:
+        "200":
+          application/json: {"name": "<value>", "text": "<value>", "id": 505057}
+        "422": {}
+  custom_messages_delete:
+    speakeasy-default-custom-messages-delete:
+      parameters:
+        path:
+          custom_message_id: 545907
+        query:
+          reason: "<value>"
+      responses:
+        "200":
+          application/json: "<value>"
+        "422": {}
