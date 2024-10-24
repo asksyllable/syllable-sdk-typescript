@@ -1,6 +1,6 @@
 {
   "name": "syllable-sdk",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
@@ -11,8 +11,7 @@
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "zod": ">= 3"
