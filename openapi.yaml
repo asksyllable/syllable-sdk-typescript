@@ -157,7 +157,12 @@ paths:
               const result = await syllableSDK.agents.create({
                 name: "<value>",
                 timezone: "Antarctica/Rothera",
-                typeExtra: {},
+                type: "<value>",
+                promptId: 638424,
+                customMessageId: 417458,
+                languages: [
+                  "<value>",
+                ],
               });
 
               // Handle the result
@@ -203,8 +208,15 @@ paths:
               const result = await syllableSDK.agents.update({
                 name: "<value>",
                 timezone: "Europe/Tallinn",
-                typeExtra: {},
-                id: 597129,
+                type: "<value>",
+                promptId: 597129,
+                customMessageId: 344620,
+                languages: [
+                  "<value>",
+                  "<value>",
+                  "<value>",
+                ],
+                id: 627690,
               });
 
               // Handle the result
@@ -902,6 +914,30 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
+      x-codeSamples:
+        - lang: typescript
+          label: send_test_message
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.test.sendTestMessage({
+                serviceName: "<value>",
+                source: "<value>",
+                testId: "<id>",
+                agentId: "<id>",
+                orgName: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/conversations/":
     get:
       tags:
@@ -1599,6 +1635,24 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     post:
       tags:
         - "custom_messages"
@@ -1623,6 +1677,27 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.create({
+                name: "<value>",
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     put:
       tags:
         - "custom_messages"
@@ -1647,6 +1722,28 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.update({
+                name: "<value>",
+                text: "<value>",
+                id: 857478,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/custom_messages/{custom_message_id}":
     get:
       tags:
@@ -1674,6 +1771,26 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: custom_message_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.getById({
+                customMessageId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     delete:
       tags:
         - "custom_messages"
@@ -1706,6 +1823,27 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: custom_messages_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.delete({
+                customMessageId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/prompts/":
     get:
       tags:
@@ -1856,6 +1994,7 @@ paths:
             async function run() {
               const result = await syllableSDK.prompts.create({
                 name: "<value>",
+                type: "<value>",
                 llmConfig: {},
               });
 
@@ -1901,6 +2040,7 @@ paths:
             async function run() {
               const result = await syllableSDK.prompts.update({
                 name: "<value>",
+                type: "<value>",
                 llmConfig: {},
                 id: 857478,
                 lastUpdated: "<value>",
