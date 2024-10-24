@@ -4,7 +4,7 @@ info:
   description: "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI capabilities into your applications. Whether you're building chatbots, virtual assistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Image Recognition**: Identify objects, faces, and scenes in images.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
   version: "0.0.2"
 servers:
-  - url: "http://localhost:8001"
+  - url: "http://127.0.0.1:8001"
 paths:
   "/api/v1/agents/":
     get:
@@ -16,30 +16,6 @@ paths:
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "filter_name"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Filter Name"
-        - name: "filter_prompt"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Filter Prompt"
-        - name: "filter_greeting"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Filter Greeting"
         - name: "page"
           in: "query"
           required: false
@@ -55,21 +31,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            minimum: -1
-            default: -1
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/AgentProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/AgentProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/AgentProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/AgentListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_Agent_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     post:
       tags:
         - "agents"
@@ -94,7 +125,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.create({\n    name: \"<value>\",\n    timezone: \"Antarctica/Rothera\",\n    typeExtra: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     put:
       tags:
         - "agents"
@@ -119,7 +149,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.update({\n    name: \"<value>\",\n    timezone: \"Europe/Tallinn\",\n    typeExtra: {},\n    id: 597129,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/agents/{agent_id}":
     get:
       tags:
@@ -147,7 +176,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.getById({\n    agentId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     delete:
       tags:
         - "agents"
@@ -180,7 +208,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "agent_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.delete({\n    agentId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/available-targets":
     get:
       tags:
@@ -206,21 +233,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            minimum: -1
-            default: -1
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/AvailableTargetProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/AvailableTargetsListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_AvailableTarget_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "available_targets", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.availableTargets({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/":
     get:
       tags:
@@ -245,21 +327,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            minimum: -1
-            default: -1
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ChannelProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ChannelProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ChannelProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_Channel_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channels_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/targets":
     get:
       tags:
@@ -273,7 +410,10 @@ paths:
           in: "query"
           required: false
           schema:
-            type: "integer"
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
             default: 0
             title: "Page"
         - name: "limit"
@@ -281,66 +421,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            default: 100
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
         - name: "order_by"
           in: "query"
           required: false
           schema:
-            type: "string"
-            default: "target"
+            allOf:
+              - {"$ref": "#/components/schemas/ChannelTargetProperties"}
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            type: "string"
-            default: "DESC"
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
             title: "Order By Direction"
-        - name: "agent_id"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
           in: "query"
           required: false
           schema:
             anyOf:
               - type: "string"
               - type: "null"
-            title: "Agent Id"
-        - name: "channel_id"
+            title: "Start Datetime"
+        - name: "end_datetime"
           in: "query"
           required: false
           schema:
             anyOf:
               - type: "string"
               - type: "null"
-            title: "Channel Id"
-        - name: "target"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Target"
-        - name: "fallback_target"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Fallback Target"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTargetListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_ChannelTarget_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/{channel_id}/targets":
     post:
       tags:
@@ -372,7 +522,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.create({\n    channelId: 134365,\n    channelTargetCreateRequest: {\n      channelId: 486589,\n      channelName: \"<value>\",\n      agentId: 638424,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: true,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/{channel_id}/targets/{target_id}":
     get:
       tags:
@@ -405,7 +554,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channel_targets_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.getById({\n    channelId: 931598,\n    targetId: 505057,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     put:
       tags:
         - "channels.targets"
@@ -443,7 +591,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channels_target_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.targets.update({\n    channelId: 627690,\n    targetId: 488852,\n    channelTarget: {\n      id: 857478,\n      channelId: 597129,\n      channelName: \"<value>\",\n      agentId: 344620,\n      target: \"<value>\",\n      targetMode: \"<value>\",\n      fallbackTarget: \"<value>\",\n      isTest: false,\n    },\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/channels/{channel_id}":
     delete:
       tags:
@@ -471,25 +618,24 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "channels_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.channels.delete({\n    channelId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
-  "/api/v1/chats/messages":
+  "/api/v1/agents/test/messages":
     post:
       tags:
-        - "agents.chats"
+        - "agents.test"
       summary: "Send New Message"
       description: "Send a new message"
-      operationId: "chats_send_message"
+      operationId: "send_test_message"
       requestBody:
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/ChatMessage"}
+            schema: {"$ref": "#/components/schemas/TestMessage"}
         required: true
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ChatMessageResponse"}
+              schema: {"$ref": "#/components/schemas/TestMessageResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -497,7 +643,6 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "chats_send_message", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.agents.chats.chatsSendMessage({\n    serviceName: \"<value>\",\n    sourceName: \"<value>\",\n    chatId: \"<id>\",\n    agentId: \"<id>\",\n    orgName: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/conversations/":
     get:
       tags:
@@ -511,7 +656,10 @@ paths:
           in: "query"
           required: false
           schema:
-            type: "integer"
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
             default: 0
             title: "Page"
         - name: "limit"
@@ -519,114 +667,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            default: 100
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ConversationProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
         - name: "order_by"
           in: "query"
           required: false
           schema:
-            type: "string"
-            default: "timestamp"
+            allOf:
+              - {"$ref": "#/components/schemas/ConversationProperties"}
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            type: "string"
-            default: "DESC"
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
             title: "Order By Direction"
-        - name: "start_time"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ConversationProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
           in: "query"
           required: false
           schema:
             anyOf:
               - type: "string"
               - type: "null"
-            title: "Start Time"
-        - name: "end_time"
+            title: "Start Datetime"
+        - name: "end_datetime"
           in: "query"
           required: false
           schema:
             anyOf:
               - type: "string"
               - type: "null"
-            title: "End Time"
-        - name: "agent_type"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Agent Type"
-        - name: "agent_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Agent Id"
-        - name: "prompt_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Prompt Id"
-        - name: "call_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Call Id"
-        - name: "source"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Source"
-        - name: "target"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Target"
-        - name: "is_legacy"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "boolean"
-              - type: "null"
-            title: "Is Legacy"
-        - name: "is_test"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "boolean"
-              - type: "null"
-            title: "Is Test"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ConversationListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_Conversation_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "conversations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/conversations/{conversation_id}":
     get:
       tags:
@@ -653,7 +763,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "conversation_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.conversations.getById({\n    conversationId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/total_call_volume_by_weekday":
     get:
       tags:
@@ -671,7 +780,6 @@ paths:
                 title: "Response Total Call Volume By Weekday"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "total_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.totalCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_total_call_volume_by_hour":
     get:
       tags:
@@ -689,7 +797,6 @@ paths:
                 title: "Response Get Total Call Volume By Hour"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_total_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getTotalCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_weekly_call_volume_by_weekday":
     get:
       tags:
@@ -707,7 +814,6 @@ paths:
                 title: "Response Get Weekly Call Volume By Weekday"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_weekly_call_volume_by_weekday", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getWeeklyCallVolumeByWeekday();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_daily_call_volume_by_hour":
     get:
       tags:
@@ -725,7 +831,6 @@ paths:
                 title: "Response Get Daily Call Volume By Hour"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_daily_call_volume_by_hour", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getDailyCallVolumeByHour();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_monthly_call_volume_by_week":
     get:
       tags:
@@ -743,7 +848,6 @@ paths:
                 title: "Response Get Monthly Call Volume By Week"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_monthly_call_volume_by_week", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByWeek();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_monthly_call_volume_by_day":
     get:
       tags:
@@ -761,7 +865,6 @@ paths:
                 title: "Response Get Monthly Call Volume By Day"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_monthly_call_volume_by_day", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getMonthlyCallVolumeByDay();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_session_summary":
     get:
       tags:
@@ -831,7 +934,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "get_session_summary", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionSummary({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/dashboards/get_agents":
     get:
       tags:
@@ -849,91 +951,12 @@ paths:
                 title: "Response Get Session Agents"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "get_session_agents", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.dashboards.getSessionAgents();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/events/":
     get:
       tags:
         - "events"
       summary: "Events List"
       operationId: "events_list"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "page"
-          in: "query"
-          required: false
-          schema:
-            type: "integer"
-            default: 0
-            title: "Page"
-        - name: "limit"
-          in: "query"
-          required: false
-          schema:
-            type: "integer"
-            default: 100
-            title: "Limit"
-        - name: "order_by"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Order By"
-        - name: "type"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Type"
-        - name: "conversation_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Conversation Id"
-        - name: "start_time"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-                format: "date-time"
-              - type: "null"
-            title: "Start Time"
-        - name: "end_time"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-                format: "date-time"
-              - type: "null"
-            title: "End Time"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/EventListResponse"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "events_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.events.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
-  "/api/v1/greetings/":
-    get:
-      tags:
-        - "greetings"
-      summary: "Greetings List"
-      description: "List the existing greetings"
-      operationId: "greetings_list"
       security:
         - APIKeyHeader: []
       parameters:
@@ -952,114 +975,261 @@ paths:
           required: false
           schema:
             type: "integer"
-            minimum: -1
-            default: -1
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/EventProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/EventProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/EventProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/GreetingListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_Event_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
-    post:
-      tags:
-        - "greetings"
-      summary: "Create Greeting"
-      description: "Create a new greeting"
-      operationId: "greetings_create"
-      security:
-        - APIKeyHeader: []
-      requestBody:
-        required: true
-        content:
-          "application/json":
-            schema: {"$ref": "#/components/schemas/GreetingCreate"}
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/GreetingResponse"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.create({\n    name: \"<value>\",\n    text: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
-    put:
-      tags:
-        - "greetings"
-      summary: "Update Greeting"
-      description: "Update a greeting"
-      operationId: "greetings_update"
-      security:
-        - APIKeyHeader: []
-      requestBody:
-        required: true
-        content:
-          "application/json":
-            schema: {"$ref": "#/components/schemas/Greeting"}
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/GreetingResponse"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.update({\n    name: \"<value>\",\n    text: \"<value>\",\n    id: 857478,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
-  "/api/v1/greetings/{greeting_id}":
+  "/api/v1/custom_messages/":
     get:
       tags:
-        - "greetings"
-      summary: "Get Greeting By Id"
-      description: "Get the greeting by its ID"
-      operationId: "greetings_get_by_id"
+        - "custom_messages"
+      summary: "Custom Messages List"
+      description: "List the existing custom_messages"
+      operationId: "custom_messages_list"
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "greeting_id"
-          in: "path"
-          required: true
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
           schema:
             type: "integer"
-            title: "Greeting Id"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/CustomMessageProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/CustomMessageProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/CustomMessageProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/GreetingResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_CustomMessage_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.getById({\n    greetingId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
-    delete:
+    post:
       tags:
-        - "greetings"
-      summary: "Delete Greeting"
-      description: "Delete greeting by ID"
-      operationId: "greetings_delete"
+        - "custom_messages"
+      summary: "Create Custom Message"
+      description: "Create a new greeting"
+      operationId: "custom_messages_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/CustomMessageCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CustomMessage"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "custom_messages"
+      summary: "Update Custom Message"
+      description: "Update a greeting"
+      operationId: "custom_messages_update"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/CustomMessage"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CustomMessage"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/custom_messages/{custom_message_id}":
+    get:
+      tags:
+        - "custom_messages"
+      summary: "Get Custom Message By Id"
+      description: "Get the greeting by its ID"
+      operationId: "custom_message_get_by_id"
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "greeting_id"
+        - name: "custom_message_id"
           in: "path"
           required: true
           schema:
             type: "integer"
-            title: "Greeting Id"
+            title: "Custom Message Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CustomMessage"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "custom_messages"
+      summary: "Delete Custom Message"
+      description: "Delete greeting by ID"
+      operationId: "custom_messages_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "custom_message_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Custom Message Id"
         - name: "reason"
           in: "query"
           required: true
@@ -1077,7 +1247,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "greetings_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.greetings.delete({\n    greetingId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/prompts/":
     get:
       tags:
@@ -1088,14 +1257,6 @@ paths:
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "filter_name"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Filter Name"
         - name: "page"
           in: "query"
           required: false
@@ -1111,21 +1272,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            minimum: -1
-            default: -1
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/PromptProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/PromptProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/PromptProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/PromptListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_Prompt_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     post:
       tags:
         - "prompts"
@@ -1150,7 +1366,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_create", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.create({\n    name: \"<value>\",\n    llmConfig: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     put:
       tags:
         - "prompts"
@@ -1175,7 +1390,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_update", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.update({\n    name: \"<value>\",\n    llmConfig: {},\n    id: 857478,\n    lastUpdated: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/prompts/{prompt_id}":
     get:
       tags:
@@ -1203,7 +1417,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_get_by_id", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.getById({\n    promptId: 931598,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
     delete:
       tags:
         - "prompts"
@@ -1236,7 +1449,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "prompts_delete", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.prompts.delete({\n    promptId: 545907,\n    reason: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/sessions/":
     get:
       tags:
@@ -1250,7 +1462,10 @@ paths:
           in: "query"
           required: false
           schema:
-            type: "integer"
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
             default: 0
             title: "Page"
         - name: "limit"
@@ -1258,76 +1473,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            default: 100
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/SessionProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
         - name: "order_by"
           in: "query"
           required: false
           schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
+            allOf:
+              - {"$ref": "#/components/schemas/SessionProperties"}
             title: "Order By"
-        - name: "channel_type"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/SessionProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
           in: "query"
           required: false
           schema:
             anyOf:
               - type: "string"
               - type: "null"
-            title: "Channel Type"
-        - name: "channel_service"
+            title: "Start Datetime"
+        - name: "end_datetime"
           in: "query"
           required: false
           schema:
             anyOf:
               - type: "string"
               - type: "null"
-            title: "Channel Service"
-        - name: "start_time"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-                format: "date-time"
-              - type: "null"
-            title: "Start Time"
-        - name: "end_time"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-                format: "date-time"
-              - type: "null"
-            title: "End Time"
-        - name: "include_legacy"
-          in: "query"
-          required: false
-          schema:
-            type: "boolean"
-            default: false
-            title: "Include Legacy"
-        - name: "include_test"
-          in: "query"
-          required: false
-          schema:
-            type: "boolean"
-            default: false
-            title: "Include Test"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/SessionListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_Session_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "sessions_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.sessions.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/tools/":
     get:
       tags:
@@ -1353,21 +1568,76 @@ paths:
           required: false
           schema:
             type: "integer"
-            minimum: -1
-            default: -1
+            minimum: 0
+            default: 25
             title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ToolProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ToolProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ToolProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ToolListResponse"}
+              schema: {"$ref": "#/components/schemas/ListResponse_SchemasBubblegumV2ToolsTool_"}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "tool_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/tools/{tool_name}":
     get:
       tags:
@@ -1395,7 +1665,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples: [{"lang": "typescript", "label": "tool_get_by_name", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.tools.getByName({\n    toolName: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
   "/api/v1/organizations/":
     get:
       tags:
@@ -1414,7 +1683,6 @@ paths:
                 title: "Response Organizations List"
       security:
         - APIKeyHeader: []
-      x-codeSamples: [{"lang": "typescript", "label": "organizations_list", "source": "import { SyllableSDK } from \"syllable-sdk\";\n\nconst syllableSDK = new SyllableSDK({\n  apiKeyHeader: process.env[\"SYLLABLESDK_API_KEY_HEADER\"] ?? \"\",\n});\n\nasync function run() {\n  const result = await syllableSDK.organizations.list();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"}]
 components:
   schemas:
     "Agent":
@@ -1425,9 +1693,33 @@ components:
         "timezone":
           type: "string"
           title: "Timezone"
-        "type_extra":
-          type: "object"
-          title: "Type Extra"
+        "type":
+          type: "string"
+          title: "Type"
+        "prompt_id":
+          type: "integer"
+          title: "Prompt Id"
+        "custom_message_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Custom Message Id"
+        "languages":
+          items:
+            type: "string"
+          type: "array"
+          title: "Languages"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+        "tool_headers":
+          anyOf:
+            - additionalProperties:
+                type: "string"
+              type: "object"
+            - type: "null"
+          title: "Tool Headers"
         "variables":
           anyOf:
             - type: "object"
@@ -1441,7 +1733,10 @@ components:
       required:
         - "name"
         - "timezone"
-        - "type_extra"
+        - "type"
+        - "prompt_id"
+        - "custom_message_id"
+        - "languages"
         - "id"
       title: "Agent"
     "AgentCreate":
@@ -1452,9 +1747,33 @@ components:
         "timezone":
           type: "string"
           title: "Timezone"
-        "type_extra":
-          type: "object"
-          title: "Type Extra"
+        "type":
+          type: "string"
+          title: "Type"
+        "prompt_id":
+          type: "integer"
+          title: "Prompt Id"
+        "custom_message_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Custom Message Id"
+        "languages":
+          items:
+            type: "string"
+          type: "array"
+          title: "Languages"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+        "tool_headers":
+          anyOf:
+            - additionalProperties:
+                type: "string"
+              type: "object"
+            - type: "null"
+          title: "Tool Headers"
         "variables":
           anyOf:
             - type: "object"
@@ -1464,22 +1783,51 @@ components:
       required:
         - "name"
         - "timezone"
-        - "type_extra"
+        - "type"
+        - "prompt_id"
+        - "custom_message_id"
+        - "languages"
       title: "AgentCreate"
-    "AgentListResponse":
+    "AgentProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "type"
+        - "timezone"
+        - "prompt_id"
+        - "custom_message_id"
+        - "languages"
+        - "variables"
+        - "prompt_tool_defaults"
+        - "tool_headers"
+      title: "AgentProperties"
+    "AgentToolDefaults":
       properties:
-        "agents":
-          items: {"$ref": "#/components/schemas/Agent"}
+        "tool_name":
+          type: "string"
+          title: "Tool Name"
+        "default_values":
+          items: {"$ref": "#/components/schemas/AgentToolFieldDefault"}
           type: "array"
-          title: "Agents"
-        "count":
-          type: "integer"
-          title: "Count"
+          title: "Default Values"
       type: "object"
       required:
-        - "agents"
-        - "count"
-      title: "AgentListResponse"
+        - "tool_name"
+        - "default_values"
+      title: "AgentToolDefaults"
+    "AgentToolFieldDefault":
+      properties:
+        "field_name":
+          type: "string"
+          title: "Field Name"
+        "default_value":
+          title: "Default Value"
+      type: "object"
+      required:
+        - "field_name"
+        - "default_value"
+      title: "AgentToolFieldDefault"
     "AvailableTarget":
       properties:
         "channel_id":
@@ -1499,32 +1847,13 @@ components:
         - "channel_name"
         - "target"
       title: "AvailableTarget"
-    "AvailableTargetsListResponse":
-      properties:
-        "targets":
-          items: {"$ref": "#/components/schemas/AvailableTarget"}
-          type: "array"
-          title: "Targets"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "targets"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "AvailableTargetsListResponse"
+    "AvailableTargetProperties":
+      type: "string"
+      enum:
+        - "channel_id"
+        - "channel_name"
+        - "target"
+      title: "AvailableTargetProperties"
     "Channel":
       properties:
         "id":
@@ -1546,39 +1875,23 @@ components:
         - "channel_service"
         - "supported_modes"
       title: "Channel"
-    "ChannelListResponse":
-      properties:
-        "channels":
-          items: {"$ref": "#/components/schemas/Channel"}
-          type: "array"
-          title: "Channels"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "channels"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "ChannelListResponse"
+    "ChannelProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "channel_service"
+        - "supported_modes"
+      title: "ChannelProperties"
     "ChannelTarget":
       properties:
         "id":
           type: "integer"
           title: "Id"
         "channel_id":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Channel Id"
         "channel_name":
           anyOf:
@@ -1591,10 +1904,14 @@ components:
             - type: "null"
           title: "Agent Id"
         "target":
-          type: "string"
+          anyOf:
+            - type: "string"
+            - type: "null"
           title: "Target"
         "target_mode":
-          type: "string"
+          anyOf:
+            - type: "string"
+            - type: "null"
           title: "Target Mode"
         "fallback_target":
           anyOf:
@@ -1602,7 +1919,9 @@ components:
             - type: "null"
           title: "Fallback Target"
         "is_test":
-          type: "boolean"
+          anyOf:
+            - type: "boolean"
+            - type: "null"
           title: "Is Test"
       type: "object"
       required:
@@ -1618,7 +1937,9 @@ components:
     "ChannelTargetCreateRequest":
       properties:
         "channel_id":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Channel Id"
         "channel_name":
           anyOf:
@@ -1631,10 +1952,14 @@ components:
             - type: "null"
           title: "Agent Id"
         "target":
-          type: "string"
+          anyOf:
+            - type: "string"
+            - type: "null"
           title: "Target"
         "target_mode":
-          type: "string"
+          anyOf:
+            - type: "string"
+            - type: "null"
           title: "Target Mode"
         "fallback_target":
           anyOf:
@@ -1642,7 +1967,9 @@ components:
             - type: "null"
           title: "Fallback Target"
         "is_test":
-          type: "boolean"
+          anyOf:
+            - type: "boolean"
+            - type: "null"
           title: "Is Test"
       type: "object"
       required:
@@ -1654,83 +1981,18 @@ components:
         - "fallback_target"
         - "is_test"
       title: "ChannelTargetCreateRequest"
-    "ChannelTargetListResponse":
-      properties:
-        "targets":
-          items: {"$ref": "#/components/schemas/ChannelTarget"}
-          type: "array"
-          title: "Targets"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "targets"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "ChannelTargetListResponse"
-    "ChatMessage":
-      properties:
-        "service_name":
-          type: "string"
-          title: "Service Name"
-          description: "Name of the service producing the message"
-        "source_name":
-          type: "string"
-          title: "Source Name"
-          description: "Name of the source of the message, should identify the user, like an email or username"
-        "chat_id":
-          type: "string"
-          title: "Chat Id"
-        "agent_id":
-          type: "string"
-          title: "Agent Id"
-        "org_name":
-          type: "string"
-          title: "Org Name"
-        "text":
-          type: "string"
-          title: "Text"
-      type: "object"
-      required:
-        - "service_name"
-        - "source_name"
-        - "chat_id"
+    "ChannelTargetProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "channel_id"
+        - "channel_name"
         - "agent_id"
-        - "org_name"
-        - "text"
-      title: "ChatMessage"
-    "ChatMessageResponse":
-      properties:
-        "chat_id":
-          type: "string"
-          title: "Chat Id"
-        "agent_id":
-          type: "string"
-          title: "Agent Id"
-        "text":
-          type: "string"
-          title: "Text"
-        "response":
-          type: "object"
-          title: "Response"
-      type: "object"
-      required:
-        - "chat_id"
-        - "agent_id"
-        - "text"
-      title: "ChatMessageResponse"
+        - "target"
+        - "target_mode"
+        - "fallback_target"
+        - "is_test"
+      title: "ChannelTargetProperties"
     "Conversation":
       properties:
         "timestamp":
@@ -1830,32 +2092,21 @@ components:
       required:
         - "timestamp"
       title: "ConversationAction"
-    "ConversationListResponse":
-      properties:
-        "conversations":
-          items: {"$ref": "#/components/schemas/Conversation"}
-          type: "array"
-          title: "Conversations"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "conversations"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "ConversationListResponse"
+    "ConversationProperties":
+      type: "string"
+      enum:
+        - "timestamp"
+        - "agent_type"
+        - "agent_id"
+        - "agent_name"
+        - "prompt_id"
+        - "prompt_name"
+        - "call_id"
+        - "source"
+        - "target"
+        - "is_legacy"
+        - "is_test"
+      title: "ConversationProperties"
     "ConversationText":
       properties:
         "timestamp":
@@ -1900,6 +2151,52 @@ components:
         - "transcription"
         - "actions"
       title: "ConversationTranscriptionResponse"
+    "CustomMessage":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the greeting"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "The text of the greeting"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the greeting"
+        "type":
+          type: "string"
+          title: "Type"
+          default: "greeting"
+      type: "object"
+      required:
+        - "name"
+        - "text"
+        - "id"
+      title: "CustomMessage"
+    "CustomMessageCreate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the greeting"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "The text of the greeting"
+      type: "object"
+      required:
+        - "name"
+        - "text"
+      title: "CustomMessageCreate"
+    "CustomMessageProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "text"
+      title: "CustomMessageProperties"
     "Defaults":
       properties:
         "anyof_schema_1_validator":
@@ -1980,32 +2277,20 @@ components:
       required:
         - "timestamp"
       title: "Event"
-    "EventListResponse":
-      properties:
-        "events":
-          items: {"$ref": "#/components/schemas/Event"}
-          type: "array"
-          title: "Events"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "events"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "EventListResponse"
+    "EventProperties":
+      type: "string"
+      enum:
+        - "timestamp"
+        - "session_id"
+        - "conversation_id"
+        - "source"
+        - "source_id"
+        - "category"
+        - "type"
+        - "user_id"
+        - "description"
+        - "attributes"
+      title: "EventProperties"
     "Function":
       properties:
         "name":
@@ -2027,73 +2312,6 @@ components:
         - "parameters"
       title: "Function"
       description: "A tool definition to be used by the OpenAI API.  See: - https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
-    "Greeting":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the greeting"
-        "text":
-          type: "string"
-          title: "Text"
-          description: "The text of the greeting"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the greeting"
-      type: "object"
-      required:
-        - "name"
-        - "text"
-        - "id"
-      title: "Greeting"
-      description: "Greeting"
-    "GreetingCreate":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the greeting"
-        "text":
-          type: "string"
-          title: "Text"
-          description: "The text of the greeting"
-      type: "object"
-      required:
-        - "name"
-        - "text"
-      title: "GreetingCreate"
-      description: "GreetingCreate"
-    "GreetingListResponse":
-      properties:
-        "greetings":
-          items: {"$ref": "#/components/schemas/Greeting"}
-          type: "array"
-          title: "Greetings"
-      type: "object"
-      required:
-        - "greetings"
-      title: "GreetingListResponse"
-    "GreetingResponse":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the greeting"
-        "text":
-          type: "string"
-          title: "Text"
-          description: "The text of the greeting"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the greeting"
-      type: "object"
-      required:
-        - "name"
-        - "text"
-        - "id"
-      title: "GreetingResponse"
     "HTTPValidationError":
       properties:
         "detail":
@@ -2123,6 +2341,266 @@ components:
         - "argument_location"
       title: "HttpEndpoint"
       description: "The configuration for an HTTP API call."
+    "ListResponse_Agent_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Agent"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Agent]"
+    "ListResponse_AvailableTarget_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/AvailableTarget"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[AvailableTarget]"
+    "ListResponse_ChannelTarget_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/ChannelTarget"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[ChannelTarget]"
+    "ListResponse_Channel_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Channel"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Channel]"
+    "ListResponse_Conversation_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Conversation"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Conversation]"
+    "ListResponse_CustomMessage_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/CustomMessage"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[CustomMessage]"
+    "ListResponse_Event_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Event"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Event]"
+    "ListResponse_Prompt_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Prompt"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Prompt]"
+    "ListResponse_SchemasBubblegumV2ToolsTool_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/SchemasBubblegumV2ToolsTool"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[SchemasBubblegumV2ToolsTool]"
+    "ListResponse_Session_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Session"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Session]"
     "LlmConfig":
       properties:
         "provider":
@@ -2150,6 +2628,12 @@ components:
       type: "object"
       title: "LlmConfig"
       description: "LlmConfig"
+    "OrderByDirection":
+      type: "string"
+      enum:
+        - "asc"
+        - "desc"
+      title: "OrderByDirection"
     "Organization":
       properties:
         "id":
@@ -2176,6 +2660,10 @@ components:
           type: "string"
           title: "Name"
           description: "The Prompt name"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "The type of the prompt"
         "context":
           anyOf:
             - type: "string"
@@ -2205,6 +2693,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "type"
         - "llm_config"
         - "id"
         - "last_updated"
@@ -2216,6 +2705,10 @@ components:
           type: "string"
           title: "Name"
           description: "The Prompt name"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "The type of the prompt"
         "context":
           anyOf:
             - type: "string"
@@ -2236,41 +2729,19 @@ components:
       type: "object"
       required:
         - "name"
+        - "type"
         - "llm_config"
       title: "PromptCreate"
       description: "PromptCreate"
-    "PromptListResponse":
-      properties:
-        "prompts":
-          items: {"$ref": "#/components/schemas/Prompt"}
-          type: "array"
-          title: "Prompts"
-        "filter_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Filter Name"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "prompts"
-        - "filter_name"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "PromptListResponse"
+    "PromptProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "context"
+        - "tools"
+        - "llm_config"
+      title: "PromptProperties"
     "Provider":
       type: "string"
       enum:
@@ -2382,32 +2853,72 @@ components:
       required:
         - "timestamp"
       title: "Session"
-    "SessionListResponse":
+    "SessionProperties":
+      type: "string"
+      enum:
+        - "timestamp"
+        - "session_id"
+        - "conversation_id"
+        - "channel_manager_service"
+        - "channel_manager_type"
+        - "channel_manager_sid"
+        - "source"
+        - "target"
+        - "is_legacy"
+        - "is_test"
+      title: "SessionProperties"
+    "TestMessage":
       properties:
-        "sessions":
-          items: {"$ref": "#/components/schemas/Session"}
-          type: "array"
-          title: "Sessions"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
+        "service_name":
+          type: "string"
+          title: "Service Name"
+          description: "Name of the service producing the message"
+        "source":
+          type: "string"
+          title: "Source"
+          description: "Name of the source of the message, should identify the user, like an email or username"
+        "text":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Text"
+        "test_id":
+          type: "string"
+          title: "Test Id"
+        "agent_id":
+          type: "string"
+          title: "Agent Id"
+        "org_name":
+          type: "string"
+          title: "Org Name"
       type: "object"
       required:
-        - "sessions"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "SessionListResponse"
+        - "service_name"
+        - "source"
+        - "test_id"
+        - "agent_id"
+        - "org_name"
+      title: "TestMessage"
+    "TestMessageResponse":
+      properties:
+        "test_id":
+          type: "string"
+          title: "Test Id"
+        "agent_id":
+          type: "string"
+          title: "Agent Id"
+        "text":
+          type: "string"
+          title: "Text"
+        "response":
+          type: "object"
+          title: "Response"
+      type: "object"
+      required:
+        - "test_id"
+        - "agent_id"
+        - "text"
+      title: "TestMessageResponse"
     "ToolDefinition":
       properties:
         "type":
@@ -2456,32 +2967,6 @@ components:
         - "description"
         - "fields"
       title: "ToolDetailResponse"
-    "ToolListResponse":
-      properties:
-        "tools":
-          items: {"$ref": "#/components/schemas/SchemasBubblegumV2ToolsTool"}
-          type: "array"
-          title: "Tools"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "tools"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "ToolListResponse"
     "ToolParameterDefault":
       properties:
         "transform":
@@ -2535,6 +3020,15 @@ components:
         - "value"
       title: "ToolParameterTransformCondition"
       description: "A condition to be met for a transform to be applied to the value of a parameter."
+    "ToolProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "service_name"
+        - "definition"
+        - "service_id"
+      title: "ToolProperties"
     "ValidationError":
       properties:
         "loc":
@@ -2564,18 +3058,20 @@ components:
 tags:
   - name: "agents"
     description: "Operations related to agents"
-  - name: "conversations"
-    description: "Operations related to conversations"
+  - name: "agents.test"
+    description: "Operations for testing agents with live text"
   - name: "channels"
     description: "Operations related to channels"
   - name: "channels.targets"
     description: "Operations related to channel targets"
-  - name: "dashboard"
+  - name: "conversations"
+    description: "Operations related to conversations"
+  - name: "custom_messages"
+    description: "Operations related to custom messages"
+  - name: "dashboards"
     description: "Operations related to system dashboard"
   - name: "events"
     description: "Operations related to agent events"
-  - name: "greetings"
-    description: "Operations related to conversation greetings"
   - name: "organizations"
     description: "Operations related to organizations"
   - name: "prompts"
