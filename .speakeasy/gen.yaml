@@ -20,9 +20,7 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON:
-    scripts:
-      prepare: npm run build
+  additionalPackageJSON: {}
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   enumFormat: union
