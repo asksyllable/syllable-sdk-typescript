@@ -25,9 +25,6 @@ import { Result } from "../types/fp.js";
 
 /**
  * Delete Agent
- *
- * @remarks
- * Delete an agent by ID
  */
 export async function agentsDelete(
   client: SyllableSDKCore,

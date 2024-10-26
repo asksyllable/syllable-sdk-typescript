@@ -32,9 +32,6 @@ export class Channels extends ClientSDK {
 
   /**
    * Delete Channel
-   *
-   * @remarks
-   * Delete channel by ID
    */
   async delete(
     request: operations.ChannelsDeleteRequest,

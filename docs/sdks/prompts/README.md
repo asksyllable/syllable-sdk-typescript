@@ -103,7 +103,12 @@ async function run() {
   const result = await syllableSDK.prompts.create({
     name: "<value>",
     type: "<value>",
-    llmConfig: {},
+    llmConfig: {
+      provider: "azure_openai",
+      model: "gpt-4o",
+      version: "2024-05-13",
+      apiVersion: "2024-06-01",
+    },
   });
 
   // Handle the result
@@ -131,7 +136,12 @@ async function run() {
   const res = await promptsCreate(syllableSDK, {
     name: "<value>",
     type: "<value>",
-    llmConfig: {},
+    llmConfig: {
+      provider: "azure_openai",
+      model: "gpt-4o",
+      version: "2024-05-13",
+      apiVersion: "2024-06-01",
+    },
   });
 
   if (!res.ok) {
@@ -184,7 +194,12 @@ async function run() {
   const result = await syllableSDK.prompts.update({
     name: "<value>",
     type: "<value>",
-    llmConfig: {},
+    llmConfig: {
+      provider: "openai",
+      model: "gpt-4o",
+      version: "2024-05-13",
+      apiVersion: "2024-06-01",
+    },
     id: 857478,
     lastUpdated: "<value>",
   });
@@ -214,7 +229,12 @@ async function run() {
   const res = await promptsUpdate(syllableSDK, {
     name: "<value>",
     type: "<value>",
-    llmConfig: {},
+    llmConfig: {
+      provider: "openai",
+      model: "gpt-4o",
+      version: "2024-05-13",
+      apiVersion: "2024-06-01",
+    },
     id: 857478,
     lastUpdated: "<value>",
   });
@@ -331,7 +351,7 @@ run();
 
 ## delete
 
-Delete an prompt by ID
+Delete Prompt
 
 ### Example Usage
 

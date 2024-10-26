@@ -10,7 +10,8 @@ import { SchemasCortexV1ToolsTool } from "syllable-sdk/models/components";
 let value: SchemasCortexV1ToolsTool = {
   function: {
     name: "<value>",
-    description: "but intrepid calculating queasily ha intensely settle",
+    description:
+      "opposite strict unnecessarily hamburger splosh around apologise",
     parameters: {},
   },
 };
@@ -18,7 +19,7 @@ let value: SchemasCortexV1ToolsTool = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `type`                                                           | *string*                                                         | :heavy_minus_sign:                                               | Always `function`.                                               |
-| `function`                                                       | [components.FunctionT](../../models/components/functiont.md)     | :heavy_check_mark:                                               | The tool definition including the JSON Schema of its parameters. |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `type`                                                                                             | [components.SchemasCortexV1ToolsToolType](../../models/components/schemascortexv1toolstooltype.md) | :heavy_minus_sign:                                                                                 | Always `function`.                                                                                 |
+| `function`                                                                                         | [components.FunctionT](../../models/components/functiont.md)                                       | :heavy_check_mark:                                                                                 | The tool definition including the JSON Schema of its parameters.                                   |

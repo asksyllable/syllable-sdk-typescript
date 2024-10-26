@@ -275,7 +275,6 @@ paths:
       tags:
         - "agents"
       summary: "Delete Agent"
-      description: "Delete an agent by ID"
       operationId: "agent_delete"
       security:
         - APIKeyHeader: []
@@ -847,7 +846,6 @@ paths:
       tags:
         - "channels"
       summary: "Delete Channel"
-      description: "Delete channel by ID"
       operationId: "channels_delete"
       security:
         - APIKeyHeader: []
@@ -2102,7 +2100,6 @@ paths:
       tags:
         - "prompts"
       summary: "Delete Prompt"
-      description: "Delete an prompt by ID"
       operationId: "prompts_delete"
       security:
         - APIKeyHeader: []
@@ -2352,7 +2349,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_SchemasBubblegumV2ToolsTool_"}
+              schema: {"$ref": "#/components/schemas/ListResponse_Tool_"}
         "422":
           description: "Validation Error"
           content:
@@ -2606,6 +2603,9 @@ components:
       title: "AgentToolFieldDefault"
     "AvailableTarget":
       properties:
+        "sub_organization_id":
+          type: "integer"
+          title: "Sub Organization Id"
         "channel_id":
           type: "integer"
           title: "Channel Id"
@@ -2619,6 +2619,7 @@ components:
           title: "Target"
       type: "object"
       required:
+        - "sub_organization_id"
         - "channel_id"
         - "channel_name"
         - "target"
@@ -2961,6 +2962,10 @@ components:
           type: "string"
           title: "Text"
           description: "The text of the greeting"
+        "type":
+          type: "string"
+          title: "Type"
+          default: "greeting"
       type: "object"
       required:
         - "name"
@@ -2973,31 +2978,6 @@ components:
         - "name"
         - "text"
       title: "CustomMessageProperties"
-    "Defaults":
-      properties:
-        "anyof_schema_1_validator":
-          anyOf:
-            - type: "object"
-            - type: "null"
-          title: "Anyof Schema 1 Validator"
-        "anyof_schema_2_validator":
-          anyOf:
-            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
-              type: "object"
-            - type: "null"
-          title: "Anyof Schema 2 Validator"
-        "actual_instance":
-          title: "Actual Instance"
-        "any_of_schemas":
-          items:
-            type: "string"
-          type: "array"
-          uniqueItems: true
-          title: "Any Of Schemas"
-          default: ["object", "Dict[str, ToolParameterDefault]"]
-      type: "object"
-      title: "Defaults"
-      description: "The default values for the parameters of the function/tool call."
     "Event":
       properties:
         "timestamp":
@@ -3087,7 +3067,7 @@ components:
         - "description"
         - "parameters"
       title: "Function"
-      description: "A tool definition to be used by the OpenAI API.  See: - https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
+      description: "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
     "HTTPValidationError":
       properties:
         "detail":
@@ -3104,10 +3084,18 @@ components:
           description: "The endpoint URL of the external service to call."
         "method":
           type: "string"
+          enum:
+            - "get"
+            - "post"
           title: "Method"
           description: "The HTTP method to use for the service call."
         "argument_location":
           type: "string"
+          enum:
+            - "body"
+            - "form"
+            - "path"
+            - "query"
           title: "Argument Location"
           description: "How to pass the arguments to the request."
       type: "object"
@@ -3325,32 +3313,6 @@ components:
         - "total_pages"
         - "total_count"
       title: "ListResponse[Prompt]"
-    "ListResponse_SchemasBubblegumV2ToolsTool_":
-      properties:
-        "items":
-          items: {"$ref": "#/components/schemas/SchemasBubblegumV2ToolsTool"}
-          type: "array"
-          title: "Items"
-        "page":
-          type: "integer"
-          title: "Page"
-        "page_size":
-          type: "integer"
-          title: "Page Size"
-        "total_pages":
-          type: "integer"
-          title: "Total Pages"
-        "total_count":
-          type: "integer"
-          title: "Total Count"
-      type: "object"
-      required:
-        - "items"
-        - "page"
-        - "page_size"
-        - "total_pages"
-        - "total_count"
-      title: "ListResponse[SchemasBubblegumV2ToolsTool]"
     "ListResponse_Session_":
       properties:
         "items":
@@ -3377,33 +3339,67 @@ components:
         - "total_pages"
         - "total_count"
       title: "ListResponse[Session]"
+    "ListResponse_Tool_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/schemas__bubblegum__v2__tools__Tool"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          type: "integer"
+          title: "Total Pages"
+        "total_count":
+          type: "integer"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total_pages"
+        - "total_count"
+      title: "ListResponse[Tool]"
     "LlmConfig":
       properties:
         "provider":
-          anyOf:
+          allOf:
             - {"$ref": "#/components/schemas/Provider"}
-            - type: "null"
           description: "Provider of the LLM model."
+          default: "azure_openai"
+          examples:
+            - "azure_openai"
+            - "openai"
         "model":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Model"
           description: "Name of the model. Must match the deployment name in Azure AI Studio."
           default: "gpt-4o"
+          examples:
+            - "gpt-4o"
         "version":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Version"
+          description: "Optional model version."
+          examples:
+            - "2024-05-13"
         "api_version":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Api Version"
+          description: "Version of the API. (Currently only used for Azure OpenAI.)"
+          examples:
+            - "2024-06-01"
       type: "object"
       title: "LlmConfig"
-      description: "LlmConfig"
     "OrderByDirection":
       type: "string"
       enum:
@@ -3445,14 +3441,14 @@ components:
             - type: "string"
             - type: "null"
           title: "Context"
+          description: "The prompt text"
         "tools":
-          anyOf:
-            - items:
-                type: "string"
-              type: "array"
-            - type: "null"
+          items:
+            type: "string"
+          type: "array"
           title: "Tools"
           description: "The tools for the prompt"
+          default: []
         "llm_config":
           allOf:
             - {"$ref": "#/components/schemas/LlmConfig"}
@@ -3466,6 +3462,7 @@ components:
             - type: "string"
             - type: "null"
           title: "Last Updated"
+          description: "The last updated date of the prompt"
       type: "object"
       required:
         - "name"
@@ -3474,7 +3471,6 @@ components:
         - "id"
         - "last_updated"
       title: "Prompt"
-      description: "Prompt"
     "PromptCreate":
       properties:
         "name":
@@ -3490,14 +3486,14 @@ components:
             - type: "string"
             - type: "null"
           title: "Context"
+          description: "The prompt text"
         "tools":
-          anyOf:
-            - items:
-                type: "string"
-              type: "array"
-            - type: "null"
+          items:
+            type: "string"
+          type: "array"
           title: "Tools"
           description: "The tools for the prompt"
+          default: []
         "llm_config":
           allOf:
             - {"$ref": "#/components/schemas/LlmConfig"}
@@ -3508,7 +3504,6 @@ components:
         - "type"
         - "llm_config"
       title: "PromptCreate"
-      description: "PromptCreate"
     "PromptProperties":
       type: "string"
       enum:
@@ -3525,55 +3520,6 @@ components:
         - "openai"
       title: "Provider"
       description: "LLM API provider."
-    "SchemasBubblegumV2ToolsTool":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the tool"
-        "definition":
-          anyOf:
-            - {"$ref": "#/components/schemas/ToolDefinition"}
-            - type: "null"
-          description: "The definition of the tool"
-        "service_id":
-          type: "integer"
-          title: "Service Id"
-          description: "The service this tool belongs to"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the tool"
-        "service_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Service Name"
-      type: "object"
-      required:
-        - "name"
-        - "service_id"
-        - "id"
-      title: "SchemasBubblegumV2ToolsTool"
-      description: "SchemasBubblegumV2ToolsTool"
-    "SchemasCortexV1ToolsTool":
-      properties:
-        "type":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Type"
-          description: "Always `function`."
-          default: "function"
-        "function":
-          allOf:
-            - {"$ref": "#/components/schemas/Function"}
-          description: "The tool definition including the JSON Schema of its parameters."
-      type: "object"
-      required:
-        - "function"
-      title: "SchemasCortexV1ToolsTool"
-      description: "A tool definition to be used by the OpenAI API."
     "Session":
       properties:
         "timestamp":
@@ -3700,30 +3646,41 @@ components:
         "type":
           anyOf:
             - type: "string"
+              enum:
+                - "action"
+                - "endpoint"
+                - "context"
             - type: "null"
           title: "Type"
+          description: "The action to take when GPT calls the tool."
         "tool":
           allOf:
-            - {"$ref": "#/components/schemas/SchemasCortexV1ToolsTool"}
+            - {"$ref": "#/components/schemas/schemas__cortex__v1__tools__Tool"}
           description: "The tool definition to be used by the OpenAI API."
         "endpoint":
           anyOf:
             - {"$ref": "#/components/schemas/HttpEndpoint"}
             - type: "null"
+          description: "The configuration for an HTTP API call."
         "defaults":
           anyOf:
-            - {"$ref": "#/components/schemas/Defaults"}
+            - type: "object"
+            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
+              type: "object"
             - type: "null"
+          title: "Defaults"
+          description: "The default values for the parameters of the function/tool call."
         "result":
           anyOf:
             - type: "object"
             - type: "null"
           title: "Result"
+          description: "The optional result of the tool call. Only used for `context` tools."
       type: "object"
       required:
         - "tool"
       title: "ToolDefinition"
-      description: "A tool that can be called from GPT during the conversation.  The tool can result in one of the following actions depending on the `type` field: - `action`:   An `ActionRequest` to return to Bubblegum in `GetResponseResponse`. - `endpoint`:   An HTTP API call to an external tool. Requires the `endpoint` field to be set too. - `context`:   Sets context variables based on the tool arguments, e.g. to change the session language. Only   `language` and `say` context vars are currently supported, but this will be made more generic.  For example, to change the current session language: ``` {   \"type\": \"context\",   \"tool\": {     \"function\": {       \"name\": \"set_language\",       \"parameters\": {         \"language\": {           \"type\": \"string\",           \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"         },         \"message\": {           \"type\": \"string\",           \"description\": \"Inform the caller we're now speaking in the new language.\"         }       }     }   } } ```  If `defaults` is provided, it will be used as the default values for the parameters of the tool call, if GPT doesn't provide them: ``` \"defaults\": {   \"hospital\": \"Queens Hospital\" } ```  Some special \"transform\" handling is supported if the value is a dict with a single `transform` key. The parameter value will be transformed by the given `action` before being used as the default value:  Removing an unwanted parameter: ``` \"defaults\": {   \"hospital\": {     \"transform\": {       \"action\": \"remove\"     }   } } ```  Add custom parameters from other parameters using Python's `format`: ``` \"defaults\": {   \"hello\": {     \"transform\": {       \"format\": \"Hello, {name}!\"     }   } }  Modify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\": ``` {   \"defaults\": {     \"city\": {       \"transform\": {         \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},         \"action\": \"override\",         \"format\": \"The {city}\"       }     }   } } ```"
+      description: "A tool that can be called from GPT during the conversation.\n\nThe tool can result in one of the following actions depending on the `type` field:\n- `action`:\n  An `ActionRequest` to return to Bubblegum in `GetResponseResponse`.\n- `endpoint`:\n  An HTTP API call to an external tool. Requires the `endpoint` field to be set too.\n- `context`:\n  Sets context variables based on the tool arguments, e.g. to change the session language. Only\n  `language` and `say` context vars are currently supported, but this will be made more generic.\n\nFor example, to change the current session language:\n```\n{\n  \"type\": \"context\",\n  \"tool\": {\n    \"function\": {\n      \"name\": \"set_language\",\n      \"parameters\": {\n        \"language\": {\n          \"type\": \"string\",\n          \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"\n        },\n        \"message\": {\n          \"type\": \"string\",\n          \"description\": \"Inform the caller we're now speaking in the new language.\"\n        }\n      }\n    }\n  }\n}\n```\n\nIf `defaults` is provided, it will be used as the default values for the parameters of the\ntool call, if GPT doesn't provide them:\n```\n\"defaults\": {\n  \"hospital\": \"Queens Hospital\"\n}\n```\n\nSome special \"transform\" handling is supported if the value is a dict with a single `transform`\nkey. The parameter value will be transformed by the given `action` before being used as the\ndefault value:\n\nRemoving an unwanted parameter:\n```\n\"defaults\": {\n  \"hospital\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n```\n\nAdd custom parameters from other parameters using Python's `format`:\n```\n\"defaults\": {\n  \"hello\": {\n    \"transform\": {\n      \"format\": \"Hello, {name}!\"\n    }\n  }\n}\n\nModify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\":\n```\n{\n  \"defaults\": {\n    \"city\": {\n      \"transform\": {\n        \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},\n        \"action\": \"override\",\n        \"format\": \"The {city}\"\n      }\n    }\n  }\n}\n```"
     "ToolDetailResponse":
       properties:
         "name":
@@ -3760,10 +3717,13 @@ components:
           anyOf:
             - {"$ref": "#/components/schemas/ToolParameterTransformCondition"}
             - type: "null"
+          description: "Only apply the transform if the condition is met."
         "action":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
+          enum:
+            - "default"
+            - "override"
+            - "remove"
           title: "Action"
           description: "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
           default: "default"
@@ -3772,6 +3732,7 @@ components:
             - type: "string"
             - type: "null"
           title: "Format"
+          description: "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
       type: "object"
       title: "ToolParameterTransform"
       description: "A transform to be applied to the value of a parameter."
@@ -3788,8 +3749,13 @@ components:
         "operator":
           anyOf:
             - type: "string"
+              enum:
+                - "eq"
+              const: "eq"
             - type: "null"
           title: "Operator"
+          description: "The operator to use for the comparison."
+          default: "eq"
       type: "object"
       required:
         - "key"
@@ -3826,6 +3792,55 @@ components:
         - "msg"
         - "type"
       title: "ValidationError"
+    "schemas__bubblegum__v2__tools__Tool":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the tool"
+        "definition":
+          allOf:
+            - {"$ref": "#/components/schemas/ToolDefinition"}
+          description: "The definition of the tool"
+        "service_id":
+          type: "integer"
+          title: "Service Id"
+          description: "The service this tool belongs to"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the tool"
+        "service_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Service Name"
+          description: "The name of the service this tool belongs to"
+      type: "object"
+      required:
+        - "name"
+        - "service_id"
+        - "id"
+      title: "Tool"
+    "schemas__cortex__v1__tools__Tool":
+      properties:
+        "type":
+          type: "string"
+          enum:
+            - "function"
+          const: "function"
+          title: "Type"
+          description: "Always `function`."
+          default: "function"
+        "function":
+          allOf:
+            - {"$ref": "#/components/schemas/Function"}
+          description: "The tool definition including the JSON Schema of its parameters."
+      type: "object"
+      required:
+        - "function"
+      title: "Tool"
+      description: "A tool definition to be used by the OpenAI API."
   securitySchemes:
     "APIKeyHeader":
       type: "apiKey"

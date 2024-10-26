@@ -85,7 +85,7 @@ run();
 
 ## delete
 
-Delete channel by ID
+Delete Channel
 
 ### Example Usage
 

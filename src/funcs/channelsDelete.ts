@@ -25,9 +25,6 @@ import { Result } from "../types/fp.js";
 
 /**
  * Delete Channel
- *
- * @remarks
- * Delete channel by ID
  */
 export async function channelsDelete(
   client: SyllableSDKCore,
