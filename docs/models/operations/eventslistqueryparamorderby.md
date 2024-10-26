@@ -5,7 +5,7 @@
 ```typescript
 import { EventsListQueryParamOrderBy } from "syllable-sdk/models/operations";
 
-let value: EventsListQueryParamOrderBy = "category";
+let value: EventsListQueryParamOrderBy = "user_id";
 ```
 
 ## Values

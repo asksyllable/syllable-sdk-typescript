@@ -5,7 +5,7 @@
 ```typescript
 import { SessionsListQueryParamOrderByDirection } from "syllable-sdk/models/operations";
 
-let value: SessionsListQueryParamOrderByDirection = "desc";
+let value: SessionsListQueryParamOrderByDirection = "asc";
 ```
 
 ## Values

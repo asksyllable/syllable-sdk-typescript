@@ -13,6 +13,7 @@ export type CustomMessageCreate = {
    * The text of the greeting
    */
   text: string;
+  type?: string | undefined;
 };
 
 /** @internal */
@@ -23,12 +24,14 @@ export const CustomMessageCreate$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   text: z.string(),
+  type: z.string().default("greeting"),
 });
 
 /** @internal */
 export type CustomMessageCreate$Outbound = {
   name: string;
   text: string;
+  type: string;
 };
 
 /** @internal */
@@ -39,6 +42,7 @@ export const CustomMessageCreate$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   text: z.string(),
+  type: z.string().default("greeting"),
 });
 
 /**

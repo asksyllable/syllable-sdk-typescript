@@ -2,19 +2,22 @@
 
 The default values for the parameters of the function/tool call.
 
-## Example Usage
+
+## Supported Types
+
+### `components.One`
 
 ```typescript
-import { Defaults } from "syllable-sdk/models/components";
-
-let value: Defaults = {};
+const value: components.One = {};
 ```
 
-## Fields
+### `{ [k: string]: components.ToolParameterDefault }`
 
-| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `anyofSchema1Validator`                                                                            | [components.AnyofSchema1Validator](../../models/components/anyofschema1validator.md)               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `anyofSchema2Validator`                                                                            | Record<string, [components.ToolParameterDefault](../../models/components/toolparameterdefault.md)> | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `actualInstance`                                                                                   | *any*                                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `anyOfSchemas`                                                                                     | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+```typescript
+const value: { [k: string]: components.ToolParameterDefault } = {
+  "key": {
+    transform: {},
+  },
+};
+```
+

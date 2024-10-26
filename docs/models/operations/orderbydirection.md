@@ -5,7 +5,7 @@
 ```typescript
 import { OrderByDirection } from "syllable-sdk/models/operations";
 
-let value: OrderByDirection = "asc";
+let value: OrderByDirection = "desc";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { ChannelTargetsListQueryParamOrderByDirection } from "syllable-sdk/models/operations";
 
-let value: ChannelTargetsListQueryParamOrderByDirection = "asc";
+let value: ChannelTargetsListQueryParamOrderByDirection = "desc";
 ```
 
 ## Values

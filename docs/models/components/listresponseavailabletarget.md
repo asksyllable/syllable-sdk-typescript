@@ -8,15 +8,16 @@ import { ListResponseAvailableTarget } from "syllable-sdk/models/components";
 let value: ListResponseAvailableTarget = {
   items: [
     {
-      channelId: 944669,
+      subOrganizationId: 944669,
+      channelId: 521848,
       channelName: "<value>",
       target: "<value>",
     },
   ],
-  page: 521848,
-  pageSize: 414662,
-  totalPages: 264555,
-  totalCount: 774234,
+  page: 414662,
+  pageSize: 264555,
+  totalPages: 774234,
+  totalCount: 456150,
 };
 ```
 

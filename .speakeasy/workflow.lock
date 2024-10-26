@@ -1,4 +1,4 @@
-speakeasyVersion: 1.421.2
+speakeasyVersion: 1.422.1
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
@@ -29,5 +29,8 @@ workflow:
         syllable-sdk:
             target: typescript
             source: SyllableSDK-OAS
+            publish:
+                npm:
+                    token: $npm_token
             codeSamples:
                 output: codeSamples.yaml

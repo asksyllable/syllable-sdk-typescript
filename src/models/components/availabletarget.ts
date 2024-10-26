@@ -6,6 +6,7 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 
 export type AvailableTarget = {
+  subOrganizationId: number;
   channelId: number;
   channelName: string | null;
   target: string;
@@ -17,11 +18,13 @@ export const AvailableTarget$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  sub_organization_id: z.number().int(),
   channel_id: z.number().int(),
   channel_name: z.nullable(z.string()),
   target: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    "sub_organization_id": "subOrganizationId",
     "channel_id": "channelId",
     "channel_name": "channelName",
   });
@@ -29,6 +32,7 @@ export const AvailableTarget$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AvailableTarget$Outbound = {
+  sub_organization_id: number;
   channel_id: number;
   channel_name: string | null;
   target: string;
@@ -40,11 +44,13 @@ export const AvailableTarget$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AvailableTarget
 > = z.object({
+  subOrganizationId: z.number().int(),
   channelId: z.number().int(),
   channelName: z.nullable(z.string()),
   target: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    subOrganizationId: "sub_organization_id",
     channelId: "channel_id",
     channelName: "channel_name",
   });
