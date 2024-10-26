@@ -11,9 +11,6 @@ import {
   LlmConfig$outboundSchema,
 } from "./llmconfig.js";
 
-/**
- * Prompt
- */
 export type Prompt = {
   /**
    * The Prompt name
@@ -23,11 +20,14 @@ export type Prompt = {
    * The type of the prompt
    */
   type: string;
+  /**
+   * The prompt text
+   */
   context?: string | null | undefined;
   /**
    * The tools for the prompt
    */
-  tools?: Array<string> | null | undefined;
+  tools?: Array<string> | undefined;
   /**
    * The configuration for the language model used by the Cortex API.
    */
@@ -36,6 +36,9 @@ export type Prompt = {
    * The Prompt ID
    */
   id: number;
+  /**
+   * The last updated date of the prompt
+   */
   lastUpdated: string | null;
 };
 
@@ -45,7 +48,7 @@ export const Prompt$inboundSchema: z.ZodType<Prompt, z.ZodTypeDef, unknown> = z
     name: z.string(),
     type: z.string(),
     context: z.nullable(z.string()).optional(),
-    tools: z.nullable(z.array(z.string())).optional(),
+    tools: z.array(z.string()).optional(),
     llm_config: LlmConfig$inboundSchema,
     id: z.number().int(),
     last_updated: z.nullable(z.string()),
@@ -61,7 +64,7 @@ export type Prompt$Outbound = {
   name: string;
   type: string;
   context?: string | null | undefined;
-  tools?: Array<string> | null | undefined;
+  tools?: Array<string> | undefined;
   llm_config: LlmConfig$Outbound;
   id: number;
   last_updated: string | null;
@@ -76,7 +79,7 @@ export const Prompt$outboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
-  tools: z.nullable(z.array(z.string())).optional(),
+  tools: z.array(z.string()).optional(),
   llmConfig: LlmConfig$outboundSchema,
   id: z.number().int(),
   lastUpdated: z.nullable(z.string()),
