@@ -5,7 +5,7 @@
 ```typescript
 import { OrderBy } from "syllable-sdk/models/operations";
 
-let value: OrderBy = "type";
+let value: OrderBy = "prompt_id";
 ```
 
 ## Values

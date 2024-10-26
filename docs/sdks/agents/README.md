@@ -349,7 +349,7 @@ run();
 
 ## delete
 
-Delete an agent by ID
+Delete Agent
 
 ### Example Usage
 

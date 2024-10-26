@@ -4,6 +4,33 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { ClosedEnum } from "../../types/enums.js";
+
+/**
+ * The HTTP method to use for the service call.
+ */
+export const Method = {
+  Get: "get",
+  Post: "post",
+} as const;
+/**
+ * The HTTP method to use for the service call.
+ */
+export type Method = ClosedEnum<typeof Method>;
+
+/**
+ * How to pass the arguments to the request.
+ */
+export const ArgumentLocation = {
+  Body: "body",
+  Form: "form",
+  Path: "path",
+  Query: "query",
+} as const;
+/**
+ * How to pass the arguments to the request.
+ */
+export type ArgumentLocation = ClosedEnum<typeof ArgumentLocation>;
 
 /**
  * The configuration for an HTTP API call.
@@ -16,12 +43,52 @@ export type HttpEndpoint = {
   /**
    * The HTTP method to use for the service call.
    */
-  method: string;
+  method: Method;
   /**
    * How to pass the arguments to the request.
    */
-  argumentLocation: string;
+  argumentLocation: ArgumentLocation;
 };
+
+/** @internal */
+export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z
+  .nativeEnum(Method);
+
+/** @internal */
+export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> =
+  Method$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Method$ {
+  /** @deprecated use `Method$inboundSchema` instead. */
+  export const inboundSchema = Method$inboundSchema;
+  /** @deprecated use `Method$outboundSchema` instead. */
+  export const outboundSchema = Method$outboundSchema;
+}
+
+/** @internal */
+export const ArgumentLocation$inboundSchema: z.ZodNativeEnum<
+  typeof ArgumentLocation
+> = z.nativeEnum(ArgumentLocation);
+
+/** @internal */
+export const ArgumentLocation$outboundSchema: z.ZodNativeEnum<
+  typeof ArgumentLocation
+> = ArgumentLocation$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ArgumentLocation$ {
+  /** @deprecated use `ArgumentLocation$inboundSchema` instead. */
+  export const inboundSchema = ArgumentLocation$inboundSchema;
+  /** @deprecated use `ArgumentLocation$outboundSchema` instead. */
+  export const outboundSchema = ArgumentLocation$outboundSchema;
+}
 
 /** @internal */
 export const HttpEndpoint$inboundSchema: z.ZodType<
@@ -30,8 +97,8 @@ export const HttpEndpoint$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   url: z.string(),
-  method: z.string(),
-  argument_location: z.string(),
+  method: Method$inboundSchema,
+  argument_location: ArgumentLocation$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "argument_location": "argumentLocation",
@@ -52,8 +119,8 @@ export const HttpEndpoint$outboundSchema: z.ZodType<
   HttpEndpoint
 > = z.object({
   url: z.string(),
-  method: z.string(),
-  argumentLocation: z.string(),
+  method: Method$outboundSchema,
+  argumentLocation: ArgumentLocation$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     argumentLocation: "argument_location",

@@ -5,7 +5,7 @@
 ```typescript
 import { ChannelsListQueryParamOrderBy } from "syllable-sdk/models/operations";
 
-let value: ChannelsListQueryParamOrderBy = "name";
+let value: ChannelsListQueryParamOrderBy = "supported_modes";
 ```
 
 ## Values

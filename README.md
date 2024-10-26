@@ -55,25 +55,25 @@ The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https
 ### NPM
 
 ```bash
-npm add https://github.com/asksyllable/syllable-sdk-typescript
+npm add syllable-sdk
 ```
 
 ### PNPM
 
 ```bash
-pnpm add https://github.com/asksyllable/syllable-sdk-typescript
+pnpm add syllable-sdk
 ```
 
 ### Bun
 
 ```bash
-bun add https://github.com/asksyllable/syllable-sdk-typescript
+bun add syllable-sdk
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/asksyllable/syllable-sdk-typescript zod
+yarn add syllable-sdk zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.

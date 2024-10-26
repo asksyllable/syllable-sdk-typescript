@@ -11,9 +11,6 @@ import {
   LlmConfig$outboundSchema,
 } from "./llmconfig.js";
 
-/**
- * PromptCreate
- */
 export type PromptCreate = {
   /**
    * The Prompt name
@@ -23,11 +20,14 @@ export type PromptCreate = {
    * The type of the prompt
    */
   type: string;
+  /**
+   * The prompt text
+   */
   context?: string | null | undefined;
   /**
    * The tools for the prompt
    */
-  tools?: Array<string> | null | undefined;
+  tools?: Array<string> | undefined;
   /**
    * The configuration for the language model used by the Cortex API.
    */
@@ -43,7 +43,7 @@ export const PromptCreate$inboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
-  tools: z.nullable(z.array(z.string())).optional(),
+  tools: z.array(z.string()).optional(),
   llm_config: LlmConfig$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
@@ -56,7 +56,7 @@ export type PromptCreate$Outbound = {
   name: string;
   type: string;
   context?: string | null | undefined;
-  tools?: Array<string> | null | undefined;
+  tools?: Array<string> | undefined;
   llm_config: LlmConfig$Outbound;
 };
 
@@ -69,7 +69,7 @@ export const PromptCreate$outboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
-  tools: z.nullable(z.array(z.string())).optional(),
+  tools: z.array(z.string()).optional(),
   llmConfig: LlmConfig$outboundSchema,
 }).transform((v) => {
   return remap$(v, {

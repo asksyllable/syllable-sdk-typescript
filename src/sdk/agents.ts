@@ -89,9 +89,6 @@ export class Agents extends ClientSDK {
 
   /**
    * Delete Agent
-   *
-   * @remarks
-   * Delete an agent by ID
    */
   async delete(
     request: operations.AgentDeleteRequest,

@@ -3,12 +3,7 @@
  */
 
 import * as z from "zod";
-import {
-  Defaults,
-  Defaults$inboundSchema,
-  Defaults$Outbound,
-  Defaults$outboundSchema,
-} from "./defaults.js";
+import { ClosedEnum } from "../../types/enums.js";
 import {
   HttpEndpoint,
   HttpEndpoint$inboundSchema,
@@ -21,22 +16,217 @@ import {
   SchemasCortexV1ToolsTool$Outbound,
   SchemasCortexV1ToolsTool$outboundSchema,
 } from "./schemascortexv1toolstool.js";
+import {
+  ToolParameterDefault,
+  ToolParameterDefault$inboundSchema,
+  ToolParameterDefault$Outbound,
+  ToolParameterDefault$outboundSchema,
+} from "./toolparameterdefault.js";
+
+export const Type = {
+  Action: "action",
+  Endpoint: "endpoint",
+  Context: "context",
+} as const;
+export type Type = ClosedEnum<typeof Type>;
+
+export type One = {};
+
+/**
+ * The default values for the parameters of the function/tool call.
+ */
+export type Defaults = One | { [k: string]: ToolParameterDefault };
 
 export type Result = {};
 
 /**
- * A tool that can be called from GPT during the conversation.  The tool can result in one of the following actions depending on the `type` field: - `action`:   An `ActionRequest` to return to Bubblegum in `GetResponseResponse`. - `endpoint`:   An HTTP API call to an external tool. Requires the `endpoint` field to be set too. - `context`:   Sets context variables based on the tool arguments, e.g. to change the session language. Only   `language` and `say` context vars are currently supported, but this will be made more generic.  For example, to change the current session language: ``` {   "type": "context",   "tool": {     "function": {       "name": "set_language",       "parameters": {         "language": {           "type": "string",           "description": "The ISO 639 language code to set for the session e.g. 'en-US'."         },         "message": {           "type": "string",           "description": "Inform the caller we're now speaking in the new language."         }       }     }   } } ```  If `defaults` is provided, it will be used as the default values for the parameters of the tool call, if GPT doesn't provide them: ``` "defaults": {   "hospital": "Queens Hospital" } ```  Some special "transform" handling is supported if the value is a dict with a single `transform` key. The parameter value will be transformed by the given `action` before being used as the default value:  Removing an unwanted parameter: ``` "defaults": {   "hospital": {     "transform": {       "action": "remove"     }   } } ```  Add custom parameters from other parameters using Python's `format`: ``` "defaults": {   "hello": {     "transform": {       "format": "Hello, {name}!"     }   } }  Modify a value conditionally, e.g. change a `city` parameter with value "Bronx" to "The Bronx": ``` {   "defaults": {     "city": {       "transform": {         "when": {"operator": "eq", "key": "city", "value": "Bronx"},         "action": "override",         "format": "The {city}"       }     }   } } ```
+ * A tool that can be called from GPT during the conversation.
+ *
+ * @remarks
+ *
+ * The tool can result in one of the following actions depending on the `type` field:
+ * - `action`:
+ *   An `ActionRequest` to return to Bubblegum in `GetResponseResponse`.
+ * - `endpoint`:
+ *   An HTTP API call to an external tool. Requires the `endpoint` field to be set too.
+ * - `context`:
+ *   Sets context variables based on the tool arguments, e.g. to change the session language. Only
+ *   `language` and `say` context vars are currently supported, but this will be made more generic.
+ *
+ * For example, to change the current session language:
+ * ```
+ * {
+ *   "type": "context",
+ *   "tool": {
+ *     "function": {
+ *       "name": "set_language",
+ *       "parameters": {
+ *         "language": {
+ *           "type": "string",
+ *           "description": "The ISO 639 language code to set for the session e.g. 'en-US'."
+ *         },
+ *         "message": {
+ *           "type": "string",
+ *           "description": "Inform the caller we're now speaking in the new language."
+ *         }
+ *       }
+ *     }
+ *   }
+ * }
+ * ```
+ *
+ * If `defaults` is provided, it will be used as the default values for the parameters of the
+ * tool call, if GPT doesn't provide them:
+ * ```
+ * "defaults": {
+ *   "hospital": "Queens Hospital"
+ * }
+ * ```
+ *
+ * Some special "transform" handling is supported if the value is a dict with a single `transform`
+ * key. The parameter value will be transformed by the given `action` before being used as the
+ * default value:
+ *
+ * Removing an unwanted parameter:
+ * ```
+ * "defaults": {
+ *   "hospital": {
+ *     "transform": {
+ *       "action": "remove"
+ *     }
+ *   }
+ * }
+ * ```
+ *
+ * Add custom parameters from other parameters using Python's `format`:
+ * ```
+ * "defaults": {
+ *   "hello": {
+ *     "transform": {
+ *       "format": "Hello, {name}!"
+ *     }
+ *   }
+ * }
+ *
+ * Modify a value conditionally, e.g. change a `city` parameter with value "Bronx" to "The Bronx":
+ * ```
+ * {
+ *   "defaults": {
+ *     "city": {
+ *       "transform": {
+ *         "when": {"operator": "eq", "key": "city", "value": "Bronx"},
+ *         "action": "override",
+ *         "format": "The {city}"
+ *       }
+ *     }
+ *   }
+ * }
+ * ```
  */
 export type ToolDefinition = {
-  type?: string | null | undefined;
+  /**
+   * The action to take when GPT calls the tool.
+   */
+  type?: Type | null | undefined;
   /**
    * The tool definition to be used by the OpenAI API.
    */
   tool: SchemasCortexV1ToolsTool;
+  /**
+   * The configuration for an HTTP API call.
+   */
   endpoint?: HttpEndpoint | null | undefined;
-  defaults?: Defaults | null | undefined;
+  /**
+   * The default values for the parameters of the function/tool call.
+   */
+  defaults?: One | { [k: string]: ToolParameterDefault } | null | undefined;
+  /**
+   * The optional result of the tool call. Only used for `context` tools.
+   */
   result?: Result | null | undefined;
 };
+
+/** @internal */
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
+  Type,
+);
+
+/** @internal */
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
+  Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Type$ {
+  /** @deprecated use `Type$inboundSchema` instead. */
+  export const inboundSchema = Type$inboundSchema;
+  /** @deprecated use `Type$outboundSchema` instead. */
+  export const outboundSchema = Type$outboundSchema;
+}
+
+/** @internal */
+export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
+  .object({});
+
+/** @internal */
+export type One$Outbound = {};
+
+/** @internal */
+export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
+  .object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace One$ {
+  /** @deprecated use `One$inboundSchema` instead. */
+  export const inboundSchema = One$inboundSchema;
+  /** @deprecated use `One$outboundSchema` instead. */
+  export const outboundSchema = One$outboundSchema;
+  /** @deprecated use `One$Outbound` instead. */
+  export type Outbound = One$Outbound;
+}
+
+/** @internal */
+export const Defaults$inboundSchema: z.ZodType<
+  Defaults,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => One$inboundSchema),
+  z.record(ToolParameterDefault$inboundSchema),
+]);
+
+/** @internal */
+export type Defaults$Outbound = One$Outbound | {
+  [k: string]: ToolParameterDefault$Outbound;
+};
+
+/** @internal */
+export const Defaults$outboundSchema: z.ZodType<
+  Defaults$Outbound,
+  z.ZodTypeDef,
+  Defaults
+> = z.union([
+  z.lazy(() => One$outboundSchema),
+  z.record(ToolParameterDefault$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Defaults$ {
+  /** @deprecated use `Defaults$inboundSchema` instead. */
+  export const inboundSchema = Defaults$inboundSchema;
+  /** @deprecated use `Defaults$outboundSchema` instead. */
+  export const outboundSchema = Defaults$outboundSchema;
+  /** @deprecated use `Defaults$Outbound` instead. */
+  export type Outbound = Defaults$Outbound;
+}
 
 /** @internal */
 export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
@@ -71,10 +261,15 @@ export const ToolDefinition$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.nullable(z.string()).optional(),
+  type: z.nullable(Type$inboundSchema).optional(),
   tool: SchemasCortexV1ToolsTool$inboundSchema,
   endpoint: z.nullable(HttpEndpoint$inboundSchema).optional(),
-  defaults: z.nullable(Defaults$inboundSchema).optional(),
+  defaults: z.nullable(
+    z.union([
+      z.lazy(() => One$inboundSchema),
+      z.record(ToolParameterDefault$inboundSchema),
+    ]),
+  ).optional(),
   result: z.nullable(z.lazy(() => Result$inboundSchema)).optional(),
 });
 
@@ -83,7 +278,11 @@ export type ToolDefinition$Outbound = {
   type?: string | null | undefined;
   tool: SchemasCortexV1ToolsTool$Outbound;
   endpoint?: HttpEndpoint$Outbound | null | undefined;
-  defaults?: Defaults$Outbound | null | undefined;
+  defaults?:
+    | One$Outbound
+    | { [k: string]: ToolParameterDefault$Outbound }
+    | null
+    | undefined;
   result?: Result$Outbound | null | undefined;
 };
 
@@ -93,10 +292,15 @@ export const ToolDefinition$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ToolDefinition
 > = z.object({
-  type: z.nullable(z.string()).optional(),
+  type: z.nullable(Type$outboundSchema).optional(),
   tool: SchemasCortexV1ToolsTool$outboundSchema,
   endpoint: z.nullable(HttpEndpoint$outboundSchema).optional(),
-  defaults: z.nullable(Defaults$outboundSchema).optional(),
+  defaults: z.nullable(
+    z.union([
+      z.lazy(() => One$outboundSchema),
+      z.record(ToolParameterDefault$outboundSchema),
+    ]),
+  ).optional(),
   result: z.nullable(z.lazy(() => Result$outboundSchema)).optional(),
 });
 

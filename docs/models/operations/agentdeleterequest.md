@@ -6,7 +6,7 @@
 import { AgentDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: AgentDeleteRequest = {
-  agentId: 463575,
+  agentId: 136900,
   reason: "<value>",
 };
 ```

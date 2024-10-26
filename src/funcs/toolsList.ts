@@ -35,7 +35,7 @@ export async function toolsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponseSchemasBubblegumV2ToolsTool,
+    components.ListResponseTool,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -115,7 +115,7 @@ export async function toolsList(
   };
 
   const [result] = await M.match<
-    components.ListResponseSchemasBubblegumV2ToolsTool,
+    components.ListResponseTool,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -125,10 +125,7 @@ export async function toolsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      components.ListResponseSchemasBubblegumV2ToolsTool$inboundSchema,
-    ),
+    M.json(200, components.ListResponseTool$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

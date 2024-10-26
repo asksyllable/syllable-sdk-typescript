@@ -15,8 +15,8 @@ let value: ToolParameterTransformCondition = {
 
 ## Fields
 
-| Field                                     | Type                                      | Required                                  | Description                               |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| `key`                                     | *string*                                  | :heavy_check_mark:                        | The name of the parameter to check.       |
-| `value`                                   | *string*                                  | :heavy_check_mark:                        | The value to check against the parameter. |
-| `operator`                                | *string*                                  | :heavy_minus_sign:                        | N/A                                       |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `key`                                                      | *string*                                                   | :heavy_check_mark:                                         | The name of the parameter to check.                        |
+| `value`                                                    | *string*                                                   | :heavy_check_mark:                                         | The value to check against the parameter.                  |
+| `operator`                                                 | [components.Operator](../../models/components/operator.md) | :heavy_minus_sign:                                         | The operator to use for the comparison.                    |

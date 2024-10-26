@@ -5,7 +5,7 @@
 ```typescript
 import { QueryParamOrderBy } from "syllable-sdk/models/operations";
 
-let value: QueryParamOrderBy = "target";
+let value: QueryParamOrderBy = "channel_name";
 ```
 
 ## Values
