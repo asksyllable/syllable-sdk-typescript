@@ -70,6 +70,9 @@ export async function agentsTestSendTestMessage(
   const context = {
     operationID: "send_test_message",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -12,11 +12,10 @@ export const ConversationProperties = {
   AgentName: "agent_name",
   PromptId: "prompt_id",
   PromptName: "prompt_name",
-  CallId: "call_id",
-  Source: "source",
-  Target: "target",
+  LlmProvider: "llm_provider",
+  LlmModel: "llm_model",
+  LlmVersion: "llm_version",
   IsLegacy: "is_legacy",
-  IsTest: "is_test",
 } as const;
 export type ConversationProperties = ClosedEnum<typeof ConversationProperties>;
 

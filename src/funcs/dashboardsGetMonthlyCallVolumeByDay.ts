@@ -55,6 +55,9 @@ export async function dashboardsGetMonthlyCallVolumeByDay(
   const context = {
     operationID: "get_monthly_call_volume_by_day",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

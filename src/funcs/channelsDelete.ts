@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -24,11 +24,11 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete Channel
+ * Delete Channel Target
  */
 export async function channelsDelete(
   client: SyllableSDKCore,
-  request: operations.ChannelsDeleteRequest,
+  request: operations.ChannelTargetsDeleteRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -45,7 +45,8 @@ export async function channelsDelete(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.ChannelsDeleteRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.ChannelTargetsDeleteRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -63,6 +64,10 @@ export async function channelsDelete(
 
   const path = pathToFunc("/api/v1/channels/{channel_id}")(pathParams);
 
+  const query = encodeFormQuery({
+    "target_id": payload.target_id,
+  });
+
   const headers = new Headers({
     Accept: "application/json",
   });
@@ -72,8 +77,11 @@ export async function channelsDelete(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "channels_delete",
+    operationID: "channel_targets_delete",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig
@@ -86,6 +94,7 @@ export async function channelsDelete(
     method: "DELETE",
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);

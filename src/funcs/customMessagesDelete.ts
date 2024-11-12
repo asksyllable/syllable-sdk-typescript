@@ -85,6 +85,9 @@ export async function customMessagesDelete(
   const context = {
     operationID: "custom_messages_delete",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

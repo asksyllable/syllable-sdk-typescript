@@ -16,7 +16,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.1.0-alpha.1
+  version: 0.1.0-alpha.2
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -24,6 +24,7 @@ typescript:
   additionalPackageJSON: {}
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   enumFormat: union
   envVarPrefix: SYLLABLESDK
   flattenGlobalSecurity: true

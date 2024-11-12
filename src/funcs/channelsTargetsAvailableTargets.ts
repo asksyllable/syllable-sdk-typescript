@@ -82,6 +82,9 @@ export async function channelsTargetsAvailableTargets(
   const context = {
     operationID: "available_targets",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -21,8 +21,6 @@ let value: ListResponseAgent = {
   ],
   page: 423655,
   pageSize: 645894,
-  totalPages: 437587,
-  totalCount: 891773,
 };
 ```
 
@@ -33,5 +31,5 @@ let value: ListResponseAgent = {
 | `items`                                                | [components.Agent](../../models/components/agent.md)[] | :heavy_check_mark:                                     | N/A                                                    |
 | `page`                                                 | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `pageSize`                                             | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `totalPages`                                           | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `totalCount`                                           | *number*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `totalPages`                                           | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| `totalCount`                                           | *number*                                               | :heavy_minus_sign:                                     | N/A                                                    |

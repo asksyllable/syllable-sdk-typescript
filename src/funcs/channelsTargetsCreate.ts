@@ -78,6 +78,9 @@ export async function channelsTargetsCreate(
   const context = {
     operationID: "channel_targets_create",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

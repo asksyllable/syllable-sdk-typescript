@@ -77,6 +77,9 @@ export async function agentsGetById(
   const context = {
     operationID: "agent_get_by_id",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -8,7 +8,7 @@ Operations related to channels
 ### Available Operations
 
 * [list](#list) - Get Channels
-* [delete](#delete) - Delete Channel
+* [delete](#delete) - Delete Channel Target
 
 ## list
 
@@ -85,7 +85,7 @@ run();
 
 ## delete
 
-Delete Channel
+Delete Channel Target
 
 ### Example Usage
 
@@ -99,6 +99,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.channels.delete({
     channelId: "<id>",
+    targetId: "<id>",
   });
 
   // Handle the result
@@ -125,6 +126,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await channelsDelete(syllableSDK, {
     channelId: "<id>",
+    targetId: "<id>",
   });
 
   if (!res.ok) {
@@ -144,7 +146,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ChannelsDeleteRequest](../../models/operations/channelsdeleterequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ChannelTargetsDeleteRequest](../../models/operations/channeltargetsdeleterequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

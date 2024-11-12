@@ -131,7 +131,7 @@ run();
 ### [channels](docs/sdks/channels/README.md)
 
 * [list](docs/sdks/channels/README.md#list) - Get Channels
-* [delete](docs/sdks/channels/README.md#delete) - Delete Channel
+* [delete](docs/sdks/channels/README.md#delete) - Delete Channel Target
 
 #### [channels.targets](docs/sdks/targets/README.md)
 
@@ -144,7 +144,6 @@ run();
 ### [conversations](docs/sdks/conversations/README.md)
 
 * [list](docs/sdks/conversations/README.md#list) - Conversations List
-* [getById](docs/sdks/conversations/README.md#getbyid) - Get Conversation By Id
 
 ### [customMessages](docs/sdks/custommessages/README.md)
 
@@ -169,10 +168,6 @@ run();
 
 * [list](docs/sdks/events/README.md#list) - Events List
 
-### [organizations](docs/sdks/organizations/README.md)
-
-* [list](docs/sdks/organizations/README.md#list) - Organizations List
-
 ### [prompts](docs/sdks/prompts/README.md)
 
 * [list](docs/sdks/prompts/README.md#list) - Prompt List
@@ -181,15 +176,31 @@ run();
 * [getById](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 * [delete](docs/sdks/prompts/README.md#delete) - Delete Prompt
 
+### [sessionLabels](docs/sdks/sessionlabels/README.md)
+
+* [getById](docs/sdks/sessionlabels/README.md#getbyid) - Get Label By Id
+* [create](docs/sdks/sessionlabels/README.md#create) - Create Label
+* [list](docs/sdks/sessionlabels/README.md#list) - Session Labels List
+
 ### [sessions](docs/sdks/sessions/README.md)
 
 * [list](docs/sdks/sessions/README.md#list) - Sessions List
+
+#### [sessions.transcript](docs/sdks/transcript/README.md)
+
+* [getById](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 
 
 ### [tools](docs/sdks/tools/README.md)
 
 * [list](docs/sdks/tools/README.md#list) - Tool List
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
+
+### [v1](docs/sdks/v1/README.md)
+
+* [getById](docs/sdks/v1/README.md#getbyid) - Get Label By Id
+* [create](docs/sdks/v1/README.md#create) - Create Label
+* [list](docs/sdks/v1/README.md#list) - Session Labels List
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -215,14 +226,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsList`](docs/sdks/agents/README.md#list) - Agent List
 - [`agentsTestSendTestMessage`](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 - [`agentsUpdate`](docs/sdks/agents/README.md#update) - Update Agent
-- [`channelsDelete`](docs/sdks/channels/README.md#delete) - Delete Channel
+- [`channelsDelete`](docs/sdks/channels/README.md#delete) - Delete Channel Target
 - [`channelsList`](docs/sdks/channels/README.md#list) - Get Channels
 - [`channelsTargetsAvailableTargets`](docs/sdks/targets/README.md#availabletargets) - Available Targets List
 - [`channelsTargetsCreate`](docs/sdks/targets/README.md#create) - Assign A Channel Target
 - [`channelsTargetsGetById`](docs/sdks/targets/README.md#getbyid) - Get A Channel Target
 - [`channelsTargetsList`](docs/sdks/targets/README.md#list) - Get Channel Targets
 - [`channelsTargetsUpdate`](docs/sdks/targets/README.md#update) - Edit Channel Target
-- [`conversationsGetById`](docs/sdks/conversations/README.md#getbyid) - Get Conversation By Id
 - [`conversationsList`](docs/sdks/conversations/README.md#list) - Conversations List
 - [`customMessagesCreate`](docs/sdks/custommessages/README.md#create) - Create Custom Message
 - [`customMessagesDelete`](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
@@ -238,15 +248,21 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dashboardsGetWeeklyCallVolumeByWeekday`](docs/sdks/dashboards/README.md#getweeklycallvolumebyweekday) - Get Weekly Call Volume By Weekday
 - [`dashboardsTotalCallVolumeByWeekday`](docs/sdks/dashboards/README.md#totalcallvolumebyweekday) - Get Total Call Volume By Weekday
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
-- [`organizationsList`](docs/sdks/organizations/README.md#list) - Organizations List
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
 - [`promptsGetById`](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 - [`promptsList`](docs/sdks/prompts/README.md#list) - Prompt List
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
+- [`sessionLabelsCreate`](docs/sdks/sessionlabels/README.md#create) - Create Label
+- [`sessionLabelsGetById`](docs/sdks/sessionlabels/README.md#getbyid) - Get Label By Id
+- [`sessionLabelsList`](docs/sdks/sessionlabels/README.md#list) - Session Labels List
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
+- [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
+- [`v1Create`](docs/sdks/v1/README.md#create) - Create Label
+- [`v1GetById`](docs/sdks/v1/README.md#getbyid) - Get Label By Id
+- [`v1List`](docs/sdks/v1/README.md#list) - Session Labels List
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -333,10 +349,10 @@ If a HTTP request fails, an operation my also throw an error from the `models/er
 
 In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `list` method may throw the following errors:
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.HTTPValidationError | 422                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                 | Status Code | Content Type     |
+| -------------------------- | ----------- | ---------------- |
+| errors.HTTPValidationError | 422         | application/json |
+| errors.SDKError            | 4XX, 5XX    | \*/\*            |
 
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
@@ -389,17 +405,20 @@ Validation errors can also occur when either method arguments or data returned f
 
 ### Select Server by Index
 
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `http://127.0.0.1:8001` | None |
+| #   | Server                  |
+| --- | ----------------------- |
+| 0   | `http://localhost:8001` |
+| 1   | `http://localhost:8001` |
+
+#### Example
 
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverIdx: 0,
+  serverIdx: 1,
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 
@@ -414,16 +433,14 @@ run();
 
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverURL: "http://127.0.0.1:8001",
+  serverURL: "http://localhost:8001",
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 
@@ -495,9 +512,9 @@ const sdk = new SyllableSDK({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name                         | Type                         | Scheme                       | Environment Variable         |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `apiKeyHeader`               | apiKey                       | API key                      | `SYLLABLESDK_API_KEY_HEADER` |
+| Name           | Type   | Scheme  | Environment Variable         |
+| -------------- | ------ | ------- | ---------------------------- |
+| `apiKeyHeader` | apiKey | API key | `SYLLABLESDK_API_KEY_HEADER` |
 
 To authenticate with the API the `apiKeyHeader` parameter must be set when initializing the SDK client instance. For example:
 ```typescript

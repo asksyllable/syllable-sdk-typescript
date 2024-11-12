@@ -1,6 +1,6 @@
 # Provider
 
-Provider of the LLM model.
+LLM API provider.
 
 ## Example Usage
 
