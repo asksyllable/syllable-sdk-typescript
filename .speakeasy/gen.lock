@@ -1,23 +1,24 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 438df668f67e6913799f61e1a34e4ff7
+  docChecksum: bc1a0ef305571fdbed95d5555c98e57b
   docVersion: 0.0.2
-  speakeasyVersion: 1.421.2
-  generationVersion: 2.438.15
-  releaseVersion: 0.0.9
-  configChecksum: c48cff9752c1d865b765cc2fb39a40d4
+  speakeasyVersion: 1.434.0
+  generationVersion: 2.452.0
+  releaseVersion: 0.1.0-alpha.1
+  configChecksum: 14cedddd83ca4a4b5eccd85a3647facb
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.2
+    core: 3.18.3
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     enumUnions: 0.1.0
-    envVarSecurityUsage: 0.1.1
+    envVarSecurityUsage: 0.1.2
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -26,8 +27,8 @@ features:
     nullables: 0.1.0
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.1.0
-    unions: 2.85.7
+    sdkHooks: 0.2.0
+    unions: 2.85.8
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -40,13 +41,14 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
+  - docs/models/components/action.md
   - docs/models/components/agent.md
   - docs/models/components/agentcreate.md
   - docs/models/components/agentcreatevariables.md
   - docs/models/components/agentproperties.md
   - docs/models/components/agenttooldefaults.md
   - docs/models/components/agenttoolfielddefault.md
-  - docs/models/components/anyofschema1validator.md
+  - docs/models/components/argumentlocation.md
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
@@ -76,10 +78,13 @@ generatedFiles:
   - docs/models/components/listresponsecustommessage.md
   - docs/models/components/listresponseevent.md
   - docs/models/components/listresponseprompt.md
-  - docs/models/components/listresponseschemasbubblegumv2toolstool.md
   - docs/models/components/listresponsesession.md
+  - docs/models/components/listresponsetool.md
   - docs/models/components/llmconfig.md
   - docs/models/components/loc.md
+  - docs/models/components/method.md
+  - docs/models/components/one.md
+  - docs/models/components/operator.md
   - docs/models/components/organization.md
   - docs/models/components/parameterst.md
   - docs/models/components/prompt.md
@@ -90,6 +95,7 @@ generatedFiles:
   - docs/models/components/result.md
   - docs/models/components/schemasbubblegumv2toolstool.md
   - docs/models/components/schemascortexv1toolstool.md
+  - docs/models/components/schemascortexv1toolstooltype.md
   - docs/models/components/security.md
   - docs/models/components/session.md
   - docs/models/components/sessionproperties.md
@@ -101,6 +107,7 @@ generatedFiles:
   - docs/models/components/toolparametertransform.md
   - docs/models/components/toolparametertransformcondition.md
   - docs/models/components/toolproperties.md
+  - docs/models/components/type.md
   - docs/models/components/validationerror.md
   - docs/models/components/variables.md
   - docs/models/errors/httpvalidationerror.md
@@ -249,7 +256,6 @@ generatedFiles:
   - src/models/components/custommessage.ts
   - src/models/components/custommessagecreate.ts
   - src/models/components/custommessageproperties.ts
-  - src/models/components/defaults.ts
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
   - src/models/components/function.ts
@@ -263,14 +269,13 @@ generatedFiles:
   - src/models/components/listresponsecustommessage.ts
   - src/models/components/listresponseevent.ts
   - src/models/components/listresponseprompt.ts
-  - src/models/components/listresponseschemasbubblegumv2toolstool.ts
   - src/models/components/listresponsesession.ts
+  - src/models/components/listresponsetool.ts
   - src/models/components/llmconfig.ts
   - src/models/components/organization.ts
   - src/models/components/prompt.ts
   - src/models/components/promptcreate.ts
   - src/models/components/promptproperties.ts
-  - src/models/components/provider.ts
   - src/models/components/schemasbubblegumv2toolstool.ts
   - src/models/components/schemascortexv1toolstool.ts
   - src/models/components/security.ts
@@ -414,7 +419,7 @@ examples:
     speakeasy-default-available-targets:
       responses:
         "200":
-          application/json: {"items": [{"channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
+          application/json: {"items": [{"sub_organization_id": 607868, "channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"sub_organization_id": 397275, "channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
         "422": {}
   channel_targets_list:
     speakeasy-default-channel-targets-list:
@@ -530,23 +535,23 @@ examples:
     speakeasy-default-prompts-list:
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "type": "<value>", "id": 547272, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "id": 678317, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "id": 177706, "last_updated": "<value>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 547272, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 678317, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 177706, "last_updated": "<value>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
         "422": {}
   prompts_create:
     speakeasy-default-prompts-create:
       requestBody:
-        application/json: {"name": "<value>", "type": "<value>"}
+        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "azure_openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}}
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "<value>", "id": 486589, "last_updated": "<value>"}
+          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 486589, "last_updated": "<value>"}
         "422": {}
   prompts_update:
     speakeasy-default-prompts-update:
       requestBody:
-        application/json: {"name": "<value>", "type": "<value>", "id": 857478, "last_updated": "<value>"}
+        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 857478, "last_updated": "<value>"}
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "<value>", "id": 597129, "last_updated": "<value>"}
+          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 597129, "last_updated": "<value>"}
         "422": {}
   prompts_get_by_id:
     speakeasy-default-prompts-get-by-id:
@@ -555,7 +560,7 @@ examples:
           prompt_id: 931598
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "<value>", "id": 505057, "last_updated": "<value>"}
+          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 505057, "last_updated": "<value>"}
         "422": {}
   prompts_delete:
     speakeasy-default-prompts-delete:

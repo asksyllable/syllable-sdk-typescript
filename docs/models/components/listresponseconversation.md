@@ -8,14 +8,14 @@ import { ListResponseConversation } from "syllable-sdk/models/components";
 let value: ListResponseConversation = {
   items: [
     {
-      timestamp: new Date("2024-01-01T18:37:54.059Z"),
+      timestamp: new Date("2022-08-19T13:54:10.391Z"),
       conversationId: "<id>",
     },
   ],
-  page: 670638,
-  pageSize: 210382,
-  totalPages: 128926,
-  totalCount: 315428,
+  page: 128926,
+  pageSize: 315428,
+  totalPages: 363711,
+  totalCount: 570197,
 };
 ```
 

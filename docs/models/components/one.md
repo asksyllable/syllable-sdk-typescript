@@ -1,11 +1,11 @@
-# AnyofSchema1Validator
+# One
 
 ## Example Usage
 
 ```typescript
-import { AnyofSchema1Validator } from "syllable-sdk/models/components";
+import { One } from "syllable-sdk/models/components";
 
-let value: AnyofSchema1Validator = {};
+let value: One = {};
 ```
 
 ## Fields

@@ -1,22 +1,22 @@
-# ListResponseSchemasBubblegumV2ToolsTool
+# ListResponseTool
 
 ## Example Usage
 
 ```typescript
-import { ListResponseSchemasBubblegumV2ToolsTool } from "syllable-sdk/models/components";
+import { ListResponseTool } from "syllable-sdk/models/components";
 
-let value: ListResponseSchemasBubblegumV2ToolsTool = {
+let value: ListResponseTool = {
   items: [
     {
       name: "<value>",
-      serviceId: 566602,
-      id: 265389,
+      serviceId: 318569,
+      id: 667411,
     },
   ],
-  page: 523248,
-  pageSize: 93940,
-  totalPages: 575947,
-  totalCount: 929297,
+  page: 131797,
+  pageSize: 716327,
+  totalPages: 289406,
+  totalCount: 183191,
 };
 ```
 

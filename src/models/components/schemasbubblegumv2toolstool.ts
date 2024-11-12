@@ -11,9 +11,6 @@ import {
   ToolDefinition$outboundSchema,
 } from "./tooldefinition.js";
 
-/**
- * SchemasBubblegumV2ToolsTool
- */
 export type SchemasBubblegumV2ToolsTool = {
   /**
    * The name of the tool
@@ -22,7 +19,7 @@ export type SchemasBubblegumV2ToolsTool = {
   /**
    * The definition of the tool
    */
-  definition?: ToolDefinition | null | undefined;
+  definition?: ToolDefinition | undefined;
   /**
    * The service this tool belongs to
    */
@@ -31,6 +28,9 @@ export type SchemasBubblegumV2ToolsTool = {
    * The ID of the tool
    */
   id: number;
+  /**
+   * The name of the service this tool belongs to
+   */
   serviceName?: string | null | undefined;
 };
 
@@ -41,7 +41,7 @@ export const SchemasBubblegumV2ToolsTool$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  definition: z.nullable(ToolDefinition$inboundSchema).optional(),
+  definition: ToolDefinition$inboundSchema.optional(),
   service_id: z.number().int(),
   id: z.number().int(),
   service_name: z.nullable(z.string()).optional(),
@@ -55,7 +55,7 @@ export const SchemasBubblegumV2ToolsTool$inboundSchema: z.ZodType<
 /** @internal */
 export type SchemasBubblegumV2ToolsTool$Outbound = {
   name: string;
-  definition?: ToolDefinition$Outbound | null | undefined;
+  definition?: ToolDefinition$Outbound | undefined;
   service_id: number;
   id: number;
   service_name?: string | null | undefined;
@@ -68,7 +68,7 @@ export const SchemasBubblegumV2ToolsTool$outboundSchema: z.ZodType<
   SchemasBubblegumV2ToolsTool
 > = z.object({
   name: z.string(),
-  definition: z.nullable(ToolDefinition$outboundSchema).optional(),
+  definition: ToolDefinition$outboundSchema.optional(),
   serviceId: z.number().int(),
   id: z.number().int(),
   serviceName: z.nullable(z.string()).optional(),

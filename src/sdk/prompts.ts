@@ -83,9 +83,6 @@ export class Prompts extends ClientSDK {
 
   /**
    * Delete Prompt
-   *
-   * @remarks
-   * Delete an prompt by ID
    */
   async delete(
     request: operations.PromptsDeleteRequest,

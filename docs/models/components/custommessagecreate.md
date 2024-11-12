@@ -17,3 +17,4 @@ let value: CustomMessageCreate = {
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
 | `name`                   | *string*                 | :heavy_check_mark:       | The name of the greeting |
 | `text`                   | *string*                 | :heavy_check_mark:       | The text of the greeting |
+| `type`                   | *string*                 | :heavy_minus_sign:       | N/A                      |

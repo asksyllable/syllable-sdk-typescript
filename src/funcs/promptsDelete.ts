@@ -25,9 +25,6 @@ import { Result } from "../types/fp.js";
 
 /**
  * Delete Prompt
- *
- * @remarks
- * Delete an prompt by ID
  */
 export async function promptsDelete(
   client: SyllableSDKCore,
@@ -76,12 +73,17 @@ export async function promptsDelete(
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "prompts_delete",
     oAuth2Scopes: [],
     securitySource: client._options.apiKeyHeader,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
@@ -100,9 +102,8 @@ export async function promptsDelete(
   const doResult = await client._do(req, {
     context,
     errorCodes: ["422", "4XX", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;

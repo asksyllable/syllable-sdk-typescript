@@ -13,16 +13,15 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
   auth:
-    oAuth2ClientCredentialsEnabled: true
+    oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
-  version: 0.0.9
+  version: 0.1.0-alpha.1
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON:
-    scripts:
-      prepare: npm run build
+  additionalPackageJSON: {}
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   enumFormat: union

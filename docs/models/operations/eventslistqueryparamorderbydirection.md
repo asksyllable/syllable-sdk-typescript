@@ -5,7 +5,7 @@
 ```typescript
 import { EventsListQueryParamOrderByDirection } from "syllable-sdk/models/operations";
 
-let value: EventsListQueryParamOrderByDirection = "desc";
+let value: EventsListQueryParamOrderByDirection = "asc";
 ```
 
 ## Values

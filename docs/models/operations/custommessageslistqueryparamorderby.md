@@ -5,7 +5,7 @@
 ```typescript
 import { CustomMessagesListQueryParamOrderBy } from "syllable-sdk/models/operations";
 
-let value: CustomMessagesListQueryParamOrderBy = "text";
+let value: CustomMessagesListQueryParamOrderBy = "id";
 ```
 
 ## Values
