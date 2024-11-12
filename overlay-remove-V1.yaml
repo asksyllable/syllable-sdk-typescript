@@ -178,6 +178,11 @@ actions:
   - target: $["paths"]["/api/v1/sessions/"]["get"]["tags"]
     update:
       - "sessions"
+  - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]["tags"]
+    update:
+      - "sessions.transcript"
   - target: $["paths"]["/api/v1/tools/"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/tools/"]["get"]["tags"]
