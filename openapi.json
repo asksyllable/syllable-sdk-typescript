@@ -4487,11 +4487,11 @@
         ],
         "title": "ListResponse[SessionLabel]"
       },
-      "ListResponse_Tool_": {
+      "ListResponse_Session_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/schemas__bubblegum__v2__tools__Tool"
+              "$ref": "#/components/schemas/Session"
             },
             "type": "array",
             "title": "Items"
@@ -4533,55 +4533,7 @@
           "page",
           "page_size"
         ],
-        "title": "ListResponse[Tool]"
-      },
-      "ListResponse_Tool_": {
-        "properties": {
-          "items": {
-            "items": {
-              "$ref": "#/components/schemas/Tool"
-            },
-            "type": "array",
-            "title": "Items"
-          },
-          "page": {
-            "type": "integer",
-            "title": "Page"
-          },
-          "page_size": {
-            "type": "integer",
-            "title": "Page Size"
-          },
-          "total_pages": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Total Pages"
-          },
-          "total_count": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Total Count"
-          }
-        },
-        "type": "object",
-        "required": [
-          "items",
-          "page",
-          "page_size"
-        ],
-        "title": "ListResponse[Tool]"
+        "title": "ListResponse[Session]"
       },
       "ListResponse_Tool_": {
         "properties": {
@@ -5476,80 +5428,6 @@
           "type"
         ],
         "title": "ValidationError"
-      },
-      "schemas__bubblegum__v2__tools__Tool": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the tool"
-          },
-          "definition": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ToolDefinition"
-              }
-            ],
-            "description": "The definition of the tool"
-          },
-          "service_id": {
-            "type": "integer",
-            "title": "Service Id",
-            "description": "The service this tool belongs to"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The ID of the tool"
-          },
-          "service_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Service Name",
-            "description": "The name of the service this tool belongs to"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "service_id",
-          "id"
-        ],
-        "title": "Tool"
-      },
-      "schemas__cortex__v1__tools__Tool": {
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "function"
-            ],
-            "const": "function",
-            "title": "Type",
-            "description": "Always `function`.",
-            "default": "function"
-          },
-          "function": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Function"
-              }
-            ],
-            "description": "The tool definition including the JSON Schema of its parameters."
-          }
-        },
-        "type": "object",
-        "required": [
-          "function"
-        ],
-        "title": "Tool",
-        "description": "A tool definition to be used by the OpenAI API."
       }
     },
     "securitySchemes": {
