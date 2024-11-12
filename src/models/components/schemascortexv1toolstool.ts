@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { ClosedEnum } from "../../types/enums.js";
 import {
   FunctionT,
   FunctionT$inboundSchema,
@@ -11,13 +12,26 @@ import {
 } from "./function.js";
 
 /**
+ * Always `function`.
+ */
+export const SchemasCortexV1ToolsToolType = {
+  Function: "function",
+} as const;
+/**
+ * Always `function`.
+ */
+export type SchemasCortexV1ToolsToolType = ClosedEnum<
+  typeof SchemasCortexV1ToolsToolType
+>;
+
+/**
  * A tool definition to be used by the OpenAI API.
  */
 export type SchemasCortexV1ToolsTool = {
   /**
    * Always `function`.
    */
-  type?: string | null | undefined;
+  type?: "function" | undefined;
   /**
    * The tool definition including the JSON Schema of its parameters.
    */
@@ -25,18 +39,39 @@ export type SchemasCortexV1ToolsTool = {
 };
 
 /** @internal */
+export const SchemasCortexV1ToolsToolType$inboundSchema: z.ZodNativeEnum<
+  typeof SchemasCortexV1ToolsToolType
+> = z.nativeEnum(SchemasCortexV1ToolsToolType);
+
+/** @internal */
+export const SchemasCortexV1ToolsToolType$outboundSchema: z.ZodNativeEnum<
+  typeof SchemasCortexV1ToolsToolType
+> = SchemasCortexV1ToolsToolType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SchemasCortexV1ToolsToolType$ {
+  /** @deprecated use `SchemasCortexV1ToolsToolType$inboundSchema` instead. */
+  export const inboundSchema = SchemasCortexV1ToolsToolType$inboundSchema;
+  /** @deprecated use `SchemasCortexV1ToolsToolType$outboundSchema` instead. */
+  export const outboundSchema = SchemasCortexV1ToolsToolType$outboundSchema;
+}
+
+/** @internal */
 export const SchemasCortexV1ToolsTool$inboundSchema: z.ZodType<
   SchemasCortexV1ToolsTool,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.nullable(z.string()).optional(),
+  type: z.literal("function").default("function"),
   function: FunctionT$inboundSchema,
 });
 
 /** @internal */
 export type SchemasCortexV1ToolsTool$Outbound = {
-  type?: string | null | undefined;
+  type: "function";
   function: FunctionT$Outbound;
 };
 
@@ -46,7 +81,7 @@ export const SchemasCortexV1ToolsTool$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SchemasCortexV1ToolsTool
 > = z.object({
-  type: z.nullable(z.string()).optional(),
+  type: z.literal("function").default("function"),
   function: FunctionT$outboundSchema,
 });
 

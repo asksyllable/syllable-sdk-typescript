@@ -74,7 +74,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponseSchemasBubblegumV2ToolsTool](../../models/components/listresponseschemasbubblegumv2toolstool.md)\>**
+**Promise\<[components.ListResponseTool](../../models/components/listresponsetool.md)\>**
 
 ### Errors
 

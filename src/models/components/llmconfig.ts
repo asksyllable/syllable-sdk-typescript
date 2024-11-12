@@ -4,27 +4,57 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
-import {
-  Provider,
-  Provider$inboundSchema,
-  Provider$outboundSchema,
-} from "./provider.js";
+import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * LlmConfig
+ * Provider of the LLM model.
  */
+export const Provider = {
+  AzureOpenai: "azure_openai",
+  Openai: "openai",
+} as const;
+/**
+ * Provider of the LLM model.
+ */
+export type Provider = ClosedEnum<typeof Provider>;
+
 export type LlmConfig = {
   /**
    * Provider of the LLM model.
    */
-  provider?: Provider | null | undefined;
+  provider?: Provider | undefined;
   /**
    * Name of the model. Must match the deployment name in Azure AI Studio.
    */
-  model?: string | null | undefined;
+  model?: string | undefined;
+  /**
+   * Optional model version.
+   */
   version?: string | null | undefined;
+  /**
+   * Version of the API. (Currently only used for Azure OpenAI.)
+   */
   apiVersion?: string | null | undefined;
 };
+
+/** @internal */
+export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
+  .nativeEnum(Provider);
+
+/** @internal */
+export const Provider$outboundSchema: z.ZodNativeEnum<typeof Provider> =
+  Provider$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Provider$ {
+  /** @deprecated use `Provider$inboundSchema` instead. */
+  export const inboundSchema = Provider$inboundSchema;
+  /** @deprecated use `Provider$outboundSchema` instead. */
+  export const outboundSchema = Provider$outboundSchema;
+}
 
 /** @internal */
 export const LlmConfig$inboundSchema: z.ZodType<
@@ -32,8 +62,8 @@ export const LlmConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: z.nullable(Provider$inboundSchema).optional(),
-  model: z.nullable(z.string()).optional(),
+  provider: Provider$inboundSchema.default("azure_openai"),
+  model: z.string().default("gpt-4o"),
   version: z.nullable(z.string()).optional(),
   api_version: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -44,8 +74,8 @@ export const LlmConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LlmConfig$Outbound = {
-  provider?: string | null | undefined;
-  model?: string | null | undefined;
+  provider: string;
+  model: string;
   version?: string | null | undefined;
   api_version?: string | null | undefined;
 };
@@ -56,8 +86,8 @@ export const LlmConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LlmConfig
 > = z.object({
-  provider: z.nullable(Provider$outboundSchema).optional(),
-  model: z.nullable(z.string()).optional(),
+  provider: Provider$outboundSchema.default("azure_openai"),
+  model: z.string().default("gpt-4o"),
   version: z.nullable(z.string()).optional(),
   apiVersion: z.nullable(z.string()).optional(),
 }).transform((v) => {

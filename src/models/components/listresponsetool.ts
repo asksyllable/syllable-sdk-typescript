@@ -11,7 +11,7 @@ import {
   SchemasBubblegumV2ToolsTool$outboundSchema,
 } from "./schemasbubblegumv2toolstool.js";
 
-export type ListResponseSchemasBubblegumV2ToolsTool = {
+export type ListResponseTool = {
   items: Array<SchemasBubblegumV2ToolsTool>;
   page: number;
   pageSize: number;
@@ -20,8 +20,8 @@ export type ListResponseSchemasBubblegumV2ToolsTool = {
 };
 
 /** @internal */
-export const ListResponseSchemasBubblegumV2ToolsTool$inboundSchema: z.ZodType<
-  ListResponseSchemasBubblegumV2ToolsTool,
+export const ListResponseTool$inboundSchema: z.ZodType<
+  ListResponseTool,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -39,7 +39,7 @@ export const ListResponseSchemasBubblegumV2ToolsTool$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ListResponseSchemasBubblegumV2ToolsTool$Outbound = {
+export type ListResponseTool$Outbound = {
   items: Array<SchemasBubblegumV2ToolsTool$Outbound>;
   page: number;
   page_size: number;
@@ -48,10 +48,10 @@ export type ListResponseSchemasBubblegumV2ToolsTool$Outbound = {
 };
 
 /** @internal */
-export const ListResponseSchemasBubblegumV2ToolsTool$outboundSchema: z.ZodType<
-  ListResponseSchemasBubblegumV2ToolsTool$Outbound,
+export const ListResponseTool$outboundSchema: z.ZodType<
+  ListResponseTool$Outbound,
   z.ZodTypeDef,
-  ListResponseSchemasBubblegumV2ToolsTool
+  ListResponseTool
 > = z.object({
   items: z.array(SchemasBubblegumV2ToolsTool$outboundSchema),
   page: z.number().int(),
@@ -70,13 +70,11 @@ export const ListResponseSchemasBubblegumV2ToolsTool$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListResponseSchemasBubblegumV2ToolsTool$ {
-  /** @deprecated use `ListResponseSchemasBubblegumV2ToolsTool$inboundSchema` instead. */
-  export const inboundSchema =
-    ListResponseSchemasBubblegumV2ToolsTool$inboundSchema;
-  /** @deprecated use `ListResponseSchemasBubblegumV2ToolsTool$outboundSchema` instead. */
-  export const outboundSchema =
-    ListResponseSchemasBubblegumV2ToolsTool$outboundSchema;
-  /** @deprecated use `ListResponseSchemasBubblegumV2ToolsTool$Outbound` instead. */
-  export type Outbound = ListResponseSchemasBubblegumV2ToolsTool$Outbound;
+export namespace ListResponseTool$ {
+  /** @deprecated use `ListResponseTool$inboundSchema` instead. */
+  export const inboundSchema = ListResponseTool$inboundSchema;
+  /** @deprecated use `ListResponseTool$outboundSchema` instead. */
+  export const outboundSchema = ListResponseTool$outboundSchema;
+  /** @deprecated use `ListResponseTool$Outbound` instead. */
+  export type Outbound = ListResponseTool$Outbound;
 }

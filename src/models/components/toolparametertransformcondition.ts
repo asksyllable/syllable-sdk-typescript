@@ -3,6 +3,12 @@
  */
 
 import * as z from "zod";
+import { ClosedEnum } from "../../types/enums.js";
+
+export const Operator = {
+  Eq: "eq",
+} as const;
+export type Operator = ClosedEnum<typeof Operator>;
 
 /**
  * A condition to be met for a transform to be applied to the value of a parameter.
@@ -16,8 +22,30 @@ export type ToolParameterTransformCondition = {
    * The value to check against the parameter.
    */
   value: string;
-  operator?: string | null | undefined;
+  /**
+   * The operator to use for the comparison.
+   */
+  operator?: "eq" | null | undefined;
 };
+
+/** @internal */
+export const Operator$inboundSchema: z.ZodNativeEnum<typeof Operator> = z
+  .nativeEnum(Operator);
+
+/** @internal */
+export const Operator$outboundSchema: z.ZodNativeEnum<typeof Operator> =
+  Operator$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Operator$ {
+  /** @deprecated use `Operator$inboundSchema` instead. */
+  export const inboundSchema = Operator$inboundSchema;
+  /** @deprecated use `Operator$outboundSchema` instead. */
+  export const outboundSchema = Operator$outboundSchema;
+}
 
 /** @internal */
 export const ToolParameterTransformCondition$inboundSchema: z.ZodType<
@@ -27,14 +55,14 @@ export const ToolParameterTransformCondition$inboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  operator: z.nullable(z.string()).optional(),
+  operator: z.nullable(z.literal("eq")).optional(),
 });
 
 /** @internal */
 export type ToolParameterTransformCondition$Outbound = {
   key: string;
   value: string;
-  operator?: string | null | undefined;
+  operator: "eq" | null;
 };
 
 /** @internal */
@@ -45,7 +73,7 @@ export const ToolParameterTransformCondition$outboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  operator: z.nullable(z.string()).optional(),
+  operator: z.nullable(z.literal("eq").default("eq")),
 });
 
 /**

@@ -5,7 +5,7 @@
 ```typescript
 import { PromptsListQueryParamOrderBy } from "syllable-sdk/models/operations";
 
-let value: PromptsListQueryParamOrderBy = "id";
+let value: PromptsListQueryParamOrderBy = "context";
 ```
 
 ## Values

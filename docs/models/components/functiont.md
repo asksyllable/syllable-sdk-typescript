@@ -1,6 +1,9 @@
 # FunctionT
 
-A tool definition to be used by the OpenAI API.  See: - https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling
+A tool definition to be used by the OpenAI API.
+
+See:
+- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling
 
 ## Example Usage
 
@@ -9,7 +12,7 @@ import { FunctionT } from "syllable-sdk/models/components";
 
 let value: FunctionT = {
   name: "<value>",
-  description: "overcharge general astride boohoo",
+  description: "overcooked what unless lest",
   parameters: {},
 };
 ```

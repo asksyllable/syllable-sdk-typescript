@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { ClosedEnum } from "../../types/enums.js";
 import {
   ToolParameterTransformCondition,
   ToolParameterTransformCondition$inboundSchema,
@@ -11,16 +12,54 @@ import {
 } from "./toolparametertransformcondition.js";
 
 /**
+ * The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
+ */
+export const Action = {
+  Default: "default",
+  Override: "override",
+  Remove: "remove",
+} as const;
+/**
+ * The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
+ */
+export type Action = ClosedEnum<typeof Action>;
+
+/**
  * A transform to be applied to the value of a parameter.
  */
 export type ToolParameterTransform = {
+  /**
+   * Only apply the transform if the condition is met.
+   */
   when?: ToolParameterTransformCondition | null | undefined;
   /**
    * The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
    */
-  action?: string | null | undefined;
+  action?: Action | undefined;
+  /**
+   * The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`
+   */
   format?: string | null | undefined;
 };
+
+/** @internal */
+export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
+  .nativeEnum(Action);
+
+/** @internal */
+export const Action$outboundSchema: z.ZodNativeEnum<typeof Action> =
+  Action$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Action$ {
+  /** @deprecated use `Action$inboundSchema` instead. */
+  export const inboundSchema = Action$inboundSchema;
+  /** @deprecated use `Action$outboundSchema` instead. */
+  export const outboundSchema = Action$outboundSchema;
+}
 
 /** @internal */
 export const ToolParameterTransform$inboundSchema: z.ZodType<
@@ -29,14 +68,14 @@ export const ToolParameterTransform$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   when: z.nullable(ToolParameterTransformCondition$inboundSchema).optional(),
-  action: z.nullable(z.string()).optional(),
+  action: Action$inboundSchema.default("default"),
   format: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type ToolParameterTransform$Outbound = {
   when?: ToolParameterTransformCondition$Outbound | null | undefined;
-  action?: string | null | undefined;
+  action: string;
   format?: string | null | undefined;
 };
 
@@ -47,7 +86,7 @@ export const ToolParameterTransform$outboundSchema: z.ZodType<
   ToolParameterTransform
 > = z.object({
   when: z.nullable(ToolParameterTransformCondition$outboundSchema).optional(),
-  action: z.nullable(z.string()).optional(),
+  action: Action$outboundSchema.default("default"),
   format: z.nullable(z.string()).optional(),
 });
 

@@ -5,7 +5,7 @@
 ```typescript
 import { ConversationsListQueryParamOrderBy } from "syllable-sdk/models/operations";
 
-let value: ConversationsListQueryParamOrderBy = "is_legacy";
+let value: ConversationsListQueryParamOrderBy = "source";
 ```
 
 ## Values

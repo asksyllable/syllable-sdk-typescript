@@ -10,7 +10,12 @@ import * as z from "zod";
 export type ParametersT = {};
 
 /**
- * A tool definition to be used by the OpenAI API.  See: - https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling
+ * A tool definition to be used by the OpenAI API.
+ *
+ * @remarks
+ *
+ * See:
+ * - https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling
  */
 export type FunctionT = {
   /**
