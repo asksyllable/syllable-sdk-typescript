@@ -355,9 +355,7 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-
-                }
+                "schema": {}
               }
             }
           },
@@ -4494,6 +4492,54 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/schemas__bubblegum__v2__tools__Tool"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size"
+          },
+          "total_pages": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Pages"
+          },
+          "total_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "page",
+          "page_size"
+        ],
+        "title": "ListResponse[Tool]"
+      },
+      "ListResponse_Tool_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Tool"
             },
             "type": "array",
             "title": "Items"
