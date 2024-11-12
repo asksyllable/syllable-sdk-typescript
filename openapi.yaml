@@ -1463,7 +1463,6 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -1514,12 +1513,11 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 597129,
+                id: 857478,
                 lastUpdated: "<value>",
               });
 
@@ -1631,7 +1629,6 @@ paths:
     get:
       tags:
         - "session_labels"
-        - "V1"
       summary: "Get Label By Id"
       operationId: "session_label_get_by_id"
       security:
@@ -1654,11 +1651,49 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: session_label_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionLabels.getById({
+                sessionLabelId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: session_label_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.getById({
+                sessionLabelId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/session_labels/":
     post:
       tags:
         - "session_labels"
-        - "V1"
       summary: "Create Label"
       description: "Create a new label"
       operationId: "session_label_create"
@@ -1680,10 +1715,54 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: session_label_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionLabels.create({
+                sessionId: 486589,
+                type: "<value>",
+                code: "<value>",
+                userEmail: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: session_label_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.create({
+                sessionId: 486589,
+                type: "<value>",
+                code: "<value>",
+                userEmail: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     get:
       tags:
         - "session_labels"
-        - "V1"
       summary: "Session Labels List"
       operationId: "session_labels_list"
       security:
@@ -1768,6 +1847,41 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: session_labels_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionLabels.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: session_labels_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/sessions/":
     get:
       tags:
@@ -1900,6 +2014,26 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: session_transcript_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.transcript.getById({
+                sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/tools/":
     get:
       tags:
@@ -2313,7 +2447,6 @@ paths:
                 channelId: 134365,
                 channelTargetCreateRequest: {
                   channelId: 486589,
-                  channelName: "<value>",
                   agentId: 638424,
                   target: "<value>",
                   targetMode: "<value>",
@@ -2419,7 +2552,7 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       x-codeSamples:
         - lang: typescript
-          label: channels_target_update
+          label: channel_targets_update
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -2482,7 +2615,7 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       x-codeSamples:
         - lang: typescript
-          label: channels_delete
+          label: channel_targets_delete
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -2493,6 +2626,7 @@ paths:
             async function run() {
               const result = await syllableSDK.channels.delete({
                 channelId: "<id>",
+                targetId: "<id>",
               });
 
               // Handle the result
