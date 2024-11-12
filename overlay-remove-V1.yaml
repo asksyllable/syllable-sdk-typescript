@@ -188,14 +188,14 @@ actions:
   - target: $["paths"]["/api/v1/session_labels/{session_label_id}"]["get"]["tags"]
     update:
       - "session_labels"
-  - target: $["paths"]["/api/v1/session_labels"]["post"]["tags"][*]
+  - target: $["paths"]["/api/v1/session_labels/"]["post"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/session_labels"]["post"]["tags"]
+  - target: $["paths"]["/api/v1/session_labels/"]["post"]["tags"]
     update:
       - "session_labels"
-  - target: $["paths"]["/api/v1/session_labels"]["get"]["tags"][*]
+  - target: $["paths"]["/api/v1/session_labels/"]["get"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/session_labels"]["get"]["tags"]
+  - target: $["paths"]["/api/v1/session_labels/"]["get"]["tags"]
     update:
       - "session_labels"
   - target: $["paths"]["/api/v1/tools/"]["get"]["tags"][*]
