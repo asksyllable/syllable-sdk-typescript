@@ -1,4 +1,4 @@
-speakeasyVersion: 1.422.1
+speakeasyVersion: 1.434.0
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
