@@ -7,7 +7,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 
 export type ChannelTargetCreateRequest = {
   channelId: number | null;
-  channelName: string | null;
   agentId: number | null;
   target: string | null;
   targetMode: string | null;
@@ -22,7 +21,6 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   channel_id: z.nullable(z.number().int()),
-  channel_name: z.nullable(z.string()),
   agent_id: z.nullable(z.number().int()),
   target: z.nullable(z.string()),
   target_mode: z.nullable(z.string()),
@@ -31,7 +29,6 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "channel_id": "channelId",
-    "channel_name": "channelName",
     "agent_id": "agentId",
     "target_mode": "targetMode",
     "fallback_target": "fallbackTarget",
@@ -42,7 +39,6 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type ChannelTargetCreateRequest$Outbound = {
   channel_id: number | null;
-  channel_name: string | null;
   agent_id: number | null;
   target: string | null;
   target_mode: string | null;
@@ -57,7 +53,6 @@ export const ChannelTargetCreateRequest$outboundSchema: z.ZodType<
   ChannelTargetCreateRequest
 > = z.object({
   channelId: z.nullable(z.number().int()),
-  channelName: z.nullable(z.string()),
   agentId: z.nullable(z.number().int()),
   target: z.nullable(z.string()),
   targetMode: z.nullable(z.string()),
@@ -66,7 +61,6 @@ export const ChannelTargetCreateRequest$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     channelId: "channel_id",
-    channelName: "channel_name",
     agentId: "agent_id",
     targetMode: "target_mode",
     fallbackTarget: "fallback_target",

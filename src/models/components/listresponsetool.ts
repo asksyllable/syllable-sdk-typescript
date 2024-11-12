@@ -5,18 +5,18 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import {
-  SchemasBubblegumV2ToolsTool,
-  SchemasBubblegumV2ToolsTool$inboundSchema,
-  SchemasBubblegumV2ToolsTool$Outbound,
-  SchemasBubblegumV2ToolsTool$outboundSchema,
-} from "./schemasbubblegumv2toolstool.js";
+  Tool,
+  Tool$inboundSchema,
+  Tool$Outbound,
+  Tool$outboundSchema,
+} from "./tool.js";
 
 export type ListResponseTool = {
-  items: Array<SchemasBubblegumV2ToolsTool>;
+  items: Array<Tool>;
   page: number;
   pageSize: number;
-  totalPages: number;
-  totalCount: number;
+  totalPages?: number | null | undefined;
+  totalCount?: number | null | undefined;
 };
 
 /** @internal */
@@ -25,11 +25,11 @@ export const ListResponseTool$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.array(SchemasBubblegumV2ToolsTool$inboundSchema),
+  items: z.array(Tool$inboundSchema),
   page: z.number().int(),
   page_size: z.number().int(),
-  total_pages: z.number().int(),
-  total_count: z.number().int(),
+  total_pages: z.nullable(z.number().int()).optional(),
+  total_count: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "page_size": "pageSize",
@@ -40,11 +40,11 @@ export const ListResponseTool$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListResponseTool$Outbound = {
-  items: Array<SchemasBubblegumV2ToolsTool$Outbound>;
+  items: Array<Tool$Outbound>;
   page: number;
   page_size: number;
-  total_pages: number;
-  total_count: number;
+  total_pages?: number | null | undefined;
+  total_count?: number | null | undefined;
 };
 
 /** @internal */
@@ -53,11 +53,11 @@ export const ListResponseTool$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListResponseTool
 > = z.object({
-  items: z.array(SchemasBubblegumV2ToolsTool$outboundSchema),
+  items: z.array(Tool$outboundSchema),
   page: z.number().int(),
   pageSize: z.number().int(),
-  totalPages: z.number().int(),
-  totalCount: z.number().int(),
+  totalPages: z.nullable(z.number().int()).optional(),
+  totalCount: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     pageSize: "page_size",

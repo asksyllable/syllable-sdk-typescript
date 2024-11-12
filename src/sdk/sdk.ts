@@ -9,10 +9,11 @@ import { Conversations } from "./conversations.js";
 import { CustomMessages } from "./custommessages.js";
 import { Dashboards } from "./dashboards.js";
 import { Events } from "./events.js";
-import { Organizations } from "./organizations.js";
 import { Prompts } from "./prompts.js";
+import { SessionLabels } from "./sessionlabels.js";
 import { Sessions } from "./sessions.js";
 import { Tools } from "./tools.js";
+import { V1 } from "./v1.js";
 
 export class SyllableSDK extends ClientSDK {
   private _agents?: Agents;
@@ -50,6 +51,16 @@ export class SyllableSDK extends ClientSDK {
     return (this._prompts ??= new Prompts(this._options));
   }
 
+  private _sessionLabels?: SessionLabels;
+  get sessionLabels(): SessionLabels {
+    return (this._sessionLabels ??= new SessionLabels(this._options));
+  }
+
+  private _v1?: V1;
+  get v1(): V1 {
+    return (this._v1 ??= new V1(this._options));
+  }
+
   private _sessions?: Sessions;
   get sessions(): Sessions {
     return (this._sessions ??= new Sessions(this._options));
@@ -58,10 +69,5 @@ export class SyllableSDK extends ClientSDK {
   private _tools?: Tools;
   get tools(): Tools {
     return (this._tools ??= new Tools(this._options));
-  }
-
-  private _organizations?: Organizations;
-  get organizations(): Organizations {
-    return (this._organizations ??= new Organizations(this._options));
   }
 }

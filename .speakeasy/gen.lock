@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: bc1a0ef305571fdbed95d5555c98e57b
+  docChecksum: 0c6fff1d5216a0725e1cb54bd3dc6a19
   docVersion: 0.0.2
-  speakeasyVersion: 1.434.0
-  generationVersion: 2.452.0
-  releaseVersion: 0.1.0-alpha.1
-  configChecksum: 14cedddd83ca4a4b5eccd85a3647facb
+  speakeasyVersion: 1.438.1
+  generationVersion: 2.457.2
+  releaseVersion: 0.1.0-alpha.2
+  configChecksum: d809b3921d0a5535fb3d7e3f957e4480
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -41,35 +41,29 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
-  - docs/models/components/action.md
   - docs/models/components/agent.md
   - docs/models/components/agentcreate.md
   - docs/models/components/agentcreatevariables.md
   - docs/models/components/agentproperties.md
   - docs/models/components/agenttooldefaults.md
   - docs/models/components/agenttoolfielddefault.md
-  - docs/models/components/argumentlocation.md
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
   - docs/models/components/channel.md
   - docs/models/components/channelproperties.md
+  - docs/models/components/channelservices.md
   - docs/models/components/channeltarget.md
   - docs/models/components/channeltargetcreaterequest.md
   - docs/models/components/channeltargetproperties.md
   - docs/models/components/conversation.md
-  - docs/models/components/conversationaction.md
   - docs/models/components/conversationproperties.md
-  - docs/models/components/conversationtext.md
-  - docs/models/components/conversationtranscriptionresponse.md
   - docs/models/components/custommessage.md
   - docs/models/components/custommessagecreate.md
   - docs/models/components/custommessageproperties.md
-  - docs/models/components/defaults.md
+  - docs/models/components/definition.md
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
-  - docs/models/components/functiont.md
-  - docs/models/components/httpendpoint.md
   - docs/models/components/listresponseagent.md
   - docs/models/components/listresponseavailabletarget.md
   - docs/models/components/listresponsechannel.md
@@ -79,35 +73,30 @@ generatedFiles:
   - docs/models/components/listresponseevent.md
   - docs/models/components/listresponseprompt.md
   - docs/models/components/listresponsesession.md
+  - docs/models/components/listresponsesessionlabel.md
   - docs/models/components/listresponsetool.md
   - docs/models/components/llmconfig.md
   - docs/models/components/loc.md
-  - docs/models/components/method.md
-  - docs/models/components/one.md
-  - docs/models/components/operator.md
-  - docs/models/components/organization.md
-  - docs/models/components/parameterst.md
+  - docs/models/components/orderbydirection.md
   - docs/models/components/prompt.md
   - docs/models/components/promptcreate.md
   - docs/models/components/promptproperties.md
   - docs/models/components/provider.md
   - docs/models/components/response.md
-  - docs/models/components/result.md
-  - docs/models/components/schemasbubblegumv2toolstool.md
-  - docs/models/components/schemascortexv1toolstool.md
-  - docs/models/components/schemascortexv1toolstooltype.md
   - docs/models/components/security.md
   - docs/models/components/session.md
+  - docs/models/components/sessionaction.md
+  - docs/models/components/sessionlabel.md
+  - docs/models/components/sessionlabelcreate.md
+  - docs/models/components/sessionlabelproperties.md
   - docs/models/components/sessionproperties.md
+  - docs/models/components/sessiontext.md
+  - docs/models/components/sessiontranscriptionresponse.md
   - docs/models/components/testmessage.md
   - docs/models/components/testmessageresponse.md
-  - docs/models/components/tooldefinition.md
+  - docs/models/components/tool.md
   - docs/models/components/tooldetailresponse.md
-  - docs/models/components/toolparameterdefault.md
-  - docs/models/components/toolparametertransform.md
-  - docs/models/components/toolparametertransformcondition.md
   - docs/models/components/toolproperties.md
-  - docs/models/components/type.md
   - docs/models/components/validationerror.md
   - docs/models/components/variables.md
   - docs/models/errors/httpvalidationerror.md
@@ -115,27 +104,16 @@ generatedFiles:
   - docs/models/operations/agentgetbyidrequest.md
   - docs/models/operations/agentlistrequest.md
   - docs/models/operations/availabletargetsrequest.md
-  - docs/models/operations/channelsdeleterequest.md
-  - docs/models/operations/channelslistqueryparamorderby.md
-  - docs/models/operations/channelslistqueryparamorderbydirection.md
   - docs/models/operations/channelslistrequest.md
-  - docs/models/operations/channelstargetupdaterequest.md
   - docs/models/operations/channeltargetscreaterequest.md
+  - docs/models/operations/channeltargetsdeleterequest.md
   - docs/models/operations/channeltargetsgetbyidrequest.md
-  - docs/models/operations/channeltargetslistqueryparamorderby.md
-  - docs/models/operations/channeltargetslistqueryparamorderbydirection.md
   - docs/models/operations/channeltargetslistrequest.md
-  - docs/models/operations/conversationgetbyidrequest.md
-  - docs/models/operations/conversationslistqueryparamorderby.md
-  - docs/models/operations/conversationslistqueryparamorderbydirection.md
+  - docs/models/operations/channeltargetsupdaterequest.md
   - docs/models/operations/conversationslistrequest.md
   - docs/models/operations/custommessagegetbyidrequest.md
   - docs/models/operations/custommessagesdeleterequest.md
-  - docs/models/operations/custommessageslistqueryparamorderby.md
-  - docs/models/operations/custommessageslistqueryparamorderbydirection.md
   - docs/models/operations/custommessageslistrequest.md
-  - docs/models/operations/eventslistqueryparamorderby.md
-  - docs/models/operations/eventslistqueryparamorderbydirection.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/getdailycallvolumebyhourresponsegetdailycallvolumebyhour.md
   - docs/models/operations/getmonthlycallvolumebydayresponsegetmonthlycallvolumebyday.md
@@ -145,21 +123,14 @@ generatedFiles:
   - docs/models/operations/getsessionsummaryresponsegetsessionsummary.md
   - docs/models/operations/gettotalcallvolumebyhourresponsegettotalcallvolumebyhour.md
   - docs/models/operations/getweeklycallvolumebyweekdayresponsegetweeklycallvolumebyweekday.md
-  - docs/models/operations/orderby.md
-  - docs/models/operations/orderbydirection.md
   - docs/models/operations/promptsdeleterequest.md
   - docs/models/operations/promptsgetbyidrequest.md
-  - docs/models/operations/promptslistqueryparamorderby.md
-  - docs/models/operations/promptslistqueryparamorderbydirection.md
   - docs/models/operations/promptslistrequest.md
-  - docs/models/operations/queryparamorderby.md
-  - docs/models/operations/queryparamorderbydirection.md
-  - docs/models/operations/sessionslistqueryparamorderby.md
-  - docs/models/operations/sessionslistqueryparamorderbydirection.md
+  - docs/models/operations/sessionlabelgetbyidrequest.md
+  - docs/models/operations/sessionlabelslistrequest.md
   - docs/models/operations/sessionslistrequest.md
+  - docs/models/operations/sessiontranscriptgetbyidrequest.md
   - docs/models/operations/toolgetbynamerequest.md
-  - docs/models/operations/toollistqueryparamorderby.md
-  - docs/models/operations/toollistqueryparamorderbydirection.md
   - docs/models/operations/toollistrequest.md
   - docs/models/operations/totalcallvolumebyweekdayresponsetotalcallvolumebyweekday.md
   - docs/sdks/agents/README.md
@@ -168,13 +139,15 @@ generatedFiles:
   - docs/sdks/custommessages/README.md
   - docs/sdks/dashboards/README.md
   - docs/sdks/events/README.md
-  - docs/sdks/organizations/README.md
   - docs/sdks/prompts/README.md
+  - docs/sdks/sessionlabels/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/syllablesdk/README.md
   - docs/sdks/targets/README.md
   - docs/sdks/test/README.md
   - docs/sdks/tools/README.md
+  - docs/sdks/transcript/README.md
+  - docs/sdks/v1/README.md
   - jsr.json
   - package.json
   - src/core.ts
@@ -191,7 +164,6 @@ generatedFiles:
   - src/funcs/channelsTargetsGetById.ts
   - src/funcs/channelsTargetsList.ts
   - src/funcs/channelsTargetsUpdate.ts
-  - src/funcs/conversationsGetById.ts
   - src/funcs/conversationsList.ts
   - src/funcs/customMessagesCreate.ts
   - src/funcs/customMessagesDelete.ts
@@ -207,15 +179,21 @@ generatedFiles:
   - src/funcs/dashboardsGetWeeklyCallVolumeByWeekday.ts
   - src/funcs/dashboardsTotalCallVolumeByWeekday.ts
   - src/funcs/eventsList.ts
-  - src/funcs/organizationsList.ts
   - src/funcs/promptsCreate.ts
   - src/funcs/promptsDelete.ts
   - src/funcs/promptsGetById.ts
   - src/funcs/promptsList.ts
   - src/funcs/promptsUpdate.ts
+  - src/funcs/sessionLabelsCreate.ts
+  - src/funcs/sessionLabelsGetById.ts
+  - src/funcs/sessionLabelsList.ts
   - src/funcs/sessionsList.ts
+  - src/funcs/sessionsTranscriptGetById.ts
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
+  - src/funcs/v1Create.ts
+  - src/funcs/v1GetById.ts
+  - src/funcs/v1List.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -245,21 +223,17 @@ generatedFiles:
   - src/models/components/availabletargetproperties.ts
   - src/models/components/channel.ts
   - src/models/components/channelproperties.ts
+  - src/models/components/channelservices.ts
   - src/models/components/channeltarget.ts
   - src/models/components/channeltargetcreaterequest.ts
   - src/models/components/channeltargetproperties.ts
   - src/models/components/conversation.ts
-  - src/models/components/conversationaction.ts
   - src/models/components/conversationproperties.ts
-  - src/models/components/conversationtext.ts
-  - src/models/components/conversationtranscriptionresponse.ts
   - src/models/components/custommessage.ts
   - src/models/components/custommessagecreate.ts
   - src/models/components/custommessageproperties.ts
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
-  - src/models/components/function.ts
-  - src/models/components/httpendpoint.ts
   - src/models/components/index.ts
   - src/models/components/listresponseagent.ts
   - src/models/components/listresponseavailabletarget.ts
@@ -270,24 +244,27 @@ generatedFiles:
   - src/models/components/listresponseevent.ts
   - src/models/components/listresponseprompt.ts
   - src/models/components/listresponsesession.ts
+  - src/models/components/listresponsesessionlabel.ts
   - src/models/components/listresponsetool.ts
   - src/models/components/llmconfig.ts
-  - src/models/components/organization.ts
+  - src/models/components/orderbydirection.ts
   - src/models/components/prompt.ts
   - src/models/components/promptcreate.ts
   - src/models/components/promptproperties.ts
-  - src/models/components/schemasbubblegumv2toolstool.ts
-  - src/models/components/schemascortexv1toolstool.ts
+  - src/models/components/provider.ts
   - src/models/components/security.ts
   - src/models/components/session.ts
+  - src/models/components/sessionaction.ts
+  - src/models/components/sessionlabel.ts
+  - src/models/components/sessionlabelcreate.ts
+  - src/models/components/sessionlabelproperties.ts
   - src/models/components/sessionproperties.ts
+  - src/models/components/sessiontext.ts
+  - src/models/components/sessiontranscriptionresponse.ts
   - src/models/components/testmessage.ts
   - src/models/components/testmessageresponse.ts
-  - src/models/components/tooldefinition.ts
+  - src/models/components/tool.ts
   - src/models/components/tooldetailresponse.ts
-  - src/models/components/toolparameterdefault.ts
-  - src/models/components/toolparametertransform.ts
-  - src/models/components/toolparametertransformcondition.ts
   - src/models/components/toolproperties.ts
   - src/models/components/validationerror.ts
   - src/models/errors/httpclienterrors.ts
@@ -299,13 +276,12 @@ generatedFiles:
   - src/models/operations/agentgetbyid.ts
   - src/models/operations/agentlist.ts
   - src/models/operations/availabletargets.ts
-  - src/models/operations/channelsdelete.ts
   - src/models/operations/channelslist.ts
-  - src/models/operations/channelstargetupdate.ts
   - src/models/operations/channeltargetscreate.ts
+  - src/models/operations/channeltargetsdelete.ts
   - src/models/operations/channeltargetsgetbyid.ts
   - src/models/operations/channeltargetslist.ts
-  - src/models/operations/conversationgetbyid.ts
+  - src/models/operations/channeltargetsupdate.ts
   - src/models/operations/conversationslist.ts
   - src/models/operations/custommessagegetbyid.ts
   - src/models/operations/custommessagesdelete.ts
@@ -322,7 +298,10 @@ generatedFiles:
   - src/models/operations/promptsdelete.ts
   - src/models/operations/promptsgetbyid.ts
   - src/models/operations/promptslist.ts
+  - src/models/operations/sessionlabelgetbyid.ts
+  - src/models/operations/sessionlabelslist.ts
   - src/models/operations/sessionslist.ts
+  - src/models/operations/sessiontranscriptgetbyid.ts
   - src/models/operations/toolgetbyname.ts
   - src/models/operations/toollist.ts
   - src/models/operations/totalcallvolumebyweekday.ts
@@ -333,13 +312,15 @@ generatedFiles:
   - src/sdk/dashboards.ts
   - src/sdk/events.ts
   - src/sdk/index.ts
-  - src/sdk/organizations.ts
   - src/sdk/prompts.ts
   - src/sdk/sdk.ts
+  - src/sdk/sessionlabels.ts
   - src/sdk/sessions.ts
   - src/sdk/targets.ts
   - src/sdk/test.ts
   - src/sdk/tools.ts
+  - src/sdk/transcript.ts
+  - src/sdk/v1.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
@@ -404,7 +385,7 @@ examples:
     speakeasy-default-channels-list:
       responses:
         "200":
-          application/json: {"items": [{"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}, {"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}, {"id": "<id>", "name": "<value>", "channel_service": "<value>", "supported_modes": "<value>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
+          application/json: {"items": [{"name": "<value>", "channel_service": "webchat", "supported_modes": "<value>", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "<value>", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "<value>", "id": "<id>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
         "422": {}
   channels_delete:
     speakeasy-default-channels-delete:
@@ -419,7 +400,7 @@ examples:
     speakeasy-default-available-targets:
       responses:
         "200":
-          application/json: {"items": [{"sub_organization_id": 607868, "channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"sub_organization_id": 397275, "channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
+          application/json: {"items": [{"organization_id": 607868, "channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"organization_id": 397275, "channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
         "422": {}
   channel_targets_list:
     speakeasy-default-channel-targets-list:
@@ -433,7 +414,7 @@ examples:
         path:
           channel_id: 134365
       requestBody:
-        application/json: {"channel_id": 486589, "channel_name": "<value>", "agent_id": 638424, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
+        application/json: {"channel_id": 486589, "agent_id": 638424, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
       responses:
         "200":
           application/json: {"id": 69025, "channel_id": 796474, "channel_name": "<value>", "agent_id": 951062, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
@@ -648,4 +629,59 @@ examples:
       responses:
         "200":
           application/json: "<value>"
+        "422": {}
+  channel_targets_delete:
+    speakeasy-default-channel-targets-delete:
+      parameters:
+        path:
+          channel_id: "<id>"
+        query:
+          target_id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": 545907, "channel_id": 698486, "channel_name": "<value>", "agent_id": 386564, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
+        "422": {}
+  channel_targets_update:
+    speakeasy-default-channel-targets-update:
+      parameters:
+        path:
+          channel_id: 627690
+          target_id: 488852
+      requestBody:
+        application/json: {"id": 857478, "channel_id": 597129, "channel_name": "<value>", "agent_id": 344620, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
+      responses:
+        "200":
+          application/json: {"id": 984008, "channel_id": 54062, "channel_name": "<value>", "agent_id": 896501, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
+        "422": {}
+  session_label_get_by_id:
+    speakeasy-default-session-label-get-by-id:
+      parameters:
+        path:
+          session_label_id: 931598
+      responses:
+        "200":
+          application/json: {"session_id": 505057, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 467619, "timestamp": "<value>"}
+        "422": {}
+  session_label_create:
+    speakeasy-default-session-label-create:
+      requestBody:
+        application/json: {"session_id": 486589, "type": "<value>", "code": "<value>", "user_email": "<value>"}
+      responses:
+        "200":
+          application/json: {"session_id": 638424, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 417458, "timestamp": "<value>"}
+        "422": {}
+  session_labels_list:
+    speakeasy-default-session-labels-list:
+      responses:
+        "200":
+          application/json: {"items": [{"session_id": 547272, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 678317, "timestamp": "<value>"}, {"session_id": 177706, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 229716, "timestamp": "<value>"}, {"session_id": 152837, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 635532, "timestamp": "<value>"}], "page": 639387, "page_size": 17577}
+        "422": {}
+  session_transcript_get_by_id:
+    speakeasy-default-session-transcript-get-by-id:
+      parameters:
+        path:
+          session_id: "<id>"
+      responses:
+        "200":
+          application/json: {"session_id": "<id>", "transcription": [{"timestamp": "2023-07-08T13:01:26.809Z"}, {"timestamp": "2023-05-28T12:15:12.578Z"}, {"timestamp": "2022-02-06T16:50:06.315Z"}], "actions": [{"timestamp": "2024-08-17T13:32:33.654Z"}, {"timestamp": "2023-08-23T04:58:12.943Z"}]}
         "422": {}

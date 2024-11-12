@@ -7,8 +7,14 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { Transcript } from "./transcript.js";
 
 export class Sessions extends ClientSDK {
+  private _transcript?: Transcript;
+  get transcript(): Transcript {
+    return (this._transcript ??= new Transcript(this._options));
+  }
+
   /**
    * Sessions List
    */

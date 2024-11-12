@@ -81,6 +81,9 @@ export async function customMessagesGetById(
   const context = {
     operationID: "custom_message_get_by_id",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -6,7 +6,7 @@
 import { AvailableTarget } from "syllable-sdk/models/components";
 
 let value: AvailableTarget = {
-  subOrganizationId: 568434,
+  organizationId: 568434,
   channelId: 18789,
   channelName: "<value>",
   target: "<value>",
@@ -15,9 +15,9 @@ let value: AvailableTarget = {
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `subOrganizationId` | *number*            | :heavy_check_mark:  | N/A                 |
-| `channelId`         | *number*            | :heavy_check_mark:  | N/A                 |
-| `channelName`       | *string*            | :heavy_check_mark:  | N/A                 |
-| `target`            | *string*            | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `organizationId`   | *number*           | :heavy_check_mark: | N/A                |
+| `channelId`        | *number*           | :heavy_check_mark: | N/A                |
+| `channelName`      | *string*           | :heavy_check_mark: | N/A                |
+| `target`           | *string*           | :heavy_check_mark: | N/A                |

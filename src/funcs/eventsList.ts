@@ -79,6 +79,9 @@ export async function eventsList(
   const context = {
     operationID: "events_list",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

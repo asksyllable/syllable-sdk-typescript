@@ -53,6 +53,9 @@ export async function dashboardsGetTotalCallVolumeByHour(
   const context = {
     operationID: "get_total_call_volume_by_hour",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

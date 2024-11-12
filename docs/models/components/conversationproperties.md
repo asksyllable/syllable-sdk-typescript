@@ -5,11 +5,11 @@
 ```typescript
 import { ConversationProperties } from "syllable-sdk/models/components";
 
-let value: ConversationProperties = "is_test";
+let value: ConversationProperties = "agent_name";
 ```
 
 ## Values
 
 ```typescript
-"timestamp" | "agent_type" | "agent_id" | "agent_name" | "prompt_id" | "prompt_name" | "call_id" | "source" | "target" | "is_legacy" | "is_test"
+"timestamp" | "agent_type" | "agent_id" | "agent_name" | "prompt_id" | "prompt_name" | "llm_provider" | "llm_model" | "llm_version" | "is_legacy"
 ```

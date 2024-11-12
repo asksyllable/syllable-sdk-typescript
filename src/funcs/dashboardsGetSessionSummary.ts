@@ -78,6 +78,9 @@ export async function dashboardsGetSessionSummary(
   const context = {
     operationID: "get_session_summary",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

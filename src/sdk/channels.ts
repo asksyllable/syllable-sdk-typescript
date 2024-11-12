@@ -31,10 +31,10 @@ export class Channels extends ClientSDK {
   }
 
   /**
-   * Delete Channel
+   * Delete Channel Target
    */
   async delete(
-    request: operations.ChannelsDeleteRequest,
+    request: operations.ChannelTargetsDeleteRequest,
     options?: RequestOptions,
   ): Promise<components.ChannelTarget> {
     return unwrapAsync(channelsDelete(
