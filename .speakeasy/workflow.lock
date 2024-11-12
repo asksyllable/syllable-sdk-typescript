@@ -2,8 +2,8 @@ speakeasyVersion: 1.438.1
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:5ae74b9cc636174c1938ac653e8864ac44ecb449d8cdfbcc0e4c902a459e7832
-        sourceBlobDigest: sha256:dfecd9fbd88d1d8e4ca9fe804a292bef14bda5819906958616c9e4ca91dad2b5
+        sourceRevisionDigest: sha256:445bc9fdde5a7b49c5229ac77d6a94759354f306ce707708bb9d6550c2e19895
+        sourceBlobDigest: sha256:0cc30b1c5e856000b5a1481dc02dca8d7371c581c82ea1f46b41137d021987e9
         tags:
             - latest
             - main
@@ -11,8 +11,10 @@ targets:
     syllable-sdk:
         source: SyllableSDK-OAS
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:5ae74b9cc636174c1938ac653e8864ac44ecb449d8cdfbcc0e4c902a459e7832
-        sourceBlobDigest: sha256:dfecd9fbd88d1d8e4ca9fe804a292bef14bda5819906958616c9e4ca91dad2b5
+        sourceRevisionDigest: sha256:445bc9fdde5a7b49c5229ac77d6a94759354f306ce707708bb9d6550c2e19895
+        sourceBlobDigest: sha256:0cc30b1c5e856000b5a1481dc02dca8d7371c581c82ea1f46b41137d021987e9
+        codeSamplesNamespace: syllable-sdk-oas-code-samples
+        codeSamplesRevisionDigest: sha256:7d541a6bc43a148c40a77fb447897f22cd618d5ffa7b00c47973d2050cb02def
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -35,3 +37,5 @@ workflow:
                     token: $npm_token
             codeSamples:
                 output: codeSamples.yaml
+                registry:
+                    location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-sdk-oas-code-samples

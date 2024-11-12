@@ -19,3 +19,5 @@ targets:
                 token: $npm_token
         codeSamples:
             output: codeSamples.yaml
+            registry:
+                location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-sdk-oas-code-samples

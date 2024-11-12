@@ -196,12 +196,6 @@ run();
 * [list](docs/sdks/tools/README.md#list) - Tool List
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
 
-### [v1](docs/sdks/v1/README.md)
-
-* [getById](docs/sdks/v1/README.md#getbyid) - Get Label By Id
-* [create](docs/sdks/v1/README.md#create) - Create Label
-* [list](docs/sdks/v1/README.md#list) - Session Labels List
-
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -260,9 +254,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
-- [`v1Create`](docs/sdks/v1/README.md#create) - Create Label
-- [`v1GetById`](docs/sdks/v1/README.md#getbyid) - Get Label By Id
-- [`v1List`](docs/sdks/v1/README.md#list) - Session Labels List
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

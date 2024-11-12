@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 0c6fff1d5216a0725e1cb54bd3dc6a19
+  docChecksum: ca922f1a1ddd1e5c5dee10f74b38dee3
   docVersion: 0.0.2
   speakeasyVersion: 1.438.1
   generationVersion: 2.457.2
-  releaseVersion: 0.1.0-alpha.2
-  configChecksum: d809b3921d0a5535fb3d7e3f957e4480
+  releaseVersion: 0.1.0-alpha.3
+  configChecksum: 0c926f4f7dc3ee8b7aaccc60af055b7a
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -147,7 +147,6 @@ generatedFiles:
   - docs/sdks/test/README.md
   - docs/sdks/tools/README.md
   - docs/sdks/transcript/README.md
-  - docs/sdks/v1/README.md
   - jsr.json
   - package.json
   - src/core.ts
@@ -191,9 +190,6 @@ generatedFiles:
   - src/funcs/sessionsTranscriptGetById.ts
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
-  - src/funcs/v1Create.ts
-  - src/funcs/v1GetById.ts
-  - src/funcs/v1List.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -320,7 +316,6 @@ generatedFiles:
   - src/sdk/test.ts
   - src/sdk/tools.ts
   - src/sdk/transcript.ts
-  - src/sdk/v1.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts

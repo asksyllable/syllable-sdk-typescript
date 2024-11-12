@@ -779,23 +779,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: session_labels_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/session_labels/"]["post"]
     update:
       x-codeSamples:
@@ -821,28 +804,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: session_label_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.create({
-                sessionId: 486589,
-                type: "<value>",
-                code: "<value>",
-                userEmail: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/session_labels/{session_label_id}"]["get"]
     update:
       x-codeSamples:
@@ -857,25 +818,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessionLabels.getById({
-                sessionLabelId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: session_label_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.getById({
                 sessionLabelId: 931598,
               });
 

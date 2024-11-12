@@ -13,7 +13,6 @@ import { Prompts } from "./prompts.js";
 import { SessionLabels } from "./sessionlabels.js";
 import { Sessions } from "./sessions.js";
 import { Tools } from "./tools.js";
-import { V1 } from "./v1.js";
 
 export class SyllableSDK extends ClientSDK {
   private _agents?: Agents;
@@ -54,11 +53,6 @@ export class SyllableSDK extends ClientSDK {
   private _sessionLabels?: SessionLabels;
   get sessionLabels(): SessionLabels {
     return (this._sessionLabels ??= new SessionLabels(this._options));
-  }
-
-  private _v1?: V1;
-  get v1(): V1 {
-    return (this._v1 ??= new V1(this._options));
   }
 
   private _sessions?: Sessions;
