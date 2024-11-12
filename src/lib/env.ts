@@ -13,11 +13,10 @@ export interface Env {
 }
 
 export const envSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z.object({
-  SYLLABLESDK_API_KEY_HEADER: z.string(),
+  SYLLABLESDK_API_KEY_HEADER: z.string().optional(),
 
-  SYLLABLESDK_DEBUG: z.coerce.boolean(),
-})
-  .partial();
+  SYLLABLESDK_DEBUG: z.coerce.boolean().optional(),
+});
 
 let envMemo: Env | undefined = undefined;
 /**

@@ -4,21 +4,35 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import {
+  ChannelServices,
+  ChannelServices$inboundSchema,
+  ChannelServices$outboundSchema,
+} from "./channelservices.js";
 
 export type Channel = {
-  id: string;
+  /**
+   * The channel name
+   */
   name: string;
-  channelService: string;
-  supportedModes: string;
+  channelService: ChannelServices;
+  /**
+   * The comma-delimited list of supported modes for the channel
+   */
+  supportedModes?: string | null | undefined;
+  /**
+   * The channel ID
+   */
+  id: number;
 };
 
 /** @internal */
 export const Channel$inboundSchema: z.ZodType<Channel, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.string(),
     name: z.string(),
-    channel_service: z.string(),
-    supported_modes: z.string(),
+    channel_service: ChannelServices$inboundSchema,
+    supported_modes: z.nullable(z.string()).optional(),
+    id: z.number().int(),
   }).transform((v) => {
     return remap$(v, {
       "channel_service": "channelService",
@@ -28,10 +42,10 @@ export const Channel$inboundSchema: z.ZodType<Channel, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type Channel$Outbound = {
-  id: string;
   name: string;
   channel_service: string;
-  supported_modes: string;
+  supported_modes?: string | null | undefined;
+  id: number;
 };
 
 /** @internal */
@@ -40,10 +54,10 @@ export const Channel$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Channel
 > = z.object({
-  id: z.string(),
   name: z.string(),
-  channelService: z.string(),
-  supportedModes: z.string(),
+  channelService: ChannelServices$outboundSchema,
+  supportedModes: z.nullable(z.string()).optional(),
+  id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     channelService: "channel_service",

@@ -79,7 +79,7 @@ export class Targets extends ClientSDK {
    * Update channel target by ID
    */
   async update(
-    request: operations.ChannelsTargetUpdateRequest,
+    request: operations.ChannelTargetsUpdateRequest,
     options?: RequestOptions,
   ): Promise<components.ChannelTarget> {
     return unwrapAsync(channelsTargetsUpdate(

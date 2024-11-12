@@ -8,6 +8,8 @@ sources:
             - location: ./overlay-remove-V1.yaml
             - location: ./codeSamples.yaml
         output: openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-sdk-oas
 targets:
     syllable-sdk:
         target: typescript

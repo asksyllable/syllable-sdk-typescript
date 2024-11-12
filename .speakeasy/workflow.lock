@@ -1,17 +1,18 @@
-speakeasyVersion: 1.434.0
+speakeasyVersion: 1.438.1
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:35f3d4070443692bb4d3f996842645b08f53415078f43f26d1116159dd7acfc5
-        sourceBlobDigest: sha256:ac64055e286324cb27d7d569319e4ff4a4cdd31ec12184b30d49188526000faa
+        sourceRevisionDigest: sha256:5ae74b9cc636174c1938ac653e8864ac44ecb449d8cdfbcc0e4c902a459e7832
+        sourceBlobDigest: sha256:dfecd9fbd88d1d8e4ca9fe804a292bef14bda5819906958616c9e4ca91dad2b5
         tags:
             - latest
+            - main
 targets:
     syllable-sdk:
         source: SyllableSDK-OAS
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:35f3d4070443692bb4d3f996842645b08f53415078f43f26d1116159dd7acfc5
-        sourceBlobDigest: sha256:ac64055e286324cb27d7d569319e4ff4a4cdd31ec12184b30d49188526000faa
+        sourceRevisionDigest: sha256:5ae74b9cc636174c1938ac653e8864ac44ecb449d8cdfbcc0e4c902a459e7832
+        sourceBlobDigest: sha256:dfecd9fbd88d1d8e4ca9fe804a292bef14bda5819906958616c9e4ca91dad2b5
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -23,6 +24,8 @@ workflow:
                 - location: ./overlay-remove-V1.yaml
                 - location: ./codeSamples.yaml
             output: openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-sdk-oas
     targets:
         syllable-sdk:
             target: typescript

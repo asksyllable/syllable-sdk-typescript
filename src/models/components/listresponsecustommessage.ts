@@ -15,8 +15,8 @@ export type ListResponseCustomMessage = {
   items: Array<CustomMessage>;
   page: number;
   pageSize: number;
-  totalPages: number;
-  totalCount: number;
+  totalPages?: number | null | undefined;
+  totalCount?: number | null | undefined;
 };
 
 /** @internal */
@@ -28,8 +28,8 @@ export const ListResponseCustomMessage$inboundSchema: z.ZodType<
   items: z.array(CustomMessage$inboundSchema),
   page: z.number().int(),
   page_size: z.number().int(),
-  total_pages: z.number().int(),
-  total_count: z.number().int(),
+  total_pages: z.nullable(z.number().int()).optional(),
+  total_count: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "page_size": "pageSize",
@@ -43,8 +43,8 @@ export type ListResponseCustomMessage$Outbound = {
   items: Array<CustomMessage$Outbound>;
   page: number;
   page_size: number;
-  total_pages: number;
-  total_count: number;
+  total_pages?: number | null | undefined;
+  total_count?: number | null | undefined;
 };
 
 /** @internal */
@@ -56,8 +56,8 @@ export const ListResponseCustomMessage$outboundSchema: z.ZodType<
   items: z.array(CustomMessage$outboundSchema),
   page: z.number().int(),
   pageSize: z.number().int(),
-  totalPages: z.number().int(),
-  totalCount: z.number().int(),
+  totalPages: z.nullable(z.number().int()).optional(),
+  totalCount: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     pageSize: "page_size",

@@ -10,13 +10,11 @@ let value: ListResponseCustomMessage = {
     {
       name: "<value>",
       text: "<value>",
-      id: 196582,
+      id: 208876,
     },
   ],
-  page: 368725,
-  pageSize: 820994,
-  totalPages: 97101,
-  totalCount: 837945,
+  page: 161309,
+  pageSize: 653108,
 };
 ```
 
@@ -27,5 +25,5 @@ let value: ListResponseCustomMessage = {
 | `items`                                                                | [components.CustomMessage](../../models/components/custommessage.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
 | `page`                                                                 | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `pageSize`                                                             | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `totalPages`                                                           | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `totalCount`                                                           | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `totalPages`                                                           | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `totalCount`                                                           | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

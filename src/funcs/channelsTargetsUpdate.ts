@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  */
 export async function channelsTargetsUpdate(
   client: SyllableSDKCore,
-  request: operations.ChannelsTargetUpdateRequest,
+  request: operations.ChannelTargetsUpdateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -49,7 +49,7 @@ export async function channelsTargetsUpdate(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ChannelsTargetUpdateRequest$outboundSchema.parse(value),
+      operations.ChannelTargetsUpdateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -83,8 +83,11 @@ export async function channelsTargetsUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "channels_target_update",
+    operationID: "channel_targets_update",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

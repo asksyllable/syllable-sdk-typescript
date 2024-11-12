@@ -20,8 +20,6 @@ let value: ListResponseChannelTarget = {
   ],
   page: 681820,
   pageSize: 359508,
-  totalPages: 437032,
-  totalCount: 697631,
 };
 ```
 
@@ -32,5 +30,5 @@ let value: ListResponseChannelTarget = {
 | `items`                                                                | [components.ChannelTarget](../../models/components/channeltarget.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
 | `page`                                                                 | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `pageSize`                                                             | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `totalPages`                                                           | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `totalCount`                                                           | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `totalPages`                                                           | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `totalCount`                                                           | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

@@ -53,6 +53,9 @@ export async function dashboardsTotalCallVolumeByWeekday(
   const context = {
     operationID: "total_call_volume_by_weekday",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig
