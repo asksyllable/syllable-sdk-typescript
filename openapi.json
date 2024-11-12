@@ -7,7 +7,12 @@
   },
   "servers": [
     {
-      "url": "http://127.0.0.1:8001"
+      "url": "http://localhost:8001",
+      "description": "dev server"
+    },
+    {
+      "url": "http://localhost:8001",
+      "description": "dev / port-forwarding server"
     }
   ],
   "paths": {
@@ -86,12 +91,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AgentProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/AgentProperties"
             }
           },
           {
@@ -99,12 +99,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -329,7 +324,6 @@
           "V1"
         ],
         "summary": "Delete Agent",
-        "description": "Delete an agent by ID",
         "operationId": "agent_delete",
         "security": [
           {
@@ -362,178 +356,6 @@
             "content": {
               "application/json": {
                 "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/channels/available-targets": {
-      "get": {
-        "tags": [
-          "channels.targets",
-          "V1"
-        ],
-        "summary": "Available Targets List",
-        "description": "List the available phone numbers",
-        "operationId": "available_targets",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": 0,
-              "title": "Page"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 25,
-              "title": "Limit"
-            }
-          },
-          {
-            "name": "search_fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AvailableTargetProperties"
-              },
-              "default": [],
-              "title": "Search Fields"
-            }
-          },
-          {
-            "name": "search_field_values",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [],
-              "title": "Search Field Values"
-            }
-          },
-          {
-            "name": "order_by",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AvailableTargetProperties"
-                }
-              ],
-              "title": "Order By"
-            }
-          },
-          {
-            "name": "order_by_direction",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/AvailableTargetProperties"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Fields"
-            }
-          },
-          {
-            "name": "start_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Start Datetime"
-            }
-          },
-          {
-            "name": "end_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "End Datetime"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListResponse_AvailableTarget_"
-                }
               }
             }
           },
@@ -624,12 +446,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ChannelProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/ChannelProperties"
             }
           },
           {
@@ -637,12 +454,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -704,407 +516,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ListResponse_Channel_"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/channels/targets": {
-      "get": {
-        "tags": [
-          "channels.targets",
-          "V1"
-        ],
-        "summary": "Get Channel Targets",
-        "operationId": "channel_targets_list",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": 0,
-              "title": "Page"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 25,
-              "title": "Limit"
-            }
-          },
-          {
-            "name": "search_fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/ChannelTargetProperties"
-              },
-              "default": [],
-              "title": "Search Fields"
-            }
-          },
-          {
-            "name": "search_field_values",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [],
-              "title": "Search Field Values"
-            }
-          },
-          {
-            "name": "order_by",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ChannelTargetProperties"
-                }
-              ],
-              "title": "Order By"
-            }
-          },
-          {
-            "name": "order_by_direction",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ChannelTargetProperties"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Fields"
-            }
-          },
-          {
-            "name": "start_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Start Datetime"
-            }
-          },
-          {
-            "name": "end_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "End Datetime"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListResponse_ChannelTarget_"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/channels/{channel_id}/targets": {
-      "post": {
-        "tags": [
-          "channels.targets",
-          "V1"
-        ],
-        "summary": "Assign A Channel Target",
-        "operationId": "channel_targets_create",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "channel_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Channel Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ChannelTargetCreateRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/channels/{channel_id}/targets/{target_id}": {
-      "get": {
-        "tags": [
-          "channels.targets",
-          "V1"
-        ],
-        "summary": "Get A Channel Target",
-        "operationId": "channel_targets_get_by_id",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "channel_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Channel Id"
-            }
-          },
-          {
-            "name": "target_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Target Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "channels.targets",
-          "V1"
-        ],
-        "summary": "Edit Channel Target",
-        "description": "Update channel target by ID",
-        "operationId": "channels_target_update",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "channel_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Channel Id"
-            }
-          },
-          {
-            "name": "target_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Target Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ChannelTarget"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/channels/{channel_id}": {
-      "delete": {
-        "tags": [
-          "channels",
-          "V1"
-        ],
-        "summary": "Delete Channel",
-        "description": "Delete channel by ID",
-        "operationId": "channels_delete",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "channel_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Channel Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
                 }
               }
             }
@@ -1244,12 +655,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ConversationProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/ConversationProperties"
             }
           },
           {
@@ -1257,12 +663,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -1324,54 +725,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ListResponse_Conversation_"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/conversations/{conversation_id}": {
-      "get": {
-        "tags": [
-          "conversations",
-          "V1"
-        ],
-        "summary": "Get Conversation By Id",
-        "operationId": "conversation_get_by_id",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "conversation_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Conversation Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ConversationTranscriptionResponse"
                 }
               }
             }
@@ -1791,12 +1144,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/EventProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/EventProperties"
             }
           },
           {
@@ -1804,12 +1152,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -1963,12 +1306,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/CustomMessageProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/CustomMessageProperties"
             }
           },
           {
@@ -1976,12 +1314,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2330,12 +1663,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/PromptProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/PromptProperties"
             }
           },
           {
@@ -2343,12 +1671,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2573,7 +1896,6 @@
           "V1"
         ],
         "summary": "Delete Prompt",
-        "description": "Delete an prompt by ID",
         "operationId": "prompts_delete",
         "security": [
           {
@@ -2606,6 +1928,261 @@
             "content": {
               "application/json": {
                 "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/session_labels/{session_label_id}": {
+      "get": {
+        "tags": [
+          "session_labels",
+          "V1"
+        ],
+        "summary": "Get Label By Id",
+        "operationId": "session_label_get_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_label_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Session Label Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionLabel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/session_labels/": {
+      "post": {
+        "tags": [
+          "session_labels",
+          "V1"
+        ],
+        "summary": "Create Label",
+        "description": "Create a new label",
+        "operationId": "session_label_create",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionLabelCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionLabel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "session_labels",
+          "V1"
+        ],
+        "summary": "Session Labels List",
+        "operationId": "session_labels_list",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": 0,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 25,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "search_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SessionLabelProperties"
+              },
+              "default": [],
+              "title": "Search Fields"
+            }
+          },
+          {
+            "name": "search_field_values",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "Search Field Values"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/SessionLabelProperties"
+            }
+          },
+          {
+            "name": "order_by_direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/OrderByDirection"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionLabelProperties"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Fields"
+            }
+          },
+          {
+            "name": "start_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Datetime"
+            }
+          },
+          {
+            "name": "end_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Datetime"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponse_SessionLabel_"
+                }
               }
             }
           },
@@ -2696,12 +2273,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SessionProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/SessionProperties"
             }
           },
           {
@@ -2709,12 +2281,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2776,6 +2343,54 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ListResponse_Session_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/transcript/{session_id}": {
+      "get": {
+        "tags": [
+          "sessions",
+          "V1"
+        ],
+        "summary": "Get Session Transcript By Id",
+        "operationId": "session_transcript_get_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionTranscriptionResponse"
                 }
               }
             }
@@ -2868,12 +2483,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ToolProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/ToolProperties"
             }
           },
           {
@@ -2881,12 +2491,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2947,7 +2552,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListResponse_SchemasBubblegumV2ToolsTool_"
+                  "$ref": "#/components/schemas/ListResponse_Tool_"
                 }
               }
             }
@@ -3014,36 +2619,573 @@
         }
       }
     },
-    "/api/v1/organizations/": {
+    "/api/v1/channels/available-targets": {
       "get": {
         "tags": [
-          "organizations",
+          "channels.targets",
+          "V1",
+          "channels.targets",
           "V1"
         ],
-        "summary": "Organizations List",
-        "description": "List all organizations",
-        "operationId": "organizations_list",
+        "summary": "Available Targets List",
+        "description": "List the available phone numbers",
+        "operationId": "available_targets",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": 0,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 25,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "search_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AvailableTargetProperties"
+              },
+              "default": [],
+              "title": "Search Fields"
+            }
+          },
+          {
+            "name": "search_field_values",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "Search Field Values"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/AvailableTargetProperties"
+            }
+          },
+          {
+            "name": "order_by_direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/OrderByDirection"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AvailableTargetProperties"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Fields"
+            }
+          },
+          {
+            "name": "start_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Datetime"
+            }
+          },
+          {
+            "name": "end_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Datetime"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/Organization"
-                  },
-                  "type": "array",
-                  "title": "Response Organizations List"
+                  "$ref": "#/components/schemas/ListResponse_AvailableTarget_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
           }
-        },
+        }
+      }
+    },
+    "/api/v1/channels/targets": {
+      "get": {
+        "tags": [
+          "channels.targets",
+          "V1",
+          "channels.targets",
+          "V1"
+        ],
+        "summary": "Get Channel Targets",
+        "operationId": "channel_targets_list",
         "security": [
           {
             "APIKeyHeader": []
           }
-        ]
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": 0,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 25,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "search_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ChannelTargetProperties"
+              },
+              "default": [],
+              "title": "Search Fields"
+            }
+          },
+          {
+            "name": "search_field_values",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "Search Field Values"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/ChannelTargetProperties"
+            }
+          },
+          {
+            "name": "order_by_direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/OrderByDirection"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChannelTargetProperties"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Fields"
+            }
+          },
+          {
+            "name": "start_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Datetime"
+            }
+          },
+          {
+            "name": "end_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Datetime"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponse_ChannelTarget_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/channels/{channel_id}/targets": {
+      "post": {
+        "tags": [
+          "channels.targets",
+          "V1",
+          "channels.targets",
+          "V1"
+        ],
+        "summary": "Assign A Channel Target",
+        "operationId": "channel_targets_create",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "channel_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Channel Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChannelTargetCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelTarget"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/channels/{channel_id}/targets/{target_id}": {
+      "get": {
+        "tags": [
+          "channels.targets",
+          "V1",
+          "channels.targets",
+          "V1"
+        ],
+        "summary": "Get A Channel Target",
+        "operationId": "channel_targets_get_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "channel_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Channel Id"
+            }
+          },
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Target Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelTarget"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "channels.targets",
+          "V1"
+        ],
+        "summary": "Edit Channel Target",
+        "description": "Update channel target by ID",
+        "operationId": "channel_targets_update",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "channel_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Channel Id"
+            }
+          },
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Target Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChannelTarget"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelTarget"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/channels/{channel_id}": {
+      "delete": {
+        "tags": [
+          "channels.targets",
+          "V1"
+        ],
+        "summary": "Delete Channel Target",
+        "operationId": "channel_targets_delete",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "channel_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Channel Id"
+            }
+          },
+          {
+            "name": "target_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Target Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelTarget"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -3271,6 +3413,10 @@
       },
       "AvailableTarget": {
         "properties": {
+          "organization_id": {
+            "type": "integer",
+            "title": "Organization Id"
+          },
           "channel_id": {
             "type": "integer",
             "title": "Channel Id"
@@ -3293,6 +3439,7 @@
         },
         "type": "object",
         "required": [
+          "organization_id",
           "channel_id",
           "channel_name",
           "target"
@@ -3310,29 +3457,38 @@
       },
       "Channel": {
         "properties": {
-          "id": {
-            "type": "string",
-            "title": "Id"
-          },
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "The channel name"
           },
           "channel_service": {
-            "type": "string",
-            "title": "Channel Service"
+            "$ref": "#/components/schemas/ChannelServices",
+            "description": "The service for the channel"
           },
           "supported_modes": {
-            "type": "string",
-            "title": "Supported Modes"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Supported Modes",
+            "description": "The comma-delimited list of supported modes for the channel"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The channel ID"
           }
         },
         "type": "object",
         "required": [
-          "id",
           "name",
           "channel_service",
-          "supported_modes"
+          "id"
         ],
         "title": "Channel"
       },
@@ -3345,6 +3501,16 @@
           "supported_modes"
         ],
         "title": "ChannelProperties"
+      },
+      "ChannelServices": {
+        "type": "string",
+        "enum": [
+          "sip",
+          "twilio",
+          "email",
+          "webchat"
+        ],
+        "title": "ChannelServices"
       },
       "ChannelTarget": {
         "properties": {
@@ -3456,17 +3622,6 @@
             ],
             "title": "Channel Id"
           },
-          "channel_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Channel Name"
-          },
           "agent_id": {
             "anyOf": [
               {
@@ -3526,7 +3681,6 @@
         "type": "object",
         "required": [
           "channel_id",
-          "channel_name",
           "agent_id",
           "target",
           "target_mode",
@@ -3559,17 +3713,6 @@
           "conversation_id": {
             "type": "string",
             "title": "Conversation Id"
-          },
-          "session_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Session Id"
           },
           "agent_id": {
             "anyOf": [
@@ -3637,7 +3780,7 @@
             ],
             "title": "Prompt Version"
           },
-          "call_id": {
+          "llm_provider": {
             "anyOf": [
               {
                 "type": "string"
@@ -3646,9 +3789,9 @@
                 "type": "null"
               }
             ],
-            "title": "Call Id"
+            "title": "Llm Provider"
           },
-          "source": {
+          "llm_model": {
             "anyOf": [
               {
                 "type": "string"
@@ -3657,9 +3800,9 @@
                 "type": "null"
               }
             ],
-            "title": "Source"
+            "title": "Llm Model"
           },
-          "target": {
+          "llm_version": {
             "anyOf": [
               {
                 "type": "string"
@@ -3668,7 +3811,7 @@
                 "type": "null"
               }
             ],
-            "title": "Target"
+            "title": "Llm Version"
           },
           "is_legacy": {
             "anyOf": [
@@ -3680,17 +3823,6 @@
               }
             ],
             "title": "Is Legacy"
-          },
-          "is_test": {
-            "anyOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Is Test"
           }
         },
         "type": "object",
@@ -3699,53 +3831,6 @@
           "conversation_id"
         ],
         "title": "Conversation"
-      },
-      "ConversationAction": {
-        "properties": {
-          "timestamp": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Timestamp"
-          },
-          "tool_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Tool Name"
-          },
-          "tool_request": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Tool Request"
-          },
-          "tool_result": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Tool Result"
-          }
-        },
-        "type": "object",
-        "required": [
-          "timestamp"
-        ],
-        "title": "ConversationAction"
       },
       "ConversationProperties": {
         "type": "string",
@@ -3756,89 +3841,12 @@
           "agent_name",
           "prompt_id",
           "prompt_name",
-          "call_id",
-          "source",
-          "target",
-          "is_legacy",
-          "is_test"
+          "llm_provider",
+          "llm_model",
+          "llm_version",
+          "is_legacy"
         ],
         "title": "ConversationProperties"
-      },
-      "ConversationText": {
-        "properties": {
-          "timestamp": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Timestamp"
-          },
-          "lang": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Lang"
-          },
-          "source": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Source"
-          },
-          "text": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Text"
-          }
-        },
-        "type": "object",
-        "required": [
-          "timestamp"
-        ],
-        "title": "ConversationText"
-      },
-      "ConversationTranscriptionResponse": {
-        "properties": {
-          "conversation_id": {
-            "type": "string",
-            "title": "Conversation Id"
-          },
-          "transcription": {
-            "items": {
-              "$ref": "#/components/schemas/ConversationText"
-            },
-            "type": "array",
-            "title": "Transcription"
-          },
-          "actions": {
-            "items": {
-              "$ref": "#/components/schemas/ConversationAction"
-            },
-            "type": "array",
-            "title": "Actions"
-          }
-        },
-        "type": "object",
-        "required": [
-          "conversation_id",
-          "transcription",
-          "actions"
-        ],
-        "title": "ConversationTranscriptionResponse"
       },
       "CustomMessage": {
         "properties": {
@@ -3882,6 +3890,11 @@
             "type": "string",
             "title": "Text",
             "description": "The text of the greeting"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "default": "greeting"
           }
         },
         "type": "object",
@@ -3899,53 +3912,6 @@
           "text"
         ],
         "title": "CustomMessageProperties"
-      },
-      "Defaults": {
-        "properties": {
-          "anyof_schema_1_validator": {
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Anyof Schema 1 Validator"
-          },
-          "anyof_schema_2_validator": {
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "$ref": "#/components/schemas/ToolParameterDefault"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Anyof Schema 2 Validator"
-          },
-          "actual_instance": {
-            "title": "Actual Instance"
-          },
-          "any_of_schemas": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "uniqueItems": true,
-            "title": "Any Of Schemas",
-            "default": [
-              "object",
-              "Dict[str, ToolParameterDefault]"
-            ]
-          }
-        },
-        "type": "object",
-        "title": "Defaults",
-        "description": "The default values for the parameters of the function/tool call."
       },
       "Event": {
         "properties": {
@@ -4076,33 +4042,6 @@
         ],
         "title": "EventProperties"
       },
-      "Function": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the function/tool call."
-          },
-          "description": {
-            "type": "string",
-            "title": "Description",
-            "description": "The description of the tool."
-          },
-          "parameters": {
-            "type": "object",
-            "title": "Parameters",
-            "description": "The JSON Schema of parameters of the function/tool call."
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "description",
-          "parameters"
-        ],
-        "title": "Function",
-        "description": "A tool definition to be used by the OpenAI API.  See: - https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
-      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -4115,33 +4054,6 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
-      },
-      "HttpEndpoint": {
-        "properties": {
-          "url": {
-            "type": "string",
-            "title": "Url",
-            "description": "The endpoint URL of the external service to call."
-          },
-          "method": {
-            "type": "string",
-            "title": "Method",
-            "description": "The HTTP method to use for the service call."
-          },
-          "argument_location": {
-            "type": "string",
-            "title": "Argument Location",
-            "description": "How to pass the arguments to the request."
-          }
-        },
-        "type": "object",
-        "required": [
-          "url",
-          "method",
-          "argument_location"
-        ],
-        "title": "HttpEndpoint",
-        "description": "The configuration for an HTTP API call."
       },
       "ListResponse_Agent_": {
         "properties": {
@@ -4161,11 +4073,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4173,9 +4099,7 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[Agent]"
       },
@@ -4197,11 +4121,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4209,9 +4147,7 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[AvailableTarget]"
       },
@@ -4233,11 +4169,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4245,9 +4195,7 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[ChannelTarget]"
       },
@@ -4269,11 +4217,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4281,9 +4243,7 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[Channel]"
       },
@@ -4305,11 +4265,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4317,9 +4291,7 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[Conversation]"
       },
@@ -4341,11 +4313,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4353,9 +4339,7 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[CustomMessage]"
       },
@@ -4377,11 +4361,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4389,9 +4387,7 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[Event]"
       },
@@ -4413,11 +4409,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4425,17 +4435,15 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[Prompt]"
       },
-      "ListResponse_SchemasBubblegumV2ToolsTool_": {
+      "ListResponse_SessionLabel_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/SchemasBubblegumV2ToolsTool"
+              "$ref": "#/components/schemas/SessionLabel"
             },
             "type": "array",
             "title": "Items"
@@ -4449,11 +4457,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4461,11 +4483,9 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
-        "title": "ListResponse[SchemasBubblegumV2ToolsTool]"
+        "title": "ListResponse[SessionLabel]"
       },
       "ListResponse_Session_": {
         "properties": {
@@ -4485,11 +4505,25 @@
             "title": "Page Size"
           },
           "total_pages": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Pages"
           },
           "total_count": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Total Count"
           }
         },
@@ -4497,37 +4531,77 @@
         "required": [
           "items",
           "page",
-          "page_size",
-          "total_pages",
-          "total_count"
+          "page_size"
         ],
         "title": "ListResponse[Session]"
+      },
+      "ListResponse_Tool_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Tool"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size"
+          },
+          "total_pages": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Pages"
+          },
+          "total_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "page",
+          "page_size"
+        ],
+        "title": "ListResponse[Tool]"
       },
       "LlmConfig": {
         "properties": {
           "provider": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Provider"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Provider of the LLM model."
+            "$ref": "#/components/schemas/Provider",
+            "description": "Provider of the LLM model.",
+            "default": "azure_openai",
+            "examples": [
+              "azure_openai",
+              "openai"
+            ]
           },
           "model": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Model",
             "description": "Name of the model. Must match the deployment name in Azure AI Studio.",
-            "default": "gpt-4o"
+            "default": "gpt-4o",
+            "examples": [
+              "gpt-4o"
+            ]
           },
           "version": {
             "anyOf": [
@@ -4538,7 +4612,11 @@
                 "type": "null"
               }
             ],
-            "title": "Version"
+            "title": "Version",
+            "description": "Optional model version.",
+            "examples": [
+              "2024-05-13"
+            ]
           },
           "api_version": {
             "anyOf": [
@@ -4549,12 +4627,15 @@
                 "type": "null"
               }
             ],
-            "title": "Api Version"
+            "title": "Api Version",
+            "description": "Version of the API. (Currently only used for Azure OpenAI.)",
+            "examples": [
+              "2024-06-01"
+            ]
           }
         },
         "type": "object",
-        "title": "LlmConfig",
-        "description": "LlmConfig"
+        "title": "LlmConfig"
       },
       "OrderByDirection": {
         "type": "string",
@@ -4563,32 +4644,6 @@
           "desc"
         ],
         "title": "OrderByDirection"
-      },
-      "Organization": {
-        "properties": {
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The organization ID"
-          },
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The organization name"
-          },
-          "display_name": {
-            "type": "string",
-            "title": "Display Name",
-            "description": "The organization display name"
-          }
-        },
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "display_name"
-        ],
-        "title": "Organization"
       },
       "Prompt": {
         "properties": {
@@ -4611,29 +4666,20 @@
                 "type": "null"
               }
             ],
-            "title": "Context"
+            "title": "Context",
+            "description": "The prompt text"
           },
           "tools": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
             "title": "Tools",
-            "description": "The tools for the prompt"
+            "description": "The tools for the prompt",
+            "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -4650,7 +4696,8 @@
                 "type": "null"
               }
             ],
-            "title": "Last Updated"
+            "title": "Last Updated",
+            "description": "The last updated date of the prompt"
           }
         },
         "type": "object",
@@ -4661,8 +4708,7 @@
           "id",
           "last_updated"
         ],
-        "title": "Prompt",
-        "description": "Prompt"
+        "title": "Prompt"
       },
       "PromptCreate": {
         "properties": {
@@ -4685,29 +4731,20 @@
                 "type": "null"
               }
             ],
-            "title": "Context"
+            "title": "Context",
+            "description": "The prompt text"
           },
           "tools": {
-            "anyOf": [
-              {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
             "title": "Tools",
-            "description": "The tools for the prompt"
+            "description": "The tools for the prompt",
+            "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           }
         },
@@ -4717,8 +4754,7 @@
           "type",
           "llm_config"
         ],
-        "title": "PromptCreate",
-        "description": "PromptCreate"
+        "title": "PromptCreate"
       },
       "PromptProperties": {
         "type": "string",
@@ -4739,86 +4775,6 @@
         ],
         "title": "Provider",
         "description": "LLM API provider."
-      },
-      "SchemasBubblegumV2ToolsTool": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the tool"
-          },
-          "definition": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ToolDefinition"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "The definition of the tool"
-          },
-          "service_id": {
-            "type": "integer",
-            "title": "Service Id",
-            "description": "The service this tool belongs to"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The ID of the tool"
-          },
-          "service_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Service Name"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "service_id",
-          "id"
-        ],
-        "title": "SchemasBubblegumV2ToolsTool",
-        "description": "SchemasBubblegumV2ToolsTool"
-      },
-      "SchemasCortexV1ToolsTool": {
-        "properties": {
-          "type": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Type",
-            "description": "Always `function`.",
-            "default": "function"
-          },
-          "function": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Function"
-              }
-            ],
-            "description": "The tool definition including the JSON Schema of its parameters."
-          }
-        },
-        "type": "object",
-        "required": [
-          "function"
-        ],
-        "title": "SchemasCortexV1ToolsTool",
-        "description": "A tool definition to be used by the OpenAI API."
       },
       "Session": {
         "properties": {
@@ -4882,6 +4838,83 @@
             ],
             "title": "Channel Manager Sid"
           },
+          "agent_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Name"
+          },
+          "agent_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Type"
+          },
+          "prompt_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Id"
+          },
+          "prompt_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Name"
+          },
+          "prompt_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Version"
+          },
+          "duration": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration"
+          },
+          "session_label_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Label Id"
+          },
           "source": {
             "anyOf": [
               {
@@ -4933,6 +4966,186 @@
         ],
         "title": "Session"
       },
+      "SessionAction": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          },
+          "tool_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Name"
+          },
+          "tool_request": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Request"
+          },
+          "tool_result": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Result"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestamp"
+        ],
+        "title": "SessionAction"
+      },
+      "SessionLabel": {
+        "properties": {
+          "session_id": {
+            "type": "integer",
+            "title": "Session Id"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "user_email": {
+            "type": "string",
+            "title": "User Email"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comments"
+          },
+          "issue_categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Issue Categories",
+            "default": []
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The label ID"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp",
+            "description": "The timestamp of the label creation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "type",
+          "code",
+          "user_email",
+          "id",
+          "timestamp"
+        ],
+        "title": "SessionLabel"
+      },
+      "SessionLabelCreate": {
+        "properties": {
+          "session_id": {
+            "type": "integer",
+            "title": "Session Id"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "user_email": {
+            "type": "string",
+            "title": "User Email"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comments"
+          },
+          "issue_categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Issue Categories",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "type",
+          "code",
+          "user_email"
+        ],
+        "title": "SessionLabelCreate"
+      },
+      "SessionLabelProperties": {
+        "type": "string",
+        "enum": [
+          "timestamp",
+          "session_id",
+          "type",
+          "code",
+          "user_email",
+          "issue_categories",
+          "session_id_list"
+        ],
+        "title": "SessionLabelProperties"
+      },
       "SessionProperties": {
         "type": "string",
         "enum": [
@@ -4942,12 +5155,93 @@
           "channel_manager_service",
           "channel_manager_type",
           "channel_manager_sid",
+          "agent_type",
+          "agent_id",
+          "agent_name",
+          "prompt_id",
+          "prompt_name",
           "source",
           "target",
           "is_legacy",
           "is_test"
         ],
         "title": "SessionProperties"
+      },
+      "SessionText": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          },
+          "lang": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lang"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestamp"
+        ],
+        "title": "SessionText"
+      },
+      "SessionTranscriptionResponse": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "transcription": {
+            "items": {
+              "$ref": "#/components/schemas/SessionText"
+            },
+            "type": "array",
+            "title": "Transcription"
+          },
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/SessionAction"
+            },
+            "type": "array",
+            "title": "Actions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "transcription",
+          "actions"
+        ],
+        "title": "SessionTranscriptionResponse"
       },
       "TestMessage": {
         "properties": {
@@ -5022,9 +5316,29 @@
         ],
         "title": "TestMessageResponse"
       },
-      "ToolDefinition": {
+      "Tool": {
         "properties": {
-          "type": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the tool"
+          },
+          "definition": {
+            "type": "object",
+            "title": "Definition",
+            "description": "The definition of the tool"
+          },
+          "service_id": {
+            "type": "integer",
+            "title": "Service Id",
+            "description": "The service this tool belongs to"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the tool"
+          },
+          "service_name": {
             "anyOf": [
               {
                 "type": "string"
@@ -5033,54 +5347,17 @@
                 "type": "null"
               }
             ],
-            "title": "Type"
-          },
-          "tool": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SchemasCortexV1ToolsTool"
-              }
-            ],
-            "description": "The tool definition to be used by the OpenAI API."
-          },
-          "endpoint": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/HttpEndpoint"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "defaults": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Defaults"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "result": {
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Result"
+            "title": "Service Name",
+            "description": "The name of the service this tool belongs to"
           }
         },
         "type": "object",
         "required": [
-          "tool"
+          "name",
+          "service_id",
+          "id"
         ],
-        "title": "ToolDefinition",
-        "description": "A tool that can be called from GPT during the conversation.  The tool can result in one of the following actions depending on the `type` field: - `action`:   An `ActionRequest` to return to Bubblegum in `GetResponseResponse`. - `endpoint`:   An HTTP API call to an external tool. Requires the `endpoint` field to be set too. - `context`:   Sets context variables based on the tool arguments, e.g. to change the session language. Only   `language` and `say` context vars are currently supported, but this will be made more generic.  For example, to change the current session language: ``` {   \"type\": \"context\",   \"tool\": {     \"function\": {       \"name\": \"set_language\",       \"parameters\": {         \"language\": {           \"type\": \"string\",           \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"         },         \"message\": {           \"type\": \"string\",           \"description\": \"Inform the caller we're now speaking in the new language.\"         }       }     }   } } ```  If `defaults` is provided, it will be used as the default values for the parameters of the tool call, if GPT doesn't provide them: ``` \"defaults\": {   \"hospital\": \"Queens Hospital\" } ```  Some special \"transform\" handling is supported if the value is a dict with a single `transform` key. The parameter value will be transformed by the given `action` before being used as the default value:  Removing an unwanted parameter: ``` \"defaults\": {   \"hospital\": {     \"transform\": {       \"action\": \"remove\"     }   } } ```  Add custom parameters from other parameters using Python's `format`: ``` \"defaults\": {   \"hello\": {     \"transform\": {       \"format\": \"Hello, {name}!\"     }   } }  Modify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\": ``` {   \"defaults\": {     \"city\": {       \"transform\": {         \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},         \"action\": \"override\",         \"format\": \"The {city}\"       }     }   } } ```"
+        "title": "Tool"
       },
       "ToolDetailResponse": {
         "properties": {
@@ -5107,97 +5384,6 @@
           "fields"
         ],
         "title": "ToolDetailResponse"
-      },
-      "ToolParameterDefault": {
-        "properties": {
-          "transform": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ToolParameterTransform"
-              }
-            ],
-            "description": "The transform to apply to the value before using it as the default."
-          }
-        },
-        "type": "object",
-        "required": [
-          "transform"
-        ],
-        "title": "ToolParameterDefault",
-        "description": "The default value for a parameter of the tool call."
-      },
-      "ToolParameterTransform": {
-        "properties": {
-          "when": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ToolParameterTransformCondition"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "action": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Action",
-            "description": "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.",
-            "default": "default"
-          },
-          "format": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Format"
-          }
-        },
-        "type": "object",
-        "title": "ToolParameterTransform",
-        "description": "A transform to be applied to the value of a parameter."
-      },
-      "ToolParameterTransformCondition": {
-        "properties": {
-          "key": {
-            "type": "string",
-            "title": "Key",
-            "description": "The name of the parameter to check."
-          },
-          "value": {
-            "type": "string",
-            "title": "Value",
-            "description": "The value to check against the parameter."
-          },
-          "operator": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Operator"
-          }
-        },
-        "type": "object",
-        "required": [
-          "key",
-          "value"
-        ],
-        "title": "ToolParameterTransformCondition",
-        "description": "A condition to be met for a transform to be applied to the value of a parameter."
       },
       "ToolProperties": {
         "type": "string",
