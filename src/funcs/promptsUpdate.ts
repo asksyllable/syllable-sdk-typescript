@@ -70,6 +70,9 @@ export async function promptsUpdate(
   const context = {
     operationID: "prompts_update",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

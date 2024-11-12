@@ -8,18 +8,16 @@ import { remap as remap$ } from "../../lib/primitives.js";
 export type Conversation = {
   timestamp: Date;
   conversationId: string;
-  sessionId?: string | null | undefined;
   agentId?: string | null | undefined;
   agentName?: string | null | undefined;
   agentType?: string | null | undefined;
   promptId?: string | null | undefined;
   promptName?: string | null | undefined;
   promptVersion?: string | null | undefined;
-  callId?: string | null | undefined;
-  source?: string | null | undefined;
-  target?: string | null | undefined;
+  llmProvider?: string | null | undefined;
+  llmModel?: string | null | undefined;
+  llmVersion?: string | null | undefined;
   isLegacy?: boolean | null | undefined;
-  isTest?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -30,31 +28,29 @@ export const Conversation$inboundSchema: z.ZodType<
 > = z.object({
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   conversation_id: z.string(),
-  session_id: z.nullable(z.string()).optional(),
   agent_id: z.nullable(z.string()).optional(),
   agent_name: z.nullable(z.string()).optional(),
   agent_type: z.nullable(z.string()).optional(),
   prompt_id: z.nullable(z.string()).optional(),
   prompt_name: z.nullable(z.string()).optional(),
   prompt_version: z.nullable(z.string()).optional(),
-  call_id: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  target: z.nullable(z.string()).optional(),
+  llm_provider: z.nullable(z.string()).optional(),
+  llm_model: z.nullable(z.string()).optional(),
+  llm_version: z.nullable(z.string()).optional(),
   is_legacy: z.nullable(z.boolean()).optional(),
-  is_test: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "conversation_id": "conversationId",
-    "session_id": "sessionId",
     "agent_id": "agentId",
     "agent_name": "agentName",
     "agent_type": "agentType",
     "prompt_id": "promptId",
     "prompt_name": "promptName",
     "prompt_version": "promptVersion",
-    "call_id": "callId",
+    "llm_provider": "llmProvider",
+    "llm_model": "llmModel",
+    "llm_version": "llmVersion",
     "is_legacy": "isLegacy",
-    "is_test": "isTest",
   });
 });
 
@@ -62,18 +58,16 @@ export const Conversation$inboundSchema: z.ZodType<
 export type Conversation$Outbound = {
   timestamp: string;
   conversation_id: string;
-  session_id?: string | null | undefined;
   agent_id?: string | null | undefined;
   agent_name?: string | null | undefined;
   agent_type?: string | null | undefined;
   prompt_id?: string | null | undefined;
   prompt_name?: string | null | undefined;
   prompt_version?: string | null | undefined;
-  call_id?: string | null | undefined;
-  source?: string | null | undefined;
-  target?: string | null | undefined;
+  llm_provider?: string | null | undefined;
+  llm_model?: string | null | undefined;
+  llm_version?: string | null | undefined;
   is_legacy?: boolean | null | undefined;
-  is_test?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -84,31 +78,29 @@ export const Conversation$outboundSchema: z.ZodType<
 > = z.object({
   timestamp: z.date().transform(v => v.toISOString()),
   conversationId: z.string(),
-  sessionId: z.nullable(z.string()).optional(),
   agentId: z.nullable(z.string()).optional(),
   agentName: z.nullable(z.string()).optional(),
   agentType: z.nullable(z.string()).optional(),
   promptId: z.nullable(z.string()).optional(),
   promptName: z.nullable(z.string()).optional(),
   promptVersion: z.nullable(z.string()).optional(),
-  callId: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  target: z.nullable(z.string()).optional(),
+  llmProvider: z.nullable(z.string()).optional(),
+  llmModel: z.nullable(z.string()).optional(),
+  llmVersion: z.nullable(z.string()).optional(),
   isLegacy: z.nullable(z.boolean()).optional(),
-  isTest: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     conversationId: "conversation_id",
-    sessionId: "session_id",
     agentId: "agent_id",
     agentName: "agent_name",
     agentType: "agent_type",
     promptId: "prompt_id",
     promptName: "prompt_name",
     promptVersion: "prompt_version",
-    callId: "call_id",
+    llmProvider: "llm_provider",
+    llmModel: "llm_model",
+    llmVersion: "llm_version",
     isLegacy: "is_legacy",
-    isTest: "is_test",
   });
 });
 

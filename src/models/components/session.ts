@@ -12,6 +12,13 @@ export type Session = {
   channelManagerService?: string | null | undefined;
   channelManagerType?: string | null | undefined;
   channelManagerSid?: string | null | undefined;
+  agentName?: string | null | undefined;
+  agentType?: string | null | undefined;
+  promptId?: string | null | undefined;
+  promptName?: string | null | undefined;
+  promptVersion?: string | null | undefined;
+  duration?: number | null | undefined;
+  sessionLabelId?: string | null | undefined;
   source?: string | null | undefined;
   target?: string | null | undefined;
   isLegacy?: boolean | null | undefined;
@@ -29,6 +36,13 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     channel_manager_service: z.nullable(z.string()).optional(),
     channel_manager_type: z.nullable(z.string()).optional(),
     channel_manager_sid: z.nullable(z.string()).optional(),
+    agent_name: z.nullable(z.string()).optional(),
+    agent_type: z.nullable(z.string()).optional(),
+    prompt_id: z.nullable(z.string()).optional(),
+    prompt_name: z.nullable(z.string()).optional(),
+    prompt_version: z.nullable(z.string()).optional(),
+    duration: z.nullable(z.number()).optional(),
+    session_label_id: z.nullable(z.string()).optional(),
     source: z.nullable(z.string()).optional(),
     target: z.nullable(z.string()).optional(),
     is_legacy: z.nullable(z.boolean()).optional(),
@@ -40,6 +54,12 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "channel_manager_service": "channelManagerService",
       "channel_manager_type": "channelManagerType",
       "channel_manager_sid": "channelManagerSid",
+      "agent_name": "agentName",
+      "agent_type": "agentType",
+      "prompt_id": "promptId",
+      "prompt_name": "promptName",
+      "prompt_version": "promptVersion",
+      "session_label_id": "sessionLabelId",
       "is_legacy": "isLegacy",
       "is_test": "isTest",
     });
@@ -53,6 +73,13 @@ export type Session$Outbound = {
   channel_manager_service?: string | null | undefined;
   channel_manager_type?: string | null | undefined;
   channel_manager_sid?: string | null | undefined;
+  agent_name?: string | null | undefined;
+  agent_type?: string | null | undefined;
+  prompt_id?: string | null | undefined;
+  prompt_name?: string | null | undefined;
+  prompt_version?: string | null | undefined;
+  duration?: number | null | undefined;
+  session_label_id?: string | null | undefined;
   source?: string | null | undefined;
   target?: string | null | undefined;
   is_legacy?: boolean | null | undefined;
@@ -71,6 +98,13 @@ export const Session$outboundSchema: z.ZodType<
   channelManagerService: z.nullable(z.string()).optional(),
   channelManagerType: z.nullable(z.string()).optional(),
   channelManagerSid: z.nullable(z.string()).optional(),
+  agentName: z.nullable(z.string()).optional(),
+  agentType: z.nullable(z.string()).optional(),
+  promptId: z.nullable(z.string()).optional(),
+  promptName: z.nullable(z.string()).optional(),
+  promptVersion: z.nullable(z.string()).optional(),
+  duration: z.nullable(z.number()).optional(),
+  sessionLabelId: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
   target: z.nullable(z.string()).optional(),
   isLegacy: z.nullable(z.boolean()).optional(),
@@ -82,6 +116,12 @@ export const Session$outboundSchema: z.ZodType<
     channelManagerService: "channel_manager_service",
     channelManagerType: "channel_manager_type",
     channelManagerSid: "channel_manager_sid",
+    agentName: "agent_name",
+    agentType: "agent_type",
+    promptId: "prompt_id",
+    promptName: "prompt_name",
+    promptVersion: "prompt_version",
+    sessionLabelId: "session_label_id",
     isLegacy: "is_legacy",
     isTest: "is_test",
   });

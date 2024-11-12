@@ -77,6 +77,9 @@ export async function toolsGetByName(
   const context = {
     operationID: "tool_get_by_name",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

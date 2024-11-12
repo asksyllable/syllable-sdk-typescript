@@ -4,7 +4,10 @@ info:
   description: "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI capabilities into your applications. Whether you're building chatbots, virtual assistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Image Recognition**: Identify objects, faces, and scenes in images.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
   version: "0.0.2"
 servers:
-  - url: "http://127.0.0.1:8001"
+  - url: "http://localhost:8001"
+    description: "dev server"
+  - url: "http://localhost:8001"
+    description: "dev / port-forwarding server"
 paths:
   "/api/v1/agents/":
     get:
@@ -54,17 +57,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/AgentProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/AgentProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -323,119 +320,6 @@ paths:
             }
 
             run();
-  "/api/v1/channels/available-targets":
-    get:
-      tags:
-        - "channels.targets"
-      summary: "Available Targets List"
-      description: "List the available phone numbers"
-      operationId: "available_targets"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "page"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "integer"
-                minimum: 0
-              - type: "null"
-            default: 0
-            title: "Page"
-        - name: "limit"
-          in: "query"
-          required: false
-          schema:
-            type: "integer"
-            minimum: 0
-            default: 25
-            title: "Limit"
-        - name: "search_fields"
-          in: "query"
-          required: false
-          schema:
-            type: "array"
-            items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
-            default: []
-            title: "Search Fields"
-        - name: "search_field_values"
-          in: "query"
-          required: false
-          schema:
-            type: "array"
-            items:
-              type: "string"
-            default: []
-            title: "Search Field Values"
-        - name: "order_by"
-          in: "query"
-          required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/AvailableTargetProperties"}
-            title: "Order By"
-        - name: "order_by_direction"
-          in: "query"
-          required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
-        - name: "fields"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "array"
-                items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
-              - type: "null"
-            title: "Fields"
-        - name: "start_datetime"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Start Datetime"
-        - name: "end_datetime"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "End Datetime"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_AvailableTarget_"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: available_targets
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.availableTargets({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/channels/":
     get:
       tags:
@@ -483,17 +367,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ChannelProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/ChannelProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -542,345 +420,6 @@ paths:
 
             async function run() {
               const result = await syllableSDK.channels.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/channels/targets":
-    get:
-      tags:
-        - "channels.targets"
-      summary: "Get Channel Targets"
-      operationId: "channel_targets_list"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "page"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "integer"
-                minimum: 0
-              - type: "null"
-            default: 0
-            title: "Page"
-        - name: "limit"
-          in: "query"
-          required: false
-          schema:
-            type: "integer"
-            minimum: 0
-            default: 25
-            title: "Limit"
-        - name: "search_fields"
-          in: "query"
-          required: false
-          schema:
-            type: "array"
-            items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
-            default: []
-            title: "Search Fields"
-        - name: "search_field_values"
-          in: "query"
-          required: false
-          schema:
-            type: "array"
-            items:
-              type: "string"
-            default: []
-            title: "Search Field Values"
-        - name: "order_by"
-          in: "query"
-          required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ChannelTargetProperties"}
-            title: "Order By"
-        - name: "order_by_direction"
-          in: "query"
-          required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
-        - name: "fields"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "array"
-                items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
-              - type: "null"
-            title: "Fields"
-        - name: "start_datetime"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Start Datetime"
-        - name: "end_datetime"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "End Datetime"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_ChannelTarget_"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/channels/{channel_id}/targets":
-    post:
-      tags:
-        - "channels.targets"
-      summary: "Assign A Channel Target"
-      operationId: "channel_targets_create"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "channel_id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
-            title: "Channel Id"
-      requestBody:
-        required: true
-        content:
-          "application/json":
-            schema: {"$ref": "#/components/schemas/ChannelTargetCreateRequest"}
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.create({
-                channelId: 134365,
-                channelTargetCreateRequest: {
-                  channelId: 486589,
-                  channelName: "<value>",
-                  agentId: 638424,
-                  target: "<value>",
-                  targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: true,
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/channels/{channel_id}/targets/{target_id}":
-    get:
-      tags:
-        - "channels.targets"
-      summary: "Get A Channel Target"
-      operationId: "channel_targets_get_by_id"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "channel_id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
-            title: "Channel Id"
-        - name: "target_id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
-            title: "Target Id"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.getById({
-                channelId: 931598,
-                targetId: 505057,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-    put:
-      tags:
-        - "channels.targets"
-      summary: "Edit Channel Target"
-      description: "Update channel target by ID"
-      operationId: "channels_target_update"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "channel_id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
-            title: "Channel Id"
-        - name: "target_id"
-          in: "path"
-          required: true
-          schema:
-            type: "integer"
-            title: "Target Id"
-      requestBody:
-        required: true
-        content:
-          "application/json":
-            schema: {"$ref": "#/components/schemas/ChannelTarget"}
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channels_target_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.update({
-                channelId: 627690,
-                targetId: 488852,
-                channelTarget: {
-                  id: 857478,
-                  channelId: 597129,
-                  channelName: "<value>",
-                  agentId: 344620,
-                  target: "<value>",
-                  targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: false,
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/channels/{channel_id}":
-    delete:
-      tags:
-        - "channels"
-      summary: "Delete Channel"
-      operationId: "channels_delete"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "channel_id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-            title: "Channel Id"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channels_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.delete({
-                channelId: "<id>",
-              });
 
               // Handle the result
               console.log(result);
@@ -983,17 +522,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ConversationProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/ConversationProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -1042,52 +575,6 @@ paths:
 
             async function run() {
               const result = await syllableSDK.conversations.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/conversations/{conversation_id}":
-    get:
-      tags:
-        - "conversations"
-      summary: "Get Conversation By Id"
-      operationId: "conversation_get_by_id"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "conversation_id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-            title: "Conversation Id"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/ConversationTranscriptionResponse"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: conversation_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.conversations.getById({
-                conversationId: "<id>",
-              });
 
               // Handle the result
               console.log(result);
@@ -1473,17 +960,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/EventProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/EventProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -1586,17 +1067,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/CustomMessageProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/CustomMessageProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -1890,17 +1365,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/PromptProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/PromptProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -2158,6 +1627,147 @@ paths:
             }
 
             run();
+  "/api/v1/session_labels/{session_label_id}":
+    get:
+      tags:
+        - "session_labels"
+        - "V1"
+      summary: "Get Label By Id"
+      operationId: "session_label_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "session_label_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Session Label Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/SessionLabel"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/session_labels/":
+    post:
+      tags:
+        - "session_labels"
+        - "V1"
+      summary: "Create Label"
+      description: "Create a new label"
+      operationId: "session_label_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/SessionLabelCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/SessionLabel"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    get:
+      tags:
+        - "session_labels"
+        - "V1"
+      summary: "Session Labels List"
+      operationId: "session_labels_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/SessionLabelProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema: {"$ref": "#/components/schemas/SessionLabelProperties"}
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/SessionLabelProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_SessionLabel_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
   "/api/v1/sessions/":
     get:
       tags:
@@ -2205,17 +1815,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/SessionProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/SessionProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -2270,6 +1874,32 @@ paths:
             }
 
             run();
+  "/api/v1/sessions/transcript/{session_id}":
+    get:
+      tags:
+        - "sessions.transcript"
+      summary: "Get Session Transcript By Id"
+      operationId: "session_transcript_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "session_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Session Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/SessionTranscriptionResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
   "/api/v1/tools/":
     get:
       tags:
@@ -2318,17 +1948,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ToolProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/ToolProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -2430,27 +2054,98 @@ paths:
             }
 
             run();
-  "/api/v1/organizations/":
+  "/api/v1/channels/available-targets":
     get:
       tags:
-        - "organizations"
-      summary: "Organizations List"
-      description: "List all organizations"
-      operationId: "organizations_list"
+        - "channels.targets"
+      summary: "Available Targets List"
+      description: "List the available phone numbers"
+      operationId: "available_targets"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema:
-                items: {"$ref": "#/components/schemas/Organization"}
-                type: "array"
-                title: "Response Organizations List"
-      security:
-        - APIKeyHeader: []
+              schema: {"$ref": "#/components/schemas/ListResponse_AvailableTarget_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       x-codeSamples:
         - lang: typescript
-          label: organizations_list
+          label: available_targets
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -2459,7 +2154,346 @@ paths:
             });
 
             async function run() {
-              const result = await syllableSDK.organizations.list();
+              const result = await syllableSDK.channels.targets.availableTargets({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  "/api/v1/channels/targets":
+    get:
+      tags:
+        - "channels.targets"
+      summary: "Get Channel Targets"
+      operationId: "channel_targets_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_ChannelTarget_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: channel_targets_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  "/api/v1/channels/{channel_id}/targets":
+    post:
+      tags:
+        - "channels.targets"
+      summary: "Assign A Channel Target"
+      operationId: "channel_targets_create"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Channel Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ChannelTargetCreateRequest"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: channel_targets_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.create({
+                channelId: 134365,
+                channelTargetCreateRequest: {
+                  channelId: 486589,
+                  channelName: "<value>",
+                  agentId: 638424,
+                  target: "<value>",
+                  targetMode: "<value>",
+                  fallbackTarget: "<value>",
+                  isTest: true,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  "/api/v1/channels/{channel_id}/targets/{target_id}":
+    get:
+      tags:
+        - "channels.targets"
+      summary: "Get A Channel Target"
+      operationId: "channel_targets_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Channel Id"
+        - name: "target_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Target Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: channel_targets_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.getById({
+                channelId: 931598,
+                targetId: 505057,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+    put:
+      tags:
+        - "channels.targets"
+      summary: "Edit Channel Target"
+      description: "Update channel target by ID"
+      operationId: "channel_targets_update"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Channel Id"
+        - name: "target_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Target Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ChannelTarget"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: channels_target_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.targets.update({
+                channelId: 627690,
+                targetId: 488852,
+                channelTarget: {
+                  id: 857478,
+                  channelId: 597129,
+                  channelName: "<value>",
+                  agentId: 344620,
+                  target: "<value>",
+                  targetMode: "<value>",
+                  fallbackTarget: "<value>",
+                  isTest: false,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  "/api/v1/channels/{channel_id}":
+    delete:
+      tags:
+        - "channels"
+      summary: "Delete Channel Target"
+      operationId: "channel_targets_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "channel_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Channel Id"
+        - name: "target_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Target Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: channels_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.delete({
+                channelId: "<id>",
+              });
 
               // Handle the result
               console.log(result);
@@ -2613,9 +2647,9 @@ components:
       title: "AgentToolFieldDefault"
     "AvailableTarget":
       properties:
-        "sub_organization_id":
+        "organization_id":
           type: "integer"
-          title: "Sub Organization Id"
+          title: "Organization Id"
         "channel_id":
           type: "integer"
           title: "Channel Id"
@@ -2629,7 +2663,7 @@ components:
           title: "Target"
       type: "object"
       required:
-        - "sub_organization_id"
+        - "organization_id"
         - "channel_id"
         - "channel_name"
         - "target"
@@ -2643,24 +2677,26 @@ components:
       title: "AvailableTargetProperties"
     "Channel":
       properties:
-        "id":
-          type: "string"
-          title: "Id"
         "name":
           type: "string"
           title: "Name"
-        "channel_service":
-          type: "string"
-          title: "Channel Service"
+          description: "The channel name"
+        "channel_service": {"$ref": "#/components/schemas/ChannelServices", "description": "The service for the channel"}
         "supported_modes":
-          type: "string"
+          anyOf:
+            - type: "string"
+            - type: "null"
           title: "Supported Modes"
+          description: "The comma-delimited list of supported modes for the channel"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The channel ID"
       type: "object"
       required:
-        - "id"
         - "name"
         - "channel_service"
-        - "supported_modes"
+        - "id"
       title: "Channel"
     "ChannelProperties":
       type: "string"
@@ -2670,6 +2706,14 @@ components:
         - "channel_service"
         - "supported_modes"
       title: "ChannelProperties"
+    "ChannelServices":
+      type: "string"
+      enum:
+        - "sip"
+        - "twilio"
+        - "email"
+        - "webchat"
+      title: "ChannelServices"
     "ChannelTarget":
       properties:
         "id":
@@ -2728,11 +2772,6 @@ components:
             - type: "integer"
             - type: "null"
           title: "Channel Id"
-        "channel_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Channel Name"
         "agent_id":
           anyOf:
             - type: "integer"
@@ -2761,7 +2800,6 @@ components:
       type: "object"
       required:
         - "channel_id"
-        - "channel_name"
         - "agent_id"
         - "target"
         - "target_mode"
@@ -2789,11 +2827,6 @@ components:
         "conversation_id":
           type: "string"
           title: "Conversation Id"
-        "session_id":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Session Id"
         "agent_id":
           anyOf:
             - type: "string"
@@ -2824,61 +2857,31 @@ components:
             - type: "string"
             - type: "null"
           title: "Prompt Version"
-        "call_id":
+        "llm_provider":
           anyOf:
             - type: "string"
             - type: "null"
-          title: "Call Id"
-        "source":
+          title: "Llm Provider"
+        "llm_model":
           anyOf:
             - type: "string"
             - type: "null"
-          title: "Source"
-        "target":
+          title: "Llm Model"
+        "llm_version":
           anyOf:
             - type: "string"
             - type: "null"
-          title: "Target"
+          title: "Llm Version"
         "is_legacy":
           anyOf:
             - type: "boolean"
             - type: "null"
           title: "Is Legacy"
-        "is_test":
-          anyOf:
-            - type: "boolean"
-            - type: "null"
-          title: "Is Test"
       type: "object"
       required:
         - "timestamp"
         - "conversation_id"
       title: "Conversation"
-    "ConversationAction":
-      properties:
-        "timestamp":
-          type: "string"
-          format: "date-time"
-          title: "Timestamp"
-        "tool_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Tool Name"
-        "tool_request":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Tool Request"
-        "tool_result":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Tool Result"
-      type: "object"
-      required:
-        - "timestamp"
-      title: "ConversationAction"
     "ConversationProperties":
       type: "string"
       enum:
@@ -2888,56 +2891,11 @@ components:
         - "agent_name"
         - "prompt_id"
         - "prompt_name"
-        - "call_id"
-        - "source"
-        - "target"
+        - "llm_provider"
+        - "llm_model"
+        - "llm_version"
         - "is_legacy"
-        - "is_test"
       title: "ConversationProperties"
-    "ConversationText":
-      properties:
-        "timestamp":
-          type: "string"
-          format: "date-time"
-          title: "Timestamp"
-        "lang":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Lang"
-        "source":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Source"
-        "text":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Text"
-      type: "object"
-      required:
-        - "timestamp"
-      title: "ConversationText"
-    "ConversationTranscriptionResponse":
-      properties:
-        "conversation_id":
-          type: "string"
-          title: "Conversation Id"
-        "transcription":
-          items: {"$ref": "#/components/schemas/ConversationText"}
-          type: "array"
-          title: "Transcription"
-        "actions":
-          items: {"$ref": "#/components/schemas/ConversationAction"}
-          type: "array"
-          title: "Actions"
-      type: "object"
-      required:
-        - "conversation_id"
-        - "transcription"
-        - "actions"
-      title: "ConversationTranscriptionResponse"
     "CustomMessage":
       properties:
         "name":
@@ -3057,27 +3015,6 @@ components:
         - "description"
         - "attributes"
       title: "EventProperties"
-    "Function":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the function/tool call."
-        "description":
-          type: "string"
-          title: "Description"
-          description: "The description of the tool."
-        "parameters":
-          type: "object"
-          title: "Parameters"
-          description: "The JSON Schema of parameters of the function/tool call."
-      type: "object"
-      required:
-        - "name"
-        - "description"
-        - "parameters"
-      title: "Function"
-      description: "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
     "HTTPValidationError":
       properties:
         "detail":
@@ -3086,35 +3023,6 @@ components:
           title: "Detail"
       type: "object"
       title: "HTTPValidationError"
-    "HttpEndpoint":
-      properties:
-        "url":
-          type: "string"
-          title: "Url"
-          description: "The endpoint URL of the external service to call."
-        "method":
-          type: "string"
-          enum:
-            - "get"
-            - "post"
-          title: "Method"
-          description: "The HTTP method to use for the service call."
-        "argument_location":
-          type: "string"
-          enum:
-            - "body"
-            - "form"
-            - "path"
-            - "query"
-          title: "Argument Location"
-          description: "How to pass the arguments to the request."
-      type: "object"
-      required:
-        - "url"
-        - "method"
-        - "argument_location"
-      title: "HttpEndpoint"
-      description: "The configuration for an HTTP API call."
     "ListResponse_Agent_":
       properties:
         "items":
@@ -3128,18 +3036,20 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[Agent]"
     "ListResponse_AvailableTarget_":
       properties:
@@ -3154,18 +3064,20 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[AvailableTarget]"
     "ListResponse_ChannelTarget_":
       properties:
@@ -3180,18 +3092,20 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[ChannelTarget]"
     "ListResponse_Channel_":
       properties:
@@ -3206,18 +3120,20 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[Channel]"
     "ListResponse_Conversation_":
       properties:
@@ -3232,18 +3148,20 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[Conversation]"
     "ListResponse_CustomMessage_":
       properties:
@@ -3258,18 +3176,20 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[CustomMessage]"
     "ListResponse_Event_":
       properties:
@@ -3284,18 +3204,20 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[Event]"
     "ListResponse_Prompt_":
       properties:
@@ -3310,19 +3232,49 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[Prompt]"
+    "ListResponse_SessionLabel_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/SessionLabel"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Pages"
+        "total_count":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+      title: "ListResponse[SessionLabel]"
     "ListResponse_Session_":
       properties:
         "items":
@@ -3336,23 +3288,25 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[Session]"
     "ListResponse_Tool_":
       properties:
         "items":
-          items: {"$ref": "#/components/schemas/schemas__bubblegum__v2__tools__Tool"}
+          items: {"$ref": "#/components/schemas/Tool"}
           type: "array"
           title: "Items"
         "page":
@@ -3362,29 +3316,24 @@ components:
           type: "integer"
           title: "Page Size"
         "total_pages":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Pages"
         "total_count":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Total Count"
       type: "object"
       required:
         - "items"
         - "page"
         - "page_size"
-        - "total_pages"
-        - "total_count"
       title: "ListResponse[Tool]"
     "LlmConfig":
       properties:
-        "provider":
-          allOf:
-            - {"$ref": "#/components/schemas/Provider"}
-          description: "Provider of the LLM model."
-          default: "azure_openai"
-          examples:
-            - "azure_openai"
-            - "openai"
+        "provider": {"$ref": "#/components/schemas/Provider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
         "model":
           type: "string"
           title: "Model"
@@ -3416,26 +3365,6 @@ components:
         - "asc"
         - "desc"
       title: "OrderByDirection"
-    "Organization":
-      properties:
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The organization ID"
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The organization name"
-        "display_name":
-          type: "string"
-          title: "Display Name"
-          description: "The organization display name"
-      type: "object"
-      required:
-        - "id"
-        - "name"
-        - "display_name"
-      title: "Organization"
     "Prompt":
       properties:
         "name":
@@ -3459,10 +3388,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -3504,10 +3430,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
       type: "object"
       required:
         - "name"
@@ -3561,6 +3484,41 @@ components:
             - type: "string"
             - type: "null"
           title: "Channel Manager Sid"
+        "agent_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Agent Name"
+        "agent_type":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Agent Type"
+        "prompt_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Id"
+        "prompt_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Name"
+        "prompt_version":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Version"
+        "duration":
+          anyOf:
+            - type: "number"
+            - type: "null"
+          title: "Duration"
+        "session_label_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Session Label Id"
         "source":
           anyOf:
             - type: "string"
@@ -3585,6 +3543,120 @@ components:
       required:
         - "timestamp"
       title: "Session"
+    "SessionAction":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "tool_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Tool Name"
+        "tool_request":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Tool Request"
+        "tool_result":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Tool Result"
+      type: "object"
+      required:
+        - "timestamp"
+      title: "SessionAction"
+    "SessionLabel":
+      properties:
+        "session_id":
+          type: "integer"
+          title: "Session Id"
+        "type":
+          type: "string"
+          title: "Type"
+        "code":
+          type: "string"
+          title: "Code"
+        "user_email":
+          type: "string"
+          title: "User Email"
+        "comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Comments"
+        "issue_categories":
+          anyOf:
+            - items:
+                type: "string"
+              type: "array"
+            - type: "null"
+          title: "Issue Categories"
+          default: []
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The label ID"
+        "timestamp":
+          type: "string"
+          title: "Timestamp"
+          description: "The timestamp of the label creation"
+      type: "object"
+      required:
+        - "session_id"
+        - "type"
+        - "code"
+        - "user_email"
+        - "id"
+        - "timestamp"
+      title: "SessionLabel"
+    "SessionLabelCreate":
+      properties:
+        "session_id":
+          type: "integer"
+          title: "Session Id"
+        "type":
+          type: "string"
+          title: "Type"
+        "code":
+          type: "string"
+          title: "Code"
+        "user_email":
+          type: "string"
+          title: "User Email"
+        "comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Comments"
+        "issue_categories":
+          anyOf:
+            - items:
+                type: "string"
+              type: "array"
+            - type: "null"
+          title: "Issue Categories"
+          default: []
+      type: "object"
+      required:
+        - "session_id"
+        - "type"
+        - "code"
+        - "user_email"
+      title: "SessionLabelCreate"
+    "SessionLabelProperties":
+      type: "string"
+      enum:
+        - "timestamp"
+        - "session_id"
+        - "type"
+        - "code"
+        - "user_email"
+        - "issue_categories"
+        - "session_id_list"
+      title: "SessionLabelProperties"
     "SessionProperties":
       type: "string"
       enum:
@@ -3594,11 +3666,60 @@ components:
         - "channel_manager_service"
         - "channel_manager_type"
         - "channel_manager_sid"
+        - "agent_type"
+        - "agent_id"
+        - "agent_name"
+        - "prompt_id"
+        - "prompt_name"
         - "source"
         - "target"
         - "is_legacy"
         - "is_test"
       title: "SessionProperties"
+    "SessionText":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "lang":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Lang"
+        "source":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source"
+        "text":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Text"
+      type: "object"
+      required:
+        - "timestamp"
+      title: "SessionText"
+    "SessionTranscriptionResponse":
+      properties:
+        "session_id":
+          type: "string"
+          title: "Session Id"
+        "transcription":
+          items: {"$ref": "#/components/schemas/SessionText"}
+          type: "array"
+          title: "Transcription"
+        "actions":
+          items: {"$ref": "#/components/schemas/SessionAction"}
+          type: "array"
+          title: "Actions"
+      type: "object"
+      required:
+        - "session_id"
+        - "transcription"
+        - "actions"
+      title: "SessionTranscriptionResponse"
     "TestMessage":
       properties:
         "service_name":
@@ -3651,46 +3772,36 @@ components:
         - "agent_id"
         - "text"
       title: "TestMessageResponse"
-    "ToolDefinition":
+    "Tool":
       properties:
-        "type":
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the tool"
+        "definition":
+          type: "object"
+          title: "Definition"
+          description: "The definition of the tool"
+        "service_id":
+          type: "integer"
+          title: "Service Id"
+          description: "The service this tool belongs to"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the tool"
+        "service_name":
           anyOf:
             - type: "string"
-              enum:
-                - "action"
-                - "endpoint"
-                - "context"
             - type: "null"
-          title: "Type"
-          description: "The action to take when GPT calls the tool."
-        "tool":
-          allOf:
-            - {"$ref": "#/components/schemas/schemas__cortex__v1__tools__Tool"}
-          description: "The tool definition to be used by the OpenAI API."
-        "endpoint":
-          anyOf:
-            - {"$ref": "#/components/schemas/HttpEndpoint"}
-            - type: "null"
-          description: "The configuration for an HTTP API call."
-        "defaults":
-          anyOf:
-            - type: "object"
-            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
-              type: "object"
-            - type: "null"
-          title: "Defaults"
-          description: "The default values for the parameters of the function/tool call."
-        "result":
-          anyOf:
-            - type: "object"
-            - type: "null"
-          title: "Result"
-          description: "The optional result of the tool call. Only used for `context` tools."
+          title: "Service Name"
+          description: "The name of the service this tool belongs to"
       type: "object"
       required:
-        - "tool"
-      title: "ToolDefinition"
-      description: "A tool that can be called from GPT during the conversation.\n\nThe tool can result in one of the following actions depending on the `type` field:\n- `action`:\n  An `ActionRequest` to return to Bubblegum in `GetResponseResponse`.\n- `endpoint`:\n  An HTTP API call to an external tool. Requires the `endpoint` field to be set too.\n- `context`:\n  Sets context variables based on the tool arguments, e.g. to change the session language. Only\n  `language` and `say` context vars are currently supported, but this will be made more generic.\n\nFor example, to change the current session language:\n```\n{\n  \"type\": \"context\",\n  \"tool\": {\n    \"function\": {\n      \"name\": \"set_language\",\n      \"parameters\": {\n        \"language\": {\n          \"type\": \"string\",\n          \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"\n        },\n        \"message\": {\n          \"type\": \"string\",\n          \"description\": \"Inform the caller we're now speaking in the new language.\"\n        }\n      }\n    }\n  }\n}\n```\n\nIf `defaults` is provided, it will be used as the default values for the parameters of the\ntool call, if GPT doesn't provide them:\n```\n\"defaults\": {\n  \"hospital\": \"Queens Hospital\"\n}\n```\n\nSome special \"transform\" handling is supported if the value is a dict with a single `transform`\nkey. The parameter value will be transformed by the given `action` before being used as the\ndefault value:\n\nRemoving an unwanted parameter:\n```\n\"defaults\": {\n  \"hospital\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n```\n\nAdd custom parameters from other parameters using Python's `format`:\n```\n\"defaults\": {\n  \"hello\": {\n    \"transform\": {\n      \"format\": \"Hello, {name}!\"\n    }\n  }\n}\n\nModify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\":\n```\n{\n  \"defaults\": {\n    \"city\": {\n      \"transform\": {\n        \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},\n        \"action\": \"override\",\n        \"format\": \"The {city}\"\n      }\n    }\n  }\n}\n```"
+        - "name"
+        - "service_id"
+        - "id"
+      title: "Tool"
     "ToolDetailResponse":
       properties:
         "name":
@@ -3710,68 +3821,6 @@ components:
         - "description"
         - "fields"
       title: "ToolDetailResponse"
-    "ToolParameterDefault":
-      properties:
-        "transform":
-          allOf:
-            - {"$ref": "#/components/schemas/ToolParameterTransform"}
-          description: "The transform to apply to the value before using it as the default."
-      type: "object"
-      required:
-        - "transform"
-      title: "ToolParameterDefault"
-      description: "The default value for a parameter of the tool call."
-    "ToolParameterTransform":
-      properties:
-        "when":
-          anyOf:
-            - {"$ref": "#/components/schemas/ToolParameterTransformCondition"}
-            - type: "null"
-          description: "Only apply the transform if the condition is met."
-        "action":
-          type: "string"
-          enum:
-            - "default"
-            - "override"
-            - "remove"
-          title: "Action"
-          description: "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
-          default: "default"
-        "format":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Format"
-          description: "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
-      type: "object"
-      title: "ToolParameterTransform"
-      description: "A transform to be applied to the value of a parameter."
-    "ToolParameterTransformCondition":
-      properties:
-        "key":
-          type: "string"
-          title: "Key"
-          description: "The name of the parameter to check."
-        "value":
-          type: "string"
-          title: "Value"
-          description: "The value to check against the parameter."
-        "operator":
-          anyOf:
-            - type: "string"
-              enum:
-                - "eq"
-              const: "eq"
-            - type: "null"
-          title: "Operator"
-          description: "The operator to use for the comparison."
-          default: "eq"
-      type: "object"
-      required:
-        - "key"
-        - "value"
-      title: "ToolParameterTransformCondition"
-      description: "A condition to be met for a transform to be applied to the value of a parameter."
     "ToolProperties":
       type: "string"
       enum:
@@ -3802,55 +3851,6 @@ components:
         - "msg"
         - "type"
       title: "ValidationError"
-    "schemas__bubblegum__v2__tools__Tool":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the tool"
-        "definition":
-          allOf:
-            - {"$ref": "#/components/schemas/ToolDefinition"}
-          description: "The definition of the tool"
-        "service_id":
-          type: "integer"
-          title: "Service Id"
-          description: "The service this tool belongs to"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the tool"
-        "service_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Service Name"
-          description: "The name of the service this tool belongs to"
-      type: "object"
-      required:
-        - "name"
-        - "service_id"
-        - "id"
-      title: "Tool"
-    "schemas__cortex__v1__tools__Tool":
-      properties:
-        "type":
-          type: "string"
-          enum:
-            - "function"
-          const: "function"
-          title: "Type"
-          description: "Always `function`."
-          default: "function"
-        "function":
-          allOf:
-            - {"$ref": "#/components/schemas/Function"}
-          description: "The tool definition including the JSON Schema of its parameters."
-      type: "object"
-      required:
-        - "function"
-      title: "Tool"
-      description: "A tool definition to be used by the OpenAI API."
   securitySchemes:
     "APIKeyHeader":
       type: "apiKey"

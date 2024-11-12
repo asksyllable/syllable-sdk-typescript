@@ -8,7 +8,7 @@ import { ToolDetailResponse } from "syllable-sdk/models/components";
 let value: ToolDetailResponse = {
   name: "<value>",
   description:
-    "godparent finally aside however aha roundabout embarrassment earth wildly frank",
+    "politely oof failing other insignificant woot purse salty even as",
   fields: [
     "<value>",
   ],

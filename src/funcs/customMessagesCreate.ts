@@ -70,6 +70,9 @@ export async function customMessagesCreate(
   const context = {
     operationID: "custom_messages_create",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

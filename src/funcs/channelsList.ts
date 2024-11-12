@@ -79,6 +79,9 @@ export async function channelsList(
   const context = {
     operationID: "channels_list",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -70,6 +70,9 @@ export async function agentsCreate(
   const context = {
     operationID: "agent_create",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -53,6 +53,9 @@ export async function dashboardsGetSessionAgents(
   const context = {
     operationID: "get_session_agents",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig

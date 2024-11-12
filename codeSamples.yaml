@@ -219,7 +219,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channels_delete
+          label: channel_targets_delete
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -230,6 +230,7 @@ actions:
             async function run() {
               const result = await syllableSDK.channels.delete({
                 channelId: "<id>",
+                targetId: "<id>",
               });
 
               // Handle the result
@@ -254,7 +255,6 @@ actions:
                 channelId: 134365,
                 channelTargetCreateRequest: {
                   channelId: 486589,
-                  channelName: "<value>",
                   agentId: 638424,
                   target: "<value>",
                   targetMode: "<value>",
@@ -295,7 +295,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channels_target_update
+          label: channel_targets_update
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -338,28 +338,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.conversations.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/conversations/{conversation_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: conversation_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.conversations.getById({
-                conversationId: "<id>",
-              });
 
               // Handle the result
               console.log(result);
@@ -658,26 +636,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/organizations/"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: organizations_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.organizations.list();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/prompts/"]["get"]
     update:
       x-codeSamples:
@@ -715,7 +673,6 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -744,12 +701,11 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 597129,
+                id: 857478,
                 lastUpdated: "<value>",
               });
 
@@ -803,6 +759,131 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/session_labels/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_labels_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionLabels.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: session_labels_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/session_labels/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_label_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionLabels.create({
+                sessionId: 486589,
+                type: "<value>",
+                code: "<value>",
+                userEmail: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: session_label_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.create({
+                sessionId: 486589,
+                type: "<value>",
+                code: "<value>",
+                userEmail: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/session_labels/{session_label_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_label_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionLabels.getById({
+                sessionLabelId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: session_label_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.getById({
+                sessionLabelId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/sessions/"]["get"]
     update:
       x-codeSamples:
@@ -817,6 +898,28 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessions.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_transcript_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.transcript.getById({
+                sessionId: "<id>",
+              });
 
               // Handle the result
               console.log(result);

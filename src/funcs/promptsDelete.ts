@@ -78,6 +78,9 @@ export async function promptsDelete(
   const context = {
     operationID: "prompts_delete",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKeyHeader,
     retryConfig: options?.retries
       || client._options.retryConfig
