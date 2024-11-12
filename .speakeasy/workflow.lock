@@ -23,8 +23,6 @@ workflow:
                 - location: ./overlay-remove-V1.yaml
                 - location: ./codeSamples.yaml
             output: openapi.yaml
-            registry:
-                location: registry.speakeasyapi.dev/syllableai/syllableai/syllable-sdk-oas
     targets:
         syllable-sdk:
             target: typescript
