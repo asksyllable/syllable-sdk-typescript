@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SessionLabel = {
   sessionId: number;
@@ -89,4 +92,18 @@ export namespace SessionLabel$ {
   export const outboundSchema = SessionLabel$outboundSchema;
   /** @deprecated use `SessionLabel$Outbound` instead. */
   export type Outbound = SessionLabel$Outbound;
+}
+
+export function sessionLabelToJSON(sessionLabel: SessionLabel): string {
+  return JSON.stringify(SessionLabel$outboundSchema.parse(sessionLabel));
+}
+
+export function sessionLabelFromJSON(
+  jsonString: string,
+): SafeParseResult<SessionLabel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SessionLabel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SessionLabel' from JSON`,
+  );
 }

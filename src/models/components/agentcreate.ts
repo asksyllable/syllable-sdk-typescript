@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentToolDefaults,
   AgentToolDefaults$inboundSchema,
@@ -53,6 +56,24 @@ export namespace AgentCreateVariables$ {
   export const outboundSchema = AgentCreateVariables$outboundSchema;
   /** @deprecated use `AgentCreateVariables$Outbound` instead. */
   export type Outbound = AgentCreateVariables$Outbound;
+}
+
+export function agentCreateVariablesToJSON(
+  agentCreateVariables: AgentCreateVariables,
+): string {
+  return JSON.stringify(
+    AgentCreateVariables$outboundSchema.parse(agentCreateVariables),
+  );
+}
+
+export function agentCreateVariablesFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentCreateVariables, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentCreateVariables$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentCreateVariables' from JSON`,
+  );
 }
 
 /** @internal */
@@ -129,4 +150,18 @@ export namespace AgentCreate$ {
   export const outboundSchema = AgentCreate$outboundSchema;
   /** @deprecated use `AgentCreate$Outbound` instead. */
   export type Outbound = AgentCreate$Outbound;
+}
+
+export function agentCreateToJSON(agentCreate: AgentCreate): string {
+  return JSON.stringify(AgentCreate$outboundSchema.parse(agentCreate));
+}
+
+export function agentCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentCreate' from JSON`,
+  );
 }

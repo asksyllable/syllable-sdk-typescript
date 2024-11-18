@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Conversation = {
   timestamp: Date;
@@ -115,4 +118,18 @@ export namespace Conversation$ {
   export const outboundSchema = Conversation$outboundSchema;
   /** @deprecated use `Conversation$Outbound` instead. */
   export type Outbound = Conversation$Outbound;
+}
+
+export function conversationToJSON(conversation: Conversation): string {
+  return JSON.stringify(Conversation$outboundSchema.parse(conversation));
+}
+
+export function conversationFromJSON(
+  jsonString: string,
+): SafeParseResult<Conversation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Conversation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Conversation' from JSON`,
+  );
 }

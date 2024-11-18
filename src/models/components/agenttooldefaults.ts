@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentToolFieldDefault,
   AgentToolFieldDefault$inboundSchema,
@@ -63,4 +66,22 @@ export namespace AgentToolDefaults$ {
   export const outboundSchema = AgentToolDefaults$outboundSchema;
   /** @deprecated use `AgentToolDefaults$Outbound` instead. */
   export type Outbound = AgentToolDefaults$Outbound;
+}
+
+export function agentToolDefaultsToJSON(
+  agentToolDefaults: AgentToolDefaults,
+): string {
+  return JSON.stringify(
+    AgentToolDefaults$outboundSchema.parse(agentToolDefaults),
+  );
+}
+
+export function agentToolDefaultsFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentToolDefaults, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentToolDefaults$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentToolDefaults' from JSON`,
+  );
 }

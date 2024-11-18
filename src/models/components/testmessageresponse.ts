@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Response = {};
 
@@ -42,6 +45,20 @@ export namespace Response$ {
   export const outboundSchema = Response$outboundSchema;
   /** @deprecated use `Response$Outbound` instead. */
   export type Outbound = Response$Outbound;
+}
+
+export function responseToJSON(response: Response): string {
+  return JSON.stringify(Response$outboundSchema.parse(response));
+}
+
+export function responseFromJSON(
+  jsonString: string,
+): SafeParseResult<Response, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Response$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Response' from JSON`,
+  );
 }
 
 /** @internal */
@@ -97,4 +114,22 @@ export namespace TestMessageResponse$ {
   export const outboundSchema = TestMessageResponse$outboundSchema;
   /** @deprecated use `TestMessageResponse$Outbound` instead. */
   export type Outbound = TestMessageResponse$Outbound;
+}
+
+export function testMessageResponseToJSON(
+  testMessageResponse: TestMessageResponse,
+): string {
+  return JSON.stringify(
+    TestMessageResponse$outboundSchema.parse(testMessageResponse),
+  );
+}
+
+export function testMessageResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<TestMessageResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TestMessageResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TestMessageResponse' from JSON`,
+  );
 }

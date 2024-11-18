@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomMessageCreate = {
   /**
@@ -56,4 +59,22 @@ export namespace CustomMessageCreate$ {
   export const outboundSchema = CustomMessageCreate$outboundSchema;
   /** @deprecated use `CustomMessageCreate$Outbound` instead. */
   export type Outbound = CustomMessageCreate$Outbound;
+}
+
+export function customMessageCreateToJSON(
+  customMessageCreate: CustomMessageCreate,
+): string {
+  return JSON.stringify(
+    CustomMessageCreate$outboundSchema.parse(customMessageCreate),
+  );
+}
+
+export function customMessageCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomMessageCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomMessageCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomMessageCreate' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChannelServices,
   ChannelServices$inboundSchema,
@@ -15,6 +18,9 @@ export type Channel = {
    * The channel name
    */
   name: string;
+  /**
+   * The service for the channel
+   */
   channelService: ChannelServices;
   /**
    * The comma-delimited list of supported modes for the channel
@@ -76,4 +82,18 @@ export namespace Channel$ {
   export const outboundSchema = Channel$outboundSchema;
   /** @deprecated use `Channel$Outbound` instead. */
   export type Outbound = Channel$Outbound;
+}
+
+export function channelToJSON(channel: Channel): string {
+  return JSON.stringify(Channel$outboundSchema.parse(channel));
+}
+
+export function channelFromJSON(
+  jsonString: string,
+): SafeParseResult<Channel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Channel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Channel' from JSON`,
+  );
 }

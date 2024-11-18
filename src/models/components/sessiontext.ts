@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SessionText = {
   timestamp: Date;
@@ -54,4 +57,18 @@ export namespace SessionText$ {
   export const outboundSchema = SessionText$outboundSchema;
   /** @deprecated use `SessionText$Outbound` instead. */
   export type Outbound = SessionText$Outbound;
+}
+
+export function sessionTextToJSON(sessionText: SessionText): string {
+  return JSON.stringify(SessionText$outboundSchema.parse(sessionText));
+}
+
+export function sessionTextFromJSON(
+  jsonString: string,
+): SafeParseResult<SessionText, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SessionText$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SessionText' from JSON`,
+  );
 }

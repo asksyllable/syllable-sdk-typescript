@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Successful Response
@@ -44,4 +47,29 @@ export namespace GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekda
   /** @deprecated use `GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday$Outbound` instead. */
   export type Outbound =
     GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday$Outbound;
+}
+
+export function getWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekdayToJSON(
+  getWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday:
+    GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday,
+): string {
+  return JSON.stringify(
+    GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday$outboundSchema
+      .parse(getWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday),
+  );
+}
+
+export function getWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekdayFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetWeeklyCallVolumeByWeekdayResponseGetWeeklyCallVolumeByWeekday' from JSON`,
+  );
 }

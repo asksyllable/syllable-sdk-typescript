@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetSessionSummaryRequest = {
   page?: number | undefined;
@@ -84,6 +87,24 @@ export namespace GetSessionSummaryRequest$ {
   export type Outbound = GetSessionSummaryRequest$Outbound;
 }
 
+export function getSessionSummaryRequestToJSON(
+  getSessionSummaryRequest: GetSessionSummaryRequest,
+): string {
+  return JSON.stringify(
+    GetSessionSummaryRequest$outboundSchema.parse(getSessionSummaryRequest),
+  );
+}
+
+export function getSessionSummaryRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSessionSummaryRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetSessionSummaryRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSessionSummaryRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const GetSessionSummaryResponseGetSessionSummary$inboundSchema:
   z.ZodType<GetSessionSummaryResponseGetSessionSummary, z.ZodTypeDef, unknown> =
@@ -113,4 +134,31 @@ export namespace GetSessionSummaryResponseGetSessionSummary$ {
     GetSessionSummaryResponseGetSessionSummary$outboundSchema;
   /** @deprecated use `GetSessionSummaryResponseGetSessionSummary$Outbound` instead. */
   export type Outbound = GetSessionSummaryResponseGetSessionSummary$Outbound;
+}
+
+export function getSessionSummaryResponseGetSessionSummaryToJSON(
+  getSessionSummaryResponseGetSessionSummary:
+    GetSessionSummaryResponseGetSessionSummary,
+): string {
+  return JSON.stringify(
+    GetSessionSummaryResponseGetSessionSummary$outboundSchema.parse(
+      getSessionSummaryResponseGetSessionSummary,
+    ),
+  );
+}
+
+export function getSessionSummaryResponseGetSessionSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetSessionSummaryResponseGetSessionSummary,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetSessionSummaryResponseGetSessionSummary$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetSessionSummaryResponseGetSessionSummary' from JSON`,
+  );
 }

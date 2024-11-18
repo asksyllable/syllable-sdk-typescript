@@ -185,6 +185,9 @@ run();
 ### [sessions](docs/sdks/sessions/README.md)
 
 * [list](docs/sdks/sessions/README.md#list) - Sessions List
+* [getById](docs/sdks/sessions/README.md#getbyid) - Get A Single Session By Id
+* [generateSessionRecordingUrls](docs/sdks/sessions/README.md#generatesessionrecordingurls) - Generate Recording Urls
+* [sessionRecordingStream](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 
 #### [sessions.transcript](docs/sdks/transcript/README.md)
 
@@ -250,7 +253,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionLabelsCreate`](docs/sdks/sessionlabels/README.md#create) - Create Label
 - [`sessionLabelsGetById`](docs/sdks/sessionlabels/README.md#getbyid) - Get Label By Id
 - [`sessionLabelsList`](docs/sdks/sessionlabels/README.md#list) - Session Labels List
+- [`sessionsGenerateSessionRecordingUrls`](docs/sdks/sessions/README.md#generatesessionrecordingurls) - Generate Recording Urls
+- [`sessionsGetById`](docs/sdks/sessions/README.md#getbyid) - Get A Single Session By Id
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
+- [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
@@ -398,10 +404,10 @@ Validation errors can also occur when either method arguments or data returned f
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                  |
-| --- | ----------------------- |
-| 0   | `http://localhost:8001` |
-| 1   | `http://localhost:8001` |
+| #   | Server                                  |
+| --- | --------------------------------------- |
+| 0   | `https://syllable-app-558bbffbc8-zmhqc` |
+| 1   | `http://localhost:8001`                 |
 
 #### Example
 
@@ -431,7 +437,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverURL: "http://localhost:8001",
+  serverURL: "https://syllable-app-558bbffbc8-zmhqc",
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 

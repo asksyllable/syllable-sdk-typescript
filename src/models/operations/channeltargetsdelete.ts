@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelTargetsDeleteRequest = {
   channelId: string;
@@ -57,4 +60,24 @@ export namespace ChannelTargetsDeleteRequest$ {
   export const outboundSchema = ChannelTargetsDeleteRequest$outboundSchema;
   /** @deprecated use `ChannelTargetsDeleteRequest$Outbound` instead. */
   export type Outbound = ChannelTargetsDeleteRequest$Outbound;
+}
+
+export function channelTargetsDeleteRequestToJSON(
+  channelTargetsDeleteRequest: ChannelTargetsDeleteRequest,
+): string {
+  return JSON.stringify(
+    ChannelTargetsDeleteRequest$outboundSchema.parse(
+      channelTargetsDeleteRequest,
+    ),
+  );
+}
+
+export function channelTargetsDeleteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ChannelTargetsDeleteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChannelTargetsDeleteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelTargetsDeleteRequest' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomMessage = {
   /**
@@ -63,4 +66,18 @@ export namespace CustomMessage$ {
   export const outboundSchema = CustomMessage$outboundSchema;
   /** @deprecated use `CustomMessage$Outbound` instead. */
   export type Outbound = CustomMessage$Outbound;
+}
+
+export function customMessageToJSON(customMessage: CustomMessage): string {
+  return JSON.stringify(CustomMessage$outboundSchema.parse(customMessage));
+}
+
+export function customMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomMessage' from JSON`,
+  );
 }
