@@ -178,6 +178,21 @@ actions:
   - target: $["paths"]["/api/v1/sessions/"]["get"]["tags"]
     update:
       - "sessions"
+  - target: $["paths"]["/api/v1/sessions/{session_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/sessions/{session_id}"]["get"]["tags"]
+    update:
+      - "sessions
+  - target: $["paths"]["/api/v1/sessions/recording/{session_id}"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/sessions/recording/{session_id}"]["post"]["tags"]
+    update:
+      - "sessions
+  - target: $["paths"]["/api/v1/sessions/recording/stream"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/sessions/recording/stream"]["get"]["tags"]
+    update:
+      - "sessions
   - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]["tags"]
