@@ -5,7 +5,7 @@
 ```typescript
 import { SessionProperties } from "syllable-sdk/models/components";
 
-let value: SessionProperties = "session_id";
+let value: SessionProperties = "channel_manager_type";
 ```
 
 ## Values

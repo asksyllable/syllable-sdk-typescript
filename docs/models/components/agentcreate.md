@@ -7,10 +7,10 @@ import { AgentCreate } from "syllable-sdk/models/components";
 
 let value: AgentCreate = {
   name: "<value>",
-  timezone: "Africa/Malabo",
+  timezone: "Africa/Kinshasa",
   type: "<value>",
-  promptId: 20218,
-  customMessageId: 832620,
+  promptId: 87129,
+  customMessageId: 20218,
   languages: [
     "<value>",
   ],

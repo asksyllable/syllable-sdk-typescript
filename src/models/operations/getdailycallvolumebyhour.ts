@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Successful Response
@@ -43,4 +46,29 @@ export namespace GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour$ {
   /** @deprecated use `GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour$Outbound` instead. */
   export type Outbound =
     GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour$Outbound;
+}
+
+export function getDailyCallVolumeByHourResponseGetDailyCallVolumeByHourToJSON(
+  getDailyCallVolumeByHourResponseGetDailyCallVolumeByHour:
+    GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour,
+): string {
+  return JSON.stringify(
+    GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour$outboundSchema
+      .parse(getDailyCallVolumeByHourResponseGetDailyCallVolumeByHour),
+  );
+}
+
+export function getDailyCallVolumeByHourResponseGetDailyCallVolumeByHourFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDailyCallVolumeByHourResponseGetDailyCallVolumeByHour' from JSON`,
+  );
 }

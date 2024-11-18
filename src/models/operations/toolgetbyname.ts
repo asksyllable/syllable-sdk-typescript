@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ToolGetByNameRequest = {
   toolName: string;
@@ -51,4 +54,22 @@ export namespace ToolGetByNameRequest$ {
   export const outboundSchema = ToolGetByNameRequest$outboundSchema;
   /** @deprecated use `ToolGetByNameRequest$Outbound` instead. */
   export type Outbound = ToolGetByNameRequest$Outbound;
+}
+
+export function toolGetByNameRequestToJSON(
+  toolGetByNameRequest: ToolGetByNameRequest,
+): string {
+  return JSON.stringify(
+    ToolGetByNameRequest$outboundSchema.parse(toolGetByNameRequest),
+  );
+}
+
+export function toolGetByNameRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ToolGetByNameRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ToolGetByNameRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ToolGetByNameRequest' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TestMessage = {
   /**
@@ -83,4 +86,18 @@ export namespace TestMessage$ {
   export const outboundSchema = TestMessage$outboundSchema;
   /** @deprecated use `TestMessage$Outbound` instead. */
   export type Outbound = TestMessage$Outbound;
+}
+
+export function testMessageToJSON(testMessage: TestMessage): string {
+  return JSON.stringify(TestMessage$outboundSchema.parse(testMessage));
+}
+
+export function testMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<TestMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TestMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TestMessage' from JSON`,
+  );
 }

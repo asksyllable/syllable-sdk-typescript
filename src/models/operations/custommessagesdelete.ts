@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomMessagesDeleteRequest = {
   customMessageId: number;
@@ -55,4 +58,24 @@ export namespace CustomMessagesDeleteRequest$ {
   export const outboundSchema = CustomMessagesDeleteRequest$outboundSchema;
   /** @deprecated use `CustomMessagesDeleteRequest$Outbound` instead. */
   export type Outbound = CustomMessagesDeleteRequest$Outbound;
+}
+
+export function customMessagesDeleteRequestToJSON(
+  customMessagesDeleteRequest: CustomMessagesDeleteRequest,
+): string {
+  return JSON.stringify(
+    CustomMessagesDeleteRequest$outboundSchema.parse(
+      customMessagesDeleteRequest,
+    ),
+  );
+}
+
+export function customMessagesDeleteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomMessagesDeleteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomMessagesDeleteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomMessagesDeleteRequest' from JSON`,
+  );
 }

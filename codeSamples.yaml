@@ -673,6 +673,7 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -701,11 +702,12 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 857478,
+                id: 597129,
                 lastUpdated: "<value>",
               });
 
@@ -846,6 +848,50 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/sessions/recording/stream"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_recording_stream
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.sessionRecordingStream({
+                token: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/sessions/recording/{session_id}"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: generate_session_recording_urls
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.generateSessionRecordingUrls({
+                sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]
     update:
       x-codeSamples:
@@ -860,6 +906,28 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessions.transcript.getById({
+                sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/sessions/{session_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.getById({
                 sessionId: "<id>",
               });
 

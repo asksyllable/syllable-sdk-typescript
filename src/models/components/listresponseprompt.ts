@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Prompt,
   Prompt$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ListResponsePrompt$ {
   export const outboundSchema = ListResponsePrompt$outboundSchema;
   /** @deprecated use `ListResponsePrompt$Outbound` instead. */
   export type Outbound = ListResponsePrompt$Outbound;
+}
+
+export function listResponsePromptToJSON(
+  listResponsePrompt: ListResponsePrompt,
+): string {
+  return JSON.stringify(
+    ListResponsePrompt$outboundSchema.parse(listResponsePrompt),
+  );
+}
+
+export function listResponsePromptFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResponsePrompt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResponsePrompt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponsePrompt' from JSON`,
+  );
 }

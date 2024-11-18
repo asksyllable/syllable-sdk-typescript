@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SessionTranscriptGetByIdRequest = {
   sessionId: string;
@@ -51,4 +54,24 @@ export namespace SessionTranscriptGetByIdRequest$ {
   export const outboundSchema = SessionTranscriptGetByIdRequest$outboundSchema;
   /** @deprecated use `SessionTranscriptGetByIdRequest$Outbound` instead. */
   export type Outbound = SessionTranscriptGetByIdRequest$Outbound;
+}
+
+export function sessionTranscriptGetByIdRequestToJSON(
+  sessionTranscriptGetByIdRequest: SessionTranscriptGetByIdRequest,
+): string {
+  return JSON.stringify(
+    SessionTranscriptGetByIdRequest$outboundSchema.parse(
+      sessionTranscriptGetByIdRequest,
+    ),
+  );
+}
+
+export function sessionTranscriptGetByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SessionTranscriptGetByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SessionTranscriptGetByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SessionTranscriptGetByIdRequest' from JSON`,
+  );
 }

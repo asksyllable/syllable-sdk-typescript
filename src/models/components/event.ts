@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Attributes = {};
 
@@ -48,6 +51,20 @@ export namespace Attributes$ {
   export const outboundSchema = Attributes$outboundSchema;
   /** @deprecated use `Attributes$Outbound` instead. */
   export type Outbound = Attributes$Outbound;
+}
+
+export function attributesToJSON(attributes: Attributes): string {
+  return JSON.stringify(Attributes$outboundSchema.parse(attributes));
+}
+
+export function attributesFromJSON(
+  jsonString: string,
+): SafeParseResult<Attributes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Attributes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Attributes' from JSON`,
+  );
 }
 
 /** @internal */
@@ -124,4 +141,18 @@ export namespace Event$ {
   export const outboundSchema = Event$outboundSchema;
   /** @deprecated use `Event$Outbound` instead. */
   export type Outbound = Event$Outbound;
+}
+
+export function eventToJSON(event: Event): string {
+  return JSON.stringify(Event$outboundSchema.parse(event));
+}
+
+export function eventFromJSON(
+  jsonString: string,
+): SafeParseResult<Event, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Event$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Event' from JSON`,
+  );
 }
