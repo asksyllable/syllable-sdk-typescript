@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelTarget = {
   id: number;
@@ -89,4 +92,18 @@ export namespace ChannelTarget$ {
   export const outboundSchema = ChannelTarget$outboundSchema;
   /** @deprecated use `ChannelTarget$Outbound` instead. */
   export type Outbound = ChannelTarget$Outbound;
+}
+
+export function channelTargetToJSON(channelTarget: ChannelTarget): string {
+  return JSON.stringify(ChannelTarget$outboundSchema.parse(channelTarget));
+}
+
+export function channelTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<ChannelTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChannelTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelTarget' from JSON`,
+  );
 }

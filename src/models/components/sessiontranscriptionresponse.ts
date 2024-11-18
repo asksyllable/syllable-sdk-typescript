@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SessionAction,
   SessionAction$inboundSchema,
@@ -71,4 +74,24 @@ export namespace SessionTranscriptionResponse$ {
   export const outboundSchema = SessionTranscriptionResponse$outboundSchema;
   /** @deprecated use `SessionTranscriptionResponse$Outbound` instead. */
   export type Outbound = SessionTranscriptionResponse$Outbound;
+}
+
+export function sessionTranscriptionResponseToJSON(
+  sessionTranscriptionResponse: SessionTranscriptionResponse,
+): string {
+  return JSON.stringify(
+    SessionTranscriptionResponse$outboundSchema.parse(
+      sessionTranscriptionResponse,
+    ),
+  );
+}
+
+export function sessionTranscriptionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<SessionTranscriptionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SessionTranscriptionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SessionTranscriptionResponse' from JSON`,
+  );
 }

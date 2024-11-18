@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AgentDeleteRequest = {
   agentId: number;
@@ -55,4 +58,22 @@ export namespace AgentDeleteRequest$ {
   export const outboundSchema = AgentDeleteRequest$outboundSchema;
   /** @deprecated use `AgentDeleteRequest$Outbound` instead. */
   export type Outbound = AgentDeleteRequest$Outbound;
+}
+
+export function agentDeleteRequestToJSON(
+  agentDeleteRequest: AgentDeleteRequest,
+): string {
+  return JSON.stringify(
+    AgentDeleteRequest$outboundSchema.parse(agentDeleteRequest),
+  );
+}
+
+export function agentDeleteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentDeleteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentDeleteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentDeleteRequest' from JSON`,
+  );
 }

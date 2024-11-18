@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Successful Response
@@ -43,4 +46,29 @@ export namespace GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay$ {
   /** @deprecated use `GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay$Outbound` instead. */
   export type Outbound =
     GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay$Outbound;
+}
+
+export function getMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDayToJSON(
+  getMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay:
+    GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay,
+): string {
+  return JSON.stringify(
+    GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay$outboundSchema
+      .parse(getMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay),
+  );
+}
+
+export function getMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDayFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetMonthlyCallVolumeByDayResponseGetMonthlyCallVolumeByDay' from JSON`,
+  );
 }

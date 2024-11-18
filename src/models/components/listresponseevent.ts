@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Event,
   Event$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ListResponseEvent$ {
   export const outboundSchema = ListResponseEvent$outboundSchema;
   /** @deprecated use `ListResponseEvent$Outbound` instead. */
   export type Outbound = ListResponseEvent$Outbound;
+}
+
+export function listResponseEventToJSON(
+  listResponseEvent: ListResponseEvent,
+): string {
+  return JSON.stringify(
+    ListResponseEvent$outboundSchema.parse(listResponseEvent),
+  );
+}
+
+export function listResponseEventFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResponseEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResponseEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseEvent' from JSON`,
+  );
 }

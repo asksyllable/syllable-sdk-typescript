@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChannelTarget,
   ChannelTarget$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ListResponseChannelTarget$ {
   export const outboundSchema = ListResponseChannelTarget$outboundSchema;
   /** @deprecated use `ListResponseChannelTarget$Outbound` instead. */
   export type Outbound = ListResponseChannelTarget$Outbound;
+}
+
+export function listResponseChannelTargetToJSON(
+  listResponseChannelTarget: ListResponseChannelTarget,
+): string {
+  return JSON.stringify(
+    ListResponseChannelTarget$outboundSchema.parse(listResponseChannelTarget),
+  );
+}
+
+export function listResponseChannelTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResponseChannelTarget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResponseChannelTarget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseChannelTarget' from JSON`,
+  );
 }

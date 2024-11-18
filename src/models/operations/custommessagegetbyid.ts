@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomMessageGetByIdRequest = {
   customMessageId: number;
@@ -51,4 +54,24 @@ export namespace CustomMessageGetByIdRequest$ {
   export const outboundSchema = CustomMessageGetByIdRequest$outboundSchema;
   /** @deprecated use `CustomMessageGetByIdRequest$Outbound` instead. */
   export type Outbound = CustomMessageGetByIdRequest$Outbound;
+}
+
+export function customMessageGetByIdRequestToJSON(
+  customMessageGetByIdRequest: CustomMessageGetByIdRequest,
+): string {
+  return JSON.stringify(
+    CustomMessageGetByIdRequest$outboundSchema.parse(
+      customMessageGetByIdRequest,
+    ),
+  );
+}
+
+export function customMessageGetByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomMessageGetByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomMessageGetByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomMessageGetByIdRequest' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PromptsDeleteRequest = {
   promptId: number;
@@ -55,4 +58,22 @@ export namespace PromptsDeleteRequest$ {
   export const outboundSchema = PromptsDeleteRequest$outboundSchema;
   /** @deprecated use `PromptsDeleteRequest$Outbound` instead. */
   export type Outbound = PromptsDeleteRequest$Outbound;
+}
+
+export function promptsDeleteRequestToJSON(
+  promptsDeleteRequest: PromptsDeleteRequest,
+): string {
+  return JSON.stringify(
+    PromptsDeleteRequest$outboundSchema.parse(promptsDeleteRequest),
+  );
+}
+
+export function promptsDeleteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptsDeleteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptsDeleteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptsDeleteRequest' from JSON`,
+  );
 }

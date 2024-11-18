@@ -6,7 +6,7 @@
 import { SessionLabelCreate } from "syllable-sdk/models/components";
 
 let value: SessionLabelCreate = {
-  sessionId: 97101,
+  sessionId: 976460,
   type: "<value>",
   code: "<value>",
   userEmail: "<value>",

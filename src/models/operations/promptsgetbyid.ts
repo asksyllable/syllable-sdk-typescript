@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PromptsGetByIdRequest = {
   promptId: number;
@@ -51,4 +54,22 @@ export namespace PromptsGetByIdRequest$ {
   export const outboundSchema = PromptsGetByIdRequest$outboundSchema;
   /** @deprecated use `PromptsGetByIdRequest$Outbound` instead. */
   export type Outbound = PromptsGetByIdRequest$Outbound;
+}
+
+export function promptsGetByIdRequestToJSON(
+  promptsGetByIdRequest: PromptsGetByIdRequest,
+): string {
+  return JSON.stringify(
+    PromptsGetByIdRequest$outboundSchema.parse(promptsGetByIdRequest),
+  );
+}
+
+export function promptsGetByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<PromptsGetByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PromptsGetByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptsGetByIdRequest' from JSON`,
+  );
 }

@@ -4,19 +4,92 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+export const ConversationsListQueryParamOrderBy = {
+  Timestamp: "timestamp",
+  AgentType: "agent_type",
+  AgentId: "agent_id",
+  AgentName: "agent_name",
+  PromptId: "prompt_id",
+  PromptName: "prompt_name",
+  LlmProvider: "llm_provider",
+  LlmModel: "llm_model",
+  LlmVersion: "llm_version",
+  IsLegacy: "is_legacy",
+} as const;
+export type ConversationsListQueryParamOrderBy = ClosedEnum<
+  typeof ConversationsListQueryParamOrderBy
+>;
+
+export const ConversationsListQueryParamOrderByDirection = {
+  Asc: "asc",
+  Desc: "desc",
+} as const;
+export type ConversationsListQueryParamOrderByDirection = ClosedEnum<
+  typeof ConversationsListQueryParamOrderByDirection
+>;
 
 export type ConversationsListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.ConversationProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: components.ConversationProperties | undefined;
-  orderByDirection?: components.OrderByDirection | undefined;
+  orderBy?: ConversationsListQueryParamOrderBy | undefined;
+  orderByDirection?: ConversationsListQueryParamOrderByDirection | undefined;
   fields?: Array<components.ConversationProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
+
+/** @internal */
+export const ConversationsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
+  typeof ConversationsListQueryParamOrderBy
+> = z.nativeEnum(ConversationsListQueryParamOrderBy);
+
+/** @internal */
+export const ConversationsListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
+  typeof ConversationsListQueryParamOrderBy
+> = ConversationsListQueryParamOrderBy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConversationsListQueryParamOrderBy$ {
+  /** @deprecated use `ConversationsListQueryParamOrderBy$inboundSchema` instead. */
+  export const inboundSchema = ConversationsListQueryParamOrderBy$inboundSchema;
+  /** @deprecated use `ConversationsListQueryParamOrderBy$outboundSchema` instead. */
+  export const outboundSchema =
+    ConversationsListQueryParamOrderBy$outboundSchema;
+}
+
+/** @internal */
+export const ConversationsListQueryParamOrderByDirection$inboundSchema:
+  z.ZodNativeEnum<typeof ConversationsListQueryParamOrderByDirection> = z
+    .nativeEnum(ConversationsListQueryParamOrderByDirection);
+
+/** @internal */
+export const ConversationsListQueryParamOrderByDirection$outboundSchema:
+  z.ZodNativeEnum<typeof ConversationsListQueryParamOrderByDirection> =
+    ConversationsListQueryParamOrderByDirection$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ConversationsListQueryParamOrderByDirection$ {
+  /** @deprecated use `ConversationsListQueryParamOrderByDirection$inboundSchema` instead. */
+  export const inboundSchema =
+    ConversationsListQueryParamOrderByDirection$inboundSchema;
+  /** @deprecated use `ConversationsListQueryParamOrderByDirection$outboundSchema` instead. */
+  export const outboundSchema =
+    ConversationsListQueryParamOrderByDirection$outboundSchema;
+}
 
 /** @internal */
 export const ConversationsListRequest$inboundSchema: z.ZodType<
@@ -29,8 +102,9 @@ export const ConversationsListRequest$inboundSchema: z.ZodType<
   search_fields: z.array(components.ConversationProperties$inboundSchema)
     .optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: components.ConversationProperties$inboundSchema.optional(),
-  order_by_direction: components.OrderByDirection$inboundSchema.optional(),
+  order_by: ConversationsListQueryParamOrderBy$inboundSchema.optional(),
+  order_by_direction: ConversationsListQueryParamOrderByDirection$inboundSchema
+    .optional(),
   fields: z.nullable(z.array(components.ConversationProperties$inboundSchema))
     .optional(),
   start_datetime: z.nullable(z.string()).optional(),
@@ -70,8 +144,9 @@ export const ConversationsListRequest$outboundSchema: z.ZodType<
   searchFields: z.array(components.ConversationProperties$outboundSchema)
     .optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: components.ConversationProperties$outboundSchema.optional(),
-  orderByDirection: components.OrderByDirection$outboundSchema.optional(),
+  orderBy: ConversationsListQueryParamOrderBy$outboundSchema.optional(),
+  orderByDirection: ConversationsListQueryParamOrderByDirection$outboundSchema
+    .optional(),
   fields: z.nullable(z.array(components.ConversationProperties$outboundSchema))
     .optional(),
   startDatetime: z.nullable(z.string()).optional(),
@@ -98,4 +173,22 @@ export namespace ConversationsListRequest$ {
   export const outboundSchema = ConversationsListRequest$outboundSchema;
   /** @deprecated use `ConversationsListRequest$Outbound` instead. */
   export type Outbound = ConversationsListRequest$Outbound;
+}
+
+export function conversationsListRequestToJSON(
+  conversationsListRequest: ConversationsListRequest,
+): string {
+  return JSON.stringify(
+    ConversationsListRequest$outboundSchema.parse(conversationsListRequest),
+  );
+}
+
+export function conversationsListRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ConversationsListRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConversationsListRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConversationsListRequest' from JSON`,
+  );
 }
