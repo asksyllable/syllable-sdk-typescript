@@ -14,7 +14,7 @@ export const ServerList = [
   /**
    * staging server
    */
-  "https://syllable-app-558bbffbc8-zmhqc",
+  "http://localhost:8001",
   /**
    * staging / port-forwarding server
    */
@@ -61,8 +61,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.0.2",
-  sdkVersion: "0.1.0-alpha.4",
+  sdkVersion: "0.1.0-alpha.5",
   genVersion: "2.460.1",
   userAgent:
-    "speakeasy-sdk/typescript 0.1.0-alpha.4 2.460.1 0.0.2 syllable-sdk",
+    "speakeasy-sdk/typescript 0.1.0-alpha.5 2.460.1 0.0.2 syllable-sdk",
 } as const;
