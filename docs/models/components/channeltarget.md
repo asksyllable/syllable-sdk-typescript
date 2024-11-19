@@ -6,10 +6,10 @@
 import { ChannelTarget } from "syllable-sdk/models/components";
 
 let value: ChannelTarget = {
-  id: 639921,
-  channelId: 143353,
+  id: 143353,
+  channelId: 944669,
   channelName: "<value>",
-  agentId: 944669,
+  agentId: 521848,
   target: "<value>",
   targetMode: "<value>",
   fallbackTarget: "<value>",

@@ -31,9 +31,6 @@ export type PromptCreate = {
    * The tools for the prompt
    */
   tools?: Array<string> | undefined;
-  /**
-   * The configuration for the language model used by the Cortex API.
-   */
   llmConfig: LlmConfig;
 };
 

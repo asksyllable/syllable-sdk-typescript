@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: d47f76bf14275ff7ddb22f5c762e7ed5
+  docChecksum: 99147fd89583222883ebfb8811fc8c49
   docVersion: 0.0.2
-  speakeasyVersion: 1.440.1
+  speakeasyVersion: 1.441.0
   generationVersion: 2.460.1
-  releaseVersion: 0.1.0-alpha.4
-  configChecksum: b072b6e450cfbd6ebf604485261caa9b
+  releaseVersion: 0.1.0-alpha.5
+  configChecksum: 1e38e775810d74c29e86f46c9899a290
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -17,6 +17,7 @@ features:
     core: 3.18.5
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
+    downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     globalSecurity: 2.82.11
@@ -77,6 +78,7 @@ generatedFiles:
   - docs/models/components/listresponsetool.md
   - docs/models/components/llmconfig.md
   - docs/models/components/loc.md
+  - docs/models/components/orderbydirection.md
   - docs/models/components/prompt.md
   - docs/models/components/promptcreate.md
   - docs/models/components/promptproperties.md
@@ -103,27 +105,17 @@ generatedFiles:
   - docs/models/operations/agentdeleterequest.md
   - docs/models/operations/agentgetbyidrequest.md
   - docs/models/operations/agentlistrequest.md
-  - docs/models/operations/availabletargetsqueryparamorderby.md
-  - docs/models/operations/availabletargetsqueryparamorderbydirection.md
   - docs/models/operations/availabletargetsrequest.md
   - docs/models/operations/channelslistrequest.md
   - docs/models/operations/channeltargetscreaterequest.md
   - docs/models/operations/channeltargetsdeleterequest.md
   - docs/models/operations/channeltargetsgetbyidrequest.md
-  - docs/models/operations/channeltargetslistqueryparamorderby.md
-  - docs/models/operations/channeltargetslistqueryparamorderbydirection.md
   - docs/models/operations/channeltargetslistrequest.md
   - docs/models/operations/channeltargetsupdaterequest.md
-  - docs/models/operations/conversationslistqueryparamorderby.md
-  - docs/models/operations/conversationslistqueryparamorderbydirection.md
   - docs/models/operations/conversationslistrequest.md
   - docs/models/operations/custommessagegetbyidrequest.md
   - docs/models/operations/custommessagesdeleterequest.md
-  - docs/models/operations/custommessageslistqueryparamorderby.md
-  - docs/models/operations/custommessageslistqueryparamorderbydirection.md
   - docs/models/operations/custommessageslistrequest.md
-  - docs/models/operations/eventslistqueryparamorderby.md
-  - docs/models/operations/eventslistqueryparamorderbydirection.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/generatesessionrecordingurlsrequest.md
   - docs/models/operations/getdailycallvolumebyhourresponsegetdailycallvolumebyhour.md
@@ -134,28 +126,16 @@ generatedFiles:
   - docs/models/operations/getsessionsummaryresponsegetsessionsummary.md
   - docs/models/operations/gettotalcallvolumebyhourresponsegettotalcallvolumebyhour.md
   - docs/models/operations/getweeklycallvolumebyweekdayresponsegetweeklycallvolumebyweekday.md
-  - docs/models/operations/orderby.md
-  - docs/models/operations/orderbydirection.md
   - docs/models/operations/promptsdeleterequest.md
   - docs/models/operations/promptsgetbyidrequest.md
-  - docs/models/operations/promptslistqueryparamorderby.md
-  - docs/models/operations/promptslistqueryparamorderbydirection.md
   - docs/models/operations/promptslistrequest.md
-  - docs/models/operations/queryparamorderby.md
-  - docs/models/operations/queryparamorderbydirection.md
   - docs/models/operations/sessiongetbyidrequest.md
   - docs/models/operations/sessionlabelgetbyidrequest.md
-  - docs/models/operations/sessionlabelslistqueryparamorderby.md
-  - docs/models/operations/sessionlabelslistqueryparamorderbydirection.md
   - docs/models/operations/sessionlabelslistrequest.md
   - docs/models/operations/sessionrecordingstreamrequest.md
-  - docs/models/operations/sessionslistqueryparamorderby.md
-  - docs/models/operations/sessionslistqueryparamorderbydirection.md
   - docs/models/operations/sessionslistrequest.md
   - docs/models/operations/sessiontranscriptgetbyidrequest.md
   - docs/models/operations/toolgetbynamerequest.md
-  - docs/models/operations/toollistqueryparamorderby.md
-  - docs/models/operations/toollistqueryparamorderbydirection.md
   - docs/models/operations/toollistrequest.md
   - docs/models/operations/totalcallvolumebyweekdayresponsetotalcallvolumebyweekday.md
   - docs/sdks/agents/README.md
@@ -271,9 +251,11 @@ generatedFiles:
   - src/models/components/listresponsesessionlabel.ts
   - src/models/components/listresponsetool.ts
   - src/models/components/llmconfig.ts
+  - src/models/components/orderbydirection.ts
   - src/models/components/prompt.ts
   - src/models/components/promptcreate.ts
   - src/models/components/promptproperties.ts
+  - src/models/components/provider.ts
   - src/models/components/security.ts
   - src/models/components/session.ts
   - src/models/components/sessionaction.ts
