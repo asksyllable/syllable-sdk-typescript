@@ -404,10 +404,10 @@ Validation errors can also occur when either method arguments or data returned f
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                                  |
-| --- | --------------------------------------- |
-| 0   | `https://syllable-app-558bbffbc8-zmhqc` |
-| 1   | `http://localhost:8001`                 |
+| #   | Server                  |
+| --- | ----------------------- |
+| 0   | `http://localhost:8001` |
+| 1   | `http://localhost:8001` |
 
 #### Example
 
@@ -437,7 +437,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverURL: "https://syllable-app-558bbffbc8-zmhqc",
+  serverURL: "http://localhost:8001",
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 

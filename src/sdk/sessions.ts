@@ -66,7 +66,7 @@ export class Sessions extends ClientSDK {
   async sessionRecordingStream(
     request: operations.SessionRecordingStreamRequest,
     options?: RequestOptions,
-  ): Promise<any> {
+  ): Promise<ReadableStream<Uint8Array>> {
     return unwrapAsync(sessionsSessionRecordingStream(
       this,
       request,
