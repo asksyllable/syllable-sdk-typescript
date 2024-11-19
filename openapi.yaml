@@ -4,7 +4,7 @@ info:
   description: "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI capabilities into your applications. Whether you're building chatbots, virtual assistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Image Recognition**: Identify objects, faces, and scenes in images.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
   version: "0.0.2"
 servers:
-  - url: "syllable-app-558bbffbc8-zmhqc"
+  - url: "http://localhost:8001"
     description: "staging server"
   - url: "http://localhost:8001"
     description: "staging / port-forwarding server"
@@ -57,17 +57,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/AgentProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/AgentProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -373,17 +367,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ChannelProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/ChannelProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -534,17 +522,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ConversationProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/ConversationProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -978,17 +960,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/EventProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/EventProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -1091,17 +1067,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/CustomMessageProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/CustomMessageProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -1395,17 +1365,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/PromptProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/PromptProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -1499,6 +1463,7 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -1549,11 +1514,12 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 857478,
+                id: 597129,
                 lastUpdated: "<value>",
               });
 
@@ -1801,17 +1767,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/SessionLabelProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/SessionLabelProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -1913,17 +1873,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/SessionProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/SessionProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -2050,6 +2004,26 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: session_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.getById({
+                sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/sessions/recording/{session_id}":
     post:
       tags:
@@ -2076,6 +2050,26 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: generate_session_recording_urls
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.generateSessionRecordingUrls({
+                sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/sessions/recording/stream":
     get:
       tags:
@@ -2095,13 +2089,36 @@ paths:
         "200":
           description: "Successful Response"
           content:
-            "application/json":
-              schema: {}
+            "application/octet-stream":
+              schema:
+                type: "string"
+                title: "bytes"
+                format: "binary"
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: session_recording_stream
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.sessionRecordingStream({
+                token: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/tools/":
     get:
       tags:
@@ -2150,17 +2167,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ToolProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/ToolProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -2310,17 +2321,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/AvailableTargetProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/AvailableTargetProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -2422,17 +2427,11 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/ChannelTargetProperties"}
-            title: "Order By"
+          schema: {"$ref": "#/components/schemas/ChannelTargetProperties"}
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema:
-            allOf:
-              - {"$ref": "#/components/schemas/OrderByDirection"}
-            title: "Order By Direction"
+          schema: {"$ref": "#/components/schemas/OrderByDirection"}
         - name: "fields"
           in: "query"
           required: false
@@ -2901,10 +2900,7 @@ components:
           type: "string"
           title: "Name"
           description: "The channel name"
-        "channel_service":
-          allOf:
-            - {"$ref": "#/components/schemas/ChannelServices"}
-          description: "The service for the channel"
+        "channel_service": {"$ref": "#/components/schemas/ChannelServices", "description": "The service for the channel"}
         "supported_modes":
           anyOf:
             - type: "string"
@@ -3556,14 +3552,7 @@ components:
       title: "ListResponse[Tool]"
     "LlmConfig":
       properties:
-        "provider":
-          allOf:
-            - {"$ref": "#/components/schemas/Provider"}
-          description: "Provider of the LLM model."
-          default: "azure_openai"
-          examples:
-            - "azure_openai"
-            - "openai"
+        "provider": {"$ref": "#/components/schemas/Provider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
         "model":
           type: "string"
           title: "Model"
@@ -3618,10 +3607,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -3663,10 +3649,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
       type: "object"
       required:
         - "name"
@@ -3909,6 +3892,7 @@ components:
         - "prompt_name"
         - "source"
         - "target"
+        - "duration"
         - "is_legacy"
         - "is_test"
       title: "SessionProperties"

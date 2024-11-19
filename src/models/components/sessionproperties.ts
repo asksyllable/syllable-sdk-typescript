@@ -19,6 +19,7 @@ export const SessionProperties = {
   PromptName: "prompt_name",
   Source: "source",
   Target: "target",
+  Duration: "duration",
   IsLegacy: "is_legacy",
   IsTest: "is_test",
 } as const;

@@ -5,84 +5,21 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export const AvailableTargetsQueryParamOrderBy = {
-  ChannelId: "channel_id",
-  ChannelName: "channel_name",
-  Target: "target",
-} as const;
-export type AvailableTargetsQueryParamOrderBy = ClosedEnum<
-  typeof AvailableTargetsQueryParamOrderBy
->;
-
-export const AvailableTargetsQueryParamOrderByDirection = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-export type AvailableTargetsQueryParamOrderByDirection = ClosedEnum<
-  typeof AvailableTargetsQueryParamOrderByDirection
->;
 
 export type AvailableTargetsRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.AvailableTargetProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: AvailableTargetsQueryParamOrderBy | undefined;
-  orderByDirection?: AvailableTargetsQueryParamOrderByDirection | undefined;
+  orderBy?: components.AvailableTargetProperties | undefined;
+  orderByDirection?: components.OrderByDirection | undefined;
   fields?: Array<components.AvailableTargetProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
-
-/** @internal */
-export const AvailableTargetsQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof AvailableTargetsQueryParamOrderBy
-> = z.nativeEnum(AvailableTargetsQueryParamOrderBy);
-
-/** @internal */
-export const AvailableTargetsQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
-  typeof AvailableTargetsQueryParamOrderBy
-> = AvailableTargetsQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AvailableTargetsQueryParamOrderBy$ {
-  /** @deprecated use `AvailableTargetsQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema = AvailableTargetsQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `AvailableTargetsQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    AvailableTargetsQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const AvailableTargetsQueryParamOrderByDirection$inboundSchema:
-  z.ZodNativeEnum<typeof AvailableTargetsQueryParamOrderByDirection> = z
-    .nativeEnum(AvailableTargetsQueryParamOrderByDirection);
-
-/** @internal */
-export const AvailableTargetsQueryParamOrderByDirection$outboundSchema:
-  z.ZodNativeEnum<typeof AvailableTargetsQueryParamOrderByDirection> =
-    AvailableTargetsQueryParamOrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AvailableTargetsQueryParamOrderByDirection$ {
-  /** @deprecated use `AvailableTargetsQueryParamOrderByDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    AvailableTargetsQueryParamOrderByDirection$inboundSchema;
-  /** @deprecated use `AvailableTargetsQueryParamOrderByDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    AvailableTargetsQueryParamOrderByDirection$outboundSchema;
-}
 
 /** @internal */
 export const AvailableTargetsRequest$inboundSchema: z.ZodType<
@@ -95,9 +32,8 @@ export const AvailableTargetsRequest$inboundSchema: z.ZodType<
   search_fields: z.array(components.AvailableTargetProperties$inboundSchema)
     .optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: AvailableTargetsQueryParamOrderBy$inboundSchema.optional(),
-  order_by_direction: AvailableTargetsQueryParamOrderByDirection$inboundSchema
-    .optional(),
+  order_by: components.AvailableTargetProperties$inboundSchema.optional(),
+  order_by_direction: components.OrderByDirection$inboundSchema.optional(),
   fields: z.nullable(
     z.array(components.AvailableTargetProperties$inboundSchema),
   ).optional(),
@@ -138,9 +74,8 @@ export const AvailableTargetsRequest$outboundSchema: z.ZodType<
   searchFields: z.array(components.AvailableTargetProperties$outboundSchema)
     .optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: AvailableTargetsQueryParamOrderBy$outboundSchema.optional(),
-  orderByDirection: AvailableTargetsQueryParamOrderByDirection$outboundSchema
-    .optional(),
+  orderBy: components.AvailableTargetProperties$outboundSchema.optional(),
+  orderByDirection: components.OrderByDirection$outboundSchema.optional(),
   fields: z.nullable(
     z.array(components.AvailableTargetProperties$outboundSchema),
   ).optional(),

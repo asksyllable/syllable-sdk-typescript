@@ -32,7 +32,7 @@ export async function sessionsSessionRecordingStream(
   options?: RequestOptions,
 ): Promise<
   Result<
-    any,
+    ReadableStream<Uint8Array>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -62,7 +62,7 @@ export async function sessionsSessionRecordingStream(
   });
 
   const headers = new Headers({
-    Accept: "application/json",
+    Accept: "application/octet-stream",
   });
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
@@ -112,7 +112,7 @@ export async function sessionsSessionRecordingStream(
   };
 
   const [result] = await M.match<
-    any,
+    ReadableStream<Uint8Array>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -122,7 +122,7 @@ export async function sessionsSessionRecordingStream(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.any()),
+    M.stream(200, z.instanceof(ReadableStream<Uint8Array>)),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
