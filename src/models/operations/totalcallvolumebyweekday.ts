@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Successful Response
@@ -43,4 +46,29 @@ export namespace TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday$ {
   /** @deprecated use `TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday$Outbound` instead. */
   export type Outbound =
     TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday$Outbound;
+}
+
+export function totalCallVolumeByWeekdayResponseTotalCallVolumeByWeekdayToJSON(
+  totalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday:
+    TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday,
+): string {
+  return JSON.stringify(
+    TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday$outboundSchema
+      .parse(totalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday),
+  );
+}
+
+export function totalCallVolumeByWeekdayResponseTotalCallVolumeByWeekdayFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'TotalCallVolumeByWeekdayResponseTotalCallVolumeByWeekday' from JSON`,
+  );
 }

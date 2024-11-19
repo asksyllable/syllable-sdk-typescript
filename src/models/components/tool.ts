@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The definition of the tool
@@ -63,6 +66,20 @@ export namespace Definition$ {
   export type Outbound = Definition$Outbound;
 }
 
+export function definitionToJSON(definition: Definition): string {
+  return JSON.stringify(Definition$outboundSchema.parse(definition));
+}
+
+export function definitionFromJSON(
+  jsonString: string,
+): SafeParseResult<Definition, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Definition$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Definition' from JSON`,
+  );
+}
+
 /** @internal */
 export const Tool$inboundSchema: z.ZodType<Tool, z.ZodTypeDef, unknown> = z
   .object({
@@ -113,4 +130,18 @@ export namespace Tool$ {
   export const outboundSchema = Tool$outboundSchema;
   /** @deprecated use `Tool$Outbound` instead. */
   export type Outbound = Tool$Outbound;
+}
+
+export function toolToJSON(tool: Tool): string {
+  return JSON.stringify(Tool$outboundSchema.parse(tool));
+}
+
+export function toolFromJSON(
+  jsonString: string,
+): SafeParseResult<Tool, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Tool$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Tool' from JSON`,
+  );
 }

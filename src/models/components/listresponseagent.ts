@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Agent,
   Agent$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ListResponseAgent$ {
   export const outboundSchema = ListResponseAgent$outboundSchema;
   /** @deprecated use `ListResponseAgent$Outbound` instead. */
   export type Outbound = ListResponseAgent$Outbound;
+}
+
+export function listResponseAgentToJSON(
+  listResponseAgent: ListResponseAgent,
+): string {
+  return JSON.stringify(
+    ListResponseAgent$outboundSchema.parse(listResponseAgent),
+  );
+}
+
+export function listResponseAgentFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResponseAgent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResponseAgent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseAgent' from JSON`,
+  );
 }

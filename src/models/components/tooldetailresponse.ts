@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ToolDetailResponse = {
   name: string;
@@ -50,4 +53,22 @@ export namespace ToolDetailResponse$ {
   export const outboundSchema = ToolDetailResponse$outboundSchema;
   /** @deprecated use `ToolDetailResponse$Outbound` instead. */
   export type Outbound = ToolDetailResponse$Outbound;
+}
+
+export function toolDetailResponseToJSON(
+  toolDetailResponse: ToolDetailResponse,
+): string {
+  return JSON.stringify(
+    ToolDetailResponse$outboundSchema.parse(toolDetailResponse),
+  );
+}
+
+export function toolDetailResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ToolDetailResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ToolDetailResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ToolDetailResponse' from JSON`,
+  );
 }

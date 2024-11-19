@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelTargetCreateRequest = {
   channelId: number | null;
@@ -79,4 +82,22 @@ export namespace ChannelTargetCreateRequest$ {
   export const outboundSchema = ChannelTargetCreateRequest$outboundSchema;
   /** @deprecated use `ChannelTargetCreateRequest$Outbound` instead. */
   export type Outbound = ChannelTargetCreateRequest$Outbound;
+}
+
+export function channelTargetCreateRequestToJSON(
+  channelTargetCreateRequest: ChannelTargetCreateRequest,
+): string {
+  return JSON.stringify(
+    ChannelTargetCreateRequest$outboundSchema.parse(channelTargetCreateRequest),
+  );
+}
+
+export function channelTargetCreateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ChannelTargetCreateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChannelTargetCreateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelTargetCreateRequest' from JSON`,
+  );
 }

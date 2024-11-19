@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LlmConfig,
   LlmConfig$inboundSchema,
@@ -28,6 +31,9 @@ export type Prompt = {
    * The tools for the prompt
    */
   tools?: Array<string> | undefined;
+  /**
+   * The configuration for the language model used by the Cortex API.
+   */
   llmConfig: LlmConfig;
   /**
    * The Prompt ID
@@ -98,4 +104,18 @@ export namespace Prompt$ {
   export const outboundSchema = Prompt$outboundSchema;
   /** @deprecated use `Prompt$Outbound` instead. */
   export type Outbound = Prompt$Outbound;
+}
+
+export function promptToJSON(prompt: Prompt): string {
+  return JSON.stringify(Prompt$outboundSchema.parse(prompt));
+}
+
+export function promptFromJSON(
+  jsonString: string,
+): SafeParseResult<Prompt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Prompt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Prompt' from JSON`,
+  );
 }

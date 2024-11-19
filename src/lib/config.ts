@@ -12,11 +12,11 @@ import { Params, pathToFunc } from "./url.js";
  */
 export const ServerList = [
   /**
-   * dev server
+   * staging server
    */
-  "http://localhost:8001",
+  "https://syllable-app-558bbffbc8-zmhqc",
   /**
-   * dev / port-forwarding server
+   * staging / port-forwarding server
    */
   "http://localhost:8001",
 ] as const;
@@ -61,8 +61,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.0.2",
-  sdkVersion: "0.1.0-alpha.3",
-  genVersion: "2.457.2",
+  sdkVersion: "0.1.0-alpha.4",
+  genVersion: "2.460.1",
   userAgent:
-    "speakeasy-sdk/typescript 0.1.0-alpha.3 2.457.2 0.0.2 syllable-sdk",
+    "speakeasy-sdk/typescript 0.1.0-alpha.4 2.460.1 0.0.2 syllable-sdk",
 } as const;

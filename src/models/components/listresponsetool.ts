@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Tool,
   Tool$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ListResponseTool$ {
   export const outboundSchema = ListResponseTool$outboundSchema;
   /** @deprecated use `ListResponseTool$Outbound` instead. */
   export type Outbound = ListResponseTool$Outbound;
+}
+
+export function listResponseToolToJSON(
+  listResponseTool: ListResponseTool,
+): string {
+  return JSON.stringify(
+    ListResponseTool$outboundSchema.parse(listResponseTool),
+  );
+}
+
+export function listResponseToolFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResponseTool, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResponseTool$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseTool' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomMessage,
   CustomMessage$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ListResponseCustomMessage$ {
   export const outboundSchema = ListResponseCustomMessage$outboundSchema;
   /** @deprecated use `ListResponseCustomMessage$Outbound` instead. */
   export type Outbound = ListResponseCustomMessage$Outbound;
+}
+
+export function listResponseCustomMessageToJSON(
+  listResponseCustomMessage: ListResponseCustomMessage,
+): string {
+  return JSON.stringify(
+    ListResponseCustomMessage$outboundSchema.parse(listResponseCustomMessage),
+  );
+}
+
+export function listResponseCustomMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResponseCustomMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResponseCustomMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseCustomMessage' from JSON`,
+  );
 }

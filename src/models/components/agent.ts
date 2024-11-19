@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentToolDefaults,
   AgentToolDefaults$inboundSchema,
@@ -57,6 +60,20 @@ export namespace Variables$ {
   export const outboundSchema = Variables$outboundSchema;
   /** @deprecated use `Variables$Outbound` instead. */
   export type Outbound = Variables$Outbound;
+}
+
+export function variablesToJSON(variables: Variables): string {
+  return JSON.stringify(Variables$outboundSchema.parse(variables));
+}
+
+export function variablesFromJSON(
+  jsonString: string,
+): SafeParseResult<Variables, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Variables$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Variables' from JSON`,
+  );
 }
 
 /** @internal */
@@ -131,4 +148,18 @@ export namespace Agent$ {
   export const outboundSchema = Agent$outboundSchema;
   /** @deprecated use `Agent$Outbound` instead. */
   export type Outbound = Agent$Outbound;
+}
+
+export function agentToJSON(agent: Agent): string {
+  return JSON.stringify(Agent$outboundSchema.parse(agent));
+}
+
+export function agentFromJSON(
+  jsonString: string,
+): SafeParseResult<Agent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Agent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Agent' from JSON`,
+  );
 }

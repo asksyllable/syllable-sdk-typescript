@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AgentGetByIdRequest = {
   agentId: number;
@@ -51,4 +54,22 @@ export namespace AgentGetByIdRequest$ {
   export const outboundSchema = AgentGetByIdRequest$outboundSchema;
   /** @deprecated use `AgentGetByIdRequest$Outbound` instead. */
   export type Outbound = AgentGetByIdRequest$Outbound;
+}
+
+export function agentGetByIdRequestToJSON(
+  agentGetByIdRequest: AgentGetByIdRequest,
+): string {
+  return JSON.stringify(
+    AgentGetByIdRequest$outboundSchema.parse(agentGetByIdRequest),
+  );
+}
+
+export function agentGetByIdRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentGetByIdRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentGetByIdRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentGetByIdRequest' from JSON`,
+  );
 }

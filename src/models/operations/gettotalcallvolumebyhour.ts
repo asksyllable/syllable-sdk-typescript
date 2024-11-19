@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Successful Response
@@ -43,4 +46,29 @@ export namespace GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour$ {
   /** @deprecated use `GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour$Outbound` instead. */
   export type Outbound =
     GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour$Outbound;
+}
+
+export function getTotalCallVolumeByHourResponseGetTotalCallVolumeByHourToJSON(
+  getTotalCallVolumeByHourResponseGetTotalCallVolumeByHour:
+    GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour,
+): string {
+  return JSON.stringify(
+    GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour$outboundSchema
+      .parse(getTotalCallVolumeByHourResponseGetTotalCallVolumeByHour),
+  );
+}
+
+export function getTotalCallVolumeByHourResponseGetTotalCallVolumeByHourFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetTotalCallVolumeByHourResponseGetTotalCallVolumeByHour' from JSON`,
+  );
 }

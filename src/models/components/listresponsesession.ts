@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Session,
   Session$inboundSchema,
@@ -77,4 +80,22 @@ export namespace ListResponseSession$ {
   export const outboundSchema = ListResponseSession$outboundSchema;
   /** @deprecated use `ListResponseSession$Outbound` instead. */
   export type Outbound = ListResponseSession$Outbound;
+}
+
+export function listResponseSessionToJSON(
+  listResponseSession: ListResponseSession,
+): string {
+  return JSON.stringify(
+    ListResponseSession$outboundSchema.parse(listResponseSession),
+  );
+}
+
+export function listResponseSessionFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResponseSession, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResponseSession$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseSession' from JSON`,
+  );
 }
