@@ -193,6 +193,12 @@ actions:
   - target: $["paths"]["/api/v1/sessions/recording/stream"]["get"]["tags"]
     update:
       - "sessions"
+  - target: $["paths"]["/api/v1/sessions/recording/stream"]["get"]["responses"]["200"]["content"]["application/octet-stream"]["schema"]
+    update:
+      "title": "bytes"
+  - target: $["paths"]["/api/v1/sessions/recording/stream"]["get"]["responses"]["200"]["content"]["application/octet-stream"]["schema"]
+    update:
+      "format": "binary"
   - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]["tags"]
