@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "syllable-app-558bbffbc8-zmhqc",
+      "url": "http://localhost:8001",
       "description": "staging server"
     },
     {
@@ -91,12 +91,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AgentProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/AgentProperties"
             }
           },
           {
@@ -104,12 +99,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -456,12 +446,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ChannelProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/ChannelProperties"
             }
           },
           {
@@ -469,12 +454,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -675,12 +655,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ConversationProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/ConversationProperties"
             }
           },
           {
@@ -688,12 +663,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -1174,12 +1144,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/EventProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/EventProperties"
             }
           },
           {
@@ -1187,12 +1152,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -1346,12 +1306,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/CustomMessageProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/CustomMessageProperties"
             }
           },
           {
@@ -1359,12 +1314,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -1713,12 +1663,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/PromptProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/PromptProperties"
             }
           },
           {
@@ -1726,12 +1671,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2172,12 +2112,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SessionLabelProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/SessionLabelProperties"
             }
           },
           {
@@ -2185,12 +2120,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2343,12 +2273,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SessionProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/SessionProperties"
             }
           },
           {
@@ -2356,12 +2281,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2612,8 +2532,10 @@
           "200": {
             "description": "Successful Response",
             "content": {
-              "application/json": {
-                "schema": {}
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -2705,12 +2627,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ToolProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/ToolProperties"
             }
           },
           {
@@ -2718,12 +2635,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -2928,12 +2840,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/AvailableTargetProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/AvailableTargetProperties"
             }
           },
           {
@@ -2941,12 +2848,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -3101,12 +3003,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ChannelTargetProperties"
-                }
-              ],
-              "title": "Order By"
+              "$ref": "#/components/schemas/ChannelTargetProperties"
             }
           },
           {
@@ -3114,12 +3011,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                }
-              ],
-              "title": "Order By Direction"
+              "$ref": "#/components/schemas/OrderByDirection"
             }
           },
           {
@@ -3715,11 +3607,7 @@
             "description": "The channel name"
           },
           "channel_service": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChannelServices"
-              }
-            ],
+            "$ref": "#/components/schemas/ChannelServices",
             "description": "The service for the channel"
           },
           "supported_modes": {
@@ -4842,11 +4730,7 @@
       "LlmConfig": {
         "properties": {
           "provider": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Provider"
-              }
-            ],
+            "$ref": "#/components/schemas/Provider",
             "description": "Provider of the LLM model.",
             "default": "azure_openai",
             "examples": [
@@ -4939,11 +4823,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -5008,11 +4888,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           }
         },
@@ -5430,6 +5306,7 @@
           "prompt_name",
           "source",
           "target",
+          "duration",
           "is_legacy",
           "is_test"
         ],
