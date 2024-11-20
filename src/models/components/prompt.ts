@@ -31,6 +31,9 @@ export type Prompt = {
    * The tools for the prompt
    */
   tools?: Array<string> | undefined;
+  /**
+   * The configuration for the language model used by the Cortex API.
+   */
   llmConfig: LlmConfig;
   /**
    * The Prompt ID
@@ -40,6 +43,14 @@ export type Prompt = {
    * The last updated date of the prompt
    */
   lastUpdated: string | null;
+  /**
+   * The last updated user who last updated of the prompt
+   */
+  lastUpdatedBy?: string | null | undefined;
+  /**
+   * The comments for the last edit
+   */
+  editComments?: string | null | undefined;
 };
 
 /** @internal */
@@ -52,10 +63,14 @@ export const Prompt$inboundSchema: z.ZodType<Prompt, z.ZodTypeDef, unknown> = z
     llm_config: LlmConfig$inboundSchema,
     id: z.number().int(),
     last_updated: z.nullable(z.string()),
+    last_updated_by: z.nullable(z.string()).optional(),
+    edit_comments: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "llm_config": "llmConfig",
       "last_updated": "lastUpdated",
+      "last_updated_by": "lastUpdatedBy",
+      "edit_comments": "editComments",
     });
   });
 
@@ -68,6 +83,8 @@ export type Prompt$Outbound = {
   llm_config: LlmConfig$Outbound;
   id: number;
   last_updated: string | null;
+  last_updated_by?: string | null | undefined;
+  edit_comments?: string | null | undefined;
 };
 
 /** @internal */
@@ -83,10 +100,14 @@ export const Prompt$outboundSchema: z.ZodType<
   llmConfig: LlmConfig$outboundSchema,
   id: z.number().int(),
   lastUpdated: z.nullable(z.string()),
+  lastUpdatedBy: z.nullable(z.string()).optional(),
+  editComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
     lastUpdated: "last_updated",
+    lastUpdatedBy: "last_updated_by",
+    editComments: "edit_comments",
   });
 });
 

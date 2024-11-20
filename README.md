@@ -19,14 +19,15 @@ Syllble SDK gives you the power of awesome AI agentry. 🚀
 
 ## Overview
 
-The Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI capabilities into your applications. Whether you're building chatbots, virtual assistants, or any other AI-driven solutions, Syllble SDK has got you covered.
+The Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI  
+capabilities into your communication applications. Whether you're building chatbots, virtual
+assistants, or any other AI-driven solutions, Syllble SDK has got you covered.
 
 ## Features
 
 - **Natural Language Processing (NLP)**: Understand and generate human language with ease.
 - **Machine Learning Models**: Leverage pre-trained models or train your own custom models.
 - **Speech Recognition**: Convert speech to text and vice versa.
-- **Image Recognition**: Identify objects, faces, and scenes in images.
 - **Data Analytics**: Analyze and visualize data to gain insights.
 - **Integration**: Seamlessly integrate with other services and platforms.
 <!-- End Summary [summary] -->
@@ -175,6 +176,13 @@ run();
 * [update](docs/sdks/prompts/README.md#update) - Update Prompt
 * [getById](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 * [delete](docs/sdks/prompts/README.md#delete) - Delete Prompt
+* [promptsHistory](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
+
+### [services](docs/sdks/services/README.md)
+
+* [list](docs/sdks/services/README.md#list) - Service List
+* [create](docs/sdks/services/README.md#create) - Create Service
+* [update](docs/sdks/services/README.md#update) - Update Service
 
 ### [sessionLabels](docs/sdks/sessionlabels/README.md)
 
@@ -197,6 +205,8 @@ run();
 ### [tools](docs/sdks/tools/README.md)
 
 * [list](docs/sdks/tools/README.md#list) - Tool List
+* [create](docs/sdks/tools/README.md#create) - Create Tool
+* [update](docs/sdks/tools/README.md#update) - Update Tool
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
 
 </details>
@@ -249,7 +259,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
 - [`promptsGetById`](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 - [`promptsList`](docs/sdks/prompts/README.md#list) - Prompt List
+- [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
+- [`servicesCreate`](docs/sdks/services/README.md#create) - Create Service
+- [`servicesList`](docs/sdks/services/README.md#list) - Service List
+- [`servicesUpdate`](docs/sdks/services/README.md#update) - Update Service
 - [`sessionLabelsCreate`](docs/sdks/sessionlabels/README.md#create) - Create Label
 - [`sessionLabelsGetById`](docs/sdks/sessionlabels/README.md#getbyid) - Get Label By Id
 - [`sessionLabelsList`](docs/sdks/sessionlabels/README.md#list) - Session Labels List
@@ -258,8 +272,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
+- [`toolsCreate`](docs/sdks/tools/README.md#create) - Create Tool
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
+- [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

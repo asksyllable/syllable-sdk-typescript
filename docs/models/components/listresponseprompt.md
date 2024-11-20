@@ -11,6 +11,7 @@ let value: ListResponsePrompt = {
       name: "<value>",
       type: "<value>",
       llmConfig: {
+        provider: "azure_openai",
         model: "gpt-4o",
         version: "2024-05-13",
         apiVersion: "2024-06-01",
