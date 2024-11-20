@@ -11,6 +11,7 @@ export const PromptProperties = {
   Context: "context",
   Tools: "tools",
   LlmConfig: "llm_config",
+  LastUpdatedBy: "last_updated_by",
 } as const;
 export type PromptProperties = ClosedEnum<typeof PromptProperties>;
 
