@@ -173,6 +173,26 @@ actions:
   - target: $["paths"]["/api/v1/prompts/{prompt_id}"]["delete"]["tags"]
     update:
       - "prompts"
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}/history"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}/history"]["get"]["tags"]
+    update:
+      - "prompts"
+  - target: $["paths"]["/api/v1/services/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/services/"]["get"]["tags"]
+    update:
+      - "services"
+  - target: $["paths"]["/api/v1/services/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/services/"]["post"]["tags"]
+    update:
+      - "services"
+  - target: $["paths"]["/api/v1/services/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/services/"]["put"]["tags"]
+    update:
+      - "services"
   - target: $["paths"]["/api/v1/sessions/"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/sessions/"]["get"]["tags"]
@@ -227,6 +247,16 @@ actions:
   - target: $["paths"]["/api/v1/tools/{tool_name}"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/tools/{tool_name}"]["get"]["tags"]
+    update:
+      - "tools"
+  - target: $["paths"]["/api/v1/tools/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/tools/"]["post"]["tags"]
+    update:
+      - "tools"
+  - target: $["paths"]["/api/v1/tools/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/tools/"]["put"]["tags"]
     update:
       - "tools"
   - target: $["paths"]["/api/v1/organizations/"]["get"]["tags"][*]
