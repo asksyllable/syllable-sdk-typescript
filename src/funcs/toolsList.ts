@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Tool List
  *
  * @remarks
- * List the existing agents
+ * List the existing tools
  */
 export async function toolsList(
   client: SyllableSDKCore,

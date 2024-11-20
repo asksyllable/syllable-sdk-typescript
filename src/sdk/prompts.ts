@@ -6,6 +6,7 @@ import { promptsCreate } from "../funcs/promptsCreate.js";
 import { promptsDelete } from "../funcs/promptsDelete.js";
 import { promptsGetById } from "../funcs/promptsGetById.js";
 import { promptsList } from "../funcs/promptsList.js";
+import { promptsPromptsHistory } from "../funcs/promptsPromptsHistory.js";
 import { promptsUpdate } from "../funcs/promptsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -89,6 +90,23 @@ export class Prompts extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(promptsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Prompt History
+   *
+   * @remarks
+   * Get a prompt by ID
+   */
+  async promptsHistory(
+    request: operations.PromptsHistoryRequest,
+    options?: RequestOptions,
+  ): Promise<Array<components.PromptHistory>> {
+    return unwrapAsync(promptsPromptsHistory(
       this,
       request,
       options,

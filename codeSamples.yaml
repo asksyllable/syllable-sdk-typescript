@@ -673,6 +673,7 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -701,11 +702,12 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 857478,
+                id: 597129,
                 lastUpdated: "<value>",
               });
 
@@ -752,6 +754,95 @@ actions:
             async function run() {
               const result = await syllableSDK.prompts.getById({
                 promptId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/{prompt_id}/history"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: prompts_history
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.promptsHistory({
+                promptId: 627932,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/services/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: service_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/services/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: service_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.create({
+                name: "<value>",
+                description: "yuck vice between gee ugh ha",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/services/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: service_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.update({
+                name: "<value>",
+                description: "awful underneath retention too mobility char innocently dowse restfully",
+                id: 243447,
               });
 
               // Handle the result
@@ -948,6 +1039,53 @@ actions:
 
             async function run() {
               const result = await syllableSDK.tools.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/tools/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: tool_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.create({
+                name: "<value>",
+                serviceId: 486589,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/tools/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: tool_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.update({
+                name: "<value>",
+                serviceId: 857478,
+                id: 597129,
+              });
 
               // Handle the result
               console.log(result);
