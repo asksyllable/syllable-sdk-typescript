@@ -1,7 +1,7 @@
 openapi: "3.1.0"
 info:
   title: "SyllableSDK"
-  description: "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI capabilities into your applications. Whether you're building chatbots, virtual assistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Image Recognition**: Identify objects, faces, and scenes in images.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
+  description: "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI  \ncapabilities into your communication applications. Whether you're building chatbots, virtual\nassistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
   version: "0.0.2"
 servers:
   - url: "http://localhost:8001"
@@ -57,11 +57,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/AgentProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/AgentProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -367,11 +373,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/ChannelProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ChannelProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -522,11 +534,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/ConversationProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ConversationProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -960,11 +978,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/EventProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/EventProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -1067,11 +1091,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/CustomMessageProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/CustomMessageProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -1365,11 +1395,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/PromptProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/PromptProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -1463,7 +1499,6 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -1514,12 +1549,11 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 597129,
+                id: 857478,
                 lastUpdated: "<value>",
               });
 
@@ -1627,6 +1661,177 @@ paths:
             }
 
             run();
+  "/api/v1/prompts/{prompt_id}/history":
+    get:
+      tags:
+        - "prompts"
+      summary: "Get Prompt History"
+      description: "Get a prompt by ID"
+      operationId: "prompts_history"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "prompt_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Prompt Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "array"
+                items: {"$ref": "#/components/schemas/PromptHistory"}
+                title: "Response Prompts History"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/services/":
+    get:
+      tags:
+        - "services"
+      summary: "Service List"
+      description: "List the existing agents"
+      operationId: "service_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/ServiceProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ServiceProperties"}
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/ServiceProperties"}
+              - type: "null"
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_Service_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    post:
+      tags:
+        - "services"
+      summary: "Create Service"
+      operationId: "service_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ServiceCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Service"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "services"
+      summary: "Update Service"
+      operationId: "service_update"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ServiceUpdate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Service"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
   "/api/v1/session_labels/{session_label_id}":
     get:
       tags:
@@ -1767,11 +1972,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/SessionLabelProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/SessionLabelProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -1873,11 +2084,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/SessionProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/SessionProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -2124,7 +2341,7 @@ paths:
       tags:
         - "tools"
       summary: "Tool List"
-      description: "List the existing agents"
+      description: "List the existing tools"
       operationId: "tool_list"
       security:
         - APIKeyHeader: []
@@ -2167,11 +2384,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/ToolProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ToolProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -2226,6 +2449,54 @@ paths:
             }
 
             run();
+    post:
+      tags:
+        - "tools"
+      summary: "Create Tool"
+      description: "Create a new tool"
+      operationId: "tool_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ToolCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Tool"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "tools"
+      summary: "Update Tool"
+      description: "Update an existing tool"
+      operationId: "tool_update"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/ToolUpdate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Tool"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
   "/api/v1/tools/{tool_name}":
     get:
       tags:
@@ -2321,11 +2592,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/AvailableTargetProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/AvailableTargetProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -2427,11 +2704,17 @@ paths:
         - name: "order_by"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/ChannelTargetProperties"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/ChannelTargetProperties"}
+            title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
-          schema: {"$ref": "#/components/schemas/OrderByDirection"}
+          schema:
+            allOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+            title: "Order By Direction"
         - name: "fields"
           in: "query"
           required: false
@@ -2900,7 +3183,10 @@ components:
           type: "string"
           title: "Name"
           description: "The channel name"
-        "channel_service": {"$ref": "#/components/schemas/ChannelServices", "description": "The service for the channel"}
+        "channel_service":
+          allOf:
+            - {"$ref": "#/components/schemas/ChannelServices"}
+          description: "The service for the channel"
         "supported_modes":
           anyOf:
             - type: "string"
@@ -3466,6 +3752,34 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[Prompt]"
+    "ListResponse_Service_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/Service"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Pages"
+        "total_count":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+      title: "ListResponse[Service]"
     "ListResponse_SessionLabel_":
       properties:
         "items":
@@ -3552,7 +3866,14 @@ components:
       title: "ListResponse[Tool]"
     "LlmConfig":
       properties:
-        "provider": {"$ref": "#/components/schemas/Provider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
+        "provider":
+          allOf:
+            - {"$ref": "#/components/schemas/Provider"}
+          description: "Provider of the LLM model."
+          default: "azure_openai"
+          examples:
+            - "azure_openai"
+            - "openai"
         "model":
           type: "string"
           title: "Model"
@@ -3607,7 +3928,10 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
+        "llm_config":
+          allOf:
+            - {"$ref": "#/components/schemas/LlmConfig"}
+          description: "The configuration for the language model used by the Cortex API."
         "id":
           type: "integer"
           title: "Id"
@@ -3618,6 +3942,18 @@ components:
             - type: "null"
           title: "Last Updated"
           description: "The last updated date of the prompt"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
+          description: "The last updated user who last updated of the prompt"
+        "edit_comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Edit Comments"
+          description: "The comments for the last edit"
       type: "object"
       required:
         - "name"
@@ -3649,13 +3985,56 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
+        "llm_config":
+          allOf:
+            - {"$ref": "#/components/schemas/LlmConfig"}
+          description: "The configuration for the language model used by the Cortex API."
       type: "object"
       required:
         - "name"
         - "type"
         - "llm_config"
       title: "PromptCreate"
+    "PromptHistory":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+        "prompt_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Id"
+        "prompt_text":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Text"
+        "prompt_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Name"
+        "llm_config":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Llm Config"
+        "comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Comments"
+        "user_email":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "User Email"
+      type: "object"
+      required:
+        - "timestamp"
+      title: "PromptHistory"
     "PromptProperties":
       type: "string"
       enum:
@@ -3664,6 +4043,7 @@ components:
         - "context"
         - "tools"
         - "llm_config"
+        - "last_updated_by"
       title: "PromptProperties"
     "Provider":
       type: "string"
@@ -3672,6 +4052,74 @@ components:
         - "openai"
       title: "Provider"
       description: "LLM API provider."
+    "Service":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the service"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the service"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the service"
+        "tools":
+          items:
+            type: "string"
+          type: "array"
+          title: "Tools"
+          description: "The tools of the service"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "id"
+        - "tools"
+      title: "Service"
+    "ServiceCreate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the service"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the service"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+      title: "ServiceCreate"
+    "ServiceProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+      title: "ServiceProperties"
+    "ServiceUpdate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the service"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the service"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the service"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "id"
+      title: "ServiceUpdate"
     "Session":
       properties:
         "timestamp":
@@ -4043,6 +4491,25 @@ components:
         - "service_id"
         - "id"
       title: "Tool"
+    "ToolCreate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the tool"
+        "definition":
+          type: "object"
+          title: "Definition"
+          description: "The definition of the tool"
+        "service_id":
+          type: "integer"
+          title: "Service Id"
+          description: "The service this tool belongs to"
+      type: "object"
+      required:
+        - "name"
+        - "service_id"
+      title: "ToolCreate"
     "ToolDetailResponse":
       properties:
         "name":
@@ -4071,6 +4538,30 @@ components:
         - "definition"
         - "service_id"
       title: "ToolProperties"
+    "ToolUpdate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the tool"
+        "definition":
+          type: "object"
+          title: "Definition"
+          description: "The definition of the tool"
+        "service_id":
+          type: "integer"
+          title: "Service Id"
+          description: "The service this tool belongs to"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the tool"
+      type: "object"
+      required:
+        - "name"
+        - "service_id"
+        - "id"
+      title: "ToolUpdate"
     "ValidationError":
       properties:
         "loc":
@@ -4118,8 +4609,14 @@ tags:
     description: "Operations related to organizations"
   - name: "prompts"
     description: "Operations related to prompts"
+  - name: "services"
+    description: "Operations related to services"
   - name: "sessions"
     description: "Operations related to agent sessions"
+  - name: "sessions.labels"
+    description: "Operations related to labeling sessions"
+  - name: "sessions.transcript"
+    description: "Operations related to session transcription"
   - name: "tools"
     description: "Operations related to tools"
 x-speakeasy-name-override: [{"operationId": ".*_list$", "methodNameOverride": "list"}, {"operationId": ".*_create$", "methodNameOverride": "create"}, {"operationId": ".*_update$", "methodNameOverride": "update"}, {"operationId": ".*_delete$", "methodNameOverride": "delete"}, {"operationId": ".*_get_by_id$", "methodNameOverride": "get_by_id"}, {"operationId": ".*_get_by_name$", "methodNameOverride": "get_by_name"}]

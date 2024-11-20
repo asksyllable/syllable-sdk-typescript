@@ -10,6 +10,7 @@ import { CustomMessages } from "./custommessages.js";
 import { Dashboards } from "./dashboards.js";
 import { Events } from "./events.js";
 import { Prompts } from "./prompts.js";
+import { Services } from "./services.js";
 import { SessionLabels } from "./sessionlabels.js";
 import { Sessions } from "./sessions.js";
 import { Tools } from "./tools.js";
@@ -48,6 +49,11 @@ export class SyllableSDK extends ClientSDK {
   private _prompts?: Prompts;
   get prompts(): Prompts {
     return (this._prompts ??= new Prompts(this._options));
+  }
+
+  private _services?: Services;
+  get services(): Services {
+    return (this._services ??= new Services(this._options));
   }
 
   private _sessionLabels?: SessionLabels;

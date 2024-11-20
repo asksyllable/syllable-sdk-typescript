@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 99147fd89583222883ebfb8811fc8c49
+  docChecksum: ef25fac2b67cdf125a733795a33dda0d
   docVersion: 0.0.2
-  speakeasyVersion: 1.441.0
-  generationVersion: 2.460.1
-  releaseVersion: 0.1.0-alpha.5
-  configChecksum: 1e38e775810d74c29e86f46c9899a290
+  speakeasyVersion: 1.441.1
+  generationVersion: 2.461.2
+  releaseVersion: 0.1.0-alpha.6
+  configChecksum: 987c9dca2cc05188e316b90005acc74d
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.5
+    core: 3.18.6
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
@@ -73,18 +73,23 @@ generatedFiles:
   - docs/models/components/listresponsecustommessage.md
   - docs/models/components/listresponseevent.md
   - docs/models/components/listresponseprompt.md
+  - docs/models/components/listresponseservice.md
   - docs/models/components/listresponsesession.md
   - docs/models/components/listresponsesessionlabel.md
   - docs/models/components/listresponsetool.md
   - docs/models/components/llmconfig.md
   - docs/models/components/loc.md
-  - docs/models/components/orderbydirection.md
   - docs/models/components/prompt.md
   - docs/models/components/promptcreate.md
+  - docs/models/components/prompthistory.md
   - docs/models/components/promptproperties.md
   - docs/models/components/provider.md
   - docs/models/components/response.md
   - docs/models/components/security.md
+  - docs/models/components/service.md
+  - docs/models/components/servicecreate.md
+  - docs/models/components/serviceproperties.md
+  - docs/models/components/serviceupdate.md
   - docs/models/components/session.md
   - docs/models/components/sessionaction.md
   - docs/models/components/sessionlabel.md
@@ -97,25 +102,39 @@ generatedFiles:
   - docs/models/components/testmessage.md
   - docs/models/components/testmessageresponse.md
   - docs/models/components/tool.md
+  - docs/models/components/toolcreate.md
+  - docs/models/components/toolcreatedefinition.md
   - docs/models/components/tooldetailresponse.md
   - docs/models/components/toolproperties.md
+  - docs/models/components/toolupdate.md
+  - docs/models/components/toolupdatedefinition.md
   - docs/models/components/validationerror.md
   - docs/models/components/variables.md
   - docs/models/errors/httpvalidationerror.md
   - docs/models/operations/agentdeleterequest.md
   - docs/models/operations/agentgetbyidrequest.md
   - docs/models/operations/agentlistrequest.md
+  - docs/models/operations/availabletargetsqueryparamorderby.md
+  - docs/models/operations/availabletargetsqueryparamorderbydirection.md
   - docs/models/operations/availabletargetsrequest.md
   - docs/models/operations/channelslistrequest.md
   - docs/models/operations/channeltargetscreaterequest.md
   - docs/models/operations/channeltargetsdeleterequest.md
   - docs/models/operations/channeltargetsgetbyidrequest.md
+  - docs/models/operations/channeltargetslistqueryparamorderby.md
+  - docs/models/operations/channeltargetslistqueryparamorderbydirection.md
   - docs/models/operations/channeltargetslistrequest.md
   - docs/models/operations/channeltargetsupdaterequest.md
+  - docs/models/operations/conversationslistqueryparamorderby.md
+  - docs/models/operations/conversationslistqueryparamorderbydirection.md
   - docs/models/operations/conversationslistrequest.md
   - docs/models/operations/custommessagegetbyidrequest.md
   - docs/models/operations/custommessagesdeleterequest.md
+  - docs/models/operations/custommessageslistqueryparamorderby.md
+  - docs/models/operations/custommessageslistqueryparamorderbydirection.md
   - docs/models/operations/custommessageslistrequest.md
+  - docs/models/operations/eventslistqueryparamorderby.md
+  - docs/models/operations/eventslistqueryparamorderbydirection.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/generatesessionrecordingurlsrequest.md
   - docs/models/operations/getdailycallvolumebyhourresponsegetdailycallvolumebyhour.md
@@ -126,16 +145,32 @@ generatedFiles:
   - docs/models/operations/getsessionsummaryresponsegetsessionsummary.md
   - docs/models/operations/gettotalcallvolumebyhourresponsegettotalcallvolumebyhour.md
   - docs/models/operations/getweeklycallvolumebyweekdayresponsegetweeklycallvolumebyweekday.md
+  - docs/models/operations/orderby.md
+  - docs/models/operations/orderbydirection.md
   - docs/models/operations/promptsdeleterequest.md
   - docs/models/operations/promptsgetbyidrequest.md
+  - docs/models/operations/promptshistoryrequest.md
+  - docs/models/operations/promptslistqueryparamorderby.md
+  - docs/models/operations/promptslistqueryparamorderbydirection.md
   - docs/models/operations/promptslistrequest.md
+  - docs/models/operations/queryparamorderby.md
+  - docs/models/operations/queryparamorderbydirection.md
+  - docs/models/operations/servicelistqueryparamorderby.md
+  - docs/models/operations/servicelistqueryparamorderbydirection.md
+  - docs/models/operations/servicelistrequest.md
   - docs/models/operations/sessiongetbyidrequest.md
   - docs/models/operations/sessionlabelgetbyidrequest.md
+  - docs/models/operations/sessionlabelslistqueryparamorderby.md
+  - docs/models/operations/sessionlabelslistqueryparamorderbydirection.md
   - docs/models/operations/sessionlabelslistrequest.md
   - docs/models/operations/sessionrecordingstreamrequest.md
+  - docs/models/operations/sessionslistqueryparamorderby.md
+  - docs/models/operations/sessionslistqueryparamorderbydirection.md
   - docs/models/operations/sessionslistrequest.md
   - docs/models/operations/sessiontranscriptgetbyidrequest.md
   - docs/models/operations/toolgetbynamerequest.md
+  - docs/models/operations/toollistqueryparamorderby.md
+  - docs/models/operations/toollistqueryparamorderbydirection.md
   - docs/models/operations/toollistrequest.md
   - docs/models/operations/totalcallvolumebyweekdayresponsetotalcallvolumebyweekday.md
   - docs/sdks/agents/README.md
@@ -145,6 +180,7 @@ generatedFiles:
   - docs/sdks/dashboards/README.md
   - docs/sdks/events/README.md
   - docs/sdks/prompts/README.md
+  - docs/sdks/services/README.md
   - docs/sdks/sessionlabels/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/syllablesdk/README.md
@@ -187,7 +223,11 @@ generatedFiles:
   - src/funcs/promptsDelete.ts
   - src/funcs/promptsGetById.ts
   - src/funcs/promptsList.ts
+  - src/funcs/promptsPromptsHistory.ts
   - src/funcs/promptsUpdate.ts
+  - src/funcs/servicesCreate.ts
+  - src/funcs/servicesList.ts
+  - src/funcs/servicesUpdate.ts
   - src/funcs/sessionLabelsCreate.ts
   - src/funcs/sessionLabelsGetById.ts
   - src/funcs/sessionLabelsList.ts
@@ -196,8 +236,10 @@ generatedFiles:
   - src/funcs/sessionsList.ts
   - src/funcs/sessionsSessionRecordingStream.ts
   - src/funcs/sessionsTranscriptGetById.ts
+  - src/funcs/toolsCreate.ts
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
+  - src/funcs/toolsUpdate.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -247,16 +289,20 @@ generatedFiles:
   - src/models/components/listresponsecustommessage.ts
   - src/models/components/listresponseevent.ts
   - src/models/components/listresponseprompt.ts
+  - src/models/components/listresponseservice.ts
   - src/models/components/listresponsesession.ts
   - src/models/components/listresponsesessionlabel.ts
   - src/models/components/listresponsetool.ts
   - src/models/components/llmconfig.ts
-  - src/models/components/orderbydirection.ts
   - src/models/components/prompt.ts
   - src/models/components/promptcreate.ts
+  - src/models/components/prompthistory.ts
   - src/models/components/promptproperties.ts
-  - src/models/components/provider.ts
   - src/models/components/security.ts
+  - src/models/components/service.ts
+  - src/models/components/servicecreate.ts
+  - src/models/components/serviceproperties.ts
+  - src/models/components/serviceupdate.ts
   - src/models/components/session.ts
   - src/models/components/sessionaction.ts
   - src/models/components/sessionlabel.ts
@@ -269,8 +315,10 @@ generatedFiles:
   - src/models/components/testmessage.ts
   - src/models/components/testmessageresponse.ts
   - src/models/components/tool.ts
+  - src/models/components/toolcreate.ts
   - src/models/components/tooldetailresponse.ts
   - src/models/components/toolproperties.ts
+  - src/models/components/toolupdate.ts
   - src/models/components/validationerror.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/httpvalidationerror.ts
@@ -303,7 +351,9 @@ generatedFiles:
   - src/models/operations/index.ts
   - src/models/operations/promptsdelete.ts
   - src/models/operations/promptsgetbyid.ts
+  - src/models/operations/promptshistory.ts
   - src/models/operations/promptslist.ts
+  - src/models/operations/servicelist.ts
   - src/models/operations/sessiongetbyid.ts
   - src/models/operations/sessionlabelgetbyid.ts
   - src/models/operations/sessionlabelslist.ts
@@ -322,6 +372,7 @@ generatedFiles:
   - src/sdk/index.ts
   - src/sdk/prompts.ts
   - src/sdk/sdk.ts
+  - src/sdk/services.ts
   - src/sdk/sessionlabels.ts
   - src/sdk/sessions.ts
   - src/sdk/targets.ts
@@ -714,4 +765,51 @@ examples:
       responses:
         "200":
           application/json: "<value>"
+        "422": {}
+  prompts_history:
+    speakeasy-default-prompts-history:
+      parameters:
+        path:
+          prompt_id: 627932
+      responses:
+        "200":
+          application/json: [{"timestamp": "2022-03-05T12:13:59.670Z"}]
+        "422": {}
+  service_list:
+    speakeasy-default-service-list:
+      responses:
+        "200":
+          application/json: {"items": [{"name": "<value>", "description": "yuck accountability pish likewise excepting unimpressively quickly", "id": 934960, "tools": ["<value>", "<value>", "<value>"]}, {"name": "<value>", "description": "defiantly whenever disk", "id": 324206, "tools": []}, {"name": "<value>", "description": "via during someplace woot excepting gah only despite", "id": 933854, "tools": ["<value>", "<value>"]}], "page": 869095, "page_size": 500063}
+        "422": {}
+  service_create:
+    speakeasy-default-service-create:
+      requestBody:
+        application/json: {"name": "<value>", "description": "yuck vice between gee ugh ha"}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "description": "bulky electronics through for ick superb nudge embalm simple ouch", "id": 934959, "tools": ["<value>", "<value>", "<value>"]}
+        "422": {}
+  service_update:
+    speakeasy-default-service-update:
+      requestBody:
+        application/json: {"name": "<value>", "description": "awful underneath retention too mobility char innocently dowse restfully", "id": 243447}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "description": "belabor past wearily broadside backburn", "id": 967252, "tools": ["<value>"]}
+        "422": {}
+  tool_create:
+    speakeasy-default-tool-create:
+      requestBody:
+        application/json: {"name": "<value>", "service_id": 486589}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "service_id": 638424, "id": 417458}
+        "422": {}
+  tool_update:
+    speakeasy-default-tool-update:
+      requestBody:
+        application/json: {"name": "<value>", "service_id": 857478, "id": 597129}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "service_id": 344620, "id": 991464}
         "422": {}
