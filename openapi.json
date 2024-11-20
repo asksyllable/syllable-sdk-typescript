@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SyllableSDK",
-    "description": "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. 🚀\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI capabilities into your applications. Whether you're building chatbots, virtual assistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Image Recognition**: Identify objects, faces, and scenes in images.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n",
+    "description": "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. 🚀\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI  \ncapabilities into your communication applications. Whether you're building chatbots, virtual\nassistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n",
     "version": "0.0.2"
   },
   "servers": [
@@ -91,7 +91,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/AgentProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/AgentProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -99,7 +104,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -446,7 +456,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/ChannelProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ChannelProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -454,7 +469,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -655,7 +675,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/ConversationProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ConversationProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -663,7 +688,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -1144,7 +1174,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/EventProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/EventProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -1152,7 +1187,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -1306,7 +1346,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/CustomMessageProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/CustomMessageProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -1314,7 +1359,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -1663,7 +1713,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/PromptProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/PromptProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -1671,7 +1726,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -1944,10 +2004,325 @@
         }
       }
     },
+    "/api/v1/prompts/{prompt_id}/history": {
+      "get": {
+        "tags": [
+          "prompts",
+          "V1"
+        ],
+        "summary": "Get Prompt History",
+        "description": "Get a prompt by ID",
+        "operationId": "prompts_history",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "prompt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Prompt Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PromptHistory"
+                  },
+                  "title": "Response Prompts History"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/services/": {
+      "get": {
+        "tags": [
+          "services",
+          "V1"
+        ],
+        "summary": "Service List",
+        "description": "List the existing agents",
+        "operationId": "service_list",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": 0,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 25,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "search_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ServiceProperties"
+              },
+              "default": [],
+              "title": "Search Fields"
+            }
+          },
+          {
+            "name": "search_field_values",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "Search Field Values"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ServiceProperties"
+                }
+              ],
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "order_by_direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ServiceProperties"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Fields"
+            }
+          },
+          {
+            "name": "start_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Datetime"
+            }
+          },
+          {
+            "name": "end_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Datetime"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponse_Service_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "services",
+          "V1"
+        ],
+        "summary": "Create Service",
+        "operationId": "service_create",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "services",
+          "V1"
+        ],
+        "summary": "Update Service",
+        "operationId": "service_update",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/session_labels/{session_label_id}": {
       "get": {
         "tags": [
-          "session_labels",
+          "sessions.labels",
           "V1"
         ],
         "summary": "Get Label By Id",
@@ -1995,7 +2370,7 @@
     "/api/v1/session_labels/": {
       "post": {
         "tags": [
-          "session_labels",
+          "sessions.labels",
           "V1"
         ],
         "summary": "Create Label",
@@ -2041,7 +2416,7 @@
       },
       "get": {
         "tags": [
-          "session_labels",
+          "sessions.labels",
           "V1"
         ],
         "summary": "Session Labels List",
@@ -2112,7 +2487,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/SessionLabelProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/SessionLabelProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -2120,7 +2500,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -2273,7 +2658,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/SessionProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/SessionProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -2281,7 +2671,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -2559,7 +2954,7 @@
           "V1"
         ],
         "summary": "Tool List",
-        "description": "List the existing agents",
+        "description": "List the existing tools",
         "operationId": "tool_list",
         "security": [
           {
@@ -2627,7 +3022,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/ToolProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ToolProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -2635,7 +3035,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -2697,6 +3102,98 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ListResponse_Tool_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "tools",
+          "V1"
+        ],
+        "summary": "Create Tool",
+        "description": "Create a new tool",
+        "operationId": "tool_create",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ToolCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tool"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "tools",
+          "V1"
+        ],
+        "summary": "Update Tool",
+        "description": "Update an existing tool",
+        "operationId": "tool_update",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ToolUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tool"
                 }
               }
             }
@@ -2840,7 +3337,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/AvailableTargetProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/AvailableTargetProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -2848,7 +3350,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -3003,7 +3510,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/ChannelTargetProperties"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ChannelTargetProperties"
+                }
+              ],
+              "title": "Order By"
             }
           },
           {
@@ -3011,7 +3523,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "$ref": "#/components/schemas/OrderByDirection"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                }
+              ],
+              "title": "Order By Direction"
             }
           },
           {
@@ -3607,7 +4124,11 @@
             "description": "The channel name"
           },
           "channel_service": {
-            "$ref": "#/components/schemas/ChannelServices",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ChannelServices"
+              }
+            ],
             "description": "The service for the channel"
           },
           "supported_modes": {
@@ -4583,6 +5104,54 @@
         ],
         "title": "ListResponse[Prompt]"
       },
+      "ListResponse_Service_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Service"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size"
+          },
+          "total_pages": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Pages"
+          },
+          "total_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "page",
+          "page_size"
+        ],
+        "title": "ListResponse[Service]"
+      },
       "ListResponse_SessionLabel_": {
         "properties": {
           "items": {
@@ -4730,7 +5299,11 @@
       "LlmConfig": {
         "properties": {
           "provider": {
-            "$ref": "#/components/schemas/Provider",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Provider"
+              }
+            ],
             "description": "Provider of the LLM model.",
             "default": "azure_openai",
             "examples": [
@@ -4823,7 +5396,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -4842,6 +5419,30 @@
             ],
             "title": "Last Updated",
             "description": "The last updated date of the prompt"
+          },
+          "last_updated_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated By",
+            "description": "The last updated user who last updated of the prompt"
+          },
+          "edit_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edit Comments",
+            "description": "The comments for the last edit"
           }
         },
         "type": "object",
@@ -4888,7 +5489,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           }
         },
@@ -4900,6 +5505,86 @@
         ],
         "title": "PromptCreate"
       },
+      "PromptHistory": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          },
+          "prompt_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Id"
+          },
+          "prompt_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Text"
+          },
+          "prompt_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Name"
+          },
+          "llm_config": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llm Config"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comments"
+          },
+          "user_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User Email"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestamp"
+        ],
+        "title": "PromptHistory"
+      },
       "PromptProperties": {
         "type": "string",
         "enum": [
@@ -4907,7 +5592,8 @@
           "name",
           "context",
           "tools",
-          "llm_config"
+          "llm_config",
+          "last_updated_by"
         ],
         "title": "PromptProperties"
       },
@@ -4919,6 +5605,95 @@
         ],
         "title": "Provider",
         "description": "LLM API provider."
+      },
+      "Service": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the service"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the service"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the service"
+          },
+          "tools": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tools",
+            "description": "The tools of the service"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "id",
+          "tools"
+        ],
+        "title": "Service"
+      },
+      "ServiceCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the service"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the service"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "title": "ServiceCreate"
+      },
+      "ServiceProperties": {
+        "type": "string",
+        "enum": [
+          "id",
+          "name"
+        ],
+        "title": "ServiceProperties"
+      },
+      "ServiceUpdate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the service"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the service"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the service"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "id"
+        ],
+        "title": "ServiceUpdate"
       },
       "Session": {
         "properties": {
@@ -5546,6 +6321,31 @@
         ],
         "title": "Tool"
       },
+      "ToolCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the tool"
+          },
+          "definition": {
+            "type": "object",
+            "title": "Definition",
+            "description": "The definition of the tool"
+          },
+          "service_id": {
+            "type": "integer",
+            "title": "Service Id",
+            "description": "The service this tool belongs to"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "service_id"
+        ],
+        "title": "ToolCreate"
+      },
       "ToolDetailResponse": {
         "properties": {
           "name": {
@@ -5582,6 +6382,37 @@
           "service_id"
         ],
         "title": "ToolProperties"
+      },
+      "ToolUpdate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the tool"
+          },
+          "definition": {
+            "type": "object",
+            "title": "Definition",
+            "description": "The definition of the tool"
+          },
+          "service_id": {
+            "type": "integer",
+            "title": "Service Id",
+            "description": "The service this tool belongs to"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the tool"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "service_id",
+          "id"
+        ],
+        "title": "ToolUpdate"
       },
       "ValidationError": {
         "properties": {
@@ -5667,8 +6498,20 @@
       "description": "Operations related to prompts"
     },
     {
+      "name": "services",
+      "description": "Operations related to services"
+    },
+    {
       "name": "sessions",
       "description": "Operations related to agent sessions"
+    },
+    {
+      "name": "sessions.labels",
+      "description": "Operations related to labeling sessions"
+    },
+    {
+      "name": "sessions.transcript",
+      "description": "Operations related to session transcription"
     },
     {
       "name": "tools",
