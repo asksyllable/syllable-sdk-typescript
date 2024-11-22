@@ -352,7 +352,7 @@ run();
 
 ## delete
 
-Delete Prompt
+Delete a prompt
 
 ### Example Usage
 

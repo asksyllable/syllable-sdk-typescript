@@ -5,88 +5,21 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export const SessionLabelsListQueryParamOrderBy = {
-  Timestamp: "timestamp",
-  SessionId: "session_id",
-  Type: "type",
-  Code: "code",
-  UserEmail: "user_email",
-  IssueCategories: "issue_categories",
-  SessionIdList: "session_id_list",
-} as const;
-export type SessionLabelsListQueryParamOrderBy = ClosedEnum<
-  typeof SessionLabelsListQueryParamOrderBy
->;
-
-export const SessionLabelsListQueryParamOrderByDirection = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-export type SessionLabelsListQueryParamOrderByDirection = ClosedEnum<
-  typeof SessionLabelsListQueryParamOrderByDirection
->;
 
 export type SessionLabelsListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.SessionLabelProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: SessionLabelsListQueryParamOrderBy | undefined;
-  orderByDirection?: SessionLabelsListQueryParamOrderByDirection | undefined;
+  orderBy?: components.SessionLabelProperties | null | undefined;
+  orderByDirection?: components.OrderByDirection | null | undefined;
   fields?: Array<components.SessionLabelProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
-
-/** @internal */
-export const SessionLabelsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof SessionLabelsListQueryParamOrderBy
-> = z.nativeEnum(SessionLabelsListQueryParamOrderBy);
-
-/** @internal */
-export const SessionLabelsListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
-  typeof SessionLabelsListQueryParamOrderBy
-> = SessionLabelsListQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionLabelsListQueryParamOrderBy$ {
-  /** @deprecated use `SessionLabelsListQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema = SessionLabelsListQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `SessionLabelsListQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    SessionLabelsListQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const SessionLabelsListQueryParamOrderByDirection$inboundSchema:
-  z.ZodNativeEnum<typeof SessionLabelsListQueryParamOrderByDirection> = z
-    .nativeEnum(SessionLabelsListQueryParamOrderByDirection);
-
-/** @internal */
-export const SessionLabelsListQueryParamOrderByDirection$outboundSchema:
-  z.ZodNativeEnum<typeof SessionLabelsListQueryParamOrderByDirection> =
-    SessionLabelsListQueryParamOrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionLabelsListQueryParamOrderByDirection$ {
-  /** @deprecated use `SessionLabelsListQueryParamOrderByDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    SessionLabelsListQueryParamOrderByDirection$inboundSchema;
-  /** @deprecated use `SessionLabelsListQueryParamOrderByDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    SessionLabelsListQueryParamOrderByDirection$outboundSchema;
-}
 
 /** @internal */
 export const SessionLabelsListRequest$inboundSchema: z.ZodType<
@@ -99,8 +32,9 @@ export const SessionLabelsListRequest$inboundSchema: z.ZodType<
   search_fields: z.array(components.SessionLabelProperties$inboundSchema)
     .optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: SessionLabelsListQueryParamOrderBy$inboundSchema.optional(),
-  order_by_direction: SessionLabelsListQueryParamOrderByDirection$inboundSchema
+  order_by: z.nullable(components.SessionLabelProperties$inboundSchema)
+    .optional(),
+  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.SessionLabelProperties$inboundSchema))
     .optional(),
@@ -123,8 +57,8 @@ export type SessionLabelsListRequest$Outbound = {
   limit: number;
   search_fields?: Array<string> | undefined;
   search_field_values?: Array<string> | undefined;
-  order_by?: string | undefined;
-  order_by_direction?: string | undefined;
+  order_by?: string | null | undefined;
+  order_by_direction?: string | null | undefined;
   fields?: Array<string> | null | undefined;
   start_datetime?: string | null | undefined;
   end_datetime?: string | null | undefined;
@@ -141,8 +75,9 @@ export const SessionLabelsListRequest$outboundSchema: z.ZodType<
   searchFields: z.array(components.SessionLabelProperties$outboundSchema)
     .optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: SessionLabelsListQueryParamOrderBy$outboundSchema.optional(),
-  orderByDirection: SessionLabelsListQueryParamOrderByDirection$outboundSchema
+  orderBy: z.nullable(components.SessionLabelProperties$outboundSchema)
+    .optional(),
+  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.SessionLabelProperties$outboundSchema))
     .optional(),

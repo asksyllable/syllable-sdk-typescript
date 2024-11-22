@@ -5,7 +5,7 @@
 ```typescript
 import { PromptProperties } from "syllable-sdk/models/components";
 
-let value: PromptProperties = "llm_config";
+let value: PromptProperties = "id";
 ```
 
 ## Values

@@ -13,15 +13,15 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
 ## Summary
 
 SyllableSDK: 
-# Syllble Platform SDK
+# Syllable Platform SDK
 
-Syllble SDK gives you the power of awesome AI agentry. 🚀
+Syllable SDK gives you the power of awesome AI agentry. 🚀
 
 ## Overview
 
-The Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI  
+The Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI  
 capabilities into your communication applications. Whether you're building chatbots, virtual
-assistants, or any other AI-driven solutions, Syllble SDK has got you covered.
+assistants, or any other AI-driven solutions, Syllable SDK has got you covered.
 
 ## Features
 
