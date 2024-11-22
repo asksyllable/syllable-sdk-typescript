@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OrderByDirection } from "syllable-sdk/models/operations";
+import { OrderByDirection } from "syllable-sdk/models/components";
 
 let value: OrderByDirection = "asc";
 ```

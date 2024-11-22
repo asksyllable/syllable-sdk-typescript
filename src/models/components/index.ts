@@ -35,6 +35,7 @@ export * from "./listresponsesession.js";
 export * from "./listresponsesessionlabel.js";
 export * from "./listresponsetool.js";
 export * from "./llmconfig.js";
+export * from "./orderbydirection.js";
 export * from "./prompt.js";
 export * from "./promptcreate.js";
 export * from "./prompthistory.js";

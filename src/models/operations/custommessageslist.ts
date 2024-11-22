@@ -5,85 +5,21 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export const CustomMessagesListQueryParamOrderBy = {
-  Id: "id",
-  Name: "name",
-  Text: "text",
-} as const;
-export type CustomMessagesListQueryParamOrderBy = ClosedEnum<
-  typeof CustomMessagesListQueryParamOrderBy
->;
-
-export const CustomMessagesListQueryParamOrderByDirection = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-export type CustomMessagesListQueryParamOrderByDirection = ClosedEnum<
-  typeof CustomMessagesListQueryParamOrderByDirection
->;
 
 export type CustomMessagesListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.CustomMessageProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: CustomMessagesListQueryParamOrderBy | undefined;
-  orderByDirection?: CustomMessagesListQueryParamOrderByDirection | undefined;
+  orderBy?: components.CustomMessageProperties | null | undefined;
+  orderByDirection?: components.OrderByDirection | null | undefined;
   fields?: Array<components.CustomMessageProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
-
-/** @internal */
-export const CustomMessagesListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof CustomMessagesListQueryParamOrderBy
-> = z.nativeEnum(CustomMessagesListQueryParamOrderBy);
-
-/** @internal */
-export const CustomMessagesListQueryParamOrderBy$outboundSchema:
-  z.ZodNativeEnum<typeof CustomMessagesListQueryParamOrderBy> =
-    CustomMessagesListQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessagesListQueryParamOrderBy$ {
-  /** @deprecated use `CustomMessagesListQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema =
-    CustomMessagesListQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `CustomMessagesListQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    CustomMessagesListQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const CustomMessagesListQueryParamOrderByDirection$inboundSchema:
-  z.ZodNativeEnum<typeof CustomMessagesListQueryParamOrderByDirection> = z
-    .nativeEnum(CustomMessagesListQueryParamOrderByDirection);
-
-/** @internal */
-export const CustomMessagesListQueryParamOrderByDirection$outboundSchema:
-  z.ZodNativeEnum<typeof CustomMessagesListQueryParamOrderByDirection> =
-    CustomMessagesListQueryParamOrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessagesListQueryParamOrderByDirection$ {
-  /** @deprecated use `CustomMessagesListQueryParamOrderByDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    CustomMessagesListQueryParamOrderByDirection$inboundSchema;
-  /** @deprecated use `CustomMessagesListQueryParamOrderByDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    CustomMessagesListQueryParamOrderByDirection$outboundSchema;
-}
 
 /** @internal */
 export const CustomMessagesListRequest$inboundSchema: z.ZodType<
@@ -96,8 +32,9 @@ export const CustomMessagesListRequest$inboundSchema: z.ZodType<
   search_fields: z.array(components.CustomMessageProperties$inboundSchema)
     .optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: CustomMessagesListQueryParamOrderBy$inboundSchema.optional(),
-  order_by_direction: CustomMessagesListQueryParamOrderByDirection$inboundSchema
+  order_by: z.nullable(components.CustomMessageProperties$inboundSchema)
+    .optional(),
+  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.CustomMessageProperties$inboundSchema))
     .optional(),
@@ -120,8 +57,8 @@ export type CustomMessagesListRequest$Outbound = {
   limit: number;
   search_fields?: Array<string> | undefined;
   search_field_values?: Array<string> | undefined;
-  order_by?: string | undefined;
-  order_by_direction?: string | undefined;
+  order_by?: string | null | undefined;
+  order_by_direction?: string | null | undefined;
   fields?: Array<string> | null | undefined;
   start_datetime?: string | null | undefined;
   end_datetime?: string | null | undefined;
@@ -138,8 +75,9 @@ export const CustomMessagesListRequest$outboundSchema: z.ZodType<
   searchFields: z.array(components.CustomMessageProperties$outboundSchema)
     .optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: CustomMessagesListQueryParamOrderBy$outboundSchema.optional(),
-  orderByDirection: CustomMessagesListQueryParamOrderByDirection$outboundSchema
+  orderBy: z.nullable(components.CustomMessageProperties$outboundSchema)
+    .optional(),
+  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.CustomMessageProperties$outboundSchema))
     .optional(),
