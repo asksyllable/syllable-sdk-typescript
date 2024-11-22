@@ -5,91 +5,21 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export const EventsListQueryParamOrderBy = {
-  Timestamp: "timestamp",
-  SessionId: "session_id",
-  ConversationId: "conversation_id",
-  Source: "source",
-  SourceId: "source_id",
-  Category: "category",
-  Type: "type",
-  UserId: "user_id",
-  Description: "description",
-  Attributes: "attributes",
-} as const;
-export type EventsListQueryParamOrderBy = ClosedEnum<
-  typeof EventsListQueryParamOrderBy
->;
-
-export const EventsListQueryParamOrderByDirection = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-export type EventsListQueryParamOrderByDirection = ClosedEnum<
-  typeof EventsListQueryParamOrderByDirection
->;
 
 export type EventsListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.EventProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: EventsListQueryParamOrderBy | undefined;
-  orderByDirection?: EventsListQueryParamOrderByDirection | undefined;
+  orderBy?: components.EventProperties | null | undefined;
+  orderByDirection?: components.OrderByDirection | null | undefined;
   fields?: Array<components.EventProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
-
-/** @internal */
-export const EventsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof EventsListQueryParamOrderBy
-> = z.nativeEnum(EventsListQueryParamOrderBy);
-
-/** @internal */
-export const EventsListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
-  typeof EventsListQueryParamOrderBy
-> = EventsListQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventsListQueryParamOrderBy$ {
-  /** @deprecated use `EventsListQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema = EventsListQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `EventsListQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema = EventsListQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const EventsListQueryParamOrderByDirection$inboundSchema:
-  z.ZodNativeEnum<typeof EventsListQueryParamOrderByDirection> = z.nativeEnum(
-    EventsListQueryParamOrderByDirection,
-  );
-
-/** @internal */
-export const EventsListQueryParamOrderByDirection$outboundSchema:
-  z.ZodNativeEnum<typeof EventsListQueryParamOrderByDirection> =
-    EventsListQueryParamOrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventsListQueryParamOrderByDirection$ {
-  /** @deprecated use `EventsListQueryParamOrderByDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    EventsListQueryParamOrderByDirection$inboundSchema;
-  /** @deprecated use `EventsListQueryParamOrderByDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    EventsListQueryParamOrderByDirection$outboundSchema;
-}
 
 /** @internal */
 export const EventsListRequest$inboundSchema: z.ZodType<
@@ -101,8 +31,8 @@ export const EventsListRequest$inboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   search_fields: z.array(components.EventProperties$inboundSchema).optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: EventsListQueryParamOrderBy$inboundSchema.optional(),
-  order_by_direction: EventsListQueryParamOrderByDirection$inboundSchema
+  order_by: z.nullable(components.EventProperties$inboundSchema).optional(),
+  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.EventProperties$inboundSchema))
     .optional(),
@@ -125,8 +55,8 @@ export type EventsListRequest$Outbound = {
   limit: number;
   search_fields?: Array<string> | undefined;
   search_field_values?: Array<string> | undefined;
-  order_by?: string | undefined;
-  order_by_direction?: string | undefined;
+  order_by?: string | null | undefined;
+  order_by_direction?: string | null | undefined;
   fields?: Array<string> | null | undefined;
   start_datetime?: string | null | undefined;
   end_datetime?: string | null | undefined;
@@ -142,8 +72,8 @@ export const EventsListRequest$outboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   searchFields: z.array(components.EventProperties$outboundSchema).optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: EventsListQueryParamOrderBy$outboundSchema.optional(),
-  orderByDirection: EventsListQueryParamOrderByDirection$outboundSchema
+  orderBy: z.nullable(components.EventProperties$outboundSchema).optional(),
+  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.EventProperties$outboundSchema))
     .optional(),

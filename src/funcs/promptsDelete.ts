@@ -25,6 +25,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Delete Prompt
+ *
+ * @remarks
+ * Delete a prompt
  */
 export async function promptsDelete(
   client: SyllableSDKCore,

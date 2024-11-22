@@ -5,83 +5,21 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export const ServiceListQueryParamOrderBy = {
-  Id: "id",
-  Name: "name",
-} as const;
-export type ServiceListQueryParamOrderBy = ClosedEnum<
-  typeof ServiceListQueryParamOrderBy
->;
-
-export const ServiceListQueryParamOrderByDirection = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-export type ServiceListQueryParamOrderByDirection = ClosedEnum<
-  typeof ServiceListQueryParamOrderByDirection
->;
 
 export type ServiceListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.ServiceProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: ServiceListQueryParamOrderBy | undefined;
-  orderByDirection?: ServiceListQueryParamOrderByDirection | undefined;
+  orderBy?: components.ServiceProperties | null | undefined;
+  orderByDirection?: components.OrderByDirection | null | undefined;
   fields?: Array<components.ServiceProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
-
-/** @internal */
-export const ServiceListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof ServiceListQueryParamOrderBy
-> = z.nativeEnum(ServiceListQueryParamOrderBy);
-
-/** @internal */
-export const ServiceListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
-  typeof ServiceListQueryParamOrderBy
-> = ServiceListQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ServiceListQueryParamOrderBy$ {
-  /** @deprecated use `ServiceListQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema = ServiceListQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `ServiceListQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema = ServiceListQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const ServiceListQueryParamOrderByDirection$inboundSchema:
-  z.ZodNativeEnum<typeof ServiceListQueryParamOrderByDirection> = z.nativeEnum(
-    ServiceListQueryParamOrderByDirection,
-  );
-
-/** @internal */
-export const ServiceListQueryParamOrderByDirection$outboundSchema:
-  z.ZodNativeEnum<typeof ServiceListQueryParamOrderByDirection> =
-    ServiceListQueryParamOrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ServiceListQueryParamOrderByDirection$ {
-  /** @deprecated use `ServiceListQueryParamOrderByDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    ServiceListQueryParamOrderByDirection$inboundSchema;
-  /** @deprecated use `ServiceListQueryParamOrderByDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    ServiceListQueryParamOrderByDirection$outboundSchema;
-}
 
 /** @internal */
 export const ServiceListRequest$inboundSchema: z.ZodType<
@@ -93,8 +31,8 @@ export const ServiceListRequest$inboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   search_fields: z.array(components.ServiceProperties$inboundSchema).optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: ServiceListQueryParamOrderBy$inboundSchema.optional(),
-  order_by_direction: ServiceListQueryParamOrderByDirection$inboundSchema
+  order_by: z.nullable(components.ServiceProperties$inboundSchema).optional(),
+  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.ServiceProperties$inboundSchema))
     .optional(),
@@ -117,8 +55,8 @@ export type ServiceListRequest$Outbound = {
   limit: number;
   search_fields?: Array<string> | undefined;
   search_field_values?: Array<string> | undefined;
-  order_by?: string | undefined;
-  order_by_direction?: string | undefined;
+  order_by?: string | null | undefined;
+  order_by_direction?: string | null | undefined;
   fields?: Array<string> | null | undefined;
   start_datetime?: string | null | undefined;
   end_datetime?: string | null | undefined;
@@ -134,8 +72,8 @@ export const ServiceListRequest$outboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   searchFields: z.array(components.ServiceProperties$outboundSchema).optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: ServiceListQueryParamOrderBy$outboundSchema.optional(),
-  orderByDirection: ServiceListQueryParamOrderByDirection$outboundSchema
+  orderBy: z.nullable(components.ServiceProperties$outboundSchema).optional(),
+  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.ServiceProperties$outboundSchema))
     .optional(),

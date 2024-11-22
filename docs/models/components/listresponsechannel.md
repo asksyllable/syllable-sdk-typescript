@@ -10,11 +10,11 @@ let value: ListResponseChannel = {
     {
       name: "<value>",
       channelService: "webchat",
-      id: 778157,
+      id: 870013,
     },
   ],
-  page: 870013,
-  pageSize: 978619,
+  page: 978619,
+  pageSize: 799159,
 };
 ```
 

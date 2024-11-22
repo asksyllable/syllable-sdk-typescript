@@ -8,11 +8,11 @@ import { ListResponseSession } from "syllable-sdk/models/components";
 let value: ListResponseSession = {
   items: [
     {
-      timestamp: new Date("2022-10-16T14:25:54.471Z"),
+      timestamp: new Date("2023-08-11T15:36:46.154Z"),
     },
   ],
-  page: 20651,
-  pageSize: 758379,
+  page: 681393,
+  pageSize: 277596,
 };
 ```
 

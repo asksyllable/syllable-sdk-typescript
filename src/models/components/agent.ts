@@ -30,6 +30,7 @@ export type Agent = {
    * The Agent ID
    */
   id: number;
+  updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -89,12 +90,16 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
     tool_headers: z.nullable(z.record(z.string())).optional(),
     variables: z.nullable(z.lazy(() => Variables$inboundSchema)).optional(),
     id: z.number().int(),
+    updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "prompt_id": "promptId",
       "custom_message_id": "customMessageId",
       "prompt_tool_defaults": "promptToolDefaults",
       "tool_headers": "toolHeaders",
+      "updated_at": "updatedAt",
     });
   });
 
@@ -110,6 +115,7 @@ export type Agent$Outbound = {
   tool_headers?: { [k: string]: string } | null | undefined;
   variables?: Variables$Outbound | null | undefined;
   id: number;
+  updated_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -128,12 +134,14 @@ export const Agent$outboundSchema: z.ZodType<
   toolHeaders: z.nullable(z.record(z.string())).optional(),
   variables: z.nullable(z.lazy(() => Variables$outboundSchema)).optional(),
   id: z.number().int(),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
     customMessageId: "custom_message_id",
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
+    updatedAt: "updated_at",
   });
 });
 

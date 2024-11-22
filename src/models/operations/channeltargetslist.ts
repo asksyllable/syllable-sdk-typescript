@@ -5,90 +5,21 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export const ChannelTargetsListQueryParamOrderBy = {
-  Id: "id",
-  ChannelId: "channel_id",
-  ChannelName: "channel_name",
-  AgentId: "agent_id",
-  Target: "target",
-  TargetMode: "target_mode",
-  FallbackTarget: "fallback_target",
-  IsTest: "is_test",
-} as const;
-export type ChannelTargetsListQueryParamOrderBy = ClosedEnum<
-  typeof ChannelTargetsListQueryParamOrderBy
->;
-
-export const ChannelTargetsListQueryParamOrderByDirection = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-export type ChannelTargetsListQueryParamOrderByDirection = ClosedEnum<
-  typeof ChannelTargetsListQueryParamOrderByDirection
->;
 
 export type ChannelTargetsListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.ChannelTargetProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: ChannelTargetsListQueryParamOrderBy | undefined;
-  orderByDirection?: ChannelTargetsListQueryParamOrderByDirection | undefined;
+  orderBy?: components.ChannelTargetProperties | null | undefined;
+  orderByDirection?: components.OrderByDirection | null | undefined;
   fields?: Array<components.ChannelTargetProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
-
-/** @internal */
-export const ChannelTargetsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof ChannelTargetsListQueryParamOrderBy
-> = z.nativeEnum(ChannelTargetsListQueryParamOrderBy);
-
-/** @internal */
-export const ChannelTargetsListQueryParamOrderBy$outboundSchema:
-  z.ZodNativeEnum<typeof ChannelTargetsListQueryParamOrderBy> =
-    ChannelTargetsListQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelTargetsListQueryParamOrderBy$ {
-  /** @deprecated use `ChannelTargetsListQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema =
-    ChannelTargetsListQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `ChannelTargetsListQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema =
-    ChannelTargetsListQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const ChannelTargetsListQueryParamOrderByDirection$inboundSchema:
-  z.ZodNativeEnum<typeof ChannelTargetsListQueryParamOrderByDirection> = z
-    .nativeEnum(ChannelTargetsListQueryParamOrderByDirection);
-
-/** @internal */
-export const ChannelTargetsListQueryParamOrderByDirection$outboundSchema:
-  z.ZodNativeEnum<typeof ChannelTargetsListQueryParamOrderByDirection> =
-    ChannelTargetsListQueryParamOrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelTargetsListQueryParamOrderByDirection$ {
-  /** @deprecated use `ChannelTargetsListQueryParamOrderByDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    ChannelTargetsListQueryParamOrderByDirection$inboundSchema;
-  /** @deprecated use `ChannelTargetsListQueryParamOrderByDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    ChannelTargetsListQueryParamOrderByDirection$outboundSchema;
-}
 
 /** @internal */
 export const ChannelTargetsListRequest$inboundSchema: z.ZodType<
@@ -101,8 +32,9 @@ export const ChannelTargetsListRequest$inboundSchema: z.ZodType<
   search_fields: z.array(components.ChannelTargetProperties$inboundSchema)
     .optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: ChannelTargetsListQueryParamOrderBy$inboundSchema.optional(),
-  order_by_direction: ChannelTargetsListQueryParamOrderByDirection$inboundSchema
+  order_by: z.nullable(components.ChannelTargetProperties$inboundSchema)
+    .optional(),
+  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.ChannelTargetProperties$inboundSchema))
     .optional(),
@@ -125,8 +57,8 @@ export type ChannelTargetsListRequest$Outbound = {
   limit: number;
   search_fields?: Array<string> | undefined;
   search_field_values?: Array<string> | undefined;
-  order_by?: string | undefined;
-  order_by_direction?: string | undefined;
+  order_by?: string | null | undefined;
+  order_by_direction?: string | null | undefined;
   fields?: Array<string> | null | undefined;
   start_datetime?: string | null | undefined;
   end_datetime?: string | null | undefined;
@@ -143,8 +75,9 @@ export const ChannelTargetsListRequest$outboundSchema: z.ZodType<
   searchFields: z.array(components.ChannelTargetProperties$outboundSchema)
     .optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: ChannelTargetsListQueryParamOrderBy$outboundSchema.optional(),
-  orderByDirection: ChannelTargetsListQueryParamOrderByDirection$outboundSchema
+  orderBy: z.nullable(components.ChannelTargetProperties$outboundSchema)
+    .optional(),
+  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.ChannelTargetProperties$outboundSchema))
     .optional(),
