@@ -5,87 +5,21 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export const PromptsListQueryParamOrderBy = {
-  Id: "id",
-  Name: "name",
-  Context: "context",
-  Tools: "tools",
-  LlmConfig: "llm_config",
-  LastUpdatedBy: "last_updated_by",
-} as const;
-export type PromptsListQueryParamOrderBy = ClosedEnum<
-  typeof PromptsListQueryParamOrderBy
->;
-
-export const PromptsListQueryParamOrderByDirection = {
-  Asc: "asc",
-  Desc: "desc",
-} as const;
-export type PromptsListQueryParamOrderByDirection = ClosedEnum<
-  typeof PromptsListQueryParamOrderByDirection
->;
 
 export type PromptsListRequest = {
   page?: number | null | undefined;
   limit?: number | undefined;
   searchFields?: Array<components.PromptProperties> | undefined;
   searchFieldValues?: Array<string> | undefined;
-  orderBy?: PromptsListQueryParamOrderBy | undefined;
-  orderByDirection?: PromptsListQueryParamOrderByDirection | undefined;
+  orderBy?: components.PromptProperties | null | undefined;
+  orderByDirection?: components.OrderByDirection | null | undefined;
   fields?: Array<components.PromptProperties> | null | undefined;
   startDatetime?: string | null | undefined;
   endDatetime?: string | null | undefined;
 };
-
-/** @internal */
-export const PromptsListQueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof PromptsListQueryParamOrderBy
-> = z.nativeEnum(PromptsListQueryParamOrderBy);
-
-/** @internal */
-export const PromptsListQueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
-  typeof PromptsListQueryParamOrderBy
-> = PromptsListQueryParamOrderBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptsListQueryParamOrderBy$ {
-  /** @deprecated use `PromptsListQueryParamOrderBy$inboundSchema` instead. */
-  export const inboundSchema = PromptsListQueryParamOrderBy$inboundSchema;
-  /** @deprecated use `PromptsListQueryParamOrderBy$outboundSchema` instead. */
-  export const outboundSchema = PromptsListQueryParamOrderBy$outboundSchema;
-}
-
-/** @internal */
-export const PromptsListQueryParamOrderByDirection$inboundSchema:
-  z.ZodNativeEnum<typeof PromptsListQueryParamOrderByDirection> = z.nativeEnum(
-    PromptsListQueryParamOrderByDirection,
-  );
-
-/** @internal */
-export const PromptsListQueryParamOrderByDirection$outboundSchema:
-  z.ZodNativeEnum<typeof PromptsListQueryParamOrderByDirection> =
-    PromptsListQueryParamOrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptsListQueryParamOrderByDirection$ {
-  /** @deprecated use `PromptsListQueryParamOrderByDirection$inboundSchema` instead. */
-  export const inboundSchema =
-    PromptsListQueryParamOrderByDirection$inboundSchema;
-  /** @deprecated use `PromptsListQueryParamOrderByDirection$outboundSchema` instead. */
-  export const outboundSchema =
-    PromptsListQueryParamOrderByDirection$outboundSchema;
-}
 
 /** @internal */
 export const PromptsListRequest$inboundSchema: z.ZodType<
@@ -97,8 +31,8 @@ export const PromptsListRequest$inboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   search_fields: z.array(components.PromptProperties$inboundSchema).optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: PromptsListQueryParamOrderBy$inboundSchema.optional(),
-  order_by_direction: PromptsListQueryParamOrderByDirection$inboundSchema
+  order_by: z.nullable(components.PromptProperties$inboundSchema).optional(),
+  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.PromptProperties$inboundSchema))
     .optional(),
@@ -121,8 +55,8 @@ export type PromptsListRequest$Outbound = {
   limit: number;
   search_fields?: Array<string> | undefined;
   search_field_values?: Array<string> | undefined;
-  order_by?: string | undefined;
-  order_by_direction?: string | undefined;
+  order_by?: string | null | undefined;
+  order_by_direction?: string | null | undefined;
   fields?: Array<string> | null | undefined;
   start_datetime?: string | null | undefined;
   end_datetime?: string | null | undefined;
@@ -138,8 +72,8 @@ export const PromptsListRequest$outboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   searchFields: z.array(components.PromptProperties$outboundSchema).optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: PromptsListQueryParamOrderBy$outboundSchema.optional(),
-  orderByDirection: PromptsListQueryParamOrderByDirection$outboundSchema
+  orderBy: z.nullable(components.PromptProperties$outboundSchema).optional(),
+  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   fields: z.nullable(z.array(components.PromptProperties$outboundSchema))
     .optional(),

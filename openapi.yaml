@@ -1,13 +1,13 @@
 openapi: "3.1.0"
 info:
   title: "SyllableSDK"
-  description: "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI  \ncapabilities into your communication applications. Whether you're building chatbots, virtual\nassistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
+  description: "\n# Syllable Platform SDK\n\nSyllable SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI  \ncapabilities into your communication applications. Whether you're building chatbots, virtual\nassistants, or any other AI-driven solutions, Syllable SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
   version: "0.0.2"
 servers:
   - url: "http://localhost:8001"
-    description: "staging server"
+    description: "dev server"
   - url: "http://localhost:8001"
-    description: "staging / port-forwarding server"
+    description: "dev / port-forwarding server"
 paths:
   "/api/v1/agents/":
     get:
@@ -58,15 +58,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/AgentProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -76,6 +78,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/AgentProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -374,15 +377,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/ChannelProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -392,6 +397,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/ChannelProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -535,15 +541,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/ConversationProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -553,6 +561,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/ConversationProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -979,15 +988,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/EventProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -997,6 +1008,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/EventProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -1092,15 +1104,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/CustomMessageProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -1110,6 +1124,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/CustomMessageProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -1396,15 +1411,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/PromptProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -1414,6 +1431,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/PromptProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -1499,6 +1517,7 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -1549,11 +1568,12 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
+                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 857478,
+                id: 597129,
                 lastUpdated: "<value>",
               });
 
@@ -1613,6 +1633,7 @@ paths:
       tags:
         - "prompts"
       summary: "Delete Prompt"
+      description: "Delete a prompt"
       operationId: "prompts_delete"
       security:
         - APIKeyHeader: []
@@ -1691,6 +1712,26 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: prompts_history
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.promptsHistory({
+                promptId: 627932,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/services/":
     get:
       tags:
@@ -1740,15 +1781,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/ServiceProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -1758,6 +1801,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/ServiceProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -1786,6 +1830,24 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: service_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     post:
       tags:
         - "services"
@@ -1809,6 +1871,27 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: service_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.create({
+                name: "<value>",
+                description: "yuck vice between gee ugh ha",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     put:
       tags:
         - "services"
@@ -1832,6 +1915,28 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: service_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.update({
+                name: "<value>",
+                description: "awful underneath retention too mobility char innocently dowse restfully",
+                id: 243447,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/session_labels/{session_label_id}":
     get:
       tags:
@@ -1973,15 +2078,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/SessionLabelProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -1991,6 +2098,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/SessionLabelProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -2085,15 +2193,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/SessionProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -2103,6 +2213,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/SessionProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -2385,15 +2496,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/ToolProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -2403,6 +2516,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/ToolProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -2473,6 +2587,27 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: tool_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.create({
+                name: "<value>",
+                serviceId: 486589,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     put:
       tags:
         - "tools"
@@ -2497,6 +2632,28 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: tool_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.update({
+                name: "<value>",
+                serviceId: 857478,
+                id: 597129,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/tools/{tool_name}":
     get:
       tags:
@@ -2593,15 +2750,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/AvailableTargetProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -2611,6 +2770,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/AvailableTargetProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -2705,15 +2865,17 @@ paths:
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/ChannelTargetProperties"}
+              - type: "null"
             title: "Order By"
         - name: "order_by_direction"
           in: "query"
           required: false
           schema:
-            allOf:
+            anyOf:
               - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
             title: "Order By Direction"
         - name: "fields"
           in: "query"
@@ -2723,6 +2885,7 @@ paths:
               - type: "array"
                 items: {"$ref": "#/components/schemas/ChannelTargetProperties"}
               - type: "null"
+            default: []
             title: "Fields"
         - name: "start_datetime"
           in: "query"
@@ -3048,6 +3211,12 @@ components:
           type: "integer"
           title: "Id"
           description: "The Agent ID"
+        "updated_at":
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Updated At"
       type: "object"
       required:
         - "name"
@@ -3120,6 +3289,7 @@ components:
         - "variables"
         - "prompt_tool_defaults"
         - "tool_headers"
+        - "updated_at"
       title: "AgentProperties"
     "AgentToolDefaults":
       properties:
@@ -4151,6 +4321,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Channel Manager Sid"
+        "agent_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Agent Id"
         "agent_name":
           anyOf:
             - type: "string"
@@ -4161,6 +4336,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Agent Type"
+        "agent_timezone":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Agent Timezone"
         "prompt_id":
           anyOf:
             - type: "string"

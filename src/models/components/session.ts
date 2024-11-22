@@ -15,8 +15,10 @@ export type Session = {
   channelManagerService?: string | null | undefined;
   channelManagerType?: string | null | undefined;
   channelManagerSid?: string | null | undefined;
+  agentId?: string | null | undefined;
   agentName?: string | null | undefined;
   agentType?: string | null | undefined;
+  agentTimezone?: string | null | undefined;
   promptId?: string | null | undefined;
   promptName?: string | null | undefined;
   promptVersion?: string | null | undefined;
@@ -39,8 +41,10 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     channel_manager_service: z.nullable(z.string()).optional(),
     channel_manager_type: z.nullable(z.string()).optional(),
     channel_manager_sid: z.nullable(z.string()).optional(),
+    agent_id: z.nullable(z.string()).optional(),
     agent_name: z.nullable(z.string()).optional(),
     agent_type: z.nullable(z.string()).optional(),
+    agent_timezone: z.nullable(z.string()).optional(),
     prompt_id: z.nullable(z.string()).optional(),
     prompt_name: z.nullable(z.string()).optional(),
     prompt_version: z.nullable(z.string()).optional(),
@@ -57,8 +61,10 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "channel_manager_service": "channelManagerService",
       "channel_manager_type": "channelManagerType",
       "channel_manager_sid": "channelManagerSid",
+      "agent_id": "agentId",
       "agent_name": "agentName",
       "agent_type": "agentType",
+      "agent_timezone": "agentTimezone",
       "prompt_id": "promptId",
       "prompt_name": "promptName",
       "prompt_version": "promptVersion",
@@ -76,8 +82,10 @@ export type Session$Outbound = {
   channel_manager_service?: string | null | undefined;
   channel_manager_type?: string | null | undefined;
   channel_manager_sid?: string | null | undefined;
+  agent_id?: string | null | undefined;
   agent_name?: string | null | undefined;
   agent_type?: string | null | undefined;
+  agent_timezone?: string | null | undefined;
   prompt_id?: string | null | undefined;
   prompt_name?: string | null | undefined;
   prompt_version?: string | null | undefined;
@@ -101,8 +109,10 @@ export const Session$outboundSchema: z.ZodType<
   channelManagerService: z.nullable(z.string()).optional(),
   channelManagerType: z.nullable(z.string()).optional(),
   channelManagerSid: z.nullable(z.string()).optional(),
+  agentId: z.nullable(z.string()).optional(),
   agentName: z.nullable(z.string()).optional(),
   agentType: z.nullable(z.string()).optional(),
+  agentTimezone: z.nullable(z.string()).optional(),
   promptId: z.nullable(z.string()).optional(),
   promptName: z.nullable(z.string()).optional(),
   promptVersion: z.nullable(z.string()).optional(),
@@ -119,8 +129,10 @@ export const Session$outboundSchema: z.ZodType<
     channelManagerService: "channel_manager_service",
     channelManagerType: "channel_manager_type",
     channelManagerSid: "channel_manager_sid",
+    agentId: "agent_id",
     agentName: "agent_name",
     agentType: "agent_type",
+    agentTimezone: "agent_timezone",
     promptId: "prompt_id",
     promptName: "prompt_name",
     promptVersion: "prompt_version",
