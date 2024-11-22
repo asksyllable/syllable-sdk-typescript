@@ -2,17 +2,17 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SyllableSDK",
-    "description": "\n# Syllble Platform SDK\n\nSyllble SDK gives you the power of awesome AI agentry. 🚀\n\n## Overview\n\nThe Syllble SDK provides a comprehensive set of tools and APIs to integrate powerful AI  \ncapabilities into your communication applications. Whether you're building chatbots, virtual\nassistants, or any other AI-driven solutions, Syllble SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n",
+    "description": "\n# Syllable Platform SDK\n\nSyllable SDK gives you the power of awesome AI agentry. 🚀\n\n## Overview\n\nThe Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI  \ncapabilities into your communication applications. Whether you're building chatbots, virtual\nassistants, or any other AI-driven solutions, Syllable SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n",
     "version": "0.0.2"
   },
   "servers": [
     {
       "url": "http://localhost:8001",
-      "description": "staging server"
+      "description": "dev server"
     },
     {
       "url": "http://localhost:8001",
-      "description": "staging / port-forwarding server"
+      "description": "dev / port-forwarding server"
     }
   ],
   "paths": {
@@ -91,9 +91,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/AgentProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -104,9 +107,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -128,6 +134,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -456,9 +463,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/ChannelProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -469,9 +479,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -493,6 +506,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -675,9 +689,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/ConversationProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -688,9 +705,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -712,6 +732,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -1174,9 +1195,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/EventProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -1187,9 +1211,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -1211,6 +1238,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -1346,9 +1374,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/CustomMessageProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -1359,9 +1390,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -1383,6 +1417,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -1713,9 +1748,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/PromptProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -1726,9 +1764,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -1750,6 +1791,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -1956,6 +1998,7 @@
           "V1"
         ],
         "summary": "Delete Prompt",
+        "description": "Delete a prompt",
         "operationId": "prompts_delete",
         "security": [
           {
@@ -2132,9 +2175,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/ServiceProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -2145,9 +2191,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -2169,6 +2218,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -2487,9 +2537,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/SessionLabelProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -2500,9 +2553,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -2524,6 +2580,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -2658,9 +2715,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/SessionProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -2671,9 +2731,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -2695,6 +2758,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -3022,9 +3086,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/ToolProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -3035,9 +3102,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -3059,6 +3129,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -3337,9 +3408,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/AvailableTargetProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -3350,9 +3424,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -3374,6 +3451,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -3510,9 +3588,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/ChannelTargetProperties"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By"
@@ -3523,9 +3604,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "allOf": [
+              "anyOf": [
                 {
                   "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
                 }
               ],
               "title": "Order By Direction"
@@ -3547,6 +3631,7 @@
                   "type": "null"
                 }
               ],
+              "default": [],
               "title": "Fields"
             }
           },
@@ -3924,6 +4009,18 @@
             "type": "integer",
             "title": "Id",
             "description": "The Agent ID"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At"
           }
         },
         "type": "object",
@@ -4030,7 +4127,8 @@
           "languages",
           "variables",
           "prompt_tool_defaults",
-          "tool_headers"
+          "tool_headers",
+          "updated_at"
         ],
         "title": "AgentProperties"
       },
@@ -5757,6 +5855,17 @@
             ],
             "title": "Channel Manager Sid"
           },
+          "agent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Id"
+          },
           "agent_name": {
             "anyOf": [
               {
@@ -5778,6 +5887,17 @@
               }
             ],
             "title": "Agent Type"
+          },
+          "agent_timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Timezone"
           },
           "prompt_id": {
             "anyOf": [
