@@ -5467,6 +5467,18 @@
             "title": "Name",
             "description": "The Prompt name"
           },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "The description of the prompt"
+          },
           "type": {
             "type": "string",
             "title": "Type",
@@ -5560,6 +5572,18 @@
             "title": "Name",
             "description": "The Prompt name"
           },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "The description of the prompt"
+          },
           "type": {
             "type": "string",
             "title": "Type",
@@ -5632,6 +5656,17 @@
             ],
             "title": "Prompt Text"
           },
+          "prompt_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Description"
+          },
           "prompt_name": {
             "anyOf": [
               {
@@ -5688,9 +5723,11 @@
         "enum": [
           "id",
           "name",
+          "description",
           "context",
           "tools",
           "llm_config",
+          "last_updated",
           "last_updated_by"
         ],
         "title": "PromptProperties"
