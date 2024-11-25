@@ -20,6 +20,10 @@ export type PromptCreate = {
    */
   name: string;
   /**
+   * The description of the prompt
+   */
+  description?: string | null | undefined;
+  /**
    * The type of the prompt
    */
   type: string;
@@ -44,6 +48,7 @@ export const PromptCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
@@ -57,6 +62,7 @@ export const PromptCreate$inboundSchema: z.ZodType<
 /** @internal */
 export type PromptCreate$Outbound = {
   name: string;
+  description?: string | null | undefined;
   type: string;
   context?: string | null | undefined;
   tools?: Array<string> | undefined;
@@ -70,6 +76,7 @@ export const PromptCreate$outboundSchema: z.ZodType<
   PromptCreate
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),

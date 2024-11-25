@@ -20,6 +20,10 @@ export type Prompt = {
    */
   name: string;
   /**
+   * The description of the prompt
+   */
+  description?: string | null | undefined;
+  /**
    * The type of the prompt
    */
   type: string;
@@ -57,6 +61,7 @@ export type Prompt = {
 export const Prompt$inboundSchema: z.ZodType<Prompt, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
+    description: z.nullable(z.string()).optional(),
     type: z.string(),
     context: z.nullable(z.string()).optional(),
     tools: z.array(z.string()).optional(),
@@ -77,6 +82,7 @@ export const Prompt$inboundSchema: z.ZodType<Prompt, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Prompt$Outbound = {
   name: string;
+  description?: string | null | undefined;
   type: string;
   context?: string | null | undefined;
   tools?: Array<string> | undefined;
@@ -94,6 +100,7 @@ export const Prompt$outboundSchema: z.ZodType<
   Prompt
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
