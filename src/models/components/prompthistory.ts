@@ -12,6 +12,7 @@ export type PromptHistory = {
   timestamp: Date;
   promptId?: string | null | undefined;
   promptText?: string | null | undefined;
+  promptDescription?: string | null | undefined;
   promptName?: string | null | undefined;
   llmConfig?: string | null | undefined;
   comments?: string | null | undefined;
@@ -27,6 +28,7 @@ export const PromptHistory$inboundSchema: z.ZodType<
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   prompt_id: z.nullable(z.string()).optional(),
   prompt_text: z.nullable(z.string()).optional(),
+  prompt_description: z.nullable(z.string()).optional(),
   prompt_name: z.nullable(z.string()).optional(),
   llm_config: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
@@ -35,6 +37,7 @@ export const PromptHistory$inboundSchema: z.ZodType<
   return remap$(v, {
     "prompt_id": "promptId",
     "prompt_text": "promptText",
+    "prompt_description": "promptDescription",
     "prompt_name": "promptName",
     "llm_config": "llmConfig",
     "user_email": "userEmail",
@@ -46,6 +49,7 @@ export type PromptHistory$Outbound = {
   timestamp: string;
   prompt_id?: string | null | undefined;
   prompt_text?: string | null | undefined;
+  prompt_description?: string | null | undefined;
   prompt_name?: string | null | undefined;
   llm_config?: string | null | undefined;
   comments?: string | null | undefined;
@@ -61,6 +65,7 @@ export const PromptHistory$outboundSchema: z.ZodType<
   timestamp: z.date().transform(v => v.toISOString()),
   promptId: z.nullable(z.string()).optional(),
   promptText: z.nullable(z.string()).optional(),
+  promptDescription: z.nullable(z.string()).optional(),
   promptName: z.nullable(z.string()).optional(),
   llmConfig: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
@@ -69,6 +74,7 @@ export const PromptHistory$outboundSchema: z.ZodType<
   return remap$(v, {
     promptId: "prompt_id",
     promptText: "prompt_text",
+    promptDescription: "prompt_description",
     promptName: "prompt_name",
     llmConfig: "llm_config",
     userEmail: "user_email",

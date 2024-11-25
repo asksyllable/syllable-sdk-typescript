@@ -8,9 +8,11 @@ import { ClosedEnum } from "../../types/enums.js";
 export const PromptProperties = {
   Id: "id",
   Name: "name",
+  Description: "description",
   Context: "context",
   Tools: "tools",
   LlmConfig: "llm_config",
+  LastUpdated: "last_updated",
   LastUpdatedBy: "last_updated_by",
 } as const;
 export type PromptProperties = ClosedEnum<typeof PromptProperties>;
