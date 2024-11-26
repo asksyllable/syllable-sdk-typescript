@@ -44,6 +44,10 @@ export type Prompt = {
    */
   id: number;
   /**
+   * The comments for the last edit
+   */
+  editComments?: string | null | undefined;
+  /**
    * The last updated date of the prompt
    */
   lastUpdated: string | null;
@@ -52,9 +56,9 @@ export type Prompt = {
    */
   lastUpdatedBy?: string | null | undefined;
   /**
-   * The comments for the last edit
+   * The number of agents using the prompt
    */
-  editComments?: string | null | undefined;
+  agentCount?: number | null | undefined;
 };
 
 /** @internal */
@@ -67,15 +71,17 @@ export const Prompt$inboundSchema: z.ZodType<Prompt, z.ZodTypeDef, unknown> = z
     tools: z.array(z.string()).optional(),
     llm_config: LlmConfig$inboundSchema,
     id: z.number().int(),
+    edit_comments: z.nullable(z.string()).optional(),
     last_updated: z.nullable(z.string()),
     last_updated_by: z.nullable(z.string()).optional(),
-    edit_comments: z.nullable(z.string()).optional(),
+    agent_count: z.nullable(z.number().int()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "llm_config": "llmConfig",
+      "edit_comments": "editComments",
       "last_updated": "lastUpdated",
       "last_updated_by": "lastUpdatedBy",
-      "edit_comments": "editComments",
+      "agent_count": "agentCount",
     });
   });
 
@@ -88,9 +94,10 @@ export type Prompt$Outbound = {
   tools?: Array<string> | undefined;
   llm_config: LlmConfig$Outbound;
   id: number;
+  edit_comments?: string | null | undefined;
   last_updated: string | null;
   last_updated_by?: string | null | undefined;
-  edit_comments?: string | null | undefined;
+  agent_count?: number | null | undefined;
 };
 
 /** @internal */
@@ -106,15 +113,17 @@ export const Prompt$outboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llmConfig: LlmConfig$outboundSchema,
   id: z.number().int(),
+  editComments: z.nullable(z.string()).optional(),
   lastUpdated: z.nullable(z.string()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
-  editComments: z.nullable(z.string()).optional(),
+  agentCount: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
+    editComments: "edit_comments",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
-    editComments: "edit_comments",
+    agentCount: "agent_count",
   });
 });
 
