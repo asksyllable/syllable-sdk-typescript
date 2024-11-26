@@ -55,7 +55,7 @@ export class Prompts extends ClientSDK {
    * Update an existing prompt
    */
   async update(
-    request: components.Prompt,
+    request: components.PromptUpdate,
     options?: RequestOptions,
   ): Promise<components.Prompt> {
     return unwrapAsync(promptsUpdate(

@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  */
 export async function promptsUpdate(
   client: SyllableSDKCore,
-  request: components.Prompt,
+  request: components.PromptUpdate,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -47,7 +47,7 @@ export async function promptsUpdate(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.Prompt$outboundSchema.parse(value),
+    (value) => components.PromptUpdate$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
