@@ -7,7 +7,7 @@ import { ToolCreate } from "syllable-sdk/models/components";
 
 let value: ToolCreate = {
   name: "<value>",
-  serviceId: 699622,
+  serviceId: 333145,
 };
 ```
 

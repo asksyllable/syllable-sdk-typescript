@@ -708,7 +708,6 @@ actions:
                   apiVersion: "2024-06-01",
                 },
                 id: 597129,
-                lastUpdated: "<value>",
               });
 
               // Handle the result

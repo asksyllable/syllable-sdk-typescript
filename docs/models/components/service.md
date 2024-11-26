@@ -7,9 +7,8 @@ import { Service } from "syllable-sdk/models/components";
 
 let value: Service = {
   name: "<value>",
-  description:
-    "unnecessarily hamburger splosh around apologise lest ick yum following",
-  id: 536579,
+  description: "queasily ha intensely",
+  id: 729991,
   tools: [
     "<value>",
   ],
