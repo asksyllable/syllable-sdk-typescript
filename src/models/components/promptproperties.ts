@@ -9,11 +9,13 @@ export const PromptProperties = {
   Id: "id",
   Name: "name",
   Description: "description",
+  NameDescription: "name_description",
   Context: "context",
   Tools: "tools",
   LlmConfig: "llm_config",
   LastUpdated: "last_updated",
   LastUpdatedBy: "last_updated_by",
+  AgentCount: "agent_count",
 } as const;
 export type PromptProperties = ClosedEnum<typeof PromptProperties>;
 

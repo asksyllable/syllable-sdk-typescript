@@ -1,6 +1,6 @@
 {
   "name": "syllable-sdk",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
@@ -14,6 +14,8 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19",
     "zod": ">= 3"
   },
   "devDependencies": {

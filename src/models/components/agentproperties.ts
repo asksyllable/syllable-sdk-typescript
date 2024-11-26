@@ -11,6 +11,7 @@ export const AgentProperties = {
   Type: "type",
   Timezone: "timezone",
   PromptId: "prompt_id",
+  PromptIdList: "prompt_id_list",
   CustomMessageId: "custom_message_id",
   Languages: "languages",
   Variables: "variables",

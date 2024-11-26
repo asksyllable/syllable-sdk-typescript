@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: fa0960e60feaf7b1a39acbcb3602d1a3
+  docChecksum: 214d601a4c1ddeb754c606854e11b031
   docVersion: 0.0.2
-  speakeasyVersion: 1.445.2
-  generationVersion: 2.461.4
-  releaseVersion: 0.1.0-alpha.8
-  configChecksum: 29c2e1fd5ef229e7baf2ee262bcb6c49
+  speakeasyVersion: 1.447.4
+  generationVersion: 2.463.1
+  releaseVersion: 0.1.0-alpha.9
+  configChecksum: 81845116fe6c0d04683cb4a4e57d0a98
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.6
+    core: 3.18.7
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
@@ -84,6 +84,7 @@ generatedFiles:
   - docs/models/components/promptcreate.md
   - docs/models/components/prompthistory.md
   - docs/models/components/promptproperties.md
+  - docs/models/components/promptupdate.md
   - docs/models/components/provider.md
   - docs/models/components/response.md
   - docs/models/components/security.md
@@ -276,6 +277,7 @@ generatedFiles:
   - src/models/components/promptcreate.ts
   - src/models/components/prompthistory.ts
   - src/models/components/promptproperties.ts
+  - src/models/components/promptupdate.ts
   - src/models/components/security.ts
   - src/models/components/service.ts
   - src/models/components/servicecreate.ts
@@ -565,7 +567,7 @@ examples:
   prompts_update:
     speakeasy-default-prompts-update:
       requestBody:
-        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 857478, "last_updated": "<value>"}
+        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 857478}
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 597129, "last_updated": "<value>"}
@@ -791,3 +793,4 @@ examples:
         "200":
           application/json: {"name": "<value>", "service_id": 344620, "id": 991464}
         "422": {}
+generatedTests: {}
