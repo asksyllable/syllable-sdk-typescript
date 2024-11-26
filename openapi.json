@@ -1915,7 +1915,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Prompt"
+                "$ref": "#/components/schemas/PromptUpdate"
               }
             }
           }
@@ -4123,6 +4123,7 @@
           "type",
           "timezone",
           "prompt_id",
+          "prompt_id_list",
           "custom_message_id",
           "languages",
           "variables",
@@ -5518,6 +5519,18 @@
             "title": "Id",
             "description": "The Prompt ID"
           },
+          "edit_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edit Comments",
+            "description": "The comments for the last edit"
+          },
           "last_updated": {
             "anyOf": [
               {
@@ -5542,17 +5555,17 @@
             "title": "Last Updated By",
             "description": "The last updated user who last updated of the prompt"
           },
-          "edit_comments": {
+          "agent_count": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "integer"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Edit Comments",
-            "description": "The comments for the last edit"
+            "title": "Agent Count",
+            "description": "The number of agents using the prompt"
           }
         },
         "type": "object",
@@ -5724,13 +5737,95 @@
           "id",
           "name",
           "description",
+          "name_description",
           "context",
           "tools",
           "llm_config",
           "last_updated",
-          "last_updated_by"
+          "last_updated_by",
+          "agent_count"
         ],
         "title": "PromptProperties"
+      },
+      "PromptUpdate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The Prompt name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "The description of the prompt"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "description": "The type of the prompt"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context",
+            "description": "The prompt text"
+          },
+          "tools": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tools",
+            "description": "The tools for the prompt",
+            "default": []
+          },
+          "llm_config": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
+            "description": "The configuration for the language model used by the Cortex API."
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The Prompt ID"
+          },
+          "edit_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edit Comments",
+            "description": "The comments for the last edit"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "llm_config",
+          "id"
+        ],
+        "title": "PromptUpdate"
       },
       "Provider": {
         "type": "string",
