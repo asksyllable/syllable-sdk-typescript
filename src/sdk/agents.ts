@@ -60,7 +60,7 @@ export class Agents extends ClientSDK {
    * Update an existing agent
    */
   async update(
-    request: components.Agent,
+    request: components.AgentUpdate,
     options?: RequestOptions,
   ): Promise<components.Agent> {
     return unwrapAsync(agentsUpdate(

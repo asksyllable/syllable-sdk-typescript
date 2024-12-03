@@ -6,7 +6,7 @@
 import { Session } from "syllable-sdk/models/components";
 
 let value: Session = {
-  timestamp: new Date("2023-12-02T20:41:06.257Z"),
+  timestamp: new Date("2023-02-08T23:14:58.127Z"),
 };
 ```
 

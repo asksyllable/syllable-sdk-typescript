@@ -18,6 +18,7 @@ export type AgentCreateVariables = {};
 
 export type AgentCreate = {
   name: string;
+  description?: string | null | undefined;
   timezone: string;
   type: string;
   promptId: number;
@@ -83,6 +84,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   timezone: z.string(),
   type: z.string(),
   prompt_id: z.number().int(),
@@ -104,6 +106,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
 /** @internal */
 export type AgentCreate$Outbound = {
   name: string;
+  description?: string | null | undefined;
   timezone: string;
   type: string;
   prompt_id: number;
@@ -121,6 +124,7 @@ export const AgentCreate$outboundSchema: z.ZodType<
   AgentCreate
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   timezone: z.string(),
   type: z.string(),
   promptId: z.number().int(),

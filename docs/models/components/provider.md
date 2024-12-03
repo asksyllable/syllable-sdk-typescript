@@ -7,7 +7,7 @@ Provider of the LLM model.
 ```typescript
 import { Provider } from "syllable-sdk/models/components";
 
-let value: Provider = "azure_openai";
+let value: Provider = "openai";
 ```
 
 ## Values

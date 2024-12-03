@@ -144,6 +144,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/Agent"}
+        "400":
+          description: "Bad Request"
+        "500":
+          description: "Internal Server Error"
         "422":
           description: "Validation Error"
           content:
@@ -188,7 +192,7 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/Agent"}
+            schema: {"$ref": "#/components/schemas/AgentUpdate"}
       responses:
         "200":
           description: "Successful Response"
@@ -1574,7 +1578,6 @@ paths:
                   apiVersion: "2024-06-01",
                 },
                 id: 597129,
-                lastUpdated: "<value>",
               });
 
               // Handle the result
@@ -3165,6 +3168,231 @@ paths:
             }
 
             run();
+  "/api/v1/directory_members/":
+    get:
+      tags:
+        - "directory"
+        - "V1"
+      summary: "Directory Member List"
+      description: "List the existing directory_members"
+      operationId: "directory_member_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/DirectoryMemberProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - {"$ref": "#/components/schemas/DirectoryMemberProperties"}
+              - type: "null"
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/DirectoryMemberProperties"}
+              - type: "null"
+            default: []
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_DirectoryMember_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    post:
+      tags:
+        - "directory"
+        - "V1"
+      summary: "Create Directory Member"
+      description: "Create a new member in the directory"
+      operationId: "directory_member_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/DirectoryMemberCreate"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/DirectoryMember"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/directory_members/{member_id}":
+    get:
+      tags:
+        - "directory"
+        - "V1"
+      summary: "Get Directory Member By Id"
+      description: "Get a DirectoryMember by ID."
+      operationId: "directory_member_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "member_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Member Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/DirectoryMember"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "directory"
+        - "V1"
+      summary: "Update Directory Member"
+      description: "Update a DirectoryMember."
+      operationId: "directory_member_update"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "member_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Member Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/DirectoryMember"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/DirectoryMember"}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "412":
+          description: "Precondition Failed"
+        "500":
+          description: "Internal Server Error"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "directory"
+        - "V1"
+      summary: "Delete Directory Member"
+      description: "Delete a DirectoryMember."
+      operationId: "directory_member_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "member_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Member Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "500":
+          description: "Internal Server Error"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
 components:
   schemas:
     "Agent":
@@ -3172,6 +3400,11 @@ components:
         "name":
           type: "string"
           title: "Name"
+        "description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
         "timezone":
           type: "string"
           title: "Timezone"
@@ -3217,6 +3450,12 @@ components:
               format: "date-time"
             - type: "null"
           title: "Updated At"
+        "channel_targets":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/Target"}
+              type: "array"
+            - type: "null"
+          title: "Channel Targets"
       type: "object"
       required:
         - "name"
@@ -3232,6 +3471,11 @@ components:
         "name":
           type: "string"
           title: "Name"
+        "description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
         "timezone":
           type: "string"
           title: "Timezone"
@@ -3281,6 +3525,8 @@ components:
       enum:
         - "id"
         - "name"
+        - "description"
+        - "name_description"
         - "type"
         - "timezone"
         - "prompt_id"
@@ -3318,6 +3564,65 @@ components:
         - "field_name"
         - "default_value"
       title: "AgentToolFieldDefault"
+    "AgentUpdate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+        "timezone":
+          type: "string"
+          title: "Timezone"
+        "type":
+          type: "string"
+          title: "Type"
+        "prompt_id":
+          type: "integer"
+          title: "Prompt Id"
+        "custom_message_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Custom Message Id"
+        "languages":
+          items:
+            type: "string"
+          type: "array"
+          title: "Languages"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+        "tool_headers":
+          anyOf:
+            - additionalProperties:
+                type: "string"
+              type: "object"
+            - type: "null"
+          title: "Tool Headers"
+        "variables":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Variables"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The Agent ID"
+      type: "object"
+      required:
+        - "name"
+        - "timezone"
+        - "type"
+        - "prompt_id"
+        - "custom_message_id"
+        - "languages"
+        - "id"
+      title: "AgentUpdate"
     "AvailableTarget":
       properties:
         "organization_id":
@@ -3622,6 +3927,96 @@ components:
         - "name"
         - "text"
       title: "CustomMessageProperties"
+    "DirectoryExtension":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "numbers":
+          anyOf:
+            - items:
+                type: "object"
+              type: "array"
+            - type: "null"
+          title: "Numbers"
+      type: "object"
+      required:
+        - "name"
+      title: "DirectoryExtension"
+    "DirectoryMember":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "type":
+          type: "string"
+          title: "Type"
+        "extensions":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/DirectoryExtension"}
+              type: "array"
+            - type: "null"
+          title: "Extensions"
+        "contact_tags":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Contact Tags"
+        "updated_at":
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Updated At"
+        "id":
+          type: "integer"
+          title: "Id"
+      type: "object"
+      required:
+        - "name"
+        - "type"
+        - "id"
+      title: "DirectoryMember"
+    "DirectoryMemberCreate":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "type":
+          type: "string"
+          title: "Type"
+        "extensions":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/DirectoryExtension"}
+              type: "array"
+            - type: "null"
+          title: "Extensions"
+        "contact_tags":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Contact Tags"
+        "updated_at":
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Updated At"
+      type: "object"
+      required:
+        - "name"
+        - "type"
+      title: "DirectoryMemberCreate"
+    "DirectoryMemberProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "type"
+        - "extensions"
+        - "contact_tags"
+        - "updated_at"
+      title: "DirectoryMemberProperties"
     "Event":
       properties:
         "timestamp":
@@ -3867,6 +4262,34 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[CustomMessage]"
+    "ListResponse_DirectoryMember_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/DirectoryMember"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Pages"
+        "total_count":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+      title: "ListResponse[DirectoryMember]"
     "ListResponse_Event_":
       properties:
         "items":
@@ -4667,6 +5090,61 @@ components:
         - "transcription"
         - "actions"
       title: "SessionTranscriptionResponse"
+    "Target":
+      properties:
+        "agent_id":
+          type: "integer"
+          title: "Agent Id"
+          description: "The Agent ID"
+        "target":
+          type: "string"
+          title: "Target"
+          description: "The Target"
+        "target_mode":
+          allOf:
+            - {"$ref": "#/components/schemas/TargetModes"}
+          description: "The target mode"
+        "channel_id":
+          type: "integer"
+          title: "Channel Id"
+          description: "The Channel ID"
+        "fallback_target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Fallback Target"
+          description: "The Fallback Target"
+        "is_test":
+          type: "boolean"
+          title: "Is Test"
+          description: "Whether the Target is for testing"
+          default: false
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The Target ID"
+        "channel_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Name"
+          description: "The Channel Name"
+      type: "object"
+      required:
+        - "agent_id"
+        - "target"
+        - "target_mode"
+        - "channel_id"
+        - "id"
+      title: "Target"
+    "TargetModes":
+      type: "string"
+      enum:
+        - "voice"
+        - "chat"
+        - "sms"
+        - "email"
+      title: "TargetModes"
     "TestMessage":
       properties:
         "service_name":
@@ -4861,6 +5339,8 @@ tags:
     description: "Operations related to custom messages"
   - name: "dashboards"
     description: "Operations related to system dashboard"
+  - name: "directory"
+    description: "Operations related to directory"
   - name: "events"
     description: "Operations related to agent events"
   - name: "organizations"
