@@ -34,18 +34,26 @@ assistants, or any other AI-driven solutions, Syllable SDK has got you covered.
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [syllable-sdk](#syllable-sdk)
+* [Syllable Platform SDK](#syllable-platform-sdk)
+  * [Overview](#overview)
+  * [Features](#features)
+  * [SDK Installation](#sdk-installation)
+  * [Requirements](#requirements)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Standalone functions](#standalone-functions)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -165,6 +173,14 @@ run();
 * [getSessionSummary](docs/sdks/dashboards/README.md#getsessionsummary) - Get Session Summary
 * [getSessionAgents](docs/sdks/dashboards/README.md#getsessionagents) - Get Agents
 
+### [directory](docs/sdks/directory/README.md)
+
+* [list](docs/sdks/directory/README.md#list) - Directory Member List
+* [create](docs/sdks/directory/README.md#create) - Create Directory Member
+* [getById](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
+* [update](docs/sdks/directory/README.md#update) - Update Directory Member
+* [delete](docs/sdks/directory/README.md#delete) - Delete Directory Member
+
 ### [events](docs/sdks/events/README.md)
 
 * [list](docs/sdks/events/README.md#list) - Events List
@@ -208,6 +224,14 @@ run();
 * [create](docs/sdks/tools/README.md#create) - Create Tool
 * [update](docs/sdks/tools/README.md#update) - Update Tool
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
+
+### [v1](docs/sdks/v1/README.md)
+
+* [list](docs/sdks/v1/README.md#list) - Directory Member List
+* [create](docs/sdks/v1/README.md#create) - Create Directory Member
+* [getById](docs/sdks/v1/README.md#getbyid) - Get Directory Member By Id
+* [update](docs/sdks/v1/README.md#update) - Update Directory Member
+* [delete](docs/sdks/v1/README.md#delete) - Delete Directory Member
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -254,6 +278,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dashboardsGetTotalCallVolumeByHour`](docs/sdks/dashboards/README.md#gettotalcallvolumebyhour) - Get Total Call Volume By Hour
 - [`dashboardsGetWeeklyCallVolumeByWeekday`](docs/sdks/dashboards/README.md#getweeklycallvolumebyweekday) - Get Weekly Call Volume By Weekday
 - [`dashboardsTotalCallVolumeByWeekday`](docs/sdks/dashboards/README.md#totalcallvolumebyweekday) - Get Total Call Volume By Weekday
+- [`directoryCreate`](docs/sdks/directory/README.md#create) - Create Directory Member
+- [`directoryDelete`](docs/sdks/directory/README.md#delete) - Delete Directory Member
+- [`directoryGetById`](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
+- [`directoryList`](docs/sdks/directory/README.md#list) - Directory Member List
+- [`directoryUpdate`](docs/sdks/directory/README.md#update) - Update Directory Member
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
@@ -276,6 +305,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`v1Create`](docs/sdks/v1/README.md#create) - Create Directory Member
+- [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete Directory Member
+- [`v1GetById`](docs/sdks/v1/README.md#getbyid) - Get Directory Member By Id
+- [`v1List`](docs/sdks/v1/README.md#list) - Directory Member List
+- [`v1Update`](docs/sdks/v1/README.md#update) - Update Directory Member
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

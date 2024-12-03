@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  */
 export async function agentsUpdate(
   client: SyllableSDKCore,
-  request: components.Agent,
+  request: components.AgentUpdate,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -47,7 +47,7 @@ export async function agentsUpdate(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.Agent$outboundSchema.parse(value),
+    (value) => components.AgentUpdate$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 214d601a4c1ddeb754c606854e11b031
+  docChecksum: 3ec2afd3dfdb1be79ebcc9f2c18c5d80
   docVersion: 0.0.2
-  speakeasyVersion: 1.447.4
-  generationVersion: 2.463.1
-  releaseVersion: 0.1.0-alpha.9
-  configChecksum: 81845116fe6c0d04683cb4a4e57d0a98
+  speakeasyVersion: 1.449.0
+  generationVersion: 2.467.4
+  releaseVersion: 0.1.0-alpha.10
+  configChecksum: 15e4cfbc3a9f13bdc4857ffbdc0ccc41
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -48,6 +48,8 @@ generatedFiles:
   - docs/models/components/agentproperties.md
   - docs/models/components/agenttooldefaults.md
   - docs/models/components/agenttoolfielddefault.md
+  - docs/models/components/agentupdate.md
+  - docs/models/components/agentupdatevariables.md
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
@@ -57,12 +59,18 @@ generatedFiles:
   - docs/models/components/channeltarget.md
   - docs/models/components/channeltargetcreaterequest.md
   - docs/models/components/channeltargetproperties.md
+  - docs/models/components/contacttags.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
   - docs/models/components/custommessage.md
   - docs/models/components/custommessagecreate.md
   - docs/models/components/custommessageproperties.md
   - docs/models/components/definition.md
+  - docs/models/components/directoryextension.md
+  - docs/models/components/directorymember.md
+  - docs/models/components/directorymembercreate.md
+  - docs/models/components/directorymembercreatecontacttags.md
+  - docs/models/components/directorymemberproperties.md
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
   - docs/models/components/listresponseagent.md
@@ -71,6 +79,7 @@ generatedFiles:
   - docs/models/components/listresponsechanneltarget.md
   - docs/models/components/listresponseconversation.md
   - docs/models/components/listresponsecustommessage.md
+  - docs/models/components/listresponsedirectorymember.md
   - docs/models/components/listresponseevent.md
   - docs/models/components/listresponseprompt.md
   - docs/models/components/listresponseservice.md
@@ -79,6 +88,7 @@ generatedFiles:
   - docs/models/components/listresponsetool.md
   - docs/models/components/llmconfig.md
   - docs/models/components/loc.md
+  - docs/models/components/numbers.md
   - docs/models/components/orderbydirection.md
   - docs/models/components/prompt.md
   - docs/models/components/promptcreate.md
@@ -101,6 +111,8 @@ generatedFiles:
   - docs/models/components/sessionrecordingresponse.md
   - docs/models/components/sessiontext.md
   - docs/models/components/sessiontranscriptionresponse.md
+  - docs/models/components/target.md
+  - docs/models/components/targetmodes.md
   - docs/models/components/testmessage.md
   - docs/models/components/testmessageresponse.md
   - docs/models/components/tool.md
@@ -127,6 +139,10 @@ generatedFiles:
   - docs/models/operations/custommessagegetbyidrequest.md
   - docs/models/operations/custommessagesdeleterequest.md
   - docs/models/operations/custommessageslistrequest.md
+  - docs/models/operations/directorymemberdeleterequest.md
+  - docs/models/operations/directorymembergetbyidrequest.md
+  - docs/models/operations/directorymemberlistrequest.md
+  - docs/models/operations/directorymemberupdaterequest.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/generatesessionrecordingurlsrequest.md
   - docs/models/operations/getdailycallvolumebyhourresponsegetdailycallvolumebyhour.md
@@ -156,6 +172,7 @@ generatedFiles:
   - docs/sdks/conversations/README.md
   - docs/sdks/custommessages/README.md
   - docs/sdks/dashboards/README.md
+  - docs/sdks/directory/README.md
   - docs/sdks/events/README.md
   - docs/sdks/prompts/README.md
   - docs/sdks/services/README.md
@@ -166,6 +183,7 @@ generatedFiles:
   - docs/sdks/test/README.md
   - docs/sdks/tools/README.md
   - docs/sdks/transcript/README.md
+  - docs/sdks/v1/README.md
   - jsr.json
   - package.json
   - src/core.ts
@@ -196,6 +214,11 @@ generatedFiles:
   - src/funcs/dashboardsGetTotalCallVolumeByHour.ts
   - src/funcs/dashboardsGetWeeklyCallVolumeByWeekday.ts
   - src/funcs/dashboardsTotalCallVolumeByWeekday.ts
+  - src/funcs/directoryCreate.ts
+  - src/funcs/directoryDelete.ts
+  - src/funcs/directoryGetById.ts
+  - src/funcs/directoryList.ts
+  - src/funcs/directoryUpdate.ts
   - src/funcs/eventsList.ts
   - src/funcs/promptsCreate.ts
   - src/funcs/promptsDelete.ts
@@ -218,6 +241,11 @@ generatedFiles:
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
+  - src/funcs/v1Create.ts
+  - src/funcs/v1Delete.ts
+  - src/funcs/v1GetById.ts
+  - src/funcs/v1List.ts
+  - src/funcs/v1Update.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -243,6 +271,7 @@ generatedFiles:
   - src/models/components/agentproperties.ts
   - src/models/components/agenttooldefaults.ts
   - src/models/components/agenttoolfielddefault.ts
+  - src/models/components/agentupdate.ts
   - src/models/components/availabletarget.ts
   - src/models/components/availabletargetproperties.ts
   - src/models/components/channel.ts
@@ -256,6 +285,10 @@ generatedFiles:
   - src/models/components/custommessage.ts
   - src/models/components/custommessagecreate.ts
   - src/models/components/custommessageproperties.ts
+  - src/models/components/directoryextension.ts
+  - src/models/components/directorymember.ts
+  - src/models/components/directorymembercreate.ts
+  - src/models/components/directorymemberproperties.ts
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
   - src/models/components/index.ts
@@ -265,6 +298,7 @@ generatedFiles:
   - src/models/components/listresponsechanneltarget.ts
   - src/models/components/listresponseconversation.ts
   - src/models/components/listresponsecustommessage.ts
+  - src/models/components/listresponsedirectorymember.ts
   - src/models/components/listresponseevent.ts
   - src/models/components/listresponseprompt.ts
   - src/models/components/listresponseservice.ts
@@ -292,6 +326,8 @@ generatedFiles:
   - src/models/components/sessionrecordingresponse.ts
   - src/models/components/sessiontext.ts
   - src/models/components/sessiontranscriptionresponse.ts
+  - src/models/components/target.ts
+  - src/models/components/targetmodes.ts
   - src/models/components/testmessage.ts
   - src/models/components/testmessageresponse.ts
   - src/models/components/tool.ts
@@ -319,6 +355,10 @@ generatedFiles:
   - src/models/operations/custommessagegetbyid.ts
   - src/models/operations/custommessagesdelete.ts
   - src/models/operations/custommessageslist.ts
+  - src/models/operations/directorymemberdelete.ts
+  - src/models/operations/directorymembergetbyid.ts
+  - src/models/operations/directorymemberlist.ts
+  - src/models/operations/directorymemberupdate.ts
   - src/models/operations/eventslist.ts
   - src/models/operations/generatesessionrecordingurls.ts
   - src/models/operations/getdailycallvolumebyhour.ts
@@ -348,6 +388,7 @@ generatedFiles:
   - src/sdk/conversations.ts
   - src/sdk/custommessages.ts
   - src/sdk/dashboards.ts
+  - src/sdk/directory.ts
   - src/sdk/events.ts
   - src/sdk/index.ts
   - src/sdk/prompts.ts
@@ -359,6 +400,7 @@ generatedFiles:
   - src/sdk/test.ts
   - src/sdk/tools.ts
   - src/sdk/transcript.ts
+  - src/sdk/v1.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
@@ -792,5 +834,48 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "service_id": 344620, "id": 991464}
+        "422": {}
+  directory_member_list:
+    speakeasy-default-directory-member-list:
+      responses:
+        "200":
+          application/json: {"items": [{"name": "<value>", "type": "<value>", "id": 547272}, {"name": "<value>", "type": "<value>", "id": 678317}, {"name": "<value>", "type": "<value>", "id": 177706}], "page": 229716, "page_size": 152837}
+        "422": {}
+  directory_member_create:
+    speakeasy-default-directory-member-create:
+      requestBody:
+        application/json: {"name": "<value>", "type": "<value>"}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "type": "<value>", "id": 486589}
+        "422": {}
+  directory_member_get_by_id:
+    speakeasy-default-directory-member-get-by-id:
+      parameters:
+        path:
+          member_id: 931598
+      responses:
+        "200":
+          application/json: {"name": "<value>", "type": "<value>", "id": 505057}
+        "422": {}
+  directory_member_update:
+    speakeasy-default-directory-member-update:
+      parameters:
+        path:
+          member_id: 597129
+      requestBody:
+        application/json: {"name": "<value>", "type": "<value>", "id": 857478}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "type": "<value>", "id": 344620}
+        "422": {}
+  directory_member_delete:
+    speakeasy-default-directory-member-delete:
+      parameters:
+        path:
+          member_id: 545907
+      responses:
+        "200":
+          application/json: "<value>"
         "422": {}
 generatedTests: {}
