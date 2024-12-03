@@ -616,6 +616,219 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/directory_members/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.create({
+                name: "<value>",
+                type: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.create({
+                name: "<value>",
+                type: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.delete({
+                memberId: 545907,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.delete({
+                memberId: 545907,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.getById({
+                memberId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.getById({
+                memberId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.update({
+                memberId: 597129,
+                directoryMember: {
+                  name: "<value>",
+                  type: "<value>",
+                  id: 857478,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.update({
+                memberId: 597129,
+                directoryMember: {
+                  name: "<value>",
+                  type: "<value>",
+                  id: 857478,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/events/"]["get"]
     update:
       x-codeSamples:

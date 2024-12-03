@@ -8,16 +8,16 @@ import { ListResponseSessionLabel } from "syllable-sdk/models/components";
 let value: ListResponseSessionLabel = {
   items: [
     {
-      sessionId: 848944,
+      sessionId: 617877,
       type: "<value>",
       code: "<value>",
       userEmail: "<value>",
-      id: 617877,
+      id: 13236,
       timestamp: "<value>",
     },
   ],
-  page: 13236,
-  pageSize: 347233,
+  page: 347233,
+  pageSize: 148141,
 };
 ```
 

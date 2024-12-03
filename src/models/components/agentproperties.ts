@@ -8,6 +8,8 @@ import { ClosedEnum } from "../../types/enums.js";
 export const AgentProperties = {
   Id: "id",
   Name: "name",
+  Description: "description",
+  NameDescription: "name_description",
   Type: "type",
   Timezone: "timezone",
   PromptId: "prompt_id",

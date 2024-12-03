@@ -7,10 +7,10 @@ import { AgentCreate } from "syllable-sdk/models/components";
 
 let value: AgentCreate = {
   name: "<value>",
-  timezone: "Africa/Malabo",
+  timezone: "Europe/Vienna",
   type: "<value>",
-  promptId: 20218,
-  customMessageId: 832620,
+  promptId: 978619,
+  customMessageId: 799159,
   languages: [
     "<value>",
   ],
@@ -22,6 +22,7 @@ let value: AgentCreate = {
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `name`                                                                             | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `description`                                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `timezone`                                                                         | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `type`                                                                             | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `promptId`                                                                         | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
