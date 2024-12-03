@@ -13,11 +13,18 @@ import {
   AgentToolDefaults$Outbound,
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
+import {
+  Target,
+  Target$inboundSchema,
+  Target$Outbound,
+  Target$outboundSchema,
+} from "./target.js";
 
 export type Variables = {};
 
 export type Agent = {
   name: string;
+  description?: string | null | undefined;
   timezone: string;
   type: string;
   promptId: number;
@@ -31,6 +38,7 @@ export type Agent = {
    */
   id: number;
   updatedAt?: Date | null | undefined;
+  channelTargets?: Array<Target> | null | undefined;
 };
 
 /** @internal */
@@ -81,6 +89,7 @@ export function variablesFromJSON(
 export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
+    description: z.nullable(z.string()).optional(),
     timezone: z.string(),
     type: z.string(),
     prompt_id: z.number().int(),
@@ -93,6 +102,7 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
     updated_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
+    channel_targets: z.nullable(z.array(Target$inboundSchema)).optional(),
   }).transform((v) => {
     return remap$(v, {
       "prompt_id": "promptId",
@@ -100,12 +110,14 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
       "prompt_tool_defaults": "promptToolDefaults",
       "tool_headers": "toolHeaders",
       "updated_at": "updatedAt",
+      "channel_targets": "channelTargets",
     });
   });
 
 /** @internal */
 export type Agent$Outbound = {
   name: string;
+  description?: string | null | undefined;
   timezone: string;
   type: string;
   prompt_id: number;
@@ -116,6 +128,7 @@ export type Agent$Outbound = {
   variables?: Variables$Outbound | null | undefined;
   id: number;
   updated_at?: string | null | undefined;
+  channel_targets?: Array<Target$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -125,6 +138,7 @@ export const Agent$outboundSchema: z.ZodType<
   Agent
 > = z.object({
   name: z.string(),
+  description: z.nullable(z.string()).optional(),
   timezone: z.string(),
   type: z.string(),
   promptId: z.number().int(),
@@ -135,6 +149,7 @@ export const Agent$outboundSchema: z.ZodType<
   variables: z.nullable(z.lazy(() => Variables$outboundSchema)).optional(),
   id: z.number().int(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  channelTargets: z.nullable(z.array(Target$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
@@ -142,6 +157,7 @@ export const Agent$outboundSchema: z.ZodType<
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
     updatedAt: "updated_at",
+    channelTargets: "channel_targets",
   });
 });
 

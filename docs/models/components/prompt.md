@@ -14,7 +14,7 @@ let value: Prompt = {
     version: "2024-05-13",
     apiVersion: "2024-06-01",
   },
-  id: 196582,
+  id: 976762,
   lastUpdated: "<value>",
 };
 ```

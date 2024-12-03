@@ -7,7 +7,7 @@ import { ServiceCreate } from "syllable-sdk/models/components";
 
 let value: ServiceCreate = {
   name: "<value>",
-  description: "upon er evenly backburn bathhouse reluctantly till",
+  description: "obedience finally less over how prejudge cutover for",
 };
 ```
 
