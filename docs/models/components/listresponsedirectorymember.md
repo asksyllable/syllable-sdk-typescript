@@ -10,11 +10,10 @@ let value: ListResponseDirectoryMember = {
     {
       name: "<value>",
       type: "<value>",
-      id: 777408,
     },
   ],
-  page: 259422,
-  pageSize: 373813,
+  page: 777408,
+  pageSize: 259422,
 };
 ```
 

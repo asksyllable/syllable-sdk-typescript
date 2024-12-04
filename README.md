@@ -44,6 +44,7 @@ assistants, or any other AI-driven solutions, Syllable SDK has got you covered.
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
+  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -180,6 +181,8 @@ run();
 * [getById](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
 * [update](docs/sdks/directory/README.md#update) - Update Directory Member
 * [delete](docs/sdks/directory/README.md#delete) - Delete Directory Member
+* [directoryMemberBulkLoad](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
+* [directoryMemberDownload](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
 
 ### [events](docs/sdks/events/README.md)
 
@@ -232,6 +235,8 @@ run();
 * [getById](docs/sdks/v1/README.md#getbyid) - Get Directory Member By Id
 * [update](docs/sdks/v1/README.md#update) - Update Directory Member
 * [delete](docs/sdks/v1/README.md#delete) - Delete Directory Member
+* [directoryMemberBulkLoad](docs/sdks/v1/README.md#directorymemberbulkload) - Bulk Load Directory Members
+* [directoryMemberDownload](docs/sdks/v1/README.md#directorymemberdownload) - Download Directory Members
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -280,6 +285,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dashboardsTotalCallVolumeByWeekday`](docs/sdks/dashboards/README.md#totalcallvolumebyweekday) - Get Total Call Volume By Weekday
 - [`directoryCreate`](docs/sdks/directory/README.md#create) - Create Directory Member
 - [`directoryDelete`](docs/sdks/directory/README.md#delete) - Delete Directory Member
+- [`directoryDirectoryMemberBulkLoad`](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
+- [`directoryDirectoryMemberDownload`](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
 - [`directoryGetById`](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
 - [`directoryList`](docs/sdks/directory/README.md#list) - Directory Member List
 - [`directoryUpdate`](docs/sdks/directory/README.md#update) - Update Directory Member
@@ -307,12 +314,50 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
 - [`v1Create`](docs/sdks/v1/README.md#create) - Create Directory Member
 - [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete Directory Member
+- [`v1DirectoryMemberBulkLoad`](docs/sdks/v1/README.md#directorymemberbulkload) - Bulk Load Directory Members
+- [`v1DirectoryMemberDownload`](docs/sdks/v1/README.md#directorymemberdownload) - Download Directory Members
 - [`v1GetById`](docs/sdks/v1/README.md#getbyid) - Get Directory Member By Id
 - [`v1List`](docs/sdks/v1/README.md#list) - Directory Member List
 - [`v1Update`](docs/sdks/v1/README.md#update) - Update Directory Member
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
+>
+> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
+> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
+> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
+> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
+
+```typescript
+import { openAsBlob } from "node:fs";
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.directory.directoryMemberBulkLoad({
+    file: await openAsBlob("example.file"),
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries

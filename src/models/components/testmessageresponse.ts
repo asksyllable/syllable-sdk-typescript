@@ -15,6 +15,7 @@ export type TestMessageResponse = {
   agentId: string;
   text: string;
   response?: Response | undefined;
+  responseText: string;
 };
 
 /** @internal */
@@ -71,10 +72,12 @@ export const TestMessageResponse$inboundSchema: z.ZodType<
   agent_id: z.string(),
   text: z.string(),
   response: z.lazy(() => Response$inboundSchema).optional(),
+  response_text: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "test_id": "testId",
     "agent_id": "agentId",
+    "response_text": "responseText",
   });
 });
 
@@ -84,6 +87,7 @@ export type TestMessageResponse$Outbound = {
   agent_id: string;
   text: string;
   response?: Response$Outbound | undefined;
+  response_text: string;
 };
 
 /** @internal */
@@ -96,10 +100,12 @@ export const TestMessageResponse$outboundSchema: z.ZodType<
   agentId: z.string(),
   text: z.string(),
   response: z.lazy(() => Response$outboundSchema).optional(),
+  responseText: z.string(),
 }).transform((v) => {
   return remap$(v, {
     testId: "test_id",
     agentId: "agent_id",
+    responseText: "response_text",
   });
 });
 
