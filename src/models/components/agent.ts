@@ -25,6 +25,7 @@ export type Variables = {};
 export type Agent = {
   name: string;
   description?: string | null | undefined;
+  label?: string | null | undefined;
   timezone: string;
   type: string;
   promptId: number;
@@ -90,6 +91,7 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
     description: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
     timezone: z.string(),
     type: z.string(),
     prompt_id: z.number().int(),
@@ -118,6 +120,7 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
 export type Agent$Outbound = {
   name: string;
   description?: string | null | undefined;
+  label?: string | null | undefined;
   timezone: string;
   type: string;
   prompt_id: number;
@@ -139,6 +142,7 @@ export const Agent$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
   timezone: z.string(),
   type: z.string(),
   promptId: z.number().int(),

@@ -696,6 +696,86 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/directory_members/download/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_download
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberDownload();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_download
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.directoryMemberDownload();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/upload/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_bulk_load
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberBulkLoad({
+                file: await openAsBlob("example.file"),
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_bulk_load
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.directoryMemberBulkLoad({
+                file: await openAsBlob("example.file"),
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/directory_members/{member_id}"]["delete"]
     update:
       x-codeSamples:
@@ -792,11 +872,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.directory.update({
-                memberId: 597129,
+                memberId: 857478,
                 directoryMember: {
                   name: "<value>",
                   type: "<value>",
-                  id: 857478,
                 },
               });
 
@@ -816,11 +895,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.v1.update({
-                memberId: 597129,
+                memberId: 857478,
                 directoryMember: {
                   name: "<value>",
                   type: "<value>",
-                  id: 857478,
                 },
               });
 

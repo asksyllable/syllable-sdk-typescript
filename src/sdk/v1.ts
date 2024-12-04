@@ -4,6 +4,8 @@
 
 import { v1Create } from "../funcs/v1Create.js";
 import { v1Delete } from "../funcs/v1Delete.js";
+import { v1DirectoryMemberBulkLoad } from "../funcs/v1DirectoryMemberBulkLoad.js";
+import { v1DirectoryMemberDownload } from "../funcs/v1DirectoryMemberDownload.js";
 import { v1GetById } from "../funcs/v1GetById.js";
 import { v1List } from "../funcs/v1List.js";
 import { v1Update } from "../funcs/v1Update.js";
@@ -94,6 +96,38 @@ export class V1 extends ClientSDK {
     return unwrapAsync(v1Delete(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Bulk Load Directory Members
+   *
+   * @remarks
+   * Update Directory Members in chunks of 100.
+   */
+  async directoryMemberBulkLoad(
+    request: components.BodyDirectoryMemberBulkLoad,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(v1DirectoryMemberBulkLoad(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Download Directory Members
+   *
+   * @remarks
+   * Download the entire directory as a JSON file.
+   */
+  async directoryMemberDownload(
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(v1DirectoryMemberDownload(
+      this,
       options,
     ));
   }

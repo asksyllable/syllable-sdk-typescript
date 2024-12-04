@@ -4,6 +4,8 @@
 
 import { directoryCreate } from "../funcs/directoryCreate.js";
 import { directoryDelete } from "../funcs/directoryDelete.js";
+import { directoryDirectoryMemberBulkLoad } from "../funcs/directoryDirectoryMemberBulkLoad.js";
+import { directoryDirectoryMemberDownload } from "../funcs/directoryDirectoryMemberDownload.js";
 import { directoryGetById } from "../funcs/directoryGetById.js";
 import { directoryList } from "../funcs/directoryList.js";
 import { directoryUpdate } from "../funcs/directoryUpdate.js";
@@ -94,6 +96,38 @@ export class Directory extends ClientSDK {
     return unwrapAsync(directoryDelete(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Bulk Load Directory Members
+   *
+   * @remarks
+   * Update Directory Members in chunks of 100.
+   */
+  async directoryMemberBulkLoad(
+    request: components.BodyDirectoryMemberBulkLoad,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(directoryDirectoryMemberBulkLoad(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Download Directory Members
+   *
+   * @remarks
+   * Download the entire directory as a JSON file.
+   */
+  async directoryMemberDownload(
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(directoryDirectoryMemberDownload(
+      this,
       options,
     ));
   }

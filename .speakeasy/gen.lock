@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 3ec2afd3dfdb1be79ebcc9f2c18c5d80
+  docChecksum: 9449d8119bf9b867e2c69b875bafaa13
   docVersion: 0.0.2
-  speakeasyVersion: 1.449.0
-  generationVersion: 2.467.4
-  releaseVersion: 0.1.0-alpha.10
-  configChecksum: 15e4cfbc3a9f13bdc4857ffbdc0ccc41
+  speakeasyVersion: 1.451.2
+  generationVersion: 2.471.2
+  releaseVersion: 0.1.0-alpha.11
+  configChecksum: 5918b15928c2a8d3e94cf61c521ec280
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.7
+    core: 3.18.8
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
@@ -30,6 +30,7 @@ features:
     retries: 2.83.0
     sdkHooks: 0.2.0
     unions: 2.85.8
+    uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -53,6 +54,7 @@ generatedFiles:
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
+  - docs/models/components/bodydirectorymemberbulkload.md
   - docs/models/components/channel.md
   - docs/models/components/channelproperties.md
   - docs/models/components/channelservices.md
@@ -73,6 +75,7 @@ generatedFiles:
   - docs/models/components/directorymemberproperties.md
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
+  - docs/models/components/filet.md
   - docs/models/components/listresponseagent.md
   - docs/models/components/listresponseavailabletarget.md
   - docs/models/components/listresponsechannel.md
@@ -216,6 +219,8 @@ generatedFiles:
   - src/funcs/dashboardsTotalCallVolumeByWeekday.ts
   - src/funcs/directoryCreate.ts
   - src/funcs/directoryDelete.ts
+  - src/funcs/directoryDirectoryMemberBulkLoad.ts
+  - src/funcs/directoryDirectoryMemberDownload.ts
   - src/funcs/directoryGetById.ts
   - src/funcs/directoryList.ts
   - src/funcs/directoryUpdate.ts
@@ -243,6 +248,8 @@ generatedFiles:
   - src/funcs/toolsUpdate.ts
   - src/funcs/v1Create.ts
   - src/funcs/v1Delete.ts
+  - src/funcs/v1DirectoryMemberBulkLoad.ts
+  - src/funcs/v1DirectoryMemberDownload.ts
   - src/funcs/v1GetById.ts
   - src/funcs/v1List.ts
   - src/funcs/v1Update.ts
@@ -274,6 +281,7 @@ generatedFiles:
   - src/models/components/agentupdate.ts
   - src/models/components/availabletarget.ts
   - src/models/components/availabletargetproperties.ts
+  - src/models/components/bodydirectorymemberbulkload.ts
   - src/models/components/channel.ts
   - src/models/components/channelproperties.ts
   - src/models/components/channelservices.ts
@@ -666,7 +674,7 @@ examples:
         application/json: {"service_name": "<value>", "source": "<value>", "test_id": "<id>", "agent_id": "<id>", "org_name": "<value>"}
       responses:
         "200":
-          application/json: {"test_id": "<id>", "agent_id": "<id>", "text": "<value>"}
+          application/json: {"test_id": "<id>", "agent_id": "<id>", "text": "<value>", "response_text": "<value>"}
         "422": {}
   custom_messages_list:
     speakeasy-default-custom-messages-list:
@@ -878,4 +886,17 @@ examples:
         "200":
           application/json: "<value>"
         "422": {}
+  directory_member_bulk_load:
+    speakeasy-default-directory-member-bulk-load:
+      requestBody:
+        multipart/form-data: {"file": {}}
+      responses:
+        "200":
+          application/json: "<value>"
+        "422": {}
+  directory_member_download:
+    speakeasy-default-directory-member-download:
+      responses:
+        "200":
+          application/json: "<value>"
 generatedTests: {}

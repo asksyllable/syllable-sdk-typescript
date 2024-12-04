@@ -8,7 +8,6 @@ import { DirectoryMember } from "syllable-sdk/models/components";
 let value: DirectoryMember = {
   name: "<value>",
   type: "<value>",
-  id: 587600,
 };
 ```
 
@@ -21,4 +20,5 @@ let value: DirectoryMember = {
 | `extensions`                                                                                  | [components.DirectoryExtension](../../models/components/directoryextension.md)[]              | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `contactTags`                                                                                 | [components.ContactTags](../../models/components/contacttags.md)                              | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `id`                                                                                          | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `lastUpdatedBy`                                                                               | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `id`                                                                                          | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
