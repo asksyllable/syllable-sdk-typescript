@@ -9,6 +9,7 @@ let value: TestMessageResponse = {
   testId: "<id>",
   agentId: "<id>",
   text: "<value>",
+  responseText: "<value>",
 };
 ```
 
@@ -20,3 +21,4 @@ let value: TestMessageResponse = {
 | `agentId`                                                  | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
 | `text`                                                     | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
 | `response`                                                 | [components.Response](../../models/components/response.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| `responseText`                                             | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |

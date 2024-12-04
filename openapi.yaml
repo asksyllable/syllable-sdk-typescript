@@ -3267,6 +3267,41 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     post:
       tags:
         - "directory"
@@ -3292,6 +3327,47 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.create({
+                name: "<value>",
+                type: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.create({
+                name: "<value>",
+                type: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/directory_members/{member_id}":
     get:
       tags:
@@ -3320,6 +3396,45 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.getById({
+                memberId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.getById({
+                memberId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     put:
       tags:
         - "directory"
@@ -3360,6 +3475,55 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.update({
+                memberId: 597129,
+                directoryMember: {
+                  name: "<value>",
+                  type: "<value>",
+                  id: 857478,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.update({
+                memberId: 597129,
+                directoryMember: {
+                  name: "<value>",
+                  type: "<value>",
+                  id: 857478,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
     delete:
       tags:
         - "directory"
@@ -3393,6 +3557,97 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.delete({
+                memberId: 545907,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.delete({
+                memberId: 545907,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  "/api/v1/directory_members/upload/":
+    put:
+      tags:
+        - "directory"
+        - "V1"
+      summary: "Bulk Load Directory Members"
+      description: "Update Directory Members in chunks of 100."
+      operationId: "directory_member_bulk_load"
+      requestBody:
+        content:
+          "multipart/form-data":
+            schema: {"$ref": "#/components/schemas/Body_directory_member_bulk_load"}
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "412":
+          description: "Precondition Failed"
+        "500":
+          description: "Internal Server Error"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      security:
+        - APIKeyHeader: []
+  "/api/v1/directory_members/download/":
+    get:
+      tags:
+        - "directory"
+        - "V1"
+      summary: "Download Directory Members"
+      description: "Download the entire directory as a JSON file."
+      operationId: "directory_member_download"
+      responses:
+        "200":
+          description: "Directory downloaded successfully"
+          content:
+            "application/json":
+              schema: {}
+        "500":
+          description: "Internal Server Error"
+      security:
+        - APIKeyHeader: []
 components:
   schemas:
     "Agent":
@@ -3405,6 +3660,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Description"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
         "timezone":
           type: "string"
           title: "Timezone"
@@ -3476,6 +3736,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Description"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
         "timezone":
           type: "string"
           title: "Timezone"
@@ -3526,6 +3791,7 @@ components:
         - "id"
         - "name"
         - "description"
+        - "label"
         - "name_description"
         - "type"
         - "timezone"
@@ -3574,6 +3840,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Description"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
         "timezone":
           type: "string"
           title: "Timezone"
@@ -3653,6 +3924,16 @@ components:
         - "channel_name"
         - "target"
       title: "AvailableTargetProperties"
+    "Body_directory_member_bulk_load":
+      properties:
+        "file":
+          type: "string"
+          format: "binary"
+          title: "File"
+      type: "object"
+      required:
+        - "file"
+      title: "Body_directory_member_bulk_load"
     "Channel":
       properties:
         "name":
@@ -3968,14 +4249,20 @@ components:
               format: "date-time"
             - type: "null"
           title: "Updated At"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
         "id":
-          type: "integer"
+          anyOf:
+            - type: "integer"
+            - type: "null"
           title: "Id"
       type: "object"
       required:
         - "name"
         - "type"
-        - "id"
       title: "DirectoryMember"
     "DirectoryMemberCreate":
       properties:
@@ -4002,6 +4289,11 @@ components:
               format: "date-time"
             - type: "null"
           title: "Updated At"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
       type: "object"
       required:
         - "name"
@@ -5191,11 +5483,15 @@ components:
         "response":
           type: "object"
           title: "Response"
+        "response_text":
+          type: "string"
+          title: "Response Text"
       type: "object"
       required:
         - "test_id"
         - "agent_id"
         - "text"
+        - "response_text"
       title: "TestMessageResponse"
     "Tool":
       properties:

@@ -10,6 +10,7 @@ export * from "./agenttoolfielddefault.js";
 export * from "./agentupdate.js";
 export * from "./availabletarget.js";
 export * from "./availabletargetproperties.js";
+export * from "./bodydirectorymemberbulkload.js";
 export * from "./channel.js";
 export * from "./channelproperties.js";
 export * from "./channelservices.js";

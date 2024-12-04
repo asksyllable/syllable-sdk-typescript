@@ -22,7 +22,8 @@ export type DirectoryMember = {
   extensions?: Array<DirectoryExtension> | null | undefined;
   contactTags?: ContactTags | null | undefined;
   updatedAt?: Date | null | undefined;
-  id: number;
+  lastUpdatedBy?: string | null | undefined;
+  id?: number | null | undefined;
 };
 
 /** @internal */
@@ -82,11 +83,13 @@ export const DirectoryMember$inboundSchema: z.ZodType<
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  id: z.number().int(),
+  last_updated_by: z.nullable(z.string()).optional(),
+  id: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "contact_tags": "contactTags",
     "updated_at": "updatedAt",
+    "last_updated_by": "lastUpdatedBy",
   });
 });
 
@@ -97,7 +100,8 @@ export type DirectoryMember$Outbound = {
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
   contact_tags?: ContactTags$Outbound | null | undefined;
   updated_at?: string | null | undefined;
-  id: number;
+  last_updated_by?: string | null | undefined;
+  id?: number | null | undefined;
 };
 
 /** @internal */
@@ -111,11 +115,13 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
   contactTags: z.nullable(z.lazy(() => ContactTags$outboundSchema)).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.number().int(),
+  lastUpdatedBy: z.nullable(z.string()).optional(),
+  id: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contactTags: "contact_tags",
     updatedAt: "updated_at",
+    lastUpdatedBy: "last_updated_by",
   });
 });
 
