@@ -9,6 +9,7 @@ export const AgentProperties = {
   Id: "id",
   Name: "name",
   Description: "description",
+  Label: "label",
   NameDescription: "name_description",
   Type: "type",
   Timezone: "timezone",

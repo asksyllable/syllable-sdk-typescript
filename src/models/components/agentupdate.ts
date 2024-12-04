@@ -19,6 +19,7 @@ export type AgentUpdateVariables = {};
 export type AgentUpdate = {
   name: string;
   description?: string | null | undefined;
+  label?: string | null | undefined;
   timezone: string;
   type: string;
   promptId: number;
@@ -89,6 +90,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
   timezone: z.string(),
   type: z.string(),
   prompt_id: z.number().int(),
@@ -112,6 +114,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
 export type AgentUpdate$Outbound = {
   name: string;
   description?: string | null | undefined;
+  label?: string | null | undefined;
   timezone: string;
   type: string;
   prompt_id: number;
@@ -131,6 +134,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
   timezone: z.string(),
   type: z.string(),
   promptId: z.number().int(),
