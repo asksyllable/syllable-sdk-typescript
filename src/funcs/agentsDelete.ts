@@ -104,7 +104,7 @@ export async function agentsDelete(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["422", "4XX", "5XX"],
+    errorCodes: ["400", "404", "422", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -129,8 +129,8 @@ export async function agentsDelete(
     | ConnectionError
   >(
     M.json(200, z.any()),
+    M.fail([400, 404, "4XX", 500, "5XX"]),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
