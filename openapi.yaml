@@ -199,6 +199,12 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/Agent"}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "500":
+          description: "Internal Server Error"
         "422":
           description: "Validation Error"
           content:
@@ -307,6 +313,12 @@ paths:
           content:
             "application/json":
               schema: {}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "500":
+          description: "Internal Server Error"
         "422":
           description: "Validation Error"
           content:
@@ -3487,11 +3499,10 @@ paths:
 
             async function run() {
               const result = await syllableSDK.directory.update({
-                memberId: 597129,
+                memberId: 857478,
                 directoryMember: {
                   name: "<value>",
                   type: "<value>",
-                  id: 857478,
                 },
               });
 
@@ -3511,11 +3522,10 @@ paths:
 
             async function run() {
               const result = await syllableSDK.v1.update({
-                memberId: 597129,
+                memberId: 857478,
                 directoryMember: {
                   name: "<value>",
                   type: "<value>",
-                  id: 857478,
                 },
               });
 
@@ -3630,6 +3640,47 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_bulk_load
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberBulkLoad({
+                file: await openAsBlob("example.file"),
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_bulk_load
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.directoryMemberBulkLoad({
+                file: await openAsBlob("example.file"),
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/directory_members/download/":
     get:
       tags:
@@ -3648,6 +3699,41 @@ paths:
           description: "Internal Server Error"
       security:
         - APIKeyHeader: []
+      x-codeSamples:
+        - lang: typescript
+          label: directory_member_download
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberDownload();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: directory_member_download
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.directoryMemberDownload();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
 components:
   schemas:
     "Agent":
