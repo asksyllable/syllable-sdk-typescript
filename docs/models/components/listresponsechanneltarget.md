@@ -8,18 +8,18 @@ import { ListResponseChannelTarget } from "syllable-sdk/models/components";
 let value: ListResponseChannelTarget = {
   items: [
     {
-      id: 666767,
-      channelId: 670638,
+      id: 253291,
+      channelId: 466311,
       channelName: "<value>",
-      agentId: 210382,
+      agentId: 244425,
       target: "<value>",
       targetMode: "<value>",
       fallbackTarget: "<value>",
       isTest: false,
     },
   ],
-  page: 128926,
-  pageSize: 315428,
+  page: 158969,
+  pageSize: 110375,
 };
 ```
 
