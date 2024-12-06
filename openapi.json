@@ -4565,6 +4565,17 @@
               }
             ],
             "title": "Channel Targets"
+          },
+          "last_updated_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated By"
           }
         },
         "type": "object",
@@ -4698,7 +4709,8 @@
           "variables",
           "prompt_tool_defaults",
           "tool_headers",
-          "updated_at"
+          "updated_at",
+          "last_updated_by"
         ],
         "title": "AgentProperties"
       },
