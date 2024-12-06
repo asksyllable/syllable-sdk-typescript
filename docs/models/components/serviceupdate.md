@@ -7,8 +7,8 @@ import { ServiceUpdate } from "syllable-sdk/models/components";
 
 let value: ServiceUpdate = {
   name: "<value>",
-  description: "league given only trash within ack",
-  id: 630448,
+  description: "for clear-cut consequently bouncy",
+  id: 552193,
 };
 ```
 

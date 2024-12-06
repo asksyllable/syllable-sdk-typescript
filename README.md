@@ -133,6 +133,7 @@ run();
 * [update](docs/sdks/agents/README.md#update) - Update Agent
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
+* [agentGetAvailableVoices](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
 
 #### [agents.test](docs/sdks/test/README.md)
 
@@ -230,6 +231,7 @@ run();
 
 ### [v1](docs/sdks/v1/README.md)
 
+* [agentGetAvailableVoices](docs/sdks/v1/README.md#agentgetavailablevoices) - Get Available Agent Voices
 * [list](docs/sdks/v1/README.md#list) - Directory Member List
 * [create](docs/sdks/v1/README.md#create) - Create Directory Member
 * [getById](docs/sdks/v1/README.md#getbyid) - Get Directory Member By Id
@@ -256,6 +258,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`agentsAgentGetAvailableVoices`](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
 - [`agentsCreate`](docs/sdks/agents/README.md#create) - Create Agent
 - [`agentsDelete`](docs/sdks/agents/README.md#delete) - Delete Agent
 - [`agentsGetById`](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
@@ -312,6 +315,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`v1AgentGetAvailableVoices`](docs/sdks/v1/README.md#agentgetavailablevoices) - Get Available Agent Voices
 - [`v1Create`](docs/sdks/v1/README.md#create) - Create Directory Member
 - [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete Directory Member
 - [`v1DirectoryMemberBulkLoad`](docs/sdks/v1/README.md#directorymemberbulkload) - Bulk Load Directory Members
@@ -346,7 +350,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.directory.directoryMemberBulkLoad({
+  const result = await syllableSDK.v1.directoryMemberBulkLoad({
     file: await openAsBlob("example.file"),
   });
 

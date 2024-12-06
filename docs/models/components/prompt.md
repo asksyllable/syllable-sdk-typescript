@@ -9,12 +9,12 @@ let value: Prompt = {
   name: "<value>",
   type: "<value>",
   llmConfig: {
-    provider: "azure_openai",
+    provider: "openai",
     model: "gpt-4o",
     version: "2024-05-13",
     apiVersion: "2024-06-01",
   },
-  id: 976762,
+  id: 265389,
   lastUpdated: "<value>",
 };
 ```

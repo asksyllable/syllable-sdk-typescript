@@ -23,6 +23,11 @@ export class SyllableSDK extends ClientSDK {
     return (this._agents ??= new Agents(this._options));
   }
 
+  private _v1?: V1;
+  get v1(): V1 {
+    return (this._v1 ??= new V1(this._options));
+  }
+
   private _channels?: Channels;
   get channels(): Channels {
     return (this._channels ??= new Channels(this._options));
@@ -76,10 +81,5 @@ export class SyllableSDK extends ClientSDK {
   private _directory?: Directory;
   get directory(): Directory {
     return (this._directory ??= new Directory(this._options));
-  }
-
-  private _v1?: V1;
-  get v1(): V1 {
-    return (this._v1 ??= new V1(this._options));
   }
 }
