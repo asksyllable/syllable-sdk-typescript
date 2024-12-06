@@ -413,6 +413,38 @@
         }
       }
     },
+    "/api/v1/agents/voices/available": {
+      "get": {
+        "tags": [
+          "agents",
+          "V1"
+        ],
+        "summary": "Get Available Agent Voices",
+        "description": "Get available agent voices.",
+        "operationId": "agent_get_available_voices",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AgentVoice"
+                  },
+                  "type": "array",
+                  "title": "Response Agent Get Available Voices"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
     "/api/v1/channels/": {
       "get": {
         "tags": [
@@ -4860,6 +4892,61 @@
         ],
         "title": "AgentUpdate"
       },
+      "AgentVoice": {
+        "properties": {
+          "provider": {
+            "$ref": "#/components/schemas/SttProvider"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name"
+          },
+          "var_name": {
+            "$ref": "#/components/schemas/AgentVoiceVarName"
+          }
+        },
+        "type": "object",
+        "required": [
+          "provider",
+          "display_name",
+          "var_name"
+        ],
+        "title": "AgentVoice"
+      },
+      "AgentVoiceVarName": {
+        "type": "string",
+        "enum": [
+          "openai:alloy",
+          "openai:echo",
+          "openai:fable",
+          "openai:nova",
+          "openai:onyx",
+          "openai:shimmer",
+          "elevenlabs:Alice",
+          "elevenlabs:Bill",
+          "elevenlabs:Brian",
+          "elevenlabs:Callum",
+          "elevenlabs:Charlie",
+          "elevenlabs:Charlotte",
+          "elevenlabs:Chris",
+          "elevenlabs:Daniel",
+          "elevenlabs:Eric",
+          "elevenlabs:George",
+          "elevenlabs:Jessica",
+          "elevenlabs:Laura",
+          "elevenlabs:Liam",
+          "elevenlabs:Lily",
+          "elevenlabs:Matilda",
+          "elevenlabs:River",
+          "elevenlabs:Roger",
+          "elevenlabs:Sarah",
+          "elevenlabs:Will",
+          "wavenet:female/en-US-Neural2-F",
+          "wavenet:male/en-US-Neural2-D",
+          "wavenet:female/en-US-Studio-O"
+        ],
+        "title": "AgentVoiceVarName"
+      },
       "AvailableTarget": {
         "properties": {
           "organization_id": {
@@ -7389,6 +7476,15 @@
           "actions"
         ],
         "title": "SessionTranscriptionResponse"
+      },
+      "SttProvider": {
+        "type": "string",
+        "enum": [
+          "OpenAI",
+          "ElevenLabs",
+          "Google"
+        ],
+        "title": "SttProvider"
       },
       "Target": {
         "properties": {
