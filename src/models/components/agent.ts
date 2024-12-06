@@ -40,6 +40,7 @@ export type Agent = {
   id: number;
   updatedAt?: Date | null | undefined;
   channelTargets?: Array<Target> | null | undefined;
+  lastUpdatedBy?: string | null | undefined;
 };
 
 /** @internal */
@@ -105,6 +106,7 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
     channel_targets: z.nullable(z.array(Target$inboundSchema)).optional(),
+    last_updated_by: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "prompt_id": "promptId",
@@ -113,6 +115,7 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
       "tool_headers": "toolHeaders",
       "updated_at": "updatedAt",
       "channel_targets": "channelTargets",
+      "last_updated_by": "lastUpdatedBy",
     });
   });
 
@@ -132,6 +135,7 @@ export type Agent$Outbound = {
   id: number;
   updated_at?: string | null | undefined;
   channel_targets?: Array<Target$Outbound> | null | undefined;
+  last_updated_by?: string | null | undefined;
 };
 
 /** @internal */
@@ -154,6 +158,7 @@ export const Agent$outboundSchema: z.ZodType<
   id: z.number().int(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   channelTargets: z.nullable(z.array(Target$outboundSchema)).optional(),
+  lastUpdatedBy: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
@@ -162,6 +167,7 @@ export const Agent$outboundSchema: z.ZodType<
     toolHeaders: "tool_headers",
     updatedAt: "updated_at",
     channelTargets: "channel_targets",
+    lastUpdatedBy: "last_updated_by",
   });
 });
 

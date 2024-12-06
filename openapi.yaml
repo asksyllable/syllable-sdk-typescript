@@ -3802,6 +3802,11 @@ components:
               type: "array"
             - type: "null"
           title: "Channel Targets"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
       type: "object"
       required:
         - "name"
@@ -3889,6 +3894,7 @@ components:
         - "prompt_tool_defaults"
         - "tool_headers"
         - "updated_at"
+        - "last_updated_by"
       title: "AgentProperties"
     "AgentToolDefaults":
       properties:

@@ -21,6 +21,7 @@ export const AgentProperties = {
   PromptToolDefaults: "prompt_tool_defaults",
   ToolHeaders: "tool_headers",
   UpdatedAt: "updated_at",
+  LastUpdatedBy: "last_updated_by",
 } as const;
 export type AgentProperties = ClosedEnum<typeof AgentProperties>;
 
