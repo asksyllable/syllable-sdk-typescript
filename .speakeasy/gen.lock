@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: f2ed45c185b533375483b2d0422e52d2
+  docChecksum: b0293c27a4e2cb2016a0d66f43814e22
   docVersion: 0.0.2
-  speakeasyVersion: 1.453.0
-  generationVersion: 2.472.1
-  releaseVersion: 0.1.0-alpha.13
-  configChecksum: b3af261f2ebb2f1be94486aaae4fdd52
+  speakeasyVersion: 1.453.1
+  generationVersion: 2.474.4
+  releaseVersion: 0.1.0-alpha.14
+  configChecksum: d3058e05d1ff6afda56f62e5c0ef6b83
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -51,6 +51,8 @@ generatedFiles:
   - docs/models/components/agenttoolfielddefault.md
   - docs/models/components/agentupdate.md
   - docs/models/components/agentupdatevariables.md
+  - docs/models/components/agentvoice.md
+  - docs/models/components/agentvoicevarname.md
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
@@ -114,6 +116,7 @@ generatedFiles:
   - docs/models/components/sessionrecordingresponse.md
   - docs/models/components/sessiontext.md
   - docs/models/components/sessiontranscriptionresponse.md
+  - docs/models/components/sttprovider.md
   - docs/models/components/target.md
   - docs/models/components/targetmodes.md
   - docs/models/components/testmessage.md
@@ -190,6 +193,7 @@ generatedFiles:
   - jsr.json
   - package.json
   - src/core.ts
+  - src/funcs/agentsAgentGetAvailableVoices.ts
   - src/funcs/agentsCreate.ts
   - src/funcs/agentsDelete.ts
   - src/funcs/agentsGetById.ts
@@ -246,6 +250,7 @@ generatedFiles:
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
+  - src/funcs/v1AgentGetAvailableVoices.ts
   - src/funcs/v1Create.ts
   - src/funcs/v1Delete.ts
   - src/funcs/v1DirectoryMemberBulkLoad.ts
@@ -279,6 +284,8 @@ generatedFiles:
   - src/models/components/agenttooldefaults.ts
   - src/models/components/agenttoolfielddefault.ts
   - src/models/components/agentupdate.ts
+  - src/models/components/agentvoice.ts
+  - src/models/components/agentvoicevarname.ts
   - src/models/components/availabletarget.ts
   - src/models/components/availabletargetproperties.ts
   - src/models/components/bodydirectorymemberbulkload.ts
@@ -334,6 +341,7 @@ generatedFiles:
   - src/models/components/sessionrecordingresponse.ts
   - src/models/components/sessiontext.ts
   - src/models/components/sessiontranscriptionresponse.ts
+  - src/models/components/sttprovider.ts
   - src/models/components/target.ts
   - src/models/components/targetmodes.ts
   - src/models/components/testmessage.ts
@@ -899,4 +907,9 @@ examples:
       responses:
         "200":
           application/json: "<value>"
+  agent_get_available_voices:
+    speakeasy-default-agent-get-available-voices:
+      responses:
+        "200":
+          application/json: []
 generatedTests: {}

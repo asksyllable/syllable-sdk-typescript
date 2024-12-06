@@ -110,6 +110,43 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/agents/voices/available"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: agent_get_available_voices
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.agentGetAvailableVoices();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: agent_get_available_voices
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.agentGetAvailableVoices();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/agents/{agent_id}"]["delete"]
     update:
       x-codeSamples:
