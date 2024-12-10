@@ -35,7 +35,7 @@ export async function agentsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponseAgent,
+    components.ListResponseAgentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -122,7 +122,7 @@ export async function agentsList(
   };
 
   const [result] = await M.match<
-    components.ListResponseAgent,
+    components.ListResponseAgentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -132,7 +132,7 @@ export async function agentsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListResponseAgent$inboundSchema),
+    M.json(200, components.ListResponseAgentResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

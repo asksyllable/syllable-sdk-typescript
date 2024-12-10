@@ -6,7 +6,7 @@
 import { LlmConfig } from "syllable-sdk/models/components";
 
 let value: LlmConfig = {
-  provider: "azure_openai",
+  provider: "openai",
   model: "gpt-4o",
   version: "2024-05-13",
   apiVersion: "2024-06-01",

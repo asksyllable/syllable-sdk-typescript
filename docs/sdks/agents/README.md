@@ -78,7 +78,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponseAgent](../../models/components/listresponseagent.md)\>**
+**Promise\<[components.ListResponseAgentResponse](../../models/components/listresponseagentresponse.md)\>**
 
 ### Errors
 
@@ -339,7 +339,7 @@ run();
 
 ### Response
 
-**Promise\<[components.Agent](../../models/components/agent.md)\>**
+**Promise\<[components.AgentResponse](../../models/components/agentresponse.md)\>**
 
 ### Errors
 

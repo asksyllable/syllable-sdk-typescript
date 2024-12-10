@@ -5,7 +5,7 @@
 ```typescript
 import { TargetModes } from "syllable-sdk/models/components";
 
-let value: TargetModes = "voice";
+let value: TargetModes = "email";
 ```
 
 ## Values
