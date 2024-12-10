@@ -364,6 +364,41 @@ paths:
                 title: "Response Agent Get Available Voices"
       security:
         - APIKeyHeader: []
+      x-codeSamples:
+        - lang: typescript
+          label: agent_get_available_voices
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.agentGetAvailableVoices();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: agent_get_available_voices
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.agentGetAvailableVoices();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   "/api/v1/channels/":
     get:
       tags:
@@ -3802,7 +3837,9 @@ components:
           title: "Tool Headers"
         "variables":
           anyOf:
-            - type: "object"
+            - additionalProperties:
+                type: "string"
+              type: "object"
             - type: "null"
           title: "Variables"
         "id":
@@ -3883,7 +3920,9 @@ components:
           title: "Tool Headers"
         "variables":
           anyOf:
-            - type: "object"
+            - additionalProperties:
+                type: "string"
+              type: "object"
             - type: "null"
           title: "Variables"
       type: "object"
@@ -3988,7 +4027,9 @@ components:
           title: "Tool Headers"
         "variables":
           anyOf:
-            - type: "object"
+            - additionalProperties:
+                type: "string"
+              type: "object"
             - type: "null"
           title: "Variables"
         "id":

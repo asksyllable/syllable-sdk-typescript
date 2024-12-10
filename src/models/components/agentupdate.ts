@@ -14,8 +14,6 @@ import {
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
 
-export type AgentUpdateVariables = {};
-
 export type AgentUpdate = {
   name: string;
   description?: string | null | undefined;
@@ -27,60 +25,12 @@ export type AgentUpdate = {
   languages: Array<string>;
   promptToolDefaults?: Array<AgentToolDefaults> | undefined;
   toolHeaders?: { [k: string]: string } | null | undefined;
-  variables?: AgentUpdateVariables | null | undefined;
+  variables?: { [k: string]: string } | null | undefined;
   /**
    * The Agent ID
    */
   id: number;
 };
-
-/** @internal */
-export const AgentUpdateVariables$inboundSchema: z.ZodType<
-  AgentUpdateVariables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type AgentUpdateVariables$Outbound = {};
-
-/** @internal */
-export const AgentUpdateVariables$outboundSchema: z.ZodType<
-  AgentUpdateVariables$Outbound,
-  z.ZodTypeDef,
-  AgentUpdateVariables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentUpdateVariables$ {
-  /** @deprecated use `AgentUpdateVariables$inboundSchema` instead. */
-  export const inboundSchema = AgentUpdateVariables$inboundSchema;
-  /** @deprecated use `AgentUpdateVariables$outboundSchema` instead. */
-  export const outboundSchema = AgentUpdateVariables$outboundSchema;
-  /** @deprecated use `AgentUpdateVariables$Outbound` instead. */
-  export type Outbound = AgentUpdateVariables$Outbound;
-}
-
-export function agentUpdateVariablesToJSON(
-  agentUpdateVariables: AgentUpdateVariables,
-): string {
-  return JSON.stringify(
-    AgentUpdateVariables$outboundSchema.parse(agentUpdateVariables),
-  );
-}
-
-export function agentUpdateVariablesFromJSON(
-  jsonString: string,
-): SafeParseResult<AgentUpdateVariables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AgentUpdateVariables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AgentUpdateVariables' from JSON`,
-  );
-}
 
 /** @internal */
 export const AgentUpdate$inboundSchema: z.ZodType<
@@ -98,8 +48,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
   languages: z.array(z.string()),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
   tool_headers: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.lazy(() => AgentUpdateVariables$inboundSchema))
-    .optional(),
+  variables: z.nullable(z.record(z.string())).optional(),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -122,7 +71,7 @@ export type AgentUpdate$Outbound = {
   languages: Array<string>;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
   tool_headers?: { [k: string]: string } | null | undefined;
-  variables?: AgentUpdateVariables$Outbound | null | undefined;
+  variables?: { [k: string]: string } | null | undefined;
   id: number;
 };
 
@@ -142,8 +91,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
   languages: z.array(z.string()),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
   toolHeaders: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.lazy(() => AgentUpdateVariables$outboundSchema))
-    .optional(),
+  variables: z.nullable(z.record(z.string())).optional(),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
