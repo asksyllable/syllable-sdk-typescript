@@ -14,8 +14,6 @@ import {
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
 
-export type AgentCreateVariables = {};
-
 export type AgentCreate = {
   name: string;
   description?: string | null | undefined;
@@ -27,56 +25,8 @@ export type AgentCreate = {
   languages: Array<string>;
   promptToolDefaults?: Array<AgentToolDefaults> | undefined;
   toolHeaders?: { [k: string]: string } | null | undefined;
-  variables?: AgentCreateVariables | null | undefined;
+  variables?: { [k: string]: string } | null | undefined;
 };
-
-/** @internal */
-export const AgentCreateVariables$inboundSchema: z.ZodType<
-  AgentCreateVariables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type AgentCreateVariables$Outbound = {};
-
-/** @internal */
-export const AgentCreateVariables$outboundSchema: z.ZodType<
-  AgentCreateVariables$Outbound,
-  z.ZodTypeDef,
-  AgentCreateVariables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentCreateVariables$ {
-  /** @deprecated use `AgentCreateVariables$inboundSchema` instead. */
-  export const inboundSchema = AgentCreateVariables$inboundSchema;
-  /** @deprecated use `AgentCreateVariables$outboundSchema` instead. */
-  export const outboundSchema = AgentCreateVariables$outboundSchema;
-  /** @deprecated use `AgentCreateVariables$Outbound` instead. */
-  export type Outbound = AgentCreateVariables$Outbound;
-}
-
-export function agentCreateVariablesToJSON(
-  agentCreateVariables: AgentCreateVariables,
-): string {
-  return JSON.stringify(
-    AgentCreateVariables$outboundSchema.parse(agentCreateVariables),
-  );
-}
-
-export function agentCreateVariablesFromJSON(
-  jsonString: string,
-): SafeParseResult<AgentCreateVariables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AgentCreateVariables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AgentCreateVariables' from JSON`,
-  );
-}
 
 /** @internal */
 export const AgentCreate$inboundSchema: z.ZodType<
@@ -94,8 +44,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
   languages: z.array(z.string()),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
   tool_headers: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.lazy(() => AgentCreateVariables$inboundSchema))
-    .optional(),
+  variables: z.nullable(z.record(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -117,7 +66,7 @@ export type AgentCreate$Outbound = {
   languages: Array<string>;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
   tool_headers?: { [k: string]: string } | null | undefined;
-  variables?: AgentCreateVariables$Outbound | null | undefined;
+  variables?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -136,8 +85,7 @@ export const AgentCreate$outboundSchema: z.ZodType<
   languages: z.array(z.string()),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
   toolHeaders: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.lazy(() => AgentCreateVariables$outboundSchema))
-    .optional(),
+  variables: z.nullable(z.record(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",

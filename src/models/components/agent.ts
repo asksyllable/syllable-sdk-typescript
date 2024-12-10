@@ -20,8 +20,6 @@ import {
   Target$outboundSchema,
 } from "./target.js";
 
-export type Variables = {};
-
 export type Agent = {
   name: string;
   description?: string | null | undefined;
@@ -33,7 +31,7 @@ export type Agent = {
   languages: Array<string>;
   promptToolDefaults?: Array<AgentToolDefaults> | undefined;
   toolHeaders?: { [k: string]: string } | null | undefined;
-  variables?: Variables | null | undefined;
+  variables?: { [k: string]: string } | null | undefined;
   /**
    * The Agent ID
    */
@@ -42,50 +40,6 @@ export type Agent = {
   channelTargets?: Array<Target> | null | undefined;
   lastUpdatedBy?: string | null | undefined;
 };
-
-/** @internal */
-export const Variables$inboundSchema: z.ZodType<
-  Variables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type Variables$Outbound = {};
-
-/** @internal */
-export const Variables$outboundSchema: z.ZodType<
-  Variables$Outbound,
-  z.ZodTypeDef,
-  Variables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Variables$ {
-  /** @deprecated use `Variables$inboundSchema` instead. */
-  export const inboundSchema = Variables$inboundSchema;
-  /** @deprecated use `Variables$outboundSchema` instead. */
-  export const outboundSchema = Variables$outboundSchema;
-  /** @deprecated use `Variables$Outbound` instead. */
-  export type Outbound = Variables$Outbound;
-}
-
-export function variablesToJSON(variables: Variables): string {
-  return JSON.stringify(Variables$outboundSchema.parse(variables));
-}
-
-export function variablesFromJSON(
-  jsonString: string,
-): SafeParseResult<Variables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Variables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Variables' from JSON`,
-  );
-}
 
 /** @internal */
 export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
@@ -100,7 +54,7 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
     languages: z.array(z.string()),
     prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
     tool_headers: z.nullable(z.record(z.string())).optional(),
-    variables: z.nullable(z.lazy(() => Variables$inboundSchema)).optional(),
+    variables: z.nullable(z.record(z.string())).optional(),
     id: z.number().int(),
     updated_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -131,7 +85,7 @@ export type Agent$Outbound = {
   languages: Array<string>;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
   tool_headers?: { [k: string]: string } | null | undefined;
-  variables?: Variables$Outbound | null | undefined;
+  variables?: { [k: string]: string } | null | undefined;
   id: number;
   updated_at?: string | null | undefined;
   channel_targets?: Array<Target$Outbound> | null | undefined;
@@ -154,7 +108,7 @@ export const Agent$outboundSchema: z.ZodType<
   languages: z.array(z.string()),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
   toolHeaders: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.lazy(() => Variables$outboundSchema)).optional(),
+  variables: z.nullable(z.record(z.string())).optional(),
   id: z.number().int(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   channelTargets: z.nullable(z.array(Target$outboundSchema)).optional(),

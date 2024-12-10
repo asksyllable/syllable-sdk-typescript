@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: b0293c27a4e2cb2016a0d66f43814e22
+  docChecksum: 4727ba061e3e4555f866b7666b4430b1
   docVersion: 0.0.2
-  speakeasyVersion: 1.453.1
-  generationVersion: 2.474.4
-  releaseVersion: 0.1.0-alpha.14
-  configChecksum: d3058e05d1ff6afda56f62e5c0ef6b83
+  speakeasyVersion: 1.453.8
+  generationVersion: 2.474.15
+  releaseVersion: 0.1.0-alpha.15
+  configChecksum: c867b6bde08429de6be616e958212ac8
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.8
+    core: 3.18.9
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
@@ -45,12 +45,10 @@ generatedFiles:
   - docs/lib/utils/retryconfig.md
   - docs/models/components/agent.md
   - docs/models/components/agentcreate.md
-  - docs/models/components/agentcreatevariables.md
   - docs/models/components/agentproperties.md
   - docs/models/components/agenttooldefaults.md
   - docs/models/components/agenttoolfielddefault.md
   - docs/models/components/agentupdate.md
-  - docs/models/components/agentupdatevariables.md
   - docs/models/components/agentvoice.md
   - docs/models/components/agentvoicevarname.md
   - docs/models/components/attributes.md
@@ -129,7 +127,6 @@ generatedFiles:
   - docs/models/components/toolupdate.md
   - docs/models/components/toolupdatedefinition.md
   - docs/models/components/validationerror.md
-  - docs/models/components/variables.md
   - docs/models/errors/httpvalidationerror.md
   - docs/models/operations/agentdeleterequest.md
   - docs/models/operations/agentgetbyidrequest.md
