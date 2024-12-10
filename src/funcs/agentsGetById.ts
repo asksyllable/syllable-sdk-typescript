@@ -35,7 +35,7 @@ export async function agentsGetById(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.Agent,
+    components.AgentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -116,7 +116,7 @@ export async function agentsGetById(
   };
 
   const [result] = await M.match<
-    components.Agent,
+    components.AgentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -126,7 +126,7 @@ export async function agentsGetById(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.Agent$inboundSchema),
+    M.json(200, components.AgentResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

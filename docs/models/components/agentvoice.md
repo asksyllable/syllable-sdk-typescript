@@ -6,9 +6,9 @@
 import { AgentVoice } from "syllable-sdk/models/components";
 
 let value: AgentVoice = {
-  provider: "OpenAI",
-  displayName: "Tyrel.Johns",
-  varName: "elevenlabs:George",
+  provider: "ElevenLabs",
+  displayName: "Humberto_Beier67",
+  varName: "openai:nova",
 };
 ```
 

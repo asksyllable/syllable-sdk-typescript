@@ -12,8 +12,8 @@ let value: ListResponseDirectoryMember = {
       type: "<value>",
     },
   ],
-  page: 612096,
-  pageSize: 616934,
+  page: 570197,
+  pageSize: 438601,
 };
 ```
 

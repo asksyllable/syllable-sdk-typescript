@@ -8,14 +8,14 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Agent,
-  Agent$inboundSchema,
-  Agent$Outbound,
-  Agent$outboundSchema,
-} from "./agent.js";
+  AgentResponse,
+  AgentResponse$inboundSchema,
+  AgentResponse$Outbound,
+  AgentResponse$outboundSchema,
+} from "./agentresponse.js";
 
-export type ListResponseAgent = {
-  items: Array<Agent>;
+export type ListResponseAgentResponse = {
+  items: Array<AgentResponse>;
   page: number;
   pageSize: number;
   totalPages?: number | null | undefined;
@@ -23,12 +23,12 @@ export type ListResponseAgent = {
 };
 
 /** @internal */
-export const ListResponseAgent$inboundSchema: z.ZodType<
-  ListResponseAgent,
+export const ListResponseAgentResponse$inboundSchema: z.ZodType<
+  ListResponseAgentResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.array(Agent$inboundSchema),
+  items: z.array(AgentResponse$inboundSchema),
   page: z.number().int(),
   page_size: z.number().int(),
   total_pages: z.nullable(z.number().int()).optional(),
@@ -42,8 +42,8 @@ export const ListResponseAgent$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ListResponseAgent$Outbound = {
-  items: Array<Agent$Outbound>;
+export type ListResponseAgentResponse$Outbound = {
+  items: Array<AgentResponse$Outbound>;
   page: number;
   page_size: number;
   total_pages?: number | null | undefined;
@@ -51,12 +51,12 @@ export type ListResponseAgent$Outbound = {
 };
 
 /** @internal */
-export const ListResponseAgent$outboundSchema: z.ZodType<
-  ListResponseAgent$Outbound,
+export const ListResponseAgentResponse$outboundSchema: z.ZodType<
+  ListResponseAgentResponse$Outbound,
   z.ZodTypeDef,
-  ListResponseAgent
+  ListResponseAgentResponse
 > = z.object({
-  items: z.array(Agent$outboundSchema),
+  items: z.array(AgentResponse$outboundSchema),
   page: z.number().int(),
   pageSize: z.number().int(),
   totalPages: z.nullable(z.number().int()).optional(),
@@ -73,29 +73,29 @@ export const ListResponseAgent$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListResponseAgent$ {
-  /** @deprecated use `ListResponseAgent$inboundSchema` instead. */
-  export const inboundSchema = ListResponseAgent$inboundSchema;
-  /** @deprecated use `ListResponseAgent$outboundSchema` instead. */
-  export const outboundSchema = ListResponseAgent$outboundSchema;
-  /** @deprecated use `ListResponseAgent$Outbound` instead. */
-  export type Outbound = ListResponseAgent$Outbound;
+export namespace ListResponseAgentResponse$ {
+  /** @deprecated use `ListResponseAgentResponse$inboundSchema` instead. */
+  export const inboundSchema = ListResponseAgentResponse$inboundSchema;
+  /** @deprecated use `ListResponseAgentResponse$outboundSchema` instead. */
+  export const outboundSchema = ListResponseAgentResponse$outboundSchema;
+  /** @deprecated use `ListResponseAgentResponse$Outbound` instead. */
+  export type Outbound = ListResponseAgentResponse$Outbound;
 }
 
-export function listResponseAgentToJSON(
-  listResponseAgent: ListResponseAgent,
+export function listResponseAgentResponseToJSON(
+  listResponseAgentResponse: ListResponseAgentResponse,
 ): string {
   return JSON.stringify(
-    ListResponseAgent$outboundSchema.parse(listResponseAgent),
+    ListResponseAgentResponse$outboundSchema.parse(listResponseAgentResponse),
   );
 }
 
-export function listResponseAgentFromJSON(
+export function listResponseAgentResponseFromJSON(
   jsonString: string,
-): SafeParseResult<ListResponseAgent, SDKValidationError> {
+): SafeParseResult<ListResponseAgentResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListResponseAgent$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListResponseAgent' from JSON`,
+    (x) => ListResponseAgentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseAgentResponse' from JSON`,
   );
 }

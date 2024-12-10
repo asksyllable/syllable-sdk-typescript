@@ -29,7 +29,7 @@ export class Agents extends ClientSDK {
   async list(
     request: operations.AgentListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseAgent> {
+  ): Promise<components.ListResponseAgentResponse> {
     return unwrapAsync(agentsList(
       this,
       request,
@@ -80,7 +80,7 @@ export class Agents extends ClientSDK {
   async getById(
     request: operations.AgentGetByIdRequest,
     options?: RequestOptions,
-  ): Promise<components.Agent> {
+  ): Promise<components.AgentResponse> {
     return unwrapAsync(agentsGetById(
       this,
       request,
