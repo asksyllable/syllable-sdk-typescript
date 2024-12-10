@@ -1,25 +1,56 @@
-# ListResponseChannelTarget
+# ListResponseAgentResponse
 
 ## Example Usage
 
 ```typescript
-import { ListResponseChannelTarget } from "syllable-sdk/models/components";
+import { ListResponseAgentResponse } from "syllable-sdk/models/components";
 
-let value: ListResponseChannelTarget = {
+let value: ListResponseAgentResponse = {
   items: [
     {
-      id: 468651,
-      channelId: 976762,
-      channelName: "<value>",
-      agentId: 604846,
-      target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: false,
+      name: "<value>",
+      type: "<value>",
+      promptId: 548814,
+      timezone: "Atlantic/St_Helena",
+      promptToolDefaults: [
+        {
+          toolName: "<value>",
+          defaultValues: [
+            {
+              fieldName: "<value>",
+              defaultValue: "<value>",
+            },
+          ],
+        },
+      ],
+      languages: [
+        "<value>",
+      ],
+      variables: {
+        "key": "<value>",
+      },
+      toolHeaders: {
+        "key": "<value>",
+      },
+      id: 602763,
+      updatedAt: new Date("2023-08-21T04:36:26.084Z"),
+      lastUpdatedBy: "<value>",
+      prompt: {
+        name: "<value>",
+        type: "<value>",
+        llmConfig: {
+          provider: "azure_openai",
+          model: "gpt-4o",
+          version: "2024-05-13",
+          apiVersion: "2024-06-01",
+        },
+        id: 645894,
+        lastUpdated: "<value>",
+      },
     },
   ],
-  page: 739264,
-  pageSize: 39187,
+  page: 437587,
+  pageSize: 891773,
 };
 ```
 
@@ -27,7 +58,7 @@ let value: ListResponseChannelTarget = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `items`                                                                | [components.ChannelTarget](../../models/components/channeltarget.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
+| `items`                                                                | [components.AgentResponse](../../models/components/agentresponse.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
 | `page`                                                                 | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `pageSize`                                                             | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `totalPages`                                                           | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

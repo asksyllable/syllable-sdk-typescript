@@ -6,7 +6,7 @@
 import { PromptHistory } from "syllable-sdk/models/components";
 
 let value: PromptHistory = {
-  timestamp: new Date("2022-05-25T10:48:39.501Z"),
+  timestamp: new Date("2024-03-16T18:32:36.809Z"),
 };
 ```
 

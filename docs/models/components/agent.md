@@ -7,14 +7,14 @@ import { Agent } from "syllable-sdk/models/components";
 
 let value: Agent = {
   name: "<value>",
-  timezone: "America/St_Thomas",
+  timezone: "America/Santarem",
   type: "<value>",
-  promptId: 891773,
-  customMessageId: 963663,
+  promptId: 264555,
+  customMessageId: 774234,
   languages: [
     "<value>",
   ],
-  id: 383441,
+  id: 456150,
 };
 ```
 

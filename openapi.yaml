@@ -101,7 +101,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_Agent_"}
+              schema: {"$ref": "#/components/schemas/ListResponse_AgentResponse_"}
         "422":
           description: "Validation Error"
           content:
@@ -261,7 +261,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Agent"}
+              schema: {"$ref": "#/components/schemas/AgentResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -3954,6 +3954,110 @@ components:
         - "updated_at"
         - "last_updated_by"
       title: "AgentProperties"
+    "AgentResponse":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The Agent name"
+        "description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+          description: "The Agent description"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
+          description: "The Agent label"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "The Agent type"
+        "prompt_id":
+          type: "integer"
+          title: "Prompt Id"
+          description: "The Agent's prompt id"
+        "custom_message_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Custom Message Id"
+          description: "The Agent's custom message id"
+        "timezone":
+          type: "string"
+          title: "Timezone"
+          description: "The time zone the bot operates in"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+        "languages":
+          items:
+            type: "string"
+          type: "array"
+          title: "Languages"
+        "variables":
+          additionalProperties:
+            type: "string"
+          type: "object"
+          title: "Variables"
+        "tool_headers":
+          anyOf:
+            - additionalProperties:
+                type: "string"
+              type: "object"
+            - type: "null"
+          title: "Tool Headers"
+          description: "Optional headers to include in tool calls."
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The Agent ID"
+        "updated_at":
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+          description: "Timestamp of most recent update"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
+          description: "Email of the user who last updated the agent"
+        "channel_targets":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/Target"}
+              type: "array"
+            - type: "null"
+          title: "Channel Targets"
+          description: "Channel targets associated with the agent"
+        "prompt":
+          anyOf:
+            - {"$ref": "#/components/schemas/Prompt"}
+            - type: "null"
+          description: "The prompt associated with the agent"
+        "custom_message":
+          anyOf:
+            - {"$ref": "#/components/schemas/Greeting"}
+            - type: "null"
+          description: "The custom message associated with the agent"
+      type: "object"
+      required:
+        - "name"
+        - "type"
+        - "prompt_id"
+        - "timezone"
+        - "prompt_tool_defaults"
+        - "languages"
+        - "variables"
+        - "tool_headers"
+        - "id"
+        - "updated_at"
+        - "last_updated_by"
+      title: "AgentResponse"
     "AgentToolDefaults":
       properties:
         "tool_name":
@@ -4575,6 +4679,26 @@ components:
         - "description"
         - "attributes"
       title: "EventProperties"
+    "Greeting":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the greeting"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "The text of the greeting"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the greeting"
+      type: "object"
+      required:
+        - "name"
+        - "text"
+        - "id"
+      title: "Greeting"
     "HTTPValidationError":
       properties:
         "detail":
@@ -4583,10 +4707,10 @@ components:
           title: "Detail"
       type: "object"
       title: "HTTPValidationError"
-    "ListResponse_Agent_":
+    "ListResponse_AgentResponse_":
       properties:
         "items":
-          items: {"$ref": "#/components/schemas/Agent"}
+          items: {"$ref": "#/components/schemas/AgentResponse"}
           type: "array"
           title: "Items"
         "page":
@@ -4610,7 +4734,7 @@ components:
         - "items"
         - "page"
         - "page_size"
-      title: "ListResponse[Agent]"
+      title: "ListResponse[AgentResponse]"
     "ListResponse_AvailableTarget_":
       properties:
         "items":
