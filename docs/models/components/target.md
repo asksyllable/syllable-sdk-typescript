@@ -6,11 +6,11 @@
 import { Target } from "syllable-sdk/models/components";
 
 let value: Target = {
-  agentId: 791725,
+  agentId: 870013,
   target: "<value>",
-  targetMode: "sms",
-  channelId: 568045,
-  id: 925597,
+  targetMode: "email",
+  channelId: 799159,
+  id: 461479,
 };
 ```
 

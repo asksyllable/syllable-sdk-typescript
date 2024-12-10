@@ -5,6 +5,7 @@
 export * from "./agent.js";
 export * from "./agentcreate.js";
 export * from "./agentproperties.js";
+export * from "./agentresponse.js";
 export * from "./agenttooldefaults.js";
 export * from "./agenttoolfielddefault.js";
 export * from "./agentupdate.js";
@@ -30,7 +31,8 @@ export * from "./directorymembercreate.js";
 export * from "./directorymemberproperties.js";
 export * from "./event.js";
 export * from "./eventproperties.js";
-export * from "./listresponseagent.js";
+export * from "./greeting.js";
+export * from "./listresponseagentresponse.js";
 export * from "./listresponseavailabletarget.js";
 export * from "./listresponsechannel.js";
 export * from "./listresponsechanneltarget.js";

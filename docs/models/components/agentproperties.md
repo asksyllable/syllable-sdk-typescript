@@ -5,7 +5,7 @@
 ```typescript
 import { AgentProperties } from "syllable-sdk/models/components";
 
-let value: AgentProperties = "tool_headers";
+let value: AgentProperties = "last_updated_by";
 ```
 
 ## Values
