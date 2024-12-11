@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Delete Custom Message
  *
  * @remarks
- * Delete greeting by ID
+ * Delete custom message by ID
  */
 export async function customMessagesDelete(
   client: SyllableSDKCore,

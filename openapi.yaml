@@ -1245,7 +1245,7 @@ paths:
       tags:
         - "custom_messages"
       summary: "Create Custom Message"
-      description: "Create a new greeting"
+      description: "Create a new custom message"
       operationId: "custom_messages_create"
       security:
         - APIKeyHeader: []
@@ -1290,7 +1290,7 @@ paths:
       tags:
         - "custom_messages"
       summary: "Update Custom Message"
-      description: "Update a greeting"
+      description: "Update a custom message"
       operationId: "custom_messages_update"
       security:
         - APIKeyHeader: []
@@ -1337,7 +1337,7 @@ paths:
       tags:
         - "custom_messages"
       summary: "Get Custom Message By Id"
-      description: "Get the greeting by its ID"
+      description: "Get the custom message by its ID"
       operationId: "custom_message_get_by_id"
       security:
         - APIKeyHeader: []
@@ -1383,7 +1383,7 @@ paths:
       tags:
         - "custom_messages"
       summary: "Delete Custom Message"
-      description: "Delete greeting by ID"
+      description: "Delete custom message by ID"
       operationId: "custom_messages_delete"
       security:
         - APIKeyHeader: []
