@@ -33,6 +33,10 @@ export type CustomMessageResponse = {
    * The number of agents using the custom message
    */
   agentCount?: number | null | undefined;
+  /**
+   * The email address of the user who most recently updated the custom message
+   */
+  lastUpdatedBy: string;
   type?: string | undefined;
 };
 
@@ -48,11 +52,13 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   agent_count: z.nullable(z.number().int()).optional(),
+  last_updated_by: z.string(),
   type: z.string().default("greeting"),
 }).transform((v) => {
   return remap$(v, {
     "updated_at": "updatedAt",
     "agent_count": "agentCount",
+    "last_updated_by": "lastUpdatedBy",
   });
 });
 
@@ -64,6 +70,7 @@ export type CustomMessageResponse$Outbound = {
   id: number;
   updated_at: string;
   agent_count?: number | null | undefined;
+  last_updated_by: string;
   type: string;
 };
 
@@ -79,11 +86,13 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   agentCount: z.nullable(z.number().int()).optional(),
+  lastUpdatedBy: z.string(),
   type: z.string().default("greeting"),
 }).transform((v) => {
   return remap$(v, {
     updatedAt: "updated_at",
     agentCount: "agent_count",
+    lastUpdatedBy: "last_updated_by",
   });
 });
 

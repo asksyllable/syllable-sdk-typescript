@@ -12,6 +12,7 @@ let value: ListResponseCustomMessageResponse = {
       text: "<value>",
       id: 265389,
       updatedAt: new Date("2023-07-28T11:31:00.474Z"),
+      lastUpdatedBy: "<value>",
     },
   ],
   page: 93940,
