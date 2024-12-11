@@ -5616,6 +5616,18 @@
             "title": "Text",
             "description": "The text of the custom message"
           },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label",
+            "description": "The label of the custom message"
+          },
           "type": {
             "type": "string",
             "title": "Type",
@@ -5634,7 +5646,9 @@
         "enum": [
           "id",
           "name",
-          "text"
+          "text",
+          "label",
+          "updated_at"
         ],
         "title": "CustomMessageProperties"
       },
@@ -5650,10 +5664,28 @@
             "title": "Text",
             "description": "The text of the custom message"
           },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label",
+            "description": "The label of the custom message"
+          },
           "id": {
             "type": "integer",
             "title": "Id",
             "description": "The ID of the custom message"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At",
+            "description": "Timestamp of the most recent update to the custom message"
           },
           "type": {
             "type": "string",
@@ -5665,7 +5697,8 @@
         "required": [
           "name",
           "text",
-          "id"
+          "id",
+          "updated_at"
         ],
         "title": "CustomMessageResponse"
       },
@@ -5680,6 +5713,18 @@
             "type": "string",
             "title": "Text",
             "description": "The text of the custom message"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label",
+            "description": "The label of the custom message"
           },
           "id": {
             "type": "integer",
