@@ -29,6 +29,10 @@ export type CustomMessageResponse = {
    * Timestamp of the most recent update to the custom message
    */
   updatedAt: Date;
+  /**
+   * The number of agents using the custom message
+   */
+  agentCount?: number | null | undefined;
   type?: string | undefined;
 };
 
@@ -43,10 +47,12 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   label: z.nullable(z.string()).optional(),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  agent_count: z.nullable(z.number().int()).optional(),
   type: z.string().default("greeting"),
 }).transform((v) => {
   return remap$(v, {
     "updated_at": "updatedAt",
+    "agent_count": "agentCount",
   });
 });
 
@@ -57,6 +63,7 @@ export type CustomMessageResponse$Outbound = {
   label?: string | null | undefined;
   id: number;
   updated_at: string;
+  agent_count?: number | null | undefined;
   type: string;
 };
 
@@ -71,10 +78,12 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   label: z.nullable(z.string()).optional(),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
+  agentCount: z.nullable(z.number().int()).optional(),
   type: z.string().default("greeting"),
 }).transform((v) => {
   return remap$(v, {
     updatedAt: "updated_at",
+    agentCount: "agent_count",
   });
 });
 
