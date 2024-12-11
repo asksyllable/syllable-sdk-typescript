@@ -34,7 +34,7 @@ export class CustomMessages extends ClientSDK {
    * Create Custom Message
    *
    * @remarks
-   * Create a new greeting
+   * Create a new custom message
    */
   async create(
     request: components.CustomMessageCreateRequest,
@@ -51,7 +51,7 @@ export class CustomMessages extends ClientSDK {
    * Update Custom Message
    *
    * @remarks
-   * Update a greeting
+   * Update a custom message
    */
   async update(
     request: components.CustomMessageUpdateRequest,
@@ -68,7 +68,7 @@ export class CustomMessages extends ClientSDK {
    * Get Custom Message By Id
    *
    * @remarks
-   * Get the greeting by its ID
+   * Get the custom message by its ID
    */
   async getById(
     request: operations.CustomMessageGetByIdRequest,
@@ -85,7 +85,7 @@ export class CustomMessages extends ClientSDK {
    * Delete Custom Message
    *
    * @remarks
-   * Delete greeting by ID
+   * Delete custom message by ID
    */
   async delete(
     request: operations.CustomMessagesDeleteRequest,

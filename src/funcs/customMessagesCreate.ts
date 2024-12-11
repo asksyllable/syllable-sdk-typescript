@@ -26,7 +26,7 @@ import { Result } from "../types/fp.js";
  * Create Custom Message
  *
  * @remarks
- * Create a new greeting
+ * Create a new custom message
  */
 export async function customMessagesCreate(
   client: SyllableSDKCore,
