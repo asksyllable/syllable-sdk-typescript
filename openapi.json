@@ -1516,7 +1516,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListResponse_CustomMessage_"
+                  "$ref": "#/components/schemas/ListResponse_CustomMessageResponse_"
                 }
               }
             }
@@ -1551,7 +1551,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CustomMessageCreate"
+                "$ref": "#/components/schemas/CustomMessageCreateRequest"
               }
             }
           }
@@ -1562,7 +1562,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomMessage"
+                  "$ref": "#/components/schemas/CustomMessageResponse"
                 }
               }
             }
@@ -1597,7 +1597,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CustomMessage"
+                "$ref": "#/components/schemas/CustomMessageUpdateRequest"
               }
             }
           }
@@ -1608,7 +1608,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomMessage"
+                  "$ref": "#/components/schemas/CustomMessageResponse"
                 }
               }
             }
@@ -1657,7 +1657,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomMessage"
+                  "$ref": "#/components/schemas/CustomMessageResponse"
                 }
               }
             }
@@ -4898,7 +4898,7 @@
           "custom_message": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Greeting"
+                "$ref": "#/components/schemas/CustomMessage"
               },
               {
                 "type": "null"
@@ -5193,11 +5193,7 @@
             "description": "The channel name"
           },
           "channel_service": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChannelServices"
-              }
-            ],
+            "$ref": "#/components/schemas/ChannelServices",
             "description": "The service for the channel"
           },
           "supported_modes": {
@@ -5587,17 +5583,77 @@
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The name of the greeting"
+            "description": "The name of the custom message"
           },
           "text": {
             "type": "string",
             "title": "Text",
-            "description": "The text of the greeting"
+            "description": "The text of the custom message"
           },
           "id": {
             "type": "integer",
             "title": "Id",
-            "description": "The ID of the greeting"
+            "description": "The ID of the custom message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "text",
+          "id"
+        ],
+        "title": "CustomMessage"
+      },
+      "CustomMessageCreateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the custom message"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The text of the custom message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "default": "greeting"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "text"
+        ],
+        "title": "CustomMessageCreateRequest"
+      },
+      "CustomMessageProperties": {
+        "type": "string",
+        "enum": [
+          "id",
+          "name",
+          "text"
+        ],
+        "title": "CustomMessageProperties"
+      },
+      "CustomMessageResponse": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the custom message"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "The text of the custom message"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the custom message"
           },
           "type": {
             "type": "string",
@@ -5611,19 +5667,24 @@
           "text",
           "id"
         ],
-        "title": "CustomMessage"
+        "title": "CustomMessageResponse"
       },
-      "CustomMessageCreate": {
+      "CustomMessageUpdateRequest": {
         "properties": {
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The name of the greeting"
+            "description": "The name of the custom message"
           },
           "text": {
             "type": "string",
             "title": "Text",
-            "description": "The text of the greeting"
+            "description": "The text of the custom message"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the custom message"
           },
           "type": {
             "type": "string",
@@ -5634,18 +5695,10 @@
         "type": "object",
         "required": [
           "name",
-          "text"
+          "text",
+          "id"
         ],
-        "title": "CustomMessageCreate"
-      },
-      "CustomMessageProperties": {
-        "type": "string",
-        "enum": [
-          "id",
-          "name",
-          "text"
-        ],
-        "title": "CustomMessageProperties"
+        "title": "CustomMessageUpdateRequest"
       },
       "DirectoryExtension": {
         "properties": {
@@ -5958,32 +6011,6 @@
         ],
         "title": "EventProperties"
       },
-      "Greeting": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the greeting"
-          },
-          "text": {
-            "type": "string",
-            "title": "Text",
-            "description": "The text of the greeting"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The ID of the greeting"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "text",
-          "id"
-        ],
-        "title": "Greeting"
-      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -6237,11 +6264,11 @@
         ],
         "title": "ListResponse[Conversation]"
       },
-      "ListResponse_CustomMessage_": {
+      "ListResponse_CustomMessageResponse_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/CustomMessage"
+              "$ref": "#/components/schemas/CustomMessageResponse"
             },
             "type": "array",
             "title": "Items"
@@ -6283,7 +6310,7 @@
           "page",
           "page_size"
         ],
-        "title": "ListResponse[CustomMessage]"
+        "title": "ListResponse[CustomMessageResponse]"
       },
       "ListResponse_DirectoryMember_": {
         "properties": {
@@ -6624,11 +6651,7 @@
       "LlmConfig": {
         "properties": {
           "provider": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Provider"
-              }
-            ],
+            "$ref": "#/components/schemas/Provider",
             "description": "Provider of the LLM model.",
             "default": "azure_openai",
             "examples": [
@@ -6733,11 +6756,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -6850,11 +6869,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           }
         },
@@ -7019,11 +7034,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -7705,11 +7716,7 @@
             "description": "The Target"
           },
           "target_mode": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TargetModes"
-              }
-            ],
+            "$ref": "#/components/schemas/TargetModes",
             "description": "The target mode"
           },
           "channel_id": {
