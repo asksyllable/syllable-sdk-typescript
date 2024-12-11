@@ -5687,6 +5687,18 @@
             "title": "Updated At",
             "description": "Timestamp of the most recent update to the custom message"
           },
+          "agent_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Count",
+            "description": "The number of agents using the custom message"
+          },
           "type": {
             "type": "string",
             "title": "Type",
