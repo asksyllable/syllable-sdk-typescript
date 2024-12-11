@@ -30,11 +30,11 @@ import { Result } from "../types/fp.js";
  */
 export async function customMessagesCreate(
   client: SyllableSDKCore,
-  request: components.CustomMessageCreate,
+  request: components.CustomMessageCreateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.CustomMessage,
+    components.CustomMessageResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -47,7 +47,8 @@ export async function customMessagesCreate(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.CustomMessageCreate$outboundSchema.parse(value),
+    (value) =>
+      components.CustomMessageCreateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -109,7 +110,7 @@ export async function customMessagesCreate(
   };
 
   const [result] = await M.match<
-    components.CustomMessage,
+    components.CustomMessageResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -119,7 +120,7 @@ export async function customMessagesCreate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.CustomMessage$inboundSchema),
+    M.json(200, components.CustomMessageResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

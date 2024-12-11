@@ -9,18 +9,17 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomMessage = {
   /**
-   * The name of the greeting
+   * The name of the custom message
    */
   name: string;
   /**
-   * The text of the greeting
+   * The text of the custom message
    */
   text: string;
   /**
-   * The ID of the greeting
+   * The ID of the custom message
    */
   id: number;
-  type?: string | undefined;
 };
 
 /** @internal */
@@ -32,7 +31,6 @@ export const CustomMessage$inboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   id: z.number().int(),
-  type: z.string().default("greeting"),
 });
 
 /** @internal */
@@ -40,7 +38,6 @@ export type CustomMessage$Outbound = {
   name: string;
   text: string;
   id: number;
-  type: string;
 };
 
 /** @internal */
@@ -52,7 +49,6 @@ export const CustomMessage$outboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   id: z.number().int(),
-  type: z.string().default("greeting"),
 });
 
 /**

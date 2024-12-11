@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: d1a5b289bba8caf29f7979aa16aa7b1b
+  docChecksum: acbe194627cbcb93574fc445fffd518d
   docVersion: 0.0.2
-  speakeasyVersion: 1.453.9
-  generationVersion: 2.474.15
-  releaseVersion: 0.1.0-alpha.16
-  configChecksum: b7b817ad487924b686719432b6b6abf5
+  speakeasyVersion: 1.454.0
+  generationVersion: 2.477.0
+  releaseVersion: 0.1.0-alpha.17
+  configChecksum: fe2551ca94b6b1d01e3b1e7734cc79b2
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -66,8 +66,10 @@ generatedFiles:
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
   - docs/models/components/custommessage.md
-  - docs/models/components/custommessagecreate.md
+  - docs/models/components/custommessagecreaterequest.md
   - docs/models/components/custommessageproperties.md
+  - docs/models/components/custommessageresponse.md
+  - docs/models/components/custommessageupdaterequest.md
   - docs/models/components/definition.md
   - docs/models/components/directoryextension.md
   - docs/models/components/directorymember.md
@@ -77,13 +79,12 @@ generatedFiles:
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
   - docs/models/components/filet.md
-  - docs/models/components/greeting.md
   - docs/models/components/listresponseagentresponse.md
   - docs/models/components/listresponseavailabletarget.md
   - docs/models/components/listresponsechannel.md
   - docs/models/components/listresponsechanneltarget.md
   - docs/models/components/listresponseconversation.md
-  - docs/models/components/listresponsecustommessage.md
+  - docs/models/components/listresponsecustommessageresponse.md
   - docs/models/components/listresponsedirectorymember.md
   - docs/models/components/listresponseevent.md
   - docs/models/components/listresponseprompt.md
@@ -298,22 +299,23 @@ generatedFiles:
   - src/models/components/conversation.ts
   - src/models/components/conversationproperties.ts
   - src/models/components/custommessage.ts
-  - src/models/components/custommessagecreate.ts
+  - src/models/components/custommessagecreaterequest.ts
   - src/models/components/custommessageproperties.ts
+  - src/models/components/custommessageresponse.ts
+  - src/models/components/custommessageupdaterequest.ts
   - src/models/components/directoryextension.ts
   - src/models/components/directorymember.ts
   - src/models/components/directorymembercreate.ts
   - src/models/components/directorymemberproperties.ts
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
-  - src/models/components/greeting.ts
   - src/models/components/index.ts
   - src/models/components/listresponseagentresponse.ts
   - src/models/components/listresponseavailabletarget.ts
   - src/models/components/listresponsechannel.ts
   - src/models/components/listresponsechanneltarget.ts
   - src/models/components/listresponseconversation.ts
-  - src/models/components/listresponsecustommessage.ts
+  - src/models/components/listresponsecustommessageresponse.ts
   - src/models/components/listresponsedirectorymember.ts
   - src/models/components/listresponseevent.ts
   - src/models/components/listresponseprompt.ts
@@ -328,6 +330,7 @@ generatedFiles:
   - src/models/components/prompthistory.ts
   - src/models/components/promptproperties.ts
   - src/models/components/promptupdate.ts
+  - src/models/components/provider.ts
   - src/models/components/security.ts
   - src/models/components/service.ts
   - src/models/components/servicecreate.ts
