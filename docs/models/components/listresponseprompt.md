@@ -11,17 +11,16 @@ let value: ListResponsePrompt = {
       name: "<value>",
       type: "<value>",
       llmConfig: {
-        provider: "azure_openai",
         model: "gpt-4o",
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 183191,
+      id: 667411,
       lastUpdated: "<value>",
     },
   ],
-  page: 586513,
-  pageSize: 20107,
+  page: 131797,
+  pageSize: 716327,
 };
 ```
 

@@ -7,8 +7,8 @@ import { Tool } from "syllable-sdk/models/components";
 
 let value: Tool = {
   name: "<value>",
-  serviceId: 590984,
-  id: 857723,
+  serviceId: 97844,
+  id: 862192,
 };
 ```
 

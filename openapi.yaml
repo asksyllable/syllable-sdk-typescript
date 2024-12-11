@@ -1217,7 +1217,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_CustomMessage_"}
+              schema: {"$ref": "#/components/schemas/ListResponse_CustomMessageResponse_"}
         "422":
           description: "Validation Error"
           content:
@@ -1253,13 +1253,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/CustomMessageCreate"}
+            schema: {"$ref": "#/components/schemas/CustomMessageCreateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/CustomMessage"}
+              schema: {"$ref": "#/components/schemas/CustomMessageResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1298,13 +1298,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/CustomMessage"}
+            schema: {"$ref": "#/components/schemas/CustomMessageUpdateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/CustomMessage"}
+              schema: {"$ref": "#/components/schemas/CustomMessageResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1353,7 +1353,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/CustomMessage"}
+              schema: {"$ref": "#/components/schemas/CustomMessageResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -4041,7 +4041,7 @@ components:
           description: "The prompt associated with the agent"
         "custom_message":
           anyOf:
-            - {"$ref": "#/components/schemas/Greeting"}
+            - {"$ref": "#/components/schemas/CustomMessage"}
             - type: "null"
           description: "The custom message associated with the agent"
       type: "object"
@@ -4241,10 +4241,7 @@ components:
           type: "string"
           title: "Name"
           description: "The channel name"
-        "channel_service":
-          allOf:
-            - {"$ref": "#/components/schemas/ChannelServices"}
-          description: "The service for the channel"
+        "channel_service": {"$ref": "#/components/schemas/ChannelServices", "description": "The service for the channel"}
         "supported_modes":
           anyOf:
             - type: "string"
@@ -4464,35 +4461,31 @@ components:
         "name":
           type: "string"
           title: "Name"
-          description: "The name of the greeting"
+          description: "The name of the custom message"
         "text":
           type: "string"
           title: "Text"
-          description: "The text of the greeting"
+          description: "The text of the custom message"
         "id":
           type: "integer"
           title: "Id"
-          description: "The ID of the greeting"
-        "type":
-          type: "string"
-          title: "Type"
-          default: "greeting"
+          description: "The ID of the custom message"
       type: "object"
       required:
         - "name"
         - "text"
         - "id"
       title: "CustomMessage"
-    "CustomMessageCreate":
+    "CustomMessageCreateRequest":
       properties:
         "name":
           type: "string"
           title: "Name"
-          description: "The name of the greeting"
+          description: "The name of the custom message"
         "text":
           type: "string"
           title: "Text"
-          description: "The text of the greeting"
+          description: "The text of the custom message"
         "type":
           type: "string"
           title: "Type"
@@ -4501,7 +4494,7 @@ components:
       required:
         - "name"
         - "text"
-      title: "CustomMessageCreate"
+      title: "CustomMessageCreateRequest"
     "CustomMessageProperties":
       type: "string"
       enum:
@@ -4509,6 +4502,54 @@ components:
         - "name"
         - "text"
       title: "CustomMessageProperties"
+    "CustomMessageResponse":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the custom message"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "The text of the custom message"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the custom message"
+        "type":
+          type: "string"
+          title: "Type"
+          default: "greeting"
+      type: "object"
+      required:
+        - "name"
+        - "text"
+        - "id"
+      title: "CustomMessageResponse"
+    "CustomMessageUpdateRequest":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the custom message"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "The text of the custom message"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the custom message"
+        "type":
+          type: "string"
+          title: "Type"
+          default: "greeting"
+      type: "object"
+      required:
+        - "name"
+        - "text"
+        - "id"
+      title: "CustomMessageUpdateRequest"
     "DirectoryExtension":
       properties:
         "name":
@@ -4679,26 +4720,6 @@ components:
         - "description"
         - "attributes"
       title: "EventProperties"
-    "Greeting":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the greeting"
-        "text":
-          type: "string"
-          title: "Text"
-          description: "The text of the greeting"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the greeting"
-      type: "object"
-      required:
-        - "name"
-        - "text"
-        - "id"
-      title: "Greeting"
     "HTTPValidationError":
       properties:
         "detail":
@@ -4847,10 +4868,10 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[Conversation]"
-    "ListResponse_CustomMessage_":
+    "ListResponse_CustomMessageResponse_":
       properties:
         "items":
-          items: {"$ref": "#/components/schemas/CustomMessage"}
+          items: {"$ref": "#/components/schemas/CustomMessageResponse"}
           type: "array"
           title: "Items"
         "page":
@@ -4874,7 +4895,7 @@ components:
         - "items"
         - "page"
         - "page_size"
-      title: "ListResponse[CustomMessage]"
+      title: "ListResponse[CustomMessageResponse]"
     "ListResponse_DirectoryMember_":
       properties:
         "items":
@@ -5073,14 +5094,7 @@ components:
       title: "ListResponse[Tool]"
     "LlmConfig":
       properties:
-        "provider":
-          allOf:
-            - {"$ref": "#/components/schemas/Provider"}
-          description: "Provider of the LLM model."
-          default: "azure_openai"
-          examples:
-            - "azure_openai"
-            - "openai"
+        "provider": {"$ref": "#/components/schemas/Provider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
         "model":
           type: "string"
           title: "Model"
@@ -5141,10 +5155,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -5210,10 +5221,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
       type: "object"
       required:
         - "name"
@@ -5308,10 +5316,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -5720,10 +5725,7 @@ components:
           type: "string"
           title: "Target"
           description: "The Target"
-        "target_mode":
-          allOf:
-            - {"$ref": "#/components/schemas/TargetModes"}
-          description: "The target mode"
+        "target_mode": {"$ref": "#/components/schemas/TargetModes", "description": "The target mode"}
         "channel_id":
           type: "integer"
           title: "Channel Id"

@@ -35,7 +35,7 @@ export async function customMessagesGetById(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.CustomMessage,
+    components.CustomMessageResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -120,7 +120,7 @@ export async function customMessagesGetById(
   };
 
   const [result] = await M.match<
-    components.CustomMessage,
+    components.CustomMessageResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -130,7 +130,7 @@ export async function customMessagesGetById(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.CustomMessage$inboundSchema),
+    M.json(200, components.CustomMessageResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

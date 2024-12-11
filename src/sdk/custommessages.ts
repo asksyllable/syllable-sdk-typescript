@@ -22,7 +22,7 @@ export class CustomMessages extends ClientSDK {
   async list(
     request: operations.CustomMessagesListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseCustomMessage> {
+  ): Promise<components.ListResponseCustomMessageResponse> {
     return unwrapAsync(customMessagesList(
       this,
       request,
@@ -37,9 +37,9 @@ export class CustomMessages extends ClientSDK {
    * Create a new greeting
    */
   async create(
-    request: components.CustomMessageCreate,
+    request: components.CustomMessageCreateRequest,
     options?: RequestOptions,
-  ): Promise<components.CustomMessage> {
+  ): Promise<components.CustomMessageResponse> {
     return unwrapAsync(customMessagesCreate(
       this,
       request,
@@ -54,9 +54,9 @@ export class CustomMessages extends ClientSDK {
    * Update a greeting
    */
   async update(
-    request: components.CustomMessage,
+    request: components.CustomMessageUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.CustomMessage> {
+  ): Promise<components.CustomMessageResponse> {
     return unwrapAsync(customMessagesUpdate(
       this,
       request,
@@ -73,7 +73,7 @@ export class CustomMessages extends ClientSDK {
   async getById(
     request: operations.CustomMessageGetByIdRequest,
     options?: RequestOptions,
-  ): Promise<components.CustomMessage> {
+  ): Promise<components.CustomMessageResponse> {
     return unwrapAsync(customMessagesGetById(
       this,
       request,

@@ -35,7 +35,7 @@ export async function customMessagesList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponseCustomMessage,
+    components.ListResponseCustomMessageResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -122,7 +122,7 @@ export async function customMessagesList(
   };
 
   const [result] = await M.match<
-    components.ListResponseCustomMessage,
+    components.ListResponseCustomMessageResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -132,7 +132,7 @@ export async function customMessagesList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListResponseCustomMessage$inboundSchema),
+    M.json(200, components.ListResponseCustomMessageResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
