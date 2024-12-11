@@ -10,6 +10,7 @@ let value: CustomMessageResponse = {
   text: "<value>",
   id: 929297,
   updatedAt: new Date("2022-12-16T03:38:15.811Z"),
+  lastUpdatedBy: "<value>",
 };
 ```
 
@@ -23,4 +24,5 @@ let value: CustomMessageResponse = {
 | `id`                                                                                          | *number*                                                                                      | :heavy_check_mark:                                                                            | The ID of the custom message                                                                  |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | Timestamp of the most recent update to the custom message                                     |
 | `agentCount`                                                                                  | *number*                                                                                      | :heavy_minus_sign:                                                                            | The number of agents using the custom message                                                 |
+| `lastUpdatedBy`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | The email address of the user who most recently updated the custom message                    |
 | `type`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |

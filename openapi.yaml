@@ -4539,6 +4539,10 @@ components:
             - type: "null"
           title: "Agent Count"
           description: "The number of agents using the custom message"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "The email address of the user who most recently updated the custom message"
         "type":
           type: "string"
           title: "Type"
@@ -4549,6 +4553,7 @@ components:
         - "text"
         - "id"
         - "updated_at"
+        - "last_updated_by"
       title: "CustomMessageResponse"
     "CustomMessageUpdateRequest":
       properties:
