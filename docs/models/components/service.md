@@ -8,8 +8,8 @@ import { Service } from "syllable-sdk/models/components";
 let value: Service = {
   name: "<value>",
   description:
-    "er evenly backburn bathhouse reluctantly till unless although towards contractor",
-  id: 144847,
+    "below outrun swat come metal within phooey presume obedience finally",
+  id: 944373,
   tools: [
     "<value>",
   ],

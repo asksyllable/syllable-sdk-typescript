@@ -1,13 +1,13 @@
 # Provider
 
-Provider of the LLM model.
+LLM API provider.
 
 ## Example Usage
 
 ```typescript
 import { Provider } from "syllable-sdk/models/components";
 
-let value: Provider = "openai";
+let value: Provider = "azure_openai";
 ```
 
 ## Values

@@ -1,14 +1,14 @@
-# CustomMessage
+# CustomMessageUpdateRequest
 
 ## Example Usage
 
 ```typescript
-import { CustomMessage } from "syllable-sdk/models/components";
+import { CustomMessageUpdateRequest } from "syllable-sdk/models/components";
 
-let value: CustomMessage = {
+let value: CustomMessageUpdateRequest = {
   name: "<value>",
   text: "<value>",
-  id: 568045,
+  id: 318569,
 };
 ```
 
@@ -19,3 +19,4 @@ let value: CustomMessage = {
 | `name`                         | *string*                       | :heavy_check_mark:             | The name of the custom message |
 | `text`                         | *string*                       | :heavy_check_mark:             | The text of the custom message |
 | `id`                           | *number*                       | :heavy_check_mark:             | The ID of the custom message   |
+| `type`                         | *string*                       | :heavy_minus_sign:             | N/A                            |

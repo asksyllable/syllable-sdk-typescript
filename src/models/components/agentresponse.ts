@@ -14,11 +14,11 @@ import {
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
 import {
-  Greeting,
-  Greeting$inboundSchema,
-  Greeting$Outbound,
-  Greeting$outboundSchema,
-} from "./greeting.js";
+  CustomMessage,
+  CustomMessage$inboundSchema,
+  CustomMessage$Outbound,
+  CustomMessage$outboundSchema,
+} from "./custommessage.js";
 import {
   Prompt,
   Prompt$inboundSchema,
@@ -91,7 +91,7 @@ export type AgentResponse = {
   /**
    * The custom message associated with the agent
    */
-  customMessage?: Greeting | null | undefined;
+  customMessage?: CustomMessage | null | undefined;
 };
 
 /** @internal */
@@ -116,7 +116,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
   last_updated_by: z.nullable(z.string()),
   channel_targets: z.nullable(z.array(Target$inboundSchema)).optional(),
   prompt: z.nullable(Prompt$inboundSchema).optional(),
-  custom_message: z.nullable(Greeting$inboundSchema).optional(),
+  custom_message: z.nullable(CustomMessage$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -148,7 +148,7 @@ export type AgentResponse$Outbound = {
   last_updated_by: string | null;
   channel_targets?: Array<Target$Outbound> | null | undefined;
   prompt?: Prompt$Outbound | null | undefined;
-  custom_message?: Greeting$Outbound | null | undefined;
+  custom_message?: CustomMessage$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -173,7 +173,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
   lastUpdatedBy: z.nullable(z.string()),
   channelTargets: z.nullable(z.array(Target$outboundSchema)).optional(),
   prompt: z.nullable(Prompt$outboundSchema).optional(),
-  customMessage: z.nullable(Greeting$outboundSchema).optional(),
+  customMessage: z.nullable(CustomMessage$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
