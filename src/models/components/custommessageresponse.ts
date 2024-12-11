@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -17,9 +18,17 @@ export type CustomMessageResponse = {
    */
   text: string;
   /**
+   * The label of the custom message
+   */
+  label?: string | null | undefined;
+  /**
    * The ID of the custom message
    */
   id: number;
+  /**
+   * Timestamp of the most recent update to the custom message
+   */
+  updatedAt: Date;
   type?: string | undefined;
 };
 
@@ -31,15 +40,23 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   text: z.string(),
+  label: z.nullable(z.string()).optional(),
   id: z.number().int(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   type: z.string().default("greeting"),
+}).transform((v) => {
+  return remap$(v, {
+    "updated_at": "updatedAt",
+  });
 });
 
 /** @internal */
 export type CustomMessageResponse$Outbound = {
   name: string;
   text: string;
+  label?: string | null | undefined;
   id: number;
+  updated_at: string;
   type: string;
 };
 
@@ -51,8 +68,14 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   text: z.string(),
+  label: z.nullable(z.string()).optional(),
   id: z.number().int(),
+  updatedAt: z.date().transform(v => v.toISOString()),
   type: z.string().default("greeting"),
+}).transform((v) => {
+  return remap$(v, {
+    updatedAt: "updated_at",
+  });
 });
 
 /**

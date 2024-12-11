@@ -17,6 +17,10 @@ export type CustomMessageUpdateRequest = {
    */
   text: string;
   /**
+   * The label of the custom message
+   */
+  label?: string | null | undefined;
+  /**
    * The ID of the custom message
    */
   id: number;
@@ -31,6 +35,7 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   text: z.string(),
+  label: z.nullable(z.string()).optional(),
   id: z.number().int(),
   type: z.string().default("greeting"),
 });
@@ -39,6 +44,7 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
 export type CustomMessageUpdateRequest$Outbound = {
   name: string;
   text: string;
+  label?: string | null | undefined;
   id: number;
   type: string;
 };
@@ -51,6 +57,7 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   text: z.string(),
+  label: z.nullable(z.string()).optional(),
   id: z.number().int(),
   type: z.string().default("greeting"),
 });
