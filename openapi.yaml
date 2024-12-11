@@ -1587,7 +1587,6 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -1638,12 +1637,11 @@ paths:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 597129,
+                id: 857478,
               });
 
               // Handle the result
@@ -4486,6 +4484,12 @@ components:
           type: "string"
           title: "Text"
           description: "The text of the custom message"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
+          description: "The label of the custom message"
         "type":
           type: "string"
           title: "Type"
@@ -4501,6 +4505,8 @@ components:
         - "id"
         - "name"
         - "text"
+        - "label"
+        - "updated_at"
       title: "CustomMessageProperties"
     "CustomMessageResponse":
       properties:
@@ -4512,10 +4518,21 @@ components:
           type: "string"
           title: "Text"
           description: "The text of the custom message"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
+          description: "The label of the custom message"
         "id":
           type: "integer"
           title: "Id"
           description: "The ID of the custom message"
+        "updated_at":
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+          description: "Timestamp of the most recent update to the custom message"
         "type":
           type: "string"
           title: "Type"
@@ -4525,6 +4542,7 @@ components:
         - "name"
         - "text"
         - "id"
+        - "updated_at"
       title: "CustomMessageResponse"
     "CustomMessageUpdateRequest":
       properties:
@@ -4536,6 +4554,12 @@ components:
           type: "string"
           title: "Text"
           description: "The text of the custom message"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
+          description: "The label of the custom message"
         "id":
           type: "integer"
           title: "Id"
