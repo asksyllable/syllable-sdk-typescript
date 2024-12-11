@@ -88,7 +88,7 @@ run();
 
 ## create
 
-Create a new greeting
+Create a new custom message
 
 ### Example Usage
 
@@ -167,7 +167,7 @@ run();
 
 ## update
 
-Update a greeting
+Update a custom message
 
 ### Example Usage
 
@@ -248,7 +248,7 @@ run();
 
 ## getById
 
-Get the greeting by its ID
+Get the custom message by its ID
 
 ### Example Usage
 
@@ -325,7 +325,7 @@ run();
 
 ## delete
 
-Delete greeting by ID
+Delete custom message by ID
 
 ### Example Usage
 
