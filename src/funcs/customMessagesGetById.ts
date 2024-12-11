@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Get Custom Message By Id
  *
  * @remarks
- * Get the greeting by its ID
+ * Get the custom message by its ID
  */
 export async function customMessagesGetById(
   client: SyllableSDKCore,
