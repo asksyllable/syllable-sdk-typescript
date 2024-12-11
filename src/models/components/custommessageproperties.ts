@@ -9,6 +9,8 @@ export const CustomMessageProperties = {
   Id: "id",
   Name: "name",
   Text: "text",
+  Label: "label",
+  UpdatedAt: "updated_at",
 } as const;
 export type CustomMessageProperties = ClosedEnum<
   typeof CustomMessageProperties
