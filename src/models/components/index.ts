@@ -27,6 +27,8 @@ export * from "./custommessagecreaterequest.js";
 export * from "./custommessageproperties.js";
 export * from "./custommessageresponse.js";
 export * from "./custommessageupdaterequest.js";
+export * from "./daocustommessagerule.js";
+export * from "./dayofweek.js";
 export * from "./directoryextension.js";
 export * from "./directorymember.js";
 export * from "./directorymembercreate.js";
