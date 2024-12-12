@@ -4490,6 +4490,12 @@ components:
             - type: "null"
           title: "Label"
           description: "The label of the custom message"
+        "rules":
+          items: {"$ref": "#/components/schemas/DaoCustomMessageRule"}
+          type: "array"
+          title: "Rules"
+          description: "Rules for time-specific message variants"
+          default: []
         "type":
           type: "string"
           title: "Type"
@@ -4524,6 +4530,12 @@ components:
             - type: "null"
           title: "Label"
           description: "The label of the custom message"
+        "rules":
+          items: {"$ref": "#/components/schemas/DaoCustomMessageRule"}
+          type: "array"
+          title: "Rules"
+          description: "Rules for time-specific message variants"
+          default: []
         "id":
           type: "integer"
           title: "Id"
@@ -4571,6 +4583,12 @@ components:
             - type: "null"
           title: "Label"
           description: "The label of the custom message"
+        "rules":
+          items: {"$ref": "#/components/schemas/DaoCustomMessageRule"}
+          type: "array"
+          title: "Rules"
+          description: "Rules for time-specific message variants"
+          default: []
         "id":
           type: "integer"
           title: "Id"
@@ -4585,6 +4603,65 @@ components:
         - "text"
         - "id"
       title: "CustomMessageUpdateRequest"
+    "DaoCustomMessageRule":
+      properties:
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the rule"
+        "time_range_start":
+          anyOf:
+            - type: "string"
+              pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+            - type: "null"
+          title: "Time Range Start"
+          description: "The start of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
+        "time_range_end":
+          anyOf:
+            - type: "string"
+              pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+            - type: "null"
+          title: "Time Range End"
+          description: "The end of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
+        "date":
+          anyOf:
+            - type: "string"
+              pattern: "\\b(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\b"
+            - type: "null"
+          title: "Date"
+          description: "The date for the rule in YYYY-MM-DD format"
+        "days_of_week":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/DayOfWeek"}
+              type: "array"
+            - type: "null"
+          title: "Days Of Week"
+          description: "The days of the week for the rule"
+        "invert":
+          type: "boolean"
+          title: "Invert"
+          description: "Whether the rule logic should be inverted (i.e. \"not\")"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "Message text associated with the rule"
+      type: "object"
+      required:
+        - "description"
+        - "invert"
+        - "text"
+      title: "DaoCustomMessageRule"
+    "DayOfWeek":
+      type: "string"
+      enum:
+        - "mo"
+        - "tu"
+        - "we"
+        - "th"
+        - "fr"
+        - "sa"
+        - "su"
+      title: "DayOfWeek"
     "DirectoryExtension":
       properties:
         "name":

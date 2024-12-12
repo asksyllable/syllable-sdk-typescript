@@ -6,6 +6,12 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  DaoCustomMessageRule,
+  DaoCustomMessageRule$inboundSchema,
+  DaoCustomMessageRule$Outbound,
+  DaoCustomMessageRule$outboundSchema,
+} from "./daocustommessagerule.js";
 
 export type CustomMessageCreateRequest = {
   /**
@@ -20,6 +26,10 @@ export type CustomMessageCreateRequest = {
    * The label of the custom message
    */
   label?: string | null | undefined;
+  /**
+   * Rules for time-specific message variants
+   */
+  rules?: Array<DaoCustomMessageRule> | undefined;
   type?: string | undefined;
 };
 
@@ -32,6 +42,7 @@ export const CustomMessageCreateRequest$inboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
+  rules: z.array(DaoCustomMessageRule$inboundSchema).optional(),
   type: z.string().default("greeting"),
 });
 
@@ -40,6 +51,7 @@ export type CustomMessageCreateRequest$Outbound = {
   name: string;
   text: string;
   label?: string | null | undefined;
+  rules?: Array<DaoCustomMessageRule$Outbound> | undefined;
   type: string;
 };
 
@@ -52,6 +64,7 @@ export const CustomMessageCreateRequest$outboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
+  rules: z.array(DaoCustomMessageRule$outboundSchema).optional(),
   type: z.string().default("greeting"),
 });
 

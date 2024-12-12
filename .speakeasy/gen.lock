@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: f85b2c010e6adde692e4a94effe4b0e4
+  docChecksum: 1ccf59749c49fa10bc2e495e365da62c
   docVersion: 0.0.2
-  speakeasyVersion: 1.454.0
-  generationVersion: 2.477.0
-  releaseVersion: 0.1.0-alpha.21
-  configChecksum: 423ec5e75da03bf22a81ebff6b87085b
+  speakeasyVersion: 1.454.2
+  generationVersion: 2.477.4
+  releaseVersion: 0.1.0-alpha.22
+  configChecksum: 309a37f925c50bbc10395e29bd94ff4a
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -70,6 +70,8 @@ generatedFiles:
   - docs/models/components/custommessageproperties.md
   - docs/models/components/custommessageresponse.md
   - docs/models/components/custommessageupdaterequest.md
+  - docs/models/components/daocustommessagerule.md
+  - docs/models/components/dayofweek.md
   - docs/models/components/definition.md
   - docs/models/components/directoryextension.md
   - docs/models/components/directorymember.md
@@ -303,6 +305,8 @@ generatedFiles:
   - src/models/components/custommessageproperties.ts
   - src/models/components/custommessageresponse.ts
   - src/models/components/custommessageupdaterequest.ts
+  - src/models/components/daocustommessagerule.ts
+  - src/models/components/dayofweek.ts
   - src/models/components/directoryextension.ts
   - src/models/components/directorymember.ts
   - src/models/components/directorymembercreate.ts
