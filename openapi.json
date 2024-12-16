@@ -4865,7 +4865,11 @@
             "description": "The channel name"
           },
           "channel_service": {
-            "$ref": "#/components/schemas/ChannelServices",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ChannelServices"
+              }
+            ],
             "description": "The service for the channel"
           },
           "supported_modes": {
@@ -6506,7 +6510,11 @@
       "LlmConfig": {
         "properties": {
           "provider": {
-            "$ref": "#/components/schemas/Provider",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Provider"
+              }
+            ],
             "description": "Provider of the LLM model.",
             "default": "azure_openai",
             "examples": [
@@ -6611,7 +6619,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -6724,7 +6736,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           }
         },
@@ -6889,7 +6905,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -7571,7 +7591,11 @@
             "description": "The Target"
           },
           "target_mode": {
-            "$ref": "#/components/schemas/TargetModes",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TargetModes"
+              }
+            ],
             "description": "The target mode"
           },
           "channel_id": {
@@ -7794,6 +7818,10 @@
       },
       "ToolDetailResponse": {
         "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
           "name": {
             "type": "string",
             "title": "Name"
@@ -7812,6 +7840,7 @@
         },
         "type": "object",
         "required": [
+          "id",
           "name",
           "description",
           "fields"
