@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 1ccf59749c49fa10bc2e495e365da62c
+  docChecksum: cf50fcd03451de216499cb34655592e0
   docVersion: 0.0.2
-  speakeasyVersion: 1.454.2
-  generationVersion: 2.477.4
-  releaseVersion: 0.1.0-alpha.22
-  configChecksum: 309a37f925c50bbc10395e29bd94ff4a
+  speakeasyVersion: 1.455.5
+  generationVersion: 2.479.3
+  releaseVersion: 0.1.0-alpha.23
+  configChecksum: 47c2cea0e50919df530794543d2b2dc3
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -153,14 +153,6 @@ generatedFiles:
   - docs/models/operations/directorymemberupdaterequest.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/generatesessionrecordingurlsrequest.md
-  - docs/models/operations/getdailycallvolumebyhourresponsegetdailycallvolumebyhour.md
-  - docs/models/operations/getmonthlycallvolumebydayresponsegetmonthlycallvolumebyday.md
-  - docs/models/operations/getmonthlycallvolumebyweekresponsegetmonthlycallvolumebyweek.md
-  - docs/models/operations/getsessionagentsresponsegetsessionagents.md
-  - docs/models/operations/getsessionsummaryrequest.md
-  - docs/models/operations/getsessionsummaryresponsegetsessionsummary.md
-  - docs/models/operations/gettotalcallvolumebyhourresponsegettotalcallvolumebyhour.md
-  - docs/models/operations/getweeklycallvolumebyweekdayresponsegetweeklycallvolumebyweekday.md
   - docs/models/operations/promptsdeleterequest.md
   - docs/models/operations/promptsgetbyidrequest.md
   - docs/models/operations/promptshistoryrequest.md
@@ -174,12 +166,10 @@ generatedFiles:
   - docs/models/operations/sessiontranscriptgetbyidrequest.md
   - docs/models/operations/toolgetbynamerequest.md
   - docs/models/operations/toollistrequest.md
-  - docs/models/operations/totalcallvolumebyweekdayresponsetotalcallvolumebyweekday.md
   - docs/sdks/agents/README.md
   - docs/sdks/channels/README.md
   - docs/sdks/conversations/README.md
   - docs/sdks/custommessages/README.md
-  - docs/sdks/dashboards/README.md
   - docs/sdks/directory/README.md
   - docs/sdks/events/README.md
   - docs/sdks/prompts/README.md
@@ -215,14 +205,6 @@ generatedFiles:
   - src/funcs/customMessagesGetById.ts
   - src/funcs/customMessagesList.ts
   - src/funcs/customMessagesUpdate.ts
-  - src/funcs/dashboardsGetDailyCallVolumeByHour.ts
-  - src/funcs/dashboardsGetMonthlyCallVolumeByDay.ts
-  - src/funcs/dashboardsGetMonthlyCallVolumeByWeek.ts
-  - src/funcs/dashboardsGetSessionAgents.ts
-  - src/funcs/dashboardsGetSessionSummary.ts
-  - src/funcs/dashboardsGetTotalCallVolumeByHour.ts
-  - src/funcs/dashboardsGetWeeklyCallVolumeByWeekday.ts
-  - src/funcs/dashboardsTotalCallVolumeByWeekday.ts
   - src/funcs/directoryCreate.ts
   - src/funcs/directoryDelete.ts
   - src/funcs/directoryDirectoryMemberBulkLoad.ts
@@ -385,13 +367,6 @@ generatedFiles:
   - src/models/operations/directorymemberupdate.ts
   - src/models/operations/eventslist.ts
   - src/models/operations/generatesessionrecordingurls.ts
-  - src/models/operations/getdailycallvolumebyhour.ts
-  - src/models/operations/getmonthlycallvolumebyday.ts
-  - src/models/operations/getmonthlycallvolumebyweek.ts
-  - src/models/operations/getsessionagents.ts
-  - src/models/operations/getsessionsummary.ts
-  - src/models/operations/gettotalcallvolumebyhour.ts
-  - src/models/operations/getweeklycallvolumebyweekday.ts
   - src/models/operations/index.ts
   - src/models/operations/promptsdelete.ts
   - src/models/operations/promptsgetbyid.ts
@@ -406,12 +381,10 @@ generatedFiles:
   - src/models/operations/sessiontranscriptgetbyid.ts
   - src/models/operations/toolgetbyname.ts
   - src/models/operations/toollist.ts
-  - src/models/operations/totalcallvolumebyweekday.ts
   - src/sdk/agents.ts
   - src/sdk/channels.ts
   - src/sdk/conversations.ts
   - src/sdk/custommessages.ts
-  - src/sdk/dashboards.ts
   - src/sdk/directory.ts
   - src/sdk/events.ts
   - src/sdk/index.ts

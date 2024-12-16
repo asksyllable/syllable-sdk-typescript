@@ -164,17 +164,6 @@ run();
 * [getById](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 * [delete](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
 
-### [dashboards](docs/sdks/dashboards/README.md)
-
-* [totalCallVolumeByWeekday](docs/sdks/dashboards/README.md#totalcallvolumebyweekday) - Get Total Call Volume By Weekday
-* [getTotalCallVolumeByHour](docs/sdks/dashboards/README.md#gettotalcallvolumebyhour) - Get Total Call Volume By Hour
-* [getWeeklyCallVolumeByWeekday](docs/sdks/dashboards/README.md#getweeklycallvolumebyweekday) - Get Weekly Call Volume By Weekday
-* [getDailyCallVolumeByHour](docs/sdks/dashboards/README.md#getdailycallvolumebyhour) - Get Daily Call Volume By Hour
-* [getMonthlyCallVolumeByWeek](docs/sdks/dashboards/README.md#getmonthlycallvolumebyweek) - Get Monthly Call Volume By Week
-* [getMonthlyCallVolumeByDay](docs/sdks/dashboards/README.md#getmonthlycallvolumebyday) - Get Monthly Call Volume By Day
-* [getSessionSummary](docs/sdks/dashboards/README.md#getsessionsummary) - Get Session Summary
-* [getSessionAgents](docs/sdks/dashboards/README.md#getsessionagents) - Get Agents
-
 ### [directory](docs/sdks/directory/README.md)
 
 * [list](docs/sdks/directory/README.md#list) - Directory Member List
@@ -278,14 +267,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customMessagesGetById`](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 - [`customMessagesList`](docs/sdks/custommessages/README.md#list) - Custom Messages List
 - [`customMessagesUpdate`](docs/sdks/custommessages/README.md#update) - Update Custom Message
-- [`dashboardsGetDailyCallVolumeByHour`](docs/sdks/dashboards/README.md#getdailycallvolumebyhour) - Get Daily Call Volume By Hour
-- [`dashboardsGetMonthlyCallVolumeByDay`](docs/sdks/dashboards/README.md#getmonthlycallvolumebyday) - Get Monthly Call Volume By Day
-- [`dashboardsGetMonthlyCallVolumeByWeek`](docs/sdks/dashboards/README.md#getmonthlycallvolumebyweek) - Get Monthly Call Volume By Week
-- [`dashboardsGetSessionAgents`](docs/sdks/dashboards/README.md#getsessionagents) - Get Agents
-- [`dashboardsGetSessionSummary`](docs/sdks/dashboards/README.md#getsessionsummary) - Get Session Summary
-- [`dashboardsGetTotalCallVolumeByHour`](docs/sdks/dashboards/README.md#gettotalcallvolumebyhour) - Get Total Call Volume By Hour
-- [`dashboardsGetWeeklyCallVolumeByWeekday`](docs/sdks/dashboards/README.md#getweeklycallvolumebyweekday) - Get Weekly Call Volume By Weekday
-- [`dashboardsTotalCallVolumeByWeekday`](docs/sdks/dashboards/README.md#totalcallvolumebyweekday) - Get Total Call Volume By Weekday
 - [`directoryCreate`](docs/sdks/directory/README.md#create) - Create Directory Member
 - [`directoryDelete`](docs/sdks/directory/README.md#delete) - Delete Directory Member
 - [`directoryDirectoryMemberBulkLoad`](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
