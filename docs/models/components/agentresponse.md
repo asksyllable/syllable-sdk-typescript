@@ -8,8 +8,8 @@ import { AgentResponse } from "syllable-sdk/models/components";
 let value: AgentResponse = {
   name: "<value>",
   type: "<value>",
-  promptId: 891773,
-  timezone: "Pacific/Nauru",
+  promptId: 963663,
+  timezone: "America/Panama",
   promptToolDefaults: [
     {
       toolName: "<value>",
@@ -30,18 +30,19 @@ let value: AgentResponse = {
   toolHeaders: {
     "key": "<value>",
   },
-  id: 383441,
-  updatedAt: new Date("2024-05-17T17:32:07.447Z"),
+  id: 791725,
+  updatedAt: new Date("2023-08-03T16:03:07.089Z"),
   lastUpdatedBy: "<value>",
   prompt: {
     name: "<value>",
     type: "<value>",
     llmConfig: {
+      provider: "openai",
       model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
-    id: 528895,
+    id: 925597,
     lastUpdated: "<value>",
   },
 };
