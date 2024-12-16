@@ -8,7 +8,7 @@ import { CustomMessageUpdateRequest } from "syllable-sdk/models/components";
 let value: CustomMessageUpdateRequest = {
   name: "<value>",
   text: "<value>",
-  id: 19193,
+  id: 149448,
 };
 ```
 

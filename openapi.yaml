@@ -2729,10 +2729,7 @@ components:
           type: "string"
           title: "Name"
           description: "The channel name"
-        "channel_service":
-          allOf:
-            - {"$ref": "#/components/schemas/ChannelServices"}
-          description: "The service for the channel"
+        "channel_service": {"$ref": "#/components/schemas/ChannelServices", "description": "The service for the channel"}
         "supported_modes":
           anyOf:
             - type: "string"
@@ -3699,14 +3696,7 @@ components:
       title: "ListResponse[Tool]"
     "LlmConfig":
       properties:
-        "provider":
-          allOf:
-            - {"$ref": "#/components/schemas/Provider"}
-          description: "Provider of the LLM model."
-          default: "azure_openai"
-          examples:
-            - "azure_openai"
-            - "openai"
+        "provider": {"$ref": "#/components/schemas/Provider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
         "model":
           type: "string"
           title: "Model"
@@ -3767,10 +3757,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -3836,10 +3823,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
       type: "object"
       required:
         - "name"
@@ -3934,10 +3918,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -4346,10 +4327,7 @@ components:
           type: "string"
           title: "Target"
           description: "The Target"
-        "target_mode":
-          allOf:
-            - {"$ref": "#/components/schemas/TargetModes"}
-          description: "The target mode"
+        "target_mode": {"$ref": "#/components/schemas/TargetModes", "description": "The target mode"}
         "channel_id":
           type: "integer"
           title: "Channel Id"
