@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: cf50fcd03451de216499cb34655592e0
+  docChecksum: f9f3c39ddc977be22e8d14b16e4a2f7c
   docVersion: 0.0.2
-  speakeasyVersion: 1.455.5
-  generationVersion: 2.479.3
-  releaseVersion: 0.1.0-alpha.23
-  configChecksum: 47c2cea0e50919df530794543d2b2dc3
+  speakeasyVersion: 1.455.7
+  generationVersion: 2.480.1
+  releaseVersion: 0.1.0-alpha.24
+  configChecksum: b4e67191cbec290e07f9494fca58b7ac
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.9
+    core: 3.18.11
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
@@ -316,7 +316,6 @@ generatedFiles:
   - src/models/components/prompthistory.ts
   - src/models/components/promptproperties.ts
   - src/models/components/promptupdate.ts
-  - src/models/components/provider.ts
   - src/models/components/security.ts
   - src/models/components/service.ts
   - src/models/components/servicecreate.ts
@@ -650,7 +649,7 @@ examples:
           tool_name: "<value>"
       responses:
         "200":
-          application/json: {"name": "<value>", "description": "round likewise ponder bump but sport", "fields": ["<value>"]}
+          application/json: {"id": 442973, "name": "<value>", "description": "round likewise ponder bump but sport", "fields": ["<value>"]}
         "422": {}
   organizations_list:
     speakeasy-default-organizations-list:

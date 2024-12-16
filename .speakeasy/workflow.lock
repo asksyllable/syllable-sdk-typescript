@@ -1,21 +1,21 @@
-speakeasyVersion: 1.455.5
+speakeasyVersion: 1.455.7
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:1c989fea482f95366b319751ec7f3d0b0e3601eca72451b2fc5381c2766f9761
-        sourceBlobDigest: sha256:7a1959f23ad9c2f5949976eec53011cb896b1088756aaf47d50cc16395632a31
+        sourceRevisionDigest: sha256:85ce5ba9c5ef39be467fe1ed5fd2238481f21ff390d1df24e5a5a6c81bc288be
+        sourceBlobDigest: sha256:54434b262d7139e6c3628306ed377ceff2cd1301921b40aa4b63c23caa27400f
         tags:
             - latest
-            - speakeasy-sdk-regen-1734363960
+            - speakeasy-sdk-regen-1734372550
             - 0.0.2
 targets:
     syllable-sdk:
         source: SyllableSDK-OAS
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:1c989fea482f95366b319751ec7f3d0b0e3601eca72451b2fc5381c2766f9761
-        sourceBlobDigest: sha256:7a1959f23ad9c2f5949976eec53011cb896b1088756aaf47d50cc16395632a31
+        sourceRevisionDigest: sha256:85ce5ba9c5ef39be467fe1ed5fd2238481f21ff390d1df24e5a5a6c81bc288be
+        sourceBlobDigest: sha256:54434b262d7139e6c3628306ed377ceff2cd1301921b40aa4b63c23caa27400f
         codeSamplesNamespace: syllable-sdk-oas-code-samples
-        codeSamplesRevisionDigest: sha256:3a84384521767d0d8fe02f0a22573f11075830b47c5616cc9b9c73acbeaa6260
+        codeSamplesRevisionDigest: sha256:67f536c0d757e36787b77ddf9f65ac7eccf4ff26b45cebf7fdd70914c9ddf3fc
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -25,7 +25,6 @@ workflow:
                 - location: ./openapi.json
             overlays:
                 - location: ./overlay-remove-V1.yaml
-                - location: ./codeSamples.yaml
             output: openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-sdk-oas
