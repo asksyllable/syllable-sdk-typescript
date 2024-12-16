@@ -7,7 +7,6 @@ import { Agents } from "./agents.js";
 import { Channels } from "./channels.js";
 import { Conversations } from "./conversations.js";
 import { CustomMessages } from "./custommessages.js";
-import { Dashboards } from "./dashboards.js";
 import { Directory } from "./directory.js";
 import { Events } from "./events.js";
 import { Prompts } from "./prompts.js";
@@ -36,11 +35,6 @@ export class SyllableSDK extends ClientSDK {
   private _conversations?: Conversations;
   get conversations(): Conversations {
     return (this._conversations ??= new Conversations(this._options));
-  }
-
-  private _dashboards?: Dashboards;
-  get dashboards(): Dashboards {
-    return (this._dashboards ??= new Dashboards(this._options));
   }
 
   private _events?: Events;
