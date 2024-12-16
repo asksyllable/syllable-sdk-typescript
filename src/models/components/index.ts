@@ -55,6 +55,7 @@ export * from "./promptcreate.js";
 export * from "./prompthistory.js";
 export * from "./promptproperties.js";
 export * from "./promptupdate.js";
+export * from "./provider.js";
 export * from "./security.js";
 export * from "./service.js";
 export * from "./servicecreate.js";

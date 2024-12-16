@@ -6,7 +6,7 @@
 import { DirectoryMemberUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: DirectoryMemberUpdateRequest = {
-  memberId: 99615,
+  memberId: 33074,
   directoryMember: {
     name: "<value>",
     type: "<value>",

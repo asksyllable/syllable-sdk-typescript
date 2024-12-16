@@ -6,13 +6,13 @@
 import { ChannelTargetsUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: ChannelTargetsUpdateRequest = {
-  channelId: 33074,
-  targetId: 15606,
+  channelId: 131055,
+  targetId: 12036,
   channelTarget: {
-    id: 428796,
-    channelId: 68074,
+    id: 115484,
+    channelId: 618480,
     channelName: "<value>",
-    agentId: 251941,
+    agentId: 974257,
     target: "<value>",
     targetMode: "<value>",
     fallbackTarget: "<value>",
