@@ -1,0 +1,62 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Syllable SDK",
+  "logo": {
+    "light": "/logo/syllable_logo_svg.svg",
+    "dark": "/logo/syllable_logo_svg.svg"
+  },
+  "favicon": "syllable-favicon.png",
+  "colors": {
+    "primary": "#5a50f5",
+    "light": "#ff7255",
+    "dark": "#f2f0fe",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@syllable.ai"
+    }
+  ],
+  "primaryTab": {
+    "name": "Home"
+  },
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://dashboard.mintlify.com"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
+      "name": "SDK Documentation",
+      "url": "docs"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "API Reference",
+      "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
+      "url": "api-reference",
+      "icon": "square-terminal"
+    }
+  ],
+  "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
+  "navigation": [
+    {
+      "group": "Essentials",
+      "pages": [
+        "essentials/markdown",
+        "essentials/code",
+        "essentials/images",
+        "essentials/settings",
+        "essentials/navigation"
+      ]
+    }
+  ]
+}
