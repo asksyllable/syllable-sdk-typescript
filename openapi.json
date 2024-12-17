@@ -8,11 +8,11 @@
   "servers": [
     {
       "url": "http://localhost:8001",
-      "description": "dev server"
+      "description": "production server"
     },
     {
       "url": "http://localhost:8001",
-      "description": "dev / port-forwarding server"
+      "description": "production / port-forwarding server"
     }
   ],
   "paths": {
@@ -231,9 +231,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "500": {
-            "description": "Internal Server Error"
-          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -243,6 +240,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -286,9 +286,6 @@
           "404": {
             "description": "Not Found"
           },
-          "500": {
-            "description": "Internal Server Error"
-          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -298,6 +295,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -397,9 +397,6 @@
           "404": {
             "description": "Not Found"
           },
-          "500": {
-            "description": "Internal Server Error"
-          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -409,6 +406,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -3576,7 +3576,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChannelTarget"
+                "$ref": "#/components/schemas/ChannelTargetUpdateRequest"
               }
             }
           }
@@ -3612,6 +3612,7 @@
           "V1"
         ],
         "summary": "Delete Channel Target",
+        "description": "Hard-delete a channel target by ID",
         "operationId": "channel_targets_delete",
         "security": [
           {
@@ -3643,9 +3644,7 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
-                }
+                "schema": {}
               }
             }
           },
@@ -3989,9 +3988,6 @@
           "412": {
             "description": "Precondition Failed"
           },
-          "500": {
-            "description": "Internal Server Error"
-          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -4001,6 +3997,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -4043,9 +4042,6 @@
           "404": {
             "description": "Not Found"
           },
-          "500": {
-            "description": "Internal Server Error"
-          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -4055,6 +4051,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -4096,9 +4095,6 @@
           "412": {
             "description": "Precondition Failed"
           },
-          "500": {
-            "description": "Internal Server Error"
-          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -4108,6 +4104,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "security": [
@@ -4953,6 +4952,16 @@
             ],
             "title": "Agent Id"
           },
+          "agent": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DaoChannelTargetAgent"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "target": {
             "anyOf": [
               {
@@ -4996,6 +5005,29 @@
               }
             ],
             "title": "Is Test"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At"
+          },
+          "last_updated_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated By"
           }
         },
         "type": "object",
@@ -5004,12 +5036,16 @@
           "channel_id",
           "channel_name",
           "agent_id",
+          "agent",
           "target",
           "target_mode",
           "fallback_target",
-          "is_test"
+          "is_test",
+          "updated_at",
+          "last_updated_by"
         ],
-        "title": "ChannelTarget"
+        "title": "ChannelTarget",
+        "description": "Class for all Channel Target responses"
       },
       "ChannelTargetCreateRequest": {
         "properties": {
@@ -5104,6 +5140,91 @@
           "is_test"
         ],
         "title": "ChannelTargetProperties"
+      },
+      "ChannelTargetUpdateRequest": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "channel_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Channel Id"
+          },
+          "agent_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Id"
+          },
+          "target": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target"
+          },
+          "target_mode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Mode"
+          },
+          "fallback_target": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fallback Target"
+          },
+          "is_test": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Test"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "channel_id",
+          "agent_id",
+          "target",
+          "target_mode",
+          "fallback_target",
+          "is_test"
+        ],
+        "title": "ChannelTargetUpdateRequest"
       },
       "Conversation": {
         "properties": {
@@ -5461,6 +5582,90 @@
           "id"
         ],
         "title": "CustomMessageUpdateRequest"
+      },
+      "DaoChannelTargetAgent": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "prompt_id": {
+            "type": "integer",
+            "title": "Prompt Id"
+          },
+          "custom_message_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Message Id"
+          },
+          "timezone": {
+            "type": "string",
+            "title": "Timezone"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "last_updated_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "prompt_id",
+          "timezone",
+          "id",
+          "updated_at",
+          "last_updated_by"
+        ],
+        "title": "DaoChannelTargetAgent"
       },
       "DaoCustomMessageRule": {
         "properties": {
