@@ -49,9 +49,9 @@
   "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
   "navigation": [
       {
-      "group": "Home",
+      "group": "Docs",
       "pages": [
-        "home"
+        "Docs"
       ]
     },
     {
