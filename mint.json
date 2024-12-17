@@ -36,10 +36,6 @@
     {
       "name": "SDK Documentation",
       "url": "docs"
-    },
-    {
-      "name": "Introduction to Syllable",
-      "url": "introSyllable"
     }
   ],
   "anchors": [
@@ -56,6 +52,14 @@
       "group": "Home",
       "pages": [
         "Home"
+      ]
+    },
+        {
+      "group": "Introduction to Syllable",
+      "pages": [
+        "introtosyllable/HowSyllableWorks",
+        "introtosyllable/Keyfeatures",
+        "introtosyllable/LoginSignup",
       ]
     },
     {
