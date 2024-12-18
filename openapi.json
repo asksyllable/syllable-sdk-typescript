@@ -8,11 +8,11 @@
   "servers": [
     {
       "url": "http://localhost:8001",
-      "description": "production server"
+      "description": "staging server"
     },
     {
       "url": "http://localhost:8001",
-      "description": "production / port-forwarding server"
+      "description": "staging / port-forwarding server"
     }
   ],
   "paths": {
@@ -231,6 +231,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -240,9 +243,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -286,6 +286,9 @@
           "404": {
             "description": "Not Found"
           },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -295,9 +298,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -397,6 +397,9 @@
           "404": {
             "description": "Not Found"
           },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -406,9 +409,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -3988,6 +3988,9 @@
           "412": {
             "description": "Precondition Failed"
           },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -3997,9 +4000,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -4042,6 +4042,9 @@
           "404": {
             "description": "Not Found"
           },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -4051,9 +4054,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -4095,6 +4095,9 @@
           "412": {
             "description": "Precondition Failed"
           },
+          "500": {
+            "description": "Internal Server Error"
+          },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -4104,9 +4107,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         },
         "security": [
@@ -4864,7 +4864,11 @@
             "description": "The channel name"
           },
           "channel_service": {
-            "$ref": "#/components/schemas/ChannelServices",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ChannelServices"
+              }
+            ],
             "description": "The service for the channel"
           },
           "supported_modes": {
@@ -6711,7 +6715,11 @@
       "LlmConfig": {
         "properties": {
           "provider": {
-            "$ref": "#/components/schemas/Provider",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Provider"
+              }
+            ],
             "description": "Provider of the LLM model.",
             "default": "azure_openai",
             "examples": [
@@ -6816,7 +6824,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -6929,7 +6941,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           }
         },
@@ -7094,7 +7110,11 @@
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlmConfig"
+              }
+            ],
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -7776,7 +7796,11 @@
             "description": "The Target"
           },
           "target_mode": {
-            "$ref": "#/components/schemas/TargetModes",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TargetModes"
+              }
+            ],
             "description": "The target mode"
           },
           "channel_id": {
@@ -7885,6 +7909,11 @@
               }
             ],
             "title": "Override Timestamp"
+          },
+          "session_start": {
+            "type": "boolean",
+            "title": "Session Start",
+            "default": false
           }
         },
         "type": "object",
