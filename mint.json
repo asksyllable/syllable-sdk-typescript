@@ -22,7 +22,7 @@
     }
   ],
   "primaryTab": {
-    "name": "Docs"
+    "name": "Docs1111"
   },
   "topbarCtaButton": {
     "name": "Console",
@@ -57,9 +57,9 @@
         {
       "group": "Introduction to Syllable",
       "pages": [
-        "introtosyllable/HowSyllableWorks",
-        "introtosyllable/Keyfeatures",
-        "introtosyllable/LoginSignup",
+        "introsyllable/HowSyllableWorks",
+        "introsyllable/Keyfeatures",
+        "introsyllable/LoginSignup",
       ]
     },
     {
