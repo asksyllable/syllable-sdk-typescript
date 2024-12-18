@@ -1,13 +1,11 @@
-# ToolCreateDefinition
-
-The definition of the tool
+# One
 
 ## Example Usage
 
 ```typescript
-import { ToolCreateDefinition } from "syllable-sdk/models/components";
+import { One } from "syllable-sdk/models/components";
 
-let value: ToolCreateDefinition = {};
+let value: One = {};
 ```
 
 ## Fields

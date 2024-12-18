@@ -9,12 +9,12 @@ let value: ListResponseChannel = {
   items: [
     {
       name: "<value>",
-      channelService: "email",
-      id: 438601,
+      channelService: "sip",
+      id: 128926,
     },
   ],
-  page: 988374,
-  pageSize: 102044,
+  page: 315428,
+  pageSize: 363711,
 };
 ```
 

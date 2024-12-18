@@ -6,13 +6,11 @@
 import { ChannelTargetUpdateRequest } from "syllable-sdk/models/components";
 
 let value: ChannelTargetUpdateRequest = {
-  id: 318569,
-  channelId: 667411,
-  agentId: 131797,
+  id: 523248,
+  channelId: 93940,
+  agentId: 575947,
   target: "<value>",
   targetMode: "<value>",
-  fallbackTarget: "<value>",
-  isTest: false,
 };
 ```
 
@@ -25,5 +23,5 @@ let value: ChannelTargetUpdateRequest = {
 | `agentId`          | *number*           | :heavy_check_mark: | N/A                |
 | `target`           | *string*           | :heavy_check_mark: | N/A                |
 | `targetMode`       | *string*           | :heavy_check_mark: | N/A                |
-| `fallbackTarget`   | *string*           | :heavy_check_mark: | N/A                |
-| `isTest`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `fallbackTarget`   | *string*           | :heavy_minus_sign: | N/A                |
+| `isTest`           | *boolean*          | :heavy_minus_sign: | N/A                |
