@@ -264,3 +264,51 @@ actions:
   - target: $["paths"]["/api/v1/organizations/"]["get"]["tags"]
     update:
       - "organizations"
+
+  - target: $["paths"]["/api/v1/agents/voices/available"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/agents/voices/available"]["get"]["tags"]
+    update:
+      - "agents"
+
+  - target: $["paths"]["/api/v1/directory_members/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/directory_members/"]["get"]["tags"]
+    update:
+      - "directory"
+
+  - target: $["paths"]["/api/v1/directory_members/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/directory_members/"]["post"]["tags"]
+    update:
+      - "directory"
+
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["get"]["tags"]
+    update:
+      - "directory"
+
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["put"]["tags"]
+    update:
+      - "directory"
+
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["delete"]["tags"]
+    update:
+      - "directory"
+
+  - target: $["paths"]["/api/v1/directory_members/upload/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/directory_members/upload/"]["put"]["tags"]
+    update:
+      - "directory"
+
+  - target: $["paths"]["/api/v1/directory_members/download/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/directory_members/download/"]["get"]["tags"]
+    update:
+      - "directory"
