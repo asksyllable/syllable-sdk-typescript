@@ -1,37 +1,13 @@
 ---
-title: 'How Syllable Works'
-description: 'This is a test'
+title: 'Introduction to Syllable'
+description: ''
 icon: 'pencil'
 ---
 
-## Basic
+## How Syllable works
 
-### Inline Code
+Syllable makes it effortless to build and deploy voice agents.  There are two ways to create agents with the builder UI and the SDK. Regardless of which path you choose, the principles outlined in this guide can help you get started.
 
-To denote a `word` or `phrase` as code, enclose it in backticks (\`).
+![](howsyllableworks.png)
 
-```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-```
-
-### Code Block
-
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
-
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+Agents receive their instructions and behavior from a prompt. Prompts have access to tools, which allow Agents to perform tasks by interacting with Data Sources and API’s. Your users interact and converse with Agents per your instructions, through either web chat or voice. Channels may require Greetings.
