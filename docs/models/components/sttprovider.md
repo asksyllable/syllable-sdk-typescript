@@ -5,7 +5,7 @@
 ```typescript
 import { SttProvider } from "syllable-sdk/models/components";
 
-let value: SttProvider = "Google";
+let value: SttProvider = "ElevenLabs";
 ```
 
 ## Values

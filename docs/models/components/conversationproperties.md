@@ -5,7 +5,7 @@
 ```typescript
 import { ConversationProperties } from "syllable-sdk/models/components";
 
-let value: ConversationProperties = "prompt_name";
+let value: ConversationProperties = "timestamp";
 ```
 
 ## Values

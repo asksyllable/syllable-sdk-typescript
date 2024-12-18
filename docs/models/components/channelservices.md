@@ -5,7 +5,7 @@
 ```typescript
 import { ChannelServices } from "syllable-sdk/models/components";
 
-let value: ChannelServices = "sip";
+let value: ChannelServices = "email";
 ```
 
 ## Values

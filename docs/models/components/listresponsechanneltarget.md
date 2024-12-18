@@ -8,29 +8,29 @@ import { ListResponseChannelTarget } from "syllable-sdk/models/components";
 let value: ListResponseChannelTarget = {
   items: [
     {
-      id: 196582,
-      channelId: 368725,
+      id: 368725,
+      channelId: 820994,
       channelName: "<value>",
-      agentId: 820994,
+      agentId: 97101,
       agent: {
         name: "<value>",
         type: "<value>",
-        promptId: 97101,
-        timezone: "Europe/Samara",
-        id: 96098,
-        updatedAt: new Date("2024-12-06T04:47:23.164Z"),
+        promptId: 837945,
+        timezone: "Africa/Mogadishu",
+        id: 976460,
+        updatedAt: new Date("2023-05-29T15:24:04.349Z"),
         lastUpdatedBy: "<value>",
       },
       target: "<value>",
       targetMode: "<value>",
       fallbackTarget: "<value>",
       isTest: false,
-      updatedAt: new Date("2023-05-29T15:24:04.349Z"),
+      updatedAt: new Date("2024-12-06T12:43:25.190Z"),
       lastUpdatedBy: "<value>",
     },
   ],
-  page: 976762,
-  pageSize: 604846,
+  page: 604846,
+  pageSize: 739264,
 };
 ```
 
