@@ -2,10 +2,10 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Syllable SDK",
   "logo": {
-    "light": "/logo/logo_black.svg",
-    "dark": "/logo/logo_white.svg"
+    "light": "/logo/syllable_logo_svg.svg",
+    "dark": "/logo/syllable_logo_svg.svg"
   },
-  "favicon": "/logo/32_32.png",
+  "favicon": "syllable-favicon.png",
   "colors": {
     "primary": "#5a50f5",
     "light": "#ff7255",
@@ -17,12 +17,12 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:support@syllable.ai"
+      "name": "Community",
+      "url": "https://community.syllable.ai/"
     }
   ],
   "primaryTab": {
-    "name": "Docs"
+    "name": "Home"
   },
   "topbarCtaButton": {
     "name": "Console",
@@ -34,8 +34,8 @@
       "url": "api-reference"
     },
     {
-      "name": "SDK Reference",
-      "url": "sdk-docs"
+      "name": "SDK Documentation",
+      "url": "docs"
     }
   ],
   "anchors": [
@@ -48,46 +48,20 @@
   ],
   "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
   "navigation": [
-    {
-      "group": "Introduction to Syllable",
+      {
+      "group": "Home",
       "pages": [
-        "introsyllable/HowSyllableWorks",
-        "introsyllable/KeyFeatures",
-        "introsyllable/LoginSignup"
+        "home"
       ]
     },
     {
-      "group": "Build your first agent",
+      "group": "Essentials",
       "pages": [
-        "buildFirstAgent/Overview",
-        "buildFirstAgent/CreatePrompt",
-        "buildFirstAgent/CreateCustomMessage",
-        "buildFirstAgent/CreateChannel",
-        "buildFirstAgent/ConfigureAgent",
-        "buildFirstAgent/SessionConfiguration"
-      ]
-    },
-    {
-      "group": "Workspaces",
-      "pages": [
-        "workspaces/Agents",
-        "workspaces/Insights"
-      ]
-    },
-    {
-      "group": "Resources",
-      "pages": [
-        "resources/Prompts.mdx",
-        "resources/Tools.mdx",
-        "resources/CustomMessages.mdx",
-        "resources/Channels.mdx"
-      ]
-    },
-    {
-      "group": "SDK Reference",
-      "pages": [
-        "sdk-docs/Overview",
-        "sdk-docs/functions"
+        "essentials/markdown",
+        "essentials/code",
+        "essentials/images",
+        "essentials/settings",
+        "essentials/navigation"
       ]
     }
   ]
