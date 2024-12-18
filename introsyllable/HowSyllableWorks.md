@@ -1,7 +1,7 @@
 ---
-title: 'Code Blocks'
-description: 'Display inline code and code blocks'
-icon: 'code'
+title: 'How Syllable Works'
+description: 'This is a test'
+icon: 'pencil'
 ---
 
 ## Basic
