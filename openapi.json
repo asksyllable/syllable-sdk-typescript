@@ -5949,6 +5949,33 @@
         ],
         "title": "EventProperties"
       },
+      "Function": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the function/tool call."
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the tool."
+          },
+          "parameters": {
+            "type": "object",
+            "title": "Parameters",
+            "description": "The JSON Schema of parameters of the function/tool call."
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "parameters"
+        ],
+        "title": "Function",
+        "description": "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -5961,6 +5988,43 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "HttpEndpoint": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "description": "The endpoint URL of the external service to call."
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "get",
+              "post"
+            ],
+            "title": "Method",
+            "description": "The HTTP method to use for the service call."
+          },
+          "argument_location": {
+            "type": "string",
+            "enum": [
+              "body",
+              "form",
+              "path",
+              "query"
+            ],
+            "title": "Argument Location",
+            "description": "How to pass the arguments to the request."
+          }
+        },
+        "type": "object",
+        "required": [
+          "url",
+          "method",
+          "argument_location"
+        ],
+        "title": "HttpEndpoint",
+        "description": "The configuration for an HTTP API call."
       },
       "ListResponse_AgentResponse_": {
         "properties": {
@@ -7011,6 +7075,99 @@
         "title": "Provider",
         "description": "LLM API provider."
       },
+      "SdkInternalTool": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "function",
+            "title": "Type",
+            "description": "Always `function`.",
+            "default": "function"
+          },
+          "function": {
+            "$ref": "#/components/schemas/Function",
+            "description": "The tool definition including the JSON Schema of its parameters."
+          }
+        },
+        "type": "object",
+        "required": [
+          "function"
+        ],
+        "title": "SdkInternalTool",
+        "description": "A tool definition to be used by the OpenAI API."
+      },
+      "SdkToolDefinition": {
+        "properties": {
+          "type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "action",
+                  "endpoint",
+                  "context",
+                  "log"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type",
+            "description": "The action to take when GPT calls the tool."
+          },
+          "tool": {
+            "$ref": "#/components/schemas/SdkInternalTool",
+            "description": "The tool definition to be used by the OpenAI API."
+          },
+          "endpoint": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HttpEndpoint"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The configuration for an HTTP API call."
+          },
+          "defaults": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/ToolParameterDefault"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Defaults",
+            "description": "The default values for the parameters of the function/tool call."
+          },
+          "result": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result",
+            "description": "The optional result of the tool call. Only used for `context` tools."
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool"
+        ],
+        "title": "SdkToolDefinition"
+      },
       "Service": {
         "properties": {
           "name": {
@@ -7820,8 +7977,7 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "type": "object",
-            "title": "Definition",
+            "$ref": "#/components/schemas/SdkToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -7850,6 +8006,7 @@
         "type": "object",
         "required": [
           "name",
+          "definition",
           "service_id",
           "id"
         ],
@@ -7863,8 +8020,7 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "type": "object",
-            "title": "Definition",
+            "$ref": "#/components/schemas/SdkToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -7876,6 +8032,7 @@
         "type": "object",
         "required": [
           "name",
+          "definition",
           "service_id"
         ],
         "title": "ToolCreate"
@@ -7911,6 +8068,96 @@
         ],
         "title": "ToolDetailResponse"
       },
+      "ToolParameterDefault": {
+        "properties": {
+          "transform": {
+            "$ref": "#/components/schemas/ToolParameterTransform",
+            "description": "The transform to apply to the value before using it as the default."
+          }
+        },
+        "type": "object",
+        "required": [
+          "transform"
+        ],
+        "title": "ToolParameterDefault",
+        "description": "The default value for a parameter of the tool call."
+      },
+      "ToolParameterTransform": {
+        "properties": {
+          "when": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ToolParameterTransformCondition"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Only apply the transform if the condition is met."
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "default",
+              "override",
+              "remove"
+            ],
+            "title": "Action",
+            "description": "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.",
+            "default": "default"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Format",
+            "description": "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
+          }
+        },
+        "type": "object",
+        "title": "ToolParameterTransform",
+        "description": "A transform to be applied to the value of a parameter."
+      },
+      "ToolParameterTransformCondition": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key",
+            "description": "The name of the parameter to check."
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The value to check against the parameter."
+          },
+          "operator": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "eq"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operator",
+            "description": "The operator to use for the comparison.",
+            "default": "eq"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "value"
+        ],
+        "title": "ToolParameterTransformCondition",
+        "description": "A condition to be met for a transform to be applied to the value of a parameter."
+      },
       "ToolProperties": {
         "type": "string",
         "enum": [
@@ -7930,8 +8177,7 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "type": "object",
-            "title": "Definition",
+            "$ref": "#/components/schemas/SdkToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -7948,6 +8194,7 @@
         "type": "object",
         "required": [
           "name",
+          "definition",
           "service_id",
           "id"
         ],
