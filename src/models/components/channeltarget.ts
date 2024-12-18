@@ -7,16 +7,28 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  DaoChannelTargetAgent,
+  DaoChannelTargetAgent$inboundSchema,
+  DaoChannelTargetAgent$Outbound,
+  DaoChannelTargetAgent$outboundSchema,
+} from "./daochanneltargetagent.js";
 
+/**
+ * Class for all Channel Target responses
+ */
 export type ChannelTarget = {
   id: number;
   channelId: number | null;
   channelName: string | null;
   agentId: number | null;
+  agent: DaoChannelTargetAgent | null;
   target: string | null;
   targetMode: string | null;
   fallbackTarget: string | null;
   isTest: boolean | null;
+  updatedAt: Date | null;
+  lastUpdatedBy: string | null;
 };
 
 /** @internal */
@@ -29,10 +41,15 @@ export const ChannelTarget$inboundSchema: z.ZodType<
   channel_id: z.nullable(z.number().int()),
   channel_name: z.nullable(z.string()),
   agent_id: z.nullable(z.number().int()),
+  agent: z.nullable(DaoChannelTargetAgent$inboundSchema),
   target: z.nullable(z.string()),
   target_mode: z.nullable(z.string()),
   fallback_target: z.nullable(z.string()),
   is_test: z.nullable(z.boolean()),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ),
+  last_updated_by: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "channel_id": "channelId",
@@ -41,6 +58,8 @@ export const ChannelTarget$inboundSchema: z.ZodType<
     "target_mode": "targetMode",
     "fallback_target": "fallbackTarget",
     "is_test": "isTest",
+    "updated_at": "updatedAt",
+    "last_updated_by": "lastUpdatedBy",
   });
 });
 
@@ -50,10 +69,13 @@ export type ChannelTarget$Outbound = {
   channel_id: number | null;
   channel_name: string | null;
   agent_id: number | null;
+  agent: DaoChannelTargetAgent$Outbound | null;
   target: string | null;
   target_mode: string | null;
   fallback_target: string | null;
   is_test: boolean | null;
+  updated_at: string | null;
+  last_updated_by: string | null;
 };
 
 /** @internal */
@@ -66,10 +88,13 @@ export const ChannelTarget$outboundSchema: z.ZodType<
   channelId: z.nullable(z.number().int()),
   channelName: z.nullable(z.string()),
   agentId: z.nullable(z.number().int()),
+  agent: z.nullable(DaoChannelTargetAgent$outboundSchema),
   target: z.nullable(z.string()),
   targetMode: z.nullable(z.string()),
   fallbackTarget: z.nullable(z.string()),
   isTest: z.nullable(z.boolean()),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())),
+  lastUpdatedBy: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     channelId: "channel_id",
@@ -78,6 +103,8 @@ export const ChannelTarget$outboundSchema: z.ZodType<
     targetMode: "target_mode",
     fallbackTarget: "fallback_target",
     isTest: "is_test",
+    updatedAt: "updated_at",
+    lastUpdatedBy: "last_updated_by",
   });
 });
 

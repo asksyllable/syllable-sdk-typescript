@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type ChannelTargetsUpdateRequest = {
   channelId: number;
   targetId: number;
-  channelTarget: components.ChannelTarget;
+  channelTargetUpdateRequest: components.ChannelTargetUpdateRequest;
 };
 
 /** @internal */
@@ -23,12 +23,13 @@ export const ChannelTargetsUpdateRequest$inboundSchema: z.ZodType<
 > = z.object({
   channel_id: z.number().int(),
   target_id: z.number().int(),
-  ChannelTarget: components.ChannelTarget$inboundSchema,
+  ChannelTargetUpdateRequest:
+    components.ChannelTargetUpdateRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "channel_id": "channelId",
     "target_id": "targetId",
-    "ChannelTarget": "channelTarget",
+    "ChannelTargetUpdateRequest": "channelTargetUpdateRequest",
   });
 });
 
@@ -36,7 +37,7 @@ export const ChannelTargetsUpdateRequest$inboundSchema: z.ZodType<
 export type ChannelTargetsUpdateRequest$Outbound = {
   channel_id: number;
   target_id: number;
-  ChannelTarget: components.ChannelTarget$Outbound;
+  ChannelTargetUpdateRequest: components.ChannelTargetUpdateRequest$Outbound;
 };
 
 /** @internal */
@@ -47,12 +48,13 @@ export const ChannelTargetsUpdateRequest$outboundSchema: z.ZodType<
 > = z.object({
   channelId: z.number().int(),
   targetId: z.number().int(),
-  channelTarget: components.ChannelTarget$outboundSchema,
+  channelTargetUpdateRequest:
+    components.ChannelTargetUpdateRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     channelId: "channel_id",
     targetId: "target_id",
-    channelTarget: "ChannelTarget",
+    channelTargetUpdateRequest: "ChannelTargetUpdateRequest",
   });
 });
 

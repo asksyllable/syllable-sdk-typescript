@@ -1,13 +1,14 @@
-# ChannelTargetCreateRequest
+# ChannelTargetUpdateRequest
 
 ## Example Usage
 
 ```typescript
-import { ChannelTargetCreateRequest } from "syllable-sdk/models/components";
+import { ChannelTargetUpdateRequest } from "syllable-sdk/models/components";
 
-let value: ChannelTargetCreateRequest = {
-  channelId: 93940,
-  agentId: 575947,
+let value: ChannelTargetUpdateRequest = {
+  id: 929297,
+  channelId: 318569,
+  agentId: 667411,
   target: "<value>",
   targetMode: "<value>",
   fallbackTarget: "<value>",
@@ -19,6 +20,7 @@ let value: ChannelTargetCreateRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *number*           | :heavy_check_mark: | N/A                |
 | `channelId`        | *number*           | :heavy_check_mark: | N/A                |
 | `agentId`          | *number*           | :heavy_check_mark: | N/A                |
 | `target`           | *string*           | :heavy_check_mark: | N/A                |
