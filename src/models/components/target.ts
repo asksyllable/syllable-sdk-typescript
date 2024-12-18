@@ -22,6 +22,9 @@ export type Target = {
    * The Target
    */
   target: string;
+  /**
+   * The target mode
+   */
   targetMode: TargetModes;
   /**
    * The Channel ID

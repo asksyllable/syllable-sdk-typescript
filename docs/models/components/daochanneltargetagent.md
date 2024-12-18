@@ -8,10 +8,10 @@ import { DaoChannelTargetAgent } from "syllable-sdk/models/components";
 let value: DaoChannelTargetAgent = {
   name: "<value>",
   type: "<value>",
-  promptId: 64147,
-  timezone: "Asia/Yerevan",
-  id: 566602,
-  updatedAt: new Date("2022-10-18T20:48:18.611Z"),
+  promptId: 692472,
+  timezone: "Asia/Hovd",
+  id: 265389,
+  updatedAt: new Date("2023-07-28T11:31:00.474Z"),
   lastUpdatedBy: "<value>",
 };
 ```
