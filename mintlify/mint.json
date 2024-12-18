@@ -28,16 +28,6 @@
     "name": "Console",
     "url": "https://beta.syllable.cloud"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    },
-    {
-      "name": "SDK Reference",
-      "url": "sdk-docs"
-    }
-  ],
   "anchors": [
     {
       "name": "API Reference",
