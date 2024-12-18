@@ -1,0 +1,32 @@
+# ListResponseService
+
+## Example Usage
+
+```typescript
+import { ListResponseService } from "syllable-sdk/models/components";
+
+let value: ListResponseService = {
+  items: [
+    {
+      name: "<value>",
+      description: "less over how prejudge",
+      id: 872651,
+      tools: [
+        "<value>",
+      ],
+    },
+  ],
+  page: 273542,
+  pageSize: 798047,
+};
+```
+
+## Fields
+
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `items`                                                    | [components.Service](../../models/components/service.md)[] | TRUE                                         | N/A                                                        |
+| `page`                                                     | *number*                                                   | TRUE                                         | N/A                                                        |
+| `pageSize`                                                 | *number*                                                   | TRUE                                         | N/A                                                        |
+| `totalPages`                                               | *number*                                                   | FALSE                                         | N/A                                                        |
+| `totalCount`                                               | *number*                                                   | FALSE                                         | N/A                                                        |
