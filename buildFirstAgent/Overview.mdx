@@ -1,37 +1,31 @@
 ---
-title: 'How Syllable Works'
+title: 'Overview'
 description: 'This is a test'
 icon: 'pencil'
 ---
 
-## Basic
+An Agent is composed of a **prompt**, a **custom message**, **tools**, and a **channel**. You must create a prompt and a custom message before you create an Agent. After an Agent is created, you can create a channel for that agent to communicate to your customers through. 
 
-### Inline Code
+**Prompt:** natural language instructions to the Agent that detail everything your agent does, how it does those things, and what it shouldn’t do. 
 
-To denote a `word` or `phrase` as code, enclose it in backticks (\`).
+* Through the prompt, you also give the Agent access to tools which give it the ability to do useful work like schedule appointments, or relay messages 
 
-```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-```
+* A prompt can be reused by multiple agents
 
-### Code Block
+**Tools:** are functions or APIs the Agent can call upon to perform actions like, accessing databases, or manipulate data.
 
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
+* They let your Agent schedule an appointment on behalf of your customer, or do countless other tasks. 
 
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
+**Custom message:** messages or responses your Agent says to your callers based on time logic. 
 
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+* For example, if your business goes to lunch everyday from 12-1pm, a custom message would instruct the Agent to respond with your desired out to lunch message and behavior.
+
+* Custom messages can be reused by multiple agents.
+
+**Channel:** channels are how your customers will interact with the agent, e.g. web or voice.
+
+* Web is all forms of text through a website, SMS
+
+* Voice can be phone number of internet voice
+
+* To create a channel, you must have an agent already created.&#x20;
