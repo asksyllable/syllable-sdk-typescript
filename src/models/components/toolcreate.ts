@@ -7,74 +7,24 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-/**
- * The definition of the tool
- */
-export type ToolCreateDefinition = {};
+import {
+  SDKToolDefinition,
+  SDKToolDefinition$inboundSchema,
+  SDKToolDefinition$Outbound,
+  SDKToolDefinition$outboundSchema,
+} from "./sdktooldefinition.js";
 
 export type ToolCreate = {
   /**
    * The name of the tool
    */
   name: string;
-  /**
-   * The definition of the tool
-   */
-  definition?: ToolCreateDefinition | undefined;
+  definition: SDKToolDefinition;
   /**
    * The service this tool belongs to
    */
   serviceId: number;
 };
-
-/** @internal */
-export const ToolCreateDefinition$inboundSchema: z.ZodType<
-  ToolCreateDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ToolCreateDefinition$Outbound = {};
-
-/** @internal */
-export const ToolCreateDefinition$outboundSchema: z.ZodType<
-  ToolCreateDefinition$Outbound,
-  z.ZodTypeDef,
-  ToolCreateDefinition
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolCreateDefinition$ {
-  /** @deprecated use `ToolCreateDefinition$inboundSchema` instead. */
-  export const inboundSchema = ToolCreateDefinition$inboundSchema;
-  /** @deprecated use `ToolCreateDefinition$outboundSchema` instead. */
-  export const outboundSchema = ToolCreateDefinition$outboundSchema;
-  /** @deprecated use `ToolCreateDefinition$Outbound` instead. */
-  export type Outbound = ToolCreateDefinition$Outbound;
-}
-
-export function toolCreateDefinitionToJSON(
-  toolCreateDefinition: ToolCreateDefinition,
-): string {
-  return JSON.stringify(
-    ToolCreateDefinition$outboundSchema.parse(toolCreateDefinition),
-  );
-}
-
-export function toolCreateDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<ToolCreateDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ToolCreateDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ToolCreateDefinition' from JSON`,
-  );
-}
 
 /** @internal */
 export const ToolCreate$inboundSchema: z.ZodType<
@@ -83,7 +33,7 @@ export const ToolCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  definition: z.lazy(() => ToolCreateDefinition$inboundSchema).optional(),
+  definition: SDKToolDefinition$inboundSchema,
   service_id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -94,7 +44,7 @@ export const ToolCreate$inboundSchema: z.ZodType<
 /** @internal */
 export type ToolCreate$Outbound = {
   name: string;
-  definition?: ToolCreateDefinition$Outbound | undefined;
+  definition: SDKToolDefinition$Outbound;
   service_id: number;
 };
 
@@ -105,7 +55,7 @@ export const ToolCreate$outboundSchema: z.ZodType<
   ToolCreate
 > = z.object({
   name: z.string(),
-  definition: z.lazy(() => ToolCreateDefinition$outboundSchema).optional(),
+  definition: SDKToolDefinition$outboundSchema,
   serviceId: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
