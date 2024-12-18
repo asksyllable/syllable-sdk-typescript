@@ -6,7 +6,7 @@
 import { DirectoryMemberDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: DirectoryMemberDeleteRequest = {
-  memberId: 15606,
+  memberId: 379927,
 };
 ```
 

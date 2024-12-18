@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: ea64e86321e07bc00cb41a8bba6cdd96
+  docChecksum: 88a09c81f4daecd495c0a87160482f12
   docVersion: 0.0.2
-  speakeasyVersion: 1.455.7
-  generationVersion: 2.480.1
-  releaseVersion: 0.1.0-alpha.25
-  configChecksum: d546db0a4087d57c09cc3c3a12a0676d
+  speakeasyVersion: 1.456.0
+  generationVersion: 2.481.0
+  releaseVersion: 0.1.0-alpha.26
+  configChecksum: 6c77bd4d76554c6a82df76fbea288169
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -62,6 +62,7 @@ generatedFiles:
   - docs/models/components/channeltarget.md
   - docs/models/components/channeltargetcreaterequest.md
   - docs/models/components/channeltargetproperties.md
+  - docs/models/components/channeltargetupdaterequest.md
   - docs/models/components/contacttags.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
@@ -70,6 +71,7 @@ generatedFiles:
   - docs/models/components/custommessageproperties.md
   - docs/models/components/custommessageresponse.md
   - docs/models/components/custommessageupdaterequest.md
+  - docs/models/components/daochanneltargetagent.md
   - docs/models/components/daocustommessagerule.md
   - docs/models/components/dayofweek.md
   - docs/models/components/definition.md
@@ -280,6 +282,7 @@ generatedFiles:
   - src/models/components/channeltarget.ts
   - src/models/components/channeltargetcreaterequest.ts
   - src/models/components/channeltargetproperties.ts
+  - src/models/components/channeltargetupdaterequest.ts
   - src/models/components/conversation.ts
   - src/models/components/conversationproperties.ts
   - src/models/components/custommessage.ts
@@ -287,6 +290,7 @@ generatedFiles:
   - src/models/components/custommessageproperties.ts
   - src/models/components/custommessageresponse.ts
   - src/models/components/custommessageupdaterequest.ts
+  - src/models/components/daochanneltargetagent.ts
   - src/models/components/daocustommessagerule.ts
   - src/models/components/dayofweek.ts
   - src/models/components/directoryextension.ts
@@ -413,7 +417,8 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "type": "<value>", "prompt_id": 678317, "custom_message_id": 177706, "timezone": "Asia/Dili", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": [], "variables": {}, "tool_headers": {}, "id": 152837, "updated_at": "2023-11-28T13:02:27.296Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "<value>", "prompt_id": 639387, "custom_message_id": 17577, "timezone": "Asia/Qostanay", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": []}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}], "languages": ["<value>", "<value>"], "variables": {}, "tool_headers": {}, "id": 86140, "updated_at": "2024-01-25T00:05:25.844Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "<value>", "prompt_id": 687960, "custom_message_id": 509883, "timezone": "Africa/Kigali", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["<value>", "<value>"], "variables": {}, "tool_headers": {"key": "<value>"}, "id": 7468, "updated_at": "2023-06-17T08:36:51.636Z", "last_updated_by": "<value>"}], "page": 54607, "page_size": 367745, "total_pages": 485729, "total_count": 73227}
-        "422": {}
+        "422":
+          application/json: {}
   agent_create:
     speakeasy-default-agent-create:
       requestBody:
@@ -421,7 +426,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "timezone": "Asia/Qyzylorda", "type": "<value>", "prompt_id": 134365, "custom_message_id": 69025, "languages": ["<value>", "<value>", "<value>"], "id": 417458}
-        "422": {}
+        "422":
+          application/json: {}
   agent_update:
     speakeasy-default-agent-update:
       requestBody:
@@ -429,7 +435,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "timezone": "America/Metlakatla", "type": "<value>", "prompt_id": 991464, "custom_message_id": 627690, "languages": ["<value>"], "id": 991464}
-        "422": {}
+        "422":
+          application/json: {}
   agent_get_by_id:
     speakeasy-default-agent-get-by-id:
       parameters:
@@ -438,7 +445,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "Asia/Anadyr", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["<value>"], "variables": {"key": "<value>", "key1": "<value>"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 467619, "updated_at": "2023-08-23T04:58:12.943Z", "last_updated_by": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   agent_delete:
     speakeasy-default-agent-delete:
       parameters:
@@ -449,7 +457,8 @@ examples:
       responses:
         "200":
           application/json: "<value>"
-        "422": {}
+        "422":
+          application/json: {}
   chats_send_message:
     speakeasy-default-chats-send-message:
       requestBody:
@@ -463,7 +472,8 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "channel_service": "webchat", "supported_modes": "<value>", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "<value>", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "<value>", "id": "<id>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
-        "422": {}
+        "422":
+          application/json: {}
   channels_delete:
     speakeasy-default-channels-delete:
       parameters:
@@ -478,13 +488,15 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"organization_id": 607868, "channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"organization_id": 397275, "channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
-        "422": {}
+        "422":
+          application/json: {}
   channel_targets_list:
     speakeasy-default-channel-targets-list:
       responses:
         "200":
-          application/json: {"items": [{"id": 547272, "channel_id": 678317, "channel_name": "<value>", "agent_id": 177706, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}, {"id": 152837, "channel_id": 635532, "channel_name": "<value>", "agent_id": 639387, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}, {"id": 718303, "channel_id": 86140, "channel_name": "<value>", "agent_id": 68504, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
-        "422": {}
+          application/json: {"items": [{"id": 547272, "channel_id": 678317, "channel_name": "<value>", "agent_id": 177706, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 768578, "timezone": "Asia/Dili", "id": 678317, "updated_at": "2022-07-14T18:23:27.528Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2022-09-09T18:28:08.953Z", "last_updated_by": "<value>"}, {"id": 152837, "channel_id": 635532, "channel_name": "<value>", "agent_id": 639387, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 152837, "timezone": "Asia/Qostanay", "id": 639387, "updated_at": "2022-01-20T06:21:22.156Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2024-02-27T06:14:46.641Z", "last_updated_by": "<value>"}, {"id": 718303, "channel_id": 86140, "channel_name": "<value>", "agent_id": 68504, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 86140, "timezone": "Africa/Kigali", "id": 687960, "updated_at": "2023-07-13T19:57:33.016Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false, "updated_at": "2023-11-26T18:23:24.264Z", "last_updated_by": "<value>"}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
+        "422":
+          application/json: {}
   channel_targets_create:
     speakeasy-default-channel-targets-create:
       parameters:
@@ -494,8 +506,9 @@ examples:
         application/json: {"channel_id": 486589, "agent_id": 638424, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
       responses:
         "200":
-          application/json: {"id": 69025, "channel_id": 796474, "channel_name": "<value>", "agent_id": 951062, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
-        "422": {}
+          application/json: {"id": 69025, "channel_id": 796474, "channel_name": "<value>", "agent_id": 951062, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 486589, "timezone": "Asia/Qyzylorda", "id": 417458, "updated_at": "2022-05-28T06:20:22.766Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2022-03-17T15:39:20.911Z", "last_updated_by": "<value>"}
+        "422":
+          application/json: {}
   channel_targets_get_by_id:
     speakeasy-default-channel-targets-get-by-id:
       parameters:
@@ -504,8 +517,9 @@ examples:
           target_id: 505057
       responses:
         "200":
-          application/json: {"id": 467619, "channel_id": 33486, "channel_name": "<value>", "agent_id": 529758, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
-        "422": {}
+          application/json: {"id": 467619, "channel_id": 33486, "channel_name": "<value>", "agent_id": 529758, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 931598, "timezone": "Asia/Anadyr", "id": 467619, "updated_at": "2022-02-06T16:50:06.315Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false, "updated_at": "2023-08-04T14:44:32.694Z", "last_updated_by": "<value>"}
+        "422":
+          application/json: {}
   channels_target_update:
     speakeasy-default-channels-target-update:
       parameters:
@@ -523,7 +537,8 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z", "conversation_id": "<id>"}, {"timestamp": "2024-01-14T10:26:00.433Z", "conversation_id": "<id>"}, {"timestamp": "2022-07-14T18:23:27.528Z", "conversation_id": "<id>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422": {}
+        "422":
+          application/json: {}
   conversation_get_by_id:
     speakeasy-default-conversation-get-by-id:
       parameters:
@@ -546,7 +561,8 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422": {}
+        "422":
+          application/json: {}
   greetings_list:
     speakeasy-default-greetings-list:
       responses:
@@ -594,7 +610,8 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 547272, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 678317, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 177706, "last_updated": "<value>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422": {}
+        "422":
+          application/json: {}
   prompts_create:
     speakeasy-default-prompts-create:
       requestBody:
@@ -602,7 +619,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 486589, "last_updated": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   prompts_update:
     speakeasy-default-prompts-update:
       requestBody:
@@ -610,7 +628,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 597129, "last_updated": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   prompts_get_by_id:
     speakeasy-default-prompts-get-by-id:
       parameters:
@@ -619,7 +638,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 505057, "last_updated": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   prompts_delete:
     speakeasy-default-prompts-delete:
       parameters:
@@ -630,19 +650,22 @@ examples:
       responses:
         "200":
           application/json: "<value>"
-        "422": {}
+        "422":
+          application/json: {}
   sessions_list:
     speakeasy-default-sessions-list:
       responses:
         "200":
           application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422": {}
+        "422":
+          application/json: {}
   tool_list:
     speakeasy-default-tool-list:
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "service_id": 547272, "id": 678317}, {"name": "<value>", "service_id": 177706, "id": 229716}, {"name": "<value>", "service_id": 152837, "id": 635532}], "page": 639387, "page_size": 17577, "total_pages": 718303, "total_count": 86140}
-        "422": {}
+        "422":
+          application/json: {}
   tool_get_by_name:
     speakeasy-default-tool-get-by-name:
       parameters:
@@ -651,7 +674,8 @@ examples:
       responses:
         "200":
           application/json: {"id": 442973, "name": "<value>", "description": "round likewise ponder bump but sport", "fields": ["<value>"]}
-        "422": {}
+        "422":
+          application/json: {}
   organizations_list:
     speakeasy-default-organizations-list:
       responses:
@@ -664,13 +688,15 @@ examples:
       responses:
         "200":
           application/json: {"test_id": "<id>", "agent_id": "<id>", "text": "<value>", "response_text": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   custom_messages_list:
     speakeasy-default-custom-messages-list:
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "text": "<value>", "id": 547272, "updated_at": "2024-04-22T08:39:55.981Z", "last_updated_by": "<value>"}, {"name": "<value>", "text": "<value>", "id": 678317, "updated_at": "2023-08-23T19:26:20.850Z", "last_updated_by": "<value>"}, {"name": "<value>", "text": "<value>", "id": 177706, "updated_at": "2024-01-14T10:26:00.433Z", "last_updated_by": "<value>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422": {}
+        "422":
+          application/json: {}
   custom_messages_create:
     speakeasy-default-custom-messages-create:
       requestBody:
@@ -678,7 +704,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "text": "<value>", "id": 486589, "updated_at": "2023-06-18T07:14:55.338Z", "last_updated_by": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   custom_messages_update:
     speakeasy-default-custom-messages-update:
       requestBody:
@@ -686,7 +713,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "text": "<value>", "id": 597129, "updated_at": "2024-07-28T19:04:48.565Z", "last_updated_by": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   custom_message_get_by_id:
     speakeasy-default-custom-message-get-by-id:
       parameters:
@@ -695,7 +723,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "text": "<value>", "id": 505057, "updated_at": "2024-10-18T00:43:47.367Z", "last_updated_by": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   custom_messages_delete:
     speakeasy-default-custom-messages-delete:
       parameters:
@@ -706,7 +735,8 @@ examples:
       responses:
         "200":
           application/json: "<value>"
-        "422": {}
+        "422":
+          application/json: {}
   channel_targets_delete:
     speakeasy-default-channel-targets-delete:
       parameters:
@@ -717,7 +747,8 @@ examples:
       responses:
         "200":
           application/json: {"id": 545907, "channel_id": 698486, "channel_name": "<value>", "agent_id": 386564, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
-        "422": {}
+        "422":
+          application/json: {}
   channel_targets_update:
     speakeasy-default-channel-targets-update:
       parameters:
@@ -725,11 +756,12 @@ examples:
           channel_id: 627690
           target_id: 488852
       requestBody:
-        application/json: {"id": 857478, "channel_id": 597129, "channel_name": "<value>", "agent_id": 344620, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
+        application/json: {"id": 857478, "channel_id": 597129, "agent_id": 344620, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
       responses:
         "200":
-          application/json: {"id": 984008, "channel_id": 54062, "channel_name": "<value>", "agent_id": 896501, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
-        "422": {}
+          application/json: {"id": 984008, "channel_id": 54062, "channel_name": "<value>", "agent_id": 896501, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 857478, "timezone": "Asia/Kuching", "id": 344620, "updated_at": "2024-12-22T15:27:45.882Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2023-11-19T22:44:58.301Z", "last_updated_by": "<value>"}
+        "422":
+          application/json: {}
   session_label_get_by_id:
     speakeasy-default-session-label-get-by-id:
       parameters:
@@ -738,7 +770,8 @@ examples:
       responses:
         "200":
           application/json: {"session_id": 505057, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 467619, "timestamp": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   session_label_create:
     speakeasy-default-session-label-create:
       requestBody:
@@ -746,13 +779,15 @@ examples:
       responses:
         "200":
           application/json: {"session_id": 638424, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 417458, "timestamp": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
   session_labels_list:
     speakeasy-default-session-labels-list:
       responses:
         "200":
           application/json: {"items": [{"session_id": 547272, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 678317, "timestamp": "<value>"}, {"session_id": 177706, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 229716, "timestamp": "<value>"}, {"session_id": 152837, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 635532, "timestamp": "<value>"}], "page": 639387, "page_size": 17577}
-        "422": {}
+        "422":
+          application/json: {}
   session_transcript_get_by_id:
     speakeasy-default-session-transcript-get-by-id:
       parameters:
@@ -761,7 +796,8 @@ examples:
       responses:
         "200":
           application/json: {"session_id": "<id>", "transcription": [{"timestamp": "2023-07-08T13:01:26.809Z"}, {"timestamp": "2023-05-28T12:15:12.578Z"}, {"timestamp": "2022-02-06T16:50:06.315Z"}], "actions": [{"timestamp": "2024-08-17T13:32:33.654Z"}, {"timestamp": "2023-08-23T04:58:12.943Z"}]}
-        "422": {}
+        "422":
+          application/json: {}
   session_get_by_id:
     speakeasy-default-session-get-by-id:
       parameters:
@@ -770,12 +806,18 @@ examples:
       responses:
         "200":
           application/json: {"timestamp": "2024-10-18T00:43:47.367Z"}
-        "422": {}
+        "422":
+          application/json: {}
   generate_session_recording_urls:
     speakeasy-default-generate-session-recording-urls:
       parameters:
         path:
           session_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "422":
+          application/json: {}
   session_recording_stream:
     speakeasy-default-session-recording-stream:
       parameters:
@@ -784,7 +826,8 @@ examples:
       responses:
         "200":
           application/json: "<value>"
-        "422": {}
+        "422":
+          application/json: {}
   prompts_history:
     speakeasy-default-prompts-history:
       parameters:
@@ -793,13 +836,15 @@ examples:
       responses:
         "200":
           application/json: [{"timestamp": "2022-03-05T12:13:59.670Z"}]
-        "422": {}
+        "422":
+          application/json: {}
   service_list:
     speakeasy-default-service-list:
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "description": "yuck accountability pish likewise excepting unimpressively quickly", "id": 934960, "tools": ["<value>", "<value>", "<value>"]}, {"name": "<value>", "description": "defiantly whenever disk", "id": 324206, "tools": []}, {"name": "<value>", "description": "via during someplace woot excepting gah only despite", "id": 933854, "tools": ["<value>", "<value>"]}], "page": 869095, "page_size": 500063}
-        "422": {}
+        "422":
+          application/json: {}
   service_create:
     speakeasy-default-service-create:
       requestBody:
@@ -807,7 +852,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "description": "bulky electronics through for ick superb nudge embalm simple ouch", "id": 934959, "tools": ["<value>", "<value>", "<value>"]}
-        "422": {}
+        "422":
+          application/json: {}
   service_update:
     speakeasy-default-service-update:
       requestBody:
@@ -815,7 +861,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "description": "belabor past wearily broadside backburn", "id": 967252, "tools": ["<value>"]}
-        "422": {}
+        "422":
+          application/json: {}
   tool_create:
     speakeasy-default-tool-create:
       requestBody:
@@ -823,7 +870,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "service_id": 638424, "id": 417458}
-        "422": {}
+        "422":
+          application/json: {}
   tool_update:
     speakeasy-default-tool-update:
       requestBody:
@@ -831,13 +879,15 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "service_id": 344620, "id": 991464}
-        "422": {}
+        "422":
+          application/json: {}
   directory_member_list:
     speakeasy-default-directory-member-list:
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "type": "<value>", "id": 547272}, {"name": "<value>", "type": "<value>", "id": 678317}, {"name": "<value>", "type": "<value>", "id": 177706}], "page": 229716, "page_size": 152837}
-        "422": {}
+        "422":
+          application/json: {}
   directory_member_create:
     speakeasy-default-directory-member-create:
       requestBody:
@@ -845,7 +895,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "id": 486589}
-        "422": {}
+        "422":
+          application/json: {}
   directory_member_get_by_id:
     speakeasy-default-directory-member-get-by-id:
       parameters:
@@ -854,7 +905,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "id": 505057}
-        "422": {}
+        "422":
+          application/json: {}
   directory_member_update:
     speakeasy-default-directory-member-update:
       parameters:
@@ -865,7 +917,8 @@ examples:
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "id": 344620}
-        "422": {}
+        "422":
+          application/json: {}
   directory_member_delete:
     speakeasy-default-directory-member-delete:
       parameters:
@@ -874,7 +927,8 @@ examples:
       responses:
         "200":
           application/json: "<value>"
-        "422": {}
+        "422":
+          application/json: {}
   directory_member_bulk_load:
     speakeasy-default-directory-member-bulk-load:
       requestBody:
@@ -882,7 +936,8 @@ examples:
       responses:
         "200":
           application/json: "<value>"
-        "422": {}
+        "422":
+          application/json: {}
   directory_member_download:
     speakeasy-default-directory-member-download:
       responses:

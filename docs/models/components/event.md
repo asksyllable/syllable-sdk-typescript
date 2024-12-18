@@ -6,7 +6,7 @@
 import { Event } from "syllable-sdk/models/components";
 
 let value: Event = {
-  timestamp: new Date("2024-01-29T22:47:11.861Z"),
+  timestamp: new Date("2024-01-13T21:17:10.262Z"),
 };
 ```
 

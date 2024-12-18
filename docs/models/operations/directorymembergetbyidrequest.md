@@ -6,7 +6,7 @@
 import { DirectoryMemberGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: DirectoryMemberGetByIdRequest = {
-  memberId: 614465,
+  memberId: 695626,
 };
 ```
 
