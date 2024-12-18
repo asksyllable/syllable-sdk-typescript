@@ -12,11 +12,11 @@ import { Params, pathToFunc } from "./url.js";
  */
 export const ServerList = [
   /**
-   * dev server
+   * production server
    */
   "http://localhost:8001",
   /**
-   * dev / port-forwarding server
+   * production / port-forwarding server
    */
   "http://localhost:8001",
 ] as const;
@@ -61,8 +61,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.0.2",
-  sdkVersion: "0.1.0-alpha.25",
-  genVersion: "2.480.1",
+  sdkVersion: "0.1.0-alpha.26",
+  genVersion: "2.481.0",
   userAgent:
-    "speakeasy-sdk/typescript 0.1.0-alpha.25 2.480.1 0.0.2 syllable-sdk",
+    "speakeasy-sdk/typescript 0.1.0-alpha.26 2.481.0 0.0.2 syllable-sdk",
 } as const;

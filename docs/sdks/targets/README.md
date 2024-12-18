@@ -348,10 +348,9 @@ async function run() {
   const result = await syllableSDK.channels.targets.update({
     channelId: 627690,
     targetId: 488852,
-    channelTarget: {
+    channelTargetUpdateRequest: {
       id: 857478,
       channelId: 597129,
-      channelName: "<value>",
       agentId: 344620,
       target: "<value>",
       targetMode: "<value>",
@@ -385,10 +384,9 @@ async function run() {
   const res = await channelsTargetsUpdate(syllableSDK, {
     channelId: 627690,
     targetId: 488852,
-    channelTarget: {
+    channelTargetUpdateRequest: {
       id: 857478,
       channelId: 597129,
-      channelName: "<value>",
       agentId: 344620,
       target: "<value>",
       targetMode: "<value>",

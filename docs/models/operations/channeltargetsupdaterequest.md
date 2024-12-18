@@ -6,13 +6,12 @@
 import { ChannelTargetsUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: ChannelTargetsUpdateRequest = {
-  channelId: 131055,
-  targetId: 12036,
-  channelTarget: {
-    id: 115484,
-    channelId: 618480,
-    channelName: "<value>",
-    agentId: 974257,
+  channelId: 777408,
+  targetId: 259422,
+  channelTargetUpdateRequest: {
+    id: 373813,
+    channelId: 587600,
+    agentId: 272822,
     target: "<value>",
     targetMode: "<value>",
     fallbackTarget: "<value>",
@@ -23,8 +22,8 @@ let value: ChannelTargetsUpdateRequest = {
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `channelId`                                                          | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `targetId`                                                           | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `channelTarget`                                                      | [components.ChannelTarget](../../models/components/channeltarget.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `channelId`                                                                                    | *number*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `targetId`                                                                                     | *number*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `channelTargetUpdateRequest`                                                                   | [components.ChannelTargetUpdateRequest](../../models/components/channeltargetupdaterequest.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
