@@ -218,17 +218,6 @@ run();
 * [update](docs/sdks/tools/README.md#update) - Update Tool
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
 
-### [v1](docs/sdks/v1/README.md)
-
-* [agentGetAvailableVoices](docs/sdks/v1/README.md#agentgetavailablevoices) - Get Available Agent Voices
-* [list](docs/sdks/v1/README.md#list) - Directory Member List
-* [create](docs/sdks/v1/README.md#create) - Create Directory Member
-* [getById](docs/sdks/v1/README.md#getbyid) - Get Directory Member By Id
-* [update](docs/sdks/v1/README.md#update) - Update Directory Member
-* [delete](docs/sdks/v1/README.md#delete) - Delete Directory Member
-* [directoryMemberBulkLoad](docs/sdks/v1/README.md#directorymemberbulkload) - Bulk Load Directory Members
-* [directoryMemberDownload](docs/sdks/v1/README.md#directorymemberdownload) - Download Directory Members
-
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -296,14 +285,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
-- [`v1AgentGetAvailableVoices`](docs/sdks/v1/README.md#agentgetavailablevoices) - Get Available Agent Voices
-- [`v1Create`](docs/sdks/v1/README.md#create) - Create Directory Member
-- [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete Directory Member
-- [`v1DirectoryMemberBulkLoad`](docs/sdks/v1/README.md#directorymemberbulkload) - Bulk Load Directory Members
-- [`v1DirectoryMemberDownload`](docs/sdks/v1/README.md#directorymemberdownload) - Download Directory Members
-- [`v1GetById`](docs/sdks/v1/README.md#getbyid) - Get Directory Member By Id
-- [`v1List`](docs/sdks/v1/README.md#list) - Directory Member List
-- [`v1Update`](docs/sdks/v1/README.md#update) - Update Directory Member
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -331,7 +312,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.v1.directoryMemberBulkLoad({
+  const result = await syllableSDK.directory.directoryMemberBulkLoad({
     file: await openAsBlob("example.file"),
   });
 
@@ -486,10 +467,10 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                  |
-| --- | ----------------------- |
-| 0   | `http://localhost:8001` |
-| 1   | `http://localhost:8001` |
+| #   | Server                          |
+| --- | ------------------------------- |
+| 0   | `https://api.syllable.ai`       |
+| 1   | `https://trial.api.syllable.ai` |
 
 #### Example
 
@@ -519,7 +500,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverURL: "http://localhost:8001",
+  serverURL: "https://api.syllable.ai",
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 

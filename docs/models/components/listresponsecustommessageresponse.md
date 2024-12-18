@@ -10,13 +10,13 @@ let value: ListResponseCustomMessageResponse = {
     {
       name: "<value>",
       text: "<value>",
-      id: 735194,
-      updatedAt: new Date("2024-11-20T13:24:26.967Z"),
+      id: 962189,
+      updatedAt: new Date("2022-09-30T15:12:09.673Z"),
       lastUpdatedBy: "<value>",
     },
   ],
-  page: 248753,
-  pageSize: 576157,
+  page: 576157,
+  pageSize: 592042,
 };
 ```
 

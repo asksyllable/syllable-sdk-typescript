@@ -18,6 +18,9 @@ export type Channel = {
    * The channel name
    */
   name: string;
+  /**
+   * The service for the channel
+   */
   channelService: ChannelServices;
   /**
    * The comma-delimited list of supported modes for the channel

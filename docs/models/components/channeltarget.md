@@ -8,24 +8,24 @@ Class for all Channel Target responses
 import { ChannelTarget } from "syllable-sdk/models/components";
 
 let value: ChannelTarget = {
-  id: 739264,
-  channelId: 39187,
+  id: 39187,
+  channelId: 282807,
   channelName: "<value>",
-  agentId: 282807,
+  agentId: 120196,
   agent: {
     name: "<value>",
     type: "<value>",
-    promptId: 120196,
-    timezone: "America/Inuvik",
-    id: 118727,
-    updatedAt: new Date("2022-12-15T12:13:46.383Z"),
+    promptId: 296140,
+    timezone: "Africa/Tripoli",
+    id: 317983,
+    updatedAt: new Date("2023-03-31T00:46:25.708Z"),
     lastUpdatedBy: "<value>",
   },
   target: "<value>",
   targetMode: "<value>",
   fallbackTarget: "<value>",
   isTest: false,
-  updatedAt: new Date("2023-03-31T00:46:25.708Z"),
+  updatedAt: new Date("2022-03-12T07:20:08.678Z"),
   lastUpdatedBy: "<value>",
 };
 ```

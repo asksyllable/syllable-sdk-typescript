@@ -8,12 +8,12 @@ import { ListResponseConversation } from "syllable-sdk/models/components";
 let value: ListResponseConversation = {
   items: [
     {
-      timestamp: new Date("2022-05-25T10:48:39.501Z"),
+      timestamp: new Date("2024-02-25T02:16:14.798Z"),
       conversationId: "<id>",
     },
   ],
-  page: 716327,
-  pageSize: 289406,
+  page: 289406,
+  pageSize: 183191,
 };
 ```
 

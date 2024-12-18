@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 88a09c81f4daecd495c0a87160482f12
+  docChecksum: 107abdeae9c64b06a3e4ad2638016f5a
   docVersion: 0.0.2
   speakeasyVersion: 1.456.0
   generationVersion: 2.481.0
-  releaseVersion: 0.1.0-alpha.26
-  configChecksum: 6c77bd4d76554c6a82df76fbea288169
+  releaseVersion: 0.1.0-alpha.27
+  configChecksum: 9e630143af0662c85988826b7ebe5e90
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -183,7 +183,6 @@ generatedFiles:
   - docs/sdks/test/README.md
   - docs/sdks/tools/README.md
   - docs/sdks/transcript/README.md
-  - docs/sdks/v1/README.md
   - jsr.json
   - package.json
   - src/core.ts
@@ -236,14 +235,6 @@ generatedFiles:
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
-  - src/funcs/v1AgentGetAvailableVoices.ts
-  - src/funcs/v1Create.ts
-  - src/funcs/v1Delete.ts
-  - src/funcs/v1DirectoryMemberBulkLoad.ts
-  - src/funcs/v1DirectoryMemberDownload.ts
-  - src/funcs/v1GetById.ts
-  - src/funcs/v1List.ts
-  - src/funcs/v1Update.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -320,7 +311,6 @@ generatedFiles:
   - src/models/components/prompthistory.ts
   - src/models/components/promptproperties.ts
   - src/models/components/promptupdate.ts
-  - src/models/components/provider.ts
   - src/models/components/security.ts
   - src/models/components/service.ts
   - src/models/components/servicecreate.ts
@@ -401,7 +391,6 @@ generatedFiles:
   - src/sdk/test.ts
   - src/sdk/tools.ts
   - src/sdk/transcript.ts
-  - src/sdk/v1.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
