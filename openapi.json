@@ -4864,11 +4864,7 @@
             "description": "The channel name"
           },
           "channel_service": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChannelServices"
-              }
-            ],
+            "$ref": "#/components/schemas/ChannelServices",
             "description": "The service for the channel"
           },
           "supported_modes": {
@@ -4924,68 +4920,26 @@
             "title": "Id"
           },
           "channel_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Channel Id"
           },
           "channel_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Channel Name"
           },
           "agent_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Agent Id"
           },
           "agent": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/DaoChannelTargetAgent"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "$ref": "#/components/schemas/DaoChannelTargetAgent"
           },
           "target": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target"
           },
           "target_mode": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target Mode"
           },
           "fallback_target": {
@@ -5000,15 +4954,9 @@
             "title": "Fallback Target"
           },
           "is_test": {
-            "anyOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Is Test"
+            "type": "boolean",
+            "title": "Is Test",
+            "default": false
           },
           "updated_at": {
             "anyOf": [
@@ -5043,8 +4991,6 @@
           "agent",
           "target",
           "target_mode",
-          "fallback_target",
-          "is_test",
           "updated_at",
           "last_updated_by"
         ],
@@ -5054,47 +5000,19 @@
       "ChannelTargetCreateRequest": {
         "properties": {
           "channel_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Channel Id"
           },
           "agent_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Agent Id"
           },
           "target": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target"
           },
           "target_mode": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target Mode"
           },
           "fallback_target": {
@@ -5109,15 +5027,9 @@
             "title": "Fallback Target"
           },
           "is_test": {
-            "anyOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Is Test"
+            "type": "boolean",
+            "title": "Is Test",
+            "default": false
           }
         },
         "type": "object",
@@ -5125,9 +5037,7 @@
           "channel_id",
           "agent_id",
           "target",
-          "target_mode",
-          "fallback_target",
-          "is_test"
+          "target_mode"
         ],
         "title": "ChannelTargetCreateRequest"
       },
@@ -5152,47 +5062,19 @@
             "title": "Id"
           },
           "channel_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Channel Id"
           },
           "agent_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Agent Id"
           },
           "target": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target"
           },
           "target_mode": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target Mode"
           },
           "fallback_target": {
@@ -5207,15 +5089,9 @@
             "title": "Fallback Target"
           },
           "is_test": {
-            "anyOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Is Test"
+            "type": "boolean",
+            "title": "Is Test",
+            "default": false
           }
         },
         "type": "object",
@@ -5224,9 +5100,7 @@
           "channel_id",
           "agent_id",
           "target",
-          "target_mode",
-          "fallback_target",
-          "is_test"
+          "target_mode"
         ],
         "title": "ChannelTargetUpdateRequest"
       },
@@ -6715,11 +6589,7 @@
       "LlmConfig": {
         "properties": {
           "provider": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Provider"
-              }
-            ],
+            "$ref": "#/components/schemas/Provider",
             "description": "Provider of the LLM model.",
             "default": "azure_openai",
             "examples": [
@@ -6824,11 +6694,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -6941,11 +6807,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           }
         },
@@ -7110,11 +6972,7 @@
             "default": []
           },
           "llm_config": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LlmConfig"
-              }
-            ],
+            "$ref": "#/components/schemas/LlmConfig",
             "description": "The configuration for the language model used by the Cortex API."
           },
           "id": {
@@ -7796,11 +7654,7 @@
             "description": "The Target"
           },
           "target_mode": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TargetModes"
-              }
-            ],
+            "$ref": "#/components/schemas/TargetModes",
             "description": "The target mode"
           },
           "channel_id": {
