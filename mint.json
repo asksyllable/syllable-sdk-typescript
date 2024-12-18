@@ -5,7 +5,7 @@
     "light": "/logo/logo_black.png",
     "dark": "/logo/logo_white.png"
   },
-  "favicon": "syllable-favicon.png",
+  "favicon": "/logo/32_32.png",
   "colors": {
     "primary": "#5a50f5",
     "light": "#ff7255",
@@ -35,7 +35,7 @@
     },
     {
       "name": "SDK Documentation",
-      "url": "docs"
+      "url": "sdk-docs"
     }
   ],
   "anchors": [
@@ -51,18 +51,9 @@
       {
       "group": "Home",
       "pages": [
-        "home"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "buildFirstAgent/Overview",
-        "buildFirstAgent/CreatePrompt",
-        "buildFirstAgent/CreateCustomMessage",
-        "buildFirstAgent/CreateChannel",
-        "buildFirstAgent/ConfigureAgent",
-        "buildFirstAgent/SessionConfiguration"
+        "introSyllable/HowSyllableWorks",
+        "introSyllable/KeyFeatures",
+        "introSyllable/LoginSignup"
       ]
     },
     {
