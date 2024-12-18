@@ -1,0 +1,28 @@
+# ListResponseDirectoryMember
+
+## Example Usage
+
+```typescript
+import { ListResponseDirectoryMember } from "syllable-sdk/models/components";
+
+let value: ListResponseDirectoryMember = {
+  items: [
+    {
+      name: "<value>",
+      type: "<value>",
+    },
+  ],
+  page: 65304,
+  pageSize: 783235,
+};
+```
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `items`                                                                    | [components.DirectoryMember](../../models/components/directorymember.md)[] | TRUE                                                         | N/A                                                                        |
+| `page`                                                                     | *number*                                                                   | TRUE                                                         | N/A                                                                        |
+| `pageSize`                                                                 | *number*                                                                   | TRUE                                                         | N/A                                                                        |
+| `totalPages`                                                               | *number*                                                                   | FALSE                                                         | N/A                                                                        |
+| `totalCount`                                                               | *number*                                                                   | FALSE                                                         | N/A                                                                        |
