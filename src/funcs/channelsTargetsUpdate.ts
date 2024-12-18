@@ -56,7 +56,9 @@ export async function channelsTargetsUpdate(
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.ChannelTarget, { explode: true });
+  const body = encodeJSON("body", payload.ChannelTargetUpdateRequest, {
+    explode: true,
+  });
 
   const pathParams = {
     channel_id: encodeSimple("channel_id", payload.channel_id, {
