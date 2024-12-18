@@ -9,12 +9,22 @@ let value: ListResponseTool = {
   items: [
     {
       name: "<value>",
-      serviceId: 956406,
-      id: 187131,
+      definition: {
+        tool: {
+          function: {
+            name: "<value>",
+            description:
+              "gee fondly handful electronics mid athletic frequent and everlasting versus",
+            parameters: {},
+          },
+        },
+      },
+      serviceId: 633998,
+      id: 867290,
     },
   ],
-  page: 903984,
-  pageSize: 543806,
+  page: 940210,
+  pageSize: 750765,
 };
 ```
 

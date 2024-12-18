@@ -272,14 +272,12 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.create({
-                channelId: 134365,
+                channelId: 417458,
                 channelTargetCreateRequest: {
                   channelId: 486589,
                   agentId: 638424,
                   target: "<value>",
                   targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: true,
                 },
               });
 
@@ -325,16 +323,14 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.update({
-                channelId: 627690,
-                targetId: 488852,
+                channelId: 991464,
+                targetId: 627690,
                 channelTargetUpdateRequest: {
                   id: 857478,
                   channelId: 597129,
                   agentId: 344620,
                   target: "<value>",
                   targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: false,
                 },
               });
 
@@ -688,7 +684,6 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "azure_openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -717,12 +712,11 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  provider: "openai",
                   model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 597129,
+                id: 857478,
               });
 
               // Handle the result
@@ -1074,7 +1068,16 @@ actions:
             async function run() {
               const result = await syllableSDK.tools.create({
                 name: "<value>",
-                serviceId: 486589,
+                definition: {
+                  tool: {
+                    function: {
+                      name: "<value>",
+                      description: "yuck vice between gee ugh ha",
+                      parameters: {},
+                    },
+                  },
+                },
+                serviceId: 920994,
               });
 
               // Handle the result
@@ -1097,8 +1100,17 @@ actions:
             async function run() {
               const result = await syllableSDK.tools.update({
                 name: "<value>",
-                serviceId: 857478,
-                id: 597129,
+                definition: {
+                  tool: {
+                    function: {
+                      name: "<value>",
+                      description: "awful underneath retention too mobility char innocently dowse restfully",
+                      parameters: {},
+                    },
+                  },
+                },
+                serviceId: 243447,
+                id: 265006,
               });
 
               // Handle the result

@@ -2722,10 +2722,7 @@ components:
           type: "string"
           title: "Name"
           description: "The channel name"
-        "channel_service":
-          allOf:
-            - {"$ref": "#/components/schemas/ChannelServices"}
-          description: "The service for the channel"
+        "channel_service": {"$ref": "#/components/schemas/ChannelServices", "description": "The service for the channel"}
         "supported_modes":
           anyOf:
             - type: "string"
@@ -2764,33 +2761,20 @@ components:
           type: "integer"
           title: "Id"
         "channel_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Channel Id"
         "channel_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Channel Name"
         "agent_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Agent Id"
-        "agent":
-          anyOf:
-            - {"$ref": "#/components/schemas/DaoChannelTargetAgent"}
-            - type: "null"
+        "agent": {"$ref": "#/components/schemas/DaoChannelTargetAgent"}
         "target":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target"
         "target_mode":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target Mode"
         "fallback_target":
           anyOf:
@@ -2798,10 +2782,9 @@ components:
             - type: "null"
           title: "Fallback Target"
         "is_test":
-          anyOf:
-            - type: "boolean"
-            - type: "null"
+          type: "boolean"
           title: "Is Test"
+          default: false
         "updated_at":
           anyOf:
             - type: "string"
@@ -2822,8 +2805,6 @@ components:
         - "agent"
         - "target"
         - "target_mode"
-        - "fallback_target"
-        - "is_test"
         - "updated_at"
         - "last_updated_by"
       title: "ChannelTarget"
@@ -2831,24 +2812,16 @@ components:
     "ChannelTargetCreateRequest":
       properties:
         "channel_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Channel Id"
         "agent_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Agent Id"
         "target":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target"
         "target_mode":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target Mode"
         "fallback_target":
           anyOf:
@@ -2856,18 +2829,15 @@ components:
             - type: "null"
           title: "Fallback Target"
         "is_test":
-          anyOf:
-            - type: "boolean"
-            - type: "null"
+          type: "boolean"
           title: "Is Test"
+          default: false
       type: "object"
       required:
         - "channel_id"
         - "agent_id"
         - "target"
         - "target_mode"
-        - "fallback_target"
-        - "is_test"
       title: "ChannelTargetCreateRequest"
     "ChannelTargetProperties":
       type: "string"
@@ -2887,24 +2857,16 @@ components:
           type: "integer"
           title: "Id"
         "channel_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Channel Id"
         "agent_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Agent Id"
         "target":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target"
         "target_mode":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target Mode"
         "fallback_target":
           anyOf:
@@ -2912,10 +2874,9 @@ components:
             - type: "null"
           title: "Fallback Target"
         "is_test":
-          anyOf:
-            - type: "boolean"
-            - type: "null"
+          type: "boolean"
           title: "Is Test"
+          default: false
       type: "object"
       required:
         - "id"
@@ -2923,8 +2884,6 @@ components:
         - "agent_id"
         - "target"
         - "target_mode"
-        - "fallback_target"
-        - "is_test"
       title: "ChannelTargetUpdateRequest"
     "Conversation":
       properties:
@@ -3433,6 +3392,27 @@ components:
         - "description"
         - "attributes"
       title: "EventProperties"
+    "Function":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the function/tool call."
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the tool."
+        "parameters":
+          type: "object"
+          title: "Parameters"
+          description: "The JSON Schema of parameters of the function/tool call."
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "parameters"
+      title: "Function"
+      description: "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
     "HTTPValidationError":
       properties:
         "detail":
@@ -3441,6 +3421,35 @@ components:
           title: "Detail"
       type: "object"
       title: "HTTPValidationError"
+    "HttpEndpoint":
+      properties:
+        "url":
+          type: "string"
+          title: "Url"
+          description: "The endpoint URL of the external service to call."
+        "method":
+          type: "string"
+          enum:
+            - "get"
+            - "post"
+          title: "Method"
+          description: "The HTTP method to use for the service call."
+        "argument_location":
+          type: "string"
+          enum:
+            - "body"
+            - "form"
+            - "path"
+            - "query"
+          title: "Argument Location"
+          description: "How to pass the arguments to the request."
+      type: "object"
+      required:
+        - "url"
+        - "method"
+        - "argument_location"
+      title: "HttpEndpoint"
+      description: "The configuration for an HTTP API call."
     "ListResponse_AgentResponse_":
       properties:
         "items":
@@ -3807,14 +3816,7 @@ components:
       title: "ListResponse[Tool]"
     "LlmConfig":
       properties:
-        "provider":
-          allOf:
-            - {"$ref": "#/components/schemas/Provider"}
-          description: "Provider of the LLM model."
-          default: "azure_openai"
-          examples:
-            - "azure_openai"
-            - "openai"
+        "provider": {"$ref": "#/components/schemas/Provider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
         "model":
           type: "string"
           title: "Model"
@@ -3875,10 +3877,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -3944,10 +3943,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
       type: "object"
       required:
         - "name"
@@ -4042,10 +4038,7 @@ components:
           title: "Tools"
           description: "The tools for the prompt"
           default: []
-        "llm_config":
-          allOf:
-            - {"$ref": "#/components/schemas/LlmConfig"}
-          description: "The configuration for the language model used by the Cortex API."
+        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
         "id":
           type: "integer"
           title: "Id"
@@ -4070,6 +4063,57 @@ components:
         - "openai"
       title: "Provider"
       description: "LLM API provider."
+    "SdkInternalTool":
+      properties:
+        "type":
+          type: "string"
+          const: "function"
+          title: "Type"
+          description: "Always `function`."
+          default: "function"
+        "function": {"$ref": "#/components/schemas/Function", "description": "The tool definition including the JSON Schema of its parameters."}
+      type: "object"
+      required:
+        - "function"
+      title: "SdkInternalTool"
+      description: "A tool definition to be used by the OpenAI API."
+    "SdkToolDefinition":
+      properties:
+        "type":
+          anyOf:
+            - type: "string"
+              enum:
+                - "action"
+                - "endpoint"
+                - "context"
+                - "log"
+            - type: "null"
+          title: "Type"
+          description: "The action to take when GPT calls the tool."
+        "tool": {"$ref": "#/components/schemas/SdkInternalTool", "description": "The tool definition to be used by the OpenAI API."}
+        "endpoint":
+          anyOf:
+            - {"$ref": "#/components/schemas/HttpEndpoint"}
+            - type: "null"
+          description: "The configuration for an HTTP API call."
+        "defaults":
+          anyOf:
+            - type: "object"
+            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
+              type: "object"
+            - type: "null"
+          title: "Defaults"
+          description: "The default values for the parameters of the function/tool call."
+        "result":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Result"
+          description: "The optional result of the tool call. Only used for `context` tools."
+      type: "object"
+      required:
+        - "tool"
+      title: "SdkToolDefinition"
     "Service":
       properties:
         "name":
@@ -4454,10 +4498,7 @@ components:
           type: "string"
           title: "Target"
           description: "The Target"
-        "target_mode":
-          allOf:
-            - {"$ref": "#/components/schemas/TargetModes"}
-          description: "The target mode"
+        "target_mode": {"$ref": "#/components/schemas/TargetModes", "description": "The target mode"}
         "channel_id":
           type: "integer"
           title: "Channel Id"
@@ -4570,10 +4611,7 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition":
-          type: "object"
-          title: "Definition"
-          description: "The definition of the tool"
+        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
@@ -4591,6 +4629,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "definition"
         - "service_id"
         - "id"
       title: "Tool"
@@ -4600,10 +4639,7 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition":
-          type: "object"
-          title: "Definition"
-          description: "The definition of the tool"
+        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
@@ -4611,6 +4647,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "definition"
         - "service_id"
       title: "ToolCreate"
     "ToolDetailResponse":
@@ -4636,6 +4673,63 @@ components:
         - "description"
         - "fields"
       title: "ToolDetailResponse"
+    "ToolParameterDefault":
+      properties:
+        "transform": {"$ref": "#/components/schemas/ToolParameterTransform", "description": "The transform to apply to the value before using it as the default."}
+      type: "object"
+      required:
+        - "transform"
+      title: "ToolParameterDefault"
+      description: "The default value for a parameter of the tool call."
+    "ToolParameterTransform":
+      properties:
+        "when":
+          anyOf:
+            - {"$ref": "#/components/schemas/ToolParameterTransformCondition"}
+            - type: "null"
+          description: "Only apply the transform if the condition is met."
+        "action":
+          type: "string"
+          enum:
+            - "default"
+            - "override"
+            - "remove"
+          title: "Action"
+          description: "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
+          default: "default"
+        "format":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Format"
+          description: "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
+      type: "object"
+      title: "ToolParameterTransform"
+      description: "A transform to be applied to the value of a parameter."
+    "ToolParameterTransformCondition":
+      properties:
+        "key":
+          type: "string"
+          title: "Key"
+          description: "The name of the parameter to check."
+        "value":
+          type: "string"
+          title: "Value"
+          description: "The value to check against the parameter."
+        "operator":
+          anyOf:
+            - type: "string"
+              const: "eq"
+            - type: "null"
+          title: "Operator"
+          description: "The operator to use for the comparison."
+          default: "eq"
+      type: "object"
+      required:
+        - "key"
+        - "value"
+      title: "ToolParameterTransformCondition"
+      description: "A condition to be met for a transform to be applied to the value of a parameter."
     "ToolProperties":
       type: "string"
       enum:
@@ -4651,10 +4745,7 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition":
-          type: "object"
-          title: "Definition"
-          description: "The definition of the tool"
+        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
@@ -4666,6 +4757,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "definition"
         - "service_id"
         - "id"
       title: "ToolUpdate"

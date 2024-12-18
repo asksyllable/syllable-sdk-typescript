@@ -1,13 +1,13 @@
-# ToolUpdateDefinition
+# ParametersT
 
-The definition of the tool
+The JSON Schema of parameters of the function/tool call.
 
 ## Example Usage
 
 ```typescript
-import { ToolUpdateDefinition } from "syllable-sdk/models/components";
+import { ParametersT } from "syllable-sdk/models/components";
 
-let value: ToolUpdateDefinition = {};
+let value: ParametersT = {};
 ```
 
 ## Fields

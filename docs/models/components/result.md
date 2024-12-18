@@ -1,13 +1,11 @@
-# Definition
-
-The definition of the tool
+# Result
 
 ## Example Usage
 
 ```typescript
-import { Definition } from "syllable-sdk/models/components";
+import { Result } from "syllable-sdk/models/components";
 
-let value: Definition = {};
+let value: Result = {};
 ```
 
 ## Fields
