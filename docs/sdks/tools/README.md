@@ -101,6 +101,15 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.tools.create({
     name: "<value>",
+    definition: {
+      tool: {
+        function: {
+          name: "<value>",
+          description: "yuck vice between gee ugh ha",
+          parameters: {},
+        },
+      },
+    },
     serviceId: 486589,
   });
 
@@ -128,6 +137,15 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await toolsCreate(syllableSDK, {
     name: "<value>",
+    definition: {
+      tool: {
+        function: {
+          name: "<value>",
+          description: "yuck vice between gee ugh ha",
+          parameters: {},
+        },
+      },
+    },
     serviceId: 486589,
   });
 
@@ -180,6 +198,15 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.tools.update({
     name: "<value>",
+    definition: {
+      tool: {
+        function: {
+          name: "<value>",
+          description: "awful underneath retention too mobility char innocently dowse restfully",
+          parameters: {},
+        },
+      },
+    },
     serviceId: 857478,
     id: 597129,
   });
@@ -208,6 +235,15 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await toolsUpdate(syllableSDK, {
     name: "<value>",
+    definition: {
+      tool: {
+        function: {
+          name: "<value>",
+          description: "awful underneath retention too mobility char innocently dowse restfully",
+          parameters: {},
+        },
+      },
+    },
     serviceId: 857478,
     id: 597129,
   });

@@ -8,24 +8,22 @@ Class for all Channel Target responses
 import { ChannelTarget } from "syllable-sdk/models/components";
 
 let value: ChannelTarget = {
-  id: 39187,
-  channelId: 282807,
+  id: 468651,
+  channelId: 976762,
   channelName: "<value>",
-  agentId: 120196,
+  agentId: 604846,
   agent: {
     name: "<value>",
     type: "<value>",
-    promptId: 296140,
-    timezone: "Africa/Tripoli",
-    id: 317983,
-    updatedAt: new Date("2023-03-31T00:46:25.708Z"),
+    promptId: 739264,
+    timezone: "Africa/Dakar",
+    id: 282807,
+    updatedAt: new Date("2022-05-12T17:39:01.246Z"),
     lastUpdatedBy: "<value>",
   },
   target: "<value>",
   targetMode: "<value>",
-  fallbackTarget: "<value>",
-  isTest: false,
-  updatedAt: new Date("2022-03-12T07:20:08.678Z"),
+  updatedAt: new Date("2022-11-21T13:40:18.320Z"),
   lastUpdatedBy: "<value>",
 };
 ```
@@ -41,7 +39,7 @@ let value: ChannelTarget = {
 | `agent`                                                                                       | [components.DaoChannelTargetAgent](../../models/components/daochanneltargetagent.md)          | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `target`                                                                                      | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `targetMode`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `fallbackTarget`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `isTest`                                                                                      | *boolean*                                                                                     | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `fallbackTarget`                                                                              | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `isTest`                                                                                      | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `lastUpdatedBy`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
