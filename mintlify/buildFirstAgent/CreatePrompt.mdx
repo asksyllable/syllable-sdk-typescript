@@ -1,37 +1,27 @@
 ---
-title: 'How Syllable Works'
-description: 'This is a test'
-icon: 'pencil'
+title: "Create a prompt"
+description: "This is a test"
+icon: "pencil"
 ---
 
-## Basic
+## Write your prompt
 
-### Inline Code
+A prompt is a set of written instructions given to an AI Agent that detail everything the Agent does, how it does those things, and what it should and shouldn’t do given certain other conditions. You give the Agent access to tools which give it the ability to do useful work like schedule appointments, or relay messages. A prompt can be reused by multiple agents.
 
-To denote a `word` or `phrase` as code, enclose it in backticks (\`).
+Writing a good prompt for an AI to follow is the same as writing good instructions for a human to follow. It’s essentially a written communication challenge that requires the prompt writer to write clear, unambiguous, and explicit instructions. Writing a good prompt for your use case is an iterative process that requires trial and error writing and testing. 
 
-```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-```
+Click here for more information on writing prompts for AI agents.
 
-### Code Block
+## Configure your prompt
 
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
+![](configureprompt.jpg)
 
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
+* **Prompt name:** This is just the name of your prompt. Use a name that’s easily remembered and will make it easy to tell the difference between other prompts
 
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+* **Description:** Write a short description of the prompt, with what it does, who it’s for, and what its goal is. 
+
+* **Model provider and version**: Depending on the model you use, there may be a specific version you have in mind
+
+* **Select tools from dropdown menu:** Based on the tools available to your organization, you can select tools that give the agent the ability to do useful work like schedule appointments, or relay messages. 
+
+  * Note, you will have to reference these tools in the prompt, [<u>click here</u>](https://docs.google.com/document/d/1ByrkXEyDe-jKj8mj91KhrpZbeefmONxLbzQb4Cw-5hg/edit?tab=t.0#heading=h.4q6y0z7jjzz8) for more info.
