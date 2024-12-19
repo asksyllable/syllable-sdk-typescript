@@ -71,7 +71,7 @@
       "pages": [
         "workspaces/AgentsList",
         "workspaces/Insights",
-        "workspaces/SesssionConfig"
+        "workspaces/SessionConfig"
       ]
     },
     {
@@ -108,8 +108,7 @@
       "pages": [
         "sdk-docs/Sessions",
         "sdk-docs/Conversations",
-        "sdk-docs/Transcripts",
-        "sdk-docs/Events"
+        "sdk-docs/Transcripts"
       ]
     }
   ]
