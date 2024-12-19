@@ -101,6 +101,12 @@
         "sdk-docs/Agents",
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
+        "sdk-docs/Tools"
+      ]
+    },
+    {
+      "group": "Audits & Logging",
+      "pages": [
         "sdk-docs/Sessions"
       ]
     }
