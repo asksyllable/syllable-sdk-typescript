@@ -71,11 +71,11 @@
       "group": "Workspaces",
       "pages": [
         "workspaces/Agents",
-        "workspaces/AgentConfig",
         "workspaces/AgentsList",
         "workspaces/NewAgentConfig",
         "workspaces/SessionConfig",
-        "workspaces/Insights"
+        "workspaces/Insights",
+        "workspaces/Sesssions"
       ]
     },
     {
@@ -92,16 +92,9 @@
       "pages": [
         "sdk-docs/Overview",
         "sdk-docs/functions",
-        "sdk-docs/runtimes"
-      ]
-    },
-    {
-      "group": "Operations & Models",
-      "pages": [
+        "sdk-docs/runtimes",
         "sdk-docs/Agents",
-        "sdk-docs/Prompts",
-        "sdk-docs/CustomMessages",
-        "sdk-docs/Sessions"
+        "sdk-docs/Prompts"
       ]
     }
   ]
