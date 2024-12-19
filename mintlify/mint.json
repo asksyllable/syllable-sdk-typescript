@@ -93,7 +93,7 @@
       ]
     },
     {
-      "group": "Operations & Models",
+      "group": "Configuration & Settings",
       "pages": [
         "sdk-docs/Agents",
         "sdk-docs/Prompts",
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "group": "Audits & Logging",
+      "group": "Insights & Analytics",
       "pages": [
         "sdk-docs/Sessions",
         "sdk-docs/Conversations",
