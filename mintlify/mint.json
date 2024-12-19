@@ -82,7 +82,8 @@
         "sdk-docs/Overview",
         "sdk-docs/functions",
         "sdk-docs/runtimes",
-        "sdk-docs/Agents"
+        "sdk-docs/Agents",
+        "sdk-docs/Prompts"
       ]
     }
   ]
