@@ -1,4 +1,6 @@
-# AgentToolDefaults
+---
+title: 'AgentToolDefaults'
+---
 
 ## Example Usage
 
