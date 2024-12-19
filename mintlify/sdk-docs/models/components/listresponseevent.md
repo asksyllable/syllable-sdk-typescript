@@ -20,7 +20,7 @@ let value: ListResponseEvent = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `items`                                                | [components.Event](../../models/components/event.md)[] | TRUE                                     | N/A                                                    |
+| `items`                                                | [components.Event](/sdk-docs/models/components/event)[] | TRUE                                     | N/A                                                    |
 | `page`                                                 | *number*                                               | TRUE                                     | N/A                                                    |
 | `pageSize`                                             | *number*                                               | TRUE                                     | N/A                                                    |
 | `totalPages`                                           | *number*                                               | FALSE                                     | N/A                                                    |

@@ -22,7 +22,7 @@ let value: ListResponseTool = {
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `items`                                              | [components.Tool](../../models/components/tool.md)[] | TRUE                                   | N/A                                                  |
+| `items`                                              | [components.Tool](/sdk-docs/models/components/tool)[] | TRUE                                   | N/A                                                  |
 | `page`                                               | *number*                                             | TRUE                                   | N/A                                                  |
 | `pageSize`                                           | *number*                                             | TRUE                                   | N/A                                                  |
 | `totalPages`                                         | *number*                                             | FALSE                                   | N/A                                                  |

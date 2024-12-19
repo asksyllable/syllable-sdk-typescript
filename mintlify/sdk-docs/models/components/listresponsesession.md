@@ -20,7 +20,7 @@ let value: ListResponseSession = {
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `items`                                                    | [components.Session](../../models/components/session.md)[] | TRUE                                         | N/A                                                        |
+| `items`                                                    | [components.Session](/sdk-docs/models/components/session)[] | TRUE                                         | N/A                                                        |
 | `page`                                                     | *number*                                                   | TRUE                                         | N/A                                                        |
 | `pageSize`                                                 | *number*                                                   | TRUE                                         | N/A                                                        |
 | `totalPages`                                               | *number*                                                   | FALSE                                         | N/A                                                        |

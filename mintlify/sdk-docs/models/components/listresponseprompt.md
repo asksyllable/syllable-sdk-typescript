@@ -29,7 +29,7 @@ let value: ListResponsePrompt = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `items`                                                  | [components.Prompt](../../models/components/prompt.md)[] | TRUE                                       | N/A                                                      |
+| `items`                                                  | [components.Prompt](/sdk-docs/models/components/prompt)[] | TRUE                                       | N/A                                                      |
 | `page`                                                   | *number*                                                 | TRUE                                       | N/A                                                      |
 | `pageSize`                                               | *number*                                                 | TRUE                                       | N/A                                                      |
 | `totalPages`                                             | *number*                                                 | FALSE                                       | N/A                                                      |
