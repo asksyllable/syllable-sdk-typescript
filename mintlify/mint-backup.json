@@ -70,7 +70,6 @@
     {
       "group": "Workspaces",
       "pages": [
-        "workspaces/Agents",
         "workspaces/AgentsList",
         "workspaces/NewAgentConfig",
         "workspaces/SessionConfig",
@@ -107,7 +106,8 @@
     {
       "group": "Audits & Logging",
       "pages": [
-        "sdk-docs/Sessions"
+        "sdk-docs/Sessions",
+        "sdk-docs/Conversations"
       ]
     }
   ]

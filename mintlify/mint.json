@@ -106,7 +106,8 @@
     {
       "group": "Audits & Logging",
       "pages": [
-        "sdk-docs/Sessions"
+        "sdk-docs/Sessions",
+        "sdk-docs/Conversations"
       ]
     }
   ]
