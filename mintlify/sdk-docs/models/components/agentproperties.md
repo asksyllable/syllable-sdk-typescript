@@ -1,5 +1,5 @@
 ---
-tiltle: 'Agent Properties'
+title: 'AgentProperties'
 ---
 
 ## Example Usage

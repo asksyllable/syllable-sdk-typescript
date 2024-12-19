@@ -1,4 +1,6 @@
-# AgentVoice
+---
+title: 'AgentVoice'
+---
 
 ## Example Usage
 

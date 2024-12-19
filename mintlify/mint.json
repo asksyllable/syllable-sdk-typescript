@@ -124,8 +124,13 @@
             "pages": [
               "sdk-docs/models/components/agent",
               "sdk-docs/models/components/agentcreate",
+              "sdk-docs/models/components/agentupdate",
+              "sdk-docs/models/components/agentvoice",
+              "sdk-docs/models/components/agentvoicevarname",
               "sdk-docs/models/components/agentproperties",
               "sdk-docs/models/components/agentresponse",
+              "sdk-docs/models/components/agenttooldefaults",
+              "sdk-docs/models/components/agenttoolfielddefault",
               "sdk-docs/models/operations/agentdeleterequest",
               "sdk-docs/models/operations/agentlistrequest",
               "sdk-docs/models/operations/agentgetbyidrequest"

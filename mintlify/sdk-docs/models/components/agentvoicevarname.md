@@ -1,4 +1,6 @@
-# AgentVoiceVarName
+---
+title: 'AgentVoiceVarName'
+---
 
 ## Example Usage
 

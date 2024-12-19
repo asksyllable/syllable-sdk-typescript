@@ -1,5 +1,5 @@
 ---
-tiltle: 'Agent'
+title: 'Agent'
 ---
 
 ## Example Usage

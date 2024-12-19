@@ -1,4 +1,6 @@
-# AgentUpdate
+---
+title: 'AgentUpdate'
+---
 
 ## Example Usage
 
