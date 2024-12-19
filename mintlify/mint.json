@@ -71,8 +71,6 @@
       "group": "Workspaces",
       "pages": [
         "workspaces/AgentsList",
-        "workspaces/NewAgentConfig",
-        "workspaces/SessionConfig",
         "workspaces/Insights",
         "workspaces/Sesssion"
       ]
