@@ -123,37 +123,6 @@
       "group": "Models",
       "pages": [
         {
-            "group": "Agent",
-            "pages": [
-              "sdk-docs/models/components/agent",
-              "sdk-docs/models/components/agentcreate",
-              "sdk-docs/models/components/agentupdate",
-              "sdk-docs/models/components/agentvoice",
-              "sdk-docs/models/components/agentvoicevarname",
-              "sdk-docs/models/components/agentproperties",
-              "sdk-docs/models/components/agentresponse",
-              "sdk-docs/models/components/agenttooldefaults",
-              "sdk-docs/models/components/agenttoolfielddefault",
-              "sdk-docs/models/operations/agentdeleterequest",
-              "sdk-docs/models/operations/agentlistrequest",
-              "sdk-docs/models/operations/agentgetbyidrequest"
-            ]
-        },
-        {
-            "group": "Prompt",
-            "pages": [
-              "sdk-docs/models/components/prompt",
-              "sdk-docs/models/components/promptcreate",
-              "sdk-docs/models/components/promptproperties",
-              "sdk-docs/models/components/prompthistory",
-              "sdk-docs/models/components/prompthistoryrequest",
-              "sdk-docs/models/operations/promptupdate",
-              "sdk-docs/models/operations/promptdeleterequest",
-              "sdk-docs/models/operations/promptlistrequest",
-              "sdk-docs/models/operations/promptgetbyidrequest"
-            ]
-        },
-        {
           "group": "Components",
           "pages": [
             "/sdk-docs/models/components/agent",
@@ -285,6 +254,12 @@
             "/sdk-docs/models/operations/sessiontranscriptgetbyidrequest",
             "/sdk-docs/models/operations/toolgetbynamerequest",
             "/sdk-docs/models/operations/toollistrequest"
+          ]
+        },
+        {
+          "group": "Errors",
+          "pages": [
+            "/sdk-docs/models/errors/httpvalidationerror"
           ]
         }
       ]
