@@ -71,7 +71,7 @@
       "pages": [
         "workspaces/AgentsList",
         "workspaces/Insights",
-        "workspaces/SesssionConfig"
+        "workspaces/SessionConfig"
       ]
     },
     {
@@ -98,6 +98,7 @@
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
+        "sdk-docs/Services",
         "sdk-docs/Channels",
         "sdk-docs/Targets",
         "sdk-docs/Directory"
