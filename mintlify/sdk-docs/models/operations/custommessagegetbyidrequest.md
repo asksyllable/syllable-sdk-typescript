@@ -1,4 +1,6 @@
-# CustomMessageGetByIdRequest
+---
+title: 'CustomMessageGetByIdRequest'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# Target
+---
+title: 'Target'
+---
 
 ## Example Usage
 

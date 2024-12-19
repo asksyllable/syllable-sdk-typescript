@@ -1,4 +1,6 @@
-# CustomMessagesDeleteRequest
+---
+title: 'CustomMessagesDeleteRequest'
+---
 
 ## Example Usage
 

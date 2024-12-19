@@ -1,4 +1,6 @@
-# DayOfWeek
+---
+title: 'DayOfWeek'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# Attributes
+---
+title: 'Attributes'
+---
 
 ## Example Usage
 

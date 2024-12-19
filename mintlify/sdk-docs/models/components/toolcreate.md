@@ -1,4 +1,6 @@
-# ToolCreate
+---
+title: 'ToolCreate'
+---
 
 ## Example Usage
 

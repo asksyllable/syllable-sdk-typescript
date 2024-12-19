@@ -1,4 +1,6 @@
-# BodyDirectoryMemberBulkLoad
+---
+title: 'BodyDirectoryMemberBulkLoad'
+---
 
 ## Example Usage
 

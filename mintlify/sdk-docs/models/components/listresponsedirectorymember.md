@@ -1,4 +1,6 @@
-# ListResponseDirectoryMember
+---
+title: 'ListResponseDirectoryMember'
+---
 
 ## Example Usage
 

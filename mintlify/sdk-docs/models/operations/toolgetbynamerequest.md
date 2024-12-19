@@ -1,4 +1,6 @@
-# ToolGetByNameRequest
+---
+title: 'ToolGetByNameRequest'
+---
 
 ## Example Usage
 

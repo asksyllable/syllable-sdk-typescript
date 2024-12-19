@@ -1,4 +1,6 @@
-# OrderByDirection
+---
+title: 'OrderByDirection'
+---
 
 ## Example Usage
 

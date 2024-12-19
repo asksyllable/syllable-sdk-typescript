@@ -1,4 +1,6 @@
-# SessionAction
+---
+title: 'SessionAction'
+---
 
 ## Example Usage
 

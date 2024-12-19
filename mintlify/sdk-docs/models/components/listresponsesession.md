@@ -1,4 +1,6 @@
-# ListResponseSession
+---
+title: 'ListResponseSession'
+---
 
 ## Example Usage
 

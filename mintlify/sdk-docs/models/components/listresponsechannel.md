@@ -1,4 +1,6 @@
-# ListResponseChannel
+---
+title: 'ListResponseChannel'
+---
 
 ## Example Usage
 

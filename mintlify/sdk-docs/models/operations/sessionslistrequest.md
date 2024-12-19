@@ -1,4 +1,6 @@
-# SessionsListRequest
+---
+title: 'SessionsListRequest'
+---
 
 ## Example Usage
 

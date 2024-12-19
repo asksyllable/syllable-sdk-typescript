@@ -1,4 +1,6 @@
-# SessionLabel
+---
+title: 'SessionLabel'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# ListResponseTool
+---
+title: 'ListResponseTool'
+---
 
 ## Example Usage
 

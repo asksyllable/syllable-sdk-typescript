@@ -1,4 +1,6 @@
-# Numbers
+---
+title: 'Numbers'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# ToolUpdateDefinition
+---
+title: 'ToolUpdateDefinition'
+---
 
 The definition of the tool
 

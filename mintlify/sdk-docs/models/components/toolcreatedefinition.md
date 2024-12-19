@@ -1,4 +1,6 @@
-# ToolCreateDefinition
+---
+title: 'ToolCreateDefinition'
+---
 
 The definition of the tool
 

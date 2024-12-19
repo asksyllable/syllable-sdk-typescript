@@ -1,4 +1,6 @@
-# PromptsGetByIdRequest
+---
+title: 'PromptsGetByIdRequest'
+---
 
 ## Example Usage
 

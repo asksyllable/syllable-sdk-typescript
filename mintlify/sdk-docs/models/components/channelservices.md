@@ -1,4 +1,6 @@
-# ChannelServices
+---
+title: 'ChannelServices'
+---
 
 ## Example Usage
 

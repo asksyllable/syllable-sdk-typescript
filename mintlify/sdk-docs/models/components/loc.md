@@ -1,4 +1,6 @@
-# Loc
+---
+title: 'Loc'
+---
 
 
 ## Supported Types

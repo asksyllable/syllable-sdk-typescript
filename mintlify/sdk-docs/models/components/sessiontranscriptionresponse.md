@@ -1,4 +1,6 @@
-# SessionTranscriptionResponse
+---
+title: 'SessionTranscriptionResponse'
+---
 
 ## Example Usage
 

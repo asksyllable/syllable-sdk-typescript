@@ -1,4 +1,6 @@
-# CustomMessageUpdateRequest
+---
+title: 'CustomMessageUpdateRequest'
+---
 
 ## Example Usage
 

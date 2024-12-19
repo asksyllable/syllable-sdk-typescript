@@ -1,4 +1,6 @@
-# ListResponsePrompt
+---
+title: 'ListResponsePrompt'
+---
 
 ## Example Usage
 

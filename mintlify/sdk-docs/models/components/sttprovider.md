@@ -1,4 +1,6 @@
-# SttProvider
+---
+title: 'SttProvider'
+---
 
 ## Example Usage
 

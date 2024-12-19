@@ -1,4 +1,6 @@
-# PromptUpdate
+---
+title: 'PromptUpdate'
+---
 
 ## Example Usage
 

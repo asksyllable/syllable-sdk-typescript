@@ -1,4 +1,6 @@
-# ChannelsListRequest
+---
+title: 'ChannelsListRequest'
+---
 
 ## Example Usage
 

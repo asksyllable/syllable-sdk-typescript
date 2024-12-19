@@ -1,4 +1,6 @@
-# ServiceUpdate
+---
+title: 'ServiceUpdate'
+---
 
 ## Example Usage
 

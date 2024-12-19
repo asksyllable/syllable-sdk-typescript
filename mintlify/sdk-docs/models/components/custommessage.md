@@ -1,4 +1,6 @@
-# CustomMessage
+---
+title: 'CustomMessage'
+---
 
 ## Example Usage
 

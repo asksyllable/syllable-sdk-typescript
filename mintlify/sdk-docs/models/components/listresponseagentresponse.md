@@ -1,4 +1,6 @@
-# ListResponseAgentResponse
+---
+title: 'ListResponseAgentResponse'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# ChannelTargetUpdateRequest
+---
+title: 'ChannelTargetUpdateRequest'
+---
 
 ## Example Usage
 

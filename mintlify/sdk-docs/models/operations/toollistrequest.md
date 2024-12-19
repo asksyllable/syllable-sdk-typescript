@@ -1,4 +1,6 @@
-# ToolListRequest
+---
+title: 'ToolListRequest'
+---
 
 ## Example Usage
 

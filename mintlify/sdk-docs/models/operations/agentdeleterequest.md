@@ -1,4 +1,6 @@
-# AgentDeleteRequest
+---
+title: 'AgentDeleteRequest'
+---
 
 ## Example Usage
 

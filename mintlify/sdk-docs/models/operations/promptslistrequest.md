@@ -1,4 +1,6 @@
-# PromptsListRequest
+---
+title: 'PromptsListRequest'
+---
 
 ## Example Usage
 

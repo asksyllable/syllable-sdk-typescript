@@ -1,4 +1,6 @@
-# HTTPValidationError
+---
+title: 'HTTPValidationError'
+---
 
 ## Example Usage
 

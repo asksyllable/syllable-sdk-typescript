@@ -1,4 +1,6 @@
-# SessionLabelProperties
+---
+title: 'SessionLabelProperties'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# SessionTranscriptGetByIdRequest
+---
+title: 'SessionTranscriptGetByIdRequest'
+---
 
 ## Example Usage
 

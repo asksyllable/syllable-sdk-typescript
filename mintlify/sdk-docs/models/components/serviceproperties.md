@@ -1,4 +1,6 @@
-# ServiceProperties
+---
+title: 'ServiceProperties'
+---
 
 ## Example Usage
 

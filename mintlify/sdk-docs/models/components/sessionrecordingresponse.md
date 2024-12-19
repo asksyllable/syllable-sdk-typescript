@@ -1,4 +1,6 @@
-# SessionRecordingResponse
+---
+title: 'SessionRecordingResponse'
+---
 
 ## Example Usage
 

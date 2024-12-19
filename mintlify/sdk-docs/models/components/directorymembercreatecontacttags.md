@@ -1,4 +1,6 @@
-# DirectoryMemberCreateContactTags
+---
+title: 'DirectoryMemberCreateContactTags'
+---
 
 ## Example Usage
 

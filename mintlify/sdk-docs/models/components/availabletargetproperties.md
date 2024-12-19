@@ -1,4 +1,6 @@
-# AvailableTargetProperties
+---
+title: 'AvailableTargetProperties'
+---
 
 ## Example Usage
 

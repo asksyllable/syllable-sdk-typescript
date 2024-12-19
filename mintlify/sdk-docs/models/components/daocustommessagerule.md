@@ -1,4 +1,6 @@
-# DaoCustomMessageRule
+---
+title: 'DaoCustomMessageRule'
+---
 
 ## Example Usage
 

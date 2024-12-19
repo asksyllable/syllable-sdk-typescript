@@ -1,4 +1,6 @@
-# EventsListRequest
+---
+title: 'EventsListRequest'
+---
 
 ## Example Usage
 

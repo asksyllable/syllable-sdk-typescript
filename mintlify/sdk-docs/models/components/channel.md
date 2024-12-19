@@ -1,4 +1,6 @@
-# Channel
+---
+title: 'Channel'
+---
 
 ## Example Usage
 

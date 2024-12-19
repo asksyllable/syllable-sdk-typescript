@@ -1,4 +1,6 @@
-# PromptHistory
+---
+title: 'PromptHistory'
+---
 
 ## Example Usage
 

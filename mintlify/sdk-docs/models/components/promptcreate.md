@@ -1,4 +1,6 @@
-# PromptCreate
+---
+title: 'PromptCreate'
+---
 
 ## Example Usage
 

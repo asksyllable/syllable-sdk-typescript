@@ -1,4 +1,6 @@
-# ToolDetailResponse
+---
+title: 'ToolDetailResponse'
+---
 
 ## Example Usage
 

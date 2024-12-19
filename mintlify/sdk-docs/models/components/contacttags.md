@@ -1,4 +1,6 @@
-# ContactTags
+---
+title: 'ContactTags'
+---
 
 ## Example Usage
 

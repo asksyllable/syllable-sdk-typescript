@@ -1,4 +1,6 @@
-# LlmConfig
+---
+title: 'LlmConfig'
+---
 
 ## Example Usage
 

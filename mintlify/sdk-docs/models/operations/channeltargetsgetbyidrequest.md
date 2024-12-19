@@ -1,4 +1,6 @@
-# ChannelTargetsGetByIdRequest
+---
+title: 'ChannelTargetsGetByIdRequest'
+---
 
 ## Example Usage
 

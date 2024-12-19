@@ -1,4 +1,6 @@
-# AvailableTarget
+---
+title: 'AvailableTarget'
+---
 
 ## Example Usage
 

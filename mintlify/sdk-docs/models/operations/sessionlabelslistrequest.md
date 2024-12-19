@@ -1,4 +1,6 @@
-# SessionLabelsListRequest
+---
+title: 'SessionLabelsListRequest'
+---
 
 ## Example Usage
 

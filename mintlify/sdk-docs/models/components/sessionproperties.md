@@ -1,4 +1,6 @@
-# SessionProperties
+---
+title: 'SessionProperties'
+---
 
 ## Example Usage
 

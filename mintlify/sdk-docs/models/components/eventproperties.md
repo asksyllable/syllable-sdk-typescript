@@ -1,4 +1,6 @@
-# EventProperties
+---
+title: 'EventProperties'
+---
 
 ## Example Usage
 
