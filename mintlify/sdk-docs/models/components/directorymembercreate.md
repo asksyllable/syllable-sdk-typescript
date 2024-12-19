@@ -1,4 +1,6 @@
-# DirectoryMemberCreate
+---
+title: 'DirectoryMemberCreate'
+---
 
 ## Example Usage
 

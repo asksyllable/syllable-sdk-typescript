@@ -1,4 +1,6 @@
-# ListResponseAvailableTarget
+---
+title: 'ListResponseAvailableTarget'
+---
 
 ## Example Usage
 

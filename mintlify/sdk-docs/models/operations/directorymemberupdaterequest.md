@@ -1,4 +1,6 @@
-# DirectoryMemberUpdateRequest
+---
+title: 'DirectoryMemberUpdateRequest'
+---
 
 ## Example Usage
 

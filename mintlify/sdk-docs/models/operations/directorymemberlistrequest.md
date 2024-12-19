@@ -1,4 +1,6 @@
-# DirectoryMemberListRequest
+---
+title: 'DirectoryMemberListRequest'
+---
 
 ## Example Usage
 

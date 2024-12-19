@@ -1,4 +1,6 @@
-# Session
+---
+title: 'Session'
+---
 
 ## Example Usage
 

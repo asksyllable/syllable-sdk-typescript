@@ -1,4 +1,6 @@
-# Provider
+---
+title: 'Provider'
+---
 
 Provider of the LLM model.
 

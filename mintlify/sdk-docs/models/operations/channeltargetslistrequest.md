@@ -1,4 +1,6 @@
-# ChannelTargetsListRequest
+---
+title: 'ChannelTargetsListRequest'
+---
 
 ## Example Usage
 

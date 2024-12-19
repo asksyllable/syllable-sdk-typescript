@@ -1,4 +1,6 @@
-# ListResponseEvent
+---
+title: 'ListResponseEvent'
+---
 
 ## Example Usage
 

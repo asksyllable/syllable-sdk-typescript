@@ -1,4 +1,6 @@
-# DirectoryMemberProperties
+---
+title: 'DirectoryMemberProperties'
+---
 
 ## Example Usage
 

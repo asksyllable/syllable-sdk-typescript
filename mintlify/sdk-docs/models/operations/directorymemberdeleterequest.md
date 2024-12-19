@@ -1,4 +1,6 @@
-# DirectoryMemberDeleteRequest
+---
+title: 'DirectoryMemberDeleteRequest'
+---
 
 ## Example Usage
 

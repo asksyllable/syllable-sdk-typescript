@@ -1,4 +1,6 @@
-# PromptsDeleteRequest
+---
+title: 'PromptsDeleteRequest'
+---
 
 ## Example Usage
 

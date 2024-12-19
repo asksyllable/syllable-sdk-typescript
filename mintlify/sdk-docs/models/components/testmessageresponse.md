@@ -1,4 +1,6 @@
-# TestMessageResponse
+---
+title: 'TestMessageResponse'
+---
 
 ## Example Usage
 

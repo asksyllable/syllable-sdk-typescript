@@ -1,4 +1,6 @@
-# ToolProperties
+---
+title: 'ToolProperties'
+---
 
 ## Example Usage
 

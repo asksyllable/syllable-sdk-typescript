@@ -1,4 +1,6 @@
-# TestMessage
+---
+title: 'TestMessage'
+---
 
 ## Example Usage
 

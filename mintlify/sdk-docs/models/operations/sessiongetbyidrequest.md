@@ -1,4 +1,6 @@
-# SessionGetByIdRequest
+---
+title: 'SessionGetByIdRequest'
+---
 
 ## Example Usage
 

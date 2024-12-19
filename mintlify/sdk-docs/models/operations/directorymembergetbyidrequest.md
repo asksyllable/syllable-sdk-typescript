@@ -1,4 +1,6 @@
-# DirectoryMemberGetByIdRequest
+---
+title: 'DirectoryMemberGetByIdRequest'
+---
 
 ## Example Usage
 

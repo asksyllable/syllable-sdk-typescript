@@ -1,4 +1,6 @@
-# ChannelTargetsCreateRequest
+---
+title: 'ChannelTargetsCreateRequest'
+---
 
 ## Example Usage
 

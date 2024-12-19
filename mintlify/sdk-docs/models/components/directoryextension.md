@@ -1,4 +1,6 @@
-# DirectoryExtension
+---
+title: 'DirectoryExtension'
+---
 
 ## Example Usage
 

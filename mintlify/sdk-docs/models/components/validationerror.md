@@ -1,4 +1,6 @@
-# ValidationError
+---
+title: 'ValidationError'
+---
 
 ## Example Usage
 

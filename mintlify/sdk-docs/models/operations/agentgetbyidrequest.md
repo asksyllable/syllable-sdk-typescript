@@ -1,4 +1,6 @@
-# AgentGetByIdRequest
+---
+title: 'AgentGetByIdRequest'
+---
 
 ## Example Usage
 

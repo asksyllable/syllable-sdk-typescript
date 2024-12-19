@@ -1,4 +1,6 @@
-# PromptProperties
+---
+title: 'PromptProperties'
+---
 
 ## Example Usage
 

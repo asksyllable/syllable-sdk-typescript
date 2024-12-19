@@ -1,4 +1,6 @@
-# DirectoryMember
+---
+title: 'DirectoryMember'
+---
 
 ## Example Usage
 

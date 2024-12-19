@@ -1,4 +1,6 @@
-# ListResponseCustomMessageResponse
+---
+title: 'ListResponseCustomMessageResponse'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# ListResponseSessionLabel
+---
+title: 'ListResponseSessionLabel'
+---
 
 ## Example Usage
 

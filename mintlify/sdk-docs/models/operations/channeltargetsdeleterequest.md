@@ -1,4 +1,6 @@
-# ChannelTargetsDeleteRequest
+---
+title: 'ChannelTargetsDeleteRequest'
+---
 
 ## Example Usage
 

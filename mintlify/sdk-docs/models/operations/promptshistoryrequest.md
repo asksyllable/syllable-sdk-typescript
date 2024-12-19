@@ -1,4 +1,6 @@
-# PromptsHistoryRequest
+---
+title: 'PromptsHistoryRequest'
+---
 
 ## Example Usage
 

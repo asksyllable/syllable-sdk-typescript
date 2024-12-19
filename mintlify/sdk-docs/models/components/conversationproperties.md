@@ -1,4 +1,6 @@
-# ConversationProperties
+---
+title: 'ConversationProperties'
+---
 
 ## Example Usage
 

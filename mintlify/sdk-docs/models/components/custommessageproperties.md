@@ -1,4 +1,6 @@
-# CustomMessageProperties
+---
+title: 'CustomMessageProperties'
+---
 
 ## Example Usage
 

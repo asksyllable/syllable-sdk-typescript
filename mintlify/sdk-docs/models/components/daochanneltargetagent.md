@@ -1,4 +1,6 @@
-# DaoChannelTargetAgent
+---
+title: 'DaoChannelTargetAgent'
+---
 
 ## Example Usage
 

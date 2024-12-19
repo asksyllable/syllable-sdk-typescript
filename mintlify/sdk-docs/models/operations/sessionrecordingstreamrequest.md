@@ -1,4 +1,6 @@
-# SessionRecordingStreamRequest
+---
+title: 'SessionRecordingStreamRequest'
+---
 
 ## Example Usage
 

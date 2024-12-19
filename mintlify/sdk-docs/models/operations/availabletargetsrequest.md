@@ -1,4 +1,6 @@
-# AvailableTargetsRequest
+---
+title: 'AvailableTargetsRequest'
+---
 
 ## Example Usage
 

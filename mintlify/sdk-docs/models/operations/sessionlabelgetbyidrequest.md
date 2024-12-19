@@ -1,4 +1,6 @@
-# SessionLabelGetByIdRequest
+---
+title: 'SessionLabelGetByIdRequest'
+---
 
 ## Example Usage
 

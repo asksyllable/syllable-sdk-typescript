@@ -1,4 +1,6 @@
-# TargetModes
+---
+title: 'TargetModes'
+---
 
 ## Example Usage
 

@@ -1,4 +1,7 @@
-# ChannelProperties
+---
+title: 'ChannelProperties'
+---
+
 
 ## Example Usage
 

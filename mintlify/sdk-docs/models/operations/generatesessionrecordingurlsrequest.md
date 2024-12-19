@@ -1,4 +1,6 @@
-# GenerateSessionRecordingUrlsRequest
+---
+title: 'GenerateSessionRecordingUrlsRequest'
+---
 
 ## Example Usage
 

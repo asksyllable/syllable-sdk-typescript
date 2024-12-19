@@ -1,4 +1,6 @@
-# ChannelTarget
+---
+title: 'ChannelTarget'
+---
 
 Class for all Channel Target responses
 

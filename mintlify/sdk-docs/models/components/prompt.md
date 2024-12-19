@@ -1,4 +1,6 @@
-# Prompt
+---
+title: 'Prompt'
+---
 
 ## Example Usage
 

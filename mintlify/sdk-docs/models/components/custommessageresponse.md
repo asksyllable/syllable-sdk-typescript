@@ -1,4 +1,6 @@
-# CustomMessageResponse
+---
+title: 'CustomMessageResponse'
+---
 
 ## Example Usage
 

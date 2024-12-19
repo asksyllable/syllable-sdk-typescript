@@ -1,4 +1,6 @@
-# FileT
+---
+title: 'FileT'
+---
 
 ## Example Usage
 

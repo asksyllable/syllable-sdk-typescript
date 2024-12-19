@@ -1,4 +1,6 @@
-# CustomMessageCreateRequest
+---
+title: 'CustomMessageCreateRequest'
+---
 
 ## Example Usage
 

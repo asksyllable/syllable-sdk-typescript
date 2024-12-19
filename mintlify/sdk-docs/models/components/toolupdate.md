@@ -1,4 +1,6 @@
-# ToolUpdate
+---
+title: 'ToolUpdate'
+---
 
 ## Example Usage
 

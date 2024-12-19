@@ -1,4 +1,6 @@
-# Tool
+---
+title: 'Tool'
+---
 
 ## Example Usage
 

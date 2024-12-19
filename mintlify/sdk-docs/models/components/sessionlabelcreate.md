@@ -1,4 +1,6 @@
-# SessionLabelCreate
+---
+title: 'SessionLabelCreate'
+---
 
 ## Example Usage
 

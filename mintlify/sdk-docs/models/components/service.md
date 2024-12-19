@@ -1,4 +1,6 @@
-# Service
+---
+title: 'Service'
+---
 
 ## Example Usage
 

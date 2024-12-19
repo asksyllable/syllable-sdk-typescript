@@ -1,4 +1,6 @@
-# ChannelTargetProperties
+---
+title: 'ChannelTargetProperties'
+---
 
 ## Example Usage
 
