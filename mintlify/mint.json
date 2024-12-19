@@ -99,6 +99,7 @@
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
         "sdk-docs/Channels",
+        "sdk-docs/Targets",
         "sdk-docs/Directory"
       ]
     },
