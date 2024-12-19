@@ -76,7 +76,7 @@
          {
             "group": "Insights",
             "pages": ["workspaces/SessionList", "workspaces/SessionDetails"]
-        },
+        }
       ]
     },
     {
