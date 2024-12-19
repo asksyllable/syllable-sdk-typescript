@@ -77,10 +77,10 @@
     {
       "group": "Resources",
       "pages": [
-        "resources/Prompts.mdx",
-        "resources/Tools.mdx",
-        "resources/CustomMessages.mdx",
-        "resources/Channels.mdx"
+        "Resources/res_WritePrompt",
+        "Resources/Tools",
+        "Resources/CustomMessages",
+        "Resources/Channels"
       ]
     },
     {
