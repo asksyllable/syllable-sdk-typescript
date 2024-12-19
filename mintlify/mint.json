@@ -70,10 +70,10 @@
       "group": "Workspaces",
       "pages": [
         "workspaces/Agents",
-          {
-              "group": "Session Configuration",
-              "pages": ["workspaces/SessionConfig"]
-          },
+        {
+            "group": "Session Configuration",
+            "pages": ["workspaces/SessionConfig"]
+        },
         "workspaces/Insights"
       ]
     },
