@@ -3,8 +3,12 @@ title: 'Tools'
 icon: "screwdriver-wrench"
 ---
 
-Tools are functions or APIs the Agent can call upon to perform actions like, accessing databases, or manipulate data.They let your Agent schedule an appointment on behalf of your customer, or do countless other tasks. 
+Tools are functions or APIs the Agent can call upon to perform actions like, accessing databases, or manipulate data. They let your Agent schedule an appointment on behalf of your customer, or do countless other tasks. 
 
 The tools list page shows all of the tools currently available to your organization. 
 
-If you want an Agent to reference a specific tool during sessions with customers, then you need to provide those instructions in the prompt.
+![](/mintlify/images/toolslist.jpg)
+
+If you want an Agent to reference a specific tool during sessions with customers, then you need to provide those instructions in the prompt. For example, if you want to provide hangup instructions to your Agent, it might look something like:
+
+`Before a call ends, make sure to always ask user whether they need anything else. If user doesn’t need anything else, use “hangup” tool.`
