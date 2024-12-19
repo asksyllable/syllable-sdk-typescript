@@ -69,9 +69,12 @@
     {
       "group": "Workspaces",
       "pages": [
-        "workspaces/AgentsList",
-        "workspaces/Insights",
-        "workspaces/SessionConfig"
+        "workspaces/Agents",
+          {
+              "group": "Session Configuration",
+              "pages": ["workspaces/SessionConfig"]
+          }
+        "workspaces/Insights"
       ]
     },
     {
@@ -95,7 +98,6 @@
       "group": "Configuration & Settings",
       "pages": [
         "sdk-docs/Agents",
-        "sdk-docs/AgentTest",
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
