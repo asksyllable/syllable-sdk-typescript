@@ -60,6 +60,10 @@
       "group": "Workspaces",
       "pages": [
         "workspaces/Agents",
+        "workspaces/AgentConfig",
+        "workspaces/AgentsList",
+        "workspaces/NewAgentConfig",
+        "workspaces/SessionConfig",
         "workspaces/Insights"
       ]
     },
