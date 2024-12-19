@@ -57,14 +57,25 @@
       ]
     },
     {
+      "group": "Build your first Agent",
+      "pages": [
+        "buildFirstAgent/Overview",
+        "buildFirstAgent/CreatePrompt",
+        "buildFirstAgent/CreateCustomMessage",
+        "buildFirstAgent/CreateChannel",
+        "buildFirstAgent/ConfigureAgent",
+        "buildFirstAgent/SessionConfiguration"
+      ]
+    },
+    {
       "group": "Workspaces",
       "pages": [
         "workspaces/Agents",
-        "workspaces/AgentConfig",
         "workspaces/AgentsList",
         "workspaces/NewAgentConfig",
         "workspaces/SessionConfig",
-        "workspaces/Insights"
+        "workspaces/Insights",
+        "workspaces/Sesssions"
       ]
     },
     {
@@ -90,6 +101,12 @@
         "sdk-docs/Agents",
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
+        "sdk-docs/Tools"
+      ]
+    },
+    {
+      "group": "Audits & Logging",
+      "pages": [
         "sdk-docs/Sessions"
       ]
     }
