@@ -69,10 +69,9 @@
     {
       "group": "Workspaces",
       "pages": [
-        "workspaces/Agents",
         {
-            "group": "Session Configuration",
-            "pages": ["workspaces/SessionConfig"]
+            "group": "Agents",
+            "pages": ["workspaces/Agents", "workspaces/SessionConfig"]
         },
         "workspaces/Insights"
       ]
