@@ -81,9 +81,16 @@
       "pages": [
         "sdk-docs/Overview",
         "sdk-docs/functions",
-        "sdk-docs/runtimes",
+        "sdk-docs/runtimes"
+      ]
+    },
+    {
+      "group": "Operations & Models",
+      "pages": [
         "sdk-docs/Agents",
-        "sdk-docs/Prompts"
+        "sdk-docs/Prompts",
+        "sdk-docs/CustomMessages",
+        "sdk-docs/Sessions"
       ]
     }
   ]
