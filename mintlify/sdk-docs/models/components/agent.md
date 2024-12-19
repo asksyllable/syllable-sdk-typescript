@@ -1,4 +1,6 @@
-# Agent
+---
+tiltle: 'Agent'
+---
 
 ## Example Usage
 

@@ -1,4 +1,6 @@
-# AgentProperties
+---
+tiltle: 'Agent Properties'
+---
 
 ## Example Usage
 
