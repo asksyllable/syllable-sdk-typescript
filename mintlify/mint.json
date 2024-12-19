@@ -77,7 +77,7 @@
     {
       "group": "Resources",
       "pages": [
-        "resources/Prompts.mdx",
+        "resources/res_WritePrompt.mdx",
         "resources/Tools.mdx",
         "resources/CustomMessages.mdx",
         "resources/Channels.mdx"
