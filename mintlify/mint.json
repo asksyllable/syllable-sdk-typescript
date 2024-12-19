@@ -95,6 +95,7 @@
       "group": "Configuration & Settings",
       "pages": [
         "sdk-docs/Agents",
+        "sdk-docs/AgentTest",
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
