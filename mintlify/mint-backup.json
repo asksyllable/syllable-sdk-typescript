@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Syllable SDK",
   "logo": {
-    "light": "/logo/logo_black.png",
-    "dark": "/logo/logo_white.png"
+    "light": "/logo/Logo_96px_Black.webp",
+    "dark": "/logo/Logo_96px_White.webp"
   },
   "favicon": "/logo/32_32.png",
   "colors": {
@@ -24,10 +24,6 @@
   "primaryTab": {
     "name": "Home"
   },
-  "topbarCtaButton": {
-    "name": "Console",
-    "url": "https://beta.syllable.cloud"
-  },
   "tabs": [
     {
       "name": "API Reference",
@@ -38,6 +34,10 @@
       "url": "sdk-docs"
     }
   ],
+  "topbarCtaButton": {
+    "name": "Console",
+    "url": "https://beta.syllable.cloud"
+  },
   "anchors": [
     {
       "name": "API Reference",
@@ -51,15 +51,19 @@
     {
       "group": "Overview",
       "pages": [
-        "introSyllable/HowSyllableWorks",
-        "introSyllable/KeyFeatures",
-        "introSyllable/LoginSignup"
+        "introsyllable/HowSyllableWorks",
+        "introsyllable/KeyFeatures",
+        "introsyllable/LoginSignup"
       ]
     },
     {
       "group": "Workspaces",
       "pages": [
         "workspaces/Agents",
+        "workspaces/AgentConfig",
+        "workspaces/AgentsList",
+        "workspaces/NewAgentConfig",
+        "workspaces/SessionConfig",
         "workspaces/Insights"
       ]
     },
@@ -78,7 +82,8 @@
         "sdk-docs/Overview",
         "sdk-docs/functions",
         "sdk-docs/runtimes",
-        "sdk-docs/Agents"
+        "sdk-docs/Agents",
+        "sdk-docs/Prompts"
       ]
     }
   ]
