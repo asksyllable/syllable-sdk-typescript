@@ -98,7 +98,8 @@
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
-        "sdk-docs/Channels"
+        "sdk-docs/Channels",
+        "sdk-docs/Directory"
       ]
     },
     {
