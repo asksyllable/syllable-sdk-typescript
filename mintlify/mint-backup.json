@@ -71,10 +71,8 @@
       "group": "Workspaces",
       "pages": [
         "workspaces/AgentsList",
-        "workspaces/NewAgentConfig",
-        "workspaces/SessionConfig",
         "workspaces/Insights",
-        "workspaces/Sesssions"
+        "workspaces/SesssionConfig"
       ]
     },
     {
@@ -100,14 +98,16 @@
         "sdk-docs/Agents",
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
-        "sdk-docs/Tools"
+        "sdk-docs/Tools",
+        "sdk-docs/Channels"
       ]
     },
     {
       "group": "Audits & Logging",
       "pages": [
         "sdk-docs/Sessions",
-        "sdk-docs/Conversations"
+        "sdk-docs/Conversations",
+        "sdk-docs/Transcripts"
       ]
     }
   ]
