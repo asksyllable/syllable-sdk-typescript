@@ -24,10 +24,6 @@
   "primaryTab": {
     "name": "Home"
   },
-  "topbarCtaButton": {
-    "name": "Console",
-    "url": "https://beta.syllable.cloud"
-  },
   "tabs": [
     {
       "name": "API Reference",
@@ -38,6 +34,10 @@
       "url": "sdk-docs"
     }
   ],
+  "topbarCtaButton": {
+    "name": "Console",
+    "url": "https://beta.syllable.cloud"
+  },
   "anchors": [
     {
       "name": "API Reference",
@@ -51,9 +51,9 @@
     {
       "group": "Overview",
       "pages": [
-        "introSyllable/HowSyllableWorks",
-        "introSyllable/KeyFeatures",
-        "introSyllable/LoginSignup"
+        "introsyllable/HowSyllableWorks",
+        "introsyllable/KeyFeatures",
+        "introsyllable/LoginSignup"
       ]
     },
     {
