@@ -215,7 +215,6 @@
             "/sdk-docs/models/components/toolproperties",
             "/sdk-docs/models/components/toolupdate",
             "/sdk-docs/models/components/toolupdatedefinition",
-            "/sdk-docs/models/components/validationerror"
           ]
         },
         {
@@ -259,7 +258,8 @@
         {
           "group": "Errors",
           "pages": [
-            "/sdk-docs/models/errors/httpvalidationerror"
+            "/sdk-docs/models/errors/httpvalidationerror",
+            "/sdk-docs/models/components/validationerror"
           ]
         }
       ]
