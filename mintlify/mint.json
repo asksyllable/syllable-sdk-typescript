@@ -63,7 +63,7 @@
         "buildFirstAgent/CreatePrompt",
         "buildFirstAgent/CreateCustomMessage",
         "buildFirstAgent/CreateChannel",
-        "buildFirstAgent/ConfigureAgent"
+        "buildFirstAgent/CreateAgent"
       ]
     },
     {
