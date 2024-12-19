@@ -77,10 +77,10 @@
     {
       "group": "Resources",
       "pages": [
-        "resources/Prompts.mdx",
-        "resources/Tools.mdx",
-        "resources/CustomMessages.mdx",
-        "resources/Channels.mdx"
+        "Resources/res_WritePrompt",
+        "Resources/Tools",
+        "Resources/CustomMessages",
+        "Resources/Channels"
       ]
     },
     {
@@ -99,6 +99,7 @@
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
         "sdk-docs/Channels",
+        "sdk-docs/Targets",
         "sdk-docs/Directory"
       ]
     },
@@ -107,7 +108,8 @@
       "pages": [
         "sdk-docs/Sessions",
         "sdk-docs/Conversations",
-        "sdk-docs/Transcripts"
+        "sdk-docs/Transcripts",
+        "sdk-docs/Events"
       ]
     }
   ]

@@ -108,7 +108,8 @@
       "pages": [
         "sdk-docs/Sessions",
         "sdk-docs/Conversations",
-        "sdk-docs/Transcripts"
+        "sdk-docs/Transcripts",
+        "sdk-docs/Events"
       ]
     }
   ]
