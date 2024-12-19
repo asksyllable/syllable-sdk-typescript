@@ -57,6 +57,17 @@
       ]
     },
     {
+      "group": "Build your first Agent",
+      "pages": [
+        "buildFirstAgent/Overview",
+        "buildFirstAgent/CreatePrompt",
+        "buildFirstAgent/CreateCustomMessage",
+        "buildFirstAgent/CreateChannel",
+        "buildFirstAgent/ConfigureAgent",
+        "buildFirstAgent/SessionConfiguration"
+      ]
+    },
+    {
       "group": "Workspaces",
       "pages": [
         "workspaces/Agents",
