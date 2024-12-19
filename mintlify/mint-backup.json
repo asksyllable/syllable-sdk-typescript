@@ -63,8 +63,7 @@
         "buildFirstAgent/CreatePrompt",
         "buildFirstAgent/CreateCustomMessage",
         "buildFirstAgent/CreateChannel",
-        "buildFirstAgent/ConfigureAgent",
-        "buildFirstAgent/SessionConfiguration"
+        "buildFirstAgent/ConfigureAgent"
       ]
     },
     {
@@ -93,17 +92,18 @@
       ]
     },
     {
-      "group": "Operations & Models",
+      "group": "Configuration & Settings",
       "pages": [
         "sdk-docs/Agents",
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
-        "sdk-docs/Channels"
+        "sdk-docs/Channels",
+        "sdk-docs/Directory"
       ]
     },
     {
-      "group": "Audits & Logging",
+      "group": "Insights & Analytics",
       "pages": [
         "sdk-docs/Sessions",
         "sdk-docs/Conversations",
