@@ -70,7 +70,6 @@
     {
       "group": "Workspaces",
       "pages": [
-        "workspaces/Agents",
         "workspaces/AgentsList",
         "workspaces/NewAgentConfig",
         "workspaces/SessionConfig",
