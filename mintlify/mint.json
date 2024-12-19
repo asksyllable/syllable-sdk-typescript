@@ -71,7 +71,7 @@
       "pages": [
         "workspaces/AgentsList",
         "workspaces/Insights",
-        "workspaces/SesssionConfig"
+        "workspaces/SessionConfig"
       ]
     },
     {
