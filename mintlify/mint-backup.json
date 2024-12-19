@@ -69,9 +69,11 @@
     {
       "group": "Workspaces",
       "pages": [
-        "workspaces/AgentsList",
-        "workspaces/Insights",
-        "workspaces/SessionConfig"
+        {
+            "group": "Agents",
+            "pages": ["workspaces/Agents", "workspaces/SessionConfig"]
+        },
+        "workspaces/Insights"
       ]
     },
     {
@@ -95,7 +97,6 @@
       "group": "Configuration & Settings",
       "pages": [
         "sdk-docs/Agents",
-        "sdk-docs/AgentTest",
         "sdk-docs/Prompts",
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
@@ -114,6 +115,36 @@
         "sdk-docs/Events",
         "sdk-docs/SessionLabels"
       ]
-    }
+    },
+    {
+      "group": "Models",
+      "pages": [
+        {
+            "group": "Agent",
+            "pages": [
+              "sdk-docs/models/components/agent",
+              "sdk-docs/models/components/agentcreate",
+              "sdk-docs/models/components/agentproperties",
+              "sdk-docs/models/components/agentresponse",
+              "sdk-docs/models/operations/agentdeleterequest",
+              "sdk-docs/models/operations/agentlistrequest",
+              "sdk-docs/models/operations/agentgetbyidrequest"
+            ]
+        },
+        {
+            "group": "Prompt",
+            "pages": [
+              "sdk-docs/models/components/prompt",
+              "sdk-docs/models/components/promptcreate",
+              "sdk-docs/models/components/promptproperties",
+              "sdk-docs/models/components/prompthistory",
+              "sdk-docs/models/operations/promptupdate",
+              "sdk-docs/models/operations/promptdeleterequest",
+              "sdk-docs/models/operations/promptlistrequest",
+              "sdk-docs/models/operations/promptgetbyidrequest"
+            ]
+        }
+      ]
+    },
   ]
 }
