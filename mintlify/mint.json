@@ -49,7 +49,7 @@
   "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
   "navigation": [
     {
-      "group": "Overview",
+      "group": "Introduction to Syllable",
       "pages": [
         "introsyllable/HowSyllableWorks",
         "introsyllable/KeyFeatures",
@@ -59,7 +59,7 @@
     {
       "group": "Build your first Agent",
       "pages": [
-        "buildFirstAgent/Overview",
+        "buildFirstAgent/Quickstart",
         "buildFirstAgent/CreatePrompt",
         "buildFirstAgent/CreateCustomMessage",
         "buildFirstAgent/CreateChannel",
