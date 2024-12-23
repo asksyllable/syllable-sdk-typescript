@@ -6,7 +6,7 @@ function getMarkdownFilesSync(dir) {
         const files = readdirSync(dir);
         const markdownFiles = files
             .filter(file => extname(file) === '.md')
-            .map(file => '/sdk-docs/' + dir + '/' + basename(file, '.md'));
+            .map(file => 'sdk-docs/' + dir + '/' + basename(file, '.md'));
         return markdownFiles;
     } catch (err) {
         console.error(`Error reading directory: ${err}`);
