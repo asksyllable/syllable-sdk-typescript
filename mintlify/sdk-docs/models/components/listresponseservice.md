@@ -28,7 +28,7 @@ let value: ListResponseService = {
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `items`                                                    | [components.Service](sdk-docs/models/components/service)[] | TRUE                                         | N/A                                                        |
+| `items`                                                    | [components.Service](/sdk-docs/models/components/service)[] | TRUE                                         | N/A                                                        |
 | `page`                                                     | *number*                                                   | TRUE                                         | N/A                                                        |
 | `pageSize`                                                 | *number*                                                   | TRUE                                         | N/A                                                        |
 | `totalPages`                                               | *number*                                                   | FALSE                                         | N/A                                                        |
