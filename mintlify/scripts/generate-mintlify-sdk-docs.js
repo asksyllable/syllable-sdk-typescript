@@ -3,10 +3,10 @@ import { extname, basename, join, dirname } from 'path';
 
 function getMarkdownFilesSync(dir) {
     try {
-        const files = readdirSync(dir);
+        const files = readdirSync('mintlify/' + dir);
         const markdownFiles = files
             .filter(file => extname(file) === '.md')
-            .map(file => 'sdk-docs/' + dir + '/' + basename(file, '.md'));
+            .map(file =>  dir + '/' + basename(file, '.md'));
         return markdownFiles;
     } catch (err) {
         console.error(`Error reading directory: ${err}`);
@@ -81,9 +81,9 @@ function updateMintJsonSync() {
     const mintJsonPath = 'mintlify/mint.json';
     const mintJson = JSON.parse(readFileSync(mintJsonPath, 'utf8'));
 
-    const componentsDir = 'mintlify/sdk-docs/models/components';
-    const operationsDir = 'mintlify/sdk-docs/models/operations';
-    const errorsDir = 'mintlify/sdk-docs/models/errors';
+    const componentsDir = 'sdk-docs/models/components';
+    const operationsDir = 'sdk-docs/models/operations';
+    const errorsDir = 'sdk-docs/models/errors';
 
     const componentsPages = getMarkdownFilesSync(componentsDir);
     const operationsPages = getMarkdownFilesSync(operationsDir);
