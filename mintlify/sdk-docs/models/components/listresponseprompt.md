@@ -13,17 +13,16 @@ let value: ListResponsePrompt = {
       name: "<value>",
       type: "<value>",
       llmConfig: {
-        provider: "azure_openai",
         model: "gpt-4o",
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 934214,
+      id: 407183,
       lastUpdated: "<value>",
     },
   ],
-  page: 613966,
-  pageSize: 535633,
+  page: 69167,
+  pageSize: 697429,
 };
 ```
 
@@ -31,7 +30,7 @@ let value: ListResponsePrompt = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `items`                                                  | [components.Prompt](/sdk-docs/models/components/prompt)[] | TRUE                                       | N/A                                                      |
+| `items`                                                  | [components.Prompt](sdk-docs/models/components/prompt)[] | TRUE                                       | N/A                                                      |
 | `page`                                                   | *number*                                                 | TRUE                                       | N/A                                                      |
 | `pageSize`                                               | *number*                                                 | TRUE                                       | N/A                                                      |
 | `totalPages`                                             | *number*                                                 | FALSE                                       | N/A                                                      |

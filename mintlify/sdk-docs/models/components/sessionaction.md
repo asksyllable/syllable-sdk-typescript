@@ -8,7 +8,7 @@ title: 'SessionAction'
 import { SessionAction } from "syllable-sdk/models/components";
 
 let value: SessionAction = {
-  timestamp: new Date("2022-05-22T05:32:53.930Z"),
+  timestamp: new Date("2022-07-23T00:21:03.899Z"),
 };
 ```
 

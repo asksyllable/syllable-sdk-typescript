@@ -11,15 +11,16 @@ let value: ListResponseService = {
   items: [
     {
       name: "<value>",
-      description: "less over how prejudge",
-      id: 872651,
+      description:
+        "phooey presume obedience finally less over how prejudge cutover for",
+      id: 424685,
       tools: [
         "<value>",
       ],
     },
   ],
-  page: 273542,
-  pageSize: 798047,
+  page: 374170,
+  pageSize: 463575,
 };
 ```
 
@@ -27,7 +28,7 @@ let value: ListResponseService = {
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `items`                                                    | [components.Service](/sdk-docs/models/components/service)[] | TRUE                                         | N/A                                                        |
+| `items`                                                    | [components.Service](sdk-docs/models/components/service)[] | TRUE                                         | N/A                                                        |
 | `page`                                                     | *number*                                                   | TRUE                                         | N/A                                                        |
 | `pageSize`                                                 | *number*                                                   | TRUE                                         | N/A                                                        |
 | `totalPages`                                               | *number*                                                   | FALSE                                         | N/A                                                        |

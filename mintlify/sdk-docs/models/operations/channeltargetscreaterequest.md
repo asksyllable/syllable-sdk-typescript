@@ -8,14 +8,12 @@ title: 'ChannelTargetsCreateRequest'
 import { ChannelTargetsCreateRequest } from "syllable-sdk/models/operations";
 
 let value: ChannelTargetsCreateRequest = {
-  channelId: 246063,
+  channelId: 491892,
   channelTargetCreateRequest: {
-    channelId: 665859,
-    agentId: 517309,
+    channelId: 898961,
+    agentId: 185518,
     target: "<value>",
     targetMode: "<value>",
-    fallbackTarget: "<value>",
-    isTest: false,
   },
 };
 ```
@@ -25,4 +23,4 @@ let value: ChannelTargetsCreateRequest = {
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `channelId`                                                                                    | *number*                                                                                       | TRUE                                                                             | N/A                                                                                            |
-| `channelTargetCreateRequest`                                                                   | [components.ChannelTargetCreateRequest](/sdk-docs/models/components/channeltargetcreaterequest) | TRUE                                                                             | N/A                                                                                            |
+| `channelTargetCreateRequest`                                                                   | [components.ChannelTargetCreateRequest](sdk-docs/models/components/channeltargetcreaterequest) | TRUE                                                                             | N/A                                                                                            |

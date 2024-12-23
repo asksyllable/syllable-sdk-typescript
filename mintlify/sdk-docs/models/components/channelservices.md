@@ -7,7 +7,7 @@ title: 'ChannelServices'
 ```typescript
 import { ChannelServices } from "syllable-sdk/models/components";
 
-let value: ChannelServices = "email";
+let value: ChannelServices = "webchat";
 ```
 
 ## Values

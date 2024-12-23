@@ -12,13 +12,13 @@ let value: ListResponseCustomMessageResponse = {
     {
       name: "<value>",
       text: "<value>",
-      id: 962189,
-      updatedAt: new Date("2022-09-30T15:12:09.673Z"),
+      id: 4695,
+      updatedAt: new Date("2024-01-13T21:17:10.262Z"),
       lastUpdatedBy: "<value>",
     },
   ],
-  page: 576157,
-  pageSize: 592042,
+  page: 270008,
+  pageSize: 735194,
 };
 ```
 
@@ -26,7 +26,7 @@ let value: ListResponseCustomMessageResponse = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `items`                                                                                | [components.CustomMessageResponse](/sdk-docs/models/components/custommessageresponse)[] | TRUE                                                                     | N/A                                                                                    |
+| `items`                                                                                | [components.CustomMessageResponse](sdk-docs/models/components/custommessageresponse)[] | TRUE                                                                     | N/A                                                                                    |
 | `page`                                                                                 | *number*                                                                               | TRUE                                                                     | N/A                                                                                    |
 | `pageSize`                                                                             | *number*                                                                               | TRUE                                                                     | N/A                                                                                    |
 | `totalPages`                                                                           | *number*                                                                               | FALSE                                                                     | N/A                                                                                    |

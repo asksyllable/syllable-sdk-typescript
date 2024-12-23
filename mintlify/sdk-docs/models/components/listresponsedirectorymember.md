@@ -14,8 +14,8 @@ let value: ListResponseDirectoryMember = {
       type: "<value>",
     },
   ],
-  page: 65304,
-  pageSize: 783235,
+  page: 600213,
+  pageSize: 963198,
 };
 ```
 
@@ -23,7 +23,7 @@ let value: ListResponseDirectoryMember = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `items`                                                                    | [components.DirectoryMember](/sdk-docs/models/components/directorymember)[] | TRUE                                                         | N/A                                                                        |
+| `items`                                                                    | [components.DirectoryMember](sdk-docs/models/components/directorymember)[] | TRUE                                                         | N/A                                                                        |
 | `page`                                                                     | *number*                                                                   | TRUE                                                         | N/A                                                                        |
 | `pageSize`                                                                 | *number*                                                                   | TRUE                                                         | N/A                                                                        |
 | `totalPages`                                                               | *number*                                                                   | FALSE                                                         | N/A                                                                        |

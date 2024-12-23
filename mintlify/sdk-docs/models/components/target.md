@@ -8,11 +8,11 @@ title: 'Target'
 import { Target } from "syllable-sdk/models/components";
 
 let value: Target = {
-  agentId: 870013,
+  agentId: 87129,
   target: "<value>",
-  targetMode: "email",
-  channelId: 799159,
-  id: 461479,
+  targetMode: "voice",
+  channelId: 832620,
+  id: 778157,
 };
 ```
 
@@ -22,7 +22,7 @@ let value: Target = {
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `agentId`                                                        | *number*                                                         | TRUE                                               | The Agent ID                                                     |
 | `target`                                                         | *string*                                                         | TRUE                                               | The Target                                                       |
-| `targetMode`                                                     | [components.TargetModes](/sdk-docs/models/components/targetmodes) | TRUE                                               | The target mode                                                  |
+| `targetMode`                                                     | [components.TargetModes](sdk-docs/models/components/targetmodes) | TRUE                                               | N/A                                                              |
 | `channelId`                                                      | *number*                                                         | TRUE                                               | The Channel ID                                                   |
 | `fallbackTarget`                                                 | *string*                                                         | FALSE                                               | The Fallback Target                                              |
 | `isTest`                                                         | *boolean*                                                        | FALSE                                               | Whether the Target is for testing                                |
