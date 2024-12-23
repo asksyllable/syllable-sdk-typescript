@@ -10,29 +10,27 @@ import { ListResponseChannelTarget } from "syllable-sdk/models/components";
 let value: ListResponseChannelTarget = {
   items: [
     {
-      id: 368725,
-      channelId: 820994,
+      id: 110375,
+      channelId: 656330,
       channelName: "<value>",
-      agentId: 97101,
+      agentId: 138183,
       agent: {
         name: "<value>",
         type: "<value>",
-        promptId: 837945,
-        timezone: "Africa/Mogadishu",
-        id: 976460,
-        updatedAt: new Date("2023-05-29T15:24:04.349Z"),
+        promptId: 196582,
+        timezone: "America/Noronha",
+        id: 820994,
+        updatedAt: new Date("2022-04-17T10:09:07.050Z"),
         lastUpdatedBy: "<value>",
       },
       target: "<value>",
       targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: false,
-      updatedAt: new Date("2024-12-06T12:43:25.190Z"),
+      updatedAt: new Date("2024-07-07T09:18:10.249Z"),
       lastUpdatedBy: "<value>",
     },
   ],
-  page: 604846,
-  pageSize: 739264,
+  page: 96098,
+  pageSize: 976460,
 };
 ```
 
@@ -40,7 +38,7 @@ let value: ListResponseChannelTarget = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `items`                                                                | [components.ChannelTarget](/sdk-docs/models/components/channeltarget)[] | TRUE                                                     | N/A                                                                    |
+| `items`                                                                | [components.ChannelTarget](sdk-docs/models/components/channeltarget)[] | TRUE                                                     | N/A                                                                    |
 | `page`                                                                 | *number*                                                               | TRUE                                                     | N/A                                                                    |
 | `pageSize`                                                             | *number*                                                               | TRUE                                                     | N/A                                                                    |
 | `totalPages`                                                           | *number*                                                               | FALSE                                                     | N/A                                                                    |

@@ -8,11 +8,11 @@ title: 'SessionLabel'
 import { SessionLabel } from "syllable-sdk/models/components";
 
 let value: SessionLabel = {
-  sessionId: 459856,
+  sessionId: 820767,
   type: "<value>",
   code: "<value>",
   userEmail: "<value>",
-  id: 44612,
+  id: 908844,
   timestamp: "<value>",
 };
 ```

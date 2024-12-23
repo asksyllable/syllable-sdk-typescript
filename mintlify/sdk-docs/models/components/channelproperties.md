@@ -2,13 +2,12 @@
 title: 'ChannelProperties'
 ---
 
-
 ## Example Usage
 
 ```typescript
 import { ChannelProperties } from "syllable-sdk/models/components";
 
-let value: ChannelProperties = "name";
+let value: ChannelProperties = "id";
 ```
 
 ## Values

@@ -10,11 +10,11 @@ import { ListResponseSession } from "syllable-sdk/models/components";
 let value: ListResponseSession = {
   items: [
     {
-      timestamp: new Date("2023-12-09T13:04:46.957Z"),
+      timestamp: new Date("2022-10-11T12:25:32.503Z"),
     },
   ],
-  page: 35362,
-  pageSize: 430402,
+  page: 849039,
+  pageSize: 33304,
 };
 ```
 
@@ -22,7 +22,7 @@ let value: ListResponseSession = {
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `items`                                                    | [components.Session](/sdk-docs/models/components/session)[] | TRUE                                         | N/A                                                        |
+| `items`                                                    | [components.Session](sdk-docs/models/components/session)[] | TRUE                                         | N/A                                                        |
 | `page`                                                     | *number*                                                   | TRUE                                         | N/A                                                        |
 | `pageSize`                                                 | *number*                                                   | TRUE                                         | N/A                                                        |
 | `totalPages`                                               | *number*                                                   | FALSE                                         | N/A                                                        |

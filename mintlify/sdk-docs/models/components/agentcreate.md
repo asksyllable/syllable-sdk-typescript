@@ -1,6 +1,7 @@
 ---
 title: 'AgentCreate'
 ---
+
 ## Example Usage
 
 ```typescript
@@ -8,10 +9,10 @@ import { AgentCreate } from "syllable-sdk/models/components";
 
 let value: AgentCreate = {
   name: "<value>",
-  timezone: "Asia/Irkutsk",
+  timezone: "America/Santarem",
   type: "<value>",
-  promptId: 18789,
-  customMessageId: 617636,
+  promptId: 264555,
+  customMessageId: 774234,
   languages: [
     "<value>",
   ],
@@ -30,6 +31,6 @@ let value: AgentCreate = {
 | `promptId`                                                                     | *number*                                                                       | TRUE                                                             | N/A                                                                            |
 | `customMessageId`                                                              | *number*                                                                       | TRUE                                                             | N/A                                                                            |
 | `languages`                                                                    | *string*[]                                                                     | TRUE                                                             | N/A                                                                            |
-| `promptToolDefaults`                                                           | [components.AgentToolDefaults](/sdk-docs/models/components/agenttooldefaults)[] | FALSE                                                             | N/A                                                                            |
-| `toolHeaders`                                                                  | Record                                                      | FALSE                                                             | N/A                                                                            |
-| `variables`                                                                    | Record                                                      | FALSE                                                             | N/A                                                                            |
+| `promptToolDefaults`                                                           | [components.AgentToolDefaults](sdk-docs/models/components/agenttooldefaults)[] | FALSE                                                             | N/A                                                                            |
+| `toolHeaders`                                                                  | Record                                                       | FALSE                                                             | N/A                                                                            |
+| `variables`                                                                    | Record                                                       | FALSE                                                             | N/A                                                                            |

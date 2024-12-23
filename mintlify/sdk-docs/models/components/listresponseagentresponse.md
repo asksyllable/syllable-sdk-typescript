@@ -41,18 +41,17 @@ let value: ListResponseAgentResponse = {
         name: "<value>",
         type: "<value>",
         llmConfig: {
-          provider: "azure_openai",
           model: "gpt-4o",
           version: "2024-05-13",
           apiVersion: "2024-06-01",
         },
-        id: 645894,
+        id: 423655,
         lastUpdated: "<value>",
       },
     },
   ],
-  page: 437587,
-  pageSize: 891773,
+  page: 645894,
+  pageSize: 437587,
 };
 ```
 
@@ -60,7 +59,7 @@ let value: ListResponseAgentResponse = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `items`                                                                | [components.AgentResponse](/sdk-docs/models/components/agentresponse)[] | TRUE                                                     | N/A                                                                    |
+| `items`                                                                | [components.AgentResponse](sdk-docs/models/components/agentresponse)[] | TRUE                                                     | N/A                                                                    |
 | `page`                                                                 | *number*                                                               | TRUE                                                     | N/A                                                                    |
 | `pageSize`                                                             | *number*                                                               | TRUE                                                     | N/A                                                                    |
 | `totalPages`                                                           | *number*                                                               | FALSE                                                     | N/A                                                                    |

@@ -10,24 +10,22 @@ Class for all Channel Target responses
 import { ChannelTarget } from "syllable-sdk/models/components";
 
 let value: ChannelTarget = {
-  id: 39187,
-  channelId: 282807,
+  id: 468651,
+  channelId: 976762,
   channelName: "<value>",
-  agentId: 120196,
+  agentId: 604846,
   agent: {
     name: "<value>",
     type: "<value>",
-    promptId: 296140,
-    timezone: "Africa/Tripoli",
-    id: 317983,
-    updatedAt: new Date("2023-03-31T00:46:25.708Z"),
+    promptId: 739264,
+    timezone: "Africa/Dakar",
+    id: 282807,
+    updatedAt: new Date("2022-05-12T17:39:01.246Z"),
     lastUpdatedBy: "<value>",
   },
   target: "<value>",
   targetMode: "<value>",
-  fallbackTarget: "<value>",
-  isTest: false,
-  updatedAt: new Date("2022-03-12T07:20:08.678Z"),
+  updatedAt: new Date("2022-11-21T13:40:18.320Z"),
   lastUpdatedBy: "<value>",
 };
 ```
@@ -40,10 +38,10 @@ let value: ChannelTarget = {
 | `channelId`                                                                                   | *number*                                                                                      | TRUE                                                                            | N/A                                                                                           |
 | `channelName`                                                                                 | *string*                                                                                      | TRUE                                                                            | N/A                                                                                           |
 | `agentId`                                                                                     | *number*                                                                                      | TRUE                                                                            | N/A                                                                                           |
-| `agent`                                                                                       | [components.DaoChannelTargetAgent](/sdk-docs/models/components/daochanneltargetagent)          | TRUE                                                                            | N/A                                                                                           |
+| `agent`                                                                                       | [components.DaoChannelTargetAgent](sdk-docs/models/components/daochanneltargetagent)          | TRUE                                                                            | N/A                                                                                           |
 | `target`                                                                                      | *string*                                                                                      | TRUE                                                                            | N/A                                                                                           |
 | `targetMode`                                                                                  | *string*                                                                                      | TRUE                                                                            | N/A                                                                                           |
-| `fallbackTarget`                                                                              | *string*                                                                                      | TRUE                                                                            | N/A                                                                                           |
-| `isTest`                                                                                      | *boolean*                                                                                     | TRUE                                                                            | N/A                                                                                           |
+| `fallbackTarget`                                                                              | *string*                                                                                      | FALSE                                                                            | N/A                                                                                           |
+| `isTest`                                                                                      | *boolean*                                                                                     | FALSE                                                                            | N/A                                                                                           |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | TRUE                                                                            | N/A                                                                                           |
 | `lastUpdatedBy`                                                                               | *string*                                                                                      | TRUE                                                                            | N/A                                                                                           |

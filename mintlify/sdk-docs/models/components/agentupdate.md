@@ -9,14 +9,14 @@ import { AgentUpdate } from "syllable-sdk/models/components";
 
 let value: AgentUpdate = {
   name: "<value>",
-  timezone: "Asia/Muscat",
+  timezone: "America/Vancouver",
   type: "<value>",
-  promptId: 616934,
-  customMessageId: 943749,
+  promptId: 568434,
+  customMessageId: 18789,
   languages: [
     "<value>",
   ],
-  id: 681820,
+  id: 617636,
 };
 ```
 
@@ -32,7 +32,7 @@ let value: AgentUpdate = {
 | `promptId`                                                                     | *number*                                                                       | TRUE                                                             | N/A                                                                            |
 | `customMessageId`                                                              | *number*                                                                       | TRUE                                                             | N/A                                                                            |
 | `languages`                                                                    | *string*[]                                                                     | TRUE                                                             | N/A                                                                            |
-| `promptToolDefaults`                                                           | [components.AgentToolDefaults](/sdk-docs/models/components/agenttooldefaults)[] | FALSE                                                             | N/A                                                                            |
-| `toolHeaders`                                                                  | Record                                                      | FALSE                                                             | N/A                                                                            |
-| `variables`                                                                    | Record                                                      | FALSE                                                             | N/A                                                                            |
+| `promptToolDefaults`                                                           | [components.AgentToolDefaults](sdk-docs/models/components/agenttooldefaults)[] | FALSE                                                             | N/A                                                                            |
+| `toolHeaders`                                                                  | Record                                                       | FALSE                                                             | N/A                                                                            |
+| `variables`                                                                    | Record                                                       | FALSE                                                             | N/A                                                                            |
 | `id`                                                                           | *number*                                                                       | TRUE                                                             | The Agent ID                                                                   |
