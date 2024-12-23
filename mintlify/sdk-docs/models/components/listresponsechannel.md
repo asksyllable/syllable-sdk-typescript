@@ -24,7 +24,7 @@ let value: ListResponseChannel = {
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `items`                                                    | [components.Channel](sdk-docs/models/components/channel)[] | TRUE                                         | N/A                                                        |
+| `items`                                                    | [components.Channel](/sdk-docs/models/components/channel)[] | TRUE                                         | N/A                                                        |
 | `page`                                                     | *number*                                                   | TRUE                                         | N/A                                                        |
 | `pageSize`                                                 | *number*                                                   | TRUE                                         | N/A                                                        |
 | `totalPages`                                               | *number*                                                   | FALSE                                         | N/A                                                        |

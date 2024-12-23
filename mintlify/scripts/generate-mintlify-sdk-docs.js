@@ -6,7 +6,7 @@ function getMarkdownFilesSync(dir) {
         const files = readdirSync(dir);
         const markdownFiles = files
             .filter(file => extname(file) === '.md')
-            .map(file => 'sdk-docs/' + dir + '/' + basename(file, '.md'));
+            .map(file => '/sdk-docs/' + dir + '/' + basename(file, '.md'));
         return markdownFiles;
     } catch (err) {
         console.error(`Error reading directory: ${err}`);
@@ -56,19 +56,19 @@ function moveAndUpdateFilesSync(srcDir, destDir) {
                 updatedData = updatedData.replace(/<string, \*string\*>/g, ''); // Remove HTML conflicts
                 updatedData = updatedData.replace(/:heavy_check_mark:/g, 'TRUE'); // Replace :heavy-check-mark: with TRUE
                 updatedData = updatedData.replace(/:heavy_minus_sign:/g, 'FALSE'); // Replace :heavy-minus-sign: with FALSE
-                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/components\/([^\)]+)\.md\)/g, '[$1](sdk-docs/models/components/$2)'); // Update links
-                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/operations\/([^\)]+)\.md\)/g, '[$1](sdk-docs/models/operations/$2)'); // Update links
-                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/errors\/([^\)]+)\.md\)/g, '[$1](sdk-docs/models/errors/$2)'); // Update links
-                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/errors\/([^\)]+)\.md\)/g, '[$1](sdk-docs/models/errors/$2)'); // Update links
-                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/lib\/utils\/([^\)]+)\.md\)/g, '[$1](sdk-docs/lib/utils/$2)'); // Update links
+                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/components\/([^\)]+)\.md\)/g, '[$1](/sdk-docs/models/components/$2)'); // Update links
+                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/operations\/([^\)]+)\.md\)/g, '[$1](/sdk-docs/models/operations/$2)'); // Update links
+                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/errors\/([^\)]+)\.md\)/g, '[$1](/sdk-docs/models/errors/$2)'); // Update links
+                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/models\/errors\/([^\)]+)\.md\)/g, '[$1](/sdk-docs/models/errors/$2)'); // Update links
+                updatedData = updatedData.replace(/\[([^\]]+)\]\(\.\.\/\.\.\/lib\/utils\/([^\)]+)\.md\)/g, '[$1](/sdk-docs/lib/utils/$2)'); // Update links
                 updatedData = updatedData.replace(/<\[any\]\(\.\.\/\.\.\/models\/.*\.md\)/g, 'ANY');// Replace <[any](../../models/.md)> with ANY
 
                 // Special fixes for specific files
                 updatedData = updatedData.replace("**Promise\\<[ReadableStream](../../models/.md)\\>**", "Promise\\<ReadableStream\\>"); // Fix for ReadableStream
                 updatedData = updatedData.replace("**Promise\\<[components.AgentVoice[]](../../models/.md)\\>**", 
-                    "**Promise\\<[components.AgentVoice[]](sdk-docs/models/components/agentvoice)\\>**"); // Fix for AgentVoice
+                    "Promise\\<[components.AgentVoice[]](/sdk-docs/models/components/agentvoice)\\>"); // Fix for AgentVoice
                 updatedData = updatedData.replace("**Promise\\<[components.PromptHistory[]](../../models/.md)\\>**", 
-                    "**Promise\\<[components.PromptHistory[]](sdk-docs/models/components/prompthistory)\\>**"); // Fix for PromptHistory
+                    "**Promise\\<[components.PromptHistory[]](/sdk-docs/models/components/prompthistory)\\>**"); // Fix for PromptHistory
 
                 writeFileSync(destPath, updatedData, 'utf8');
                 console.log(`Moved and updated ${srcPath} to ${destPath}`);
