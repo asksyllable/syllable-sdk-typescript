@@ -9,12 +9,12 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelTargetCreateRequest = {
-  channelId: number | null;
-  agentId: number | null;
-  target: string | null;
-  targetMode: string | null;
-  fallbackTarget: string | null;
-  isTest: boolean | null;
+  channelId: number;
+  agentId: number;
+  target: string;
+  targetMode: string;
+  fallbackTarget?: string | null | undefined;
+  isTest?: boolean | undefined;
 };
 
 /** @internal */
@@ -23,12 +23,12 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  channel_id: z.nullable(z.number().int()),
-  agent_id: z.nullable(z.number().int()),
-  target: z.nullable(z.string()),
-  target_mode: z.nullable(z.string()),
-  fallback_target: z.nullable(z.string()),
-  is_test: z.nullable(z.boolean()),
+  channel_id: z.number().int(),
+  agent_id: z.number().int(),
+  target: z.string(),
+  target_mode: z.string(),
+  fallback_target: z.nullable(z.string()).optional(),
+  is_test: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "channel_id": "channelId",
@@ -41,12 +41,12 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ChannelTargetCreateRequest$Outbound = {
-  channel_id: number | null;
-  agent_id: number | null;
-  target: string | null;
-  target_mode: string | null;
-  fallback_target: string | null;
-  is_test: boolean | null;
+  channel_id: number;
+  agent_id: number;
+  target: string;
+  target_mode: string;
+  fallback_target?: string | null | undefined;
+  is_test: boolean;
 };
 
 /** @internal */
@@ -55,12 +55,12 @@ export const ChannelTargetCreateRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ChannelTargetCreateRequest
 > = z.object({
-  channelId: z.nullable(z.number().int()),
-  agentId: z.nullable(z.number().int()),
-  target: z.nullable(z.string()),
-  targetMode: z.nullable(z.string()),
-  fallbackTarget: z.nullable(z.string()),
-  isTest: z.nullable(z.boolean()),
+  channelId: z.number().int(),
+  agentId: z.number().int(),
+  target: z.string(),
+  targetMode: z.string(),
+  fallbackTarget: z.nullable(z.string()).optional(),
+  isTest: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     channelId: "channel_id",

@@ -8,6 +8,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ToolDetailResponse = {
+  id: number;
   name: string;
   description: string;
   fields: Array<string>;
@@ -19,6 +20,7 @@ export const ToolDetailResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  id: z.number().int(),
   name: z.string(),
   description: z.string(),
   fields: z.array(z.string()),
@@ -26,6 +28,7 @@ export const ToolDetailResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ToolDetailResponse$Outbound = {
+  id: number;
   name: string;
   description: string;
   fields: Array<string>;
@@ -37,6 +40,7 @@ export const ToolDetailResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ToolDetailResponse
 > = z.object({
+  id: z.number().int(),
   name: z.string(),
   description: z.string(),
   fields: z.array(z.string()),

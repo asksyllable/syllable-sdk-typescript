@@ -6,8 +6,9 @@
 import { ToolDetailResponse } from "syllable-sdk/models/components";
 
 let value: ToolDetailResponse = {
+  id: 172951,
   name: "<value>",
-  description: "rotating than optimistic as by summer horde",
+  description: "psst apropos flat",
   fields: [
     "<value>",
   ],
@@ -18,6 +19,7 @@ let value: ToolDetailResponse = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *number*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `description`      | *string*           | :heavy_check_mark: | N/A                |
 | `fields`           | *string*[]         | :heavy_check_mark: | N/A                |

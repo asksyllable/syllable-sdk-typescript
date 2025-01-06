@@ -32,11 +32,14 @@ export class Channels extends ClientSDK {
 
   /**
    * Delete Channel Target
+   *
+   * @remarks
+   * Hard-delete a channel target by ID
    */
   async delete(
     request: operations.ChannelTargetsDeleteRequest,
     options?: RequestOptions,
-  ): Promise<components.ChannelTarget> {
+  ): Promise<any> {
     return unwrapAsync(channelsDelete(
       this,
       request,
