@@ -5,7 +5,7 @@
 ```typescript
 import { DayOfWeek } from "syllable-sdk/models/components";
 
-let value: DayOfWeek = "fr";
+let value: DayOfWeek = "sa";
 ```
 
 ## Values

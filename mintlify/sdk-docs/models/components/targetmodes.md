@@ -1,0 +1,17 @@
+---
+title: 'TargetModes'
+---
+
+## Example Usage
+
+```typescript
+import { TargetModes } from "syllable-sdk/models/components";
+
+let value: TargetModes = "email";
+```
+
+## Values
+
+```typescript
+"voice" | "chat" | "sms" | "email"
+```

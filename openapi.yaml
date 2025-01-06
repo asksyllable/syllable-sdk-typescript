@@ -4,10 +4,10 @@ info:
   description: "\n# Syllable Platform SDK\n\nSyllable SDK gives you the power of awesome AI agentry. \U0001F680\n\n## Overview\n\nThe Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI  \ncapabilities into your communication applications. Whether you're building chatbots, virtual\nassistants, or any other AI-driven solutions, Syllable SDK has got you covered.\n\n## Features\n\n- **Natural Language Processing (NLP)**: Understand and generate human language with ease.\n- **Machine Learning Models**: Leverage pre-trained models or train your own custom models.\n- **Speech Recognition**: Convert speech to text and vice versa.\n- **Data Analytics**: Analyze and visualize data to gain insights.\n- **Integration**: Seamlessly integrate with other services and platforms.\n\n"
   version: "0.0.2"
 servers:
-  - url: "http://localhost:8001"
-    description: "dev server"
-  - url: "http://localhost:8001"
-    description: "dev / port-forwarding server"
+  - url: "https://api.syllable.ai"
+    description: "API server"
+  - url: "https://trial.api.syllable.ai"
+    description: "Trial API server"
 paths:
   "/api/v1/agents/":
     get:
@@ -107,24 +107,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: agent_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     post:
       tags:
         - "agents"
@@ -153,33 +135,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: agent_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.create({
-                name: "<value>",
-                timezone: "Antarctica/Rothera",
-                type: "<value>",
-                promptId: 638424,
-                customMessageId: 417458,
-                languages: [
-                  "<value>",
-                ],
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     put:
       tags:
         - "agents"
@@ -210,36 +165,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: agent_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.update({
-                name: "<value>",
-                timezone: "Europe/Tallinn",
-                type: "<value>",
-                promptId: 597129,
-                customMessageId: 344620,
-                languages: [
-                  "<value>",
-                  "<value>",
-                  "<value>",
-                ],
-                id: 627690,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/agents/{agent_id}":
     get:
       tags:
@@ -267,26 +192,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: agent_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.getById({
-                agentId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     delete:
       tags:
         - "agents"
@@ -324,32 +229,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: agent_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.delete({
-                agentId: 545907,
-                reason: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/agents/voices/available":
     get:
       tags:
         - "agents"
-        - "V1"
       summary: "Get Available Agent Voices"
       description: "Get available agent voices."
       operationId: "agent_get_available_voices"
@@ -364,41 +247,6 @@ paths:
                 title: "Response Agent Get Available Voices"
       security:
         - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: agent_get_available_voices
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.agentGetAvailableVoices();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: agent_get_available_voices
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.agentGetAvailableVoices();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/channels/":
     get:
       tags:
@@ -496,24 +344,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channels_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/agents/test/messages":
     post:
       tags:
@@ -539,30 +369,6 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: send_test_message
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.agents.test.sendTestMessage({
-                serviceName: "<value>",
-                source: "<value>",
-                testId: "<id>",
-                agentId: "<id>",
-                orgName: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/conversations/":
     get:
       tags:
@@ -660,356 +466,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: conversations_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.conversations.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/total_call_volume_by_weekday":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Total Call Volume By Weekday"
-      description: "Get total call volume by weekday."
-      operationId: "total_call_volume_by_weekday"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Total Call Volume By Weekday"
-      security:
-        - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: total_call_volume_by_weekday
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.totalCallVolumeByWeekday();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/get_total_call_volume_by_hour":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Total Call Volume By Hour"
-      description: "Get total call volume by hour."
-      operationId: "get_total_call_volume_by_hour"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Get Total Call Volume By Hour"
-      security:
-        - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: get_total_call_volume_by_hour
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getTotalCallVolumeByHour();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/get_weekly_call_volume_by_weekday":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Weekly Call Volume By Weekday"
-      description: "Get weekly call volume by weekday."
-      operationId: "get_weekly_call_volume_by_weekday"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Get Weekly Call Volume By Weekday"
-      security:
-        - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: get_weekly_call_volume_by_weekday
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getWeeklyCallVolumeByWeekday();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/get_daily_call_volume_by_hour":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Daily Call Volume By Hour"
-      description: "Get daily call volume by hour."
-      operationId: "get_daily_call_volume_by_hour"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Get Daily Call Volume By Hour"
-      security:
-        - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: get_daily_call_volume_by_hour
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getDailyCallVolumeByHour();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/get_monthly_call_volume_by_week":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Monthly Call Volume By Week"
-      description: "Get monthly cal volume by week."
-      operationId: "get_monthly_call_volume_by_week"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Get Monthly Call Volume By Week"
-      security:
-        - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: get_monthly_call_volume_by_week
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getMonthlyCallVolumeByWeek();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/get_monthly_call_volume_by_day":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Monthly Call Volume By Day"
-      description: "Get monthly call volume by day."
-      operationId: "get_monthly_call_volume_by_day"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Get Monthly Call Volume By Day"
-      security:
-        - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: get_monthly_call_volume_by_day
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getMonthlyCallVolumeByDay();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/get_session_summary":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Session Summary"
-      description: "Get session summary data"
-      operationId: "get_session_summary"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "page"
-          in: "query"
-          required: false
-          schema:
-            type: "integer"
-            default: 0
-            title: "Page"
-        - name: "limit"
-          in: "query"
-          required: false
-          schema:
-            type: "integer"
-            default: 100
-            title: "Limit"
-        - name: "start_date"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Start Date"
-        - name: "end_date"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "End Date"
-        - name: "order_by"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Order By"
-        - name: "agent_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "integer"
-              - type: "null"
-            title: "Agent Id"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Get Session Summary"
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: get_session_summary
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getSessionSummary({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  "/api/v1/dashboards/get_agents":
-    get:
-      tags:
-        - "dashboards"
-      summary: "Get Agents"
-      description: "Get list of agents for session summary dropdown"
-      operationId: "get_session_agents"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "object"
-                title: "Response Get Session Agents"
-      security:
-        - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: get_session_agents
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getSessionAgents();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/events/":
     get:
       tags:
@@ -1107,24 +563,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: events_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.events.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/custom_messages/":
     get:
       tags:
@@ -1223,24 +661,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: custom_messages_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.customMessages.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     post:
       tags:
         - "custom_messages"
@@ -1265,27 +685,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: custom_messages_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.customMessages.create({
-                name: "<value>",
-                text: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     put:
       tags:
         - "custom_messages"
@@ -1310,28 +709,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: custom_messages_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.customMessages.update({
-                name: "<value>",
-                text: "<value>",
-                id: 857478,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/custom_messages/{custom_message_id}":
     get:
       tags:
@@ -1359,26 +736,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: custom_message_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.customMessages.getById({
-                customMessageId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     delete:
       tags:
         - "custom_messages"
@@ -1411,27 +768,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: custom_messages_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.customMessages.delete({
-                customMessageId: 545907,
-                reason: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/prompts/":
     get:
       tags:
@@ -1530,24 +866,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: prompts_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.prompts.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     post:
       tags:
         - "prompts"
@@ -1572,32 +890,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: prompts_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.prompts.create({
-                name: "<value>",
-                type: "<value>",
-                llmConfig: {
-                  model: "gpt-4o",
-                  version: "2024-05-13",
-                  apiVersion: "2024-06-01",
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     put:
       tags:
         - "prompts"
@@ -1622,33 +914,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: prompts_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.prompts.update({
-                name: "<value>",
-                type: "<value>",
-                llmConfig: {
-                  model: "gpt-4o",
-                  version: "2024-05-13",
-                  apiVersion: "2024-06-01",
-                },
-                id: 857478,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/prompts/{prompt_id}":
     get:
       tags:
@@ -1676,26 +941,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: prompts_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.prompts.getById({
-                promptId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     delete:
       tags:
         - "prompts"
@@ -1728,27 +973,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: prompts_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.prompts.delete({
-                promptId: 545907,
-                reason: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/prompts/{prompt_id}/history":
     get:
       tags:
@@ -1779,26 +1003,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: prompts_history
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.prompts.promptsHistory({
-                promptId: 627932,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/services/":
     get:
       tags:
@@ -1897,24 +1101,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: service_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.services.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     post:
       tags:
         - "services"
@@ -1938,27 +1124,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: service_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.services.create({
-                name: "<value>",
-                description: "yuck vice between gee ugh ha",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     put:
       tags:
         - "services"
@@ -1982,28 +1147,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: service_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.services.update({
-                name: "<value>",
-                description: "awful underneath retention too mobility char innocently dowse restfully",
-                id: 243447,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/session_labels/{session_label_id}":
     get:
       tags:
@@ -2030,26 +1173,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: session_label_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessionLabels.getById({
-                sessionLabelId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/session_labels/":
     post:
       tags:
@@ -2075,29 +1198,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: session_label_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessionLabels.create({
-                sessionId: 486589,
-                type: "<value>",
-                code: "<value>",
-                userEmail: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     get:
       tags:
         - "session_labels"
@@ -2194,24 +1294,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: session_labels_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessionLabels.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/sessions/":
     get:
       tags:
@@ -2309,24 +1391,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: sessions_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessions.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/sessions/transcript/{session_id}":
     get:
       tags:
@@ -2353,26 +1417,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: session_transcript_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessions.transcript.getById({
-                sessionId: "<id>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/sessions/{session_id}":
     get:
       tags:
@@ -2399,26 +1443,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: session_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessions.getById({
-                sessionId: "<id>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/sessions/recording/{session_id}":
     post:
       tags:
@@ -2445,26 +1469,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: generate_session_recording_urls
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessions.generateSessionRecordingUrls({
-                sessionId: "<id>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/sessions/recording/stream":
     get:
       tags:
@@ -2494,26 +1498,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: session_recording_stream
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessions.sessionRecordingStream({
-                token: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/tools/":
     get:
       tags:
@@ -2612,24 +1596,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: tool_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.tools.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     post:
       tags:
         - "tools"
@@ -2654,27 +1620,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: tool_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.tools.create({
-                name: "<value>",
-                serviceId: 486589,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     put:
       tags:
         - "tools"
@@ -2699,28 +1644,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: tool_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.tools.update({
-                name: "<value>",
-                serviceId: 857478,
-                id: 597129,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/tools/{tool_name}":
     get:
       tags:
@@ -2748,26 +1671,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: tool_get_by_name
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.tools.getByName({
-                toolName: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/channels/available-targets":
     get:
       tags:
@@ -2866,24 +1769,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: available_targets
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.availableTargets({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/channels/targets":
     get:
       tags:
@@ -2981,24 +1866,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/channels/{channel_id}/targets":
     post:
       tags:
@@ -3030,34 +1897,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.create({
-                channelId: 134365,
-                channelTargetCreateRequest: {
-                  channelId: 486589,
-                  agentId: 638424,
-                  target: "<value>",
-                  targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: true,
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/channels/{channel_id}/targets/{target_id}":
     get:
       tags:
@@ -3090,27 +1929,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.getById({
-                channelId: 931598,
-                targetId: 505057,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     put:
       tags:
         - "channels.targets"
@@ -3136,7 +1954,7 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/ChannelTarget"}
+            schema: {"$ref": "#/components/schemas/ChannelTargetUpdateRequest"}
       responses:
         "200":
           description: "Successful Response"
@@ -3148,42 +1966,12 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.targets.update({
-                channelId: 627690,
-                targetId: 488852,
-                channelTarget: {
-                  id: 857478,
-                  channelId: 597129,
-                  channelName: "<value>",
-                  agentId: 344620,
-                  target: "<value>",
-                  targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: false,
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/channels/{channel_id}":
     delete:
       tags:
         - "channels"
       summary: "Delete Channel Target"
+      description: "Hard-delete a channel target by ID"
       operationId: "channel_targets_delete"
       security:
         - APIKeyHeader: []
@@ -3205,38 +1993,16 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+              schema: {}
         "422":
           description: "Validation Error"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: channel_targets_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.channels.delete({
-                channelId: "<id>",
-                targetId: "<id>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/directory_members/":
     get:
       tags:
         - "directory"
-        - "V1"
       summary: "Directory Member List"
       description: "List the existing directory_members"
       operationId: "directory_member_list"
@@ -3331,45 +2097,9 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     post:
       tags:
         - "directory"
-        - "V1"
       summary: "Create Directory Member"
       description: "Create a new member in the directory"
       operationId: "directory_member_create"
@@ -3391,52 +2121,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.create({
-                name: "<value>",
-                type: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.create({
-                name: "<value>",
-                type: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/directory_members/{member_id}":
     get:
       tags:
         - "directory"
-        - "V1"
       summary: "Get Directory Member By Id"
       description: "Get a DirectoryMember by ID."
       operationId: "directory_member_get_by_id"
@@ -3460,49 +2148,9 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.getById({
-                memberId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.getById({
-                memberId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     put:
       tags:
         - "directory"
-        - "V1"
       summary: "Update Directory Member"
       description: "Update a DirectoryMember."
       operationId: "directory_member_update"
@@ -3539,57 +2187,9 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.update({
-                memberId: 857478,
-                directoryMember: {
-                  name: "<value>",
-                  type: "<value>",
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.update({
-                memberId: 857478,
-                directoryMember: {
-                  name: "<value>",
-                  type: "<value>",
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
     delete:
       tags:
         - "directory"
-        - "V1"
       summary: "Delete Directory Member"
       description: "Delete a DirectoryMember."
       operationId: "directory_member_delete"
@@ -3619,50 +2219,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.delete({
-                memberId: 545907,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.delete({
-                memberId: 545907,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/directory_members/upload/":
     put:
       tags:
         - "directory"
-        - "V1"
       summary: "Bulk Load Directory Members"
       description: "Update Directory Members in chunks of 100."
       operationId: "directory_member_bulk_load"
@@ -3692,52 +2252,10 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_bulk_load
-          source: |-
-            import { openAsBlob } from "node:fs";
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.directoryMemberBulkLoad({
-                file: await openAsBlob("example.file"),
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_bulk_load
-          source: |-
-            import { openAsBlob } from "node:fs";
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.directoryMemberBulkLoad({
-                file: await openAsBlob("example.file"),
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   "/api/v1/directory_members/download/":
     get:
       tags:
         - "directory"
-        - "V1"
       summary: "Download Directory Members"
       description: "Download the entire directory as a JSON file."
       operationId: "directory_member_download"
@@ -3751,41 +2269,6 @@ paths:
           description: "Internal Server Error"
       security:
         - APIKeyHeader: []
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_download
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.directoryMemberDownload();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_download
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.directoryMemberDownload();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
 components:
   schemas:
     "Agent":
@@ -4278,29 +2761,20 @@ components:
           type: "integer"
           title: "Id"
         "channel_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Channel Id"
         "channel_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Channel Name"
         "agent_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Agent Id"
+        "agent": {"$ref": "#/components/schemas/DaoChannelTargetAgent"}
         "target":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target"
         "target_mode":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target Mode"
         "fallback_target":
           anyOf:
@@ -4308,42 +2782,46 @@ components:
             - type: "null"
           title: "Fallback Target"
         "is_test":
-          anyOf:
-            - type: "boolean"
-            - type: "null"
+          type: "boolean"
           title: "Is Test"
+          default: false
+        "updated_at":
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Updated At"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
       type: "object"
       required:
         - "id"
         - "channel_id"
         - "channel_name"
         - "agent_id"
+        - "agent"
         - "target"
         - "target_mode"
-        - "fallback_target"
-        - "is_test"
+        - "updated_at"
+        - "last_updated_by"
       title: "ChannelTarget"
+      description: "Class for all Channel Target responses"
     "ChannelTargetCreateRequest":
       properties:
         "channel_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Channel Id"
         "agent_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Agent Id"
         "target":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target"
         "target_mode":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Target Mode"
         "fallback_target":
           anyOf:
@@ -4351,18 +2829,15 @@ components:
             - type: "null"
           title: "Fallback Target"
         "is_test":
-          anyOf:
-            - type: "boolean"
-            - type: "null"
+          type: "boolean"
           title: "Is Test"
+          default: false
       type: "object"
       required:
         - "channel_id"
         - "agent_id"
         - "target"
         - "target_mode"
-        - "fallback_target"
-        - "is_test"
       title: "ChannelTargetCreateRequest"
     "ChannelTargetProperties":
       type: "string"
@@ -4376,6 +2851,40 @@ components:
         - "fallback_target"
         - "is_test"
       title: "ChannelTargetProperties"
+    "ChannelTargetUpdateRequest":
+      properties:
+        "id":
+          type: "integer"
+          title: "Id"
+        "channel_id":
+          type: "integer"
+          title: "Channel Id"
+        "agent_id":
+          type: "integer"
+          title: "Agent Id"
+        "target":
+          type: "string"
+          title: "Target"
+        "target_mode":
+          type: "string"
+          title: "Target Mode"
+        "fallback_target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Fallback Target"
+        "is_test":
+          type: "boolean"
+          title: "Is Test"
+          default: false
+      type: "object"
+      required:
+        - "id"
+        - "channel_id"
+        - "agent_id"
+        - "target"
+        - "target_mode"
+      title: "ChannelTargetUpdateRequest"
     "Conversation":
       properties:
         "timestamp":
@@ -4603,6 +3112,57 @@ components:
         - "text"
         - "id"
       title: "CustomMessageUpdateRequest"
+    "DaoChannelTargetAgent":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+        "description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+        "label":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
+        "type":
+          type: "string"
+          title: "Type"
+        "prompt_id":
+          type: "integer"
+          title: "Prompt Id"
+        "custom_message_id":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Custom Message Id"
+        "timezone":
+          type: "string"
+          title: "Timezone"
+        "id":
+          type: "integer"
+          title: "Id"
+        "updated_at":
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
+      type: "object"
+      required:
+        - "name"
+        - "type"
+        - "prompt_id"
+        - "timezone"
+        - "id"
+        - "updated_at"
+        - "last_updated_by"
+      title: "DaoChannelTargetAgent"
     "DaoCustomMessageRule":
       properties:
         "description":
@@ -4832,6 +3392,27 @@ components:
         - "description"
         - "attributes"
       title: "EventProperties"
+    "Function":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the function/tool call."
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the tool."
+        "parameters":
+          type: "object"
+          title: "Parameters"
+          description: "The JSON Schema of parameters of the function/tool call."
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "parameters"
+      title: "Function"
+      description: "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
     "HTTPValidationError":
       properties:
         "detail":
@@ -4840,6 +3421,35 @@ components:
           title: "Detail"
       type: "object"
       title: "HTTPValidationError"
+    "HttpEndpoint":
+      properties:
+        "url":
+          type: "string"
+          title: "Url"
+          description: "The endpoint URL of the external service to call."
+        "method":
+          type: "string"
+          enum:
+            - "get"
+            - "post"
+          title: "Method"
+          description: "The HTTP method to use for the service call."
+        "argument_location":
+          type: "string"
+          enum:
+            - "body"
+            - "form"
+            - "path"
+            - "query"
+          title: "Argument Location"
+          description: "How to pass the arguments to the request."
+      type: "object"
+      required:
+        - "url"
+        - "method"
+        - "argument_location"
+      title: "HttpEndpoint"
+      description: "The configuration for an HTTP API call."
     "ListResponse_AgentResponse_":
       properties:
         "items":
@@ -5453,6 +4063,57 @@ components:
         - "openai"
       title: "Provider"
       description: "LLM API provider."
+    "SdkInternalTool":
+      properties:
+        "type":
+          type: "string"
+          const: "function"
+          title: "Type"
+          description: "Always `function`."
+          default: "function"
+        "function": {"$ref": "#/components/schemas/Function", "description": "The tool definition including the JSON Schema of its parameters."}
+      type: "object"
+      required:
+        - "function"
+      title: "SdkInternalTool"
+      description: "A tool definition to be used by the OpenAI API."
+    "SdkToolDefinition":
+      properties:
+        "type":
+          anyOf:
+            - type: "string"
+              enum:
+                - "action"
+                - "endpoint"
+                - "context"
+                - "log"
+            - type: "null"
+          title: "Type"
+          description: "The action to take when GPT calls the tool."
+        "tool": {"$ref": "#/components/schemas/SdkInternalTool", "description": "The tool definition to be used by the OpenAI API."}
+        "endpoint":
+          anyOf:
+            - {"$ref": "#/components/schemas/HttpEndpoint"}
+            - type: "null"
+          description: "The configuration for an HTTP API call."
+        "defaults":
+          anyOf:
+            - type: "object"
+            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
+              type: "object"
+            - type: "null"
+          title: "Defaults"
+          description: "The default values for the parameters of the function/tool call."
+        "result":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Result"
+          description: "The optional result of the tool call. Only used for `context` tools."
+      type: "object"
+      required:
+        - "tool"
+      title: "SdkToolDefinition"
     "Service":
       properties:
         "name":
@@ -5903,6 +4564,15 @@ components:
         "org_name":
           type: "string"
           title: "Org Name"
+        "override_timestamp":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Override Timestamp"
+        "session_start":
+          type: "boolean"
+          title: "Session Start"
+          default: false
       type: "object"
       required:
         - "service_name"
@@ -5941,10 +4611,7 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition":
-          type: "object"
-          title: "Definition"
-          description: "The definition of the tool"
+        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
@@ -5962,6 +4629,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "definition"
         - "service_id"
         - "id"
       title: "Tool"
@@ -5971,10 +4639,7 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition":
-          type: "object"
-          title: "Definition"
-          description: "The definition of the tool"
+        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
@@ -5982,10 +4647,14 @@ components:
       type: "object"
       required:
         - "name"
+        - "definition"
         - "service_id"
       title: "ToolCreate"
     "ToolDetailResponse":
       properties:
+        "id":
+          type: "integer"
+          title: "Id"
         "name":
           type: "string"
           title: "Name"
@@ -5999,10 +4668,68 @@ components:
           title: "Fields"
       type: "object"
       required:
+        - "id"
         - "name"
         - "description"
         - "fields"
       title: "ToolDetailResponse"
+    "ToolParameterDefault":
+      properties:
+        "transform": {"$ref": "#/components/schemas/ToolParameterTransform", "description": "The transform to apply to the value before using it as the default."}
+      type: "object"
+      required:
+        - "transform"
+      title: "ToolParameterDefault"
+      description: "The default value for a parameter of the tool call."
+    "ToolParameterTransform":
+      properties:
+        "when":
+          anyOf:
+            - {"$ref": "#/components/schemas/ToolParameterTransformCondition"}
+            - type: "null"
+          description: "Only apply the transform if the condition is met."
+        "action":
+          type: "string"
+          enum:
+            - "default"
+            - "override"
+            - "remove"
+          title: "Action"
+          description: "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
+          default: "default"
+        "format":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Format"
+          description: "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
+      type: "object"
+      title: "ToolParameterTransform"
+      description: "A transform to be applied to the value of a parameter."
+    "ToolParameterTransformCondition":
+      properties:
+        "key":
+          type: "string"
+          title: "Key"
+          description: "The name of the parameter to check."
+        "value":
+          type: "string"
+          title: "Value"
+          description: "The value to check against the parameter."
+        "operator":
+          anyOf:
+            - type: "string"
+              const: "eq"
+            - type: "null"
+          title: "Operator"
+          description: "The operator to use for the comparison."
+          default: "eq"
+      type: "object"
+      required:
+        - "key"
+        - "value"
+      title: "ToolParameterTransformCondition"
+      description: "A condition to be met for a transform to be applied to the value of a parameter."
     "ToolProperties":
       type: "string"
       enum:
@@ -6018,10 +4745,7 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition":
-          type: "object"
-          title: "Definition"
-          description: "The definition of the tool"
+        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
@@ -6033,6 +4757,7 @@ components:
       type: "object"
       required:
         - "name"
+        - "definition"
         - "service_id"
         - "id"
       title: "ToolUpdate"
@@ -6075,8 +4800,6 @@ tags:
     description: "Operations related to conversations"
   - name: "custom_messages"
     description: "Operations related to custom messages"
-  - name: "dashboards"
-    description: "Operations related to system dashboard"
   - name: "directory"
     description: "Operations related to directory"
   - name: "events"

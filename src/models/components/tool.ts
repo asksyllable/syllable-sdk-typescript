@@ -7,21 +7,19 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-/**
- * The definition of the tool
- */
-export type Definition = {};
+import {
+  SDKToolDefinition,
+  SDKToolDefinition$inboundSchema,
+  SDKToolDefinition$Outbound,
+  SDKToolDefinition$outboundSchema,
+} from "./sdktooldefinition.js";
 
 export type Tool = {
   /**
    * The name of the tool
    */
   name: string;
-  /**
-   * The definition of the tool
-   */
-  definition?: Definition | undefined;
+  definition: SDKToolDefinition;
   /**
    * The service this tool belongs to
    */
@@ -37,54 +35,10 @@ export type Tool = {
 };
 
 /** @internal */
-export const Definition$inboundSchema: z.ZodType<
-  Definition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type Definition$Outbound = {};
-
-/** @internal */
-export const Definition$outboundSchema: z.ZodType<
-  Definition$Outbound,
-  z.ZodTypeDef,
-  Definition
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Definition$ {
-  /** @deprecated use `Definition$inboundSchema` instead. */
-  export const inboundSchema = Definition$inboundSchema;
-  /** @deprecated use `Definition$outboundSchema` instead. */
-  export const outboundSchema = Definition$outboundSchema;
-  /** @deprecated use `Definition$Outbound` instead. */
-  export type Outbound = Definition$Outbound;
-}
-
-export function definitionToJSON(definition: Definition): string {
-  return JSON.stringify(Definition$outboundSchema.parse(definition));
-}
-
-export function definitionFromJSON(
-  jsonString: string,
-): SafeParseResult<Definition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Definition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Definition' from JSON`,
-  );
-}
-
-/** @internal */
 export const Tool$inboundSchema: z.ZodType<Tool, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
-    definition: z.lazy(() => Definition$inboundSchema).optional(),
+    definition: SDKToolDefinition$inboundSchema,
     service_id: z.number().int(),
     id: z.number().int(),
     service_name: z.nullable(z.string()).optional(),
@@ -98,7 +52,7 @@ export const Tool$inboundSchema: z.ZodType<Tool, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Tool$Outbound = {
   name: string;
-  definition?: Definition$Outbound | undefined;
+  definition: SDKToolDefinition$Outbound;
   service_id: number;
   id: number;
   service_name?: string | null | undefined;
@@ -108,7 +62,7 @@ export type Tool$Outbound = {
 export const Tool$outboundSchema: z.ZodType<Tool$Outbound, z.ZodTypeDef, Tool> =
   z.object({
     name: z.string(),
-    definition: z.lazy(() => Definition$outboundSchema).optional(),
+    definition: SDKToolDefinition$outboundSchema,
     serviceId: z.number().int(),
     id: z.number().int(),
     serviceName: z.nullable(z.string()).optional(),

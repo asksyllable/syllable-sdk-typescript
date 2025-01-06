@@ -6,7 +6,7 @@
 import { DaoCustomMessageRule } from "syllable-sdk/models/components";
 
 let value: DaoCustomMessageRule = {
-  description: "wherever minus runny rough agreeable beneath unlike vastly",
+  description: "runny rough agreeable beneath unlike vastly but",
   invert: false,
   text: "<value>",
 };

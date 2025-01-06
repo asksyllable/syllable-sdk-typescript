@@ -85,7 +85,7 @@ run();
 
 ## delete
 
-Delete Channel Target
+Hard-delete a channel target by ID
 
 ### Example Usage
 
@@ -153,7 +153,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](../../models/components/channeltarget.md)\>**
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 

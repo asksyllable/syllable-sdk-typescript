@@ -8,8 +8,8 @@ import { CustomMessageResponse } from "syllable-sdk/models/components";
 let value: CustomMessageResponse = {
   name: "<value>",
   text: "<value>",
-  id: 929297,
-  updatedAt: new Date("2022-12-16T03:38:15.811Z"),
+  id: 962189,
+  updatedAt: new Date("2022-09-30T15:12:09.673Z"),
   lastUpdatedBy: "<value>",
 };
 ```

@@ -7,12 +7,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8001",
-      "description": "dev server"
+      "url": "https://api.syllable.ai",
+      "description": "API server"
     },
     {
-      "url": "http://localhost:8001",
-      "description": "dev / port-forwarding server"
+      "url": "https://trial.api.syllable.ai",
+      "description": "Trial API server"
     }
   ],
   "paths": {
@@ -847,334 +847,6 @@
             }
           }
         }
-      }
-    },
-    "/api/v1/dashboards/total_call_volume_by_weekday": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Total Call Volume By Weekday",
-        "description": "Get total call volume by weekday.",
-        "operationId": "total_call_volume_by_weekday",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Total Call Volume By Weekday"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/api/v1/dashboards/get_total_call_volume_by_hour": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Total Call Volume By Hour",
-        "description": "Get total call volume by hour.",
-        "operationId": "get_total_call_volume_by_hour",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Get Total Call Volume By Hour"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/api/v1/dashboards/get_weekly_call_volume_by_weekday": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Weekly Call Volume By Weekday",
-        "description": "Get weekly call volume by weekday.",
-        "operationId": "get_weekly_call_volume_by_weekday",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Get Weekly Call Volume By Weekday"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/api/v1/dashboards/get_daily_call_volume_by_hour": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Daily Call Volume By Hour",
-        "description": "Get daily call volume by hour.",
-        "operationId": "get_daily_call_volume_by_hour",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Get Daily Call Volume By Hour"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/api/v1/dashboards/get_monthly_call_volume_by_week": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Monthly Call Volume By Week",
-        "description": "Get monthly cal volume by week.",
-        "operationId": "get_monthly_call_volume_by_week",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Get Monthly Call Volume By Week"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/api/v1/dashboards/get_monthly_call_volume_by_day": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Monthly Call Volume By Day",
-        "description": "Get monthly call volume by day.",
-        "operationId": "get_monthly_call_volume_by_day",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Get Monthly Call Volume By Day"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
-      }
-    },
-    "/api/v1/dashboards/get_session_summary": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Session Summary",
-        "description": "Get session summary data",
-        "operationId": "get_session_summary",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 0,
-              "title": "Page"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 100,
-              "title": "Limit"
-            }
-          },
-          {
-            "name": "start_date",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Start Date"
-            }
-          },
-          {
-            "name": "end_date",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "End Date"
-            }
-          },
-          {
-            "name": "order_by",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Order By"
-            }
-          },
-          {
-            "name": "agent_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "integer"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Agent Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Get Session Summary"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/dashboards/get_agents": {
-      "get": {
-        "tags": [
-          "V1",
-          "dashboards"
-        ],
-        "summary": "Get Agents",
-        "description": "Get list of agents for session summary dropdown",
-        "operationId": "get_session_agents",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Response Get Session Agents"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
       }
     },
     "/api/v1/events/": {
@@ -3904,7 +3576,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChannelTarget"
+                "$ref": "#/components/schemas/ChannelTargetUpdateRequest"
               }
             }
           }
@@ -3940,6 +3612,7 @@
           "V1"
         ],
         "summary": "Delete Channel Target",
+        "description": "Hard-delete a channel target by ID",
         "operationId": "channel_targets_delete",
         "security": [
           {
@@ -3971,9 +3644,7 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
-                }
+                "schema": {}
               }
             }
           },
@@ -5249,58 +4920,26 @@
             "title": "Id"
           },
           "channel_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Channel Id"
           },
           "channel_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Channel Name"
           },
           "agent_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Agent Id"
           },
+          "agent": {
+            "$ref": "#/components/schemas/DaoChannelTargetAgent"
+          },
           "target": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target"
           },
           "target_mode": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target Mode"
           },
           "fallback_target": {
@@ -5315,15 +4954,32 @@
             "title": "Fallback Target"
           },
           "is_test": {
+            "type": "boolean",
+            "title": "Is Test",
+            "default": false
+          },
+          "updated_at": {
             "anyOf": [
               {
-                "type": "boolean"
+                "type": "string",
+                "format": "date-time"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Is Test"
+            "title": "Updated At"
+          },
+          "last_updated_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated By"
           }
         },
         "type": "object",
@@ -5332,57 +4988,31 @@
           "channel_id",
           "channel_name",
           "agent_id",
+          "agent",
           "target",
           "target_mode",
-          "fallback_target",
-          "is_test"
+          "updated_at",
+          "last_updated_by"
         ],
-        "title": "ChannelTarget"
+        "title": "ChannelTarget",
+        "description": "Class for all Channel Target responses"
       },
       "ChannelTargetCreateRequest": {
         "properties": {
           "channel_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Channel Id"
           },
           "agent_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Agent Id"
           },
           "target": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target"
           },
           "target_mode": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Target Mode"
           },
           "fallback_target": {
@@ -5397,15 +5027,9 @@
             "title": "Fallback Target"
           },
           "is_test": {
-            "anyOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Is Test"
+            "type": "boolean",
+            "title": "Is Test",
+            "default": false
           }
         },
         "type": "object",
@@ -5413,9 +5037,7 @@
           "channel_id",
           "agent_id",
           "target",
-          "target_mode",
-          "fallback_target",
-          "is_test"
+          "target_mode"
         ],
         "title": "ChannelTargetCreateRequest"
       },
@@ -5432,6 +5054,55 @@
           "is_test"
         ],
         "title": "ChannelTargetProperties"
+      },
+      "ChannelTargetUpdateRequest": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "channel_id": {
+            "type": "integer",
+            "title": "Channel Id"
+          },
+          "agent_id": {
+            "type": "integer",
+            "title": "Agent Id"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "target_mode": {
+            "type": "string",
+            "title": "Target Mode"
+          },
+          "fallback_target": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fallback Target"
+          },
+          "is_test": {
+            "type": "boolean",
+            "title": "Is Test",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "channel_id",
+          "agent_id",
+          "target",
+          "target_mode"
+        ],
+        "title": "ChannelTargetUpdateRequest"
       },
       "Conversation": {
         "properties": {
@@ -5789,6 +5460,90 @@
           "id"
         ],
         "title": "CustomMessageUpdateRequest"
+      },
+      "DaoChannelTargetAgent": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "prompt_id": {
+            "type": "integer",
+            "title": "Prompt Id"
+          },
+          "custom_message_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Message Id"
+          },
+          "timezone": {
+            "type": "string",
+            "title": "Timezone"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "last_updated_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated By"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "prompt_id",
+          "timezone",
+          "id",
+          "updated_at",
+          "last_updated_by"
+        ],
+        "title": "DaoChannelTargetAgent"
       },
       "DaoCustomMessageRule": {
         "properties": {
@@ -6194,6 +5949,33 @@
         ],
         "title": "EventProperties"
       },
+      "Function": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the function/tool call."
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the tool."
+          },
+          "parameters": {
+            "type": "object",
+            "title": "Parameters",
+            "description": "The JSON Schema of parameters of the function/tool call."
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "parameters"
+        ],
+        "title": "Function",
+        "description": "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -6206,6 +5988,43 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "HttpEndpoint": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "description": "The endpoint URL of the external service to call."
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "get",
+              "post"
+            ],
+            "title": "Method",
+            "description": "The HTTP method to use for the service call."
+          },
+          "argument_location": {
+            "type": "string",
+            "enum": [
+              "body",
+              "form",
+              "path",
+              "query"
+            ],
+            "title": "Argument Location",
+            "description": "How to pass the arguments to the request."
+          }
+        },
+        "type": "object",
+        "required": [
+          "url",
+          "method",
+          "argument_location"
+        ],
+        "title": "HttpEndpoint",
+        "description": "The configuration for an HTTP API call."
       },
       "ListResponse_AgentResponse_": {
         "properties": {
@@ -7256,6 +7075,99 @@
         "title": "Provider",
         "description": "LLM API provider."
       },
+      "SdkInternalTool": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "function",
+            "title": "Type",
+            "description": "Always `function`.",
+            "default": "function"
+          },
+          "function": {
+            "$ref": "#/components/schemas/Function",
+            "description": "The tool definition including the JSON Schema of its parameters."
+          }
+        },
+        "type": "object",
+        "required": [
+          "function"
+        ],
+        "title": "SdkInternalTool",
+        "description": "A tool definition to be used by the OpenAI API."
+      },
+      "SdkToolDefinition": {
+        "properties": {
+          "type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "action",
+                  "endpoint",
+                  "context",
+                  "log"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type",
+            "description": "The action to take when GPT calls the tool."
+          },
+          "tool": {
+            "$ref": "#/components/schemas/SdkInternalTool",
+            "description": "The tool definition to be used by the OpenAI API."
+          },
+          "endpoint": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HttpEndpoint"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The configuration for an HTTP API call."
+          },
+          "defaults": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/ToolParameterDefault"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Defaults",
+            "description": "The default values for the parameters of the function/tool call."
+          },
+          "result": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result",
+            "description": "The optional result of the tool call. Only used for `context` tools."
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool"
+        ],
+        "title": "SdkToolDefinition"
+      },
       "Service": {
         "properties": {
           "name": {
@@ -7997,6 +7909,22 @@
           "org_name": {
             "type": "string",
             "title": "Org Name"
+          },
+          "override_timestamp": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Override Timestamp"
+          },
+          "session_start": {
+            "type": "boolean",
+            "title": "Session Start",
+            "default": false
           }
         },
         "type": "object",
@@ -8049,8 +7977,7 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "type": "object",
-            "title": "Definition",
+            "$ref": "#/components/schemas/SdkToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -8079,6 +8006,7 @@
         "type": "object",
         "required": [
           "name",
+          "definition",
           "service_id",
           "id"
         ],
@@ -8092,8 +8020,7 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "type": "object",
-            "title": "Definition",
+            "$ref": "#/components/schemas/SdkToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -8105,12 +8032,17 @@
         "type": "object",
         "required": [
           "name",
+          "definition",
           "service_id"
         ],
         "title": "ToolCreate"
       },
       "ToolDetailResponse": {
         "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
           "name": {
             "type": "string",
             "title": "Name"
@@ -8129,11 +8061,102 @@
         },
         "type": "object",
         "required": [
+          "id",
           "name",
           "description",
           "fields"
         ],
         "title": "ToolDetailResponse"
+      },
+      "ToolParameterDefault": {
+        "properties": {
+          "transform": {
+            "$ref": "#/components/schemas/ToolParameterTransform",
+            "description": "The transform to apply to the value before using it as the default."
+          }
+        },
+        "type": "object",
+        "required": [
+          "transform"
+        ],
+        "title": "ToolParameterDefault",
+        "description": "The default value for a parameter of the tool call."
+      },
+      "ToolParameterTransform": {
+        "properties": {
+          "when": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ToolParameterTransformCondition"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Only apply the transform if the condition is met."
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "default",
+              "override",
+              "remove"
+            ],
+            "title": "Action",
+            "description": "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.",
+            "default": "default"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Format",
+            "description": "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
+          }
+        },
+        "type": "object",
+        "title": "ToolParameterTransform",
+        "description": "A transform to be applied to the value of a parameter."
+      },
+      "ToolParameterTransformCondition": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key",
+            "description": "The name of the parameter to check."
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "The value to check against the parameter."
+          },
+          "operator": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "eq"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operator",
+            "description": "The operator to use for the comparison.",
+            "default": "eq"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "value"
+        ],
+        "title": "ToolParameterTransformCondition",
+        "description": "A condition to be met for a transform to be applied to the value of a parameter."
       },
       "ToolProperties": {
         "type": "string",
@@ -8154,8 +8177,7 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "type": "object",
-            "title": "Definition",
+            "$ref": "#/components/schemas/SdkToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -8172,6 +8194,7 @@
         "type": "object",
         "required": [
           "name",
+          "definition",
           "service_id",
           "id"
         ],
@@ -8243,10 +8266,6 @@
     {
       "name": "custom_messages",
       "description": "Operations related to custom messages"
-    },
-    {
-      "name": "dashboards",
-      "description": "Operations related to system dashboard"
     },
     {
       "name": "directory",

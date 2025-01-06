@@ -130,23 +130,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: agent_get_available_voices
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.agentGetAvailableVoices();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/agents/{agent_id}"]["delete"]
     update:
       x-codeSamples:
@@ -289,14 +272,12 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.create({
-                channelId: 134365,
+                channelId: 417458,
                 channelTargetCreateRequest: {
                   channelId: 486589,
                   agentId: 638424,
                   target: "<value>",
                   targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: true,
                 },
               });
 
@@ -342,17 +323,14 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.update({
-                channelId: 627690,
-                targetId: 488852,
-                channelTarget: {
+                channelId: 991464,
+                targetId: 627690,
+                channelTargetUpdateRequest: {
                   id: 857478,
                   channelId: 597129,
-                  channelName: "<value>",
                   agentId: 344620,
                   target: "<value>",
                   targetMode: "<value>",
-                  fallbackTarget: "<value>",
-                  isTest: false,
                 },
               });
 
@@ -493,166 +471,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/dashboards/get_agents"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_session_agents
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getSessionAgents();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/get_daily_call_volume_by_hour"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_daily_call_volume_by_hour
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getDailyCallVolumeByHour();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_day"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_monthly_call_volume_by_day
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getMonthlyCallVolumeByDay();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/get_monthly_call_volume_by_week"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_monthly_call_volume_by_week
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getMonthlyCallVolumeByWeek();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/get_session_summary"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_session_summary
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getSessionSummary({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/get_total_call_volume_by_hour"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_total_call_volume_by_hour
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getTotalCallVolumeByHour();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/get_weekly_call_volume_by_weekday"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_weekly_call_volume_by_weekday
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.getWeeklyCallVolumeByWeekday();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/total_call_volume_by_weekday"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: total_call_volume_by_weekday
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.totalCallVolumeByWeekday();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/directory_members/"]["get"]
     update:
       x-codeSamples:
@@ -667,23 +485,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.directory.list({});
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_list
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.list({});
 
               // Handle the result
               console.log(result);
@@ -713,26 +514,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: directory_member_create
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.create({
-                name: "<value>",
-                type: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/directory_members/download/"]["get"]
     update:
       x-codeSamples:
@@ -747,23 +528,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.directory.directoryMemberDownload();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_download
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.directoryMemberDownload();
 
               // Handle the result
               console.log(result);
@@ -785,26 +549,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.directory.directoryMemberBulkLoad({
-                file: await openAsBlob("example.file"),
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_bulk_load
-          source: |-
-            import { openAsBlob } from "node:fs";
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.directoryMemberBulkLoad({
                 file: await openAsBlob("example.file"),
               });
 
@@ -835,25 +579,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: directory_member_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.delete({
-                memberId: 545907,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/directory_members/{member_id}"]["get"]
     update:
       x-codeSamples:
@@ -876,25 +601,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: directory_member_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.getById({
-                memberId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/directory_members/{member_id}"]["put"]
     update:
       x-codeSamples:
@@ -909,29 +615,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.directory.update({
-                memberId: 857478,
-                directoryMember: {
-                  name: "<value>",
-                  type: "<value>",
-                },
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: directory_member_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.update({
                 memberId: 857478,
                 directoryMember: {
                   name: "<value>",
@@ -1385,7 +1068,16 @@ actions:
             async function run() {
               const result = await syllableSDK.tools.create({
                 name: "<value>",
-                serviceId: 486589,
+                definition: {
+                  tool: {
+                    function: {
+                      name: "<value>",
+                      description: "yuck vice between gee ugh ha",
+                      parameters: {},
+                    },
+                  },
+                },
+                serviceId: 920994,
               });
 
               // Handle the result
@@ -1408,8 +1100,17 @@ actions:
             async function run() {
               const result = await syllableSDK.tools.update({
                 name: "<value>",
-                serviceId: 857478,
-                id: 597129,
+                definition: {
+                  tool: {
+                    function: {
+                      name: "<value>",
+                      description: "awful underneath retention too mobility char innocently dowse restfully",
+                      parameters: {},
+                    },
+                  },
+                },
+                serviceId: 243447,
+                id: 265006,
               });
 
               // Handle the result

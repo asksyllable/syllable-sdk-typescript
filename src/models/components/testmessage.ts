@@ -21,6 +21,8 @@ export type TestMessage = {
   testId: string;
   agentId: string;
   orgName: string;
+  overrideTimestamp?: string | null | undefined;
+  sessionStart?: boolean | undefined;
 };
 
 /** @internal */
@@ -35,12 +37,16 @@ export const TestMessage$inboundSchema: z.ZodType<
   test_id: z.string(),
   agent_id: z.string(),
   org_name: z.string(),
+  override_timestamp: z.nullable(z.string()).optional(),
+  session_start: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "service_name": "serviceName",
     "test_id": "testId",
     "agent_id": "agentId",
     "org_name": "orgName",
+    "override_timestamp": "overrideTimestamp",
+    "session_start": "sessionStart",
   });
 });
 
@@ -52,6 +58,8 @@ export type TestMessage$Outbound = {
   test_id: string;
   agent_id: string;
   org_name: string;
+  override_timestamp?: string | null | undefined;
+  session_start: boolean;
 };
 
 /** @internal */
@@ -66,12 +74,16 @@ export const TestMessage$outboundSchema: z.ZodType<
   testId: z.string(),
   agentId: z.string(),
   orgName: z.string(),
+  overrideTimestamp: z.nullable(z.string()).optional(),
+  sessionStart: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     serviceName: "service_name",
     testId: "test_id",
     agentId: "agent_id",
     orgName: "org_name",
+    overrideTimestamp: "override_timestamp",
+    sessionStart: "session_start",
   });
 });
 

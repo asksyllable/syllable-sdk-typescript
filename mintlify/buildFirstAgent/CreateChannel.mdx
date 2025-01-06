@@ -1,0 +1,22 @@
+---
+title: "Create a channel"
+icon: "plug"
+---
+
+A channel is how people will communicate with your Agent. As of today there are two channel modes: voice or web. Voice lets an Agent communicate through speech, and web lets an Agent communicate through text. As of today, an agent can only have one channel. 
+
+### Channel configuration
+
+![](/images/create_channel.jpg)
+
+* **Mode:** Select whether this is a voice Agent that speaks, or whether it’s a web Agent that communicates through text
+
+* **Channel service:** Channel service provides the service for a given mode. For example Twilio is a common channel service for telephony channels. As of today you must use one of the default services provided. 
+
+* **Channel target:** Phone numbers associated with each service for voice. 
+
+* **Fallback (optional):** In the event your primary channel is not available, set a fallback phone number if mode is set to voice, or a fallback chat option if mode is set to web 
+
+* **Agent:** Select the agent you wish to associate with this channel. If you haven’t already created an Agent, you won’t be able to select one at this point. 
+
+* **Test:** A channel with test turned on will label all data that goes through that channel as 'test'. These sessions will not show up in any dashboards and data and will be labeled as test, which means you can filter them out in conversations&#x20;

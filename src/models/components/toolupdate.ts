@@ -7,21 +7,19 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-/**
- * The definition of the tool
- */
-export type ToolUpdateDefinition = {};
+import {
+  SDKToolDefinition,
+  SDKToolDefinition$inboundSchema,
+  SDKToolDefinition$Outbound,
+  SDKToolDefinition$outboundSchema,
+} from "./sdktooldefinition.js";
 
 export type ToolUpdate = {
   /**
    * The name of the tool
    */
   name: string;
-  /**
-   * The definition of the tool
-   */
-  definition?: ToolUpdateDefinition | undefined;
+  definition: SDKToolDefinition;
   /**
    * The service this tool belongs to
    */
@@ -33,61 +31,13 @@ export type ToolUpdate = {
 };
 
 /** @internal */
-export const ToolUpdateDefinition$inboundSchema: z.ZodType<
-  ToolUpdateDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ToolUpdateDefinition$Outbound = {};
-
-/** @internal */
-export const ToolUpdateDefinition$outboundSchema: z.ZodType<
-  ToolUpdateDefinition$Outbound,
-  z.ZodTypeDef,
-  ToolUpdateDefinition
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolUpdateDefinition$ {
-  /** @deprecated use `ToolUpdateDefinition$inboundSchema` instead. */
-  export const inboundSchema = ToolUpdateDefinition$inboundSchema;
-  /** @deprecated use `ToolUpdateDefinition$outboundSchema` instead. */
-  export const outboundSchema = ToolUpdateDefinition$outboundSchema;
-  /** @deprecated use `ToolUpdateDefinition$Outbound` instead. */
-  export type Outbound = ToolUpdateDefinition$Outbound;
-}
-
-export function toolUpdateDefinitionToJSON(
-  toolUpdateDefinition: ToolUpdateDefinition,
-): string {
-  return JSON.stringify(
-    ToolUpdateDefinition$outboundSchema.parse(toolUpdateDefinition),
-  );
-}
-
-export function toolUpdateDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<ToolUpdateDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ToolUpdateDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ToolUpdateDefinition' from JSON`,
-  );
-}
-
-/** @internal */
 export const ToolUpdate$inboundSchema: z.ZodType<
   ToolUpdate,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: z.string(),
-  definition: z.lazy(() => ToolUpdateDefinition$inboundSchema).optional(),
+  definition: SDKToolDefinition$inboundSchema,
   service_id: z.number().int(),
   id: z.number().int(),
 }).transform((v) => {
@@ -99,7 +49,7 @@ export const ToolUpdate$inboundSchema: z.ZodType<
 /** @internal */
 export type ToolUpdate$Outbound = {
   name: string;
-  definition?: ToolUpdateDefinition$Outbound | undefined;
+  definition: SDKToolDefinition$Outbound;
   service_id: number;
   id: number;
 };
@@ -111,7 +61,7 @@ export const ToolUpdate$outboundSchema: z.ZodType<
   ToolUpdate
 > = z.object({
   name: z.string(),
-  definition: z.lazy(() => ToolUpdateDefinition$outboundSchema).optional(),
+  definition: SDKToolDefinition$outboundSchema,
   serviceId: z.number().int(),
   id: z.number().int(),
 }).transform((v) => {
