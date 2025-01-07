@@ -33,7 +33,7 @@ describe('Syllable SDK Contract test suite', () => {
                 const prompt = generateFake('prompt');
                 const promptResult = await sdk.prompts.create(prompt);
                 const message = generateFake('customMessage');
-                delete message.rules[0].days_of_week
+                delete message.rules[0].daysOfWeek
                 message.rules[0].date = new Date().toJSON().slice(0, 10);
                 const messageResult = await sdk.customMessages.create(message);
                 const agent = generateFake('agent');
@@ -48,7 +48,7 @@ describe('Syllable SDK Contract test suite', () => {
                 const prompt = generateFake('prompt');
                 const promptResult = await sdk.prompts.create(prompt);
                 const message = generateFake('customMessage');
-                delete message.rules[0].days_of_week
+                delete message.rules[0].daysOfWeek
                 message.rules[0].date = new Date().toJSON().slice(0, 10);
                 const messageResult = await sdk.customMessages.create(message);
                 const agent = generateFake('agent');
@@ -70,7 +70,7 @@ describe('Syllable SDK Contract test suite', () => {
                 const prompt = generateFake('prompt');
                 const promptResult = await sdk.prompts.create(prompt);
                 const message = generateFake('customMessage');
-                delete message.rules[0].days_of_week
+                delete message.rules[0].daysOfWeek
                 message.rules[0].date = new Date().toJSON().slice(0, 10);
                 const messageResult = await sdk.customMessages.create(message);
                 const agent = generateFake('agent');
@@ -88,7 +88,7 @@ describe('Syllable SDK Contract test suite', () => {
                 const prompt = generateFake('prompt');
                 const promptResult = await sdk.prompts.create(prompt);
                 const message = generateFake('customMessage');
-                delete message.rules[0].days_of_week
+                delete message.rules[0].daysOfWeek
                 message.rules[0].date = new Date().toJSON().slice(0, 10);
                 const messageResult = await sdk.customMessages.create(message);
                 const agent = generateFake('agent');
