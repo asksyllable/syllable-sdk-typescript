@@ -1,5 +1,5 @@
 import { SyllableSDK } from "../../../src/index.ts"
-import { randAirportCode, randParagraph, randPhrase } from '@ngneat/falso';
+import { randAirportCode, randNumber, randParagraph, randPhrase } from '@ngneat/falso';
 import { camelCase, snakeCase, isArray, transform, isObject, get } from "lodash"
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
@@ -131,7 +131,7 @@ export function validateResponse(modelType, op, response, responseCode) {
 function createCustomMessage(options) {
     const message = {
         "type": "greeting",
-        "name": `${options.prefix}${randPhrase()}`,
+        "name": `${options.prefix}${randPhrase()} ${randNumber()}`,
         "text": randParagraph(),
         "label": "test",
         "rules": [
@@ -152,7 +152,7 @@ function createCustomMessage(options) {
 
 function createPrompt(options) {
     const prompt = {
-        "name": `${options.prefix} ${randPhrase()} ${randPhrase()} ${randAirportCode()}`,
+        "name": `${options.prefix} ${randPhrase()} ${randPhrase()} ${randNumber()}}`,
         "description": randParagraph(),
         "type": "prompt_v1",
         "context": "You know everything about macos releases. You know their code names and release dates. You will answer questions like when was macos lion was released and what is the latest macos name, etc",
@@ -173,7 +173,7 @@ function createPrompt(options) {
 
 function createAgent(options) {
     const agent = {
-        "name": `${options.prefix} ${randPhrase()} ${randPhrase()}`,
+        "name": `${options.prefix} ${randPhrase()} ${randPhrase()} ${randNumber()}`,
         "description": randParagraph(),
         "label": "test",
         "timezone": "America/New_York",
