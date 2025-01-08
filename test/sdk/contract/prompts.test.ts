@@ -16,7 +16,7 @@ afterAll(async () => {
     }
 })
 
-describe.skip('Syllable SDK Contract test suite', () => {
+describe('Syllable SDK Contract test suite', () => {
     describe('prompts', () => {
         describe('create', () => {
             it('should create a prompt', async() => {

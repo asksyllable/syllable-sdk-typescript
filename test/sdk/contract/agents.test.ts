@@ -9,18 +9,18 @@ beforeAll(async () => {
 
 afterAll(async () => {
     for (const agent of createdAgents) {
+        const result = await sdk.agents.delete({
+            agentId: agent.id,
+            reason: 'was a created by a test'
+        })
+    }
+    for (const agent of createdAgents) {
         const promptResult = await sdk.prompts.delete({
             promptId: agent.promptId,
             reason: 'was a created by a test'
         })
         const customMessageResult = await sdk.customMessages.delete({
             customMessageId: agent.customMessageId,
-            reason: 'was a created by a test'
-        })
-    }
-    for (const agent of createdAgents) {
-        const result = await sdk.agents.delete({
-            agentId: agent.id,
             reason: 'was a created by a test'
         })
     }
@@ -98,7 +98,15 @@ describe('Syllable SDK Contract test suite', () => {
                 const deleteResult = await sdk.agents.delete({
                     agentId: result.id,
                     reason: 'created by a test'
-                });
+                })
+                await sdk.prompts.delete({
+                    promptId: agent.promptId,
+                    reason: 'was a created by a test'
+                })
+                await sdk.customMessages.delete({
+                    customMessageId: agent.customMessageId,
+                    reason: 'was a created by a test'
+                })
             })
         })
     })
