@@ -14,6 +14,7 @@ export const ChannelTargetProperties = {
   TargetMode: "target_mode",
   FallbackTarget: "fallback_target",
   IsTest: "is_test",
+  UpdatedAt: "updated_at",
 } as const;
 export type ChannelTargetProperties = ClosedEnum<
   typeof ChannelTargetProperties

@@ -30,6 +30,7 @@ export * from "./custommessageresponse.js";
 export * from "./custommessageupdaterequest.js";
 export * from "./daochanneltargetagent.js";
 export * from "./daocustommessagerule.js";
+export * from "./dashboard.js";
 export * from "./dayofweek.js";
 export * from "./directoryextension.js";
 export * from "./directorymember.js";

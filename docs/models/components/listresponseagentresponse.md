@@ -33,7 +33,7 @@ let value: ListResponseAgentResponse = {
         "key": "<value>",
       },
       id: 602763,
-      updatedAt: new Date("2023-08-21T04:36:26.084Z"),
+      updatedAt: new Date("2024-08-20T04:36:26.084Z"),
       lastUpdatedBy: "<value>",
       prompt: {
         name: "<value>",

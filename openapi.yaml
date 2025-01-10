@@ -2269,6 +2269,70 @@ paths:
           description: "Internal Server Error"
       security:
         - APIKeyHeader: []
+  "/api/v1/dashboards/session_events":
+    post:
+      tags:
+        - "dashboards"
+        - "V1"
+      summary: "Post Session Events"
+      description: "METHOD: POST\nURL: /dashboard/session_events\nARGUMENTS: None\nRETURNS: Dashboard info for embedding"
+      operationId: "post_session_events_dashboard"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Dashboard"}
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/session_summary":
+    post:
+      tags:
+        - "dashboards"
+        - "V1"
+      summary: "Post Session Summary"
+      description: "METHOD: POST\nURL: /dashboard/session_summary\nARGUMENTS: None\nRETURNS: Dashboard info for embedding"
+      operationId: "post_session_summary_dashboard"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Dashboard"}
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/session_transfers":
+    post:
+      tags:
+        - "dashboards"
+        - "V1"
+      summary: "Post Session Transfers"
+      description: "METHOD: POST\nURL: /dashboard/session_transfers\nARGUMENTS: None\nRETURNS: Dashboard info for embedding"
+      operationId: "post_session_transfers_dashboard"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Dashboard"}
+      security:
+        - APIKeyHeader: []
+  "/api/v1/dashboards/sessions":
+    post:
+      tags:
+        - "dashboards"
+        - "V1"
+      summary: "Post Sessions"
+      description: "METHOD: POST\nURL: /dashboard/sessions\nARGUMENTS: None\nRETURNS: Dashboard info for embedding"
+      operationId: "post_sessions_dashboard"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/Dashboard"}
+      security:
+        - APIKeyHeader: []
 components:
   schemas:
     "Agent":
@@ -2850,6 +2914,7 @@ components:
         - "target_mode"
         - "fallback_target"
         - "is_test"
+        - "updated_at"
       title: "ChannelTargetProperties"
     "ChannelTargetUpdateRequest":
       properties:
@@ -3211,6 +3276,27 @@ components:
         - "invert"
         - "text"
       title: "DaoCustomMessageRule"
+    "Dashboard":
+      properties:
+        "embedded_id":
+          type: "string"
+          title: "Embedded Id"
+        "guest_token":
+          type: "string"
+          title: "Guest Token"
+        "name":
+          type: "string"
+          title: "Name"
+        "superset_url":
+          type: "string"
+          title: "Superset Url"
+      type: "object"
+      required:
+        - "embedded_id"
+        - "guest_token"
+        - "name"
+        - "superset_url"
+      title: "Dashboard"
     "DayOfWeek":
       type: "string"
       enum:
@@ -4683,11 +4769,6 @@ components:
       description: "The default value for a parameter of the tool call."
     "ToolParameterTransform":
       properties:
-        "when":
-          anyOf:
-            - {"$ref": "#/components/schemas/ToolParameterTransformCondition"}
-            - type: "null"
-          description: "Only apply the transform if the condition is met."
         "action":
           type: "string"
           enum:
@@ -4697,6 +4778,17 @@ components:
           title: "Action"
           description: "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
           default: "default"
+        "when":
+          anyOf:
+            - {"$ref": "#/components/schemas/ToolParameterTransformCondition"}
+            - type: "null"
+          description: "Only apply the transform if the condition is met."
+        "value":
+          anyOf:
+            - {}
+            - type: "null"
+          title: "Value"
+          description: "The default value to use for the parameter."
         "format":
           anyOf:
             - type: "string"
@@ -4705,7 +4797,7 @@ components:
           description: "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
       type: "object"
       title: "ToolParameterTransform"
-      description: "A transform to be applied to the value of a parameter."
+      description: "A transform to be applied to the value of a parameter.\n\nEither `value` or `format` must be set:\n- `value` is any arbitrary value: string, list or dictionary.\n- `format` is a string composed of other parameters or context variables."
     "ToolParameterTransformCondition":
       properties:
         "key":
@@ -4800,6 +4892,8 @@ tags:
     description: "Operations related to conversations"
   - name: "custom_messages"
     description: "Operations related to custom messages"
+  - name: "dashboards"
+    description: "Operations related to dashboards"
   - name: "directory"
     description: "Operations related to directory"
   - name: "events"
