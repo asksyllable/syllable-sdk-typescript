@@ -9,7 +9,7 @@ let value: CustomMessageResponse = {
   name: "<value>",
   text: "<value>",
   id: 962189,
-  updatedAt: new Date("2022-09-30T15:12:09.673Z"),
+  updatedAt: new Date("2023-09-30T15:12:09.673Z"),
   lastUpdatedBy: "<value>",
 };
 ```

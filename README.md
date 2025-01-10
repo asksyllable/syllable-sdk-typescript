@@ -164,6 +164,13 @@ run();
 * [getById](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 * [delete](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
 
+### [dashboards](docs/sdks/dashboards/README.md)
+
+* [postSessionEventsDashboard](docs/sdks/dashboards/README.md#postsessioneventsdashboard) - Post Session Events
+* [postSessionSummaryDashboard](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary
+* [postSessionTransfersDashboard](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers
+* [postSessionsDashboard](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions
+
 ### [directory](docs/sdks/directory/README.md)
 
 * [list](docs/sdks/directory/README.md#list) - Directory Member List
@@ -218,6 +225,13 @@ run();
 * [update](docs/sdks/tools/README.md#update) - Update Tool
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
 
+### [v1](docs/sdks/v1/README.md)
+
+* [postSessionEventsDashboard](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
+* [postSessionSummaryDashboard](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
+* [postSessionTransfersDashboard](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
+* [postSessionsDashboard](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -256,6 +270,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customMessagesGetById`](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 - [`customMessagesList`](docs/sdks/custommessages/README.md#list) - Custom Messages List
 - [`customMessagesUpdate`](docs/sdks/custommessages/README.md#update) - Update Custom Message
+- [`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard) - Post Session Events
+- [`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions
+- [`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary
+- [`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers
 - [`directoryCreate`](docs/sdks/directory/README.md#create) - Create Directory Member
 - [`directoryDelete`](docs/sdks/directory/README.md#delete) - Delete Directory Member
 - [`directoryDirectoryMemberBulkLoad`](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
@@ -285,6 +303,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`v1PostSessionEventsDashboard`](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
+- [`v1PostSessionsDashboard`](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions
+- [`v1PostSessionSummaryDashboard`](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
+- [`v1PostSessionTransfersDashboard`](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

@@ -19,6 +19,12 @@ import {
 export type ToolParameterDefault = {
   /**
    * A transform to be applied to the value of a parameter.
+   *
+   * @remarks
+   *
+   * Either `value` or `format` must be set:
+   * - `value` is any arbitrary value: string, list or dictionary.
+   * - `format` is a string composed of other parameters or context variables.
    */
   transform: ToolParameterTransform;
 };

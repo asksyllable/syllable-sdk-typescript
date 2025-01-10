@@ -18,12 +18,12 @@ let value: ChannelTarget = {
     promptId: 739264,
     timezone: "Africa/Dakar",
     id: 282807,
-    updatedAt: new Date("2022-05-12T17:39:01.246Z"),
+    updatedAt: new Date("2023-05-12T17:39:01.246Z"),
     lastUpdatedBy: "<value>",
   },
   target: "<value>",
   targetMode: "<value>",
-  updatedAt: new Date("2022-11-21T13:40:18.320Z"),
+  updatedAt: new Date("2023-11-21T13:40:18.320Z"),
   lastUpdatedBy: "<value>",
 };
 ```

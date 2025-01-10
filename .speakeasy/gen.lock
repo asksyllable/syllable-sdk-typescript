@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 02793c8a43c888ad7c247cb45079fffe
+  docChecksum: 8b3adac0a18080916810f4d7c2b97963
   docVersion: 0.0.2
-  speakeasyVersion: 1.456.0
-  generationVersion: 2.481.0
-  releaseVersion: 0.1.0-alpha.28
-  configChecksum: e875ac634072590d2ba9c0cc45977951
+  speakeasyVersion: 1.467.1
+  generationVersion: 2.492.3
+  releaseVersion: 0.1.0-alpha.29
+  configChecksum: c2b494bfa1787e0c7983e4f07fce7a1a
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,13 +14,13 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.11
+    core: 3.18.12
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    globalSecurity: 2.82.11
+    globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -75,6 +75,7 @@ generatedFiles:
   - docs/models/components/custommessageupdaterequest.md
   - docs/models/components/daochanneltargetagent.md
   - docs/models/components/daocustommessagerule.md
+  - docs/models/components/dashboard.md
   - docs/models/components/dayofweek.md
   - docs/models/components/defaults.md
   - docs/models/components/directoryextension.md
@@ -184,6 +185,7 @@ generatedFiles:
   - docs/sdks/channels/README.md
   - docs/sdks/conversations/README.md
   - docs/sdks/custommessages/README.md
+  - docs/sdks/dashboards/README.md
   - docs/sdks/directory/README.md
   - docs/sdks/events/README.md
   - docs/sdks/prompts/README.md
@@ -195,6 +197,7 @@ generatedFiles:
   - docs/sdks/test/README.md
   - docs/sdks/tools/README.md
   - docs/sdks/transcript/README.md
+  - docs/sdks/v1/README.md
   - jsr.json
   - package.json
   - src/core.ts
@@ -218,6 +221,10 @@ generatedFiles:
   - src/funcs/customMessagesGetById.ts
   - src/funcs/customMessagesList.ts
   - src/funcs/customMessagesUpdate.ts
+  - src/funcs/dashboardsPostSessionEventsDashboard.ts
+  - src/funcs/dashboardsPostSessionSummaryDashboard.ts
+  - src/funcs/dashboardsPostSessionTransfersDashboard.ts
+  - src/funcs/dashboardsPostSessionsDashboard.ts
   - src/funcs/directoryCreate.ts
   - src/funcs/directoryDelete.ts
   - src/funcs/directoryDirectoryMemberBulkLoad.ts
@@ -247,6 +254,10 @@ generatedFiles:
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
+  - src/funcs/v1PostSessionEventsDashboard.ts
+  - src/funcs/v1PostSessionSummaryDashboard.ts
+  - src/funcs/v1PostSessionTransfersDashboard.ts
+  - src/funcs/v1PostSessionsDashboard.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -295,6 +306,7 @@ generatedFiles:
   - src/models/components/custommessageupdaterequest.ts
   - src/models/components/daochanneltargetagent.ts
   - src/models/components/daocustommessagerule.ts
+  - src/models/components/dashboard.ts
   - src/models/components/dayofweek.ts
   - src/models/components/directoryextension.ts
   - src/models/components/directorymember.ts
@@ -399,6 +411,7 @@ generatedFiles:
   - src/sdk/channels.ts
   - src/sdk/conversations.ts
   - src/sdk/custommessages.ts
+  - src/sdk/dashboards.ts
   - src/sdk/directory.ts
   - src/sdk/events.ts
   - src/sdk/index.ts
@@ -411,6 +424,7 @@ generatedFiles:
   - src/sdk/test.ts
   - src/sdk/tools.ts
   - src/sdk/transcript.ts
+  - src/sdk/v1.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
@@ -957,4 +971,24 @@ examples:
       responses:
         "200":
           application/json: []
+  post_session_events_dashboard:
+    speakeasy-default-post-session-events-dashboard:
+      responses:
+        "200":
+          application/json: {"embedded_id": "<id>", "guest_token": "<value>", "name": "<value>", "superset_url": "https://black-and-white-forgery.name"}
+  post_session_summary_dashboard:
+    speakeasy-default-post-session-summary-dashboard:
+      responses:
+        "200":
+          application/json: {"embedded_id": "<id>", "guest_token": "<value>", "name": "<value>", "superset_url": "https://white-elevation.org"}
+  post_session_transfers_dashboard:
+    speakeasy-default-post-session-transfers-dashboard:
+      responses:
+        "200":
+          application/json: {"embedded_id": "<id>", "guest_token": "<value>", "name": "<value>", "superset_url": "https://private-deer.biz/"}
+  post_sessions_dashboard:
+    speakeasy-default-post-sessions-dashboard:
+      responses:
+        "200":
+          application/json: {"embedded_id": "<id>", "guest_token": "<value>", "name": "<value>", "superset_url": "https://only-napkin.net"}
 generatedTests: {}

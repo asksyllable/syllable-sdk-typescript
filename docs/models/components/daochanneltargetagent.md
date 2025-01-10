@@ -11,7 +11,7 @@ let value: DaoChannelTargetAgent = {
   promptId: 118727,
   timezone: "America/Los_Angeles",
   id: 414263,
-  updatedAt: new Date("2022-03-12T07:20:08.678Z"),
+  updatedAt: new Date("2023-03-12T07:20:08.678Z"),
   lastUpdatedBy: "<value>",
 };
 ```
