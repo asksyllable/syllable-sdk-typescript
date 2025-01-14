@@ -223,7 +223,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Agent"
+                  "$ref": "#/components/schemas/AgentResponse"
                 }
               }
             }
@@ -275,7 +275,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Agent"
+                  "$ref": "#/components/schemas/AgentResponse"
                 }
               }
             }
@@ -1562,7 +1562,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListResponse_Prompt_"
+                  "$ref": "#/components/schemas/ListResponse_PromptResponse_"
                 }
               }
             }
@@ -1597,7 +1597,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PromptCreate"
+                "$ref": "#/components/schemas/PromptCreateRequest"
               }
             }
           }
@@ -1608,7 +1608,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Prompt"
+                  "$ref": "#/components/schemas/PromptResponse"
                 }
               }
             }
@@ -1643,7 +1643,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PromptUpdate"
+                "$ref": "#/components/schemas/PromptUpdateRequest"
               }
             }
           }
@@ -1654,7 +1654,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Prompt"
+                  "$ref": "#/components/schemas/PromptResponse"
                 }
               }
             }
@@ -1703,7 +1703,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Prompt"
+                  "$ref": "#/components/schemas/PromptResponse"
                 }
               }
             }
@@ -2900,7 +2900,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListResponse_Tool_"
+                  "$ref": "#/components/schemas/ListResponse_ToolResponse_"
                 }
               }
             }
@@ -2935,7 +2935,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ToolCreate"
+                "$ref": "#/components/schemas/ToolCreateRequest"
               }
             }
           }
@@ -2946,7 +2946,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tool"
+                  "$ref": "#/components/schemas/ToolResponse"
                 }
               }
             }
@@ -2981,7 +2981,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ToolUpdate"
+                "$ref": "#/components/schemas/ToolUpdateRequest"
               }
             }
           }
@@ -2992,7 +2992,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tool"
+                  "$ref": "#/components/schemas/ToolResponse"
                 }
               }
             }
@@ -3402,7 +3402,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListResponse_ChannelTarget_"
+                  "$ref": "#/components/schemas/ListResponse_ChannelTargetResponse_"
                 }
               }
             }
@@ -3462,7 +3462,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
+                  "$ref": "#/components/schemas/ChannelTargetResponse"
                 }
               }
             }
@@ -3521,7 +3521,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
+                  "$ref": "#/components/schemas/ChannelTargetResponse"
                 }
               }
             }
@@ -3587,7 +3587,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChannelTarget"
+                  "$ref": "#/components/schemas/ChannelTargetResponse"
                 }
               }
             }
@@ -4260,159 +4260,12 @@
   },
   "components": {
     "schemas": {
-      "Agent": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "label": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Label"
-          },
-          "timezone": {
-            "type": "string",
-            "title": "Timezone"
-          },
-          "type": {
-            "type": "string",
-            "title": "Type"
-          },
-          "prompt_id": {
-            "type": "integer",
-            "title": "Prompt Id"
-          },
-          "custom_message_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Custom Message Id"
-          },
-          "languages": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Languages"
-          },
-          "prompt_tool_defaults": {
-            "items": {
-              "$ref": "#/components/schemas/AgentToolDefaults"
-            },
-            "type": "array",
-            "title": "Prompt Tool Defaults"
-          },
-          "tool_headers": {
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Tool Headers"
-          },
-          "variables": {
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Variables"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The Agent ID"
-          },
-          "updated_at": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Updated At"
-          },
-          "channel_targets": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Target"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Channel Targets"
-          },
-          "last_updated_by": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Last Updated By"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "timezone",
-          "type",
-          "prompt_id",
-          "custom_message_id",
-          "languages",
-          "id"
-        ],
-        "title": "Agent"
-      },
       "AgentCreate": {
         "properties": {
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "The agent name"
           },
           "description": {
             "anyOf": [
@@ -4423,7 +4276,8 @@
                 "type": "null"
               }
             ],
-            "title": "Description"
+            "title": "Description",
+            "description": "The agent description"
           },
           "label": {
             "anyOf": [
@@ -4434,44 +4288,74 @@
                 "type": "null"
               }
             ],
-            "title": "Label"
-          },
-          "timezone": {
-            "type": "string",
-            "title": "Timezone"
+            "title": "Label",
+            "description": "The agent label"
           },
           "type": {
             "type": "string",
-            "title": "Type"
+            "title": "Type",
+            "description": "The agent type. Can be an arbitrary string",
+            "examples": [
+              "ca_v1"
+            ]
           },
           "prompt_id": {
             "type": "integer",
-            "title": "Prompt Id"
+            "title": "Prompt Id",
+            "description": "ID of the prompt associated with the agent"
           },
           "custom_message_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Custom Message Id"
+            "type": "integer",
+            "title": "Custom Message Id",
+            "description": "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
           },
-          "languages": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Languages"
+          "timezone": {
+            "type": "string",
+            "title": "Timezone",
+            "description": "The time zone in which the agent operates",
+            "examples": [
+              "America/New_York",
+              "America/Chicago"
+            ]
           },
           "prompt_tool_defaults": {
             "items": {
               "$ref": "#/components/schemas/AgentToolDefaults"
             },
             "type": "array",
-            "title": "Prompt Tool Defaults"
+            "title": "Prompt Tool Defaults",
+            "description": "The prompt tool defaults"
+          },
+          "languages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Languages",
+            "description": "BCP 47 codes of languages the agent supports",
+            "examples": [
+              [
+                "en-US",
+                "es-MX"
+              ]
+            ]
+          },
+          "variables": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Variables",
+            "description": "Custom context variables for the conversation session. Should be prefixed with \"vars.\".",
+            "examples": [
+              {
+                "vars.hospital": "Weill Cornell Medical Center"
+              }
+            ]
           },
           "tool_headers": {
             "anyOf": [
@@ -4485,31 +4369,19 @@
                 "type": "null"
               }
             ],
-            "title": "Tool Headers"
-          },
-          "variables": {
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Variables"
+            "title": "Tool Headers",
+            "description": "Optional headers to include in tool calls for agent."
           }
         },
         "type": "object",
         "required": [
           "name",
-          "timezone",
           "type",
           "prompt_id",
           "custom_message_id",
-          "languages"
+          "timezone",
+          "variables",
+          "tool_headers"
         ],
         "title": "AgentCreate"
       },
@@ -4540,7 +4412,7 @@
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The Agent name"
+            "description": "The agent name"
           },
           "description": {
             "anyOf": [
@@ -4552,7 +4424,7 @@
               }
             ],
             "title": "Description",
-            "description": "The Agent description"
+            "description": "The agent description"
           },
           "label": {
             "anyOf": [
@@ -4564,55 +4436,69 @@
               }
             ],
             "title": "Label",
-            "description": "The Agent label"
+            "description": "The agent label"
           },
           "type": {
             "type": "string",
             "title": "Type",
-            "description": "The Agent type"
+            "description": "The agent type. Can be an arbitrary string",
+            "examples": [
+              "ca_v1"
+            ]
           },
           "prompt_id": {
             "type": "integer",
             "title": "Prompt Id",
-            "description": "The Agent's prompt id"
+            "description": "ID of the prompt associated with the agent"
           },
           "custom_message_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "integer",
             "title": "Custom Message Id",
-            "description": "The Agent's custom message id"
+            "description": "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
           },
           "timezone": {
             "type": "string",
             "title": "Timezone",
-            "description": "The time zone the bot operates in"
+            "description": "The time zone in which the agent operates",
+            "examples": [
+              "America/New_York",
+              "America/Chicago"
+            ]
           },
           "prompt_tool_defaults": {
             "items": {
               "$ref": "#/components/schemas/AgentToolDefaults"
             },
             "type": "array",
-            "title": "Prompt Tool Defaults"
+            "title": "Prompt Tool Defaults",
+            "description": "The prompt tool defaults"
           },
           "languages": {
             "items": {
               "type": "string"
             },
             "type": "array",
-            "title": "Languages"
+            "title": "Languages",
+            "description": "BCP 47 codes of languages the agent supports",
+            "examples": [
+              [
+                "en-US",
+                "es-MX"
+              ]
+            ]
           },
           "variables": {
             "additionalProperties": {
               "type": "string"
             },
             "type": "object",
-            "title": "Variables"
+            "title": "Variables",
+            "description": "Custom context variables for the conversation session. Should be prefixed with \"vars.\".",
+            "examples": [
+              {
+                "vars.hospital": "Weill Cornell Medical Center"
+              }
+            ]
           },
           "tool_headers": {
             "anyOf": [
@@ -4627,12 +4513,12 @@
               }
             ],
             "title": "Tool Headers",
-            "description": "Optional headers to include in tool calls."
+            "description": "Optional headers to include in tool calls for agent."
           },
           "id": {
             "type": "integer",
             "title": "Id",
-            "description": "The Agent ID"
+            "description": "The agent ID"
           },
           "updated_at": {
             "type": "string",
@@ -4652,11 +4538,33 @@
             "title": "Last Updated By",
             "description": "Email of the user who last updated the agent"
           },
+          "prompt": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PromptResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The prompt associated with the agent."
+          },
+          "custom_message": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CustomMessageResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The custom message associated with the agent. Will be delivered as a greeting at the beginning of a conversation."
+          },
           "channel_targets": {
             "anyOf": [
               {
                 "items": {
-                  "$ref": "#/components/schemas/Target"
+                  "$ref": "#/components/schemas/ChannelTargetResponse"
                 },
                 "type": "array"
               },
@@ -4666,28 +4574,6 @@
             ],
             "title": "Channel Targets",
             "description": "Channel targets associated with the agent"
-          },
-          "prompt": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Prompt"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "The prompt associated with the agent"
-          },
-          "custom_message": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/CustomMessage"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "The custom message associated with the agent"
           }
         },
         "type": "object",
@@ -4695,9 +4581,8 @@
           "name",
           "type",
           "prompt_id",
+          "custom_message_id",
           "timezone",
-          "prompt_tool_defaults",
-          "languages",
           "variables",
           "tool_headers",
           "id",
@@ -4710,14 +4595,16 @@
         "properties": {
           "tool_name": {
             "type": "string",
-            "title": "Tool Name"
+            "title": "Tool Name",
+            "description": "The name of the tool"
           },
           "default_values": {
             "items": {
               "$ref": "#/components/schemas/AgentToolFieldDefault"
             },
             "type": "array",
-            "title": "Default Values"
+            "title": "Default Values",
+            "description": "The default values for fields used in the tool"
           }
         },
         "type": "object",
@@ -4731,10 +4618,12 @@
         "properties": {
           "field_name": {
             "type": "string",
-            "title": "Field Name"
+            "title": "Field Name",
+            "description": "The name of the field"
           },
           "default_value": {
-            "title": "Default Value"
+            "title": "Default Value",
+            "description": "The default value for the field"
           }
         },
         "type": "object",
@@ -4748,7 +4637,8 @@
         "properties": {
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "The agent name"
           },
           "description": {
             "anyOf": [
@@ -4759,7 +4649,8 @@
                 "type": "null"
               }
             ],
-            "title": "Description"
+            "title": "Description",
+            "description": "The agent description"
           },
           "label": {
             "anyOf": [
@@ -4770,44 +4661,74 @@
                 "type": "null"
               }
             ],
-            "title": "Label"
-          },
-          "timezone": {
-            "type": "string",
-            "title": "Timezone"
+            "title": "Label",
+            "description": "The agent label"
           },
           "type": {
             "type": "string",
-            "title": "Type"
+            "title": "Type",
+            "description": "The agent type. Can be an arbitrary string",
+            "examples": [
+              "ca_v1"
+            ]
           },
           "prompt_id": {
             "type": "integer",
-            "title": "Prompt Id"
+            "title": "Prompt Id",
+            "description": "ID of the prompt associated with the agent"
           },
           "custom_message_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Custom Message Id"
+            "type": "integer",
+            "title": "Custom Message Id",
+            "description": "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
           },
-          "languages": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Languages"
+          "timezone": {
+            "type": "string",
+            "title": "Timezone",
+            "description": "The time zone in which the agent operates",
+            "examples": [
+              "America/New_York",
+              "America/Chicago"
+            ]
           },
           "prompt_tool_defaults": {
             "items": {
               "$ref": "#/components/schemas/AgentToolDefaults"
             },
             "type": "array",
-            "title": "Prompt Tool Defaults"
+            "title": "Prompt Tool Defaults",
+            "description": "The prompt tool defaults"
+          },
+          "languages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Languages",
+            "description": "BCP 47 codes of languages the agent supports",
+            "examples": [
+              [
+                "en-US",
+                "es-MX"
+              ]
+            ]
+          },
+          "variables": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Variables",
+            "description": "Custom context variables for the conversation session. Should be prefixed with \"vars.\".",
+            "examples": [
+              {
+                "vars.hospital": "Weill Cornell Medical Center"
+              }
+            ]
           },
           "tool_headers": {
             "anyOf": [
@@ -4821,36 +4742,24 @@
                 "type": "null"
               }
             ],
-            "title": "Tool Headers"
-          },
-          "variables": {
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Variables"
+            "title": "Tool Headers",
+            "description": "Optional headers to include in tool calls for agent."
           },
           "id": {
             "type": "integer",
             "title": "Id",
-            "description": "The Agent ID"
+            "description": "The agent ID"
           }
         },
         "type": "object",
         "required": [
           "name",
-          "timezone",
           "type",
           "prompt_id",
           "custom_message_id",
-          "languages",
+          "timezone",
+          "variables",
+          "tool_headers",
           "id"
         ],
         "title": "AgentUpdate"
@@ -5025,107 +4934,26 @@
         ],
         "title": "ChannelServices"
       },
-      "ChannelTarget": {
-        "properties": {
-          "id": {
-            "type": "integer",
-            "title": "Id"
-          },
-          "channel_id": {
-            "type": "integer",
-            "title": "Channel Id"
-          },
-          "channel_name": {
-            "type": "string",
-            "title": "Channel Name"
-          },
-          "agent_id": {
-            "type": "integer",
-            "title": "Agent Id"
-          },
-          "agent": {
-            "$ref": "#/components/schemas/DaoChannelTargetAgent"
-          },
-          "target": {
-            "type": "string",
-            "title": "Target"
-          },
-          "target_mode": {
-            "type": "string",
-            "title": "Target Mode"
-          },
-          "fallback_target": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Fallback Target"
-          },
-          "is_test": {
-            "type": "boolean",
-            "title": "Is Test",
-            "default": false
-          },
-          "updated_at": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Updated At"
-          },
-          "last_updated_by": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Last Updated By"
-          }
-        },
-        "type": "object",
-        "required": [
-          "id",
-          "channel_id",
-          "channel_name",
-          "agent_id",
-          "agent",
-          "target",
-          "target_mode",
-          "updated_at",
-          "last_updated_by"
-        ],
-        "title": "ChannelTarget",
-        "description": "Class for all Channel Target responses"
-      },
       "ChannelTargetCreateRequest": {
         "properties": {
-          "channel_id": {
-            "type": "integer",
-            "title": "Channel Id"
-          },
           "agent_id": {
             "type": "integer",
-            "title": "Agent Id"
+            "title": "Agent Id",
+            "description": "The ID of the agent associated with the channel target"
+          },
+          "channel_id": {
+            "type": "integer",
+            "title": "Channel Id",
+            "description": "The ID of the channel associated with the channel target"
           },
           "target": {
             "type": "string",
-            "title": "Target"
+            "title": "Target",
+            "description": "The name of the channel target (must correspond to an organization-level target)"
           },
           "target_mode": {
-            "type": "string",
-            "title": "Target Mode"
+            "$ref": "#/components/schemas/TargetModes",
+            "description": "The mode of the channel target (must match one of the supported modes of the associated channel)"
           },
           "fallback_target": {
             "anyOf": [
@@ -5136,18 +4964,20 @@
                 "type": "null"
               }
             ],
-            "title": "Fallback Target"
+            "title": "Fallback Target",
+            "description": "The fallback for the channel target (currently only supported for \"voice\" mode)"
           },
           "is_test": {
             "type": "boolean",
             "title": "Is Test",
+            "description": "Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test.",
             "default": false
           }
         },
         "type": "object",
         "required": [
-          "channel_id",
           "agent_id",
+          "channel_id",
           "target",
           "target_mode"
         ],
@@ -5168,27 +4998,26 @@
         ],
         "title": "ChannelTargetProperties"
       },
-      "ChannelTargetUpdateRequest": {
+      "ChannelTargetResponse": {
         "properties": {
-          "id": {
+          "agent_id": {
             "type": "integer",
-            "title": "Id"
+            "title": "Agent Id",
+            "description": "The ID of the agent associated with the channel target"
           },
           "channel_id": {
             "type": "integer",
-            "title": "Channel Id"
-          },
-          "agent_id": {
-            "type": "integer",
-            "title": "Agent Id"
+            "title": "Channel Id",
+            "description": "The ID of the channel associated with the channel target"
           },
           "target": {
             "type": "string",
-            "title": "Target"
+            "title": "Target",
+            "description": "The name of the channel target (must correspond to an organization-level target)"
           },
           "target_mode": {
-            "type": "string",
-            "title": "Target Mode"
+            "$ref": "#/components/schemas/TargetModes",
+            "description": "The mode of the channel target (must match one of the supported modes of the associated channel)"
           },
           "fallback_target": {
             "anyOf": [
@@ -5199,21 +5028,114 @@
                 "type": "null"
               }
             ],
-            "title": "Fallback Target"
+            "title": "Fallback Target",
+            "description": "The fallback for the channel target (currently only supported for \"voice\" mode)"
           },
           "is_test": {
             "type": "boolean",
             "title": "Is Test",
+            "description": "Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test.",
             "default": false
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the channel target"
+          },
+          "channel_name": {
+            "type": "string",
+            "title": "Channel Name",
+            "description": "The name of the channel associated with the channel target"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At",
+            "description": "Timestamp of the most recent update to the channel target"
+          },
+          "last_updated_by": {
+            "type": "string",
+            "title": "Last Updated By",
+            "description": "Email of the user who last updated the channel target"
+          },
+          "agent": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Definition of the agent for the channel target"
           }
         },
         "type": "object",
         "required": [
-          "id",
-          "channel_id",
           "agent_id",
+          "channel_id",
           "target",
-          "target_mode"
+          "target_mode",
+          "id",
+          "channel_name",
+          "updated_at",
+          "last_updated_by"
+        ],
+        "title": "ChannelTargetResponse",
+        "description": "Class for all Channel Target responses"
+      },
+      "ChannelTargetUpdateRequest": {
+        "properties": {
+          "agent_id": {
+            "type": "integer",
+            "title": "Agent Id",
+            "description": "The ID of the agent associated with the channel target"
+          },
+          "channel_id": {
+            "type": "integer",
+            "title": "Channel Id",
+            "description": "The ID of the channel associated with the channel target"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target",
+            "description": "The name of the channel target (must correspond to an organization-level target)"
+          },
+          "target_mode": {
+            "$ref": "#/components/schemas/TargetModes",
+            "description": "The mode of the channel target (must match one of the supported modes of the associated channel)"
+          },
+          "fallback_target": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fallback Target",
+            "description": "The fallback for the channel target (currently only supported for \"voice\" mode)"
+          },
+          "is_test": {
+            "type": "boolean",
+            "title": "Is Test",
+            "description": "Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test.",
+            "default": false
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the channel target"
+          }
+        },
+        "type": "object",
+        "required": [
+          "agent_id",
+          "channel_id",
+          "target",
+          "target_mode",
+          "id"
         ],
         "title": "ChannelTargetUpdateRequest"
       },
@@ -5362,32 +5284,6 @@
         ],
         "title": "ConversationProperties"
       },
-      "CustomMessage": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the custom message"
-          },
-          "text": {
-            "type": "string",
-            "title": "Text",
-            "description": "The text of the custom message"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The ID of the custom message"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "text",
-          "id"
-        ],
-        "title": "CustomMessage"
-      },
       "CustomMessageCreateRequest": {
         "properties": {
           "name": {
@@ -5414,7 +5310,7 @@
           },
           "rules": {
             "items": {
-              "$ref": "#/components/schemas/DaoCustomMessageRule"
+              "$ref": "#/components/schemas/CustomMessageRule"
             },
             "type": "array",
             "title": "Rules",
@@ -5471,7 +5367,7 @@
           },
           "rules": {
             "items": {
-              "$ref": "#/components/schemas/DaoCustomMessageRule"
+              "$ref": "#/components/schemas/CustomMessageRule"
             },
             "type": "array",
             "title": "Rules",
@@ -5504,7 +5400,10 @@
           "last_updated_by": {
             "type": "string",
             "title": "Last Updated By",
-            "description": "The email address of the user who most recently updated the custom message"
+            "description": "The email address of the user who most recently updated the custom message",
+            "examples": [
+              "user@email.com"
+            ]
           },
           "type": {
             "type": "string",
@@ -5521,6 +5420,107 @@
           "last_updated_by"
         ],
         "title": "CustomMessageResponse"
+      },
+      "CustomMessageRule": {
+        "properties": {
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the rule"
+          },
+          "time_range_start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Range Start",
+            "description": "The start of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)",
+            "examples": [
+              "09:00"
+            ]
+          },
+          "time_range_end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Range End",
+            "description": "The end of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)",
+            "examples": [
+              "17:00"
+            ]
+          },
+          "date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "\\b(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\b"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date",
+            "description": "The date for the rule in YYYY-MM-DD format",
+            "examples": [
+              "2025-01-01"
+            ]
+          },
+          "days_of_week": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DayOfWeek"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Days Of Week",
+            "description": "The days of the week for the rule",
+            "examples": [
+              [
+                "mo",
+                "tu",
+                "we",
+                "th",
+                "fr"
+              ]
+            ]
+          },
+          "invert": {
+            "type": "boolean",
+            "title": "Invert",
+            "description": "Whether the rule logic should be inverted (i.e. \"not\")"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "description": "Message text associated with the rule",
+            "examples": [
+              "Sorry, we're closed today"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "description",
+          "invert",
+          "text"
+        ],
+        "title": "CustomMessageRule"
       },
       "CustomMessageUpdateRequest": {
         "properties": {
@@ -5548,7 +5548,7 @@
           },
           "rules": {
             "items": {
-              "$ref": "#/components/schemas/DaoCustomMessageRule"
+              "$ref": "#/components/schemas/CustomMessageRule"
             },
             "type": "array",
             "title": "Rules",
@@ -5573,170 +5573,6 @@
           "id"
         ],
         "title": "CustomMessageUpdateRequest"
-      },
-      "DaoChannelTargetAgent": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "label": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Label"
-          },
-          "type": {
-            "type": "string",
-            "title": "Type"
-          },
-          "prompt_id": {
-            "type": "integer",
-            "title": "Prompt Id"
-          },
-          "custom_message_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Custom Message Id"
-          },
-          "timezone": {
-            "type": "string",
-            "title": "Timezone"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Updated At"
-          },
-          "last_updated_by": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Last Updated By"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "type",
-          "prompt_id",
-          "timezone",
-          "id",
-          "updated_at",
-          "last_updated_by"
-        ],
-        "title": "DaoChannelTargetAgent"
-      },
-      "DaoCustomMessageRule": {
-        "properties": {
-          "description": {
-            "type": "string",
-            "title": "Description",
-            "description": "The description of the rule"
-          },
-          "time_range_start": {
-            "anyOf": [
-              {
-                "type": "string",
-                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Time Range Start",
-            "description": "The start of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
-          },
-          "time_range_end": {
-            "anyOf": [
-              {
-                "type": "string",
-                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Time Range End",
-            "description": "The end of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
-          },
-          "date": {
-            "anyOf": [
-              {
-                "type": "string",
-                "pattern": "\\b(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\b"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Date",
-            "description": "The date for the rule in YYYY-MM-DD format"
-          },
-          "days_of_week": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/DayOfWeek"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Days Of Week",
-            "description": "The days of the week for the rule"
-          },
-          "invert": {
-            "type": "boolean",
-            "title": "Invert",
-            "description": "Whether the rule logic should be inverted (i.e. \"not\")"
-          },
-          "text": {
-            "type": "string",
-            "title": "Text",
-            "description": "Message text associated with the rule"
-          }
-        },
-        "type": "object",
-        "required": [
-          "description",
-          "invert",
-          "text"
-        ],
-        "title": "DaoCustomMessageRule"
       },
       "Dashboard": {
         "properties": {
@@ -6090,33 +5926,6 @@
         ],
         "title": "EventProperties"
       },
-      "Function": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the function/tool call."
-          },
-          "description": {
-            "type": "string",
-            "title": "Description",
-            "description": "The description of the tool."
-          },
-          "parameters": {
-            "type": "object",
-            "title": "Parameters",
-            "description": "The JSON Schema of parameters of the function/tool call."
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "description",
-          "parameters"
-        ],
-        "title": "Function",
-        "description": "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
-      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -6130,42 +5939,26 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
-      "HttpEndpoint": {
+      "InternalTool": {
         "properties": {
-          "url": {
+          "type": {
             "type": "string",
-            "title": "Url",
-            "description": "The endpoint URL of the external service to call."
+            "const": "function",
+            "title": "Type",
+            "description": "Always `function`.",
+            "default": "function"
           },
-          "method": {
-            "type": "string",
-            "enum": [
-              "get",
-              "post"
-            ],
-            "title": "Method",
-            "description": "The HTTP method to use for the service call."
-          },
-          "argument_location": {
-            "type": "string",
-            "enum": [
-              "body",
-              "form",
-              "path",
-              "query"
-            ],
-            "title": "Argument Location",
-            "description": "How to pass the arguments to the request."
+          "function": {
+            "$ref": "#/components/schemas/ToolFunction",
+            "description": "The tool definition including the JSON Schema of its parameters."
           }
         },
         "type": "object",
         "required": [
-          "url",
-          "method",
-          "argument_location"
+          "function"
         ],
-        "title": "HttpEndpoint",
-        "description": "The configuration for an HTTP API call."
+        "title": "InternalTool",
+        "description": "A tool definition to be used by the OpenAI API."
       },
       "ListResponse_AgentResponse_": {
         "properties": {
@@ -6263,11 +6056,11 @@
         ],
         "title": "ListResponse[AvailableTarget]"
       },
-      "ListResponse_ChannelTarget_": {
+      "ListResponse_ChannelTargetResponse_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/ChannelTarget"
+              "$ref": "#/components/schemas/ChannelTargetResponse"
             },
             "type": "array",
             "title": "Items"
@@ -6309,7 +6102,7 @@
           "page",
           "page_size"
         ],
-        "title": "ListResponse[ChannelTarget]"
+        "title": "ListResponse[ChannelTargetResponse]"
       },
       "ListResponse_Channel_": {
         "properties": {
@@ -6551,11 +6344,11 @@
         ],
         "title": "ListResponse[Event]"
       },
-      "ListResponse_Prompt_": {
+      "ListResponse_PromptResponse_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/Prompt"
+              "$ref": "#/components/schemas/PromptResponse"
             },
             "type": "array",
             "title": "Items"
@@ -6597,7 +6390,7 @@
           "page",
           "page_size"
         ],
-        "title": "ListResponse[Prompt]"
+        "title": "ListResponse[PromptResponse]"
       },
       "ListResponse_Service_": {
         "properties": {
@@ -6743,11 +6536,11 @@
         ],
         "title": "ListResponse[Session]"
       },
-      "ListResponse_Tool_": {
+      "ListResponse_ToolResponse_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/Tool"
+              "$ref": "#/components/schemas/ToolResponse"
             },
             "type": "array",
             "title": "Items"
@@ -6789,12 +6582,154 @@
           "page",
           "page_size"
         ],
-        "title": "ListResponse[Tool]"
+        "title": "ListResponse[ToolResponse]"
       },
-      "LlmConfig": {
+      "OrderByDirection": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "title": "OrderByDirection"
+      },
+      "PromptCreateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The prompt name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "The description of the prompt"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "description": "The type of the prompt"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context",
+            "description": "The prompt text"
+          },
+          "tools": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tools",
+            "description": "Names of tools to which the prompt has access",
+            "default": []
+          },
+          "llm_config": {
+            "$ref": "#/components/schemas/PromptLlmConfig",
+            "description": "The configuration for the LLM that the prompt uses"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "llm_config"
+        ],
+        "title": "PromptCreateRequest"
+      },
+      "PromptHistory": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp",
+            "description": "Timestamp of the change"
+          },
+          "prompt_id": {
+            "type": "string",
+            "title": "Prompt Id",
+            "description": "ID of the prompt"
+          },
+          "prompt_text": {
+            "type": "string",
+            "title": "Prompt Text",
+            "description": "Text of the prompt"
+          },
+          "prompt_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Description",
+            "description": "Description of the prompt"
+          },
+          "prompt_name": {
+            "type": "string",
+            "title": "Prompt Name",
+            "description": "Name of the prompt"
+          },
+          "llm_config": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llm Config",
+            "description": "String representation of LLM config for the prompt"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Comments",
+            "description": "Comments describing the change"
+          },
+          "user_email": {
+            "type": "string",
+            "title": "User Email",
+            "description": "Email address of the user who made the change"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestamp",
+          "prompt_id",
+          "prompt_text",
+          "prompt_name",
+          "user_email"
+        ],
+        "title": "PromptHistory",
+        "description": "Record of a change to a prompt. Values reflect post-change state."
+      },
+      "PromptLlmConfig": {
         "properties": {
           "provider": {
-            "$ref": "#/components/schemas/Provider",
+            "$ref": "#/components/schemas/PromptLlmProvider",
             "description": "Provider of the LLM model.",
             "default": "azure_openai",
             "examples": [
@@ -6843,22 +6778,39 @@
           }
         },
         "type": "object",
-        "title": "LlmConfig"
+        "title": "PromptLlmConfig"
       },
-      "OrderByDirection": {
+      "PromptLlmProvider": {
         "type": "string",
         "enum": [
-          "asc",
-          "desc"
+          "azure_openai",
+          "openai"
         ],
-        "title": "OrderByDirection"
+        "title": "PromptLlmProvider",
+        "description": "LLM API provider."
       },
-      "Prompt": {
+      "PromptProperties": {
+        "type": "string",
+        "enum": [
+          "id",
+          "name",
+          "description",
+          "name_description",
+          "context",
+          "tools",
+          "llm_config",
+          "last_updated",
+          "last_updated_by",
+          "agent_count"
+        ],
+        "title": "PromptProperties"
+      },
+      "PromptResponse": {
         "properties": {
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The Prompt name"
+            "description": "The prompt name"
           },
           "description": {
             "anyOf": [
@@ -6895,17 +6847,17 @@
             },
             "type": "array",
             "title": "Tools",
-            "description": "The tools for the prompt",
+            "description": "Names of the tools to which the prompt has access",
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
-            "description": "The configuration for the language model used by the Cortex API."
+            "$ref": "#/components/schemas/PromptLlmConfig",
+            "description": "The configuration for the LLM that the prompt uses"
           },
           "id": {
             "type": "integer",
             "title": "Id",
-            "description": "The Prompt ID"
+            "description": "The prompt ID"
           },
           "edit_comments": {
             "anyOf": [
@@ -6917,7 +6869,7 @@
               }
             ],
             "title": "Edit Comments",
-            "description": "The comments for the last edit"
+            "description": "The comments for the most recent edit to the prompt"
           },
           "last_updated": {
             "anyOf": [
@@ -6941,7 +6893,10 @@
               }
             ],
             "title": "Last Updated By",
-            "description": "The last updated user who last updated of the prompt"
+            "description": "Email address of the user who most recently updated the prompt",
+            "examples": [
+              "user@email.com"
+            ]
           },
           "agent_count": {
             "anyOf": [
@@ -6964,14 +6919,14 @@
           "id",
           "last_updated"
         ],
-        "title": "Prompt"
+        "title": "PromptResponse"
       },
-      "PromptCreate": {
+      "PromptUpdateRequest": {
         "properties": {
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The Prompt name"
+            "description": "The prompt name"
           },
           "description": {
             "anyOf": [
@@ -7008,182 +6963,17 @@
             },
             "type": "array",
             "title": "Tools",
-            "description": "The tools for the prompt",
+            "description": "Names of tools to which the prompt has access",
             "default": []
           },
           "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
-            "description": "The configuration for the language model used by the Cortex API."
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "type",
-          "llm_config"
-        ],
-        "title": "PromptCreate"
-      },
-      "PromptHistory": {
-        "properties": {
-          "timestamp": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Timestamp"
-          },
-          "prompt_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Prompt Id"
-          },
-          "prompt_text": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Prompt Text"
-          },
-          "prompt_description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Prompt Description"
-          },
-          "prompt_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Prompt Name"
-          },
-          "llm_config": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Llm Config"
-          },
-          "comments": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Comments"
-          },
-          "user_email": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "User Email"
-          }
-        },
-        "type": "object",
-        "required": [
-          "timestamp"
-        ],
-        "title": "PromptHistory"
-      },
-      "PromptProperties": {
-        "type": "string",
-        "enum": [
-          "id",
-          "name",
-          "description",
-          "name_description",
-          "context",
-          "tools",
-          "llm_config",
-          "last_updated",
-          "last_updated_by",
-          "agent_count"
-        ],
-        "title": "PromptProperties"
-      },
-      "PromptUpdate": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The Prompt name"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description",
-            "description": "The description of the prompt"
-          },
-          "type": {
-            "type": "string",
-            "title": "Type",
-            "description": "The type of the prompt"
-          },
-          "context": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Context",
-            "description": "The prompt text"
-          },
-          "tools": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Tools",
-            "description": "The tools for the prompt",
-            "default": []
-          },
-          "llm_config": {
-            "$ref": "#/components/schemas/LlmConfig",
-            "description": "The configuration for the language model used by the Cortex API."
+            "$ref": "#/components/schemas/PromptLlmConfig",
+            "description": "The configuration for the LLM that the prompt uses"
           },
           "id": {
             "type": "integer",
             "title": "Id",
-            "description": "The Prompt ID"
+            "description": "The prompt ID"
           },
           "edit_comments": {
             "anyOf": [
@@ -7195,7 +6985,7 @@
               }
             ],
             "title": "Edit Comments",
-            "description": "The comments for the last edit"
+            "description": "The comments for the most recent edit to the prompt"
           }
         },
         "type": "object",
@@ -7205,109 +6995,7 @@
           "llm_config",
           "id"
         ],
-        "title": "PromptUpdate"
-      },
-      "Provider": {
-        "type": "string",
-        "enum": [
-          "azure_openai",
-          "openai"
-        ],
-        "title": "Provider",
-        "description": "LLM API provider."
-      },
-      "SdkInternalTool": {
-        "properties": {
-          "type": {
-            "type": "string",
-            "const": "function",
-            "title": "Type",
-            "description": "Always `function`.",
-            "default": "function"
-          },
-          "function": {
-            "$ref": "#/components/schemas/Function",
-            "description": "The tool definition including the JSON Schema of its parameters."
-          }
-        },
-        "type": "object",
-        "required": [
-          "function"
-        ],
-        "title": "SdkInternalTool",
-        "description": "A tool definition to be used by the OpenAI API."
-      },
-      "SdkToolDefinition": {
-        "properties": {
-          "type": {
-            "anyOf": [
-              {
-                "type": "string",
-                "enum": [
-                  "action",
-                  "endpoint",
-                  "context",
-                  "log"
-                ]
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Type",
-            "description": "The action to take when GPT calls the tool."
-          },
-          "tool": {
-            "$ref": "#/components/schemas/SdkInternalTool",
-            "description": "The tool definition to be used by the OpenAI API."
-          },
-          "endpoint": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/HttpEndpoint"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "The configuration for an HTTP API call."
-          },
-          "defaults": {
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "additionalProperties": {
-                  "$ref": "#/components/schemas/ToolParameterDefault"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Defaults",
-            "description": "The default values for the parameters of the function/tool call."
-          },
-          "result": {
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Result",
-            "description": "The optional result of the tool call. Only used for `context` tools."
-          }
-        },
-        "type": "object",
-        "required": [
-          "tool"
-        ],
-        "title": "SdkToolDefinition"
+        "title": "PromptUpdateRequest"
       },
       "Service": {
         "properties": {
@@ -7332,7 +7020,7 @@
             },
             "type": "array",
             "title": "Tools",
-            "description": "The tools of the service"
+            "description": "Names of the tools that belong to the service"
           }
         },
         "type": "object",
@@ -7939,73 +7627,6 @@
         ],
         "title": "SttProvider"
       },
-      "Target": {
-        "properties": {
-          "agent_id": {
-            "type": "integer",
-            "title": "Agent Id",
-            "description": "The Agent ID"
-          },
-          "target": {
-            "type": "string",
-            "title": "Target",
-            "description": "The Target"
-          },
-          "target_mode": {
-            "$ref": "#/components/schemas/TargetModes",
-            "description": "The target mode"
-          },
-          "channel_id": {
-            "type": "integer",
-            "title": "Channel Id",
-            "description": "The Channel ID"
-          },
-          "fallback_target": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Fallback Target",
-            "description": "The Fallback Target"
-          },
-          "is_test": {
-            "type": "boolean",
-            "title": "Is Test",
-            "description": "Whether the Target is for testing",
-            "default": false
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The Target ID"
-          },
-          "channel_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Channel Name",
-            "description": "The Channel Name"
-          }
-        },
-        "type": "object",
-        "required": [
-          "agent_id",
-          "target",
-          "target_mode",
-          "channel_id",
-          "id"
-        ],
-        "title": "Target"
-      },
       "TargetModes": {
         "type": "string",
         "enum": [
@@ -8014,7 +7635,8 @@
           "sms",
           "email"
         ],
-        "title": "TargetModes"
+        "title": "TargetModes",
+        "description": "Available modes (communication methods) for channel targets."
       },
       "TestMessage": {
         "properties": {
@@ -8110,50 +7732,18 @@
         ],
         "title": "TestMessageResponse"
       },
-      "Tool": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the tool"
-          },
-          "definition": {
-            "$ref": "#/components/schemas/SdkToolDefinition",
-            "description": "The definition of the tool"
-          },
-          "service_id": {
-            "type": "integer",
-            "title": "Service Id",
-            "description": "The service this tool belongs to"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The ID of the tool"
-          },
-          "service_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Service Name",
-            "description": "The name of the service this tool belongs to"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "definition",
-          "service_id",
-          "id"
+      "ToolArgumentLocation": {
+        "type": "string",
+        "enum": [
+          "body",
+          "form",
+          "path",
+          "query"
         ],
-        "title": "Tool"
+        "title": "ToolArgumentLocation",
+        "description": "The location of the argument in the request.\n'body' is used for JSON data in the POST request body.\n'form' is used for form data in the POST request body.\n'path' is used for URL path parameters.\n'query' is used for query parameters in the URL."
       },
-      "ToolCreate": {
+      "ToolCreateRequest": {
         "properties": {
           "name": {
             "type": "string",
@@ -8161,7 +7751,7 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "$ref": "#/components/schemas/SdkToolDefinition",
+            "$ref": "#/components/schemas/ToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -8176,7 +7766,80 @@
           "definition",
           "service_id"
         ],
-        "title": "ToolCreate"
+        "title": "ToolCreateRequest"
+      },
+      "ToolDefinition": {
+        "properties": {
+          "type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "action",
+                  "endpoint",
+                  "context",
+                  "log"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Type",
+            "description": "The action to take when the LLM calls the tool."
+          },
+          "tool": {
+            "$ref": "#/components/schemas/InternalTool",
+            "description": "The tool definition to be used by the OpenAI API."
+          },
+          "endpoint": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ToolHttpEndpoint"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The configuration for an HTTP API call."
+          },
+          "defaults": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/ToolParameterDefault"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Defaults",
+            "description": "The default values for the parameters of the function/tool call."
+          },
+          "result": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result",
+            "description": "The optional result of the tool call. Only used for `context` tools."
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool"
+        ],
+        "title": "ToolDefinition",
+        "description": "A tool that can be called from an LLM during the conversation.\n\nThe tool can result in one of the following actions depending on the `type` field:\n- `action`:\n  A request to perform an action.\n- `endpoint`:\n  An HTTP API call to an external tool. Requires the `endpoint` field to be set too.\n- `context`:\n  Sets context variables based on the tool arguments, e.g. to change the session language. Only\n  `language` and `say` context vars are currently supported, but this will be made more generic.\n\nFor example, to change the current session language:\n```\n{\n  \"type\": \"context\",\n  \"tool\": {\n    \"function\": {\n      \"name\": \"set_language\",\n      \"parameters\": {\n        \"language\": {\n          \"type\": \"string\",\n          \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"\n        },\n        \"message\": {\n          \"type\": \"string\",\n          \"description\": \"Inform the caller we're now speaking in the new language.\"\n        }\n      }\n    }\n  }\n}\n```\n\nIf `defaults` is provided, it will be used as the default values for the parameters of the\ntool call, if the LLM doesn't provide them:\n```\n\"defaults\": {\n  \"hospital\": \"Queens Hospital\"\n}\n```\n\nSome special \"transform\" handling is supported if the value is a dict with a single `transform`\nkey. The parameter value will be transformed by the given `action` before being used as the\ndefault value:\n\nRemoving an unwanted parameter:\n```\n\"defaults\": {\n  \"hospital\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n```\n\nUsing a value from another parameter and converting it to a dictionary:\n```\n\"defaults\": {\n  \"tags.hospital\": \"{vars.hospital}\",\n  \"tags.foo\": \"{params.foo}\",\n  \"foo\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n```\n\nAdd custom parameters from other parameters using Python's `format`:\n```\n\"defaults\": {\n  \"hello\": {\n    \"transform\": {\n      \"format\": \"Hello, {name}!\"\n    }\n  }\n}\n\nModify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\":\n```\n{\n  \"defaults\": {\n    \"city\": {\n      \"transform\": {\n        \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},\n        \"action\": \"override\",\n        \"format\": \"The {city}\"\n      }\n    }\n  }\n}\n```\n\nSome common transform actions can be abbreviated using the `@` prefix to support a string syntax:\n```\n\"defaults\": {\n  \"foo\": \"@remove\",\n  \"name\": \"@override Hello, {name}!\"\n}\n```"
       },
       "ToolDetailResponse": {
         "properties": {
@@ -8208,6 +7871,67 @@
           "fields"
         ],
         "title": "ToolDetailResponse"
+      },
+      "ToolFunction": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the function/tool call."
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the tool."
+          },
+          "parameters": {
+            "type": "object",
+            "title": "Parameters",
+            "description": "The JSON Schema of parameters of the function/tool call."
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "parameters"
+        ],
+        "title": "ToolFunction",
+        "description": "A function available to the tool.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
+      },
+      "ToolHttpEndpoint": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "description": "The endpoint URL of the external service to call."
+          },
+          "method": {
+            "$ref": "#/components/schemas/ToolHttpMethod",
+            "description": "The HTTP method to use for the service call."
+          },
+          "argument_location": {
+            "$ref": "#/components/schemas/ToolArgumentLocation",
+            "description": "How to pass the arguments to the request."
+          }
+        },
+        "type": "object",
+        "required": [
+          "url",
+          "method",
+          "argument_location"
+        ],
+        "title": "ToolHttpEndpoint",
+        "description": "The configuration for an HTTP API call."
+      },
+      "ToolHttpMethod": {
+        "type": "string",
+        "enum": [
+          "get",
+          "post"
+        ],
+        "title": "ToolHttpMethod",
+        "description": "The HTTP method to use for the request."
       },
       "ToolParameterDefault": {
         "properties": {
@@ -8320,7 +8044,7 @@
         ],
         "title": "ToolProperties"
       },
-      "ToolUpdate": {
+      "ToolResponse": {
         "properties": {
           "name": {
             "type": "string",
@@ -8328,7 +8052,50 @@
             "description": "The name of the tool"
           },
           "definition": {
-            "$ref": "#/components/schemas/SdkToolDefinition",
+            "$ref": "#/components/schemas/ToolDefinition",
+            "description": "The definition of the tool"
+          },
+          "service_id": {
+            "type": "integer",
+            "title": "Service Id",
+            "description": "The service this tool belongs to"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the tool"
+          },
+          "service_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Service Name",
+            "description": "The name of the service to which the tool belongs"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "definition",
+          "service_id",
+          "id"
+        ],
+        "title": "ToolResponse"
+      },
+      "ToolUpdateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the tool"
+          },
+          "definition": {
+            "$ref": "#/components/schemas/ToolDefinition",
             "description": "The definition of the tool"
           },
           "service_id": {
@@ -8349,7 +8116,7 @@
           "service_id",
           "id"
         ],
-        "title": "ToolUpdate"
+        "title": "ToolUpdateRequest"
       },
       "ValidationError": {
         "properties": {
@@ -8429,10 +8196,6 @@
     {
       "name": "events",
       "description": "Operations related to agent events"
-    },
-    {
-      "name": "organizations",
-      "description": "Operations related to organizations"
     },
     {
       "name": "prompts",
