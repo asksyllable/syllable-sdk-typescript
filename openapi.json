@@ -8201,7 +8201,8 @@
       "name": "prompts",
       "description": "Operations related to prompts",
       "externalDocs": {
-        "url": "https://docs.syllable.ai/Resources/res_WritePrompt"
+        "url": "https://docs.syllable.ai/Resources/res_WritePrompt",
+        "description": "(for more information)"
       }
     },
     {
