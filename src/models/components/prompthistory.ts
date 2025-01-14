@@ -8,15 +8,42 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Record of a change to a prompt. Values reflect post-change state.
+ */
 export type PromptHistory = {
+  /**
+   * Timestamp of the change
+   */
   timestamp: Date;
-  promptId?: string | null | undefined;
-  promptText?: string | null | undefined;
+  /**
+   * ID of the prompt
+   */
+  promptId: string;
+  /**
+   * Text of the prompt
+   */
+  promptText: string;
+  /**
+   * Description of the prompt
+   */
   promptDescription?: string | null | undefined;
-  promptName?: string | null | undefined;
+  /**
+   * Name of the prompt
+   */
+  promptName: string;
+  /**
+   * String representation of LLM config for the prompt
+   */
   llmConfig?: string | null | undefined;
+  /**
+   * Comments describing the change
+   */
   comments?: string | null | undefined;
-  userEmail?: string | null | undefined;
+  /**
+   * Email address of the user who made the change
+   */
+  userEmail: string;
 };
 
 /** @internal */
@@ -26,13 +53,13 @@ export const PromptHistory$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  prompt_id: z.nullable(z.string()).optional(),
-  prompt_text: z.nullable(z.string()).optional(),
+  prompt_id: z.string(),
+  prompt_text: z.string(),
   prompt_description: z.nullable(z.string()).optional(),
-  prompt_name: z.nullable(z.string()).optional(),
+  prompt_name: z.string(),
   llm_config: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
-  user_email: z.nullable(z.string()).optional(),
+  user_email: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -47,13 +74,13 @@ export const PromptHistory$inboundSchema: z.ZodType<
 /** @internal */
 export type PromptHistory$Outbound = {
   timestamp: string;
-  prompt_id?: string | null | undefined;
-  prompt_text?: string | null | undefined;
+  prompt_id: string;
+  prompt_text: string;
   prompt_description?: string | null | undefined;
-  prompt_name?: string | null | undefined;
+  prompt_name: string;
   llm_config?: string | null | undefined;
   comments?: string | null | undefined;
-  user_email?: string | null | undefined;
+  user_email: string;
 };
 
 /** @internal */
@@ -63,13 +90,13 @@ export const PromptHistory$outboundSchema: z.ZodType<
   PromptHistory
 > = z.object({
   timestamp: z.date().transform(v => v.toISOString()),
-  promptId: z.nullable(z.string()).optional(),
-  promptText: z.nullable(z.string()).optional(),
+  promptId: z.string(),
+  promptText: z.string(),
   promptDescription: z.nullable(z.string()).optional(),
-  promptName: z.nullable(z.string()).optional(),
+  promptName: z.string(),
   llmConfig: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
-  userEmail: z.nullable(z.string()).optional(),
+  userEmail: z.string(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",

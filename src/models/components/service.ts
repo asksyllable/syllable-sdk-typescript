@@ -21,7 +21,7 @@ export type Service = {
    */
   id: number;
   /**
-   * The tools of the service
+   * Names of the tools that belong to the service
    */
   tools: Array<string>;
 };

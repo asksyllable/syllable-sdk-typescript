@@ -6,7 +6,7 @@
 import { Conversation } from "syllable-sdk/models/components";
 
 let value: Conversation = {
-  timestamp: new Date("2023-05-25T10:48:39.501Z"),
+  timestamp: new Date("2024-01-25T18:02:14.843Z"),
   conversationId: "<id>",
 };
 ```

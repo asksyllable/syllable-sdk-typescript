@@ -5,7 +5,7 @@
 ```typescript
 import { ChannelProperties } from "syllable-sdk/models/components";
 
-let value: ChannelProperties = "id";
+let value: ChannelProperties = "channel_service";
 ```
 
 ## Values

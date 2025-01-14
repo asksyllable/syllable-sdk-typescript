@@ -5,7 +5,7 @@
 ```typescript
 import { AgentVoiceVarName } from "syllable-sdk/models/components";
 
-let value: AgentVoiceVarName = "elevenlabs:Liam";
+let value: AgentVoiceVarName = "elevenlabs:Laura";
 ```
 
 ## Values

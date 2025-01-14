@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -34,7 +35,7 @@ export async function agentsUpdate(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.Agent,
+    components.AgentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -58,10 +59,10 @@ export async function agentsUpdate(
 
   const path = pathToFunc("/api/v1/agents/")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
@@ -110,7 +111,7 @@ export async function agentsUpdate(
   };
 
   const [result] = await M.match<
-    components.Agent,
+    components.AgentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -120,7 +121,7 @@ export async function agentsUpdate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.Agent$inboundSchema),
+    M.json(200, components.AgentResponse$inboundSchema),
     M.fail([400, 404, "4XX", 500, "5XX"]),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
   )(response, { extraFields: responseFields });

@@ -13,7 +13,7 @@ let value: AgentToolFieldDefault = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `fieldName`        | *string*           | :heavy_check_mark: | N/A                |
-| `defaultValue`     | *any*              | :heavy_check_mark: | N/A                |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `fieldName`                     | *string*                        | :heavy_check_mark:              | The name of the field           |
+| `defaultValue`                  | *any*                           | :heavy_check_mark:              | The default value for the field |

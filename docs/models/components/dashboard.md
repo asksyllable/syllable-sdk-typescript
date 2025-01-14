@@ -9,7 +9,7 @@ let value: Dashboard = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  supersetUrl: "https://trusty-junior.org/",
+  supersetUrl: "https://celebrated-eggplant.info",
 };
 ```
 

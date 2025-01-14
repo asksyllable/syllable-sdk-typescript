@@ -150,7 +150,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponseChannelTarget](../../models/components/listresponsechanneltarget.md)\>**
+**Promise\<[components.ListResponseChannelTargetResponse](../../models/components/listresponsechanneltargetresponse.md)\>**
 
 ### Errors
 
@@ -176,10 +176,10 @@ async function run() {
   const result = await syllableSDK.channels.targets.create({
     channelId: 134365,
     channelTargetCreateRequest: {
-      channelId: 486589,
       agentId: 638424,
+      channelId: 486589,
       target: "<value>",
-      targetMode: "<value>",
+      targetMode: "chat",
       fallbackTarget: "<value>",
       isTest: true,
     },
@@ -210,10 +210,10 @@ async function run() {
   const res = await channelsTargetsCreate(syllableSDK, {
     channelId: 134365,
     channelTargetCreateRequest: {
-      channelId: 486589,
       agentId: 638424,
+      channelId: 486589,
       target: "<value>",
-      targetMode: "<value>",
+      targetMode: "chat",
       fallbackTarget: "<value>",
       isTest: true,
     },
@@ -243,7 +243,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](../../models/components/channeltarget.md)\>**
+**Promise\<[components.ChannelTargetResponse](../../models/components/channeltargetresponse.md)\>**
 
 ### Errors
 
@@ -322,7 +322,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](../../models/components/channeltarget.md)\>**
+**Promise\<[components.ChannelTargetResponse](../../models/components/channeltargetresponse.md)\>**
 
 ### Errors
 
@@ -349,13 +349,13 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      id: 857478,
-      channelId: 597129,
       agentId: 344620,
+      channelId: 597129,
       target: "<value>",
-      targetMode: "<value>",
+      targetMode: "email",
       fallbackTarget: "<value>",
       isTest: false,
+      id: 857478,
     },
   });
 
@@ -385,13 +385,13 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      id: 857478,
-      channelId: 597129,
       agentId: 344620,
+      channelId: 597129,
       target: "<value>",
-      targetMode: "<value>",
+      targetMode: "email",
       fallbackTarget: "<value>",
       isTest: false,
+      id: 857478,
     },
   });
 
@@ -419,7 +419,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](../../models/components/channeltarget.md)\>**
+**Promise\<[components.ChannelTargetResponse](../../models/components/channeltargetresponse.md)\>**
 
 ### Errors
 

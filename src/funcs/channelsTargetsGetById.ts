@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -32,7 +33,7 @@ export async function channelsTargetsGetById(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ChannelTarget,
+    components.ChannelTargetResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -70,9 +71,9 @@ export async function channelsTargetsGetById(
     pathParams,
   );
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
@@ -121,7 +122,7 @@ export async function channelsTargetsGetById(
   };
 
   const [result] = await M.match<
-    components.ChannelTarget,
+    components.ChannelTargetResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -131,7 +132,7 @@ export async function channelsTargetsGetById(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ChannelTarget$inboundSchema),
+    M.json(200, components.ChannelTargetResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

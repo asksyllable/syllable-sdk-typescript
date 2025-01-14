@@ -4,8 +4,10 @@
 
 import * as z from "zod";
 import { SyllableSDKCore } from "../core.js";
+import { appendForm } from "../lib/encodings.js";
 import { readableStreamToArrayBuffer } from "../lib/files.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -61,13 +63,14 @@ export async function directoryDirectoryMemberBulkLoad(
   const body = new FormData();
 
   if (isBlobLike(payload.file)) {
-    body.append("file", payload.file);
+    appendForm(body, "file", payload.file);
   } else if (isReadableStream(payload.file.content)) {
     const buffer = await readableStreamToArrayBuffer(payload.file.content);
     const blob = new Blob([buffer], { type: "application/octet-stream" });
-    body.append("file", blob);
+    appendForm(body, "file", blob);
   } else {
-    body.append(
+    appendForm(
+      body,
       "file",
       new Blob([payload.file.content], { type: "application/octet-stream" }),
       payload.file.fileName,
@@ -76,9 +79,9 @@ export async function directoryDirectoryMemberBulkLoad(
 
   const path = pathToFunc("/api/v1/directory_members/upload/")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };

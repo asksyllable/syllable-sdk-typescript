@@ -7,13 +7,36 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  TargetModes,
+  TargetModes$inboundSchema,
+  TargetModes$outboundSchema,
+} from "./targetmodes.js";
 
 export type ChannelTargetCreateRequest = {
-  channelId: number;
+  /**
+   * The ID of the agent associated with the channel target
+   */
   agentId: number;
+  /**
+   * The ID of the channel associated with the channel target
+   */
+  channelId: number;
+  /**
+   * The name of the channel target (must correspond to an organization-level target)
+   */
   target: string;
-  targetMode: string;
+  /**
+   * Available modes (communication methods) for channel targets.
+   */
+  targetMode: TargetModes;
+  /**
+   * The fallback for the channel target (currently only supported for "voice" mode)
+   */
   fallbackTarget?: string | null | undefined;
+  /**
+   * Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test.
+   */
   isTest?: boolean | undefined;
 };
 
@@ -23,16 +46,16 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  channel_id: z.number().int(),
   agent_id: z.number().int(),
+  channel_id: z.number().int(),
   target: z.string(),
-  target_mode: z.string(),
+  target_mode: TargetModes$inboundSchema,
   fallback_target: z.nullable(z.string()).optional(),
   is_test: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
-    "channel_id": "channelId",
     "agent_id": "agentId",
+    "channel_id": "channelId",
     "target_mode": "targetMode",
     "fallback_target": "fallbackTarget",
     "is_test": "isTest",
@@ -41,8 +64,8 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ChannelTargetCreateRequest$Outbound = {
-  channel_id: number;
   agent_id: number;
+  channel_id: number;
   target: string;
   target_mode: string;
   fallback_target?: string | null | undefined;
@@ -55,16 +78,16 @@ export const ChannelTargetCreateRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ChannelTargetCreateRequest
 > = z.object({
-  channelId: z.number().int(),
   agentId: z.number().int(),
+  channelId: z.number().int(),
   target: z.string(),
-  targetMode: z.string(),
+  targetMode: TargetModes$outboundSchema,
   fallbackTarget: z.nullable(z.string()).optional(),
   isTest: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
-    channelId: "channel_id",
     agentId: "agent_id",
+    channelId: "channel_id",
     targetMode: "target_mode",
     fallbackTarget: "fallback_target",
     isTest: "is_test",

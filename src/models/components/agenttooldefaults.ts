@@ -15,7 +15,13 @@ import {
 } from "./agenttoolfielddefault.js";
 
 export type AgentToolDefaults = {
+  /**
+   * The name of the tool
+   */
   toolName: string;
+  /**
+   * The default values for fields used in the tool
+   */
   defaultValues: Array<AgentToolFieldDefault>;
 };
 

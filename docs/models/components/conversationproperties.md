@@ -5,7 +5,7 @@
 ```typescript
 import { ConversationProperties } from "syllable-sdk/models/components";
 
-let value: ConversationProperties = "llm_model";
+let value: ConversationProperties = "is_legacy";
 ```
 
 ## Values

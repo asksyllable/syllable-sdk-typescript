@@ -6,11 +6,11 @@
 import { SessionLabel } from "syllable-sdk/models/components";
 
 let value: SessionLabel = {
-  sessionId: 820767,
+  sessionId: 607249,
   type: "<value>",
   code: "<value>",
   userEmail: "<value>",
-  id: 908844,
+  id: 477646,
   timestamp: "<value>",
 };
 ```

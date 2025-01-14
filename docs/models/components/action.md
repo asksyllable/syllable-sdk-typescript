@@ -7,7 +7,7 @@ The action to perform on the value: `default` means only set the value (using th
 ```typescript
 import { Action } from "syllable-sdk/models/components";
 
-let value: Action = "default";
+let value: Action = "override";
 ```
 
 ## Values

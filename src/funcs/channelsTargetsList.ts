@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -32,7 +33,7 @@ export async function channelsTargetsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponseChannelTarget,
+    components.ListResponseChannelTargetResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -68,9 +69,9 @@ export async function channelsTargetsList(
     "start_datetime": payload.start_datetime,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
@@ -120,7 +121,7 @@ export async function channelsTargetsList(
   };
 
   const [result] = await M.match<
-    components.ListResponseChannelTarget,
+    components.ListResponseChannelTargetResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -130,7 +131,7 @@ export async function channelsTargetsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListResponseChannelTarget$inboundSchema),
+    M.json(200, components.ListResponseChannelTargetResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

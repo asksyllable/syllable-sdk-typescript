@@ -9,7 +9,13 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AgentToolFieldDefault = {
+  /**
+   * The name of the field
+   */
   fieldName: string;
+  /**
+   * The default value for the field
+   */
   defaultValue?: any | undefined;
 };
 

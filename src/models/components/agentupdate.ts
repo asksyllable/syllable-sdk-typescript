@@ -14,23 +14,106 @@ import {
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
 
+export type AgentUpdateVariables = {};
+
 export type AgentUpdate = {
-  name: string;
-  description?: string | null | undefined;
-  label?: string | null | undefined;
-  timezone: string;
-  type: string;
-  promptId: number;
-  customMessageId: number | null;
-  languages: Array<string>;
-  promptToolDefaults?: Array<AgentToolDefaults> | undefined;
-  toolHeaders?: { [k: string]: string } | null | undefined;
-  variables?: { [k: string]: string } | null | undefined;
   /**
-   * The Agent ID
+   * The agent name
+   */
+  name: string;
+  /**
+   * The agent description
+   */
+  description?: string | null | undefined;
+  /**
+   * The agent label
+   */
+  label?: string | null | undefined;
+  /**
+   * The agent type. Can be an arbitrary string
+   */
+  type: string;
+  /**
+   * ID of the prompt associated with the agent
+   */
+  promptId: number;
+  /**
+   * ID of the custom message that should be delivered at the beginning of a conversation with the agent
+   */
+  customMessageId: number;
+  /**
+   * The time zone in which the agent operates
+   */
+  timezone: string;
+  /**
+   * The prompt tool defaults
+   */
+  promptToolDefaults?: Array<AgentToolDefaults> | undefined;
+  /**
+   * BCP 47 codes of languages the agent supports
+   */
+  languages?: Array<string> | undefined;
+  /**
+   * Custom context variables for the conversation session. Should be prefixed with "vars.".
+   */
+  variables: AgentUpdateVariables | null;
+  /**
+   * Optional headers to include in tool calls for agent.
+   */
+  toolHeaders: { [k: string]: string } | null;
+  /**
+   * The agent ID
    */
   id: number;
 };
+
+/** @internal */
+export const AgentUpdateVariables$inboundSchema: z.ZodType<
+  AgentUpdateVariables,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type AgentUpdateVariables$Outbound = {};
+
+/** @internal */
+export const AgentUpdateVariables$outboundSchema: z.ZodType<
+  AgentUpdateVariables$Outbound,
+  z.ZodTypeDef,
+  AgentUpdateVariables
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AgentUpdateVariables$ {
+  /** @deprecated use `AgentUpdateVariables$inboundSchema` instead. */
+  export const inboundSchema = AgentUpdateVariables$inboundSchema;
+  /** @deprecated use `AgentUpdateVariables$outboundSchema` instead. */
+  export const outboundSchema = AgentUpdateVariables$outboundSchema;
+  /** @deprecated use `AgentUpdateVariables$Outbound` instead. */
+  export type Outbound = AgentUpdateVariables$Outbound;
+}
+
+export function agentUpdateVariablesToJSON(
+  agentUpdateVariables: AgentUpdateVariables,
+): string {
+  return JSON.stringify(
+    AgentUpdateVariables$outboundSchema.parse(agentUpdateVariables),
+  );
+}
+
+export function agentUpdateVariablesFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentUpdateVariables, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentUpdateVariables$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentUpdateVariables' from JSON`,
+  );
+}
 
 /** @internal */
 export const AgentUpdate$inboundSchema: z.ZodType<
@@ -41,14 +124,14 @@ export const AgentUpdate$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  timezone: z.string(),
   type: z.string(),
   prompt_id: z.number().int(),
-  custom_message_id: z.nullable(z.number().int()),
-  languages: z.array(z.string()),
+  custom_message_id: z.number().int(),
+  timezone: z.string(),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
-  tool_headers: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.record(z.string())).optional(),
+  languages: z.array(z.string()).optional(),
+  variables: z.nullable(z.lazy(() => AgentUpdateVariables$inboundSchema)),
+  tool_headers: z.nullable(z.record(z.string())),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -64,14 +147,14 @@ export type AgentUpdate$Outbound = {
   name: string;
   description?: string | null | undefined;
   label?: string | null | undefined;
-  timezone: string;
   type: string;
   prompt_id: number;
-  custom_message_id: number | null;
-  languages: Array<string>;
+  custom_message_id: number;
+  timezone: string;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
-  tool_headers?: { [k: string]: string } | null | undefined;
-  variables?: { [k: string]: string } | null | undefined;
+  languages?: Array<string> | undefined;
+  variables: AgentUpdateVariables$Outbound | null;
+  tool_headers: { [k: string]: string } | null;
   id: number;
 };
 
@@ -84,14 +167,14 @@ export const AgentUpdate$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  timezone: z.string(),
   type: z.string(),
   promptId: z.number().int(),
-  customMessageId: z.nullable(z.number().int()),
-  languages: z.array(z.string()),
+  customMessageId: z.number().int(),
+  timezone: z.string(),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
-  toolHeaders: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.record(z.string())).optional(),
+  languages: z.array(z.string()).optional(),
+  variables: z.nullable(z.lazy(() => AgentUpdateVariables$outboundSchema)),
+  toolHeaders: z.nullable(z.record(z.string())),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
