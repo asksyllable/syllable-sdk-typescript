@@ -8199,7 +8199,10 @@
     },
     {
       "name": "prompts",
-      "description": "Operations related to prompts"
+      "description": "Operations related to prompts",
+      "externalDocs": {
+        "url": "https://docs.syllable.ai/Resources/res_WritePrompt"
+      }
     },
     {
       "name": "services",
