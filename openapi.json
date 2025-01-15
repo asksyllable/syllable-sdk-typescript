@@ -2100,7 +2100,7 @@
     "/api/v1/session_labels/{session_label_id}": {
       "get": {
         "tags": [
-          "sessions.labels",
+          "session_labels",
           "V1"
         ],
         "summary": "Get Label By Id",
@@ -2148,7 +2148,7 @@
     "/api/v1/session_labels/": {
       "post": {
         "tags": [
-          "sessions.labels",
+          "session_labels",
           "V1"
         ],
         "summary": "Create Label",
@@ -2194,7 +2194,7 @@
       },
       "get": {
         "tags": [
-          "sessions.labels",
+          "session_labels",
           "V1"
         ],
         "summary": "Session Labels List",
@@ -3837,7 +3837,8 @@
               }
             }
           }
-        }
+        },
+        "x-speakeasy-ignore": true
       },
       "post": {
         "tags": [
@@ -3883,7 +3884,8 @@
               }
             }
           }
-        }
+        },
+        "x-speakeasy-ignore": true
       }
     },
     "/api/v1/directory_members/{member_id}": {
@@ -3932,7 +3934,8 @@
               }
             }
           }
-        }
+        },
+        "x-speakeasy-ignore": true
       },
       "put": {
         "tags": [
@@ -4001,7 +4004,8 @@
               }
             }
           }
-        }
+        },
+        "x-speakeasy-ignore": true
       },
       "delete": {
         "tags": [
@@ -4055,7 +4059,8 @@
               }
             }
           }
-        }
+        },
+        "x-speakeasy-ignore": true
       }
     },
     "/api/v1/directory_members/upload/": {
@@ -4113,7 +4118,8 @@
           {
             "APIKeyHeader": []
           }
-        ]
+        ],
+        "x-speakeasy-ignore": true
       }
     },
     "/api/v1/directory_members/download/": {
@@ -4142,7 +4148,8 @@
           {
             "APIKeyHeader": []
           }
-        ]
+        ],
+        "x-speakeasy-ignore": true
       }
     },
     "/api/v1/dashboards/session_events": {
@@ -4589,7 +4596,8 @@
           "updated_at",
           "last_updated_by"
         ],
-        "title": "AgentResponse"
+        "title": "AgentResponse",
+        "description": "When a user interacts with the Syllable system, they do so by communicating with an agent.\nAn agent is linked to a prompt, a custom message, and one or more channel targets to define its\nbehavior and capabilities."
       },
       "AgentToolDefaults": {
         "properties": {
@@ -4767,14 +4775,28 @@
       "AgentVoice": {
         "properties": {
           "provider": {
-            "$ref": "#/components/schemas/SttProvider"
+            "$ref": "#/components/schemas/SttProvider",
+            "description": "The provider for the voice",
+            "examples": [
+              "OpenAI",
+              "ElevenLabs",
+              "Google"
+            ]
           },
           "display_name": {
             "type": "string",
-            "title": "Display Name"
+            "title": "Display Name",
+            "description": "The display name of the voice",
+            "examples": [
+              "Alloy"
+            ]
           },
           "var_name": {
-            "$ref": "#/components/schemas/AgentVoiceVarName"
+            "$ref": "#/components/schemas/AgentVoiceVarName",
+            "description": "The variable name of the voice (used when procesing messages)",
+            "examples": [
+              "openai:alloy"
+            ]
           }
         },
         "type": "object",
@@ -4898,7 +4920,13 @@
               }
             ],
             "title": "Supported Modes",
-            "description": "The comma-delimited list of supported modes for the channel"
+            "description": "The comma-delimited list of supported modes for the channel, which defines the       possible communication methods for channel targets linked to it.",
+            "examples": [
+              [
+                "chat",
+                "voice"
+              ]
+            ]
           },
           "id": {
             "type": "integer",
@@ -4932,7 +4960,8 @@
           "email",
           "webchat"
         ],
-        "title": "ChannelServices"
+        "title": "ChannelServices",
+        "description": "The communication service for a channel."
       },
       "ChannelTargetCreateRequest": {
         "properties": {
@@ -5082,7 +5111,7 @@
           "last_updated_by"
         ],
         "title": "ChannelTargetResponse",
-        "description": "Class for all Channel Target responses"
+        "description": "A channel target links a channel to an agent, allowing users to communicate with the agent\nthrough that channel."
       },
       "ChannelTargetUpdateRequest": {
         "properties": {
@@ -5144,11 +5173,13 @@
           "timestamp": {
             "type": "string",
             "format": "date-time",
-            "title": "Timestamp"
+            "title": "Timestamp",
+            "description": "Timestamp of the conversation"
           },
           "conversation_id": {
             "type": "string",
-            "title": "Conversation Id"
+            "title": "Conversation Id",
+            "description": "ID of the conversation"
           },
           "agent_id": {
             "anyOf": [
@@ -5159,7 +5190,8 @@
                 "type": "null"
               }
             ],
-            "title": "Agent Id"
+            "title": "Agent Id",
+            "description": "ID of the agent with which the conversation occurred"
           },
           "agent_name": {
             "anyOf": [
@@ -5170,7 +5202,8 @@
                 "type": "null"
               }
             ],
-            "title": "Agent Name"
+            "title": "Agent Name",
+            "description": "Name of the agent with which the conversation occurred"
           },
           "agent_type": {
             "anyOf": [
@@ -5181,7 +5214,8 @@
                 "type": "null"
               }
             ],
-            "title": "Agent Type"
+            "title": "Agent Type",
+            "description": "Value of the \"type\" field of the agent with which the conversation occurred"
           },
           "prompt_id": {
             "anyOf": [
@@ -5192,7 +5226,8 @@
                 "type": "null"
               }
             ],
-            "title": "Prompt Id"
+            "title": "Prompt Id",
+            "description": "ID of the prompt used in the conversation"
           },
           "prompt_name": {
             "anyOf": [
@@ -5203,7 +5238,8 @@
                 "type": "null"
               }
             ],
-            "title": "Prompt Name"
+            "title": "Prompt Name",
+            "description": "Name of the prompt used in the conversation"
           },
           "prompt_version": {
             "anyOf": [
@@ -5214,7 +5250,8 @@
                 "type": "null"
               }
             ],
-            "title": "Prompt Version"
+            "title": "Prompt Version",
+            "description": "Version of the prompt used in the conversation"
           },
           "llm_provider": {
             "anyOf": [
@@ -5225,7 +5262,8 @@
                 "type": "null"
               }
             ],
-            "title": "Llm Provider"
+            "title": "Llm Provider",
+            "description": "Provider for the LLM used in the conversation (see PromptResponse.llm_config.provider)"
           },
           "llm_model": {
             "anyOf": [
@@ -5236,7 +5274,8 @@
                 "type": "null"
               }
             ],
-            "title": "Llm Model"
+            "title": "Llm Model",
+            "description": "Model for the LLM used in the conversation (see PromptResponse.llm_config.model)"
           },
           "llm_version": {
             "anyOf": [
@@ -5247,7 +5286,8 @@
                 "type": "null"
               }
             ],
-            "title": "Llm Version"
+            "title": "Llm Version",
+            "description": "Version for the LLM used in the conversation (see PromptResponse.llm_config.version)"
           },
           "is_legacy": {
             "anyOf": [
@@ -5258,7 +5298,8 @@
                 "type": "null"
               }
             ],
-            "title": "Is Legacy"
+            "title": "Is Legacy",
+            "description": "Whether the conversation occurred on the legacy Syllable system"
           }
         },
         "type": "object",
@@ -5266,7 +5307,8 @@
           "timestamp",
           "conversation_id"
         ],
-        "title": "Conversation"
+        "title": "Conversation",
+        "description": "A conversation is a record of messages between a user and an agent, and is composed of one or\nmore sessions."
       },
       "ConversationProperties": {
         "type": "string",
@@ -5419,7 +5461,8 @@
           "updated_at",
           "last_updated_by"
         ],
-        "title": "CustomMessageResponse"
+        "title": "CustomMessageResponse",
+        "description": "A custom message is a pre-configured message delivered by an agent as a greeting at the\nbeginning of a conversation. Multiple agents can use the same custom mesasage. A custom message\nhas one or more rules defined, which allow for different messages to be dynamically selected and\ndelivered at runtime based on the current time and either date or day of the week."
       },
       "CustomMessageRule": {
         "properties": {
@@ -5578,19 +5621,23 @@
         "properties": {
           "embedded_id": {
             "type": "string",
-            "title": "Embedded Id"
+            "title": "Embedded Id",
+            "description": "Superset embedded ID of the dashboard"
           },
           "guest_token": {
             "type": "string",
-            "title": "Guest Token"
+            "title": "Guest Token",
+            "description": "Superset guest token of the dashboard"
           },
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "Name of the dashboard"
           },
           "superset_url": {
             "type": "string",
-            "title": "Superset Url"
+            "title": "Superset Url",
+            "description": "Superset URL of the dashboard"
           }
         },
         "type": "object",
@@ -5600,7 +5647,8 @@
           "name",
           "superset_url"
         ],
-        "title": "Dashboard"
+        "title": "Dashboard",
+        "description": "Basic information about a dashboard."
       },
       "DayOfWeek": {
         "type": "string",
@@ -5802,7 +5850,8 @@
           "timestamp": {
             "type": "string",
             "format": "date-time",
-            "title": "Timestamp"
+            "title": "Timestamp",
+            "description": "Timestamp at which the event occurred"
           },
           "session_id": {
             "anyOf": [
@@ -5813,7 +5862,8 @@
                 "type": "null"
               }
             ],
-            "title": "Session Id"
+            "title": "Session Id",
+            "description": "ID of the session in which the event occurred"
           },
           "conversation_id": {
             "anyOf": [
@@ -5824,7 +5874,8 @@
                 "type": "null"
               }
             ],
-            "title": "Conversation Id"
+            "title": "Conversation Id",
+            "description": "ID of the conversation associated with the session in which the event occurred"
           },
           "source": {
             "anyOf": [
@@ -5835,7 +5886,11 @@
                 "type": "null"
               }
             ],
-            "title": "Source"
+            "title": "Source",
+            "description": "Source of the event (either a tool call or an LLM prompt)",
+            "examples": [
+              "tool-call"
+            ]
           },
           "source_id": {
             "anyOf": [
@@ -5846,7 +5901,8 @@
                 "type": "null"
               }
             ],
-            "title": "Source Id"
+            "title": "Source Id",
+            "description": "ID of the source of the event (either a tool ID or a prompt ID)"
           },
           "category": {
             "anyOf": [
@@ -5857,7 +5913,11 @@
                 "type": "null"
               }
             ],
-            "title": "Category"
+            "title": "Category",
+            "description": "Broad categorization of the event",
+            "examples": [
+              "automation"
+            ]
           },
           "type": {
             "anyOf": [
@@ -5868,7 +5928,11 @@
                 "type": "null"
               }
             ],
-            "title": "Type"
+            "title": "Type",
+            "description": "More specific class of the event",
+            "examples": [
+              "phone-transfer"
+            ]
           },
           "user_id": {
             "anyOf": [
@@ -5879,7 +5943,11 @@
                 "type": "null"
               }
             ],
-            "title": "User Id"
+            "title": "User Id",
+            "description": "ID of the user interacting with the system when the event occurred (e.g., their       phone number)",
+            "examples": [
+              "+18042221111"
+            ]
           },
           "description": {
             "anyOf": [
@@ -5890,7 +5958,11 @@
                 "type": "null"
               }
             ],
-            "title": "Description"
+            "title": "Description",
+            "description": "Human-readable description of the event",
+            "examples": [
+              "Transfer to phone number +18042221111"
+            ]
           },
           "attributes": {
             "anyOf": [
@@ -5901,14 +5973,27 @@
                 "type": "null"
               }
             ],
-            "title": "Attributes"
+            "title": "Attributes",
+            "description": "Arbitrary additional metadata for the event",
+            "examples": [
+              {
+                "contact_type": "operator",
+                "duration_s": 60,
+                "end_time": "2024-05-20T15:31:00.000+00:00",
+                "name": "Operator",
+                "outcome": "success",
+                "phone": "+18042221111",
+                "start_time": "2024-05-20T15:30:00.000+00:00"
+              }
+            ]
           }
         },
         "type": "object",
         "required": [
           "timestamp"
         ],
-        "title": "Event"
+        "title": "Event",
+        "description": "An event represents a specific occurrence during a session."
       },
       "EventProperties": {
         "type": "string",
@@ -6919,7 +7004,8 @@
           "id",
           "last_updated"
         ],
-        "title": "PromptResponse"
+        "title": "PromptResponse",
+        "description": "A prompt defines the behavior of an agent by delivering instructions to the LLM about how the\nagent should behave. A prompt can be linked to one or more agents. A prompt can also be linked to\ntools to allow an agent using it to use those tools."
       },
       "PromptUpdateRequest": {
         "properties": {
@@ -7030,7 +7116,8 @@
           "id",
           "tools"
         ],
-        "title": "Service"
+        "title": "Service",
+        "description": "A service is a collection of tools."
       },
       "ServiceCreate": {
         "properties": {
@@ -7091,7 +7178,8 @@
           "timestamp": {
             "type": "string",
             "format": "date-time",
-            "title": "Timestamp"
+            "title": "Timestamp",
+            "description": "Timestamp of the session"
           },
           "session_id": {
             "anyOf": [
@@ -7102,7 +7190,8 @@
                 "type": "null"
               }
             ],
-            "title": "Session Id"
+            "title": "Session Id",
+            "description": "Internal ID of the session, generated based on interaction details"
           },
           "conversation_id": {
             "anyOf": [
@@ -7113,7 +7202,8 @@
                 "type": "null"
               }
             ],
-            "title": "Conversation Id"
+            "title": "Conversation Id",
+            "description": "ID of the conversation of which the session is a part"
           },
           "channel_manager_service": {
             "anyOf": [
@@ -7124,7 +7214,12 @@
                 "type": "null"
               }
             ],
-            "title": "Channel Manager Service"
+            "title": "Channel Manager Service",
+            "description": "Name of the service used to facilitate the session",
+            "examples": [
+              "hedy",
+              "console"
+            ]
           },
           "channel_manager_type": {
             "anyOf": [
@@ -7135,7 +7230,13 @@
                 "type": "null"
               }
             ],
-            "title": "Channel Manager Type"
+            "title": "Channel Manager Type",
+            "description": "Type of the service used to facilitate the session",
+            "examples": [
+              "voice_sip_v1",
+              "voice_twilio_v1",
+              "web_chat_v1"
+            ]
           },
           "channel_manager_sid": {
             "anyOf": [
@@ -7146,7 +7247,8 @@
                 "type": "null"
               }
             ],
-            "title": "Channel Manager Sid"
+            "title": "Channel Manager Sid",
+            "description": "Channel-manager-side ID of the session (different from session_id)"
           },
           "agent_id": {
             "anyOf": [
@@ -7157,7 +7259,8 @@
                 "type": "null"
               }
             ],
-            "title": "Agent Id"
+            "title": "Agent Id",
+            "description": "ID of the agent with which the session occurred"
           },
           "agent_name": {
             "anyOf": [
@@ -7168,7 +7271,8 @@
                 "type": "null"
               }
             ],
-            "title": "Agent Name"
+            "title": "Agent Name",
+            "description": "Name of the agent with which the session occurred"
           },
           "agent_type": {
             "anyOf": [
@@ -7179,7 +7283,8 @@
                 "type": "null"
               }
             ],
-            "title": "Agent Type"
+            "title": "Agent Type",
+            "description": "Type of the agent with which the session occurred"
           },
           "agent_timezone": {
             "anyOf": [
@@ -7190,7 +7295,8 @@
                 "type": "null"
               }
             ],
-            "title": "Agent Timezone"
+            "title": "Agent Timezone",
+            "description": "Timezone of the agent with which the session occurred"
           },
           "prompt_id": {
             "anyOf": [
@@ -7201,7 +7307,8 @@
                 "type": "null"
               }
             ],
-            "title": "Prompt Id"
+            "title": "Prompt Id",
+            "description": "ID of the prompt used by the agent with which the session occurred"
           },
           "prompt_name": {
             "anyOf": [
@@ -7212,7 +7319,8 @@
                 "type": "null"
               }
             ],
-            "title": "Prompt Name"
+            "title": "Prompt Name",
+            "description": "Name of the prompt used by the agent with which the session occurred"
           },
           "prompt_version": {
             "anyOf": [
@@ -7223,7 +7331,8 @@
                 "type": "null"
               }
             ],
-            "title": "Prompt Version"
+            "title": "Prompt Version",
+            "description": "Version of the prompt used by the agent with which the session occurred"
           },
           "duration": {
             "anyOf": [
@@ -7234,7 +7343,8 @@
                 "type": "null"
               }
             ],
-            "title": "Duration"
+            "title": "Duration",
+            "description": "Duration of the session in seconds"
           },
           "session_label_id": {
             "anyOf": [
@@ -7245,7 +7355,8 @@
                 "type": "null"
               }
             ],
-            "title": "Session Label Id"
+            "title": "Session Label Id",
+            "description": "ID of the label (listing the quality of the session and any issues that occurred) associated with the session"
           },
           "source": {
             "anyOf": [
@@ -7256,7 +7367,12 @@
                 "type": "null"
               }
             ],
-            "title": "Source"
+            "title": "Source",
+            "description": "Source of the session (e.g., for an inbound session, the user's phone number/username/email)",
+            "examples": [
+              "+18042221111",
+              "user@email.com"
+            ]
           },
           "target": {
             "anyOf": [
@@ -7267,7 +7383,8 @@
                 "type": "null"
               }
             ],
-            "title": "Target"
+            "title": "Target",
+            "description": "The name of the channel target associated with the agent at the time of the session (see ChannelTargetResponse.target)"
           },
           "is_legacy": {
             "anyOf": [
@@ -7278,7 +7395,8 @@
                 "type": "null"
               }
             ],
-            "title": "Is Legacy"
+            "title": "Is Legacy",
+            "description": "Whether the session occurred on the legacy Syllable system"
           },
           "is_test": {
             "anyOf": [
@@ -7289,14 +7407,16 @@
                 "type": "null"
               }
             ],
-            "title": "Is Test"
+            "title": "Is Test",
+            "description": "Whether the session is a test session"
           }
         },
         "type": "object",
         "required": [
           "timestamp"
         ],
-        "title": "Session"
+        "title": "Session",
+        "description": "A session is a building block of a conversation."
       },
       "SessionAction": {
         "properties": {
@@ -7349,19 +7469,33 @@
         "properties": {
           "session_id": {
             "type": "integer",
-            "title": "Session Id"
+            "title": "Session Id",
+            "description": "The internal ID of the session (see Session.session_id)"
           },
           "type": {
             "type": "string",
-            "title": "Type"
+            "title": "Type",
+            "description": "The type of the label",
+            "examples": [
+              "auto-rating",
+              "human-rating"
+            ]
           },
           "code": {
             "type": "string",
-            "title": "Code"
+            "title": "Code",
+            "description": "A code describing the quality of the labeled session",
+            "examples": [
+              "GOOD",
+              "OK",
+              "BAD",
+              "N/A"
+            ]
           },
           "user_email": {
             "type": "string",
-            "title": "User Email"
+            "title": "User Email",
+            "description": "The email of the user who created the label"
           },
           "comments": {
             "anyOf": [
@@ -7372,7 +7506,8 @@
                 "type": "null"
               }
             ],
-            "title": "Comments"
+            "title": "Comments",
+            "description": "Comment string describing additional details about the session"
           },
           "issue_categories": {
             "anyOf": [
@@ -7387,12 +7522,21 @@
               }
             ],
             "title": "Issue Categories",
-            "default": []
+            "description": "Descriptions of issues occurring in the labeled call",
+            "default": [],
+            "examples": [
+              [
+                "Silent treatment"
+              ],
+              [
+                "Speech transcription (STT)"
+              ]
+            ]
           },
           "id": {
             "type": "integer",
             "title": "Id",
-            "description": "The label ID"
+            "description": "The internal ID of the label"
           },
           "timestamp": {
             "type": "string",
@@ -7409,25 +7553,40 @@
           "id",
           "timestamp"
         ],
-        "title": "SessionLabel"
+        "title": "SessionLabel",
+        "description": "A session label is associated with a given session and contains an evaluation of quality and\ndescriptions of issues the user encountered in that session or other details."
       },
       "SessionLabelCreate": {
         "properties": {
           "session_id": {
             "type": "integer",
-            "title": "Session Id"
+            "title": "Session Id",
+            "description": "The internal ID of the session (see Session.session_id)"
           },
           "type": {
             "type": "string",
-            "title": "Type"
+            "title": "Type",
+            "description": "The type of the label",
+            "examples": [
+              "auto-rating",
+              "human-rating"
+            ]
           },
           "code": {
             "type": "string",
-            "title": "Code"
+            "title": "Code",
+            "description": "A code describing the quality of the labeled session",
+            "examples": [
+              "GOOD",
+              "OK",
+              "BAD",
+              "N/A"
+            ]
           },
           "user_email": {
             "type": "string",
-            "title": "User Email"
+            "title": "User Email",
+            "description": "The email of the user who created the label"
           },
           "comments": {
             "anyOf": [
@@ -7438,7 +7597,8 @@
                 "type": "null"
               }
             ],
-            "title": "Comments"
+            "title": "Comments",
+            "description": "Comment string describing additional details about the session"
           },
           "issue_categories": {
             "anyOf": [
@@ -7453,7 +7613,16 @@
               }
             ],
             "title": "Issue Categories",
-            "default": []
+            "description": "Descriptions of issues occurring in the labeled call",
+            "default": [],
+            "examples": [
+              [
+                "Silent treatment"
+              ],
+              [
+                "Speech transcription (STT)"
+              ]
+            ]
           }
         },
         "type": "object",
@@ -7511,7 +7680,8 @@
                 "type": "null"
               }
             ],
-            "title": "Session Id"
+            "title": "Session Id",
+            "description": "The internal ID of the session"
           },
           "recordings": {
             "anyOf": [
@@ -7525,7 +7695,8 @@
                 "type": "null"
               }
             ],
-            "title": "Recordings"
+            "title": "Recordings",
+            "description": "List of recording URLs"
           },
           "expiration": {
             "anyOf": [
@@ -7536,11 +7707,13 @@
                 "type": "null"
               }
             ],
-            "title": "Expiration"
+            "title": "Expiration",
+            "description": "Expiration timestamp of the URLs"
           }
         },
         "type": "object",
-        "title": "SessionRecordingResponse"
+        "title": "SessionRecordingResponse",
+        "description": "Recording URLs for a given session."
       },
       "SessionText": {
         "properties": {
@@ -8085,7 +8258,8 @@
           "service_id",
           "id"
         ],
-        "title": "ToolResponse"
+        "title": "ToolResponse",
+        "description": "A tool is a function that an agent can call to perform actions like accessing databases, \nmaking API calls, or processing data. For an agent to have access to a tool, the prompt \nassociated with that agent should be linked to the tool and include instructions to use it."
       },
       "ToolUpdateRequest": {
         "properties": {
@@ -8163,31 +8337,43 @@
   "tags": [
     {
       "name": "agents",
-      "description": "Operations related to agents"
+      "description": "Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities."
     },
     {
       "name": "agents.test",
-      "description": "Operations for testing agents with live text"
+      "description": "Operations for testing agents with live text.           These endpoints allow sending messages to an agent and receiving its responses."
     },
     {
       "name": "channels",
-      "description": "Operations related to channels"
+      "description": "Operations related to channel configuration.           A channel is an organization-level point of communication, like a phone number or a web           chat. A channel can be associated with an agent by creating a channel target linking           them.",
+      "externalDocs": {
+        "description": "For more information:",
+        "url": "https://docs.syllable.ai/Resources/Channels"
+      }
     },
     {
       "name": "channels.targets",
-      "description": "Operations related to channel targets"
+      "description": "Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel.",
+      "externalDocs": {
+        "description": "For more information:",
+        "url": "https://docs.syllable.ai/Resources/Channels"
+      }
     },
     {
       "name": "conversations",
-      "description": "Operations related to conversations"
+      "description": "Operations related to conversations.           A conversation is a record of messages between a user and an agent, and is composed of           one or more sessions."
     },
     {
       "name": "custom_messages",
-      "description": "Operations related to custom messages"
+      "description": "Operations related to custom message configuration.           A custom message is a pre-configured message delivered by an agent as a greeting at the           beginning of a conversation. Multiple agents can use the same custom mesasage. A custom           message has one or more rules defined, which allow for different messages to be           dynamically selected and delivered at runtime based on the current time and either           date or day of the week.",
+      "externalDocs": {
+        "description": "For more information:",
+        "url": "https://docs.syllable.ai/Resources/CustomMessages"
+      }
     },
     {
       "name": "dashboards",
-      "description": "Operations related to dashboards"
+      "description": "Operations related to dashboards. Currently the API/SDK           only supports fetching basic information about dashboards."
     },
     {
       "name": "directory",
@@ -8195,35 +8381,35 @@
     },
     {
       "name": "events",
-      "description": "Operations related to agent events"
+      "description": "Operations related to events. An event represents a specific occurrence           during a session. Currently the API/SDK only supports fetching logged events."
     },
     {
       "name": "prompts",
-      "description": "Operations related to prompts",
+      "description": "Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them.",
       "externalDocs": {
-        "url": "https://docs.syllable.ai/Resources/res_WritePrompt",
-        "description": "[(for more information)](https://docs.syllable.ai/Resources/res_WritePrompt)"
+        "description": "For more information:",
+        "url": "https://docs.syllable.ai/Resources/res_WritePrompt"
       }
     },
     {
       "name": "services",
-      "description": "Operations related to services"
+      "description": "Operations related to service configuration. A service is a collection of           tools."
     },
     {
       "name": "sessions",
-      "description": "Operations related to agent sessions"
+      "description": "Operations related to sessions. A session is a building block of a           conversation."
     },
     {
-      "name": "sessions.labels",
-      "description": "Operations related to labeling sessions"
-    },
-    {
-      "name": "sessions.transcript",
-      "description": "Operations related to session transcription"
+      "name": "session_labels",
+      "description": "Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details."
     },
     {
       "name": "tools",
-      "description": "Operations related to tools"
+      "description": "Operations related to tool configuration. A tool is a function that an           agent can call to perform actions like accessing databases, making API calls, or           processing data. For an agent to have access to a tool, the prompt associated with that           agent should be linked to the tool and include instructions to use it.",
+      "externalDocs": {
+        "description": "For more information:",
+        "url": "https://docs.syllable.ai/Resources/Tools"
+      }
     }
   ],
   "x-speakeasy-name-override": [
