@@ -2399,9 +2399,7 @@ components:
             - type: "object"
             - type: "null"
           title: "Variables"
-          description: "Custom context variables for the conversation session. Should be prefixed with \"vars.\"."
-          examples:
-            - {"vars.hospital": "Weill Cornell Medical Center"}
+          description: "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
         "tool_headers":
           anyOf:
             - additionalProperties:
@@ -2643,9 +2641,7 @@ components:
             - type: "object"
             - type: "null"
           title: "Variables"
-          description: "Custom context variables for the conversation session. Should be prefixed with \"vars.\"."
-          examples:
-            - {"vars.hospital": "Weill Cornell Medical Center"}
+          description: "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
         "tool_headers":
           anyOf:
             - additionalProperties:
@@ -3435,8 +3431,6 @@ components:
             - type: "null"
           title: "Attributes"
           description: "Arbitrary additional metadata for the event"
-          examples:
-            - {"contact_type": "operator", "duration_s": 60, "end_time": "2024-05-20T15:31:00.000+00:00", "name": "Operator", "outcome": "success", "phone": "+18042221111", "start_time": "2024-05-20T15:30:00.000+00:00"}
       type: "object"
       required:
         - "timestamp"
@@ -4712,7 +4706,7 @@ components:
       required:
         - "tool"
       title: "ToolDefinition"
-      description: "A tool that can be called from an LLM during the conversation.\n\nThe tool can result in one of the following actions depending on the `type` field:\n- `action`:\n  A request to perform an action.\n- `endpoint`:\n  An HTTP API call to an external tool. Requires the `endpoint` field to be set too.\n- `context`:\n  Sets context variables based on the tool arguments, e.g. to change the session language. Only\n  `language` and `say` context vars are currently supported, but this will be made more generic.\n\nFor example, to change the current session language:\n{\n  \"type\": \"context\",\n  \"tool\": {\n    \"function\": {\n      \"name\": \"set_language\",\n      \"parameters\": {\n        \"language\": {\n          \"type\": \"string\",\n          \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"\n        },\n        \"message\": {\n          \"type\": \"string\",\n          \"description\": \"Inform the caller we're now speaking in the new language.\"\n        }\n      }\n    }\n  }\n}\n\nIf `defaults` is provided, it will be used as the default values for the parameters of the\ntool call, if the LLM doesn't provide them:\n\"defaults\": {\n  \"hospital\": \"Queens Hospital\"\n}\n\nSome special \"transform\" handling is supported if the value is a dict with a single `transform`\nkey. The parameter value will be transformed by the given `action` before being used as the\ndefault value:\n\nRemoving an unwanted parameter:\n\"defaults\": {\n  \"hospital\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n\nUsing a value from another parameter and converting it to a dictionary:\n\"defaults\": {\n  \"tags.hospital\": \"{vars.hospital}\",\n  \"tags.foo\": \"{params.foo}\",\n  \"foo\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n\nAdd custom parameters from other parameters using Python's `format`:\n\"defaults\": {\n  \"hello\": {\n    \"transform\": {\n      \"format\": \"Hello, {name}!\"\n    }\n  }\n}\n\nModify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\":\n{\n  \"defaults\": {\n    \"city\": {\n      \"transform\": {\n        \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},\n        \"action\": \"override\",\n        \"format\": \"The {city}\"\n      }\n    }\n  }\n}\n\nSome common transform actions can be abbreviated using the `@` prefix to support a string syntax:\n\"defaults\": {\n  \"foo\": \"@remove\",\n  \"name\": \"@override Hello, {name}!\"\n}"
+      description: "A tool that can be called from an LLM during the conversation."
     "ToolDetailResponse":
       properties:
         "id":
@@ -4935,21 +4929,12 @@ tags:
     description: "Operations for testing agents with live text.           These endpoints allow sending messages to an agent and receiving its responses."
   - name: "channels"
     description: "Operations related to channel configuration.           A channel is an organization-level point of communication, like a phone number or a web           chat. A channel can be associated with an agent by creating a channel target linking           them."
-    externalDocs:
-      description: "For more information:"
-      url: "https://docs.syllable.ai/Resources/Channels"
   - name: "channels.targets"
     description: "Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel."
-    externalDocs:
-      description: "For more information:"
-      url: "https://docs.syllable.ai/Resources/Channels"
   - name: "conversations"
     description: "Operations related to conversations.           A conversation is a record of messages between a user and an agent, and is composed of           one or more sessions."
   - name: "custom_messages"
     description: "Operations related to custom message configuration.           A custom message is a pre-configured message delivered by an agent as a greeting at the           beginning of a conversation. Multiple agents can use the same custom mesasage. A custom           message has one or more rules defined, which allow for different messages to be           dynamically selected and delivered at runtime based on the current time and either           date or day of the week."
-    externalDocs:
-      description: "For more information:"
-      url: "https://docs.syllable.ai/Resources/CustomMessages"
   - name: "dashboards"
     description: "Operations related to dashboards. Currently the API/SDK           only supports fetching basic information about dashboards."
   - name: "directory"
@@ -4958,9 +4943,6 @@ tags:
     description: "Operations related to events. An event represents a specific occurrence           during a session. Currently the API/SDK only supports fetching logged events."
   - name: "prompts"
     description: "Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them."
-    externalDocs:
-      description: "For more information:"
-      url: "https://docs.syllable.ai/Resources/res_WritePrompt"
   - name: "services"
     description: "Operations related to service configuration. A service is a collection of           tools."
   - name: "sessions"
@@ -4969,7 +4951,4 @@ tags:
     description: "Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details."
   - name: "tools"
     description: "Operations related to tool configuration. A tool is a function that an           agent can call to perform actions like accessing databases, making API calls, or           processing data. For an agent to have access to a tool, the prompt associated with that           agent should be linked to the tool and include instructions to use it."
-    externalDocs:
-      description: "For more information:"
-      url: "https://docs.syllable.ai/Resources/Tools"
 x-speakeasy-name-override: [{"operationId": ".*_list$", "methodNameOverride": "list"}, {"operationId": ".*_create$", "methodNameOverride": "create"}, {"operationId": ".*_update$", "methodNameOverride": "update"}, {"operationId": ".*_delete$", "methodNameOverride": "delete"}, {"operationId": ".*_get_by_id$", "methodNameOverride": "get_by_id"}, {"operationId": ".*_get_by_name$", "methodNameOverride": "get_by_name"}]

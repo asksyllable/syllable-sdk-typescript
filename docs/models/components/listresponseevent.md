@@ -14,7 +14,6 @@ let value: ListResponseEvent = {
       type: "phone-transfer",
       userId: "+18042221111",
       description: "Transfer to phone number +18042221111",
-      attributes: {},
     },
   ],
   page: 183280,

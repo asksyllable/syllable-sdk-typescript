@@ -54,7 +54,7 @@ export type AgentUpdate = {
    */
   languages?: Array<string> | undefined;
   /**
-   * Custom context variables for the conversation session. Should be prefixed with "vars.".
+   * Custom context variables for the conversation session. Keys should be prefixed with "vars.".
    */
   variables: AgentUpdateVariables | null;
   /**
