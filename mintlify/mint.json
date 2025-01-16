@@ -121,7 +121,9 @@
         "sdk-docs/Conversations",
         "sdk-docs/Transcripts",
         "sdk-docs/Events",
-        "sdk-docs/SessionLabels"
+        "sdk-docs/SessionLabels",
+        "sdk-docs/dashboards",
+        "sdk-docs/test"
       ]
     },
     {
