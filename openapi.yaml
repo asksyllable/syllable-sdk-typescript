@@ -2495,9 +2495,7 @@ components:
             type: "string"
           type: "object"
           title: "Variables"
-          description: "Custom context variables for the conversation session. Should be prefixed with \"vars.\"."
-          examples:
-            - {"vars.hospital": "Weill Cornell Medical Center"}
+          description: "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
         "tool_headers":
           anyOf:
             - additionalProperties:
