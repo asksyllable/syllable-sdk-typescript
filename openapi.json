@@ -4343,7 +4343,7 @@
             "examples": [
               [
                 "en-US",
-                "es-MX"
+                "es-US"
               ]
             ]
           },
@@ -4490,7 +4490,7 @@
             "examples": [
               [
                 "en-US",
-                "es-MX"
+                "es-US"
               ]
             ]
           },
@@ -4620,7 +4620,8 @@
           "tool_name",
           "default_values"
         ],
-        "title": "AgentToolDefaults"
+        "title": "AgentToolDefaults",
+        "description": "An agent-level configuration of default values for tool parameters for its tools."
       },
       "AgentToolFieldDefault": {
         "properties": {
@@ -4639,7 +4640,8 @@
           "field_name",
           "default_value"
         ],
-        "title": "AgentToolFieldDefault"
+        "title": "AgentToolFieldDefault",
+        "description": "An agent-level configuration of default values for tool parameters for a given tool."
       },
       "AgentUpdate": {
         "properties": {
@@ -4717,7 +4719,7 @@
             "examples": [
               [
                 "en-US",
-                "es-MX"
+                "es-US"
               ]
             ]
           },
@@ -4805,7 +4807,8 @@
           "display_name",
           "var_name"
         ],
-        "title": "AgentVoice"
+        "title": "AgentVoice",
+        "description": "Voice option for an agent."
       },
       "AgentVoiceVarName": {
         "type": "string",
@@ -4839,7 +4842,8 @@
           "wavenet:male/en-US-Neural2-D",
           "wavenet:female/en-US-Studio-O"
         ],
-        "title": "AgentVoiceVarName"
+        "title": "AgentVoiceVarName",
+        "description": "The variable name of an agent voice (used when procesing messages)."
       },
       "AvailableTarget": {
         "properties": {
@@ -7423,7 +7427,8 @@
           "timestamp": {
             "type": "string",
             "format": "date-time",
-            "title": "Timestamp"
+            "title": "Timestamp",
+            "description": "Timestamp of the tool invocation"
           },
           "tool_name": {
             "anyOf": [
@@ -7434,7 +7439,8 @@
                 "type": "null"
               }
             ],
-            "title": "Tool Name"
+            "title": "Tool Name",
+            "description": "Name of the tool that was invoked"
           },
           "tool_request": {
             "anyOf": [
@@ -7445,7 +7451,8 @@
                 "type": "null"
               }
             ],
-            "title": "Tool Request"
+            "title": "Tool Request",
+            "description": "Request sent to the tool API, if applicable"
           },
           "tool_result": {
             "anyOf": [
@@ -7456,14 +7463,16 @@
                 "type": "null"
               }
             ],
-            "title": "Tool Result"
+            "title": "Tool Result",
+            "description": "Response received from the tool API, if applicable"
           }
         },
         "type": "object",
         "required": [
           "timestamp"
         ],
-        "title": "SessionAction"
+        "title": "SessionAction",
+        "description": "Information about a given tool invocation as part of a session."
       },
       "SessionLabel": {
         "properties": {
@@ -7720,7 +7729,8 @@
           "timestamp": {
             "type": "string",
             "format": "date-time",
-            "title": "Timestamp"
+            "title": "Timestamp",
+            "description": "Timestamp of the message"
           },
           "lang": {
             "anyOf": [
@@ -7731,7 +7741,13 @@
                 "type": "null"
               }
             ],
-            "title": "Lang"
+            "title": "Lang",
+            "description": "ISO 639 code of the language used for the message (may appear as \"unset\" if was not conclusively determined)",
+            "examples": [
+              "en-US",
+              "es-US",
+              "unset"
+            ]
           },
           "source": {
             "anyOf": [
@@ -7742,7 +7758,12 @@
                 "type": "null"
               }
             ],
-            "title": "Source"
+            "title": "Source",
+            "description": "Whether the user or agent sent the message",
+            "examples": [
+              "user",
+              "agent"
+            ]
           },
           "text": {
             "anyOf": [
@@ -7753,34 +7774,39 @@
                 "type": "null"
               }
             ],
-            "title": "Text"
+            "title": "Text",
+            "description": "Content of the message"
           }
         },
         "type": "object",
         "required": [
           "timestamp"
         ],
-        "title": "SessionText"
+        "title": "SessionText",
+        "description": "Information about a given message from a user to an agent or vice-versa."
       },
       "SessionTranscriptionResponse": {
         "properties": {
           "session_id": {
             "type": "string",
-            "title": "Session Id"
+            "title": "Session Id",
+            "description": "Internal ID of the session"
           },
           "transcription": {
             "items": {
               "$ref": "#/components/schemas/SessionText"
             },
             "type": "array",
-            "title": "Transcription"
+            "title": "Transcription",
+            "description": "Transcriptions of all messages in the session"
           },
           "actions": {
             "items": {
               "$ref": "#/components/schemas/SessionAction"
             },
             "type": "array",
-            "title": "Actions"
+            "title": "Actions",
+            "description": "Tool invocations that occurred during the session"
           }
         },
         "type": "object",
@@ -7789,7 +7815,8 @@
           "transcription",
           "actions"
         ],
-        "title": "SessionTranscriptionResponse"
+        "title": "SessionTranscriptionResponse",
+        "description": "Text transcript of a given session."
       },
       "SttProvider": {
         "type": "string",
@@ -7798,7 +7825,8 @@
           "ElevenLabs",
           "Google"
         ],
-        "title": "SttProvider"
+        "title": "SttProvider",
+        "description": "Provider for an agent voice."
       },
       "TargetModes": {
         "type": "string",
@@ -7832,19 +7860,23 @@
                 "type": "null"
               }
             ],
-            "title": "Text"
+            "title": "Text",
+            "description": "The text of the message"
           },
           "test_id": {
             "type": "string",
-            "title": "Test Id"
+            "title": "Test Id",
+            "description": "Channel-manager-side ID of the session (see Session.channel_manager_sid)"
           },
           "agent_id": {
             "type": "string",
-            "title": "Agent Id"
+            "title": "Agent Id",
+            "description": "ID of the agent with which the chat is taking place"
           },
           "org_name": {
             "type": "string",
-            "title": "Org Name"
+            "title": "Org Name",
+            "description": "Name of the organization associated with the agent"
           },
           "override_timestamp": {
             "anyOf": [
@@ -7855,11 +7887,13 @@
                 "type": "null"
               }
             ],
-            "title": "Override Timestamp"
+            "title": "Override Timestamp",
+            "description": "Override for the timestamp of the message"
           },
           "session_start": {
             "type": "boolean",
             "title": "Session Start",
+            "description": "Whether this message is the start of a new session",
             "default": false
           }
         },
@@ -7871,21 +7905,25 @@
           "agent_id",
           "org_name"
         ],
-        "title": "TestMessage"
+        "title": "TestMessage",
+        "description": "Message sent in a test chat with an agent."
       },
       "TestMessageResponse": {
         "properties": {
           "test_id": {
             "type": "string",
-            "title": "Test Id"
+            "title": "Test Id",
+            "description": "Channel-manager-side ID of the session (see Session.channel_manager_sid)"
           },
           "agent_id": {
             "type": "string",
-            "title": "Agent Id"
+            "title": "Agent Id",
+            "description": "ID of the agent with which the chat is taking place"
           },
           "text": {
             "type": "string",
-            "title": "Text"
+            "title": "Text",
+            "description": "The text of the message that elicited the response"
           },
           "response": {
             "type": "object",
@@ -7893,17 +7931,17 @@
           },
           "response_text": {
             "type": "string",
-            "title": "Response Text"
+            "title": "Response Text",
+            "description": "The text of the response"
           }
         },
         "type": "object",
         "required": [
           "test_id",
-          "agent_id",
-          "text",
-          "response_text"
+          "agent_id"
         ],
-        "title": "TestMessageResponse"
+        "title": "TestMessageResponse",
+        "description": "Response from an agent in a test chat."
       },
       "ToolArgumentLocation": {
         "type": "string",
@@ -7914,7 +7952,7 @@
           "query"
         ],
         "title": "ToolArgumentLocation",
-        "description": "The location of the argument in the request.\n'body' is used for JSON data in the POST request body.\n'form' is used for form data in the POST request body.\n'path' is used for URL path parameters.\n'query' is used for query parameters in the URL."
+        "description": "The location of the argument in a tool HTTP request.\n'body' is used for JSON data in the POST request body.\n'form' is used for form data in the POST request body.\n'path' is used for URL path parameters.\n'query' is used for query parameters in the URL."
       },
       "ToolCreateRequest": {
         "properties": {
@@ -8070,7 +8108,7 @@
           "parameters"
         ],
         "title": "ToolFunction",
-        "description": "A function available to the tool.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
+        "description": "A function available to an agent.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
       },
       "ToolHttpEndpoint": {
         "properties": {
@@ -8095,7 +8133,7 @@
           "argument_location"
         ],
         "title": "ToolHttpEndpoint",
-        "description": "The configuration for an HTTP API call."
+        "description": "The configuration for an HTTP API call by a tool."
       },
       "ToolHttpMethod": {
         "type": "string",
@@ -8104,7 +8142,7 @@
           "post"
         ],
         "title": "ToolHttpMethod",
-        "description": "The HTTP method to use for the request."
+        "description": "The HTTP method to use for a tool HTTP request."
       },
       "ToolParameterDefault": {
         "properties": {
@@ -8118,7 +8156,7 @@
           "transform"
         ],
         "title": "ToolParameterDefault",
-        "description": "The default value for a parameter of the tool call."
+        "description": "The default value for a parameter of a tool call."
       },
       "ToolParameterTransform": {
         "properties": {
@@ -8130,7 +8168,7 @@
               "remove"
             ],
             "title": "Action",
-            "description": "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.",
+            "description": "The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.",
             "default": "default"
           },
           "when": {
@@ -8169,7 +8207,7 @@
         },
         "type": "object",
         "title": "ToolParameterTransform",
-        "description": "A transform to be applied to the value of a parameter.\n\nEither `value` or `format` must be set:\n- `value` is any arbitrary value: string, list or dictionary.\n- `format` is a string composed of other parameters or context variables."
+        "description": "A transform to be applied to the value of a tool parameter.\n\nEither `value` or `format` must be set:\n- `value` is any arbitrary value: string, list or dictionary.\n- `format` is a string composed of other parameters or context variables."
       },
       "ToolParameterTransformCondition": {
         "properties": {
@@ -8204,7 +8242,7 @@
           "value"
         ],
         "title": "ToolParameterTransformCondition",
-        "description": "A condition to be met for a transform to be applied to the value of a parameter."
+        "description": "A condition to be met for a transform to be applied to the value of a tool parameter."
       },
       "ToolProperties": {
         "type": "string",
