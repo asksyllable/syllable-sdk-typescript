@@ -111,8 +111,7 @@
         "sdk-docs/Tools",
         "sdk-docs/Services",
         "sdk-docs/Channels",
-        "sdk-docs/Targets",
-        "sdk-docs/Directory"
+        "sdk-docs/Targets"
       ]
     },
     {
@@ -122,7 +121,8 @@
         "sdk-docs/Conversations",
         "sdk-docs/Transcripts",
         "sdk-docs/Events",
-        "sdk-docs/SessionLabels"
+        "sdk-docs/SessionLabels",
+        "sdk-docs/dashboards"
       ]
     },
     {
