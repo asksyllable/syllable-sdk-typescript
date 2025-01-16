@@ -46,7 +46,7 @@ export class Agents extends ClientSDK {
   async create(
     request: components.AgentCreate,
     options?: RequestOptions,
-  ): Promise<components.Agent> {
+  ): Promise<components.AgentResponse> {
     return unwrapAsync(agentsCreate(
       this,
       request,
@@ -63,7 +63,7 @@ export class Agents extends ClientSDK {
   async update(
     request: components.AgentUpdate,
     options?: RequestOptions,
-  ): Promise<components.Agent> {
+  ): Promise<components.AgentResponse> {
     return unwrapAsync(agentsUpdate(
       this,
       request,

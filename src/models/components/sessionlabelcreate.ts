@@ -9,11 +9,29 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SessionLabelCreate = {
+  /**
+   * The internal ID of the session (see Session.session_id)
+   */
   sessionId: number;
+  /**
+   * The type of the label
+   */
   type: string;
+  /**
+   * A code describing the quality of the labeled session
+   */
   code: string;
+  /**
+   * The email of the user who created the label
+   */
   userEmail: string;
+  /**
+   * Comment string describing additional details about the session
+   */
   comments?: string | null | undefined;
+  /**
+   * Descriptions of issues occurring in the labeled call
+   */
   issueCategories?: Array<string> | null | undefined;
 };
 

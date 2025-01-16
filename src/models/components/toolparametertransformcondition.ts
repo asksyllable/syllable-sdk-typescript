@@ -8,7 +8,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * A condition to be met for a transform to be applied to the value of a parameter.
+ * A condition to be met for a transform to be applied to the value of a tool parameter.
  */
 export type ToolParameterTransformCondition = {
   /**

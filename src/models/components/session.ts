@@ -8,25 +8,85 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * A session is a building block of a conversation.
+ */
 export type Session = {
+  /**
+   * Timestamp of the session
+   */
   timestamp: Date;
+  /**
+   * Internal ID of the session, generated based on interaction details
+   */
   sessionId?: string | null | undefined;
+  /**
+   * ID of the conversation of which the session is a part
+   */
   conversationId?: string | null | undefined;
+  /**
+   * Name of the service used to facilitate the session
+   */
   channelManagerService?: string | null | undefined;
+  /**
+   * Type of the service used to facilitate the session
+   */
   channelManagerType?: string | null | undefined;
+  /**
+   * Channel-manager-side ID of the session (different from session_id)
+   */
   channelManagerSid?: string | null | undefined;
+  /**
+   * ID of the agent with which the session occurred
+   */
   agentId?: string | null | undefined;
+  /**
+   * Name of the agent with which the session occurred
+   */
   agentName?: string | null | undefined;
+  /**
+   * Type of the agent with which the session occurred
+   */
   agentType?: string | null | undefined;
+  /**
+   * Timezone of the agent with which the session occurred
+   */
   agentTimezone?: string | null | undefined;
+  /**
+   * ID of the prompt used by the agent with which the session occurred
+   */
   promptId?: string | null | undefined;
+  /**
+   * Name of the prompt used by the agent with which the session occurred
+   */
   promptName?: string | null | undefined;
+  /**
+   * Version of the prompt used by the agent with which the session occurred
+   */
   promptVersion?: string | null | undefined;
+  /**
+   * Duration of the session in seconds
+   */
   duration?: number | null | undefined;
+  /**
+   * ID of the label (listing the quality of the session and any issues that occurred) associated with the session
+   */
   sessionLabelId?: string | null | undefined;
+  /**
+   * Source of the session (e.g., for an inbound session, the user's phone number/username/email)
+   */
   source?: string | null | undefined;
+  /**
+   * The name of the channel target associated with the agent at the time of the session (see ChannelTargetResponse.target)
+   */
   target?: string | null | undefined;
+  /**
+   * Whether the session occurred on the legacy Syllable system
+   */
   isLegacy?: boolean | null | undefined;
+  /**
+   * Whether the session is a test session
+   */
   isTest?: boolean | null | undefined;
 };
 

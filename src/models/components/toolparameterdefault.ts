@@ -14,11 +14,11 @@ import {
 } from "./toolparametertransform.js";
 
 /**
- * The default value for a parameter of the tool call.
+ * The default value for a parameter of a tool call.
  */
 export type ToolParameterDefault = {
   /**
-   * A transform to be applied to the value of a parameter.
+   * A transform to be applied to the value of a tool parameter.
    *
    * @remarks
    *

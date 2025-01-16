@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to agents
+Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities.
 
 ### Available Operations
 
@@ -103,13 +103,19 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.agents.create({
     name: "<value>",
-    timezone: "Antarctica/Rothera",
-    type: "<value>",
+    type: "ca_v1",
     promptId: 486589,
     customMessageId: 638424,
+    timezone: "America/New_York",
     languages: [
-      "<value>",
+      "en-US",
+      "es-US",
     ],
+    variables: {},
+    toolHeaders: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
   });
 
   // Handle the result
@@ -136,13 +142,19 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await agentsCreate(syllableSDK, {
     name: "<value>",
-    timezone: "Antarctica/Rothera",
-    type: "<value>",
+    type: "ca_v1",
     promptId: 486589,
     customMessageId: 638424,
+    timezone: "America/New_York",
     languages: [
-      "<value>",
+      "en-US",
+      "es-US",
     ],
+    variables: {},
+    toolHeaders: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
   });
 
   if (!res.ok) {
@@ -169,7 +181,7 @@ run();
 
 ### Response
 
-**Promise\<[components.Agent](../../models/components/agent.md)\>**
+**Promise\<[components.AgentResponse](../../models/components/agentresponse.md)\>**
 
 ### Errors
 
@@ -194,13 +206,19 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.agents.update({
     name: "<value>",
-    timezone: "Europe/Tallinn",
-    type: "<value>",
+    type: "ca_v1",
     promptId: 857478,
     customMessageId: 597129,
+    timezone: "America/Chicago",
     languages: [
-      "<value>",
+      "en-US",
+      "es-US",
     ],
+    variables: {},
+    toolHeaders: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
     id: 597129,
   });
 
@@ -228,13 +246,19 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await agentsUpdate(syllableSDK, {
     name: "<value>",
-    timezone: "Europe/Tallinn",
-    type: "<value>",
+    type: "ca_v1",
     promptId: 857478,
     customMessageId: 597129,
+    timezone: "America/Chicago",
     languages: [
-      "<value>",
+      "en-US",
+      "es-US",
     ],
+    variables: {},
+    toolHeaders: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
     id: 597129,
   });
 
@@ -262,7 +286,7 @@ run();
 
 ### Response
 
-**Promise\<[components.Agent](../../models/components/agent.md)\>**
+**Promise\<[components.AgentResponse](../../models/components/agentresponse.md)\>**
 
 ### Errors
 

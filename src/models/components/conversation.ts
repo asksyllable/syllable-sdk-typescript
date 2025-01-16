@@ -8,18 +8,60 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * A conversation is a record of messages between a user and an agent, and is composed of one or
+ *
+ * @remarks
+ * more sessions.
+ */
 export type Conversation = {
+  /**
+   * Timestamp of the conversation
+   */
   timestamp: Date;
+  /**
+   * ID of the conversation
+   */
   conversationId: string;
+  /**
+   * ID of the agent with which the conversation occurred
+   */
   agentId?: string | null | undefined;
+  /**
+   * Name of the agent with which the conversation occurred
+   */
   agentName?: string | null | undefined;
+  /**
+   * Value of the "type" field of the agent with which the conversation occurred
+   */
   agentType?: string | null | undefined;
+  /**
+   * ID of the prompt used in the conversation
+   */
   promptId?: string | null | undefined;
+  /**
+   * Name of the prompt used in the conversation
+   */
   promptName?: string | null | undefined;
+  /**
+   * Version of the prompt used in the conversation
+   */
   promptVersion?: string | null | undefined;
+  /**
+   * Provider for the LLM used in the conversation (see PromptResponse.llm_config.provider)
+   */
   llmProvider?: string | null | undefined;
+  /**
+   * Model for the LLM used in the conversation (see PromptResponse.llm_config.model)
+   */
   llmModel?: string | null | undefined;
+  /**
+   * Version for the LLM used in the conversation (see PromptResponse.llm_config.version)
+   */
   llmVersion?: string | null | undefined;
+  /**
+   * Whether the conversation occurred on the legacy Syllable system
+   */
   isLegacy?: boolean | null | undefined;
 };
 

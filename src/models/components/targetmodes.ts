@@ -5,12 +5,18 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Available modes (communication methods) for channel targets.
+ */
 export const TargetModes = {
   Voice: "voice",
   Chat: "chat",
   Sms: "sms",
   Email: "email",
 } as const;
+/**
+ * Available modes (communication methods) for channel targets.
+ */
 export type TargetModes = ClosedEnum<typeof TargetModes>;
 
 /** @internal */

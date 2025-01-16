@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to conversations
+Operations related to conversations.           A conversation is a record of messages between a user and an agent, and is composed of           one or more sessions.
 
 ### Available Operations
 
