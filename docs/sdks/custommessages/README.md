@@ -5,9 +5,6 @@
 
 Operations related to custom message configuration.           A custom message is a pre-configured message delivered by an agent as a greeting at the           beginning of a conversation. Multiple agents can use the same custom mesasage. A custom           message has one or more rules defined, which allow for different messages to be           dynamically selected and delivered at runtime based on the current time and either           date or day of the week.
 
-For more information:
-<https://docs.syllable.ai/Resources/CustomMessages>
-
 ### Available Operations
 
 * [list](#list) - Custom Messages List

@@ -5,9 +5,6 @@
 
 Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them.
 
-For more information:
-<https://docs.syllable.ai/Resources/res_WritePrompt>
-
 ### Available Operations
 
 * [list](#list) - Prompt List

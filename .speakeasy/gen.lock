@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 459bfbda88241da7ec0ba4c490e82c7a
+  docChecksum: c3cfda3f6bedd7e830788a87aaa1256c
   docVersion: 0.0.2
   speakeasyVersion: 1.468.9
   generationVersion: 2.493.21
-  releaseVersion: 0.1.0-alpha.30
-  configChecksum: ddd0f95480e0b20d0858a398de21355d
+  releaseVersion: 0.1.0-alpha.31
+  configChecksum: c6f16b766c03d6117974403f8472e385
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -401,7 +401,7 @@ examples:
     speakeasy-default-agent-list:
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "type": "ca_v1", "prompt_id": 678317, "custom_message_id": 177706, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 152837, "updated_at": "2023-11-28T13:02:27.296Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 639387, "custom_message_id": 17577, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": []}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 86140, "updated_at": "2024-01-25T00:05:25.844Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 687960, "custom_message_id": 509883, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>"}, "id": 7468, "updated_at": "2023-06-17T08:36:51.636Z", "last_updated_by": "<value>"}], "page": 54607, "page_size": 367745, "total_pages": 485729, "total_count": 73227}
+          application/json: {"items": [{"name": "<value>", "type": "ca_v1", "prompt_id": 678317, "custom_message_id": 177706, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 152837, "updated_at": "2023-11-28T13:02:27.296Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 639387, "custom_message_id": 17577, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": []}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 86140, "updated_at": "2024-01-25T00:05:25.844Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 687960, "custom_message_id": 509883, "timezone": "America/New_York", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>"}, "id": 7468, "updated_at": "2023-06-17T08:36:51.636Z", "last_updated_by": "<value>"}], "page": 54607, "page_size": 367745, "total_pages": 485729, "total_count": 73227}
         "422":
           application/json: {}
   agent_create:
@@ -410,7 +410,7 @@ examples:
         application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 638424, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {}, "tool_headers": {"key": "<value>", "key1": "<value>"}}
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 134365, "custom_message_id": 69025, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 417458, "updated_at": "2023-03-17T15:39:20.911Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 134365, "custom_message_id": 69025, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>"}, "id": 417458, "updated_at": "2023-03-17T15:39:20.911Z", "last_updated_by": "<value>"}
         "422":
           application/json: {}
   agent_update:
@@ -419,7 +419,7 @@ examples:
         application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 857478, "custom_message_id": 597129, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 597129}
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 991464, "custom_message_id": 627690, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 991464, "updated_at": "2024-11-18T22:44:58.301Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 991464, "custom_message_id": 627690, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 991464, "updated_at": "2024-11-18T22:44:58.301Z", "last_updated_by": "<value>"}
         "422":
           application/json: {}
   agent_get_by_id:
@@ -479,7 +479,7 @@ examples:
     speakeasy-default-channel-targets-list:
       responses:
         "200":
-          application/json: {"items": [{"agent_id": 177706, "channel_id": 678317, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": true, "id": 547272, "channel_name": "<value>", "updated_at": "2022-09-09T18:28:08.953Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 768578, "custom_message_id": 547272, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 678317, "updated_at": "2022-07-14T18:23:27.528Z", "last_updated_by": "<value>"}}, {"agent_id": 639387, "channel_id": 635532, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": true, "id": 152837, "channel_name": "<value>", "updated_at": "2024-02-27T06:14:46.641Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 152837, "custom_message_id": 152837, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 639387, "updated_at": "2022-01-20T06:21:22.156Z", "last_updated_by": "<value>"}}, {"agent_id": 68504, "channel_id": 86140, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": false, "id": 718303, "channel_name": "<value>", "updated_at": "2023-11-26T18:23:24.264Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 86140, "custom_message_id": 718303, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 687960, "updated_at": "2023-07-13T19:57:33.016Z", "last_updated_by": "<value>"}}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
+          application/json: {"items": [{"agent_id": 177706, "channel_id": 678317, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": true, "id": 547272, "channel_name": "<value>", "updated_at": "2022-09-09T18:28:08.953Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 768578, "custom_message_id": 547272, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 678317, "updated_at": "2022-07-14T18:23:27.528Z", "last_updated_by": "<value>"}}, {"agent_id": 639387, "channel_id": 635532, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": true, "id": 152837, "channel_name": "<value>", "updated_at": "2024-02-27T06:14:46.641Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 152837, "custom_message_id": 152837, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 639387, "updated_at": "2022-01-20T06:21:22.156Z", "last_updated_by": "<value>"}}, {"agent_id": 68504, "channel_id": 86140, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": false, "id": 718303, "channel_name": "<value>", "updated_at": "2023-11-26T18:23:24.264Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 86140, "custom_message_id": 718303, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 687960, "updated_at": "2023-07-13T19:57:33.016Z", "last_updated_by": "<value>"}}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
         "422":
           application/json: {}
   channel_targets_create:
@@ -491,7 +491,7 @@ examples:
         application/json: {"agent_id": 638424, "channel_id": 486589, "target": "<value>", "target_mode": "chat", "fallback_target": "<value>", "is_test": true}
       responses:
         "200":
-          application/json: {"agent_id": 951062, "channel_id": 796474, "target": "<value>", "target_mode": "sms", "fallback_target": "<value>", "is_test": true, "id": 69025, "channel_name": "<value>", "updated_at": "2022-03-17T15:39:20.911Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 417458, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 417458, "updated_at": "2022-05-28T06:20:22.766Z", "last_updated_by": "<value>"}}
+          application/json: {"agent_id": 951062, "channel_id": 796474, "target": "<value>", "target_mode": "sms", "fallback_target": "<value>", "is_test": true, "id": 69025, "channel_name": "<value>", "updated_at": "2022-03-17T15:39:20.911Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 417458, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 417458, "updated_at": "2022-05-28T06:20:22.766Z", "last_updated_by": "<value>"}}
         "422":
           application/json: {}
   channel_targets_get_by_id:
@@ -502,7 +502,7 @@ examples:
           target_id: 505057
       responses:
         "200":
-          application/json: {"agent_id": 529758, "channel_id": 33486, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": false, "id": 467619, "channel_name": "<value>", "updated_at": "2023-08-04T14:44:32.694Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 467619, "updated_at": "2022-02-06T16:50:06.315Z", "last_updated_by": "<value>"}}
+          application/json: {"agent_id": 529758, "channel_id": 33486, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": false, "id": 467619, "channel_name": "<value>", "updated_at": "2023-08-04T14:44:32.694Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 467619, "updated_at": "2022-02-06T16:50:06.315Z", "last_updated_by": "<value>"}}
         "422":
           application/json: {}
   channels_target_update:
