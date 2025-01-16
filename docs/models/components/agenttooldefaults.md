@@ -1,5 +1,7 @@
 # AgentToolDefaults
 
+An agent-level configuration of default values for tool parameters for its tools.
+
 ## Example Usage
 
 ```typescript
@@ -20,5 +22,5 @@ let value: AgentToolDefaults = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `toolName`                                                                             | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `defaultValues`                                                                        | [components.AgentToolFieldDefault](../../models/components/agenttoolfielddefault.md)[] | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `toolName`                                                                             | *string*                                                                               | :heavy_check_mark:                                                                     | The name of the tool                                                                   |
+| `defaultValues`                                                                        | [components.AgentToolFieldDefault](../../models/components/agenttoolfielddefault.md)[] | :heavy_check_mark:                                                                     | The default values for fields used in the tool                                         |

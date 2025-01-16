@@ -14,8 +14,17 @@ import {
   AgentToolFieldDefault$outboundSchema,
 } from "./agenttoolfielddefault.js";
 
+/**
+ * An agent-level configuration of default values for tool parameters for its tools.
+ */
 export type AgentToolDefaults = {
+  /**
+   * The name of the tool
+   */
   toolName: string;
+  /**
+   * The default values for fields used in the tool
+   */
   defaultValues: Array<AgentToolFieldDefault>;
 };
 

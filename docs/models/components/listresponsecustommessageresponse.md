@@ -10,13 +10,31 @@ let value: ListResponseCustomMessageResponse = {
     {
       name: "<value>",
       text: "<value>",
-      id: 4695,
-      updatedAt: new Date("2025-01-12T21:17:10.262Z"),
-      lastUpdatedBy: "<value>",
+      rules: [
+        {
+          description:
+            "oof ack flame turbulent westernize apud testing phooey restfully circulate",
+          timeRangeStart: "09:00",
+          timeRangeEnd: "17:00",
+          date: "2025-01-01",
+          daysOfWeek: [
+            "mo",
+            "tu",
+            "we",
+            "th",
+            "fr",
+          ],
+          invert: false,
+          text: "Sorry, we're closed today",
+        },
+      ],
+      id: 55374,
+      updatedAt: new Date("2023-11-27T13:15:01.733Z"),
+      lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 270008,
-  pageSize: 735194,
+  page: 262118,
+  pageSize: 456141,
 };
 ```
 

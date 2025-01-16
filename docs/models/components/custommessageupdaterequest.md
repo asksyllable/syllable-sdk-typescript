@@ -8,17 +8,34 @@ import { CustomMessageUpdateRequest } from "syllable-sdk/models/components";
 let value: CustomMessageUpdateRequest = {
   name: "<value>",
   text: "<value>",
-  id: 569101,
+  rules: [
+    {
+      description: "woot after drat afore octave wombat though fuss um",
+      timeRangeStart: "09:00",
+      timeRangeEnd: "17:00",
+      date: "2025-01-01",
+      daysOfWeek: [
+        "mo",
+        "tu",
+        "we",
+        "th",
+        "fr",
+      ],
+      invert: false,
+      text: "Sorry, we're closed today",
+    },
+  ],
+  id: 968972,
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `name`                                                                               | *string*                                                                             | :heavy_check_mark:                                                                   | The name of the custom message                                                       |
-| `text`                                                                               | *string*                                                                             | :heavy_check_mark:                                                                   | The text of the custom message                                                       |
-| `label`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | The label of the custom message                                                      |
-| `rules`                                                                              | [components.DaoCustomMessageRule](../../models/components/daocustommessagerule.md)[] | :heavy_minus_sign:                                                                   | Rules for time-specific message variants                                             |
-| `id`                                                                                 | *number*                                                                             | :heavy_check_mark:                                                                   | The ID of the custom message                                                         |
-| `type`                                                                               | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `name`                                                                         | *string*                                                                       | :heavy_check_mark:                                                             | The name of the custom message                                                 |
+| `text`                                                                         | *string*                                                                       | :heavy_check_mark:                                                             | The text of the custom message                                                 |
+| `label`                                                                        | *string*                                                                       | :heavy_minus_sign:                                                             | The label of the custom message                                                |
+| `rules`                                                                        | [components.CustomMessageRule](../../models/components/custommessagerule.md)[] | :heavy_minus_sign:                                                             | Rules for time-specific message variants                                       |
+| `id`                                                                           | *number*                                                                       | :heavy_check_mark:                                                             | The ID of the custom message                                                   |
+| `type`                                                                         | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

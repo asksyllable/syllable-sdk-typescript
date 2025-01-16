@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to services
+Operations related to service configuration. A service is a collection of           tools.
 
 ### Available Operations
 

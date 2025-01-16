@@ -3,7 +3,10 @@
 
 ## Overview
 
-Operations related to channels
+Operations related to channel configuration.           A channel is an organization-level point of communication, like a phone number or a web           chat. A channel can be associated with an agent by creating a channel target linking           them.
+
+For more information:
+<https://docs.syllable.ai/Resources/Channels>
 
 ### Available Operations
 

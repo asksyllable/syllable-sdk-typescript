@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to dashboards
+Operations related to dashboards. Currently the API/SDK           only supports fetching basic information about dashboards.
 
 ### Available Operations
 

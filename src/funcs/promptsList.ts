@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -35,7 +36,7 @@ export async function promptsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponsePrompt,
+    components.ListResponsePromptResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -71,9 +72,9 @@ export async function promptsList(
     "start_datetime": payload.start_datetime,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
@@ -123,7 +124,7 @@ export async function promptsList(
   };
 
   const [result] = await M.match<
-    components.ListResponsePrompt,
+    components.ListResponsePromptResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -133,9 +134,10 @@ export async function promptsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListResponsePrompt$inboundSchema),
+    M.json(200, components.ListResponsePromptResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

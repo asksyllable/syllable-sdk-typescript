@@ -4,6 +4,7 @@
 
 import { SyllableSDKCore } from "../core.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -45,9 +46,9 @@ export async function dashboardsPostSessionSummaryDashboard(
 > {
   const path = pathToFunc("/api/v1/dashboards/session_summary")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
@@ -101,7 +102,8 @@ export async function dashboardsPostSessionSummaryDashboard(
     | ConnectionError
   >(
     M.json(200, components.Dashboard$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response);
   if (!result.ok) {
     return result;

@@ -18,9 +18,21 @@ import {
   SttProvider$outboundSchema,
 } from "./sttprovider.js";
 
+/**
+ * Voice option for an agent.
+ */
 export type AgentVoice = {
+  /**
+   * Provider for an agent voice.
+   */
   provider: SttProvider;
+  /**
+   * The display name of the voice
+   */
   displayName: string;
+  /**
+   * The variable name of an agent voice (used when procesing messages).
+   */
   varName: AgentVoiceVarName;
 };
 

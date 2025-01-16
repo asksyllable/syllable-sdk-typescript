@@ -20,9 +20,21 @@ import {
   SessionText$outboundSchema,
 } from "./sessiontext.js";
 
+/**
+ * Text transcript of a given session.
+ */
 export type SessionTranscriptionResponse = {
+  /**
+   * Internal ID of the session
+   */
   sessionId: string;
+  /**
+   * Transcriptions of all messages in the session
+   */
   transcription: Array<SessionText>;
+  /**
+   * Tool invocations that occurred during the session
+   */
   actions: Array<SessionAction>;
 };
 

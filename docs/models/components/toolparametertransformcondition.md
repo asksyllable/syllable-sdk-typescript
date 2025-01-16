@@ -1,6 +1,6 @@
 # ToolParameterTransformCondition
 
-A condition to be met for a transform to be applied to the value of a parameter.
+A condition to be met for a transform to be applied to the value of a tool parameter.
 
 ## Example Usage
 

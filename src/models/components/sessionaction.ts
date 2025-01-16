@@ -8,10 +8,25 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Information about a given tool invocation as part of a session.
+ */
 export type SessionAction = {
+  /**
+   * Timestamp of the tool invocation
+   */
   timestamp: Date;
+  /**
+   * Name of the tool that was invoked
+   */
   toolName?: string | null | undefined;
+  /**
+   * Request sent to the tool API, if applicable
+   */
   toolRequest?: string | null | undefined;
+  /**
+   * Response received from the tool API, if applicable
+   */
   toolResult?: string | null | undefined;
 };
 

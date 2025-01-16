@@ -125,7 +125,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Agent"}
+              schema: {"$ref": "#/components/schemas/AgentResponse"}
         "400":
           description: "Bad Request"
         "500":
@@ -153,7 +153,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Agent"}
+              schema: {"$ref": "#/components/schemas/AgentResponse"}
         "400":
           description: "Bad Request"
         "404":
@@ -860,7 +860,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_Prompt_"}
+              schema: {"$ref": "#/components/schemas/ListResponse_PromptResponse_"}
         "422":
           description: "Validation Error"
           content:
@@ -878,13 +878,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/PromptCreate"}
+            schema: {"$ref": "#/components/schemas/PromptCreateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Prompt"}
+              schema: {"$ref": "#/components/schemas/PromptResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -902,13 +902,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/PromptUpdate"}
+            schema: {"$ref": "#/components/schemas/PromptUpdateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Prompt"}
+              schema: {"$ref": "#/components/schemas/PromptResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -935,7 +935,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Prompt"}
+              schema: {"$ref": "#/components/schemas/PromptResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1590,7 +1590,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_Tool_"}
+              schema: {"$ref": "#/components/schemas/ListResponse_ToolResponse_"}
         "422":
           description: "Validation Error"
           content:
@@ -1608,13 +1608,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/ToolCreate"}
+            schema: {"$ref": "#/components/schemas/ToolCreateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Tool"}
+              schema: {"$ref": "#/components/schemas/ToolResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1632,13 +1632,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/ToolUpdate"}
+            schema: {"$ref": "#/components/schemas/ToolUpdateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Tool"}
+              schema: {"$ref": "#/components/schemas/ToolResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1860,7 +1860,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_ChannelTarget_"}
+              schema: {"$ref": "#/components/schemas/ListResponse_ChannelTargetResponse_"}
         "422":
           description: "Validation Error"
           content:
@@ -1891,7 +1891,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+              schema: {"$ref": "#/components/schemas/ChannelTargetResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1923,7 +1923,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+              schema: {"$ref": "#/components/schemas/ChannelTargetResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1960,7 +1960,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ChannelTarget"}
+              schema: {"$ref": "#/components/schemas/ChannelTargetResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -2097,6 +2097,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
     post:
       tags:
         - "directory"
@@ -2121,6 +2122,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
   "/api/v1/directory_members/{member_id}":
     get:
       tags:
@@ -2148,6 +2150,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
     put:
       tags:
         - "directory"
@@ -2187,6 +2190,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
     delete:
       tags:
         - "directory"
@@ -2219,6 +2223,7 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
   "/api/v1/directory_members/upload/":
     put:
       tags:
@@ -2252,6 +2257,7 @@ paths:
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
+      x-speakeasy-ignore: true
   "/api/v1/directory_members/download/":
     get:
       tags:
@@ -2269,6 +2275,7 @@ paths:
           description: "Internal Server Error"
       security:
         - APIKeyHeader: []
+      x-speakeasy-ignore: true
   "/api/v1/dashboards/session_events":
     post:
       tags:
@@ -2335,127 +2342,66 @@ paths:
         - APIKeyHeader: []
 components:
   schemas:
-    "Agent":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-        "description":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Description"
-        "label":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Label"
-        "timezone":
-          type: "string"
-          title: "Timezone"
-        "type":
-          type: "string"
-          title: "Type"
-        "prompt_id":
-          type: "integer"
-          title: "Prompt Id"
-        "custom_message_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Custom Message Id"
-        "languages":
-          items:
-            type: "string"
-          type: "array"
-          title: "Languages"
-        "prompt_tool_defaults":
-          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
-          type: "array"
-          title: "Prompt Tool Defaults"
-        "tool_headers":
-          anyOf:
-            - additionalProperties:
-                type: "string"
-              type: "object"
-            - type: "null"
-          title: "Tool Headers"
-        "variables":
-          anyOf:
-            - additionalProperties:
-                type: "string"
-              type: "object"
-            - type: "null"
-          title: "Variables"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The Agent ID"
-        "updated_at":
-          anyOf:
-            - type: "string"
-              format: "date-time"
-            - type: "null"
-          title: "Updated At"
-        "channel_targets":
-          anyOf:
-            - items: {"$ref": "#/components/schemas/Target"}
-              type: "array"
-            - type: "null"
-          title: "Channel Targets"
-        "last_updated_by":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Last Updated By"
-      type: "object"
-      required:
-        - "name"
-        - "timezone"
-        - "type"
-        - "prompt_id"
-        - "custom_message_id"
-        - "languages"
-        - "id"
-      title: "Agent"
     "AgentCreate":
       properties:
         "name":
           type: "string"
           title: "Name"
+          description: "The agent name"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
+          description: "The agent description"
         "label":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Label"
-        "timezone":
-          type: "string"
-          title: "Timezone"
+          description: "The agent label"
         "type":
           type: "string"
           title: "Type"
+          description: "The agent type. Can be an arbitrary string"
+          examples:
+            - "ca_v1"
         "prompt_id":
           type: "integer"
           title: "Prompt Id"
+          description: "ID of the prompt associated with the agent"
         "custom_message_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Custom Message Id"
+          description: "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
+        "timezone":
+          type: "string"
+          title: "Timezone"
+          description: "The time zone in which the agent operates"
+          examples:
+            - "America/New_York"
+            - "America/Chicago"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+          description: "The prompt tool defaults"
         "languages":
           items:
             type: "string"
           type: "array"
           title: "Languages"
-        "prompt_tool_defaults":
-          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
-          type: "array"
-          title: "Prompt Tool Defaults"
+          description: "BCP 47 codes of languages the agent supports"
+          examples:
+            - ["en-US", "es-US"]
+        "variables":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Variables"
+          description: "Custom context variables for the conversation session. Should be prefixed with \"vars.\"."
+          examples:
+            - {"vars.hospital": "Weill Cornell Medical Center"}
         "tool_headers":
           anyOf:
             - additionalProperties:
@@ -2463,21 +2409,16 @@ components:
               type: "object"
             - type: "null"
           title: "Tool Headers"
-        "variables":
-          anyOf:
-            - additionalProperties:
-                type: "string"
-              type: "object"
-            - type: "null"
-          title: "Variables"
+          description: "Optional headers to include in tool calls for agent."
       type: "object"
       required:
         - "name"
-        - "timezone"
         - "type"
         - "prompt_id"
         - "custom_message_id"
-        - "languages"
+        - "timezone"
+        - "variables"
+        - "tool_headers"
       title: "AgentCreate"
     "AgentProperties":
       type: "string"
@@ -2504,51 +2445,61 @@ components:
         "name":
           type: "string"
           title: "Name"
-          description: "The Agent name"
+          description: "The agent name"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
-          description: "The Agent description"
+          description: "The agent description"
         "label":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Label"
-          description: "The Agent label"
+          description: "The agent label"
         "type":
           type: "string"
           title: "Type"
-          description: "The Agent type"
+          description: "The agent type. Can be an arbitrary string"
+          examples:
+            - "ca_v1"
         "prompt_id":
           type: "integer"
           title: "Prompt Id"
-          description: "The Agent's prompt id"
+          description: "ID of the prompt associated with the agent"
         "custom_message_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Custom Message Id"
-          description: "The Agent's custom message id"
+          description: "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
         "timezone":
           type: "string"
           title: "Timezone"
-          description: "The time zone the bot operates in"
+          description: "The time zone in which the agent operates"
+          examples:
+            - "America/New_York"
+            - "America/Chicago"
         "prompt_tool_defaults":
           items: {"$ref": "#/components/schemas/AgentToolDefaults"}
           type: "array"
           title: "Prompt Tool Defaults"
+          description: "The prompt tool defaults"
         "languages":
           items:
             type: "string"
           type: "array"
           title: "Languages"
+          description: "BCP 47 codes of languages the agent supports"
+          examples:
+            - ["en-US", "es-US"]
         "variables":
           additionalProperties:
             type: "string"
           type: "object"
           title: "Variables"
+          description: "Custom context variables for the conversation session. Should be prefixed with \"vars.\"."
+          examples:
+            - {"vars.hospital": "Weill Cornell Medical Center"}
         "tool_headers":
           anyOf:
             - additionalProperties:
@@ -2556,11 +2507,11 @@ components:
               type: "object"
             - type: "null"
           title: "Tool Headers"
-          description: "Optional headers to include in tool calls."
+          description: "Optional headers to include in tool calls for agent."
         "id":
           type: "integer"
           title: "Id"
-          description: "The Agent ID"
+          description: "The agent ID"
         "updated_at":
           type: "string"
           format: "date-time"
@@ -2572,101 +2523,129 @@ components:
             - type: "null"
           title: "Last Updated By"
           description: "Email of the user who last updated the agent"
+        "prompt":
+          anyOf:
+            - {"$ref": "#/components/schemas/PromptResponse"}
+            - type: "null"
+          description: "The prompt associated with the agent."
+        "custom_message":
+          anyOf:
+            - {"$ref": "#/components/schemas/CustomMessageResponse"}
+            - type: "null"
+          description: "The custom message associated with the agent. Will be delivered as a greeting at the beginning of a conversation."
         "channel_targets":
           anyOf:
-            - items: {"$ref": "#/components/schemas/Target"}
+            - items: {"$ref": "#/components/schemas/ChannelTargetResponse"}
               type: "array"
             - type: "null"
           title: "Channel Targets"
           description: "Channel targets associated with the agent"
-        "prompt":
-          anyOf:
-            - {"$ref": "#/components/schemas/Prompt"}
-            - type: "null"
-          description: "The prompt associated with the agent"
-        "custom_message":
-          anyOf:
-            - {"$ref": "#/components/schemas/CustomMessage"}
-            - type: "null"
-          description: "The custom message associated with the agent"
       type: "object"
       required:
         - "name"
         - "type"
         - "prompt_id"
+        - "custom_message_id"
         - "timezone"
-        - "prompt_tool_defaults"
-        - "languages"
         - "variables"
         - "tool_headers"
         - "id"
         - "updated_at"
         - "last_updated_by"
       title: "AgentResponse"
+      description: "When a user interacts with the Syllable system, they do so by communicating with an agent.\nAn agent is linked to a prompt, a custom message, and one or more channel targets to define its\nbehavior and capabilities."
     "AgentToolDefaults":
       properties:
         "tool_name":
           type: "string"
           title: "Tool Name"
+          description: "The name of the tool"
         "default_values":
           items: {"$ref": "#/components/schemas/AgentToolFieldDefault"}
           type: "array"
           title: "Default Values"
+          description: "The default values for fields used in the tool"
       type: "object"
       required:
         - "tool_name"
         - "default_values"
       title: "AgentToolDefaults"
+      description: "An agent-level configuration of default values for tool parameters for its tools."
     "AgentToolFieldDefault":
       properties:
         "field_name":
           type: "string"
           title: "Field Name"
+          description: "The name of the field"
         "default_value":
           title: "Default Value"
+          description: "The default value for the field"
       type: "object"
       required:
         - "field_name"
         - "default_value"
       title: "AgentToolFieldDefault"
+      description: "An agent-level configuration of default values for tool parameters for a given tool."
     "AgentUpdate":
       properties:
         "name":
           type: "string"
           title: "Name"
+          description: "The agent name"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
+          description: "The agent description"
         "label":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Label"
-        "timezone":
-          type: "string"
-          title: "Timezone"
+          description: "The agent label"
         "type":
           type: "string"
           title: "Type"
+          description: "The agent type. Can be an arbitrary string"
+          examples:
+            - "ca_v1"
         "prompt_id":
           type: "integer"
           title: "Prompt Id"
+          description: "ID of the prompt associated with the agent"
         "custom_message_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
+          type: "integer"
           title: "Custom Message Id"
+          description: "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
+        "timezone":
+          type: "string"
+          title: "Timezone"
+          description: "The time zone in which the agent operates"
+          examples:
+            - "America/New_York"
+            - "America/Chicago"
+        "prompt_tool_defaults":
+          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
+          type: "array"
+          title: "Prompt Tool Defaults"
+          description: "The prompt tool defaults"
         "languages":
           items:
             type: "string"
           type: "array"
           title: "Languages"
-        "prompt_tool_defaults":
-          items: {"$ref": "#/components/schemas/AgentToolDefaults"}
-          type: "array"
-          title: "Prompt Tool Defaults"
+          description: "BCP 47 codes of languages the agent supports"
+          examples:
+            - ["en-US", "es-US"]
+        "variables":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Variables"
+          description: "Custom context variables for the conversation session. Should be prefixed with \"vars.\"."
+          examples:
+            - {"vars.hospital": "Weill Cornell Medical Center"}
         "tool_headers":
           anyOf:
             - additionalProperties:
@@ -2674,40 +2653,39 @@ components:
               type: "object"
             - type: "null"
           title: "Tool Headers"
-        "variables":
-          anyOf:
-            - additionalProperties:
-                type: "string"
-              type: "object"
-            - type: "null"
-          title: "Variables"
+          description: "Optional headers to include in tool calls for agent."
         "id":
           type: "integer"
           title: "Id"
-          description: "The Agent ID"
+          description: "The agent ID"
       type: "object"
       required:
         - "name"
-        - "timezone"
         - "type"
         - "prompt_id"
         - "custom_message_id"
-        - "languages"
+        - "timezone"
+        - "variables"
+        - "tool_headers"
         - "id"
       title: "AgentUpdate"
     "AgentVoice":
       properties:
-        "provider": {"$ref": "#/components/schemas/SttProvider"}
+        "provider": {"$ref": "#/components/schemas/SttProvider", "description": "The provider for the voice", "examples": ["OpenAI", "ElevenLabs", "Google"]}
         "display_name":
           type: "string"
           title: "Display Name"
-        "var_name": {"$ref": "#/components/schemas/AgentVoiceVarName"}
+          description: "The display name of the voice"
+          examples:
+            - "Alloy"
+        "var_name": {"$ref": "#/components/schemas/AgentVoiceVarName", "description": "The variable name of the voice (used when procesing messages)", "examples": ["openai:alloy"]}
       type: "object"
       required:
         - "provider"
         - "display_name"
         - "var_name"
       title: "AgentVoice"
+      description: "Voice option for an agent."
     "AgentVoiceVarName":
       type: "string"
       enum:
@@ -2740,6 +2718,7 @@ components:
         - "wavenet:male/en-US-Neural2-D"
         - "wavenet:female/en-US-Studio-O"
       title: "AgentVoiceVarName"
+      description: "The variable name of an agent voice (used when procesing messages)."
     "AvailableTarget":
       properties:
         "organization_id":
@@ -2792,7 +2771,9 @@ components:
             - type: "string"
             - type: "null"
           title: "Supported Modes"
-          description: "The comma-delimited list of supported modes for the channel"
+          description: "The comma-delimited list of supported modes for the channel, which defines the       possible communication methods for channel targets linked to it."
+          examples:
+            - ["chat", "voice"]
         "id":
           type: "integer"
           title: "Id"
@@ -2819,87 +2800,37 @@ components:
         - "email"
         - "webchat"
       title: "ChannelServices"
-    "ChannelTarget":
-      properties:
-        "id":
-          type: "integer"
-          title: "Id"
-        "channel_id":
-          type: "integer"
-          title: "Channel Id"
-        "channel_name":
-          type: "string"
-          title: "Channel Name"
-        "agent_id":
-          type: "integer"
-          title: "Agent Id"
-        "agent": {"$ref": "#/components/schemas/DaoChannelTargetAgent"}
-        "target":
-          type: "string"
-          title: "Target"
-        "target_mode":
-          type: "string"
-          title: "Target Mode"
-        "fallback_target":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Fallback Target"
-        "is_test":
-          type: "boolean"
-          title: "Is Test"
-          default: false
-        "updated_at":
-          anyOf:
-            - type: "string"
-              format: "date-time"
-            - type: "null"
-          title: "Updated At"
-        "last_updated_by":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Last Updated By"
-      type: "object"
-      required:
-        - "id"
-        - "channel_id"
-        - "channel_name"
-        - "agent_id"
-        - "agent"
-        - "target"
-        - "target_mode"
-        - "updated_at"
-        - "last_updated_by"
-      title: "ChannelTarget"
-      description: "Class for all Channel Target responses"
+      description: "The communication service for a channel."
     "ChannelTargetCreateRequest":
       properties:
-        "channel_id":
-          type: "integer"
-          title: "Channel Id"
         "agent_id":
           type: "integer"
           title: "Agent Id"
+          description: "The ID of the agent associated with the channel target"
+        "channel_id":
+          type: "integer"
+          title: "Channel Id"
+          description: "The ID of the channel associated with the channel target"
         "target":
           type: "string"
           title: "Target"
-        "target_mode":
-          type: "string"
-          title: "Target Mode"
+          description: "The name of the channel target (must correspond to an organization-level target)"
+        "target_mode": {"$ref": "#/components/schemas/TargetModes", "description": "The mode of the channel target (must match one of the supported modes of the associated channel)"}
         "fallback_target":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Fallback Target"
+          description: "The fallback for the channel target (currently only supported for \"voice\" mode)"
         "is_test":
           type: "boolean"
           title: "Is Test"
+          description: "Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test."
           default: false
       type: "object"
       required:
-        - "channel_id"
         - "agent_id"
+        - "channel_id"
         - "target"
         - "target_mode"
       title: "ChannelTargetCreateRequest"
@@ -2916,39 +2847,103 @@ components:
         - "is_test"
         - "updated_at"
       title: "ChannelTargetProperties"
-    "ChannelTargetUpdateRequest":
+    "ChannelTargetResponse":
       properties:
-        "id":
-          type: "integer"
-          title: "Id"
-        "channel_id":
-          type: "integer"
-          title: "Channel Id"
         "agent_id":
           type: "integer"
           title: "Agent Id"
+          description: "The ID of the agent associated with the channel target"
+        "channel_id":
+          type: "integer"
+          title: "Channel Id"
+          description: "The ID of the channel associated with the channel target"
         "target":
           type: "string"
           title: "Target"
-        "target_mode":
-          type: "string"
-          title: "Target Mode"
+          description: "The name of the channel target (must correspond to an organization-level target)"
+        "target_mode": {"$ref": "#/components/schemas/TargetModes", "description": "The mode of the channel target (must match one of the supported modes of the associated channel)"}
         "fallback_target":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Fallback Target"
+          description: "The fallback for the channel target (currently only supported for \"voice\" mode)"
         "is_test":
           type: "boolean"
           title: "Is Test"
+          description: "Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test."
           default: false
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the channel target"
+        "channel_name":
+          type: "string"
+          title: "Channel Name"
+          description: "The name of the channel associated with the channel target"
+        "updated_at":
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+          description: "Timestamp of the most recent update to the channel target"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "Email of the user who last updated the channel target"
+        "agent":
+          anyOf:
+            - {"$ref": "#/components/schemas/AgentResponse"}
+            - type: "null"
+          description: "Definition of the agent for the channel target"
       type: "object"
       required:
-        - "id"
-        - "channel_id"
         - "agent_id"
+        - "channel_id"
         - "target"
         - "target_mode"
+        - "id"
+        - "channel_name"
+        - "updated_at"
+        - "last_updated_by"
+      title: "ChannelTargetResponse"
+      description: "A channel target links a channel to an agent, allowing users to communicate with the agent\nthrough that channel."
+    "ChannelTargetUpdateRequest":
+      properties:
+        "agent_id":
+          type: "integer"
+          title: "Agent Id"
+          description: "The ID of the agent associated with the channel target"
+        "channel_id":
+          type: "integer"
+          title: "Channel Id"
+          description: "The ID of the channel associated with the channel target"
+        "target":
+          type: "string"
+          title: "Target"
+          description: "The name of the channel target (must correspond to an organization-level target)"
+        "target_mode": {"$ref": "#/components/schemas/TargetModes", "description": "The mode of the channel target (must match one of the supported modes of the associated channel)"}
+        "fallback_target":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Fallback Target"
+          description: "The fallback for the channel target (currently only supported for \"voice\" mode)"
+        "is_test":
+          type: "boolean"
+          title: "Is Test"
+          description: "Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test."
+          default: false
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the channel target"
+      type: "object"
+      required:
+        - "agent_id"
+        - "channel_id"
+        - "target"
+        - "target_mode"
+        - "id"
       title: "ChannelTargetUpdateRequest"
     "Conversation":
       properties:
@@ -2956,64 +2951,77 @@ components:
           type: "string"
           format: "date-time"
           title: "Timestamp"
+          description: "Timestamp of the conversation"
         "conversation_id":
           type: "string"
           title: "Conversation Id"
+          description: "ID of the conversation"
         "agent_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Agent Id"
+          description: "ID of the agent with which the conversation occurred"
         "agent_name":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Agent Name"
+          description: "Name of the agent with which the conversation occurred"
         "agent_type":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Agent Type"
+          description: "Value of the \"type\" field of the agent with which the conversation occurred"
         "prompt_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Prompt Id"
+          description: "ID of the prompt used in the conversation"
         "prompt_name":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Prompt Name"
+          description: "Name of the prompt used in the conversation"
         "prompt_version":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Prompt Version"
+          description: "Version of the prompt used in the conversation"
         "llm_provider":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Llm Provider"
+          description: "Provider for the LLM used in the conversation (see PromptResponse.llm_config.provider)"
         "llm_model":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Llm Model"
+          description: "Model for the LLM used in the conversation (see PromptResponse.llm_config.model)"
         "llm_version":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Llm Version"
+          description: "Version for the LLM used in the conversation (see PromptResponse.llm_config.version)"
         "is_legacy":
           anyOf:
             - type: "boolean"
             - type: "null"
           title: "Is Legacy"
+          description: "Whether the conversation occurred on the legacy Syllable system"
       type: "object"
       required:
         - "timestamp"
         - "conversation_id"
       title: "Conversation"
+      description: "A conversation is a record of messages between a user and an agent, and is composed of one or\nmore sessions."
     "ConversationProperties":
       type: "string"
       enum:
@@ -3028,26 +3036,6 @@ components:
         - "llm_version"
         - "is_legacy"
       title: "ConversationProperties"
-    "CustomMessage":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the custom message"
-        "text":
-          type: "string"
-          title: "Text"
-          description: "The text of the custom message"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the custom message"
-      type: "object"
-      required:
-        - "name"
-        - "text"
-        - "id"
-      title: "CustomMessage"
     "CustomMessageCreateRequest":
       properties:
         "name":
@@ -3065,7 +3053,7 @@ components:
           title: "Label"
           description: "The label of the custom message"
         "rules":
-          items: {"$ref": "#/components/schemas/DaoCustomMessageRule"}
+          items: {"$ref": "#/components/schemas/CustomMessageRule"}
           type: "array"
           title: "Rules"
           description: "Rules for time-specific message variants"
@@ -3105,7 +3093,7 @@ components:
           title: "Label"
           description: "The label of the custom message"
         "rules":
-          items: {"$ref": "#/components/schemas/DaoCustomMessageRule"}
+          items: {"$ref": "#/components/schemas/CustomMessageRule"}
           type: "array"
           title: "Rules"
           description: "Rules for time-specific message variants"
@@ -3129,6 +3117,8 @@ components:
           type: "string"
           title: "Last Updated By"
           description: "The email address of the user who most recently updated the custom message"
+          examples:
+            - "user@email.com"
         "type":
           type: "string"
           title: "Type"
@@ -3141,6 +3131,65 @@ components:
         - "updated_at"
         - "last_updated_by"
       title: "CustomMessageResponse"
+      description: "A custom message is a pre-configured message delivered by an agent as a greeting at the\nbeginning of a conversation. Multiple agents can use the same custom mesasage. A custom message\nhas one or more rules defined, which allow for different messages to be dynamically selected and\ndelivered at runtime based on the current time and either date or day of the week."
+    "CustomMessageRule":
+      properties:
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the rule"
+        "time_range_start":
+          anyOf:
+            - type: "string"
+              pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+            - type: "null"
+          title: "Time Range Start"
+          description: "The start of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
+          examples:
+            - "09:00"
+        "time_range_end":
+          anyOf:
+            - type: "string"
+              pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+            - type: "null"
+          title: "Time Range End"
+          description: "The end of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
+          examples:
+            - "17:00"
+        "date":
+          anyOf:
+            - type: "string"
+              pattern: "\\b(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\b"
+            - type: "null"
+          title: "Date"
+          description: "The date for the rule in YYYY-MM-DD format"
+          examples:
+            - "2025-01-01"
+        "days_of_week":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/DayOfWeek"}
+              type: "array"
+            - type: "null"
+          title: "Days Of Week"
+          description: "The days of the week for the rule"
+          examples:
+            - ["mo", "tu", "we", "th", "fr"]
+        "invert":
+          type: "boolean"
+          title: "Invert"
+          description: "Whether the rule logic should be inverted (i.e. \"not\")"
+        "text":
+          type: "string"
+          title: "Text"
+          description: "Message text associated with the rule"
+          examples:
+            - "Sorry, we're closed today"
+      type: "object"
+      required:
+        - "description"
+        - "invert"
+        - "text"
+      title: "CustomMessageRule"
     "CustomMessageUpdateRequest":
       properties:
         "name":
@@ -3158,7 +3207,7 @@ components:
           title: "Label"
           description: "The label of the custom message"
         "rules":
-          items: {"$ref": "#/components/schemas/DaoCustomMessageRule"}
+          items: {"$ref": "#/components/schemas/CustomMessageRule"}
           type: "array"
           title: "Rules"
           description: "Rules for time-specific message variants"
@@ -3177,119 +3226,24 @@ components:
         - "text"
         - "id"
       title: "CustomMessageUpdateRequest"
-    "DaoChannelTargetAgent":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-        "description":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Description"
-        "label":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Label"
-        "type":
-          type: "string"
-          title: "Type"
-        "prompt_id":
-          type: "integer"
-          title: "Prompt Id"
-        "custom_message_id":
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Custom Message Id"
-        "timezone":
-          type: "string"
-          title: "Timezone"
-        "id":
-          type: "integer"
-          title: "Id"
-        "updated_at":
-          type: "string"
-          format: "date-time"
-          title: "Updated At"
-        "last_updated_by":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Last Updated By"
-      type: "object"
-      required:
-        - "name"
-        - "type"
-        - "prompt_id"
-        - "timezone"
-        - "id"
-        - "updated_at"
-        - "last_updated_by"
-      title: "DaoChannelTargetAgent"
-    "DaoCustomMessageRule":
-      properties:
-        "description":
-          type: "string"
-          title: "Description"
-          description: "The description of the rule"
-        "time_range_start":
-          anyOf:
-            - type: "string"
-              pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
-            - type: "null"
-          title: "Time Range Start"
-          description: "The start of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
-        "time_range_end":
-          anyOf:
-            - type: "string"
-              pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
-            - type: "null"
-          title: "Time Range End"
-          description: "The end of the time range for the rule in 24-hour format hh:mm (should be null for \"all day\" cases)"
-        "date":
-          anyOf:
-            - type: "string"
-              pattern: "\\b(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\b"
-            - type: "null"
-          title: "Date"
-          description: "The date for the rule in YYYY-MM-DD format"
-        "days_of_week":
-          anyOf:
-            - items: {"$ref": "#/components/schemas/DayOfWeek"}
-              type: "array"
-            - type: "null"
-          title: "Days Of Week"
-          description: "The days of the week for the rule"
-        "invert":
-          type: "boolean"
-          title: "Invert"
-          description: "Whether the rule logic should be inverted (i.e. \"not\")"
-        "text":
-          type: "string"
-          title: "Text"
-          description: "Message text associated with the rule"
-      type: "object"
-      required:
-        - "description"
-        - "invert"
-        - "text"
-      title: "DaoCustomMessageRule"
     "Dashboard":
       properties:
         "embedded_id":
           type: "string"
           title: "Embedded Id"
+          description: "Superset embedded ID of the dashboard"
         "guest_token":
           type: "string"
           title: "Guest Token"
+          description: "Superset guest token of the dashboard"
         "name":
           type: "string"
           title: "Name"
+          description: "Name of the dashboard"
         "superset_url":
           type: "string"
           title: "Superset Url"
+          description: "Superset URL of the dashboard"
       type: "object"
       required:
         - "embedded_id"
@@ -3297,6 +3251,7 @@ components:
         - "name"
         - "superset_url"
       title: "Dashboard"
+      description: "Basic information about a dashboard."
     "DayOfWeek":
       type: "string"
       enum:
@@ -3415,55 +3370,78 @@ components:
           type: "string"
           format: "date-time"
           title: "Timestamp"
+          description: "Timestamp at which the event occurred"
         "session_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Session Id"
+          description: "ID of the session in which the event occurred"
         "conversation_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Conversation Id"
+          description: "ID of the conversation associated with the session in which the event occurred"
         "source":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Source"
+          description: "Source of the event (either a tool call or an LLM prompt)"
+          examples:
+            - "tool-call"
         "source_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Source Id"
+          description: "ID of the source of the event (either a tool ID or a prompt ID)"
         "category":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Category"
+          description: "Broad categorization of the event"
+          examples:
+            - "automation"
         "type":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Type"
+          description: "More specific class of the event"
+          examples:
+            - "phone-transfer"
         "user_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "User Id"
+          description: "ID of the user interacting with the system when the event occurred (e.g., their       phone number)"
+          examples:
+            - "+18042221111"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
+          description: "Human-readable description of the event"
+          examples:
+            - "Transfer to phone number +18042221111"
         "attributes":
           anyOf:
             - type: "object"
             - type: "null"
           title: "Attributes"
+          description: "Arbitrary additional metadata for the event"
+          examples:
+            - {"contact_type": "operator", "duration_s": 60, "end_time": "2024-05-20T15:31:00.000+00:00", "name": "Operator", "outcome": "success", "phone": "+18042221111", "start_time": "2024-05-20T15:30:00.000+00:00"}
       type: "object"
       required:
         - "timestamp"
       title: "Event"
+      description: "An event represents a specific occurrence during a session."
     "EventProperties":
       type: "string"
       enum:
@@ -3478,27 +3456,6 @@ components:
         - "description"
         - "attributes"
       title: "EventProperties"
-    "Function":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the function/tool call."
-        "description":
-          type: "string"
-          title: "Description"
-          description: "The description of the tool."
-        "parameters":
-          type: "object"
-          title: "Parameters"
-          description: "The JSON Schema of parameters of the function/tool call."
-      type: "object"
-      required:
-        - "name"
-        - "description"
-        - "parameters"
-      title: "Function"
-      description: "A tool definition to be used by the OpenAI API.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
     "HTTPValidationError":
       properties:
         "detail":
@@ -3507,35 +3464,20 @@ components:
           title: "Detail"
       type: "object"
       title: "HTTPValidationError"
-    "HttpEndpoint":
+    "InternalTool":
       properties:
-        "url":
+        "type":
           type: "string"
-          title: "Url"
-          description: "The endpoint URL of the external service to call."
-        "method":
-          type: "string"
-          enum:
-            - "get"
-            - "post"
-          title: "Method"
-          description: "The HTTP method to use for the service call."
-        "argument_location":
-          type: "string"
-          enum:
-            - "body"
-            - "form"
-            - "path"
-            - "query"
-          title: "Argument Location"
-          description: "How to pass the arguments to the request."
+          const: "function"
+          title: "Type"
+          description: "Always `function`."
+          default: "function"
+        "function": {"$ref": "#/components/schemas/ToolFunction", "description": "The tool definition including the JSON Schema of its parameters."}
       type: "object"
       required:
-        - "url"
-        - "method"
-        - "argument_location"
-      title: "HttpEndpoint"
-      description: "The configuration for an HTTP API call."
+        - "function"
+      title: "InternalTool"
+      description: "A tool definition to be used by the OpenAI API."
     "ListResponse_AgentResponse_":
       properties:
         "items":
@@ -3592,10 +3534,10 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[AvailableTarget]"
-    "ListResponse_ChannelTarget_":
+    "ListResponse_ChannelTargetResponse_":
       properties:
         "items":
-          items: {"$ref": "#/components/schemas/ChannelTarget"}
+          items: {"$ref": "#/components/schemas/ChannelTargetResponse"}
           type: "array"
           title: "Items"
         "page":
@@ -3619,7 +3561,7 @@ components:
         - "items"
         - "page"
         - "page_size"
-      title: "ListResponse[ChannelTarget]"
+      title: "ListResponse[ChannelTargetResponse]"
     "ListResponse_Channel_":
       properties:
         "items":
@@ -3760,10 +3702,10 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[Event]"
-    "ListResponse_Prompt_":
+    "ListResponse_PromptResponse_":
       properties:
         "items":
-          items: {"$ref": "#/components/schemas/Prompt"}
+          items: {"$ref": "#/components/schemas/PromptResponse"}
           type: "array"
           title: "Items"
         "page":
@@ -3787,7 +3729,7 @@ components:
         - "items"
         - "page"
         - "page_size"
-      title: "ListResponse[Prompt]"
+      title: "ListResponse[PromptResponse]"
     "ListResponse_Service_":
       properties:
         "items":
@@ -3872,10 +3814,10 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[Session]"
-    "ListResponse_Tool_":
+    "ListResponse_ToolResponse_":
       properties:
         "items":
-          items: {"$ref": "#/components/schemas/Tool"}
+          items: {"$ref": "#/components/schemas/ToolResponse"}
           type: "array"
           title: "Items"
         "page":
@@ -3899,10 +3841,102 @@ components:
         - "items"
         - "page"
         - "page_size"
-      title: "ListResponse[Tool]"
-    "LlmConfig":
+      title: "ListResponse[ToolResponse]"
+    "OrderByDirection":
+      type: "string"
+      enum:
+        - "asc"
+        - "desc"
+      title: "OrderByDirection"
+    "PromptCreateRequest":
       properties:
-        "provider": {"$ref": "#/components/schemas/Provider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The prompt name"
+        "description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+          description: "The description of the prompt"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "The type of the prompt"
+        "context":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Context"
+          description: "The prompt text"
+        "tools":
+          items:
+            type: "string"
+          type: "array"
+          title: "Tools"
+          description: "Names of tools to which the prompt has access"
+          default: []
+        "llm_config": {"$ref": "#/components/schemas/PromptLlmConfig", "description": "The configuration for the LLM that the prompt uses"}
+      type: "object"
+      required:
+        - "name"
+        - "type"
+        - "llm_config"
+      title: "PromptCreateRequest"
+    "PromptHistory":
+      properties:
+        "timestamp":
+          type: "string"
+          format: "date-time"
+          title: "Timestamp"
+          description: "Timestamp of the change"
+        "prompt_id":
+          type: "string"
+          title: "Prompt Id"
+          description: "ID of the prompt"
+        "prompt_text":
+          type: "string"
+          title: "Prompt Text"
+          description: "Text of the prompt"
+        "prompt_description":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Prompt Description"
+          description: "Description of the prompt"
+        "prompt_name":
+          type: "string"
+          title: "Prompt Name"
+          description: "Name of the prompt"
+        "llm_config":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Llm Config"
+          description: "String representation of LLM config for the prompt"
+        "comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Comments"
+          description: "Comments describing the change"
+        "user_email":
+          type: "string"
+          title: "User Email"
+          description: "Email address of the user who made the change"
+      type: "object"
+      required:
+        - "timestamp"
+        - "prompt_id"
+        - "prompt_text"
+        - "prompt_name"
+        - "user_email"
+      title: "PromptHistory"
+      description: "Record of a change to a prompt. Values reflect post-change state."
+    "PromptLlmConfig":
+      properties:
+        "provider": {"$ref": "#/components/schemas/PromptLlmProvider", "description": "Provider of the LLM model.", "default": "azure_openai", "examples": ["azure_openai", "openai"]}
         "model":
           type: "string"
           title: "Model"
@@ -3927,160 +3961,14 @@ components:
           examples:
             - "2024-06-01"
       type: "object"
-      title: "LlmConfig"
-    "OrderByDirection":
+      title: "PromptLlmConfig"
+    "PromptLlmProvider":
       type: "string"
       enum:
-        - "asc"
-        - "desc"
-      title: "OrderByDirection"
-    "Prompt":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The Prompt name"
-        "description":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Description"
-          description: "The description of the prompt"
-        "type":
-          type: "string"
-          title: "Type"
-          description: "The type of the prompt"
-        "context":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Context"
-          description: "The prompt text"
-        "tools":
-          items:
-            type: "string"
-          type: "array"
-          title: "Tools"
-          description: "The tools for the prompt"
-          default: []
-        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The Prompt ID"
-        "edit_comments":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Edit Comments"
-          description: "The comments for the last edit"
-        "last_updated":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Last Updated"
-          description: "The last updated date of the prompt"
-        "last_updated_by":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Last Updated By"
-          description: "The last updated user who last updated of the prompt"
-        "agent_count":
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Agent Count"
-          description: "The number of agents using the prompt"
-      type: "object"
-      required:
-        - "name"
-        - "type"
-        - "llm_config"
-        - "id"
-        - "last_updated"
-      title: "Prompt"
-    "PromptCreate":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The Prompt name"
-        "description":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Description"
-          description: "The description of the prompt"
-        "type":
-          type: "string"
-          title: "Type"
-          description: "The type of the prompt"
-        "context":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Context"
-          description: "The prompt text"
-        "tools":
-          items:
-            type: "string"
-          type: "array"
-          title: "Tools"
-          description: "The tools for the prompt"
-          default: []
-        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
-      type: "object"
-      required:
-        - "name"
-        - "type"
-        - "llm_config"
-      title: "PromptCreate"
-    "PromptHistory":
-      properties:
-        "timestamp":
-          type: "string"
-          format: "date-time"
-          title: "Timestamp"
-        "prompt_id":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Prompt Id"
-        "prompt_text":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Prompt Text"
-        "prompt_description":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Prompt Description"
-        "prompt_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Prompt Name"
-        "llm_config":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Llm Config"
-        "comments":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Comments"
-        "user_email":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "User Email"
-      type: "object"
-      required:
-        - "timestamp"
-      title: "PromptHistory"
+        - "azure_openai"
+        - "openai"
+      title: "PromptLlmProvider"
+      description: "LLM API provider."
     "PromptProperties":
       type: "string"
       enum:
@@ -4095,12 +3983,12 @@ components:
         - "last_updated_by"
         - "agent_count"
       title: "PromptProperties"
-    "PromptUpdate":
+    "PromptResponse":
       properties:
         "name":
           type: "string"
           title: "Name"
-          description: "The Prompt name"
+          description: "The prompt name"
         "description":
           anyOf:
             - type: "string"
@@ -4122,84 +4010,95 @@ components:
             type: "string"
           type: "array"
           title: "Tools"
-          description: "The tools for the prompt"
+          description: "Names of the tools to which the prompt has access"
           default: []
-        "llm_config": {"$ref": "#/components/schemas/LlmConfig", "description": "The configuration for the language model used by the Cortex API."}
+        "llm_config": {"$ref": "#/components/schemas/PromptLlmConfig", "description": "The configuration for the LLM that the prompt uses"}
         "id":
           type: "integer"
           title: "Id"
-          description: "The Prompt ID"
+          description: "The prompt ID"
         "edit_comments":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Edit Comments"
-          description: "The comments for the last edit"
+          description: "The comments for the most recent edit to the prompt"
+        "last_updated":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated"
+          description: "The last updated date of the prompt"
+        "last_updated_by":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated By"
+          description: "Email address of the user who most recently updated the prompt"
+          examples:
+            - "user@email.com"
+        "agent_count":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Agent Count"
+          description: "The number of agents using the prompt"
       type: "object"
       required:
         - "name"
         - "type"
         - "llm_config"
         - "id"
-      title: "PromptUpdate"
-    "Provider":
-      type: "string"
-      enum:
-        - "azure_openai"
-        - "openai"
-      title: "Provider"
-      description: "LLM API provider."
-    "SdkInternalTool":
+        - "last_updated"
+      title: "PromptResponse"
+      description: "A prompt defines the behavior of an agent by delivering instructions to the LLM about how the\nagent should behave. A prompt can be linked to one or more agents. A prompt can also be linked to\ntools to allow an agent using it to use those tools."
+    "PromptUpdateRequest":
       properties:
-        "type":
+        "name":
           type: "string"
-          const: "function"
-          title: "Type"
-          description: "Always `function`."
-          default: "function"
-        "function": {"$ref": "#/components/schemas/Function", "description": "The tool definition including the JSON Schema of its parameters."}
-      type: "object"
-      required:
-        - "function"
-      title: "SdkInternalTool"
-      description: "A tool definition to be used by the OpenAI API."
-    "SdkToolDefinition":
-      properties:
-        "type":
+          title: "Name"
+          description: "The prompt name"
+        "description":
           anyOf:
             - type: "string"
-              enum:
-                - "action"
-                - "endpoint"
-                - "context"
-                - "log"
             - type: "null"
+          title: "Description"
+          description: "The description of the prompt"
+        "type":
+          type: "string"
           title: "Type"
-          description: "The action to take when GPT calls the tool."
-        "tool": {"$ref": "#/components/schemas/SdkInternalTool", "description": "The tool definition to be used by the OpenAI API."}
-        "endpoint":
+          description: "The type of the prompt"
+        "context":
           anyOf:
-            - {"$ref": "#/components/schemas/HttpEndpoint"}
+            - type: "string"
             - type: "null"
-          description: "The configuration for an HTTP API call."
-        "defaults":
+          title: "Context"
+          description: "The prompt text"
+        "tools":
+          items:
+            type: "string"
+          type: "array"
+          title: "Tools"
+          description: "Names of tools to which the prompt has access"
+          default: []
+        "llm_config": {"$ref": "#/components/schemas/PromptLlmConfig", "description": "The configuration for the LLM that the prompt uses"}
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The prompt ID"
+        "edit_comments":
           anyOf:
-            - type: "object"
-            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
-              type: "object"
+            - type: "string"
             - type: "null"
-          title: "Defaults"
-          description: "The default values for the parameters of the function/tool call."
-        "result":
-          anyOf:
-            - type: "object"
-            - type: "null"
-          title: "Result"
-          description: "The optional result of the tool call. Only used for `context` tools."
+          title: "Edit Comments"
+          description: "The comments for the most recent edit to the prompt"
       type: "object"
       required:
-        - "tool"
-      title: "SdkToolDefinition"
+        - "name"
+        - "type"
+        - "llm_config"
+        - "id"
+      title: "PromptUpdateRequest"
     "Service":
       properties:
         "name":
@@ -4219,7 +4118,7 @@ components:
             type: "string"
           type: "array"
           title: "Tools"
-          description: "The tools of the service"
+          description: "Names of the tools that belong to the service"
       type: "object"
       required:
         - "name"
@@ -4227,6 +4126,7 @@ components:
         - "id"
         - "tools"
       title: "Service"
+      description: "A service is a collection of tools."
     "ServiceCreate":
       properties:
         "name":
@@ -4274,144 +4174,192 @@ components:
           type: "string"
           format: "date-time"
           title: "Timestamp"
+          description: "Timestamp of the session"
         "session_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Session Id"
+          description: "Internal ID of the session, generated based on interaction details"
         "conversation_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Conversation Id"
+          description: "ID of the conversation of which the session is a part"
         "channel_manager_service":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Channel Manager Service"
+          description: "Name of the service used to facilitate the session"
+          examples:
+            - "hedy"
+            - "console"
         "channel_manager_type":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Channel Manager Type"
+          description: "Type of the service used to facilitate the session"
+          examples:
+            - "voice_sip_v1"
+            - "voice_twilio_v1"
+            - "web_chat_v1"
         "channel_manager_sid":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Channel Manager Sid"
+          description: "Channel-manager-side ID of the session (different from session_id)"
         "agent_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Agent Id"
+          description: "ID of the agent with which the session occurred"
         "agent_name":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Agent Name"
+          description: "Name of the agent with which the session occurred"
         "agent_type":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Agent Type"
+          description: "Type of the agent with which the session occurred"
         "agent_timezone":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Agent Timezone"
+          description: "Timezone of the agent with which the session occurred"
         "prompt_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Prompt Id"
+          description: "ID of the prompt used by the agent with which the session occurred"
         "prompt_name":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Prompt Name"
+          description: "Name of the prompt used by the agent with which the session occurred"
         "prompt_version":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Prompt Version"
+          description: "Version of the prompt used by the agent with which the session occurred"
         "duration":
           anyOf:
             - type: "number"
             - type: "null"
           title: "Duration"
+          description: "Duration of the session in seconds"
         "session_label_id":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Session Label Id"
+          description: "ID of the label (listing the quality of the session and any issues that occurred) associated with the session"
         "source":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Source"
+          description: "Source of the session (e.g., for an inbound session, the user's phone number/username/email)"
+          examples:
+            - "+18042221111"
+            - "user@email.com"
         "target":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Target"
+          description: "The name of the channel target associated with the agent at the time of the session (see ChannelTargetResponse.target)"
         "is_legacy":
           anyOf:
             - type: "boolean"
             - type: "null"
           title: "Is Legacy"
+          description: "Whether the session occurred on the legacy Syllable system"
         "is_test":
           anyOf:
             - type: "boolean"
             - type: "null"
           title: "Is Test"
+          description: "Whether the session is a test session"
       type: "object"
       required:
         - "timestamp"
       title: "Session"
+      description: "A session is a building block of a conversation."
     "SessionAction":
       properties:
         "timestamp":
           type: "string"
           format: "date-time"
           title: "Timestamp"
+          description: "Timestamp of the tool invocation"
         "tool_name":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Tool Name"
+          description: "Name of the tool that was invoked"
         "tool_request":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Tool Request"
+          description: "Request sent to the tool API, if applicable"
         "tool_result":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Tool Result"
+          description: "Response received from the tool API, if applicable"
       type: "object"
       required:
         - "timestamp"
       title: "SessionAction"
+      description: "Information about a given tool invocation as part of a session."
     "SessionLabel":
       properties:
         "session_id":
           type: "integer"
           title: "Session Id"
+          description: "The internal ID of the session (see Session.session_id)"
         "type":
           type: "string"
           title: "Type"
+          description: "The type of the label"
+          examples:
+            - "auto-rating"
+            - "human-rating"
         "code":
           type: "string"
           title: "Code"
+          description: "A code describing the quality of the labeled session"
+          examples:
+            - "GOOD"
+            - "OK"
+            - "BAD"
+            - "N/A"
         "user_email":
           type: "string"
           title: "User Email"
+          description: "The email of the user who created the label"
         "comments":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Comments"
+          description: "Comment string describing additional details about the session"
         "issue_categories":
           anyOf:
             - items:
@@ -4419,11 +4367,15 @@ components:
               type: "array"
             - type: "null"
           title: "Issue Categories"
+          description: "Descriptions of issues occurring in the labeled call"
           default: []
+          examples:
+            - ["Silent treatment"]
+            - ["Speech transcription (STT)"]
         "id":
           type: "integer"
           title: "Id"
-          description: "The label ID"
+          description: "The internal ID of the label"
         "timestamp":
           type: "string"
           title: "Timestamp"
@@ -4437,25 +4389,39 @@ components:
         - "id"
         - "timestamp"
       title: "SessionLabel"
+      description: "A session label is associated with a given session and contains an evaluation of quality and\ndescriptions of issues the user encountered in that session or other details."
     "SessionLabelCreate":
       properties:
         "session_id":
           type: "integer"
           title: "Session Id"
+          description: "The internal ID of the session (see Session.session_id)"
         "type":
           type: "string"
           title: "Type"
+          description: "The type of the label"
+          examples:
+            - "auto-rating"
+            - "human-rating"
         "code":
           type: "string"
           title: "Code"
+          description: "A code describing the quality of the labeled session"
+          examples:
+            - "GOOD"
+            - "OK"
+            - "BAD"
+            - "N/A"
         "user_email":
           type: "string"
           title: "User Email"
+          description: "The email of the user who created the label"
         "comments":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Comments"
+          description: "Comment string describing additional details about the session"
         "issue_categories":
           anyOf:
             - items:
@@ -4463,7 +4429,11 @@ components:
               type: "array"
             - type: "null"
           title: "Issue Categories"
+          description: "Descriptions of issues occurring in the labeled call"
           default: []
+          examples:
+            - ["Silent treatment"]
+            - ["Speech transcription (STT)"]
       type: "object"
       required:
         - "session_id"
@@ -4509,6 +4479,7 @@ components:
             - type: "string"
             - type: "null"
           title: "Session Id"
+          description: "The internal ID of the session"
         "recordings":
           anyOf:
             - items:
@@ -4516,57 +4487,76 @@ components:
               type: "array"
             - type: "null"
           title: "Recordings"
+          description: "List of recording URLs"
         "expiration":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Expiration"
+          description: "Expiration timestamp of the URLs"
       type: "object"
       title: "SessionRecordingResponse"
+      description: "Recording URLs for a given session."
     "SessionText":
       properties:
         "timestamp":
           type: "string"
           format: "date-time"
           title: "Timestamp"
+          description: "Timestamp of the message"
         "lang":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Lang"
+          description: "ISO 639 code of the language used for the message (may appear as \"unset\" if was not conclusively determined)"
+          examples:
+            - "en-US"
+            - "es-US"
+            - "unset"
         "source":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Source"
+          description: "Whether the user or agent sent the message"
+          examples:
+            - "user"
+            - "agent"
         "text":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Text"
+          description: "Content of the message"
       type: "object"
       required:
         - "timestamp"
       title: "SessionText"
+      description: "Information about a given message from a user to an agent or vice-versa."
     "SessionTranscriptionResponse":
       properties:
         "session_id":
           type: "string"
           title: "Session Id"
+          description: "Internal ID of the session"
         "transcription":
           items: {"$ref": "#/components/schemas/SessionText"}
           type: "array"
           title: "Transcription"
+          description: "Transcriptions of all messages in the session"
         "actions":
           items: {"$ref": "#/components/schemas/SessionAction"}
           type: "array"
           title: "Actions"
+          description: "Tool invocations that occurred during the session"
       type: "object"
       required:
         - "session_id"
         - "transcription"
         - "actions"
       title: "SessionTranscriptionResponse"
+      description: "Text transcript of a given session."
     "SttProvider":
       type: "string"
       enum:
@@ -4574,50 +4564,7 @@ components:
         - "ElevenLabs"
         - "Google"
       title: "SttProvider"
-    "Target":
-      properties:
-        "agent_id":
-          type: "integer"
-          title: "Agent Id"
-          description: "The Agent ID"
-        "target":
-          type: "string"
-          title: "Target"
-          description: "The Target"
-        "target_mode": {"$ref": "#/components/schemas/TargetModes", "description": "The target mode"}
-        "channel_id":
-          type: "integer"
-          title: "Channel Id"
-          description: "The Channel ID"
-        "fallback_target":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Fallback Target"
-          description: "The Fallback Target"
-        "is_test":
-          type: "boolean"
-          title: "Is Test"
-          description: "Whether the Target is for testing"
-          default: false
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The Target ID"
-        "channel_name":
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Channel Name"
-          description: "The Channel Name"
-      type: "object"
-      required:
-        - "agent_id"
-        - "target"
-        - "target_mode"
-        - "channel_id"
-        - "id"
-      title: "Target"
+      description: "Provider for an agent voice."
     "TargetModes":
       type: "string"
       enum:
@@ -4626,6 +4573,7 @@ components:
         - "sms"
         - "email"
       title: "TargetModes"
+      description: "Available modes (communication methods) for channel targets."
     "TestMessage":
       properties:
         "service_name":
@@ -4641,23 +4589,29 @@ components:
             - type: "string"
             - type: "null"
           title: "Text"
+          description: "The text of the message"
         "test_id":
           type: "string"
           title: "Test Id"
+          description: "Channel-manager-side ID of the session (see Session.channel_manager_sid)"
         "agent_id":
           type: "string"
           title: "Agent Id"
+          description: "ID of the agent with which the chat is taking place"
         "org_name":
           type: "string"
           title: "Org Name"
+          description: "Name of the organization associated with the agent"
         "override_timestamp":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Override Timestamp"
+          description: "Override for the timestamp of the message"
         "session_start":
           type: "boolean"
           title: "Session Start"
+          description: "Whether this message is the start of a new session"
           default: false
       type: "object"
       required:
@@ -4667,75 +4621,98 @@ components:
         - "agent_id"
         - "org_name"
       title: "TestMessage"
+      description: "Message sent in a test chat with an agent."
     "TestMessageResponse":
       properties:
         "test_id":
           type: "string"
           title: "Test Id"
+          description: "Channel-manager-side ID of the session (see Session.channel_manager_sid)"
         "agent_id":
           type: "string"
           title: "Agent Id"
+          description: "ID of the agent with which the chat is taking place"
         "text":
           type: "string"
           title: "Text"
+          description: "The text of the message that elicited the response"
         "response":
           type: "object"
           title: "Response"
         "response_text":
           type: "string"
           title: "Response Text"
+          description: "The text of the response"
       type: "object"
       required:
         - "test_id"
         - "agent_id"
-        - "text"
-        - "response_text"
       title: "TestMessageResponse"
-    "Tool":
+      description: "Response from an agent in a test chat."
+    "ToolArgumentLocation":
+      type: "string"
+      enum:
+        - "body"
+        - "form"
+        - "path"
+        - "query"
+      title: "ToolArgumentLocation"
+      description: "The location of the argument in a tool HTTP request.\n'body' is used for JSON data in the POST request body.\n'form' is used for form data in the POST request body.\n'path' is used for URL path parameters.\n'query' is used for query parameters in the URL."
+    "ToolCreateRequest":
       properties:
         "name":
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
+        "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
           description: "The service this tool belongs to"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the tool"
-        "service_name":
+      type: "object"
+      required:
+        - "name"
+        - "definition"
+        - "service_id"
+      title: "ToolCreateRequest"
+    "ToolDefinition":
+      properties:
+        "type":
           anyOf:
             - type: "string"
+              enum:
+                - "action"
+                - "endpoint"
+                - "context"
+                - "log"
             - type: "null"
-          title: "Service Name"
-          description: "The name of the service this tool belongs to"
+          title: "Type"
+          description: "The action to take when the LLM calls the tool."
+        "tool": {"$ref": "#/components/schemas/InternalTool", "description": "The tool definition to be used by the OpenAI API."}
+        "endpoint":
+          anyOf:
+            - {"$ref": "#/components/schemas/ToolHttpEndpoint"}
+            - type: "null"
+          description: "The configuration for an HTTP API call."
+        "defaults":
+          anyOf:
+            - type: "object"
+            - additionalProperties: {"$ref": "#/components/schemas/ToolParameterDefault"}
+              type: "object"
+            - type: "null"
+          title: "Defaults"
+          description: "The default values for the parameters of the function/tool call."
+        "result":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Result"
+          description: "The optional result of the tool call. Only used for `context` tools."
       type: "object"
       required:
-        - "name"
-        - "definition"
-        - "service_id"
-        - "id"
-      title: "Tool"
-    "ToolCreate":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the tool"
-        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
-        "service_id":
-          type: "integer"
-          title: "Service Id"
-          description: "The service this tool belongs to"
-      type: "object"
-      required:
-        - "name"
-        - "definition"
-        - "service_id"
-      title: "ToolCreate"
+        - "tool"
+      title: "ToolDefinition"
+      description: "A tool that can be called from an LLM during the conversation.\n\nThe tool can result in one of the following actions depending on the `type` field:\n- `action`:\n  A request to perform an action.\n- `endpoint`:\n  An HTTP API call to an external tool. Requires the `endpoint` field to be set too.\n- `context`:\n  Sets context variables based on the tool arguments, e.g. to change the session language. Only\n  `language` and `say` context vars are currently supported, but this will be made more generic.\n\nFor example, to change the current session language:\n{\n  \"type\": \"context\",\n  \"tool\": {\n    \"function\": {\n      \"name\": \"set_language\",\n      \"parameters\": {\n        \"language\": {\n          \"type\": \"string\",\n          \"description\": \"The ISO 639 language code to set for the session e.g. 'en-US'.\"\n        },\n        \"message\": {\n          \"type\": \"string\",\n          \"description\": \"Inform the caller we're now speaking in the new language.\"\n        }\n      }\n    }\n  }\n}\n\nIf `defaults` is provided, it will be used as the default values for the parameters of the\ntool call, if the LLM doesn't provide them:\n\"defaults\": {\n  \"hospital\": \"Queens Hospital\"\n}\n\nSome special \"transform\" handling is supported if the value is a dict with a single `transform`\nkey. The parameter value will be transformed by the given `action` before being used as the\ndefault value:\n\nRemoving an unwanted parameter:\n\"defaults\": {\n  \"hospital\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n\nUsing a value from another parameter and converting it to a dictionary:\n\"defaults\": {\n  \"tags.hospital\": \"{vars.hospital}\",\n  \"tags.foo\": \"{params.foo}\",\n  \"foo\": {\n    \"transform\": {\n      \"action\": \"remove\"\n    }\n  }\n}\n\nAdd custom parameters from other parameters using Python's `format`:\n\"defaults\": {\n  \"hello\": {\n    \"transform\": {\n      \"format\": \"Hello, {name}!\"\n    }\n  }\n}\n\nModify a value conditionally, e.g. change a `city` parameter with value \"Bronx\" to \"The Bronx\":\n{\n  \"defaults\": {\n    \"city\": {\n      \"transform\": {\n        \"when\": {\"operator\": \"eq\", \"key\": \"city\", \"value\": \"Bronx\"},\n        \"action\": \"override\",\n        \"format\": \"The {city}\"\n      }\n    }\n  }\n}\n\nSome common transform actions can be abbreviated using the `@` prefix to support a string syntax:\n\"defaults\": {\n  \"foo\": \"@remove\",\n  \"name\": \"@override Hello, {name}!\"\n}"
     "ToolDetailResponse":
       properties:
         "id":
@@ -4759,6 +4736,49 @@ components:
         - "description"
         - "fields"
       title: "ToolDetailResponse"
+    "ToolFunction":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the function/tool call."
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the tool."
+        "parameters":
+          type: "object"
+          title: "Parameters"
+          description: "The JSON Schema of parameters of the function/tool call."
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "parameters"
+      title: "ToolFunction"
+      description: "A function available to an agent.\n\nSee:\n- https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling"
+    "ToolHttpEndpoint":
+      properties:
+        "url":
+          type: "string"
+          title: "Url"
+          description: "The endpoint URL of the external service to call."
+        "method": {"$ref": "#/components/schemas/ToolHttpMethod", "description": "The HTTP method to use for the service call."}
+        "argument_location": {"$ref": "#/components/schemas/ToolArgumentLocation", "description": "How to pass the arguments to the request."}
+      type: "object"
+      required:
+        - "url"
+        - "method"
+        - "argument_location"
+      title: "ToolHttpEndpoint"
+      description: "The configuration for an HTTP API call by a tool."
+    "ToolHttpMethod":
+      type: "string"
+      enum:
+        - "get"
+        - "post"
+      title: "ToolHttpMethod"
+      description: "The HTTP method to use for a tool HTTP request."
     "ToolParameterDefault":
       properties:
         "transform": {"$ref": "#/components/schemas/ToolParameterTransform", "description": "The transform to apply to the value before using it as the default."}
@@ -4766,7 +4786,7 @@ components:
       required:
         - "transform"
       title: "ToolParameterDefault"
-      description: "The default value for a parameter of the tool call."
+      description: "The default value for a parameter of a tool call."
     "ToolParameterTransform":
       properties:
         "action":
@@ -4776,7 +4796,7 @@ components:
             - "override"
             - "remove"
           title: "Action"
-          description: "The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
+          description: "The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value."
           default: "default"
         "when":
           anyOf:
@@ -4797,7 +4817,7 @@ components:
           description: "The string value to use for the parameter. The value will be evaluated with the Python `str.format` method, for example, `Hello, {name}!`"
       type: "object"
       title: "ToolParameterTransform"
-      description: "A transform to be applied to the value of a parameter.\n\nEither `value` or `format` must be set:\n- `value` is any arbitrary value: string, list or dictionary.\n- `format` is a string composed of other parameters or context variables."
+      description: "A transform to be applied to the value of a tool parameter.\n\nEither `value` or `format` must be set:\n- `value` is any arbitrary value: string, list or dictionary.\n- `format` is a string composed of other parameters or context variables."
     "ToolParameterTransformCondition":
       properties:
         "key":
@@ -4821,7 +4841,7 @@ components:
         - "key"
         - "value"
       title: "ToolParameterTransformCondition"
-      description: "A condition to be met for a transform to be applied to the value of a parameter."
+      description: "A condition to be met for a transform to be applied to the value of a tool parameter."
     "ToolProperties":
       type: "string"
       enum:
@@ -4831,13 +4851,42 @@ components:
         - "definition"
         - "service_id"
       title: "ToolProperties"
-    "ToolUpdate":
+    "ToolResponse":
       properties:
         "name":
           type: "string"
           title: "Name"
           description: "The name of the tool"
-        "definition": {"$ref": "#/components/schemas/SdkToolDefinition", "description": "The definition of the tool"}
+        "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
+        "service_id":
+          type: "integer"
+          title: "Service Id"
+          description: "The service this tool belongs to"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the tool"
+        "service_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Service Name"
+          description: "The name of the service to which the tool belongs"
+      type: "object"
+      required:
+        - "name"
+        - "definition"
+        - "service_id"
+        - "id"
+      title: "ToolResponse"
+      description: "A tool is a function that an agent can call to perform actions like accessing databases, \nmaking API calls, or processing data. For an agent to have access to a tool, the prompt \nassociated with that agent should be linked to the tool and include instructions to use it."
+    "ToolUpdateRequest":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the tool"
+        "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
@@ -4852,7 +4901,7 @@ components:
         - "definition"
         - "service_id"
         - "id"
-      title: "ToolUpdate"
+      title: "ToolUpdateRequest"
     "ValidationError":
       properties:
         "loc":
@@ -4881,35 +4930,46 @@ components:
       name: "Syllable-API-Key"
 tags:
   - name: "agents"
-    description: "Operations related to agents"
+    description: "Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities."
   - name: "agents.test"
-    description: "Operations for testing agents with live text"
+    description: "Operations for testing agents with live text.           These endpoints allow sending messages to an agent and receiving its responses."
   - name: "channels"
-    description: "Operations related to channels"
+    description: "Operations related to channel configuration.           A channel is an organization-level point of communication, like a phone number or a web           chat. A channel can be associated with an agent by creating a channel target linking           them."
+    externalDocs:
+      description: "For more information:"
+      url: "https://docs.syllable.ai/Resources/Channels"
   - name: "channels.targets"
-    description: "Operations related to channel targets"
+    description: "Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel."
+    externalDocs:
+      description: "For more information:"
+      url: "https://docs.syllable.ai/Resources/Channels"
   - name: "conversations"
-    description: "Operations related to conversations"
+    description: "Operations related to conversations.           A conversation is a record of messages between a user and an agent, and is composed of           one or more sessions."
   - name: "custom_messages"
-    description: "Operations related to custom messages"
+    description: "Operations related to custom message configuration.           A custom message is a pre-configured message delivered by an agent as a greeting at the           beginning of a conversation. Multiple agents can use the same custom mesasage. A custom           message has one or more rules defined, which allow for different messages to be           dynamically selected and delivered at runtime based on the current time and either           date or day of the week."
+    externalDocs:
+      description: "For more information:"
+      url: "https://docs.syllable.ai/Resources/CustomMessages"
   - name: "dashboards"
-    description: "Operations related to dashboards"
+    description: "Operations related to dashboards. Currently the API/SDK           only supports fetching basic information about dashboards."
   - name: "directory"
     description: "Operations related to directory"
   - name: "events"
-    description: "Operations related to agent events"
-  - name: "organizations"
-    description: "Operations related to organizations"
+    description: "Operations related to events. An event represents a specific occurrence           during a session. Currently the API/SDK only supports fetching logged events."
   - name: "prompts"
-    description: "Operations related to prompts"
+    description: "Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them."
+    externalDocs:
+      description: "For more information:"
+      url: "https://docs.syllable.ai/Resources/res_WritePrompt"
   - name: "services"
-    description: "Operations related to services"
+    description: "Operations related to service configuration. A service is a collection of           tools."
   - name: "sessions"
-    description: "Operations related to agent sessions"
-  - name: "sessions.labels"
-    description: "Operations related to labeling sessions"
-  - name: "sessions.transcript"
-    description: "Operations related to session transcription"
+    description: "Operations related to sessions. A session is a building block of a           conversation."
+  - name: "session_labels"
+    description: "Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details."
   - name: "tools"
-    description: "Operations related to tools"
+    description: "Operations related to tool configuration. A tool is a function that an           agent can call to perform actions like accessing databases, making API calls, or           processing data. For an agent to have access to a tool, the prompt associated with that           agent should be linked to the tool and include instructions to use it."
+    externalDocs:
+      description: "For more information:"
+      url: "https://docs.syllable.ai/Resources/Tools"
 x-speakeasy-name-override: [{"operationId": ".*_list$", "methodNameOverride": "list"}, {"operationId": ".*_create$", "methodNameOverride": "create"}, {"operationId": ".*_update$", "methodNameOverride": "update"}, {"operationId": ".*_delete$", "methodNameOverride": "delete"}, {"operationId": ".*_get_by_id$", "methodNameOverride": "get_by_id"}, {"operationId": ".*_get_by_name$", "methodNameOverride": "get_by_name"}]

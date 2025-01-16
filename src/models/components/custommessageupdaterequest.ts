@@ -7,11 +7,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  DaoCustomMessageRule,
-  DaoCustomMessageRule$inboundSchema,
-  DaoCustomMessageRule$Outbound,
-  DaoCustomMessageRule$outboundSchema,
-} from "./daocustommessagerule.js";
+  CustomMessageRule,
+  CustomMessageRule$inboundSchema,
+  CustomMessageRule$Outbound,
+  CustomMessageRule$outboundSchema,
+} from "./custommessagerule.js";
 
 export type CustomMessageUpdateRequest = {
   /**
@@ -29,7 +29,7 @@ export type CustomMessageUpdateRequest = {
   /**
    * Rules for time-specific message variants
    */
-  rules?: Array<DaoCustomMessageRule> | undefined;
+  rules?: Array<CustomMessageRule> | undefined;
   /**
    * The ID of the custom message
    */
@@ -46,7 +46,7 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
-  rules: z.array(DaoCustomMessageRule$inboundSchema).optional(),
+  rules: z.array(CustomMessageRule$inboundSchema).optional(),
   id: z.number().int(),
   type: z.string().default("greeting"),
 });
@@ -56,7 +56,7 @@ export type CustomMessageUpdateRequest$Outbound = {
   name: string;
   text: string;
   label?: string | null | undefined;
-  rules?: Array<DaoCustomMessageRule$Outbound> | undefined;
+  rules?: Array<CustomMessageRule$Outbound> | undefined;
   id: number;
   type: string;
 };
@@ -70,7 +70,7 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
-  rules: z.array(DaoCustomMessageRule$outboundSchema).optional(),
+  rules: z.array(CustomMessageRule$outboundSchema).optional(),
   id: z.number().int(),
   type: z.string().default("greeting"),
 });
