@@ -15,7 +15,7 @@ import {
 } from "./toolparametertransformcondition.js";
 
 /**
- * The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
+ * The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
  */
 export const Action = {
   Default: "default",
@@ -23,12 +23,12 @@ export const Action = {
   Remove: "remove",
 } as const;
 /**
- * The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
+ * The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
  */
 export type Action = ClosedEnum<typeof Action>;
 
 /**
- * A transform to be applied to the value of a parameter.
+ * A transform to be applied to the value of a tool parameter.
  *
  * @remarks
  *
@@ -38,7 +38,7 @@ export type Action = ClosedEnum<typeof Action>;
  */
 export type ToolParameterTransform = {
   /**
-   * The action to perform on the value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
+   * The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value, and `remove` means remove the parameter value.
    */
   action?: Action | undefined;
   /**

@@ -10,16 +10,49 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Attributes = {};
 
+/**
+ * An event represents a specific occurrence during a session.
+ */
 export type Event = {
+  /**
+   * Timestamp at which the event occurred
+   */
   timestamp: Date;
+  /**
+   * ID of the session in which the event occurred
+   */
   sessionId?: string | null | undefined;
+  /**
+   * ID of the conversation associated with the session in which the event occurred
+   */
   conversationId?: string | null | undefined;
+  /**
+   * Source of the event (either a tool call or an LLM prompt)
+   */
   source?: string | null | undefined;
+  /**
+   * ID of the source of the event (either a tool ID or a prompt ID)
+   */
   sourceId?: string | null | undefined;
+  /**
+   * Broad categorization of the event
+   */
   category?: string | null | undefined;
+  /**
+   * More specific class of the event
+   */
   type?: string | null | undefined;
+  /**
+   * ID of the user interacting with the system when the event occurred (e.g., their       phone number)
+   */
   userId?: string | null | undefined;
+  /**
+   * Human-readable description of the event
+   */
   description?: string | null | undefined;
+  /**
+   * Arbitrary additional metadata for the event
+   */
   attributes?: Attributes | null | undefined;
 };
 

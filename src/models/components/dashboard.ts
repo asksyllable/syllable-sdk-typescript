@@ -8,10 +8,25 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Basic information about a dashboard.
+ */
 export type Dashboard = {
+  /**
+   * Superset embedded ID of the dashboard
+   */
   embeddedId: string;
+  /**
+   * Superset guest token of the dashboard
+   */
   guestToken: string;
+  /**
+   * Name of the dashboard
+   */
   name: string;
+  /**
+   * Superset URL of the dashboard
+   */
   supersetUrl: string;
 };
 

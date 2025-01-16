@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 8b3adac0a18080916810f4d7c2b97963
+  docChecksum: 459bfbda88241da7ec0ba4c490e82c7a
   docVersion: 0.0.2
-  speakeasyVersion: 1.467.1
-  generationVersion: 2.492.3
-  releaseVersion: 0.1.0-alpha.29
-  configChecksum: c2b494bfa1787e0c7983e4f07fce7a1a
+  speakeasyVersion: 1.468.9
+  generationVersion: 2.493.21
+  releaseVersion: 0.1.0-alpha.30
+  configChecksum: ddd0f95480e0b20d0858a398de21355d
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.12
+    core: 3.18.16
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
@@ -24,13 +24,13 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
+    ignores: 2.81.1
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
     unions: 2.85.8
-    uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -38,86 +38,68 @@ generatedFiles:
   - .eslintrc.cjs
   - .gitattributes
   - .npmignore
-  - CONTRIBUTING.md
   - FUNCTIONS.md
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
   - docs/models/components/action.md
-  - docs/models/components/agent.md
   - docs/models/components/agentcreate.md
   - docs/models/components/agentproperties.md
   - docs/models/components/agentresponse.md
   - docs/models/components/agenttooldefaults.md
   - docs/models/components/agenttoolfielddefault.md
   - docs/models/components/agentupdate.md
+  - docs/models/components/agentupdatevariables.md
   - docs/models/components/agentvoice.md
   - docs/models/components/agentvoicevarname.md
-  - docs/models/components/argumentlocation.md
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
-  - docs/models/components/bodydirectorymemberbulkload.md
   - docs/models/components/channel.md
   - docs/models/components/channelproperties.md
   - docs/models/components/channelservices.md
-  - docs/models/components/channeltarget.md
   - docs/models/components/channeltargetcreaterequest.md
   - docs/models/components/channeltargetproperties.md
+  - docs/models/components/channeltargetresponse.md
   - docs/models/components/channeltargetupdaterequest.md
-  - docs/models/components/contacttags.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
-  - docs/models/components/custommessage.md
   - docs/models/components/custommessagecreaterequest.md
   - docs/models/components/custommessageproperties.md
   - docs/models/components/custommessageresponse.md
+  - docs/models/components/custommessagerule.md
   - docs/models/components/custommessageupdaterequest.md
-  - docs/models/components/daochanneltargetagent.md
-  - docs/models/components/daocustommessagerule.md
   - docs/models/components/dashboard.md
   - docs/models/components/dayofweek.md
   - docs/models/components/defaults.md
-  - docs/models/components/directoryextension.md
-  - docs/models/components/directorymember.md
-  - docs/models/components/directorymembercreate.md
-  - docs/models/components/directorymembercreatecontacttags.md
-  - docs/models/components/directorymemberproperties.md
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
-  - docs/models/components/filet.md
-  - docs/models/components/functiont.md
-  - docs/models/components/httpendpoint.md
+  - docs/models/components/internaltool.md
   - docs/models/components/listresponseagentresponse.md
   - docs/models/components/listresponseavailabletarget.md
   - docs/models/components/listresponsechannel.md
-  - docs/models/components/listresponsechanneltarget.md
+  - docs/models/components/listresponsechanneltargetresponse.md
   - docs/models/components/listresponseconversation.md
   - docs/models/components/listresponsecustommessageresponse.md
-  - docs/models/components/listresponsedirectorymember.md
   - docs/models/components/listresponseevent.md
-  - docs/models/components/listresponseprompt.md
+  - docs/models/components/listresponsepromptresponse.md
   - docs/models/components/listresponseservice.md
   - docs/models/components/listresponsesession.md
   - docs/models/components/listresponsesessionlabel.md
-  - docs/models/components/listresponsetool.md
-  - docs/models/components/llmconfig.md
+  - docs/models/components/listresponsetoolresponse.md
   - docs/models/components/loc.md
-  - docs/models/components/method.md
-  - docs/models/components/numbers.md
   - docs/models/components/one.md
   - docs/models/components/orderbydirection.md
   - docs/models/components/parameterst.md
-  - docs/models/components/prompt.md
-  - docs/models/components/promptcreate.md
+  - docs/models/components/promptcreaterequest.md
   - docs/models/components/prompthistory.md
+  - docs/models/components/promptllmconfig.md
+  - docs/models/components/promptllmprovider.md
   - docs/models/components/promptproperties.md
-  - docs/models/components/promptupdate.md
-  - docs/models/components/provider.md
+  - docs/models/components/promptresponse.md
+  - docs/models/components/promptupdaterequest.md
   - docs/models/components/response.md
   - docs/models/components/result.md
-  - docs/models/components/sdkinternaltool.md
-  - docs/models/components/sdktooldefinition.md
   - docs/models/components/security.md
   - docs/models/components/service.md
   - docs/models/components/servicecreate.md
@@ -133,20 +115,25 @@ generatedFiles:
   - docs/models/components/sessiontext.md
   - docs/models/components/sessiontranscriptionresponse.md
   - docs/models/components/sttprovider.md
-  - docs/models/components/target.md
   - docs/models/components/targetmodes.md
   - docs/models/components/testmessage.md
   - docs/models/components/testmessageresponse.md
-  - docs/models/components/tool.md
-  - docs/models/components/toolcreate.md
+  - docs/models/components/toolargumentlocation.md
+  - docs/models/components/toolcreaterequest.md
+  - docs/models/components/tooldefinition.md
   - docs/models/components/tooldetailresponse.md
+  - docs/models/components/toolfunction.md
+  - docs/models/components/toolhttpendpoint.md
+  - docs/models/components/toolhttpmethod.md
   - docs/models/components/toolparameterdefault.md
   - docs/models/components/toolparametertransform.md
   - docs/models/components/toolparametertransformcondition.md
   - docs/models/components/toolproperties.md
-  - docs/models/components/toolupdate.md
+  - docs/models/components/toolresponse.md
+  - docs/models/components/toolupdaterequest.md
   - docs/models/components/type.md
   - docs/models/components/validationerror.md
+  - docs/models/components/variables.md
   - docs/models/errors/httpvalidationerror.md
   - docs/models/operations/agentdeleterequest.md
   - docs/models/operations/agentgetbyidrequest.md
@@ -162,10 +149,6 @@ generatedFiles:
   - docs/models/operations/custommessagegetbyidrequest.md
   - docs/models/operations/custommessagesdeleterequest.md
   - docs/models/operations/custommessageslistrequest.md
-  - docs/models/operations/directorymemberdeleterequest.md
-  - docs/models/operations/directorymembergetbyidrequest.md
-  - docs/models/operations/directorymemberlistrequest.md
-  - docs/models/operations/directorymemberupdaterequest.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/generatesessionrecordingurlsrequest.md
   - docs/models/operations/promptsdeleterequest.md
@@ -186,7 +169,6 @@ generatedFiles:
   - docs/sdks/conversations/README.md
   - docs/sdks/custommessages/README.md
   - docs/sdks/dashboards/README.md
-  - docs/sdks/directory/README.md
   - docs/sdks/events/README.md
   - docs/sdks/prompts/README.md
   - docs/sdks/services/README.md
@@ -225,13 +207,6 @@ generatedFiles:
   - src/funcs/dashboardsPostSessionSummaryDashboard.ts
   - src/funcs/dashboardsPostSessionTransfersDashboard.ts
   - src/funcs/dashboardsPostSessionsDashboard.ts
-  - src/funcs/directoryCreate.ts
-  - src/funcs/directoryDelete.ts
-  - src/funcs/directoryDirectoryMemberBulkLoad.ts
-  - src/funcs/directoryDirectoryMemberDownload.ts
-  - src/funcs/directoryGetById.ts
-  - src/funcs/directoryList.ts
-  - src/funcs/directoryUpdate.ts
   - src/funcs/eventsList.ts
   - src/funcs/promptsCreate.ts
   - src/funcs/promptsDelete.ts
@@ -278,7 +253,6 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
-  - src/models/components/agent.ts
   - src/models/components/agentcreate.ts
   - src/models/components/agentproperties.ts
   - src/models/components/agentresponse.ts
@@ -289,57 +263,46 @@ generatedFiles:
   - src/models/components/agentvoicevarname.ts
   - src/models/components/availabletarget.ts
   - src/models/components/availabletargetproperties.ts
-  - src/models/components/bodydirectorymemberbulkload.ts
   - src/models/components/channel.ts
   - src/models/components/channelproperties.ts
   - src/models/components/channelservices.ts
-  - src/models/components/channeltarget.ts
   - src/models/components/channeltargetcreaterequest.ts
   - src/models/components/channeltargetproperties.ts
+  - src/models/components/channeltargetresponse.ts
   - src/models/components/channeltargetupdaterequest.ts
   - src/models/components/conversation.ts
   - src/models/components/conversationproperties.ts
-  - src/models/components/custommessage.ts
   - src/models/components/custommessagecreaterequest.ts
   - src/models/components/custommessageproperties.ts
   - src/models/components/custommessageresponse.ts
+  - src/models/components/custommessagerule.ts
   - src/models/components/custommessageupdaterequest.ts
-  - src/models/components/daochanneltargetagent.ts
-  - src/models/components/daocustommessagerule.ts
   - src/models/components/dashboard.ts
   - src/models/components/dayofweek.ts
-  - src/models/components/directoryextension.ts
-  - src/models/components/directorymember.ts
-  - src/models/components/directorymembercreate.ts
-  - src/models/components/directorymemberproperties.ts
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
-  - src/models/components/function.ts
-  - src/models/components/httpendpoint.ts
   - src/models/components/index.ts
+  - src/models/components/internaltool.ts
   - src/models/components/listresponseagentresponse.ts
   - src/models/components/listresponseavailabletarget.ts
   - src/models/components/listresponsechannel.ts
-  - src/models/components/listresponsechanneltarget.ts
+  - src/models/components/listresponsechanneltargetresponse.ts
   - src/models/components/listresponseconversation.ts
   - src/models/components/listresponsecustommessageresponse.ts
-  - src/models/components/listresponsedirectorymember.ts
   - src/models/components/listresponseevent.ts
-  - src/models/components/listresponseprompt.ts
+  - src/models/components/listresponsepromptresponse.ts
   - src/models/components/listresponseservice.ts
   - src/models/components/listresponsesession.ts
   - src/models/components/listresponsesessionlabel.ts
-  - src/models/components/listresponsetool.ts
-  - src/models/components/llmconfig.ts
+  - src/models/components/listresponsetoolresponse.ts
   - src/models/components/orderbydirection.ts
-  - src/models/components/prompt.ts
-  - src/models/components/promptcreate.ts
+  - src/models/components/promptcreaterequest.ts
   - src/models/components/prompthistory.ts
+  - src/models/components/promptllmconfig.ts
+  - src/models/components/promptllmprovider.ts
   - src/models/components/promptproperties.ts
-  - src/models/components/promptupdate.ts
-  - src/models/components/provider.ts
-  - src/models/components/sdkinternaltool.ts
-  - src/models/components/sdktooldefinition.ts
+  - src/models/components/promptresponse.ts
+  - src/models/components/promptupdaterequest.ts
   - src/models/components/security.ts
   - src/models/components/service.ts
   - src/models/components/servicecreate.ts
@@ -355,18 +318,22 @@ generatedFiles:
   - src/models/components/sessiontext.ts
   - src/models/components/sessiontranscriptionresponse.ts
   - src/models/components/sttprovider.ts
-  - src/models/components/target.ts
   - src/models/components/targetmodes.ts
   - src/models/components/testmessage.ts
   - src/models/components/testmessageresponse.ts
-  - src/models/components/tool.ts
-  - src/models/components/toolcreate.ts
+  - src/models/components/toolargumentlocation.ts
+  - src/models/components/toolcreaterequest.ts
+  - src/models/components/tooldefinition.ts
   - src/models/components/tooldetailresponse.ts
+  - src/models/components/toolfunction.ts
+  - src/models/components/toolhttpendpoint.ts
+  - src/models/components/toolhttpmethod.ts
   - src/models/components/toolparameterdefault.ts
   - src/models/components/toolparametertransform.ts
   - src/models/components/toolparametertransformcondition.ts
   - src/models/components/toolproperties.ts
-  - src/models/components/toolupdate.ts
+  - src/models/components/toolresponse.ts
+  - src/models/components/toolupdaterequest.ts
   - src/models/components/validationerror.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/httpvalidationerror.ts
@@ -387,10 +354,6 @@ generatedFiles:
   - src/models/operations/custommessagegetbyid.ts
   - src/models/operations/custommessagesdelete.ts
   - src/models/operations/custommessageslist.ts
-  - src/models/operations/directorymemberdelete.ts
-  - src/models/operations/directorymembergetbyid.ts
-  - src/models/operations/directorymemberlist.ts
-  - src/models/operations/directorymemberupdate.ts
   - src/models/operations/eventslist.ts
   - src/models/operations/generatesessionrecordingurls.ts
   - src/models/operations/index.ts
@@ -412,7 +375,6 @@ generatedFiles:
   - src/sdk/conversations.ts
   - src/sdk/custommessages.ts
   - src/sdk/dashboards.ts
-  - src/sdk/directory.ts
   - src/sdk/events.ts
   - src/sdk/index.ts
   - src/sdk/prompts.ts
@@ -439,25 +401,25 @@ examples:
     speakeasy-default-agent-list:
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "type": "<value>", "prompt_id": 678317, "custom_message_id": 177706, "timezone": "Asia/Dili", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": [], "variables": {}, "tool_headers": {}, "id": 152837, "updated_at": "2023-11-28T13:02:27.296Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "<value>", "prompt_id": 639387, "custom_message_id": 17577, "timezone": "Asia/Qostanay", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": []}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}], "languages": ["<value>", "<value>"], "variables": {}, "tool_headers": {}, "id": 86140, "updated_at": "2024-01-25T00:05:25.844Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "<value>", "prompt_id": 687960, "custom_message_id": 509883, "timezone": "Africa/Kigali", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["<value>", "<value>"], "variables": {}, "tool_headers": {"key": "<value>"}, "id": 7468, "updated_at": "2023-06-17T08:36:51.636Z", "last_updated_by": "<value>"}], "page": 54607, "page_size": 367745, "total_pages": 485729, "total_count": 73227}
+          application/json: {"items": [{"name": "<value>", "type": "ca_v1", "prompt_id": 678317, "custom_message_id": 177706, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 152837, "updated_at": "2023-11-28T13:02:27.296Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 639387, "custom_message_id": 17577, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": []}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 86140, "updated_at": "2024-01-25T00:05:25.844Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 687960, "custom_message_id": 509883, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>"}, "id": 7468, "updated_at": "2023-06-17T08:36:51.636Z", "last_updated_by": "<value>"}], "page": 54607, "page_size": 367745, "total_pages": 485729, "total_count": 73227}
         "422":
           application/json: {}
   agent_create:
     speakeasy-default-agent-create:
       requestBody:
-        application/json: {"name": "<value>", "timezone": "Antarctica/Rothera", "type": "<value>", "prompt_id": 486589, "custom_message_id": 638424, "languages": ["<value>"]}
+        application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 638424, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {}, "tool_headers": {"key": "<value>", "key1": "<value>"}}
       responses:
         "200":
-          application/json: {"name": "<value>", "timezone": "Asia/Qyzylorda", "type": "<value>", "prompt_id": 134365, "custom_message_id": 69025, "languages": ["<value>", "<value>", "<value>"], "id": 417458}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 134365, "custom_message_id": 69025, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 417458, "updated_at": "2023-03-17T15:39:20.911Z", "last_updated_by": "<value>"}
         "422":
           application/json: {}
   agent_update:
     speakeasy-default-agent-update:
       requestBody:
-        application/json: {"name": "<value>", "timezone": "Europe/Tallinn", "type": "<value>", "prompt_id": 857478, "custom_message_id": 597129, "languages": ["<value>"], "id": 597129}
+        application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 857478, "custom_message_id": 597129, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 597129}
       responses:
         "200":
-          application/json: {"name": "<value>", "timezone": "America/Metlakatla", "type": "<value>", "prompt_id": 991464, "custom_message_id": 627690, "languages": ["<value>"], "id": 991464}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 991464, "custom_message_id": 627690, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 991464, "updated_at": "2024-11-18T22:44:58.301Z", "last_updated_by": "<value>"}
         "422":
           application/json: {}
   agent_get_by_id:
@@ -467,7 +429,7 @@ examples:
           agent_id: 931598
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "<value>", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "Asia/Anadyr", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["<value>"], "variables": {"key": "<value>", "key1": "<value>"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 467619, "updated_at": "2023-08-23T04:58:12.943Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 467619, "updated_at": "2023-08-23T04:58:12.943Z", "last_updated_by": "<value>"}
         "422":
           application/json: {}
   agent_delete:
@@ -494,7 +456,7 @@ examples:
     speakeasy-default-channels-list:
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "channel_service": "webchat", "supported_modes": "<value>", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "<value>", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "<value>", "id": "<id>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
+          application/json: {"items": [{"name": "<value>", "channel_service": "webchat", "supported_modes": "[\"chat\",\"voice\"]", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "id": "<id>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
         "422":
           application/json: {}
   channels_delete:
@@ -517,7 +479,7 @@ examples:
     speakeasy-default-channel-targets-list:
       responses:
         "200":
-          application/json: {"items": [{"id": 547272, "channel_id": 678317, "channel_name": "<value>", "agent_id": 177706, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 768578, "timezone": "Asia/Dili", "id": 678317, "updated_at": "2022-07-14T18:23:27.528Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2022-09-09T18:28:08.953Z", "last_updated_by": "<value>"}, {"id": 152837, "channel_id": 635532, "channel_name": "<value>", "agent_id": 639387, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 152837, "timezone": "Asia/Qostanay", "id": 639387, "updated_at": "2022-01-20T06:21:22.156Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2024-02-27T06:14:46.641Z", "last_updated_by": "<value>"}, {"id": 718303, "channel_id": 86140, "channel_name": "<value>", "agent_id": 68504, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 86140, "timezone": "Africa/Kigali", "id": 687960, "updated_at": "2023-07-13T19:57:33.016Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false, "updated_at": "2023-11-26T18:23:24.264Z", "last_updated_by": "<value>"}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
+          application/json: {"items": [{"agent_id": 177706, "channel_id": 678317, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": true, "id": 547272, "channel_name": "<value>", "updated_at": "2022-09-09T18:28:08.953Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 768578, "custom_message_id": 547272, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 678317, "updated_at": "2022-07-14T18:23:27.528Z", "last_updated_by": "<value>"}}, {"agent_id": 639387, "channel_id": 635532, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": true, "id": 152837, "channel_name": "<value>", "updated_at": "2024-02-27T06:14:46.641Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 152837, "custom_message_id": 152837, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 639387, "updated_at": "2022-01-20T06:21:22.156Z", "last_updated_by": "<value>"}}, {"agent_id": 68504, "channel_id": 86140, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": false, "id": 718303, "channel_name": "<value>", "updated_at": "2023-11-26T18:23:24.264Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 86140, "custom_message_id": 718303, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 687960, "updated_at": "2023-07-13T19:57:33.016Z", "last_updated_by": "<value>"}}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
         "422":
           application/json: {}
   channel_targets_create:
@@ -526,10 +488,10 @@ examples:
         path:
           channel_id: 134365
       requestBody:
-        application/json: {"channel_id": 486589, "agent_id": 638424, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
+        application/json: {"agent_id": 638424, "channel_id": 486589, "target": "<value>", "target_mode": "chat", "fallback_target": "<value>", "is_test": true}
       responses:
         "200":
-          application/json: {"id": 69025, "channel_id": 796474, "channel_name": "<value>", "agent_id": 951062, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 486589, "timezone": "Asia/Qyzylorda", "id": 417458, "updated_at": "2022-05-28T06:20:22.766Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2022-03-17T15:39:20.911Z", "last_updated_by": "<value>"}
+          application/json: {"agent_id": 951062, "channel_id": 796474, "target": "<value>", "target_mode": "sms", "fallback_target": "<value>", "is_test": true, "id": 69025, "channel_name": "<value>", "updated_at": "2022-03-17T15:39:20.911Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 417458, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 417458, "updated_at": "2022-05-28T06:20:22.766Z", "last_updated_by": "<value>"}}
         "422":
           application/json: {}
   channel_targets_get_by_id:
@@ -540,7 +502,7 @@ examples:
           target_id: 505057
       responses:
         "200":
-          application/json: {"id": 467619, "channel_id": 33486, "channel_name": "<value>", "agent_id": 529758, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 931598, "timezone": "Asia/Anadyr", "id": 467619, "updated_at": "2022-02-06T16:50:06.315Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false, "updated_at": "2023-08-04T14:44:32.694Z", "last_updated_by": "<value>"}
+          application/json: {"agent_id": 529758, "channel_id": 33486, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": false, "id": 467619, "channel_name": "<value>", "updated_at": "2023-08-04T14:44:32.694Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 467619, "updated_at": "2022-02-06T16:50:06.315Z", "last_updated_by": "<value>"}}
         "422":
           application/json: {}
   channels_target_update:
@@ -686,7 +648,7 @@ examples:
     speakeasy-default-tool-list:
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "that bah since zowie loudly aha although gosh whenever"}}}, "service_id": 547272, "id": 678317}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "beneath meanwhile synthesise angrily"}}}, "service_id": 177706, "id": 229716}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "kindheartedly nor fooey a supposing regarding times uselessly"}}}, "service_id": 152837, "id": 635532}], "page": 639387, "page_size": 17577, "total_pages": 718303, "total_count": 86140}
+          application/json: {"items": [{"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "that bah since zowie loudly aha although gosh whenever", "parameters": {}}}}, "service_id": 547272, "id": 678317}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "beneath meanwhile synthesise angrily", "parameters": {}}}}, "service_id": 177706, "id": 229716}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "kindheartedly nor fooey a supposing regarding times uselessly", "parameters": {}}}}, "service_id": 152837, "id": 635532}], "page": 639387, "page_size": 17577, "total_pages": 718303, "total_count": 86140}
         "422":
           application/json: {}
   tool_get_by_name:
@@ -717,7 +679,7 @@ examples:
     speakeasy-default-custom-messages-list:
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "text": "<value>", "id": 547272, "updated_at": "2024-04-22T08:39:55.981Z", "last_updated_by": "<value>"}, {"name": "<value>", "text": "<value>", "id": 678317, "updated_at": "2023-08-23T19:26:20.850Z", "last_updated_by": "<value>"}, {"name": "<value>", "text": "<value>", "id": 177706, "updated_at": "2024-01-14T10:26:00.433Z", "last_updated_by": "<value>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"name": "<value>", "text": "<value>", "id": 547272, "updated_at": "2024-04-22T08:39:55.981Z", "last_updated_by": "user@email.com"}, {"name": "<value>", "text": "<value>", "id": 678317, "updated_at": "2023-08-23T19:26:20.850Z", "last_updated_by": "user@email.com"}, {"name": "<value>", "text": "<value>", "id": 177706, "updated_at": "2024-01-14T10:26:00.433Z", "last_updated_by": "user@email.com"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
         "422":
           application/json: {}
   custom_messages_create:
@@ -726,7 +688,7 @@ examples:
         application/json: {"name": "<value>", "text": "<value>"}
       responses:
         "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 486589, "updated_at": "2023-06-18T07:14:55.338Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "text": "<value>", "id": 486589, "updated_at": "2023-06-18T07:14:55.338Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   custom_messages_update:
@@ -735,7 +697,7 @@ examples:
         application/json: {"name": "<value>", "text": "<value>", "id": 857478}
       responses:
         "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 597129, "updated_at": "2024-07-28T19:04:48.565Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "text": "<value>", "id": 597129, "updated_at": "2024-07-28T19:04:48.565Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   custom_message_get_by_id:
@@ -745,7 +707,7 @@ examples:
           custom_message_id: 931598
       responses:
         "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 505057, "updated_at": "2024-10-18T00:43:47.367Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "text": "<value>", "id": 505057, "updated_at": "2024-10-18T00:43:47.367Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   custom_messages_delete:
@@ -779,10 +741,10 @@ examples:
           channel_id: 627690
           target_id: 488852
       requestBody:
-        application/json: {"id": 857478, "channel_id": 597129, "agent_id": 344620, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
+        application/json: {"agent_id": 344620, "channel_id": 597129, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": false, "id": 857478}
       responses:
         "200":
-          application/json: {"id": 984008, "channel_id": 54062, "channel_name": "<value>", "agent_id": 896501, "agent": {"name": "<value>", "type": "<value>", "prompt_id": 857478, "timezone": "Asia/Kuching", "id": 344620, "updated_at": "2024-12-22T15:27:45.882Z", "last_updated_by": "<value>"}, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true, "updated_at": "2023-11-19T22:44:58.301Z", "last_updated_by": "<value>"}
+          application/json: {"agent_id": 896501, "channel_id": 54062, "target": "<value>", "target_mode": "sms", "fallback_target": "<value>", "is_test": true, "id": 984008, "channel_name": "<value>", "updated_at": "2023-11-19T22:44:58.301Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 857478, "custom_message_id": 344620, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 344620, "updated_at": "2024-12-22T15:27:45.882Z", "last_updated_by": "<value>"}}
         "422":
           application/json: {}
   session_label_get_by_id:
@@ -792,23 +754,23 @@ examples:
           session_label_id: 931598
       responses:
         "200":
-          application/json: {"session_id": 505057, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 467619, "timestamp": "<value>"}
+          application/json: {"session_id": 505057, "type": "human-rating", "code": "BAD", "user_email": "<value>", "id": 467619, "timestamp": "<value>"}
         "422":
           application/json: {}
   session_label_create:
     speakeasy-default-session-label-create:
       requestBody:
-        application/json: {"session_id": 486589, "type": "<value>", "code": "<value>", "user_email": "<value>"}
+        application/json: {"session_id": 486589, "type": "auto-rating", "code": "BAD", "user_email": "<value>"}
       responses:
         "200":
-          application/json: {"session_id": 638424, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 417458, "timestamp": "<value>"}
+          application/json: {"session_id": 638424, "type": "auto-rating", "code": "GOOD", "user_email": "<value>", "id": 417458, "timestamp": "<value>"}
         "422":
           application/json: {}
   session_labels_list:
     speakeasy-default-session-labels-list:
       responses:
         "200":
-          application/json: {"items": [{"session_id": 547272, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 678317, "timestamp": "<value>"}, {"session_id": 177706, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 229716, "timestamp": "<value>"}, {"session_id": 152837, "type": "<value>", "code": "<value>", "user_email": "<value>", "id": 635532, "timestamp": "<value>"}], "page": 639387, "page_size": 17577}
+          application/json: {"items": [{"session_id": 547272, "type": "human-rating", "code": "BAD", "user_email": "<value>", "id": 678317, "timestamp": "<value>"}, {"session_id": 177706, "type": "human-rating", "code": "GOOD", "user_email": "<value>", "id": 229716, "timestamp": "<value>"}, {"session_id": 152837, "type": "auto-rating", "code": "GOOD", "user_email": "<value>", "id": 635532, "timestamp": "<value>"}], "page": 639387, "page_size": 17577}
         "422":
           application/json: {}
   session_transcript_get_by_id:
@@ -849,6 +811,7 @@ examples:
       responses:
         "200":
           application/json: "<value>"
+          application/octet-stream: "x-file: example.file"
         "422":
           application/json: {}
   prompts_history:
@@ -858,7 +821,7 @@ examples:
           prompt_id: 627932
       responses:
         "200":
-          application/json: [{"timestamp": "2022-03-05T12:13:59.670Z"}]
+          application/json: [{"timestamp": "2022-03-05T12:13:59.670Z", "prompt_id": "<id>", "prompt_text": "<value>", "prompt_name": "<value>", "user_email": "<value>"}]
         "422":
           application/json: {}
   service_list:
@@ -889,19 +852,19 @@ examples:
   tool_create:
     speakeasy-default-tool-create:
       requestBody:
-        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "yuck vice between gee ugh ha"}}}, "service_id": 486589}
+        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "yuck vice between gee ugh ha", "parameters": {}}}}, "service_id": 486589}
       responses:
         "200":
-          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "bulky electronics through for ick superb nudge embalm simple ouch"}}}, "service_id": 638424, "id": 417458}
+          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "bulky electronics through for ick superb nudge embalm simple ouch", "parameters": {}}}}, "service_id": 638424, "id": 417458}
         "422":
           application/json: {}
   tool_update:
     speakeasy-default-tool-update:
       requestBody:
-        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "awful underneath retention too mobility char innocently dowse restfully"}}}, "service_id": 857478, "id": 597129}
+        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "awful underneath retention too mobility char innocently dowse restfully", "parameters": {}}}}, "service_id": 857478, "id": 597129}
       responses:
         "200":
-          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "finer ha excepting hence"}}}, "service_id": 344620, "id": 991464}
+          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "finer ha excepting hence", "parameters": {}}}}, "service_id": 344620, "id": 991464}
         "422":
           application/json: {}
   directory_member_list:

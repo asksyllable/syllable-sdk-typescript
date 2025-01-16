@@ -7,6 +7,9 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * A service is a collection of tools.
+ */
 export type Service = {
   /**
    * The name of the service
@@ -21,7 +24,7 @@ export type Service = {
    */
   id: number;
   /**
-   * The tools of the service
+   * Names of the tools that belong to the service
    */
   tools: Array<string>;
 };

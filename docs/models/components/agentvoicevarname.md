@@ -1,11 +1,13 @@
 # AgentVoiceVarName
 
+The variable name of an agent voice (used when procesing messages).
+
 ## Example Usage
 
 ```typescript
 import { AgentVoiceVarName } from "syllable-sdk/models/components";
 
-let value: AgentVoiceVarName = "elevenlabs:Liam";
+let value: AgentVoiceVarName = "openai:alloy";
 ```
 
 ## Values

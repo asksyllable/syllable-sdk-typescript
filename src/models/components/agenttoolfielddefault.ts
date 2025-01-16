@@ -8,8 +8,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * An agent-level configuration of default values for tool parameters for a given tool.
+ */
 export type AgentToolFieldDefault = {
+  /**
+   * The name of the field
+   */
   fieldName: string;
+  /**
+   * The default value for the field
+   */
   defaultValue?: any | undefined;
 };
 

@@ -21,7 +21,7 @@ export class Tools extends ClientSDK {
   async list(
     request: operations.ToolListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseTool> {
+  ): Promise<components.ListResponseToolResponse> {
     return unwrapAsync(toolsList(
       this,
       request,
@@ -36,9 +36,9 @@ export class Tools extends ClientSDK {
    * Create a new tool
    */
   async create(
-    request: components.ToolCreate,
+    request: components.ToolCreateRequest,
     options?: RequestOptions,
-  ): Promise<components.Tool> {
+  ): Promise<components.ToolResponse> {
     return unwrapAsync(toolsCreate(
       this,
       request,
@@ -53,9 +53,9 @@ export class Tools extends ClientSDK {
    * Update an existing tool
    */
   async update(
-    request: components.ToolUpdate,
+    request: components.ToolUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.Tool> {
+  ): Promise<components.ToolResponse> {
     return unwrapAsync(toolsUpdate(
       this,
       request,

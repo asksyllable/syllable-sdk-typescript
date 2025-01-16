@@ -6,6 +6,7 @@ import * as z from "zod";
 import { SyllableSDKCore } from "../core.js";
 import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -67,9 +68,9 @@ export async function agentsDelete(
     "reason": payload.reason,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
@@ -130,8 +131,9 @@ export async function agentsDelete(
     | ConnectionError
   >(
     M.json(200, z.any()),
-    M.fail([400, 404, "4XX", 500, "5XX"]),
+    M.fail([400, 404, "4XX"]),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
+    M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
