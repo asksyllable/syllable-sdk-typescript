@@ -7,7 +7,7 @@ title: 'AgentProperties'
 ```typescript
 import { AgentProperties } from "syllable-sdk/models/components";
 
-let value: AgentProperties = "prompt_tool_defaults";
+let value: AgentProperties = "description";
 ```
 
 ## Values

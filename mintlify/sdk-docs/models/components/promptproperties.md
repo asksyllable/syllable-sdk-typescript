@@ -7,7 +7,7 @@ title: 'PromptProperties'
 ```typescript
 import { PromptProperties } from "syllable-sdk/models/components";
 
-let value: PromptProperties = "context";
+let value: PromptProperties = "description";
 ```
 
 ## Values

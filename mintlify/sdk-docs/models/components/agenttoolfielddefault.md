@@ -2,6 +2,8 @@
 title: 'AgentToolFieldDefault'
 ---
 
+An agent-level configuration of default values for tool parameters for a given tool.
+
 ## Example Usage
 
 ```typescript
@@ -15,7 +17,7 @@ let value: AgentToolFieldDefault = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `fieldName`        | *string*           | TRUE | N/A                |
-| `defaultValue`     | *any*              | TRUE | N/A                |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `fieldName`                     | *string*                        | TRUE              | The name of the field           |
+| `defaultValue`                  | *any*                           | TRUE              | The default value for the field |

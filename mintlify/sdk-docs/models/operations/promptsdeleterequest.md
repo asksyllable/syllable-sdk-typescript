@@ -8,7 +8,7 @@ title: 'PromptsDeleteRequest'
 import { PromptsDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: PromptsDeleteRequest = {
-  promptId: 577710,
+  promptId: 354225,
   reason: "<value>",
 };
 ```
