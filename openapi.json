@@ -7,12 +7,12 @@
   },
   "servers": [
     {
-      "url": "https://api.syllable.ai",
-      "description": "API server"
+      "url": "http://localhost:8001",
+      "description": "dev server"
     },
     {
-      "url": "https://trial.api.syllable.ai",
-      "description": "Trial API server"
+      "url": "http://localhost:8001",
+      "description": "dev / port-forwarding server"
     }
   ],
   "paths": {
@@ -4495,12 +4495,7 @@
             },
             "type": "object",
             "title": "Variables",
-            "description": "Custom context variables for the conversation session. Should be prefixed with \"vars.\".",
-            "examples": [
-              {
-                "vars.hospital": "Weill Cornell Medical Center"
-              }
-            ]
+            "description": "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
           },
           "tool_headers": {
             "anyOf": [
