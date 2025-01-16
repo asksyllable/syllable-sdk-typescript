@@ -7,12 +7,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8001",
-      "description": "dev server"
+      "url": "https://api.syllable.ai",
+      "description": "API server"
     },
     {
-      "url": "http://localhost:8001",
-      "description": "dev / port-forwarding server"
+      "url": "https://trial.api.syllable.ai",
+      "description": "Trial API server"
     }
   ],
   "paths": {
