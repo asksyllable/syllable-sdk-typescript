@@ -30,7 +30,7 @@ let value: ChannelTargetResponse = {
       "es-US",
     ],
     variables: {
-      "vars.hospital": "Weill Cornell Medical Center",
+      "key": "<value>",
     },
     toolHeaders: {
       "key": "<value>",
