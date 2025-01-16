@@ -2,6 +2,8 @@
 title: 'SttProvider'
 ---
 
+Provider for an agent voice.
+
 ## Example Usage
 
 ```typescript
