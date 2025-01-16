@@ -111,8 +111,7 @@
         "sdk-docs/Tools",
         "sdk-docs/Services",
         "sdk-docs/Channels",
-        "sdk-docs/Targets",
-        "sdk-docs/Directory"
+        "sdk-docs/Targets"
       ]
     },
     {
