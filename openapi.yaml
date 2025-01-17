@@ -2409,11 +2409,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema:
-                anyOf:
-                  - {"$ref": "#/components/schemas/CommunicationBatch"}
-                  - type: "null"
-                title: "Response Outbound Batch Get By Id"
+              schema: {"$ref": "#/components/schemas/CommunicationBatch"}
         "422":
           description: "Validation Error"
           content:
@@ -2556,11 +2552,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema:
-                anyOf:
-                  - {"$ref": "#/components/schemas/OutboundCampaign"}
-                  - type: "null"
-                title: "Response Outbound Campaign Get By Id"
+              schema: {"$ref": "#/components/schemas/OutboundCampaign"}
         "422":
           description: "Validation Error"
           content:
@@ -2592,11 +2584,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema:
-                anyOf:
-                  - {"$ref": "#/components/schemas/OutboundCampaign"}
-                  - type: "null"
-                title: "Response Outbound Campaign Update"
+              schema: {"$ref": "#/components/schemas/OutboundCampaign"}
         "422":
           description: "Validation Error"
           content:
