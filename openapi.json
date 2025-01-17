@@ -4380,15 +4380,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/CommunicationBatch"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ],
-                  "title": "Response Outbound Batch Get By Id"
+                  "$ref": "#/components/schemas/CommunicationBatch"
                 }
               }
             }
@@ -4642,15 +4634,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/OutboundCampaign"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ],
-                  "title": "Response Outbound Campaign Get By Id"
+                  "$ref": "#/components/schemas/OutboundCampaign"
                 }
               }
             }
@@ -4707,15 +4691,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/OutboundCampaign"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ],
-                  "title": "Response Outbound Campaign Update"
+                  "$ref": "#/components/schemas/OutboundCampaign"
                 }
               }
             }
