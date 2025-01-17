@@ -1,0 +1,56 @@
+name: run-sdk-contract-test-suite
+on:
+  push:
+    branches:
+      - test-workflow
+permissions:
+  id-token: write
+  contents: read
+env:
+  CLUSTER_NAME: zoon
+  NAMESPACE: dev
+  RESOURCE_GROUP: Zoon_Staging
+  SYLLABLESDK_SERVER_URL: http://localhost:8000
+  SYLLABLESDK_API_KEY_HEADER: ${{ secrets.SYLLABLESDK_API_KEY_HEADER }}
+
+jobs:
+  sdk-contract-test-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'azure - log into AKS'
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: 'azure - setup kubectl'
+        uses: azure/setup-kubectl@v4
+
+      - name: 'azure - setup kubelogin for non-interactive login'
+        uses: azure/use-kubelogin@v1
+        with:
+          kubelogin-version: 'v0.0.24'
+
+      - name: 'azure - Set Kubernetes context'
+        uses: azure/aks-set-context@v4
+        with:
+          resource-group: ${{ env.RESOURCE_GROUP }}
+          cluster-name: ${{ env.CLUSTER_NAME }}
+          admin: 'false'
+          use-kubelogin: 'true'
+
+      - name: Setup Kubernetes port-forward daemon
+        uses: vbem/k8s-port-forward@v1.0.2
+        with:
+          workload: svc/syllable-app
+          mappings: 8000:80
+          options: --namespace=${{ env.NAMESPACE }}
+
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+      - run: npm install
+      - run: cd test && npm install
+      - run: npm run test
