@@ -4268,7 +4268,7 @@
       "get": {
         "tags": [
           "outbound.batches",
-          "v1"
+          "V1"
         ],
         "summary": "List Outbound Communication Batches",
         "operationId": "outbound_batch_list",
@@ -4298,7 +4298,7 @@
       "put": {
         "tags": [
           "outbound.batches",
-          "v1"
+          "V1"
         ],
         "summary": "Create Outbound Communication Batch",
         "operationId": "outbound_batch_create",
@@ -4354,7 +4354,7 @@
       "get": {
         "tags": [
           "outbound.batches",
-          "v1"
+          "V1"
         ],
         "summary": "Get Outbound Communication Batch",
         "operationId": "outbound_batch_get_by_id",
@@ -4409,7 +4409,7 @@
       "delete": {
         "tags": [
           "outbound.batches",
-          "v1"
+          "V1"
         ],
         "summary": "Delete Outbound Communication Batch",
         "operationId": "outbound_batch_delete",
@@ -4466,7 +4466,7 @@
       "post": {
         "tags": [
           "outbound.batches",
-          "v1"
+          "V1"
         ],
         "summary": "Upload Outbound Communication Batch",
         "operationId": "outbound_batch_upload",
@@ -4523,7 +4523,7 @@
       "get": {
         "tags": [
           "outbound.campaigns",
-          "v1"
+          "V1"
         ],
         "summary": "List Outbound Communication Campaigns",
         "operationId": "outbound_campaign_list",
@@ -4560,7 +4560,7 @@
       "post": {
         "tags": [
           "outbound.campaigns",
-          "v1"
+          "V1"
         ],
         "summary": "Create Outbound Communication Campaign",
         "operationId": "outbound_campaign_create",
@@ -4616,7 +4616,7 @@
       "get": {
         "tags": [
           "outbound.campaigns",
-          "v1"
+          "V1"
         ],
         "summary": "Get Outbound Communication Campaign",
         "operationId": "outbound_campaign_get_by_id",
@@ -4671,7 +4671,7 @@
       "put": {
         "tags": [
           "outbound.campaigns",
-          "v1"
+          "V1"
         ],
         "summary": "Update Outbound Communication Campaign",
         "operationId": "outbound_campaign_update",
