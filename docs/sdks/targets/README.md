@@ -27,7 +27,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.channels.targets.availableTargets({});
+  const result = await syllableSDK.channels.targets.availableTargets({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -51,7 +53,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await channelsTargetsAvailableTargets(syllableSDK, {});
+  const res = await channelsTargetsAvailableTargets(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -100,7 +104,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.channels.targets.list({});
+  const result = await syllableSDK.channels.targets.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -124,7 +130,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await channelsTargetsList(syllableSDK, {});
+  const res = await channelsTargetsList(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -176,12 +184,11 @@ async function run() {
   const result = await syllableSDK.channels.targets.create({
     channelId: 134365,
     channelTargetCreateRequest: {
-      agentId: 638424,
-      channelId: 486589,
+      agentId: 486589,
+      channelId: 638424,
       target: "<value>",
       targetMode: "chat",
-      fallbackTarget: "<value>",
-      isTest: true,
+      isTest: false,
     },
   });
 
@@ -210,12 +217,11 @@ async function run() {
   const res = await channelsTargetsCreate(syllableSDK, {
     channelId: 134365,
     channelTargetCreateRequest: {
-      agentId: 638424,
-      channelId: 486589,
+      agentId: 486589,
+      channelId: 638424,
       target: "<value>",
       targetMode: "chat",
-      fallbackTarget: "<value>",
-      isTest: true,
+      isTest: false,
     },
   });
 
@@ -349,13 +355,12 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      agentId: 344620,
+      agentId: 857478,
       channelId: 597129,
       target: "<value>",
-      targetMode: "email",
-      fallbackTarget: "<value>",
+      targetMode: "chat",
       isTest: false,
-      id: 857478,
+      id: 991464,
     },
   });
 
@@ -385,13 +390,12 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      agentId: 344620,
+      agentId: 857478,
       channelId: 597129,
       target: "<value>",
-      targetMode: "email",
-      fallbackTarget: "<value>",
+      targetMode: "chat",
       isTest: false,
-      id: 857478,
+      id: 991464,
     },
   });
 

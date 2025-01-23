@@ -14,8 +14,6 @@ import {
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
 
-export type Variables = {};
-
 export type AgentCreate = {
   /**
    * The agent name
@@ -56,56 +54,12 @@ export type AgentCreate = {
   /**
    * Custom context variables for the conversation session. Keys should be prefixed with "vars.".
    */
-  variables: Variables | null;
+  variables: { [k: string]: string };
   /**
    * Optional headers to include in tool calls for agent.
    */
   toolHeaders: { [k: string]: string } | null;
 };
-
-/** @internal */
-export const Variables$inboundSchema: z.ZodType<
-  Variables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type Variables$Outbound = {};
-
-/** @internal */
-export const Variables$outboundSchema: z.ZodType<
-  Variables$Outbound,
-  z.ZodTypeDef,
-  Variables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Variables$ {
-  /** @deprecated use `Variables$inboundSchema` instead. */
-  export const inboundSchema = Variables$inboundSchema;
-  /** @deprecated use `Variables$outboundSchema` instead. */
-  export const outboundSchema = Variables$outboundSchema;
-  /** @deprecated use `Variables$Outbound` instead. */
-  export type Outbound = Variables$Outbound;
-}
-
-export function variablesToJSON(variables: Variables): string {
-  return JSON.stringify(Variables$outboundSchema.parse(variables));
-}
-
-export function variablesFromJSON(
-  jsonString: string,
-): SafeParseResult<Variables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Variables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Variables' from JSON`,
-  );
-}
 
 /** @internal */
 export const AgentCreate$inboundSchema: z.ZodType<
@@ -122,7 +76,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
   timezone: z.string(),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
   languages: z.array(z.string()).optional(),
-  variables: z.nullable(z.lazy(() => Variables$inboundSchema)),
+  variables: z.record(z.string()),
   tool_headers: z.nullable(z.record(z.string())),
 }).transform((v) => {
   return remap$(v, {
@@ -144,7 +98,7 @@ export type AgentCreate$Outbound = {
   timezone: string;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
   languages?: Array<string> | undefined;
-  variables: Variables$Outbound | null;
+  variables: { [k: string]: string };
   tool_headers: { [k: string]: string } | null;
 };
 
@@ -163,7 +117,7 @@ export const AgentCreate$outboundSchema: z.ZodType<
   timezone: z.string(),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
   languages: z.array(z.string()).optional(),
-  variables: z.nullable(z.lazy(() => Variables$outboundSchema)),
+  variables: z.record(z.string()),
   toolHeaders: z.nullable(z.record(z.string())),
 }).transform((v) => {
   return remap$(v, {

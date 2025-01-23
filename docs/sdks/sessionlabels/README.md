@@ -104,9 +104,12 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.sessionLabels.create({
     sessionId: 486589,
-    type: "auto-rating",
-    code: "BAD",
+    type: "human-rating",
+    code: "OK",
     userEmail: "<value>",
+    issueCategories: [
+      "Silent treatment",
+    ],
   });
 
   // Handle the result
@@ -133,9 +136,12 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await sessionLabelsCreate(syllableSDK, {
     sessionId: 486589,
-    type: "auto-rating",
-    code: "BAD",
+    type: "human-rating",
+    code: "OK",
     userEmail: "<value>",
+    issueCategories: [
+      "Silent treatment",
+    ],
   });
 
   if (!res.ok) {
@@ -185,7 +191,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.sessionLabels.list({});
+  const result = await syllableSDK.sessionLabels.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -209,7 +217,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await sessionLabelsList(syllableSDK, {});
+  const res = await sessionLabelsList(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;

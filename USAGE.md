@@ -7,7 +7,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);

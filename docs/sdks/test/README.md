@@ -29,6 +29,7 @@ async function run() {
     testId: "<id>",
     agentId: "<id>",
     orgName: "<value>",
+    sessionStart: false,
   });
 
   // Handle the result
@@ -59,6 +60,7 @@ async function run() {
     testId: "<id>",
     agentId: "<id>",
     orgName: "<value>",
+    sessionStart: false,
   });
 
   if (!res.ok) {

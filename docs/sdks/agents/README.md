@@ -28,7 +28,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -52,7 +54,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await agentsList(syllableSDK, {});
+  const res = await agentsList(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -111,10 +115,11 @@ async function run() {
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+
+    },
     toolHeaders: {
       "key": "<value>",
-      "key1": "<value>",
     },
   });
 
@@ -150,10 +155,11 @@ async function run() {
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+  
+    },
     toolHeaders: {
       "key": "<value>",
-      "key1": "<value>",
     },
   });
 
@@ -209,17 +215,21 @@ async function run() {
     type: "ca_v1",
     promptId: 857478,
     customMessageId: 597129,
-    timezone: "America/Chicago",
+    timezone: "America/New_York",
     languages: [
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
     toolHeaders: {
       "key": "<value>",
       "key1": "<value>",
     },
-    id: 597129,
+    id: 488852,
   });
 
   // Handle the result
@@ -249,17 +259,21 @@ async function run() {
     type: "ca_v1",
     promptId: 857478,
     customMessageId: 597129,
-    timezone: "America/Chicago",
+    timezone: "America/New_York",
     languages: [
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
     toolHeaders: {
       "key": "<value>",
       "key1": "<value>",
     },
-    id: 597129,
+    id: 488852,
   });
 
   if (!res.ok) {

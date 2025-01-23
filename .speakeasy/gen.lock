@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 58a78026a75b220d3201d834703ec3c6
+  docChecksum: 6579f4ba456b1c6d911e9182857e152a
   docVersion: 0.0.2
-  speakeasyVersion: 1.469.1
-  generationVersion: 2.493.21
-  releaseVersion: 0.1.0-alpha.34
-  configChecksum: 312bd69ef15e466ad2288085fe58a0f1
+  speakeasyVersion: 1.472.1
+  generationVersion: 2.493.34
+  releaseVersion: 0.1.0-alpha.35
+  configChecksum: 759cf2371ac12125ba884af939e72f21
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.16
+    core: 3.18.17
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
@@ -49,7 +49,6 @@ generatedFiles:
   - docs/models/components/agenttooldefaults.md
   - docs/models/components/agenttoolfielddefault.md
   - docs/models/components/agentupdate.md
-  - docs/models/components/agentupdatevariables.md
   - docs/models/components/agentvoice.md
   - docs/models/components/agentvoicevarname.md
   - docs/models/components/attributes.md
@@ -133,7 +132,6 @@ generatedFiles:
   - docs/models/components/toolupdaterequest.md
   - docs/models/components/type.md
   - docs/models/components/validationerror.md
-  - docs/models/components/variables.md
   - docs/models/errors/httpvalidationerror.md
   - docs/models/operations/agentdeleterequest.md
   - docs/models/operations/agentgetbyidrequest.md
@@ -399,27 +397,30 @@ generatedFiles:
 examples:
   agent_list:
     speakeasy-default-agent-list:
+      parameters:
+        query:
+          limit: 25
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "type": "ca_v1", "prompt_id": 678317, "custom_message_id": 177706, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 152837, "updated_at": "2023-11-28T13:02:27.296Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 639387, "custom_message_id": 17577, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": []}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 86140, "updated_at": "2024-01-25T00:05:25.844Z", "last_updated_by": "<value>"}, {"name": "<value>", "type": "ca_v1", "prompt_id": 687960, "custom_message_id": 509883, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>"}, "id": 7468, "updated_at": "2023-06-17T08:36:51.636Z", "last_updated_by": "<value>"}], "page": 54607, "page_size": 367745, "total_pages": 485729, "total_count": 73227}
+          application/json: {"items": [{"name": "<value>", "type": "ca_v1", "prompt_id": 547272, "custom_message_id": 678317, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {}, "id": 635532, "updated_at": "2024-12-01T18:25:37.169Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 17577, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "inwardly beautifully comparison", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "lid covenant safely briefly ugh fen phew reschedule hammock ick", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "excepting gah only despite seemingly eventually", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 895464, "updated_at": "2023-01-27T21:43:08.849Z", "last_updated_by": "user@email.com", "type": "greeting"}, "channel_targets": [{"agent_id": 314888, "channel_id": 621551, "target": "<value>", "target_mode": "chat", "is_test": false, "id": 256538, "channel_name": "<value>", "updated_at": "2025-10-07T04:54:41.981Z", "last_updated_by": "<value>"}, {"agent_id": 726951, "channel_id": 806103, "target": "<value>", "target_mode": "email", "is_test": false, "id": 689122, "channel_name": "<value>", "updated_at": "2023-06-14T04:35:02.740Z", "last_updated_by": "<value>"}]}, {"name": "<value>", "type": "ca_v1", "prompt_id": 480213, "custom_message_id": 739313, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"key": "<value>"}, "tool_headers": {"key": "<value>"}, "id": 350124, "updated_at": "2023-07-28T12:54:58.990Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 830742, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "swerve than bicycle twine huzzah obnoxiously after crooked", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 844592, "updated_at": "2024-06-18T04:12:45.071Z", "last_updated_by": "user@email.com", "type": "greeting"}, "channel_targets": [{"agent_id": 232917, "channel_id": 18518, "target": "<value>", "target_mode": "voice", "is_test": false, "id": 621450, "channel_name": "<value>", "updated_at": "2025-07-01T16:47:46.535Z", "last_updated_by": "<value>"}, {"agent_id": 877227, "channel_id": 767546, "target": "<value>", "target_mode": "chat", "is_test": false, "id": 942258, "channel_name": "<value>", "updated_at": "2023-11-06T03:01:50.647Z", "last_updated_by": "<value>"}, {"agent_id": 354965, "channel_id": 824962, "target": "<value>", "target_mode": "sms", "is_test": false, "id": 467428, "channel_name": "<value>", "updated_at": "2025-03-07T02:26:31.358Z", "last_updated_by": "<value>"}]}, {"name": "<value>", "type": "ca_v1", "prompt_id": 156101, "custom_message_id": 783071, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "tool_headers": {"key": "<value>"}, "id": 985599, "updated_at": "2024-06-30T19:00:16.624Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 704478, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "apud house for concerning freely overcook till boo ack solicit", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "apud suffice roughly instead athwart before tattered gosh", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "yuck failing consign tedious scar failing", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 236968, "updated_at": "2025-06-14T21:21:53.369Z", "last_updated_by": "user@email.com", "type": "greeting"}, "channel_targets": [{"agent_id": 503527, "channel_id": 919939, "target": "<value>", "target_mode": "email", "is_test": false, "id": 382289, "channel_name": "<value>", "updated_at": "2023-04-06T05:41:10.109Z", "last_updated_by": "<value>"}, {"agent_id": 299166, "channel_id": 350321, "target": "<value>", "target_mode": "sms", "is_test": false, "id": 945134, "channel_name": "<value>", "updated_at": "2024-06-30T05:56:59.196Z", "last_updated_by": "<value>"}]}], "page": 198719, "page_size": 46984}
         "422":
           application/json: {}
   agent_create:
     speakeasy-default-agent-create:
       requestBody:
-        application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 638424, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {}, "tool_headers": {"key": "<value>", "key1": "<value>"}}
+        application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 638424, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {}}
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 134365, "custom_message_id": 69025, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>"}, "id": 417458, "updated_at": "2023-03-17T15:39:20.911Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 796474, "custom_message_id": 951062, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {}, "id": 792620, "updated_at": "2025-06-13T23:30:51.782Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 586220, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "between gee ugh ha supposing whoa coordination affect hmph worth", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "miserly stealthily without trick", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "entomb gah aha what lobotomise apud overwork snuggle midst er", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 695413, "updated_at": "2023-12-22T20:37:32.114Z", "last_updated_by": "user@email.com", "type": "greeting"}, "channel_targets": [{"agent_id": 608435, "channel_id": 400422, "target": "<value>", "target_mode": "chat", "is_test": false, "id": 229175, "channel_name": "<value>", "updated_at": "2024-05-12T13:20:59.575Z", "last_updated_by": "<value>"}]}
         "422":
           application/json: {}
   agent_update:
     speakeasy-default-agent-update:
       requestBody:
-        application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 857478, "custom_message_id": 597129, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 597129}
+        application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 857478, "custom_message_id": 597129, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 488852}
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 991464, "custom_message_id": 627690, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 991464, "updated_at": "2024-11-18T22:44:58.301Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 984008, "custom_message_id": 54062, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"key": "<value>"}, "tool_headers": {"key": "<value>"}, "id": 249440, "updated_at": "2023-06-02T23:29:52.263Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 789275, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "whereas till mild than during", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "qualified cycle woot abseil perfumed fisherman with duh", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "ultimately in likely opera please antelope", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 975440, "updated_at": "2025-03-14T17:31:49.028Z", "last_updated_by": "user@email.com", "type": "greeting"}, "channel_targets": [{"agent_id": 372087, "channel_id": 527494, "target": "<value>", "target_mode": "voice", "is_test": false, "id": 498767, "channel_name": "<value>", "updated_at": "2025-03-15T16:18:52.369Z", "last_updated_by": "<value>"}, {"agent_id": 239080, "channel_id": 924554, "target": "<value>", "target_mode": "email", "is_test": false, "id": 536597, "channel_name": "<value>", "updated_at": "2023-12-05T01:40:56.089Z", "last_updated_by": "<value>"}, {"agent_id": 877939, "channel_id": 353996, "target": "<value>", "target_mode": "email", "is_test": false, "id": 930718, "channel_name": "<value>", "updated_at": "2024-08-29T02:34:50.546Z", "last_updated_by": "<value>"}]}
         "422":
           application/json: {}
   agent_get_by_id:
@@ -429,7 +430,7 @@ examples:
           agent_id: 931598
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "America/Chicago", "prompt_tool_defaults": [{"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}, {"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": [{"field_name": "<value>", "default_value": "<value>"}]}, {"tool_name": "<value>", "default_values": []}], "languages": ["en-US", "es-US"], "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 467619, "updated_at": "2023-08-23T04:58:12.943Z", "last_updated_by": "<value>"}
+          application/json: {"name": "<value>", "type": "ca_v1", "prompt_id": 505057, "custom_message_id": 467619, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"key": "<value>", "key1": "<value>"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 546722, "updated_at": "2025-06-21T03:22:37.071Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 272201, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "statement unabashedly carelessly", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "silt frankly aha", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 733288, "updated_at": "2023-07-11T14:33:15.093Z", "last_updated_by": "user@email.com", "type": "greeting"}, "channel_targets": [{"agent_id": 397254, "channel_id": 600664, "target": "<value>", "target_mode": "email", "is_test": false, "id": 737576, "channel_name": "<value>", "updated_at": "2025-04-30T03:28:34.984Z", "last_updated_by": "<value>"}]}
         "422":
           application/json: {}
   agent_delete:
@@ -444,42 +445,60 @@ examples:
           application/json: "<value>"
         "422":
           application/json: {}
-  chats_send_message:
-    speakeasy-default-chats-send-message:
+  agent_get_available_voices:
+    speakeasy-default-agent-get-available-voices:
+      responses:
+        "200":
+          application/json: [{"provider": "OpenAI", "display_name": "Alloy", "var_name": "elevenlabs:Chris"}]
+  send_test_message:
+    speakeasy-default-send-test-message:
       requestBody:
-        application/json: {"service_name": "<value>", "source_name": "<value>", "chat_id": "<id>", "agent_id": "<id>", "org_name": "<value>", "text": "<value>"}
+        application/json: {"service_name": "<value>", "source": "<value>", "test_id": "<id>", "agent_id": "<id>", "org_name": "<value>", "session_start": false}
       responses:
         "200":
-          application/json: {"chat_id": "<id>", "agent_id": "<id>", "text": "<value>"}
-        "422": {}
-  channels_list:
-    speakeasy-default-channels-list:
-      responses:
-        "200":
-          application/json: {"items": [{"name": "<value>", "channel_service": "webchat", "supported_modes": "[\"chat\",\"voice\"]", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "id": "<id>"}, {"name": "<value>", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "id": "<id>"}], "page": 547272, "page_size": 678317, "total_pages": 177706, "total_count": 229716}
+          application/json: {"test_id": "<id>", "agent_id": "<id>"}
         "422":
           application/json: {}
-  channels_delete:
-    speakeasy-default-channels-delete:
+  channels_list:
+    speakeasy-default-channels-list:
+      parameters:
+        query:
+          limit: 25
+      responses:
+        "200":
+          application/json: {"items": [{"name": "<value>", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "id": 678317}, {"name": "<value>", "channel_service": "sip", "supported_modes": "[\"chat\",\"voice\"]", "id": 229716}, {"name": "<value>", "channel_service": "sip", "supported_modes": "[\"chat\",\"voice\"]", "id": 635532}], "page": 639387, "page_size": 17577}
+        "422":
+          application/json: {}
+  channel_targets_delete:
+    speakeasy-default-channel-targets-delete:
       parameters:
         path:
           channel_id: "<id>"
+        query:
+          target_id: "<id>"
       responses:
         "200":
-          application/json: {"id": 545907, "channel_id": 698486, "channel_name": "<value>", "agent_id": 386564, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
-        "422": {}
+          application/json: "<value>"
+        "422":
+          application/json: {}
   available_targets:
     speakeasy-default-available-targets:
+      parameters:
+        query:
+          limit: 25
       responses:
         "200":
-          application/json: {"items": [{"organization_id": 607868, "channel_id": 397275, "channel_name": "<value>", "target": "<value>"}, {"organization_id": 397275, "channel_id": 270907, "channel_name": "<value>", "target": "<value>"}], "page": 472435, "page_size": 214468, "total_pages": 585620, "total_count": 563255}
+          application/json: {"items": [{"organization_id": 397275, "channel_id": 270907, "channel_name": "<value>", "target": "<value>"}, {"organization_id": 472435, "channel_id": 214468, "channel_name": "<value>", "target": "<value>"}], "page": 585620, "page_size": 563255}
         "422":
           application/json: {}
   channel_targets_list:
     speakeasy-default-channel-targets-list:
+      parameters:
+        query:
+          limit: 25
       responses:
         "200":
-          application/json: {"items": [{"agent_id": 177706, "channel_id": 678317, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": true, "id": 547272, "channel_name": "<value>", "updated_at": "2022-09-09T18:28:08.953Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 768578, "custom_message_id": 547272, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 678317, "updated_at": "2022-07-14T18:23:27.528Z", "last_updated_by": "<value>"}}, {"agent_id": 639387, "channel_id": 635532, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": true, "id": 152837, "channel_name": "<value>", "updated_at": "2024-02-27T06:14:46.641Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 152837, "custom_message_id": 152837, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 639387, "updated_at": "2022-01-20T06:21:22.156Z", "last_updated_by": "<value>"}}, {"agent_id": 68504, "channel_id": 86140, "target": "<value>", "target_mode": "voice", "fallback_target": "<value>", "is_test": false, "id": 718303, "channel_name": "<value>", "updated_at": "2023-11-26T18:23:24.264Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 86140, "custom_message_id": 718303, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "id": 687960, "updated_at": "2023-07-13T19:57:33.016Z", "last_updated_by": "<value>"}}], "page": 509883, "page_size": 633911, "total_pages": 7468, "total_count": 54607}
+          application/json: {"items": [{"agent_id": 547272, "channel_id": 678317, "target": "<value>", "target_mode": "voice", "is_test": false, "id": 229716, "channel_name": "<value>", "updated_at": "2023-06-17T12:14:27.999Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 635532, "custom_message_id": 639387, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"key": "<value>", "key1": "<value>"}, "id": 68504, "updated_at": "2025-01-24T00:05:25.844Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 509883, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "pish likewise excepting", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "despite er boom however when uh-huh", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 777438, "updated_at": "2024-07-08T07:59:15.466Z", "last_updated_by": "user@email.com", "type": "greeting"}}}, {"agent_id": 900109, "channel_id": 20615, "target": "<value>", "target_mode": "chat", "is_test": false, "id": 993677, "channel_name": "<value>", "updated_at": "2025-03-07T11:07:08.720Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 767950, "custom_message_id": 406555, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"key": "<value>", "key1": "<value>"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 605070, "updated_at": "2024-03-23T05:46:37.955Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 41398, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "irritably finally round alongside whoever", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "minor oh what steeple overheard swerve than bicycle twine", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "off however kissingly whether", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 973913, "updated_at": "2023-09-13T06:39:19.968Z", "last_updated_by": "user@email.com", "type": "greeting"}}}, {"agent_id": 197777, "channel_id": 621450, "target": "<value>", "target_mode": "email", "is_test": false, "id": 877227, "channel_name": "<value>", "updated_at": "2025-04-21T05:31:02.040Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 412854, "custom_message_id": 942258, "timezone": "America/New_York", "languages": ["en-US", "es-US"], "variables": {"key": "<value>"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 565282, "updated_at": "2024-05-27T07:14:10.577Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 726370, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "sticky without linseed finger inasmuch hydrolyze blowgun for and", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 773805, "updated_at": "2025-09-13T01:21:21.360Z", "last_updated_by": "user@email.com", "type": "greeting"}}}], "page": 728947, "page_size": 356375}
         "422":
           application/json: {}
   channel_targets_create:
@@ -488,10 +507,10 @@ examples:
         path:
           channel_id: 134365
       requestBody:
-        application/json: {"agent_id": 638424, "channel_id": 486589, "target": "<value>", "target_mode": "chat", "fallback_target": "<value>", "is_test": true}
+        application/json: {"agent_id": 486589, "channel_id": 638424, "target": "<value>", "target_mode": "chat", "is_test": false}
       responses:
         "200":
-          application/json: {"agent_id": 951062, "channel_id": 796474, "target": "<value>", "target_mode": "sms", "fallback_target": "<value>", "is_test": true, "id": 69025, "channel_name": "<value>", "updated_at": "2022-03-17T15:39:20.911Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 486589, "custom_message_id": 417458, "timezone": "America/New_York", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 417458, "updated_at": "2022-05-28T06:20:22.766Z", "last_updated_by": "<value>"}}
+          application/json: {"agent_id": 69025, "channel_id": 796474, "target": "<value>", "target_mode": "email", "is_test": false, "id": 86, "channel_name": "<value>", "updated_at": "2023-07-06T00:30:20.403Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 89964, "custom_message_id": 792620, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"key": "<value>", "key1": "<value>"}, "tool_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "id": 957409, "updated_at": "2024-01-27T07:05:06.005Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 259629, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "pearl nicely disposer demob", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 427887, "updated_at": "2024-10-06T23:48:35.278Z", "last_updated_by": "user@email.com", "type": "greeting"}}}
         "422":
           application/json: {}
   channel_targets_get_by_id:
@@ -502,202 +521,68 @@ examples:
           target_id: 505057
       responses:
         "200":
-          application/json: {"agent_id": 529758, "channel_id": 33486, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": false, "id": 467619, "channel_name": "<value>", "updated_at": "2023-08-04T14:44:32.694Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 931598, "custom_message_id": 505057, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 467619, "updated_at": "2022-02-06T16:50:06.315Z", "last_updated_by": "<value>"}}
+          application/json: {"agent_id": 467619, "channel_id": 33486, "target": "<value>", "target_mode": "sms", "is_test": false, "id": 875515, "channel_name": "<value>", "updated_at": "2024-08-22T04:58:12.943Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 823121, "custom_message_id": 272201, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 250435, "updated_at": "2024-10-15T16:22:26.294Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 904189, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "famously headline unless small amongst equally amused", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 96648, "updated_at": "2023-06-22T00:36:58.612Z", "last_updated_by": "user@email.com", "type": "greeting"}}}
         "422":
           application/json: {}
-  channels_target_update:
-    speakeasy-default-channels-target-update:
+  channel_targets_update:
+    speakeasy-default-channel-targets-update:
       parameters:
         path:
           channel_id: 627690
           target_id: 488852
       requestBody:
-        application/json: {"id": 857478, "channel_id": 597129, "channel_name": "<value>", "agent_id": 344620, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
+        application/json: {"agent_id": 857478, "channel_id": 597129, "target": "<value>", "target_mode": "chat", "is_test": false, "id": 991464}
       responses:
         "200":
-          application/json: {"id": 984008, "channel_id": 54062, "channel_name": "<value>", "agent_id": 896501, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": true}
-        "422": {}
+          application/json: {"agent_id": 984008, "channel_id": 54062, "target": "<value>", "target_mode": "email", "is_test": false, "id": 446863, "channel_name": "<value>", "updated_at": "2023-12-08T09:52:54.805Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 249440, "custom_message_id": 139579, "timezone": "America/Chicago", "languages": ["en-US", "es-US"], "variables": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "tool_headers": {"key": "<value>"}, "id": 464385, "updated_at": "2025-04-25T05:43:42.397Z", "last_updated_by": "<value>", "prompt": {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 693508, "last_updated": "<value>", "last_updated_by": "user@email.com"}, "custom_message": {"name": "<value>", "text": "<value>", "rules": [{"description": "inquisitively ugh recklessly", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "during meanwhile disapprove finer ha excepting hence", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 335191, "updated_at": "2024-08-06T22:56:22.190Z", "last_updated_by": "user@email.com", "type": "greeting"}}}
+        "422":
+          application/json: {}
   conversations_list:
     speakeasy-default-conversations-list:
+      parameters:
+        query:
+          limit: 25
       responses:
         "200":
-          application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z", "conversation_id": "<id>"}, {"timestamp": "2024-01-14T10:26:00.433Z", "conversation_id": "<id>"}, {"timestamp": "2022-07-14T18:23:27.528Z", "conversation_id": "<id>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"timestamp": "2024-08-22T19:26:20.850Z", "conversation_id": "<id>"}, {"timestamp": "2025-01-13T10:26:00.433Z", "conversation_id": "<id>"}, {"timestamp": "2023-07-14T18:23:27.528Z", "conversation_id": "<id>"}], "page": 229716, "page_size": 152837}
         "422":
           application/json: {}
-  conversation_get_by_id:
-    speakeasy-default-conversation-get-by-id:
-      parameters:
-        path:
-          conversation_id: "<id>"
-      responses:
-        "200":
-          application/json: {"conversation_id": "<id>", "transcription": [{"timestamp": "2023-07-08T13:01:26.809Z"}, {"timestamp": "2023-05-28T12:15:12.578Z"}, {"timestamp": "2022-02-06T16:50:06.315Z"}], "actions": [{"timestamp": "2024-08-17T13:32:33.654Z"}, {"timestamp": "2023-08-23T04:58:12.943Z"}]}
-        "422": {}
-  total_call_volume_by_weekday: {}
-  get_total_call_volume_by_hour: {}
-  get_weekly_call_volume_by_weekday: {}
-  get_daily_call_volume_by_hour: {}
-  get_monthly_call_volume_by_week: {}
-  get_monthly_call_volume_by_day: {}
-  get_session_summary: {}
-  get_session_agents: {}
   events_list:
     speakeasy-default-events-list:
-      responses:
-        "200":
-          application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422":
-          application/json: {}
-  greetings_list:
-    speakeasy-default-greetings-list:
-      responses:
-        "200":
-          application/json: {"greetings": [{"name": "<value>", "text": "<value>", "id": 547272}, {"name": "<value>", "text": "<value>", "id": 678317}, {"name": "<value>", "text": "<value>", "id": 177706}]}
-        "422": {}
-  greetings_create:
-    speakeasy-default-greetings-create:
-      requestBody:
-        application/json: {"name": "<value>", "text": "<value>"}
-      responses:
-        "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 486589}
-        "422": {}
-  greetings_update:
-    speakeasy-default-greetings-update:
-      requestBody:
-        application/json: {"name": "<value>", "text": "<value>", "id": 857478}
-      responses:
-        "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 597129}
-        "422": {}
-  greetings_get_by_id:
-    speakeasy-default-greetings-get-by-id:
       parameters:
-        path:
-          greeting_id: 931598
-      responses:
-        "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 505057}
-        "422": {}
-  greetings_delete:
-    speakeasy-default-greetings-delete:
-      parameters:
-        path:
-          greeting_id: 545907
         query:
-          reason: "<value>"
+          limit: 25
       responses:
         "200":
-          application/json: "<value>"
-        "422": {}
-  prompts_list:
-    speakeasy-default-prompts-list:
-      responses:
-        "200":
-          application/json: {"items": [{"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 547272, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 678317, "last_updated": "<value>"}, {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 177706, "last_updated": "<value>"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422":
-          application/json: {}
-  prompts_create:
-    speakeasy-default-prompts-create:
-      requestBody:
-        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "azure_openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}}
-      responses:
-        "200":
-          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 486589, "last_updated": "<value>"}
-        "422":
-          application/json: {}
-  prompts_update:
-    speakeasy-default-prompts-update:
-      requestBody:
-        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 857478}
-      responses:
-        "200":
-          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 597129, "last_updated": "<value>"}
-        "422":
-          application/json: {}
-  prompts_get_by_id:
-    speakeasy-default-prompts-get-by-id:
-      parameters:
-        path:
-          prompt_id: 931598
-      responses:
-        "200":
-          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"provider": "openai", "model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 505057, "last_updated": "<value>"}
-        "422":
-          application/json: {}
-  prompts_delete:
-    speakeasy-default-prompts-delete:
-      parameters:
-        path:
-          prompt_id: 545907
-        query:
-          reason: "<value>"
-      responses:
-        "200":
-          application/json: "<value>"
-        "422":
-          application/json: {}
-  sessions_list:
-    speakeasy-default-sessions-list:
-      responses:
-        "200":
-          application/json: {"items": [{"timestamp": "2023-08-23T19:26:20.850Z"}, {"timestamp": "2024-01-14T10:26:00.433Z"}, {"timestamp": "2022-07-14T18:23:27.528Z"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
-        "422":
-          application/json: {}
-  tool_list:
-    speakeasy-default-tool-list:
-      responses:
-        "200":
-          application/json: {"items": [{"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "that bah since zowie loudly aha although gosh whenever", "parameters": {}}}}, "service_id": 547272, "id": 678317}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "beneath meanwhile synthesise angrily", "parameters": {}}}}, "service_id": 177706, "id": 229716}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "kindheartedly nor fooey a supposing regarding times uselessly", "parameters": {}}}}, "service_id": 152837, "id": 635532}], "page": 639387, "page_size": 17577, "total_pages": 718303, "total_count": 86140}
-        "422":
-          application/json: {}
-  tool_get_by_name:
-    speakeasy-default-tool-get-by-name:
-      parameters:
-        path:
-          tool_name: "<value>"
-      responses:
-        "200":
-          application/json: {"id": 442973, "name": "<value>", "description": "round likewise ponder bump but sport", "fields": ["<value>"]}
-        "422":
-          application/json: {}
-  organizations_list:
-    speakeasy-default-organizations-list:
-      responses:
-        "200":
-          application/json: [{"id": 547272, "name": "<value>", "display_name": "Marie.Fay"}, {"id": 17577, "name": "<value>", "display_name": "Miles_Bernhard"}, {"id": 7468, "name": "<value>", "display_name": "Amparo.Kuhic"}]
-  send_test_message:
-    speakeasy-default-send-test-message:
-      requestBody:
-        application/json: {"service_name": "<value>", "source": "<value>", "test_id": "<id>", "agent_id": "<id>", "org_name": "<value>"}
-      responses:
-        "200":
-          application/json: {"test_id": "<id>", "agent_id": "<id>", "text": "<value>", "response_text": "<value>"}
+          application/json: {"items": [{"timestamp": "2024-08-22T19:26:20.850Z", "source": "tool-call", "category": "automation", "type": "phone-transfer", "user_id": "+18042221111", "description": "Transfer to phone number +18042221111"}, {"timestamp": "2025-01-13T10:26:00.433Z", "source": "tool-call", "category": "automation", "type": "phone-transfer", "user_id": "+18042221111", "description": "Transfer to phone number +18042221111"}, {"timestamp": "2023-07-14T18:23:27.528Z", "source": "tool-call", "category": "automation", "type": "phone-transfer", "user_id": "+18042221111", "description": "Transfer to phone number +18042221111"}], "page": 229716, "page_size": 152837}
         "422":
           application/json: {}
   custom_messages_list:
     speakeasy-default-custom-messages-list:
+      parameters:
+        query:
+          limit: 25
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "text": "<value>", "id": 547272, "updated_at": "2024-04-22T08:39:55.981Z", "last_updated_by": "user@email.com"}, {"name": "<value>", "text": "<value>", "id": 678317, "updated_at": "2023-08-23T19:26:20.850Z", "last_updated_by": "user@email.com"}, {"name": "<value>", "text": "<value>", "id": 177706, "updated_at": "2024-01-14T10:26:00.433Z", "last_updated_by": "user@email.com"}], "page": 229716, "page_size": 152837, "total_pages": 635532, "total_count": 639387}
+          application/json: {"items": [{"name": "<value>", "text": "<value>", "rules": [{"description": "mmm avalanche jungle unto meanwhile beside tromp worth", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "whenever disk usher yesterday", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 767950, "updated_at": "2024-03-21T14:01:55.283Z", "last_updated_by": "user@email.com", "type": "greeting"}, {"name": "<value>", "text": "<value>", "rules": [{"description": "kindheartedly nor fooey a supposing regarding times uselessly", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 523166, "updated_at": "2023-12-12T02:49:50.316Z", "last_updated_by": "user@email.com", "type": "greeting"}, {"name": "<value>", "text": "<value>", "rules": [{"description": "creative finally earth that early", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "fund provided although dreary shrill yuck unbalance cuddly ha plumber", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 186930, "updated_at": "2023-03-11T17:32:08.709Z", "last_updated_by": "user@email.com", "type": "greeting"}], "page": 608798, "page_size": 310591}
         "422":
           application/json: {}
   custom_messages_create:
     speakeasy-default-custom-messages-create:
       requestBody:
-        application/json: {"name": "<value>", "text": "<value>"}
+        application/json: {"name": "<value>", "text": "<value>", "rules": [{"description": "delightfully fumigate convection though zowie up bulky electronics", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}, {"description": "yuck forager beneath please shadowy foodstuffs welcome", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "type": "greeting"}
       responses:
         "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 486589, "updated_at": "2023-06-18T07:14:55.338Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "<value>", "text": "<value>", "rules": [{"description": "brightly sleet where schedule insolence when warming when", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 866487, "updated_at": "2023-08-08T06:49:45.892Z", "last_updated_by": "user@email.com", "type": "greeting"}
         "422":
           application/json: {}
   custom_messages_update:
     speakeasy-default-custom-messages-update:
       requestBody:
-        application/json: {"name": "<value>", "text": "<value>", "id": 857478}
+        application/json: {"name": "<value>", "text": "<value>", "rules": [{"description": "technician eulogise whereas till mild than during", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "qualified cycle woot abseil perfumed fisherman with duh", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "ultimately in likely opera please antelope", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 975440, "type": "greeting"}
       responses:
         "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 597129, "updated_at": "2024-07-28T19:04:48.565Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "<value>", "text": "<value>", "rules": [{"description": "up vibrant sternly translation scrutinise condense lovingly following and", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "meh when deform thoughtfully", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "while reprimand near construe", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": false, "text": "Sorry, we're closed today"}], "id": 57147, "updated_at": "2024-11-18T10:36:26.431Z", "last_updated_by": "user@email.com", "type": "greeting"}
         "422":
           application/json: {}
   custom_message_get_by_id:
@@ -707,7 +592,7 @@ examples:
           custom_message_id: 931598
       responses:
         "200":
-          application/json: {"name": "<value>", "text": "<value>", "id": 505057, "updated_at": "2024-10-18T00:43:47.367Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "<value>", "text": "<value>", "rules": [{"description": "obediently markup famously headline unless small", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}, {"description": "orchid promptly burgeon cricket colorful", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "days_of_week": ["mo", "tu", "we", "th", "fr"], "invert": true, "text": "Sorry, we're closed today"}], "id": 500381, "updated_at": "2023-04-06T01:17:32.009Z", "last_updated_by": "user@email.com", "type": "greeting"}
         "422":
           application/json: {}
   custom_messages_delete:
@@ -722,96 +607,54 @@ examples:
           application/json: "<value>"
         "422":
           application/json: {}
-  channel_targets_delete:
-    speakeasy-default-channel-targets-delete:
-      parameters:
-        path:
-          channel_id: "<id>"
-        query:
-          target_id: "<id>"
-      responses:
-        "200":
-          application/json: {"id": 545907, "channel_id": 698486, "channel_name": "<value>", "agent_id": 386564, "target": "<value>", "target_mode": "<value>", "fallback_target": "<value>", "is_test": false}
-        "422":
-          application/json: {}
-  channel_targets_update:
-    speakeasy-default-channel-targets-update:
-      parameters:
-        path:
-          channel_id: 627690
-          target_id: 488852
-      requestBody:
-        application/json: {"agent_id": 344620, "channel_id": 597129, "target": "<value>", "target_mode": "email", "fallback_target": "<value>", "is_test": false, "id": 857478}
-      responses:
-        "200":
-          application/json: {"agent_id": 896501, "channel_id": 54062, "target": "<value>", "target_mode": "sms", "fallback_target": "<value>", "is_test": true, "id": 984008, "channel_name": "<value>", "updated_at": "2023-11-19T22:44:58.301Z", "last_updated_by": "<value>", "agent": {"name": "<value>", "type": "ca_v1", "prompt_id": 857478, "custom_message_id": 344620, "timezone": "America/Chicago", "variables": {"vars.hospital": "Weill Cornell Medical Center"}, "tool_headers": {"key": "<value>", "key1": "<value>"}, "id": 344620, "updated_at": "2024-12-22T15:27:45.882Z", "last_updated_by": "<value>"}}
-        "422":
-          application/json: {}
-  session_label_get_by_id:
-    speakeasy-default-session-label-get-by-id:
-      parameters:
-        path:
-          session_label_id: 931598
-      responses:
-        "200":
-          application/json: {"session_id": 505057, "type": "human-rating", "code": "BAD", "user_email": "<value>", "id": 467619, "timestamp": "<value>"}
-        "422":
-          application/json: {}
-  session_label_create:
-    speakeasy-default-session-label-create:
-      requestBody:
-        application/json: {"session_id": 486589, "type": "auto-rating", "code": "BAD", "user_email": "<value>"}
-      responses:
-        "200":
-          application/json: {"session_id": 638424, "type": "auto-rating", "code": "GOOD", "user_email": "<value>", "id": 417458, "timestamp": "<value>"}
-        "422":
-          application/json: {}
-  session_labels_list:
-    speakeasy-default-session-labels-list:
-      responses:
-        "200":
-          application/json: {"items": [{"session_id": 547272, "type": "human-rating", "code": "BAD", "user_email": "<value>", "id": 678317, "timestamp": "<value>"}, {"session_id": 177706, "type": "human-rating", "code": "GOOD", "user_email": "<value>", "id": 229716, "timestamp": "<value>"}, {"session_id": 152837, "type": "auto-rating", "code": "GOOD", "user_email": "<value>", "id": 635532, "timestamp": "<value>"}], "page": 639387, "page_size": 17577}
-        "422":
-          application/json: {}
-  session_transcript_get_by_id:
-    speakeasy-default-session-transcript-get-by-id:
-      parameters:
-        path:
-          session_id: "<id>"
-      responses:
-        "200":
-          application/json: {"session_id": "<id>", "transcription": [{"timestamp": "2023-07-08T13:01:26.809Z"}, {"timestamp": "2023-05-28T12:15:12.578Z"}, {"timestamp": "2022-02-06T16:50:06.315Z"}], "actions": [{"timestamp": "2024-08-17T13:32:33.654Z"}, {"timestamp": "2023-08-23T04:58:12.943Z"}]}
-        "422":
-          application/json: {}
-  session_get_by_id:
-    speakeasy-default-session-get-by-id:
-      parameters:
-        path:
-          session_id: "<id>"
-      responses:
-        "200":
-          application/json: {"timestamp": "2024-10-18T00:43:47.367Z"}
-        "422":
-          application/json: {}
-  generate_session_recording_urls:
-    speakeasy-default-generate-session-recording-urls:
-      parameters:
-        path:
-          session_id: "<id>"
-      responses:
-        "200":
-          application/json: {}
-        "422":
-          application/json: {}
-  session_recording_stream:
-    speakeasy-default-session-recording-stream:
+  prompts_list:
+    speakeasy-default-prompts-list:
       parameters:
         query:
-          token: "<value>"
+          limit: 25
+      responses:
+        "200":
+          application/json: {"items": [{"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 547272, "last_updated": "<value>", "last_updated_by": "user@email.com"}, {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 678317, "last_updated": "<value>", "last_updated_by": "user@email.com"}, {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 177706, "last_updated": "<value>", "last_updated_by": "user@email.com"}], "page": 229716, "page_size": 152837}
+        "422":
+          application/json: {}
+  prompts_create:
+    speakeasy-default-prompts-create:
+      requestBody:
+        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 486589, "last_updated": "<value>", "last_updated_by": "user@email.com"}
+        "422":
+          application/json: {}
+  prompts_update:
+    speakeasy-default-prompts-update:
+      requestBody:
+        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 857478}
+      responses:
+        "200":
+          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 597129, "last_updated": "<value>", "last_updated_by": "user@email.com"}
+        "422":
+          application/json: {}
+  prompts_get_by_id:
+    speakeasy-default-prompts-get-by-id:
+      parameters:
+        path:
+          prompt_id: 931598
+      responses:
+        "200":
+          application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 505057, "last_updated": "<value>", "last_updated_by": "user@email.com"}
+        "422":
+          application/json: {}
+  prompts_delete:
+    speakeasy-default-prompts-delete:
+      parameters:
+        path:
+          prompt_id: 545907
+        query:
+          reason: "<value>"
       responses:
         "200":
           application/json: "<value>"
-          application/octet-stream: "x-file: example.file"
         "422":
           application/json: {}
   prompts_history:
@@ -821,11 +664,14 @@ examples:
           prompt_id: 627932
       responses:
         "200":
-          application/json: [{"timestamp": "2022-03-05T12:13:59.670Z", "prompt_id": "<id>", "prompt_text": "<value>", "prompt_name": "<value>", "user_email": "<value>"}]
+          application/json: [{"timestamp": "2023-03-05T12:13:59.670Z", "prompt_id": "<id>", "prompt_text": "<value>", "prompt_name": "<value>", "user_email": "<value>"}, {"timestamp": "2025-10-24T07:19:14.525Z", "prompt_id": "<id>", "prompt_text": "<value>", "prompt_name": "<value>", "user_email": "<value>"}]
         "422":
           application/json: {}
   service_list:
     speakeasy-default-service-list:
+      parameters:
+        query:
+          limit: 25
       responses:
         "200":
           application/json: {"items": [{"name": "<value>", "description": "yuck accountability pish likewise excepting unimpressively quickly", "id": 934960, "tools": ["<value>", "<value>", "<value>"]}, {"name": "<value>", "description": "defiantly whenever disk", "id": 324206, "tools": []}, {"name": "<value>", "description": "via during someplace woot excepting gah only despite", "id": 933854, "tools": ["<value>", "<value>"]}], "page": 869095, "page_size": 500063}
@@ -849,91 +695,123 @@ examples:
           application/json: {"name": "<value>", "description": "belabor past wearily broadside backburn", "id": 967252, "tools": ["<value>"]}
         "422":
           application/json: {}
+  session_label_get_by_id:
+    speakeasy-default-session-label-get-by-id:
+      parameters:
+        path:
+          session_label_id: 931598
+      responses:
+        "200":
+          application/json: {"session_id": 505057, "type": "auto-rating", "code": "GOOD", "user_email": "<value>", "issue_categories": ["Speech transcription (STT)"], "id": 875515, "timestamp": "<value>"}
+        "422":
+          application/json: {}
+  session_label_create:
+    speakeasy-default-session-label-create:
+      requestBody:
+        application/json: {"session_id": 486589, "type": "human-rating", "code": "OK", "user_email": "<value>", "issue_categories": ["Silent treatment"]}
+      responses:
+        "200":
+          application/json: {"session_id": 69025, "type": "human-rating", "code": "N/A", "user_email": "<value>", "issue_categories": ["Silent treatment"], "id": 169727, "timestamp": "<value>"}
+        "422":
+          application/json: {}
+  session_labels_list:
+    speakeasy-default-session-labels-list:
+      parameters:
+        query:
+          limit: 25
+      responses:
+        "200":
+          application/json: {"items": [{"session_id": 547272, "type": "human-rating", "code": "GOOD", "user_email": "<value>", "issue_categories": ["Silent treatment"], "id": 152837, "timestamp": "<value>"}, {"session_id": 635532, "type": "human-rating", "code": "GOOD", "user_email": "<value>", "issue_categories": ["Speech transcription (STT)"], "id": 86140, "timestamp": "<value>"}, {"session_id": 68504, "type": "human-rating", "code": "BAD", "user_email": "<value>", "issue_categories": ["Speech transcription (STT)"], "id": 7468, "timestamp": "<value>"}], "page": 54607, "page_size": 367745}
+        "422":
+          application/json: {}
+  sessions_list:
+    speakeasy-default-sessions-list:
+      parameters:
+        query:
+          limit: 25
+      responses:
+        "200":
+          application/json: {"items": [{"timestamp": "2024-08-22T19:26:20.850Z", "channel_manager_service": "console", "channel_manager_type": "voice_sip_v1", "source": "+18042221111"}, {"timestamp": "2023-06-17T12:14:27.999Z", "channel_manager_service": "console", "channel_manager_type": "voice_twilio_v1", "source": "+18042221111"}, {"timestamp": "2025-02-26T06:14:46.641Z", "channel_manager_service": "hedy", "channel_manager_type": "voice_sip_v1", "source": "user@email.com"}], "page": 509883, "page_size": 633911}
+        "422":
+          application/json: {}
+  session_get_by_id:
+    speakeasy-default-session-get-by-id:
+      parameters:
+        path:
+          session_id: "<id>"
+      responses:
+        "200":
+          application/json: {"timestamp": "2025-10-18T00:43:47.367Z", "channel_manager_service": "console", "channel_manager_type": "voice_twilio_v1", "source": "+18042221111"}
+        "422":
+          application/json: {}
+  generate_session_recording_urls:
+    speakeasy-default-generate-session-recording-urls:
+      parameters:
+        path:
+          session_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "422":
+          application/json: {}
+  session_recording_stream:
+    speakeasy-default-session-recording-stream:
+      parameters:
+        query:
+          token: "<value>"
+      responses:
+        "200":
+          application/octet-stream: "x-file: example.file"
+        "422":
+          application/json: {}
+  session_transcript_get_by_id:
+    speakeasy-default-session-transcript-get-by-id:
+      parameters:
+        path:
+          session_id: "<id>"
+      responses:
+        "200":
+          application/json: {"session_id": "<id>", "transcription": [{"timestamp": "2024-07-07T13:01:26.809Z", "lang": "es-US", "source": "user"}, {"timestamp": "2024-08-03T14:44:32.694Z", "lang": "unset", "source": "agent"}, {"timestamp": "2025-06-21T03:22:37.071Z", "lang": "en-US", "source": "agent"}], "actions": []}
+        "422":
+          application/json: {}
+  tool_list:
+    speakeasy-default-tool-list:
+      parameters:
+        query:
+          limit: 25
+      responses:
+        "200":
+          application/json: {"items": [{"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "yuck accountability pish likewise excepting unimpressively quickly", "parameters": {}}}}, "service_id": 934960, "id": 918561}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "defiantly whenever disk", "parameters": {}}}}, "service_id": 324206, "id": 96709}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "via during someplace woot excepting gah only despite", "parameters": {}}}}, "service_id": 933854, "id": 749833}], "page": 869095, "page_size": 500063}
+        "422":
+          application/json: {}
   tool_create:
     speakeasy-default-tool-create:
       requestBody:
-        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "yuck vice between gee ugh ha", "parameters": {}}}}, "service_id": 486589}
+        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "yuck vice between gee ugh ha", "parameters": {}}}}, "service_id": 920994}
       responses:
         "200":
-          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "bulky electronics through for ick superb nudge embalm simple ouch", "parameters": {}}}}, "service_id": 638424, "id": 417458}
+          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "junior modulo tackle unabashedly mentor early miserly stealthily without", "parameters": {}}}}, "service_id": 979186, "id": 282436}
         "422":
           application/json: {}
   tool_update:
     speakeasy-default-tool-update:
       requestBody:
-        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "awful underneath retention too mobility char innocently dowse restfully", "parameters": {}}}}, "service_id": 857478, "id": 597129}
+        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "awful underneath retention too mobility char innocently dowse restfully", "parameters": {}}}}, "service_id": 243447, "id": 265006}
       responses:
         "200":
-          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "finer ha excepting hence", "parameters": {}}}}, "service_id": 344620, "id": 991464}
+          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "woot abseil perfumed fisherman", "parameters": {}}}}, "service_id": 532806, "id": 784089}
         "422":
           application/json: {}
-  directory_member_list:
-    speakeasy-default-directory-member-list:
-      responses:
-        "200":
-          application/json: {"items": [{"name": "<value>", "type": "<value>", "id": 547272}, {"name": "<value>", "type": "<value>", "id": 678317}, {"name": "<value>", "type": "<value>", "id": 177706}], "page": 229716, "page_size": 152837}
-        "422":
-          application/json: {}
-  directory_member_create:
-    speakeasy-default-directory-member-create:
-      requestBody:
-        application/json: {"name": "<value>", "type": "<value>"}
-      responses:
-        "200":
-          application/json: {"name": "<value>", "type": "<value>", "id": 486589}
-        "422":
-          application/json: {}
-  directory_member_get_by_id:
-    speakeasy-default-directory-member-get-by-id:
+  tool_get_by_name:
+    speakeasy-default-tool-get-by-name:
       parameters:
         path:
-          member_id: 931598
+          tool_name: "<value>"
       responses:
         "200":
-          application/json: {"name": "<value>", "type": "<value>", "id": 505057}
+          application/json: {"id": 442973, "name": "<value>", "description": "hence arbitrate educated before", "fields": ["<value>", "<value>"]}
         "422":
           application/json: {}
-  directory_member_update:
-    speakeasy-default-directory-member-update:
-      parameters:
-        path:
-          member_id: 597129
-      requestBody:
-        application/json: {"name": "<value>", "type": "<value>", "id": 857478}
-      responses:
-        "200":
-          application/json: {"name": "<value>", "type": "<value>", "id": 344620}
-        "422":
-          application/json: {}
-  directory_member_delete:
-    speakeasy-default-directory-member-delete:
-      parameters:
-        path:
-          member_id: 545907
-      responses:
-        "200":
-          application/json: "<value>"
-        "422":
-          application/json: {}
-  directory_member_bulk_load:
-    speakeasy-default-directory-member-bulk-load:
-      requestBody:
-        multipart/form-data: {"file": {}}
-      responses:
-        "200":
-          application/json: "<value>"
-        "422":
-          application/json: {}
-  directory_member_download:
-    speakeasy-default-directory-member-download:
-      responses:
-        "200":
-          application/json: "<value>"
-  agent_get_available_voices:
-    speakeasy-default-agent-get-available-voices:
-      responses:
-        "200":
-          application/json: []
   post_session_events_dashboard:
     speakeasy-default-post-session-events-dashboard:
       responses:
@@ -954,4 +832,5 @@ examples:
       responses:
         "200":
           application/json: {"embedded_id": "<id>", "guest_token": "<value>", "name": "<value>", "superset_url": "https://only-napkin.net"}
+examplesVersion: 1.0.0
 generatedTests: {}

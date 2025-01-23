@@ -28,7 +28,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.prompts.list({});
+  const result = await syllableSDK.prompts.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -52,7 +54,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await promptsList(syllableSDK, {});
+  const res = await promptsList(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -105,7 +109,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "azure_openai",
       model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -138,7 +141,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "azure_openai",
       model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -196,7 +198,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "openai",
       model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -230,7 +231,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "openai",
       model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",

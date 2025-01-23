@@ -26,7 +26,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.tools.list({});
+  const result = await syllableSDK.tools.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -50,7 +52,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await toolsList(syllableSDK, {});
+  const res = await toolsList(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -110,7 +114,7 @@ async function run() {
         },
       },
     },
-    serviceId: 486589,
+    serviceId: 920994,
   });
 
   // Handle the result
@@ -146,7 +150,7 @@ async function run() {
         },
       },
     },
-    serviceId: 486589,
+    serviceId: 920994,
   });
 
   if (!res.ok) {
@@ -207,8 +211,8 @@ async function run() {
         },
       },
     },
-    serviceId: 857478,
-    id: 597129,
+    serviceId: 243447,
+    id: 265006,
   });
 
   // Handle the result
@@ -244,8 +248,8 @@ async function run() {
         },
       },
     },
-    serviceId: 857478,
-    id: 597129,
+    serviceId: 243447,
+    id: 265006,
   });
 
   if (!res.ok) {

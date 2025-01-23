@@ -30,7 +30,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await agentsList(syllableSDK, {});
+  const res = await agentsList(syllableSDK, {
+    limit: 25,
+  });
 
   switch (true) {
     case res.ok:
