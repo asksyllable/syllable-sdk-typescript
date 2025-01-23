@@ -4794,6 +4794,9 @@
             ]
           },
           "variables": {
+            "additionalProperties": {
+              "type": "string"
+            },
             "type": "object",
             "title": "Variables",
             "description": "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
@@ -4821,6 +4824,7 @@
           "prompt_id",
           "custom_message_id",
           "timezone",
+          "variables",
           "tool_headers"
         ],
         "title": "AgentCreate"
@@ -5152,6 +5156,9 @@
             ]
           },
           "variables": {
+            "additionalProperties": {
+              "type": "string"
+            },
             "type": "object",
             "title": "Variables",
             "description": "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
@@ -5184,6 +5191,7 @@
           "prompt_id",
           "custom_message_id",
           "timezone",
+          "variables",
           "tool_headers",
           "id"
         ],
