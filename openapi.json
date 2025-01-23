@@ -4794,14 +4794,10 @@
             ]
           },
           "variables": {
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
             "title": "Variables",
             "description": "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
           },
@@ -5160,14 +5156,10 @@
             ]
           },
           "variables": {
-            "anyOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
             "title": "Variables",
             "description": "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
           },
