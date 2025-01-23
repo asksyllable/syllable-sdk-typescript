@@ -23,7 +23,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.conversations.list({});
+  const result = await syllableSDK.conversations.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -47,7 +49,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await conversationsList(syllableSDK, {});
+  const res = await conversationsList(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;
