@@ -16,6 +16,7 @@ env:
 jobs:
   sdk-contract-test-suite:
     runs-on: ubuntu-latest
+    environment: contract-test
     steps:
       - name: 'azure - log into AKS'
         uses: azure/login@v2
