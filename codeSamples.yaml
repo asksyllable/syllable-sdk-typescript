@@ -16,7 +16,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.agents.list({});
+              const result = await syllableSDK.agents.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -46,7 +48,9 @@ actions:
                   "en-US",
                   "es-US",
                 ],
-                variables: {},
+                variables: {
+
+                },
                 toolHeaders: {
                   "key": "<value>",
                 },
@@ -80,13 +84,16 @@ actions:
                   "en-US",
                   "es-US",
                 ],
-                variables: {},
-                toolHeaders: {
+                variables: {
                   "key": "<value>",
                   "key1": "<value>",
                   "key2": "<value>",
                 },
-                id: 627690,
+                toolHeaders: {
+                  "key": "<value>",
+                  "key1": "<value>",
+                },
+                id: 488852,
               });
 
               // Handle the result
@@ -113,6 +120,7 @@ actions:
                 testId: "<id>",
                 agentId: "<id>",
                 orgName: "<value>",
+                sessionStart: false,
               });
 
               // Handle the result
@@ -198,7 +206,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.list({});
+              const result = await syllableSDK.channels.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -218,7 +228,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.targets.availableTargets({});
+              const result = await syllableSDK.channels.targets.availableTargets({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -238,7 +250,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.targets.list({});
+              const result = await syllableSDK.channels.targets.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -288,6 +302,7 @@ actions:
                   channelId: 638424,
                   target: "<value>",
                   targetMode: "chat",
+                  isTest: false,
                 },
               });
 
@@ -340,6 +355,7 @@ actions:
                   channelId: 597129,
                   target: "<value>",
                   targetMode: "chat",
+                  isTest: false,
                   id: 991464,
                 },
               });
@@ -362,7 +378,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.conversations.list({});
+              const result = await syllableSDK.conversations.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -382,7 +400,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.customMessages.list({});
+              const result = await syllableSDK.customMessages.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -421,7 +441,23 @@ actions:
                     invert: false,
                     text: "Sorry, we're closed today",
                   },
+                  {
+                    description: "yuck forager beneath please shadowy foodstuffs welcome",
+                    timeRangeStart: "09:00",
+                    timeRangeEnd: "17:00",
+                    date: "2025-01-01",
+                    daysOfWeek: [
+                      "mo",
+                      "tu",
+                      "we",
+                      "th",
+                      "fr",
+                    ],
+                    invert: true,
+                    text: "Sorry, we're closed today",
+                  },
                 ],
+                type: "greeting",
               });
 
               // Handle the result
@@ -493,6 +529,7 @@ actions:
                   },
                 ],
                 id: 975440,
+                type: "greeting",
               });
 
               // Handle the result
@@ -706,7 +743,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.events.list({});
+              const result = await syllableSDK.events.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -726,7 +765,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.prompts.list({});
+              const result = await syllableSDK.prompts.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -870,7 +911,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.services.list({});
+              const result = await syllableSDK.services.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -937,7 +980,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.sessionLabels.list({});
+              const result = await syllableSDK.sessionLabels.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -1007,7 +1052,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.sessions.list({});
+              const result = await syllableSDK.sessions.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);
@@ -1115,7 +1162,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.tools.list({});
+              const result = await syllableSDK.tools.list({
+                limit: 25,
+              });
 
               // Handle the result
               console.log(result);

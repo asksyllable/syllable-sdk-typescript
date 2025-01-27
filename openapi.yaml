@@ -2340,6 +2340,257 @@ paths:
               schema: {"$ref": "#/components/schemas/Dashboard"}
       security:
         - APIKeyHeader: []
+  "/api/v1/outbound/batches":
+    get:
+      tags:
+        - "outbound.batches"
+        - "V1"
+      summary: "List Outbound Communication Batches"
+      operationId: "outbound_batch_list"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                items: {"$ref": "#/components/schemas/CommunicationBatch"}
+                type: "array"
+                title: "Response Outbound Batch List"
+      security:
+        - APIKeyHeader: []
+      x-speakeasy-ignore: true
+    put:
+      tags:
+        - "outbound.batches"
+        - "V1"
+      summary: "Create Outbound Communication Batch"
+      operationId: "outbound_batch_create"
+      requestBody:
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/CommunicationBatchInput"}
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                anyOf:
+                  - {"$ref": "#/components/schemas/CommunicationBatch"}
+                  - type: "null"
+                title: "Response Outbound Batch Create"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      security:
+        - APIKeyHeader: []
+      x-speakeasy-ignore: true
+  "/api/v1/outbound/batches/{batch_id}":
+    get:
+      tags:
+        - "outbound.batches"
+        - "V1"
+      summary: "Get Outbound Communication Batch"
+      operationId: "outbound_batch_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "batch_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Batch Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CommunicationBatch"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
+    delete:
+      tags:
+        - "outbound.batches"
+        - "V1"
+      summary: "Delete Outbound Communication Batch"
+      operationId: "outbound_batch_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "batch_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Batch Id"
+      requestBody:
+        required: true
+        content:
+          "application/x-www-form-urlencoded":
+            schema: {"$ref": "#/components/schemas/Body_outbound_batch_delete"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
+  "/api/v1/outbound/batches/{batch_id}/upload_batch":
+    post:
+      tags:
+        - "outbound.batches"
+        - "V1"
+      summary: "Upload Outbound Communication Batch"
+      operationId: "outbound_batch_upload"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "batch_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Batch Id"
+      requestBody:
+        required: true
+        content:
+          "multipart/form-data":
+            schema: {"$ref": "#/components/schemas/Body_outbound_batch_upload"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
+  "/api/v1/outbound/campaigns":
+    get:
+      tags:
+        - "outbound.campaigns"
+        - "V1"
+      summary: "List Outbound Communication Campaigns"
+      operationId: "outbound_campaign_list"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                anyOf:
+                  - items: {"$ref": "#/components/schemas/OutboundCampaign"}
+                    type: "array"
+                  - type: "null"
+                title: "Response Outbound Campaign List"
+      security:
+        - APIKeyHeader: []
+      x-speakeasy-ignore: true
+    post:
+      tags:
+        - "outbound.campaigns"
+        - "V1"
+      summary: "Create Outbound Communication Campaign"
+      operationId: "outbound_campaign_create"
+      requestBody:
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/OutboundCampaignInput"}
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                anyOf:
+                  - {"$ref": "#/components/schemas/OutboundCampaign"}
+                  - type: "null"
+                title: "Response Outbound Campaign Create"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      security:
+        - APIKeyHeader: []
+      x-speakeasy-ignore: true
+  "/api/v1/outbound/campaigns/{campaign_id}":
+    get:
+      tags:
+        - "outbound.campaigns"
+        - "V1"
+      summary: "Get Outbound Communication Campaign"
+      operationId: "outbound_campaign_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "campaign_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Campaign Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/OutboundCampaign"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
+    put:
+      tags:
+        - "outbound.campaigns"
+        - "V1"
+      summary: "Update Outbound Communication Campaign"
+      operationId: "outbound_campaign_update"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "campaign_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Campaign Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/OutboundCampaignInput"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/OutboundCampaign"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      x-speakeasy-ignore: true
 components:
   schemas:
     "AgentCreate":
@@ -2395,9 +2646,9 @@ components:
           examples:
             - ["en-US", "es-US"]
         "variables":
-          anyOf:
-            - type: "object"
-            - type: "null"
+          additionalProperties:
+            type: "string"
+          type: "object"
           title: "Variables"
           description: "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
         "tool_headers":
@@ -2635,9 +2886,9 @@ components:
           examples:
             - ["en-US", "es-US"]
         "variables":
-          anyOf:
-            - type: "object"
-            - type: "null"
+          additionalProperties:
+            type: "string"
+          type: "object"
           title: "Variables"
           description: "Custom context variables for the conversation session. Keys should be prefixed with \"vars.\"."
         "tool_headers":
@@ -2743,6 +2994,17 @@ components:
         - "channel_name"
         - "target"
       title: "AvailableTargetProperties"
+    "BatchStatus":
+      type: "string"
+      enum:
+        - "NEW"
+        - "LOADED"
+        - "ACTIVE"
+        - "INACTIVE"
+        - "PAUSED"
+        - "DELETED"
+        - "COMPLETED"
+      title: "BatchStatus"
     "Body_directory_member_bulk_load":
       properties:
         "file":
@@ -2753,6 +3015,35 @@ components:
       required:
         - "file"
       title: "Body_directory_member_bulk_load"
+    "Body_outbound_batch_delete":
+      properties:
+        "deleteReason":
+          type: "string"
+          title: "Deletereason"
+      type: "object"
+      required:
+        - "deleteReason"
+      title: "Body_outbound_batch_delete"
+    "Body_outbound_batch_upload":
+      properties:
+        "file":
+          type: "string"
+          format: "binary"
+          title: "File"
+      type: "object"
+      required:
+        - "file"
+      title: "Body_outbound_batch_upload"
+    "CampaignStatus":
+      type: "string"
+      enum:
+        - "NEW"
+        - "ACTIVE"
+        - "INACTIVE"
+        - "PAUSED"
+        - "DELETED"
+        - "COMPLETED"
+      title: "CampaignStatus"
     "Channel":
       properties:
         "name":
@@ -2939,6 +3230,122 @@ components:
         - "target_mode"
         - "id"
       title: "ChannelTargetUpdateRequest"
+    "CommunicationBatch":
+      properties:
+        "batch_id":
+          type: "string"
+          title: "Batch Id"
+          description: "Unique ID for conversation batch"
+        "campaign_id":
+          type: "integer"
+          title: "Campaign Id"
+          description: "Unique ID for campaign"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "Call, SMS, email"
+        "source":
+          type: "string"
+          title: "Source"
+          description: "Source phone number, email, or SMS number"
+        "rate":
+          type: "integer"
+          title: "Rate"
+          description: "Number of outreach per hour"
+        "retry_count":
+          type: "integer"
+          title: "Retry Count"
+          description: "Number of retries per target"
+          default: 0
+        "retry_interval":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Retry Interval"
+          description: "How long (30m, 12h, 7d) to wait before retrying"
+        "status": {"$ref": "#/components/schemas/BatchStatus", "description": "Status of batch", "default": "NEW"}
+        "created_at":
+          type: "string"
+          title: "Created At"
+          description: "Timestamp of batch creation"
+        "deleted_at":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Deleted At"
+          description: "Timestamp of batch deletion"
+        "deleted_reason":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Deleted Reason"
+          description: "Reason for batch deletion"
+        "dispatch_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Dispatch Id"
+          description: "Unique ID of worker assigned to batch"
+        "last_worked_on":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Worked On"
+          description: "Timestamp of last batch activity"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "User who last updated campaign"
+      type: "object"
+      required:
+        - "batch_id"
+        - "campaign_id"
+        - "type"
+        - "source"
+        - "rate"
+        - "last_updated_by"
+      title: "CommunicationBatch"
+    "CommunicationBatchInput":
+      properties:
+        "batch_id":
+          type: "string"
+          title: "Batch Id"
+          description: "Unique ID for conversation batch"
+        "campaign_id":
+          type: "integer"
+          title: "Campaign Id"
+          description: "Unique ID for campaign"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "Call, SMS, email"
+        "source":
+          type: "string"
+          title: "Source"
+          description: "Source phone number, email, or SMS number"
+        "rate":
+          type: "integer"
+          title: "Rate"
+          description: "Number of outreach per hour"
+        "retry_count":
+          type: "integer"
+          title: "Retry Count"
+          description: "Number of retries per target"
+          default: 0
+        "retry_interval":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Retry Interval"
+          description: "How long (30m, 12h, 7d) to wait before retrying"
+      type: "object"
+      required:
+        - "batch_id"
+        - "campaign_id"
+        - "type"
+        - "source"
+        - "rate"
+      title: "CommunicationBatchInput"
     "Conversation":
       properties:
         "timestamp":
@@ -3840,6 +4247,56 @@ components:
         - "asc"
         - "desc"
       title: "OrderByDirection"
+    "OutboundCampaign":
+      properties:
+        "campaign_name":
+          type: "string"
+          title: "Campaign Name"
+          description: "Human readable name of campaign"
+        "campaign_variables":
+          type: "object"
+          title: "Campaign Variables"
+          description: "Variables for campaign"
+        "status": {"$ref": "#/components/schemas/CampaignStatus", "description": "Status of campaign", "default": "NEW"}
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "Unique ID for campaign"
+        "created_at":
+          type: "string"
+          title: "Created At"
+          description: "Timestamp of campaign creation"
+        "updated_at":
+          type: "string"
+          title: "Updated At"
+          description: "Timestamp of campaign update"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "User who last updated campaign"
+      type: "object"
+      required:
+        - "campaign_name"
+        - "campaign_variables"
+        - "id"
+        - "last_updated_by"
+      title: "OutboundCampaign"
+    "OutboundCampaignInput":
+      properties:
+        "campaign_name":
+          type: "string"
+          title: "Campaign Name"
+          description: "Human readable name of campaign"
+        "campaign_variables":
+          type: "object"
+          title: "Campaign Variables"
+          description: "Variables for campaign"
+        "status": {"$ref": "#/components/schemas/CampaignStatus", "description": "Status of campaign", "default": "NEW"}
+      type: "object"
+      required:
+        - "campaign_name"
+        - "campaign_variables"
+      title: "OutboundCampaignInput"
     "PromptCreateRequest":
       properties:
         "name":
@@ -4939,6 +5396,10 @@ tags:
     description: "Operations related to directory"
   - name: "events"
     description: "Operations related to events. An event represents a specific occurrence           during a session. Currently the API/SDK only supports fetching logged events."
+  - name: "outbound.campaigns"
+    description: "Operations related to outbound message campaigns"
+  - name: "outbound.batches"
+    description: "Operations related to outbound campaign batches"
   - name: "prompts"
     description: "Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them."
   - name: "services"
@@ -4949,4 +5410,4 @@ tags:
     description: "Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details."
   - name: "tools"
     description: "Operations related to tool configuration. A tool is a function that an           agent can call to perform actions like accessing databases, making API calls, or           processing data. For an agent to have access to a tool, the prompt associated with that           agent should be linked to the tool and include instructions to use it."
-x-speakeasy-name-override: [{"operationId": ".*_list$", "methodNameOverride": "list"}, {"operationId": ".*_create$", "methodNameOverride": "create"}, {"operationId": ".*_update$", "methodNameOverride": "update"}, {"operationId": ".*_delete$", "methodNameOverride": "delete"}, {"operationId": ".*_get_by_id$", "methodNameOverride": "get_by_id"}, {"operationId": ".*_get_by_name$", "methodNameOverride": "get_by_name"}]
+x-speakeasy-name-override: [{"operationId": ".*_list$", "methodNameOverride": "list"}, {"operationId": ".*_create$", "methodNameOverride": "create"}, {"operationId": ".*_update$", "methodNameOverride": "update"}, {"operationId": ".*_upload$", "methodNameOverride": "upload"}, {"operationId": ".*_delete$", "methodNameOverride": "delete"}, {"operationId": ".*_get_by_id$", "methodNameOverride": "get_by_id"}, {"operationId": ".*_get_by_name$", "methodNameOverride": "get_by_name"}]

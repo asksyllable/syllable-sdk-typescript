@@ -61,7 +61,7 @@
       "pages": [
         "buildFirstAgent/Quickstart",
         "buildFirstAgent/CreatePrompt",
-        "buildFirstAgent/CreateCustomMessage",
+        "buildFirstAgent/CreateMessage",
         "buildFirstAgent/CreateAgent",
         "buildFirstAgent/CreateChannel"
       ]

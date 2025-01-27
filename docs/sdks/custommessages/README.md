@@ -27,7 +27,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.customMessages.list({});
+  const result = await syllableSDK.customMessages.list({
+    limit: 25,
+  });
 
   // Handle the result
   console.log(result);
@@ -51,7 +53,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await customMessagesList(syllableSDK, {});
+  const res = await customMessagesList(syllableSDK, {
+    limit: 25,
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -103,6 +107,39 @@ async function run() {
   const result = await syllableSDK.customMessages.create({
     name: "<value>",
     text: "<value>",
+    rules: [
+      {
+        description: "delightfully fumigate convection though zowie up bulky electronics",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: false,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "yuck forager beneath please shadowy foodstuffs welcome",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
+    type: "greeting",
   });
 
   // Handle the result
@@ -130,6 +167,39 @@ async function run() {
   const res = await customMessagesCreate(syllableSDK, {
     name: "<value>",
     text: "<value>",
+    rules: [
+      {
+        description: "delightfully fumigate convection though zowie up bulky electronics",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: false,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "yuck forager beneath please shadowy foodstuffs welcome",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
+    type: "greeting",
   });
 
   if (!res.ok) {
@@ -182,7 +252,55 @@ async function run() {
   const result = await syllableSDK.customMessages.update({
     name: "<value>",
     text: "<value>",
-    id: 857478,
+    rules: [
+      {
+        description: "technician eulogise whereas till mild than during",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "qualified cycle woot abseil perfumed fisherman with duh",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "ultimately in likely opera please antelope",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
+    id: 975440,
+    type: "greeting",
   });
 
   // Handle the result
@@ -210,7 +328,55 @@ async function run() {
   const res = await customMessagesUpdate(syllableSDK, {
     name: "<value>",
     text: "<value>",
-    id: 857478,
+    rules: [
+      {
+        description: "technician eulogise whereas till mild than during",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "qualified cycle woot abseil perfumed fisherman with duh",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "ultimately in likely opera please antelope",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
+    id: 975440,
+    type: "greeting",
   });
 
   if (!res.ok) {
