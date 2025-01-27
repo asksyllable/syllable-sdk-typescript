@@ -53,4 +53,5 @@ jobs:
           lfs: false
       - uses: actions/setup-node@v4
       - run: npm install
+      - run: echo $SYLLABLESDK_API_KEY_HEADER
       - run: cd test && npm install && npm run test
