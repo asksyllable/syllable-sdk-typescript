@@ -849,380 +849,6 @@
         }
       }
     },
-    "/api/v1/data_sources/": {
-      "get": {
-        "tags": [
-          "data_sources",
-          "V1"
-        ],
-        "summary": "List Data Sources",
-        "description": "Fetch metadata about all data sources, not including their text.",
-        "operationId": "data_sources_list",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": 0,
-              "title": "Page"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 25,
-              "title": "Limit"
-            }
-          },
-          {
-            "name": "search_fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/DataSourceProperties"
-              },
-              "default": [],
-              "title": "Search Fields"
-            }
-          },
-          {
-            "name": "search_field_values",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [],
-              "title": "Search Field Values"
-            }
-          },
-          {
-            "name": "order_by",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/DataSourceProperties"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Order By"
-            }
-          },
-          {
-            "name": "order_by_direction",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Order By Direction"
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DataSourceProperties"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": [],
-              "title": "Fields"
-            }
-          },
-          {
-            "name": "start_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Start Datetime"
-            }
-          },
-          {
-            "name": "end_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "End Datetime"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListResponse_DataSourceMetadataResponse_"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "data_sources",
-          "V1"
-        ],
-        "summary": "Create Data Source",
-        "description": "Create a new data source.",
-        "operationId": "data_sources_create",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DataSourceCreateRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataSourceDetailResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "data_sources",
-          "V1"
-        ],
-        "summary": "Update Data Source",
-        "description": "Update an existing data source.",
-        "operationId": "data_sources_update",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DataSourceUpdateRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataSourceDetailResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/data_sources/{name}": {
-      "get": {
-        "tags": [
-          "data_sources",
-          "V1"
-        ],
-        "summary": "Get Data Source",
-        "description": "Fetch a given data source, including its text.",
-        "operationId": "data_sources_get_by_name",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Name"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataSourceDetailResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "data_sources",
-          "V1"
-        ],
-        "summary": "Delete Data Source",
-        "description": "Delete a given data source.",
-        "operationId": "data_sources_delete_by_name",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Name"
-            }
-          },
-          {
-            "name": "reason",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Reason"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/events/": {
       "get": {
         "tags": [
@@ -4646,178 +4272,27 @@
         ],
         "summary": "List Outbound Communication Batches",
         "operationId": "outbound_batch_list",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": 0,
-              "title": "Page"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 25,
-              "title": "Limit"
-            }
-          },
-          {
-            "name": "search_fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/BatchProperties"
-              },
-              "default": [],
-              "title": "Search Fields"
-            }
-          },
-          {
-            "name": "search_field_values",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [],
-              "title": "Search Field Values"
-            }
-          },
-          {
-            "name": "order_by",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/BatchProperties"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Order By"
-            }
-          },
-          {
-            "name": "order_by_direction",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Order By Direction"
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BatchProperties"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": [],
-              "title": "Fields"
-            }
-          },
-          {
-            "name": "start_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Start Datetime"
-            }
-          },
-          {
-            "name": "end_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "End Datetime"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/CommunicationBatch"
                   },
+                  "type": "array",
                   "title": "Response Outbound Batch List"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
           }
         },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
         "x-speakeasy-ignore": true
       },
       "put": {
@@ -4827,20 +4302,15 @@
         ],
         "summary": "Create Outbound Communication Batch",
         "operationId": "outbound_batch_create",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CommunicationBatchInput"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -4872,6 +4342,11 @@
             }
           }
         },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
         "x-speakeasy-ignore": true
       }
     },
@@ -5036,177 +4511,6 @@
         "x-speakeasy-ignore": true
       }
     },
-    "/api/v1/outbound/batches/{batch_id}/results": {
-      "get": {
-        "tags": [
-          "outbound.batches",
-          "V1"
-        ],
-        "summary": "Fetch Outbound Communication Batch Results",
-        "operationId": "outbound_batch_results",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "batch_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Batch Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CommunicationRequestResult"
-                  },
-                  "title": "Response Outbound Batch Results"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        },
-        "x-speakeasy-ignore": true
-      }
-    },
-    "/api/v1/outbound/batches/{batch_id}/requests": {
-      "post": {
-        "tags": [
-          "outbound.batches",
-          "V1"
-        ],
-        "summary": "Create Outbound Communication Request",
-        "operationId": "outbound_batch_add",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "batch_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Batch Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CommunicationRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        },
-        "x-speakeasy-ignore": true
-      }
-    },
-    "/api/v1/outbound/batches/{batch_id}/remove-requests": {
-      "post": {
-        "tags": [
-          "outbound.batches",
-          "V1"
-        ],
-        "summary": "Delete Requests By List Of Reference Ids",
-        "operationId": "outbound_batch_remove",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "batch_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Batch Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "title": "Reference Ids"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        },
-        "x-speakeasy-ignore": true
-      }
-    },
     "/api/v1/outbound/campaigns": {
       "get": {
         "tags": [
@@ -5215,152 +4519,6 @@
         ],
         "summary": "List Outbound Communication Campaigns",
         "operationId": "outbound_campaign_list",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": 0,
-              "title": "Page"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 25,
-              "title": "Limit"
-            }
-          },
-          {
-            "name": "search_fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/CampaignProperties"
-              },
-              "default": [],
-              "title": "Search Fields"
-            }
-          },
-          {
-            "name": "search_field_values",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [],
-              "title": "Search Field Values"
-            }
-          },
-          {
-            "name": "order_by",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/CampaignProperties"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Order By"
-            }
-          },
-          {
-            "name": "order_by_direction",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/OrderByDirection"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Order By Direction"
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CampaignProperties"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": [],
-              "title": "Fields"
-            }
-          },
-          {
-            "name": "start_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Start Datetime"
-            }
-          },
-          {
-            "name": "end_datetime",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "End Datetime"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -5369,10 +4527,10 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/OutboundCampaign"
-                      }
+                      },
+                      "type": "array"
                     },
                     {
                       "type": "null"
@@ -5382,18 +4540,13 @@
                 }
               }
             }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
           }
         },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
         "x-speakeasy-ignore": true
       },
       "post": {
@@ -5403,20 +4556,15 @@
         ],
         "summary": "Create Outbound Communication Campaign",
         "operationId": "outbound_campaign_create",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/OutboundCampaignInput"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -5448,6 +4596,11 @@
             }
           }
         },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
         "x-speakeasy-ignore": true
       }
     },
@@ -5560,14 +4713,6 @@
   },
   "components": {
     "schemas": {
-      "ActionMode": {
-        "type": "string",
-        "enum": [
-          "BATCH",
-          "INTERACTIVE"
-        ],
-        "title": "ActionMode"
-      },
       "AgentCreate": {
         "properties": {
           "name": {
@@ -6167,28 +5312,15 @@
         ],
         "title": "AvailableTargetProperties"
       },
-      "BatchProperties": {
-        "type": "string",
-        "enum": [
-          "batch_id",
-          "campaign_id",
-          "status",
-          "type",
-          "source",
-          "rate",
-          "expires_on",
-          "retry_count",
-          "retry_interval"
-        ],
-        "title": "BatchProperties"
-      },
       "BatchStatus": {
         "type": "string",
         "enum": [
-          "PENDING",
+          "NEW",
+          "LOADED",
           "ACTIVE",
-          "IDLE",
-          "CANCELED",
+          "INACTIVE",
+          "PAUSED",
+          "DELETED",
           "COMPLETED"
         ],
         "title": "BatchStatus"
@@ -6234,27 +5366,15 @@
         ],
         "title": "Body_outbound_batch_upload"
       },
-      "CampaignProperties": {
-        "type": "string",
-        "enum": [
-          "id",
-          "campaign_name",
-          "campaign_variables",
-          "status",
-          "daily_start_time",
-          "daily_end_time",
-          "timezone",
-          "mode"
-        ],
-        "title": "CampaignProperties"
-      },
       "CampaignStatus": {
         "type": "string",
         "enum": [
-          "PENDING",
+          "NEW",
           "ACTIVE",
+          "INACTIVE",
           "PAUSED",
-          "CANCELED"
+          "DELETED",
+          "COMPLETED"
         ],
         "title": "CampaignStatus"
       },
@@ -6552,19 +5672,7 @@
           "rate": {
             "type": "integer",
             "title": "Rate",
-            "description": "Target number of outreach calls per minute"
-          },
-          "expires_on": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Expires On",
-            "description": "Timestamp of batch expiration"
+            "description": "Number of outreach per hour"
           },
           "retry_count": {
             "type": "integer",
@@ -6587,7 +5695,7 @@
           "status": {
             "$ref": "#/components/schemas/BatchStatus",
             "description": "Status of batch",
-            "default": "PENDING"
+            "default": "NEW"
           },
           "created_at": {
             "type": "string",
@@ -6617,6 +5725,18 @@
             ],
             "title": "Deleted Reason",
             "description": "Reason for batch deletion"
+          },
+          "dispatch_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dispatch Id",
+            "description": "Unique ID of worker assigned to batch"
           },
           "last_worked_on": {
             "anyOf": [
@@ -6672,19 +5792,7 @@
           "rate": {
             "type": "integer",
             "title": "Rate",
-            "description": "Target number of outreach calls per minute"
-          },
-          "expires_on": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Expires On",
-            "description": "Timestamp of batch expiration"
+            "description": "Number of outreach per hour"
           },
           "retry_count": {
             "type": "integer",
@@ -6714,139 +5822,6 @@
           "rate"
         ],
         "title": "CommunicationBatchInput"
-      },
-      "CommunicationRequest": {
-        "properties": {
-          "batch_id": {
-            "type": "string",
-            "title": "Batch Id",
-            "description": "Unique ID for conversation batch"
-          },
-          "reference_id": {
-            "type": "string",
-            "title": "Reference Id",
-            "description": "Unique ID for target call"
-          },
-          "target": {
-            "type": "string",
-            "title": "Target",
-            "description": "Target phone number or email address"
-          },
-          "request_status": {
-            "$ref": "#/components/schemas/RequestStatus",
-            "description": "Status of request",
-            "default": "PENDING"
-          },
-          "request_variables": {
-            "type": "object",
-            "title": "Request Variables",
-            "description": "Variables for request"
-          }
-        },
-        "type": "object",
-        "required": [
-          "batch_id",
-          "reference_id",
-          "target",
-          "request_variables"
-        ],
-        "title": "CommunicationRequest"
-      },
-      "CommunicationRequestResult": {
-        "properties": {
-          "batch_id": {
-            "type": "string",
-            "title": "Batch Id",
-            "description": "Unique ID for conversation batch"
-          },
-          "reference_id": {
-            "type": "string",
-            "title": "Reference Id",
-            "description": "Unique ID for target call"
-          },
-          "target": {
-            "type": "string",
-            "title": "Target",
-            "description": "Target phone number or email address"
-          },
-          "request_status": {
-            "$ref": "#/components/schemas/RequestStatus",
-            "description": "Status of request",
-            "default": "PENDING"
-          },
-          "request_variables": {
-            "type": "object",
-            "title": "Request Variables",
-            "description": "Variables for request"
-          },
-          "call_manager_sid": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Call Manager Sid",
-            "description": "Call manager SID"
-          },
-          "sent_at": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Sent At",
-            "description": "Timestamp of request sent"
-          },
-          "created_at": {
-            "type": "string",
-            "title": "Created At",
-            "description": "Timestamp of request creation"
-          },
-          "attempt_count": {
-            "type": "integer",
-            "title": "Attempt Count",
-            "description": "Number of attempts for request",
-            "default": 0
-          },
-          "session_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Session Id",
-            "description": "Unique ID for call session"
-          },
-          "conversation_id": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Conversation Id",
-            "description": "Unique ID for conversation"
-          }
-        },
-        "type": "object",
-        "required": [
-          "batch_id",
-          "reference_id",
-          "target",
-          "request_variables"
-        ],
-        "title": "CommunicationRequestResult"
       },
       "Conversation": {
         "properties": {
@@ -7329,347 +6304,6 @@
         ],
         "title": "Dashboard",
         "description": "Basic information about a dashboard."
-      },
-      "DataSourceCreateRequest": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description",
-            "description": "The description of the data source."
-          },
-          "labels": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Labels",
-            "description": "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool.",
-            "default": [],
-            "examples": [
-              [
-                "Location Info"
-              ]
-            ]
-          },
-          "chunk": {
-            "type": "boolean",
-            "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-          },
-          "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
-          },
-          "text": {
-            "type": "string",
-            "title": "Text",
-            "description": "Information that the data source will provide to the agent accessing it."
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "chunk",
-          "text"
-        ],
-        "title": "DataSourceCreateRequest"
-      },
-      "DataSourceDetailResponse": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description",
-            "description": "The description of the data source."
-          },
-          "labels": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Labels",
-            "description": "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool.",
-            "default": [],
-            "examples": [
-              [
-                "Location Info"
-              ]
-            ]
-          },
-          "chunk": {
-            "type": "boolean",
-            "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-          },
-          "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
-          },
-          "edit_comments": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Edit Comments",
-            "description": "The comments for the most recent edit to the data source"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Updated At",
-            "description": "Timestamp of most recent update"
-          },
-          "last_updated_by": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Last Updated By",
-            "description": "Email of the user who last updated the data source"
-          },
-          "text": {
-            "type": "string",
-            "title": "Text",
-            "description": "Information that the data source will provide to the agent accessing it."
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "chunk",
-          "updated_at",
-          "last_updated_by",
-          "text"
-        ],
-        "title": "DataSourceDetailResponse",
-        "description": "Metadata about a data source, along with the text."
-      },
-      "DataSourceMetadataResponse": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description",
-            "description": "The description of the data source."
-          },
-          "labels": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Labels",
-            "description": "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool.",
-            "default": [],
-            "examples": [
-              [
-                "Location Info"
-              ]
-            ]
-          },
-          "chunk": {
-            "type": "boolean",
-            "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-          },
-          "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
-          },
-          "edit_comments": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Edit Comments",
-            "description": "The comments for the most recent edit to the data source"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Updated At",
-            "description": "Timestamp of most recent update"
-          },
-          "last_updated_by": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Last Updated By",
-            "description": "Email of the user who last updated the data source"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "chunk",
-          "updated_at",
-          "last_updated_by"
-        ],
-        "title": "DataSourceMetadataResponse",
-        "description": "Metadata about a data source, not including the text."
-      },
-      "DataSourceProperties": {
-        "type": "string",
-        "enum": [
-          "name",
-          "description",
-          "labels",
-          "chunk",
-          "chunk_delimiter",
-          "updated_at",
-          "last_updated_by"
-        ],
-        "title": "DataSourceProperties"
-      },
-      "DataSourceUpdateRequest": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description",
-            "description": "The description of the data source."
-          },
-          "labels": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Labels",
-            "description": "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool.",
-            "default": [],
-            "examples": [
-              [
-                "Location Info"
-              ]
-            ]
-          },
-          "chunk": {
-            "type": "boolean",
-            "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-          },
-          "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
-          },
-          "edit_comments": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Edit Comments",
-            "description": "The comments for the most recent edit to the data source"
-          },
-          "text": {
-            "type": "string",
-            "title": "Text",
-            "description": "Information that the data source will provide to the agent accessing it."
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "chunk",
-          "text"
-        ],
-        "title": "DataSourceUpdateRequest"
       },
       "DayOfWeek": {
         "type": "string",
@@ -8343,54 +6977,6 @@
         ],
         "title": "ListResponse[CustomMessageResponse]"
       },
-      "ListResponse_DataSourceMetadataResponse_": {
-        "properties": {
-          "items": {
-            "items": {
-              "$ref": "#/components/schemas/DataSourceMetadataResponse"
-            },
-            "type": "array",
-            "title": "Items"
-          },
-          "page": {
-            "type": "integer",
-            "title": "Page"
-          },
-          "page_size": {
-            "type": "integer",
-            "title": "Page Size"
-          },
-          "total_pages": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Total Pages"
-          },
-          "total_count": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Total Count"
-          }
-        },
-        "type": "object",
-        "required": [
-          "items",
-          "page",
-          "page_size"
-        ],
-        "title": "ListResponse[DataSourceMetadataResponse]"
-      },
       "ListResponse_DirectoryMember_": {
         "properties": {
           "items": {
@@ -8750,27 +7336,7 @@
           "status": {
             "$ref": "#/components/schemas/CampaignStatus",
             "description": "Status of campaign",
-            "default": "PENDING"
-          },
-          "daily_start_time": {
-            "type": "string",
-            "title": "Daily Start Time",
-            "description": "Start time of campaign"
-          },
-          "daily_end_time": {
-            "type": "string",
-            "title": "Daily End Time",
-            "description": "End time of campaign"
-          },
-          "timezone": {
-            "type": "string",
-            "title": "Timezone",
-            "description": "Timezone of campaign"
-          },
-          "mode": {
-            "$ref": "#/components/schemas/ActionMode",
-            "description": "Batch or Interactive",
-            "default": "BATCH"
+            "default": "NEW"
           },
           "id": {
             "type": "integer",
@@ -8797,9 +7363,6 @@
         "required": [
           "campaign_name",
           "campaign_variables",
-          "daily_start_time",
-          "daily_end_time",
-          "timezone",
           "id",
           "last_updated_by"
         ],
@@ -8820,36 +7383,13 @@
           "status": {
             "$ref": "#/components/schemas/CampaignStatus",
             "description": "Status of campaign",
-            "default": "PENDING"
-          },
-          "daily_start_time": {
-            "type": "string",
-            "title": "Daily Start Time",
-            "description": "Start time of campaign"
-          },
-          "daily_end_time": {
-            "type": "string",
-            "title": "Daily End Time",
-            "description": "End time of campaign"
-          },
-          "timezone": {
-            "type": "string",
-            "title": "Timezone",
-            "description": "Timezone of campaign"
-          },
-          "mode": {
-            "$ref": "#/components/schemas/ActionMode",
-            "description": "Batch or Interactive",
-            "default": "BATCH"
+            "default": "NEW"
           }
         },
         "type": "object",
         "required": [
           "campaign_name",
-          "campaign_variables",
-          "daily_start_time",
-          "daily_end_time",
-          "timezone"
+          "campaign_variables"
         ],
         "title": "OutboundCampaignInput"
       },
@@ -9258,18 +7798,6 @@
           "id"
         ],
         "title": "PromptUpdateRequest"
-      },
-      "RequestStatus": {
-        "type": "string",
-        "enum": [
-          "PENDING",
-          "QUEUEING",
-          "INITIATED",
-          "CONNECTED",
-          "FAILED",
-          "CANCELED"
-        ],
-        "title": "RequestStatus"
       },
       "Service": {
         "properties": {
@@ -10481,7 +9009,7 @@
           "id"
         ],
         "title": "ToolResponse",
-        "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
+        "description": "A tool is a function that an agent can call to perform actions like accessing databases, \nmaking API calls, or processing data. For an agent to have access to a tool, the prompt \nassociated with that agent should be linked to the tool and include instructions to use it."
       },
       "ToolUpdateRequest": {
         "properties": {
@@ -10584,10 +9112,6 @@
     {
       "name": "dashboards",
       "description": "Operations related to dashboards. Currently the API/SDK           only supports fetching basic information about dashboards."
-    },
-    {
-      "name": "data_sources",
-      "description": "Operations related to data sources. A data source is a blob of text that           can be made available to an agent's general info tools to provide more context to the           agent when generating its responses."
     },
     {
       "name": "directory",
