@@ -12,7 +12,8 @@ import { ToolFunction } from "syllable-sdk/models/components";
 
 let value: ToolFunction = {
   name: "<value>",
-  description: "whoa burgeon opposite apprehensive legitimize geez",
+  description:
+    "reasoning safely ick discourse besides forsaken coordinated married",
   parameters: {},
 };
 ```
