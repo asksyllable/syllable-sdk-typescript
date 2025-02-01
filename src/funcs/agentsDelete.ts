@@ -131,8 +131,8 @@ export async function agentsDelete(
     | ConnectionError
   >(
     M.json(200, z.any()),
-    M.fail([400, 404, "4XX"]),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
+    M.fail([400, 404, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

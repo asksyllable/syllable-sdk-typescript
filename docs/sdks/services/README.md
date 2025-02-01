@@ -25,9 +25,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.services.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.services.list({});
 
   // Handle the result
   console.log(result);
@@ -51,9 +49,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await servicesList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await servicesList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;

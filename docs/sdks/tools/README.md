@@ -26,9 +26,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.tools.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.tools.list({});
 
   // Handle the result
   console.log(result);
@@ -52,9 +50,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await toolsList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await toolsList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;

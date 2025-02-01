@@ -26,9 +26,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.sessions.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.sessions.list({});
 
   // Handle the result
   console.log(result);
@@ -52,9 +50,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await sessionsList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await sessionsList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;

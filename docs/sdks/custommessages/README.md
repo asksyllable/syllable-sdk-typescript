@@ -27,9 +27,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.customMessages.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.customMessages.list({});
 
   // Handle the result
   console.log(result);
@@ -53,9 +51,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await customMessagesList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await customMessagesList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;
@@ -139,7 +135,6 @@ async function run() {
         text: "Sorry, we're closed today",
       },
     ],
-    type: "greeting",
   });
 
   // Handle the result
@@ -199,7 +194,6 @@ async function run() {
         text: "Sorry, we're closed today",
       },
     ],
-    type: "greeting",
   });
 
   if (!res.ok) {
@@ -300,7 +294,6 @@ async function run() {
       },
     ],
     id: 975440,
-    type: "greeting",
   });
 
   // Handle the result
@@ -376,7 +369,6 @@ async function run() {
       },
     ],
     id: 975440,
-    type: "greeting",
   });
 
   if (!res.ok) {

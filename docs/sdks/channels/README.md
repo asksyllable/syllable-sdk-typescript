@@ -24,9 +24,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.channels.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.channels.list({});
 
   // Handle the result
   console.log(result);
@@ -50,9 +48,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await channelsList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await channelsList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;

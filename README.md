@@ -108,9 +108,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.agents.list({});
 
   // Handle the result
   console.log(result);
@@ -172,6 +170,14 @@ run();
 * [postSessionTransfersDashboard](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers
 * [postSessionsDashboard](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions
 
+### [dataSources](docs/sdks/datasources/README.md)
+
+* [list](docs/sdks/datasources/README.md#list) - List Data Sources
+* [create](docs/sdks/datasources/README.md#create) - Create Data Source
+* [update](docs/sdks/datasources/README.md#update) - Update Data Source
+* [getByName](docs/sdks/datasources/README.md#getbyname) - Get Data Source
+* [dataSourcesDeleteByName](docs/sdks/datasources/README.md#datasourcesdeletebyname) - Delete Data Source
+
 ### [events](docs/sdks/events/README.md)
 
 * [list](docs/sdks/events/README.md#list) - Events List
@@ -218,6 +224,11 @@ run();
 
 ### [v1](docs/sdks/v1/README.md)
 
+* [list](docs/sdks/v1/README.md#list) - List Data Sources
+* [create](docs/sdks/v1/README.md#create) - Create Data Source
+* [update](docs/sdks/v1/README.md#update) - Update Data Source
+* [getByName](docs/sdks/v1/README.md#getbyname) - Get Data Source
+* [dataSourcesDeleteByName](docs/sdks/v1/README.md#datasourcesdeletebyname) - Delete Data Source
 * [postSessionEventsDashboard](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
 * [postSessionSummaryDashboard](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
 * [postSessionTransfersDashboard](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
@@ -265,6 +276,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions
 - [`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary
 - [`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers
+- [`dataSourcesCreate`](docs/sdks/datasources/README.md#create) - Create Data Source
+- [`dataSourcesDataSourcesDeleteByName`](docs/sdks/datasources/README.md#datasourcesdeletebyname) - Delete Data Source
+- [`dataSourcesGetByName`](docs/sdks/datasources/README.md#getbyname) - Get Data Source
+- [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
+- [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
@@ -287,10 +303,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`v1Create`](docs/sdks/v1/README.md#create) - Create Data Source
+- [`v1DataSourcesDeleteByName`](docs/sdks/v1/README.md#datasourcesdeletebyname) - Delete Data Source
+- [`v1GetByName`](docs/sdks/v1/README.md#getbyname) - Get Data Source
+- [`v1List`](docs/sdks/v1/README.md#list) - List Data Sources
 - [`v1PostSessionEventsDashboard`](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
 - [`v1PostSessionsDashboard`](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions
 - [`v1PostSessionSummaryDashboard`](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
 - [`v1PostSessionTransfersDashboard`](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
+- [`v1Update`](docs/sdks/v1/README.md#update) - Update Data Source
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -309,9 +330,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({
-    limit: 25,
-  }, {
+  const result = await syllableSDK.agents.list({}, {
     retries: {
       strategy: "backoff",
       backoff: {
@@ -351,9 +370,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.agents.list({});
 
   // Handle the result
   console.log(result);
@@ -390,9 +407,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   let result;
   try {
-    result = await syllableSDK.agents.list({
-      limit: 25,
-    });
+    result = await syllableSDK.agents.list({});
 
     // Handle the result
     console.log(result);
@@ -459,9 +474,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.agents.list({});
 
   // Handle the result
   console.log(result);
@@ -483,9 +496,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.agents.list({});
 
   // Handle the result
   console.log(result);
@@ -565,9 +576,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.agents.list({});
 
   // Handle the result
   console.log(result);

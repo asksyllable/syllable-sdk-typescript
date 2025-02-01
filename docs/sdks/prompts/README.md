@@ -28,9 +28,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.prompts.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.prompts.list({});
 
   // Handle the result
   console.log(result);
@@ -54,9 +52,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await promptsList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await promptsList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;
@@ -109,7 +105,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
@@ -141,7 +136,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
@@ -198,7 +192,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
@@ -231,7 +224,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },

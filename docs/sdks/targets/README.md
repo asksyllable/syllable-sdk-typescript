@@ -27,9 +27,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.channels.targets.availableTargets({
-    limit: 25,
-  });
+  const result = await syllableSDK.channels.targets.availableTargets({});
 
   // Handle the result
   console.log(result);
@@ -53,9 +51,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await channelsTargetsAvailableTargets(syllableSDK, {
-    limit: 25,
-  });
+  const res = await channelsTargetsAvailableTargets(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;
@@ -104,9 +100,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.channels.targets.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.channels.targets.list({});
 
   // Handle the result
   console.log(result);
@@ -130,9 +124,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await channelsTargetsList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await channelsTargetsList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;
@@ -188,7 +180,6 @@ async function run() {
       channelId: 638424,
       target: "<value>",
       targetMode: "chat",
-      isTest: false,
     },
   });
 
@@ -221,7 +212,6 @@ async function run() {
       channelId: 638424,
       target: "<value>",
       targetMode: "chat",
-      isTest: false,
     },
   });
 
@@ -359,7 +349,6 @@ async function run() {
       channelId: 597129,
       target: "<value>",
       targetMode: "chat",
-      isTest: false,
       id: 991464,
     },
   });
@@ -394,7 +383,6 @@ async function run() {
       channelId: 597129,
       target: "<value>",
       targetMode: "chat",
-      isTest: false,
       id: 991464,
     },
   });

@@ -28,9 +28,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({
-    limit: 25,
-  });
+  const result = await syllableSDK.agents.list({});
 
   // Handle the result
   console.log(result);
@@ -54,9 +52,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await agentsList(syllableSDK, {
-    limit: 25,
-  });
+  const res = await agentsList(syllableSDK, {});
 
   if (!res.ok) {
     throw res.error;
@@ -120,6 +116,7 @@ async function run() {
     },
     toolHeaders: {
       "key": "<value>",
+      "key1": "<value>",
     },
   });
 
@@ -160,6 +157,7 @@ async function run() {
     },
     toolHeaders: {
       "key": "<value>",
+      "key1": "<value>",
     },
   });
 
@@ -215,7 +213,7 @@ async function run() {
     type: "ca_v1",
     promptId: 857478,
     customMessageId: 597129,
-    timezone: "America/New_York",
+    timezone: "America/Chicago",
     languages: [
       "en-US",
       "es-US",
@@ -259,7 +257,7 @@ async function run() {
     type: "ca_v1",
     promptId: 857478,
     customMessageId: 597129,
-    timezone: "America/New_York",
+    timezone: "America/Chicago",
     languages: [
       "en-US",
       "es-US",

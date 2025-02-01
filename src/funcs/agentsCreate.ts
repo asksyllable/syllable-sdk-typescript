@@ -122,8 +122,8 @@ export async function agentsCreate(
     | ConnectionError
   >(
     M.json(200, components.AgentResponse$inboundSchema),
-    M.fail([400, "4XX"]),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
+    M.fail([400, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
