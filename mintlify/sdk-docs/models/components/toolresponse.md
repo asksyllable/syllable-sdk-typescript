@@ -2,8 +2,8 @@
 title: 'ToolResponse'
 ---
 
-A tool is a function that an agent can call to perform actions like accessing databases, 
-making API calls, or processing data. For an agent to have access to a tool, the prompt 
+A tool is a function that an agent can call to perform actions like accessing databases,
+making API calls, or processing data. For an agent to have access to a tool, the prompt
 associated with that agent should be linked to the tool and include instructions to use it.
 
 ## Example Usage
@@ -17,13 +17,14 @@ let value: ToolResponse = {
     tool: {
       function: {
         name: "<value>",
-        description: "weary exactly tepid gratefully",
+        description:
+          "brace instruction ew impish loyalty cake although misfire breastplate whenever",
         parameters: {},
       },
     },
   },
-  serviceId: 75359,
-  id: 424663,
+  serviceId: 456410,
+  id: 153369,
 };
 ```
 

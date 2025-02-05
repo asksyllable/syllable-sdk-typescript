@@ -1,14 +1,14 @@
 ---
-title: 'CustomMessagesDeleteRequest'
+title: 'DataSourcesDeleteByNameRequest'
 ---
 
 ## Example Usage
 
 ```typescript
-import { CustomMessagesDeleteRequest } from "syllable-sdk/models/operations";
+import { DataSourcesDeleteByNameRequest } from "syllable-sdk/models/operations";
 
-let value: CustomMessagesDeleteRequest = {
-  customMessageId: 51075,
+let value: DataSourcesDeleteByNameRequest = {
+  name: "<value>",
   reason: "<value>",
 };
 ```
@@ -17,5 +17,5 @@ let value: CustomMessagesDeleteRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `customMessageId`  | *number*           | TRUE | N/A                |
+| `name`             | *string*           | TRUE | N/A                |
 | `reason`           | *string*           | TRUE | N/A                |

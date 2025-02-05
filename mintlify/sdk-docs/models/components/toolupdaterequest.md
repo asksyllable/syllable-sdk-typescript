@@ -13,13 +13,13 @@ let value: ToolUpdateRequest = {
     tool: {
       function: {
         name: "<value>",
-        description: "furthermore lest paintwork",
+        description: "before substantiate mosh noted abaft",
         parameters: {},
       },
     },
   },
-  serviceId: 948541,
-  id: 778276,
+  serviceId: 322829,
+  id: 229567,
 };
 ```
 

@@ -13,12 +13,12 @@ let value: ToolCreateRequest = {
     tool: {
       function: {
         name: "<value>",
-        description: "educated or fedora compromise if made-up deer rightfully",
+        description: "pish and ouch supportive honestly uh-huh mmm gently",
         parameters: {},
       },
     },
   },
-  serviceId: 592880,
+  serviceId: 179795,
 };
 ```
 

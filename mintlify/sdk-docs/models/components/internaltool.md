@@ -12,7 +12,8 @@ import { InternalTool } from "syllable-sdk/models/components";
 let value: InternalTool = {
   function: {
     name: "<value>",
-    description: "apropos flat zowie indeed stale mockingly important",
+    description:
+      "however ultimately boo ham gift harmful down cross-contamination before enrage",
     parameters: {},
   },
 };
