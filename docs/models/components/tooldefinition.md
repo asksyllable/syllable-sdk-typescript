@@ -11,7 +11,7 @@ let value: ToolDefinition = {
   tool: {
     function: {
       name: "<value>",
-      description: "dilate uh-huh pluck slowly trek what selfishly",
+      description: "uselessly mostly aw quarrelsomely since hence",
       parameters: {},
     },
   },

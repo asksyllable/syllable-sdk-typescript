@@ -107,6 +107,9 @@ async function run() {
     type: "auto-rating",
     code: "BAD",
     userEmail: "<value>",
+    issueCategories: [
+      "Silent treatment",
+    ],
   });
 
   // Handle the result
@@ -136,6 +139,9 @@ async function run() {
     type: "auto-rating",
     code: "BAD",
     userEmail: "<value>",
+    issueCategories: [
+      "Silent treatment",
+    ],
   });
 
   if (!res.ok) {

@@ -381,3 +381,33 @@ Based on:
 - [typescript v0.1.0-alpha.34] .
 ### Releases
 - [NPM v0.1.0-alpha.34] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.34 - .
+
+## 2025-01-23 20:23:33
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.472.1 (2.493.34) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.35] .
+### Releases
+- [NPM v0.1.0-alpha.35] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.35 - .
+
+## 2025-02-01 00:12:09
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.481.1 (2.500.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.36] .
+### Releases
+- [NPM v0.1.0-alpha.36] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.36 - .
+
+## 2025-02-05 20:49:15
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.484.1 (2.503.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.37] .
+### Releases
+- [NPM v0.1.0-alpha.37] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.37 - .

@@ -111,7 +111,9 @@ async function run() {
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+
+    },
     toolHeaders: {
       "key": "<value>",
       "key1": "<value>",
@@ -150,7 +152,9 @@ async function run() {
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+  
+    },
     toolHeaders: {
       "key": "<value>",
       "key1": "<value>",
@@ -214,12 +218,16 @@ async function run() {
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
     toolHeaders: {
       "key": "<value>",
       "key1": "<value>",
     },
-    id: 597129,
+    id: 488852,
   });
 
   // Handle the result
@@ -254,12 +262,16 @@ async function run() {
       "en-US",
       "es-US",
     ],
-    variables: {},
+    variables: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
     toolHeaders: {
       "key": "<value>",
       "key1": "<value>",
     },
-    id: 597129,
+    id: 488852,
   });
 
   if (!res.ok) {

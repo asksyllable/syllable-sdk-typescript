@@ -46,7 +46,9 @@ actions:
                   "en-US",
                   "es-US",
                 ],
-                variables: {},
+                variables: {
+
+                },
                 toolHeaders: {
                   "key": "<value>",
                 },
@@ -80,13 +82,16 @@ actions:
                   "en-US",
                   "es-US",
                 ],
-                variables: {},
-                toolHeaders: {
+                variables: {
                   "key": "<value>",
                   "key1": "<value>",
                   "key2": "<value>",
                 },
-                id: 627690,
+                toolHeaders: {
+                  "key": "<value>",
+                  "key1": "<value>",
+                },
+                id: 488852,
               });
 
               // Handle the result
@@ -421,6 +426,21 @@ actions:
                     invert: false,
                     text: "Sorry, we're closed today",
                   },
+                  {
+                    description: "yuck forager beneath please shadowy foodstuffs welcome",
+                    timeRangeStart: "09:00",
+                    timeRangeEnd: "17:00",
+                    date: "2025-01-01",
+                    daysOfWeek: [
+                      "mo",
+                      "tu",
+                      "we",
+                      "th",
+                      "fr",
+                    ],
+                    invert: true,
+                    text: "Sorry, we're closed today",
+                  },
                 ],
               });
 
@@ -693,6 +713,229 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/data_sources/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: data_sources_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/data_sources/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.create({
+                name: "<value>",
+                labels: [
+                  "Location Info",
+                ],
+                chunk: true,
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: data_sources_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.create({
+                name: "<value>",
+                labels: [
+                  "Location Info",
+                ],
+                chunk: true,
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/data_sources/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.update({
+                name: "<value>",
+                labels: [
+                  "Location Info",
+                ],
+                chunk: false,
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: data_sources_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.update({
+                name: "<value>",
+                labels: [
+                  "Location Info",
+                ],
+                chunk: false,
+                text: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/data_sources/{name}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_delete_by_name
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.dataSourcesDeleteByName({
+                name: "<value>",
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: data_sources_delete_by_name
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.dataSourcesDeleteByName({
+                name: "<value>",
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/data_sources/{name}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_get_by_name
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.getByName({
+                name: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: data_sources_get_by_name
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.getByName({
+                name: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/events/"]["get"]
     update:
       x-codeSamples:
@@ -750,7 +993,6 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
@@ -778,7 +1020,6 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },

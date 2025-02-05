@@ -11,17 +11,16 @@ let value: ListResponsePromptResponse = {
       name: "<value>",
       type: "<value>",
       llmConfig: {
-        model: "gpt-4o",
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 904949,
+      id: 355369,
       lastUpdated: "<value>",
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 296556,
-  pageSize: 992012,
+  page: 356707,
+  pageSize: 16328,
 };
 ```
 

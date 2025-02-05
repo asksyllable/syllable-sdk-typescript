@@ -6,7 +6,6 @@
 import { PromptLlmConfig } from "syllable-sdk/models/components";
 
 let value: PromptLlmConfig = {
-  model: "gpt-4o",
   version: "2024-05-13",
   apiVersion: "2024-06-01",
 };
