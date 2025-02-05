@@ -12,7 +12,8 @@ let value: CustomMessageUpdateRequest = {
   text: "<value>",
   rules: [
     {
-      description: "woot after drat afore octave wombat though fuss um",
+      description:
+        "politely after horst vanadyl mmm ownership toward curly about",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",
@@ -27,7 +28,7 @@ let value: CustomMessageUpdateRequest = {
       text: "Sorry, we're closed today",
     },
   ],
-  id: 968972,
+  id: 958983,
 };
 ```
 

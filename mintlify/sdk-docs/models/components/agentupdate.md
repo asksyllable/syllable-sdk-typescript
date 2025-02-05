@@ -17,7 +17,9 @@ let value: AgentUpdate = {
     "en-US",
     "es-US",
   ],
-  variables: {},
+  variables: {
+    "key": "<value>",
+  },
   toolHeaders: {
     "key": "<value>",
   },
@@ -38,6 +40,6 @@ let value: AgentUpdate = {
 | `timezone`                                                                                          | *string*                                                                                            | TRUE                                                                                  | The time zone in which the agent operates                                                           | America/New_York                                                                                    |
 | `promptToolDefaults`                                                                                | [components.AgentToolDefaults](/sdk-docs/models/components/agenttooldefaults)[]                      | FALSE                                                                                  | The prompt tool defaults                                                                            |                                                                                                     |
 | `languages`                                                                                         | *string*[]                                                                                          | FALSE                                                                                  | BCP 47 codes of languages the agent supports                                                        | [<br/>"en-US",<br/>"es-US"<br/>]                                                                    |
-| `variables`                                                                                         | [components.AgentUpdateVariables](/sdk-docs/models/components/agentupdatevariables)                  | TRUE                                                                                  | Custom context variables for the conversation session. Keys should be prefixed with "vars.".        |                                                                                                     |
+| `variables`                                                                                         | Record                                                                            | TRUE                                                                                  | Custom context variables for the conversation session. Keys should be prefixed with "vars.".        |                                                                                                     |
 | `toolHeaders`                                                                                       | Record                                                                            | TRUE                                                                                  | Optional headers to include in tool calls for agent.                                                |                                                                                                     |
 | `id`                                                                                                | *number*                                                                                            | TRUE                                                                                  | The agent ID                                                                                        |                                                                                                     |

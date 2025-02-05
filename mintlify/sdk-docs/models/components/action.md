@@ -9,7 +9,7 @@ The action to perform on the tool parameter value: `default` means only set the 
 ```typescript
 import { Action } from "syllable-sdk/models/components";
 
-let value: Action = "override";
+let value: Action = "default";
 ```
 
 ## Values

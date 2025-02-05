@@ -10,9 +10,9 @@ The configuration for an HTTP API call by a tool.
 import { ToolHttpEndpoint } from "syllable-sdk/models/components";
 
 let value: ToolHttpEndpoint = {
-  url: "https://celebrated-skeleton.info/",
+  url: "https://lavish-hydrocarbon.info",
   method: "post",
-  argumentLocation: "path",
+  argumentLocation: "query",
 };
 ```
 

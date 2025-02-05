@@ -15,7 +15,6 @@ let value: PromptResponse = {
   name: "<value>",
   type: "<value>",
   llmConfig: {
-    model: "gpt-4o",
     version: "2024-05-13",
     apiVersion: "2024-06-01",
   },
