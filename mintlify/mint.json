@@ -107,6 +107,7 @@
       "pages": [
         "sdk-docs/Agents",
         "sdk-docs/Prompts",
+        "sdk-docs/datasources",
         "sdk-docs/CustomMessages",
         "sdk-docs/Tools",
         "sdk-docs/Services",
