@@ -8,7 +8,7 @@ title: 'DataSourcesGetByNameRequest'
 import { DataSourcesGetByNameRequest } from "syllable-sdk/models/operations";
 
 let value: DataSourcesGetByNameRequest = {
-  name: "<value>",
+  dataSourceName: "<value>",
 };
 ```
 
@@ -16,4 +16,4 @@ let value: DataSourcesGetByNameRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | TRUE | N/A                |
+| `dataSourceName`   | *string*           | TRUE | N/A                |
