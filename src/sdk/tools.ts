@@ -3,6 +3,7 @@
  */
 
 import { toolsCreate } from "../funcs/toolsCreate.js";
+import { toolsDelete } from "../funcs/toolsDelete.js";
 import { toolsGetByName } from "../funcs/toolsGetByName.js";
 import { toolsList } from "../funcs/toolsList.js";
 import { toolsUpdate } from "../funcs/toolsUpdate.js";
@@ -74,6 +75,23 @@ export class Tools extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ToolDetailResponse> {
     return unwrapAsync(toolsGetByName(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Tool
+   *
+   * @remarks
+   * Delete a tool.
+   */
+  async delete(
+    request: operations.ToolDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(toolsDelete(
       this,
       request,
       options,

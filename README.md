@@ -176,7 +176,7 @@ run();
 * [create](docs/sdks/datasources/README.md#create) - Create Data Source
 * [update](docs/sdks/datasources/README.md#update) - Update Data Source
 * [getByName](docs/sdks/datasources/README.md#getbyname) - Get Data Source
-* [dataSourcesDeleteByName](docs/sdks/datasources/README.md#datasourcesdeletebyname) - Delete Data Source
+* [delete](docs/sdks/datasources/README.md#delete) - Delete Data Source
 
 ### [events](docs/sdks/events/README.md)
 
@@ -196,6 +196,8 @@ run();
 * [list](docs/sdks/services/README.md#list) - Service List
 * [create](docs/sdks/services/README.md#create) - Create Service
 * [update](docs/sdks/services/README.md#update) - Update Service
+* [getById](docs/sdks/services/README.md#getbyid) - Get Service By Id
+* [delete](docs/sdks/services/README.md#delete) - Delete Service
 
 ### [sessionLabels](docs/sdks/sessionlabels/README.md)
 
@@ -221,14 +223,10 @@ run();
 * [create](docs/sdks/tools/README.md#create) - Create Tool
 * [update](docs/sdks/tools/README.md#update) - Update Tool
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
+* [delete](docs/sdks/tools/README.md#delete) - Delete Tool
 
 ### [v1](docs/sdks/v1/README.md)
 
-* [list](docs/sdks/v1/README.md#list) - List Data Sources
-* [create](docs/sdks/v1/README.md#create) - Create Data Source
-* [update](docs/sdks/v1/README.md#update) - Update Data Source
-* [getByName](docs/sdks/v1/README.md#getbyname) - Get Data Source
-* [dataSourcesDeleteByName](docs/sdks/v1/README.md#datasourcesdeletebyname) - Delete Data Source
 * [postSessionEventsDashboard](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
 * [postSessionSummaryDashboard](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
 * [postSessionTransfersDashboard](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
@@ -277,7 +275,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary
 - [`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers
 - [`dataSourcesCreate`](docs/sdks/datasources/README.md#create) - Create Data Source
-- [`dataSourcesDataSourcesDeleteByName`](docs/sdks/datasources/README.md#datasourcesdeletebyname) - Delete Data Source
+- [`dataSourcesDelete`](docs/sdks/datasources/README.md#delete) - Delete Data Source
 - [`dataSourcesGetByName`](docs/sdks/datasources/README.md#getbyname) - Get Data Source
 - [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
 - [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
@@ -289,6 +287,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
 - [`servicesCreate`](docs/sdks/services/README.md#create) - Create Service
+- [`servicesDelete`](docs/sdks/services/README.md#delete) - Delete Service
+- [`servicesGetById`](docs/sdks/services/README.md#getbyid) - Get Service By Id
 - [`servicesList`](docs/sdks/services/README.md#list) - Service List
 - [`servicesUpdate`](docs/sdks/services/README.md#update) - Update Service
 - [`sessionLabelsCreate`](docs/sdks/sessionlabels/README.md#create) - Create Label
@@ -300,18 +300,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`toolsCreate`](docs/sdks/tools/README.md#create) - Create Tool
+- [`toolsDelete`](docs/sdks/tools/README.md#delete) - Delete Tool
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
-- [`v1Create`](docs/sdks/v1/README.md#create) - Create Data Source
-- [`v1DataSourcesDeleteByName`](docs/sdks/v1/README.md#datasourcesdeletebyname) - Delete Data Source
-- [`v1GetByName`](docs/sdks/v1/README.md#getbyname) - Get Data Source
-- [`v1List`](docs/sdks/v1/README.md#list) - List Data Sources
 - [`v1PostSessionEventsDashboard`](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
 - [`v1PostSessionsDashboard`](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions
 - [`v1PostSessionSummaryDashboard`](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
 - [`v1PostSessionTransfersDashboard`](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
-- [`v1Update`](docs/sdks/v1/README.md#update) - Update Data Source
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

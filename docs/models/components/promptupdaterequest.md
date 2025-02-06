@@ -12,7 +12,7 @@ let value: PromptUpdateRequest = {
     version: "2024-05-13",
     apiVersion: "2024-06-01",
   },
-  id: 401259,
+  id: 945302,
 };
 ```
 

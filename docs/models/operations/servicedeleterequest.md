@@ -1,12 +1,12 @@
-# DataSourcesDeleteByNameRequest
+# ServiceDeleteRequest
 
 ## Example Usage
 
 ```typescript
-import { DataSourcesDeleteByNameRequest } from "syllable-sdk/models/operations";
+import { ServiceDeleteRequest } from "syllable-sdk/models/operations";
 
-let value: DataSourcesDeleteByNameRequest = {
-  name: "<value>",
+let value: ServiceDeleteRequest = {
+  serviceId: 664,
   reason: "<value>",
 };
 ```
@@ -15,5 +15,5 @@ let value: DataSourcesDeleteByNameRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `serviceId`        | *number*           | :heavy_check_mark: | N/A                |
 | `reason`           | *string*           | :heavy_check_mark: | N/A                |

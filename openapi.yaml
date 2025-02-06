@@ -470,7 +470,6 @@ paths:
     get:
       tags:
         - "data_sources"
-        - "V1"
       summary: "List Data Sources"
       description: "Fetch metadata about all data sources, not including their text."
       operationId: "data_sources_list"
@@ -568,7 +567,6 @@ paths:
     post:
       tags:
         - "data_sources"
-        - "V1"
       summary: "Create Data Source"
       description: "Create a new data source."
       operationId: "data_sources_create"
@@ -593,7 +591,6 @@ paths:
     put:
       tags:
         - "data_sources"
-        - "V1"
       summary: "Update Data Source"
       description: "Update an existing data source."
       operationId: "data_sources_update"
@@ -615,23 +612,22 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-  "/api/v1/data_sources/{name}":
+  "/api/v1/data_sources/{data_source_name}":
     get:
       tags:
         - "data_sources"
-        - "V1"
       summary: "Get Data Source"
       description: "Fetch a given data source, including its text."
       operationId: "data_sources_get_by_name"
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "name"
+        - name: "data_source_name"
           in: "path"
           required: true
           schema:
             type: "string"
-            title: "Name"
+            title: "Data Source Name"
       responses:
         "200":
           description: "Successful Response"
@@ -646,19 +642,18 @@ paths:
     delete:
       tags:
         - "data_sources"
-        - "V1"
       summary: "Delete Data Source"
       description: "Delete a given data source."
-      operationId: "data_sources_delete_by_name"
+      operationId: "data_sources_delete"
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "name"
+        - name: "data_source_name"
           in: "path"
           required: true
           schema:
             type: "string"
-            title: "Name"
+            title: "Data Source Name"
         - name: "reason"
           in: "query"
           required: true
@@ -1218,7 +1213,7 @@ paths:
       tags:
         - "services"
       summary: "Service List"
-      description: "List the existing agents"
+      description: "List the existing services"
       operationId: "service_list"
       security:
         - APIKeyHeader: []
@@ -1305,7 +1300,7 @@ paths:
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/ListResponse_Service_"}
+              schema: {"$ref": "#/components/schemas/ListResponse_ServiceResponse_"}
         "422":
           description: "Validation Error"
           content:
@@ -1315,6 +1310,7 @@ paths:
       tags:
         - "services"
       summary: "Create Service"
+      description: "Create a new service."
       operationId: "service_create"
       security:
         - APIKeyHeader: []
@@ -1322,13 +1318,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/ServiceCreate"}
+            schema: {"$ref": "#/components/schemas/ServiceCreateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Service"}
+              schema: {"$ref": "#/components/schemas/ServiceResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -1338,6 +1334,7 @@ paths:
       tags:
         - "services"
       summary: "Update Service"
+      description: "Update an existing service."
       operationId: "service_update"
       security:
         - APIKeyHeader: []
@@ -1345,13 +1342,72 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/ServiceUpdate"}
+            schema: {"$ref": "#/components/schemas/ServiceUpdateRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/Service"}
+              schema: {"$ref": "#/components/schemas/ServiceResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/services/{service_id}":
+    get:
+      tags:
+        - "services"
+      summary: "Get Service By Id"
+      description: "Get a service by its ID"
+      operationId: "services_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "service_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Service Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServiceResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "services"
+      summary: "Delete Service"
+      description: "Delete a service. A service with linked tools cannot be deleted."
+      operationId: "service_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "service_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Service Id"
+        - name: "reason"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Reason"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
         "422":
           description: "Validation Error"
           content:
@@ -1876,6 +1932,38 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/ToolDetailResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "tools"
+      summary: "Delete Tool"
+      description: "Delete a tool."
+      operationId: "tool_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "tool_name"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Tool Name"
+        - name: "reason"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+            title: "Reason"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
         "422":
           description: "Validation Error"
           content:
@@ -3142,6 +3230,11 @@ components:
             - type: "null"
           title: "Tool Headers"
           description: "Optional headers to include in tool calls for agent."
+        "agent_initiated":
+          type: "boolean"
+          title: "Agent Initiated"
+          description: "Whether the agent initiates conversation with a user after the custom_message is delivered"
+          default: false
       type: "object"
       required:
         - "name"
@@ -3238,6 +3331,11 @@ components:
             - type: "null"
           title: "Tool Headers"
           description: "Optional headers to include in tool calls for agent."
+        "agent_initiated":
+          type: "boolean"
+          title: "Agent Initiated"
+          description: "Whether the agent initiates conversation with a user after the custom_message is delivered"
+          default: false
         "id":
           type: "integer"
           title: "Id"
@@ -3382,6 +3480,11 @@ components:
             - type: "null"
           title: "Tool Headers"
           description: "Optional headers to include in tool calls for agent."
+        "agent_initiated":
+          type: "boolean"
+          title: "Agent Initiated"
+          description: "Whether the agent initiates conversation with a user after the custom_message is delivered"
+          default: false
         "id":
           type: "integer"
           title: "Id"
@@ -4968,10 +5071,10 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[PromptResponse]"
-    "ListResponse_Service_":
+    "ListResponse_ServiceResponse_":
       properties:
         "items":
-          items: {"$ref": "#/components/schemas/Service"}
+          items: {"$ref": "#/components/schemas/ServiceResponse"}
           type: "array"
           title: "Items"
         "page":
@@ -4995,7 +5098,7 @@ components:
         - "items"
         - "page"
         - "page_size"
-      title: "ListResponse[Service]"
+      title: "ListResponse[ServiceResponse]"
     "ListResponse_SessionLabel_":
       properties:
         "items":
@@ -5429,35 +5532,7 @@ components:
         - "FAILED"
         - "CANCELED"
       title: "RequestStatus"
-    "Service":
-      properties:
-        "name":
-          type: "string"
-          title: "Name"
-          description: "The name of the service"
-        "description":
-          type: "string"
-          title: "Description"
-          description: "The description of the service"
-        "id":
-          type: "integer"
-          title: "Id"
-          description: "The ID of the service"
-        "tools":
-          items:
-            type: "string"
-          type: "array"
-          title: "Tools"
-          description: "Names of the tools that belong to the service"
-      type: "object"
-      required:
-        - "name"
-        - "description"
-        - "id"
-        - "tools"
-      title: "Service"
-      description: "A service is a collection of tools."
-    "ServiceCreate":
+    "ServiceCreateRequest":
       properties:
         "name":
           type: "string"
@@ -5471,14 +5546,17 @@ components:
       required:
         - "name"
         - "description"
-      title: "ServiceCreate"
+      title: "ServiceCreateRequest"
     "ServiceProperties":
       type: "string"
       enum:
         - "id"
         - "name"
+        - "description"
+        - "updated_at"
+        - "last_updated_by"
       title: "ServiceProperties"
-    "ServiceUpdate":
+    "ServiceResponse":
       properties:
         "name":
           type: "string"
@@ -5492,12 +5570,63 @@ components:
           type: "integer"
           title: "Id"
           description: "The ID of the service"
+        "last_updated_comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated Comments"
+          description: "Update comments"
+        "last_updated":
+          type: "string"
+          format: "date-time"
+          title: "Last Updated"
+          description: "The timestamp of the most recent update to the service"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "The email of the user who last updated the service"
+        "tools":
+          items:
+            type: "string"
+          type: "array"
+          title: "Tools"
+          description: "Names of tools that belong to the service"
       type: "object"
       required:
         - "name"
         - "description"
         - "id"
-      title: "ServiceUpdate"
+        - "last_updated"
+        - "last_updated_by"
+        - "tools"
+      title: "ServiceResponse"
+      description: "A service is a collection of tools."
+    "ServiceUpdateRequest":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the service"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "The description of the service"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the service"
+        "last_updated_comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated Comments"
+          description: "Update comments"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "id"
+      title: "ServiceUpdateRequest"
     "Session":
       properties:
         "timestamp":
@@ -6045,27 +6174,57 @@ components:
       description: "A tool that can be called from an LLM during the conversation."
     "ToolDetailResponse":
       properties:
-        "id":
-          type: "integer"
-          title: "Id"
         "name":
           type: "string"
           title: "Name"
-        "description":
+          description: "The name of the tool"
+        "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
+        "service_id":
+          type: "integer"
+          title: "Service Id"
+          description: "The service this tool belongs to"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the tool"
+        "last_updated_comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated Comments"
+          description: "Update comments"
+        "service_name":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Service Name"
+          description: "The name of the service to which the tool belongs"
+        "last_updated":
           type: "string"
-          title: "Description"
+          format: "date-time"
+          title: "Last Updated"
+          description: "The timestamp of the most recent update to the service"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "The email of the user who last updated the tool"
         "fields":
           items:
             type: "string"
           type: "array"
           title: "Fields"
+          description: "Fields that the tool accepts as input"
       type: "object"
       required:
-        - "id"
         - "name"
-        - "description"
+        - "definition"
+        - "service_id"
+        - "id"
+        - "last_updated"
+        - "last_updated_by"
         - "fields"
       title: "ToolDetailResponse"
+      description: "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
     "ToolFunction":
       properties:
         "name":
@@ -6180,6 +6339,8 @@ components:
         - "service_name"
         - "definition"
         - "service_id"
+        - "updated_at"
+        - "last_updated_by"
       title: "ToolProperties"
     "ToolResponse":
       properties:
@@ -6196,18 +6357,35 @@ components:
           type: "integer"
           title: "Id"
           description: "The ID of the tool"
+        "last_updated_comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated Comments"
+          description: "Update comments"
         "service_name":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Service Name"
           description: "The name of the service to which the tool belongs"
+        "last_updated":
+          type: "string"
+          format: "date-time"
+          title: "Last Updated"
+          description: "The timestamp of the most recent update to the service"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "The email of the user who last updated the tool"
       type: "object"
       required:
         - "name"
         - "definition"
         - "service_id"
         - "id"
+        - "last_updated"
+        - "last_updated_by"
       title: "ToolResponse"
       description: "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
     "ToolUpdateRequest":
@@ -6225,6 +6403,12 @@ components:
           type: "integer"
           title: "Id"
           description: "The ID of the tool"
+        "last_updated_comments":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Updated Comments"
+          description: "Update comments"
       type: "object"
       required:
         - "name"

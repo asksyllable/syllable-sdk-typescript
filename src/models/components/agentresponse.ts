@@ -85,6 +85,10 @@ export type AgentResponse = {
    */
   toolHeaders: { [k: string]: string } | null;
   /**
+   * Whether the agent initiates conversation with a user after the custom_message is delivered
+   */
+  agentInitiated?: boolean | undefined;
+  /**
    * The agent ID
    */
   id: number;
@@ -127,6 +131,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
   languages: z.array(z.string()).optional(),
   variables: z.record(z.string()),
   tool_headers: z.nullable(z.record(z.string())),
+  agent_initiated: z.boolean().default(false),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.nullable(z.string()),
@@ -141,6 +146,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
     "custom_message_id": "customMessageId",
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
+    "agent_initiated": "agentInitiated",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
     "custom_message": "customMessage",
@@ -161,6 +167,7 @@ export type AgentResponse$Outbound = {
   languages?: Array<string> | undefined;
   variables: { [k: string]: string };
   tool_headers: { [k: string]: string } | null;
+  agent_initiated: boolean;
   id: number;
   updated_at: string;
   last_updated_by: string | null;
@@ -186,6 +193,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
   languages: z.array(z.string()).optional(),
   variables: z.record(z.string()),
   toolHeaders: z.nullable(z.record(z.string())),
+  agentInitiated: z.boolean().default(false),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()),
@@ -200,6 +208,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
     customMessageId: "custom_message_id",
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
+    agentInitiated: "agent_initiated",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
     customMessage: "custom_message",

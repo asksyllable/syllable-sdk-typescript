@@ -39,9 +39,21 @@ export type ToolResponse = {
    */
   id: number;
   /**
+   * Update comments
+   */
+  lastUpdatedComments?: string | null | undefined;
+  /**
    * The name of the service to which the tool belongs
    */
   serviceName?: string | null | undefined;
+  /**
+   * The timestamp of the most recent update to the service
+   */
+  lastUpdated: Date;
+  /**
+   * The email of the user who last updated the tool
+   */
+  lastUpdatedBy: string;
 };
 
 /** @internal */
@@ -54,11 +66,19 @@ export const ToolResponse$inboundSchema: z.ZodType<
   definition: ToolDefinition$inboundSchema,
   service_id: z.number().int(),
   id: z.number().int(),
+  last_updated_comments: z.nullable(z.string()).optional(),
   service_name: z.nullable(z.string()).optional(),
+  last_updated: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ),
+  last_updated_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "service_id": "serviceId",
+    "last_updated_comments": "lastUpdatedComments",
     "service_name": "serviceName",
+    "last_updated": "lastUpdated",
+    "last_updated_by": "lastUpdatedBy",
   });
 });
 
@@ -68,7 +88,10 @@ export type ToolResponse$Outbound = {
   definition: ToolDefinition$Outbound;
   service_id: number;
   id: number;
+  last_updated_comments?: string | null | undefined;
   service_name?: string | null | undefined;
+  last_updated: string;
+  last_updated_by: string;
 };
 
 /** @internal */
@@ -81,11 +104,17 @@ export const ToolResponse$outboundSchema: z.ZodType<
   definition: ToolDefinition$outboundSchema,
   serviceId: z.number().int(),
   id: z.number().int(),
+  lastUpdatedComments: z.nullable(z.string()).optional(),
   serviceName: z.nullable(z.string()).optional(),
+  lastUpdated: z.date().transform(v => v.toISOString()),
+  lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
     serviceId: "service_id",
+    lastUpdatedComments: "last_updated_comments",
     serviceName: "service_name",
+    lastUpdated: "last_updated",
+    lastUpdatedBy: "last_updated_by",
   });
 });
 
