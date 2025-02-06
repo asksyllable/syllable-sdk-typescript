@@ -5775,12 +5775,6 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
-          },
-          "agent_initiated": {
-            "type": "boolean",
-            "title": "Agent Initiated",
-            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
-            "default": false
           }
         },
         "type": "object",
@@ -5919,12 +5913,6 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
-          },
-          "agent_initiated": {
-            "type": "boolean",
-            "title": "Agent Initiated",
-            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
-            "default": false
           },
           "id": {
             "type": "integer",
@@ -6149,12 +6137,6 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
-          },
-          "agent_initiated": {
-            "type": "boolean",
-            "title": "Agent Initiated",
-            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
-            "default": false
           },
           "id": {
             "type": "integer",
