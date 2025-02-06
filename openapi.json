@@ -3489,54 +3489,7 @@
         }
       }
     },
-    "/api/v1/tools/{tool_name}": {
-      "get": {
-        "tags": [
-          "tools",
-          "V1"
-        ],
-        "summary": "Tool Info",
-        "description": "Get the details of a specific tool",
-        "operationId": "tool_get_by_name",
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "tool_name",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Tool Name"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ToolDetailResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      },
+    "/api/v1/tools/{tool_id}": {
       "delete": {
         "tags": [
           "tools",
@@ -3552,12 +3505,12 @@
         ],
         "parameters": [
           {
-            "name": "tool_name",
+            "name": "tool_id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "title": "Tool Name"
+              "type": "integer",
+              "title": "Tool Id"
             }
           },
           {
@@ -10452,84 +10405,6 @@
         ],
         "title": "ToolDefinition",
         "description": "A tool that can be called from an LLM during the conversation."
-      },
-      "ToolDetailResponse": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the tool"
-          },
-          "definition": {
-            "$ref": "#/components/schemas/ToolDefinition",
-            "description": "The definition of the tool"
-          },
-          "service_id": {
-            "type": "integer",
-            "title": "Service Id",
-            "description": "The service this tool belongs to"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The ID of the tool"
-          },
-          "last_updated_comments": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Last Updated Comments",
-            "description": "Update comments"
-          },
-          "service_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Service Name",
-            "description": "The name of the service to which the tool belongs"
-          },
-          "last_updated": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Last Updated",
-            "description": "The timestamp of the most recent update to the service"
-          },
-          "last_updated_by": {
-            "type": "string",
-            "title": "Last Updated By",
-            "description": "The email of the user who last updated the tool"
-          },
-          "fields": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Fields",
-            "description": "Fields that the tool accepts as input"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "definition",
-          "service_id",
-          "id",
-          "last_updated",
-          "last_updated_by",
-          "fields"
-        ],
-        "title": "ToolDetailResponse",
-        "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
       },
       "ToolFunction": {
         "properties": {
