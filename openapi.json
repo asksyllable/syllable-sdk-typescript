@@ -1120,7 +1120,7 @@
         }
       }
     },
-    "/api/v1/data_sources/{name}": {
+    "/api/v1/data_sources/{data_source_name}": {
       "get": {
         "tags": [
           "data_sources",
@@ -1136,12 +1136,12 @@
         ],
         "parameters": [
           {
-            "name": "name",
+            "name": "data_source_name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Name"
+              "title": "Data Source Name"
             }
           }
         ],
@@ -1175,7 +1175,7 @@
         ],
         "summary": "Delete Data Source",
         "description": "Delete a given data source.",
-        "operationId": "data_sources_delete_by_name",
+        "operationId": "data_sources_delete",
         "security": [
           {
             "APIKeyHeader": []
@@ -1183,12 +1183,12 @@
         ],
         "parameters": [
           {
-            "name": "name",
+            "name": "data_source_name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Name"
+              "title": "Data Source Name"
             }
           },
           {
@@ -3489,7 +3489,7 @@
         }
       }
     },
-    "/api/v1/tools/{name}": {
+    "/api/v1/tools/{tool_name}": {
       "get": {
         "tags": [
           "tools",
@@ -3505,12 +3505,12 @@
         ],
         "parameters": [
           {
-            "name": "name",
+            "name": "tool_name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Name"
+              "title": "Tool Name"
             }
           }
         ],
@@ -3552,12 +3552,12 @@
         ],
         "parameters": [
           {
-            "name": "name",
+            "name": "tool_name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Name"
+              "title": "Tool Name"
             }
           },
           {
