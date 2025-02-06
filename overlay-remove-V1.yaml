@@ -183,6 +183,11 @@ actions:
   - target: $["paths"]["/api/v1/services/"]["get"]["tags"]
     update:
       - "services"
+  - target: $["paths"]["/api/v1/services/{service_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/services/{service_id}"]["get"]["tags"]
+    update:
+      - "services"
   - target: $["paths"]["/api/v1/services/"]["post"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/services/"]["post"]["tags"]
@@ -191,6 +196,11 @@ actions:
   - target: $["paths"]["/api/v1/services/"]["put"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/services/"]["put"]["tags"]
+    update:
+      - "services"
+  - target: $["paths"]["/api/v1/services/{service_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/services/{service_id}"]["delete"]["tags"]
     update:
       - "services"
   - target: $["paths"]["/api/v1/sessions/"]["get"]["tags"][*]
@@ -317,3 +327,29 @@ actions:
   - target: $["paths"]["/api/v1/directory_members/download/"]["get"]["tags"]
     update:
       - "directory"
+
+  - target: $["paths"]["/api/v1/data_sources/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/data_sources/"]["get"]["tags"]
+    update:
+      - "data_sources"
+  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["get"]["tags"]
+    update:
+      - "data_sources"
+  - target: $["paths"]["/api/v1/data_sources/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/data_sources/"]["post"]["tags"]
+    update:
+      - "data_sources"
+  - target: $["paths"]["/api/v1/data_sources/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/data_sources/"]["put"]["tags"]
+    update:
+      - "data_sources"
+  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["delete"]["tags"]
+    update:
+      - "data_sources"
