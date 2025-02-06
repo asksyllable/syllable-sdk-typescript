@@ -18,22 +18,27 @@ let value: ToolResponse = {
       function: {
         name: "<value>",
         description:
-          "brace instruction ew impish loyalty cake although misfire breastplate whenever",
+          "hmph backburn amid productive quit ride unnaturally aboard dead midst",
         parameters: {},
       },
     },
   },
-  serviceId: 456410,
-  id: 153369,
+  serviceId: 773456,
+  id: 456410,
+  lastUpdated: new Date("2023-06-18T02:12:53.867Z"),
+  lastUpdatedBy: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `name`                                                                 | *string*                                                               | TRUE                                                     | The name of the tool                                                   |
-| `definition`                                                           | [components.ToolDefinition](/sdk-docs/models/components/tooldefinition) | TRUE                                                     | A tool that can be called from an LLM during the conversation.         |
-| `serviceId`                                                            | *number*                                                               | TRUE                                                     | The service this tool belongs to                                       |
-| `id`                                                                   | *number*                                                               | TRUE                                                     | The ID of the tool                                                     |
-| `serviceName`                                                          | *string*                                                               | FALSE                                                     | The name of the service to which the tool belongs                      |
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `name`                                                                                        | *string*                                                                                      | TRUE                                                                            | The name of the tool                                                                          |
+| `definition`                                                                                  | [components.ToolDefinition](/sdk-docs/models/components/tooldefinition)                        | TRUE                                                                            | A tool that can be called from an LLM during the conversation.                                |
+| `serviceId`                                                                                   | *number*                                                                                      | TRUE                                                                            | The service this tool belongs to                                                              |
+| `id`                                                                                          | *number*                                                                                      | TRUE                                                                            | The ID of the tool                                                                            |
+| `lastUpdatedComments`                                                                         | *string*                                                                                      | FALSE                                                                            | Update comments                                                                               |
+| `serviceName`                                                                                 | *string*                                                                                      | FALSE                                                                            | The name of the service to which the tool belongs                                             |
+| `lastUpdated`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | TRUE                                                                            | The timestamp of the most recent update to the service                                        |
+| `lastUpdatedBy`                                                                               | *string*                                                                                      | TRUE                                                                            | The email of the user who last updated the tool                                               |

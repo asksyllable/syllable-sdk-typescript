@@ -10,8 +10,8 @@ Information about a given message from a user to an agent or vice-versa.
 import { SessionText } from "syllable-sdk/models/components";
 
 let value: SessionText = {
-  timestamp: new Date("2024-05-04T05:57:31.337Z"),
-  lang: "unset",
+  timestamp: new Date("2024-10-27T13:05:15.123Z"),
+  lang: "es-US",
   source: "user",
 };
 ```
