@@ -16,13 +16,13 @@ let value: ListResponsePromptResponse = {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 355369,
+      id: 185232,
       lastUpdated: "<value>",
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 356707,
-  pageSize: 16328,
+  page: 401259,
+  pageSize: 929292,
 };
 ```
 
