@@ -3,12 +3,13 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DataSourcesGetByNameRequest = {
-  name: string;
+  dataSourceName: string;
 };
 
 /** @internal */
@@ -17,12 +18,16 @@ export const DataSourcesGetByNameRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
+  data_source_name: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "data_source_name": "dataSourceName",
+  });
 });
 
 /** @internal */
 export type DataSourcesGetByNameRequest$Outbound = {
-  name: string;
+  data_source_name: string;
 };
 
 /** @internal */
@@ -31,7 +36,11 @@ export const DataSourcesGetByNameRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DataSourcesGetByNameRequest
 > = z.object({
-  name: z.string(),
+  dataSourceName: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    dataSourceName: "data_source_name",
+  });
 });
 
 /**

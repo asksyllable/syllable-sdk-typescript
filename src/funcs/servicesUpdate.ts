@@ -25,14 +25,17 @@ import { Result } from "../types/fp.js";
 
 /**
  * Update Service
+ *
+ * @remarks
+ * Update an existing service.
  */
 export async function servicesUpdate(
   client: SyllableSDKCore,
-  request: components.ServiceUpdate,
+  request: components.ServiceUpdateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.Service,
+    components.ServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -45,7 +48,7 @@ export async function servicesUpdate(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.ServiceUpdate$outboundSchema.parse(value),
+    (value) => components.ServiceUpdateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -108,7 +111,7 @@ export async function servicesUpdate(
   };
 
   const [result] = await M.match<
-    components.Service,
+    components.ServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -118,7 +121,7 @@ export async function servicesUpdate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.Service$inboundSchema),
+    M.json(200, components.ServiceResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

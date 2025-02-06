@@ -3,6 +3,8 @@
  */
 
 import { servicesCreate } from "../funcs/servicesCreate.js";
+import { servicesDelete } from "../funcs/servicesDelete.js";
+import { servicesGetById } from "../funcs/servicesGetById.js";
 import { servicesList } from "../funcs/servicesList.js";
 import { servicesUpdate } from "../funcs/servicesUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -15,12 +17,12 @@ export class Services extends ClientSDK {
    * Service List
    *
    * @remarks
-   * List the existing agents
+   * List the existing services
    */
   async list(
     request: operations.ServiceListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseService> {
+  ): Promise<components.ListResponseServiceResponse> {
     return unwrapAsync(servicesList(
       this,
       request,
@@ -30,11 +32,14 @@ export class Services extends ClientSDK {
 
   /**
    * Create Service
+   *
+   * @remarks
+   * Create a new service.
    */
   async create(
-    request: components.ServiceCreate,
+    request: components.ServiceCreateRequest,
     options?: RequestOptions,
-  ): Promise<components.Service> {
+  ): Promise<components.ServiceResponse> {
     return unwrapAsync(servicesCreate(
       this,
       request,
@@ -44,12 +49,49 @@ export class Services extends ClientSDK {
 
   /**
    * Update Service
+   *
+   * @remarks
+   * Update an existing service.
    */
   async update(
-    request: components.ServiceUpdate,
+    request: components.ServiceUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.Service> {
+  ): Promise<components.ServiceResponse> {
     return unwrapAsync(servicesUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Service By Id
+   *
+   * @remarks
+   * Get a service by its ID
+   */
+  async getById(
+    request: operations.ServicesGetByIdRequest,
+    options?: RequestOptions,
+  ): Promise<components.ServiceResponse> {
+    return unwrapAsync(servicesGetById(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Service
+   *
+   * @remarks
+   * Delete a service. A service with linked tools cannot be deleted.
+   */
+  async delete(
+    request: operations.ServiceDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(servicesDelete(
       this,
       request,
       options,

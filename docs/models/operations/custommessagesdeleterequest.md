@@ -6,7 +6,7 @@
 import { CustomMessagesDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: CustomMessagesDeleteRequest = {
-  customMessageId: 51075,
+  customMessageId: 83291,
   reason: "<value>",
 };
 ```

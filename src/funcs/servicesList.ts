@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Service List
  *
  * @remarks
- * List the existing agents
+ * List the existing services
  */
 export async function servicesList(
   client: SyllableSDKCore,
@@ -36,7 +36,7 @@ export async function servicesList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponseService,
+    components.ListResponseServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -124,7 +124,7 @@ export async function servicesList(
   };
 
   const [result] = await M.match<
-    components.ListResponseService,
+    components.ListResponseServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -134,7 +134,7 @@ export async function servicesList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListResponseService$inboundSchema),
+    M.json(200, components.ListResponseServiceResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

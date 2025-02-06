@@ -3,14 +3,60 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ToolDefinition,
+  ToolDefinition$inboundSchema,
+  ToolDefinition$Outbound,
+  ToolDefinition$outboundSchema,
+} from "./tooldefinition.js";
 
+/**
+ * A tool is a function that an agent can call to perform actions like accessing databases,
+ *
+ * @remarks
+ * making API calls, or processing data. For an agent to have access to a tool, the prompt
+ * associated with that agent should be linked to the tool and include instructions to use it.
+ */
 export type ToolDetailResponse = {
-  id: number;
+  /**
+   * The name of the tool
+   */
   name: string;
-  description: string;
+  /**
+   * A tool that can be called from an LLM during the conversation.
+   */
+  definition: ToolDefinition;
+  /**
+   * The service this tool belongs to
+   */
+  serviceId: number;
+  /**
+   * The ID of the tool
+   */
+  id: number;
+  /**
+   * Update comments
+   */
+  lastUpdatedComments?: string | null | undefined;
+  /**
+   * The name of the service to which the tool belongs
+   */
+  serviceName?: string | null | undefined;
+  /**
+   * The timestamp of the most recent update to the service
+   */
+  lastUpdated: Date;
+  /**
+   * The email of the user who last updated the tool
+   */
+  lastUpdatedBy: string;
+  /**
+   * Fields that the tool accepts as input
+   */
   fields: Array<string>;
 };
 
@@ -20,17 +66,37 @@ export const ToolDetailResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.number().int(),
   name: z.string(),
-  description: z.string(),
+  definition: ToolDefinition$inboundSchema,
+  service_id: z.number().int(),
+  id: z.number().int(),
+  last_updated_comments: z.nullable(z.string()).optional(),
+  service_name: z.nullable(z.string()).optional(),
+  last_updated: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ),
+  last_updated_by: z.string(),
   fields: z.array(z.string()),
+}).transform((v) => {
+  return remap$(v, {
+    "service_id": "serviceId",
+    "last_updated_comments": "lastUpdatedComments",
+    "service_name": "serviceName",
+    "last_updated": "lastUpdated",
+    "last_updated_by": "lastUpdatedBy",
+  });
 });
 
 /** @internal */
 export type ToolDetailResponse$Outbound = {
-  id: number;
   name: string;
-  description: string;
+  definition: ToolDefinition$Outbound;
+  service_id: number;
+  id: number;
+  last_updated_comments?: string | null | undefined;
+  service_name?: string | null | undefined;
+  last_updated: string;
+  last_updated_by: string;
   fields: Array<string>;
 };
 
@@ -40,10 +106,23 @@ export const ToolDetailResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ToolDetailResponse
 > = z.object({
-  id: z.number().int(),
   name: z.string(),
-  description: z.string(),
+  definition: ToolDefinition$outboundSchema,
+  serviceId: z.number().int(),
+  id: z.number().int(),
+  lastUpdatedComments: z.nullable(z.string()).optional(),
+  serviceName: z.nullable(z.string()).optional(),
+  lastUpdated: z.date().transform(v => v.toISOString()),
+  lastUpdatedBy: z.string(),
   fields: z.array(z.string()),
+}).transform((v) => {
+  return remap$(v, {
+    serviceId: "service_id",
+    lastUpdatedComments: "last_updated_comments",
+    serviceName: "service_name",
+    lastUpdated: "last_updated",
+    lastUpdatedBy: "last_updated_by",
+  });
 });
 
 /**

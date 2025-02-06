@@ -13,18 +13,19 @@ let value: ListResponseToolResponse = {
         tool: {
           function: {
             name: "<value>",
-            description:
-              "blindly um platypus fund positively stylish barge card",
+            description: "burgeon pupil great vice",
             parameters: {},
           },
         },
       },
-      serviceId: 589695,
-      id: 745398,
+      serviceId: 117320,
+      id: 107004,
+      lastUpdated: new Date("2024-10-08T07:19:47.979Z"),
+      lastUpdatedBy: "<value>",
     },
   ],
-  page: 848151,
-  pageSize: 935833,
+  page: 745398,
+  pageSize: 848151,
 };
 ```
 

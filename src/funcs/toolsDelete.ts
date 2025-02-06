@@ -25,14 +25,14 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete Data Source
+ * Delete Tool
  *
  * @remarks
- * Delete a given data source.
+ * Delete a tool.
  */
-export async function v1DataSourcesDeleteByName(
+export async function toolsDelete(
   client: SyllableSDKCore,
-  request: operations.DataSourcesDeleteByNameRequest,
+  request: operations.ToolDeleteRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -49,8 +49,7 @@ export async function v1DataSourcesDeleteByName(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.DataSourcesDeleteByNameRequest$outboundSchema.parse(value),
+    (value) => operations.ToolDeleteRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -60,13 +59,13 @@ export async function v1DataSourcesDeleteByName(
   const body = null;
 
   const pathParams = {
-    name: encodeSimple("name", payload.name, {
+    tool_name: encodeSimple("tool_name", payload.tool_name, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path = pathToFunc("/api/v1/data_sources/{name}")(pathParams);
+  const path = pathToFunc("/api/v1/tools/{tool_name}")(pathParams);
 
   const query = encodeFormQuery({
     "reason": payload.reason,
@@ -81,7 +80,7 @@ export async function v1DataSourcesDeleteByName(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "data_sources_delete_by_name",
+    operationID: "tool_delete",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,

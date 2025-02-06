@@ -6,8 +6,8 @@
 import { SessionLabelCreate } from "syllable-sdk/models/components";
 
 let value: SessionLabelCreate = {
-  sessionId: 790840,
-  type: "auto-rating",
+  sessionId: 160467,
+  type: "human-rating",
   code: "OK",
   userEmail: "<value>",
   issueCategories: [

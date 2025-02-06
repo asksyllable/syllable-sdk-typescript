@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,21 +21,22 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update Data Source
+ * Get Service By Id
  *
  * @remarks
- * Update an existing data source.
+ * Get a service by its ID
  */
-export async function v1Update(
+export async function servicesGetById(
   client: SyllableSDKCore,
-  request: components.DataSourceUpdateRequest,
+  request: operations.ServicesGetByIdRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.DataSourceDetailResponse,
+    components.ServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -48,19 +49,25 @@ export async function v1Update(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.DataSourceUpdateRequest$outboundSchema.parse(value),
+    (value) => operations.ServicesGetByIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = null;
 
-  const path = pathToFunc("/api/v1/data_sources/")();
+  const pathParams = {
+    service_id: encodeSimple("service_id", payload.service_id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/api/v1/services/{service_id}")(pathParams);
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -69,7 +76,7 @@ export async function v1Update(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "data_sources_update",
+    operationID: "services_get_by_id",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -83,7 +90,7 @@ export async function v1Update(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "PUT",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -111,7 +118,7 @@ export async function v1Update(
   };
 
   const [result] = await M.match<
-    components.DataSourceDetailResponse,
+    components.ServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -121,7 +128,7 @@ export async function v1Update(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.DataSourceDetailResponse$inboundSchema),
+    M.json(200, components.ServiceResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

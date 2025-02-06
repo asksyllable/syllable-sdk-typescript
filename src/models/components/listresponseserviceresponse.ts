@@ -8,14 +8,14 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  Service,
-  Service$inboundSchema,
-  Service$Outbound,
-  Service$outboundSchema,
-} from "./service.js";
+  ServiceResponse,
+  ServiceResponse$inboundSchema,
+  ServiceResponse$Outbound,
+  ServiceResponse$outboundSchema,
+} from "./serviceresponse.js";
 
-export type ListResponseService = {
-  items: Array<Service>;
+export type ListResponseServiceResponse = {
+  items: Array<ServiceResponse>;
   page: number;
   pageSize: number;
   totalPages?: number | null | undefined;
@@ -23,12 +23,12 @@ export type ListResponseService = {
 };
 
 /** @internal */
-export const ListResponseService$inboundSchema: z.ZodType<
-  ListResponseService,
+export const ListResponseServiceResponse$inboundSchema: z.ZodType<
+  ListResponseServiceResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.array(Service$inboundSchema),
+  items: z.array(ServiceResponse$inboundSchema),
   page: z.number().int(),
   page_size: z.number().int(),
   total_pages: z.nullable(z.number().int()).optional(),
@@ -42,8 +42,8 @@ export const ListResponseService$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ListResponseService$Outbound = {
-  items: Array<Service$Outbound>;
+export type ListResponseServiceResponse$Outbound = {
+  items: Array<ServiceResponse$Outbound>;
   page: number;
   page_size: number;
   total_pages?: number | null | undefined;
@@ -51,12 +51,12 @@ export type ListResponseService$Outbound = {
 };
 
 /** @internal */
-export const ListResponseService$outboundSchema: z.ZodType<
-  ListResponseService$Outbound,
+export const ListResponseServiceResponse$outboundSchema: z.ZodType<
+  ListResponseServiceResponse$Outbound,
   z.ZodTypeDef,
-  ListResponseService
+  ListResponseServiceResponse
 > = z.object({
-  items: z.array(Service$outboundSchema),
+  items: z.array(ServiceResponse$outboundSchema),
   page: z.number().int(),
   pageSize: z.number().int(),
   totalPages: z.nullable(z.number().int()).optional(),
@@ -73,29 +73,31 @@ export const ListResponseService$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ListResponseService$ {
-  /** @deprecated use `ListResponseService$inboundSchema` instead. */
-  export const inboundSchema = ListResponseService$inboundSchema;
-  /** @deprecated use `ListResponseService$outboundSchema` instead. */
-  export const outboundSchema = ListResponseService$outboundSchema;
-  /** @deprecated use `ListResponseService$Outbound` instead. */
-  export type Outbound = ListResponseService$Outbound;
+export namespace ListResponseServiceResponse$ {
+  /** @deprecated use `ListResponseServiceResponse$inboundSchema` instead. */
+  export const inboundSchema = ListResponseServiceResponse$inboundSchema;
+  /** @deprecated use `ListResponseServiceResponse$outboundSchema` instead. */
+  export const outboundSchema = ListResponseServiceResponse$outboundSchema;
+  /** @deprecated use `ListResponseServiceResponse$Outbound` instead. */
+  export type Outbound = ListResponseServiceResponse$Outbound;
 }
 
-export function listResponseServiceToJSON(
-  listResponseService: ListResponseService,
+export function listResponseServiceResponseToJSON(
+  listResponseServiceResponse: ListResponseServiceResponse,
 ): string {
   return JSON.stringify(
-    ListResponseService$outboundSchema.parse(listResponseService),
+    ListResponseServiceResponse$outboundSchema.parse(
+      listResponseServiceResponse,
+    ),
   );
 }
 
-export function listResponseServiceFromJSON(
+export function listResponseServiceResponseFromJSON(
   jsonString: string,
-): SafeParseResult<ListResponseService, SDKValidationError> {
+): SafeParseResult<ListResponseServiceResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListResponseService$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListResponseService' from JSON`,
+    (x) => ListResponseServiceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseServiceResponse' from JSON`,
   );
 }
