@@ -3489,7 +3489,7 @@
         }
       }
     },
-    "/api/v1/tools/{tool_name}": {
+    "/api/v1/tools/{name}": {
       "get": {
         "tags": [
           "tools",
@@ -3505,12 +3505,12 @@
         ],
         "parameters": [
           {
-            "name": "tool_name",
+            "name": "name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Tool Name"
+              "title": "Name"
             }
           }
         ],
@@ -3552,12 +3552,12 @@
         ],
         "parameters": [
           {
-            "name": "tool_name",
+            "name": "name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Tool Name"
+              "title": "Name"
             }
           },
           {
