@@ -1120,7 +1120,7 @@
         }
       }
     },
-    "/api/v1/data_sources/{name}": {
+    "/api/v1/data_sources/{data_source_name}": {
       "get": {
         "tags": [
           "data_sources",
@@ -1136,12 +1136,12 @@
         ],
         "parameters": [
           {
-            "name": "name",
+            "name": "data_source_name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Name"
+              "title": "Data Source Name"
             }
           }
         ],
@@ -1175,7 +1175,7 @@
         ],
         "summary": "Delete Data Source",
         "description": "Delete a given data source.",
-        "operationId": "data_sources_delete_by_name",
+        "operationId": "data_sources_delete",
         "security": [
           {
             "APIKeyHeader": []
@@ -1183,12 +1183,12 @@
         ],
         "parameters": [
           {
-            "name": "name",
+            "name": "data_source_name",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Name"
+              "title": "Data Source Name"
             }
           },
           {
@@ -2209,7 +2209,7 @@
           "V1"
         ],
         "summary": "Service List",
-        "description": "List the existing agents",
+        "description": "List the existing services",
         "operationId": "service_list",
         "security": [
           {
@@ -2363,7 +2363,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListResponse_Service_"
+                  "$ref": "#/components/schemas/ListResponse_ServiceResponse_"
                 }
               }
             }
@@ -2386,6 +2386,7 @@
           "V1"
         ],
         "summary": "Create Service",
+        "description": "Create a new service.",
         "operationId": "service_create",
         "security": [
           {
@@ -2397,7 +2398,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServiceCreate"
+                "$ref": "#/components/schemas/ServiceCreateRequest"
               }
             }
           }
@@ -2408,7 +2409,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Service"
+                  "$ref": "#/components/schemas/ServiceResponse"
                 }
               }
             }
@@ -2431,6 +2432,7 @@
           "V1"
         ],
         "summary": "Update Service",
+        "description": "Update an existing service.",
         "operationId": "service_update",
         "security": [
           {
@@ -2442,7 +2444,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServiceUpdate"
+                "$ref": "#/components/schemas/ServiceUpdateRequest"
               }
             }
           }
@@ -2453,8 +2455,111 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Service"
+                  "$ref": "#/components/schemas/ServiceResponse"
                 }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/services/{service_id}": {
+      "get": {
+        "tags": [
+          "services",
+          "V1"
+        ],
+        "summary": "Get Service By Id",
+        "description": "Get a service by its ID",
+        "operationId": "services_get_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "service_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Service Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "services",
+          "V1"
+        ],
+        "summary": "Delete Service",
+        "description": "Delete a service. A service with linked tools cannot be deleted.",
+        "operationId": "service_delete",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "service_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Service Id"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reason"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
           },
@@ -3417,6 +3522,60 @@
                 "schema": {
                   "$ref": "#/components/schemas/ToolDetailResponse"
                 }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "tools",
+          "V1"
+        ],
+        "summary": "Delete Tool",
+        "description": "Delete a tool.",
+        "operationId": "tool_delete",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tool_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tool Name"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reason"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
           },
@@ -5670,6 +5829,12 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
+          },
+          "agent_initiated": {
+            "type": "boolean",
+            "title": "Agent Initiated",
+            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "default": false
           }
         },
         "type": "object",
@@ -5808,6 +5973,12 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
+          },
+          "agent_initiated": {
+            "type": "boolean",
+            "title": "Agent Initiated",
+            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "default": false
           },
           "id": {
             "type": "integer",
@@ -6032,6 +6203,12 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
+          },
+          "agent_initiated": {
+            "type": "boolean",
+            "title": "Agent Initiated",
+            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "default": false
           },
           "id": {
             "type": "integer",
@@ -8535,11 +8712,11 @@
         ],
         "title": "ListResponse[PromptResponse]"
       },
-      "ListResponse_Service_": {
+      "ListResponse_ServiceResponse_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/Service"
+              "$ref": "#/components/schemas/ServiceResponse"
             },
             "type": "array",
             "title": "Items"
@@ -8581,7 +8758,7 @@
           "page",
           "page_size"
         ],
-        "title": "ListResponse[Service]"
+        "title": "ListResponse[ServiceResponse]"
       },
       "ListResponse_SessionLabel_": {
         "properties": {
@@ -9271,43 +9448,7 @@
         ],
         "title": "RequestStatus"
       },
-      "Service": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The name of the service"
-          },
-          "description": {
-            "type": "string",
-            "title": "Description",
-            "description": "The description of the service"
-          },
-          "id": {
-            "type": "integer",
-            "title": "Id",
-            "description": "The ID of the service"
-          },
-          "tools": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Tools",
-            "description": "Names of the tools that belong to the service"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "description",
-          "id",
-          "tools"
-        ],
-        "title": "Service",
-        "description": "A service is a collection of tools."
-      },
-      "ServiceCreate": {
+      "ServiceCreateRequest": {
         "properties": {
           "name": {
             "type": "string",
@@ -9325,17 +9466,20 @@
           "name",
           "description"
         ],
-        "title": "ServiceCreate"
+        "title": "ServiceCreateRequest"
       },
       "ServiceProperties": {
         "type": "string",
         "enum": [
           "id",
-          "name"
+          "name",
+          "description",
+          "updated_at",
+          "last_updated_by"
         ],
         "title": "ServiceProperties"
       },
-      "ServiceUpdate": {
+      "ServiceResponse": {
         "properties": {
           "name": {
             "type": "string",
@@ -9351,6 +9495,79 @@
             "type": "integer",
             "title": "Id",
             "description": "The ID of the service"
+          },
+          "last_updated_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated Comments",
+            "description": "Update comments"
+          },
+          "last_updated": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Last Updated",
+            "description": "The timestamp of the most recent update to the service"
+          },
+          "last_updated_by": {
+            "type": "string",
+            "title": "Last Updated By",
+            "description": "The email of the user who last updated the service"
+          },
+          "tools": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tools",
+            "description": "Names of tools that belong to the service"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "id",
+          "last_updated",
+          "last_updated_by",
+          "tools"
+        ],
+        "title": "ServiceResponse",
+        "description": "A service is a collection of tools."
+      },
+      "ServiceUpdateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the service"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "The description of the service"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the service"
+          },
+          "last_updated_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated Comments",
+            "description": "Update comments"
           }
         },
         "type": "object",
@@ -9359,7 +9576,7 @@
           "description",
           "id"
         ],
-        "title": "ServiceUpdate"
+        "title": "ServiceUpdateRequest"
       },
       "Session": {
         "properties": {
@@ -10238,34 +10455,81 @@
       },
       "ToolDetailResponse": {
         "properties": {
-          "id": {
-            "type": "integer",
-            "title": "Id"
-          },
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "The name of the tool"
           },
-          "description": {
+          "definition": {
+            "$ref": "#/components/schemas/ToolDefinition",
+            "description": "The definition of the tool"
+          },
+          "service_id": {
+            "type": "integer",
+            "title": "Service Id",
+            "description": "The service this tool belongs to"
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the tool"
+          },
+          "last_updated_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated Comments",
+            "description": "Update comments"
+          },
+          "service_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Service Name",
+            "description": "The name of the service to which the tool belongs"
+          },
+          "last_updated": {
             "type": "string",
-            "title": "Description"
+            "format": "date-time",
+            "title": "Last Updated",
+            "description": "The timestamp of the most recent update to the service"
+          },
+          "last_updated_by": {
+            "type": "string",
+            "title": "Last Updated By",
+            "description": "The email of the user who last updated the tool"
           },
           "fields": {
             "items": {
               "type": "string"
             },
             "type": "array",
-            "title": "Fields"
+            "title": "Fields",
+            "description": "Fields that the tool accepts as input"
           }
         },
         "type": "object",
         "required": [
-          "id",
           "name",
-          "description",
+          "definition",
+          "service_id",
+          "id",
+          "last_updated",
+          "last_updated_by",
           "fields"
         ],
-        "title": "ToolDetailResponse"
+        "title": "ToolDetailResponse",
+        "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
       },
       "ToolFunction": {
         "properties": {
@@ -10435,7 +10699,9 @@
           "name",
           "service_name",
           "definition",
-          "service_id"
+          "service_id",
+          "updated_at",
+          "last_updated_by"
         ],
         "title": "ToolProperties"
       },
@@ -10460,6 +10726,18 @@
             "title": "Id",
             "description": "The ID of the tool"
           },
+          "last_updated_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated Comments",
+            "description": "Update comments"
+          },
           "service_name": {
             "anyOf": [
               {
@@ -10471,6 +10749,17 @@
             ],
             "title": "Service Name",
             "description": "The name of the service to which the tool belongs"
+          },
+          "last_updated": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Last Updated",
+            "description": "The timestamp of the most recent update to the service"
+          },
+          "last_updated_by": {
+            "type": "string",
+            "title": "Last Updated By",
+            "description": "The email of the user who last updated the tool"
           }
         },
         "type": "object",
@@ -10478,7 +10767,9 @@
           "name",
           "definition",
           "service_id",
-          "id"
+          "id",
+          "last_updated",
+          "last_updated_by"
         ],
         "title": "ToolResponse",
         "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
@@ -10503,6 +10794,18 @@
             "type": "integer",
             "title": "Id",
             "description": "The ID of the tool"
+          },
+          "last_updated_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Updated Comments",
+            "description": "Update comments"
           }
         },
         "type": "object",
