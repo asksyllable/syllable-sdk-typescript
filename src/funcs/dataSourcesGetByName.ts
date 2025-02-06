@@ -60,13 +60,16 @@ export async function dataSourcesGetByName(
   const body = null;
 
   const pathParams = {
-    name: encodeSimple("name", payload.name, {
-      explode: false,
-      charEncoding: "percent",
-    }),
+    data_source_name: encodeSimple(
+      "data_source_name",
+      payload.data_source_name,
+      { explode: false, charEncoding: "percent" },
+    ),
   };
 
-  const path = pathToFunc("/api/v1/data_sources/{name}")(pathParams);
+  const path = pathToFunc("/api/v1/data_sources/{data_source_name}")(
+    pathParams,
+  );
 
   const headers = new Headers(compactMap({
     Accept: "application/json",

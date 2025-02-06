@@ -3,7 +3,7 @@
  */
 
 import { dataSourcesCreate } from "../funcs/dataSourcesCreate.js";
-import { dataSourcesDataSourcesDeleteByName } from "../funcs/dataSourcesDataSourcesDeleteByName.js";
+import { dataSourcesDelete } from "../funcs/dataSourcesDelete.js";
 import { dataSourcesGetByName } from "../funcs/dataSourcesGetByName.js";
 import { dataSourcesList } from "../funcs/dataSourcesList.js";
 import { dataSourcesUpdate } from "../funcs/dataSourcesUpdate.js";
@@ -87,11 +87,11 @@ export class DataSources extends ClientSDK {
    * @remarks
    * Delete a given data source.
    */
-  async dataSourcesDeleteByName(
-    request: operations.DataSourcesDeleteByNameRequest,
+  async delete(
+    request: operations.DataSourcesDeleteRequest,
     options?: RequestOptions,
   ): Promise<any> {
-    return unwrapAsync(dataSourcesDataSourcesDeleteByName(
+    return unwrapAsync(dataSourcesDelete(
       this,
       request,
       options,

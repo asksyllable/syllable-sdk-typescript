@@ -1,14 +1,13 @@
-# ServiceUpdate
+# ServiceCreateRequest
 
 ## Example Usage
 
 ```typescript
-import { ServiceUpdate } from "syllable-sdk/models/components";
+import { ServiceCreateRequest } from "syllable-sdk/models/components";
 
-let value: ServiceUpdate = {
+let value: ServiceCreateRequest = {
   name: "<value>",
-  description: "holster minority eek",
-  id: 962771,
+  description: "near digestive traffic ouch",
 };
 ```
 
@@ -18,4 +17,3 @@ let value: ServiceUpdate = {
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `name`                         | *string*                       | :heavy_check_mark:             | The name of the service        |
 | `description`                  | *string*                       | :heavy_check_mark:             | The description of the service |
-| `id`                           | *number*                       | :heavy_check_mark:             | The ID of the service          |

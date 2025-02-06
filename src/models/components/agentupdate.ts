@@ -60,6 +60,10 @@ export type AgentUpdate = {
    */
   toolHeaders: { [k: string]: string } | null;
   /**
+   * Whether the agent initiates conversation with a user after the custom_message is delivered
+   */
+  agentInitiated?: boolean | undefined;
+  /**
    * The agent ID
    */
   id: number;
@@ -82,6 +86,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
   languages: z.array(z.string()).optional(),
   variables: z.record(z.string()),
   tool_headers: z.nullable(z.record(z.string())),
+  agent_initiated: z.boolean().default(false),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -89,6 +94,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
     "custom_message_id": "customMessageId",
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
+    "agent_initiated": "agentInitiated",
   });
 });
 
@@ -105,6 +111,7 @@ export type AgentUpdate$Outbound = {
   languages?: Array<string> | undefined;
   variables: { [k: string]: string };
   tool_headers: { [k: string]: string } | null;
+  agent_initiated: boolean;
   id: number;
 };
 
@@ -125,6 +132,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
   languages: z.array(z.string()).optional(),
   variables: z.record(z.string()),
   toolHeaders: z.nullable(z.record(z.string())),
+  agentInitiated: z.boolean().default(false),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -132,6 +140,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
     customMessageId: "custom_message_id",
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
+    agentInitiated: "agent_initiated",
   });
 });
 

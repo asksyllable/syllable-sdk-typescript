@@ -31,6 +31,10 @@ export type ToolUpdateRequest = {
    * The ID of the tool
    */
   id: number;
+  /**
+   * Update comments
+   */
+  lastUpdatedComments?: string | null | undefined;
 };
 
 /** @internal */
@@ -43,9 +47,11 @@ export const ToolUpdateRequest$inboundSchema: z.ZodType<
   definition: ToolDefinition$inboundSchema,
   service_id: z.number().int(),
   id: z.number().int(),
+  last_updated_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "service_id": "serviceId",
+    "last_updated_comments": "lastUpdatedComments",
   });
 });
 
@@ -55,6 +61,7 @@ export type ToolUpdateRequest$Outbound = {
   definition: ToolDefinition$Outbound;
   service_id: number;
   id: number;
+  last_updated_comments?: string | null | undefined;
 };
 
 /** @internal */
@@ -67,9 +74,11 @@ export const ToolUpdateRequest$outboundSchema: z.ZodType<
   definition: ToolDefinition$outboundSchema,
   serviceId: z.number().int(),
   id: z.number().int(),
+  lastUpdatedComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     serviceId: "service_id",
+    lastUpdatedComments: "last_updated_comments",
   });
 });
 

@@ -8,7 +8,7 @@ Record of a change to a prompt. Values reflect post-change state.
 import { PromptHistory } from "syllable-sdk/models/components";
 
 let value: PromptHistory = {
-  timestamp: new Date("2025-10-15T12:04:53.187Z"),
+  timestamp: new Date("2025-08-10T23:01:34.707Z"),
   promptId: "<id>",
   promptText: "<value>",
   promptName: "<value>",
