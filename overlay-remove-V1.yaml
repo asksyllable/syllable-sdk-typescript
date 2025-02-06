@@ -259,6 +259,11 @@ actions:
   - target: $["paths"]["/api/v1/tools/"]["put"]["tags"]
     update:
       - "tools"
+  - target: $["paths"]["/api/v1/tools/{tool_name}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/tools/{tool_name}"]["delete"]["tags"]
+    update:
+      - "tools"
   - target: $["paths"]["/api/v1/organizations/"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/organizations/"]["get"]["tags"]
