@@ -1167,6 +1167,60 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "data_sources",
+          "V1"
+        ],
+        "summary": "Delete Data Source",
+        "description": "Delete a given data source.",
+        "operationId": "data_sources_delete",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "data_source_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Data Source Name"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reason"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/events/": {
@@ -5775,6 +5829,12 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
+          },
+          "agent_initiated": {
+            "type": "boolean",
+            "title": "Agent Initiated",
+            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "default": false
           }
         },
         "type": "object",
@@ -5913,6 +5973,12 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
+          },
+          "agent_initiated": {
+            "type": "boolean",
+            "title": "Agent Initiated",
+            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "default": false
           },
           "id": {
             "type": "integer",
@@ -6137,6 +6203,12 @@
             ],
             "title": "Tool Headers",
             "description": "Optional headers to include in tool calls for agent."
+          },
+          "agent_initiated": {
+            "type": "boolean",
+            "title": "Agent Initiated",
+            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "default": false
           },
           "id": {
             "type": "integer",
