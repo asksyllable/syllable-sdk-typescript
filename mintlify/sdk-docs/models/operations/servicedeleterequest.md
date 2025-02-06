@@ -1,14 +1,14 @@
 ---
-title: 'AgentDeleteRequest'
+title: 'ServiceDeleteRequest'
 ---
 
 ## Example Usage
 
 ```typescript
-import { AgentDeleteRequest } from "syllable-sdk/models/operations";
+import { ServiceDeleteRequest } from "syllable-sdk/models/operations";
 
-let value: AgentDeleteRequest = {
-  agentId: 13508,
+let value: ServiceDeleteRequest = {
+  serviceId: 664,
   reason: "<value>",
 };
 ```
@@ -17,5 +17,5 @@ let value: AgentDeleteRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `agentId`          | *number*           | TRUE | N/A                |
+| `serviceId`        | *number*           | TRUE | N/A                |
 | `reason`           | *string*           | TRUE | N/A                |
