@@ -7,12 +7,12 @@
   },
   "servers": [
     {
-      "url": "https://api.syllable.ai",
-      "description": "API server"
+      "url": "http://localhost:8001",
+      "description": "dev server"
     },
     {
-      "url": "https://trial.api.syllable.ai",
-      "description": "Trial API server"
+      "url": "http://localhost:8001",
+      "description": "dev / port-forwarding server"
     }
   ],
   "paths": {
@@ -8232,6 +8232,7 @@
         "title": "InternalTool",
         "description": "A tool definition to be used by the OpenAI API."
       },
+      "JsonValue": {},
       "ListResponse_AgentResponse_": {
         "properties": {
           "items": {
@@ -10544,8 +10545,7 @@
             "description": "The description of the tool."
           },
           "parameters": {
-            "type": "object",
-            "title": "Parameters",
+            "$ref": "#/components/schemas/JsonValue",
             "description": "The JSON Schema of parameters of the function/tool call."
           }
         },
