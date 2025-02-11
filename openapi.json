@@ -10919,21 +10919,6 @@
             "description": "The description of the tool."
           },
           "parameters": {
-            "additionalProperties": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "object"
-                },
-                {
-                  "items": {},
-                  "type": "array"
-                }
-              ]
-            },
-            "type": "object",
             "title": "Parameters",
             "description": "The JSON Schema of parameters of the function/tool call."
           }
