@@ -7,8 +7,12 @@
   },
   "servers": [
     {
-      "url": "https://api.syllable.cloud",
-      "description": "API server"
+      "url": "http://localhost:8001",
+      "description": "dev server"
+    },
+    {
+      "url": "http://localhost:8001",
+      "description": "dev / port-forwarding server"
     }
   ],
   "paths": {
@@ -4681,6 +4685,234 @@
         "x-speakeasy-ignore": true
       }
     },
+    "/api/v1/dashboards/list": {
+      "post": {
+        "tags": [
+          "dashboards",
+          "V1"
+        ],
+        "summary": "Post List Dashboards",
+        "description": "METHOD: POST\nURL: /dashboard/list\nARGUMENTS: None\nRETURNS: List of dashboards",
+        "operationId": "post_list_dashboard",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": 0,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 25,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "search_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DashboardProperties"
+              },
+              "default": [],
+              "title": "Search Fields"
+            }
+          },
+          {
+            "name": "search_field_values",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "Search Field Values"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DashboardProperties"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "order_by_direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Order By Direction"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DashboardProperties"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": [],
+              "title": "Fields"
+            }
+          },
+          {
+            "name": "start_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Datetime"
+            }
+          },
+          {
+            "name": "end_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Datetime"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponse_DashboardResponse_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboards/fetch_info": {
+      "post": {
+        "tags": [
+          "dashboards",
+          "V1"
+        ],
+        "summary": "Post Fetch Info",
+        "description": "METHOD: POST\nURL: /dashboard/fetch_info\nARGUMENTS: None\nRETURNS: Dashboard info for embedding",
+        "operationId": "post_get_dashboard",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dashboard_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Dashboard Name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardTokenResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/dashboards/session_events": {
       "post": {
         "tags": [
@@ -4688,7 +4920,7 @@
           "V1"
         ],
         "summary": "Post Session Events",
-        "description": "METHOD: POST\nURL: /dashboard/session_events\nARGUMENTS: None\nRETURNS: Dashboard info for embedding",
+        "description": "METHOD: POST\nURL: /dashboard/session_events\nARGUMENTS: None\nRETURNS: Dashboard info for embedding\nDEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead",
         "operationId": "post_session_events_dashboard",
         "responses": {
           "200": {
@@ -4702,6 +4934,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "APIKeyHeader": []
@@ -4716,7 +4949,7 @@
           "V1"
         ],
         "summary": "Post Session Summary",
-        "description": "METHOD: POST\nURL: /dashboard/session_summary\nARGUMENTS: None\nRETURNS: Dashboard info for embedding",
+        "description": "METHOD: POST\nURL: /dashboard/session_summary\nARGUMENTS: None\nRETURNS: Dashboard info for embedding\nDEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead",
         "operationId": "post_session_summary_dashboard",
         "responses": {
           "200": {
@@ -4730,6 +4963,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "APIKeyHeader": []
@@ -4744,7 +4978,7 @@
           "V1"
         ],
         "summary": "Post Session Transfers",
-        "description": "METHOD: POST\nURL: /dashboard/session_transfers\nARGUMENTS: None\nRETURNS: Dashboard info for embedding",
+        "description": "METHOD: POST\nURL: /dashboard/session_transfers\nARGUMENTS: None\nRETURNS: Dashboard info for embedding\nDEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead",
         "operationId": "post_session_transfers_dashboard",
         "responses": {
           "200": {
@@ -4758,6 +4992,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "APIKeyHeader": []
@@ -4772,7 +5007,7 @@
           "V1"
         ],
         "summary": "Post Sessions",
-        "description": "METHOD: POST\nURL: /dashboard/sessions\nARGUMENTS: None\nRETURNS: Dashboard info for embedding",
+        "description": "METHOD: POST\nURL: /dashboard/sessions\nARGUMENTS: None\nRETURNS: Dashboard info for embedding\nDEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead",
         "operationId": "post_sessions_dashboard",
         "responses": {
           "200": {
@@ -4786,6 +5021,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "APIKeyHeader": []
@@ -7501,6 +7737,101 @@
           "superset_url"
         ],
         "title": "Dashboard",
+        "description": "Deprecated.  Please update to use DashboardTokenResponse.\nBasic information about a dashboard."
+      },
+      "DashboardProperties": {
+        "type": "string",
+        "enum": [
+          "id",
+          "name",
+          "display_name",
+          "rank",
+          "label"
+        ],
+        "title": "DashboardProperties"
+      },
+      "DashboardResponse": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the dashboard"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name",
+            "description": "Display name of the dashboard"
+          },
+          "rank": {
+            "type": "integer",
+            "title": "Rank",
+            "description": "Dashboard importance, 0 is the highest"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "description": "Dashboard label.  Typically report or dashboard"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "display_name",
+          "rank",
+          "label"
+        ],
+        "title": "DashboardResponse",
+        "description": "Basic information about a dashboard with a description."
+      },
+      "DashboardTokenResponse": {
+        "properties": {
+          "embedded_id": {
+            "type": "string",
+            "title": "Embedded Id",
+            "description": "Superset embedded ID of the dashboard"
+          },
+          "guest_token": {
+            "type": "string",
+            "title": "Guest Token",
+            "description": "Superset guest token of the dashboard"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the dashboard"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name",
+            "description": "Display name of the dashboard"
+          },
+          "superset_url": {
+            "type": "string",
+            "title": "Superset Url",
+            "description": "Superset URL of the dashboard"
+          },
+          "rank": {
+            "type": "integer",
+            "title": "Rank",
+            "description": "Dashboard importance, 0 is the highest"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "description": "Dashboard label.  Typically report or dashboard"
+          }
+        },
+        "type": "object",
+        "required": [
+          "embedded_id",
+          "guest_token",
+          "name",
+          "display_name",
+          "superset_url",
+          "rank",
+          "label"
+        ],
+        "title": "DashboardTokenResponse",
         "description": "Basic information about a dashboard."
       },
       "DataSourceCreateRequest": {
@@ -8515,6 +8846,54 @@
           "page_size"
         ],
         "title": "ListResponse[CustomMessageResponse]"
+      },
+      "ListResponse_DashboardResponse_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardResponse"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size"
+          },
+          "total_pages": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Pages"
+          },
+          "total_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "page",
+          "page_size"
+        ],
+        "title": "ListResponse[DashboardResponse]"
       },
       "ListResponse_DataSourceMetadataResponse_": {
         "properties": {
@@ -10540,6 +10919,20 @@
             "description": "The description of the tool."
           },
           "parameters": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object"
+                },
+                {
+                  "items": {},
+                  "type": "array"
+                }
+              ]
+            },
             "type": "object",
             "title": "Parameters",
             "description": "The JSON Schema of parameters of the function/tool call."
