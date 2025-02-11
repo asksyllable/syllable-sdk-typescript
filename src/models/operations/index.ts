@@ -21,6 +21,8 @@ export * from "./datasourcesgetbyname.js";
 export * from "./datasourceslist.js";
 export * from "./eventslist.js";
 export * from "./generatesessionrecordingurls.js";
+export * from "./postgetdashboard.js";
+export * from "./postlistdashboard.js";
 export * from "./promptsdelete.js";
 export * from "./promptsgetbyid.js";
 export * from "./promptshistory.js";

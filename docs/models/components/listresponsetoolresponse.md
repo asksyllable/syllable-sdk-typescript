@@ -14,7 +14,7 @@ let value: ListResponseToolResponse = {
           function: {
             name: "<value>",
             description: "burgeon pupil great vice",
-            parameters: {},
+            parameters: "<value>",
           },
         },
       },
