@@ -9,11 +9,9 @@ icon: "gear"
 
 A session variable allows you to pass custom variables from agents so that prompts can reference those during conversations (voice or web) with one of your customers. 
 
-* If you have a session variable named agent_name, you can reference it in a prompt like this: “Hello! My name is
+* If you have a session variable named agent_name, you can reference it in a prompt like this: 
 
-  {vars.name}
-
-  ! How can I assist you today?”
+  `“Hello! My name is {vars.name}! How can I assist you today?”`
 
 * This makes it possible to use the same prompt for multiple agents without having to create a new prompt for each agent.
 
