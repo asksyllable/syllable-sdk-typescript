@@ -14,7 +14,7 @@ let value: InternalTool = {
     name: "<value>",
     description:
       "however ultimately boo ham gift harmful down cross-contamination before enrage",
-    parameters: {},
+    parameters: "<value>",
   },
 };
 ```

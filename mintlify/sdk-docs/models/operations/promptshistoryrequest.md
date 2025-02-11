@@ -8,7 +8,7 @@ title: 'PromptsHistoryRequest'
 import { PromptsHistoryRequest } from "syllable-sdk/models/operations";
 
 let value: PromptsHistoryRequest = {
-  promptId: 859003,
+  promptId: 17060,
 };
 ```
 
