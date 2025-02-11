@@ -565,11 +565,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/dashboards/session_events"]["post"]
+  - target: $["paths"]["/api/v1/dashboards/fetch_info"]["post"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: post_session_events_dashboard
+          label: post_get_dashboard
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -578,7 +578,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.dashboards.postSessionEventsDashboard();
+              const result = await syllableSDK.dashboards.postGetDashboard({
+                dashboardName: "<value>",
+              });
 
               // Handle the result
               console.log(result);
@@ -586,7 +588,7 @@ actions:
 
             run();
         - lang: typescript
-          label: post_session_events_dashboard
+          label: post_get_dashboard
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -595,18 +597,20 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.v1.postSessionEventsDashboard();
+              const result = await syllableSDK.v1.postGetDashboard({
+                dashboardName: "<value>",
+              });
 
               // Handle the result
               console.log(result);
             }
 
             run();
-  - target: $["paths"]["/api/v1/dashboards/session_summary"]["post"]
+  - target: $["paths"]["/api/v1/dashboards/list"]["post"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: post_session_summary_dashboard
+          label: post_list_dashboard
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -615,7 +619,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.dashboards.postSessionSummaryDashboard();
+              const result = await syllableSDK.dashboards.postListDashboard({});
 
               // Handle the result
               console.log(result);
@@ -623,7 +627,7 @@ actions:
 
             run();
         - lang: typescript
-          label: post_session_summary_dashboard
+          label: post_list_dashboard
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -632,81 +636,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.v1.postSessionSummaryDashboard();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/session_transfers"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: post_session_transfers_dashboard
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.postSessionTransfersDashboard();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: post_session_transfers_dashboard
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.postSessionTransfersDashboard();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/dashboards/sessions"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: post_sessions_dashboard
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.dashboards.postSessionsDashboard();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: post_sessions_dashboard
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.postSessionsDashboard();
+              const result = await syllableSDK.v1.postListDashboard({});
 
               // Handle the result
               console.log(result);
@@ -1324,7 +1254,7 @@ actions:
                     function: {
                       name: "<value>",
                       description: "yuck vice between gee ugh ha",
-                      parameters: {},
+                      parameters: "<value>",
                     },
                   },
                 },
@@ -1356,7 +1286,7 @@ actions:
                     function: {
                       name: "<value>",
                       description: "awful underneath retention too mobility char innocently dowse restfully",
-                      parameters: {},
+                      parameters: "<value>",
                     },
                   },
                 },

@@ -3,8 +3,10 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -16,28 +18,29 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Post Session Transfers
+ * Post List Dashboards
  *
  * @remarks
  * METHOD: POST
- * URL: /dashboard/session_transfers
+ * URL: /dashboard/list
  * ARGUMENTS: None
- * RETURNS: Dashboard info for embedding
- * DEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead
- *
- * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+ * RETURNS: List of dashboards
  */
-export async function v1PostSessionTransfersDashboard(
+export async function v1PostListDashboard(
   client: SyllableSDKCore,
+  request: operations.PostListDashboardRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.Dashboard,
+    components.ListResponseDashboardResponse,
+    | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -47,7 +50,30 @@ export async function v1PostSessionTransfersDashboard(
     | ConnectionError
   >
 > {
-  const path = pathToFunc("/api/v1/dashboards/session_transfers")();
+  const parsed = safeParse(
+    request,
+    (value) => operations.PostListDashboardRequest$outboundSchema.parse(value),
+    "Input validation failed",
+  );
+  if (!parsed.ok) {
+    return parsed;
+  }
+  const payload = parsed.value;
+  const body = null;
+
+  const path = pathToFunc("/api/v1/dashboards/list")();
+
+  const query = encodeFormQuery({
+    "end_datetime": payload.end_datetime,
+    "fields": payload.fields,
+    "limit": payload.limit,
+    "order_by": payload.order_by,
+    "order_by_direction": payload.order_by_direction,
+    "page": payload.page,
+    "search_field_values": payload.search_field_values,
+    "search_fields": payload.search_fields,
+    "start_datetime": payload.start_datetime,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -58,7 +84,7 @@ export async function v1PostSessionTransfersDashboard(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    operationID: "post_session_transfers_dashboard",
+    operationID: "post_list_dashboard",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -76,6 +102,8 @@ export async function v1PostSessionTransfersDashboard(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
+    body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -85,7 +113,7 @@ export async function v1PostSessionTransfersDashboard(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["4XX", "5XX"],
+    errorCodes: ["422", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -94,8 +122,13 @@ export async function v1PostSessionTransfersDashboard(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
-    components.Dashboard,
+    components.ListResponseDashboardResponse,
+    | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -104,10 +137,11 @@ export async function v1PostSessionTransfersDashboard(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.Dashboard$inboundSchema),
+    M.json(200, components.ListResponseDashboardResponse$inboundSchema),
+    M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response);
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
   }

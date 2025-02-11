@@ -14,14 +14,14 @@ let value: ToolFunction = {
   name: "<value>",
   description:
     "reasoning safely ick discourse besides forsaken coordinated married",
-  parameters: {},
+  parameters: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `name`                                                           | *string*                                                         | :heavy_check_mark:                                               | The name of the function/tool call.                              |
-| `description`                                                    | *string*                                                         | :heavy_check_mark:                                               | The description of the tool.                                     |
-| `parameters`                                                     | [components.ParametersT](../../models/components/parameterst.md) | :heavy_check_mark:                                               | The JSON Schema of parameters of the function/tool call.         |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `name`                                                   | *string*                                                 | :heavy_check_mark:                                       | The name of the function/tool call.                      |
+| `description`                                            | *string*                                                 | :heavy_check_mark:                                       | The description of the tool.                             |
+| `parameters`                                             | *any*                                                    | :heavy_check_mark:                                       | The JSON Schema of parameters of the function/tool call. |

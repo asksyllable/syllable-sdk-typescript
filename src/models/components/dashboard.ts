@@ -9,6 +9,9 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
+ * Deprecated.  Please update to use DashboardTokenResponse.
+ *
+ * @remarks
  * Basic information about a dashboard.
  */
 export type Dashboard = {

@@ -8,11 +8,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The JSON Schema of parameters of the function/tool call.
- */
-export type ParametersT = {};
-
-/**
  * A function available to an agent.
  *
  * @remarks
@@ -32,52 +27,8 @@ export type ToolFunction = {
   /**
    * The JSON Schema of parameters of the function/tool call.
    */
-  parameters: ParametersT;
+  parameters?: any | undefined;
 };
-
-/** @internal */
-export const ParametersT$inboundSchema: z.ZodType<
-  ParametersT,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ParametersT$Outbound = {};
-
-/** @internal */
-export const ParametersT$outboundSchema: z.ZodType<
-  ParametersT$Outbound,
-  z.ZodTypeDef,
-  ParametersT
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ParametersT$ {
-  /** @deprecated use `ParametersT$inboundSchema` instead. */
-  export const inboundSchema = ParametersT$inboundSchema;
-  /** @deprecated use `ParametersT$outboundSchema` instead. */
-  export const outboundSchema = ParametersT$outboundSchema;
-  /** @deprecated use `ParametersT$Outbound` instead. */
-  export type Outbound = ParametersT$Outbound;
-}
-
-export function parametersToJSON(parametersT: ParametersT): string {
-  return JSON.stringify(ParametersT$outboundSchema.parse(parametersT));
-}
-
-export function parametersFromJSON(
-  jsonString: string,
-): SafeParseResult<ParametersT, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ParametersT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ParametersT' from JSON`,
-  );
-}
 
 /** @internal */
 export const ToolFunction$inboundSchema: z.ZodType<
@@ -87,14 +38,14 @@ export const ToolFunction$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.string(),
-  parameters: z.lazy(() => ParametersT$inboundSchema),
+  parameters: z.any().optional(),
 });
 
 /** @internal */
 export type ToolFunction$Outbound = {
   name: string;
   description: string;
-  parameters: ParametersT$Outbound;
+  parameters?: any | undefined;
 };
 
 /** @internal */
@@ -105,7 +56,7 @@ export const ToolFunction$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.string(),
-  parameters: z.lazy(() => ParametersT$outboundSchema),
+  parameters: z.any().optional(),
 });
 
 /**

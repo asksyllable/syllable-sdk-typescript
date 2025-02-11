@@ -12,7 +12,7 @@ let value: ToolUpdateRequest = {
       function: {
         name: "<value>",
         description: "before substantiate mosh noted abaft",
-        parameters: {},
+        parameters: "<value>",
       },
     },
   },

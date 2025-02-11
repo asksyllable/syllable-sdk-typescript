@@ -28,6 +28,9 @@ import { Result } from "../types/fp.js";
  * URL: /dashboard/session_summary
  * ARGUMENTS: None
  * RETURNS: Dashboard info for embedding
+ * DEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export async function v1PostSessionSummaryDashboard(
   client: SyllableSDKCore,

@@ -34,14 +34,10 @@ export const Type = {
 } as const;
 export type Type = ClosedEnum<typeof Type>;
 
-export type One = {};
-
 /**
  * The default values for the parameters of the function/tool call.
  */
-export type Defaults = One | { [k: string]: ToolParameterDefault };
-
-export type Result = {};
+export type Defaults = any | { [k: string]: ToolParameterDefault };
 
 /**
  * A tool that can be called from an LLM during the conversation.
@@ -62,11 +58,11 @@ export type ToolDefinition = {
   /**
    * The default values for the parameters of the function/tool call.
    */
-  defaults?: One | { [k: string]: ToolParameterDefault } | null | undefined;
+  defaults?: any | { [k: string]: ToolParameterDefault } | null | undefined;
   /**
    * The optional result of the tool call. Only used for `context` tools.
    */
-  result?: Result | null | undefined;
+  result?: any | null | undefined;
 };
 
 /** @internal */
@@ -90,55 +86,14 @@ export namespace Type$ {
 }
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
-export type One$Outbound = {};
-
-/** @internal */
-export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
-  .object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-  /** @deprecated use `One$Outbound` instead. */
-  export type Outbound = One$Outbound;
-}
-
-export function oneToJSON(one: One): string {
-  return JSON.stringify(One$outboundSchema.parse(one));
-}
-
-export function oneFromJSON(
-  jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
-  );
-}
-
-/** @internal */
 export const Defaults$inboundSchema: z.ZodType<
   Defaults,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => One$inboundSchema),
-  z.record(ToolParameterDefault$inboundSchema),
-]);
+> = z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]);
 
 /** @internal */
-export type Defaults$Outbound = One$Outbound | {
+export type Defaults$Outbound = any | {
   [k: string]: ToolParameterDefault$Outbound;
 };
 
@@ -147,10 +102,7 @@ export const Defaults$outboundSchema: z.ZodType<
   Defaults$Outbound,
   z.ZodTypeDef,
   Defaults
-> = z.union([
-  z.lazy(() => One$outboundSchema),
-  z.record(ToolParameterDefault$outboundSchema),
-]);
+> = z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]);
 
 /**
  * @internal
@@ -180,47 +132,6 @@ export function defaultsFromJSON(
 }
 
 /** @internal */
-export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
-export type Result$Outbound = {};
-
-/** @internal */
-export const Result$outboundSchema: z.ZodType<
-  Result$Outbound,
-  z.ZodTypeDef,
-  Result
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Result$ {
-  /** @deprecated use `Result$inboundSchema` instead. */
-  export const inboundSchema = Result$inboundSchema;
-  /** @deprecated use `Result$outboundSchema` instead. */
-  export const outboundSchema = Result$outboundSchema;
-  /** @deprecated use `Result$Outbound` instead. */
-  export type Outbound = Result$Outbound;
-}
-
-export function resultToJSON(result: Result): string {
-  return JSON.stringify(Result$outboundSchema.parse(result));
-}
-
-export function resultFromJSON(
-  jsonString: string,
-): SafeParseResult<Result, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Result$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Result' from JSON`,
-  );
-}
-
-/** @internal */
 export const ToolDefinition$inboundSchema: z.ZodType<
   ToolDefinition,
   z.ZodTypeDef,
@@ -230,12 +141,9 @@ export const ToolDefinition$inboundSchema: z.ZodType<
   tool: InternalTool$inboundSchema,
   endpoint: z.nullable(ToolHttpEndpoint$inboundSchema).optional(),
   defaults: z.nullable(
-    z.union([
-      z.lazy(() => One$inboundSchema),
-      z.record(ToolParameterDefault$inboundSchema),
-    ]),
+    z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]),
   ).optional(),
-  result: z.nullable(z.lazy(() => Result$inboundSchema)).optional(),
+  result: z.nullable(z.any()).optional(),
 });
 
 /** @internal */
@@ -244,11 +152,11 @@ export type ToolDefinition$Outbound = {
   tool: InternalTool$Outbound;
   endpoint?: ToolHttpEndpoint$Outbound | null | undefined;
   defaults?:
-    | One$Outbound
+    | any
     | { [k: string]: ToolParameterDefault$Outbound }
     | null
     | undefined;
-  result?: Result$Outbound | null | undefined;
+  result?: any | null | undefined;
 };
 
 /** @internal */
@@ -261,12 +169,9 @@ export const ToolDefinition$outboundSchema: z.ZodType<
   tool: InternalTool$outboundSchema,
   endpoint: z.nullable(ToolHttpEndpoint$outboundSchema).optional(),
   defaults: z.nullable(
-    z.union([
-      z.lazy(() => One$outboundSchema),
-      z.record(ToolParameterDefault$outboundSchema),
-    ]),
+    z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]),
   ).optional(),
-  result: z.nullable(z.lazy(() => Result$outboundSchema)).optional(),
+  result: z.nullable(z.any()).optional(),
 });
 
 /**

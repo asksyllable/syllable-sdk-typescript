@@ -16,7 +16,7 @@ let value: ToolDetailResponse = {
       function: {
         name: "<value>",
         description: "mozzarella alliance airbrush oil yet following off",
-        parameters: {},
+        parameters: "<value>",
       },
     },
   },

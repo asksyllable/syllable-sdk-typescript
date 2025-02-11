@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: a4f7befd9877d3ff2626f5a797fb167e
+  docChecksum: 4f5b313603a4e7c0ee9d4980457f4607
   docVersion: 0.0.2
   speakeasyVersion: 1.488.0
   generationVersion: 2.506.0
-  releaseVersion: 0.1.0-alpha.39
-  configChecksum: edff4b16663751b0926975b9c415f4ab
+  releaseVersion: 0.1.0-alpha.40
+  configChecksum: 987338ce29c98104920c463376ec4878
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -16,6 +16,7 @@ features:
     constsAndDefaults: 0.1.11
     core: 3.19.0
     defaultEnabledRetries: 0.1.0
+    deprecations: 2.81.1
     devContainers: 2.90.0
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
@@ -68,6 +69,9 @@ generatedFiles:
   - docs/models/components/custommessagerule.md
   - docs/models/components/custommessageupdaterequest.md
   - docs/models/components/dashboard.md
+  - docs/models/components/dashboardproperties.md
+  - docs/models/components/dashboardresponse.md
+  - docs/models/components/dashboardtokenresponse.md
   - docs/models/components/datasourcecreaterequest.md
   - docs/models/components/datasourcedetailresponse.md
   - docs/models/components/datasourcemetadataresponse.md
@@ -84,6 +88,7 @@ generatedFiles:
   - docs/models/components/listresponsechanneltargetresponse.md
   - docs/models/components/listresponseconversation.md
   - docs/models/components/listresponsecustommessageresponse.md
+  - docs/models/components/listresponsedashboardresponse.md
   - docs/models/components/listresponsedatasourcemetadataresponse.md
   - docs/models/components/listresponseevent.md
   - docs/models/components/listresponsepromptresponse.md
@@ -92,9 +97,7 @@ generatedFiles:
   - docs/models/components/listresponsesessionlabel.md
   - docs/models/components/listresponsetoolresponse.md
   - docs/models/components/loc.md
-  - docs/models/components/one.md
   - docs/models/components/orderbydirection.md
-  - docs/models/components/parameterst.md
   - docs/models/components/promptcreaterequest.md
   - docs/models/components/prompthistory.md
   - docs/models/components/promptllmconfig.md
@@ -103,7 +106,6 @@ generatedFiles:
   - docs/models/components/promptresponse.md
   - docs/models/components/promptupdaterequest.md
   - docs/models/components/response.md
-  - docs/models/components/result.md
   - docs/models/components/security.md
   - docs/models/components/servicecreaterequest.md
   - docs/models/components/serviceproperties.md
@@ -157,6 +159,8 @@ generatedFiles:
   - docs/models/operations/datasourceslistrequest.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/generatesessionrecordingurlsrequest.md
+  - docs/models/operations/postgetdashboardrequest.md
+  - docs/models/operations/postlistdashboardrequest.md
   - docs/models/operations/promptsdeleterequest.md
   - docs/models/operations/promptsgetbyidrequest.md
   - docs/models/operations/promptshistoryrequest.md
@@ -214,6 +218,8 @@ generatedFiles:
   - src/funcs/customMessagesGetById.ts
   - src/funcs/customMessagesList.ts
   - src/funcs/customMessagesUpdate.ts
+  - src/funcs/dashboardsPostGetDashboard.ts
+  - src/funcs/dashboardsPostListDashboard.ts
   - src/funcs/dashboardsPostSessionEventsDashboard.ts
   - src/funcs/dashboardsPostSessionSummaryDashboard.ts
   - src/funcs/dashboardsPostSessionTransfersDashboard.ts
@@ -248,6 +254,8 @@ generatedFiles:
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
+  - src/funcs/v1PostGetDashboard.ts
+  - src/funcs/v1PostListDashboard.ts
   - src/funcs/v1PostSessionEventsDashboard.ts
   - src/funcs/v1PostSessionSummaryDashboard.ts
   - src/funcs/v1PostSessionTransfersDashboard.ts
@@ -297,6 +305,9 @@ generatedFiles:
   - src/models/components/custommessagerule.ts
   - src/models/components/custommessageupdaterequest.ts
   - src/models/components/dashboard.ts
+  - src/models/components/dashboardproperties.ts
+  - src/models/components/dashboardresponse.ts
+  - src/models/components/dashboardtokenresponse.ts
   - src/models/components/datasourcecreaterequest.ts
   - src/models/components/datasourcedetailresponse.ts
   - src/models/components/datasourcemetadataresponse.ts
@@ -313,6 +324,7 @@ generatedFiles:
   - src/models/components/listresponsechanneltargetresponse.ts
   - src/models/components/listresponseconversation.ts
   - src/models/components/listresponsecustommessageresponse.ts
+  - src/models/components/listresponsedashboardresponse.ts
   - src/models/components/listresponsedatasourcemetadataresponse.ts
   - src/models/components/listresponseevent.ts
   - src/models/components/listresponsepromptresponse.ts
@@ -385,6 +397,8 @@ generatedFiles:
   - src/models/operations/eventslist.ts
   - src/models/operations/generatesessionrecordingurls.ts
   - src/models/operations/index.ts
+  - src/models/operations/postgetdashboard.ts
+  - src/models/operations/postlistdashboard.ts
   - src/models/operations/promptsdelete.ts
   - src/models/operations/promptsgetbyid.ts
   - src/models/operations/promptshistory.ts
@@ -961,6 +975,26 @@ examples:
       responses:
         "200":
           application/json: "<value>"
+        "422":
+          application/json: {}
+  post_list_dashboard:
+    speakeasy-default-post-list-dashboard:
+      parameters:
+        query:
+          limit: 25
+      responses:
+        "200":
+          application/json: {"items": [{"name": "<value>", "display_name": "Daryl_Baumbach33", "rank": 561464, "label": "<value>"}, {"name": "<value>", "display_name": "Deondre5", "rank": 701948, "label": "<value>"}, {"name": "<value>", "display_name": "Esteban79", "rank": 709457, "label": "<value>"}], "page": 393753, "page_size": 834240}
+        "422":
+          application/json: {}
+  post_get_dashboard:
+    speakeasy-default-post-get-dashboard:
+      parameters:
+        query:
+          dashboard_name: "<value>"
+      responses:
+        "200":
+          application/json: {"embedded_id": "<id>", "guest_token": "<value>", "name": "<value>", "display_name": "Arnaldo71", "superset_url": "https://antique-possession.info/", "rank": 298549, "label": "<value>"}
         "422":
           application/json: {}
 examplesVersion: 1.0.0
