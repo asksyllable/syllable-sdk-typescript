@@ -2,6 +2,7 @@
 title: 'Dashboard'
 ---
 
+Deprecated.  Please update to use DashboardTokenResponse.
 Basic information about a dashboard.
 
 ## Example Usage
@@ -13,7 +14,7 @@ let value: Dashboard = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  supersetUrl: "https://thrifty-interchange.org",
+  supersetUrl: "https://charming-divine.org",
 };
 ```
 

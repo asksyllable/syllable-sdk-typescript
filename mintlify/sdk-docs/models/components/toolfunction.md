@@ -16,14 +16,14 @@ let value: ToolFunction = {
   name: "<value>",
   description:
     "reasoning safely ick discourse besides forsaken coordinated married",
-  parameters: {},
+  parameters: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `name`                                                           | *string*                                                         | TRUE                                               | The name of the function/tool call.                              |
-| `description`                                                    | *string*                                                         | TRUE                                               | The description of the tool.                                     |
-| `parameters`                                                     | [components.ParametersT](/sdk-docs/models/components/parameterst) | TRUE                                               | The JSON Schema of parameters of the function/tool call.         |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `name`                                                   | *string*                                                 | TRUE                                       | The name of the function/tool call.                      |
+| `description`                                            | *string*                                                 | TRUE                                       | The description of the tool.                             |
+| `parameters`                                             | *any*                                                    | TRUE                                       | The JSON Schema of parameters of the function/tool call. |
