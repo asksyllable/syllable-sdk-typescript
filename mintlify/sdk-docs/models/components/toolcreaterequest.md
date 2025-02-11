@@ -14,7 +14,7 @@ let value: ToolCreateRequest = {
       function: {
         name: "<value>",
         description: "pish and ouch supportive honestly uh-huh mmm gently",
-        parameters: {},
+        parameters: "<value>",
       },
     },
   },

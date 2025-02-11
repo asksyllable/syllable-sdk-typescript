@@ -19,7 +19,7 @@ let value: ToolResponse = {
         name: "<value>",
         description:
           "hmph backburn amid productive quit ride unnaturally aboard dead midst",
-        parameters: {},
+        parameters: "<value>",
       },
     },
   },
