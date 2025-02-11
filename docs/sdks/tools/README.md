@@ -107,7 +107,9 @@ async function run() {
         function: {
           name: "<value>",
           description: "yuck vice between gee ugh ha",
-          parameters: {},
+          parameters: {
+
+          },
         },
       },
     },
@@ -143,7 +145,9 @@ async function run() {
         function: {
           name: "<value>",
           description: "yuck vice between gee ugh ha",
-          parameters: {},
+          parameters: {
+  
+          },
         },
       },
     },
@@ -204,7 +208,9 @@ async function run() {
         function: {
           name: "<value>",
           description: "awful underneath retention too mobility char innocently dowse restfully",
-          parameters: {},
+          parameters: {
+
+          },
         },
       },
     },
@@ -241,7 +247,9 @@ async function run() {
         function: {
           name: "<value>",
           description: "awful underneath retention too mobility char innocently dowse restfully",
-          parameters: {},
+          parameters: {
+  
+          },
         },
       },
     },

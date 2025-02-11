@@ -165,10 +165,12 @@ run();
 
 ### [dashboards](docs/sdks/dashboards/README.md)
 
-* [postSessionEventsDashboard](docs/sdks/dashboards/README.md#postsessioneventsdashboard) - Post Session Events
-* [postSessionSummaryDashboard](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary
-* [postSessionTransfersDashboard](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers
-* [postSessionsDashboard](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions
+* [postListDashboard](docs/sdks/dashboards/README.md#postlistdashboard) - Post List Dashboards
+* [postGetDashboard](docs/sdks/dashboards/README.md#postgetdashboard) - Post Fetch Info
+* [~~postSessionEventsDashboard~~](docs/sdks/dashboards/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
+* [~~postSessionSummaryDashboard~~](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
+* [~~postSessionTransfersDashboard~~](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
+* [~~postSessionsDashboard~~](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
 
 ### [dataSources](docs/sdks/datasources/README.md)
 
@@ -227,10 +229,12 @@ run();
 
 ### [v1](docs/sdks/v1/README.md)
 
-* [postSessionEventsDashboard](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
-* [postSessionSummaryDashboard](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
-* [postSessionTransfersDashboard](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
-* [postSessionsDashboard](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions
+* [postListDashboard](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
+* [postGetDashboard](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
+* [~~postSessionEventsDashboard~~](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
+* [~~postSessionSummaryDashboard~~](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
+* [~~postSessionTransfersDashboard~~](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
+* [~~postSessionsDashboard~~](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -270,10 +274,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customMessagesGetById`](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 - [`customMessagesList`](docs/sdks/custommessages/README.md#list) - Custom Messages List
 - [`customMessagesUpdate`](docs/sdks/custommessages/README.md#update) - Update Custom Message
-- [`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard) - Post Session Events
-- [`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions
-- [`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary
-- [`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers
+- [`dashboardsPostGetDashboard`](docs/sdks/dashboards/README.md#postgetdashboard) - Post Fetch Info
+- [`dashboardsPostListDashboard`](docs/sdks/dashboards/README.md#postlistdashboard) - Post List Dashboards
 - [`dataSourcesCreate`](docs/sdks/datasources/README.md#create) - Create Data Source
 - [`dataSourcesDelete`](docs/sdks/datasources/README.md#delete) - Delete Data Source
 - [`dataSourcesGetByName`](docs/sdks/datasources/README.md#getbyname) - Get Data Source
@@ -304,10 +306,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
-- [`v1PostSessionEventsDashboard`](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events
-- [`v1PostSessionsDashboard`](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions
-- [`v1PostSessionSummaryDashboard`](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary
-- [`v1PostSessionTransfersDashboard`](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers
+- [`v1PostGetDashboard`](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
+- [`v1PostListDashboard`](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
+- ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
+- ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
+- ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
+- ~~[`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard)~~ - Post Session Transfers :warning: **Deprecated**
+- ~~[`v1PostSessionEventsDashboard`](docs/sdks/v1/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
+- ~~[`v1PostSessionsDashboard`](docs/sdks/v1/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
+- ~~[`v1PostSessionSummaryDashboard`](docs/sdks/v1/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
+- ~~[`v1PostSessionTransfersDashboard`](docs/sdks/v1/README.md#postsessiontransfersdashboard)~~ - Post Session Transfers :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
