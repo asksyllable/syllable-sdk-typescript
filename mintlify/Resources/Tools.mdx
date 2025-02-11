@@ -63,7 +63,7 @@ Tool create and update operations are currently only supported in the SDK, but a
 
 ### Tool defaults
 
-Aside from the configuration available in the `parameters` object, you can also set up your tool to use default values configured at the agent level. To do this, you can pass an object to the `defaults` field, referencing agent-level variables via the "vars." syntax (see [here](https://docs.syllable.ai/workspaces/SessionConfig)). For example, if you want individual agents to be able to specify whether they want to receive temperature in Fahrenheit or Celsius when using the tool above, add this configuration to the "definition" section in the above request:
+Aside from the configuration available in the `parameters` object, you can also set up your tool to use values configured at the agent level. To do this, you can pass an object to the `defaults` field, referencing agent-level variables via the "vars." syntax (see [here](https://docs.syllable.ai/workspaces/SessionConfig)). For example, if you want individual agents to be able to specify whether they want to receive temperature in Fahrenheit or Celsius when using the tool above, add this configuration to the "definition" section in the above request:
 
 ```json
 "defaults": {
