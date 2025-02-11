@@ -9,16 +9,28 @@ A channel is how people will communicate with your Agent. As of today there are 
 
 ![](/images/create_channel.jpg)
 
-* **Mode:** Select whether this is a voice Agent that speaks, or whether it’s a web Agent that communicates through text
+* **Mode:**
 
-* **Channel service:** Channel service provides the service for a given mode. For example Twilio is a common channel service for telephony channels. As of today you must use one of the default services provided. 
+   Select whether this is a voice Agent that speaks, or whether it’s a web Agent that communicates through text
 
-* **Channel target:** Phone numbers associated with each service for voice. 
+* **Channel service:**
 
-* **Fallback (optional):** In the event your primary channel is not available, set a fallback phone number if mode is set to voice, or a fallback chat option if mode is set to web 
+   Channel service provides the service for a given mode. For example Twilio is a common channel service for telephony channels. As of today you must use one of the default services provided. 
 
-* **Agent:** Select the agent you wish to associate with this channel. If you haven’t already created an Agent, you won’t be able to select one at this point. 
+* **Channel target:**
 
-* **Test:** A channel with test turned on will label all data that goes through that channel as 'test'. These sessions will not show up in any dashboards and data and will be labeled as test, which means you can filter them out in conversations&#x20;
+   Phone numbers associated with each service for voice. 
+
+* **Fallback (optional):**
+
+   In the event your primary channel is not available, set a fallback phone number if mode is set to voice, or a fallback chat option if mode is set to web 
+
+* **Agent:**
+
+   Select the agent you wish to associate with this channel. If you haven’t already created an Agent, you won’t be able to select one at this point. 
+
+* **Test:**
+
+   A channel with test turned on will label all data that goes through that channel as 'test'. These sessions will not show up in any dashboards and data and will be labeled as test, which means you can filter them out in conversations 
 
 After you configure these parameters, your new Agent should be good to start using and interacting with. If you want your new agent to perform actual tasks for your customers, you need to set up [Session Configuration](https://docs.syllable.ai/workspaces/SessionConfig) and [Tools](https://docs.syllable.ai/Resources/Tools).
