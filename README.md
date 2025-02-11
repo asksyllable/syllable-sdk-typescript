@@ -450,36 +450,6 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| #   | Server                          |
-| --- | ------------------------------- |
-| 0   | `https://api.syllable.ai`       |
-| 1   | `https://trial.api.syllable.ai` |
-
-#### Example
-
-```typescript
-import { SyllableSDK } from "syllable-sdk";
-
-const syllableSDK = new SyllableSDK({
-  serverIdx: 1,
-  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-});
-
-async function run() {
-  const result = await syllableSDK.agents.list({});
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
@@ -487,7 +457,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverURL: "https://api.syllable.ai",
+  serverURL: "https://api.syllable.cloud",
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 
