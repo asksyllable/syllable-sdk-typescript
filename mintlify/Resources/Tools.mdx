@@ -15,7 +15,7 @@ If you want an Agent to reference a specific tool during sessions with customers
 
 ### Tool specs
 
-Tool create and update operations are currently only supported in the SDK, but are coming soon to Console.  Here is an example `POST` request to [create a new tool](https://docs.syllable.ai/sdk-docs/Tools#create) that uses the Open-Meteo API to look up weather information. Note that the value of the "parameters" field must be defined as a JSON Schema per the [OpenAI API](https://platform.openai.com/docs/guides/function-calling):
+Tool create and update operations are currently only supported in the SDK, but are coming soon to Console.  Here is an example `POST` request to [create a new tool](https://docs.syllable.ai/sdk-docs/Tools#create) that uses the [Open-Meteo API](https://open-meteo.com/en/docs) to look up weather information. Note that the value of the "parameters" field must be defined as a JSON Schema per the [OpenAI API](https://platform.openai.com/docs/guides/function-calling):
 
 ```json
   "name": "Get Weather",
@@ -60,3 +60,15 @@ Tool create and update operations are currently only supported in the SDK, but a
   }
 }
 ```
+
+### Tool defaults
+
+Aside from the configuration available in the `parameters` object, you can also set up your tool to use default values configured at the agent level. To do this, you can pass an object to the `defaults` field, referencing agent-level variables via the "vars." syntax (see [here](https://docs.syllable.ai/workspaces/SessionConfig)). For example, if you want individual agents to be able to specify whether they want to receive temperature in Fahrenheit or Celsius when using the tool above, add this configuration to the "definition" section in the above request:
+
+```json
+"defaults": {
+  "temperature_unit": "{vars.temperature_unit}"
+}
+```
+
+Then, set a value of either "celsius" or "fahrenheit" for `vars.temperature_unit` for an agent using the tool, and that value will be passed to the Open-Meteo API for the given agent's calls to the tool. (Additional options for tool parameters and defaults to make configuration easier and more flexible are coming soon.)
