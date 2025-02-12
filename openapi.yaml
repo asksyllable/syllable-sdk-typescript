@@ -6356,11 +6356,13 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
+          examples:
+            - "Weather Fetcher"
         "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
-          description: "The service this tool belongs to"
+          description: "The service to which this tool belongs"
       type: "object"
       required:
         - "name"
@@ -6411,11 +6413,13 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
+          examples:
+            - "Weather Fetcher"
         "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
-          description: "The service this tool belongs to"
+          description: "The service to which this tool belongs"
         "id":
           type: "integer"
           title: "Id"
@@ -6441,6 +6445,8 @@ components:
           type: "string"
           title: "Last Updated By"
           description: "The email of the user who last updated the tool"
+          examples:
+            - "user@email.com"
         "fields":
           items:
             type: "string"
@@ -6464,10 +6470,14 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the function/tool call."
+          examples:
+            - "weather_fetcher"
         "description":
           type: "string"
           title: "Description"
           description: "The description of the tool."
+          examples:
+            - "Fetches weather data"
         "parameters":
           title: "Parameters"
           description: "The JSON Schema of parameters of the function/tool call."
@@ -6484,6 +6494,8 @@ components:
           type: "string"
           title: "Url"
           description: "The endpoint URL of the external service to call."
+          examples:
+            - "https://api.example.com"
         "method": {"$ref": "#/components/schemas/ToolHttpMethod", "description": "The HTTP method to use for the service call."}
         "argument_location": {"$ref": "#/components/schemas/ToolArgumentLocation", "description": "How to pass the arguments to the request."}
       type: "object"
@@ -6545,10 +6557,14 @@ components:
           type: "string"
           title: "Key"
           description: "The name of the parameter to check."
+          examples:
+            - "key"
         "value":
           type: "string"
           title: "Value"
           description: "The value to check against the parameter."
+          examples:
+            - "value"
         "operator":
           anyOf:
             - type: "string"
@@ -6580,11 +6596,13 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
+          examples:
+            - "Weather Fetcher"
         "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
-          description: "The service this tool belongs to"
+          description: "The service to which this tool belongs"
         "id":
           type: "integer"
           title: "Id"
@@ -6610,6 +6628,8 @@ components:
           type: "string"
           title: "Last Updated By"
           description: "The email of the user who last updated the tool"
+          examples:
+            - "user@email.com"
       type: "object"
       required:
         - "name"
@@ -6626,11 +6646,13 @@ components:
           type: "string"
           title: "Name"
           description: "The name of the tool"
+          examples:
+            - "Weather Fetcher"
         "definition": {"$ref": "#/components/schemas/ToolDefinition", "description": "The definition of the tool"}
         "service_id":
           type: "integer"
           title: "Service Id"
-          description: "The service this tool belongs to"
+          description: "The service to which this tool belongs"
         "id":
           type: "integer"
           title: "Id"

@@ -31,7 +31,7 @@ export type ToolResponse = {
    */
   definition: ToolDefinition;
   /**
-   * The service this tool belongs to
+   * The service to which this tool belongs
    */
   serviceId: number;
   /**

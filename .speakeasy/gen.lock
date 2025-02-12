@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 4f5b313603a4e7c0ee9d4980457f4607
+  docChecksum: 469a4db69aba37db4a6e2b44864cb8f2
   docVersion: 0.0.2
   speakeasyVersion: 1.488.0
   generationVersion: 2.506.0
-  releaseVersion: 0.1.0-alpha.40
-  configChecksum: 987338ce29c98104920c463376ec4878
+  releaseVersion: 0.1.0-alpha.41
+  configChecksum: 527925a10ddf1d43d6e67d95cf87c205
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -829,25 +829,25 @@ examples:
           limit: 25
       responses:
         "200":
-          application/json: {"items": [{"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "yuck accountability pish likewise excepting unimpressively quickly", "parameters": {}}}}, "service_id": 934960, "id": 918561, "last_updated": "2025-04-22T08:39:55.981Z", "last_updated_by": "<value>"}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "defiantly whenever disk", "parameters": {}}}}, "service_id": 324206, "id": 96709, "last_updated": "2024-08-22T19:26:20.850Z", "last_updated_by": "<value>"}, {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "via during someplace woot excepting gah only despite", "parameters": {}}}}, "service_id": 933854, "id": 749833, "last_updated": "2025-01-13T10:26:00.433Z", "last_updated_by": "<value>"}], "page": 869095, "page_size": 500063}
+          application/json: {"items": [{"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 934960, "id": 918561, "last_updated": "2025-04-22T08:39:55.981Z", "last_updated_by": "user@email.com"}, {"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 324206, "id": 96709, "last_updated": "2024-08-22T19:26:20.850Z", "last_updated_by": "user@email.com"}, {"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 933854, "id": 749833, "last_updated": "2025-01-13T10:26:00.433Z", "last_updated_by": "user@email.com"}], "page": 869095, "page_size": 500063}
         "422":
           application/json: {}
   tool_create:
     speakeasy-default-tool-create:
       requestBody:
-        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "yuck vice between gee ugh ha", "parameters": {}}}}, "service_id": 920994}
+        application/json: {"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 920994}
       responses:
         "200":
-          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "junior modulo tackle unabashedly mentor early miserly stealthily without", "parameters": {}}}}, "service_id": 979186, "id": 282436, "last_updated": "2024-06-17T07:14:55.338Z", "last_updated_by": "<value>"}
+          application/json: {"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 979186, "id": 282436, "last_updated": "2024-06-17T07:14:55.338Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   tool_update:
     speakeasy-default-tool-update:
       requestBody:
-        application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "awful underneath retention too mobility char innocently dowse restfully", "parameters": {}}}}, "service_id": 243447, "id": 265006}
+        application/json: {"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 243447, "id": 265006}
       responses:
         "200":
-          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "woot abseil perfumed fisherman", "parameters": {}}}}, "service_id": 532806, "id": 784089, "last_updated": "2025-07-28T19:04:48.565Z", "last_updated_by": "<value>"}
+          application/json: {"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 532806, "id": 784089, "last_updated": "2025-07-28T19:04:48.565Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   tool_get_by_name:
@@ -857,7 +857,7 @@ examples:
           tool_name: "<value>"
       responses:
         "200":
-          application/json: {"name": "<value>", "definition": {"tool": {"function": {"name": "<value>", "description": "round likewise ponder bump but sport", "parameters": {}}}}, "service_id": 481354, "id": 442973, "last_updated": "2023-11-12T08:16:17.918Z", "last_updated_by": "<value>", "fields": ["<value>", "<value>"]}
+          application/json: {"name": "Weather Fetcher", "definition": {"tool": {"function": {"name": "weather_fetcher", "description": "Fetches weather data", "parameters": {}}}}, "service_id": 481354, "id": 442973, "last_updated": "2023-11-12T08:16:17.918Z", "last_updated_by": "user@email.com", "fields": ["<value>", "<value>"]}
         "422":
           application/json: {}
   post_session_events_dashboard:

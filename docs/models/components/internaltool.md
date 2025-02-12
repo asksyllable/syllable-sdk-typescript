@@ -9,9 +9,8 @@ import { InternalTool } from "syllable-sdk/models/components";
 
 let value: InternalTool = {
   function: {
-    name: "<value>",
-    description:
-      "however ultimately boo ham gift harmful down cross-contamination before enrage",
+    name: "weather_fetcher",
+    description: "Fetches weather data",
     parameters: "<value>",
   },
 };

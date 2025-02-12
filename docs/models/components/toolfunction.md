@@ -11,17 +11,16 @@ See:
 import { ToolFunction } from "syllable-sdk/models/components";
 
 let value: ToolFunction = {
-  name: "<value>",
-  description:
-    "reasoning safely ick discourse besides forsaken coordinated married",
+  name: "weather_fetcher",
+  description: "Fetches weather data",
   parameters: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `name`                                                   | *string*                                                 | :heavy_check_mark:                                       | The name of the function/tool call.                      |
-| `description`                                            | *string*                                                 | :heavy_check_mark:                                       | The description of the tool.                             |
-| `parameters`                                             | *any*                                                    | :heavy_check_mark:                                       | The JSON Schema of parameters of the function/tool call. |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `name`                                                   | *string*                                                 | :heavy_check_mark:                                       | The name of the function/tool call.                      | weather_fetcher                                          |
+| `description`                                            | *string*                                                 | :heavy_check_mark:                                       | The description of the tool.                             | Fetches weather data                                     |
+| `parameters`                                             | *any*                                                    | :heavy_check_mark:                                       | The JSON Schema of parameters of the function/tool call. |                                                          |
