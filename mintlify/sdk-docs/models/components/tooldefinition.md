@@ -12,9 +12,25 @@ import { ToolDefinition } from "syllable-sdk/models/components";
 let value: ToolDefinition = {
   tool: {
     function: {
-      name: "<value>",
-      description: "uselessly mostly aw quarrelsomely since hence",
+      name: "weather_fetcher",
+      description: "Fetches weather data",
       parameters: "<value>",
+    },
+  },
+  endpoint: {
+    url: "https://api.example.com",
+    method: "post",
+    argumentLocation: "query",
+  },
+  defaults: {
+    "key": {
+      transform: {
+        action: "default",
+        when: {
+          key: "key",
+          value: "value",
+        },
+      },
     },
   },
 };
