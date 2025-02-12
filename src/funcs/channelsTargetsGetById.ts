@@ -80,6 +80,7 @@ export async function channelsTargetsGetById(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "channel_targets_get_by_id",
     oAuth2Scopes: [],
 

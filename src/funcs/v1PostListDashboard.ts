@@ -84,6 +84,7 @@ export async function v1PostListDashboard(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "post_list_dashboard",
     oAuth2Scopes: [],
 

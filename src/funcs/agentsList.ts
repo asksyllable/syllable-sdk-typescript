@@ -81,6 +81,7 @@ export async function agentsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "agent_list",
     oAuth2Scopes: [],
 

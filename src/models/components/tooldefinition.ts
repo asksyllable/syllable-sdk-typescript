@@ -40,7 +40,7 @@ export type Type = ClosedEnum<typeof Type>;
 export type Defaults = any | { [k: string]: ToolParameterDefault };
 
 /**
- * A tool that can be called from an LLM during the conversation.
+ * A tool that can be called from an LLM during the conversation. See https://docs.syllable.ai/Resources/Tools.
  */
 export type ToolDefinition = {
   /**

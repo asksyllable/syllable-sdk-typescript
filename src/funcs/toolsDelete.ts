@@ -80,6 +80,7 @@ export async function toolsDelete(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "tool_delete",
     oAuth2Scopes: [],
 

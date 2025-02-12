@@ -76,6 +76,7 @@ export async function agentsGetById(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "agent_get_by_id",
     oAuth2Scopes: [],
 

@@ -78,6 +78,7 @@ export async function sessionLabelsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "session_labels_list",
     oAuth2Scopes: [],
 

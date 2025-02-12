@@ -76,6 +76,7 @@ export async function servicesGetById(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "services_get_by_id",
     oAuth2Scopes: [],
 

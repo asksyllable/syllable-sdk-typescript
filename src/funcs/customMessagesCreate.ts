@@ -70,6 +70,7 @@ export async function customMessagesCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "custom_messages_create",
     oAuth2Scopes: [],
 

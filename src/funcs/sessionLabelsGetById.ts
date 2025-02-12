@@ -77,6 +77,7 @@ export async function sessionLabelsGetById(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "session_label_get_by_id",
     oAuth2Scopes: [],
 

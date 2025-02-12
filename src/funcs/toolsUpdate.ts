@@ -69,6 +69,7 @@ export async function toolsUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "tool_update",
     oAuth2Scopes: [],
 

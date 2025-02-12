@@ -6406,7 +6406,7 @@ components:
       required:
         - "tool"
       title: "ToolDefinition"
-      description: "A tool that can be called from an LLM during the conversation."
+      description: "A tool that can be called from an LLM during the conversation. See https://docs.syllable.ai/Resources/Tools."
     "ToolDetailResponse":
       properties:
         "name":

@@ -58,6 +58,7 @@ export async function dashboardsPostSessionTransfersDashboard(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "post_session_transfers_dashboard",
     oAuth2Scopes: [],
 

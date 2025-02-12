@@ -69,6 +69,7 @@ export async function agentsUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "agent_update",
     oAuth2Scopes: [],
 

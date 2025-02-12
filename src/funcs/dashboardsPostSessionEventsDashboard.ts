@@ -58,6 +58,7 @@ export async function dashboardsPostSessionEventsDashboard(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "post_session_events_dashboard",
     oAuth2Scopes: [],
 

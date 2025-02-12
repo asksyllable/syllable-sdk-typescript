@@ -76,6 +76,7 @@ export async function toolsGetByName(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "tool_get_by_name",
     oAuth2Scopes: [],
 

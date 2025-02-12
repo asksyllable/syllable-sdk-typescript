@@ -69,6 +69,7 @@ export async function agentsTestSendTestMessage(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "send_test_message",
     oAuth2Scopes: [],
 

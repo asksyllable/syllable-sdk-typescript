@@ -69,6 +69,7 @@ export async function sessionLabelsCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "session_label_create",
     oAuth2Scopes: [],
 
