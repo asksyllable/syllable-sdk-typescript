@@ -8,15 +8,39 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * A session label is associated with a given session and contains an evaluation of quality and
+ *
+ * @remarks
+ * descriptions of issues the user encountered in that session or other details.
+ */
 export type SessionLabel = {
+  /**
+   * The internal ID of the session (see Session.session_id)
+   */
   sessionId: number;
+  /**
+   * The type of the label
+   */
   type: string;
+  /**
+   * A code describing the quality of the labeled session
+   */
   code: string;
+  /**
+   * The email of the user who created the label
+   */
   userEmail: string;
+  /**
+   * Comment string describing additional details about the session
+   */
   comments?: string | null | undefined;
+  /**
+   * Descriptions of issues occurring in the labeled call
+   */
   issueCategories?: Array<string> | null | undefined;
   /**
-   * The label ID
+   * The internal ID of the label
    */
   id: number;
   /**

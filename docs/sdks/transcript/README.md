@@ -3,8 +3,6 @@
 
 ## Overview
 
-Operations related to session transcription
-
 ### Available Operations
 
 * [getById](#getbyid) - Get Session Transcript By Id

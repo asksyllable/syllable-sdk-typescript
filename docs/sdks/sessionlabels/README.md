@@ -3,6 +3,8 @@
 
 ## Overview
 
+Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details.
+
 ### Available Operations
 
 * [getById](#getbyid) - Get Label By Id
@@ -102,9 +104,12 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.sessionLabels.create({
     sessionId: 486589,
-    type: "<value>",
-    code: "<value>",
+    type: "auto-rating",
+    code: "BAD",
     userEmail: "<value>",
+    issueCategories: [
+      "Silent treatment",
+    ],
   });
 
   // Handle the result
@@ -131,9 +136,12 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await sessionLabelsCreate(syllableSDK, {
     sessionId: 486589,
-    type: "<value>",
-    code: "<value>",
+    type: "auto-rating",
+    code: "BAD",
     userEmail: "<value>",
+    issueCategories: [
+      "Silent treatment",
+    ],
   });
 
   if (!res.ok) {

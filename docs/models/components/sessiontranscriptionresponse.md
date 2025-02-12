@@ -1,5 +1,7 @@
 # SessionTranscriptionResponse
 
+Text transcript of a given session.
+
 ## Example Usage
 
 ```typescript
@@ -9,12 +11,14 @@ let value: SessionTranscriptionResponse = {
   sessionId: "<id>",
   transcription: [
     {
-      timestamp: new Date("2023-01-26T22:49:04.962Z"),
+      timestamp: new Date("2025-12-09T13:28:34.858Z"),
+      lang: "en-US",
+      source: "user",
     },
   ],
   actions: [
     {
-      timestamp: new Date("2022-01-18T21:30:17.764Z"),
+      timestamp: new Date("2025-01-15T15:53:28.719Z"),
     },
   ],
 };
@@ -24,6 +28,6 @@ let value: SessionTranscriptionResponse = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `sessionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `transcription`                                                        | [components.SessionText](../../models/components/sessiontext.md)[]     | :heavy_check_mark:                                                     | N/A                                                                    |
-| `actions`                                                              | [components.SessionAction](../../models/components/sessionaction.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
+| `sessionId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Internal ID of the session                                             |
+| `transcription`                                                        | [components.SessionText](../../models/components/sessiontext.md)[]     | :heavy_check_mark:                                                     | Transcriptions of all messages in the session                          |
+| `actions`                                                              | [components.SessionAction](../../models/components/sessionaction.md)[] | :heavy_check_mark:                                                     | Tool invocations that occurred during the session                      |

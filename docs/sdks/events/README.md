@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to agent events
+Operations related to events. An event represents a specific occurrence           during a session. Currently the API/SDK only supports fetching logged events.
 
 ### Available Operations
 

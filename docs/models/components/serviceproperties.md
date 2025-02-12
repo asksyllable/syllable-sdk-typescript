@@ -5,11 +5,11 @@
 ```typescript
 import { ServiceProperties } from "syllable-sdk/models/components";
 
-let value: ServiceProperties = "name";
+let value: ServiceProperties = "description";
 ```
 
 ## Values
 
 ```typescript
-"id" | "name"
+"id" | "name" | "description" | "updated_at" | "last_updated_by"
 ```

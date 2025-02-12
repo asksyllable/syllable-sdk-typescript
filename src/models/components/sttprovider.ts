@@ -5,11 +5,17 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Provider for an agent voice.
+ */
 export const SttProvider = {
   OpenAI: "OpenAI",
   ElevenLabs: "ElevenLabs",
   Google: "Google",
 } as const;
+/**
+ * Provider for an agent voice.
+ */
 export type SttProvider = ClosedEnum<typeof SttProvider>;
 
 /** @internal */

@@ -1,9 +1,9 @@
 ---
-title: 'Tools'
+title: "Tools"
 icon: "screwdriver-wrench"
 ---
 
-Tools are functions or APIs the Agent can call upon to perform actions like, accessing databases, or manipulate data. They let your Agent schedule an appointment on behalf of your customer, or do countless other tasks. 
+Tools are functions or APIs the Agent can call upon to perform actions like accessing databases or manipulating data. They let your Agent schedule an appointment on behalf of your customer, request a prescription refill, or do countless other tasks.
 
 The tools list page shows all of the tools currently available to your organization. 
 
@@ -12,3 +12,63 @@ The tools list page shows all of the tools currently available to your organizat
 If you want an Agent to reference a specific tool during sessions with customers, then you need to provide those instructions in the prompt. For example, if you want to provide hangup instructions to your Agent, it might look something like:
 
 `Before a call ends, make sure to always ask user whether they need anything else. If user doesn’t need anything else, use “hangup” tool.`
+
+### Tool specs
+
+Tool create and update operations are currently only supported in the SDK, but are coming soon to Console.  Here is an example `POST` request to [create a new tool](https://docs.syllable.ai/sdk-docs/Tools#create) that uses the [Open-Meteo API](https://open-meteo.com/en/docs) to look up weather information. Note that the value of the "parameters" field must be defined as a JSON Schema per the [OpenAI API](https://platform.openai.com/docs/guides/function-calling), and that you must have created a [service](https://docs.syllable.ai/sdk-docs/Services) with which to link the tool via the `serviceId` field:
+
+```json
+  "name": "Get Weather",
+  "serviceId": 1,
+  "definition": {
+    "endpoint": {
+      "url": "https://api.open-meteo.com/v1/forecast",
+      "method": "get",
+      "argumentLocation": "query"
+    },
+    "tool": {
+      "type": "function",
+      "function": {
+        "name": "get_weather",
+        "description": "Get the weather for a city",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "longitude": {
+              "type": "number",
+              "description": "The longitude of the city"
+            },
+            "latitude": {
+              "type": "number",
+              "description": "The latitude of the city"
+            },
+            "current": {
+              "type": "string",
+              "description": "Information to retrieve from the Open-Meteo API, comma-separated",
+              "default": "temperature_2m,relative_humidity_2m,precipitation,rain,showers,snowfall"
+            }
+          },
+          "required": [
+            "longitude",
+            "latitude",
+            "current"
+          ]
+        }
+      }
+    },
+    "type": "endpoint"
+  }
+}
+```
+
+### Tool defaults
+
+Aside from the configuration available in the `parameters` object, you can also set up your tool to use values configured at the agent level. To do this, you can pass an object to the `defaults` field, referencing agent-level variables via the "vars." syntax (see [here](https://docs.syllable.ai/workspaces/SessionConfig)). For example, if you want individual agents to be able to specify whether they want to receive temperature in Fahrenheit or Celsius when using the tool above, add this configuration to the "definition" section in the above request:
+
+```json
+"defaults": {
+  "temperature_unit": "{vars.temperature_unit}"
+}
+```
+
+Then, set a value of either "celsius" or "fahrenheit" for `vars.temperature_unit` for an agent using the tool, and that value will be passed to the Open-Meteo API for the given agent's calls to the tool. (Additional options for tool parameters and defaults to make configuration easier and more flexible are coming soon.)

@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -27,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Service List
  *
  * @remarks
- * List the existing agents
+ * List the existing services
  */
 export async function servicesList(
   client: SyllableSDKCore,
@@ -35,7 +36,7 @@ export async function servicesList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponseService,
+    components.ListResponseServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -71,15 +72,16 @@ export async function servicesList(
     "start_datetime": payload.start_datetime,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "service_list",
     oAuth2Scopes: [],
 
@@ -123,7 +125,7 @@ export async function servicesList(
   };
 
   const [result] = await M.match<
-    components.ListResponseService,
+    components.ListResponseServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -133,9 +135,10 @@ export async function servicesList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListResponseService$inboundSchema),
+    M.json(200, components.ListResponseServiceResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

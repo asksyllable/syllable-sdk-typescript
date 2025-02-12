@@ -10,12 +10,27 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Response = {};
 
+/**
+ * Response from an agent in a test chat.
+ */
 export type TestMessageResponse = {
+  /**
+   * Channel-manager-side ID of the session (see Session.channel_manager_sid)
+   */
   testId: string;
+  /**
+   * ID of the agent with which the chat is taking place
+   */
   agentId: string;
-  text: string;
+  /**
+   * The text of the message that elicited the response
+   */
+  text?: string | undefined;
   response?: Response | undefined;
-  responseText: string;
+  /**
+   * The text of the response
+   */
+  responseText?: string | undefined;
 };
 
 /** @internal */
@@ -70,9 +85,9 @@ export const TestMessageResponse$inboundSchema: z.ZodType<
 > = z.object({
   test_id: z.string(),
   agent_id: z.string(),
-  text: z.string(),
+  text: z.string().optional(),
   response: z.lazy(() => Response$inboundSchema).optional(),
-  response_text: z.string(),
+  response_text: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "test_id": "testId",
@@ -85,9 +100,9 @@ export const TestMessageResponse$inboundSchema: z.ZodType<
 export type TestMessageResponse$Outbound = {
   test_id: string;
   agent_id: string;
-  text: string;
+  text?: string | undefined;
   response?: Response$Outbound | undefined;
-  response_text: string;
+  response_text?: string | undefined;
 };
 
 /** @internal */
@@ -98,9 +113,9 @@ export const TestMessageResponse$outboundSchema: z.ZodType<
 > = z.object({
   testId: z.string(),
   agentId: z.string(),
-  text: z.string(),
+  text: z.string().optional(),
   response: z.lazy(() => Response$outboundSchema).optional(),
-  responseText: z.string(),
+  responseText: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     testId: "test_id",

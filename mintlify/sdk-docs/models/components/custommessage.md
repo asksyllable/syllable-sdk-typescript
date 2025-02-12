@@ -10,7 +10,7 @@ import { CustomMessage } from "syllable-sdk/models/components";
 let value: CustomMessage = {
   name: "<value>",
   text: "<value>",
-  id: 71036,
+  id: 568045,
 };
 ```
 

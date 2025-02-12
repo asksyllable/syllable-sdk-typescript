@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-description: "Welcome to Syllable AI SDK"
+description: "Welcome to the Syllable AI SDK!"
 ---
 
 Developer-friendly & type-safe Typescript SDK specifically catered to leverage *syllable-sdk* API.
@@ -9,18 +9,21 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
 
 Syllable SDK gives you the power of awesome AI agentry. 🚀
 
-The Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI  
+The Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI
 capabilities into your communication applications. Whether you're building chatbots, virtual
 assistants, or any other AI-driven solutions, Syllable SDK has got you covered.
 
 ## Features
 
-- **Natural Language Processing (NLP)**: Understand and generate human language with ease.
-- **LLM Agents**: Leverage pre-built agents or train your own custom agents.
-- **Speech Recognition**: Convert speech to text and vice versa.
-- **Data Analytics**: Analyze and visualize data to gain insights.
-- **Integration**: Seamlessly integrate with other services and platforms.
+* **Natural Language Processing (NLP)**: Understand and generate human language with ease.
 
+* **LLM Agents**: Leverage pre-built agents or train your own custom agents.
+
+* **Speech Recognition**: Convert speech to text and vice versa.
+
+* **Data Analytics**: Analyze and visualize data to gain insights.
+
+* **Integration**: Seamlessly integrate with other services and platforms.
 
 ## SDK Installation
 
@@ -52,6 +55,14 @@ yarn add syllable-sdk zod
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
+
+## API Keys
+
+In order to use the SDK, you'll need a Syllable API key. First, you should [create an account](https://docs.syllable.ai/introsyllable/LoginSignup). Then, after logging into the console, click your user icon in the top right and select "API tokens":
+
+![](/mintlify/image.png)
+
+Click "Generate" for the desired organization. Then, copy the API key text from the resulting popup. (After you close the popup you won't be able to see the key again; if you lose it, you'll need to click Revoke to delete the old key, then generate a new one.) You can then use the key in your SDK-consuming code.
 
 ## Requirements
 
@@ -87,18 +98,12 @@ runtimes or other environments where application bundle size is a primary
 concern. When using a bundler to build your application, all unused
 functionality will be either excluded from the final bundle or tree-shaken away.
 
-
 ## File uploads
 
 Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
 
-> [!TIP]
+> \[!TIP]Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:- **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).- **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.- **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
 >
-> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
->
-> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
-> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
-> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
 > - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
 
 ```typescript
@@ -127,6 +132,7 @@ run();
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -157,6 +163,7 @@ run();
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -245,13 +252,13 @@ Validation errors can also occur when either method arguments or data returned f
 
 In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `models/errors/httpclienterrors.ts` module:
 
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
+| HTTP Client Error     | Description                                          |
+| --------------------- | ---------------------------------------------------- |
+| RequestAbortedError   | HTTP request was aborted by the client               |
+| RequestTimeoutError   | HTTP request timed out due to an AbortSignal signal  |
+| ConnectionError       | HTTP client was unable to make a request to a server |
+| InvalidRequestError   | Any input used to create a request is invalid        |
+| UnexpectedClientError | Unrecognised or unexpected error                     |
 
 ## Server Selection
 
@@ -259,10 +266,10 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                  |
-| --- | ----------------------- |
-| 0   | `https://api.syllable.ai` |
-| 1   | `https://trial.api.syllable.ai` |
+| # | Server                          |
+| - | ------------------------------- |
+| 0 | `https://api.syllable.ai`       |
+| 1 | `https://trial.api.syllable.ai` |
 
 #### Example
 
@@ -288,6 +295,7 @@ run();
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -365,6 +373,7 @@ This SDK supports the following security scheme globally:
 | `apiKeyHeader` | apiKey | API key | `SYLLABLESDK_API_KEY_HEADER` |
 
 To authenticate with the API the `apiKeyHeader` parameter must be set when initializing the SDK client instance. For example:
+
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -389,7 +398,7 @@ You can setup your SDK to emit debug logs for SDK requests and responses.
 
 You can pass a logger that matches `console`'s interface as an SDK option.
 
-> [!WARNING]
+> \[!WARNING]
 > Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
 
 ```typescript
@@ -399,7 +408,6 @@ const sdk = new SyllableSDK({ debugLogger: console });
 ```
 
 You can also enable a default debug logger by setting an environment variable `SYLLABLESDK_DEBUG` to true.
-
 
 # Development
 
@@ -411,6 +419,5 @@ looking for the latest version.
 
 ## Contributions
 
-While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
-We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
-
+While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation.
+We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release.

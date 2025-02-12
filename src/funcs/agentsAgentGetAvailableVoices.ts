@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { SyllableSDKCore } from "../core.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -43,15 +44,16 @@ export async function agentsAgentGetAvailableVoices(
 > {
   const path = pathToFunc("/api/v1/agents/voices/available")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "agent_get_available_voices",
     oAuth2Scopes: [],
 
@@ -99,7 +101,8 @@ export async function agentsAgentGetAvailableVoices(
     | ConnectionError
   >(
     M.json(200, z.array(components.AgentVoice$inboundSchema)),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response);
   if (!result.ok) {
     return result;

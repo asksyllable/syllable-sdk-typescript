@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to prompts
+Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them.
 
 ### Available Operations
 
@@ -78,7 +78,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponsePrompt](../../models/components/listresponseprompt.md)\>**
+**Promise\<[components.ListResponsePromptResponse](../../models/components/listresponsepromptresponse.md)\>**
 
 ### Errors
 
@@ -105,8 +105,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "azure_openai",
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
@@ -138,8 +136,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "azure_openai",
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
@@ -162,14 +158,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.PromptCreate](../../models/components/promptcreate.md)                                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.PromptCreateRequest](../../models/components/promptcreaterequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Prompt](../../models/components/prompt.md)\>**
+**Promise\<[components.PromptResponse](../../models/components/promptresponse.md)\>**
 
 ### Errors
 
@@ -196,8 +192,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "openai",
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
@@ -230,8 +224,6 @@ async function run() {
     name: "<value>",
     type: "<value>",
     llmConfig: {
-      provider: "openai",
-      model: "gpt-4o",
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
@@ -255,14 +247,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.PromptUpdate](../../models/components/promptupdate.md)                                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.PromptUpdateRequest](../../models/components/promptupdaterequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.Prompt](../../models/components/prompt.md)\>**
+**Promise\<[components.PromptResponse](../../models/components/promptresponse.md)\>**
 
 ### Errors
 
@@ -339,7 +331,7 @@ run();
 
 ### Response
 
-**Promise\<[components.Prompt](../../models/components/prompt.md)\>**
+**Promise\<[components.PromptResponse](../../models/components/promptresponse.md)\>**
 
 ### Errors
 

@@ -7,10 +7,25 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Information about a given message from a user to an agent or vice-versa.
+ */
 export type SessionText = {
+  /**
+   * Timestamp of the message
+   */
   timestamp: Date;
+  /**
+   * ISO 639 code of the language used for the message (may appear as "unset" if was not conclusively determined)
+   */
   lang?: string | null | undefined;
+  /**
+   * Whether the user or agent sent the message
+   */
   source?: string | null | undefined;
+  /**
+   * Content of the message
+   */
   text?: string | null | undefined;
 };
 

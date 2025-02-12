@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to channel targets
+Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel.
 
 ### Available Operations
 
@@ -150,7 +150,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponseChannelTarget](../../models/components/listresponsechanneltarget.md)\>**
+**Promise\<[components.ListResponseChannelTargetResponse](../../models/components/listresponsechanneltargetresponse.md)\>**
 
 ### Errors
 
@@ -176,12 +176,10 @@ async function run() {
   const result = await syllableSDK.channels.targets.create({
     channelId: 134365,
     channelTargetCreateRequest: {
-      channelId: 486589,
-      agentId: 638424,
+      agentId: 486589,
+      channelId: 638424,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: true,
+      targetMode: "chat",
     },
   });
 
@@ -210,12 +208,10 @@ async function run() {
   const res = await channelsTargetsCreate(syllableSDK, {
     channelId: 134365,
     channelTargetCreateRequest: {
-      channelId: 486589,
-      agentId: 638424,
+      agentId: 486589,
+      channelId: 638424,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: true,
+      targetMode: "chat",
     },
   });
 
@@ -243,7 +239,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](../../models/components/channeltarget.md)\>**
+**Promise\<[components.ChannelTargetResponse](../../models/components/channeltargetresponse.md)\>**
 
 ### Errors
 
@@ -322,7 +318,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](../../models/components/channeltarget.md)\>**
+**Promise\<[components.ChannelTargetResponse](../../models/components/channeltargetresponse.md)\>**
 
 ### Errors
 
@@ -349,13 +345,11 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      id: 857478,
+      agentId: 857478,
       channelId: 597129,
-      agentId: 344620,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: false,
+      targetMode: "chat",
+      id: 991464,
     },
   });
 
@@ -385,13 +379,11 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      id: 857478,
+      agentId: 857478,
       channelId: 597129,
-      agentId: 344620,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: false,
+      targetMode: "chat",
+      id: 991464,
     },
   });
 
@@ -419,7 +411,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](../../models/components/channeltarget.md)\>**
+**Promise\<[components.ChannelTargetResponse](../../models/components/channeltargetresponse.md)\>**
 
 ### Errors
 

@@ -1,8 +1,11 @@
 ---
 title: 'Targets'
-description: 'Targets are the phone-numbers or addresses that the user calls or messages when interacting with an agent'
 ---
+(*channels.targets*)
 
+## Overview
+
+Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel.
 
 ### Available Operations
 
@@ -149,7 +152,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponseChannelTarget](/sdk-docs/models/components/listresponsechanneltarget)\>**
+**Promise\<[components.ListResponseChannelTargetResponse](/sdk-docs/models/components/listresponsechanneltargetresponse)\>**
 
 ### Errors
 
@@ -175,12 +178,10 @@ async function run() {
   const result = await syllableSDK.channels.targets.create({
     channelId: 134365,
     channelTargetCreateRequest: {
-      channelId: 486589,
-      agentId: 638424,
+      agentId: 486589,
+      channelId: 638424,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: true,
+      targetMode: "chat",
     },
   });
 
@@ -209,12 +210,10 @@ async function run() {
   const res = await channelsTargetsCreate(syllableSDK, {
     channelId: 134365,
     channelTargetCreateRequest: {
-      channelId: 486589,
-      agentId: 638424,
+      agentId: 486589,
+      channelId: 638424,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: true,
+      targetMode: "chat",
     },
   });
 
@@ -242,7 +241,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](/sdk-docs/models/components/channeltarget)\>**
+**Promise\<[components.ChannelTargetResponse](/sdk-docs/models/components/channeltargetresponse)\>**
 
 ### Errors
 
@@ -321,7 +320,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](/sdk-docs/models/components/channeltarget)\>**
+**Promise\<[components.ChannelTargetResponse](/sdk-docs/models/components/channeltargetresponse)\>**
 
 ### Errors
 
@@ -348,13 +347,11 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      id: 857478,
+      agentId: 857478,
       channelId: 597129,
-      agentId: 344620,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: false,
+      targetMode: "chat",
+      id: 991464,
     },
   });
 
@@ -384,13 +381,11 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      id: 857478,
+      agentId: 857478,
       channelId: 597129,
-      agentId: 344620,
       target: "<value>",
-      targetMode: "<value>",
-      fallbackTarget: "<value>",
-      isTest: false,
+      targetMode: "chat",
+      id: 991464,
     },
   });
 
@@ -418,7 +413,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ChannelTarget](/sdk-docs/models/components/channeltarget)\>**
+**Promise\<[components.ChannelTargetResponse](/sdk-docs/models/components/channeltargetresponse)\>**
 
 ### Errors
 

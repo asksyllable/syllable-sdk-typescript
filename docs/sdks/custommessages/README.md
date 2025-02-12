@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to custom messages
+Operations related to custom message configuration.           A custom message is a pre-configured message delivered by an agent as a greeting at the           beginning of a conversation. Multiple agents can use the same custom mesasage. A custom           message has one or more rules defined, which allow for different messages to be           dynamically selected and delivered at runtime based on the current time and either           date or day of the week.
 
 ### Available Operations
 
@@ -103,6 +103,38 @@ async function run() {
   const result = await syllableSDK.customMessages.create({
     name: "<value>",
     text: "<value>",
+    rules: [
+      {
+        description: "delightfully fumigate convection though zowie up bulky electronics",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: false,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "yuck forager beneath please shadowy foodstuffs welcome",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
   });
 
   // Handle the result
@@ -130,6 +162,38 @@ async function run() {
   const res = await customMessagesCreate(syllableSDK, {
     name: "<value>",
     text: "<value>",
+    rules: [
+      {
+        description: "delightfully fumigate convection though zowie up bulky electronics",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: false,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "yuck forager beneath please shadowy foodstuffs welcome",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
   });
 
   if (!res.ok) {
@@ -182,7 +246,54 @@ async function run() {
   const result = await syllableSDK.customMessages.update({
     name: "<value>",
     text: "<value>",
-    id: 857478,
+    rules: [
+      {
+        description: "technician eulogise whereas till mild than during",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "qualified cycle woot abseil perfumed fisherman with duh",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "ultimately in likely opera please antelope",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
+    id: 975440,
   });
 
   // Handle the result
@@ -210,7 +321,54 @@ async function run() {
   const res = await customMessagesUpdate(syllableSDK, {
     name: "<value>",
     text: "<value>",
-    id: 857478,
+    rules: [
+      {
+        description: "technician eulogise whereas till mild than during",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "qualified cycle woot abseil perfumed fisherman with duh",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+      {
+        description: "ultimately in likely opera please antelope",
+        timeRangeStart: "09:00",
+        timeRangeEnd: "17:00",
+        date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
+        invert: true,
+        text: "Sorry, we're closed today",
+      },
+    ],
+    id: 975440,
   });
 
   if (!res.ok) {

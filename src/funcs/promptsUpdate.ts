@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -30,11 +31,11 @@ import { Result } from "../types/fp.js";
  */
 export async function promptsUpdate(
   client: SyllableSDKCore,
-  request: components.PromptUpdate,
+  request: components.PromptUpdateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.Prompt,
+    components.PromptResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -47,7 +48,7 @@ export async function promptsUpdate(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.PromptUpdate$outboundSchema.parse(value),
+    (value) => components.PromptUpdateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -58,16 +59,17 @@ export async function promptsUpdate(
 
   const path = pathToFunc("/api/v1/prompts/")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "prompts_update",
     oAuth2Scopes: [],
 
@@ -110,7 +112,7 @@ export async function promptsUpdate(
   };
 
   const [result] = await M.match<
-    components.Prompt,
+    components.PromptResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -120,9 +122,10 @@ export async function promptsUpdate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.Prompt$inboundSchema),
+    M.json(200, components.PromptResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

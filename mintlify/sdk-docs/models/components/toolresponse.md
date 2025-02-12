@@ -1,0 +1,59 @@
+---
+title: 'ToolResponse'
+---
+
+A tool is a function that an agent can call to perform actions like accessing databases,
+making API calls, or processing data. For an agent to have access to a tool, the prompt
+associated with that agent should be linked to the tool and include instructions to use it.
+
+## Example Usage
+
+```typescript
+import { ToolResponse } from "syllable-sdk/models/components";
+
+let value: ToolResponse = {
+  name: "Weather Fetcher",
+  definition: {
+    tool: {
+      function: {
+        name: "weather_fetcher",
+        description: "Fetches weather data",
+        parameters: "<value>",
+      },
+    },
+    endpoint: {
+      url: "https://api.example.com",
+      method: "get",
+      argumentLocation: "path",
+    },
+    defaults: {
+      "key": {
+        transform: {
+          action: "default",
+          when: {
+            key: "key",
+            value: "value",
+          },
+        },
+      },
+    },
+  },
+  serviceId: 397257,
+  id: 999278,
+  lastUpdated: new Date("2024-01-21T16:11:36.139Z"),
+  lastUpdatedBy: "user@email.com",
+};
+```
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `name`                                                                                                       | *string*                                                                                                     | TRUE                                                                                           | The name of the tool                                                                                         | Weather Fetcher                                                                                              |
+| `definition`                                                                                                 | [components.ToolDefinition](/sdk-docs/models/components/tooldefinition)                                       | TRUE                                                                                           | A tool that can be called from an LLM during the conversation. See https://docs.syllable.ai/Resources/Tools. |                                                                                                              |
+| `serviceId`                                                                                                  | *number*                                                                                                     | TRUE                                                                                           | The service to which this tool belongs                                                                       |                                                                                                              |
+| `id`                                                                                                         | *number*                                                                                                     | TRUE                                                                                           | The ID of the tool                                                                                           |                                                                                                              |
+| `lastUpdatedComments`                                                                                        | *string*                                                                                                     | FALSE                                                                                           | Update comments                                                                                              |                                                                                                              |
+| `serviceName`                                                                                                | *string*                                                                                                     | FALSE                                                                                           | The name of the service to which the tool belongs                                                            |                                                                                                              |
+| `lastUpdated`                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                | TRUE                                                                                           | The timestamp of the most recent update to the service                                                       |                                                                                                              |
+| `lastUpdatedBy`                                                                                              | *string*                                                                                                     | TRUE                                                                                           | The email of the user who last updated the tool                                                              | user@email.com                                                                                               |

@@ -1,0 +1,32 @@
+---
+title: "Compose a message"
+icon: "message"
+---
+
+Messages are configurable text that the agent reads to the user - for example, every agent must be associated with a message to be delivered as a greeting at the beginning of the conversation. Messages are set up with time-based logic so that the agent can deliver different variations on the message depending on the date and time of the conversation.
+
+## Configure a Message
+
+![](/images/createmessage.jpg)
+
+* **Message name:** The name of your Message. Use a name that’s easily remembered and specific enough to distinguish it from other Messages.
+
+* **Label (optional):** A plain text indicator to help you remember your Message. It should be different from the name.
+
+### Message rules
+
+These rules let you control when and what your Agent will say - for example, if a business is either closed or unavailable for a holiday.
+
+* **Rule description**: Information related to the rule, like why it’s used or which Agent(s) will use it. 
+
+* **Condition:** Select whether you want the rule to take effect when the time/date IS a certain value, or when it’s NOT a certain value. 
+
+* **Time type:** Select whether the messages should follow rules based on the day of the week, like for a Friday closure, or specific date(s), like a holiday. 
+
+* **Time range:** Indicate whether the message should follow a specific time of day.
+
+* **\[ ] all day:** Check this box if the rule should apply all day for the selected days.
+
+* **Message**: Write out the specific message the Agent will say based on the logic you just defined. 
+
+* **Add condition:** Click the + to add additional Message rules. If multiple rules match, Syllable will use the message corresponding to the most specific rule.

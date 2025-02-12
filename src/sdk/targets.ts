@@ -36,7 +36,7 @@ export class Targets extends ClientSDK {
   async list(
     request: operations.ChannelTargetsListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseChannelTarget> {
+  ): Promise<components.ListResponseChannelTargetResponse> {
     return unwrapAsync(channelsTargetsList(
       this,
       request,
@@ -50,7 +50,7 @@ export class Targets extends ClientSDK {
   async create(
     request: operations.ChannelTargetsCreateRequest,
     options?: RequestOptions,
-  ): Promise<components.ChannelTarget> {
+  ): Promise<components.ChannelTargetResponse> {
     return unwrapAsync(channelsTargetsCreate(
       this,
       request,
@@ -64,7 +64,7 @@ export class Targets extends ClientSDK {
   async getById(
     request: operations.ChannelTargetsGetByIdRequest,
     options?: RequestOptions,
-  ): Promise<components.ChannelTarget> {
+  ): Promise<components.ChannelTargetResponse> {
     return unwrapAsync(channelsTargetsGetById(
       this,
       request,
@@ -81,7 +81,7 @@ export class Targets extends ClientSDK {
   async update(
     request: operations.ChannelTargetsUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.ChannelTarget> {
+  ): Promise<components.ChannelTargetResponse> {
     return unwrapAsync(channelsTargetsUpdate(
       this,
       request,

@@ -3,6 +3,7 @@
  */
 
 import { toolsCreate } from "../funcs/toolsCreate.js";
+import { toolsDelete } from "../funcs/toolsDelete.js";
 import { toolsGetByName } from "../funcs/toolsGetByName.js";
 import { toolsList } from "../funcs/toolsList.js";
 import { toolsUpdate } from "../funcs/toolsUpdate.js";
@@ -21,7 +22,7 @@ export class Tools extends ClientSDK {
   async list(
     request: operations.ToolListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseTool> {
+  ): Promise<components.ListResponseToolResponse> {
     return unwrapAsync(toolsList(
       this,
       request,
@@ -36,9 +37,9 @@ export class Tools extends ClientSDK {
    * Create a new tool
    */
   async create(
-    request: components.ToolCreate,
+    request: components.ToolCreateRequest,
     options?: RequestOptions,
-  ): Promise<components.Tool> {
+  ): Promise<components.ToolResponse> {
     return unwrapAsync(toolsCreate(
       this,
       request,
@@ -53,9 +54,9 @@ export class Tools extends ClientSDK {
    * Update an existing tool
    */
   async update(
-    request: components.ToolUpdate,
+    request: components.ToolUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.Tool> {
+  ): Promise<components.ToolResponse> {
     return unwrapAsync(toolsUpdate(
       this,
       request,
@@ -74,6 +75,23 @@ export class Tools extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ToolDetailResponse> {
     return unwrapAsync(toolsGetByName(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Tool
+   *
+   * @remarks
+   * Delete a tool.
+   */
+  async delete(
+    request: operations.ToolDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(toolsDelete(
       this,
       request,
       options,
