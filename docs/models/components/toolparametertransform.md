@@ -11,7 +11,12 @@ Either `value` or `format` must be set:
 ```typescript
 import { ToolParameterTransform } from "syllable-sdk/models/components";
 
-let value: ToolParameterTransform = {};
+let value: ToolParameterTransform = {
+  when: {
+    key: "key",
+    value: "value",
+  },
+};
 ```
 
 ## Fields

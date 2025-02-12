@@ -101,12 +101,12 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.tools.create({
-    name: "<value>",
+    name: "Weather Fetcher",
     definition: {
       tool: {
         function: {
-          name: "<value>",
-          description: "yuck vice between gee ugh ha",
+          name: "weather_fetcher",
+          description: "Fetches weather data",
           parameters: {
 
           },
@@ -139,12 +139,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await toolsCreate(syllableSDK, {
-    name: "<value>",
+    name: "Weather Fetcher",
     definition: {
       tool: {
         function: {
-          name: "<value>",
-          description: "yuck vice between gee ugh ha",
+          name: "weather_fetcher",
+          description: "Fetches weather data",
           parameters: {
   
           },
@@ -202,12 +202,12 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.tools.update({
-    name: "<value>",
+    name: "Weather Fetcher",
     definition: {
       tool: {
         function: {
-          name: "<value>",
-          description: "awful underneath retention too mobility char innocently dowse restfully",
+          name: "weather_fetcher",
+          description: "Fetches weather data",
           parameters: {
 
           },
@@ -241,12 +241,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await toolsUpdate(syllableSDK, {
-    name: "<value>",
+    name: "Weather Fetcher",
     definition: {
       tool: {
         function: {
-          name: "<value>",
-          description: "awful underneath retention too mobility char innocently dowse restfully",
+          name: "weather_fetcher",
+          description: "Fetches weather data",
           parameters: {
   
           },

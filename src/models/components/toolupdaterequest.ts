@@ -24,7 +24,7 @@ export type ToolUpdateRequest = {
    */
   definition: ToolDefinition;
   /**
-   * The service this tool belongs to
+   * The service to which this tool belongs
    */
   serviceId: number;
   /**

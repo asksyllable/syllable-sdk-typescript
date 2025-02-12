@@ -8,24 +8,30 @@ import { ListResponseToolResponse } from "syllable-sdk/models/components";
 let value: ListResponseToolResponse = {
   items: [
     {
-      name: "<value>",
+      name: "Weather Fetcher",
       definition: {
         tool: {
           function: {
-            name: "<value>",
-            description: "burgeon pupil great vice",
+            name: "weather_fetcher",
+            description: "Fetches weather data",
             parameters: "<value>",
           },
         },
+        endpoint: {
+          url: "https://api.example.com",
+          method: "get",
+          argumentLocation: "path",
+        },
+        defaults: "<value>",
       },
-      serviceId: 117320,
-      id: 107004,
-      lastUpdated: new Date("2024-10-08T07:19:47.979Z"),
-      lastUpdatedBy: "<value>",
+      serviceId: 456520,
+      id: 337477,
+      lastUpdated: new Date("2025-11-29T15:51:58.019Z"),
+      lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 745398,
-  pageSize: 848151,
+  page: 133439,
+  pageSize: 96804,
 };
 ```
 
