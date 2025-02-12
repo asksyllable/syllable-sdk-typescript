@@ -12,20 +12,36 @@ associated with that agent should be linked to the tool and include instructions
 import { ToolDetailResponse } from "syllable-sdk/models/components";
 
 let value: ToolDetailResponse = {
-  name: "<value>",
+  name: "Weather Fetcher",
   definition: {
     tool: {
       function: {
-        name: "<value>",
-        description: "mozzarella alliance airbrush oil yet following off",
+        name: "weather_fetcher",
+        description: "Fetches weather data",
         parameters: "<value>",
       },
     },
+    endpoint: {
+      url: "https://api.example.com",
+      method: "post",
+      argumentLocation: "query",
+    },
+    defaults: {
+      "key": {
+        transform: {
+          action: "default",
+          when: {
+            key: "key",
+            value: "value",
+          },
+        },
+      },
+    },
   },
-  serviceId: 727544,
-  id: 24272,
-  lastUpdated: new Date("2024-04-16T09:46:15.071Z"),
-  lastUpdatedBy: "<value>",
+  serviceId: 399802,
+  id: 380335,
+  lastUpdated: new Date("2023-06-11T23:57:33.954Z"),
+  lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",
   ],
@@ -34,14 +50,14 @@ let value: ToolDetailResponse = {
 
 ## Fields
 
-| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `name`                                                                                        | *string*                                                                                      | TRUE                                                                            | The name of the tool                                                                          |
-| `definition`                                                                                  | [components.ToolDefinition](/sdk-docs/models/components/tooldefinition)                        | TRUE                                                                            | A tool that can be called from an LLM during the conversation.                                |
-| `serviceId`                                                                                   | *number*                                                                                      | TRUE                                                                            | The service this tool belongs to                                                              |
-| `id`                                                                                          | *number*                                                                                      | TRUE                                                                            | The ID of the tool                                                                            |
-| `lastUpdatedComments`                                                                         | *string*                                                                                      | FALSE                                                                            | Update comments                                                                               |
-| `serviceName`                                                                                 | *string*                                                                                      | FALSE                                                                            | The name of the service to which the tool belongs                                             |
-| `lastUpdated`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | TRUE                                                                            | The timestamp of the most recent update to the service                                        |
-| `lastUpdatedBy`                                                                               | *string*                                                                                      | TRUE                                                                            | The email of the user who last updated the tool                                               |
-| `fields`                                                                                      | *string*[]                                                                                    | TRUE                                                                            | Fields that the tool accepts as input                                                         |
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `name`                                                                                        | *string*                                                                                      | TRUE                                                                            | The name of the tool                                                                          | Weather Fetcher                                                                               |
+| `definition`                                                                                  | [components.ToolDefinition](/sdk-docs/models/components/tooldefinition)                        | TRUE                                                                            | A tool that can be called from an LLM during the conversation.                                |                                                                                               |
+| `serviceId`                                                                                   | *number*                                                                                      | TRUE                                                                            | The service to which this tool belongs                                                        |                                                                                               |
+| `id`                                                                                          | *number*                                                                                      | TRUE                                                                            | The ID of the tool                                                                            |                                                                                               |
+| `lastUpdatedComments`                                                                         | *string*                                                                                      | FALSE                                                                            | Update comments                                                                               |                                                                                               |
+| `serviceName`                                                                                 | *string*                                                                                      | FALSE                                                                            | The name of the service to which the tool belongs                                             |                                                                                               |
+| `lastUpdated`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | TRUE                                                                            | The timestamp of the most recent update to the service                                        |                                                                                               |
+| `lastUpdatedBy`                                                                               | *string*                                                                                      | TRUE                                                                            | The email of the user who last updated the tool                                               | user@email.com                                                                                |
+| `fields`                                                                                      | *string*[]                                                                                    | TRUE                                                                            | Fields that the tool accepts as input                                                         |                                                                                               |
