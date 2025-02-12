@@ -2,10 +2,10 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Syllable SDK",
   "logo": {
-    "light": "/logo/Logo_96px_Black.webp",
-    "dark": "/logo/Logo_96px_White.webp"
+    "light": "/logo/Logo_Black.webp",
+    "dark": "/logo/Logo_White.webp"
   },
-  "favicon": "/logo/32_32.png",
+  "favicon": "/logo/favicon_32.png",
   "colors": {
     "primary": "#5a50f5",
     "light": "#ff7255",
