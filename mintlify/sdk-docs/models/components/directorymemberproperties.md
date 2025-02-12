@@ -7,7 +7,7 @@ title: 'DirectoryMemberProperties'
 ```typescript
 import { DirectoryMemberProperties } from "syllable-sdk/models/components";
 
-let value: DirectoryMemberProperties = "name";
+let value: DirectoryMemberProperties = "id";
 ```
 
 ## Values

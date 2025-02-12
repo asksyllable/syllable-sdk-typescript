@@ -23,7 +23,7 @@ export class Prompts extends ClientSDK {
   async list(
     request: operations.PromptsListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponsePrompt> {
+  ): Promise<components.ListResponsePromptResponse> {
     return unwrapAsync(promptsList(
       this,
       request,
@@ -38,9 +38,9 @@ export class Prompts extends ClientSDK {
    * Create a new prompt
    */
   async create(
-    request: components.PromptCreate,
+    request: components.PromptCreateRequest,
     options?: RequestOptions,
-  ): Promise<components.Prompt> {
+  ): Promise<components.PromptResponse> {
     return unwrapAsync(promptsCreate(
       this,
       request,
@@ -55,9 +55,9 @@ export class Prompts extends ClientSDK {
    * Update an existing prompt
    */
   async update(
-    request: components.PromptUpdate,
+    request: components.PromptUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.Prompt> {
+  ): Promise<components.PromptResponse> {
     return unwrapAsync(promptsUpdate(
       this,
       request,
@@ -74,7 +74,7 @@ export class Prompts extends ClientSDK {
   async getById(
     request: operations.PromptsGetByIdRequest,
     options?: RequestOptions,
-  ): Promise<components.Prompt> {
+  ): Promise<components.PromptResponse> {
     return unwrapAsync(promptsGetById(
       this,
       request,

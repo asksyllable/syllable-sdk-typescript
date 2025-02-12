@@ -8,8 +8,7 @@ title: 'DaoCustomMessageRule'
 import { DaoCustomMessageRule } from "syllable-sdk/models/components";
 
 let value: DaoCustomMessageRule = {
-  description:
-    "swine proud plait opposite strict unnecessarily hamburger splosh around apologise",
+  description: "runny rough agreeable beneath unlike vastly but",
   invert: false,
   text: "<value>",
 };

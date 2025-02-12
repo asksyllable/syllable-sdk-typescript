@@ -5,10 +5,10 @@ The default values for the parameters of the function/tool call.
 
 ## Supported Types
 
-### `components.One`
+### `any`
 
 ```typescript
-const value: components.One = {};
+const value: any = "<value>";
 ```
 
 ### `{ [k: string]: components.ToolParameterDefault }`
@@ -16,7 +16,12 @@ const value: components.One = {};
 ```typescript
 const value: { [k: string]: components.ToolParameterDefault } = {
   "key": {
-    transform: {},
+    transform: {
+      when: {
+        key: "key",
+        value: "value",
+      },
+    },
   },
 };
 ```

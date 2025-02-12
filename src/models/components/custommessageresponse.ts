@@ -8,12 +8,20 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  DaoCustomMessageRule,
-  DaoCustomMessageRule$inboundSchema,
-  DaoCustomMessageRule$Outbound,
-  DaoCustomMessageRule$outboundSchema,
-} from "./daocustommessagerule.js";
+  CustomMessageRule,
+  CustomMessageRule$inboundSchema,
+  CustomMessageRule$Outbound,
+  CustomMessageRule$outboundSchema,
+} from "./custommessagerule.js";
 
+/**
+ * A custom message is a pre-configured message delivered by an agent as a greeting at the
+ *
+ * @remarks
+ * beginning of a conversation. Multiple agents can use the same custom mesasage. A custom message
+ * has one or more rules defined, which allow for different messages to be dynamically selected and
+ * delivered at runtime based on the current time and either date or day of the week.
+ */
 export type CustomMessageResponse = {
   /**
    * The name of the custom message
@@ -30,7 +38,7 @@ export type CustomMessageResponse = {
   /**
    * Rules for time-specific message variants
    */
-  rules?: Array<DaoCustomMessageRule> | undefined;
+  rules?: Array<CustomMessageRule> | undefined;
   /**
    * The ID of the custom message
    */
@@ -59,7 +67,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
-  rules: z.array(DaoCustomMessageRule$inboundSchema).optional(),
+  rules: z.array(CustomMessageRule$inboundSchema).optional(),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   agent_count: z.nullable(z.number().int()).optional(),
@@ -78,7 +86,7 @@ export type CustomMessageResponse$Outbound = {
   name: string;
   text: string;
   label?: string | null | undefined;
-  rules?: Array<DaoCustomMessageRule$Outbound> | undefined;
+  rules?: Array<CustomMessageRule$Outbound> | undefined;
   id: number;
   updated_at: string;
   agent_count?: number | null | undefined;
@@ -95,7 +103,7 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   name: z.string(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
-  rules: z.array(DaoCustomMessageRule$outboundSchema).optional(),
+  rules: z.array(CustomMessageRule$outboundSchema).optional(),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   agentCount: z.nullable(z.number().int()).optional(),

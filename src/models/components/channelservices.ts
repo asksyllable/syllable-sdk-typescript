@@ -5,12 +5,18 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * The communication service for a channel.
+ */
 export const ChannelServices = {
   Sip: "sip",
   Twilio: "twilio",
   Email: "email",
   Webchat: "webchat",
 } as const;
+/**
+ * The communication service for a channel.
+ */
 export type ChannelServices = ClosedEnum<typeof ChannelServices>;
 
 /** @internal */

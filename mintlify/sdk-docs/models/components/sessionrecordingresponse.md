@@ -2,6 +2,8 @@
 title: 'SessionRecordingResponse'
 ---
 
+Recording URLs for a given session.
+
 ## Example Usage
 
 ```typescript
@@ -12,8 +14,8 @@ let value: SessionRecordingResponse = {};
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `sessionId`        | *string*           | FALSE | N/A                |
-| `recordings`       | *string*[]         | FALSE | N/A                |
-| `expiration`       | *string*           | FALSE | N/A                |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `sessionId`                      | *string*                         | FALSE               | The internal ID of the session   |
+| `recordings`                     | *string*[]                       | FALSE               | List of recording URLs           |
+| `expiration`                     | *string*                         | FALSE               | Expiration timestamp of the URLs |

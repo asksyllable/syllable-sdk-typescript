@@ -38,13 +38,20 @@ actions:
             async function run() {
               const result = await syllableSDK.agents.create({
                 name: "<value>",
-                timezone: "Antarctica/Rothera",
-                type: "<value>",
-                promptId: 638424,
-                customMessageId: 417458,
+                type: "ca_v1",
+                promptId: 486589,
+                customMessageId: 638424,
+                timezone: "America/New_York",
                 languages: [
-                  "<value>",
+                  "en-US",
+                  "es-US",
                 ],
+                variables: {
+
+                },
+                toolHeaders: {
+                  "key": "<value>",
+                },
               });
 
               // Handle the result
@@ -67,16 +74,24 @@ actions:
             async function run() {
               const result = await syllableSDK.agents.update({
                 name: "<value>",
-                timezone: "Europe/Tallinn",
-                type: "<value>",
-                promptId: 597129,
-                customMessageId: 344620,
+                type: "ca_v1",
+                promptId: 857478,
+                customMessageId: 597129,
+                timezone: "America/New_York",
                 languages: [
-                  "<value>",
-                  "<value>",
-                  "<value>",
+                  "en-US",
+                  "es-US",
                 ],
-                id: 627690,
+                variables: {
+                  "key": "<value>",
+                  "key1": "<value>",
+                  "key2": "<value>",
+                },
+                toolHeaders: {
+                  "key": "<value>",
+                  "key1": "<value>",
+                },
+                id: 488852,
               });
 
               // Handle the result
@@ -272,12 +287,12 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.create({
-                channelId: 417458,
+                channelId: 134365,
                 channelTargetCreateRequest: {
-                  channelId: 486589,
-                  agentId: 638424,
+                  agentId: 486589,
+                  channelId: 638424,
                   target: "<value>",
-                  targetMode: "<value>",
+                  targetMode: "chat",
                 },
               });
 
@@ -323,14 +338,14 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.update({
-                channelId: 991464,
-                targetId: 627690,
+                channelId: 627690,
+                targetId: 488852,
                 channelTargetUpdateRequest: {
-                  id: 857478,
+                  agentId: 857478,
                   channelId: 597129,
-                  agentId: 344620,
                   target: "<value>",
-                  targetMode: "<value>",
+                  targetMode: "chat",
+                  id: 991464,
                 },
               });
 
@@ -395,6 +410,38 @@ actions:
               const result = await syllableSDK.customMessages.create({
                 name: "<value>",
                 text: "<value>",
+                rules: [
+                  {
+                    description: "delightfully fumigate convection though zowie up bulky electronics",
+                    timeRangeStart: "09:00",
+                    timeRangeEnd: "17:00",
+                    date: "2025-01-01",
+                    daysOfWeek: [
+                      "mo",
+                      "tu",
+                      "we",
+                      "th",
+                      "fr",
+                    ],
+                    invert: false,
+                    text: "Sorry, we're closed today",
+                  },
+                  {
+                    description: "yuck forager beneath please shadowy foodstuffs welcome",
+                    timeRangeStart: "09:00",
+                    timeRangeEnd: "17:00",
+                    date: "2025-01-01",
+                    daysOfWeek: [
+                      "mo",
+                      "tu",
+                      "we",
+                      "th",
+                      "fr",
+                    ],
+                    invert: true,
+                    text: "Sorry, we're closed today",
+                  },
+                ],
               });
 
               // Handle the result
@@ -418,7 +465,54 @@ actions:
               const result = await syllableSDK.customMessages.update({
                 name: "<value>",
                 text: "<value>",
-                id: 857478,
+                rules: [
+                  {
+                    description: "technician eulogise whereas till mild than during",
+                    timeRangeStart: "09:00",
+                    timeRangeEnd: "17:00",
+                    date: "2025-01-01",
+                    daysOfWeek: [
+                      "mo",
+                      "tu",
+                      "we",
+                      "th",
+                      "fr",
+                    ],
+                    invert: true,
+                    text: "Sorry, we're closed today",
+                  },
+                  {
+                    description: "qualified cycle woot abseil perfumed fisherman with duh",
+                    timeRangeStart: "09:00",
+                    timeRangeEnd: "17:00",
+                    date: "2025-01-01",
+                    daysOfWeek: [
+                      "mo",
+                      "tu",
+                      "we",
+                      "th",
+                      "fr",
+                    ],
+                    invert: true,
+                    text: "Sorry, we're closed today",
+                  },
+                  {
+                    description: "ultimately in likely opera please antelope",
+                    timeRangeStart: "09:00",
+                    timeRangeEnd: "17:00",
+                    date: "2025-01-01",
+                    daysOfWeek: [
+                      "mo",
+                      "tu",
+                      "we",
+                      "th",
+                      "fr",
+                    ],
+                    invert: true,
+                    text: "Sorry, we're closed today",
+                  },
+                ],
+                id: 975440,
               });
 
               // Handle the result
@@ -471,11 +565,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/directory_members/"]["get"]
+  - target: $["paths"]["/api/v1/dashboards/fetch_info"]["post"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: directory_member_list
+          label: post_get_dashboard
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -484,18 +578,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.list({});
+              const result = await syllableSDK.dashboards.postGetDashboard({
+                dashboardName: "<value>",
+              });
 
               // Handle the result
               console.log(result);
             }
 
             run();
-  - target: $["paths"]["/api/v1/directory_members/"]["post"]
-    update:
-      x-codeSamples:
         - lang: typescript
-          label: directory_member_create
+          label: post_get_dashboard
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -504,9 +597,92 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.create({
+              const result = await syllableSDK.v1.postGetDashboard({
+                dashboardName: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/dashboards/list"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: post_list_dashboard
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dashboards.postListDashboard({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: post_list_dashboard
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.postListDashboard({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/data_sources/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/data_sources/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.create({
                 name: "<value>",
-                type: "<value>",
+                labels: [
+                  "Location Info",
+                ],
+                chunk: true,
+                text: "<value>",
               });
 
               // Handle the result
@@ -514,11 +690,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/directory_members/download/"]["get"]
+  - target: $["paths"]["/api/v1/data_sources/"]["put"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: directory_member_download
+          label: data_sources_update
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -527,29 +703,13 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.directoryMemberDownload();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/directory_members/upload/"]["put"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_bulk_load
-          source: |-
-            import { openAsBlob } from "node:fs";
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.directoryMemberBulkLoad({
-                file: await openAsBlob("example.file"),
+              const result = await syllableSDK.dataSources.update({
+                name: "<value>",
+                labels: [
+                  "Location Info",
+                ],
+                chunk: false,
+                text: "<value>",
               });
 
               // Handle the result
@@ -557,11 +717,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["delete"]
+  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["delete"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: directory_member_delete
+          label: data_sources_delete
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -570,8 +730,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.delete({
-                memberId: 545907,
+              const result = await syllableSDK.dataSources.delete({
+                dataSourceName: "<value>",
+                reason: "<value>",
               });
 
               // Handle the result
@@ -579,11 +740,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["get"]
+  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: directory_member_get_by_id
+          label: data_sources_get_by_name
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -592,34 +753,8 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.getById({
-                memberId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["put"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: directory_member_update
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.directory.update({
-                memberId: 857478,
-                directoryMember: {
-                  name: "<value>",
-                  type: "<value>",
-                },
+              const result = await syllableSDK.dataSources.getByName({
+                dataSourceName: "<value>",
               });
 
               // Handle the result
@@ -684,7 +819,6 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
@@ -712,7 +846,6 @@ actions:
                 name: "<value>",
                 type: "<value>",
                 llmConfig: {
-                  model: "gpt-4o",
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
@@ -858,6 +991,51 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/services/{service_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: service_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.delete({
+                serviceId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/services/{service_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: services_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.services.getById({
+                serviceId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/session_labels/"]["get"]
     update:
       x-codeSamples:
@@ -893,9 +1071,12 @@ actions:
             async function run() {
               const result = await syllableSDK.sessionLabels.create({
                 sessionId: 486589,
-                type: "<value>",
-                code: "<value>",
+                type: "human-rating",
+                code: "OK",
                 userEmail: "<value>",
+                issueCategories: [
+                  "Silent treatment",
+                ],
               });
 
               // Handle the result
@@ -1067,17 +1248,23 @@ actions:
 
             async function run() {
               const result = await syllableSDK.tools.create({
-                name: "<value>",
+                name: "Weather Fetcher",
                 definition: {
                   tool: {
                     function: {
-                      name: "<value>",
-                      description: "yuck vice between gee ugh ha",
-                      parameters: {},
+                      name: "weather_fetcher",
+                      description: "Fetches weather data",
+                      parameters: "<value>",
                     },
                   },
+                  endpoint: {
+                    url: "https://api.example.com",
+                    method: "get",
+                    argumentLocation: "path",
+                  },
+                  defaults: "<value>",
                 },
-                serviceId: 920994,
+                serviceId: 134365,
               });
 
               // Handle the result
@@ -1099,18 +1286,47 @@ actions:
 
             async function run() {
               const result = await syllableSDK.tools.update({
-                name: "<value>",
+                name: "Weather Fetcher",
                 definition: {
                   tool: {
                     function: {
-                      name: "<value>",
-                      description: "awful underneath retention too mobility char innocently dowse restfully",
-                      parameters: {},
+                      name: "weather_fetcher",
+                      description: "Fetches weather data",
+                      parameters: "<value>",
                     },
                   },
+                  endpoint: {
+                    url: "https://api.example.com",
+                    method: "post",
+                    argumentLocation: "path",
+                  },
+                  defaults: "<value>",
                 },
-                serviceId: 243447,
-                id: 265006,
+                serviceId: 991464,
+                id: 627690,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/tools/{tool_name}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: tool_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.delete({
+                toolName: "<value>",
+                reason: "<value>",
               });
 
               // Handle the result

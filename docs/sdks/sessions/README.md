@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to agent sessions
+Operations related to sessions. A session is a building block of a           conversation.
 
 ### Available Operations
 

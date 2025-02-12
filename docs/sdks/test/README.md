@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations for testing agents with live text
+Operations for testing agents with live text.           These endpoints allow sending messages to an agent and receiving its responses.
 
 ### Available Operations
 

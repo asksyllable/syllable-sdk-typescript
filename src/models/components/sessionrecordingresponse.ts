@@ -8,9 +8,21 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Recording URLs for a given session.
+ */
 export type SessionRecordingResponse = {
+  /**
+   * The internal ID of the session
+   */
   sessionId?: string | null | undefined;
+  /**
+   * List of recording URLs
+   */
   recordings?: Array<string> | null | undefined;
+  /**
+   * Expiration timestamp of the URLs
+   */
   expiration?: string | null | undefined;
 };
 

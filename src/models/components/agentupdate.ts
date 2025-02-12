@@ -15,19 +15,56 @@ import {
 } from "./agenttooldefaults.js";
 
 export type AgentUpdate = {
-  name: string;
-  description?: string | null | undefined;
-  label?: string | null | undefined;
-  timezone: string;
-  type: string;
-  promptId: number;
-  customMessageId: number | null;
-  languages: Array<string>;
-  promptToolDefaults?: Array<AgentToolDefaults> | undefined;
-  toolHeaders?: { [k: string]: string } | null | undefined;
-  variables?: { [k: string]: string } | null | undefined;
   /**
-   * The Agent ID
+   * The agent name
+   */
+  name: string;
+  /**
+   * The agent description
+   */
+  description?: string | null | undefined;
+  /**
+   * The agent label
+   */
+  label?: string | null | undefined;
+  /**
+   * The agent type. Can be an arbitrary string
+   */
+  type: string;
+  /**
+   * ID of the prompt associated with the agent
+   */
+  promptId: number;
+  /**
+   * ID of the custom message that should be delivered at the beginning of a conversation with the agent
+   */
+  customMessageId: number;
+  /**
+   * The time zone in which the agent operates
+   */
+  timezone: string;
+  /**
+   * The prompt tool defaults
+   */
+  promptToolDefaults?: Array<AgentToolDefaults> | undefined;
+  /**
+   * BCP 47 codes of languages the agent supports
+   */
+  languages?: Array<string> | undefined;
+  /**
+   * Custom context variables for the conversation session. Keys should be prefixed with "vars.".
+   */
+  variables: { [k: string]: string };
+  /**
+   * Optional headers to include in tool calls for agent.
+   */
+  toolHeaders: { [k: string]: string } | null;
+  /**
+   * Whether the agent initiates conversation with a user after the custom_message is delivered
+   */
+  agentInitiated?: boolean | undefined;
+  /**
+   * The agent ID
    */
   id: number;
 };
@@ -41,14 +78,15 @@ export const AgentUpdate$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  timezone: z.string(),
   type: z.string(),
   prompt_id: z.number().int(),
-  custom_message_id: z.nullable(z.number().int()),
-  languages: z.array(z.string()),
+  custom_message_id: z.number().int(),
+  timezone: z.string(),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
-  tool_headers: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.record(z.string())).optional(),
+  languages: z.array(z.string()).optional(),
+  variables: z.record(z.string()),
+  tool_headers: z.nullable(z.record(z.string())),
+  agent_initiated: z.boolean().default(false),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -56,6 +94,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
     "custom_message_id": "customMessageId",
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
+    "agent_initiated": "agentInitiated",
   });
 });
 
@@ -64,14 +103,15 @@ export type AgentUpdate$Outbound = {
   name: string;
   description?: string | null | undefined;
   label?: string | null | undefined;
-  timezone: string;
   type: string;
   prompt_id: number;
-  custom_message_id: number | null;
-  languages: Array<string>;
+  custom_message_id: number;
+  timezone: string;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
-  tool_headers?: { [k: string]: string } | null | undefined;
-  variables?: { [k: string]: string } | null | undefined;
+  languages?: Array<string> | undefined;
+  variables: { [k: string]: string };
+  tool_headers: { [k: string]: string } | null;
+  agent_initiated: boolean;
   id: number;
 };
 
@@ -84,14 +124,15 @@ export const AgentUpdate$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  timezone: z.string(),
   type: z.string(),
   promptId: z.number().int(),
-  customMessageId: z.nullable(z.number().int()),
-  languages: z.array(z.string()),
+  customMessageId: z.number().int(),
+  timezone: z.string(),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
-  toolHeaders: z.nullable(z.record(z.string())).optional(),
-  variables: z.nullable(z.record(z.string())).optional(),
+  languages: z.array(z.string()).optional(),
+  variables: z.record(z.string()),
+  toolHeaders: z.nullable(z.record(z.string())),
+  agentInitiated: z.boolean().default(false),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -99,6 +140,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
     customMessageId: "custom_message_id",
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
+    agentInitiated: "agent_initiated",
   });
 });
 

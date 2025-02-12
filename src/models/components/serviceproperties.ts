@@ -8,6 +8,9 @@ import { ClosedEnum } from "../../types/enums.js";
 export const ServiceProperties = {
   Id: "id",
   Name: "name",
+  Description: "description",
+  UpdatedAt: "updated_at",
+  LastUpdatedBy: "last_updated_by",
 } as const;
 export type ServiceProperties = ClosedEnum<typeof ServiceProperties>;
 

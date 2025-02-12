@@ -1,6 +1,6 @@
 # syllable-sdk
 
-Developer-friendly & type-safe Typescript SDK specifically catered to leverage *syllable-sdk* API.
+Developer-friendly & type-safe TypeScript SDK specifically catered to leverage *syllable-sdk* API.
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=syllable-sdk&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
@@ -44,7 +44,6 @@ assistants, or any other AI-driven solutions, Syllable SDK has got you covered.
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
-  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -164,15 +163,22 @@ run();
 * [getById](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 * [delete](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
 
-### [directory](docs/sdks/directory/README.md)
+### [dashboards](docs/sdks/dashboards/README.md)
 
-* [list](docs/sdks/directory/README.md#list) - Directory Member List
-* [create](docs/sdks/directory/README.md#create) - Create Directory Member
-* [getById](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
-* [update](docs/sdks/directory/README.md#update) - Update Directory Member
-* [delete](docs/sdks/directory/README.md#delete) - Delete Directory Member
-* [directoryMemberBulkLoad](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
-* [directoryMemberDownload](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
+* [postListDashboard](docs/sdks/dashboards/README.md#postlistdashboard) - Post List Dashboards
+* [postGetDashboard](docs/sdks/dashboards/README.md#postgetdashboard) - Post Fetch Info
+* [~~postSessionEventsDashboard~~](docs/sdks/dashboards/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
+* [~~postSessionSummaryDashboard~~](docs/sdks/dashboards/README.md#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
+* [~~postSessionTransfersDashboard~~](docs/sdks/dashboards/README.md#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
+* [~~postSessionsDashboard~~](docs/sdks/dashboards/README.md#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
+
+### [dataSources](docs/sdks/datasources/README.md)
+
+* [list](docs/sdks/datasources/README.md#list) - List Data Sources
+* [create](docs/sdks/datasources/README.md#create) - Create Data Source
+* [update](docs/sdks/datasources/README.md#update) - Update Data Source
+* [getByName](docs/sdks/datasources/README.md#getbyname) - Get Data Source
+* [delete](docs/sdks/datasources/README.md#delete) - Delete Data Source
 
 ### [events](docs/sdks/events/README.md)
 
@@ -192,6 +198,8 @@ run();
 * [list](docs/sdks/services/README.md#list) - Service List
 * [create](docs/sdks/services/README.md#create) - Create Service
 * [update](docs/sdks/services/README.md#update) - Update Service
+* [getById](docs/sdks/services/README.md#getbyid) - Get Service By Id
+* [delete](docs/sdks/services/README.md#delete) - Delete Service
 
 ### [sessionLabels](docs/sdks/sessionlabels/README.md)
 
@@ -217,6 +225,16 @@ run();
 * [create](docs/sdks/tools/README.md#create) - Create Tool
 * [update](docs/sdks/tools/README.md#update) - Update Tool
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
+* [delete](docs/sdks/tools/README.md#delete) - Delete Tool
+
+### [v1](docs/sdks/v1/README.md)
+
+* [postListDashboard](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
+* [postGetDashboard](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
+* [~~postSessionEventsDashboard~~](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
+* [~~postSessionSummaryDashboard~~](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
+* [~~postSessionTransfersDashboard~~](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
+* [~~postSessionsDashboard~~](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -256,13 +274,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customMessagesGetById`](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 - [`customMessagesList`](docs/sdks/custommessages/README.md#list) - Custom Messages List
 - [`customMessagesUpdate`](docs/sdks/custommessages/README.md#update) - Update Custom Message
-- [`directoryCreate`](docs/sdks/directory/README.md#create) - Create Directory Member
-- [`directoryDelete`](docs/sdks/directory/README.md#delete) - Delete Directory Member
-- [`directoryDirectoryMemberBulkLoad`](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
-- [`directoryDirectoryMemberDownload`](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
-- [`directoryGetById`](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
-- [`directoryList`](docs/sdks/directory/README.md#list) - Directory Member List
-- [`directoryUpdate`](docs/sdks/directory/README.md#update) - Update Directory Member
+- [`dashboardsPostGetDashboard`](docs/sdks/dashboards/README.md#postgetdashboard) - Post Fetch Info
+- [`dashboardsPostListDashboard`](docs/sdks/dashboards/README.md#postlistdashboard) - Post List Dashboards
+- [`dataSourcesCreate`](docs/sdks/datasources/README.md#create) - Create Data Source
+- [`dataSourcesDelete`](docs/sdks/datasources/README.md#delete) - Delete Data Source
+- [`dataSourcesGetByName`](docs/sdks/datasources/README.md#getbyname) - Get Data Source
+- [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
+- [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
@@ -271,6 +289,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
 - [`servicesCreate`](docs/sdks/services/README.md#create) - Create Service
+- [`servicesDelete`](docs/sdks/services/README.md#delete) - Delete Service
+- [`servicesGetById`](docs/sdks/services/README.md#getbyid) - Get Service By Id
 - [`servicesList`](docs/sdks/services/README.md#list) - Service List
 - [`servicesUpdate`](docs/sdks/services/README.md#update) - Update Service
 - [`sessionLabelsCreate`](docs/sdks/sessionlabels/README.md#create) - Create Label
@@ -282,48 +302,23 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`toolsCreate`](docs/sdks/tools/README.md#create) - Create Tool
+- [`toolsDelete`](docs/sdks/tools/README.md#delete) - Delete Tool
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`v1PostGetDashboard`](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
+- [`v1PostListDashboard`](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
+- ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
+- ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
+- ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
+- ~~[`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard)~~ - Post Session Transfers :warning: **Deprecated**
+- ~~[`v1PostSessionEventsDashboard`](docs/sdks/v1/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
+- ~~[`v1PostSessionsDashboard`](docs/sdks/v1/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
+- ~~[`v1PostSessionSummaryDashboard`](docs/sdks/v1/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
+- ~~[`v1PostSessionTransfersDashboard`](docs/sdks/v1/README.md#postsessiontransfersdashboard)~~ - Post Session Transfers :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
-
-<!-- Start File uploads [file-upload] -->
-## File uploads
-
-Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
-
-> [!TIP]
->
-> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
->
-> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
-> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
-> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
-> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
-
-```typescript
-import { openAsBlob } from "node:fs";
-import { SyllableSDK } from "syllable-sdk";
-
-const syllableSDK = new SyllableSDK({
-  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-});
-
-async function run() {
-  const result = await syllableSDK.directory.directoryMemberBulkLoad({
-    file: await openAsBlob("example.file"),
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -463,36 +458,6 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| #   | Server                          |
-| --- | ------------------------------- |
-| 0   | `https://api.syllable.ai`       |
-| 1   | `https://trial.api.syllable.ai` |
-
-#### Example
-
-```typescript
-import { SyllableSDK } from "syllable-sdk";
-
-const syllableSDK = new SyllableSDK({
-  serverIdx: 1,
-  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-});
-
-async function run() {
-  const result = await syllableSDK.agents.list({});
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
@@ -500,7 +465,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
-  serverURL: "https://api.syllable.ai",
+  serverURL: "https://api.syllable.cloud",
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 

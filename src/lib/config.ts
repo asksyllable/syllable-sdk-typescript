@@ -14,11 +14,7 @@ export const ServerList = [
   /**
    * API server
    */
-  "https://api.syllable.ai",
-  /**
-   * Trial API server
-   */
-  "https://trial.api.syllable.ai",
+  "https://api.syllable.cloud",
 ] as const;
 
 export type SDKOptions = {
@@ -61,8 +57,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.0.2",
-  sdkVersion: "0.1.0-alpha.28",
-  genVersion: "2.481.0",
+  sdkVersion: "0.1.0-alpha.42",
+  genVersion: "2.511.2",
   userAgent:
-    "speakeasy-sdk/typescript 0.1.0-alpha.28 2.481.0 0.0.2 syllable-sdk",
+    "speakeasy-sdk/typescript 0.1.0-alpha.42 2.511.2 0.0.2 syllable-sdk",
 } as const;

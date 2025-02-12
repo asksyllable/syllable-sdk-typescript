@@ -14,62 +14,82 @@ import {
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
 import {
-  CustomMessage,
-  CustomMessage$inboundSchema,
-  CustomMessage$Outbound,
-  CustomMessage$outboundSchema,
-} from "./custommessage.js";
+  ChannelTargetResponse,
+  ChannelTargetResponse$inboundSchema,
+  ChannelTargetResponse$Outbound,
+  ChannelTargetResponse$outboundSchema,
+} from "./channeltargetresponse.js";
 import {
-  Prompt,
-  Prompt$inboundSchema,
-  Prompt$Outbound,
-  Prompt$outboundSchema,
-} from "./prompt.js";
+  CustomMessageResponse,
+  CustomMessageResponse$inboundSchema,
+  CustomMessageResponse$Outbound,
+  CustomMessageResponse$outboundSchema,
+} from "./custommessageresponse.js";
 import {
-  Target,
-  Target$inboundSchema,
-  Target$Outbound,
-  Target$outboundSchema,
-} from "./target.js";
+  PromptResponse,
+  PromptResponse$inboundSchema,
+  PromptResponse$Outbound,
+  PromptResponse$outboundSchema,
+} from "./promptresponse.js";
 
+/**
+ * When a user interacts with the Syllable system, they do so by communicating with an agent.
+ *
+ * @remarks
+ * An agent is linked to a prompt, a custom message, and one or more channel targets to define its
+ * behavior and capabilities.
+ */
 export type AgentResponse = {
   /**
-   * The Agent name
+   * The agent name
    */
   name: string;
   /**
-   * The Agent description
+   * The agent description
    */
   description?: string | null | undefined;
   /**
-   * The Agent label
+   * The agent label
    */
   label?: string | null | undefined;
   /**
-   * The Agent type
+   * The agent type. Can be an arbitrary string
    */
   type: string;
   /**
-   * The Agent's prompt id
+   * ID of the prompt associated with the agent
    */
   promptId: number;
   /**
-   * The Agent's custom message id
+   * ID of the custom message that should be delivered at the beginning of a conversation with the agent
    */
-  customMessageId?: number | null | undefined;
+  customMessageId: number;
   /**
-   * The time zone the bot operates in
+   * The time zone in which the agent operates
    */
   timezone: string;
-  promptToolDefaults: Array<AgentToolDefaults>;
-  languages: Array<string>;
+  /**
+   * The prompt tool defaults
+   */
+  promptToolDefaults?: Array<AgentToolDefaults> | undefined;
+  /**
+   * BCP 47 codes of languages the agent supports
+   */
+  languages?: Array<string> | undefined;
+  /**
+   * Custom context variables for the conversation session. Keys should be prefixed with "vars.".
+   */
   variables: { [k: string]: string };
   /**
-   * Optional headers to include in tool calls.
+   * Optional headers to include in tool calls for agent.
    */
   toolHeaders: { [k: string]: string } | null;
   /**
-   * The Agent ID
+   * Whether the agent initiates conversation with a user after the custom_message is delivered
+   */
+  agentInitiated?: boolean | undefined;
+  /**
+   * The agent ID
    */
   id: number;
   /**
@@ -81,17 +101,17 @@ export type AgentResponse = {
    */
   lastUpdatedBy: string | null;
   /**
+   * The prompt associated with the agent.
+   */
+  prompt?: PromptResponse | null | undefined;
+  /**
+   * The custom message associated with the agent. Will be delivered as a greeting at the beginning of a conversation.
+   */
+  customMessage?: CustomMessageResponse | null | undefined;
+  /**
    * Channel targets associated with the agent
    */
-  channelTargets?: Array<Target> | null | undefined;
-  /**
-   * The prompt associated with the agent
-   */
-  prompt?: Prompt | null | undefined;
-  /**
-   * The custom message associated with the agent
-   */
-  customMessage?: CustomMessage | null | undefined;
+  channelTargets?: Array<ChannelTargetResponse> | null | undefined;
 };
 
 /** @internal */
@@ -105,28 +125,32 @@ export const AgentResponse$inboundSchema: z.ZodType<
   label: z.nullable(z.string()).optional(),
   type: z.string(),
   prompt_id: z.number().int(),
-  custom_message_id: z.nullable(z.number().int()).optional(),
+  custom_message_id: z.number().int(),
   timezone: z.string(),
-  prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema),
-  languages: z.array(z.string()),
+  prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
+  languages: z.array(z.string()).optional(),
   variables: z.record(z.string()),
   tool_headers: z.nullable(z.record(z.string())),
+  agent_initiated: z.boolean().default(false),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.nullable(z.string()),
-  channel_targets: z.nullable(z.array(Target$inboundSchema)).optional(),
-  prompt: z.nullable(Prompt$inboundSchema).optional(),
-  custom_message: z.nullable(CustomMessage$inboundSchema).optional(),
+  prompt: z.nullable(PromptResponse$inboundSchema).optional(),
+  custom_message: z.nullable(CustomMessageResponse$inboundSchema).optional(),
+  channel_targets: z.nullable(
+    z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
     "custom_message_id": "customMessageId",
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
+    "agent_initiated": "agentInitiated",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
-    "channel_targets": "channelTargets",
     "custom_message": "customMessage",
+    "channel_targets": "channelTargets",
   });
 });
 
@@ -137,18 +161,19 @@ export type AgentResponse$Outbound = {
   label?: string | null | undefined;
   type: string;
   prompt_id: number;
-  custom_message_id?: number | null | undefined;
+  custom_message_id: number;
   timezone: string;
-  prompt_tool_defaults: Array<AgentToolDefaults$Outbound>;
-  languages: Array<string>;
+  prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
+  languages?: Array<string> | undefined;
   variables: { [k: string]: string };
   tool_headers: { [k: string]: string } | null;
+  agent_initiated: boolean;
   id: number;
   updated_at: string;
   last_updated_by: string | null;
-  channel_targets?: Array<Target$Outbound> | null | undefined;
-  prompt?: Prompt$Outbound | null | undefined;
-  custom_message?: CustomMessage$Outbound | null | undefined;
+  prompt?: PromptResponse$Outbound | null | undefined;
+  custom_message?: CustomMessageResponse$Outbound | null | undefined;
+  channel_targets?: Array<ChannelTargetResponse$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -162,28 +187,32 @@ export const AgentResponse$outboundSchema: z.ZodType<
   label: z.nullable(z.string()).optional(),
   type: z.string(),
   promptId: z.number().int(),
-  customMessageId: z.nullable(z.number().int()).optional(),
+  customMessageId: z.number().int(),
   timezone: z.string(),
-  promptToolDefaults: z.array(AgentToolDefaults$outboundSchema),
-  languages: z.array(z.string()),
+  promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
+  languages: z.array(z.string()).optional(),
   variables: z.record(z.string()),
   toolHeaders: z.nullable(z.record(z.string())),
+  agentInitiated: z.boolean().default(false),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()),
-  channelTargets: z.nullable(z.array(Target$outboundSchema)).optional(),
-  prompt: z.nullable(Prompt$outboundSchema).optional(),
-  customMessage: z.nullable(CustomMessage$outboundSchema).optional(),
+  prompt: z.nullable(PromptResponse$outboundSchema).optional(),
+  customMessage: z.nullable(CustomMessageResponse$outboundSchema).optional(),
+  channelTargets: z.nullable(
+    z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
     customMessageId: "custom_message_id",
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
+    agentInitiated: "agent_initiated",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
-    channelTargets: "channel_targets",
     customMessage: "custom_message",
+    channelTargets: "channel_targets",
   });
 });
 

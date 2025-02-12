@@ -8,7 +8,7 @@ title: 'DirectoryMemberGetByIdRequest'
 import { DirectoryMemberGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: DirectoryMemberGetByIdRequest = {
-  memberId: 968972,
+  memberId: 344530,
 };
 ```
 

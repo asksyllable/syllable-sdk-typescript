@@ -8,6 +8,9 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Message sent in a test chat with an agent.
+ */
 export type TestMessage = {
   /**
    * Name of the service producing the message
@@ -17,11 +20,29 @@ export type TestMessage = {
    * Name of the source of the message, should identify the user, like an email or username
    */
   source: string;
+  /**
+   * The text of the message
+   */
   text?: string | null | undefined;
+  /**
+   * Channel-manager-side ID of the session (see Session.channel_manager_sid)
+   */
   testId: string;
+  /**
+   * ID of the agent with which the chat is taking place
+   */
   agentId: string;
+  /**
+   * Name of the organization associated with the agent
+   */
   orgName: string;
+  /**
+   * Override for the timestamp of the message
+   */
   overrideTimestamp?: string | null | undefined;
+  /**
+   * Whether this message is the start of a new session
+   */
   sessionStart?: boolean | undefined;
 };
 

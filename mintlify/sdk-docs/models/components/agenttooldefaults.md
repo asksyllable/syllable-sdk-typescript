@@ -2,6 +2,8 @@
 title: 'AgentToolDefaults'
 ---
 
+An agent-level configuration of default values for tool parameters for its tools.
+
 ## Example Usage
 
 ```typescript
@@ -22,5 +24,5 @@ let value: AgentToolDefaults = {
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `toolName`                                                                             | *string*                                                                               | TRUE                                                                     | N/A                                                                                    |
-| `defaultValues`                                                                        | [components.AgentToolFieldDefault](/sdk-docs/models/components/agenttoolfielddefault)[] | TRUE                                                                     | N/A                                                                                    |
+| `toolName`                                                                             | *string*                                                                               | TRUE                                                                     | The name of the tool                                                                   |
+| `defaultValues`                                                                        | [components.AgentToolFieldDefault](/sdk-docs/models/components/agenttoolfielddefault)[] | TRUE                                                                     | The default values for fields used in the tool                                         |

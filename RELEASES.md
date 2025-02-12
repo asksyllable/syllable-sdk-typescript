@@ -321,3 +321,143 @@ Based on:
 - [typescript v0.1.0-alpha.28] .
 ### Releases
 - [NPM v0.1.0-alpha.28] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.28 - .
+
+## 2025-01-10 16:40:58
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.467.1 (2.492.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.29] .
+### Releases
+- [NPM v0.1.0-alpha.29] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.29 - .
+
+## 2025-01-16 20:26:51
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.468.9 (2.493.21) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.30] .
+### Releases
+- [NPM v0.1.0-alpha.30] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.30 - .
+
+## 2025-01-16 21:35:45
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.468.9 (2.493.21) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.31] .
+### Releases
+- [NPM v0.1.0-alpha.31] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.31 - .
+
+## 2025-01-16 22:02:54
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.468.9 (2.493.21) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.32] .
+### Releases
+- [NPM v0.1.0-alpha.32] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.32 - .
+
+## 2025-01-17 14:37:52
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.469.0 (2.493.21) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.33] .
+### Releases
+- [NPM v0.1.0-alpha.33] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.33 - .
+
+## 2025-01-17 21:05:19
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.469.1 (2.493.21) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.34] .
+### Releases
+- [NPM v0.1.0-alpha.34] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.34 - .
+
+## 2025-01-23 20:23:33
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.472.1 (2.493.34) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.35] .
+### Releases
+- [NPM v0.1.0-alpha.35] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.35 - .
+
+## 2025-02-01 00:12:09
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.481.1 (2.500.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.36] .
+### Releases
+- [NPM v0.1.0-alpha.36] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.36 - .
+
+## 2025-02-05 20:54:46
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.484.1 (2.503.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.37] .
+### Releases
+- [NPM v0.1.0-alpha.37] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.37 - .
+
+## 2025-02-06 17:22:19
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.485.0 (2.503.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.38] .
+### Releases
+- [NPM v0.1.0-alpha.38] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.38 - .
+
+## 2025-02-11 19:19:16
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.488.0 (2.506.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.39] .
+### Releases
+- [NPM v0.1.0-alpha.39] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.39 - .
+
+## 2025-02-11 21:58:12
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.488.0 (2.506.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.40] .
+### Releases
+- [NPM v0.1.0-alpha.40] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.40 - .
+
+## 2025-02-12 00:17:13
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.488.0 (2.506.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.41] .
+### Releases
+- [NPM v0.1.0-alpha.41] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.41 - .
+
+## 2025-02-12 14:38:40
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.489.1 (2.511.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.0-alpha.42] .
+### Releases
+- [NPM v0.1.0-alpha.42] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.42 - .

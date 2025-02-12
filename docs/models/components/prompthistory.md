@@ -1,12 +1,18 @@
 # PromptHistory
 
+Record of a change to a prompt. Values reflect post-change state.
+
 ## Example Usage
 
 ```typescript
 import { PromptHistory } from "syllable-sdk/models/components";
 
 let value: PromptHistory = {
-  timestamp: new Date("2024-08-07T13:19:14.525Z"),
+  timestamp: new Date("2025-08-10T23:01:34.707Z"),
+  promptId: "<id>",
+  promptText: "<value>",
+  promptName: "<value>",
+  userEmail: "<value>",
 };
 ```
 
@@ -14,11 +20,11 @@ let value: PromptHistory = {
 
 | Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `timestamp`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `promptId`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `promptText`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `promptDescription`                                                                           | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `promptName`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `llmConfig`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `comments`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `userEmail`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `timestamp`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | Timestamp of the change                                                                       |
+| `promptId`                                                                                    | *string*                                                                                      | :heavy_check_mark:                                                                            | ID of the prompt                                                                              |
+| `promptText`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | Text of the prompt                                                                            |
+| `promptDescription`                                                                           | *string*                                                                                      | :heavy_minus_sign:                                                                            | Description of the prompt                                                                     |
+| `promptName`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | Name of the prompt                                                                            |
+| `llmConfig`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | String representation of LLM config for the prompt                                            |
+| `comments`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | Comments describing the change                                                                |
+| `userEmail`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | Email address of the user who made the change                                                 |

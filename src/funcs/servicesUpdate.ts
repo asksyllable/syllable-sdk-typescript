@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
@@ -24,14 +25,17 @@ import { Result } from "../types/fp.js";
 
 /**
  * Update Service
+ *
+ * @remarks
+ * Update an existing service.
  */
 export async function servicesUpdate(
   client: SyllableSDKCore,
-  request: components.ServiceUpdate,
+  request: components.ServiceUpdateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.Service,
+    components.ServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -44,7 +48,7 @@ export async function servicesUpdate(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.ServiceUpdate$outboundSchema.parse(value),
+    (value) => components.ServiceUpdateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -55,16 +59,17 @@ export async function servicesUpdate(
 
   const path = pathToFunc("/api/v1/services/")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
   const securityInput = secConfig == null ? {} : { apiKeyHeader: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "service_update",
     oAuth2Scopes: [],
 
@@ -107,7 +112,7 @@ export async function servicesUpdate(
   };
 
   const [result] = await M.match<
-    components.Service,
+    components.ServiceResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -117,9 +122,10 @@ export async function servicesUpdate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.Service$inboundSchema),
+    M.json(200, components.ServiceResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
