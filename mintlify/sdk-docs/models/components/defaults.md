@@ -18,7 +18,12 @@ const value: any = "<value>";
 ```typescript
 const value: { [k: string]: components.ToolParameterDefault } = {
   "key": {
-    transform: {},
+    transform: {
+      when: {
+        key: "key",
+        value: "value",
+      },
+    },
   },
 };
 ```
