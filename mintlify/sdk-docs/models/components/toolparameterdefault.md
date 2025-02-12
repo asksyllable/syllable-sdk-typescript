@@ -10,7 +10,12 @@ The default value for a parameter of a tool call.
 import { ToolParameterDefault } from "syllable-sdk/models/components";
 
 let value: ToolParameterDefault = {
-  transform: {},
+  transform: {
+    when: {
+      key: "key",
+      value: "value",
+    },
+  },
 };
 ```
 
