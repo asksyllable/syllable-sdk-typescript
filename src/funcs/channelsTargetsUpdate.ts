@@ -86,6 +86,7 @@ export async function channelsTargetsUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "channel_targets_update",
     oAuth2Scopes: [],
 

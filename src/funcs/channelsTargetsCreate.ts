@@ -77,6 +77,7 @@ export async function channelsTargetsCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "channel_targets_create",
     oAuth2Scopes: [],
 

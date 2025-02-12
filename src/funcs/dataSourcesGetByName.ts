@@ -80,6 +80,7 @@ export async function dataSourcesGetByName(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "data_sources_get_by_name",
     oAuth2Scopes: [],
 

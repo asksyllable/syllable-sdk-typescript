@@ -69,6 +69,7 @@ export async function agentsCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "agent_create",
     oAuth2Scopes: [],
 

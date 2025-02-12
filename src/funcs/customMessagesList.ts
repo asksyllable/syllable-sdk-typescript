@@ -81,6 +81,7 @@ export async function customMessagesList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "custom_messages_list",
     oAuth2Scopes: [],
 

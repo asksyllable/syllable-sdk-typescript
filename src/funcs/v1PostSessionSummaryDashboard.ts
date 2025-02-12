@@ -58,6 +58,7 @@ export async function v1PostSessionSummaryDashboard(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "post_session_summary_dashboard",
     oAuth2Scopes: [],
 

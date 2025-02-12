@@ -73,6 +73,7 @@ export async function sessionsGetById(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "session_get_by_id",
     oAuth2Scopes: [],
 

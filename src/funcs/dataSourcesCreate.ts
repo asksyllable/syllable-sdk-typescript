@@ -69,6 +69,7 @@ export async function dataSourcesCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "data_sources_create",
     oAuth2Scopes: [],
 

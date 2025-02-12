@@ -76,6 +76,7 @@ export async function dashboardsPostGetDashboard(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "post_get_dashboard",
     oAuth2Scopes: [],
 

@@ -78,6 +78,7 @@ export async function sessionsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "sessions_list",
     oAuth2Scopes: [],
 

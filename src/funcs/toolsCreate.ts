@@ -69,6 +69,7 @@ export async function toolsCreate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "tool_create",
     oAuth2Scopes: [],
 

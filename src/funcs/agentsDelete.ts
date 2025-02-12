@@ -77,6 +77,7 @@ export async function agentsDelete(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "agent_delete",
     oAuth2Scopes: [],
 

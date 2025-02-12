@@ -112,6 +112,12 @@ async function run() {
           },
         },
       },
+      endpoint: {
+        url: "https://api.example.com",
+        method: "get",
+        argumentLocation: "path",
+      },
+      defaults: "<value>",
     },
     serviceId: 920994,
   });
@@ -150,6 +156,12 @@ async function run() {
           },
         },
       },
+      endpoint: {
+        url: "https://api.example.com",
+        method: "get",
+        argumentLocation: "path",
+      },
+      defaults: "<value>",
     },
     serviceId: 920994,
   });
@@ -213,6 +225,12 @@ async function run() {
           },
         },
       },
+      endpoint: {
+        url: "https://api.example.com",
+        method: "post",
+        argumentLocation: "path",
+      },
+      defaults: "<value>",
     },
     serviceId: 243447,
     id: 265006,
@@ -252,6 +270,12 @@ async function run() {
           },
         },
       },
+      endpoint: {
+        url: "https://api.example.com",
+        method: "post",
+        argumentLocation: "path",
+      },
+      defaults: "<value>",
     },
     serviceId: 243447,
     id: 265006,

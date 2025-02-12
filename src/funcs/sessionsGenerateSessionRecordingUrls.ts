@@ -78,6 +78,7 @@ export async function sessionsGenerateSessionRecordingUrls(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "generate_session_recording_urls",
     oAuth2Scopes: [],
 

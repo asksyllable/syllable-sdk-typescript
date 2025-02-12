@@ -69,6 +69,7 @@ export async function dataSourcesUpdate(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "data_sources_update",
     oAuth2Scopes: [],
 

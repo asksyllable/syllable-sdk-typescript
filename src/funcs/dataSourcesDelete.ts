@@ -83,6 +83,7 @@ export async function dataSourcesDelete(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "data_sources_delete",
     oAuth2Scopes: [],
 

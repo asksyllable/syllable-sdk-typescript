@@ -1,6 +1,6 @@
 # ToolDefinition
 
-A tool that can be called from an LLM during the conversation.
+A tool that can be called from an LLM during the conversation. See https://docs.syllable.ai/Resources/Tools.
 
 ## Example Usage
 

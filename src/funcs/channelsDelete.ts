@@ -81,6 +81,7 @@ export async function channelsDelete(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "channel_targets_delete",
     oAuth2Scopes: [],
 

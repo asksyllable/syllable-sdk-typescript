@@ -71,6 +71,7 @@ export async function sessionsSessionRecordingStream(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "session_recording_stream",
     oAuth2Scopes: [],
 

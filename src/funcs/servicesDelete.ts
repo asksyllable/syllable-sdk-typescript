@@ -80,6 +80,7 @@ export async function servicesDelete(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "service_delete",
     oAuth2Scopes: [],
 

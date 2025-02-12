@@ -76,6 +76,7 @@ export async function sessionsTranscriptGetById(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "session_transcript_get_by_id",
     oAuth2Scopes: [],
 

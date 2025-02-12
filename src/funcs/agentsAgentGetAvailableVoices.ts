@@ -53,6 +53,7 @@ export async function agentsAgentGetAvailableVoices(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "agent_get_available_voices",
     oAuth2Scopes: [],
 

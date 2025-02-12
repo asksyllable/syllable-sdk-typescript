@@ -78,6 +78,7 @@ export async function eventsList(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "events_list",
     oAuth2Scopes: [],
 
