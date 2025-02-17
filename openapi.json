@@ -6019,7 +6019,7 @@
             },
             "type": "array",
             "title": "Prompt Tool Defaults",
-            "description": "The prompt tool defaults"
+            "description": "User-configured parameter values for the agent's tools"
           },
           "languages": {
             "items": {
@@ -6163,7 +6163,7 @@
             },
             "type": "array",
             "title": "Prompt Tool Defaults",
-            "description": "The prompt tool defaults"
+            "description": "User-configured parameter values for the agent's tools"
           },
           "languages": {
             "items": {
@@ -6267,6 +6267,21 @@
             ],
             "title": "Channel Targets",
             "description": "Channel targets associated with the agent"
+          },
+          "tools": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ToolResponse"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tools",
+            "description": "Tools associated with the agent"
           }
         },
         "type": "object",
@@ -6393,7 +6408,7 @@
             },
             "type": "array",
             "title": "Prompt Tool Defaults",
-            "description": "The prompt tool defaults"
+            "description": "User-configured parameter values for the agent's tools"
           },
           "languages": {
             "items": {
@@ -10590,6 +10605,65 @@
         "title": "SessionTranscriptionResponse",
         "description": "Text transcript of a given session."
       },
+      "StaticToolParameter": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the parameter - must be unique within the tool."
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "The description of the parameter."
+          },
+          "required": {
+            "type": "boolean",
+            "title": "Required",
+            "description": "Whether the parameter is required to have a value assigned."
+          },
+          "type": {
+            "$ref": "#/components/schemas/StaticToolParameterType",
+            "description": "The expected type for the parameter."
+          },
+          "default": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Default",
+            "description": "The default value for the parameter. If `type` is string, must be a string. If `type` is int, must be an int. If `type` is boolean, must be a boolean. If `type` is data_source_list, must be a list of strings (data source names)."
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "required",
+          "type"
+        ],
+        "title": "StaticToolParameter",
+        "description": "A parameter for the tool whose value should be set at config time."
+      },
+      "StaticToolParameterType": {
+        "type": "string",
+        "enum": [
+          "string",
+          "int",
+          "boolean",
+          "data_source_list"
+        ],
+        "title": "StaticToolParameterType",
+        "description": "The expected type for a static tool parameter."
+      },
       "SttProvider": {
         "type": "string",
         "enum": [
@@ -10804,6 +10878,21 @@
             ],
             "title": "Defaults",
             "description": "The default values for the parameters of the function/tool call."
+          },
+          "static_parameters": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/StaticToolParameter"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Static Parameters",
+            "description": "Parameters for the tool whose values should be set at config time (i.e., not provided by the LLM)."
           },
           "result": {
             "anyOf": [
