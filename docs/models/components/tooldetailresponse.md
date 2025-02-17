@@ -21,24 +21,14 @@ let value: ToolDetailResponse = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "post",
-      argumentLocation: "query",
+      method: "get",
+      argumentLocation: "body",
     },
-    defaults: {
-      "key": {
-        transform: {
-          action: "default",
-          when: {
-            key: "key",
-            value: "value",
-          },
-        },
-      },
-    },
+    defaults: "<value>",
   },
-  serviceId: 399802,
-  id: 380335,
-  lastUpdated: new Date("2023-06-11T23:57:33.954Z"),
+  serviceId: 265039,
+  id: 66149,
+  lastUpdated: new Date("2023-03-13T21:40:13.537Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",

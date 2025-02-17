@@ -65,6 +65,40 @@ let value: AgentResponse = {
     lastUpdatedBy: "user@email.com",
   },
   channelTargets: [],
+  tools: [
+    {
+      name: "Weather Fetcher",
+      definition: {
+        tool: {
+          function: {
+            name: "weather_fetcher",
+            description: "Fetches weather data",
+            parameters: "<value>",
+          },
+        },
+        endpoint: {
+          url: "https://api.example.com",
+          method: "get",
+          argumentLocation: "body",
+        },
+        defaults: {
+          "key": {
+            transform: {
+              action: "default",
+              when: {
+                key: "key",
+                value: "value",
+              },
+            },
+          },
+        },
+      },
+      serviceId: 566602,
+      id: 265389,
+      lastUpdated: new Date("2024-07-27T11:31:00.474Z"),
+      lastUpdatedBy: "user@email.com",
+    },
+  ],
 };
 ```
 
@@ -79,7 +113,7 @@ let value: AgentResponse = {
 | `promptId`                                                                                                        | *number*                                                                                                          | :heavy_check_mark:                                                                                                | ID of the prompt associated with the agent                                                                        |                                                                                                                   |
 | `customMessageId`                                                                                                 | *number*                                                                                                          | :heavy_check_mark:                                                                                                | ID of the custom message that should be delivered at the beginning of a conversation with the agent               |                                                                                                                   |
 | `timezone`                                                                                                        | *string*                                                                                                          | :heavy_check_mark:                                                                                                | The time zone in which the agent operates                                                                         | America/New_York                                                                                                  |
-| `promptToolDefaults`                                                                                              | [components.AgentToolDefaults](../../models/components/agenttooldefaults.md)[]                                    | :heavy_minus_sign:                                                                                                | The prompt tool defaults                                                                                          |                                                                                                                   |
+| `promptToolDefaults`                                                                                              | [components.AgentToolDefaults](../../models/components/agenttooldefaults.md)[]                                    | :heavy_minus_sign:                                                                                                | User-configured parameter values for the agent's tools                                                            |                                                                                                                   |
 | `languages`                                                                                                       | *string*[]                                                                                                        | :heavy_minus_sign:                                                                                                | BCP 47 codes of languages the agent supports                                                                      | [<br/>"en-US",<br/>"es-US"<br/>]                                                                                  |
 | `variables`                                                                                                       | Record<string, *string*>                                                                                          | :heavy_check_mark:                                                                                                | Custom context variables for the conversation session. Keys should be prefixed with "vars.".                      |                                                                                                                   |
 | `toolHeaders`                                                                                                     | Record<string, *string*>                                                                                          | :heavy_check_mark:                                                                                                | Optional headers to include in tool calls for agent.                                                              |                                                                                                                   |
@@ -90,3 +124,4 @@ let value: AgentResponse = {
 | `prompt`                                                                                                          | [components.PromptResponse](../../models/components/promptresponse.md)                                            | :heavy_minus_sign:                                                                                                | The prompt associated with the agent.                                                                             |                                                                                                                   |
 | `customMessage`                                                                                                   | [components.CustomMessageResponse](../../models/components/custommessageresponse.md)                              | :heavy_minus_sign:                                                                                                | The custom message associated with the agent. Will be delivered as a greeting at the beginning of a conversation. |                                                                                                                   |
 | `channelTargets`                                                                                                  | [components.ChannelTargetResponse](../../models/components/channeltargetresponse.md)[]                            | :heavy_minus_sign:                                                                                                | Channel targets associated with the agent                                                                         |                                                                                                                   |
+| `tools`                                                                                                           | [components.ToolResponse](../../models/components/toolresponse.md)[]                                              | :heavy_minus_sign:                                                                                                | Tools associated with the agent                                                                                   |                                                                                                                   |

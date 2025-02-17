@@ -75,6 +75,8 @@ export * from "./sessionproperties.js";
 export * from "./sessionrecordingresponse.js";
 export * from "./sessiontext.js";
 export * from "./sessiontranscriptionresponse.js";
+export * from "./statictoolparameter.js";
+export * from "./statictoolparametertype.js";
 export * from "./sttprovider.js";
 export * from "./targetmodes.js";
 export * from "./testmessage.js";

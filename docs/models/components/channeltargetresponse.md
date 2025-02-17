@@ -9,19 +9,19 @@ through that channel.
 import { ChannelTargetResponse } from "syllable-sdk/models/components";
 
 let value: ChannelTargetResponse = {
-  agentId: 414263,
-  channelId: 64147,
+  agentId: 248753,
+  channelId: 576157,
   target: "<value>",
   targetMode: "sms",
-  id: 566602,
+  id: 572252,
   channelName: "<value>",
-  updatedAt: new Date("2023-10-18T20:48:18.611Z"),
+  updatedAt: new Date("2023-09-02T11:56:21.354Z"),
   lastUpdatedBy: "<value>",
   agent: {
     name: "<value>",
     type: "ca_v1",
-    promptId: 523248,
-    customMessageId: 93940,
+    promptId: 952749,
+    customMessageId: 447125,
     timezone: "America/Chicago",
     languages: [
       "en-US",
@@ -33,8 +33,8 @@ let value: ChannelTargetResponse = {
     toolHeaders: {
       "key": "<value>",
     },
-    id: 929297,
-    updatedAt: new Date("2023-12-16T03:38:15.811Z"),
+    id: 699479,
+    updatedAt: new Date("2023-11-22T23:46:53.599Z"),
     lastUpdatedBy: "<value>",
     prompt: {
       name: "<value>",
@@ -43,7 +43,7 @@ let value: ChannelTargetResponse = {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 667411,
+      id: 813798,
       lastUpdated: "<value>",
       lastUpdatedBy: "user@email.com",
     },
@@ -52,7 +52,7 @@ let value: ChannelTargetResponse = {
       text: "<value>",
       rules: [
         {
-          description: "yuck supposing friendly serpentine",
+          description: "well-to-do below outrun swat come metal",
           timeRangeStart: "09:00",
           timeRangeEnd: "17:00",
           date: "2025-01-01",
@@ -67,11 +67,45 @@ let value: ChannelTargetResponse = {
           text: "Sorry, we're closed today",
         },
       ],
-      id: 501324,
-      updatedAt: new Date("2025-11-13T20:49:26.140Z"),
+      id: 407183,
+      updatedAt: new Date("2023-03-17T19:22:07.134Z"),
       lastUpdatedBy: "user@email.com",
     },
     channelTargets: [],
+    tools: [
+      {
+        name: "Weather Fetcher",
+        definition: {
+          tool: {
+            function: {
+              name: "weather_fetcher",
+              description: "Fetches weather data",
+              parameters: "<value>",
+            },
+          },
+          endpoint: {
+            url: "https://api.example.com",
+            method: "post",
+            argumentLocation: "form",
+          },
+          defaults: {
+            "key": {
+              transform: {
+                action: "default",
+                when: {
+                  key: "key",
+                  value: "value",
+                },
+              },
+            },
+          },
+        },
+        serviceId: 866383,
+        id: 975522,
+        lastUpdated: new Date("2025-07-26T23:03:04.026Z"),
+        lastUpdatedBy: "user@email.com",
+      },
+    ],
   },
 };
 ```

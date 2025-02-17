@@ -19,19 +19,29 @@ let value: ListResponseToolResponse = {
         },
         endpoint: {
           url: "https://api.example.com",
-          method: "get",
+          method: "post",
           argumentLocation: "path",
         },
-        defaults: "<value>",
+        defaults: {
+          "key": {
+            transform: {
+              action: "default",
+              when: {
+                key: "key",
+                value: "value",
+              },
+            },
+          },
+        },
       },
-      serviceId: 456520,
-      id: 337477,
-      lastUpdated: new Date("2025-11-29T15:51:58.019Z"),
+      serviceId: 959143,
+      id: 103298,
+      lastUpdated: new Date("2025-08-08T09:57:53.832Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 133439,
-  pageSize: 96804,
+  page: 29190,
+  pageSize: 534917,
 };
 ```
 

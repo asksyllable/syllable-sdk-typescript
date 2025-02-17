@@ -7,7 +7,7 @@ The variable name of an agent voice (used when procesing messages).
 ```typescript
 import { AgentVoiceVarName } from "syllable-sdk/models/components";
 
-let value: AgentVoiceVarName = "openai:alloy";
+let value: AgentVoiceVarName = "openai:nova";
 ```
 
 ## Values

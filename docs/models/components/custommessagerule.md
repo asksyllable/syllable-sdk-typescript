@@ -6,7 +6,7 @@
 import { CustomMessageRule } from "syllable-sdk/models/components";
 
 let value: CustomMessageRule = {
-  description: "immediately geez justly pfft",
+  description: "reluctantly till unless",
   timeRangeStart: "09:00",
   timeRangeEnd: "17:00",
   date: "2025-01-01",

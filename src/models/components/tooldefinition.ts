@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -13,6 +14,12 @@ import {
   InternalTool$Outbound,
   InternalTool$outboundSchema,
 } from "./internaltool.js";
+import {
+  StaticToolParameter,
+  StaticToolParameter$inboundSchema,
+  StaticToolParameter$Outbound,
+  StaticToolParameter$outboundSchema,
+} from "./statictoolparameter.js";
 import {
   ToolHttpEndpoint,
   ToolHttpEndpoint$inboundSchema,
@@ -59,6 +66,10 @@ export type ToolDefinition = {
    * The default values for the parameters of the function/tool call.
    */
   defaults?: any | { [k: string]: ToolParameterDefault } | null | undefined;
+  /**
+   * Parameters for the tool whose values should be set at config time (i.e., not provided by the LLM).
+   */
+  staticParameters?: Array<StaticToolParameter> | null | undefined;
   /**
    * The optional result of the tool call. Only used for `context` tools.
    */
@@ -143,7 +154,13 @@ export const ToolDefinition$inboundSchema: z.ZodType<
   defaults: z.nullable(
     z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]),
   ).optional(),
+  static_parameters: z.nullable(z.array(StaticToolParameter$inboundSchema))
+    .optional(),
   result: z.nullable(z.any()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "static_parameters": "staticParameters",
+  });
 });
 
 /** @internal */
@@ -156,6 +173,7 @@ export type ToolDefinition$Outbound = {
     | { [k: string]: ToolParameterDefault$Outbound }
     | null
     | undefined;
+  static_parameters?: Array<StaticToolParameter$Outbound> | null | undefined;
   result?: any | null | undefined;
 };
 
@@ -171,7 +189,13 @@ export const ToolDefinition$outboundSchema: z.ZodType<
   defaults: z.nullable(
     z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]),
   ).optional(),
+  staticParameters: z.nullable(z.array(StaticToolParameter$outboundSchema))
+    .optional(),
   result: z.nullable(z.any()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    staticParameters: "static_parameters",
+  });
 });
 
 /**
