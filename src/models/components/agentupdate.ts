@@ -44,7 +44,7 @@ export type AgentUpdate = {
    */
   timezone: string;
   /**
-   * The prompt tool defaults
+   * User-configured parameter values for the agent's tools
    */
   promptToolDefaults?: Array<AgentToolDefaults> | undefined;
   /**

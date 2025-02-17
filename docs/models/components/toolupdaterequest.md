@@ -18,12 +18,12 @@ let value: ToolUpdateRequest = {
     endpoint: {
       url: "https://api.example.com",
       method: "post",
-      argumentLocation: "body",
+      argumentLocation: "query",
     },
     defaults: "<value>",
   },
-  serviceId: 589695,
-  id: 745398,
+  serviceId: 222864,
+  id: 80532,
 };
 ```
 

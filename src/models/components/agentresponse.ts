@@ -31,6 +31,12 @@ import {
   PromptResponse$Outbound,
   PromptResponse$outboundSchema,
 } from "./promptresponse.js";
+import {
+  ToolResponse,
+  ToolResponse$inboundSchema,
+  ToolResponse$Outbound,
+  ToolResponse$outboundSchema,
+} from "./toolresponse.js";
 
 /**
  * When a user interacts with the Syllable system, they do so by communicating with an agent.
@@ -69,7 +75,7 @@ export type AgentResponse = {
    */
   timezone: string;
   /**
-   * The prompt tool defaults
+   * User-configured parameter values for the agent's tools
    */
   promptToolDefaults?: Array<AgentToolDefaults> | undefined;
   /**
@@ -112,6 +118,10 @@ export type AgentResponse = {
    * Channel targets associated with the agent
    */
   channelTargets?: Array<ChannelTargetResponse> | null | undefined;
+  /**
+   * Tools associated with the agent
+   */
+  tools?: Array<ToolResponse> | null | undefined;
 };
 
 /** @internal */
@@ -140,6 +150,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
   channel_targets: z.nullable(
     z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
   ).optional(),
+  tools: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -174,6 +185,7 @@ export type AgentResponse$Outbound = {
   prompt?: PromptResponse$Outbound | null | undefined;
   custom_message?: CustomMessageResponse$Outbound | null | undefined;
   channel_targets?: Array<ChannelTargetResponse$Outbound> | null | undefined;
+  tools?: Array<ToolResponse$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -202,6 +214,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
   channelTargets: z.nullable(
     z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
   ).optional(),
+  tools: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",

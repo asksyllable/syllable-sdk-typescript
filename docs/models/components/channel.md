@@ -7,9 +7,9 @@ import { Channel } from "syllable-sdk/models/components";
 
 let value: Channel = {
   name: "<value>",
-  channelService: "email",
+  channelService: "twilio",
   supportedModes: "[\"chat\",\"voice\"]",
-  id: 872651,
+  id: 355613,
 };
 ```
 
