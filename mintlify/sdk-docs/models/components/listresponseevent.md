@@ -10,7 +10,7 @@ import { ListResponseEvent } from "syllable-sdk/models/components";
 let value: ListResponseEvent = {
   items: [
     {
-      timestamp: new Date("2025-04-18T19:06:55.714Z"),
+      timestamp: new Date("2025-07-19T10:36:40.605Z"),
       source: "tool-call",
       category: "automation",
       type: "phone-transfer",
@@ -18,8 +18,8 @@ let value: ListResponseEvent = {
       description: "Transfer to phone number +18042221111",
     },
   ],
-  page: 748664,
-  pageSize: 903720,
+  page: 617877,
+  pageSize: 13236,
 };
 ```
 

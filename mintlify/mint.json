@@ -249,6 +249,8 @@
             "sdk-docs/models/components/sessionrecordingresponse",
             "sdk-docs/models/components/sessiontext",
             "sdk-docs/models/components/sessiontranscriptionresponse",
+            "sdk-docs/models/components/statictoolparameter",
+            "sdk-docs/models/components/statictoolparametertype",
             "sdk-docs/models/components/sttprovider",
             "sdk-docs/models/components/target",
             "sdk-docs/models/components/targetmodes",
