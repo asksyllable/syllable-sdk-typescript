@@ -7,7 +7,7 @@ title: 'DataSourceProperties'
 ```typescript
 import { DataSourceProperties } from "syllable-sdk/models/components";
 
-let value: DataSourceProperties = "labels";
+let value: DataSourceProperties = "last_updated_by";
 ```
 
 ## Values

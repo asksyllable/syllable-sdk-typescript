@@ -15,7 +15,7 @@ let value: DataSourceMetadataResponse = {
     "Location Info",
   ],
   chunk: false,
-  updatedAt: new Date("2024-06-18T21:49:56.662Z"),
+  updatedAt: new Date("2024-11-21T23:18:09.113Z"),
   lastUpdatedBy: "<value>",
 };
 ```

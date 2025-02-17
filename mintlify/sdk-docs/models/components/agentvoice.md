@@ -10,9 +10,9 @@ Voice option for an agent.
 import { AgentVoice } from "syllable-sdk/models/components";
 
 let value: AgentVoice = {
-  provider: "ElevenLabs",
+  provider: "OpenAI",
   displayName: "Alloy",
-  varName: "elevenlabs:Bill",
+  varName: "elevenlabs:Eric",
 };
 ```
 
