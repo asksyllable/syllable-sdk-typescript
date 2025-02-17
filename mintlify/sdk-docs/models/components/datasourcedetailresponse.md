@@ -15,7 +15,7 @@ let value: DataSourceDetailResponse = {
     "Location Info",
   ],
   chunk: false,
-  updatedAt: new Date("2025-10-27T17:07:18.797Z"),
+  updatedAt: new Date("2023-11-18T03:36:20.029Z"),
   lastUpdatedBy: "<value>",
   text: "<value>",
 };

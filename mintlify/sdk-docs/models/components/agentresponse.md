@@ -67,6 +67,40 @@ let value: AgentResponse = {
     lastUpdatedBy: "user@email.com",
   },
   channelTargets: [],
+  tools: [
+    {
+      name: "Weather Fetcher",
+      definition: {
+        tool: {
+          function: {
+            name: "weather_fetcher",
+            description: "Fetches weather data",
+            parameters: "<value>",
+          },
+        },
+        endpoint: {
+          url: "https://api.example.com",
+          method: "get",
+          argumentLocation: "body",
+        },
+        defaults: {
+          "key": {
+            transform: {
+              action: "default",
+              when: {
+                key: "key",
+                value: "value",
+              },
+            },
+          },
+        },
+      },
+      serviceId: 566602,
+      id: 265389,
+      lastUpdated: new Date("2024-07-27T11:31:00.474Z"),
+      lastUpdatedBy: "user@email.com",
+    },
+  ],
 };
 ```
 
@@ -81,7 +115,7 @@ let value: AgentResponse = {
 | `promptId`                                                                                                        | *number*                                                                                                          | TRUE                                                                                                | ID of the prompt associated with the agent                                                                        |                                                                                                                   |
 | `customMessageId`                                                                                                 | *number*                                                                                                          | TRUE                                                                                                | ID of the custom message that should be delivered at the beginning of a conversation with the agent               |                                                                                                                   |
 | `timezone`                                                                                                        | *string*                                                                                                          | TRUE                                                                                                | The time zone in which the agent operates                                                                         | America/New_York                                                                                                  |
-| `promptToolDefaults`                                                                                              | [components.AgentToolDefaults](/sdk-docs/models/components/agenttooldefaults)[]                                    | FALSE                                                                                                | The prompt tool defaults                                                                                          |                                                                                                                   |
+| `promptToolDefaults`                                                                                              | [components.AgentToolDefaults](/sdk-docs/models/components/agenttooldefaults)[]                                    | FALSE                                                                                                | User-configured parameter values for the agent's tools                                                            |                                                                                                                   |
 | `languages`                                                                                                       | *string*[]                                                                                                        | FALSE                                                                                                | BCP 47 codes of languages the agent supports                                                                      | [<br/>"en-US",<br/>"es-US"<br/>]                                                                                  |
 | `variables`                                                                                                       | Record                                                                                          | TRUE                                                                                                | Custom context variables for the conversation session. Keys should be prefixed with "vars.".                      |                                                                                                                   |
 | `toolHeaders`                                                                                                     | Record                                                                                          | TRUE                                                                                                | Optional headers to include in tool calls for agent.                                                              |                                                                                                                   |
@@ -92,3 +126,4 @@ let value: AgentResponse = {
 | `prompt`                                                                                                          | [components.PromptResponse](/sdk-docs/models/components/promptresponse)                                            | FALSE                                                                                                | The prompt associated with the agent.                                                                             |                                                                                                                   |
 | `customMessage`                                                                                                   | [components.CustomMessageResponse](/sdk-docs/models/components/custommessageresponse)                              | FALSE                                                                                                | The custom message associated with the agent. Will be delivered as a greeting at the beginning of a conversation. |                                                                                                                   |
 | `channelTargets`                                                                                                  | [components.ChannelTargetResponse](/sdk-docs/models/components/channeltargetresponse)[]                            | FALSE                                                                                                | Channel targets associated with the agent                                                                         |                                                                                                                   |
+| `tools`                                                                                                           | [components.ToolResponse](/sdk-docs/models/components/toolresponse)[]                                              | FALSE                                                                                                | Tools associated with the agent                                                                                   |                                                                                                                   |
