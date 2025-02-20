@@ -12,7 +12,7 @@ let value: CustomMessageCreateRequest = {
   text: "<value>",
   rules: [
     {
-      description: "rotating than optimistic as by summer horde",
+      description: "quickly oof boo almighty yowza deeply",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",

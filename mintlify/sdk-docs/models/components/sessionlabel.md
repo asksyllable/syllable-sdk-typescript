@@ -11,14 +11,14 @@ descriptions of issues the user encountered in that session or other details.
 import { SessionLabel } from "syllable-sdk/models/components";
 
 let value: SessionLabel = {
-  sessionId: 97258,
-  type: "auto-rating",
-  code: "BAD",
+  sessionId: 29950,
+  type: "human-rating",
+  code: "GOOD",
   userEmail: "<value>",
   issueCategories: [
-    "Silent treatment",
+    "Speech transcription (STT)",
   ],
-  id: 169025,
+  id: 703218,
   timestamp: "<value>",
 };
 ```
