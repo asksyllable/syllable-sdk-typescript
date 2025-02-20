@@ -10,13 +10,16 @@ import { ListResponseDataSourceMetadataResponse } from "syllable-sdk/models/comp
 let value: ListResponseDataSourceMetadataResponse = {
   items: [
     {
-      name: "<value>",
+      name: "Rain",
+      description: "Information about rain.",
       labels: [
-        "Location Info",
+        "Weather Info",
       ],
       chunk: false,
+      id: 1,
+      editComments: "Added new info",
       updatedAt: new Date("2025-11-06T10:52:56.298Z"),
-      lastUpdatedBy: "<value>",
+      lastUpdatedBy: "user@email.com",
     },
   ],
   page: 941378,

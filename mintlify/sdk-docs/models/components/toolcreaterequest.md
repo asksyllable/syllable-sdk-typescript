@@ -20,11 +20,11 @@ let value: ToolCreateRequest = {
     endpoint: {
       url: "https://api.example.com",
       method: "post",
-      argumentLocation: "form",
+      argumentLocation: "query",
     },
     defaults: "<value>",
   },
-  serviceId: 19122,
+  serviceId: 501063,
 };
 ```
 

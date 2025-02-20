@@ -12,7 +12,8 @@ let value: CustomMessageUpdateRequest = {
   text: "<value>",
   rules: [
     {
-      description: "octave wombat though",
+      description:
+        "reluctantly printer innocently hence pish hyphenation trim bravely",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",
@@ -27,7 +28,7 @@ let value: CustomMessageUpdateRequest = {
       text: "Sorry, we're closed today",
     },
   ],
-  id: 517309,
+  id: 292794,
 };
 ```
 
