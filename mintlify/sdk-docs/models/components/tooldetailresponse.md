@@ -30,6 +30,12 @@ let value: ToolDetailResponse = {
   },
   serviceId: 265039,
   id: 66149,
+  promptsInfo: [
+    {
+      id: 1,
+      name: "Test Prompt",
+    },
+  ],
   lastUpdated: new Date("2023-03-13T21:40:13.537Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
@@ -48,6 +54,7 @@ let value: ToolDetailResponse = {
 | `id`                                                                                                         | *number*                                                                                                     | TRUE                                                                                           | The ID of the tool                                                                                           |                                                                                                              |
 | `lastUpdatedComments`                                                                                        | *string*                                                                                                     | FALSE                                                                                           | Update comments                                                                                              |                                                                                                              |
 | `serviceName`                                                                                                | *string*                                                                                                     | FALSE                                                                                           | The name of the service to which the tool belongs                                                            |                                                                                                              |
+| `promptsInfo`                                                                                                | [components.ToolPromptInfo](/sdk-docs/models/components/toolpromptinfo)[]                                     | FALSE                                                                                           | IDs and names of the prompts linked to the tool                                                              |                                                                                                              |
 | `lastUpdated`                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                | TRUE                                                                                           | The timestamp of the most recent update to the service                                                       |                                                                                                              |
 | `lastUpdatedBy`                                                                                              | *string*                                                                                                     | TRUE                                                                                           | The email of the user who last updated the tool                                                              | user@email.com                                                                                               |
 | `fields`                                                                                                     | *string*[]                                                                                                   | TRUE                                                                                           | Fields that the tool accepts as input                                                                        |                                                                                                              |
