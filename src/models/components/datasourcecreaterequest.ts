@@ -26,9 +26,9 @@ export type DataSourceCreateRequest = {
    */
   chunk: boolean;
   /**
-   * String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled.
+   * String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\n\n').
    */
-  chunkDelimiter?: string | null | undefined;
+  chunkDelimiter?: string | undefined;
   /**
    * Information that the data source will provide to the agent accessing it.
    */
@@ -45,7 +45,7 @@ export const DataSourceCreateRequest$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
-  chunk_delimiter: z.nullable(z.string()).optional(),
+  chunk_delimiter: z.string().default("\n\n"),
   text: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -59,7 +59,7 @@ export type DataSourceCreateRequest$Outbound = {
   description?: string | null | undefined;
   labels?: Array<string> | undefined;
   chunk: boolean;
-  chunk_delimiter?: string | null | undefined;
+  chunk_delimiter: string;
   text: string;
 };
 
@@ -73,7 +73,7 @@ export const DataSourceCreateRequest$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
-  chunkDelimiter: z.nullable(z.string()).optional(),
+  chunkDelimiter: z.string().default("\n\n"),
   text: z.string(),
 }).transform((v) => {
   return remap$(v, {

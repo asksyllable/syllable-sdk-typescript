@@ -38,6 +38,12 @@ let value: ToolResponse = {
   },
   serviceId: 318569,
   id: 667411,
+  promptsInfo: [
+    {
+      id: 1,
+      name: "Test Prompt",
+    },
+  ],
   lastUpdated: new Date("2023-05-25T10:48:39.501Z"),
   lastUpdatedBy: "user@email.com",
 };
@@ -53,5 +59,6 @@ let value: ToolResponse = {
 | `id`                                                                                                         | *number*                                                                                                     | :heavy_check_mark:                                                                                           | The ID of the tool                                                                                           |                                                                                                              |
 | `lastUpdatedComments`                                                                                        | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Update comments                                                                                              |                                                                                                              |
 | `serviceName`                                                                                                | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | The name of the service to which the tool belongs                                                            |                                                                                                              |
+| `promptsInfo`                                                                                                | [components.ToolPromptInfo](../../models/components/toolpromptinfo.md)[]                                     | :heavy_minus_sign:                                                                                           | IDs and names of the prompts linked to the tool                                                              |                                                                                                              |
 | `lastUpdated`                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                | :heavy_check_mark:                                                                                           | The timestamp of the most recent update to the service                                                       |                                                                                                              |
 | `lastUpdatedBy`                                                                                              | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The email of the user who last updated the tool                                                              | user@email.com                                                                                               |

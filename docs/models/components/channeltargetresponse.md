@@ -102,6 +102,12 @@ let value: ChannelTargetResponse = {
         },
         serviceId: 866383,
         id: 975522,
+        promptsInfo: [
+          {
+            id: 1,
+            name: "Test Prompt",
+          },
+        ],
         lastUpdated: new Date("2025-07-26T23:03:04.026Z"),
         lastUpdatedBy: "user@email.com",
       },
