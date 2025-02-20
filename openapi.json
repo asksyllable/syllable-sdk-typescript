@@ -7884,16 +7884,10 @@
             "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
           },
           "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
+            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
+            "default": "\n\n"
           },
           "text": {
             "type": "string",
@@ -7948,16 +7942,10 @@
             "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
           },
           "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
+            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
+            "default": "\n\n"
           },
           "edit_comments": {
             "anyOf": [
@@ -8045,16 +8033,10 @@
             "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
           },
           "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
+            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
+            "default": "\n\n"
           },
           "edit_comments": {
             "anyOf": [
@@ -8149,16 +8131,10 @@
             "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
           },
           "chunk_delimiter": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled."
+            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
+            "default": "\n\n"
           },
           "edit_comments": {
             "anyOf": [
@@ -10960,6 +10936,21 @@
             "title": "Service Name",
             "description": "The name of the service to which the tool belongs"
           },
+          "prompts_info": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ToolPromptInfo"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompts Info",
+            "description": "IDs and names of the prompts linked to the tool"
+          },
           "last_updated": {
             "type": "string",
             "format": "date-time",
@@ -11171,6 +11162,33 @@
         "title": "ToolParameterTransformCondition",
         "description": "A condition to be met for a transform to be applied to the value of a tool parameter."
       },
+      "ToolPromptInfo": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the prompt",
+            "examples": [
+              1
+            ]
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the prompt",
+            "examples": [
+              "Test Prompt"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "ToolPromptInfo",
+        "description": "Information about a prompt linked to a tool."
+      },
       "ToolProperties": {
         "type": "string",
         "enum": [
@@ -11231,6 +11249,21 @@
             ],
             "title": "Service Name",
             "description": "The name of the service to which the tool belongs"
+          },
+          "prompts_info": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ToolPromptInfo"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompts Info",
+            "description": "IDs and names of the prompts linked to the tool"
           },
           "last_updated": {
             "type": "string",
