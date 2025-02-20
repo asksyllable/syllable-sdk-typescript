@@ -299,6 +299,7 @@
             "sdk-docs/models/operations/custommessageslistrequest",
             "sdk-docs/models/operations/datasourcesdeletebynamerequest",
             "sdk-docs/models/operations/datasourcesdeleterequest",
+            "sdk-docs/models/operations/datasourcesgetbyidrequest",
             "sdk-docs/models/operations/datasourcesgetbynamerequest",
             "sdk-docs/models/operations/datasourceslistrequest",
             "sdk-docs/models/operations/directorymemberdeleterequest",

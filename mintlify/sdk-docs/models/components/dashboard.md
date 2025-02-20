@@ -14,7 +14,7 @@ let value: Dashboard = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  supersetUrl: "https://curly-archaeology.org/",
+  supersetUrl: "https://crafty-bin.com",
 };
 ```
 

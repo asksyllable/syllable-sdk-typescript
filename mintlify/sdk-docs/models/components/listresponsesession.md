@@ -10,14 +10,14 @@ import { ListResponseSession } from "syllable-sdk/models/components";
 let value: ListResponseSession = {
   items: [
     {
-      timestamp: new Date("2025-01-05T20:04:15.683Z"),
+      timestamp: new Date("2025-07-12T16:24:09.346Z"),
       channelManagerService: "hedy",
-      channelManagerType: "web_chat_v1",
-      source: "user@email.com",
+      channelManagerType: "voice_sip_v1",
+      source: "+18042221111",
     },
   ],
-  page: 399161,
-  pageSize: 431760,
+  page: 85311,
+  pageSize: 221396,
 };
 ```
 
