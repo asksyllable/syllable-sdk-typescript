@@ -4,7 +4,7 @@
 
 import { dataSourcesCreate } from "../funcs/dataSourcesCreate.js";
 import { dataSourcesDelete } from "../funcs/dataSourcesDelete.js";
-import { dataSourcesGetByName } from "../funcs/dataSourcesGetByName.js";
+import { dataSourcesGetById } from "../funcs/dataSourcesGetById.js";
 import { dataSourcesList } from "../funcs/dataSourcesList.js";
 import { dataSourcesUpdate } from "../funcs/dataSourcesUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -70,11 +70,11 @@ export class DataSources extends ClientSDK {
    * @remarks
    * Fetch a given data source, including its text.
    */
-  async getByName(
-    request: operations.DataSourcesGetByNameRequest,
+  async getById(
+    request: operations.DataSourcesGetByIdRequest,
     options?: RequestOptions,
   ): Promise<components.DataSourceDetailResponse> {
-    return unwrapAsync(dataSourcesGetByName(
+    return unwrapAsync(dataSourcesGetById(
       this,
       request,
       options,

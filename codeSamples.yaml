@@ -677,9 +677,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.dataSources.create({
-                name: "<value>",
+                name: "Rain",
+                description: "Information about rain.",
                 labels: [
-                  "Location Info",
+                  "Weather Info",
                 ],
                 chunk: true,
                 text: "<value>",
@@ -704,11 +705,14 @@ actions:
 
             async function run() {
               const result = await syllableSDK.dataSources.update({
-                name: "<value>",
+                name: "Rain",
+                description: "Information about rain.",
                 labels: [
-                  "Location Info",
+                  "Weather Info",
                 ],
                 chunk: false,
+                id: 1,
+                editComments: "Added new info",
                 text: "<value>",
               });
 
@@ -717,7 +721,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["delete"]
+  - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["delete"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -731,7 +735,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.dataSources.delete({
-                dataSourceName: "<value>",
+                dataSourceId: 545907,
                 reason: "<value>",
               });
 
@@ -740,11 +744,8 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["get"]
-    update:
-      x-codeSamples:
         - lang: typescript
-          label: data_sources_get_by_name
+          label: data_sources_delete
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -753,8 +754,50 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.dataSources.getByName({
-                dataSourceName: "<value>",
+              const result = await syllableSDK.v1.delete({
+                dataSourceId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: data_sources_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.dataSources.getById({
+                dataSourceId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: data_sources_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.getById({
+                dataSourceId: 931598,
               });
 
               // Handle the result

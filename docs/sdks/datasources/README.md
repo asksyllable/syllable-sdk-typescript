@@ -10,7 +10,7 @@ Operations related to data sources. A data source is a blob of text that        
 * [list](#list) - List Data Sources
 * [create](#create) - Create Data Source
 * [update](#update) - Update Data Source
-* [getByName](#getbyname) - Get Data Source
+* [getById](#getbyid) - Get Data Source
 * [delete](#delete) - Delete Data Source
 
 ## list
@@ -101,9 +101,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.dataSources.create({
-    name: "<value>",
+    name: "Rain",
+    description: "Information about rain.",
     labels: [
-      "Location Info",
+      "Weather Info",
     ],
     chunk: true,
     text: "<value>",
@@ -132,9 +133,10 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dataSourcesCreate(syllableSDK, {
-    name: "<value>",
+    name: "Rain",
+    description: "Information about rain.",
     labels: [
-      "Location Info",
+      "Weather Info",
     ],
     chunk: true,
     text: "<value>",
@@ -188,11 +190,14 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.dataSources.update({
-    name: "<value>",
+    name: "Rain",
+    description: "Information about rain.",
     labels: [
-      "Location Info",
+      "Weather Info",
     ],
     chunk: false,
+    id: 1,
+    editComments: "Added new info",
     text: "<value>",
   });
 
@@ -219,11 +224,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dataSourcesUpdate(syllableSDK, {
-    name: "<value>",
+    name: "Rain",
+    description: "Information about rain.",
     labels: [
-      "Location Info",
+      "Weather Info",
     ],
     chunk: false,
+    id: 1,
+    editComments: "Added new info",
     text: "<value>",
   });
 
@@ -260,7 +268,7 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getByName
+## getById
 
 Fetch a given data source, including its text.
 
@@ -274,8 +282,8 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.dataSources.getByName({
-    dataSourceName: "<value>",
+  const result = await syllableSDK.dataSources.getById({
+    dataSourceId: 931598,
   });
 
   // Handle the result
@@ -291,7 +299,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { dataSourcesGetByName } from "syllable-sdk/funcs/dataSourcesGetByName.js";
+import { dataSourcesGetById } from "syllable-sdk/funcs/dataSourcesGetById.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -300,8 +308,8 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await dataSourcesGetByName(syllableSDK, {
-    dataSourceName: "<value>",
+  const res = await dataSourcesGetById(syllableSDK, {
+    dataSourceId: 931598,
   });
 
   if (!res.ok) {
@@ -321,7 +329,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DataSourcesGetByNameRequest](../../models/operations/datasourcesgetbynamerequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DataSourcesGetByIdRequest](../../models/operations/datasourcesgetbyidrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -352,7 +360,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.dataSources.delete({
-    dataSourceName: "<value>",
+    dataSourceId: 545907,
     reason: "<value>",
   });
 
@@ -379,7 +387,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dataSourcesDelete(syllableSDK, {
-    dataSourceName: "<value>",
+    dataSourceId: 545907,
     reason: "<value>",
   });
 

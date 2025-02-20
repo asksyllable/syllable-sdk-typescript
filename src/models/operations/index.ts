@@ -17,7 +17,7 @@ export * from "./custommessagegetbyid.js";
 export * from "./custommessagesdelete.js";
 export * from "./custommessageslist.js";
 export * from "./datasourcesdelete.js";
-export * from "./datasourcesgetbyname.js";
+export * from "./datasourcesgetbyid.js";
 export * from "./datasourceslist.js";
 export * from "./eventslist.js";
 export * from "./generatesessionrecordingurls.js";

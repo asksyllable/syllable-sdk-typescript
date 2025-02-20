@@ -22,19 +22,19 @@ let value: ToolDetailResponse = {
     endpoint: {
       url: "https://api.example.com",
       method: "get",
-      argumentLocation: "body",
+      argumentLocation: "path",
     },
     defaults: "<value>",
   },
-  serviceId: 265039,
-  id: 66149,
+  serviceId: 159845,
+  id: 46806,
   promptsInfo: [
     {
       id: 1,
       name: "Test Prompt",
     },
   ],
-  lastUpdated: new Date("2023-03-13T21:40:13.537Z"),
+  lastUpdated: new Date("2025-11-29T22:07:11.535Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",
