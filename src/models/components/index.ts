@@ -91,6 +91,7 @@ export * from "./toolhttpmethod.js";
 export * from "./toolparameterdefault.js";
 export * from "./toolparametertransform.js";
 export * from "./toolparametertransformcondition.js";
+export * from "./toolpromptinfo.js";
 export * from "./toolproperties.js";
 export * from "./toolresponse.js";
 export * from "./toolupdaterequest.js";

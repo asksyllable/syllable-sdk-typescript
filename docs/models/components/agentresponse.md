@@ -95,6 +95,12 @@ let value: AgentResponse = {
       },
       serviceId: 566602,
       id: 265389,
+      promptsInfo: [
+        {
+          id: 1,
+          name: "Test Prompt",
+        },
+      ],
       lastUpdated: new Date("2024-07-27T11:31:00.474Z"),
       lastUpdatedBy: "user@email.com",
     },

@@ -13,6 +13,12 @@ import {
   ToolDefinition$Outbound,
   ToolDefinition$outboundSchema,
 } from "./tooldefinition.js";
+import {
+  ToolPromptInfo,
+  ToolPromptInfo$inboundSchema,
+  ToolPromptInfo$Outbound,
+  ToolPromptInfo$outboundSchema,
+} from "./toolpromptinfo.js";
 
 /**
  * A tool is a function that an agent can call to perform actions like accessing databases,
@@ -47,6 +53,10 @@ export type ToolDetailResponse = {
    */
   serviceName?: string | null | undefined;
   /**
+   * IDs and names of the prompts linked to the tool
+   */
+  promptsInfo?: Array<ToolPromptInfo> | null | undefined;
+  /**
    * The timestamp of the most recent update to the service
    */
   lastUpdated: Date;
@@ -72,6 +82,7 @@ export const ToolDetailResponse$inboundSchema: z.ZodType<
   id: z.number().int(),
   last_updated_comments: z.nullable(z.string()).optional(),
   service_name: z.nullable(z.string()).optional(),
+  prompts_info: z.nullable(z.array(ToolPromptInfo$inboundSchema)).optional(),
   last_updated: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ),
@@ -82,6 +93,7 @@ export const ToolDetailResponse$inboundSchema: z.ZodType<
     "service_id": "serviceId",
     "last_updated_comments": "lastUpdatedComments",
     "service_name": "serviceName",
+    "prompts_info": "promptsInfo",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
   });
@@ -95,6 +107,7 @@ export type ToolDetailResponse$Outbound = {
   id: number;
   last_updated_comments?: string | null | undefined;
   service_name?: string | null | undefined;
+  prompts_info?: Array<ToolPromptInfo$Outbound> | null | undefined;
   last_updated: string;
   last_updated_by: string;
   fields: Array<string>;
@@ -112,6 +125,7 @@ export const ToolDetailResponse$outboundSchema: z.ZodType<
   id: z.number().int(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
   serviceName: z.nullable(z.string()).optional(),
+  promptsInfo: z.nullable(z.array(ToolPromptInfo$outboundSchema)).optional(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
   fields: z.array(z.string()),
@@ -120,6 +134,7 @@ export const ToolDetailResponse$outboundSchema: z.ZodType<
     serviceId: "service_id",
     lastUpdatedComments: "last_updated_comments",
     serviceName: "service_name",
+    promptsInfo: "prompts_info",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
   });

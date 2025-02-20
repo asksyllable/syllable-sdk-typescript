@@ -26,9 +26,9 @@ export type DataSourceUpdateRequest = {
    */
   chunk: boolean;
   /**
-   * String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. If chunk == True and chunk_delimiter is None, the default chunking algorithm will be used. It is recommended that a delimiter be specified if chunking is enabled.
+   * String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\n\n').
    */
-  chunkDelimiter?: string | null | undefined;
+  chunkDelimiter?: string | undefined;
   /**
    * The comments for the most recent edit to the data source
    */
@@ -49,7 +49,7 @@ export const DataSourceUpdateRequest$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
-  chunk_delimiter: z.nullable(z.string()).optional(),
+  chunk_delimiter: z.string().default("\n\n"),
   edit_comments: z.nullable(z.string()).optional(),
   text: z.string(),
 }).transform((v) => {
@@ -65,7 +65,7 @@ export type DataSourceUpdateRequest$Outbound = {
   description?: string | null | undefined;
   labels?: Array<string> | undefined;
   chunk: boolean;
-  chunk_delimiter?: string | null | undefined;
+  chunk_delimiter: string;
   edit_comments?: string | null | undefined;
   text: string;
 };
@@ -80,7 +80,7 @@ export const DataSourceUpdateRequest$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
-  chunkDelimiter: z.nullable(z.string()).optional(),
+  chunkDelimiter: z.string().default("\n\n"),
   editComments: z.nullable(z.string()).optional(),
   text: z.string(),
 }).transform((v) => {
