@@ -177,7 +177,7 @@ run();
 * [list](docs/sdks/datasources/README.md#list) - List Data Sources
 * [create](docs/sdks/datasources/README.md#create) - Create Data Source
 * [update](docs/sdks/datasources/README.md#update) - Update Data Source
-* [getByName](docs/sdks/datasources/README.md#getbyname) - Get Data Source
+* [getById](docs/sdks/datasources/README.md#getbyid) - Get Data Source
 * [delete](docs/sdks/datasources/README.md#delete) - Delete Data Source
 
 ### [events](docs/sdks/events/README.md)
@@ -229,6 +229,8 @@ run();
 
 ### [v1](docs/sdks/v1/README.md)
 
+* [getById](docs/sdks/v1/README.md#getbyid) - Get Data Source
+* [delete](docs/sdks/v1/README.md#delete) - Delete Data Source
 * [postListDashboard](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 * [postGetDashboard](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 * [~~postSessionEventsDashboard~~](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
@@ -278,7 +280,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dashboardsPostListDashboard`](docs/sdks/dashboards/README.md#postlistdashboard) - Post List Dashboards
 - [`dataSourcesCreate`](docs/sdks/datasources/README.md#create) - Create Data Source
 - [`dataSourcesDelete`](docs/sdks/datasources/README.md#delete) - Delete Data Source
-- [`dataSourcesGetByName`](docs/sdks/datasources/README.md#getbyname) - Get Data Source
+- [`dataSourcesGetById`](docs/sdks/datasources/README.md#getbyid) - Get Data Source
 - [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
 - [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
@@ -306,6 +308,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete Data Source
+- [`v1GetById`](docs/sdks/v1/README.md#getbyid) - Get Data Source
 - [`v1PostGetDashboard`](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 - [`v1PostListDashboard`](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**

@@ -17,13 +17,13 @@ let value: ToolUpdateRequest = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "post",
-      argumentLocation: "query",
+      method: "get",
+      argumentLocation: "form",
     },
     defaults: "<value>",
   },
-  serviceId: 222864,
-  id: 80532,
+  serviceId: 495970,
+  id: 681740,
 };
 ```
 

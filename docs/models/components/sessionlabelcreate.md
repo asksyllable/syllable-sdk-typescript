@@ -6,12 +6,12 @@
 import { SessionLabelCreate } from "syllable-sdk/models/components";
 
 let value: SessionLabelCreate = {
-  sessionId: 859581,
-  type: "auto-rating",
-  code: "OK",
+  sessionId: 634786,
+  type: "human-rating",
+  code: "GOOD",
   userEmail: "<value>",
   issueCategories: [
-    "Silent treatment",
+    "Speech transcription (STT)",
   ],
 };
 ```

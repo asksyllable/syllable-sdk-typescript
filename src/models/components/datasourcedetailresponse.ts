@@ -33,6 +33,10 @@ export type DataSourceDetailResponse = {
    */
   chunkDelimiter?: string | undefined;
   /**
+   * The data source ID.
+   */
+  id: number;
+  /**
    * The comments for the most recent edit to the data source
    */
   editComments?: string | null | undefined;
@@ -61,6 +65,7 @@ export const DataSourceDetailResponse$inboundSchema: z.ZodType<
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
   chunk_delimiter: z.string().default("\n\n"),
+  id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.nullable(z.string()),
@@ -81,6 +86,7 @@ export type DataSourceDetailResponse$Outbound = {
   labels?: Array<string> | undefined;
   chunk: boolean;
   chunk_delimiter: string;
+  id: number;
   edit_comments?: string | null | undefined;
   updated_at: string;
   last_updated_by: string | null;
@@ -98,6 +104,7 @@ export const DataSourceDetailResponse$outboundSchema: z.ZodType<
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
   chunkDelimiter: z.string().default("\n\n"),
+  id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()),
