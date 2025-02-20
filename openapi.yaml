@@ -610,22 +610,23 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-  "/api/v1/data_sources/{data_source_name}":
+  "/api/v1/data_sources/{data_source_id}":
     get:
       tags:
         - "data_sources"
+        - "V1"
       summary: "Get Data Source"
       description: "Fetch a given data source, including its text."
-      operationId: "data_sources_get_by_name"
+      operationId: "data_sources_get_by_id"
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "data_source_name"
+        - name: "data_source_id"
           in: "path"
           required: true
           schema:
-            type: "string"
-            title: "Data Source Name"
+            type: "integer"
+            title: "Data Source Id"
       responses:
         "200":
           description: "Successful Response"
@@ -640,18 +641,19 @@ paths:
     delete:
       tags:
         - "data_sources"
+        - "V1"
       summary: "Delete Data Source"
       description: "Delete a given data source."
       operationId: "data_sources_delete"
       security:
         - APIKeyHeader: []
       parameters:
-        - name: "data_source_name"
+        - name: "data_source_id"
           in: "path"
           required: true
           schema:
-            type: "string"
-            title: "Data Source Name"
+            type: "integer"
+            title: "Data Source Id"
         - name: "reason"
           in: "query"
           required: true
@@ -4569,12 +4571,16 @@ components:
           type: "string"
           title: "Name"
           description: "The data source name. Must be unique within suborg."
+          examples:
+            - "Rain"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
           description: "The description of the data source."
+          examples:
+            - "Information about rain."
         "labels":
           items:
             type: "string"
@@ -4583,7 +4589,7 @@ components:
           description: "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool."
           default: []
           examples:
-            - ["Location Info"]
+            - ["Weather Info"]
         "chunk":
           type: "boolean"
           title: "Chunk"
@@ -4593,6 +4599,9 @@ components:
           title: "Chunk Delimiter"
           description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
           default: "\n\n"
+          examples:
+            - "\n\n"
+            - "|"
         "text":
           type: "string"
           title: "Text"
@@ -4609,12 +4618,16 @@ components:
           type: "string"
           title: "Name"
           description: "The data source name. Must be unique within suborg."
+          examples:
+            - "Rain"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
           description: "The description of the data source."
+          examples:
+            - "Information about rain."
         "labels":
           items:
             type: "string"
@@ -4623,7 +4636,7 @@ components:
           description: "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool."
           default: []
           examples:
-            - ["Location Info"]
+            - ["Weather Info"]
         "chunk":
           type: "boolean"
           title: "Chunk"
@@ -4633,12 +4646,23 @@ components:
           title: "Chunk Delimiter"
           description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
           default: "\n\n"
+          examples:
+            - "\n\n"
+            - "|"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The data source ID."
+          examples:
+            - 1
         "edit_comments":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Edit Comments"
           description: "The comments for the most recent edit to the data source"
+          examples:
+            - "Added new info"
         "updated_at":
           type: "string"
           format: "date-time"
@@ -4650,6 +4674,8 @@ components:
             - type: "null"
           title: "Last Updated By"
           description: "Email of the user who last updated the data source"
+          examples:
+            - "user@email.com"
         "text":
           type: "string"
           title: "Text"
@@ -4658,6 +4684,7 @@ components:
       required:
         - "name"
         - "chunk"
+        - "id"
         - "updated_at"
         - "last_updated_by"
         - "text"
@@ -4669,12 +4696,16 @@ components:
           type: "string"
           title: "Name"
           description: "The data source name. Must be unique within suborg."
+          examples:
+            - "Rain"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
           description: "The description of the data source."
+          examples:
+            - "Information about rain."
         "labels":
           items:
             type: "string"
@@ -4683,7 +4714,7 @@ components:
           description: "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool."
           default: []
           examples:
-            - ["Location Info"]
+            - ["Weather Info"]
         "chunk":
           type: "boolean"
           title: "Chunk"
@@ -4693,12 +4724,23 @@ components:
           title: "Chunk Delimiter"
           description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
           default: "\n\n"
+          examples:
+            - "\n\n"
+            - "|"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The data source ID."
+          examples:
+            - 1
         "edit_comments":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Edit Comments"
           description: "The comments for the most recent edit to the data source"
+          examples:
+            - "Added new info"
         "updated_at":
           type: "string"
           format: "date-time"
@@ -4710,10 +4752,13 @@ components:
             - type: "null"
           title: "Last Updated By"
           description: "Email of the user who last updated the data source"
+          examples:
+            - "user@email.com"
       type: "object"
       required:
         - "name"
         - "chunk"
+        - "id"
         - "updated_at"
         - "last_updated_by"
       title: "DataSourceMetadataResponse"
@@ -4735,12 +4780,16 @@ components:
           type: "string"
           title: "Name"
           description: "The data source name. Must be unique within suborg."
+          examples:
+            - "Rain"
         "description":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Description"
           description: "The description of the data source."
+          examples:
+            - "Information about rain."
         "labels":
           items:
             type: "string"
@@ -4749,7 +4798,7 @@ components:
           description: "Searchable labels for the data source. Can be included in agent.prompt_tool_defaults for a given tool to give the agent access to data sources with those labels when calling that tool."
           default: []
           examples:
-            - ["Location Info"]
+            - ["Weather Info"]
         "chunk":
           type: "boolean"
           title: "Chunk"
@@ -4759,12 +4808,23 @@ components:
           title: "Chunk Delimiter"
           description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
           default: "\n\n"
+          examples:
+            - "\n\n"
+            - "|"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The data source ID."
+          examples:
+            - 1
         "edit_comments":
           anyOf:
             - type: "string"
             - type: "null"
           title: "Edit Comments"
           description: "The comments for the most recent edit to the data source"
+          examples:
+            - "Added new info"
         "text":
           type: "string"
           title: "Text"
@@ -4773,6 +4833,7 @@ components:
       required:
         - "name"
         - "chunk"
+        - "id"
         - "text"
       title: "DataSourceUpdateRequest"
     "DayOfWeek":

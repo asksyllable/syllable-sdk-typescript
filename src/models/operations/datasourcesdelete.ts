@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DataSourcesDeleteRequest = {
-  dataSourceName: string;
+  dataSourceId: number;
   reason: string;
 };
 
@@ -19,17 +19,17 @@ export const DataSourcesDeleteRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data_source_name: z.string(),
+  data_source_id: z.number().int(),
   reason: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "data_source_name": "dataSourceName",
+    "data_source_id": "dataSourceId",
   });
 });
 
 /** @internal */
 export type DataSourcesDeleteRequest$Outbound = {
-  data_source_name: string;
+  data_source_id: number;
   reason: string;
 };
 
@@ -39,11 +39,11 @@ export const DataSourcesDeleteRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DataSourcesDeleteRequest
 > = z.object({
-  dataSourceName: z.string(),
+  dataSourceId: z.number().int(),
   reason: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    dataSourceName: "data_source_name",
+    dataSourceId: "data_source_id",
   });
 });
 

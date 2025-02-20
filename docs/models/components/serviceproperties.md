@@ -5,7 +5,7 @@
 ```typescript
 import { ServiceProperties } from "syllable-sdk/models/components";
 
-let value: ServiceProperties = "updated_at";
+let value: ServiceProperties = "id";
 ```
 
 ## Values
