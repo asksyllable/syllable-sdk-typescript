@@ -1116,7 +1116,7 @@
         }
       }
     },
-    "/api/v1/data_sources/{data_source_name}": {
+    "/api/v1/data_sources/{data_source_id}": {
       "get": {
         "tags": [
           "data_sources",
@@ -1124,7 +1124,7 @@
         ],
         "summary": "Get Data Source",
         "description": "Fetch a given data source, including its text.",
-        "operationId": "data_sources_get_by_name",
+        "operationId": "data_sources_get_by_id",
         "security": [
           {
             "APIKeyHeader": []
@@ -1132,12 +1132,12 @@
         ],
         "parameters": [
           {
-            "name": "data_source_name",
+            "name": "data_source_id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "title": "Data Source Name"
+              "type": "integer",
+              "title": "Data Source Id"
             }
           }
         ],
@@ -1179,12 +1179,12 @@
         ],
         "parameters": [
           {
-            "name": "data_source_name",
+            "name": "data_source_id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "title": "Data Source Name"
+              "type": "integer",
+              "title": "Data Source Id"
             }
           },
           {
@@ -7850,7 +7850,10 @@
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
+            "description": "The data source name. Must be unique within suborg.",
+            "examples": [
+              "Rain"
+            ]
           },
           "description": {
             "anyOf": [
@@ -7862,7 +7865,10 @@
               }
             ],
             "title": "Description",
-            "description": "The description of the data source."
+            "description": "The description of the data source.",
+            "examples": [
+              "Information about rain."
+            ]
           },
           "labels": {
             "items": {
@@ -7874,7 +7880,7 @@
             "default": [],
             "examples": [
               [
-                "Location Info"
+                "Weather Info"
               ]
             ]
           },
@@ -7887,7 +7893,11 @@
             "type": "string",
             "title": "Chunk Delimiter",
             "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n"
+            "default": "\n\n",
+            "examples": [
+              "\n\n",
+              "|"
+            ]
           },
           "text": {
             "type": "string",
@@ -7908,7 +7918,10 @@
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
+            "description": "The data source name. Must be unique within suborg.",
+            "examples": [
+              "Rain"
+            ]
           },
           "description": {
             "anyOf": [
@@ -7920,7 +7933,10 @@
               }
             ],
             "title": "Description",
-            "description": "The description of the data source."
+            "description": "The description of the data source.",
+            "examples": [
+              "Information about rain."
+            ]
           },
           "labels": {
             "items": {
@@ -7932,7 +7948,7 @@
             "default": [],
             "examples": [
               [
-                "Location Info"
+                "Weather Info"
               ]
             ]
           },
@@ -7945,7 +7961,19 @@
             "type": "string",
             "title": "Chunk Delimiter",
             "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n"
+            "default": "\n\n",
+            "examples": [
+              "\n\n",
+              "|"
+            ]
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The data source ID.",
+            "examples": [
+              1
+            ]
           },
           "edit_comments": {
             "anyOf": [
@@ -7957,7 +7985,10 @@
               }
             ],
             "title": "Edit Comments",
-            "description": "The comments for the most recent edit to the data source"
+            "description": "The comments for the most recent edit to the data source",
+            "examples": [
+              "Added new info"
+            ]
           },
           "updated_at": {
             "type": "string",
@@ -7975,7 +8006,10 @@
               }
             ],
             "title": "Last Updated By",
-            "description": "Email of the user who last updated the data source"
+            "description": "Email of the user who last updated the data source",
+            "examples": [
+              "user@email.com"
+            ]
           },
           "text": {
             "type": "string",
@@ -7987,6 +8021,7 @@
         "required": [
           "name",
           "chunk",
+          "id",
           "updated_at",
           "last_updated_by",
           "text"
@@ -7999,7 +8034,10 @@
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
+            "description": "The data source name. Must be unique within suborg.",
+            "examples": [
+              "Rain"
+            ]
           },
           "description": {
             "anyOf": [
@@ -8011,7 +8049,10 @@
               }
             ],
             "title": "Description",
-            "description": "The description of the data source."
+            "description": "The description of the data source.",
+            "examples": [
+              "Information about rain."
+            ]
           },
           "labels": {
             "items": {
@@ -8023,7 +8064,7 @@
             "default": [],
             "examples": [
               [
-                "Location Info"
+                "Weather Info"
               ]
             ]
           },
@@ -8036,7 +8077,19 @@
             "type": "string",
             "title": "Chunk Delimiter",
             "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n"
+            "default": "\n\n",
+            "examples": [
+              "\n\n",
+              "|"
+            ]
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The data source ID.",
+            "examples": [
+              1
+            ]
           },
           "edit_comments": {
             "anyOf": [
@@ -8048,7 +8101,10 @@
               }
             ],
             "title": "Edit Comments",
-            "description": "The comments for the most recent edit to the data source"
+            "description": "The comments for the most recent edit to the data source",
+            "examples": [
+              "Added new info"
+            ]
           },
           "updated_at": {
             "type": "string",
@@ -8066,13 +8122,17 @@
               }
             ],
             "title": "Last Updated By",
-            "description": "Email of the user who last updated the data source"
+            "description": "Email of the user who last updated the data source",
+            "examples": [
+              "user@email.com"
+            ]
           }
         },
         "type": "object",
         "required": [
           "name",
           "chunk",
+          "id",
           "updated_at",
           "last_updated_by"
         ],
@@ -8097,7 +8157,10 @@
           "name": {
             "type": "string",
             "title": "Name",
-            "description": "The data source name. Must be unique within suborg."
+            "description": "The data source name. Must be unique within suborg.",
+            "examples": [
+              "Rain"
+            ]
           },
           "description": {
             "anyOf": [
@@ -8109,7 +8172,10 @@
               }
             ],
             "title": "Description",
-            "description": "The description of the data source."
+            "description": "The description of the data source.",
+            "examples": [
+              "Information about rain."
+            ]
           },
           "labels": {
             "items": {
@@ -8121,7 +8187,7 @@
             "default": [],
             "examples": [
               [
-                "Location Info"
+                "Weather Info"
               ]
             ]
           },
@@ -8134,7 +8200,19 @@
             "type": "string",
             "title": "Chunk Delimiter",
             "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n"
+            "default": "\n\n",
+            "examples": [
+              "\n\n",
+              "|"
+            ]
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The data source ID.",
+            "examples": [
+              1
+            ]
           },
           "edit_comments": {
             "anyOf": [
@@ -8146,7 +8224,10 @@
               }
             ],
             "title": "Edit Comments",
-            "description": "The comments for the most recent edit to the data source"
+            "description": "The comments for the most recent edit to the data source",
+            "examples": [
+              "Added new info"
+            ]
           },
           "text": {
             "type": "string",
@@ -8158,6 +8239,7 @@
         "required": [
           "name",
           "chunk",
+          "id",
           "text"
         ],
         "title": "DataSourceUpdateRequest"
