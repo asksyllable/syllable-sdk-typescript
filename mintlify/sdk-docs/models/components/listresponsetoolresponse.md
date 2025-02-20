@@ -38,6 +38,12 @@ let value: ListResponseToolResponse = {
       },
       serviceId: 959143,
       id: 103298,
+      promptsInfo: [
+        {
+          id: 1,
+          name: "Test Prompt",
+        },
+      ],
       lastUpdated: new Date("2025-08-08T09:57:53.832Z"),
       lastUpdatedBy: "user@email.com",
     },

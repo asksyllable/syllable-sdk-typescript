@@ -269,6 +269,7 @@
             "sdk-docs/models/components/toolparameterdefault",
             "sdk-docs/models/components/toolparametertransform",
             "sdk-docs/models/components/toolparametertransformcondition",
+            "sdk-docs/models/components/toolpromptinfo",
             "sdk-docs/models/components/toolproperties",
             "sdk-docs/models/components/toolresponse",
             "sdk-docs/models/components/toolupdate",
