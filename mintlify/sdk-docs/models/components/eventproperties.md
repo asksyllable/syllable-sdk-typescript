@@ -7,7 +7,7 @@ title: 'EventProperties'
 ```typescript
 import { EventProperties } from "syllable-sdk/models/components";
 
-let value: EventProperties = "session_id";
+let value: EventProperties = "description";
 ```
 
 ## Values
