@@ -16,7 +16,7 @@ let value: ToolResponse = {
       function: {
         name: "weather_fetcher",
         description: "Fetches weather data",
-        parameters: "<value>",
+        parameters: {},
       },
     },
     endpoint: {
@@ -44,6 +44,12 @@ let value: ToolResponse = {
       name: "Test Prompt",
     },
   ],
+  agentsInfo: [
+    {
+      id: 1,
+      name: "Test Agent",
+    },
+  ],
   lastUpdated: new Date("2023-05-25T10:48:39.501Z"),
   lastUpdatedBy: "user@email.com",
 };
@@ -60,5 +66,6 @@ let value: ToolResponse = {
 | `lastUpdatedComments`                                                                                        | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Update comments                                                                                              |                                                                                                              |
 | `serviceName`                                                                                                | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | The name of the service to which the tool belongs                                                            |                                                                                                              |
 | `promptsInfo`                                                                                                | [components.ToolPromptInfo](../../models/components/toolpromptinfo.md)[]                                     | :heavy_minus_sign:                                                                                           | IDs and names of the prompts linked to the tool                                                              |                                                                                                              |
+| `agentsInfo`                                                                                                 | [components.ToolAgentInfo](../../models/components/toolagentinfo.md)[]                                       | :heavy_minus_sign:                                                                                           | IDs and names of the agents linked to the tool via a prompt                                                  |                                                                                                              |
 | `lastUpdated`                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                | :heavy_check_mark:                                                                                           | The timestamp of the most recent update to the service                                                       |                                                                                                              |
 | `lastUpdatedBy`                                                                                              | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The email of the user who last updated the tool                                                              | user@email.com                                                                                               |
