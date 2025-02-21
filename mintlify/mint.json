@@ -257,6 +257,7 @@
             "sdk-docs/models/components/testmessage",
             "sdk-docs/models/components/testmessageresponse",
             "sdk-docs/models/components/tool",
+            "sdk-docs/models/components/toolagentinfo",
             "sdk-docs/models/components/toolargumentlocation",
             "sdk-docs/models/components/toolcreate",
             "sdk-docs/models/components/toolcreatedefinition",
