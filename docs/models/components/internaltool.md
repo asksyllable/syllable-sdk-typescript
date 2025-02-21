@@ -11,7 +11,7 @@ let value: InternalTool = {
   function: {
     name: "weather_fetcher",
     description: "Fetches weather data",
-    parameters: "<value>",
+    parameters: {},
   },
 };
 ```

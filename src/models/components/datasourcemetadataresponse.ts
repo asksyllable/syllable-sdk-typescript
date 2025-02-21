@@ -13,7 +13,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type DataSourceMetadataResponse = {
   /**
-   * The data source name. Must be unique within suborg.
+   * The data source name. Must be unique within suborg. Cannot contain whitespace.
    */
   name: string;
   /**

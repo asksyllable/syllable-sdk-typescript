@@ -80,7 +80,7 @@ let value: ChannelTargetResponse = {
             function: {
               name: "weather_fetcher",
               description: "Fetches weather data",
-              parameters: "<value>",
+              parameters: {},
             },
           },
           endpoint: {
@@ -106,6 +106,12 @@ let value: ChannelTargetResponse = {
           {
             id: 1,
             name: "Test Prompt",
+          },
+        ],
+        agentsInfo: [
+          {
+            id: 1,
+            name: "Test Agent",
           },
         ],
         lastUpdated: new Date("2025-07-26T23:03:04.026Z"),

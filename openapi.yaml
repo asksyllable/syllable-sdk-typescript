@@ -4570,7 +4570,7 @@ components:
         "name":
           type: "string"
           title: "Name"
-          description: "The data source name. Must be unique within suborg."
+          description: "The data source name. Must be unique within suborg. Cannot contain whitespace."
           examples:
             - "Rain"
         "description":
@@ -4617,7 +4617,7 @@ components:
         "name":
           type: "string"
           title: "Name"
-          description: "The data source name. Must be unique within suborg."
+          description: "The data source name. Must be unique within suborg. Cannot contain whitespace."
           examples:
             - "Rain"
         "description":
@@ -4695,7 +4695,7 @@ components:
         "name":
           type: "string"
           title: "Name"
-          description: "The data source name. Must be unique within suborg."
+          description: "The data source name. Must be unique within suborg. Cannot contain whitespace."
           examples:
             - "Rain"
         "description":
@@ -4779,7 +4779,7 @@ components:
         "name":
           type: "string"
           title: "Name"
-          description: "The data source name. Must be unique within suborg."
+          description: "The data source name. Must be unique within suborg. Cannot contain whitespace."
           examples:
             - "Rain"
         "description":
@@ -6444,6 +6444,26 @@ components:
         - "agent_id"
       title: "TestMessageResponse"
       description: "Response from an agent in a test chat."
+    "ToolAgentInfo":
+      properties:
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the agent"
+          examples:
+            - 1
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the agent"
+          examples:
+            - "Test Agent"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+      title: "ToolAgentInfo"
+      description: "Information about an agent linked to a tool via a prompt."
     "ToolArgumentLocation":
       type: "string"
       enum:
@@ -6553,6 +6573,13 @@ components:
             - type: "null"
           title: "Prompts Info"
           description: "IDs and names of the prompts linked to the tool"
+        "agents_info":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/ToolAgentInfo"}
+              type: "array"
+            - type: "null"
+          title: "Agents Info"
+          description: "IDs and names of the agents linked to the tool via a prompt"
         "last_updated":
           type: "string"
           format: "date-time"
@@ -6598,6 +6625,8 @@ components:
         "parameters":
           title: "Parameters"
           description: "The JSON Schema of parameters of the function/tool call."
+          examples:
+            - {}
       type: "object"
       required:
         - "name"
@@ -6763,6 +6792,13 @@ components:
             - type: "null"
           title: "Prompts Info"
           description: "IDs and names of the prompts linked to the tool"
+        "agents_info":
+          anyOf:
+            - items: {"$ref": "#/components/schemas/ToolAgentInfo"}
+              type: "array"
+            - type: "null"
+          title: "Agents Info"
+          description: "IDs and names of the agents linked to the tool via a prompt"
         "last_updated":
           type: "string"
           format: "date-time"
