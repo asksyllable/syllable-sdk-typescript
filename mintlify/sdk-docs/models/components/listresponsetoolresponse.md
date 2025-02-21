@@ -16,7 +16,7 @@ let value: ListResponseToolResponse = {
           function: {
             name: "weather_fetcher",
             description: "Fetches weather data",
-            parameters: "<value>",
+            parameters: {},
           },
         },
         endpoint: {
@@ -42,6 +42,12 @@ let value: ListResponseToolResponse = {
         {
           id: 1,
           name: "Test Prompt",
+        },
+      ],
+      agentsInfo: [
+        {
+          id: 1,
+          name: "Test Agent",
         },
       ],
       lastUpdated: new Date("2025-09-08T16:15:49.407Z"),

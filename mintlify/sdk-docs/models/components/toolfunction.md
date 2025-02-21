@@ -15,7 +15,7 @@ import { ToolFunction } from "syllable-sdk/models/components";
 let value: ToolFunction = {
   name: "weather_fetcher",
   description: "Fetches weather data",
-  parameters: "<value>",
+  parameters: {},
 };
 ```
 
@@ -25,4 +25,4 @@ let value: ToolFunction = {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `name`                                                   | *string*                                                 | TRUE                                       | The name of the function/tool call.                      | weather_fetcher                                          |
 | `description`                                            | *string*                                                 | TRUE                                       | The description of the tool.                             | Fetches weather data                                     |
-| `parameters`                                             | *any*                                                    | TRUE                                       | The JSON Schema of parameters of the function/tool call. |                                                          |
+| `parameters`                                             | *any*                                                    | TRUE                                       | The JSON Schema of parameters of the function/tool call. | {}                                                       |
