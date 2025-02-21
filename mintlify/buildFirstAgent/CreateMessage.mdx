@@ -3,10 +3,32 @@ title: "Compose a Message"
 icon: "message"
 ---
 
-A message is a response your Agent will communicate to your callers based on defined time logic.
+Messages are configurable text that the agent reads to the user - for example, every agent must be associated with a message to be delivered as a greeting at the beginning of the conversation. Messages are set up with time-based logic so that the agent can deliver different variations on the message depending on the date and time of the conversation.
 
-For example, if your business closes for lunch everyday from 12-1pm, a custom "out to lunch" message would instruct the Agent to respond with your desired out to lunch message and behavior.
+## Configure a Message
 
-Click [here](https://docs.syllable.ai/Resources/Messages) to learn even more about messages
+![](/mintlify/image.png)
 
-##
+* **Message name:** The name of your message. Use a name that’s easily remembered and specific enough to distinguish it from other message.
+
+* **Label (optional):** A plain text indicator to help you remember your message. It should be different from the name.
+
+* **Text (optional)**: The fallback text that should be delivered if none of the rules match the current timestamp.
+
+### Message rules
+
+These rules let you control when and what your agent will say - for example, if a business is either closed or unavailable for a holiday.
+
+* **Rule description**: Information related to the rule, like why it’s used or which agent(s) will use it. 
+
+* **Condition:** Select whether you want the rule to take effect when the time/date IS a certain value, or when it’s NOT a certain value. 
+
+* **Time type:** Select whether the messages should follow rules based on the day of the week, like for a Friday closure, or specific date(s), like a holiday. 
+
+* **Time range:** Indicate whether the message should follow a specific time of day.
+
+* **\[ ] all day:** Check this box if the rule should apply all day for the selected days.
+
+* **Message**: Write out the specific message the agent will say based on the logic you just defined. 
+
+* **Add condition:** Click the + to add additional rules. If multiple rules match, Syllable will use the message corresponding to the most specific rule.
