@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  ToolAgentInfo,
+  ToolAgentInfo$inboundSchema,
+  ToolAgentInfo$Outbound,
+  ToolAgentInfo$outboundSchema,
+} from "./toolagentinfo.js";
+import {
   ToolDefinition,
   ToolDefinition$inboundSchema,
   ToolDefinition$Outbound,
@@ -57,6 +63,10 @@ export type ToolResponse = {
    */
   promptsInfo?: Array<ToolPromptInfo> | null | undefined;
   /**
+   * IDs and names of the agents linked to the tool via a prompt
+   */
+  agentsInfo?: Array<ToolAgentInfo> | null | undefined;
+  /**
    * The timestamp of the most recent update to the service
    */
   lastUpdated: Date;
@@ -79,6 +89,7 @@ export const ToolResponse$inboundSchema: z.ZodType<
   last_updated_comments: z.nullable(z.string()).optional(),
   service_name: z.nullable(z.string()).optional(),
   prompts_info: z.nullable(z.array(ToolPromptInfo$inboundSchema)).optional(),
+  agents_info: z.nullable(z.array(ToolAgentInfo$inboundSchema)).optional(),
   last_updated: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ),
@@ -89,6 +100,7 @@ export const ToolResponse$inboundSchema: z.ZodType<
     "last_updated_comments": "lastUpdatedComments",
     "service_name": "serviceName",
     "prompts_info": "promptsInfo",
+    "agents_info": "agentsInfo",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
   });
@@ -103,6 +115,7 @@ export type ToolResponse$Outbound = {
   last_updated_comments?: string | null | undefined;
   service_name?: string | null | undefined;
   prompts_info?: Array<ToolPromptInfo$Outbound> | null | undefined;
+  agents_info?: Array<ToolAgentInfo$Outbound> | null | undefined;
   last_updated: string;
   last_updated_by: string;
 };
@@ -120,6 +133,7 @@ export const ToolResponse$outboundSchema: z.ZodType<
   lastUpdatedComments: z.nullable(z.string()).optional(),
   serviceName: z.nullable(z.string()).optional(),
   promptsInfo: z.nullable(z.array(ToolPromptInfo$outboundSchema)).optional(),
+  agentsInfo: z.nullable(z.array(ToolAgentInfo$outboundSchema)).optional(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
 }).transform((v) => {
@@ -128,6 +142,7 @@ export const ToolResponse$outboundSchema: z.ZodType<
     lastUpdatedComments: "last_updated_comments",
     serviceName: "service_name",
     promptsInfo: "prompts_info",
+    agentsInfo: "agents_info",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
   });

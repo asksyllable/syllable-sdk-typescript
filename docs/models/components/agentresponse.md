@@ -73,7 +73,7 @@ let value: AgentResponse = {
           function: {
             name: "weather_fetcher",
             description: "Fetches weather data",
-            parameters: "<value>",
+            parameters: {},
           },
         },
         endpoint: {
@@ -99,6 +99,12 @@ let value: AgentResponse = {
         {
           id: 1,
           name: "Test Prompt",
+        },
+      ],
+      agentsInfo: [
+        {
+          id: 1,
+          name: "Test Agent",
         },
       ],
       lastUpdated: new Date("2024-07-27T11:31:00.474Z"),
