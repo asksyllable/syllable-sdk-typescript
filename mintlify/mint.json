@@ -90,8 +90,8 @@
       "pages": [
         "Resources/res_WritePrompt",
         "Resources/Tools",
-        "Resources/Messages",
-        "Resources/Channels"
+        "Resources/Channels",
+        "Resources/Webchat"
       ]
     },
     {
