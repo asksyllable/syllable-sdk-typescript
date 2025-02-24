@@ -1,5 +1,6 @@
 ---
 title: "Telephony Integration"
+icon: "phone"
 ---
 
 The main mode of operation of Zoon agents in the phone channel mode is answering incoming calls and having an AI agent have a conversation with the caller. The Zoon agents are also capable of transferring the caller to a new destination. There are multiple integration options to make inbound calls and outbound transfers possible.
@@ -60,7 +61,7 @@ In both of these examples, the following information is made available to the ag
 
 ### Outbound
 
-For every transfer call, either with an Invite or a Refer, Syllable sends the SIP header `X-Syllable-CallInfo`** that contains semicolon-delimited key-value pairs, with the following information:
+For every transfer call, either with an Invite or a Refer, Syllable sends the SIP header `X-Syllable-CallInfo` that contains semicolon-delimited key-value pairs, with the following information:
 
 * `ani`: Caller number
 
