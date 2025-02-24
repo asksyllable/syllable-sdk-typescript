@@ -31,4 +31,12 @@ These rules let you control when and what your agent will say - for example, if 
 
 * **Message**: Write out the specific message the agent will say based on the logic you just defined. 
 
-* **Add condition:** Click the + to add additional rules. If multiple rules match, Syllable will use the message corresponding to the most specific rule.
+* **Add condition:** Click the + to add additional rules.
+
+If multiple rules match the current time, the system will use the most specific one (i.e., the one that matches the shortest time range). The order of rules to check is as follows:
+
+1. Rules that match a specific date
+
+2. Rules that match day(s) of the week
+
+3. Rules with a NOT match on a specific date
