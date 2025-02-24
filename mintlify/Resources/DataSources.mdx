@@ -1,0 +1,23 @@
+---
+title: "Data Sources"
+---
+
+A data source is a predefined blob of text containing structured, semi-structured, or unstructured data. You can configure a data source to provide context to an agent that it can use when answering a user's questions. This can have significant latency advantages over including this information in the agent's prompt (more details below), as well as allows you to provide different agents with different knowledge bases even if they all use the same prompt.
+
+## Creating a data source
+
+Go to the "Data Sources" tab on the side toolbar and click "New data" on the top right.
+
+![](/mintlify/datasourcescreate.png)
+
+* **Name:** This is the name under which the data source will be stored. It must be unique within the suborg and cannot contain any whitespace.
+
+* **Description (optional):** User-readable description of the data source.
+
+* **Generate chunks:** Whether or not the data source should be separated into smaller "chunks" of text when it is stored. This is a useful process for ensuring that only the content from the data source that is relevant to a given user question is presented to the LLM.
+
+* **Delimiter:** The string that should be used to divide the chunks of the data source, if "Generate chunks" is checked.
+
+* **Content:** The actual text content of the data source.
+
+In the above example, the data source content, which is a list of pizzeria addresses with their phone numbers and hours of operation, will be broken into three chunks, separated by blank lines ("Double Paragraph Breaks"). When a user asks an agent that is using this data source a question, like "What are the hours for the restaurant at 246 River Avenue?", the system will search across all available chunks for the one(s) that best match the question. In this example, it would identify that the second chunk is the relevant one for the user's question, and then provide the content of that chunk to the LLM as additional context, so the LLM would know the hours for that location. Chunking in this way can reduce latency, as the number of tokens sent to the LLM is lower than if all three locations were included in a single chunk.
