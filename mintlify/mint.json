@@ -90,6 +90,7 @@
       "pages": [
         "Resources/res_WritePrompt",
         "Resources/Tools",
+        "Resources/DataSources",
         "Resources/TelephonyIntegration",
         "Resources/Webchat"
       ]
