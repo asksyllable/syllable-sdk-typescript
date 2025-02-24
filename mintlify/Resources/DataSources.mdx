@@ -22,3 +22,15 @@ Go to the "Data Sources" tab on the side toolbar and click "New data" on the top
 * **Content:** The actual text content of the data source.
 
 In the above example, the data source content, which is a list of pizzeria addresses with their phone numbers and hours of operation, will be broken into three chunks, separated by blank lines ("Double Paragraph Breaks"). When a user asks an agent that is using this data source a question, like "What are the hours for the restaurant at 246 River Avenue?", the system will search across all available chunks for the one(s) that best match the question. In this example, it would identify that the second chunk is the relevant one for the user's question, and then provide the content of that chunk to the LLM as additional context, so the LLM would know the hours for that location. Chunking in this way can reduce latency, as the number of tokens sent to the LLM is lower than if all three locations were included in a single chunk.
+
+### Linking a data source to an agent
+
+Here is the process to give an agent the ability to fetch information from a data source when answering questions:
+
+1. Create a data source and note the name.
+
+2. Create a prompt that has access to the **general\_information** tool.
+
+3. Link an agent to that prompt.
+
+4. In the agent's ["Session configuration" section](https://docs.syllable.ai/workspaces/SessionConfig), for the variable `vars.domain`, enter the value `doc://yourdatasourcenamehere`.
