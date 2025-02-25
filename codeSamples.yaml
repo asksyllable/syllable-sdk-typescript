@@ -825,6 +825,248 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/insights/tool-definitions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insight_tool_get_definitions
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.insightToolGetDefinitions();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tools"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insight_tool_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tools"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insights_tool_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.create({
+                name: "<value>",
+                description: "yuck vice between gee ugh ha",
+                version: 920994,
+                toolArguments: {},
+                insightToolDefinitionId: 780486,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tools/{tool_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insight_tool_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.getById({
+                toolId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tools/{tool_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insights_tool_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.update({
+                toolId: 198183,
+                insightToolInput: {
+                  name: "<value>",
+                  description: "awful underneath retention too mobility char innocently dowse restfully",
+                  version: 243447,
+                  toolArguments: {},
+                  insightToolDefinitionId: 265006,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/workflows/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insights_workflow_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.workflows.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/workflows/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insights_workflow_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.workflows.create({
+                name: "<value>",
+                description: "yuck vice between gee ugh ha",
+                insightToolIds: [
+                  780486,
+                  760259,
+                  219974,
+                ],
+                conditions: {},
+                status: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/workflows/{workflow_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: directory_workflow_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.workflows.delete({
+                workflowId: 545907,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/workflows/{workflow_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insights_workflow_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.workflows.getById({
+                workflowId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/workflows/{workflow_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: insights_workflow_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.workflows.update({
+                workflowId: 265006,
+                insightWorkflowInput: {
+                  name: "<value>",
+                  description: "awful underneath retention too mobility char innocently dowse restfully",
+                  insightToolIds: [
+
+                  ],
+                  conditions: {},
+                  status: "<value>",
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/prompts/"]["get"]
     update:
       x-codeSamples:
@@ -1205,6 +1447,28 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessions.generateSessionRecordingUrls({
+                sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/sessions/summary/{session_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_summary_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.summary.getById({
                 sessionId: "<id>",
               });
 

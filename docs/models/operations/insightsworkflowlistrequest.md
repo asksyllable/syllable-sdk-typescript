@@ -1,0 +1,23 @@
+# InsightsWorkflowListRequest
+
+## Example Usage
+
+```typescript
+import { InsightsWorkflowListRequest } from "syllable-sdk/models/operations";
+
+let value: InsightsWorkflowListRequest = {};
+```
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `page`                                                                                         | *number*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `limit`                                                                                        | *number*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `searchFields`                                                                                 | [components.InsightWorkflowProperties](../../models/components/insightworkflowproperties.md)[] | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `searchFieldValues`                                                                            | *string*[]                                                                                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `orderBy`                                                                                      | [components.InsightWorkflowProperties](../../models/components/insightworkflowproperties.md)   | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `orderByDirection`                                                                             | [components.OrderByDirection](../../models/components/orderbydirection.md)                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `fields`                                                                                       | [components.InsightWorkflowProperties](../../models/components/insightworkflowproperties.md)[] | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `startDatetime`                                                                                | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `endDatetime`                                                                                  | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |

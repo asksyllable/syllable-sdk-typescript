@@ -22,7 +22,7 @@ let value: ToolCreateRequest = {
     },
     defaults: "<value>",
   },
-  serviceId: 501063,
+  serviceId: 826806,
 };
 ```
 

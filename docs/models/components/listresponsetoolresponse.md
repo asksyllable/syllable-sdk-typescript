@@ -20,7 +20,7 @@ let value: ListResponseToolResponse = {
         endpoint: {
           url: "https://api.example.com",
           method: "get",
-          argumentLocation: "query",
+          argumentLocation: "form",
         },
         defaults: {
           "key": {
@@ -34,8 +34,8 @@ let value: ListResponseToolResponse = {
           },
         },
       },
-      serviceId: 927212,
-      id: 28952,
+      serviceId: 349898,
+      id: 706411,
       promptsInfo: [
         {
           id: 1,
@@ -48,12 +48,12 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2025-09-08T16:15:49.407Z"),
+      lastUpdated: new Date("2023-01-27T22:28:26.570Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 392569,
-  pageSize: 878373,
+  page: 633987,
+  pageSize: 230571,
 };
 ```
 

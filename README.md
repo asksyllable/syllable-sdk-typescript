@@ -184,6 +184,25 @@ run();
 
 * [list](docs/sdks/events/README.md#list) - Events List
 
+### [insights](docs/sdks/insights/README.md)
+
+
+#### [insights.tools](docs/sdks/syllablesdktools/README.md)
+
+* [list](docs/sdks/syllablesdktools/README.md#list) - Insight Tool List
+* [create](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
+* [getById](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
+* [update](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool
+* [insightToolGetDefinitions](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
+
+#### [insights.workflows](docs/sdks/workflows/README.md)
+
+* [list](docs/sdks/workflows/README.md#list) - Insight Workflow List
+* [create](docs/sdks/workflows/README.md#create) - Create Insight Workflow
+* [getById](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
+* [update](docs/sdks/workflows/README.md#update) - Update Insights Workflow
+* [delete](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
+
 ### [prompts](docs/sdks/prompts/README.md)
 
 * [list](docs/sdks/prompts/README.md#list) - Prompt List
@@ -213,6 +232,10 @@ run();
 * [getById](docs/sdks/sessions/README.md#getbyid) - Get A Single Session By Id
 * [generateSessionRecordingUrls](docs/sdks/sessions/README.md#generatesessionrecordingurls) - Generate Recording Urls
 * [sessionRecordingStream](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
+
+#### [sessions.summary](docs/sdks/summary/README.md)
+
+* [getById](docs/sdks/summary/README.md#getbyid) - Get Session Summary By Id
 
 #### [sessions.transcript](docs/sdks/transcript/README.md)
 
@@ -284,6 +307,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
 - [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
+- [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
+- [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
+- [`insightsToolsInsightToolGetDefinitions`](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
+- [`insightsToolsList`](docs/sdks/syllablesdktools/README.md#list) - Insight Tool List
+- [`insightsToolsUpdate`](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool
+- [`insightsWorkflowsCreate`](docs/sdks/workflows/README.md#create) - Create Insight Workflow
+- [`insightsWorkflowsDelete`](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
+- [`insightsWorkflowsGetById`](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
+- [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
+- [`insightsWorkflowsUpdate`](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
 - [`promptsGetById`](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
@@ -302,6 +335,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsGetById`](docs/sdks/sessions/README.md#getbyid) - Get A Single Session By Id
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
+- [`sessionsSummaryGetById`](docs/sdks/summary/README.md#getbyid) - Get Session Summary By Id
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`toolsCreate`](docs/sdks/tools/README.md#create) - Create Tool
 - [`toolsDelete`](docs/sdks/tools/README.md#delete) - Delete Tool

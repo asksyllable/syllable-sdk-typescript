@@ -10,6 +10,7 @@ import { CustomMessages } from "./custommessages.js";
 import { Dashboards } from "./dashboards.js";
 import { DataSources } from "./datasources.js";
 import { Events } from "./events.js";
+import { Insights } from "./insights.js";
 import { Prompts } from "./prompts.js";
 import { Services } from "./services.js";
 import { SessionLabels } from "./sessionlabels.js";
@@ -46,6 +47,11 @@ export class SyllableSDK extends ClientSDK {
   private _events?: Events;
   get events(): Events {
     return (this._events ??= new Events(this._options));
+  }
+
+  private _insights?: Insights;
+  get insights(): Insights {
+    return (this._insights ??= new Insights(this._options));
   }
 
   private _customMessages?: CustomMessages;

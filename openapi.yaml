@@ -768,6 +768,432 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/insights/workflows/":
+    get:
+      tags:
+        - "insights.workflows"
+      summary: "Insight Workflow List"
+      description: "List the existing insight_workflows"
+      operationId: "insights_workflow_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/InsightWorkflowProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - {"$ref": "#/components/schemas/InsightWorkflowProperties"}
+              - type: "null"
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/InsightWorkflowProperties"}
+              - type: "null"
+            default: []
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_InsightWorkflowOutput_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    post:
+      tags:
+        - "insights.workflows"
+      summary: "Create Insight Workflow"
+      description: "Create a new tool in the insights"
+      operationId: "insights_workflow_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/InsightWorkflowInput"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/InsightWorkflowOutput"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/insights/workflows/{workflow_id}":
+    get:
+      tags:
+        - "insights.workflows"
+      summary: "Get Insight Workflow By Id"
+      description: "Get a InsightWorkflow by ID."
+      operationId: "insights_workflow_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "workflow_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Workflow Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/InsightWorkflowOutput"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "insights.workflows"
+      summary: "Update Insights Workflow"
+      description: "Update a InsightWorkflow."
+      operationId: "insights_workflow_update"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "workflow_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Workflow Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/InsightWorkflowInput"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/InsightWorkflowOutput"}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "412":
+          description: "Precondition Failed"
+        "500":
+          description: "Internal Server Error"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    delete:
+      tags:
+        - "insights.workflows"
+      summary: "Delete Insights Workflow"
+      description: "Delete a Insights workflow."
+      operationId: "directory_workflow_delete"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "workflow_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Workflow Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "500":
+          description: "Internal Server Error"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/insights/tools":
+    get:
+      tags:
+        - "insights.tools"
+      summary: "Insight Tool List"
+      description: "List the existing insight_tools"
+      operationId: "insight_tool_list"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 0
+              - type: "null"
+            default: 0
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 0
+            default: 25
+            title: "Limit"
+        - name: "search_fields"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items: {"$ref": "#/components/schemas/InsightToolProperties"}
+            default: []
+            title: "Search Fields"
+        - name: "search_field_values"
+          in: "query"
+          required: false
+          schema:
+            type: "array"
+            items:
+              type: "string"
+            default: []
+            title: "Search Field Values"
+        - name: "order_by"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - {"$ref": "#/components/schemas/InsightToolProperties"}
+              - type: "null"
+            title: "Order By"
+        - name: "order_by_direction"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - {"$ref": "#/components/schemas/OrderByDirection"}
+              - type: "null"
+            title: "Order By Direction"
+        - name: "fields"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "array"
+                items: {"$ref": "#/components/schemas/InsightToolProperties"}
+              - type: "null"
+            default: []
+            title: "Fields"
+        - name: "start_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Start Datetime"
+        - name: "end_datetime"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "End Datetime"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ListResponse_InsightToolOutput_"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    post:
+      tags:
+        - "insights.tools"
+      summary: "Create Insight Tool"
+      description: "Create a new tool in the insights"
+      operationId: "insights_tool_create"
+      security:
+        - APIKeyHeader: []
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/InsightToolInput"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/InsightToolOutput"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/insights/tools/{tool_id}":
+    get:
+      tags:
+        - "insights.tools"
+      summary: "Get Insight Tool By Id"
+      description: "Get a InsightTool by Name."
+      operationId: "insight_tool_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "tool_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Tool Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/InsightToolOutput"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+    put:
+      tags:
+        - "insights.tools"
+      summary: "Update Insights Tool"
+      description: "Update a InsightTool."
+      operationId: "insights_tool_update"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "tool_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            title: "Tool Id"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/InsightToolInput"}
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/InsightToolOutput"}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "412":
+          description: "Precondition Failed"
+        "500":
+          description: "Internal Server Error"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/insights/tool-definitions":
+    get:
+      tags:
+        - "insights.tools"
+      summary: "Get Insight Tool Definitions"
+      description: "Get a InsightTool by Name."
+      operationId: "insight_tool_get_definitions"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                items: {"$ref": "#/components/schemas/InsightToolDefinition"}
+                type: "array"
+                title: "Response Insight Tool Get Definitions"
+      security:
+        - APIKeyHeader: []
   "/api/v1/custom_messages/":
     get:
       tags:
@@ -1678,6 +2104,34 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/SessionTranscriptionResponse"}
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/sessions/summary/{session_id}":
+    get:
+      tags:
+        - "sessions.summary"
+      summary: "Get Session Summary By Id"
+      operationId: "session_summary_get_by_id"
+      security:
+        - APIKeyHeader: []
+      parameters:
+        - name: "session_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Session Id"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema:
+                type: "string"
+                title: "Response Session Summary Get By Id"
         "422":
           description: "Validation Error"
           content:
@@ -5046,6 +5500,237 @@ components:
           title: "Detail"
       type: "object"
       title: "HTTPValidationError"
+    "InsightToolDefinition":
+      properties:
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "Unique ID for Insight Tool Definition"
+        "name":
+          type: "string"
+          title: "Name"
+          description: "Human readable name of Insight Tool Definition"
+        "type":
+          type: "string"
+          title: "Type"
+          description: "Type of Insight Tool Definition"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "Text description of Insight Tool Definition"
+        "tool_parameters":
+          type: "object"
+          title: "Tool Parameters"
+          description: "Parameters for Insight Tool Definition"
+        "tool_result_set":
+          type: "object"
+          title: "Tool Result Set"
+          description: "Result key/types for Insight Tool Definition"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "type"
+        - "description"
+        - "tool_parameters"
+        - "tool_result_set"
+      title: "InsightToolDefinition"
+    "InsightToolInput":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "Human readable name of Insight Tool"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "Text description of Insight Tool"
+        "version":
+          type: "integer"
+          title: "Version"
+          description: "Version number of Insight Tool"
+        "tool_arguments":
+          type: "object"
+          title: "Tool Arguments"
+          description: "Arguments for Insight Tool"
+        "insight_tool_definition_id":
+          type: "integer"
+          title: "Insight Tool Definition Id"
+          description: "Unique ID for Insight Tool Definition"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "version"
+        - "tool_arguments"
+        - "insight_tool_definition_id"
+      title: "InsightToolInput"
+    "InsightToolOutput":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "Human readable name of Insight Tool"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "Text description of Insight Tool"
+        "version":
+          type: "integer"
+          title: "Version"
+          description: "Version of Insight Tool"
+        "tool_arguments":
+          type: "object"
+          title: "Tool Arguments"
+          description: "Arguments for Insight Tool"
+        "insight_tool_definition_id":
+          type: "integer"
+          title: "Insight Tool Definition Id"
+          description: "Unique ID for Insight Tool Definition"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "Unique ID for Insight Tool"
+        "insight_tool_definition":
+          anyOf:
+            - {"$ref": "#/components/schemas/InsightToolDefinition"}
+            - type: "null"
+          description: "Insight Tool Definition"
+        "created_at":
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+          description: "Timestamp of Insight Tool creation"
+        "updated_at":
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+          description: "Timestamp of Insight Tool update"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "User who last updated Insight Tool"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "version"
+        - "tool_arguments"
+        - "insight_tool_definition_id"
+        - "id"
+        - "last_updated_by"
+      title: "InsightToolOutput"
+    "InsightToolProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "description"
+        - "tool_arguments"
+        - "insight_tool_definition_id"
+        - "updated_at"
+      title: "InsightToolProperties"
+    "InsightWorkflowInput":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "Human readable name of Insight Workflow"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "Text description of Insight Workflow"
+        "insight_tool_ids":
+          items:
+            type: "integer"
+          type: "array"
+          title: "Insight Tool Ids"
+          description: "List of Insight Tool IDs"
+        "conditions":
+          type: "object"
+          title: "Conditions"
+          description: "Conditions for Insight Workflow"
+        "status":
+          type: "string"
+          title: "Status"
+          description: "Status of the Insight Workflow"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "insight_tool_ids"
+        - "conditions"
+        - "status"
+      title: "InsightWorkflowInput"
+    "InsightWorkflowOutput":
+      properties:
+        "name":
+          type: "string"
+          title: "Name"
+          description: "Human readable name of Insight Workflow"
+        "description":
+          type: "string"
+          title: "Description"
+          description: "Text description of Insight Workflow"
+        "insight_tool_ids":
+          items:
+            type: "integer"
+          type: "array"
+          title: "Insight Tool Ids"
+          description: "List of Insight Tool IDs"
+        "conditions":
+          type: "object"
+          title: "Conditions"
+          description: "Conditions for Insight Workflow"
+        "status":
+          type: "string"
+          title: "Status"
+          description: "Status of the Insight Workflow"
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "Unique ID for Insight Workflow"
+        "insight_tools":
+          items: {"$ref": "#/components/schemas/InsightToolOutput"}
+          type: "array"
+          title: "Insight Tools"
+          description: "List of Insight Tools"
+        "created_at":
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+          description: "Timestamp of Insight Workflow creation"
+        "updated_at":
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+          description: "Timestamp of Insight Workflow update"
+        "last_updated_by":
+          type: "string"
+          title: "Last Updated By"
+          description: "User who last updated Insight Workflow"
+      type: "object"
+      required:
+        - "name"
+        - "description"
+        - "insight_tool_ids"
+        - "conditions"
+        - "status"
+        - "id"
+        - "insight_tools"
+        - "last_updated_by"
+      title: "InsightWorkflowOutput"
+    "InsightWorkflowProperties":
+      type: "string"
+      enum:
+        - "id"
+        - "name"
+        - "description"
+        - "status"
+        - "conditions"
+        - "insight_tool_ids"
+        - "updated_at"
+      title: "InsightWorkflowProperties"
     "InternalTool":
       properties:
         "type":
@@ -5340,6 +6025,62 @@ components:
         - "page"
         - "page_size"
       title: "ListResponse[Event]"
+    "ListResponse_InsightToolOutput_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/InsightToolOutput"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Pages"
+        "total_count":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+      title: "ListResponse[InsightToolOutput]"
+    "ListResponse_InsightWorkflowOutput_":
+      properties:
+        "items":
+          items: {"$ref": "#/components/schemas/InsightWorkflowOutput"}
+          type: "array"
+          title: "Items"
+        "page":
+          type: "integer"
+          title: "Page"
+        "page_size":
+          type: "integer"
+          title: "Page Size"
+        "total_pages":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Pages"
+        "total_count":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Total Count"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+      title: "ListResponse[InsightWorkflowOutput]"
     "ListResponse_PromptResponse_":
       properties:
         "items":
@@ -6897,6 +7638,10 @@ tags:
     description: "Operations related to directory"
   - name: "events"
     description: "Operations related to events. An event represents a specific occurrence           during a session. Currently the API/SDK only supports fetching logged events."
+  - name: "insights.tools"
+    description: "Operations related to insights tools. An insight is a tool that processes           conversation data to extract information and generate reports."
+  - name: "insights.workflows"
+    description: "Operations related to insights workflows. An workflow is series of tool           invocations that processes conversation data to extract information and generate reports."
   - name: "outbound.campaigns"
     description: "Operations related to outbound message campaigns"
   - name: "outbound.batches"

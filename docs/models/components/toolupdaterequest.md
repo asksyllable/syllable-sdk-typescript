@@ -18,12 +18,22 @@ let value: ToolUpdateRequest = {
     endpoint: {
       url: "https://api.example.com",
       method: "get",
-      argumentLocation: "form",
+      argumentLocation: "path",
     },
-    defaults: "<value>",
+    defaults: {
+      "key": {
+        transform: {
+          action: "default",
+          when: {
+            key: "key",
+            value: "value",
+          },
+        },
+      },
+    },
   },
-  serviceId: 495970,
-  id: 681740,
+  serviceId: 155978,
+  id: 426002,
 };
 ```
 
