@@ -12,7 +12,7 @@ let value: ListResponseCustomMessageResponse = {
       text: "<value>",
       rules: [
         {
-          description: "duh redact indeed beside motivate zowie tag even",
+          description: "upon hoot soggy contractor phooey nightlife",
           timeRangeStart: "09:00",
           timeRangeEnd: "17:00",
           date: "2025-01-01",
@@ -27,13 +27,13 @@ let value: ListResponseCustomMessageResponse = {
           text: "Sorry, we're closed today",
         },
       ],
-      id: 796392,
-      updatedAt: new Date("2025-11-17T05:55:05.975Z"),
+      id: 115661,
+      updatedAt: new Date("2025-03-08T18:22:12.424Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 458139,
-  pageSize: 590984,
+  page: 637462,
+  pageSize: 811939,
 };
 ```
 

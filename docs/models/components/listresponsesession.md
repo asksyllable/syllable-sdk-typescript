@@ -8,14 +8,14 @@ import { ListResponseSession } from "syllable-sdk/models/components";
 let value: ListResponseSession = {
   items: [
     {
-      timestamp: new Date("2025-07-12T16:24:09.346Z"),
-      channelManagerService: "hedy",
+      timestamp: new Date("2025-12-18T17:26:12.157Z"),
+      channelManagerService: "console",
       channelManagerType: "voice_sip_v1",
-      source: "+18042221111",
+      source: "user@email.com",
     },
   ],
-  page: 85311,
-  pageSize: 221396,
+  page: 2064,
+  pageSize: 198911,
 };
 ```
 

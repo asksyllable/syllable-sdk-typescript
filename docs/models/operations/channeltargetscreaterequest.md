@@ -6,12 +6,12 @@
 import { ChannelTargetsCreateRequest } from "syllable-sdk/models/operations";
 
 let value: ChannelTargetsCreateRequest = {
-  channelId: 612867,
+  channelId: 388404,
   channelTargetCreateRequest: {
-    agentId: 81369,
-    channelId: 881897,
+    agentId: 486272,
+    channelId: 588152,
     target: "<value>",
-    targetMode: "sms",
+    targetMode: "email",
   },
 };
 ```
