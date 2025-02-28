@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: aab37c35b1d8c65279b2b06a10bee777
+  docChecksum: a507f5e3f75f79db8c03693c42e11a77
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.47
-  configChecksum: 09e229ae1defe4b3378e78b205393130
+  releaseVersion: 0.1.0-alpha.48
+  configChecksum: 63c201d12110be90e8f80b019ade87c0
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -737,7 +737,7 @@ examples:
   prompts_create:
     speakeasy-default-prompts-create:
       requestBody:
-        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}}
+        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "include_default_tools": true}
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 486589, "last_updated": "<value>", "last_updated_by": "user@email.com"}
@@ -746,7 +746,7 @@ examples:
   prompts_update:
     speakeasy-default-prompts-update:
       requestBody:
-        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 857478}
+        application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 857478, "include_default_tools": true}
       responses:
         "200":
           application/json: {"name": "<value>", "type": "<value>", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01"}, "id": 597129, "last_updated": "<value>", "last_updated_by": "user@email.com"}
