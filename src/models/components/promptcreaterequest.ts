@@ -36,6 +36,10 @@ export type PromptCreateRequest = {
    */
   tools?: Array<string> | undefined;
   llmConfig: PromptLlmConfig;
+  /**
+   * Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.
+   */
+  includeDefaultTools?: boolean | undefined;
 };
 
 /** @internal */
@@ -50,9 +54,11 @@ export const PromptCreateRequest$inboundSchema: z.ZodType<
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
+  include_default_tools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     "llm_config": "llmConfig",
+    "include_default_tools": "includeDefaultTools",
   });
 });
 
@@ -64,6 +70,7 @@ export type PromptCreateRequest$Outbound = {
   context?: string | null | undefined;
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
+  include_default_tools: boolean;
 };
 
 /** @internal */
@@ -78,9 +85,11 @@ export const PromptCreateRequest$outboundSchema: z.ZodType<
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
+  includeDefaultTools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
+    includeDefaultTools: "include_default_tools",
   });
 });
 

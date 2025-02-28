@@ -44,6 +44,10 @@ export type PromptUpdateRequest = {
    * The comments for the most recent edit to the prompt
    */
   editComments?: string | null | undefined;
+  /**
+   * Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
+   */
+  includeDefaultTools?: boolean | undefined;
 };
 
 /** @internal */
@@ -60,10 +64,12 @@ export const PromptUpdateRequest$inboundSchema: z.ZodType<
   llm_config: PromptLlmConfig$inboundSchema,
   id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
+  include_default_tools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     "llm_config": "llmConfig",
     "edit_comments": "editComments",
+    "include_default_tools": "includeDefaultTools",
   });
 });
 
@@ -77,6 +83,7 @@ export type PromptUpdateRequest$Outbound = {
   llm_config: PromptLlmConfig$Outbound;
   id: number;
   edit_comments?: string | null | undefined;
+  include_default_tools: boolean;
 };
 
 /** @internal */
@@ -93,10 +100,12 @@ export const PromptUpdateRequest$outboundSchema: z.ZodType<
   llmConfig: PromptLlmConfig$outboundSchema,
   id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
+  includeDefaultTools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
     editComments: "edit_comments",
+    includeDefaultTools: "include_default_tools",
   });
 });
 
