@@ -14,7 +14,8 @@ let value: ListResponseCustomMessageResponse = {
       text: "<value>",
       rules: [
         {
-          description: "duh redact indeed beside motivate zowie tag even",
+          description:
+            "vibration swanling drat squiggly inventory sit since dilate uh-huh pluck",
           timeRangeStart: "09:00",
           timeRangeEnd: "17:00",
           date: "2025-01-01",
@@ -29,13 +30,13 @@ let value: ListResponseCustomMessageResponse = {
           text: "Sorry, we're closed today",
         },
       ],
-      id: 796392,
-      updatedAt: new Date("2025-11-17T05:55:05.975Z"),
+      id: 288570,
+      updatedAt: new Date("2025-08-16T08:12:55.508Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 458139,
-  pageSize: 590984,
+  page: 112427,
+  pageSize: 212434,
 };
 ```
 

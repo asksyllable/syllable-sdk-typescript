@@ -14,7 +14,7 @@ let value: Dashboard = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  supersetUrl: "https://crafty-bin.com",
+  supersetUrl: "https://hungry-meal.net/",
 };
 ```
 

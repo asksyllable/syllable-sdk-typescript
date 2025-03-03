@@ -8,7 +8,7 @@ title: 'CustomMessageRule'
 import { CustomMessageRule } from "syllable-sdk/models/components";
 
 let value: CustomMessageRule = {
-  description: "reluctantly till unless",
+  description: "how prejudge cutover for clear-cut consequently bouncy abaft",
   timeRangeStart: "09:00",
   timeRangeEnd: "17:00",
   date: "2025-01-01",

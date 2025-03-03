@@ -9,7 +9,7 @@ import { ServiceCreateRequest } from "syllable-sdk/models/components";
 
 let value: ServiceCreateRequest = {
   name: "<value>",
-  description: "card joshingly overload",
+  description: "spanish boldly cauliflower horst",
 };
 ```
 

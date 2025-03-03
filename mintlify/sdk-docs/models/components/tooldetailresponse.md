@@ -26,10 +26,20 @@ let value: ToolDetailResponse = {
       method: "get",
       argumentLocation: "path",
     },
-    defaults: "<value>",
+    defaults: {
+      "key": {
+        transform: {
+          action: "default",
+          when: {
+            key: "key",
+            value: "value",
+          },
+        },
+      },
+    },
   },
-  serviceId: 159845,
-  id: 46806,
+  serviceId: 155978,
+  id: 426002,
   promptsInfo: [
     {
       id: 1,
@@ -42,7 +52,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2025-11-29T22:07:11.535Z"),
+  lastUpdated: new Date("2025-09-05T09:46:09.295Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",
