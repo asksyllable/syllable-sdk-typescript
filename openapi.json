@@ -3891,6 +3891,54 @@
         }
       }
     },
+    "/api/v1/sessions/full-summary/{session_id}": {
+      "get": {
+        "tags": [
+          "sessions",
+          "V1"
+        ],
+        "summary": "Get Full Session Summary By Id",
+        "operationId": "session_full_summary_get_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionSummaryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/sessions/{session_id}": {
       "get": {
         "tags": [
@@ -6764,6 +6812,380 @@
         },
         "x-speakeasy-ignore": true
       }
+    },
+    "/api/v1/language_groups/": {
+      "get": {
+        "tags": [
+          "language_groups",
+          "V1"
+        ],
+        "summary": "List Language Groups",
+        "description": "Fetch language groups.",
+        "operationId": "language_groups_list",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": 0,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 25,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "search_fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/LanguageGroupProperties"
+              },
+              "default": [],
+              "title": "Search Fields"
+            }
+          },
+          {
+            "name": "search_field_values",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "Search Field Values"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LanguageGroupProperties"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "order_by_direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OrderByDirection"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Order By Direction"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LanguageGroupProperties"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": [],
+              "title": "Fields"
+            }
+          },
+          {
+            "name": "start_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Datetime"
+            }
+          },
+          {
+            "name": "end_datetime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Datetime"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListResponse_LanguageGroupResponse_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "language_groups",
+          "V1"
+        ],
+        "summary": "Create Language Group",
+        "description": "Create a new language group.",
+        "operationId": "language_groups_create",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageGroupCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguageGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "language_groups",
+          "V1"
+        ],
+        "summary": "Update Language Group",
+        "description": "Update an existing language group",
+        "operationId": "language_groups_update",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageGroupUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguageGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/language_groups/{language_group_id}": {
+      "get": {
+        "tags": [
+          "language_groups",
+          "V1"
+        ],
+        "summary": "Get Language Group",
+        "description": "Fetch a given language group.",
+        "operationId": "language_groups_get_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "language_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Language Group Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LanguageGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "language_groups",
+          "V1"
+        ],
+        "summary": "Delete Language Group",
+        "description": "Delete a language group.",
+        "operationId": "language_groups_delete",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "language_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Language Group Id"
+            }
+          },
+          {
+            "name": "reason",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reason"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -6825,6 +7247,18 @@
             "title": "Custom Message Id",
             "description": "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
           },
+          "language_group_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language Group Id",
+            "description": "ID of the language group associated with the agent"
+          },
           "timezone": {
             "type": "string",
             "title": "Timezone",
@@ -6849,6 +7283,7 @@
             "type": "array",
             "title": "Languages",
             "description": "BCP 47 codes of languages the agent supports",
+            "deprecated": true,
             "examples": [
               [
                 "en-US",
@@ -6897,6 +7332,32 @@
           "tool_headers"
         ],
         "title": "AgentCreate"
+      },
+      "AgentLanguage": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the language",
+            "examples": [
+              "English"
+            ]
+          },
+          "code": {
+            "$ref": "#/components/schemas/LanguageCode",
+            "description": "BCP 47 code of the language",
+            "examples": [
+              "en-US"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "code"
+        ],
+        "title": "AgentLanguage",
+        "description": "Language option for an agent."
       },
       "AgentProperties": {
         "type": "string",
@@ -6969,6 +7430,18 @@
             "title": "Custom Message Id",
             "description": "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
           },
+          "language_group_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language Group Id",
+            "description": "ID of the language group associated with the agent"
+          },
           "timezone": {
             "type": "string",
             "title": "Timezone",
@@ -6993,6 +7466,7 @@
             "type": "array",
             "title": "Languages",
             "description": "BCP 47 codes of languages the agent supports",
+            "deprecated": true,
             "examples": [
               [
                 "en-US",
@@ -7103,6 +7577,17 @@
             ],
             "title": "Tools",
             "description": "Tools associated with the agent"
+          },
+          "language_group": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LanguageGroupResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The language group associated with the agent"
           }
         },
         "type": "object",
@@ -7214,6 +7699,18 @@
             "title": "Custom Message Id",
             "description": "ID of the custom message that should be delivered at the beginning of a conversation with the agent"
           },
+          "language_group_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language Group Id",
+            "description": "ID of the language group associated with the agent"
+          },
           "timezone": {
             "type": "string",
             "title": "Timezone",
@@ -7238,6 +7735,7 @@
             "type": "array",
             "title": "Languages",
             "description": "BCP 47 codes of languages the agent supports",
+            "deprecated": true,
             "examples": [
               [
                 "en-US",
@@ -7296,7 +7794,7 @@
       "AgentVoice": {
         "properties": {
           "provider": {
-            "$ref": "#/components/schemas/SttProvider",
+            "$ref": "#/components/schemas/TtsProvider",
             "description": "The provider for the voice",
             "examples": [
               "OpenAI",
@@ -7305,38 +7803,135 @@
             ]
           },
           "display_name": {
-            "type": "string",
-            "title": "Display Name",
+            "$ref": "#/components/schemas/AgentVoiceDisplayName",
             "description": "The display name of the voice",
             "examples": [
-              "Alloy"
+              "Alejandro"
             ]
           },
           "var_name": {
             "$ref": "#/components/schemas/AgentVoiceVarName",
-            "description": "The variable name of the voice (used when procesing messages)",
+            "description": "The variable name of the voice (used when processing messages)",
+            "deprecated": true,
             "examples": [
               "openai:alloy"
             ]
+          },
+          "gender": {
+            "$ref": "#/components/schemas/AgentVoiceGender",
+            "description": "The gender of the voice",
+            "examples": [
+              "female",
+              "male"
+            ]
+          },
+          "model": {
+            "$ref": "#/components/schemas/AgentVoiceModel"
+          },
+          "supported_languages": {
+            "items": {
+              "$ref": "#/components/schemas/AgentLanguage"
+            },
+            "type": "array",
+            "title": "Supported Languages",
+            "description": "Languages supported by the voice"
+          },
+          "deprecated": {
+            "type": "boolean",
+            "title": "Deprecated",
+            "description": "Whether the voice is deprecated and should not be used"
           }
         },
         "type": "object",
         "required": [
           "provider",
           "display_name",
-          "var_name"
+          "var_name",
+          "gender",
+          "supported_languages",
+          "deprecated"
         ],
         "title": "AgentVoice",
         "description": "Voice option for an agent."
+      },
+      "AgentVoiceDisplayName": {
+        "type": "string",
+        "enum": [
+          "Alejandro",
+          "Alice",
+          "Alloy",
+          "Ash",
+          "Bill",
+          "Brian",
+          "Callum",
+          "Charlie",
+          "Charlotte",
+          "Chris",
+          "Clara",
+          "Coral",
+          "Daniel",
+          "Echo",
+          "Eric",
+          "Fable",
+          "George",
+          "Isabella",
+          "Jerry",
+          "Jessica",
+          "Laura",
+          "Liam",
+          "Lily",
+          "Lina",
+          "Mark",
+          "Matilda",
+          "Melanie",
+          "Mila",
+          "Nova",
+          "Onyx",
+          "River",
+          "Roger",
+          "Sarah",
+          "Sage",
+          "Shimmer",
+          "Sienna",
+          "Tara",
+          "Will"
+        ],
+        "title": "AgentVoiceDisplayName",
+        "description": "Display names of voices that Syllable supports."
+      },
+      "AgentVoiceGender": {
+        "type": "string",
+        "enum": [
+          "female",
+          "male"
+        ],
+        "title": "AgentVoiceGender",
+        "description": "Gender for an agent voice."
+      },
+      "AgentVoiceModel": {
+        "type": "string",
+        "enum": [
+          "Multilingual_v2",
+          "Neural2",
+          "Standard",
+          "Studio",
+          "WaveNet",
+          "Whisper"
+        ],
+        "title": "AgentVoiceModel",
+        "description": "Model for an agent voice."
       },
       "AgentVoiceVarName": {
         "type": "string",
         "enum": [
           "openai:alloy",
+          "openai:ash",
+          "openai:coral",
           "openai:echo",
           "openai:fable",
           "openai:nova",
           "openai:onyx",
+          "openai:sage",
           "openai:shimmer",
           "elevenlabs:Alice",
           "elevenlabs:Bill",
@@ -7357,9 +7952,16 @@
           "elevenlabs:Roger",
           "elevenlabs:Sarah",
           "elevenlabs:Will",
+          "wavenet:male/es-US-Neural2-B",
           "wavenet:female/en-US-Neural2-F",
+          "wavenet:female/es-US-Neural2-A",
           "wavenet:male/en-US-Neural2-D",
-          "wavenet:female/en-US-Studio-O"
+          "wavenet:female/cmn-TW-Wavenet-A",
+          "wavenet:male/en-US-Neural2-J",
+          "wavenet:female/yue-HK-Standard-C",
+          "wavenet:female/en-US-Studio-O",
+          "wavenet:female/ko-KR-Neural2-A",
+          "wavenet:female/vi-VN-Neural2-A"
         ],
         "title": "AgentVoiceVarName",
         "description": "The variable name of an agent voice (used when procesing messages)."
@@ -9744,6 +10346,286 @@
         "title": "InternalTool",
         "description": "A tool definition to be used by the OpenAI API."
       },
+      "LanguageCode": {
+        "type": "string",
+        "enum": [
+          "yue-HK",
+          "en-US",
+          "ko-KR",
+          "zh-CN",
+          "es-US",
+          "th-TH",
+          "vi-VN"
+        ],
+        "title": "LanguageCode",
+        "description": "BCP 47 codes of languages that Syllable supports."
+      },
+      "LanguageConfig": {
+        "properties": {
+          "language_code": {
+            "$ref": "#/components/schemas/LanguageCode",
+            "description": "BCP 47 code of the language",
+            "examples": [
+              "en-US"
+            ]
+          },
+          "voice_provider": {
+            "$ref": "#/components/schemas/TtsProvider",
+            "description": "TTS provider of the voice to use for the language",
+            "examples": [
+              "OpenAI"
+            ]
+          },
+          "voice_display_name": {
+            "$ref": "#/components/schemas/AgentVoiceDisplayName",
+            "description": "Display name of the voice to use for the language",
+            "examples": [
+              "Alloy"
+            ]
+          },
+          "dtmf_code": {
+            "type": "integer",
+            "title": "Dtmf Code",
+            "description": "DTMF code that should be used for the language in the menu generated from the language group",
+            "examples": [
+              1
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "language_code",
+          "voice_provider",
+          "voice_display_name",
+          "dtmf_code"
+        ],
+        "title": "LanguageConfig",
+        "description": "Voice and DTMF configurations for a language in a language group. List of available voices\nand their supported languages can be fetched from `GET /agents/voices/available/`."
+      },
+      "LanguageGroupCreateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the language group.",
+            "examples": [
+              "Call Center 1 Languages"
+            ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "Description of the language group.",
+            "examples": [
+              "Languages spoken by operators at Call Center 1"
+            ]
+          },
+          "language_configs": {
+            "items": {
+              "$ref": "#/components/schemas/LanguageConfig"
+            },
+            "type": "array",
+            "title": "Language Configs",
+            "description": "Voice and DTMF configurations for each language in the group."
+          },
+          "skip_current_language_in_message": {
+            "type": "boolean",
+            "title": "Skip Current Language In Message",
+            "description": "Whether a message using the language group to generate a language DTMF menu should skip the agent's current language in the menu."
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "language_configs",
+          "skip_current_language_in_message"
+        ],
+        "title": "LanguageGroupCreateRequest"
+      },
+      "LanguageGroupProperties": {
+        "type": "string",
+        "enum": [
+          "name",
+          "description",
+          "skip_current_language_in_message",
+          "updated_at",
+          "last_updated_by"
+        ],
+        "title": "LanguageGroupProperties"
+      },
+      "LanguageGroupResponse": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the language group.",
+            "examples": [
+              "Call Center 1 Languages"
+            ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "Description of the language group.",
+            "examples": [
+              "Languages spoken by operators at Call Center 1"
+            ]
+          },
+          "language_configs": {
+            "items": {
+              "$ref": "#/components/schemas/LanguageConfig"
+            },
+            "type": "array",
+            "title": "Language Configs",
+            "description": "Voice and DTMF configurations for each language in the group."
+          },
+          "skip_current_language_in_message": {
+            "type": "boolean",
+            "title": "Skip Current Language In Message",
+            "description": "Whether a message using the language group to generate a language DTMF menu should skip the agent's current language in the menu."
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the language group to update.",
+            "examples": [
+              1
+            ]
+          },
+          "edit_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edit Comments",
+            "description": "Comments for the most recent edit to the language group.",
+            "examples": [
+              "Added Spanish support."
+            ]
+          },
+          "agent_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Count",
+            "description": "Number of agents associated with the language group.",
+            "examples": [
+              1
+            ]
+          },
+          "last_updated_by": {
+            "type": "string",
+            "title": "Last Updated By",
+            "description": "Email of the user who last updated the language group.",
+            "examples": [
+              "user@mail.com"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "language_configs",
+          "skip_current_language_in_message",
+          "id",
+          "last_updated_by"
+        ],
+        "title": "LanguageGroupResponse"
+      },
+      "LanguageGroupUpdateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the language group.",
+            "examples": [
+              "Call Center 1 Languages"
+            ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "Description of the language group.",
+            "examples": [
+              "Languages spoken by operators at Call Center 1"
+            ]
+          },
+          "language_configs": {
+            "items": {
+              "$ref": "#/components/schemas/LanguageConfig"
+            },
+            "type": "array",
+            "title": "Language Configs",
+            "description": "Voice and DTMF configurations for each language in the group."
+          },
+          "skip_current_language_in_message": {
+            "type": "boolean",
+            "title": "Skip Current Language In Message",
+            "description": "Whether a message using the language group to generate a language DTMF menu should skip the agent's current language in the menu."
+          },
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "The ID of the language group to update.",
+            "examples": [
+              1
+            ]
+          },
+          "edit_comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edit Comments",
+            "description": "Comments for the most recent edit to the language group.",
+            "examples": [
+              "Added Spanish support."
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "language_configs",
+          "skip_current_language_in_message",
+          "id"
+        ],
+        "title": "LanguageGroupUpdateRequest"
+      },
       "ListResponse_AgentResponse_": {
         "properties": {
           "items": {
@@ -10320,6 +11202,54 @@
         ],
         "title": "ListResponse[InsightWorkflowOutput]"
       },
+      "ListResponse_LanguageGroupResponse_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/LanguageGroupResponse"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size"
+          },
+          "total_pages": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Pages"
+          },
+          "total_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "page",
+          "page_size"
+        ],
+        "title": "ListResponse[LanguageGroupResponse]"
+      },
       "ListResponse_PromptResponse_": {
         "properties": {
           "items": {
@@ -10738,7 +11668,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
             "default": true
           }
         },
@@ -11091,7 +12021,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
             "default": true
           }
         },
@@ -11775,8 +12705,15 @@
             ],
             "title": "Recordings",
             "description": "List of recording URLs"
-          },
-          "expiration": {
+          }
+        },
+        "type": "object",
+        "title": "SessionRecordingResponse",
+        "description": "Recording URLs for a given session."
+      },
+      "SessionSummaryResponse": {
+        "properties": {
+          "summary": {
             "anyOf": [
               {
                 "type": "string"
@@ -11785,13 +12722,25 @@
                 "type": "null"
               }
             ],
-            "title": "Expiration",
-            "description": "Expiration timestamp of the URLs"
+            "title": "Summary",
+            "description": "The AI summary of the session"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rating",
+            "description": "The AI rating of the session"
           }
         },
         "type": "object",
-        "title": "SessionRecordingResponse",
-        "description": "Recording URLs for a given session."
+        "title": "SessionSummaryResponse",
+        "description": "Summary for a given session."
       },
       "SessionText": {
         "properties": {
@@ -11945,16 +12894,6 @@
         ],
         "title": "StaticToolParameterType",
         "description": "The expected type for a static tool parameter."
-      },
-      "SttProvider": {
-        "type": "string",
-        "enum": [
-          "OpenAI",
-          "ElevenLabs",
-          "Google"
-        ],
-        "title": "SttProvider",
-        "description": "Provider for an agent voice."
       },
       "TargetModes": {
         "type": "string",
@@ -12704,6 +13643,16 @@
         ],
         "title": "ToolUpdateRequest"
       },
+      "TtsProvider": {
+        "type": "string",
+        "enum": [
+          "OpenAI",
+          "ElevenLabs",
+          "Google"
+        ],
+        "title": "TtsProvider",
+        "description": "TTS provider for an agent voice."
+      },
       "ValidationError": {
         "properties": {
           "loc": {
@@ -12794,6 +13743,10 @@
     {
       "name": "insights.workflows",
       "description": "Operations related to insights workflows. An workflow is series of tool           invocations that processes conversation data to extract information and generate reports."
+    },
+    {
+      "name": "language_groups",
+      "description": "Operations related to language groups. A language group is a           collection of language, voice, and DTMF configuration that can be linked to an agent to           define the languages and voices it supports."
     },
     {
       "name": "outbound.campaigns",
