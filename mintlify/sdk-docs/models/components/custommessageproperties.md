@@ -7,7 +7,7 @@ title: 'CustomMessageProperties'
 ```typescript
 import { CustomMessageProperties } from "syllable-sdk/models/components";
 
-let value: CustomMessageProperties = "updated_at";
+let value: CustomMessageProperties = "id";
 ```
 
 ## Values

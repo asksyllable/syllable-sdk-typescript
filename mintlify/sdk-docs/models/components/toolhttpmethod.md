@@ -9,7 +9,7 @@ The HTTP method to use for a tool HTTP request.
 ```typescript
 import { ToolHttpMethod } from "syllable-sdk/models/components";
 
-let value: ToolHttpMethod = "post";
+let value: ToolHttpMethod = "get";
 ```
 
 ## Values
