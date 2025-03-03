@@ -18,12 +18,12 @@ let value: ListResponseDataSourceMetadataResponse = {
       chunk: false,
       id: 1,
       editComments: "Added new info",
-      updatedAt: new Date("2025-11-06T10:52:56.298Z"),
+      updatedAt: new Date("2024-09-02T21:01:43.273Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 941378,
-  pageSize: 799203,
+  page: 860552,
+  pageSize: 727044,
 };
 ```
 
