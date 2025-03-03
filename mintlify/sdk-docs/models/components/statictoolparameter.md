@@ -12,7 +12,7 @@ import { StaticToolParameter } from "syllable-sdk/models/components";
 let value: StaticToolParameter = {
   name: "<value>",
   required: false,
-  type: "string",
+  type: "data_source_list",
 };
 ```
 

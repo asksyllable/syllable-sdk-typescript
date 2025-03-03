@@ -14,8 +14,7 @@ let value: SessionRecordingResponse = {};
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `sessionId`                      | *string*                         | FALSE               | The internal ID of the session   |
-| `recordings`                     | *string*[]                       | FALSE               | List of recording URLs           |
-| `expiration`                     | *string*                         | FALSE               | Expiration timestamp of the URLs |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `sessionId`                    | *string*                       | FALSE             | The internal ID of the session |
+| `recordings`                   | *string*[]                     | FALSE             | List of recording URLs         |

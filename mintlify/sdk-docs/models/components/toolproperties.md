@@ -7,7 +7,7 @@ title: 'ToolProperties'
 ```typescript
 import { ToolProperties } from "syllable-sdk/models/components";
 
-let value: ToolProperties = "service_id";
+let value: ToolProperties = "service_name";
 ```
 
 ## Values

@@ -7,7 +7,7 @@ title: 'ConversationProperties'
 ```typescript
 import { ConversationProperties } from "syllable-sdk/models/components";
 
-let value: ConversationProperties = "agent_id";
+let value: ConversationProperties = "prompt_id";
 ```
 
 ## Values

@@ -7,7 +7,7 @@ title: 'ChannelProperties'
 ```typescript
 import { ChannelProperties } from "syllable-sdk/models/components";
 
-let value: ChannelProperties = "supported_modes";
+let value: ChannelProperties = "channel_service";
 ```
 
 ## Values
