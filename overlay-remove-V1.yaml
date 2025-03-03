@@ -239,6 +239,12 @@ actions:
   - target: $["paths"]["/api/v1/sessions/summary/{session_id}"]["get"]["tags"]
     update:
       - "sessions.summary"
+  - target: $["paths"]["/api/v1/sessions/full-summary/{session_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/sessions/full-summary/{session_id}"]["get"]["tags"]
+    update:
+      - "sessions.full-summary"
+
   - target: $["paths"]["/api/v1/session_labels/{session_label_id}"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/session_labels/{session_label_id}"]["get"]["tags"]
