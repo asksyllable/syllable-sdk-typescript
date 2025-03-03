@@ -26,6 +26,12 @@ import {
   CustomMessageResponse$outboundSchema,
 } from "./custommessageresponse.js";
 import {
+  LanguageGroupResponse,
+  LanguageGroupResponse$inboundSchema,
+  LanguageGroupResponse$Outbound,
+  LanguageGroupResponse$outboundSchema,
+} from "./languagegroupresponse.js";
+import {
   PromptResponse,
   PromptResponse$inboundSchema,
   PromptResponse$Outbound,
@@ -71,6 +77,10 @@ export type AgentResponse = {
    */
   customMessageId: number;
   /**
+   * ID of the language group associated with the agent
+   */
+  languageGroupId?: number | null | undefined;
+  /**
    * The time zone in which the agent operates
    */
   timezone: string;
@@ -80,6 +90,8 @@ export type AgentResponse = {
   promptToolDefaults?: Array<AgentToolDefaults> | undefined;
   /**
    * BCP 47 codes of languages the agent supports
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   languages?: Array<string> | undefined;
   /**
@@ -122,6 +134,10 @@ export type AgentResponse = {
    * Tools associated with the agent
    */
   tools?: Array<ToolResponse> | null | undefined;
+  /**
+   * The language group associated with the agent
+   */
+  languageGroup?: LanguageGroupResponse | null | undefined;
 };
 
 /** @internal */
@@ -136,6 +152,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
   type: z.string(),
   prompt_id: z.number().int(),
   custom_message_id: z.number().int(),
+  language_group_id: z.nullable(z.number().int()).optional(),
   timezone: z.string(),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
   languages: z.array(z.string()).optional(),
@@ -151,10 +168,12 @@ export const AgentResponse$inboundSchema: z.ZodType<
     z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
   ).optional(),
   tools: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
+  language_group: z.nullable(LanguageGroupResponse$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
     "custom_message_id": "customMessageId",
+    "language_group_id": "languageGroupId",
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
     "agent_initiated": "agentInitiated",
@@ -162,6 +181,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
     "custom_message": "customMessage",
     "channel_targets": "channelTargets",
+    "language_group": "languageGroup",
   });
 });
 
@@ -173,6 +193,7 @@ export type AgentResponse$Outbound = {
   type: string;
   prompt_id: number;
   custom_message_id: number;
+  language_group_id?: number | null | undefined;
   timezone: string;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
   languages?: Array<string> | undefined;
@@ -186,6 +207,7 @@ export type AgentResponse$Outbound = {
   custom_message?: CustomMessageResponse$Outbound | null | undefined;
   channel_targets?: Array<ChannelTargetResponse$Outbound> | null | undefined;
   tools?: Array<ToolResponse$Outbound> | null | undefined;
+  language_group?: LanguageGroupResponse$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -200,6 +222,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
   type: z.string(),
   promptId: z.number().int(),
   customMessageId: z.number().int(),
+  languageGroupId: z.nullable(z.number().int()).optional(),
   timezone: z.string(),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
   languages: z.array(z.string()).optional(),
@@ -215,10 +238,12 @@ export const AgentResponse$outboundSchema: z.ZodType<
     z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
   ).optional(),
   tools: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
+  languageGroup: z.nullable(LanguageGroupResponse$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
     customMessageId: "custom_message_id",
+    languageGroupId: "language_group_id",
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
     agentInitiated: "agent_initiated",
@@ -226,6 +251,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
     lastUpdatedBy: "last_updated_by",
     customMessage: "custom_message",
     channelTargets: "channel_targets",
+    languageGroup: "language_group",
   });
 });
 

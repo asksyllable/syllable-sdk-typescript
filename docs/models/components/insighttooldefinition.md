@@ -6,11 +6,10 @@
 import { InsightToolDefinition } from "syllable-sdk/models/components";
 
 let value: InsightToolDefinition = {
-  id: 378245,
+  id: 96804,
   name: "<value>",
   type: "<value>",
-  description:
-    "however complicated form rundown phew trolley hmph backburn amid productive",
+  description: "private curiously censor heighten mortally",
   toolParameters: {},
   toolResultSet: {},
 };

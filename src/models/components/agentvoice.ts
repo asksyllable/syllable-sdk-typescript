@@ -8,32 +8,69 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AgentLanguage,
+  AgentLanguage$inboundSchema,
+  AgentLanguage$Outbound,
+  AgentLanguage$outboundSchema,
+} from "./agentlanguage.js";
+import {
+  AgentVoiceDisplayName,
+  AgentVoiceDisplayName$inboundSchema,
+  AgentVoiceDisplayName$outboundSchema,
+} from "./agentvoicedisplayname.js";
+import {
+  AgentVoiceGender,
+  AgentVoiceGender$inboundSchema,
+  AgentVoiceGender$outboundSchema,
+} from "./agentvoicegender.js";
+import {
+  AgentVoiceModel,
+  AgentVoiceModel$inboundSchema,
+  AgentVoiceModel$outboundSchema,
+} from "./agentvoicemodel.js";
+import {
   AgentVoiceVarName,
   AgentVoiceVarName$inboundSchema,
   AgentVoiceVarName$outboundSchema,
 } from "./agentvoicevarname.js";
 import {
-  SttProvider,
-  SttProvider$inboundSchema,
-  SttProvider$outboundSchema,
-} from "./sttprovider.js";
+  TtsProvider,
+  TtsProvider$inboundSchema,
+  TtsProvider$outboundSchema,
+} from "./ttsprovider.js";
 
 /**
  * Voice option for an agent.
  */
 export type AgentVoice = {
   /**
-   * Provider for an agent voice.
+   * TTS provider for an agent voice.
    */
-  provider: SttProvider;
+  provider: TtsProvider;
   /**
-   * The display name of the voice
+   * Display names of voices that Syllable supports.
    */
-  displayName: string;
+  displayName: AgentVoiceDisplayName;
   /**
    * The variable name of an agent voice (used when procesing messages).
    */
   varName: AgentVoiceVarName;
+  /**
+   * Gender for an agent voice.
+   */
+  gender: AgentVoiceGender;
+  /**
+   * Model for an agent voice.
+   */
+  model?: AgentVoiceModel | undefined;
+  /**
+   * Languages supported by the voice
+   */
+  supportedLanguages: Array<AgentLanguage>;
+  /**
+   * Whether the voice is deprecated and should not be used
+   */
+  deprecated: boolean;
 };
 
 /** @internal */
@@ -42,13 +79,18 @@ export const AgentVoice$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  provider: SttProvider$inboundSchema,
-  display_name: z.string(),
+  provider: TtsProvider$inboundSchema,
+  display_name: AgentVoiceDisplayName$inboundSchema,
   var_name: AgentVoiceVarName$inboundSchema,
+  gender: AgentVoiceGender$inboundSchema,
+  model: AgentVoiceModel$inboundSchema.optional(),
+  supported_languages: z.array(AgentLanguage$inboundSchema),
+  deprecated: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
     "var_name": "varName",
+    "supported_languages": "supportedLanguages",
   });
 });
 
@@ -57,6 +99,10 @@ export type AgentVoice$Outbound = {
   provider: string;
   display_name: string;
   var_name: string;
+  gender: string;
+  model?: string | undefined;
+  supported_languages: Array<AgentLanguage$Outbound>;
+  deprecated: boolean;
 };
 
 /** @internal */
@@ -65,13 +111,18 @@ export const AgentVoice$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AgentVoice
 > = z.object({
-  provider: SttProvider$outboundSchema,
-  displayName: z.string(),
+  provider: TtsProvider$outboundSchema,
+  displayName: AgentVoiceDisplayName$outboundSchema,
   varName: AgentVoiceVarName$outboundSchema,
+  gender: AgentVoiceGender$outboundSchema,
+  model: AgentVoiceModel$outboundSchema.optional(),
+  supportedLanguages: z.array(AgentLanguage$outboundSchema),
+  deprecated: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
     varName: "var_name",
+    supportedLanguages: "supported_languages",
   });
 });
 

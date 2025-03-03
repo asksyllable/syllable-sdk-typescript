@@ -203,6 +203,14 @@ run();
 * [update](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 * [delete](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
 
+### [languageGroups](docs/sdks/languagegroups/README.md)
+
+* [list](docs/sdks/languagegroups/README.md#list) - List Language Groups
+* [create](docs/sdks/languagegroups/README.md#create) - Create Language Group
+* [update](docs/sdks/languagegroups/README.md#update) - Update Language Group
+* [getById](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
+* [delete](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
+
 ### [prompts](docs/sdks/prompts/README.md)
 
 * [list](docs/sdks/prompts/README.md#list) - Prompt List
@@ -233,6 +241,10 @@ run();
 * [generateSessionRecordingUrls](docs/sdks/sessions/README.md#generatesessionrecordingurls) - Generate Recording Urls
 * [sessionRecordingStream](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 
+#### [sessions.fullSummary](docs/sdks/fullsummary/README.md)
+
+* [getById](docs/sdks/fullsummary/README.md#getbyid) - Get Full Session Summary By Id
+
 #### [sessions.summary](docs/sdks/summary/README.md)
 
 * [getById](docs/sdks/summary/README.md#getbyid) - Get Session Summary By Id
@@ -252,8 +264,6 @@ run();
 
 ### [v1](docs/sdks/v1/README.md)
 
-* [getById](docs/sdks/v1/README.md#getbyid) - Get Data Source
-* [delete](docs/sdks/v1/README.md#delete) - Delete Data Source
 * [postListDashboard](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 * [postGetDashboard](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 * [~~postSessionEventsDashboard~~](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
@@ -317,6 +327,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsWorkflowsGetById`](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 - [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
 - [`insightsWorkflowsUpdate`](docs/sdks/workflows/README.md#update) - Update Insights Workflow
+- [`languageGroupsCreate`](docs/sdks/languagegroups/README.md#create) - Create Language Group
+- [`languageGroupsDelete`](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
+- [`languageGroupsGetById`](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
+- [`languageGroupsList`](docs/sdks/languagegroups/README.md#list) - List Language Groups
+- [`languageGroupsUpdate`](docs/sdks/languagegroups/README.md#update) - Update Language Group
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
 - [`promptsGetById`](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
@@ -331,6 +346,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionLabelsCreate`](docs/sdks/sessionlabels/README.md#create) - Create Label
 - [`sessionLabelsGetById`](docs/sdks/sessionlabels/README.md#getbyid) - Get Label By Id
 - [`sessionLabelsList`](docs/sdks/sessionlabels/README.md#list) - Session Labels List
+- [`sessionsFullSummaryGetById`](docs/sdks/fullsummary/README.md#getbyid) - Get Full Session Summary By Id
 - [`sessionsGenerateSessionRecordingUrls`](docs/sdks/sessions/README.md#generatesessionrecordingurls) - Generate Recording Urls
 - [`sessionsGetById`](docs/sdks/sessions/README.md#getbyid) - Get A Single Session By Id
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
@@ -342,8 +358,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
-- [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete Data Source
-- [`v1GetById`](docs/sdks/v1/README.md#getbyid) - Get Data Source
 - [`v1PostGetDashboard`](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 - [`v1PostListDashboard`](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**

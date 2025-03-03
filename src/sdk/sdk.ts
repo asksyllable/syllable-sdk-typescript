@@ -11,6 +11,7 @@ import { Dashboards } from "./dashboards.js";
 import { DataSources } from "./datasources.js";
 import { Events } from "./events.js";
 import { Insights } from "./insights.js";
+import { LanguageGroups } from "./languagegroups.js";
 import { Prompts } from "./prompts.js";
 import { Services } from "./services.js";
 import { SessionLabels } from "./sessionlabels.js";
@@ -37,11 +38,6 @@ export class SyllableSDK extends ClientSDK {
   private _dataSources?: DataSources;
   get dataSources(): DataSources {
     return (this._dataSources ??= new DataSources(this._options));
-  }
-
-  private _v1?: V1;
-  get v1(): V1 {
-    return (this._v1 ??= new V1(this._options));
   }
 
   private _events?: Events;
@@ -87,5 +83,15 @@ export class SyllableSDK extends ClientSDK {
   private _dashboards?: Dashboards;
   get dashboards(): Dashboards {
     return (this._dashboards ??= new Dashboards(this._options));
+  }
+
+  private _v1?: V1;
+  get v1(): V1 {
+    return (this._v1 ??= new V1(this._options));
+  }
+
+  private _languageGroups?: LanguageGroups;
+  get languageGroups(): LanguageGroups {
+    return (this._languageGroups ??= new LanguageGroups(this._options));
   }
 }

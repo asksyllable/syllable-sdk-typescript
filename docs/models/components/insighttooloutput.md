@@ -7,11 +7,12 @@ import { InsightToolOutput } from "syllable-sdk/models/components";
 
 let value: InsightToolOutput = {
   name: "<value>",
-  description: "sunbathe like joyously coast blindly evince",
-  version: 997963,
+  description:
+    "popularity clamor svelte ah hunt until freckle across following",
+  version: 337477,
   toolArguments: {},
-  insightToolDefinitionId: 362189,
-  id: 470649,
+  insightToolDefinitionId: 970494,
+  id: 133439,
   lastUpdatedBy: "<value>",
 };
 ```

@@ -11,7 +11,7 @@ let value: CustomMessageCreateRequest = {
   rules: [
     {
       description:
-        "skeleton uniform miserably promptly apud who grown meanwhile heartbeat whoa",
+        "cross-contamination before enrage upside-down accurate indeed",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",
