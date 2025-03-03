@@ -9,32 +9,28 @@ through that channel.
 import { ChannelTargetResponse } from "syllable-sdk/models/components";
 
 let value: ChannelTargetResponse = {
-  agentId: 248753,
-  channelId: 576157,
+  agentId: 881104,
+  channelId: 581273,
   target: "<value>",
-  targetMode: "sms",
-  id: 572252,
+  targetMode: "email",
+  id: 692532,
   channelName: "<value>",
-  updatedAt: new Date("2023-09-02T11:56:21.354Z"),
+  updatedAt: new Date("2025-03-05T21:05:18.875Z"),
   lastUpdatedBy: "<value>",
   agent: {
     name: "<value>",
     type: "ca_v1",
-    promptId: 952749,
-    customMessageId: 447125,
+    promptId: 501324,
+    customMessageId: 956084,
     timezone: "America/Chicago",
-    languages: [
-      "en-US",
-      "es-US",
-    ],
     variables: {
       "key": "<value>",
     },
     toolHeaders: {
       "key": "<value>",
     },
-    id: 699479,
-    updatedAt: new Date("2023-11-22T23:46:53.599Z"),
+    id: 423855,
+    updatedAt: new Date("2024-10-26T14:34:01.576Z"),
     lastUpdatedBy: "<value>",
     prompt: {
       name: "<value>",
@@ -43,7 +39,7 @@ let value: ChannelTargetResponse = {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 813798,
+      id: 19193,
       lastUpdated: "<value>",
       lastUpdatedBy: "user@email.com",
     },
@@ -52,7 +48,7 @@ let value: ChannelTargetResponse = {
       text: "<value>",
       rules: [
         {
-          description: "well-to-do below outrun swat come metal",
+          description: "outfit hidden remand whether seriously",
           timeRangeStart: "09:00",
           timeRangeEnd: "17:00",
           date: "2025-01-01",
@@ -67,8 +63,8 @@ let value: ChannelTargetResponse = {
           text: "Sorry, we're closed today",
         },
       ],
-      id: 407183,
-      updatedAt: new Date("2023-03-17T19:22:07.134Z"),
+      id: 866383,
+      updatedAt: new Date("2025-12-05T04:07:03.604Z"),
       lastUpdatedBy: "user@email.com",
     },
     channelTargets: [],
@@ -86,22 +82,12 @@ let value: ChannelTargetResponse = {
           endpoint: {
             url: "https://api.example.com",
             method: "post",
-            argumentLocation: "form",
+            argumentLocation: "body",
           },
-          defaults: {
-            "key": {
-              transform: {
-                action: "default",
-                when: {
-                  key: "key",
-                  value: "value",
-                },
-              },
-            },
-          },
+          defaults: "<value>",
         },
-        serviceId: 866383,
-        id: 975522,
+        serviceId: 729991,
+        id: 171629,
         promptsInfo: [
           {
             id: 1,
@@ -114,10 +100,27 @@ let value: ChannelTargetResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2025-07-26T23:03:04.026Z"),
+        lastUpdated: new Date("2024-07-25T01:20:48.803Z"),
         lastUpdatedBy: "user@email.com",
       },
     ],
+    languageGroup: {
+      name: "Call Center 1 Languages",
+      description: "Languages spoken by operators at Call Center 1",
+      languageConfigs: [
+        {
+          languageCode: "yue-HK",
+          voiceProvider: "OpenAI",
+          voiceDisplayName: "Alejandro",
+          dtmfCode: 1,
+        },
+      ],
+      skipCurrentLanguageInMessage: false,
+      id: 1,
+      editComments: "Added Spanish support.",
+      agentCount: 1,
+      lastUpdatedBy: "user@mail.com",
+    },
   },
 };
 ```

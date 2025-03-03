@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -25,18 +25,18 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Data Source
+ * List Language Groups
  *
  * @remarks
- * Fetch a given data source, including its text.
+ * Fetch language groups.
  */
-export async function v1GetById(
+export async function languageGroupsList(
   client: SyllableSDKCore,
-  request: operations.DataSourcesGetByIdRequest,
+  request: operations.LanguageGroupsListRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.DataSourceDetailResponse,
+    components.ListResponseLanguageGroupResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -49,7 +49,7 @@ export async function v1GetById(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.DataSourcesGetByIdRequest$outboundSchema.parse(value),
+    (value) => operations.LanguageGroupsListRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -58,14 +58,19 @@ export async function v1GetById(
   const payload = parsed.value;
   const body = null;
 
-  const pathParams = {
-    data_source_id: encodeSimple("data_source_id", payload.data_source_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
+  const path = pathToFunc("/api/v1/language_groups/")();
 
-  const path = pathToFunc("/api/v1/data_sources/{data_source_id}")(pathParams);
+  const query = encodeFormQuery({
+    "end_datetime": payload.end_datetime,
+    "fields": payload.fields,
+    "limit": payload.limit,
+    "order_by": payload.order_by,
+    "order_by_direction": payload.order_by_direction,
+    "page": payload.page,
+    "search_field_values": payload.search_field_values,
+    "search_fields": payload.search_fields,
+    "start_datetime": payload.start_datetime,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -77,7 +82,7 @@ export async function v1GetById(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "data_sources_get_by_id",
+    operationID: "language_groups_list",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -95,6 +100,7 @@ export async function v1GetById(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -119,7 +125,7 @@ export async function v1GetById(
   };
 
   const [result] = await M.match<
-    components.DataSourceDetailResponse,
+    components.ListResponseLanguageGroupResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -129,7 +135,7 @@ export async function v1GetById(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.DataSourceDetailResponse$inboundSchema),
+    M.json(200, components.ListResponseLanguageGroupResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

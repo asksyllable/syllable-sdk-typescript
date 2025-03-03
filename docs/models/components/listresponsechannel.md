@@ -11,11 +11,11 @@ let value: ListResponseChannel = {
       name: "<value>",
       channelService: "twilio",
       supportedModes: "[\"chat\",\"voice\"]",
-      id: 565421,
+      id: 497391,
     },
   ],
-  page: 183280,
-  pageSize: 144847,
+  page: 639473,
+  pageSize: 368584,
 };
 ```
 

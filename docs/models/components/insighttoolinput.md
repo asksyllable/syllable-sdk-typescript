@@ -7,10 +7,10 @@ import { InsightToolInput } from "syllable-sdk/models/components";
 
 let value: InsightToolInput = {
   name: "<value>",
-  description: "abscond which exhausted whenever dearly",
-  version: 304198,
+  description: "noisily harangue huge whoa",
+  version: 159845,
   toolArguments: {},
-  insightToolDefinitionId: 75359,
+  insightToolDefinitionId: 46806,
 };
 ```
 

@@ -18,7 +18,7 @@ let value: ToolUpdateRequest = {
     endpoint: {
       url: "https://api.example.com",
       method: "get",
-      argumentLocation: "path",
+      argumentLocation: "query",
     },
     defaults: {
       "key": {
@@ -32,8 +32,8 @@ let value: ToolUpdateRequest = {
       },
     },
   },
-  serviceId: 155978,
-  id: 426002,
+  serviceId: 316550,
+  id: 826806,
 };
 ```
 

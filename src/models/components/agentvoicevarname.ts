@@ -10,10 +10,13 @@ import { ClosedEnum } from "../../types/enums.js";
  */
 export const AgentVoiceVarName = {
   OpenaiAlloy: "openai:alloy",
+  OpenaiAsh: "openai:ash",
+  OpenaiCoral: "openai:coral",
   OpenaiEcho: "openai:echo",
   OpenaiFable: "openai:fable",
   OpenaiNova: "openai:nova",
   OpenaiOnyx: "openai:onyx",
+  OpenaiSage: "openai:sage",
   OpenaiShimmer: "openai:shimmer",
   ElevenlabsAlice: "elevenlabs:Alice",
   ElevenlabsBill: "elevenlabs:Bill",
@@ -34,9 +37,16 @@ export const AgentVoiceVarName = {
   ElevenlabsRoger: "elevenlabs:Roger",
   ElevenlabsSarah: "elevenlabs:Sarah",
   ElevenlabsWill: "elevenlabs:Will",
+  WavenetMaleEsUSNeural2B: "wavenet:male/es-US-Neural2-B",
   WavenetFemaleEnUSNeural2F: "wavenet:female/en-US-Neural2-F",
+  WavenetFemaleEsUSNeural2A: "wavenet:female/es-US-Neural2-A",
   WavenetMaleEnUSNeural2D: "wavenet:male/en-US-Neural2-D",
+  WavenetFemaleCmnTWWavenetA: "wavenet:female/cmn-TW-Wavenet-A",
+  WavenetMaleEnUSNeural2J: "wavenet:male/en-US-Neural2-J",
+  WavenetFemaleYueHKStandardC: "wavenet:female/yue-HK-Standard-C",
   WavenetFemaleEnUSStudioO: "wavenet:female/en-US-Studio-O",
+  WavenetFemaleKoKRNeural2A: "wavenet:female/ko-KR-Neural2-A",
+  WavenetFemaleViVNNeural2A: "wavenet:female/vi-VN-Neural2-A",
 } as const;
 /**
  * The variable name of an agent voice (used when procesing messages).
