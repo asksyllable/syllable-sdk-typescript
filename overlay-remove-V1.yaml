@@ -338,9 +338,9 @@ actions:
   - target: $["paths"]["/api/v1/data_sources/"]["get"]["tags"]
     update:
       - "data_sources"
-  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["get"]["tags"][*]
+  - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["get"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["get"]["tags"]
+  - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["get"]["tags"]
     update:
       - "data_sources"
   - target: $["paths"]["/api/v1/data_sources/"]["post"]["tags"][*]
@@ -353,9 +353,9 @@ actions:
   - target: $["paths"]["/api/v1/data_sources/"]["put"]["tags"]
     update:
       - "data_sources"
-  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["delete"]["tags"][*]
+  - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["delete"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/data_sources/{data_source_name}"]["delete"]["tags"]
+  - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["delete"]["tags"]
     update:
       - "data_sources"
   - target: $["paths"]["/api/v1/insights/workflows/"]["get"]["tags"][*]
@@ -408,3 +408,29 @@ actions:
   - target: $["paths"]["/api/v1/insights/tool-definitions"]["get"]["tags"]
     update:
       - "insights.tools"
+
+  - target: $["paths"]["/api/v1/language_groups/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/language_groups/"]["get"]["tags"]
+    update:
+      - "language_groups"
+  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["get"]["tags"]
+    update:
+      - "language_groups"
+  - target: $["paths"]["/api/v1/language_groups/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/language_groups/"]["post"]["tags"]
+    update:
+      - "language_groups"
+  - target: $["paths"]["/api/v1/language_groups/"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/language_groups/"]["put"]["tags"]
+    update:
+      - "language_groups"
+  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["delete"]["tags"]
+    update:
+      - "language_groups"
