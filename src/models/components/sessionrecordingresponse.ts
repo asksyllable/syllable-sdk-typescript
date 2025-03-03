@@ -20,10 +20,6 @@ export type SessionRecordingResponse = {
    * List of recording URLs
    */
   recordings?: Array<string> | null | undefined;
-  /**
-   * Expiration timestamp of the URLs
-   */
-  expiration?: string | null | undefined;
 };
 
 /** @internal */
@@ -34,7 +30,6 @@ export const SessionRecordingResponse$inboundSchema: z.ZodType<
 > = z.object({
   session_id: z.nullable(z.string()).optional(),
   recordings: z.nullable(z.array(z.string())).optional(),
-  expiration: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "session_id": "sessionId",
@@ -45,7 +40,6 @@ export const SessionRecordingResponse$inboundSchema: z.ZodType<
 export type SessionRecordingResponse$Outbound = {
   session_id?: string | null | undefined;
   recordings?: Array<string> | null | undefined;
-  expiration?: string | null | undefined;
 };
 
 /** @internal */
@@ -56,7 +50,6 @@ export const SessionRecordingResponse$outboundSchema: z.ZodType<
 > = z.object({
   sessionId: z.nullable(z.string()).optional(),
   recordings: z.nullable(z.array(z.string())).optional(),
-  expiration: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",

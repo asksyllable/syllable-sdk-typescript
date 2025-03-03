@@ -22,20 +22,10 @@ let value: ListResponseToolResponse = {
           method: "get",
           argumentLocation: "form",
         },
-        defaults: {
-          "key": {
-            transform: {
-              action: "default",
-              when: {
-                key: "key",
-                value: "value",
-              },
-            },
-          },
-        },
+        defaults: "<value>",
       },
-      serviceId: 349898,
-      id: 706411,
+      serviceId: 683727,
+      id: 102446,
       promptsInfo: [
         {
           id: 1,
@@ -48,12 +38,12 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2023-01-27T22:28:26.570Z"),
+      lastUpdated: new Date("2024-03-11T03:22:02.972Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 633987,
-  pageSize: 230571,
+  page: 276650,
+  pageSize: 506343,
 };
 ```
 

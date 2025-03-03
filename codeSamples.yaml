@@ -42,10 +42,6 @@ actions:
                 promptId: 486589,
                 customMessageId: 638424,
                 timezone: "America/New_York",
-                languages: [
-                  "en-US",
-                  "es-US",
-                ],
                 variables: {
 
                 },
@@ -78,10 +74,6 @@ actions:
                 promptId: 857478,
                 customMessageId: 597129,
                 timezone: "America/New_York",
-                languages: [
-                  "en-US",
-                  "es-US",
-                ],
                 variables: {
                   "key": "<value>",
                   "key1": "<value>",
@@ -744,26 +736,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: data_sources_delete
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.delete({
-                dataSourceId: 545907,
-                reason: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["get"]
     update:
       x-codeSamples:
@@ -778,25 +750,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.dataSources.getById({
-                dataSourceId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: data_sources_get_by_id
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.getById({
                 dataSourceId: 931598,
               });
 
@@ -1060,6 +1013,149 @@ actions:
                   conditions: {},
                   status: "<value>",
                 },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/language_groups/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: language_groups_list
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.languageGroups.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/language_groups/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: language_groups_create
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.languageGroups.create({
+                name: "Call Center 1 Languages",
+                description: "Languages spoken by operators at Call Center 1",
+                languageConfigs: [
+                  {
+                    languageCode: "es-US",
+                    voiceProvider: "ElevenLabs",
+                    voiceDisplayName: "Brian",
+                    dtmfCode: 1,
+                  },
+                ],
+                skipCurrentLanguageInMessage: true,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/language_groups/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: language_groups_update
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.languageGroups.update({
+                name: "Call Center 1 Languages",
+                description: "Languages spoken by operators at Call Center 1",
+                languageConfigs: [
+                  {
+                    languageCode: "es-US",
+                    voiceProvider: "ElevenLabs",
+                    voiceDisplayName: "Will",
+                    dtmfCode: 1,
+                  },
+                  {
+                    languageCode: "es-US",
+                    voiceProvider: "ElevenLabs",
+                    voiceDisplayName: "Will",
+                    dtmfCode: 1,
+                  },
+                  {
+                    languageCode: "yue-HK",
+                    voiceProvider: "Google",
+                    voiceDisplayName: "George",
+                    dtmfCode: 1,
+                  },
+                ],
+                skipCurrentLanguageInMessage: true,
+                id: 1,
+                editComments: "Added Spanish support.",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: language_groups_delete
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.languageGroups.delete({
+                languageGroupId: 545907,
+                reason: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: language_groups_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.languageGroups.getById({
+                languageGroupId: 931598,
               });
 
               // Handle the result
@@ -1405,6 +1501,28 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessions.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/sessions/full-summary/{session_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: session_full_summary_get_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.fullSummary.getById({
+                sessionId: "<id>",
+              });
 
               // Handle the result
               console.log(result);

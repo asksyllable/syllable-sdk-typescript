@@ -7,9 +7,9 @@ import { InsightWorkflowInput } from "syllable-sdk/models/components";
 
 let value: InsightWorkflowInput = {
   name: "<value>",
-  description: "amid noon obediently solicit barring drat",
+  description: "um rationalize blank kiddingly",
   insightToolIds: [
-    153369,
+    321043,
   ],
   conditions: {},
   status: "<value>",

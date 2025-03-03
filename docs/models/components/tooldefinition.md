@@ -17,20 +17,10 @@ let value: ToolDefinition = {
   },
   endpoint: {
     url: "https://api.example.com",
-    method: "get",
-    argumentLocation: "body",
+    method: "post",
+    argumentLocation: "path",
   },
-  defaults: {
-    "key": {
-      transform: {
-        action: "default",
-        when: {
-          key: "key",
-          value: "value",
-        },
-      },
-    },
-  },
+  defaults: "<value>",
 };
 ```
 
