@@ -7,7 +7,7 @@ title: 'DataSourceProperties'
 ```typescript
 import { DataSourceProperties } from "syllable-sdk/models/components";
 
-let value: DataSourceProperties = "description";
+let value: DataSourceProperties = "chunk_delimiter";
 ```
 
 ## Values

@@ -9,7 +9,7 @@ import { ValidationError } from "syllable-sdk/models/components";
 
 let value: ValidationError = {
   loc: [
-    "<value>",
+    63955,
   ],
   msg: "<value>",
   type: "<value>",

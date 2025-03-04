@@ -12,9 +12,9 @@ let value: LanguageGroupResponse = {
   description: "Languages spoken by operators at Call Center 1",
   languageConfigs: [
     {
-      languageCode: "en-US",
-      voiceProvider: "ElevenLabs",
-      voiceDisplayName: "Ash",
+      languageCode: "zh-CN",
+      voiceProvider: "OpenAI",
+      voiceDisplayName: "Liam",
       dtmfCode: 1,
     },
   ],
@@ -27,6 +27,7 @@ let value: LanguageGroupResponse = {
       name: "Test Agent",
     },
   ],
+  updatedAt: new Date("2025-10-15T12:12:25.852Z"),
   lastUpdatedBy: "user@mail.com",
 };
 ```
@@ -42,4 +43,5 @@ let value: LanguageGroupResponse = {
 | `id`                                                                                                                              | *number*                                                                                                                          | TRUE                                                                                                                | The ID of the language group to update.                                                                                           | 1                                                                                                                                 |
 | `editComments`                                                                                                                    | *string*                                                                                                                          | FALSE                                                                                                                | Comments for the most recent edit to the language group.                                                                          | Added Spanish support.                                                                                                            |
 | `agentsInfo`                                                                                                                      | [components.LanguageGroupAgentInfo](/sdk-docs/models/components/languagegroupagentinfo)[]                                          | FALSE                                                                                                                | IDs and names of the agents linked to the language group                                                                          |                                                                                                                                   |
+| `updatedAt`                                                                                                                       | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                     | TRUE                                                                                                                | Timestamp of the last update to the language group.                                                                               |                                                                                                                                   |
 | `lastUpdatedBy`                                                                                                                   | *string*                                                                                                                          | TRUE                                                                                                                | Email of the user who last updated the language group.                                                                            | user@mail.com                                                                                                                     |

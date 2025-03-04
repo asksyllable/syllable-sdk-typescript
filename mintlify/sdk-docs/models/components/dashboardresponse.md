@@ -11,8 +11,8 @@ import { DashboardResponse } from "syllable-sdk/models/components";
 
 let value: DashboardResponse = {
   name: "<value>",
-  displayName: "Nicola1",
-  rank: 615058,
+  displayName: "Jeanne_Wyman38",
+  rank: 944626,
   label: "<value>",
 };
 ```
