@@ -6126,6 +6126,26 @@ components:
         - "dtmf_code"
       title: "LanguageConfig"
       description: "Voice and DTMF configurations for a language in a language group. List of available voices\nand their supported languages can be fetched from `GET /agents/voices/available/`."
+    "LanguageGroupAgentInfo":
+      properties:
+        "id":
+          type: "integer"
+          title: "Id"
+          description: "The ID of the agent"
+          examples:
+            - 1
+        "name":
+          type: "string"
+          title: "Name"
+          description: "The name of the agent"
+          examples:
+            - "Test Agent"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+      title: "LanguageGroupAgentInfo"
+      description: "Information about an agent linked to a language group."
     "LanguageGroupCreateRequest":
       properties:
         "name":
@@ -6205,14 +6225,13 @@ components:
           description: "Comments for the most recent edit to the language group."
           examples:
             - "Added Spanish support."
-        "agent_count":
+        "agents_info":
           anyOf:
-            - type: "integer"
+            - items: {"$ref": "#/components/schemas/LanguageGroupAgentInfo"}
+              type: "array"
             - type: "null"
-          title: "Agent Count"
-          description: "Number of agents associated with the language group."
-          examples:
-            - 1
+          title: "Agents Info"
+          description: "IDs and names of the agents linked to the language group"
         "last_updated_by":
           type: "string"
           title: "Last Updated By"
@@ -6898,7 +6917,7 @@ components:
         "include_default_tools":
           type: "boolean"
           title: "Include Default Tools"
-          description: "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt."
+          description: "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt."
           default: true
       type: "object"
       required:
@@ -7117,7 +7136,7 @@ components:
         "include_default_tools":
           type: "boolean"
           title: "Include Default Tools"
-          description: "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated."
+          description: "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated."
           default: true
       type: "object"
       required:

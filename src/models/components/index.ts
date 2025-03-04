@@ -52,6 +52,7 @@ export * from "./insightworkflowproperties.js";
 export * from "./internaltool.js";
 export * from "./languagecode.js";
 export * from "./languageconfig.js";
+export * from "./languagegroupagentinfo.js";
 export * from "./languagegroupcreaterequest.js";
 export * from "./languagegroupproperties.js";
 export * from "./languagegroupresponse.js";
