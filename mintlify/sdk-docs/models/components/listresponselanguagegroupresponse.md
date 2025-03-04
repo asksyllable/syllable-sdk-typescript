@@ -23,7 +23,12 @@ let value: ListResponseLanguageGroupResponse = {
       skipCurrentLanguageInMessage: false,
       id: 1,
       editComments: "Added Spanish support.",
-      agentCount: 1,
+      agentsInfo: [
+        {
+          id: 1,
+          name: "Test Agent",
+        },
+      ],
       lastUpdatedBy: "user@mail.com",
     },
   ],
