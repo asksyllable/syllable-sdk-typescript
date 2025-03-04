@@ -9,10 +9,11 @@ import { InsightToolInput } from "syllable-sdk/models/components";
 
 let value: InsightToolInput = {
   name: "<value>",
-  description: "loyalty cake although misfire breastplate whenever",
-  version: 456410,
+  description:
+    "hospitalization uselessly mostly aw quarrelsomely since hence weary exactly",
+  version: 166047,
   toolArguments: {},
-  insightToolDefinitionId: 153369,
+  insightToolDefinitionId: 922757,
 };
 ```
 

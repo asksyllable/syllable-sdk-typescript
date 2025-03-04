@@ -17,7 +17,7 @@ let value: CustomMessageResponse = {
   text: "<value>",
   rules: [
     {
-      description: "lest ick yum",
+      description: "sheepishly furthermore overcharge general astride boohoo",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",
@@ -32,8 +32,8 @@ let value: CustomMessageResponse = {
       text: "Sorry, we're closed today",
     },
   ],
-  id: 696344,
-  updatedAt: new Date("2024-02-19T00:23:03.771Z"),
+  id: 24678,
+  updatedAt: new Date("2023-03-15T16:56:03.501Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```

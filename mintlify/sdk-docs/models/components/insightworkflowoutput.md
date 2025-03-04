@@ -9,21 +9,22 @@ import { InsightWorkflowOutput } from "syllable-sdk/models/components";
 
 let value: InsightWorkflowOutput = {
   name: "<value>",
-  description: "quickly oof boo almighty yowza deeply",
+  description:
+    "furthermore jaggedly hence runny knavishly egg keenly grave incidentally righteously",
   insightToolIds: [
-    638762,
+    879235,
   ],
   conditions: {},
   status: "<value>",
-  id: 490305,
+  id: 543678,
   insightTools: [
     {
       name: "<value>",
-      description: "though fuss um unit grade soap sizzling huzzah like nor",
-      version: 401713,
+      description: "against captain supposing fidget faithfully",
+      version: 410301,
       toolArguments: {},
-      insightToolDefinitionId: 248413,
-      id: 505866,
+      insightToolDefinitionId: 623295,
+      id: 886961,
       lastUpdatedBy: "<value>",
     },
   ],

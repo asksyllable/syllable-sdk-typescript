@@ -8,10 +8,10 @@ title: 'ChannelTargetCreateRequest'
 import { ChannelTargetCreateRequest } from "syllable-sdk/models/components";
 
 let value: ChannelTargetCreateRequest = {
-  agentId: 874288,
-  channelId: 293020,
+  agentId: 146946,
+  channelId: 79522,
   target: "<value>",
-  targetMode: "email",
+  targetMode: "voice",
 };
 ```
 

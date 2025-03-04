@@ -8,7 +8,7 @@ title: 'DataSourcesGetByIdRequest'
 import { DataSourcesGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: DataSourcesGetByIdRequest = {
-  dataSourceId: 392319,
+  dataSourceId: 992667,
 };
 ```
 
