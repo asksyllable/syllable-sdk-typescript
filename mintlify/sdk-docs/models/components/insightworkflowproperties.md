@@ -7,7 +7,7 @@ title: 'InsightWorkflowProperties'
 ```typescript
 import { InsightWorkflowProperties } from "syllable-sdk/models/components";
 
-let value: InsightWorkflowProperties = "conditions";
+let value: InsightWorkflowProperties = "updated_at";
 ```
 
 ## Values

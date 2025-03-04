@@ -7,7 +7,7 @@ title: 'PromptProperties'
 ```typescript
 import { PromptProperties } from "syllable-sdk/models/components";
 
-let value: PromptProperties = "last_updated_by";
+let value: PromptProperties = "last_updated";
 ```
 
 ## Values

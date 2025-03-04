@@ -7,7 +7,7 @@ title: 'DashboardProperties'
 ```typescript
 import { DashboardProperties } from "syllable-sdk/models/components";
 
-let value: DashboardProperties = "label";
+let value: DashboardProperties = "display_name";
 ```
 
 ## Values
