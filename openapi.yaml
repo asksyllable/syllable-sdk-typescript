@@ -6305,6 +6305,11 @@ components:
             - type: "null"
           title: "Agents Info"
           description: "IDs and names of the agents linked to the language group"
+        "updated_at":
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+          description: "Timestamp of the last update to the language group."
         "last_updated_by":
           type: "string"
           title: "Last Updated By"
@@ -6317,6 +6322,7 @@ components:
         - "language_configs"
         - "skip_current_language_in_message"
         - "id"
+        - "updated_at"
         - "last_updated_by"
       title: "LanguageGroupResponse"
     "LanguageGroupUpdateRequest":

@@ -10,9 +10,9 @@ let value: LanguageGroupCreateRequest = {
   description: "Languages spoken by operators at Call Center 1",
   languageConfigs: [
     {
-      languageCode: "th-TH",
+      languageCode: "vi-VN",
       voiceProvider: "Google",
-      voiceDisplayName: "Bill",
+      voiceDisplayName: "Mark",
       dtmfCode: 1,
     },
   ],

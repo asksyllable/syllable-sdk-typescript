@@ -6,14 +6,14 @@
 import { InsightsToolUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsToolUpdateRequest = {
-  toolId: 816151,
+  toolId: 35742,
   insightToolInput: {
     name: "<value>",
     description:
-      "aftermath grown whereas merit loosely fumigate duster laughter pastel solidly",
-    version: 459875,
+      "provided consequently considering unnaturally busy whereas any badly impolite",
+    version: 768195,
     toolArguments: {},
-    insightToolDefinitionId: 573610,
+    insightToolDefinitionId: 527715,
   },
 };
 ```

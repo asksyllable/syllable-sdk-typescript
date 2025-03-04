@@ -7,11 +7,11 @@ import { InsightToolOutput } from "syllable-sdk/models/components";
 
 let value: InsightToolOutput = {
   name: "<value>",
-  description: "authentic onset flustered against captain",
-  version: 577140,
+  description: "tough well gadzooks blindly um platypus fund",
+  version: 456520,
   toolArguments: {},
-  insightToolDefinitionId: 695270,
-  id: 671957,
+  insightToolDefinitionId: 337477,
+  id: 970494,
   lastUpdatedBy: "<value>",
 };
 ```

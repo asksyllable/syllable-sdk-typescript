@@ -8,17 +8,17 @@ import { AgentCreate } from "syllable-sdk/models/components";
 let value: AgentCreate = {
   name: "<value>",
   type: "ca_v1",
-  promptId: 586784,
-  customMessageId: 863856,
-  timezone: "America/New_York",
+  promptId: 876506,
+  customMessageId: 338159,
+  timezone: "America/Chicago",
   variables: {
     "key": "<value>",
   },
   toolHeaders: {
     "key": "<value>",
   },
-  sttProvider: "Google STT V2",
-  waitSound: "Keyboard 1",
+  sttProvider: "Google STT V1",
+  waitSound: "Call Center",
 };
 ```
 

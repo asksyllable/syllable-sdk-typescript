@@ -20,22 +20,12 @@ let value: ListResponseToolResponse = {
         endpoint: {
           url: "https://api.example.com",
           method: "post",
-          argumentLocation: "path",
+          argumentLocation: "body",
         },
-        defaults: {
-          "key": {
-            transform: {
-              action: "default",
-              when: {
-                key: "key",
-                value: "value",
-              },
-            },
-          },
-        },
+        defaults: "<value>",
       },
-      serviceId: 418637,
-      id: 5310,
+      serviceId: 221218,
+      id: 683727,
       promptsInfo: [
         {
           id: 1,
@@ -48,12 +38,12 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2023-01-13T10:41:07.081Z"),
+      lastUpdated: new Date("2023-04-23T06:44:49.184Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 511222,
-  pageSize: 83291,
+  page: 397026,
+  pageSize: 276650,
 };
 ```
 

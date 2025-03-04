@@ -119,6 +119,7 @@ let value: AgentResponse = {
         name: "Test Agent",
       },
     ],
+    updatedAt: new Date("2023-10-18T20:48:18.611Z"),
     lastUpdatedBy: "user@mail.com",
   },
 };

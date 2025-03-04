@@ -9,7 +9,7 @@ let value: Channel = {
   name: "<value>",
   channelService: "webchat",
   supportedModes: "[\"chat\",\"voice\"]",
-  id: 281730,
+  id: 972920,
 };
 ```
 
