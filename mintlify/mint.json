@@ -209,6 +209,7 @@
             "sdk-docs/models/components/internaltool",
             "sdk-docs/models/components/languagecode",
             "sdk-docs/models/components/languageconfig",
+            "sdk-docs/models/components/languagegroupagentinfo",
             "sdk-docs/models/components/languagegroupcreaterequest",
             "sdk-docs/models/components/languagegroupproperties",
             "sdk-docs/models/components/languagegroupresponse",
