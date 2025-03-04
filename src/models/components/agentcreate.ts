@@ -8,11 +8,21 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AgentSttProvider,
+  AgentSttProvider$inboundSchema,
+  AgentSttProvider$outboundSchema,
+} from "./agentsttprovider.js";
+import {
   AgentToolDefaults,
   AgentToolDefaults$inboundSchema,
   AgentToolDefaults$Outbound,
   AgentToolDefaults$outboundSchema,
 } from "./agenttooldefaults.js";
+import {
+  AgentWaitSound,
+  AgentWaitSound$inboundSchema,
+  AgentWaitSound$outboundSchema,
+} from "./agentwaitsound.js";
 
 export type AgentCreate = {
   /**
@@ -66,9 +76,17 @@ export type AgentCreate = {
    */
   toolHeaders: { [k: string]: string } | null;
   /**
-   * Whether the agent initiates conversation with a user after the custom_message is delivered
+   * Whether the agent initiates conversation with a user after the custom message is delivered
    */
   agentInitiated?: boolean | undefined;
+  /**
+   * Speech-to-text provider for the agent.
+   */
+  sttProvider?: AgentSttProvider | null | undefined;
+  /**
+   * Sound to play while waiting for a response from the LLM.
+   */
+  waitSound?: AgentWaitSound | null | undefined;
 };
 
 /** @internal */
@@ -90,6 +108,8 @@ export const AgentCreate$inboundSchema: z.ZodType<
   variables: z.record(z.string()),
   tool_headers: z.nullable(z.record(z.string())),
   agent_initiated: z.boolean().default(false),
+  stt_provider: z.nullable(AgentSttProvider$inboundSchema).optional(),
+  wait_sound: z.nullable(AgentWaitSound$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -98,6 +118,8 @@ export const AgentCreate$inboundSchema: z.ZodType<
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
     "agent_initiated": "agentInitiated",
+    "stt_provider": "sttProvider",
+    "wait_sound": "waitSound",
   });
 });
 
@@ -116,6 +138,8 @@ export type AgentCreate$Outbound = {
   variables: { [k: string]: string };
   tool_headers: { [k: string]: string } | null;
   agent_initiated: boolean;
+  stt_provider?: string | null | undefined;
+  wait_sound?: string | null | undefined;
 };
 
 /** @internal */
@@ -137,6 +161,8 @@ export const AgentCreate$outboundSchema: z.ZodType<
   variables: z.record(z.string()),
   toolHeaders: z.nullable(z.record(z.string())),
   agentInitiated: z.boolean().default(false),
+  sttProvider: z.nullable(AgentSttProvider$outboundSchema).optional(),
+  waitSound: z.nullable(AgentWaitSound$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
@@ -145,6 +171,8 @@ export const AgentCreate$outboundSchema: z.ZodType<
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
     agentInitiated: "agent_initiated",
+    sttProvider: "stt_provider",
+    waitSound: "wait_sound",
   });
 });
 

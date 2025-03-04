@@ -118,6 +118,8 @@ async function run() {
       "key": "<value>",
       "key1": "<value>",
     },
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 2",
   });
 
   // Handle the result
@@ -159,6 +161,8 @@ async function run() {
       "key": "<value>",
       "key1": "<value>",
     },
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 2",
   });
 
   if (!res.ok) {
@@ -227,6 +231,8 @@ async function run() {
       "key": "<value>",
       "key1": "<value>",
     },
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 2",
     id: 488852,
   });
 
@@ -271,6 +277,8 @@ async function run() {
       "key": "<value>",
       "key1": "<value>",
     },
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 2",
     id: 488852,
   });
 

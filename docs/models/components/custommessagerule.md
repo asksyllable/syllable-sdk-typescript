@@ -6,7 +6,7 @@
 import { CustomMessageRule } from "syllable-sdk/models/components";
 
 let value: CustomMessageRule = {
-  description: "how prejudge cutover for clear-cut consequently bouncy abaft",
+  description: "without godparent finally aside",
   timeRangeStart: "09:00",
   timeRangeEnd: "17:00",
   date: "2025-01-01",

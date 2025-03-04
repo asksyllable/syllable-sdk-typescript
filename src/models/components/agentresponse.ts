@@ -107,6 +107,14 @@ export type AgentResponse = {
    */
   agentInitiated?: boolean | undefined;
   /**
+   * Speech-to-text provider for the agent.
+   */
+  sttProvider?: string | null | undefined;
+  /**
+   * Sound to play while waiting for a response from the LLM.
+   */
+  waitSound?: string | null | undefined;
+  /**
    * The agent ID
    */
   id: number;
@@ -159,6 +167,8 @@ export const AgentResponse$inboundSchema: z.ZodType<
   variables: z.record(z.string()),
   tool_headers: z.nullable(z.record(z.string())),
   agent_initiated: z.boolean().default(false),
+  stt_provider: z.nullable(z.string()).optional(),
+  wait_sound: z.nullable(z.string()).optional(),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.nullable(z.string()),
@@ -177,6 +187,8 @@ export const AgentResponse$inboundSchema: z.ZodType<
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
     "agent_initiated": "agentInitiated",
+    "stt_provider": "sttProvider",
+    "wait_sound": "waitSound",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
     "custom_message": "customMessage",
@@ -200,6 +212,8 @@ export type AgentResponse$Outbound = {
   variables: { [k: string]: string };
   tool_headers: { [k: string]: string } | null;
   agent_initiated: boolean;
+  stt_provider?: string | null | undefined;
+  wait_sound?: string | null | undefined;
   id: number;
   updated_at: string;
   last_updated_by: string | null;
@@ -229,6 +243,8 @@ export const AgentResponse$outboundSchema: z.ZodType<
   variables: z.record(z.string()),
   toolHeaders: z.nullable(z.record(z.string())),
   agentInitiated: z.boolean().default(false),
+  sttProvider: z.nullable(z.string()).optional(),
+  waitSound: z.nullable(z.string()).optional(),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()),
@@ -247,6 +263,8 @@ export const AgentResponse$outboundSchema: z.ZodType<
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
     agentInitiated: "agent_initiated",
+    sttProvider: "stt_provider",
+    waitSound: "wait_sound",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
     customMessage: "custom_message",

@@ -5,7 +5,7 @@
 ```typescript
 import { DataSourceProperties } from "syllable-sdk/models/components";
 
-let value: DataSourceProperties = "name";
+let value: DataSourceProperties = "description";
 ```
 
 ## Values
