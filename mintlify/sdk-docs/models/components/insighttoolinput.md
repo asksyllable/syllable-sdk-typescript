@@ -9,10 +9,10 @@ import { InsightToolInput } from "syllable-sdk/models/components";
 
 let value: InsightToolInput = {
   name: "<value>",
-  description: "noisily harangue huge whoa",
-  version: 159845,
+  description: "loyalty cake although misfire breastplate whenever",
+  version: 456410,
   toolArguments: {},
-  insightToolDefinitionId: 46806,
+  insightToolDefinitionId: 153369,
 };
 ```
 

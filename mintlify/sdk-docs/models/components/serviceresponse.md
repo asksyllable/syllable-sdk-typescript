@@ -11,9 +11,9 @@ import { ServiceResponse } from "syllable-sdk/models/components";
 
 let value: ServiceResponse = {
   name: "<value>",
-  description: "made-up deer rightfully psst following",
-  id: 20950,
-  lastUpdated: new Date("2024-03-27T03:08:04.092Z"),
+  description: "zowie incidentally nifty",
+  id: 826862,
+  lastUpdated: new Date("2025-03-06T05:29:10.468Z"),
   lastUpdatedBy: "<value>",
   tools: [
     "<value>",

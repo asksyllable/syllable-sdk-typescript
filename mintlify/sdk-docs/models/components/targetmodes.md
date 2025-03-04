@@ -9,7 +9,7 @@ Available modes (communication methods) for channel targets.
 ```typescript
 import { TargetModes } from "syllable-sdk/models/components";
 
-let value: TargetModes = "email";
+let value: TargetModes = "sms";
 ```
 
 ## Values

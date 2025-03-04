@@ -10,14 +10,14 @@ Voice option for an agent.
 import { AgentVoice } from "syllable-sdk/models/components";
 
 let value: AgentVoice = {
-  provider: "ElevenLabs",
-  displayName: "Sage",
-  varName: "elevenlabs:Brian",
-  gender: "male",
+  provider: "Google",
+  displayName: "Nova",
+  varName: "wavenet:female/yue-HK-Standard-C",
+  gender: "female",
   supportedLanguages: [
     {
       name: "English",
-      code: "es-US",
+      code: "zh-CN",
     },
   ],
   deprecated: false,

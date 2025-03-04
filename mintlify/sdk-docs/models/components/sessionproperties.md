@@ -7,7 +7,7 @@ title: 'SessionProperties'
 ```typescript
 import { SessionProperties } from "syllable-sdk/models/components";
 
-let value: SessionProperties = "channel_manager_service";
+let value: SessionProperties = "is_test";
 ```
 
 ## Values

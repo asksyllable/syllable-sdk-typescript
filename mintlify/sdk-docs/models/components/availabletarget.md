@@ -8,8 +8,8 @@ title: 'AvailableTarget'
 import { AvailableTarget } from "syllable-sdk/models/components";
 
 let value: AvailableTarget = {
-  organizationId: 960835,
-  channelId: 906556,
+  organizationId: 961571,
+  channelId: 231701,
   channelName: "<value>",
   target: "<value>",
 };
