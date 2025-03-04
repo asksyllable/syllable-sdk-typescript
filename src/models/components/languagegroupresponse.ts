@@ -13,6 +13,12 @@ import {
   LanguageConfig$Outbound,
   LanguageConfig$outboundSchema,
 } from "./languageconfig.js";
+import {
+  LanguageGroupAgentInfo,
+  LanguageGroupAgentInfo$inboundSchema,
+  LanguageGroupAgentInfo$Outbound,
+  LanguageGroupAgentInfo$outboundSchema,
+} from "./languagegroupagentinfo.js";
 
 export type LanguageGroupResponse = {
   /**
@@ -40,9 +46,9 @@ export type LanguageGroupResponse = {
    */
   editComments?: string | null | undefined;
   /**
-   * Number of agents associated with the language group.
+   * IDs and names of the agents linked to the language group
    */
-  agentCount?: number | null | undefined;
+  agentsInfo?: Array<LanguageGroupAgentInfo> | null | undefined;
   /**
    * Email of the user who last updated the language group.
    */
@@ -61,14 +67,15 @@ export const LanguageGroupResponse$inboundSchema: z.ZodType<
   skip_current_language_in_message: z.boolean(),
   id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
-  agent_count: z.nullable(z.number().int()).optional(),
+  agents_info: z.nullable(z.array(LanguageGroupAgentInfo$inboundSchema))
+    .optional(),
   last_updated_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "language_configs": "languageConfigs",
     "skip_current_language_in_message": "skipCurrentLanguageInMessage",
     "edit_comments": "editComments",
-    "agent_count": "agentCount",
+    "agents_info": "agentsInfo",
     "last_updated_by": "lastUpdatedBy",
   });
 });
@@ -81,7 +88,7 @@ export type LanguageGroupResponse$Outbound = {
   skip_current_language_in_message: boolean;
   id: number;
   edit_comments?: string | null | undefined;
-  agent_count?: number | null | undefined;
+  agents_info?: Array<LanguageGroupAgentInfo$Outbound> | null | undefined;
   last_updated_by: string;
 };
 
@@ -97,14 +104,15 @@ export const LanguageGroupResponse$outboundSchema: z.ZodType<
   skipCurrentLanguageInMessage: z.boolean(),
   id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
-  agentCount: z.nullable(z.number().int()).optional(),
+  agentsInfo: z.nullable(z.array(LanguageGroupAgentInfo$outboundSchema))
+    .optional(),
   lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
     languageConfigs: "language_configs",
     skipCurrentLanguageInMessage: "skip_current_language_in_message",
     editComments: "edit_comments",
-    agentCount: "agent_count",
+    agentsInfo: "agents_info",
     lastUpdatedBy: "last_updated_by",
   });
 });
