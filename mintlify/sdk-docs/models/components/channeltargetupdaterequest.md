@@ -8,11 +8,11 @@ title: 'ChannelTargetUpdateRequest'
 import { ChannelTargetUpdateRequest } from "syllable-sdk/models/components";
 
 let value: ChannelTargetUpdateRequest = {
-  agentId: 725595,
-  channelId: 11427,
+  agentId: 617877,
+  channelId: 13236,
   target: "<value>",
-  targetMode: "email",
-  id: 146946,
+  targetMode: "chat",
+  id: 148141,
 };
 ```
 

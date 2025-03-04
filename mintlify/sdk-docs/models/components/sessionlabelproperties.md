@@ -7,7 +7,7 @@ title: 'SessionLabelProperties'
 ```typescript
 import { SessionLabelProperties } from "syllable-sdk/models/components";
 
-let value: SessionLabelProperties = "code";
+let value: SessionLabelProperties = "timestamp";
 ```
 
 ## Values
