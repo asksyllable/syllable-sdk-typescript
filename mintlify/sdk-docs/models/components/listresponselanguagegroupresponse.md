@@ -14,9 +14,9 @@ let value: ListResponseLanguageGroupResponse = {
       description: "Languages spoken by operators at Call Center 1",
       languageConfigs: [
         {
-          languageCode: "en-US",
-          voiceProvider: "ElevenLabs",
-          voiceDisplayName: "Alice",
+          languageCode: "zh-CN",
+          voiceProvider: "Google",
+          voiceDisplayName: "Clara",
           dtmfCode: 1,
         },
       ],
@@ -29,11 +29,12 @@ let value: ListResponseLanguageGroupResponse = {
           name: "Test Agent",
         },
       ],
+      updatedAt: new Date("2023-01-22T07:56:26.664Z"),
       lastUpdatedBy: "user@mail.com",
     },
   ],
-  page: 906232,
-  pageSize: 816365,
+  page: 399222,
+  pageSize: 308528,
 };
 ```
 

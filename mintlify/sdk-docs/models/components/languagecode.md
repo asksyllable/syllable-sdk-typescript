@@ -9,7 +9,7 @@ BCP 47 codes of languages that Syllable supports.
 ```typescript
 import { LanguageCode } from "syllable-sdk/models/components";
 
-let value: LanguageCode = "th-TH";
+let value: LanguageCode = "en-US";
 ```
 
 ## Values

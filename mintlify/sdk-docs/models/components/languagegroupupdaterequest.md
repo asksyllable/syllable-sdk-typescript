@@ -12,9 +12,9 @@ let value: LanguageGroupUpdateRequest = {
   description: "Languages spoken by operators at Call Center 1",
   languageConfigs: [
     {
-      languageCode: "es-US",
-      voiceProvider: "Google",
-      voiceDisplayName: "Will",
+      languageCode: "ko-KR",
+      voiceProvider: "ElevenLabs",
+      voiceDisplayName: "River",
       dtmfCode: 1,
     },
   ],
