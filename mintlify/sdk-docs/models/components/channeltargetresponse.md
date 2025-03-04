@@ -11,19 +11,19 @@ through that channel.
 import { ChannelTargetResponse } from "syllable-sdk/models/components";
 
 let value: ChannelTargetResponse = {
-  agentId: 846409,
-  channelId: 699479,
+  agentId: 297437,
+  channelId: 813798,
   target: "<value>",
   targetMode: "chat",
-  id: 813798,
+  id: 881104,
   channelName: "<value>",
-  updatedAt: new Date("2024-03-10T13:41:13.226Z"),
+  updatedAt: new Date("2024-09-29T01:48:05.911Z"),
   lastUpdatedBy: "<value>",
   agent: {
     name: "<value>",
     type: "ca_v1",
-    promptId: 881104,
-    customMessageId: 581273,
+    promptId: 881736,
+    customMessageId: 692532,
     timezone: "America/Chicago",
     variables: {
       "key": "<value>",
@@ -31,10 +31,10 @@ let value: ChannelTargetResponse = {
     toolHeaders: {
       "key": "<value>",
     },
-    sttProvider: "Deepgram Nova 2",
+    sttProvider: "Google STT V2",
     waitSound: "Call Center",
-    id: 501324,
-    updatedAt: new Date("2025-11-13T20:49:26.140Z"),
+    id: 643990,
+    updatedAt: new Date("2024-04-09T13:04:59.510Z"),
     lastUpdatedBy: "<value>",
     prompt: {
       name: "<value>",
@@ -43,7 +43,7 @@ let value: ChannelTargetResponse = {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 643990,
+      id: 606393,
       lastUpdated: "<value>",
       lastUpdatedBy: "user@email.com",
     },
@@ -52,7 +52,7 @@ let value: ChannelTargetResponse = {
       text: "<value>",
       rules: [
         {
-          description: "woot purse salty even as advanced",
+          description: "beneath unlike vastly",
           timeRangeStart: "09:00",
           timeRangeEnd: "17:00",
           date: "2025-01-01",
@@ -67,8 +67,8 @@ let value: ChannelTargetResponse = {
           text: "Sorry, we're closed today",
         },
       ],
-      id: 359978,
-      updatedAt: new Date("2025-03-11T01:40:18.315Z"),
+      id: 714242,
+      updatedAt: new Date("2025-12-30T17:40:17.979Z"),
       lastUpdatedBy: "user@email.com",
     },
     channelTargets: [],
@@ -86,12 +86,12 @@ let value: ChannelTargetResponse = {
           endpoint: {
             url: "https://api.example.com",
             method: "get",
-            argumentLocation: "path",
+            argumentLocation: "query",
           },
           defaults: "<value>",
         },
-        serviceId: 199996,
-        id: 18521,
+        serviceId: 615560,
+        id: 123820,
         promptsInfo: [
           {
             id: 1,
@@ -104,7 +104,7 @@ let value: ChannelTargetResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2025-05-19T21:25:27.801Z"),
+        lastUpdated: new Date("2025-07-18T10:00:30.471Z"),
         lastUpdatedBy: "user@email.com",
       },
     ],
@@ -113,9 +113,9 @@ let value: ChannelTargetResponse = {
       description: "Languages spoken by operators at Call Center 1",
       languageConfigs: [
         {
-          languageCode: "en-US",
+          languageCode: "th-TH",
           voiceProvider: "ElevenLabs",
-          voiceDisplayName: "Sienna",
+          voiceDisplayName: "Fable",
           dtmfCode: 1,
         },
       ],
@@ -128,6 +128,7 @@ let value: ChannelTargetResponse = {
           name: "Test Agent",
         },
       ],
+      updatedAt: new Date("2023-03-17T19:22:07.134Z"),
       lastUpdatedBy: "user@mail.com",
     },
   },

@@ -18,7 +18,7 @@ let value: DataSourceMetadataResponse = {
   chunk: false,
   id: 1,
   editComments: "Added new info",
-  updatedAt: new Date("2024-07-14T09:44:04.261Z"),
+  updatedAt: new Date("2025-01-18T21:01:56.101Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```
