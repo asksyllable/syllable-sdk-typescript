@@ -12,7 +12,7 @@ let value: Dashboard = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  supersetUrl: "https://harmful-coin.info/",
+  supersetUrl: "https://flawed-futon.info",
 };
 ```
 

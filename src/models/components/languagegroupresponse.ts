@@ -50,6 +50,10 @@ export type LanguageGroupResponse = {
    */
   agentsInfo?: Array<LanguageGroupAgentInfo> | null | undefined;
   /**
+   * Timestamp of the last update to the language group.
+   */
+  updatedAt: Date;
+  /**
    * Email of the user who last updated the language group.
    */
   lastUpdatedBy: string;
@@ -69,6 +73,7 @@ export const LanguageGroupResponse$inboundSchema: z.ZodType<
   edit_comments: z.nullable(z.string()).optional(),
   agents_info: z.nullable(z.array(LanguageGroupAgentInfo$inboundSchema))
     .optional(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -76,6 +81,7 @@ export const LanguageGroupResponse$inboundSchema: z.ZodType<
     "skip_current_language_in_message": "skipCurrentLanguageInMessage",
     "edit_comments": "editComments",
     "agents_info": "agentsInfo",
+    "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
   });
 });
@@ -89,6 +95,7 @@ export type LanguageGroupResponse$Outbound = {
   id: number;
   edit_comments?: string | null | undefined;
   agents_info?: Array<LanguageGroupAgentInfo$Outbound> | null | undefined;
+  updated_at: string;
   last_updated_by: string;
 };
 
@@ -106,6 +113,7 @@ export const LanguageGroupResponse$outboundSchema: z.ZodType<
   editComments: z.nullable(z.string()).optional(),
   agentsInfo: z.nullable(z.array(LanguageGroupAgentInfo$outboundSchema))
     .optional(),
+  updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -113,6 +121,7 @@ export const LanguageGroupResponse$outboundSchema: z.ZodType<
     skipCurrentLanguageInMessage: "skip_current_language_in_message",
     editComments: "edit_comments",
     agentsInfo: "agents_info",
+    updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
   });
 });

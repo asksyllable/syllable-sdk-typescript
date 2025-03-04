@@ -7,8 +7,8 @@ import { ListResponseChannelTargetResponse } from "syllable-sdk/models/component
 
 let value: ListResponseChannelTargetResponse = {
   items: [],
-  page: 941378,
-  pageSize: 799203,
+  page: 725595,
+  pageSize: 11427,
 };
 ```
 

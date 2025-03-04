@@ -17,8 +17,8 @@ let value: ToolDefinition = {
   },
   endpoint: {
     url: "https://api.example.com",
-    method: "get",
-    argumentLocation: "path",
+    method: "post",
+    argumentLocation: "body",
   },
   defaults: {
     "key": {

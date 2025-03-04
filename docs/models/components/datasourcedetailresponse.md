@@ -16,7 +16,7 @@ let value: DataSourceDetailResponse = {
   chunk: false,
   id: 1,
   editComments: "Added new info",
-  updatedAt: new Date("2023-04-18T05:42:04.752Z"),
+  updatedAt: new Date("2023-11-07T17:40:47.066Z"),
   lastUpdatedBy: "user@email.com",
   text: "<value>",
 };

@@ -7,7 +7,7 @@ Model for an agent voice.
 ```typescript
 import { AgentVoiceModel } from "syllable-sdk/models/components";
 
-let value: AgentVoiceModel = "Whisper";
+let value: AgentVoiceModel = "Standard";
 ```
 
 ## Values

@@ -10,7 +10,7 @@ let value: CustomMessageCreateRequest = {
   text: "<value>",
   rules: [
     {
-      description: "concerning incidentally regal given brochure hence hence",
+      description: "phooey nightlife avow forenenst",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",
