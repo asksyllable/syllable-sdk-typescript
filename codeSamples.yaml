@@ -48,6 +48,8 @@ actions:
                 toolHeaders: {
                   "key": "<value>",
                 },
+                sttProvider: "Deepgram Nova 2",
+                waitSound: "Call Center",
               });
 
               // Handle the result
@@ -83,7 +85,9 @@ actions:
                   "key": "<value>",
                   "key1": "<value>",
                 },
-                id: 488852,
+                sttProvider: "Google STT V2",
+                waitSound: "Call Center",
+                id: 54062,
               });
 
               // Handle the result

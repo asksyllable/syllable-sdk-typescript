@@ -9,13 +9,13 @@ let value: ListResponseChannel = {
   items: [
     {
       name: "<value>",
-      channelService: "twilio",
+      channelService: "sip",
       supportedModes: "[\"chat\",\"voice\"]",
-      id: 497391,
+      id: 16429,
     },
   ],
-  page: 639473,
-  pageSize: 368584,
+  page: 929530,
+  pageSize: 669917,
 };
 ```
 

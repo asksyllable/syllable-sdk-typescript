@@ -6,13 +6,14 @@
 import { InsightsToolUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsToolUpdateRequest = {
-  toolId: 382764,
+  toolId: 816151,
   insightToolInput: {
     name: "<value>",
-    description: "if while unless",
-    version: 883078,
+    description:
+      "aftermath grown whereas merit loosely fumigate duster laughter pastel solidly",
+    version: 459875,
     toolArguments: {},
-    insightToolDefinitionId: 966576,
+    insightToolDefinitionId: 573610,
   },
 };
 ```

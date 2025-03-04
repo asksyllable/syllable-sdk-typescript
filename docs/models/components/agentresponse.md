@@ -21,8 +21,10 @@ let value: AgentResponse = {
   toolHeaders: {
     "key": "<value>",
   },
-  id: 645894,
-  updatedAt: new Date("2024-04-24T14:17:38.418Z"),
+  sttProvider: "Google STT V2",
+  waitSound: "Keyboard 2",
+  id: 891773,
+  updatedAt: new Date("2025-11-22T04:11:06.908Z"),
   lastUpdatedBy: "<value>",
   prompt: {
     name: "<value>",
@@ -31,7 +33,7 @@ let value: AgentResponse = {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
-    id: 891773,
+    id: 383441,
     lastUpdated: "<value>",
     lastUpdatedBy: "user@email.com",
   },
@@ -41,7 +43,7 @@ let value: AgentResponse = {
     rules: [
       {
         description:
-          "busily jive hawk gee basic minus hence for know gleefully",
+          "triumphantly close phew typewriter gadzooks yet athwart skateboard newsstand",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -56,8 +58,8 @@ let value: AgentResponse = {
         text: "Sorry, we're closed today",
       },
     ],
-    id: 118727,
-    updatedAt: new Date("2023-12-15T12:13:46.383Z"),
+    id: 739264,
+    updatedAt: new Date("2023-02-12T22:47:44.474Z"),
     lastUpdatedBy: "user@email.com",
   },
   channelTargets: [],
@@ -77,20 +79,10 @@ let value: AgentResponse = {
           method: "get",
           argumentLocation: "body",
         },
-        defaults: {
-          "key": {
-            transform: {
-              action: "default",
-              when: {
-                key: "key",
-                value: "value",
-              },
-            },
-          },
-        },
+        defaults: "<value>",
       },
-      serviceId: 566602,
-      id: 265389,
+      serviceId: 118727,
+      id: 317983,
       promptsInfo: [
         {
           id: 1,
@@ -103,7 +95,7 @@ let value: AgentResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2024-07-27T11:31:00.474Z"),
+      lastUpdated: new Date("2024-03-30T00:46:25.708Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
@@ -113,8 +105,8 @@ let value: AgentResponse = {
     languageConfigs: [
       {
         languageCode: "yue-HK",
-        voiceProvider: "ElevenLabs",
-        voiceDisplayName: "Sienna",
+        voiceProvider: "Google",
+        voiceDisplayName: "Liam",
         dtmfCode: 1,
       },
     ],
@@ -149,6 +141,8 @@ let value: AgentResponse = {
 | `variables`                                                                                                                                                           | Record<string, *string*>                                                                                                                                              | :heavy_check_mark:                                                                                                                                                    | Custom context variables for the conversation session. Keys should be prefixed with "vars.".                                                                          |                                                                                                                                                                       |
 | `toolHeaders`                                                                                                                                                         | Record<string, *string*>                                                                                                                                              | :heavy_check_mark:                                                                                                                                                    | Optional headers to include in tool calls for agent.                                                                                                                  |                                                                                                                                                                       |
 | `agentInitiated`                                                                                                                                                      | *boolean*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                    | Whether the agent initiates conversation with a user after the custom_message is delivered                                                                            |                                                                                                                                                                       |
+| `sttProvider`                                                                                                                                                         | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | Speech-to-text provider for the agent.                                                                                                                                | Google STT V1                                                                                                                                                         |
+| `waitSound`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | Sound to play while waiting for a response from the LLM.                                                                                                              | Keyboard 1                                                                                                                                                            |
 | `id`                                                                                                                                                                  | *number*                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                    | The agent ID                                                                                                                                                          |                                                                                                                                                                       |
 | `updatedAt`                                                                                                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                         | :heavy_check_mark:                                                                                                                                                    | Timestamp of most recent update                                                                                                                                       |                                                                                                                                                                       |
 | `lastUpdatedBy`                                                                                                                                                       | *string*                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                    | Email of the user who last updated the agent                                                                                                                          |                                                                                                                                                                       |

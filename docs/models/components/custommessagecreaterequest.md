@@ -10,8 +10,7 @@ let value: CustomMessageCreateRequest = {
   text: "<value>",
   rules: [
     {
-      description:
-        "cross-contamination before enrage upside-down accurate indeed",
+      description: "concerning incidentally regal given brochure hence hence",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",
