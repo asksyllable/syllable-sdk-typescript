@@ -7317,8 +7317,40 @@
           "agent_initiated": {
             "type": "boolean",
             "title": "Agent Initiated",
-            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "description": "Whether the agent initiates conversation with a user after the custom message is delivered",
             "default": false
+          },
+          "stt_provider": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentSttProvider"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Speech-to-text provider for the agent.",
+            "examples": [
+              "Google STT V1",
+              "Google STT V2",
+              "Deepgram Nova 2"
+            ]
+          },
+          "wait_sound": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentWaitSound"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Sound to play while waiting for a response from the LLM.",
+            "examples": [
+              "Keyboard 1",
+              "Keyboard 2",
+              "Call Center"
+            ]
           }
         },
         "type": "object",
@@ -7503,6 +7535,40 @@
             "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
             "default": false
           },
+          "stt_provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stt Provider",
+            "description": "Speech-to-text provider for the agent.",
+            "examples": [
+              "Google STT V1",
+              "Google STT V2",
+              "Deepgram Nova 2"
+            ]
+          },
+          "wait_sound": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wait Sound",
+            "description": "Sound to play while waiting for a response from the LLM.",
+            "examples": [
+              "Keyboard 1",
+              "Keyboard 2",
+              "Call Center"
+            ]
+          },
           "id": {
             "type": "integer",
             "title": "Id",
@@ -7605,6 +7671,16 @@
         ],
         "title": "AgentResponse",
         "description": "When a user interacts with the Syllable system, they do so by communicating with an agent.\nAn agent is linked to a prompt, a custom message, and one or more channel targets to define its\nbehavior and capabilities."
+      },
+      "AgentSttProvider": {
+        "type": "string",
+        "enum": [
+          "Google STT V1",
+          "Google STT V2",
+          "Deepgram Nova 2"
+        ],
+        "title": "AgentSttProvider",
+        "description": "Speech-to-text providers supported by agents."
       },
       "AgentToolDefaults": {
         "properties": {
@@ -7769,8 +7845,40 @@
           "agent_initiated": {
             "type": "boolean",
             "title": "Agent Initiated",
-            "description": "Whether the agent initiates conversation with a user after the custom_message is delivered",
+            "description": "Whether the agent initiates conversation with a user after the custom message is delivered",
             "default": false
+          },
+          "stt_provider": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentSttProvider"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Speech-to-text provider for the agent.",
+            "examples": [
+              "Google STT V1",
+              "Google STT V2",
+              "Deepgram Nova 2"
+            ]
+          },
+          "wait_sound": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AgentWaitSound"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Sound to play while waiting for a response from the LLM.",
+            "examples": [
+              "Keyboard 1",
+              "Keyboard 2",
+              "Call Center"
+            ]
           },
           "id": {
             "type": "integer",
@@ -7965,6 +8073,16 @@
         ],
         "title": "AgentVoiceVarName",
         "description": "The variable name of an agent voice (used when procesing messages)."
+      },
+      "AgentWaitSound": {
+        "type": "string",
+        "enum": [
+          "Keyboard 1",
+          "Keyboard 2",
+          "Call Center"
+        ],
+        "title": "AgentWaitSound",
+        "description": "Wait sounds supported by agents."
       },
       "AvailableTarget": {
         "properties": {
@@ -11695,7 +11813,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
             "default": true
           }
         },
@@ -12048,7 +12166,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
             "default": true
           }
         },
