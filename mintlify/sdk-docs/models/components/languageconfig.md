@@ -11,9 +11,9 @@ and their supported languages can be fetched from `GET /agents/voices/available/
 import { LanguageConfig } from "syllable-sdk/models/components";
 
 let value: LanguageConfig = {
-  languageCode: "th-TH",
-  voiceProvider: "OpenAI",
-  voiceDisplayName: "Callum",
+  languageCode: "es-US",
+  voiceProvider: "Google",
+  voiceDisplayName: "Daniel",
   dtmfCode: 1,
 };
 ```
