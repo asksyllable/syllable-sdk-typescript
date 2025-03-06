@@ -7,15 +7,21 @@ Tools are functions or APIs the Agent can call upon to perform actions like acce
 
 The tools list page shows all of the tools currently available to your organization.
 
+![](/mintlify/images/tools_list.jpg)
 
-
-If you want an Agent to reference a scpecific tool during sessions with customers, then you need to provide those instructions in the prompt. For example, if you want to provide hangup instructions to your Agent, it might look something like:
+If you want an Agent to reference a specific tool during sessions with customers, then you need to provide those instructions in the prompt. For example, if you want to provide hangup instructions to your Agent, it might look something like:
 
 `Before a call ends, make sure to always ask user whether they need anything else. If user doesn’t need anything else, use “hangup” tool.`
 
-### Tool specs
+### Creating a tool
 
-Tool create and update operations are currently only supported in the SDK, but are coming soon to Console.  Here is an example `definition` that can be used in a `POST` request to [create a new tool](https://docs.syllable.ai/sdk-docs/Tools#create) that uses the [Open-Meteo API](https://open-meteo.com/en/docs) to look up weather information. (Note that the value of the "parameters" field must be defined as a JSON Schema per the [OpenAI API](https://platform.openai.com/docs/guides/function-calling).)
+To create a tool, click the "New tool" button on the top right of the list screen.
+
+![](/mintlify/images/tools_create.jpg)
+
+### Tool schema
+
+You define the behavior and capabilities of a tool using the Tool Schema. More details on the structure of the schema are available [here](https://docs.syllable.ai/sdk-docs/models/components/tooldefinition). An example schema to call the [Open-Meteo API](https://open-meteo.com/en/docs) to look up weather information is below. (Note that the value of the "parameters" field must be defined as a JSON Schema per the [OpenAI API](https://platform.openai.com/docs/guides/function-calling).)
 
 ```json
 {
@@ -40,17 +46,11 @@ Tool create and update operations are currently only supported in the SDK, but a
           "latitude": {
             "type": "number",
             "description": "The latitude of the city"
-          },
-          "current": {
-            "type": "string",
-            "description": "Information to retrieve from the Open-Meteo API, comma-separated",
-            "default": "temperature_2m,relative_humidity_2m,precipitation,rain,showers,snowfall"
           }
         },
         "required": [
           "longitude",
-          "latitude",
-          "current"
+          "latitude"
         ]
       }
     }
@@ -58,14 +58,22 @@ Tool create and update operations are currently only supported in the SDK, but a
 }
 ```
 
-### Tool defaults
+### Static parameters
 
-Aside from the configuration available in the `parameters` object, you can also set up your tool to use values configured at the agent level. To do this, you can pass an object to the `defaults` field, referencing agent-level variables via the "vars." syntax (see [here](https://docs.syllable.ai/workspaces/SessionConfig)). For example, if you want individual agents to be able to specify whether they want to receive temperature in Fahrenheit or Celsius when using the tool above, add this configuration to the above definition:
+The "parameters" object in the schema above describes parameters that the LLM should provide when calling the API specified in the tool. In the example above, the LLM is expected to gather the latitude and longitude from the user. However, you may want to also specify configure certain parameters ahead of time, either for all calls to the given tool or at the individual agent level. To accomplish this, you can use the ["staticParameters" configuration option](https://docs.syllable.ai/sdk-docs/models/components/statictoolparameter). For example, if you want to update the `get_weather`tool so that it defaults to fetching temperature information in Fahrenheit instead of Celsius, you can add this configuration to the above definition:
 
 ```json
-"defaults": {
-  "temperature_unit": "{vars.temperature_unit}"
-}
+"staticParameters": [
+  {
+    "name": "temperature_unit",
+    "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+    "required": false,
+    "type": "string",
+    "default": "fahrenheit"
+  }
+]
 ```
 
-Then, set a value of either "celsius" or "fahrenheit" for `vars.temperature_unit` for an agent using the tool, and that value will be passed to the Open-Meteo API for the given agent's calls to the tool. (Additional options for tool parameters and defaults to make configuration easier and more flexible are coming soon.)
+Note that the `name` of each parameter must match the name of the parameter on the API endpoint side.
+
+Adding a static parameter to a tool enables agents using the tool to override the default value, if any, at the agent level. For more information, see the [Tool Configuration section](/workspaces/ToolConfig).
