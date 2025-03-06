@@ -8799,6 +8799,18 @@
             ],
             "title": "Conversation Id",
             "description": "Unique ID for conversation"
+          },
+          "insights": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Insights",
+            "description": "Insights from request"
           }
         },
         "type": "object",
@@ -9429,16 +9441,24 @@
           "chunk": {
             "type": "boolean",
             "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
+            "description": "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)",
+            "examples": [
+              false
+            ]
           },
           "chunk_delimiter": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n",
+            "description": "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)",
             "examples": [
-              "\n\n",
-              "|"
+              null
             ]
           },
           "text": {
@@ -9497,16 +9517,24 @@
           "chunk": {
             "type": "boolean",
             "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
+            "description": "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)",
+            "examples": [
+              false
+            ]
           },
           "chunk_delimiter": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n",
+            "description": "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)",
             "examples": [
-              "\n\n",
-              "|"
+              null
             ]
           },
           "id": {
@@ -9613,16 +9641,24 @@
           "chunk": {
             "type": "boolean",
             "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
+            "description": "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)",
+            "examples": [
+              false
+            ]
           },
           "chunk_delimiter": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n",
+            "description": "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)",
             "examples": [
-              "\n\n",
-              "|"
+              null
             ]
           },
           "id": {
@@ -9736,16 +9772,24 @@
           "chunk": {
             "type": "boolean",
             "title": "Chunk",
-            "description": "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
+            "description": "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)",
+            "examples": [
+              false
+            ]
           },
           "chunk_delimiter": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Chunk Delimiter",
-            "description": "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n').",
-            "default": "\n\n",
+            "description": "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)",
             "examples": [
-              "\n\n",
-              "|"
+              null
             ]
           },
           "id": {
@@ -11688,6 +11732,30 @@
             "description": "Batch or Interactive",
             "default": "BATCH"
           },
+          "caller_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caller Id",
+            "description": "Caller ID for call"
+          },
+          "pause_seconds": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pause Seconds",
+            "description": "How many seconds to pause between queueing calls. Useful when rate should be less than 1 per minute"
+          },
           "id": {
             "type": "integer",
             "title": "Id",
@@ -11716,6 +11784,7 @@
           "daily_start_time",
           "daily_end_time",
           "timezone",
+          "caller_id",
           "id",
           "last_updated_by"
         ],
@@ -11757,6 +11826,30 @@
             "$ref": "#/components/schemas/ActionMode",
             "description": "Batch or Interactive",
             "default": "BATCH"
+          },
+          "caller_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caller Id",
+            "description": "Caller ID for call"
+          },
+          "pause_seconds": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pause Seconds",
+            "description": "How many seconds to pause between queueing calls. Useful when rate should be less than 1 per minute"
           }
         },
         "type": "object",
@@ -11765,7 +11858,8 @@
           "campaign_variables",
           "daily_start_time",
           "daily_end_time",
-          "timezone"
+          "timezone",
+          "caller_id"
         ],
         "title": "OutboundCampaignInput"
       },
@@ -11821,7 +11915,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
             "default": true
           }
         },
@@ -12174,7 +12268,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
             "default": true
           }
         },
