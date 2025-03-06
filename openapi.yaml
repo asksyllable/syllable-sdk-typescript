@@ -5052,6 +5052,12 @@ components:
             - type: "null"
           title: "Conversation Id"
           description: "Unique ID for conversation"
+        "insights":
+          anyOf:
+            - type: "object"
+            - type: "null"
+          title: "Insights"
+          description: "Insights from request"
       type: "object"
       required:
         - "batch_id"
@@ -5470,15 +5476,17 @@ components:
         "chunk":
           type: "boolean"
           title: "Chunk"
-          description: "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-        "chunk_delimiter":
-          type: "string"
-          title: "Chunk Delimiter"
-          description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
-          default: "\n\n"
+          description: "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)"
           examples:
-            - "\n\n"
-            - "|"
+            - false
+        "chunk_delimiter":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Chunk Delimiter"
+          description: "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)"
+          examples:
+            - null
         "text":
           type: "string"
           title: "Text"
@@ -5517,15 +5525,17 @@ components:
         "chunk":
           type: "boolean"
           title: "Chunk"
-          description: "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-        "chunk_delimiter":
-          type: "string"
-          title: "Chunk Delimiter"
-          description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
-          default: "\n\n"
+          description: "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)"
           examples:
-            - "\n\n"
-            - "|"
+            - false
+        "chunk_delimiter":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Chunk Delimiter"
+          description: "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)"
+          examples:
+            - null
         "id":
           type: "integer"
           title: "Id"
@@ -5595,15 +5605,17 @@ components:
         "chunk":
           type: "boolean"
           title: "Chunk"
-          description: "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-        "chunk_delimiter":
-          type: "string"
-          title: "Chunk Delimiter"
-          description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
-          default: "\n\n"
+          description: "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)"
           examples:
-            - "\n\n"
-            - "|"
+            - false
+        "chunk_delimiter":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Chunk Delimiter"
+          description: "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)"
+          examples:
+            - null
         "id":
           type: "integer"
           title: "Id"
@@ -5679,15 +5691,17 @@ components:
         "chunk":
           type: "boolean"
           title: "Chunk"
-          description: "Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly."
-        "chunk_delimiter":
-          type: "string"
-          title: "Chunk Delimiter"
-          description: "String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\\n\\n')."
-          default: "\n\n"
+          description: "Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)"
           examples:
-            - "\n\n"
-            - "|"
+            - false
+        "chunk_delimiter":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Chunk Delimiter"
+          description: "String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)"
+          examples:
+            - null
         "id":
           type: "integer"
           title: "Id"
@@ -6905,6 +6919,18 @@ components:
           title: "Timezone"
           description: "Timezone of campaign"
         "mode": {"$ref": "#/components/schemas/ActionMode", "description": "Batch or Interactive", "default": "BATCH"}
+        "caller_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Caller Id"
+          description: "Caller ID for call"
+        "pause_seconds":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Pause Seconds"
+          description: "How many seconds to pause between queueing calls. Useful when rate should be less than 1 per minute"
         "id":
           type: "integer"
           title: "Id"
@@ -6928,6 +6954,7 @@ components:
         - "daily_start_time"
         - "daily_end_time"
         - "timezone"
+        - "caller_id"
         - "id"
         - "last_updated_by"
       title: "OutboundCampaign"
@@ -6955,6 +6982,18 @@ components:
           title: "Timezone"
           description: "Timezone of campaign"
         "mode": {"$ref": "#/components/schemas/ActionMode", "description": "Batch or Interactive", "default": "BATCH"}
+        "caller_id":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Caller Id"
+          description: "Caller ID for call"
+        "pause_seconds":
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Pause Seconds"
+          description: "How many seconds to pause between queueing calls. Useful when rate should be less than 1 per minute"
       type: "object"
       required:
         - "campaign_name"
@@ -6962,6 +7001,7 @@ components:
         - "daily_start_time"
         - "daily_end_time"
         - "timezone"
+        - "caller_id"
       title: "OutboundCampaignInput"
     "PromptCreateRequest":
       properties:
@@ -6996,7 +7036,7 @@ components:
         "include_default_tools":
           type: "boolean"
           title: "Include Default Tools"
-          description: "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt."
+          description: "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt."
           default: true
       type: "object"
       required:
@@ -7215,7 +7255,7 @@ components:
         "include_default_tools":
           type: "boolean"
           title: "Include Default Tools"
-          description: "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated."
+          description: "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated."
           default: true
       type: "object"
       required:
