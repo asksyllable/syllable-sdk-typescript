@@ -22,13 +22,13 @@ export type DataSourceCreateRequest = {
    */
   labels?: Array<string> | undefined;
   /**
-   * Whether the content should be split into smaller chunks. This can improve agent performance when searching a large data source but risks some relevant information being left off search results if chunk_delimiter is not set up properly.
+   * Whether the content should be split into smaller chunks. (This feature is coming in the future - currently this value will always be treated as False.)
    */
   chunk: boolean;
   /**
-   * String that should be treated as delimiter between intended chunks if chunk == True. This string will not be included in any chunks. Defaults to a blank line ('\n\n').
+   * String that should be treated as delimiter between intended chunks. (This feature is coming in the future - currently this value will always be treated as None.)
    */
-  chunkDelimiter?: string | undefined;
+  chunkDelimiter?: string | null | undefined;
   /**
    * Information that the data source will provide to the agent accessing it.
    */
@@ -45,7 +45,7 @@ export const DataSourceCreateRequest$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
-  chunk_delimiter: z.string().default("\n\n"),
+  chunk_delimiter: z.nullable(z.string()).optional(),
   text: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -59,7 +59,7 @@ export type DataSourceCreateRequest$Outbound = {
   description?: string | null | undefined;
   labels?: Array<string> | undefined;
   chunk: boolean;
-  chunk_delimiter: string;
+  chunk_delimiter?: string | null | undefined;
   text: string;
 };
 
@@ -73,7 +73,7 @@ export const DataSourceCreateRequest$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   labels: z.array(z.string()).optional(),
   chunk: z.boolean(),
-  chunkDelimiter: z.string().default("\n\n"),
+  chunkDelimiter: z.nullable(z.string()).optional(),
   text: z.string(),
 }).transform((v) => {
   return remap$(v, {

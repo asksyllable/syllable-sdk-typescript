@@ -14,6 +14,7 @@ let value: ListResponseDataSourceMetadataResponse = {
         "Weather Info",
       ],
       chunk: false,
+      chunkDelimiter: null,
       id: 1,
       editComments: "Added new info",
       updatedAt: new Date("2023-11-27T13:15:01.733Z"),

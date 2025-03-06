@@ -678,7 +678,8 @@ actions:
                 labels: [
                   "Weather Info",
                 ],
-                chunk: true,
+                chunk: false,
+                chunkDelimiter: null,
                 text: "<value>",
               });
 
@@ -707,6 +708,7 @@ actions:
                   "Weather Info",
                 ],
                 chunk: false,
+                chunkDelimiter: null,
                 id: 1,
                 editComments: "Added new info",
                 text: "<value>",
