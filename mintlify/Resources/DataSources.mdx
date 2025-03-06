@@ -9,23 +9,79 @@ A data source is a predefined blob of text containing structured, semi-structure
 
 Go to the "Data Sources" tab on the side toolbar and click "New data" on the top right.
 
-![](/mintlify/datasourcescreate.png)
+![](/mintlify/images/new_data_source_create.jpg)
 
 * **Name:** This is the name under which the data source will be stored. It must be unique within the suborg and cannot contain any whitespace.
 
 * **Description (optional):** User-readable description of the data source.
 
-* **Generate chunks:** Whether or not the data source should be separated into smaller "chunks" of text when it is stored. This is a useful process for ensuring that only the content from the data source that is relevant to a given user question is presented to the LLM.
-
-* **Delimiter:** The string that should be used to divide the chunks of the data source, if "Generate chunks" is checked.
-
-* **Content:** The actual text content of the data source.
-
-In the above example, the data source content, which is a list of pizzeria addresses with their phone numbers and hours of operation, will be broken into three chunks, separated by blank lines ("Double Paragraph Breaks"). When a user asks an agent that is using this data source a question, like "What are the hours for the restaurant at 246 River Avenue?", the system will search across all available chunks for the one(s) that best match the question. In this example, it would identify that the second chunk is the relevant one for the user's question, and then provide the content of that chunk to the LLM as additional context, so the LLM would know the hours for that location. Chunking in this way can reduce latency, as the number of tokens sent to the LLM is lower than if all three locations were included in a single chunk.
+* **Content:** The actual text content of the data source. (Note the sentence at the beginning of the context. It can significantly improve search performance if you include a statement like this providing context to the LLM for what the data represents.)
 
 ### Linking a data source to an agent
 
-Here is the process to give an agent the ability to fetch information from a data source when answering questions:
+To give an agent the ability to fetch information from a data source when answering questions, you have two options.
+
+**Option 1: Tool with static parameter**
+
+This is the recommended option. It allows you to use more than one data source if needed, and provides more user-friendly configuration at the agent level.
+
+1. Create one or more data sources and note the names.
+
+2. Create a [tool](/Resources/tools) with the following schema (specify whatever tool name you want).
+
+```json
+{
+  "type": "endpoint",
+  "tool": {
+    "type": "function",
+    "function": {
+      "name": "tool_name_here",
+      "description": "Look up general information in the organization’s documentation data sources. Returns an answer and a reference URL. Usually do not include the reference URL in the spoken response.",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "question"
+        ],
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "A user inquiry about content in the agent’s documents, e.g. Which forms do I need for my application?"
+          }
+        }
+      }
+    }
+  },
+  "endpoint": {
+    "url": "http://helix-app/v1/search",
+    "method": "post",
+    "argumentLocation": "body"
+  },
+  "defaults": null,
+  "staticParameters": [
+    {
+      "name": "doc",
+      "description": "Data sources to which the tool should have access",
+      "required": true,
+      "type": "data_source_list",
+      "default": [
+        "your_data_source", "your_other_data_source", "etc"
+      ]
+    }
+  ]
+}
+```
+
+Note that the static parameter must be named "doc" in order to successfully access the search API. Additionally, the strings in the `default` list for "doc" must be the names of your existing data sources.
+
+1. Create a prompt that has access to the tool you created.
+
+2. Link an agent to that prompt.
+
+Note that if you later create another agent that you want to have access to different data sources, you can link it to the same prompt but override the default "doc" values on that agent (see ["Tool configuration"](/workspaces/ToolConfig)).
+
+**Option 2: general\_information tool**
+
+This option is not recommended as it only allows you to use one data source and relies on the agent session "vars" syntax, which is less user-friendly than using static parameters.
 
 1. Create a data source and note the name.
 
