@@ -8,8 +8,8 @@ import { AgentUpdate } from "syllable-sdk/models/components";
 let value: AgentUpdate = {
   name: "<value>",
   type: "ca_v1",
-  promptId: 630448,
-  customMessageId: 874288,
+  promptId: 518201,
+  customMessageId: 25662,
   timezone: "America/New_York",
   variables: {
     "key": "<value>",
@@ -17,9 +17,9 @@ let value: AgentUpdate = {
   toolHeaders: {
     "key": "<value>",
   },
-  sttProvider: "Deepgram Nova 2",
-  waitSound: "Keyboard 2",
-  id: 13236,
+  sttProvider: "Google STT V2",
+  waitSound: "Keyboard 1",
+  id: 463575,
 };
 ```
 

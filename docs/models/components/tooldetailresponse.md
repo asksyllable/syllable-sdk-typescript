@@ -36,8 +36,8 @@ let value: ToolDetailResponse = {
       },
     },
   },
-  serviceId: 751033,
-  id: 155978,
+  serviceId: 244569,
+  id: 458212,
   promptsInfo: [
     {
       id: 1,
@@ -50,7 +50,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2024-04-11T21:34:00.499Z"),
+  lastUpdated: new Date("2025-04-10T02:49:19.360Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",

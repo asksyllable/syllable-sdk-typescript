@@ -36,14 +36,59 @@ let value: AgentResponse = {
     id: 383441,
     lastUpdated: "<value>",
     lastUpdatedBy: "user@email.com",
+    toolsFull: [
+      {
+        name: "Weather Fetcher",
+        definition: {
+          tool: {
+            function: {
+              name: "weather_fetcher",
+              description: "Fetches weather data",
+              parameters: {},
+            },
+          },
+          endpoint: {
+            url: "https://api.example.com",
+            method: "post",
+            argumentLocation: "path",
+          },
+          defaults: {
+            "key": {
+              transform: {
+                action: "default",
+                when: {
+                  key: "key",
+                  value: "value",
+                },
+              },
+            },
+          },
+        },
+        serviceId: 925597,
+        id: 71036,
+        promptsInfo: [
+          {
+            id: 1,
+            name: "Test Prompt",
+          },
+        ],
+        agentsInfo: [
+          {
+            id: 1,
+            name: "Test Agent",
+          },
+        ],
+        lastUpdated: new Date("2023-04-06T11:50:56.757Z"),
+        lastUpdatedBy: "user@email.com",
+      },
+    ],
   },
   customMessage: {
     name: "<value>",
     text: "<value>",
     rules: [
       {
-        description:
-          "triumphantly close phew typewriter gadzooks yet athwart skateboard newsstand",
+        description: "successfully how gee",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -58,8 +103,8 @@ let value: AgentResponse = {
         text: "Sorry, we're closed today",
       },
     ],
-    id: 739264,
-    updatedAt: new Date("2023-02-12T22:47:44.474Z"),
+    id: 943749,
+    updatedAt: new Date("2025-01-17T06:36:04.132Z"),
     lastUpdatedBy: "user@email.com",
   },
   channelTargets: [],
@@ -77,12 +122,22 @@ let value: AgentResponse = {
         endpoint: {
           url: "https://api.example.com",
           method: "get",
-          argumentLocation: "body",
+          argumentLocation: "form",
         },
-        defaults: "<value>",
+        defaults: {
+          "key": {
+            transform: {
+              action: "default",
+              when: {
+                key: "key",
+                value: "value",
+              },
+            },
+          },
+        },
       },
-      serviceId: 118727,
-      id: 317983,
+      serviceId: 60225,
+      id: 666767,
       promptsInfo: [
         {
           id: 1,
@@ -95,7 +150,7 @@ let value: AgentResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2024-03-30T00:46:25.708Z"),
+      lastUpdated: new Date("2025-01-05T00:27:30.681Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
@@ -104,9 +159,9 @@ let value: AgentResponse = {
     description: "Languages spoken by operators at Call Center 1",
     languageConfigs: [
       {
-        languageCode: "yue-HK",
-        voiceProvider: "Google",
-        voiceDisplayName: "Liam",
+        languageCode: "en-US",
+        voiceProvider: "OpenAI",
+        voiceDisplayName: "Coral",
         dtmfCode: 1,
       },
     ],
@@ -119,7 +174,7 @@ let value: AgentResponse = {
         name: "Test Agent",
       },
     ],
-    updatedAt: new Date("2023-10-18T20:48:18.611Z"),
+    updatedAt: new Date("2024-02-03T15:02:53.228Z"),
     lastUpdatedBy: "user@mail.com",
   },
 };

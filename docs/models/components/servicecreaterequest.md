@@ -7,7 +7,7 @@ import { ServiceCreateRequest } from "syllable-sdk/models/components";
 
 let value: ServiceCreateRequest = {
   name: "<value>",
-  description: "ew airmail abaft until against however",
+  description: "aw opposite pfft same willfully sadly phew er solidly doing",
 };
 ```
 

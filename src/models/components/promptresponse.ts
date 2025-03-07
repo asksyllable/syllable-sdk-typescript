@@ -13,6 +13,12 @@ import {
   PromptLlmConfig$Outbound,
   PromptLlmConfig$outboundSchema,
 } from "./promptllmconfig.js";
+import {
+  ToolResponse,
+  ToolResponse$inboundSchema,
+  ToolResponse$Outbound,
+  ToolResponse$outboundSchema,
+} from "./toolresponse.js";
 
 /**
  * A prompt defines the behavior of an agent by delivering instructions to the LLM about how the
@@ -40,6 +46,8 @@ export type PromptResponse = {
   context?: string | null | undefined;
   /**
    * Names of the tools to which the prompt has access
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   tools?: Array<string> | undefined;
   llmConfig: PromptLlmConfig;
@@ -63,6 +71,10 @@ export type PromptResponse = {
    * The number of agents using the prompt
    */
   agentCount?: number | null | undefined;
+  /**
+   * Tools to which the prompt has access
+   */
+  toolsFull?: Array<ToolResponse> | null | undefined;
 };
 
 /** @internal */
@@ -82,6 +94,7 @@ export const PromptResponse$inboundSchema: z.ZodType<
   last_updated: z.nullable(z.string()),
   last_updated_by: z.nullable(z.string()).optional(),
   agent_count: z.nullable(z.number().int()).optional(),
+  tools_full: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "llm_config": "llmConfig",
@@ -89,6 +102,7 @@ export const PromptResponse$inboundSchema: z.ZodType<
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
     "agent_count": "agentCount",
+    "tools_full": "toolsFull",
   });
 });
 
@@ -105,6 +119,7 @@ export type PromptResponse$Outbound = {
   last_updated: string | null;
   last_updated_by?: string | null | undefined;
   agent_count?: number | null | undefined;
+  tools_full?: Array<ToolResponse$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -124,6 +139,7 @@ export const PromptResponse$outboundSchema: z.ZodType<
   lastUpdated: z.nullable(z.string()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
   agentCount: z.nullable(z.number().int()).optional(),
+  toolsFull: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
@@ -131,6 +147,7 @@ export const PromptResponse$outboundSchema: z.ZodType<
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
     agentCount: "agent_count",
+    toolsFull: "tools_full",
   });
 });
 
