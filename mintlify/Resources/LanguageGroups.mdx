@@ -1,0 +1,40 @@
+---
+title: "Language Groups"
+---
+
+To configure which languages and voices your agents have access to, you can use the Language Groups feature to create a set of languages with their associated voices and DTMF options. Then, you can link the language group to one or more agents, and update the agents' messages to include a menu based on the language group so that the user can change languages if desired at the beginning of the conversation.
+
+To create a new language group, click "Languages" on the left navbar.
+
+\==TODO SCREENSHOT==
+
+**Language group name:** The name of the language group (must be unique within suborg)
+
+**Description (optional):** Description of the language group
+
+**Languages:** Here you can select which languages are associated with the language group. For each language, you must enter a DTMF code (a number between 1 and 9, inclusive), select a voice provider, and select a voice from that provider. Note that your voice options are limited to voices that support the selected language. Each language in the group must be unique and have a unique DTMF code.
+
+The option "**Skip first language when reading out language options**" allows you to omit the first language in the group from the DTMF menu presented as part of the greeting message (see below).
+
+To give an agent the ability to understand a user's request to speak in different languages, the process is as follows:
+
+1. Create a language group as outlined above.
+
+2. Navigate to the desired agent. Your language group should now appear as an option in the "Languages" dropdown on the agent edit screen. Select the language group there and save your changes.
+
+3. Navigate to the agent's [message](/buildFirstAgent/CreateMessage). Insert the tag `{{language.mode}}` into the message (and/or the text of any message rules) where you would like the language menu to be delivered by the agent. Save your changes.
+
+Now, when a user converses with your agent, at the beginning of the conversation it will deliver its associated message as normal, but at the point at which you inserted the `{{language.mode}}`tag, it will instead read off a menu automatically generated from the language group linked to the agent. For example, for the language group shown above, the menu would be as follows:
+
+```
+For English, press 1.
+Para Español, oprima el 2.
+中文请按 3.
+```
+
+If the user had selected "**Skip first language when reading out language options**" when configuring the language group, it would instead be
+
+```
+Para Español, oprima el 2.
+中文请按 3.
+```
