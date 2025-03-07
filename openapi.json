@@ -11919,7 +11919,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
             "default": true
           }
         },
@@ -12131,7 +12131,8 @@
             "type": "array",
             "title": "Tools",
             "description": "Names of the tools to which the prompt has access",
-            "default": []
+            "default": [],
+            "deprecated": true
           },
           "llm_config": {
             "$ref": "#/components/schemas/PromptLlmConfig",
@@ -12192,6 +12193,21 @@
             ],
             "title": "Agent Count",
             "description": "The number of agents using the prompt"
+          },
+          "tools_full": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ToolResponse"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tools Full",
+            "description": "Tools to which the prompt has access"
           }
         },
         "type": "object",
@@ -12274,7 +12290,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
             "default": true
           }
         },
