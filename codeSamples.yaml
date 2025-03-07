@@ -679,7 +679,7 @@ actions:
                   "Weather Info",
                 ],
                 chunk: false,
-                chunkDelimiter: null,
+                chunkDelimiter: "",
                 text: "<value>",
               });
 
@@ -708,7 +708,7 @@ actions:
                   "Weather Info",
                 ],
                 chunk: false,
-                chunkDelimiter: null,
+                chunkDelimiter: "",
                 id: 1,
                 editComments: "Added new info",
                 text: "<value>",
