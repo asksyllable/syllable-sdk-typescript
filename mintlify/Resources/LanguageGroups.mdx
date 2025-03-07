@@ -6,8 +6,6 @@ To configure which languages and voices your agents have access to, you can use 
 
 To create a new language group, click "Languages" on the left navbar.
 
-\==TODO SCREENSHOT==
-
 **Language group name:** The name of the language group (must be unique within suborg)
 
 **Description (optional):** Description of the language group
@@ -24,7 +22,15 @@ To give an agent the ability to understand a user's request to speak in differen
 
 3. Navigate to the agent's [message](/buildFirstAgent/CreateMessage). Insert the tag `{{ language.mode }}` into the message (and/or the text of any message rules) where you would like the language menu to be delivered by the agent. Save your changes.
 
-Now, when a user converses with your agent, at the beginning of the conversation it will deliver its associated message as normal, but at the point at which you inserted the `{{ language.mode }}`tag, it will instead read off a menu automatically generated from the language group linked to the agent. For example, for the language group shown above, the menu would be as follows:
+Now, when a user converses with your agent, at the beginning of the conversation it will deliver its associated message as normal, but at the point at which you inserted the `{{ language.mode }}`tag, it will instead read off a menu automatically generated from the language group linked to the agent. For example, for the language group with
+
+```
+English - DTMF 1
+Spanish - DTMF 2
+Chinese - DTMF 3
+```
+
+the menu would be as follows:
 
 ```
 For English, press 1.
