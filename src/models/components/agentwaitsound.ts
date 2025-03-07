@@ -9,6 +9,7 @@ import { ClosedEnum } from "../../types/enums.js";
  * Wait sounds supported by agents.
  */
 export const AgentWaitSound = {
+  NoSound: "No Sound",
   Keyboard1: "Keyboard 1",
   Keyboard2: "Keyboard 2",
   CallCenter: "Call Center",
