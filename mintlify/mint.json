@@ -89,6 +89,7 @@
       "group": "Resources",
       "pages": [
         "Resources/res_WritePrompt",
+        "Resources/LanguageGroups",
         "Resources/Tools",
         "Resources/DataSources",
         "Resources/TelephonyIntegration",
