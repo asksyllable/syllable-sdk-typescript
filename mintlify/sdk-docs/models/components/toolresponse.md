@@ -23,7 +23,7 @@ let value: ToolResponse = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "post",
+      method: "get",
       argumentLocation: "body",
     },
     defaults: {
@@ -38,8 +38,8 @@ let value: ToolResponse = {
       },
     },
   },
-  serviceId: 4695,
-  id: 677817,
+  serviceId: 138183,
+  id: 196582,
   promptsInfo: [
     {
       id: 1,
@@ -52,7 +52,7 @@ let value: ToolResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2023-10-23T22:17:23.016Z"),
+  lastUpdated: new Date("2024-02-09T02:56:48.801Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```

@@ -9,7 +9,7 @@ The variable name of an agent voice (used when procesing messages).
 ```typescript
 import { AgentVoiceVarName } from "syllable-sdk/models/components";
 
-let value: AgentVoiceVarName = "wavenet:male/en-US-Neural2-D";
+let value: AgentVoiceVarName = "elevenlabs:Liam";
 ```
 
 ## Values

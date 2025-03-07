@@ -22,9 +22,19 @@ let value: ToolCreateRequest = {
       method: "get",
       argumentLocation: "path",
     },
-    defaults: "<value>",
+    defaults: {
+      "key": {
+        transform: {
+          action: "default",
+          when: {
+            key: "key",
+            value: "value",
+          },
+        },
+      },
+    },
   },
-  serviceId: 633987,
+  serviceId: 169819,
 };
 ```
 

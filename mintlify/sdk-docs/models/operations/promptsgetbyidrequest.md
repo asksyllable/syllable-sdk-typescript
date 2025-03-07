@@ -8,7 +8,7 @@ title: 'PromptsGetByIdRequest'
 import { PromptsGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: PromptsGetByIdRequest = {
-  promptId: 258059,
+  promptId: 750537,
 };
 ```
 

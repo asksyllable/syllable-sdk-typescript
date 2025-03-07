@@ -7,7 +7,7 @@ title: 'InsightToolProperties'
 ```typescript
 import { InsightToolProperties } from "syllable-sdk/models/components";
 
-let value: InsightToolProperties = "id";
+let value: InsightToolProperties = "name";
 ```
 
 ## Values

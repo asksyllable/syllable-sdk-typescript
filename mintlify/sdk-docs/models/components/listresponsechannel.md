@@ -13,11 +13,11 @@ let value: ListResponseChannel = {
       name: "<value>",
       channelService: "sip",
       supportedModes: "[\"chat\",\"voice\"]",
-      id: 511319,
+      id: 144847,
     },
   ],
-  page: 224317,
-  pageSize: 97844,
+  page: 488056,
+  pageSize: 355613,
 };
 ```
 

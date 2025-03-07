@@ -9,7 +9,7 @@ Display names of voices that Syllable supports.
 ```typescript
 import { AgentVoiceDisplayName } from "syllable-sdk/models/components";
 
-let value: AgentVoiceDisplayName = "Mila";
+let value: AgentVoiceDisplayName = "Chris";
 ```
 
 ## Values

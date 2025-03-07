@@ -11,19 +11,19 @@ through that channel.
 import { ChannelTargetResponse } from "syllable-sdk/models/components";
 
 let value: ChannelTargetResponse = {
-  agentId: 297437,
-  channelId: 813798,
+  agentId: 120196,
+  channelId: 296140,
   target: "<value>",
-  targetMode: "chat",
-  id: 881104,
+  targetMode: "voice",
+  id: 317983,
   channelName: "<value>",
-  updatedAt: new Date("2024-09-29T01:48:05.911Z"),
+  updatedAt: new Date("2024-03-30T00:46:25.708Z"),
   lastUpdatedBy: "<value>",
   agent: {
     name: "<value>",
     type: "ca_v1",
-    promptId: 881736,
-    customMessageId: 692532,
+    promptId: 64147,
+    customMessageId: 692472,
     timezone: "America/Chicago",
     variables: {
       "key": "<value>",
@@ -31,10 +31,10 @@ let value: ChannelTargetResponse = {
     toolHeaders: {
       "key": "<value>",
     },
-    sttProvider: "Google STT V2",
-    waitSound: "Call Center",
-    id: 643990,
-    updatedAt: new Date("2024-04-09T13:04:59.510Z"),
+    sttProvider: "Google STT V1",
+    waitSound: "Keyboard 2",
+    id: 93940,
+    updatedAt: new Date("2024-09-23T05:41:47.829Z"),
     lastUpdatedBy: "<value>",
     prompt: {
       name: "<value>",
@@ -43,16 +43,52 @@ let value: ChannelTargetResponse = {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 606393,
+      id: 929297,
       lastUpdated: "<value>",
       lastUpdatedBy: "user@email.com",
+      toolsFull: [
+        {
+          name: "Weather Fetcher",
+          definition: {
+            tool: {
+              function: {
+                name: "weather_fetcher",
+                description: "Fetches weather data",
+                parameters: {},
+              },
+            },
+            endpoint: {
+              url: "https://api.example.com",
+              method: "get",
+              argumentLocation: "path",
+            },
+            defaults: "<value>",
+          },
+          serviceId: 716327,
+          id: 289406,
+          promptsInfo: [
+            {
+              id: 1,
+              name: "Test Prompt",
+            },
+          ],
+          agentsInfo: [
+            {
+              id: 1,
+              name: "Test Agent",
+            },
+          ],
+          lastUpdated: new Date("2023-07-20T18:39:56.110Z"),
+          lastUpdatedBy: "user@email.com",
+        },
+      ],
     },
     customMessage: {
       name: "<value>",
       text: "<value>",
       rules: [
         {
-          description: "beneath unlike vastly",
+          description: "oof failing other insignificant woot purse salty",
           timeRangeStart: "09:00",
           timeRangeEnd: "17:00",
           date: "2025-01-01",
@@ -67,8 +103,8 @@ let value: ChannelTargetResponse = {
           text: "Sorry, we're closed today",
         },
       ],
-      id: 714242,
-      updatedAt: new Date("2025-12-30T17:40:17.979Z"),
+      id: 100226,
+      updatedAt: new Date("2025-10-04T18:04:14.419Z"),
       lastUpdatedBy: "user@email.com",
     },
     channelTargets: [],
@@ -85,13 +121,13 @@ let value: ChannelTargetResponse = {
           },
           endpoint: {
             url: "https://api.example.com",
-            method: "get",
+            method: "post",
             argumentLocation: "query",
           },
           defaults: "<value>",
         },
-        serviceId: 615560,
-        id: 123820,
+        serviceId: 868126,
+        id: 162493,
         promptsInfo: [
           {
             id: 1,
@@ -104,7 +140,7 @@ let value: ChannelTargetResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2025-07-18T10:00:30.471Z"),
+        lastUpdated: new Date("2024-11-05T15:40:43.604Z"),
         lastUpdatedBy: "user@email.com",
       },
     ],
@@ -113,9 +149,9 @@ let value: ChannelTargetResponse = {
       description: "Languages spoken by operators at Call Center 1",
       languageConfigs: [
         {
-          languageCode: "th-TH",
-          voiceProvider: "ElevenLabs",
-          voiceDisplayName: "Fable",
+          languageCode: "yue-HK",
+          voiceProvider: "Google",
+          voiceDisplayName: "River",
           dtmfCode: 1,
         },
       ],
@@ -128,7 +164,7 @@ let value: ChannelTargetResponse = {
           name: "Test Agent",
         },
       ],
-      updatedAt: new Date("2023-03-17T19:22:07.134Z"),
+      updatedAt: new Date("2024-09-15T17:37:32.983Z"),
       lastUpdatedBy: "user@mail.com",
     },
   },

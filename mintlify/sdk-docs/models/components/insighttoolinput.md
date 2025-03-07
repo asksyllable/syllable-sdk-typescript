@@ -9,11 +9,10 @@ import { InsightToolInput } from "syllable-sdk/models/components";
 
 let value: InsightToolInput = {
   name: "<value>",
-  description:
-    "hospitalization uselessly mostly aw quarrelsomely since hence weary exactly",
-  version: 166047,
+  description: "whenever whenever pomelo",
+  version: 987349,
   toolArguments: {},
-  insightToolDefinitionId: 922757,
+  insightToolDefinitionId: 759283,
 };
 ```
 
