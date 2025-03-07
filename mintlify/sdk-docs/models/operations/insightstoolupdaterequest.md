@@ -8,14 +8,13 @@ title: 'InsightsToolUpdateRequest'
 import { InsightsToolUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsToolUpdateRequest = {
-  toolId: 35742,
+  toolId: 543353,
   insightToolInput: {
     name: "<value>",
-    description:
-      "provided consequently considering unnaturally busy whereas any badly impolite",
-    version: 768195,
+    description: "wealthy how onto vamoose genuine aboard barring alongside",
+    version: 134173,
     toolArguments: {},
-    insightToolDefinitionId: 527715,
+    insightToolDefinitionId: 316541,
   },
 };
 ```

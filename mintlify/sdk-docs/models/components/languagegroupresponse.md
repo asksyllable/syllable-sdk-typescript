@@ -13,8 +13,8 @@ let value: LanguageGroupResponse = {
   languageConfigs: [
     {
       languageCode: "zh-CN",
-      voiceProvider: "OpenAI",
-      voiceDisplayName: "Liam",
+      voiceProvider: "ElevenLabs",
+      voiceDisplayName: "Will",
       dtmfCode: 1,
     },
   ],
@@ -27,7 +27,7 @@ let value: LanguageGroupResponse = {
       name: "Test Agent",
     },
   ],
-  updatedAt: new Date("2025-10-15T12:12:25.852Z"),
+  updatedAt: new Date("2023-04-22T20:11:12.127Z"),
   lastUpdatedBy: "user@mail.com",
 };
 ```
