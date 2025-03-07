@@ -15,5 +15,5 @@ let value: PromptLlmProvider = "openai";
 ## Values
 
 ```typescript
-"azure_openai" | "openai"
+"azure_openai" | "google" | "openai"
 ```
