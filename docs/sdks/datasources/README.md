@@ -107,7 +107,7 @@ async function run() {
       "Weather Info",
     ],
     chunk: false,
-    chunkDelimiter: null,
+    chunkDelimiter: "",
     text: "<value>",
   });
 
@@ -140,7 +140,7 @@ async function run() {
       "Weather Info",
     ],
     chunk: false,
-    chunkDelimiter: null,
+    chunkDelimiter: "",
     text: "<value>",
   });
 
@@ -198,7 +198,7 @@ async function run() {
       "Weather Info",
     ],
     chunk: false,
-    chunkDelimiter: null,
+    chunkDelimiter: "",
     id: 1,
     editComments: "Added new info",
     text: "<value>",
@@ -233,7 +233,7 @@ async function run() {
       "Weather Info",
     ],
     chunk: false,
-    chunkDelimiter: null,
+    chunkDelimiter: "",
     id: 1,
     editComments: "Added new info",
     text: "<value>",

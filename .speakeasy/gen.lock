@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: e1fcd2478bb4edf01582e9ce6f234987
+  docChecksum: 49ce3f213cae3719c8a82e042a6fd121
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.55
-  configChecksum: 5c1e14304977cad05f2200d115060d74
+  releaseVersion: 0.1.0-alpha.56
+  configChecksum: 75ee0fbb5a916b3783f1d6a8e9878321
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -1002,25 +1002,25 @@ examples:
           limit: 25
       responses:
         "200":
-          application/json: {"items": [{"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "id": 1, "edit_comments": "Added new info", "updated_at": "2025-01-13T10:26:00.433Z", "last_updated_by": "user@email.com"}, {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "id": 1, "edit_comments": "Added new info", "updated_at": "2023-09-09T18:28:08.953Z", "last_updated_by": "user@email.com"}, {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "id": 1, "edit_comments": "Added new info", "updated_at": "2024-11-27T13:02:27.296Z", "last_updated_by": "user@email.com"}], "page": 639387, "page_size": 17577}
+          application/json: {"items": [{"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "id": 1, "edit_comments": "Added new info", "updated_at": "2025-01-13T10:26:00.433Z", "last_updated_by": "user@email.com"}, {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "id": 1, "edit_comments": "Added new info", "updated_at": "2023-09-09T18:28:08.953Z", "last_updated_by": "user@email.com"}, {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "id": 1, "edit_comments": "Added new info", "updated_at": "2024-11-27T13:02:27.296Z", "last_updated_by": "user@email.com"}], "page": 639387, "page_size": 17577}
         "422":
           application/json: {}
   data_sources_create:
     speakeasy-default-data-sources-create:
       requestBody:
-        application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "text": "<value>"}
+        application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "text": "<value>"}
       responses:
         "200":
-          application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "id": 1, "edit_comments": "Added new info", "updated_at": "2024-04-02T12:48:32.253Z", "last_updated_by": "user@email.com", "text": "<value>"}
+          application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "id": 1, "edit_comments": "Added new info", "updated_at": "2024-04-02T12:48:32.253Z", "last_updated_by": "user@email.com", "text": "<value>"}
         "422":
           application/json: {}
   data_sources_update:
     speakeasy-default-data-sources-update:
       requestBody:
-        application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "id": 1, "edit_comments": "Added new info", "text": "<value>"}
+        application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "id": 1, "edit_comments": "Added new info", "text": "<value>"}
       responses:
         "200":
-          application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "id": 1, "edit_comments": "Added new info", "updated_at": "2024-01-13T16:52:57.274Z", "last_updated_by": "user@email.com", "text": "<value>"}
+          application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "id": 1, "edit_comments": "Added new info", "updated_at": "2024-01-13T16:52:57.274Z", "last_updated_by": "user@email.com", "text": "<value>"}
         "422":
           application/json: {}
   data_sources_get_by_name:
@@ -1120,7 +1120,7 @@ examples:
           data_source_id: 931598
       responses:
         "200":
-          application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": null, "id": 1, "edit_comments": "Added new info", "updated_at": "2023-02-06T16:50:06.315Z", "last_updated_by": "user@email.com", "text": "<value>"}
+          application/json: {"name": "Rain", "description": "Information about rain.", "labels": ["Weather Info"], "chunk": false, "chunk_delimiter": "", "id": 1, "edit_comments": "Added new info", "updated_at": "2023-02-06T16:50:06.315Z", "last_updated_by": "user@email.com", "text": "<value>"}
         "422": {}
   insights_workflow_list:
     speakeasy-default-insights-workflow-list:
