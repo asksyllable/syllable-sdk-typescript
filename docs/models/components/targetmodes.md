@@ -7,7 +7,7 @@ Available modes (communication methods) for channel targets.
 ```typescript
 import { TargetModes } from "syllable-sdk/models/components";
 
-let value: TargetModes = "sms";
+let value: TargetModes = "chat";
 ```
 
 ## Values

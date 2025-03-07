@@ -7,7 +7,7 @@ Wait sounds supported by agents.
 ```typescript
 import { AgentWaitSound } from "syllable-sdk/models/components";
 
-let value: AgentWaitSound = "Call Center";
+let value: AgentWaitSound = "Keyboard 1";
 ```
 
 ## Values

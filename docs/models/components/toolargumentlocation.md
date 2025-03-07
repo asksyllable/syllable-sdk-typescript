@@ -11,7 +11,7 @@ The location of the argument in a tool HTTP request.
 ```typescript
 import { ToolArgumentLocation } from "syllable-sdk/models/components";
 
-let value: ToolArgumentLocation = "query";
+let value: ToolArgumentLocation = "body";
 ```
 
 ## Values

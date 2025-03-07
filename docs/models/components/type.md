@@ -5,7 +5,7 @@
 ```typescript
 import { Type } from "syllable-sdk/models/components";
 
-let value: Type = "context";
+let value: Type = "log";
 ```
 
 ## Values

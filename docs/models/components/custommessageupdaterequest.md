@@ -11,7 +11,7 @@ let value: CustomMessageUpdateRequest = {
   rules: [
     {
       description:
-        "accurate indeed crazy ferret shabby shocked pluck guilty converse since",
+        "sightseeing contravene jaggedly programme ecliptic make woot saw husband",
       timeRangeStart: "09:00",
       timeRangeEnd: "17:00",
       date: "2025-01-01",
@@ -26,7 +26,7 @@ let value: CustomMessageUpdateRequest = {
       text: "Sorry, we're closed today",
     },
   ],
-  id: 367917,
+  id: 486410,
 };
 ```
 

@@ -7,8 +7,8 @@ import { ServiceUpdateRequest } from "syllable-sdk/models/components";
 
 let value: ServiceUpdateRequest = {
   name: "<value>",
-  description: "down unless along er",
-  id: 265905,
+  description: "as about quietly for graceful grouper at bah poorly",
+  id: 435531,
 };
 ```
 
