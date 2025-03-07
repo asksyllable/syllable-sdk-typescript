@@ -10,6 +10,7 @@ import { ClosedEnum } from "../../types/enums.js";
  */
 export const PromptLlmProvider = {
   AzureOpenai: "azure_openai",
+  Google: "google",
   Openai: "openai",
 } as const;
 /**
