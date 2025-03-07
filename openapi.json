@@ -7347,6 +7347,7 @@
             ],
             "description": "Sound to play while waiting for a response from the LLM.",
             "examples": [
+              "No Sound",
               "Keyboard 1",
               "Keyboard 2",
               "Call Center"
@@ -7565,6 +7566,7 @@
             "title": "Wait Sound",
             "description": "Sound to play while waiting for a response from the LLM.",
             "examples": [
+              "No Sound",
               "Keyboard 1",
               "Keyboard 2",
               "Call Center"
@@ -7876,6 +7878,7 @@
             ],
             "description": "Sound to play while waiting for a response from the LLM.",
             "examples": [
+              "No Sound",
               "Keyboard 1",
               "Keyboard 2",
               "Call Center"
@@ -8078,6 +8081,7 @@
       "AgentWaitSound": {
         "type": "string",
         "enum": [
+          "No Sound",
           "Keyboard 1",
           "Keyboard 2",
           "Call Center"
