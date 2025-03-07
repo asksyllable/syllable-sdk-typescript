@@ -13,5 +13,5 @@ let value: AgentWaitSound = "Call Center";
 ## Values
 
 ```typescript
-"Keyboard 1" | "Keyboard 2" | "Call Center"
+"No Sound" | "Keyboard 1" | "Keyboard 2" | "Call Center"
 ```

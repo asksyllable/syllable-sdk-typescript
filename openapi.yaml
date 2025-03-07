@@ -4071,6 +4071,7 @@ components:
             - type: "null"
           description: "Sound to play while waiting for a response from the LLM."
           examples:
+            - "No Sound"
             - "Keyboard 1"
             - "Keyboard 2"
             - "Call Center"
@@ -4215,6 +4216,7 @@ components:
           title: "Wait Sound"
           description: "Sound to play while waiting for a response from the LLM."
           examples:
+            - "No Sound"
             - "Keyboard 1"
             - "Keyboard 2"
             - "Call Center"
@@ -4409,6 +4411,7 @@ components:
             - type: "null"
           description: "Sound to play while waiting for a response from the LLM."
           examples:
+            - "No Sound"
             - "Keyboard 1"
             - "Keyboard 2"
             - "Call Center"
@@ -4560,6 +4563,7 @@ components:
     "AgentWaitSound":
       type: "string"
       enum:
+        - "No Sound"
         - "Keyboard 1"
         - "Keyboard 2"
         - "Call Center"
