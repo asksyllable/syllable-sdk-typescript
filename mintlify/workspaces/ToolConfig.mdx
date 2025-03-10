@@ -7,3 +7,5 @@ If you have configured a static parameter on a tool (see "Static parameters" sec
 To do this, go to the page for your agent, click Edit, and scroll down to the "Tool configuration" section. Initially, the tool-level default value for the static parameter will be displayed, if one exists. If you override the value, any calls to the tool from this agent will use the agent's override value instead of the default one. (If no override value is set for a given static parameter and the agent is therefore falling back to the tool-level default, note that any changes to the default will also affect this agent.)
 
 For example, if you were using the `get_weather` tool from the Tools doc linked above, and you wanted a specific agent to fetch temperatures in Celsius instead of Fahrenheit, you could navigate to that agent and set an override value for the `temperature_unit` static parameter to "celsius".
+
+![](/mintlify/images/tool_static_param_override.jpg)
