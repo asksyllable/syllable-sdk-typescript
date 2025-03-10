@@ -9,60 +9,9 @@ icon: "gear"
 
 A session variable allows you to pass custom variables from agents so that prompts can reference those during conversations (voice or web) with one of your customers. 
 
-* If you have a session variable named agent_name, you can reference it in a prompt like this: 
-
-  `“Hello! My name is {vars.name}! How can I assist you today?”`
+* If you have a session variable named agent\_name, you can reference it in a prompt like this:`“Hello! My name is {vars.name}! How can I assist you today?”`
 
 * This makes it possible to use the same prompt for multiple agents without having to create a new prompt for each agent.
-
-Certain variables are available to all agents, such as the agent’s voice. These variables are used to configure the agent’s behavior and are set when the agent is created.
-
-* To set the voice used by the agent, set
-
-  `vars.session.voice`
-
-  to the desired voice name. For example, to set the voice to "Alice", set
-
-  `vars.session.voice`
-
-  to
-
-  `elevenlabs:Alice`
-
-* Available Voices
-
-| Voice Name | Voice configuration            |
-| ---------- | ------------------------------ |
-| Alice      | elevenlabs:Alice               |
-| Alloy      | openai:alloy                   |
-| Bill       | elevenlabs:Bill                |
-| Brian      | elevenlabs:Brian               |
-| Callum     | elevenlabs:Callum              |
-| Charlie    | elevenlabs:Charlie             |
-| Charlotte  | elevenlabs:Charlotte           |
-| Chris      | elevenlabs:Chris               |
-| Clara      | wavenet:female/en-US-Neural2-F |
-| Daniel     | elevenlabs:Daniel              |
-| Echo       | openai:echo                    |
-| Eric       | elevenlabs:Eric                |
-| Fable      | openai:fable                   |
-| George     | elevenlabs:George              |
-| Jerry      | wavenet:male/en-US-Neural2-D   |
-| Jessica    | elevenlabs:Jessica             |
-| Laura      | elevenlabs:Laura               |
-| Liam       | elevenlabs:Liam                |
-| Lily       | elevenlabs:Lily                |
-| Matilda    | elevenlabs:Matilda             |
-| Mila       | wavenet:female/en-US-Studio-O  |
-| Nova       | openai:nova                    |
-| Onyx       | openai:onyx                    |
-| River      | elevenlabs:River               |
-| Roger      | elevenlabs:Roger               |
-| Sarah      | elevenlabs:Sarah               |
-| Shimmer    | openai:shimmer                 |
-| Will       | elevenlabs:Will                |
-
-Additionally, if the agent's prompt is linked to any tools that have exposed values to be configurable at the agent level (see [here](https://docs.syllable.ai/Resources/Tools)), you can configure those values here. E.g., if a tool default references "\{vars.hospital\_name}", you can set a value for `vars.hospital_name` in this section, and when the agent calls that tool, it will use the value you've configured for the tool default.
 
 ## Tool Headers
 
