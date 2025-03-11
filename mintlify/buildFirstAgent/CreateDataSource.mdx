@@ -1,0 +1,19 @@
+---
+title: 'Create a data source'
+---
+
+Click "Data Sources" on the left sidebar. This will take you to a list of the existing data sources for your org. To create a new one, click "New data source" in the top-right corner.
+
+![](/mintlify/images/create_new_data_source_03_11.jpg)
+
+* **Name:** The name of the data source is used to reference it elsewhere in Console, including in tool definitions, so you should pick something that's easily identifiable. It can't contain any whitespace. Enter "weather\_facts" here.
+
+* **Description (optional)**: This description is displayed for extra context on the data source list screen you just saw. For this data source you can enter "General information about weather" here.
+
+* **Data source content**: The actual text content of the data source that the agent will be able to read. You can copy the text from [here](/buildFirstAgent/ExampleDataSource.mdx). (Note the sentence at the beginning - it can significantly improve search performance if you include a statement like this providing context to the LLM for what the data represents.)
+
+Click Save and wait for the data source to finish uploading. Now the general weather information is in the system, but we need to create a method for the agent to access it. We'll do this in the next step.
+
+Click "Create tools" below to continue the tutorial.
+
+[(Full data source docs)](/Resources/DataSources.mdx)
