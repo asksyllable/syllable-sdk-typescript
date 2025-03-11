@@ -57,13 +57,14 @@
       ]
     },
     {
-      "group": "Build your first Agent",
+      "group": "Build your first agent",
       "pages": [
         "buildFirstAgent/Quickstart",
-        "buildFirstAgent/CreatePrompt",
-        "buildFirstAgent/CreateMessage",
-        "buildFirstAgent/CreateAgent",
-        "buildFirstAgent/CreateChannel"
+        "buildFirstAgent/CreatePrompt_v2",
+        "buildFirstAgent/CreateDataSource",
+        "buildFirstAgent/CreateTools",
+        "buildFirstAgent/CreateMessage_v2",
+        "buildFirstAgent/CreateAgent"
       ]
     },
     {
