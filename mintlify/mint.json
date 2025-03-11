@@ -64,7 +64,7 @@
         "buildFirstAgent/CreateDataSource",
         "buildFirstAgent/CreateTools",
         "buildFirstAgent/CreateMessage_v2",
-        "buildFirstAgent/CreateAgent"
+        "buildFirstAgent/CreateAgent_v2"
       ]
     },
     {
