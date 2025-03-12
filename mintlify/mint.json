@@ -89,7 +89,7 @@
     {
       "group": "Resources",
       "pages": [
-        "Resources/res_WritePrompt",
+        "Resources/Prompts",
         "Resources/LanguageGroups",
         "Resources/Tools",
         "Resources/DataSources",
