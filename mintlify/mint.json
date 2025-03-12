@@ -53,18 +53,18 @@
       "pages": [
         "introsyllable/HowSyllableWorks",
         "introsyllable/KeyFeatures",
-        "introsyllable/LoginSignup"
-      ]
-    },
-    {
-      "group": "Build your first agent",
-      "pages": [
-        "buildFirstAgent/Quickstart",
-        "buildFirstAgent/CreatePrompt",
-        "buildFirstAgent/CreateDataSource",
-        "buildFirstAgent/CreateTools",
-        "buildFirstAgent/CreateMessage",
-        "buildFirstAgent/CreateAgent"
+        "introsyllable/LoginSignup",
+        {
+          "group": "Build your first agent",
+          "pages": [
+            "buildFirstAgent/Quickstart",
+            "buildFirstAgent/CreatePrompt",
+            "buildFirstAgent/CreateDataSource",
+            "buildFirstAgent/CreateTools",
+            "buildFirstAgent/CreateMessage",
+            "buildFirstAgent/CreateAgent"
+          ]
+        }
       ]
     },
     {
