@@ -1,24 +1,47 @@
 ---
 title: "Create an agent"
-icon: "user-bounty-hunter"
 ---
 
-This is where you fine tune the details of your agent by specifying the timezone, which languages it has access to, and its voice if mode is set to voice. Agents must be associated with a prompt and a custom message. You must create these before configuring an agent. ![](/mintlify/create_agent.png)
+Click "Agents" on the left sidebar. This will take you to a list of the existing agents for your org. To create a new one, click "New agent" in the top-right corner.
 
-* **Agent name:** This is just the name of your agent. Use a name that’s easily remembered and will make it easy to tell the difference between other agents.
+![](/mintlify/images/create_new_agent_03_11.jpg)
 
-* **Agent description (optional):** Information related to the agent, like its purpose or goal. A good rule for description is to include what someone would need to know about this agent to make sense of it.
+* **Agent name**: The name of the agent is used to reference it elsewhere in Console, so you should pick something that's easily identifiable. You can enter "Weather agent" here.
 
-* **Prompt:** Select the prompt that contains the instructions for this agent. 
+* **Agent description (optional)**: This description is displayed for extra context on the agent list screen you just saw. For this agent you can enter "An agent that can answer questions about the weather" here.
 
-* **Custom message:** A message or response your agent will say to your callers based on time logic.
+* **Prompt**: The prompt that the agent will use for the LLM. Select your `Weather prompt` here.
 
-* **Label (optional):** This is just a plaintext indicator to help you remember your label. It should be different from the name.
+* **Message**: The message that the agent will deliver to the user at the beginning of a conversation. Select your `Weather greeting` here.
 
-* **Timezone:** Select the timezone that your agent will support.
+* **Timezone**: The agent's home timezone. You can select your local timezone here.
 
-* **Languages:** Select all of the languages in which your agent will be able to communicate. 
+* **Speech-to-text**: The speech-to-text provider that the agent will use to interpret user input in voice conversations. You can select `Google STT V2` here.
 
-* **Busy sound:** (voice mode only) Select the sound you want your callers to hear while the agent is working on the caller’s request. 
+* **Languages (optional)**: If you have configured a [language group](/Resources/LanguageGroups), you can select it here to provide the agent access to the language group's languages and voices. You can skip this field for the tutorial.
 
-* **Voice:** (voice mode only) Select the voice you want your agent to speak with.
+* **Busy sound**: The sound that will be played to the user in voice conversations after they finish speaking while they're waiting for a response from the agent. You can select `Keyboard 1` here.
+
+* **Label (optional)**: Labels are used for filtering agents on the agent list screen. You can skip this field for the tutorial.
+
+* **Tool configuration**: You can use this section to override default [tool static parameter values](/Resources/Tools) at the agent level. You can skip it for the tutorial.
+
+* **Session configuration**: You can use this section to set [other agent-level configuration values](/workspaces/Agents). You can skip it for the tutorial.
+
+Click Save to save the agent.
+
+You should now see a chat box to the right where you can test your new agent! Enter something like "hello" and you should see your greeting message.
+
+![](/mintlify/images/test_agent_chat.jpg)
+
+From here, you can try asking for weather in a specific location, or ask general weather questions, and the agent should be able to answer them.
+
+This concludes the tutorial! If you want to explore more of Syllable's functionality with your new agent, you could try:
+
+* Creating a voice [channel](/Resources/Channels) for your agent so you can call a phone number to speak to it
+
+* Updating your [message](/Resources/Messages) to use time-based rules to display different greetings in the morning and afternoon
+
+* Create a [language group](/Resources/LanguageGroups), link it to your agent, and add the corresponding DTMF menu to the message to enable it to use different languages and voices
+
+[Full agents docs](/Resources/Agents)
