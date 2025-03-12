@@ -77,10 +77,12 @@
     {
       "group": "Resources",
       "pages": [
-        "Resources/Prompts",
-        "Resources/LanguageGroups",
-        "Resources/Tools",
+        "Resources/Channels",
         "Resources/DataSources",
+        "Resources/LanguageGroups",
+        "Resources/Messages",
+        "Resources/Prompts",
+        "Resources/Tools",
         "Resources/TelephonyIntegration",
         "Resources/Webchat"
       ]
