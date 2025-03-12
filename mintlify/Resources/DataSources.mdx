@@ -27,7 +27,7 @@ This is the recommended option. It allows you to use more than one data source i
 
 1. Create one or more data sources and note the names.
 
-2. Create a [tool](/mintlify/Resources/tools) with the following schema (specify whatever tool name you want).
+2. Create a [tool](/Resources/Tools) with the following schema (specify whatever tool name you want).
 
 ```json
 {
@@ -77,7 +77,7 @@ Note that the static parameter must be named "doc" in order to successfully acce
 
 2. Link an agent to that prompt.
 
-Note that if you later create another agent that you want to have access to different data sources, you can link it to the same prompt but override the default "doc" values on that agent (see ["Tool configuration"](/mintlify/workspaces/ToolConfig)).
+Note that if you later create another agent that you want to have access to different data sources, you can link it to the same prompt but override the default "doc" values on that agent (see ["Tool configuration"](/workspaces/ToolConfig)).
 
 **Option 2: general\_information tool**
 
@@ -89,4 +89,4 @@ This option is not recommended as it only allows you to use one data source and 
 
 3. Link an agent to that prompt.
 
-4. In the agent's ["Session Configuration" section](/mintlify/workspaces/SessionConfig.mdx), for the variable `vars.domain`, enter the value `doc://yourdatasourcenamehere`.
+4. In the agent's ["Session Configuration" section](/workspaces/SessionConfig), for the variable `vars.domain`, enter the value `doc://yourdatasourcenamehere`.
