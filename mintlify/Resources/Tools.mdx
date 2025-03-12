@@ -19,6 +19,10 @@ To create a tool, click the "New tool" button on the top right of the list scree
 
 ![](/mintlify/images/tools_create.jpg)
 
+* **Name**: The name of the tool is used to reference it elsewhere in Console, including in prompts and agents, so you should pick something that's easily identifiable. It shouldn't contain any whitespace.
+
+* **Service**: A service is a grouping of tools. You can select any available service here to add your new tool to that service.
+
 ### Tool schema
 
 You define the behavior and capabilities of a tool using the Tool Schema. More details on the structure of the schema are available [here](https://docs.syllable.ai/sdk-docs/models/components/tooldefinition). An example schema to call the [Open-Meteo API](https://open-meteo.com/en/docs) to look up weather information is below. (Note that the value of the "parameters" field must be defined as a JSON Schema per the [OpenAI API](https://platform.openai.com/docs/guides/function-calling).)
@@ -46,11 +50,17 @@ You define the behavior and capabilities of a tool using the Tool Schema. More d
           "latitude": {
             "type": "number",
             "description": "The latitude of the city"
+          },
+          "current": {
+            "type": "string",
+            "description": "information to retrieve from the open-meteo API, comma-separated",
+            "default": "temperature_2m,relative_humidity_2m,precipitation,rain,showers,snowfall"
           }
         },
         "required": [
           "longitude",
-          "latitude"
+          "latitude",
+          "current"
         ]
       }
     }
