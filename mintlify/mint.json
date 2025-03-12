@@ -60,11 +60,11 @@
       "group": "Build your first agent",
       "pages": [
         "buildFirstAgent/Quickstart",
-        "buildFirstAgent/CreatePrompt_v2",
+        "buildFirstAgent/CreatePrompt",
         "buildFirstAgent/CreateDataSource",
         "buildFirstAgent/CreateTools",
-        "buildFirstAgent/CreateMessage_v2",
-        "buildFirstAgent/CreateAgent_v2"
+        "buildFirstAgent/CreateMessage",
+        "buildFirstAgent/CreateAgent"
       ]
     },
     {

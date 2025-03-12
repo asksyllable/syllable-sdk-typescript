@@ -1,24 +1,31 @@
 ---
 title: "Create a prompt"
-icon: "wand-magic-sparkles"
 ---
 
-## Write your prompt
+Click "Prompts" on the left sidebar. This will take you to a list of the existing prompts for your org. To create a new one, click "New prompt" in the top-right corner.
 
-A prompt is a set of written instructions given to an AI Agent that detail everything the Agent does, how it does those things, and what it should and shouldn’t do given certain other conditions. You give the Agent access to tools which give it the ability to do useful work like schedule appointments, or relay messages. A prompt can be reused by multiple agents.
+![](/mintlify/images/create_new_prompt_03_10.jpg)
 
-Writing a good prompt for an AI to follow is the same as writing good instructions for a human to follow. It’s essentially a written communication challenge that requires the prompt writer to write clear, unambiguous, and explicit instructions. Writing a good prompt for your specific use case(s) is an iterative process that requires trial and error writing and testing. 
+* **Prompt name**: The name of the prompt is used to reference it elsewhere in Console, so you should pick something that's easily identifiable. Enter "Weather prompt" here.
 
-Click [here](/Resources/res_WritePrompt) for more information on writing prompts for AI agents.
+* **Prompt description (optional)**: This description is displayed for extra context on the prompt list screen you just saw. For this prompt you can enter "Prompt for a weather agent" here.
 
-## Configure your prompt
+* **Model provider**: This is the provider for the LLM that the prompt, and therefore any agents using it, will converse with. Select "OpenAI" here.
 
-![](/images/create_prompt.jpg)
+* **Model**: This is the specific LLM model that the prompt will use. Select "GPT-4o August" here.
 
-* **Prompt name:** This is just the name of your prompt. Use a name that’s easily remembered and will make it easy to tell the difference between other prompts
+* **Tools**: Here we can provide the prompt access to tools. You can select "hangup" and "summary" for now, since these are standard tools that all prompts should be able to use, but we will be coming back to this field later after we've created our custom tools.
 
-* **Description:** Write a short description of the prompt, with what it does, who it’s for, and what its goal is. 
+* **Content**: This is the actual text of the prompt that will be sent to the LLM at the beginning of the conversation. Enter the following here:
 
-* **Model provider and version**: Depending on the model you use, there may be a specific version you have in mind
+```
+You are a weather agent. You can tell the user information about the current weather in a given city, and also answer general weather-related questions.
 
-* **Select tools from dropdown menu:** Based on the tools available to your organization, you can select tools that give an agent using the prompt the ability to do useful work like schedule appointments or relay messages. (Note: you will have to reference these tools in the prompt in order for the agent to use them. See [Tools](/Resources/Tools) for more info.)
+When asked about any other topic, don't answer and instead remind the caller that you are a weather agent. Keep the tone professional, friendly, and clear. You are chatting with a user, so always respond naturally and conversationally. Do not use nonverbal cues, describe system actions, or add any other information.
+```
+
+Now click Save. We now have the prompt that will explain to the LLM how it should behave as a weather agent, but there are no instructions regarding how to actually the fetch weather information that it's supposed to provide to the user. We'll be setting that up in the next couple steps.
+
+Click "Create a data source" below to continue the tutorial.
+
+([Full prompts docs](/Resources/Prompts))
