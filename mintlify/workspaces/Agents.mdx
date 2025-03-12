@@ -3,8 +3,32 @@ title: "Agents"
 icon: "user-bounty-hunter"
 ---
 
-## Agents List
+A Syllable agent can communicate with users via various channels, respond to their questions, and perform tasks on their behalf.
 
-When you click on Agents on the left navigation bar, you are brought to the Agents List page. This page lists out all of the agents in your organization. It shows the name of the agent, when it was last modified and by who, the associated prompt, custom messages, and channel, and any labels attached to that agent.
+To create an agent, click "Agents" on the left sidebar. This will take you to a list of the existing agents for your org. To create a new one, click "New agent" in the top-right corner.
 
-From the Agents list page, you can create new agent by clicking the New Agent button in the top right.
+![](/mintlify/images/create_new_agent_03_11.jpg)
+
+* **Agent name**: The name of the agent is used to reference it elsewhere in Console, so you should pick something that's easily identifiable.
+
+* **Agent description (optional)**: This description is displayed for extra context on the agent list screen you just saw.
+
+* **Prompt**: The [prompt](/Resources/Prompts) that the agent will use for the LLM.
+
+* **Message**: The [message](/Resources/Messages) that the agent will deliver to the user at the beginning of a conversation.
+
+* **Timezone**: The agent's home timezone.
+
+* **Speech-to-text**: The speech-to-text provider that the agent will use to interpret user input in voice conversations.
+
+* **Languages (optional)**: If you have configured a [language group](/Resources/LanguageGroups), you can select it here to provide the agent access to the language group's languages and voices.
+
+* **Busy sound**: The sound that will be played to the user in voice conversations after they finish speaking while they're waiting for a response from the agent.
+
+* **Label (optional)**: Labels are used for filtering agents on the agent list screen.
+
+* **Tool configuration**: You can use this section to override default [tool static parameter values](/Resources/Tools) at the agent level.
+
+* **Session variables**: If the agent's prompt or message is referencing a variable, you can provide an agent-level value here. For example, if the message reads `“Hello! My name is {vars.name}! How can I assist you today?”`, and you provide a value for "vars.name" here, when a user talks to this agent, the agent-level value will be substituted into the message. This allows you to use the same prompt or message for multiple agents, but still include agent-specific information.
+
+* **Tool headers**: This section allows you to set HTTP headers and their values for tool API calls made by the agent. Note that headers configured here will be used by the agent for all tools.
