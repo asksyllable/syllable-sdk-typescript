@@ -2,7 +2,7 @@
 title: "Tool configuration"
 ---
 
-If you have configured a static parameter on a tool (see "Static parameters" section of [Tools](/Resources/Tools)), linked the tool to a prompt, and then linked that prompt to one or more agents, you can set override values for the static parameters at the agent level. When the agent calls the tool, for each static parameter, it will use its own override value if one exists; if not, it will use the tool's default value for that static parameter if one exists. If there is no override value or default value for a given static parameter, the tool call will use a `null `value for that parameter.
+If you have configured a static parameter on a tool (see "Static parameters" section of [Tools](/mintlify/Resources/Tools)), linked the tool to a prompt, and then linked that prompt to one or more agents, you can set override values for the static parameters at the agent level. When the agent calls the tool, for each static parameter, it will use its own override value if one exists; if not, it will use the tool's default value for that static parameter if one exists. If there is no override value or default value for a given static parameter, the tool call will use a `null `value for that parameter.
 
 To do this, go to the page for your agent, click Edit, and scroll down to the "Tool configuration" section. Initially, the tool-level default value for the static parameter will be displayed, if one exists. If you override the value, any calls to the tool from this agent will use the agent's override value instead of the default one. (If no override value is set for a given static parameter and the agent is therefore falling back to the tool-level default, note that any changes to the default will also affect this agent.)
 
