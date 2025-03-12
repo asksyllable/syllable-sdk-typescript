@@ -71,13 +71,7 @@
       "group": "Workspaces",
       "pages": [
         "workspaces/Agents",
-        {
-          "group": "Insights",
-          "pages": [
-            "workspaces/SessionList",
-            "workspaces/SessionDetails"
-          ]
-        }
+        "workspaces/Sessions"
       ]
     },
     {
