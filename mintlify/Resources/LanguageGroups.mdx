@@ -3,13 +3,13 @@ title: "Language Groups"
 icon: "language"
 ---
 
-To configure which languages and voices your agents have access to, you can use the Language Groups feature to create a set of languages with their associated voices and DTMF options. Then, you can link the language group to one or more agents, and update the agents' messages to include a menu based on the language group so that the user can change languages if desired at the beginning of the conversation.
+To configure which languages and voices your [agents](/workspaces/Agents) have access to, you can use the Language Groups feature to create a set of languages with their associated voices and DTMF options. Then, you can link the language group to one or more agents, and update the agents' [messages](/Resources/Messages) to include a menu based on the language group so that the user can change languages if desired at the beginning of the conversation.
 
 To create a new language group, click "Languages" on the left navbar.![](/mintlify/images/create_language_group.jpg)
 
 **Language group name:** The name of the language group (must be unique within organization)
 
-**Description (optional):** Description of the language group
+**Description (optional):** Description of the language group.
 
 **Languages:** Here you can select which languages are associated with the language group. For each language, you must enter a DTMF code (a number between 1 and 9, inclusive), select a voice provider, and select a voice from that provider. Note that your voice options are limited to voices that support the selected language. Each language in the group must be unique and have a unique DTMF code.
 
@@ -21,7 +21,7 @@ To give an agent the ability to understand a user's request to speak in differen
 
 2. Navigate to the desired agent. Your language group should now appear as an option in the "Languages" dropdown on the agent edit screen. Select the language group there and save your changes.
 
-3. Navigate to the agent's [message](/buildFirstAgent/CreateMessage). Insert the tag `{{ language.mode }}` into the message (and/or the text of any message rules) where you would like the language menu to be delivered by the agent. Save your changes.
+3. Navigate to the agent's message. Insert the tag `{{ language.mode }}` into the message (and/or the text of any message rules) where you would like the language menu to be delivered by the agent. Save your changes.
 
 Now, when a user converses with your agent, at the beginning of the conversation it will deliver its associated message as normal, but at the point at which you inserted the `{{ language.mode }}`tag, it will instead read off a menu automatically generated from the language group linked to the agent. For example, for the language group with
 
