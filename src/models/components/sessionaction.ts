@@ -28,6 +28,10 @@ export type SessionAction = {
    * Response received from the tool API, if applicable
    */
   toolResult?: string | null | undefined;
+  /**
+   * Error received from the tool API, if applicable
+   */
+  toolError?: string | null | undefined;
 };
 
 /** @internal */
@@ -40,11 +44,13 @@ export const SessionAction$inboundSchema: z.ZodType<
   tool_name: z.nullable(z.string()).optional(),
   tool_request: z.nullable(z.string()).optional(),
   tool_result: z.nullable(z.string()).optional(),
+  tool_error: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "tool_name": "toolName",
     "tool_request": "toolRequest",
     "tool_result": "toolResult",
+    "tool_error": "toolError",
   });
 });
 
@@ -54,6 +60,7 @@ export type SessionAction$Outbound = {
   tool_name?: string | null | undefined;
   tool_request?: string | null | undefined;
   tool_result?: string | null | undefined;
+  tool_error?: string | null | undefined;
 };
 
 /** @internal */
@@ -66,11 +73,13 @@ export const SessionAction$outboundSchema: z.ZodType<
   toolName: z.nullable(z.string()).optional(),
   toolRequest: z.nullable(z.string()).optional(),
   toolResult: z.nullable(z.string()).optional(),
+  toolError: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     toolName: "tool_name",
     toolRequest: "tool_request",
     toolResult: "tool_result",
+    toolError: "tool_error",
   });
 });
 

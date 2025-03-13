@@ -7537,6 +7537,12 @@ components:
             - type: "null"
           title: "Tool Result"
           description: "Response received from the tool API, if applicable"
+        "tool_error":
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Tool Error"
+          description: "Error received from the tool API, if applicable"
       type: "object"
       required:
         - "timestamp"
