@@ -5,6 +5,8 @@ icon: "clipboard-list"
 
 A prompt is a set of written instructions given to an AI [agent](/workspaces/Agents) that details everything the agent does, how it does those things, and what it should and shouldn’t do given certain other conditions. A prompt can be given access to [tools](/Resources/Tools) that enable it to fetch information or execute operations on behalf of the user. Multiple agents can use the same prompt.
 
+### Creating a prompt
+
 To create a prompt, click "Prompts" on the left sidebar. This will take you to a list of the existing prompts for your org. To create a new one, click "New prompt" in the top-right corner.
 
 ![](/mintlify/images/create_new_prompt_03_10.jpg)
@@ -20,6 +22,20 @@ To create a prompt, click "Prompts" on the left sidebar. This will take you to a
 * **Tools**: Here we can provide the prompt access to tools.
 
 * **Content**: This is the actual text of the prompt that will be sent to the LLM at the beginning of the conversation. If you want an agent using the prompt to call the tools you added above, you should explicitly tell it how and when to call them (see below).
+
+### Available models
+
+Here is the list of Syllable-supported LLM models:
+
+| Provider     | Model                 | Version    | API Version |
+| ------------ | --------------------- | ---------- | ----------- |
+| Azure OpenAI | gpt-4o-2024-08-06     | 2024-08-06 | 2024-06-01  |
+| Azure OpenAI | gpt-4o-mini           | 2024-07-18 | 2024-06-01  |
+| Google       | gemini-1.5-pro        | 002        | v1beta      |
+| Google       | gemini-2.0-flash      | 001        | v1beta      |
+| Google       | gemini-2.0-flash-lite | 001        | v1beta      |
+| OpenAI       | gpt-4o                | 2024-08-06 | `null`      |
+| OpenAI       | gpt-4o                | 2024-07-18 | `null`      |
 
 ### Prompt writing tips
 
