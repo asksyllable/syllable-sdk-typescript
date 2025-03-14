@@ -4083,6 +4083,168 @@
         }
       }
     },
+    "/api/v1/session_debug/sid/{channel_manager_service}/{channel_manager_sid}": {
+      "get": {
+        "tags": [
+          "session.debug",
+          "V1"
+        ],
+        "summary": "Get Session Data By Sid",
+        "operationId": "get_session_data_by_sid",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "channel_manager_service",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Channel Manager Service"
+            }
+          },
+          {
+            "name": "channel_manager_sid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Channel Manager Sid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionData"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/session_debug/session_id/{session_id}": {
+      "get": {
+        "tags": [
+          "session.debug",
+          "V1"
+        ],
+        "summary": "Get Session Data By Session Id",
+        "operationId": "get_session_data_by_session_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionData"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/session_debug/tool_result/{session_id}/{tool_call_id}": {
+      "get": {
+        "tags": [
+          "session.debug",
+          "V1"
+        ],
+        "summary": "Get Session Tool Call Result By Id",
+        "operationId": "get_session_tool_call_result_by_id",
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "tool_call_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tool Call Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolResultData"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/tools/": {
       "get": {
         "tags": [
@@ -9847,6 +10009,56 @@
         ],
         "title": "DayOfWeek"
       },
+      "DialogMessage": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "DialogMessage"
+      },
+      "DialogRole": {
+        "type": "string",
+        "enum": [
+          "agent",
+          "user"
+        ],
+        "title": "DialogRole"
+      },
+      "DialogToolCall": {
+        "properties": {
+          "toll_call_id": {
+            "type": "string",
+            "title": "Toll Call Id"
+          },
+          "tool_name": {
+            "type": "string",
+            "title": "Tool Name"
+          },
+          "tool_arguments": {
+            "type": "object",
+            "title": "Tool Arguments"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "toll_call_id",
+          "tool_name",
+          "tool_arguments",
+          "timestamp"
+        ],
+        "title": "DialogToolCall"
+      },
       "DirectoryExtension": {
         "properties": {
           "name": {
@@ -11919,7 +12131,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
+            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
             "default": true
           }
         },
@@ -12290,7 +12502,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
+            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
             "default": true
           }
         },
@@ -12754,6 +12966,42 @@
         "title": "SessionAction",
         "description": "Information about a given tool invocation as part of a session."
       },
+      "SessionData": {
+        "properties": {
+          "session_id": {
+            "type": "integer",
+            "title": "Session Id"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "is_test": {
+            "type": "boolean",
+            "title": "Is Test"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/SessionMessage"
+            },
+            "type": "array",
+            "title": "Messages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "source",
+          "target",
+          "is_test",
+          "messages"
+        ],
+        "title": "SessionData"
+      },
       "SessionLabel": {
         "properties": {
           "session_id": {
@@ -12935,6 +13183,36 @@
           "session_id_list"
         ],
         "title": "SessionLabelProperties"
+      },
+      "SessionMessage": {
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/DialogRole"
+          },
+          "dialog": {
+            "$ref": "#/components/schemas/DialogMessage"
+          },
+          "tool_calls": {
+            "items": {
+              "$ref": "#/components/schemas/DialogToolCall"
+            },
+            "type": "array",
+            "title": "Tool Calls"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "role",
+          "dialog",
+          "tool_calls",
+          "timestamp"
+        ],
+        "title": "SessionMessage"
       },
       "SessionProperties": {
         "type": "string",
@@ -13222,9 +13500,17 @@
             "description": "ID of the agent with which the chat is taking place"
           },
           "org_name": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Org Name",
-            "description": "Name of the organization associated with the agent"
+            "description": "Unused: Name of the organization associated with the agent",
+            "deprecated": true
           },
           "override_timestamp": {
             "anyOf": [
@@ -13250,8 +13536,7 @@
           "service_name",
           "source",
           "test_id",
-          "agent_id",
-          "org_name"
+          "agent_id"
         ],
         "title": "TestMessage",
         "description": "Message sent in a test chat with an agent."
@@ -13877,6 +14162,24 @@
         ],
         "title": "ToolResponse",
         "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
+      },
+      "ToolResultData": {
+        "properties": {
+          "tool_name": {
+            "type": "string",
+            "title": "Tool Name"
+          },
+          "tool_result": {
+            "type": "object",
+            "title": "Tool Result"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_name",
+          "tool_result"
+        ],
+        "title": "ToolResultData"
       },
       "ToolUpdateRequest": {
         "properties": {
