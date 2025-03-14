@@ -5,7 +5,7 @@ title: 'Sessions'
 
 ## Overview
 
-Operations related to sessions. A session is a building block of a           conversation.
+Operations related to sessions. A session is a building block of a           conversation. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Sessions).
 
 ### Available Operations
 
@@ -28,7 +28,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.sessions.list({});
+  const result = await syllableSDK.sessions.list({
+    page: 0,
+    searchFields: [
+      "target",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -52,7 +62,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await sessionsList(syllableSDK, {});
+  const res = await sessionsList(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "target",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   if (!res.ok) {
     throw res.error;

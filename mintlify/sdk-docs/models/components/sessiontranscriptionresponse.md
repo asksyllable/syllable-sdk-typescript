@@ -2,7 +2,8 @@
 title: 'SessionTranscriptionResponse'
 ---
 
-Text transcript of a given session.
+Text transcript of a given session. For more information, see
+[Console docs](https://docs.syllable.ai/workspaces/Sessions).
 
 ## Example Usage
 

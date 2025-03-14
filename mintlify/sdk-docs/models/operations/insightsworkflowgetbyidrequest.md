@@ -8,7 +8,7 @@ title: 'InsightsWorkflowGetByIdRequest'
 import { InsightsWorkflowGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowGetByIdRequest = {
-  workflowId: 331269,
+  workflowId: 435353,
 };
 ```
 

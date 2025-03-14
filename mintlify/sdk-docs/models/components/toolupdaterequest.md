@@ -22,20 +22,10 @@ let value: ToolUpdateRequest = {
       method: "get",
       argumentLocation: "query",
     },
-    defaults: {
-      "key": {
-        transform: {
-          action: "default",
-          when: {
-            key: "key",
-            value: "value",
-          },
-        },
-      },
-    },
+    defaults: "<value>",
   },
-  serviceId: 983000,
-  id: 982248,
+  serviceId: 566312,
+  id: 185816,
 };
 ```
 

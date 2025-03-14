@@ -8,7 +8,7 @@ title: 'LanguageGroupsGetByIdRequest'
 import { LanguageGroupsGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: LanguageGroupsGetByIdRequest = {
-  languageGroupId: 408774,
+  languageGroupId: 533978,
 };
 ```
 

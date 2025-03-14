@@ -5,7 +5,7 @@ title: 'Agents'
 
 ## Overview
 
-Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities.
+Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Agents).
 
 ### Available Operations
 
@@ -30,7 +30,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -54,7 +64,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await agentsList(syllableSDK, {});
+  const res = await agentsList(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   if (!res.ok) {
     throw res.error;

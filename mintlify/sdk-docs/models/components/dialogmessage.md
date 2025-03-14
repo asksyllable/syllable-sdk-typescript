@@ -1,14 +1,14 @@
 ---
-title: 'PromptsGetByIdRequest'
+title: 'DialogMessage'
 ---
 
 ## Example Usage
 
 ```typescript
-import { PromptsGetByIdRequest } from "syllable-sdk/models/operations";
+import { DialogMessage } from "syllable-sdk/models/components";
 
-let value: PromptsGetByIdRequest = {
-  promptId: 193236,
+let value: DialogMessage = {
+  text: "<value>",
 };
 ```
 
@@ -16,4 +16,4 @@ let value: PromptsGetByIdRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `promptId`         | *number*           | TRUE | N/A                |
+| `text`             | *string*           | TRUE | N/A                |
