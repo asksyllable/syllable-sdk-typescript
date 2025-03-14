@@ -7,7 +7,7 @@ title: 'LanguageGroupProperties'
 ```typescript
 import { LanguageGroupProperties } from "syllable-sdk/models/components";
 
-let value: LanguageGroupProperties = "last_updated_by";
+let value: LanguageGroupProperties = "updated_at";
 ```
 
 ## Values

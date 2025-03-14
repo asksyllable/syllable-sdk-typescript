@@ -2,7 +2,10 @@
 title: 'DataSourceDetailResponse'
 ---
 
-Metadata about a data source, along with the text.
+Metadata about a data source, along with the text. A data source is a blob of text that 
+can be made available to an agent's general info tools to provide more context to the agent when
+generating its responses. For more information, see
+[Console docs](https://docs.syllable.ai/Resources/DataSources).
 
 ## Example Usage
 

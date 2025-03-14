@@ -13,8 +13,8 @@ let value: LanguageGroupUpdateRequest = {
   languageConfigs: [
     {
       languageCode: "zh-CN",
-      voiceProvider: "OpenAI",
-      voiceDisplayName: "Onyx",
+      voiceProvider: "ElevenLabs",
+      voiceDisplayName: "Matilda",
       dtmfCode: 1,
     },
   ],

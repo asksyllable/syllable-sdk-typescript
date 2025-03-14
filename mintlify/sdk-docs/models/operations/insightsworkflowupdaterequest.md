@@ -8,13 +8,13 @@ title: 'InsightsWorkflowUpdateRequest'
 import { InsightsWorkflowUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowUpdateRequest = {
-  workflowId: 320326,
+  workflowId: 795457,
   insightWorkflowInput: {
     name: "<value>",
     description:
-      "yak tune judgementally young vary down foolishly jaggedly orderly sans",
+      "availability sorrowful towards yet dredger deadly siege regulate",
     insightToolIds: [
-      287153,
+      767210,
     ],
     conditions: {},
     status: "<value>",

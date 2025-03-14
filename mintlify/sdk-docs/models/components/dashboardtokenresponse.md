@@ -13,9 +13,9 @@ let value: DashboardTokenResponse = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  displayName: "Kyleigh36",
-  supersetUrl: "https://immense-valuable.name",
-  rank: 118917,
+  displayName: "Lavina69",
+  supersetUrl: "https://smart-in-joke.name/",
+  rank: 955047,
   label: "<value>",
 };
 ```

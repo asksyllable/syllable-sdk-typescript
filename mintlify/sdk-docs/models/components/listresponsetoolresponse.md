@@ -21,8 +21,8 @@ let value: ListResponseToolResponse = {
         },
         endpoint: {
           url: "https://api.example.com",
-          method: "post",
-          argumentLocation: "form",
+          method: "get",
+          argumentLocation: "path",
         },
         defaults: {
           "key": {
@@ -36,8 +36,8 @@ let value: ListResponseToolResponse = {
           },
         },
       },
-      serviceId: 815225,
-      id: 98610,
+      serviceId: 169819,
+      id: 148379,
       promptsInfo: [
         {
           id: 1,
@@ -50,12 +50,12 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2025-05-27T23:28:25.141Z"),
+      lastUpdated: new Date("2025-04-27T11:48:28.988Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 41179,
-  pageSize: 816421,
+  page: 567693,
+  pageSize: 983000,
 };
 ```
 
