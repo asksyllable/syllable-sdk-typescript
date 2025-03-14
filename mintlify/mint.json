@@ -27,8 +27,7 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference",
-      "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples"
+      "url": "api-reference"
     },
     {
       "name": "TypeScript SDK Reference",
@@ -39,6 +38,15 @@
     "name": "Console",
     "url": "https://beta.syllable.cloud"
   },
+  "anchors": [
+    {
+      "name": "API Reference",
+      "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
+      "url": "api-reference",
+      "icon": "square-terminal"
+    }
+  ],
+  "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
   "navigation": [
     {
       "group": "Introduction to Syllable",
