@@ -7673,7 +7673,7 @@
           "last_updated_by"
         ],
         "title": "AgentResponse",
-        "description": "When a user interacts with the Syllable system, they do so by communicating with an agent.\nAn agent is linked to a prompt, a custom message, and one or more channel targets to define its\nbehavior and capabilities."
+        "description": "When a user interacts with the Syllable system, they do so by communicating with an agent.\nAn agent is linked to a prompt, a custom message, and one or more channel targets to define its\nbehavior and capabilities. For more information, see\n[Console docs](https://docs.syllable.ai/workspaces/Agents)."
       },
       "AgentSttProvider": {
         "type": "string",
@@ -8436,7 +8436,7 @@
           "last_updated_by"
         ],
         "title": "ChannelTargetResponse",
-        "description": "A channel target links a channel to an agent, allowing users to communicate with the agent\nthrough that channel."
+        "description": "A channel target links a channel to an agent, allowing users to communicate with the agent\nthrough that channel. For more information, see\n[Console docs](https://docs.syllable.ai/Resources/Channels)."
       },
       "ChannelTargetUpdateRequest": {
         "properties": {
@@ -9120,7 +9120,7 @@
           "last_updated_by"
         ],
         "title": "CustomMessageResponse",
-        "description": "A custom message is a pre-configured message delivered by an agent as a greeting at the\nbeginning of a conversation. Multiple agents can use the same custom mesasage. A custom message\nhas one or more rules defined, which allow for different messages to be dynamically selected and\ndelivered at runtime based on the current time and either date or day of the week."
+        "description": "A custom message is a pre-configured message delivered by an agent as a greeting at the\nbeginning of a conversation. Multiple agents can use the same custom mesasage. A custom message\nhas one or more rules defined, which allow for different messages to be dynamically selected and\ndelivered at runtime based on the current time and either date or day of the week. For more \ninformation, see [Console docs](https://docs.syllable.ai/Resources/Messages)."
       },
       "CustomMessageRule": {
         "properties": {
@@ -9601,7 +9601,7 @@
           "text"
         ],
         "title": "DataSourceDetailResponse",
-        "description": "Metadata about a data source, along with the text."
+        "description": "Metadata about a data source, along with the text. A data source is a blob of text that \ncan be made available to an agent's general info tools to provide more context to the agent when\ngenerating its responses. For more information, see\n[Console docs](https://docs.syllable.ai/Resources/DataSources)."
       },
       "DataSourceMetadataResponse": {
         "properties": {
@@ -9719,7 +9719,7 @@
           "last_updated_by"
         ],
         "title": "DataSourceMetadataResponse",
-        "description": "Metadata about a data source, not including the text."
+        "description": "Metadata about a data source, not including the text. A data source is a blob of text that \ncan be made available to an agent's general info tools to provide more context to the agent when\ngenerating its responses. For more information, see\n[Console docs](https://docs.syllable.ai/Resources/DataSources)."
       },
       "DataSourceProperties": {
         "type": "string",
@@ -10754,7 +10754,8 @@
           "updated_at",
           "last_updated_by"
         ],
-        "title": "LanguageGroupResponse"
+        "title": "LanguageGroupResponse",
+        "description": "A language group is a collection of language, voice, and DTMF configuration that can be \nlinked to an agent to define the languages and voices it supports. For more information, see \n[Console docs](https://docs.syllable.ai/Resources/LanguageGroups)."
       },
       "LanguageGroupUpdateRequest": {
         "properties": {
@@ -11919,7 +11920,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
+            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
             "default": true
           }
         },
@@ -12219,7 +12220,7 @@
           "last_updated"
         ],
         "title": "PromptResponse",
-        "description": "A prompt defines the behavior of an agent by delivering instructions to the LLM about how the\nagent should behave. A prompt can be linked to one or more agents. A prompt can also be linked to\ntools to allow an agent using it to use those tools."
+        "description": "A prompt defines the behavior of an agent by delivering instructions to the LLM about how the\nagent should behave. A prompt can be linked to one or more agents. A prompt can also be linked to\ntools to allow an agent using it to use those tools. For more information, see\n[Console docs](https://docs.syllable.ai/Resources/Prompts)."
       },
       "PromptUpdateRequest": {
         "properties": {
@@ -12290,7 +12291,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
+            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
             "default": true
           }
         },
@@ -13115,7 +13116,7 @@
           "actions"
         ],
         "title": "SessionTranscriptionResponse",
-        "description": "Text transcript of a given session."
+        "description": "Text transcript of a given session. For more information, see\n[Console docs](https://docs.syllable.ai/workspaces/Sessions)."
       },
       "StaticToolParameter": {
         "properties": {
@@ -13553,7 +13554,7 @@
           "fields"
         ],
         "title": "ToolDetailResponse",
-        "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
+        "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it.\nFor more information, see [Console docs](https://docs.syllable.ai/Resources/Tools)."
       },
       "ToolFunction": {
         "properties": {
@@ -13876,7 +13877,7 @@
           "last_updated_by"
         ],
         "title": "ToolResponse",
-        "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it."
+        "description": "A tool is a function that an agent can call to perform actions like accessing databases,\nmaking API calls, or processing data. For an agent to have access to a tool, the prompt\nassociated with that agent should be linked to the tool and include instructions to use it.\nFor more information, see [Console docs](https://docs.syllable.ai/Resources/Tools)."
       },
       "ToolUpdateRequest": {
         "properties": {
@@ -13979,7 +13980,7 @@
   "tags": [
     {
       "name": "agents",
-      "description": "Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities."
+      "description": "Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Agents)."
     },
     {
       "name": "agents.test",
@@ -13991,7 +13992,7 @@
     },
     {
       "name": "channels.targets",
-      "description": "Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel."
+      "description": "Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel. For more information, see           [Console docs](https://docs.syllable.ai/Resources/Channels)."
     },
     {
       "name": "conversations",
@@ -13999,7 +14000,7 @@
     },
     {
       "name": "custom_messages",
-      "description": "Operations related to custom message configuration.           A custom message is a pre-configured message delivered by an agent as a greeting at the           beginning of a conversation. Multiple agents can use the same custom mesasage. A custom           message has one or more rules defined, which allow for different messages to be           dynamically selected and delivered at runtime based on the current time and either           date or day of the week."
+      "description": "Operations related to custom message configuration.           A custom message is a pre-configured message delivered by an agent as a greeting at the           beginning of a conversation. Multiple agents can use the same custom mesasage. A custom           message has one or more rules defined, which allow for different messages to be           dynamically selected and delivered at runtime based on the current time and either           date or day of the week. For more information, see           [Console docs](https://docs.syllable.ai/Resources/Messages)."
     },
     {
       "name": "dashboards",
@@ -14007,7 +14008,7 @@
     },
     {
       "name": "data_sources",
-      "description": "Operations related to data sources. A data source is a blob of text that           can be made available to an agent's general info tools to provide more context to the           agent when generating its responses."
+      "description": "Operations related to data sources. A data source is a blob of text that           can be made available to an agent's general info tools to provide more context to the           agent when generating its responses. For more information, see           [Console docs](https://docs.syllable.ai/Resources/DataSources)."
     },
     {
       "name": "directory",
@@ -14027,7 +14028,7 @@
     },
     {
       "name": "language_groups",
-      "description": "Operations related to language groups. A language group is a           collection of language, voice, and DTMF configuration that can be linked to an agent to           define the languages and voices it supports."
+      "description": "Operations related to language groups. A language group is a           collection of language, voice, and DTMF configuration that can be linked to an agent to           define the languages and voices it supports. For more information, see           [Console docs](https://docs.syllable.ai/Resources/LanguageGroups)."
     },
     {
       "name": "outbound.campaigns",
@@ -14039,7 +14040,7 @@
     },
     {
       "name": "prompts",
-      "description": "Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them."
+      "description": "Operations related to prompts. A prompt defines the behavior of an           agent by delivering instructions to the LLM about how the agent should behave.           A prompt can be linked to one or more agents. A prompt can also be linked to tools to           allow an agent using the prompt to use them. For more information, see           [Console docs](https://docs.syllable.ai/Resources/Prompts)."
     },
     {
       "name": "services",
@@ -14047,15 +14048,15 @@
     },
     {
       "name": "sessions",
-      "description": "Operations related to sessions. A session is a building block of a           conversation."
+      "description": "Operations related to sessions. A session is a building block of a           conversation. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Sessions)."
     },
     {
       "name": "session_labels",
-      "description": "Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details."
+      "description": "Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Sessions)."
     },
     {
       "name": "tools",
-      "description": "Operations related to tool configuration. A tool is a function that an           agent can call to perform actions like accessing databases, making API calls, or           processing data. For an agent to have access to a tool, the prompt associated with that           agent should be linked to the tool and include instructions to use it."
+      "description": "Operations related to tool configuration. A tool is a function that an           agent can call to perform actions like accessing databases, making API calls, or           processing data. For an agent to have access to a tool, the prompt associated with that           agent should be linked to the tool and include instructions to use it. For more           information, see [Console docs](https://docs.syllable.ai/Resources/Tools)."
     }
   ],
   "x-speakeasy-name-override": [
