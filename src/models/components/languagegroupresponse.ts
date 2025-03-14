@@ -20,6 +20,13 @@ import {
   LanguageGroupAgentInfo$outboundSchema,
 } from "./languagegroupagentinfo.js";
 
+/**
+ * A language group is a collection of language, voice, and DTMF configuration that can be
+ *
+ * @remarks
+ * linked to an agent to define the languages and voices it supports. For more information, see
+ * [Console docs](https://docs.syllable.ai/Resources/LanguageGroups).
+ */
 export type LanguageGroupResponse = {
   /**
    * The name of the language group.

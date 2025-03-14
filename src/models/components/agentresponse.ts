@@ -49,7 +49,8 @@ import {
  *
  * @remarks
  * An agent is linked to a prompt, a custom message, and one or more channel targets to define its
- * behavior and capabilities.
+ * behavior and capabilities. For more information, see
+ * [Console docs](https://docs.syllable.ai/workspaces/Agents).
  */
 export type AgentResponse = {
   /**

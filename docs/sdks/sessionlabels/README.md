@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details.
+Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Sessions).
 
 ### Available Operations
 

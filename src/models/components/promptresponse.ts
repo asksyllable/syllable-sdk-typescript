@@ -25,7 +25,8 @@ import {
  *
  * @remarks
  * agent should behave. A prompt can be linked to one or more agents. A prompt can also be linked to
- * tools to allow an agent using it to use those tools.
+ * tools to allow an agent using it to use those tools. For more information, see
+ * [Console docs](https://docs.syllable.ai/Resources/Prompts).
  */
 export type PromptResponse = {
   /**

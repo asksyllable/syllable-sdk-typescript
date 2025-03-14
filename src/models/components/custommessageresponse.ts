@@ -20,7 +20,8 @@ import {
  * @remarks
  * beginning of a conversation. Multiple agents can use the same custom mesasage. A custom message
  * has one or more rules defined, which allow for different messages to be dynamically selected and
- * delivered at runtime based on the current time and either date or day of the week.
+ * delivered at runtime based on the current time and either date or day of the week. For more
+ * information, see [Console docs](https://docs.syllable.ai/Resources/Messages).
  */
 export type CustomMessageResponse = {
   /**

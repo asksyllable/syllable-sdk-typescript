@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to sessions. A session is a building block of a           conversation.
+Operations related to sessions. A session is a building block of a           conversation. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Sessions).
 
 ### Available Operations
 

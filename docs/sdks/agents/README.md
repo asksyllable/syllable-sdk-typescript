@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities.
+Operations related to agent configuration. When a user interacts with the           Syllable system, they do so by communicating with an agent.           An agent is linked to a prompt, a custom message, and one or more channel targets to           define its behavior and capabilities. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Agents).
 
 ### Available Operations
 
