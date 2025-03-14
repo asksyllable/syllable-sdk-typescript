@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to language groups. A language group is a           collection of language, voice, and DTMF configuration that can be linked to an agent to           define the languages and voices it supports.
+Operations related to language groups. A language group is a           collection of language, voice, and DTMF configuration that can be linked to an agent to           define the languages and voices it supports. For more information, see           [Console docs](https://docs.syllable.ai/Resources/LanguageGroups).
 
 ### Available Operations
 
@@ -27,7 +27,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.languageGroups.list({});
+  const result = await syllableSDK.languageGroups.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -51,7 +61,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await languageGroupsList(syllableSDK, {});
+  const res = await languageGroupsList(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   if (!res.ok) {
     throw res.error;

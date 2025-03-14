@@ -3,6 +3,7 @@
 A tool is a function that an agent can call to perform actions like accessing databases,
 making API calls, or processing data. For an agent to have access to a tool, the prompt
 associated with that agent should be linked to the tool and include instructions to use it.
+For more information, see [Console docs](https://docs.syllable.ai/Resources/Tools).
 
 ## Example Usage
 
@@ -21,23 +22,13 @@ let value: ToolDetailResponse = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "post",
+      method: "get",
       argumentLocation: "body",
     },
-    defaults: {
-      "key": {
-        transform: {
-          action: "default",
-          when: {
-            key: "key",
-            value: "value",
-          },
-        },
-      },
-    },
+    defaults: "<value>",
   },
-  serviceId: 244569,
-  id: 458212,
+  serviceId: 4654,
+  id: 424854,
   promptsInfo: [
     {
       id: 1,
@@ -50,7 +41,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2025-04-10T02:49:19.360Z"),
+  lastUpdated: new Date("2024-12-28T23:02:26.348Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",

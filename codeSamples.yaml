@@ -16,7 +16,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.agents.list({});
+              const result = await syllableSDK.agents.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -113,7 +123,6 @@ actions:
                 source: "<value>",
                 testId: "<id>",
                 agentId: "<id>",
-                orgName: "<value>",
               });
 
               // Handle the result
@@ -199,7 +208,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.list({});
+              const result = await syllableSDK.channels.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -219,7 +238,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.targets.availableTargets({});
+              const result = await syllableSDK.channels.targets.availableTargets({
+                page: 0,
+                searchFields: [
+                  "channel_name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -239,7 +268,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.targets.list({});
+              const result = await syllableSDK.channels.targets.list({
+                page: 0,
+                searchFields: [
+                  "fallback_target",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -363,7 +402,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.conversations.list({});
+              const result = await syllableSDK.conversations.list({
+                page: 0,
+                searchFields: [
+                  "llm_model",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -383,7 +432,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.customMessages.list({});
+              const result = await syllableSDK.customMessages.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -615,7 +674,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.dashboards.postListDashboard({});
+              const result = await syllableSDK.dashboards.postListDashboard({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -632,7 +701,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.v1.postListDashboard({});
+              const result = await syllableSDK.v1.postListDashboard({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -652,7 +731,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.dataSources.list({});
+              const result = await syllableSDK.dataSources.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -777,7 +866,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.events.list({});
+              const result = await syllableSDK.events.list({
+                page: 0,
+                searchFields: [
+                  "user_id",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -817,7 +916,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.insights.tools.list({});
+              const result = await syllableSDK.insights.tools.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -914,7 +1023,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.insights.workflows.list({});
+              const result = await syllableSDK.insights.workflows.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -1039,7 +1158,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.languageGroups.list({});
+              const result = await syllableSDK.languageGroups.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -1182,7 +1311,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.prompts.list({});
+              const result = await syllableSDK.prompts.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -1324,7 +1463,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.services.list({});
+              const result = await syllableSDK.services.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -1423,6 +1572,74 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/session_debug/session_id/{session_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_session_data_by_session_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionDebug.getSessionDataBySessionId({
+                sessionId: 744354,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/session_debug/sid/{channel_manager_service}/{channel_manager_sid}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_session_data_by_sid
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionDebug.getSessionDataBySid({
+                channelManagerService: "<value>",
+                channelManagerSid: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/session_debug/tool_result/{session_id}/{tool_call_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_session_tool_call_result_by_id
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessionDebug.getSessionToolCallResultById({
+                sessionId: 187795,
+                toolCallId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/session_labels/"]["get"]
     update:
       x-codeSamples:
@@ -1436,7 +1653,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.sessionLabels.list({});
+              const result = await syllableSDK.sessionLabels.list({
+                page: 0,
+                searchFields: [
+                  "issue_categories",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -1506,7 +1733,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.sessions.list({});
+              const result = await syllableSDK.sessions.list({
+                page: 0,
+                searchFields: [
+                  "target",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -1658,7 +1895,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.tools.list({});
+              const result = await syllableSDK.tools.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);

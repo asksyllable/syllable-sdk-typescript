@@ -23,7 +23,8 @@ import {
  * A channel target links a channel to an agent, allowing users to communicate with the agent
  *
  * @remarks
- * through that channel.
+ * through that channel. For more information, see
+ * [Console docs](https://docs.syllable.ai/Resources/Channels).
  */
 export type ChannelTargetResponse = {
   /**

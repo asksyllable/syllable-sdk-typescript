@@ -14,6 +14,7 @@ import { Insights } from "./insights.js";
 import { LanguageGroups } from "./languagegroups.js";
 import { Prompts } from "./prompts.js";
 import { Services } from "./services.js";
+import { SessionDebug } from "./sessiondebug.js";
 import { SessionLabels } from "./sessionlabels.js";
 import { Sessions } from "./sessions.js";
 import { Tools } from "./tools.js";
@@ -73,6 +74,11 @@ export class SyllableSDK extends ClientSDK {
   private _sessions?: Sessions;
   get sessions(): Sessions {
     return (this._sessions ??= new Sessions(this._options));
+  }
+
+  private _sessionDebug?: SessionDebug;
+  get sessionDebug(): SessionDebug {
+    return (this._sessionDebug ??= new SessionDebug(this._options));
   }
 
   private _tools?: Tools;

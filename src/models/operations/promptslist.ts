@@ -10,14 +10,41 @@ import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PromptsListRequest = {
+  /**
+   * The page number from which to start (0-indexed)
+   */
   page?: number | null | undefined;
+  /**
+   * The maximum number of items to return
+   */
   limit?: number | undefined;
+  /**
+   * String names of fields to search. Correspond by index to search field values
+   */
   searchFields?: Array<components.PromptProperties> | undefined;
+  /**
+   * Values of fields to search. Correspond by index to search fields. Unless field name contains "list", an individual search field value cannot be a list
+   */
   searchFieldValues?: Array<string> | undefined;
+  /**
+   * The field whose value should be used to order the results
+   */
   orderBy?: components.PromptProperties | null | undefined;
+  /**
+   * The direction in which to order the results
+   */
   orderByDirection?: components.OrderByDirection | null | undefined;
+  /**
+   * The fields to include in the response
+   */
   fields?: Array<components.PromptProperties> | null | undefined;
+  /**
+   * The start datetime for filtering results
+   */
   startDatetime?: string | null | undefined;
+  /**
+   * The end datetime for filtering results
+   */
   endDatetime?: string | null | undefined;
 };
 

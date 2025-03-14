@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details.
+Operations related to labeling sessions with evaluations of quality and           descriptions of issues the user encountered or other details. For more information, see           [Console docs](https://docs.syllable.ai/workspaces/Sessions).
 
 ### Available Operations
 
@@ -191,7 +191,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.sessionLabels.list({});
+  const result = await syllableSDK.sessionLabels.list({
+    page: 0,
+    searchFields: [
+      "issue_categories",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -215,7 +225,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await sessionLabelsList(syllableSDK, {});
+  const res = await sessionLabelsList(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "issue_categories",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   if (!res.ok) {
     throw res.error;
