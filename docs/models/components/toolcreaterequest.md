@@ -17,8 +17,8 @@ let value: ToolCreateRequest = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "get",
-      argumentLocation: "path",
+      method: "post",
+      argumentLocation: "body",
     },
     defaults: {
       "key": {
@@ -32,7 +32,7 @@ let value: ToolCreateRequest = {
       },
     },
   },
-  serviceId: 169819,
+  serviceId: 244569,
 };
 ```
 

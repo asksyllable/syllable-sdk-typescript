@@ -108,7 +108,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -228,6 +238,12 @@ run();
 * [getById](docs/sdks/services/README.md#getbyid) - Get Service By Id
 * [delete](docs/sdks/services/README.md#delete) - Delete Service
 
+### [sessionDebug](docs/sdks/sessiondebug/README.md)
+
+* [getSessionDataBySid](docs/sdks/sessiondebug/README.md#getsessiondatabysid) - Get Session Data By Sid
+* [getSessionDataBySessionId](docs/sdks/sessiondebug/README.md#getsessiondatabysessionid) - Get Session Data By Session Id
+* [getSessionToolCallResultById](docs/sdks/sessiondebug/README.md#getsessiontoolcallresultbyid) - Get Session Tool Call Result By Id
+
 ### [sessionLabels](docs/sdks/sessionlabels/README.md)
 
 * [getById](docs/sdks/sessionlabels/README.md#getbyid) - Get Label By Id
@@ -343,6 +359,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`servicesGetById`](docs/sdks/services/README.md#getbyid) - Get Service By Id
 - [`servicesList`](docs/sdks/services/README.md#list) - Service List
 - [`servicesUpdate`](docs/sdks/services/README.md#update) - Update Service
+- [`sessionDebugGetSessionDataBySessionId`](docs/sdks/sessiondebug/README.md#getsessiondatabysessionid) - Get Session Data By Session Id
+- [`sessionDebugGetSessionDataBySid`](docs/sdks/sessiondebug/README.md#getsessiondatabysid) - Get Session Data By Sid
+- [`sessionDebugGetSessionToolCallResultById`](docs/sdks/sessiondebug/README.md#getsessiontoolcallresultbyid) - Get Session Tool Call Result By Id
 - [`sessionLabelsCreate`](docs/sdks/sessionlabels/README.md#create) - Create Label
 - [`sessionLabelsGetById`](docs/sdks/sessionlabels/README.md#getbyid) - Get Label By Id
 - [`sessionLabelsList`](docs/sdks/sessionlabels/README.md#list) - Session Labels List
@@ -386,7 +405,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({}, {
+  const result = await syllableSDK.agents.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  }, {
     retries: {
       strategy: "backoff",
       backoff: {
@@ -426,7 +455,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -463,7 +502,17 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   let result;
   try {
-    result = await syllableSDK.agents.list({});
+    result = await syllableSDK.agents.list({
+      page: 0,
+      searchFields: [
+        "name",
+      ],
+      searchFieldValues: [
+        "Some Object Name",
+      ],
+      startDatetime: "2023-01-01T00:00:00Z",
+      endDatetime: "2024-01-01T00:00:00Z",
+    });
 
     // Handle the result
     console.log(result);
@@ -522,7 +571,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -602,7 +661,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);

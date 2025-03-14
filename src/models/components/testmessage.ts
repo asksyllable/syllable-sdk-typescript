@@ -33,9 +33,11 @@ export type TestMessage = {
    */
   agentId: string;
   /**
-   * Name of the organization associated with the agent
+   * Unused: Name of the organization associated with the agent
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  orgName: string;
+  orgName?: string | null | undefined;
   /**
    * Override for the timestamp of the message
    */
@@ -57,7 +59,7 @@ export const TestMessage$inboundSchema: z.ZodType<
   text: z.nullable(z.string()).optional(),
   test_id: z.string(),
   agent_id: z.string(),
-  org_name: z.string(),
+  org_name: z.nullable(z.string()).optional(),
   override_timestamp: z.nullable(z.string()).optional(),
   session_start: z.boolean().default(false),
 }).transform((v) => {
@@ -78,7 +80,7 @@ export type TestMessage$Outbound = {
   text?: string | null | undefined;
   test_id: string;
   agent_id: string;
-  org_name: string;
+  org_name?: string | null | undefined;
   override_timestamp?: string | null | undefined;
   session_start: boolean;
 };
@@ -94,7 +96,7 @@ export const TestMessage$outboundSchema: z.ZodType<
   text: z.nullable(z.string()).optional(),
   testId: z.string(),
   agentId: z.string(),
-  orgName: z.string(),
+  orgName: z.nullable(z.string()).optional(),
   overrideTimestamp: z.nullable(z.string()).optional(),
   sessionStart: z.boolean().default(false),
 }).transform((v) => {
