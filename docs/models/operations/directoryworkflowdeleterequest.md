@@ -6,7 +6,7 @@
 import { DirectoryWorkflowDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: DirectoryWorkflowDeleteRequest = {
-  workflowId: 548256,
+  workflowId: 287153,
 };
 ```
 

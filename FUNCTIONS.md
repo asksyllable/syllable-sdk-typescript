@@ -30,7 +30,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await agentsList(syllableSDK, {});
+  const res = await agentsList(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   switch (true) {
     case res.ok:

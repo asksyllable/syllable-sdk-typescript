@@ -7,7 +7,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.agents.list({});
+  const result = await syllableSDK.agents.list({
+    page: 0,
+    searchFields: [
+      "name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);

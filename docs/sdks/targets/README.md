@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel.
+Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel. For more information, see           [Console docs](https://docs.syllable.ai/Resources/Channels).
 
 ### Available Operations
 
@@ -27,7 +27,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.channels.targets.availableTargets({});
+  const result = await syllableSDK.channels.targets.availableTargets({
+    page: 0,
+    searchFields: [
+      "channel_name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -51,7 +61,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await channelsTargetsAvailableTargets(syllableSDK, {});
+  const res = await channelsTargetsAvailableTargets(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "channel_name",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -100,7 +120,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.channels.targets.list({});
+  const result = await syllableSDK.channels.targets.list({
+    page: 0,
+    searchFields: [
+      "fallback_target",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -124,7 +154,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await channelsTargetsList(syllableSDK, {});
+  const res = await channelsTargetsList(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "fallback_target",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   if (!res.ok) {
     throw res.error;

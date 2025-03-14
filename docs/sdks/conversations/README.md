@@ -23,7 +23,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.conversations.list({});
+  const result = await syllableSDK.conversations.list({
+    page: 0,
+    searchFields: [
+      "llm_model",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   // Handle the result
   console.log(result);
@@ -47,7 +57,17 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await conversationsList(syllableSDK, {});
+  const res = await conversationsList(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "llm_model",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
 
   if (!res.ok) {
     throw res.error;
