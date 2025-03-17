@@ -13,17 +13,21 @@ const syllableSDK = new SyllableSDK({
 });
 
 const prompt = await syllableSDK.prompts.create({
-  // The name of the prompt is used to reference it elsewhere in the system, so you should pick something that's easily identifiable.
+  // The name of the prompt is used to reference it elsewhere in the system, so
+  // you should pick something that's easily identifiable.
   name: 'Weather Prompt',
-  // The description is displayed for extra context on the prompt list screen in the Syllable Console.
+  // The description is displayed for extra context on the prompt list screen in
+  // the Syllable Console.
   description: 'Prompt for a weather agent',
   // The type of the prompt. Can just be hardcoded to `prompt_v1` for now.
   type: 'prompt_v1',
-  // The actual text of the prompt that will be sent to the LLM at the beginning of the conversation.
+  // The actual text of the prompt that will be sent to the LLM at the beginning
+  // of the conversation.
   context: `You are a weather agent. You can tell the user information about the current weather in a given city, and also answer general weather-related questions.
 
 When asked about any other topic, don't answer and instead remind the caller that you are a weather agent. Keep the tone professional, friendly, and clear. You are chatting with a user, so always respond naturally and conversationally. Do not use nonverbal cues, describe system actions, or add any other information.`,
-  // Names of the tools to which the prompt has access. We'll fill these in later.
+  // Names of the tools to which the prompt has access. We'll fill these in
+  // later.
   tools: [],
   // For a list of all supported LLMs, see "Console prompts docs" below.
   llmConfig: {
@@ -32,7 +36,8 @@ When asked about any other topic, don't answer and instead remind the caller tha
     version: '2024-08-06',
     apiVersion: null
   },
-  // Whether to give the prompt access to default tools. You can leave this false for now.
+  // Whether to give the prompt access to default tools. You can leave this
+  // false for this tutorial.
   includeDefaultTools: false
 });
 console.log(prompt);
