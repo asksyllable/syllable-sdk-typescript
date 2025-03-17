@@ -85,7 +85,18 @@
       "pages": [
         "sdk-docs/Overview",
         "sdk-docs/functions",
-        "sdk-docs/runtimes"
+        "sdk-docs/runtimes",
+        {
+          "group": "Build your first agent",
+          "pages": [
+            "sdk-docs/ts-sdk-build-first-agent/StartHere-ts",
+            "sdk-docs/ts-sdk-build-first-agent/CreatePrompt-ts",
+            "sdk-docs/ts-sdk-build-first-agent/CreateDataSource-ts",
+            "sdk-docs/ts-sdk-build-first-agent/CreateTools-ts",
+            "sdk-docs/ts-sdk-build-first-agent/CreateMessage-ts",
+            "sdk-docs/ts-sdk-build-first-agent/CreateAgent-ts"
+          ]
+        }
       ]
     },
     {
