@@ -12,15 +12,17 @@ const syllableSDK = new SyllableSDK({
 });
 
 const dataSource = await syllableSDK.dataSources.create({
-  // The name of the data source is used to reference it elsewhere in the system, including in tool
-  // definitions, so you should pick something that's easily identifiable.
-  // It can't contain any whitespace.
+  // The name of the data source is used to reference it elsewhere in the
+  // system, including in tool definitions, so you should pick something that's
+  // easily identifiable. It can't contain any whitespace.
   name: 'weather_facts',
-  // The description is displayed for extra context on the data source list screen in the Syllable Console.
+  // The description is displayed for extra context on the data source list
+  // screen in the Syllable Console.
   description: 'General information about weather',
-  // The actual text content of the data source that the agent will be able to read.
-  // (Note the sentence at the beginning - it can significantly improve search performance if you
-  // include a statement like this providing context to the LLM for what the data represents.)
+  // The actual text content of the data source that the agent will be able to
+  // read. (Note the sentence at the beginning - it can significantly improve
+  // search performance if you include a statement like this providing context
+  // to the LLM for what the data represents.)
   text: `The following are some general facts about weather.
 1. What is Weather?
 Weather refers to the atmospheric conditions at a specific place and time. It includes temperature, humidity, precipitation, wind, and visibility. Unlike climate, which describes long-term patterns, weather can change minute-to-minute.
