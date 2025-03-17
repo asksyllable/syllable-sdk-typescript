@@ -12,12 +12,16 @@ const syllableSDK = new SyllableSDK({
 });
 
 const message = await syllableSDK.customMessages.create({
-  // The name of the message is used to reference it elsewhere in the system, so you should pick something that’s easily identifiable.
+  // The name of the message is used to reference it elsewhere in the system, so
+  // you should pick something that’s easily identifiable.
   name: 'Weather greeting',
-  // Default text that will be delivered at the beginning of a conversation with an agent using this message.
+  // Default text that will be delivered at the beginning of a conversation with
+  // an agent using this message.
   text: 'Hello! I\’m a weather agent. I can tell you the current weather in any city, or answer general questions about weather. What would you like to know?',
-  // You can also set up a message with time-based rules, so that depending on the timestamp at which the conversation begins, an agent can deliver a different message.
-  // We'll skip this for the tutorial, but if you want to know more, check out the docs linked below.
+  // You can also set up a message with time-based rules, so that depending on
+  // the timestamp at which the conversation begins, an agent can deliver a
+  // different message. We'll skip this for the tutorial, but if you want to
+  // know more, check out the docs linked below.
   rules: []
 });
 

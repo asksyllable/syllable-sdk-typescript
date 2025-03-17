@@ -33,9 +33,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 const generalWeatherInfoTool = await syllableSDK.tools.create({
-  // The name of the tool is used to reference it elsewhere in the system, including in prompts and
-  // agents, so you should pick something that's easily identifiable.
-  // It shouldn't contain any whitespace.
+  // The name of the tool is used to reference it elsewhere in the system,
+  // including in prompts and agents, so you should pick something that's easily
+  // identifiable. It shouldn't contain any whitespace.
   name: 'general_weather_information',
   // Enter your service ID here so the tool is added to the service.
   serviceId: yourServiceIdHere,
@@ -151,12 +151,14 @@ const syllableSDK = new SyllableSDK({
 });
 
 const updatedPrompt = await syllableSDK.prompts.update({
-  // If you lost the ID of the prompt you created earlier, you can use the prompts.list function to find it.
+  // If you lost the ID of the prompt you created earlier, you can use the
+  // prompts.list function to find it.
   id: yourPromptIdHere,
   name: 'Weather Prompt',
   description: 'Prompt for a weather agent',
   type: 'prompt_v1',
-  // Update the prompt text to include instructions for when to call the two new tools...
+  // Update the prompt text to include instructions for when to call the two new
+  // tools...
   context: `You are a weather agent. You can tell the user information about the current weather in a given city, and also answer general weather-related questions.
 
 When asked about information for a city, call "get_weather" with the city information (longitude and latitude). You will reply with the current temperature and relative humidity level based on the response. Using the information on the response, also tell the caller the weather conditions in one simple sentence, like "sunny," or "rainy." If you can't determine the city coordinates with the information given, ask for more information.
@@ -164,7 +166,7 @@ When asked about information for a city, call "get_weather" with the city inform
 When asked a general weather-related question, call "general_weather_information" with the question that the user asked you.
 
 When asked about any other topic, don't answer and instead remind the caller that you are a weather agent. Keep the tone professional, friendly, and clear. You are chatting with a user, so always respond naturally and conversationally. Do not use non-verbal cues, describe system actions, or add any other information.`,
-  // ...and add the tools to the prompt's tools list
+  // ...and add the tools to the prompt's tools list.
   tools: [
     'general_weather_information',
     'get_weather'
