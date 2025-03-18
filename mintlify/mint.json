@@ -99,7 +99,12 @@
             "sdk-docs/ts-sdk-build-first-agent/CreateDataSource-ts",
             "sdk-docs/ts-sdk-build-first-agent/CreateTools-ts",
             "sdk-docs/ts-sdk-build-first-agent/CreateMessage-ts",
-            "sdk-docs/ts-sdk-build-first-agent/CreateAgent-ts",
+            "sdk-docs/ts-sdk-build-first-agent/CreateAgent-ts"
+          ]
+        },
+        {
+          "group": "Build your first agent",
+          "pages": [
             "python-sdk-docs/py-sdk-build-first-agent/StartHere-py",
             "python-sdk-docs/py-sdk-build-first-agent/CreatePrompt-py",
             "python-sdk-docs/py-sdk-build-first-agent/CreateDataSource-py",
