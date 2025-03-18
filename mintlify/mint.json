@@ -347,7 +347,12 @@
             "sdk-docs/models/components/ttsprovider",
             "sdk-docs/models/components/type",
             "sdk-docs/models/components/validationerror",
-            "sdk-docs/models/components/variables",
+            "sdk-docs/models/components/variables"
+          ]
+        },
+        {
+          "group": "Components",
+          "pages": [
             "python-sdk-docs/models/components/httpvalidationerror",
             "python-sdk-docs/models/components/channeltargetproperties",
             "python-sdk-docs/models/components/channeltargetcreaterequest",
