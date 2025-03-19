@@ -11,5 +11,5 @@ title: 'InsightToolDefinition'
 | `name`                                               | *str*                                                | TRUE                                   | Human readable name of Insight Tool Definition       |
 | `type`                                               | *str*                                                | TRUE                                   | Type of Insight Tool Definition                      |
 | `description`                                        | *str*                                                | TRUE                                   | Text description of Insight Tool Definition          |
-| `tool_parameters`                                    | [models.ToolParameters](../models/toolparameters.md) | TRUE                                   | Parameters for Insight Tool Definition               |
-| `tool_result_set`                                    | [models.ToolResultSet](../models/toolresultset.md)   | TRUE                                   | Result key/types for Insight Tool Definition         |
+| `tool_parameters`                                    | [models.ToolParameters](/python-sdk-docs/models/components/toolparameters) | TRUE                                   | Parameters for Insight Tool Definition               |
+| `tool_result_set`                                    | [models.ToolResultSet](/python-sdk-docs/models/components/toolresultset)   | TRUE                                   | Result key/types for Insight Tool Definition         |
