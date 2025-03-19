@@ -7,7 +7,7 @@ title: 'ListResponseConversation'
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `items`                                                | List[[models.Conversation](../models/conversation.md)] | TRUE                                     | N/A                                                    |
+| `items`                                                | List[[models.Conversation](/python-sdk-docs/models/components/conversation)] | TRUE                                     | N/A                                                    |
 | `page`                                                 | *int*                                                  | TRUE                                     | N/A                                                    |
 | `page_size`                                            | *int*                                                  | TRUE                                     | N/A                                                    |
 | `total_pages`                                          | *OptionalNullable[int]*                                | FALSE                                     | N/A                                                    |

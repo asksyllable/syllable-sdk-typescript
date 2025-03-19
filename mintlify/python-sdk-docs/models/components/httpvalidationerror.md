@@ -7,4 +7,4 @@ title: 'HTTPValidationError'
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `detail`                                                     | List[[models.ValidationError](../models/validationerror.md)] | FALSE                                           | N/A                                                          |
+| `detail`                                                     | List[[models.ValidationError](/python-sdk-docs/models/components/validationerror)] | FALSE                                           | N/A                                                          |
