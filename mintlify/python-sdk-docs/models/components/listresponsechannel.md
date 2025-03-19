@@ -7,7 +7,7 @@ title: 'ListResponseChannel'
 
 | Field                                        | Type                                         | Required                                     | Description                                  |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `items`                                      | List[[models.Channel](../models/channel.md)] | TRUE                           | N/A                                          |
+| `items`                                      | List[[models.Channel](/python-sdk-docs/models/components/channel)] | TRUE                           | N/A                                          |
 | `page`                                       | *int*                                        | TRUE                           | N/A                                          |
 | `page_size`                                  | *int*                                        | TRUE                           | N/A                                          |
 | `total_pages`                                | *OptionalNullable[int]*                      | FALSE                           | N/A                                          |
