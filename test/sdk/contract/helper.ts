@@ -184,7 +184,8 @@ function createAgent(options) {
             "en-US",
             "es-US"
         ],
-        variables: {}
+        "variables": {},
+        "tool_headers": {}
     }
     return agent
 }
