@@ -20,3 +20,5 @@ targets:
             output: codeSamples.yaml
             registry:
                 location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-typescript-sdk-oas-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
