@@ -19,4 +19,4 @@ targets:
         codeSamples:
             output: codeSamples.yaml
             registry:
-                location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-sdk-oas-code-samples
+                location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-{LANGUAGE}-sdk-oas-code-samples
