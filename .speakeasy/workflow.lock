@@ -2,20 +2,20 @@ speakeasyVersion: 1.493.2
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:4fae0c02b0a20eb14f0e8008ec8e5cf2c1f7013715ee448956a6eba3fe763b23
+        sourceRevisionDigest: sha256:7057399cd3e5751756e4428a1a9a15aede892aa58c01363a299ee3995318b6d2
         sourceBlobDigest: sha256:601fe84ebc10eb495259d86c416d5aeb5c66ba688cb3b13e2a9b4f02f66bb0db
         tags:
             - latest
-            - speakeasy-sdk-regen-1741988806
+            - speakeasy-sdk-regen-1742515186
             - 0.0.2
 targets:
     syllable-sdk:
         source: SyllableSDK-OAS
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:4fae0c02b0a20eb14f0e8008ec8e5cf2c1f7013715ee448956a6eba3fe763b23
+        sourceRevisionDigest: sha256:7057399cd3e5751756e4428a1a9a15aede892aa58c01363a299ee3995318b6d2
         sourceBlobDigest: sha256:601fe84ebc10eb495259d86c416d5aeb5c66ba688cb3b13e2a9b4f02f66bb0db
-        codeSamplesNamespace: syllable-sdk-oas-code-samples
-        codeSamplesRevisionDigest: sha256:c8644efd6be80b8890b7b1b484fef96c0380baf04309d1d4cc3fe7c8e1a21b5c
+        codeSamplesNamespace: syllable-typescript-sdk-oas-code-samples
+        codeSamplesRevisionDigest: sha256:055e8e59f2439f0291a8b9a43be3a0a886a23dc736dab3dbb3b1f66e2e0484d2
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.493.2
@@ -38,4 +38,6 @@ workflow:
             codeSamples:
                 output: codeSamples.yaml
                 registry:
-                    location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-sdk-oas-code-samples
+                    location: registry.speakeasyapi.dev/actiumhealth/actiumhealth/syllable-typescript-sdk-oas-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
