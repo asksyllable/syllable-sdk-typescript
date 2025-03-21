@@ -7,7 +7,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: agent_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -37,7 +37,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: agent_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -71,7 +71,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: agent_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -109,7 +109,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: send_test_message
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -134,7 +134,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: agent_get_available_voices
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -154,7 +154,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: agent_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -177,7 +177,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: agent_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -199,7 +199,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channels_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -229,7 +229,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: available_targets
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -259,7 +259,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channel_targets_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -289,7 +289,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channel_targets_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -312,7 +312,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channel_targets_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -340,7 +340,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channel_targets_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -363,7 +363,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: channel_targets_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -393,7 +393,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: conversations_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -423,7 +423,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: custom_messages_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -453,7 +453,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: custom_messages_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -508,7 +508,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: custom_messages_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -579,7 +579,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: custom_messages_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -602,7 +602,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: custom_message_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -624,7 +624,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: post_get_dashboard
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -643,7 +643,7 @@ actions:
 
             run();
         - lang: typescript
-          label: post_get_dashboard
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -665,7 +665,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: post_list_dashboard
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -692,7 +692,7 @@ actions:
 
             run();
         - lang: typescript
-          label: post_list_dashboard
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -722,7 +722,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: data_sources_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -752,7 +752,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: data_sources_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -781,7 +781,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: data_sources_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -812,7 +812,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: data_sources_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -835,7 +835,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: data_sources_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -857,7 +857,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: events_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -887,7 +887,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insight_tool_get_definitions
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -907,7 +907,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insight_tool_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -937,7 +937,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insights_tool_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -963,7 +963,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insight_tool_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -985,7 +985,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insights_tool_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1014,7 +1014,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insights_workflow_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1044,7 +1044,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insights_workflow_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1074,7 +1074,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: directory_workflow_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1096,7 +1096,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insights_workflow_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1118,7 +1118,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: insights_workflow_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1149,7 +1149,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: language_groups_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1179,7 +1179,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: language_groups_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1211,7 +1211,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: language_groups_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1257,7 +1257,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: language_groups_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1280,7 +1280,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: language_groups_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1302,7 +1302,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: prompts_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1332,7 +1332,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: prompts_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1359,7 +1359,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: prompts_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1387,7 +1387,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: prompts_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1410,7 +1410,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: prompts_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1432,7 +1432,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: prompts_history
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1454,7 +1454,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: service_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1484,7 +1484,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: service_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1507,7 +1507,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: service_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1531,7 +1531,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: service_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1554,7 +1554,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: services_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1576,7 +1576,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: get_session_data_by_session_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1598,7 +1598,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: get_session_data_by_sid
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1621,7 +1621,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: get_session_tool_call_result_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1644,7 +1644,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_labels_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1674,7 +1674,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_label_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1702,7 +1702,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_label_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1724,7 +1724,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: sessions_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1754,7 +1754,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_full_summary_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1776,7 +1776,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_recording_stream
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1798,7 +1798,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: generate_session_recording_urls
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1820,7 +1820,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_summary_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1842,7 +1842,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_transcript_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1864,7 +1864,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: session_get_by_id
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1886,7 +1886,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: tool_list
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1916,7 +1916,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: tool_create
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1956,7 +1956,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: tool_update
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -1997,7 +1997,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: tool_delete
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
@@ -2020,7 +2020,7 @@ actions:
     update:
       x-codeSamples:
         - lang: typescript
-          label: tool_get_by_name
+          label: Typescript (SDK)
           source: |-
             import { SyllableSDK } from "syllable-sdk";
 
