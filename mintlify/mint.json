@@ -19,6 +19,10 @@
     {
       "name": "Community",
       "url": "https://community.syllable.ai/"
+    },
+    {
+      "name": "Console",
+      "url": "https://beta.syllable.cloud/"
     }
   ],
   "primaryTab": {
@@ -40,8 +44,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Console",
-    "url": "https://beta.syllable.cloud"
+    "name": "Syllable.ai",
+    "url": "https://syllable.ai"
   },
   "openapi": "https://spec.speakeasy.com/actiumhealth/actiumhealth/syllable-sdk-oas-with-code-samples",
   "navigation": [
