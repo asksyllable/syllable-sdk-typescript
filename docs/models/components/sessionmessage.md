@@ -12,7 +12,7 @@ let value: SessionMessage = {
   },
   toolCalls: [
     {
-      tollCallId: "<id>",
+      toolCallId: "<id>",
       toolName: "<value>",
       toolArguments: {},
       timestamp: new Date("2025-05-27T23:28:25.141Z"),
