@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type DialogToolCallToolArguments = {};
 
 export type DialogToolCall = {
-  tollCallId: string;
+  toolCallId: string;
   toolName: string;
   toolArguments: DialogToolCallToolArguments;
   timestamp: Date;
@@ -73,13 +73,13 @@ export const DialogToolCall$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  toll_call_id: z.string(),
+  tool_call_id: z.string(),
   tool_name: z.string(),
   tool_arguments: z.lazy(() => DialogToolCallToolArguments$inboundSchema),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 }).transform((v) => {
   return remap$(v, {
-    "toll_call_id": "tollCallId",
+    "tool_call_id": "toolCallId",
     "tool_name": "toolName",
     "tool_arguments": "toolArguments",
   });
@@ -87,7 +87,7 @@ export const DialogToolCall$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DialogToolCall$Outbound = {
-  toll_call_id: string;
+  tool_call_id: string;
   tool_name: string;
   tool_arguments: DialogToolCallToolArguments$Outbound;
   timestamp: string;
@@ -99,13 +99,13 @@ export const DialogToolCall$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DialogToolCall
 > = z.object({
-  tollCallId: z.string(),
+  toolCallId: z.string(),
   toolName: z.string(),
   toolArguments: z.lazy(() => DialogToolCallToolArguments$outboundSchema),
   timestamp: z.date().transform(v => v.toISOString()),
 }).transform((v) => {
   return remap$(v, {
-    tollCallId: "toll_call_id",
+    toolCallId: "tool_call_id",
     toolName: "tool_name",
     toolArguments: "tool_arguments",
   });
