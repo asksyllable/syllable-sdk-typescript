@@ -19,6 +19,6 @@ targets:
         codeSamples:
             output: codeSamples.yaml
             registry:
-                location: registry.speakeasyapi.dev/syllable/syllable/syllable-typescript-sdk-oas-code-samples
+                location: registry.speakeasyapi.dev/syllable/syllable/code-samples-typescript-sdk-syllable-sdk-oas
             labelOverride:
                 fixedValue: Typescript (SDK)
