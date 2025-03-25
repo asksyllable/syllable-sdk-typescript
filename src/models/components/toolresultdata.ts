@@ -8,56 +8,10 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ToolResult = {};
-
 export type ToolResultData = {
   toolName: string;
-  toolResult: ToolResult;
+  toolResult?: any | undefined;
 };
-
-/** @internal */
-export const ToolResult$inboundSchema: z.ZodType<
-  ToolResult,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ToolResult$Outbound = {};
-
-/** @internal */
-export const ToolResult$outboundSchema: z.ZodType<
-  ToolResult$Outbound,
-  z.ZodTypeDef,
-  ToolResult
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolResult$ {
-  /** @deprecated use `ToolResult$inboundSchema` instead. */
-  export const inboundSchema = ToolResult$inboundSchema;
-  /** @deprecated use `ToolResult$outboundSchema` instead. */
-  export const outboundSchema = ToolResult$outboundSchema;
-  /** @deprecated use `ToolResult$Outbound` instead. */
-  export type Outbound = ToolResult$Outbound;
-}
-
-export function toolResultToJSON(toolResult: ToolResult): string {
-  return JSON.stringify(ToolResult$outboundSchema.parse(toolResult));
-}
-
-export function toolResultFromJSON(
-  jsonString: string,
-): SafeParseResult<ToolResult, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ToolResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ToolResult' from JSON`,
-  );
-}
 
 /** @internal */
 export const ToolResultData$inboundSchema: z.ZodType<
@@ -66,7 +20,7 @@ export const ToolResultData$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   tool_name: z.string(),
-  tool_result: z.lazy(() => ToolResult$inboundSchema),
+  tool_result: z.any().optional(),
 }).transform((v) => {
   return remap$(v, {
     "tool_name": "toolName",
@@ -77,7 +31,7 @@ export const ToolResultData$inboundSchema: z.ZodType<
 /** @internal */
 export type ToolResultData$Outbound = {
   tool_name: string;
-  tool_result: ToolResult$Outbound;
+  tool_result?: any | undefined;
 };
 
 /** @internal */
@@ -87,7 +41,7 @@ export const ToolResultData$outboundSchema: z.ZodType<
   ToolResultData
 > = z.object({
   toolName: z.string(),
-  toolResult: z.lazy(() => ToolResult$outboundSchema),
+  toolResult: z.any().optional(),
 }).transform((v) => {
   return remap$(v, {
     toolName: "tool_name",

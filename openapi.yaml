@@ -9108,7 +9108,6 @@ components:
           type: "string"
           title: "Tool Name"
         "tool_result":
-          type: "object"
           title: "Tool Result"
       type: "object"
       required:
