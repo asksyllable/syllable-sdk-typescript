@@ -14,6 +14,9 @@ import {
   ToolDefinition$outboundSchema,
 } from "./tooldefinition.js";
 
+/**
+ * Request model to create a tool.
+ */
 export type ToolCreateRequest = {
   /**
    * The name of the tool
@@ -24,7 +27,7 @@ export type ToolCreateRequest = {
    */
   definition: ToolDefinition;
   /**
-   * The service to which this tool belongs
+   * Internal ID of the service to which the tool belongs
    */
   serviceId: number;
 };

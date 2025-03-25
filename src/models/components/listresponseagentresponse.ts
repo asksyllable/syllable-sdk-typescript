@@ -15,10 +15,25 @@ import {
 } from "./agentresponse.js";
 
 export type ListResponseAgentResponse = {
+  /**
+   * List of items returned from the query
+   */
   items: Array<AgentResponse>;
+  /**
+   * The page number of the results (0-based)
+   */
   page: number;
+  /**
+   * The number of items returned per page
+   */
   pageSize: number;
+  /**
+   * The total number of pages of results given the indicated page size
+   */
   totalPages?: number | null | undefined;
+  /**
+   * The total number of items returned from the query
+   */
   totalCount?: number | null | undefined;
 };
 

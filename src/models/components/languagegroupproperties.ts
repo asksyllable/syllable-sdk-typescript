@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of language group fields supported for filtering/sorting on list endpoint.
+ */
 export const LanguageGroupProperties = {
   Name: "name",
   Description: "description",
@@ -12,6 +15,9 @@ export const LanguageGroupProperties = {
   UpdatedAt: "updated_at",
   LastUpdatedBy: "last_updated_by",
 } as const;
+/**
+ * Names of language group fields supported for filtering/sorting on list endpoint.
+ */
 export type LanguageGroupProperties = ClosedEnum<
   typeof LanguageGroupProperties
 >;

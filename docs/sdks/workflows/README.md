@@ -121,15 +121,13 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.create({
-    name: "<value>",
-    description: "yuck vice between gee ugh ha",
+    name: "summary-workflow",
+    description: "Default workflow - generates a summary of the call",
     insightToolIds: [
-      780486,
-      760259,
-      219974,
+      1,
     ],
     conditions: {},
-    status: "<value>",
+    status: "ACTIVE",
   });
 
   // Handle the result
@@ -155,15 +153,13 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsCreate(syllableSDK, {
-    name: "<value>",
-    description: "yuck vice between gee ugh ha",
+    name: "summary-workflow",
+    description: "Default workflow - generates a summary of the call",
     insightToolIds: [
-      780486,
-      760259,
-      219974,
+      1,
     ],
     conditions: {},
-    status: "<value>",
+    status: "ACTIVE",
   });
 
   if (!res.ok) {
@@ -293,13 +289,13 @@ async function run() {
   const result = await syllableSDK.insights.workflows.update({
     workflowId: 265006,
     insightWorkflowInput: {
-      name: "<value>",
-      description: "awful underneath retention too mobility char innocently dowse restfully",
+      name: "summary-workflow",
+      description: "Default workflow - generates a summary of the call",
       insightToolIds: [
-
+        1,
       ],
       conditions: {},
-      status: "<value>",
+      status: "ACTIVE",
     },
   });
 
@@ -328,13 +324,13 @@ async function run() {
   const res = await insightsWorkflowsUpdate(syllableSDK, {
     workflowId: 265006,
     insightWorkflowInput: {
-      name: "<value>",
-      description: "awful underneath retention too mobility char innocently dowse restfully",
+      name: "summary-workflow",
+      description: "Default workflow - generates a summary of the call",
       insightToolIds: [
-  
+        1,
       ],
       conditions: {},
-      status: "<value>",
+      status: "ACTIVE",
     },
   });
 

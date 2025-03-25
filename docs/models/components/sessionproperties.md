@@ -1,11 +1,13 @@
 # SessionProperties
 
+Names of session fields supported for filtering/sorting on list endpoint.
+
 ## Example Usage
 
 ```typescript
 import { SessionProperties } from "syllable-sdk/models/components";
 
-let value: SessionProperties = "agent_name";
+let value: SessionProperties = "is_legacy";
 ```
 
 ## Values

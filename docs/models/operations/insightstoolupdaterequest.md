@@ -6,13 +6,13 @@
 import { InsightsToolUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsToolUpdateRequest = {
-  toolId: 548256,
+  toolId: 171629,
   insightToolInput: {
-    name: "<value>",
-    description: "sorrowful furthermore lest besides sniveling close whoa",
-    version: 259600,
+    name: "summary-tool",
+    description: "Default tool - generates a summary of the call",
+    version: 1,
     toolArguments: {},
-    insightToolDefinitionId: 60078,
+    insightToolDefinitionId: 1,
   },
 };
 ```

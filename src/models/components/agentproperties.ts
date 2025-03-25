@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of agent fields supported for filtering/sorting on list endpoint.
+ */
 export const AgentProperties = {
   Id: "id",
   Name: "name",
@@ -24,6 +27,9 @@ export const AgentProperties = {
   UpdatedAt: "updated_at",
   LastUpdatedBy: "last_updated_by",
 } as const;
+/**
+ * Names of agent fields supported for filtering/sorting on list endpoint.
+ */
 export type AgentProperties = ClosedEnum<typeof AgentProperties>;
 
 /** @internal */

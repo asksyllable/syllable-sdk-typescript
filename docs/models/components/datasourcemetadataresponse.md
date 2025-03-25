@@ -20,7 +20,7 @@ let value: DataSourceMetadataResponse = {
   chunkDelimiter: "",
   id: 1,
   editComments: "Added new info",
-  updatedAt: new Date("2023-11-18T03:36:20.029Z"),
+  updatedAt: new Date("2023-10-18T20:48:18.611Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```

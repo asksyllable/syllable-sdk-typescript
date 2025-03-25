@@ -125,9 +125,15 @@ async function run() {
     description: "Languages spoken by operators at Call Center 1",
     languageConfigs: [
       {
+        languageCode: "en-US",
+        voiceProvider: "OpenAI",
+        voiceDisplayName: "Alloy",
+        dtmfCode: 1,
+      },
+      {
         languageCode: "es-US",
-        voiceProvider: "ElevenLabs",
-        voiceDisplayName: "Brian",
+        voiceProvider: "Google",
+        voiceDisplayName: "Alejandro",
         dtmfCode: 1,
       },
     ],
@@ -161,9 +167,15 @@ async function run() {
     description: "Languages spoken by operators at Call Center 1",
     languageConfigs: [
       {
+        languageCode: "en-US",
+        voiceProvider: "OpenAI",
+        voiceDisplayName: "Alloy",
+        dtmfCode: 1,
+      },
+      {
         languageCode: "es-US",
-        voiceProvider: "ElevenLabs",
-        voiceDisplayName: "Brian",
+        voiceProvider: "Google",
+        voiceDisplayName: "Alejandro",
         dtmfCode: 1,
       },
     ],
@@ -222,21 +234,15 @@ async function run() {
     description: "Languages spoken by operators at Call Center 1",
     languageConfigs: [
       {
-        languageCode: "es-US",
-        voiceProvider: "ElevenLabs",
-        voiceDisplayName: "Will",
+        languageCode: "en-US",
+        voiceProvider: "OpenAI",
+        voiceDisplayName: "Alloy",
         dtmfCode: 1,
       },
       {
         languageCode: "es-US",
-        voiceProvider: "ElevenLabs",
-        voiceDisplayName: "Will",
-        dtmfCode: 1,
-      },
-      {
-        languageCode: "yue-HK",
         voiceProvider: "Google",
-        voiceDisplayName: "George",
+        voiceDisplayName: "Alejandro",
         dtmfCode: 1,
       },
     ],
@@ -272,21 +278,15 @@ async function run() {
     description: "Languages spoken by operators at Call Center 1",
     languageConfigs: [
       {
-        languageCode: "es-US",
-        voiceProvider: "ElevenLabs",
-        voiceDisplayName: "Will",
+        languageCode: "en-US",
+        voiceProvider: "OpenAI",
+        voiceDisplayName: "Alloy",
         dtmfCode: 1,
       },
       {
         languageCode: "es-US",
-        voiceProvider: "ElevenLabs",
-        voiceDisplayName: "Will",
-        dtmfCode: 1,
-      },
-      {
-        languageCode: "yue-HK",
         voiceProvider: "Google",
-        voiceDisplayName: "George",
+        voiceDisplayName: "Alejandro",
         dtmfCode: 1,
       },
     ],

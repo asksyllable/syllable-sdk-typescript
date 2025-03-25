@@ -8,35 +8,63 @@ import { ListResponsePromptResponse } from "syllable-sdk/models/components";
 let value: ListResponsePromptResponse = {
   items: [
     {
-      name: "<value>",
-      type: "<value>",
+      name: "Weather Agent Prompt",
+      description: "Prompt for a weather agent.",
+      type: "prompt_v1",
+      context:
+        "You are a weather agent. Answer the user's questions about weather and nothing else.",
       llmConfig: {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 448369,
-      lastUpdated: "<value>",
+      id: 1,
+      editComments:
+        "Updated prompt text to include requirement to not answer questions that aren't about weather.",
+      lastUpdated: "2024-01-01T12:00:00Z",
       lastUpdatedBy: "user@email.com",
+      agentCount: 5,
       toolsFull: [
         {
           name: "Weather Fetcher",
           definition: {
+            type: "endpoint",
             tool: {
               function: {
-                name: "weather_fetcher",
-                description: "Fetches weather data",
+                name: "get_weather",
+                description: "Get the weather for a city",
                 parameters: {},
               },
             },
             endpoint: {
               url: "https://api.example.com",
-              method: "post",
-              argumentLocation: "path",
+              method: "get",
+              argumentLocation: "body",
             },
-            defaults: "<value>",
+            defaults: {
+              "key": {
+                transform: {
+                  action: "default",
+                  when: {
+                    key: "key",
+                    value: "value",
+                  },
+                },
+              },
+            },
+            staticParameters: [
+              {
+                name: "temperature_unit",
+                description:
+                  "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+                required: false,
+                type: "string",
+                default: "fahrenheit",
+              },
+            ],
           },
-          serviceId: 866789,
-          id: 627735,
+          serviceId: 1,
+          id: 1,
+          lastUpdatedComments: "Updated to use new API endpoint",
           promptsInfo: [
             {
               id: 1,
@@ -49,23 +77,25 @@ let value: ListResponsePromptResponse = {
               name: "Test Agent",
             },
           ],
-          lastUpdated: new Date("2024-03-15T23:09:38.803Z"),
+          lastUpdated: new Date("2023-01-23T00:54:32.021Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
     },
   ],
-  page: 416692,
-  pageSize: 810839,
+  page: 0,
+  pageSize: 25,
+  totalPages: 4,
+  totalCount: 100,
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `items`                                                                  | [components.PromptResponse](../../models/components/promptresponse.md)[] | :heavy_check_mark:                                                       | N/A                                                                      |
-| `page`                                                                   | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `pageSize`                                                               | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `totalPages`                                                             | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `totalCount`                                                             | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `items`                                                                  | [components.PromptResponse](../../models/components/promptresponse.md)[] | :heavy_check_mark:                                                       | List of items returned from the query                                    |                                                                          |
+| `page`                                                                   | *number*                                                                 | :heavy_check_mark:                                                       | The page number of the results (0-based)                                 | 0                                                                        |
+| `pageSize`                                                               | *number*                                                                 | :heavy_check_mark:                                                       | The number of items returned per page                                    | 25                                                                       |
+| `totalPages`                                                             | *number*                                                                 | :heavy_minus_sign:                                                       | The total number of pages of results given the indicated page size       | 4                                                                        |
+| `totalCount`                                                             | *number*                                                                 | :heavy_minus_sign:                                                       | The total number of items returned from the query                        | 100                                                                      |

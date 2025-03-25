@@ -1,6 +1,6 @@
 # AgentToolDefaults
 
-An agent-level configuration of default values for tool parameters for its tools.
+Agent-level static parameter values for a tool, overriding any tool-level defaults.
 
 ## Example Usage
 
@@ -8,11 +8,11 @@ An agent-level configuration of default values for tool parameters for its tools
 import { AgentToolDefaults } from "syllable-sdk/models/components";
 
 let value: AgentToolDefaults = {
-  toolName: "<value>",
+  toolName: "get_weather",
   defaultValues: [
     {
-      fieldName: "<value>",
-      defaultValue: "<value>",
+      fieldName: "temperature_unit",
+      defaultValue: "fahrenheit",
     },
   ],
 };
@@ -20,7 +20,7 @@ let value: AgentToolDefaults = {
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `toolName`                                                                             | *string*                                                                               | :heavy_check_mark:                                                                     | The name of the tool                                                                   |
-| `defaultValues`                                                                        | [components.AgentToolFieldDefault](../../models/components/agenttoolfielddefault.md)[] | :heavy_check_mark:                                                                     | The default values for fields used in the tool                                         |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `toolName`                                                                             | *string*                                                                               | :heavy_check_mark:                                                                     | The name of the tool                                                                   | get_weather                                                                            |
+| `defaultValues`                                                                        | [components.AgentToolFieldDefault](../../models/components/agenttoolfielddefault.md)[] | :heavy_check_mark:                                                                     | The default values for fields used in the tool                                         | [<br/>{<br/>"default_value": "fahrenheit",<br/>"field_name": "temperature_unit"<br/>}<br/>] |

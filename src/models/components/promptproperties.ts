@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of prompt fields supported for filtering/sorting on list endpoint.
+ */
 export const PromptProperties = {
   Id: "id",
   Name: "name",
@@ -17,6 +20,9 @@ export const PromptProperties = {
   LastUpdatedBy: "last_updated_by",
   AgentCount: "agent_count",
 } as const;
+/**
+ * Names of prompt fields supported for filtering/sorting on list endpoint.
+ */
 export type PromptProperties = ClosedEnum<typeof PromptProperties>;
 
 /** @internal */

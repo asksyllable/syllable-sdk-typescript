@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type ToolAgentInfo = {
   /**
-   * The ID of the agent
+   * The internal ID of the agent
    */
   id: number;
   /**

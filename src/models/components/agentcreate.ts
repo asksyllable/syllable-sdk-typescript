@@ -24,6 +24,9 @@ import {
   AgentWaitSound$outboundSchema,
 } from "./agentwaitsound.js";
 
+/**
+ * Request model to create an agent.
+ */
 export type AgentCreate = {
   /**
    * The agent name
@@ -38,7 +41,7 @@ export type AgentCreate = {
    */
   label?: string | null | undefined;
   /**
-   * The agent type. Can be an arbitrary string
+   * The agent type. Must be "ca_v1" currently.
    */
   type: string;
   /**
@@ -46,11 +49,11 @@ export type AgentCreate = {
    */
   promptId: number;
   /**
-   * ID of the custom message that should be delivered at the beginning of a conversation with the agent
+   * Internal ID of the custom message that should be delivered at the beginning of a conversation with the agent
    */
   customMessageId: number;
   /**
-   * ID of the language group associated with the agent
+   * Internal ID of the language group associated with the agent
    */
   languageGroupId?: number | null | undefined;
   /**
@@ -58,11 +61,11 @@ export type AgentCreate = {
    */
   timezone: string;
   /**
-   * User-configured parameter values for the agent's tools
+   * Agent-level static parameter values for the agent's tools, overriding any tool-level defaults
    */
   promptToolDefaults?: Array<AgentToolDefaults> | undefined;
   /**
-   * BCP 47 codes of languages the agent supports
+   * BCP 47 codes of languages the agent supports. (DEPRECATED - pass an empty list here and use language group ID to link agent to a language group instead.)
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */

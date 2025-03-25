@@ -9,38 +9,44 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Parameters for Insight Tool Definition
+ * Parameters for tools that use this definition and their associated types
  */
 export type ToolParameters = {};
 
 /**
- * Result key/types for Insight Tool Definition
+ * Result key/types for insight tool definition
  */
 export type ToolResultSet = {};
 
+/**
+ * Model for an insight tool definition. This is a template that can be used by multiple insight
+ *
+ * @remarks
+ * tools, each providing their own parameter values.
+ */
 export type InsightToolDefinition = {
   /**
-   * Unique ID for Insight Tool Definition
+   * Unique ID for insight tool definition
    */
   id: number;
   /**
-   * Human readable name of Insight Tool Definition
+   * Human-readable name of insight tool definition
    */
   name: string;
   /**
-   * Type of Insight Tool Definition
+   * Type of insight tool definition
    */
   type: string;
   /**
-   * Text description of Insight Tool Definition
+   * Text description of insight tool definition
    */
   description: string;
   /**
-   * Parameters for Insight Tool Definition
+   * Parameters for tools that use this definition and their associated types
    */
   toolParameters: ToolParameters;
   /**
-   * Result key/types for Insight Tool Definition
+   * Result key/types for insight tool definition
    */
   toolResultSet: ToolResultSet;
 };

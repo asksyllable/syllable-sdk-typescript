@@ -26,9 +26,18 @@ import {
 } from "./dialogtoolcall.js";
 
 export type SessionMessage = {
+  /**
+   * Role of dialog
+   */
   role: DialogRole;
   dialog: DialogMessage;
+  /**
+   * Tool calls
+   */
   toolCalls: Array<DialogToolCall>;
+  /**
+   * Message timestamp
+   */
   timestamp: Date;
 };
 

@@ -5,11 +5,17 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of target fields supported for filtering/sorting on available targets list endpoint.
+ */
 export const AvailableTargetProperties = {
   ChannelId: "channel_id",
   ChannelName: "channel_name",
   Target: "target",
 } as const;
+/**
+ * Names of target fields supported for filtering/sorting on available targets list endpoint.
+ */
 export type AvailableTargetProperties = ClosedEnum<
   typeof AvailableTargetProperties
 >;

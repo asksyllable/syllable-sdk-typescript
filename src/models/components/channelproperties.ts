@@ -5,12 +5,18 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of channel fields supported for filtering/sorting on list endpoint.
+ */
 export const ChannelProperties = {
   Id: "id",
   Name: "name",
   ChannelService: "channel_service",
   SupportedModes: "supported_modes",
 } as const;
+/**
+ * Names of channel fields supported for filtering/sorting on list endpoint.
+ */
 export type ChannelProperties = ClosedEnum<typeof ChannelProperties>;
 
 /** @internal */

@@ -13,13 +13,16 @@ import {
   CustomMessageRule$outboundSchema,
 } from "./custommessagerule.js";
 
+/**
+ * Request model to create a custom message.
+ */
 export type CustomMessageCreateRequest = {
   /**
    * The name of the custom message
    */
   name: string;
   /**
-   * The text of the custom message
+   * The default message that the agent will deliver if no rules are set or no rules match the current timestamp.
    */
   text: string;
   /**
@@ -30,6 +33,9 @@ export type CustomMessageCreateRequest = {
    * Rules for time-specific message variants
    */
   rules?: Array<CustomMessageRule> | undefined;
+  /**
+   * Type of the custom message (must be "greeting" for now)
+   */
   type?: string | undefined;
 };
 

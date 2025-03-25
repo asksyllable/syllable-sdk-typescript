@@ -5,10 +5,16 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * The direction in which to order list results, either ascending or descending.
+ */
 export const OrderByDirection = {
   Asc: "asc",
   Desc: "desc",
 } as const;
+/**
+ * The direction in which to order list results, either ascending or descending.
+ */
 export type OrderByDirection = ClosedEnum<typeof OrderByDirection>;
 
 /** @internal */

@@ -121,11 +121,12 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.customMessages.create({
-    name: "<value>",
-    text: "<value>",
+    name: "Customer service greeting",
+    text: "Hello and thank you for calling customer service. How can I help you today?",
+    label: "Customer service",
     rules: [
       {
-        description: "delightfully fumigate convection though zowie up bulky electronics",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -137,10 +138,10 @@ async function run() {
           "fr",
         ],
         invert: false,
-        text: "Sorry, we're closed today",
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "yuck forager beneath please shadowy foodstuffs welcome",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -151,8 +152,8 @@ async function run() {
           "th",
           "fr",
         ],
-        invert: true,
-        text: "Sorry, we're closed today",
+        invert: false,
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
   });
@@ -180,11 +181,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await customMessagesCreate(syllableSDK, {
-    name: "<value>",
-    text: "<value>",
+    name: "Customer service greeting",
+    text: "Hello and thank you for calling customer service. How can I help you today?",
+    label: "Customer service",
     rules: [
       {
-        description: "delightfully fumigate convection though zowie up bulky electronics",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -196,10 +198,10 @@ async function run() {
           "fr",
         ],
         invert: false,
-        text: "Sorry, we're closed today",
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "yuck forager beneath please shadowy foodstuffs welcome",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -210,8 +212,8 @@ async function run() {
           "th",
           "fr",
         ],
-        invert: true,
-        text: "Sorry, we're closed today",
+        invert: false,
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
   });
@@ -264,11 +266,12 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.customMessages.update({
-    name: "<value>",
-    text: "<value>",
+    name: "Customer service greeting",
+    text: "Hello and thank you for calling customer service. How can I help you today?",
+    label: "Customer service",
     rules: [
       {
-        description: "technician eulogise whereas till mild than during",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -279,11 +282,11 @@ async function run() {
           "th",
           "fr",
         ],
-        invert: true,
-        text: "Sorry, we're closed today",
+        invert: false,
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "qualified cycle woot abseil perfumed fisherman with duh",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -294,26 +297,11 @@ async function run() {
           "th",
           "fr",
         ],
-        invert: true,
-        text: "Sorry, we're closed today",
-      },
-      {
-        description: "ultimately in likely opera please antelope",
-        timeRangeStart: "09:00",
-        timeRangeEnd: "17:00",
-        date: "2025-01-01",
-        daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
-        ],
-        invert: true,
-        text: "Sorry, we're closed today",
+        invert: false,
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
-    id: 975440,
+    id: 1,
   });
 
   // Handle the result
@@ -339,11 +327,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await customMessagesUpdate(syllableSDK, {
-    name: "<value>",
-    text: "<value>",
+    name: "Customer service greeting",
+    text: "Hello and thank you for calling customer service. How can I help you today?",
+    label: "Customer service",
     rules: [
       {
-        description: "technician eulogise whereas till mild than during",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -354,11 +343,11 @@ async function run() {
           "th",
           "fr",
         ],
-        invert: true,
-        text: "Sorry, we're closed today",
+        invert: false,
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "qualified cycle woot abseil perfumed fisherman with duh",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
@@ -369,26 +358,11 @@ async function run() {
           "th",
           "fr",
         ],
-        invert: true,
-        text: "Sorry, we're closed today",
-      },
-      {
-        description: "ultimately in likely opera please antelope",
-        timeRangeStart: "09:00",
-        timeRangeEnd: "17:00",
-        date: "2025-01-01",
-        daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
-        ],
-        invert: true,
-        text: "Sorry, we're closed today",
+        invert: false,
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
-    id: 975440,
+    id: 1,
   });
 
   if (!res.ok) {

@@ -14,11 +14,11 @@ export type SessionLabelCreate = {
    */
   sessionId: number;
   /**
-   * The type of the label
+   * The type of the label (either "auto-rating" or "human-rating")
    */
   type: string;
   /**
-   * A code describing the quality of the labeled session
+   * A code describing the quality of the labeled session (either "GOOD", "OK", "BAD", or "N/A")
    */
   code: string;
   /**

@@ -8,18 +8,18 @@ Basic information about a dashboard with a description.
 import { DashboardResponse } from "syllable-sdk/models/components";
 
 let value: DashboardResponse = {
-  name: "<value>",
-  displayName: "Keven.Witting",
-  rank: 395634,
-  label: "<value>",
+  name: "session_summary",
+  displayName: "Session Summary",
+  rank: 0,
+  label: "dashboard",
 };
 ```
 
 ## Fields
 
-| Field                                           | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `name`                                          | *string*                                        | :heavy_check_mark:                              | Name of the dashboard                           |
-| `displayName`                                   | *string*                                        | :heavy_check_mark:                              | Display name of the dashboard                   |
-| `rank`                                          | *number*                                        | :heavy_check_mark:                              | Dashboard importance, 0 is the highest          |
-| `label`                                         | *string*                                        | :heavy_check_mark:                              | Dashboard label.  Typically report or dashboard |
+| Field                                              | Type                                               | Required                                           | Description                                        | Example                                            |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `name`                                             | *string*                                           | :heavy_check_mark:                                 | Name of the dashboard                              | session_summary                                    |
+| `displayName`                                      | *string*                                           | :heavy_check_mark:                                 | Display name of the dashboard                      | Session Summary                                    |
+| `rank`                                             | *number*                                           | :heavy_check_mark:                                 | Dashboard importance (0 is the highest)            | 0                                                  |
+| `label`                                            | *string*                                           | :heavy_check_mark:                                 | Dashboard label. Typically "report" or "dashboard" | dashboard                                          |

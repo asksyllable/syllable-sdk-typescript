@@ -15,9 +15,10 @@ import {
 } from "./custommessagerule.js";
 
 /**
- * A custom message is a pre-configured message delivered by an agent as a greeting at the
+ * Response model for custom message operations.
  *
  * @remarks
+ * A custom message is a pre-configured message delivered by an agent as a greeting at the
  * beginning of a conversation. Multiple agents can use the same custom mesasage. A custom message
  * has one or more rules defined, which allow for different messages to be dynamically selected and
  * delivered at runtime based on the current time and either date or day of the week. For more
@@ -29,7 +30,7 @@ export type CustomMessageResponse = {
    */
   name: string;
   /**
-   * The text of the custom message
+   * The default message that the agent will deliver if no rules are set or no rules match the current timestamp.
    */
   text: string;
   /**
@@ -56,6 +57,9 @@ export type CustomMessageResponse = {
    * The email address of the user who most recently updated the custom message
    */
   lastUpdatedBy: string;
+  /**
+   * Type of the custom message (must be "greeting" for now)
+   */
   type?: string | undefined;
 };
 

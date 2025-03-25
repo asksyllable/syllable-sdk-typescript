@@ -1,11 +1,13 @@
 # ToolProperties
 
+Names of tool fields supported for filtering/sorting on list endpoint.
+
 ## Example Usage
 
 ```typescript
 import { ToolProperties } from "syllable-sdk/models/components";
 
-let value: ToolProperties = "last_updated_by";
+let value: ToolProperties = "definition";
 ```
 
 ## Values

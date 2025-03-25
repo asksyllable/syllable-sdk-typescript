@@ -14,6 +14,9 @@ import {
   LanguageConfig$outboundSchema,
 } from "./languageconfig.js";
 
+/**
+ * Request model to create a language group.
+ */
 export type LanguageGroupCreateRequest = {
   /**
    * The name of the language group.
@@ -28,7 +31,7 @@ export type LanguageGroupCreateRequest = {
    */
   languageConfigs: Array<LanguageConfig>;
   /**
-   * Whether a message using the language group to generate a language DTMF menu should skip the agent's current language in the menu.
+   * Whether a custom message using the language group to generate a language DTMF menu should skip the agent's current language in the menu.
    */
   skipCurrentLanguageInMessage: boolean;
 };

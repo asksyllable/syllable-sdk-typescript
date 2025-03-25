@@ -8,7 +8,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Summary for a given session.
+ * AI summary information for a given session.
  */
 export type SessionSummaryResponse = {
   /**

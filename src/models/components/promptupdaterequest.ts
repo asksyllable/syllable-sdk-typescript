@@ -14,6 +14,9 @@ import {
   PromptLlmConfig$outboundSchema,
 } from "./promptllmconfig.js";
 
+/**
+ * Request model to update an existing prompt.
+ */
 export type PromptUpdateRequest = {
   /**
    * The prompt name
@@ -28,16 +31,19 @@ export type PromptUpdateRequest = {
    */
   type: string;
   /**
-   * The prompt text
+   * The prompt text that will be sent to the LLM at the beginning of the conversation
    */
   context?: string | null | undefined;
   /**
    * Names of tools to which the prompt has access
    */
   tools?: Array<string> | undefined;
+  /**
+   * LLM configuration for a prompt.
+   */
   llmConfig: PromptLlmConfig;
   /**
-   * The prompt ID
+   * The internal ID of the prompt
    */
   id: number;
   /**
@@ -45,7 +51,7 @@ export type PromptUpdateRequest = {
    */
   editComments?: string | null | undefined;
   /**
-   * Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
+   * Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
    */
   includeDefaultTools?: boolean | undefined;
 };

@@ -13,17 +13,20 @@ import {
   TargetModes$outboundSchema,
 } from "./targetmodes.js";
 
+/**
+ * Request model to update a channel target.
+ */
 export type ChannelTargetUpdateRequest = {
   /**
-   * The ID of the agent associated with the channel target
+   * The internal ID of the agent associated with the channel target
    */
   agentId: number;
   /**
-   * The ID of the channel associated with the channel target
+   * The internal ID of the channel associated with the channel target
    */
   channelId: number;
   /**
-   * The name of the channel target (must correspond to an organization-level target)
+   * The name of the channel target. Must correspond to an organization-level target (available targets can be fetched from `/channels/available-targets`).
    */
   target: string;
   /**
@@ -35,11 +38,11 @@ export type ChannelTargetUpdateRequest = {
    */
   fallbackTarget?: string | null | undefined;
   /**
-   * Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test.
+   * Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as a test session (i.e., will not be included in dashboard data and can easily be filtered out in the Sessions screen in the SyllableConsole).
    */
   isTest?: boolean | undefined;
   /**
-   * The ID of the channel target
+   * The internal ID of the channel target
    */
   id: number;
 };

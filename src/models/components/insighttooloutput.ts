@@ -15,33 +15,36 @@ import {
 } from "./insighttooldefinition.js";
 
 /**
- * Arguments for Insight Tool
+ * Arguments for calling the insight tool
  */
 export type ToolArguments = {};
 
+/**
+ * Response model for an insight tool.
+ */
 export type InsightToolOutput = {
   /**
-   * Human readable name of Insight Tool
+   * Human readable name of insight tool
    */
   name: string;
   /**
-   * Text description of Insight Tool
+   * Text description of insight tool
    */
   description: string;
   /**
-   * Version of Insight Tool
+   * Version of insight tool
    */
   version: number;
   /**
-   * Arguments for Insight Tool
+   * Arguments for calling the insight tool
    */
   toolArguments: ToolArguments;
   /**
-   * Unique ID for Insight Tool Definition
+   * Unique ID for insight tool definition used by insight tool
    */
   insightToolDefinitionId: number;
   /**
-   * Unique ID for Insight Tool
+   * Unique ID for insight tool
    */
   id: number;
   /**
@@ -49,15 +52,15 @@ export type InsightToolOutput = {
    */
   insightToolDefinition?: InsightToolDefinition | null | undefined;
   /**
-   * Timestamp of Insight Tool creation
+   * Timestamp of at which insight tool was created
    */
   createdAt?: Date | undefined;
   /**
-   * Timestamp of Insight Tool update
+   * Timestamp at which insight tool was last updated
    */
   updatedAt?: Date | undefined;
   /**
-   * User who last updated Insight Tool
+   * Email of user who last updated insight tool
    */
   lastUpdatedBy: string;
 };

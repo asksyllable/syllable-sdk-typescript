@@ -14,6 +14,9 @@ import {
   PromptLlmConfig$outboundSchema,
 } from "./promptllmconfig.js";
 
+/**
+ * Request model to create a prompt.
+ */
 export type PromptCreateRequest = {
   /**
    * The prompt name
@@ -28,16 +31,19 @@ export type PromptCreateRequest = {
    */
   type: string;
   /**
-   * The prompt text
+   * The prompt text that will be sent to the LLM at the beginning of the conversation
    */
   context?: string | null | undefined;
   /**
    * Names of tools to which the prompt has access
    */
   tools?: Array<string> | undefined;
+  /**
+   * LLM configuration for a prompt.
+   */
   llmConfig: PromptLlmConfig;
   /**
-   * Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.
+   * Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.
    */
   includeDefaultTools?: boolean | undefined;
 };

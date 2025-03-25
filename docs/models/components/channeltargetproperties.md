@@ -1,11 +1,14 @@
 # ChannelTargetProperties
 
+Names of channel target fields supported for filtering/sorting on full channel targets list
+endpoint.
+
 ## Example Usage
 
 ```typescript
 import { ChannelTargetProperties } from "syllable-sdk/models/components";
 
-let value: ChannelTargetProperties = "fallback_target";
+let value: ChannelTargetProperties = "channel_name";
 ```
 
 ## Values

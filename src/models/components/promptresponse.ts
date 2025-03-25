@@ -21,9 +21,10 @@ import {
 } from "./toolresponse.js";
 
 /**
- * A prompt defines the behavior of an agent by delivering instructions to the LLM about how the
+ * Response model for prompt operations.
  *
  * @remarks
+ * A prompt defines the behavior of an agent by delivering instructions to the LLM about how the
  * agent should behave. A prompt can be linked to one or more agents. A prompt can also be linked to
  * tools to allow an agent using it to use those tools. For more information, see
  * [Console docs](https://docs.syllable.ai/Resources/Prompts).
@@ -42,18 +43,21 @@ export type PromptResponse = {
    */
   type: string;
   /**
-   * The prompt text
+   * The prompt text that will be sent to the LLM at the beginning of the conversation
    */
   context?: string | null | undefined;
   /**
-   * Names of the tools to which the prompt has access
+   * Names of the tools to which the prompt has access (DEPRECATED - use information from full tools field instead)
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   tools?: Array<string> | undefined;
+  /**
+   * LLM configuration for a prompt.
+   */
   llmConfig: PromptLlmConfig;
   /**
-   * The prompt ID
+   * The internal ID of the prompt
    */
   id: number;
   /**
@@ -73,7 +77,7 @@ export type PromptResponse = {
    */
   agentCount?: number | null | undefined;
   /**
-   * Tools to which the prompt has access
+   * Full definitions of tools to which the prompt has access
    */
   toolsFull?: Array<ToolResponse> | null | undefined;
 };

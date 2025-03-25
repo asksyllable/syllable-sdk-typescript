@@ -103,10 +103,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.sessionLabels.create({
-    sessionId: 486589,
+    sessionId: 1,
     type: "auto-rating",
     code: "BAD",
-    userEmail: "<value>",
+    userEmail: "user@email.com",
     issueCategories: [
       "Silent treatment",
     ],
@@ -135,10 +135,10 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await sessionLabelsCreate(syllableSDK, {
-    sessionId: 486589,
+    sessionId: 1,
     type: "auto-rating",
     code: "BAD",
-    userEmail: "<value>",
+    userEmail: "user@email.com",
     issueCategories: [
       "Silent treatment",
     ],

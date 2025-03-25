@@ -29,15 +29,15 @@ export type DashboardTokenResponse = {
    */
   displayName: string;
   /**
-   * Superset URL of the dashboard
+   * Base Superset URL of the dashboard
    */
   supersetUrl: string;
   /**
-   * Dashboard importance, 0 is the highest
+   * Dashboard importance (0 is the highest)
    */
   rank: number;
   /**
-   * Dashboard label.  Typically report or dashboard
+   * Dashboard label. Typically "report" or "dashboard"
    */
   label: string;
 };

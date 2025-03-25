@@ -122,21 +122,34 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.agents.create({
-    name: "<value>",
+    name: "Weather agent",
+    description: "Agent for answering questions about weather.",
+    label: "Information",
     type: "ca_v1",
-    promptId: 486589,
-    customMessageId: 638424,
+    promptId: 1,
+    customMessageId: 1,
+    languageGroupId: 1,
     timezone: "America/New_York",
+    promptToolDefaults: [
+      {
+        toolName: "get_weather",
+        defaultValues: [
+          {
+            fieldName: "temperature_unit",
+            defaultValue: "fahrenheit",
+          },
+        ],
+      },
+    ],
     languages: [
       "en-US",
       "es-US",
     ],
     variables: {
-
+      "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "key": "<value>",
-      "key1": "<value>",
+      "Authorization": "Basic sometoken",
     },
     sttProvider: "Google STT V2",
     waitSound: "Keyboard 1",
@@ -165,21 +178,34 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsCreate(syllableSDK, {
-    name: "<value>",
+    name: "Weather agent",
+    description: "Agent for answering questions about weather.",
+    label: "Information",
     type: "ca_v1",
-    promptId: 486589,
-    customMessageId: 638424,
+    promptId: 1,
+    customMessageId: 1,
+    languageGroupId: 1,
     timezone: "America/New_York",
+    promptToolDefaults: [
+      {
+        toolName: "get_weather",
+        defaultValues: [
+          {
+            fieldName: "temperature_unit",
+            defaultValue: "fahrenheit",
+          },
+        ],
+      },
+    ],
     languages: [
       "en-US",
       "es-US",
     ],
     variables: {
-  
+      "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "key": "<value>",
-      "key1": "<value>",
+      "Authorization": "Basic sometoken",
     },
     sttProvider: "Google STT V2",
     waitSound: "Keyboard 1",
@@ -233,27 +259,38 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.agents.update({
-    name: "<value>",
+    name: "Weather agent",
+    description: "Agent for answering questions about weather.",
+    label: "Information",
     type: "ca_v1",
-    promptId: 857478,
-    customMessageId: 597129,
+    promptId: 1,
+    customMessageId: 1,
+    languageGroupId: 1,
     timezone: "America/Chicago",
+    promptToolDefaults: [
+      {
+        toolName: "get_weather",
+        defaultValues: [
+          {
+            fieldName: "temperature_unit",
+            defaultValue: "fahrenheit",
+          },
+        ],
+      },
+    ],
     languages: [
       "en-US",
       "es-US",
     ],
     variables: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
+      "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "key": "<value>",
-      "key1": "<value>",
+      "Authorization": "Basic sometoken",
     },
     sttProvider: "Google STT V2",
     waitSound: "Keyboard 1",
-    id: 488852,
+    id: 1,
   });
 
   // Handle the result
@@ -279,27 +316,38 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsUpdate(syllableSDK, {
-    name: "<value>",
+    name: "Weather agent",
+    description: "Agent for answering questions about weather.",
+    label: "Information",
     type: "ca_v1",
-    promptId: 857478,
-    customMessageId: 597129,
+    promptId: 1,
+    customMessageId: 1,
+    languageGroupId: 1,
     timezone: "America/Chicago",
+    promptToolDefaults: [
+      {
+        toolName: "get_weather",
+        defaultValues: [
+          {
+            fieldName: "temperature_unit",
+            defaultValue: "fahrenheit",
+          },
+        ],
+      },
+    ],
     languages: [
       "en-US",
       "es-US",
     ],
     variables: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
+      "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "key": "<value>",
-      "key1": "<value>",
+      "Authorization": "Basic sometoken",
     },
     sttProvider: "Google STT V2",
     waitSound: "Keyboard 1",
-    id: 488852,
+    id: 1,
   });
 
   if (!res.ok) {

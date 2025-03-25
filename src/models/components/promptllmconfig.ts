@@ -13,6 +13,9 @@ import {
   PromptLlmProvider$outboundSchema,
 } from "./promptllmprovider.js";
 
+/**
+ * LLM configuration for a prompt.
+ */
 export type PromptLlmConfig = {
   /**
    * LLM API provider.
