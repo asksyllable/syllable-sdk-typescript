@@ -6,18 +6,20 @@
 import { DialogToolCall } from "syllable-sdk/models/components";
 
 let value: DialogToolCall = {
-  toolCallId: "<id>",
-  toolName: "<value>",
-  toolArguments: {},
-  timestamp: new Date("2025-06-13T19:08:19.699Z"),
+  toolCallId: "call_arbitrary_id",
+  toolName: "general_information_web",
+  toolArguments: {
+    "question": "Tell me about Syllable.ai!",
+  },
+  timestamp: new Date("2024-06-19T00:00:00"),
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `toolCallId`                                                                                     | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `toolName`                                                                                       | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `toolArguments`                                                                                  | [components.DialogToolCallToolArguments](../../models/components/dialogtoolcalltoolarguments.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `timestamp`                                                                                      | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)    | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `toolCallId`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | Tool call ID                                                                                  | call_arbitrary_id                                                                             |
+| `toolName`                                                                                    | *string*                                                                                      | :heavy_check_mark:                                                                            | Tool name                                                                                     | general_information_web                                                                       |
+| `toolArguments`                                                                               | *any*                                                                                         | :heavy_check_mark:                                                                            | Tool arguments                                                                                | {<br/>"question": "Tell me about Syllable.ai!"<br/>}                                          |
+| `timestamp`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | Tool call timestamp                                                                           | 2024-06-19T00:00:00                                                                           |

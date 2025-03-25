@@ -9,7 +9,10 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * An agent-level configuration of default values for tool parameters for a given tool.
+ * Agent-level value for a static parameter on a tool, overriding the tool-level default if one
+ *
+ * @remarks
+ * exists.
  */
 export type AgentToolFieldDefault = {
   /**

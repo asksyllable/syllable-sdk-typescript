@@ -15,10 +15,25 @@ import {
 } from "./sessionmessage.js";
 
 export type SessionData = {
+  /**
+   * Session ID
+   */
   sessionId: number;
+  /**
+   * Session source
+   */
   source: string;
+  /**
+   * Session target
+   */
   target: string;
+  /**
+   * Is test session
+   */
   isTest: boolean;
+  /**
+   * Session messages
+   */
   messages: Array<SessionMessage>;
 };
 

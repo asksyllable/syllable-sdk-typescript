@@ -6,12 +6,12 @@
 import { DialogMessage } from "syllable-sdk/models/components";
 
 let value: DialogMessage = {
-  text: "<value>",
+  text: "Tell me about Syllable.ai!",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `text`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                      | Type                       | Required                   | Description                | Example                    |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `text`                     | *string*                   | :heavy_check_mark:         | Dialog message text        | Tell me about Syllable.ai! |

@@ -62,7 +62,7 @@ export type AgentVoice = {
   /**
    * Model for an agent voice.
    */
-  model?: AgentVoiceModel | undefined;
+  model: AgentVoiceModel;
   /**
    * Languages supported by the voice
    */
@@ -83,7 +83,7 @@ export const AgentVoice$inboundSchema: z.ZodType<
   display_name: AgentVoiceDisplayName$inboundSchema,
   var_name: AgentVoiceVarName$inboundSchema,
   gender: AgentVoiceGender$inboundSchema,
-  model: AgentVoiceModel$inboundSchema.optional(),
+  model: AgentVoiceModel$inboundSchema,
   supported_languages: z.array(AgentLanguage$inboundSchema),
   deprecated: z.boolean(),
 }).transform((v) => {
@@ -100,7 +100,7 @@ export type AgentVoice$Outbound = {
   display_name: string;
   var_name: string;
   gender: string;
-  model?: string | undefined;
+  model: string;
   supported_languages: Array<AgentLanguage$Outbound>;
   deprecated: boolean;
 };
@@ -115,7 +115,7 @@ export const AgentVoice$outboundSchema: z.ZodType<
   displayName: AgentVoiceDisplayName$outboundSchema,
   varName: AgentVoiceVarName$outboundSchema,
   gender: AgentVoiceGender$outboundSchema,
-  model: AgentVoiceModel$outboundSchema.optional(),
+  model: AgentVoiceModel$outboundSchema,
   supportedLanguages: z.array(AgentLanguage$outboundSchema),
   deprecated: z.boolean(),
 }).transform((v) => {

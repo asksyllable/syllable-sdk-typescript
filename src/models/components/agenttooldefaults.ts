@@ -15,7 +15,7 @@ import {
 } from "./agenttoolfielddefault.js";
 
 /**
- * An agent-level configuration of default values for tool parameters for its tools.
+ * Agent-level static parameter values for a tool, overriding any tool-level defaults.
  */
 export type AgentToolDefaults = {
   /**

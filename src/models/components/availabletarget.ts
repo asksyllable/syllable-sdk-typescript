@@ -8,10 +8,28 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * An available organization-level channel target (i.e., one for which a channel target has not
+ *
+ * @remarks
+ * been created in the current suborg).
+ */
 export type AvailableTarget = {
+  /**
+   * Internal ID of the org with which the target is associated.
+   */
   organizationId: number;
+  /**
+   * Internal ID of the channel with which the target is associated.
+   */
   channelId: number;
+  /**
+   * Name of the channel with which the target is associated.
+   */
   channelName: string | null;
+  /**
+   * Org-level target.
+   */
   target: string;
 };
 

@@ -14,6 +14,9 @@ import {
   ToolDefinition$outboundSchema,
 } from "./tooldefinition.js";
 
+/**
+ * Request model to update an existing tool.
+ */
 export type ToolUpdateRequest = {
   /**
    * The name of the tool
@@ -24,15 +27,15 @@ export type ToolUpdateRequest = {
    */
   definition: ToolDefinition;
   /**
-   * The service to which this tool belongs
+   * Internal ID of the service to which the tool belongs
    */
   serviceId: number;
   /**
-   * The ID of the tool
+   * The internal ID of the tool
    */
   id: number;
   /**
-   * Update comments
+   * Comments for the most recent edit to the tool.
    */
   lastUpdatedComments?: string | null | undefined;
 };

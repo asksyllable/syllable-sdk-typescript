@@ -1,11 +1,13 @@
 # LanguageGroupProperties
 
+Names of language group fields supported for filtering/sorting on list endpoint.
+
 ## Example Usage
 
 ```typescript
 import { LanguageGroupProperties } from "syllable-sdk/models/components";
 
-let value: LanguageGroupProperties = "updated_at";
+let value: LanguageGroupProperties = "name";
 ```
 
 ## Values

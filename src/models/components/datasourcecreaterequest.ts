@@ -8,6 +8,9 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Request model to create a data source.
+ */
 export type DataSourceCreateRequest = {
   /**
    * The data source name. Must be unique within suborg. Cannot contain whitespace.
@@ -30,7 +33,7 @@ export type DataSourceCreateRequest = {
    */
   chunkDelimiter?: string | null | undefined;
   /**
-   * Information that the data source will provide to the agent accessing it.
+   * Information that the data source will provide to the agent accessing it. It is recommended to include a sentence at the beginning providing context to the LLM for the information in the data source.
    */
   text: string;
 };

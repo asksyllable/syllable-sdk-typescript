@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of session fields supported for filtering/sorting on list endpoint.
+ */
 export const SessionProperties = {
   Timestamp: "timestamp",
   SessionId: "session_id",
@@ -23,6 +26,9 @@ export const SessionProperties = {
   IsLegacy: "is_legacy",
   IsTest: "is_test",
 } as const;
+/**
+ * Names of session fields supported for filtering/sorting on list endpoint.
+ */
 export type SessionProperties = ClosedEnum<typeof SessionProperties>;
 
 /** @internal */

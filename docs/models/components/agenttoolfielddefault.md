@@ -1,6 +1,7 @@
 # AgentToolFieldDefault
 
-An agent-level configuration of default values for tool parameters for a given tool.
+Agent-level value for a static parameter on a tool, overriding the tool-level default if one
+exists.
 
 ## Example Usage
 
@@ -8,14 +9,14 @@ An agent-level configuration of default values for tool parameters for a given t
 import { AgentToolFieldDefault } from "syllable-sdk/models/components";
 
 let value: AgentToolFieldDefault = {
-  fieldName: "<value>",
-  defaultValue: "<value>",
+  fieldName: "temperature_unit",
+  defaultValue: "fahrenheit",
 };
 ```
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `fieldName`                     | *string*                        | :heavy_check_mark:              | The name of the field           |
-| `defaultValue`                  | *any*                           | :heavy_check_mark:              | The default value for the field |
+| Field                           | Type                            | Required                        | Description                     | Example                         |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `fieldName`                     | *string*                        | :heavy_check_mark:              | The name of the field           | temperature_unit                |
+| `defaultValue`                  | *any*                           | :heavy_check_mark:              | The default value for the field | fahrenheit                      |

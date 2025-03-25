@@ -1,11 +1,13 @@
 # AgentProperties
 
+Names of agent fields supported for filtering/sorting on list endpoint.
+
 ## Example Usage
 
 ```typescript
 import { AgentProperties } from "syllable-sdk/models/components";
 
-let value: AgentProperties = "prompt_tool_defaults";
+let value: AgentProperties = "last_updated_by";
 ```
 
 ## Values

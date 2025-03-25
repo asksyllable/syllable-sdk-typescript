@@ -8,6 +8,9 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The response from the agent
+ */
 export type Response = {};
 
 /**
@@ -26,6 +29,9 @@ export type TestMessageResponse = {
    * The text of the message that elicited the response
    */
   text?: string | undefined;
+  /**
+   * The response from the agent
+   */
   response?: Response | undefined;
   /**
    * The text of the response

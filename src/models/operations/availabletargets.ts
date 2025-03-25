@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AvailableTargetsRequest = {
   /**
-   * The page number from which to start (0-indexed)
+   * The page number from which to start (0-based)
    */
   page?: number | null | undefined;
   /**

@@ -9,29 +9,32 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Arguments for Insight Tool
+ * Arguments for calling the insight tool
  */
 export type InsightToolInputToolArguments = {};
 
+/**
+ * Request model to create/update an insight tool.
+ */
 export type InsightToolInput = {
   /**
-   * Human readable name of Insight Tool
+   * Human readable name of insight tool
    */
   name: string;
   /**
-   * Text description of Insight Tool
+   * Text description of insight tool
    */
   description: string;
   /**
-   * Version number of Insight Tool
+   * Version number of insight tool
    */
   version: number;
   /**
-   * Arguments for Insight Tool
+   * Arguments for calling the insight tool
    */
   toolArguments: InsightToolInputToolArguments;
   /**
-   * Unique ID for Insight Tool Definition
+   * Internal ID for the definition used by the insight tool
    */
   insightToolDefinitionId: number;
 };

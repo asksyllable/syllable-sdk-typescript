@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of dashboard fields supported for filtering/sorting on list endpoint.
+ */
 export const DashboardProperties = {
   Id: "id",
   Name: "name",
@@ -12,6 +15,9 @@ export const DashboardProperties = {
   Rank: "rank",
   Label: "label",
 } as const;
+/**
+ * Names of dashboard fields supported for filtering/sorting on list endpoint.
+ */
 export type DashboardProperties = ClosedEnum<typeof DashboardProperties>;
 
 /** @internal */

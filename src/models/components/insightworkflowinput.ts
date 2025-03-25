@@ -9,29 +9,32 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Conditions for Insight Workflow
+ * Conditions for insight workflow to trigger on a given call recording.
  */
 export type InsightWorkflowInputConditions = {};
 
+/**
+ * Request model to create/update an insight workflow.
+ */
 export type InsightWorkflowInput = {
   /**
-   * Human readable name of Insight Workflow
+   * Human-readable name of insight workflow
    */
   name: string;
   /**
-   * Text description of Insight Workflow
+   * Text description of insight workflow
    */
   description: string;
   /**
-   * List of Insight Tool IDs
+   * List of IDs of insight tools used in the workflow
    */
   insightToolIds: Array<number>;
   /**
-   * Conditions for Insight Workflow
+   * Conditions for insight workflow to trigger on a given call recording.
    */
   conditions: InsightWorkflowInputConditions;
   /**
-   * Status of the Insight Workflow
+   * Status of the insight workflow
    */
   status: string;
 };

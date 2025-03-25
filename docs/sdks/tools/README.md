@@ -123,10 +123,11 @@ async function run() {
   const result = await syllableSDK.tools.create({
     name: "Weather Fetcher",
     definition: {
+      type: "endpoint",
       tool: {
         function: {
-          name: "weather_fetcher",
-          description: "Fetches weather data",
+          name: "get_weather",
+          description: "Get the weather for a city",
           parameters: {
 
           },
@@ -138,8 +139,17 @@ async function run() {
         argumentLocation: "path",
       },
       defaults: "<value>",
+      staticParameters: [
+        {
+          name: "temperature_unit",
+          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
+          required: true,
+          type: "string",
+          default: "fahrenheit",
+        },
+      ],
     },
-    serviceId: 920994,
+    serviceId: 1,
   });
 
   // Handle the result
@@ -167,10 +177,11 @@ async function run() {
   const res = await toolsCreate(syllableSDK, {
     name: "Weather Fetcher",
     definition: {
+      type: "endpoint",
       tool: {
         function: {
-          name: "weather_fetcher",
-          description: "Fetches weather data",
+          name: "get_weather",
+          description: "Get the weather for a city",
           parameters: {
   
           },
@@ -182,8 +193,17 @@ async function run() {
         argumentLocation: "path",
       },
       defaults: "<value>",
+      staticParameters: [
+        {
+          name: "temperature_unit",
+          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
+          required: true,
+          type: "string",
+          default: "fahrenheit",
+        },
+      ],
     },
-    serviceId: 920994,
+    serviceId: 1,
   });
 
   if (!res.ok) {
@@ -236,10 +256,11 @@ async function run() {
   const result = await syllableSDK.tools.update({
     name: "Weather Fetcher",
     definition: {
+      type: "endpoint",
       tool: {
         function: {
-          name: "weather_fetcher",
-          description: "Fetches weather data",
+          name: "get_weather",
+          description: "Get the weather for a city",
           parameters: {
 
           },
@@ -251,9 +272,19 @@ async function run() {
         argumentLocation: "path",
       },
       defaults: "<value>",
+      staticParameters: [
+        {
+          name: "temperature_unit",
+          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
+          required: true,
+          type: "string",
+          default: "fahrenheit",
+        },
+      ],
     },
-    serviceId: 243447,
-    id: 265006,
+    serviceId: 1,
+    id: 1,
+    lastUpdatedComments: "Updated to use new API endpoint",
   });
 
   // Handle the result
@@ -281,10 +312,11 @@ async function run() {
   const res = await toolsUpdate(syllableSDK, {
     name: "Weather Fetcher",
     definition: {
+      type: "endpoint",
       tool: {
         function: {
-          name: "weather_fetcher",
-          description: "Fetches weather data",
+          name: "get_weather",
+          description: "Get the weather for a city",
           parameters: {
   
           },
@@ -296,9 +328,19 @@ async function run() {
         argumentLocation: "path",
       },
       defaults: "<value>",
+      staticParameters: [
+        {
+          name: "temperature_unit",
+          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
+          required: true,
+          type: "string",
+          default: "fahrenheit",
+        },
+      ],
     },
-    serviceId: 243447,
-    id: 265006,
+    serviceId: 1,
+    id: 1,
+    lastUpdatedComments: "Updated to use new API endpoint",
   });
 
   if (!res.ok) {

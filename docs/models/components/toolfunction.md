@@ -11,8 +11,8 @@ See:
 import { ToolFunction } from "syllable-sdk/models/components";
 
 let value: ToolFunction = {
-  name: "weather_fetcher",
-  description: "Fetches weather data",
+  name: "get_weather",
+  description: "Get the weather for a city",
   parameters: {},
 };
 ```
@@ -21,6 +21,6 @@ let value: ToolFunction = {
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `name`                                                   | *string*                                                 | :heavy_check_mark:                                       | The name of the function/tool call.                      | weather_fetcher                                          |
-| `description`                                            | *string*                                                 | :heavy_check_mark:                                       | The description of the tool.                             | Fetches weather data                                     |
+| `name`                                                   | *string*                                                 | :heavy_check_mark:                                       | The name of the function/tool call.                      | get_weather                                              |
+| `description`                                            | *string*                                                 | :heavy_check_mark:                                       | The description of the tool.                             | Get the weather for a city                               |
 | `parameters`                                             | *any*                                                    | :heavy_check_mark:                                       | The JSON Schema of parameters of the function/tool call. | {}                                                       |

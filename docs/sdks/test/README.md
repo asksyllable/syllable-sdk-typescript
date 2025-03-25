@@ -25,7 +25,8 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.agents.test.sendTestMessage({
     serviceName: "<value>",
-    source: "<value>",
+    source: "user@email.com",
+    text: "Hello",
     testId: "<id>",
     agentId: "<id>",
     orgName: "<value>",
@@ -55,7 +56,8 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await agentsTestSendTestMessage(syllableSDK, {
     serviceName: "<value>",
-    source: "<value>",
+    source: "user@email.com",
+    text: "Hello",
     testId: "<id>",
     agentId: "<id>",
     orgName: "<value>",

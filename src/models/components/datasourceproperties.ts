@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of data source fields supported for filtering/sorting on list endpoint.
+ */
 export const DataSourceProperties = {
   Name: "name",
   Description: "description",
@@ -14,6 +17,9 @@ export const DataSourceProperties = {
   UpdatedAt: "updated_at",
   LastUpdatedBy: "last_updated_by",
 } as const;
+/**
+ * Names of data source fields supported for filtering/sorting on list endpoint.
+ */
 export type DataSourceProperties = ClosedEnum<typeof DataSourceProperties>;
 
 /** @internal */

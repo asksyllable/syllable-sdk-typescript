@@ -12,13 +12,19 @@ let value: ListResponseLanguageGroupResponse = {
       description: "Languages spoken by operators at Call Center 1",
       languageConfigs: [
         {
-          languageCode: "es-US",
-          voiceProvider: "ElevenLabs",
-          voiceDisplayName: "Alice",
+          languageCode: "en-US",
+          voiceProvider: "OpenAI",
+          voiceDisplayName: "Alloy",
           dtmfCode: 1,
         },
+        {
+          languageCode: "es-US",
+          voiceProvider: "Google",
+          voiceDisplayName: "Alejandro",
+          dtmfCode: 2,
+        },
       ],
-      skipCurrentLanguageInMessage: false,
+      skipCurrentLanguageInMessage: true,
       id: 1,
       editComments: "Added Spanish support.",
       agentsInfo: [
@@ -27,21 +33,23 @@ let value: ListResponseLanguageGroupResponse = {
           name: "Test Agent",
         },
       ],
-      updatedAt: new Date("2025-04-24T01:27:00.644Z"),
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
       lastUpdatedBy: "user@mail.com",
     },
   ],
-  page: 502106,
-  pageSize: 786189,
+  page: 0,
+  pageSize: 25,
+  totalPages: 4,
+  totalCount: 100,
 };
 ```
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `items`                                                                                | [components.LanguageGroupResponse](../../models/components/languagegroupresponse.md)[] | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `page`                                                                                 | *number*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `pageSize`                                                                             | *number*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `totalPages`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
-| `totalCount`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `items`                                                                                | [components.LanguageGroupResponse](../../models/components/languagegroupresponse.md)[] | :heavy_check_mark:                                                                     | List of items returned from the query                                                  |                                                                                        |
+| `page`                                                                                 | *number*                                                                               | :heavy_check_mark:                                                                     | The page number of the results (0-based)                                               | 0                                                                                      |
+| `pageSize`                                                                             | *number*                                                                               | :heavy_check_mark:                                                                     | The number of items returned per page                                                  | 25                                                                                     |
+| `totalPages`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | The total number of pages of results given the indicated page size                     | 4                                                                                      |
+| `totalCount`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | The total number of items returned from the query                                      | 100                                                                                    |

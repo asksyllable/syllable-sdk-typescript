@@ -9,9 +9,10 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * A session label is associated with a given session and contains an evaluation of quality and
+ * Response model for session label operations.
  *
  * @remarks
+ * A session label is associated with a given session and contains an evaluation of quality and
  * descriptions of issues the user encountered in that session or other details.
  */
 export type SessionLabel = {
@@ -20,11 +21,11 @@ export type SessionLabel = {
    */
   sessionId: number;
   /**
-   * The type of the label
+   * The type of the label (either "auto-rating" or "human-rating")
    */
   type: string;
   /**
-   * A code describing the quality of the labeled session
+   * A code describing the quality of the labeled session (either "GOOD", "OK", "BAD", or "N/A")
    */
   code: string;
   /**
@@ -44,7 +45,7 @@ export type SessionLabel = {
    */
   id: number;
   /**
-   * The timestamp of the label creation
+   * The timestamp at which the label was created
    */
   timestamp: string;
 };

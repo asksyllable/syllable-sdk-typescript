@@ -8,39 +8,54 @@ import { ListResponseInsightWorkflowOutput } from "syllable-sdk/models/component
 let value: ListResponseInsightWorkflowOutput = {
   items: [
     {
-      name: "<value>",
-      description: "astride fidget abaft knottily ethyl covenant",
+      name: "summary-workflow",
+      description: "Default workflow - generates a summary of the call",
       insightToolIds: [
-        788546,
+        1,
       ],
       conditions: {},
-      status: "<value>",
-      id: 56848,
+      status: "ACTIVE",
+      id: 1,
       insightTools: [
         {
-          name: "<value>",
-          description: "indeed beside motivate zowie tag even well lest",
-          version: 62713,
+          name: "summary-tool",
+          description: "Default tool - generates a summary of the call",
+          version: 1,
           toolArguments: {},
-          insightToolDefinitionId: 424032,
-          id: 258684,
-          lastUpdatedBy: "<value>",
+          insightToolDefinitionId: 1,
+          id: 1,
+          insightToolDefinition: {
+            id: 1,
+            name: "llm_tool",
+            type: "<value>",
+            description:
+              "An LLM tool evaluates a transcript with a given prompt",
+            toolParameters: {},
+            toolResultSet: {},
+          },
+          createdAt: new Date("2024-01-01T00:00:00Z"),
+          updatedAt: new Date("2024-01-02T00:00:00Z"),
+          lastUpdatedBy: "user@email.com",
         },
       ],
-      lastUpdatedBy: "<value>",
+      createdAt: new Date("2024-01-01T00:00:00Z"),
+      updatedAt: new Date("2024-01-02T00:00:00Z"),
+      lastUpdatedBy: "user@email.com",
     },
   ],
-  page: 849039,
-  pageSize: 33304,
+  page: 0,
+  pageSize: 25,
+  totalPages: 4,
+  totalCount: 100,
 };
 ```
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `items`                                                                                | [components.InsightWorkflowOutput](../../models/components/insightworkflowoutput.md)[] | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `page`                                                                                 | *number*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `pageSize`                                                                             | *number*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `totalPages`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
-| `totalCount`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `items`                                                                                | [components.InsightWorkflowOutput](../../models/components/insightworkflowoutput.md)[] | :heavy_check_mark:                                                                     | List of items returned from the query                                                  |                                                                                        |
+| `page`                                                                                 | *number*                                                                               | :heavy_check_mark:                                                                     | The page number of the results (0-based)                                               | 0                                                                                      |
+| `pageSize`                                                                             | *number*                                                                               | :heavy_check_mark:                                                                     | The number of items returned per page                                                  | 25                                                                                     |
+| `totalPages`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | The total number of pages of results given the indicated page size                     | 4                                                                                      |
+| `totalCount`                                                                           | *number*                                                                               | :heavy_minus_sign:                                                                     | The total number of items returned from the query                                      | 100                                                                                    |

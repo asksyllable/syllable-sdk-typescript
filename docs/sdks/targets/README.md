@@ -216,10 +216,11 @@ async function run() {
   const result = await syllableSDK.channels.targets.create({
     channelId: 134365,
     channelTargetCreateRequest: {
-      agentId: 486589,
-      channelId: 638424,
-      target: "<value>",
+      agentId: 1,
+      channelId: 1,
+      target: "+19995551234",
       targetMode: "chat",
+      fallbackTarget: "+19995551235",
     },
   });
 
@@ -248,10 +249,11 @@ async function run() {
   const res = await channelsTargetsCreate(syllableSDK, {
     channelId: 134365,
     channelTargetCreateRequest: {
-      agentId: 486589,
-      channelId: 638424,
-      target: "<value>",
+      agentId: 1,
+      channelId: 1,
+      target: "+19995551234",
       targetMode: "chat",
+      fallbackTarget: "+19995551235",
     },
   });
 
@@ -385,11 +387,12 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      agentId: 857478,
-      channelId: 597129,
-      target: "<value>",
+      agentId: 1,
+      channelId: 1,
+      target: "+19995551234",
       targetMode: "chat",
-      id: 991464,
+      fallbackTarget: "+19995551235",
+      id: 1,
     },
   });
 
@@ -419,11 +422,12 @@ async function run() {
     channelId: 627690,
     targetId: 488852,
     channelTargetUpdateRequest: {
-      agentId: 857478,
-      channelId: 597129,
-      target: "<value>",
+      agentId: 1,
+      channelId: 1,
+      target: "+19995551234",
       targetMode: "chat",
-      id: 991464,
+      fallbackTarget: "+19995551235",
+      id: 1,
     },
   });
 

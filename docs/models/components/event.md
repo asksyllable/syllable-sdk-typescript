@@ -8,7 +8,7 @@ An event represents a specific occurrence during a session.
 import { Event } from "syllable-sdk/models/components";
 
 let value: Event = {
-  timestamp: new Date("2025-12-12T02:02:24.972Z"),
+  timestamp: new Date("2025-10-15T12:12:25.852Z"),
   source: "tool-call",
   category: "automation",
   type: "phone-transfer",

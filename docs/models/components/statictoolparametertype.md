@@ -7,7 +7,7 @@ The expected type for a static tool parameter.
 ```typescript
 import { StaticToolParameterType } from "syllable-sdk/models/components";
 
-let value: StaticToolParameterType = "int";
+let value: StaticToolParameterType = "boolean";
 ```
 
 ## Values

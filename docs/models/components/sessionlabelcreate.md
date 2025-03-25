@@ -6,23 +6,23 @@
 import { SessionLabelCreate } from "syllable-sdk/models/components";
 
 let value: SessionLabelCreate = {
-  sessionId: 588152,
+  sessionId: 1,
   type: "human-rating",
-  code: "BAD",
-  userEmail: "<value>",
+  code: "GOOD",
+  userEmail: "user@email.com",
   issueCategories: [
-    "Silent treatment",
+    "Speech transcription (STT)",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `sessionId`                                                    | *number*                                                       | :heavy_check_mark:                                             | The internal ID of the session (see Session.session_id)        |                                                                |
-| `type`                                                         | *string*                                                       | :heavy_check_mark:                                             | The type of the label                                          | auto-rating                                                    |
-| `code`                                                         | *string*                                                       | :heavy_check_mark:                                             | A code describing the quality of the labeled session           | GOOD                                                           |
-| `userEmail`                                                    | *string*                                                       | :heavy_check_mark:                                             | The email of the user who created the label                    |                                                                |
-| `comments`                                                     | *string*                                                       | :heavy_minus_sign:                                             | Comment string describing additional details about the session |                                                                |
-| `issueCategories`                                              | *string*[]                                                     | :heavy_minus_sign:                                             | Descriptions of issues occurring in the labeled call           | [<br/>"Silent treatment"<br/>]                                 |
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `sessionId`                                                                                 | *number*                                                                                    | :heavy_check_mark:                                                                          | The internal ID of the session (see Session.session_id)                                     | 1                                                                                           |
+| `type`                                                                                      | *string*                                                                                    | :heavy_check_mark:                                                                          | The type of the label (either "auto-rating" or "human-rating")                              | auto-rating                                                                                 |
+| `code`                                                                                      | *string*                                                                                    | :heavy_check_mark:                                                                          | A code describing the quality of the labeled session (either "GOOD", "OK", "BAD", or "N/A") | GOOD                                                                                        |
+| `userEmail`                                                                                 | *string*                                                                                    | :heavy_check_mark:                                                                          | The email of the user who created the label                                                 | user@email.com                                                                              |
+| `comments`                                                                                  | *string*                                                                                    | :heavy_minus_sign:                                                                          | Comment string describing additional details about the session                              |                                                                                             |
+| `issueCategories`                                                                           | *string*[]                                                                                  | :heavy_minus_sign:                                                                          | Descriptions of issues occurring in the labeled call                                        | [<br/>"Silent treatment"<br/>]                                                              |

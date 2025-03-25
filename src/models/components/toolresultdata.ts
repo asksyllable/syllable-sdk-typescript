@@ -9,7 +9,13 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ToolResultData = {
+  /**
+   * Tool name
+   */
   toolName: string;
+  /**
+   * Tool result data
+   */
   toolResult?: any | undefined;
 };
 

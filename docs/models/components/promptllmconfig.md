@@ -1,5 +1,7 @@
 # PromptLlmConfig
 
+LLM configuration for a prompt.
+
 ## Example Usage
 
 ```typescript

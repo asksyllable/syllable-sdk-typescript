@@ -5,10 +5,16 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Role of dialog
+ */
 export const DialogRole = {
   Agent: "agent",
   User: "user",
 } as const;
+/**
+ * Role of dialog
+ */
 export type DialogRole = ClosedEnum<typeof DialogRole>;
 
 /** @internal */

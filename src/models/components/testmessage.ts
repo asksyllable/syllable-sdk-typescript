@@ -17,7 +17,7 @@ export type TestMessage = {
    */
   serviceName: string;
   /**
-   * Name of the source of the message, should identify the user, like an email or username
+   * Name of the source of the message - identifies the user, like an email or username.
    */
   source: string;
   /**

@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of tool fields supported for filtering/sorting on list endpoint.
+ */
 export const ToolProperties = {
   Id: "id",
   Name: "name",
@@ -14,6 +17,9 @@ export const ToolProperties = {
   UpdatedAt: "updated_at",
   LastUpdatedBy: "last_updated_by",
 } as const;
+/**
+ * Names of tool fields supported for filtering/sorting on list endpoint.
+ */
 export type ToolProperties = ClosedEnum<typeof ToolProperties>;
 
 /** @internal */

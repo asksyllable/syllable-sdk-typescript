@@ -6,7 +6,7 @@
 import { LanguageGroupsDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: LanguageGroupsDeleteRequest = {
-  languageGroupId: 944203,
+  languageGroupId: 237893,
   reason: "<value>",
 };
 ```

@@ -121,8 +121,8 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.services.create({
-    name: "<value>",
-    description: "yuck vice between gee ugh ha",
+    name: "Weather tools",
+    description: "Service containing tools for fetching weather information",
   });
 
   // Handle the result
@@ -148,8 +148,8 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await servicesCreate(syllableSDK, {
-    name: "<value>",
-    description: "yuck vice between gee ugh ha",
+    name: "Weather tools",
+    description: "Service containing tools for fetching weather information",
   });
 
   if (!res.ok) {
@@ -200,9 +200,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.services.update({
-    name: "<value>",
-    description: "awful underneath retention too mobility char innocently dowse restfully",
-    id: 243447,
+    name: "Weather tools",
+    description: "Service containing tools for fetching weather information",
+    id: 1,
+    lastUpdatedComments: "Updated description to correct typo",
   });
 
   // Handle the result
@@ -228,9 +229,10 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await servicesUpdate(syllableSDK, {
-    name: "<value>",
-    description: "awful underneath retention too mobility char innocently dowse restfully",
-    id: 243447,
+    name: "Weather tools",
+    description: "Service containing tools for fetching weather information",
+    id: 1,
+    lastUpdatedComments: "Updated description to correct typo",
   });
 
   if (!res.ok) {

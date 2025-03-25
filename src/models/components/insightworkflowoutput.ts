@@ -15,49 +15,52 @@ import {
 } from "./insighttooloutput.js";
 
 /**
- * Conditions for Insight Workflow
+ * Conditions for insight workflow to trigger on a given call recording.
  */
 export type Conditions = {};
 
+/**
+ * Response model for an insight workflow.
+ */
 export type InsightWorkflowOutput = {
   /**
-   * Human readable name of Insight Workflow
+   * Human-readable name of insight workflow
    */
   name: string;
   /**
-   * Text description of Insight Workflow
+   * Text description of insight workflow
    */
   description: string;
   /**
-   * List of Insight Tool IDs
+   * List of IDs of insight tools used in the workflow
    */
   insightToolIds: Array<number>;
   /**
-   * Conditions for Insight Workflow
+   * Conditions for insight workflow to trigger on a given call recording.
    */
   conditions: Conditions;
   /**
-   * Status of the Insight Workflow
+   * Status of the insight workflow
    */
   status: string;
   /**
-   * Unique ID for Insight Workflow
+   * Internal ID of the insight workflow
    */
   id: number;
   /**
-   * List of Insight Tools
+   * List of insight tools used in the workflow
    */
   insightTools: Array<InsightToolOutput>;
   /**
-   * Timestamp of Insight Workflow creation
+   * Timestamp at which the insight workflow was created
    */
   createdAt?: Date | undefined;
   /**
-   * Timestamp of Insight Workflow update
+   * Timestamp of most recent update to the insight workflow
    */
   updatedAt?: Date | undefined;
   /**
-   * User who last updated Insight Workflow
+   * Email of user who last updated Insight Workflow
    */
   lastUpdatedBy: string;
 };

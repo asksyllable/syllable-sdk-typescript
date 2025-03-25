@@ -21,11 +21,11 @@ export type DashboardResponse = {
    */
   displayName: string;
   /**
-   * Dashboard importance, 0 is the highest
+   * Dashboard importance (0 is the highest)
    */
   rank: number;
   /**
-   * Dashboard label.  Typically report or dashboard
+   * Dashboard label. Typically "report" or "dashboard"
    */
   label: string;
 };

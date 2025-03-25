@@ -27,9 +27,10 @@ import {
 } from "./toolpromptinfo.js";
 
 /**
- * A tool is a function that an agent can call to perform actions like accessing databases,
+ * Response model for tool detail endpoint.
  *
  * @remarks
+ * A tool is a function that an agent can call to perform actions like accessing databases,
  * making API calls, or processing data. For an agent to have access to a tool, the prompt
  * associated with that agent should be linked to the tool and include instructions to use it.
  * For more information, see [Console docs](https://docs.syllable.ai/Resources/Tools).
@@ -44,15 +45,15 @@ export type ToolDetailResponse = {
    */
   definition: ToolDefinition;
   /**
-   * The service to which this tool belongs
+   * Internal ID of the service to which the tool belongs
    */
   serviceId: number;
   /**
-   * The ID of the tool
+   * The internal ID of the tool
    */
   id: number;
   /**
-   * Update comments
+   * Comments for the most recent edit to the tool.
    */
   lastUpdatedComments?: string | null | undefined;
   /**

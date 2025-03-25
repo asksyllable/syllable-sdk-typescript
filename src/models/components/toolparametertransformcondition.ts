@@ -20,7 +20,7 @@ export type ToolParameterTransformCondition = {
    */
   value: string;
   /**
-   * The operator to use for the comparison.
+   * The operator to use for the comparison. Currently only supports "eq"
    */
   operator?: "eq" | null | undefined;
 };

@@ -128,7 +128,13 @@ async function run() {
     ],
     chunk: false,
     chunkDelimiter: "",
-    text: "<value>",
+    text: "The following are names and addresses of pizza shops.\n" +
+    "\n" +
+    "Cool Pizza, 123 Main St.\n" +
+    "\n" +
+    "Really Good Pizza, 456 Water St.\n" +
+    "\n" +
+    "The Best Pizza, 789 Circle Dr.",
   });
 
   // Handle the result
@@ -161,7 +167,13 @@ async function run() {
     ],
     chunk: false,
     chunkDelimiter: "",
-    text: "<value>",
+    text: "The following are names and addresses of pizza shops.\n" +
+    "\n" +
+    "Cool Pizza, 123 Main St.\n" +
+    "\n" +
+    "Really Good Pizza, 456 Water St.\n" +
+    "\n" +
+    "The Best Pizza, 789 Circle Dr.",
   });
 
   if (!res.ok) {
@@ -221,7 +233,13 @@ async function run() {
     chunkDelimiter: "",
     id: 1,
     editComments: "Added new info",
-    text: "<value>",
+    text: "The following are names and addresses of pizza shops.\n" +
+    "\n" +
+    "Cool Pizza, 123 Main St.\n" +
+    "\n" +
+    "Really Good Pizza, 456 Water St.\n" +
+    "\n" +
+    "The Best Pizza, 789 Circle Dr.",
   });
 
   // Handle the result
@@ -256,7 +274,13 @@ async function run() {
     chunkDelimiter: "",
     id: 1,
     editComments: "Added new info",
-    text: "<value>",
+    text: "The following are names and addresses of pizza shops.\n" +
+    "\n" +
+    "Cool Pizza, 123 Main St.\n" +
+    "\n" +
+    "Really Good Pizza, 456 Water St.\n" +
+    "\n" +
+    "The Best Pizza, 789 Circle Dr.",
   });
 
   if (!res.ok) {

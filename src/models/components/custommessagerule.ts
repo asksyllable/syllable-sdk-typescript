@@ -13,6 +13,12 @@ import {
   DayOfWeek$outboundSchema,
 } from "./dayofweek.js";
 
+/**
+ * A rule used to determine whether a custom message should present a variant message based on
+ *
+ * @remarks
+ * the current timestamp.
+ */
 export type CustomMessageRule = {
   /**
    * The description of the rule

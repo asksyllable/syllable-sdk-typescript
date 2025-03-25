@@ -122,8 +122,13 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.prompts.create({
-    name: "<value>",
-    type: "<value>",
+    name: "Weather Agent Prompt",
+    description: "Prompt for a weather agent.",
+    type: "prompt_v1",
+    context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
+    tools: [
+      "summary, hangup",
+    ],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -153,8 +158,13 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await promptsCreate(syllableSDK, {
-    name: "<value>",
-    type: "<value>",
+    name: "Weather Agent Prompt",
+    description: "Prompt for a weather agent.",
+    type: "prompt_v1",
+    context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
+    tools: [
+      "summary, hangup",
+    ],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -209,13 +219,19 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.prompts.update({
-    name: "<value>",
-    type: "<value>",
+    name: "Weather Agent Prompt",
+    description: "Prompt for a weather agent.",
+    type: "prompt_v1",
+    context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
+    tools: [
+      "summary, hangup",
+    ],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
-    id: 857478,
+    id: 1,
+    editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
 
   // Handle the result
@@ -241,13 +257,19 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await promptsUpdate(syllableSDK, {
-    name: "<value>",
-    type: "<value>",
+    name: "Weather Agent Prompt",
+    description: "Prompt for a weather agent.",
+    type: "prompt_v1",
+    context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
+    tools: [
+      "summary, hangup",
+    ],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
     },
-    id: 857478,
+    id: 1,
+    editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
 
   if (!res.ok) {

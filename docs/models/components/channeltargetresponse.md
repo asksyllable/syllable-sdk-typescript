@@ -1,5 +1,6 @@
 # ChannelTargetResponse
 
+Response model for channel target operations.
 A channel target links a channel to an agent, allowing users to communicate with the agent
 through that channel. For more information, see
 [Console docs](https://docs.syllable.ai/Resources/Channels).
@@ -10,61 +11,104 @@ through that channel. For more information, see
 import { ChannelTargetResponse } from "syllable-sdk/models/components";
 
 let value: ChannelTargetResponse = {
-  agentId: 120196,
-  channelId: 296140,
-  target: "<value>",
-  targetMode: "voice",
-  id: 317983,
-  channelName: "<value>",
-  updatedAt: new Date("2024-03-30T00:46:25.708Z"),
-  lastUpdatedBy: "<value>",
+  agentId: 1,
+  channelId: 1,
+  target: "+19995551234",
+  targetMode: "email",
+  fallbackTarget: "+19995551235",
+  id: 1,
+  channelName: "+19995551234",
+  updatedAt: new Date("2024-01-01T00:00:00Z"),
+  lastUpdatedBy: "user@email.com",
   agent: {
-    name: "<value>",
+    name: "Weather agent",
+    description: "Agent for answering questions about weather.",
+    label: "Information",
     type: "ca_v1",
-    promptId: 64147,
-    customMessageId: 692472,
-    timezone: "America/Chicago",
+    promptId: 1,
+    customMessageId: 1,
+    languageGroupId: 1,
+    timezone: "America/New_York",
+    promptToolDefaults: [
+      {
+        toolName: "get_weather",
+        defaultValues: [
+          {
+            fieldName: "temperature_unit",
+            defaultValue: "fahrenheit",
+          },
+        ],
+      },
+    ],
     variables: {
-      "key": "<value>",
+      "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "key": "<value>",
+      "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V1",
-    waitSound: "Keyboard 2",
-    id: 93940,
-    updatedAt: new Date("2024-09-23T05:41:47.829Z"),
-    lastUpdatedBy: "<value>",
+    sttProvider: "Google STT V2",
+    waitSound: "No Sound",
+    id: 1,
+    updatedAt: new Date("2024-01-01T00:00:00Z"),
+    lastUpdatedBy: "user@email.com",
     prompt: {
-      name: "<value>",
-      type: "<value>",
+      name: "Weather Agent Prompt",
+      description: "Prompt for a weather agent.",
+      type: "prompt_v1",
+      context:
+        "You are a weather agent. Answer the user's questions about weather and nothing else.",
       llmConfig: {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
       },
-      id: 929297,
-      lastUpdated: "<value>",
+      id: 1,
+      editComments:
+        "Updated prompt text to include requirement to not answer questions that aren't about weather.",
+      lastUpdated: "2024-01-01T12:00:00Z",
       lastUpdatedBy: "user@email.com",
+      agentCount: 5,
       toolsFull: [
         {
           name: "Weather Fetcher",
           definition: {
+            type: "endpoint",
             tool: {
               function: {
-                name: "weather_fetcher",
-                description: "Fetches weather data",
+                name: "get_weather",
+                description: "Get the weather for a city",
                 parameters: {},
               },
             },
             endpoint: {
               url: "https://api.example.com",
-              method: "get",
+              method: "post",
               argumentLocation: "path",
             },
-            defaults: "<value>",
+            defaults: {
+              "key": {
+                transform: {
+                  action: "default",
+                  when: {
+                    key: "key",
+                    value: "value",
+                  },
+                },
+              },
+            },
+            staticParameters: [
+              {
+                name: "temperature_unit",
+                description:
+                  "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+                required: false,
+                type: "string",
+                default: "fahrenheit",
+              },
+            ],
           },
-          serviceId: 716327,
-          id: 289406,
+          serviceId: 1,
+          id: 1,
+          lastUpdatedComments: "Updated to use new API endpoint",
           promptsInfo: [
             {
               id: 1,
@@ -77,33 +121,41 @@ let value: ChannelTargetResponse = {
               name: "Test Agent",
             },
           ],
-          lastUpdated: new Date("2023-07-20T18:39:56.110Z"),
+          lastUpdated: new Date("2025-10-31T08:20:58.047Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
     },
     customMessage: {
-      name: "<value>",
-      text: "<value>",
+      name: "Customer service greeting",
+      text:
+        "Hello and thank you for calling customer service. How can I help you today?",
+      label: "Customer service",
       rules: [
         {
-          description: "oof failing other insignificant woot purse salty",
+          description: "Closed on New Year's Day",
           timeRangeStart: "09:00",
           timeRangeEnd: "17:00",
           date: "2025-01-01",
+          invert: false,
+          text: "Hello, thank you for calling. Sorry, we're closed today.",
+        },
+        {
+          description: "Closed on weekends",
+          timeRangeStart: "09:00",
+          timeRangeEnd: "17:00",
           daysOfWeek: [
-            "mo",
-            "tu",
-            "we",
-            "th",
-            "fr",
+            "sa",
+            "su",
           ],
           invert: false,
-          text: "Sorry, we're closed today",
+          text:
+            "Hello, thank you for calling. Sorry, we're closed on weekends.",
         },
       ],
-      id: 100226,
-      updatedAt: new Date("2025-10-04T18:04:14.419Z"),
+      id: 1,
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
+      agentCount: 1,
       lastUpdatedBy: "user@email.com",
     },
     channelTargets: [],
@@ -111,22 +163,34 @@ let value: ChannelTargetResponse = {
       {
         name: "Weather Fetcher",
         definition: {
+          type: "endpoint",
           tool: {
             function: {
-              name: "weather_fetcher",
-              description: "Fetches weather data",
+              name: "get_weather",
+              description: "Get the weather for a city",
               parameters: {},
             },
           },
           endpoint: {
             url: "https://api.example.com",
             method: "post",
-            argumentLocation: "query",
+            argumentLocation: "form",
           },
           defaults: "<value>",
+          staticParameters: [
+            {
+              name: "temperature_unit",
+              description:
+                "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+              required: false,
+              type: "string",
+              default: "fahrenheit",
+            },
+          ],
         },
-        serviceId: 868126,
-        id: 162493,
+        serviceId: 1,
+        id: 1,
+        lastUpdatedComments: "Updated to use new API endpoint",
         promptsInfo: [
           {
             id: 1,
@@ -139,7 +203,7 @@ let value: ChannelTargetResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2024-11-05T15:40:43.604Z"),
+        lastUpdated: new Date("2025-02-03T14:29:27.520Z"),
         lastUpdatedBy: "user@email.com",
       },
     ],
@@ -148,13 +212,19 @@ let value: ChannelTargetResponse = {
       description: "Languages spoken by operators at Call Center 1",
       languageConfigs: [
         {
-          languageCode: "yue-HK",
-          voiceProvider: "Google",
-          voiceDisplayName: "River",
+          languageCode: "en-US",
+          voiceProvider: "OpenAI",
+          voiceDisplayName: "Alloy",
           dtmfCode: 1,
         },
+        {
+          languageCode: "es-US",
+          voiceProvider: "Google",
+          voiceDisplayName: "Alejandro",
+          dtmfCode: 2,
+        },
       ],
-      skipCurrentLanguageInMessage: false,
+      skipCurrentLanguageInMessage: true,
       id: 1,
       editComments: "Added Spanish support.",
       agentsInfo: [
@@ -163,7 +233,7 @@ let value: ChannelTargetResponse = {
           name: "Test Agent",
         },
       ],
-      updatedAt: new Date("2024-09-15T17:37:32.983Z"),
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
       lastUpdatedBy: "user@mail.com",
     },
   },
@@ -172,16 +242,16 @@ let value: ChannelTargetResponse = {
 
 ## Fields
 
-| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `agentId`                                                                                                                      | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | The ID of the agent associated with the channel target                                                                         |
-| `channelId`                                                                                                                    | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | The ID of the channel associated with the channel target                                                                       |
-| `target`                                                                                                                       | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | The name of the channel target (must correspond to an organization-level target)                                               |
-| `targetMode`                                                                                                                   | [components.TargetModes](../../models/components/targetmodes.md)                                                               | :heavy_check_mark:                                                                                                             | Available modes (communication methods) for channel targets.                                                                   |
-| `fallbackTarget`                                                                                                               | *string*                                                                                                                       | :heavy_minus_sign:                                                                                                             | The fallback for the channel target (currently only supported for "voice" mode)                                                |
-| `isTest`                                                                                                                       | *boolean*                                                                                                                      | :heavy_minus_sign:                                                                                                             | Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test. |
-| `id`                                                                                                                           | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | The ID of the channel target                                                                                                   |
-| `channelName`                                                                                                                  | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | The name of the channel associated with the channel target                                                                     |
-| `updatedAt`                                                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                  | :heavy_check_mark:                                                                                                             | Timestamp of the most recent update to the channel target                                                                      |
-| `lastUpdatedBy`                                                                                                                | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | Email of the user who last updated the channel target                                                                          |
-| `agent`                                                                                                                        | [components.AgentResponse](../../models/components/agentresponse.md)                                                           | :heavy_minus_sign:                                                                                                             | Definition of the agent for the channel target                                                                                 |
+| Field                                                                                                                                                                                                                                                                | Type                                                                                                                                                                                                                                                                 | Required                                                                                                                                                                                                                                                             | Description                                                                                                                                                                                                                                                          | Example                                                                                                                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `agentId`                                                                                                                                                                                                                                                            | *number*                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                   | The internal ID of the agent associated with the channel target                                                                                                                                                                                                      | 1                                                                                                                                                                                                                                                                    |
+| `channelId`                                                                                                                                                                                                                                                          | *number*                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                   | The internal ID of the channel associated with the channel target                                                                                                                                                                                                    | 1                                                                                                                                                                                                                                                                    |
+| `target`                                                                                                                                                                                                                                                             | *string*                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                   | The name of the channel target. Must correspond to an organization-level target (available targets can be fetched from `/channels/available-targets`).                                                                                                               | +19995551234                                                                                                                                                                                                                                                         |
+| `targetMode`                                                                                                                                                                                                                                                         | [components.TargetModes](../../models/components/targetmodes.md)                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                                                                   | Available modes (communication methods) for channel targets.                                                                                                                                                                                                         |                                                                                                                                                                                                                                                                      |
+| `fallbackTarget`                                                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                   | The fallback for the channel target (currently only supported for "voice" mode)                                                                                                                                                                                      | +19995551235                                                                                                                                                                                                                                                         |
+| `isTest`                                                                                                                                                                                                                                                             | *boolean*                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                   | Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as a test session (i.e., will not be included in dashboard data and can easily be filtered out in the Sessions screen in the SyllableConsole). | true                                                                                                                                                                                                                                                                 |
+| `id`                                                                                                                                                                                                                                                                 | *number*                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                   | The internal ID of the channel target                                                                                                                                                                                                                                | 1                                                                                                                                                                                                                                                                    |
+| `channelName`                                                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                   | The name of the channel associated with the channel target                                                                                                                                                                                                           | +19995551234                                                                                                                                                                                                                                                         |
+| `updatedAt`                                                                                                                                                                                                                                                          | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                   | Timestamp of the most recent update to the channel target                                                                                                                                                                                                            | 2024-01-01T00:00:00Z                                                                                                                                                                                                                                                 |
+| `lastUpdatedBy`                                                                                                                                                                                                                                                      | *string*                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                   | Email of the user who last updated the channel target                                                                                                                                                                                                                | user@email.com                                                                                                                                                                                                                                                       |
+| `agent`                                                                                                                                                                                                                                                              | [components.AgentResponse](../../models/components/agentresponse.md)                                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                                                                                   | Definition of the agent with which the channel target is associated.                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                      |

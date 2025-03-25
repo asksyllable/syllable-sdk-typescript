@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Names of service fields supported for filtering/sorting on list endpoint.
+ */
 export const ServiceProperties = {
   Id: "id",
   Name: "name",
@@ -12,6 +15,9 @@ export const ServiceProperties = {
   UpdatedAt: "updated_at",
   LastUpdatedBy: "last_updated_by",
 } as const;
+/**
+ * Names of service fields supported for filtering/sorting on list endpoint.
+ */
 export type ServiceProperties = ClosedEnum<typeof ServiceProperties>;
 
 /** @internal */

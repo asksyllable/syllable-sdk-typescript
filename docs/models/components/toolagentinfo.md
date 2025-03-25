@@ -15,7 +15,7 @@ let value: ToolAgentInfo = {
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           | Example               |
-| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
-| `id`                  | *number*              | :heavy_check_mark:    | The ID of the agent   | 1                     |
-| `name`                | *string*              | :heavy_check_mark:    | The name of the agent | Test Agent            |
+| Field                        | Type                         | Required                     | Description                  | Example                      |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `id`                         | *number*                     | :heavy_check_mark:           | The internal ID of the agent | 1                            |
+| `name`                       | *string*                     | :heavy_check_mark:           | The name of the agent        | Test Agent                   |

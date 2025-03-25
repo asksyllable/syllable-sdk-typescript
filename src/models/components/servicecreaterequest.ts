@@ -7,6 +7,9 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Request model to create a service.
+ */
 export type ServiceCreateRequest = {
   /**
    * The name of the service

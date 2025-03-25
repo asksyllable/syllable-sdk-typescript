@@ -8,64 +8,24 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DialogToolCallToolArguments = {};
-
 export type DialogToolCall = {
+  /**
+   * Tool call ID
+   */
   toolCallId: string;
+  /**
+   * Tool name
+   */
   toolName: string;
-  toolArguments: DialogToolCallToolArguments;
+  /**
+   * Tool arguments
+   */
+  toolArguments?: any | undefined;
+  /**
+   * Tool call timestamp
+   */
   timestamp: Date;
 };
-
-/** @internal */
-export const DialogToolCallToolArguments$inboundSchema: z.ZodType<
-  DialogToolCallToolArguments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type DialogToolCallToolArguments$Outbound = {};
-
-/** @internal */
-export const DialogToolCallToolArguments$outboundSchema: z.ZodType<
-  DialogToolCallToolArguments$Outbound,
-  z.ZodTypeDef,
-  DialogToolCallToolArguments
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DialogToolCallToolArguments$ {
-  /** @deprecated use `DialogToolCallToolArguments$inboundSchema` instead. */
-  export const inboundSchema = DialogToolCallToolArguments$inboundSchema;
-  /** @deprecated use `DialogToolCallToolArguments$outboundSchema` instead. */
-  export const outboundSchema = DialogToolCallToolArguments$outboundSchema;
-  /** @deprecated use `DialogToolCallToolArguments$Outbound` instead. */
-  export type Outbound = DialogToolCallToolArguments$Outbound;
-}
-
-export function dialogToolCallToolArgumentsToJSON(
-  dialogToolCallToolArguments: DialogToolCallToolArguments,
-): string {
-  return JSON.stringify(
-    DialogToolCallToolArguments$outboundSchema.parse(
-      dialogToolCallToolArguments,
-    ),
-  );
-}
-
-export function dialogToolCallToolArgumentsFromJSON(
-  jsonString: string,
-): SafeParseResult<DialogToolCallToolArguments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DialogToolCallToolArguments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DialogToolCallToolArguments' from JSON`,
-  );
-}
 
 /** @internal */
 export const DialogToolCall$inboundSchema: z.ZodType<
@@ -75,7 +35,7 @@ export const DialogToolCall$inboundSchema: z.ZodType<
 > = z.object({
   tool_call_id: z.string(),
   tool_name: z.string(),
-  tool_arguments: z.lazy(() => DialogToolCallToolArguments$inboundSchema),
+  tool_arguments: z.any().optional(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 }).transform((v) => {
   return remap$(v, {
@@ -89,7 +49,7 @@ export const DialogToolCall$inboundSchema: z.ZodType<
 export type DialogToolCall$Outbound = {
   tool_call_id: string;
   tool_name: string;
-  tool_arguments: DialogToolCallToolArguments$Outbound;
+  tool_arguments?: any | undefined;
   timestamp: string;
 };
 
@@ -101,7 +61,7 @@ export const DialogToolCall$outboundSchema: z.ZodType<
 > = z.object({
   toolCallId: z.string(),
   toolName: z.string(),
-  toolArguments: z.lazy(() => DialogToolCallToolArguments$outboundSchema),
+  toolArguments: z.any().optional(),
   timestamp: z.date().transform(v => v.toISOString()),
 }).transform((v) => {
   return remap$(v, {

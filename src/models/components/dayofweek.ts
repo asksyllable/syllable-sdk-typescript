@@ -5,6 +5,9 @@
 import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
+/**
+ * Available options for day of the week for use in message rules.
+ */
 export const DayOfWeek = {
   Mo: "mo",
   Tu: "tu",
@@ -14,6 +17,9 @@ export const DayOfWeek = {
   Sa: "sa",
   Su: "su",
 } as const;
+/**
+ * Available options for day of the week for use in message rules.
+ */
 export type DayOfWeek = ClosedEnum<typeof DayOfWeek>;
 
 /** @internal */

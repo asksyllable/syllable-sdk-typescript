@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * A service is a collection of tools.
+ * Response model for service operations. A service is a collection of tools.
  */
 export type ServiceResponse = {
   /**
@@ -21,11 +21,11 @@ export type ServiceResponse = {
    */
   description: string;
   /**
-   * The ID of the service
+   * The internal ID of the service
    */
   id: number;
   /**
-   * Update comments
+   * Free text providing comment about what was updated
    */
   lastUpdatedComments?: string | null | undefined;
   /**

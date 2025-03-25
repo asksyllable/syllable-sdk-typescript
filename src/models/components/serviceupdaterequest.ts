@@ -8,6 +8,9 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Request model to update an existing service.
+ */
 export type ServiceUpdateRequest = {
   /**
    * The name of the service
@@ -18,11 +21,11 @@ export type ServiceUpdateRequest = {
    */
   description: string;
   /**
-   * The ID of the service
+   * The internal ID of the service
    */
   id: number;
   /**
-   * Update comments
+   * Free text providing comment about what was updated
    */
   lastUpdatedComments?: string | null | undefined;
 };

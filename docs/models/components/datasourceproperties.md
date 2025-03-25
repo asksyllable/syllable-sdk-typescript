@@ -1,11 +1,13 @@
 # DataSourceProperties
 
+Names of data source fields supported for filtering/sorting on list endpoint.
+
 ## Example Usage
 
 ```typescript
 import { DataSourceProperties } from "syllable-sdk/models/components";
 
-let value: DataSourceProperties = "updated_at";
+let value: DataSourceProperties = "chunk";
 ```
 
 ## Values

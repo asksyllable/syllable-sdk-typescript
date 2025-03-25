@@ -20,23 +20,24 @@ import {
 } from "./targetmodes.js";
 
 /**
- * A channel target links a channel to an agent, allowing users to communicate with the agent
+ * Response model for channel target operations.
  *
  * @remarks
+ * A channel target links a channel to an agent, allowing users to communicate with the agent
  * through that channel. For more information, see
  * [Console docs](https://docs.syllable.ai/Resources/Channels).
  */
 export type ChannelTargetResponse = {
   /**
-   * The ID of the agent associated with the channel target
+   * The internal ID of the agent associated with the channel target
    */
   agentId: number;
   /**
-   * The ID of the channel associated with the channel target
+   * The internal ID of the channel associated with the channel target
    */
   channelId: number;
   /**
-   * The name of the channel target (must correspond to an organization-level target)
+   * The name of the channel target. Must correspond to an organization-level target (available targets can be fetched from `/channels/available-targets`).
    */
   target: string;
   /**
@@ -48,11 +49,11 @@ export type ChannelTargetResponse = {
    */
   fallbackTarget?: string | null | undefined;
   /**
-   * Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as test.
+   * Whether the channel target is intended for testing. If true, any sessions created through this target will be labeled as a test session (i.e., will not be included in dashboard data and can easily be filtered out in the Sessions screen in the SyllableConsole).
    */
   isTest?: boolean | undefined;
   /**
-   * The ID of the channel target
+   * The internal ID of the channel target
    */
   id: number;
   /**
@@ -68,7 +69,7 @@ export type ChannelTargetResponse = {
    */
   lastUpdatedBy: string;
   /**
-   * Definition of the agent for the channel target
+   * Definition of the agent with which the channel target is associated.
    */
   agent?: AgentResponse | null | undefined;
 };

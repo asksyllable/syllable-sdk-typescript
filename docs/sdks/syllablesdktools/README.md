@@ -121,11 +121,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.tools.create({
-    name: "<value>",
-    description: "yuck vice between gee ugh ha",
-    version: 920994,
+    name: "summary-tool",
+    description: "Default tool - generates a summary of the call",
+    version: 1,
     toolArguments: {},
-    insightToolDefinitionId: 780486,
+    insightToolDefinitionId: 1,
   });
 
   // Handle the result
@@ -151,11 +151,11 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsToolsCreate(syllableSDK, {
-    name: "<value>",
-    description: "yuck vice between gee ugh ha",
-    version: 920994,
+    name: "summary-tool",
+    description: "Default tool - generates a summary of the call",
+    version: 1,
     toolArguments: {},
-    insightToolDefinitionId: 780486,
+    insightToolDefinitionId: 1,
   });
 
   if (!res.ok) {
@@ -285,11 +285,11 @@ async function run() {
   const result = await syllableSDK.insights.tools.update({
     toolId: 198183,
     insightToolInput: {
-      name: "<value>",
-      description: "awful underneath retention too mobility char innocently dowse restfully",
-      version: 243447,
+      name: "summary-tool",
+      description: "Default tool - generates a summary of the call",
+      version: 1,
       toolArguments: {},
-      insightToolDefinitionId: 265006,
+      insightToolDefinitionId: 1,
     },
   });
 
@@ -318,11 +318,11 @@ async function run() {
   const res = await insightsToolsUpdate(syllableSDK, {
     toolId: 198183,
     insightToolInput: {
-      name: "<value>",
-      description: "awful underneath retention too mobility char innocently dowse restfully",
-      version: 243447,
+      name: "summary-tool",
+      description: "Default tool - generates a summary of the call",
+      version: 1,
       toolArguments: {},
-      insightToolDefinitionId: 265006,
+      insightToolDefinitionId: 1,
     },
   });
 

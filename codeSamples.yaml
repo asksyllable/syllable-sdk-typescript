@@ -47,19 +47,33 @@ actions:
 
             async function run() {
               const result = await syllableSDK.agents.create({
-                name: "<value>",
+                name: "Weather agent",
+                description: "Agent for answering questions about weather.",
+                label: "Information",
                 type: "ca_v1",
-                promptId: 486589,
-                customMessageId: 638424,
+                promptId: 1,
+                customMessageId: 1,
+                languageGroupId: 1,
                 timezone: "America/New_York",
+                promptToolDefaults: [
+                  {
+                    toolName: "get_weather",
+                    defaultValues: [
+                      {
+                        fieldName: "temperature_unit",
+                        defaultValue: "fahrenheit",
+                      },
+                    ],
+                  },
+                ],
                 variables: {
-
+                  "vars.location_name": "Main Street Pizza",
                 },
                 toolHeaders: {
-                  "key": "<value>",
+                  "Authorization": "Basic sometoken",
                 },
-                sttProvider: "Deepgram Nova 2",
-                waitSound: "Call Center",
+                sttProvider: "Google STT V2",
+                waitSound: "Keyboard 1",
               });
 
               // Handle the result
@@ -81,23 +95,34 @@ actions:
 
             async function run() {
               const result = await syllableSDK.agents.update({
-                name: "<value>",
+                name: "Weather agent",
+                description: "Agent for answering questions about weather.",
+                label: "Information",
                 type: "ca_v1",
-                promptId: 857478,
-                customMessageId: 597129,
-                timezone: "America/New_York",
+                promptId: 1,
+                customMessageId: 1,
+                languageGroupId: 1,
+                timezone: "America/Chicago",
+                promptToolDefaults: [
+                  {
+                    toolName: "get_weather",
+                    defaultValues: [
+                      {
+                        fieldName: "temperature_unit",
+                        defaultValue: "fahrenheit",
+                      },
+                    ],
+                  },
+                ],
                 variables: {
-                  "key": "<value>",
-                  "key1": "<value>",
-                  "key2": "<value>",
+                  "vars.location_name": "Main Street Pizza",
                 },
                 toolHeaders: {
-                  "key": "<value>",
-                  "key1": "<value>",
+                  "Authorization": "Basic sometoken",
                 },
                 sttProvider: "Google STT V2",
-                waitSound: "Call Center",
-                id: 54062,
+                waitSound: "Keyboard 1",
+                id: 1,
               });
 
               // Handle the result
@@ -120,7 +145,8 @@ actions:
             async function run() {
               const result = await syllableSDK.agents.test.sendTestMessage({
                 serviceName: "<value>",
-                source: "<value>",
+                source: "user@email.com",
+                text: "Hello",
                 testId: "<id>",
                 agentId: "<id>",
               });
@@ -322,12 +348,13 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.create({
-                channelId: 134365,
+                channelId: 638424,
                 channelTargetCreateRequest: {
-                  agentId: 486589,
-                  channelId: 638424,
-                  target: "<value>",
+                  agentId: 1,
+                  channelId: 1,
+                  target: "+19995551234",
                   targetMode: "chat",
+                  fallbackTarget: "+19995551235",
                 },
               });
 
@@ -373,14 +400,15 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.update({
-                channelId: 627690,
-                targetId: 488852,
+                channelId: 597129,
+                targetId: 344620,
                 channelTargetUpdateRequest: {
-                  agentId: 857478,
-                  channelId: 597129,
-                  target: "<value>",
-                  targetMode: "chat",
-                  id: 991464,
+                  agentId: 1,
+                  channelId: 1,
+                  target: "+19995551234",
+                  targetMode: "email",
+                  fallbackTarget: "+19995551235",
+                  id: 1,
                 },
               });
 
@@ -463,11 +491,12 @@ actions:
 
             async function run() {
               const result = await syllableSDK.customMessages.create({
-                name: "<value>",
-                text: "<value>",
+                name: "Customer service greeting",
+                text: "Hello and thank you for calling customer service. How can I help you today?",
+                label: "Customer service",
                 rules: [
                   {
-                    description: "delightfully fumigate convection though zowie up bulky electronics",
+                    description: "Closed on New Year's Day",
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
                     date: "2025-01-01",
@@ -479,10 +508,10 @@ actions:
                       "fr",
                     ],
                     invert: false,
-                    text: "Sorry, we're closed today",
+                    text: "Hello, thank you for calling. Sorry, we're closed today.",
                   },
                   {
-                    description: "yuck forager beneath please shadowy foodstuffs welcome",
+                    description: "Closed on New Year's Day",
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
                     date: "2025-01-01",
@@ -493,8 +522,8 @@ actions:
                       "th",
                       "fr",
                     ],
-                    invert: true,
-                    text: "Sorry, we're closed today",
+                    invert: false,
+                    text: "Hello, thank you for calling. Sorry, we're closed today.",
                   },
                 ],
               });
@@ -518,11 +547,12 @@ actions:
 
             async function run() {
               const result = await syllableSDK.customMessages.update({
-                name: "<value>",
-                text: "<value>",
+                name: "Customer service greeting",
+                text: "Hello and thank you for calling customer service. How can I help you today?",
+                label: "Customer service",
                 rules: [
                   {
-                    description: "technician eulogise whereas till mild than during",
+                    description: "Closed on New Year's Day",
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
                     date: "2025-01-01",
@@ -533,11 +563,11 @@ actions:
                       "th",
                       "fr",
                     ],
-                    invert: true,
-                    text: "Sorry, we're closed today",
+                    invert: false,
+                    text: "Hello, thank you for calling. Sorry, we're closed today.",
                   },
                   {
-                    description: "qualified cycle woot abseil perfumed fisherman with duh",
+                    description: "Closed on New Year's Day",
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
                     date: "2025-01-01",
@@ -548,26 +578,11 @@ actions:
                       "th",
                       "fr",
                     ],
-                    invert: true,
-                    text: "Sorry, we're closed today",
-                  },
-                  {
-                    description: "ultimately in likely opera please antelope",
-                    timeRangeStart: "09:00",
-                    timeRangeEnd: "17:00",
-                    date: "2025-01-01",
-                    daysOfWeek: [
-                      "mo",
-                      "tu",
-                      "we",
-                      "th",
-                      "fr",
-                    ],
-                    invert: true,
-                    text: "Sorry, we're closed today",
+                    invert: false,
+                    text: "Hello, thank you for calling. Sorry, we're closed today.",
                   },
                 ],
-                id: 975440,
+                id: 1,
               });
 
               // Handle the result
@@ -769,7 +784,13 @@ actions:
                 ],
                 chunk: false,
                 chunkDelimiter: "",
-                text: "<value>",
+                text: "The following are names and addresses of pizza shops.\n" +
+                "\n" +
+                "Cool Pizza, 123 Main St.\n" +
+                "\n" +
+                "Really Good Pizza, 456 Water St.\n" +
+                "\n" +
+                "The Best Pizza, 789 Circle Dr.",
               });
 
               // Handle the result
@@ -800,7 +821,13 @@ actions:
                 chunkDelimiter: "",
                 id: 1,
                 editComments: "Added new info",
-                text: "<value>",
+                text: "The following are names and addresses of pizza shops.\n" +
+                "\n" +
+                "Cool Pizza, 123 Main St.\n" +
+                "\n" +
+                "Really Good Pizza, 456 Water St.\n" +
+                "\n" +
+                "The Best Pizza, 789 Circle Dr.",
               });
 
               // Handle the result
@@ -947,11 +974,11 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.tools.create({
-                name: "<value>",
-                description: "yuck vice between gee ugh ha",
-                version: 920994,
+                name: "summary-tool",
+                description: "Default tool - generates a summary of the call",
+                version: 1,
                 toolArguments: {},
-                insightToolDefinitionId: 780486,
+                insightToolDefinitionId: 1,
               });
 
               // Handle the result
@@ -995,13 +1022,13 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.tools.update({
-                toolId: 198183,
+                toolId: 857478,
                 insightToolInput: {
-                  name: "<value>",
-                  description: "awful underneath retention too mobility char innocently dowse restfully",
-                  version: 243447,
+                  name: "summary-tool",
+                  description: "Default tool - generates a summary of the call",
+                  version: 1,
                   toolArguments: {},
-                  insightToolDefinitionId: 265006,
+                  insightToolDefinitionId: 1,
                 },
               });
 
@@ -1054,15 +1081,13 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.create({
-                name: "<value>",
-                description: "yuck vice between gee ugh ha",
+                name: "summary-workflow",
+                description: "Default workflow - generates a summary of the call",
                 insightToolIds: [
-                  780486,
-                  760259,
-                  219974,
+                  1,
                 ],
                 conditions: {},
-                status: "<value>",
+                status: "ACTIVE",
               });
 
               // Handle the result
@@ -1128,15 +1153,15 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.update({
-                workflowId: 265006,
+                workflowId: 857478,
                 insightWorkflowInput: {
-                  name: "<value>",
-                  description: "awful underneath retention too mobility char innocently dowse restfully",
+                  name: "summary-workflow",
+                  description: "Default workflow - generates a summary of the call",
                   insightToolIds: [
-
+                    1,
                   ],
                   conditions: {},
-                  status: "<value>",
+                  status: "ACTIVE",
                 },
               });
 
@@ -1193,9 +1218,15 @@ actions:
                 description: "Languages spoken by operators at Call Center 1",
                 languageConfigs: [
                   {
+                    languageCode: "en-US",
+                    voiceProvider: "OpenAI",
+                    voiceDisplayName: "Alloy",
+                    dtmfCode: 1,
+                  },
+                  {
                     languageCode: "es-US",
-                    voiceProvider: "ElevenLabs",
-                    voiceDisplayName: "Brian",
+                    voiceProvider: "Google",
+                    voiceDisplayName: "Alejandro",
                     dtmfCode: 1,
                   },
                 ],
@@ -1225,21 +1256,15 @@ actions:
                 description: "Languages spoken by operators at Call Center 1",
                 languageConfigs: [
                   {
-                    languageCode: "es-US",
-                    voiceProvider: "ElevenLabs",
-                    voiceDisplayName: "Will",
+                    languageCode: "en-US",
+                    voiceProvider: "OpenAI",
+                    voiceDisplayName: "Alloy",
                     dtmfCode: 1,
                   },
                   {
                     languageCode: "es-US",
-                    voiceProvider: "ElevenLabs",
-                    voiceDisplayName: "Will",
-                    dtmfCode: 1,
-                  },
-                  {
-                    languageCode: "yue-HK",
                     voiceProvider: "Google",
-                    voiceDisplayName: "George",
+                    voiceDisplayName: "Alejandro",
                     dtmfCode: 1,
                   },
                 ],
@@ -1342,8 +1367,13 @@ actions:
 
             async function run() {
               const result = await syllableSDK.prompts.create({
-                name: "<value>",
-                type: "<value>",
+                name: "Weather Agent Prompt",
+                description: "Prompt for a weather agent.",
+                type: "prompt_v1",
+                context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
+                tools: [
+                  "summary, hangup",
+                ],
                 llmConfig: {
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -1369,13 +1399,19 @@ actions:
 
             async function run() {
               const result = await syllableSDK.prompts.update({
-                name: "<value>",
-                type: "<value>",
+                name: "Weather Agent Prompt",
+                description: "Prompt for a weather agent.",
+                type: "prompt_v1",
+                context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
+                tools: [
+                  "summary, hangup",
+                ],
                 llmConfig: {
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
                 },
-                id: 857478,
+                id: 1,
+                editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
               });
 
               // Handle the result
@@ -1494,8 +1530,8 @@ actions:
 
             async function run() {
               const result = await syllableSDK.services.create({
-                name: "<value>",
-                description: "yuck vice between gee ugh ha",
+                name: "Weather tools",
+                description: "Service containing tools for fetching weather information",
               });
 
               // Handle the result
@@ -1517,9 +1553,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.services.update({
-                name: "<value>",
-                description: "awful underneath retention too mobility char innocently dowse restfully",
-                id: 243447,
+                name: "Weather tools",
+                description: "Service containing tools for fetching weather information",
+                id: 1,
+                lastUpdatedComments: "Updated description to correct typo",
               });
 
               // Handle the result
@@ -1684,10 +1721,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessionLabels.create({
-                sessionId: 486589,
-                type: "human-rating",
-                code: "OK",
-                userEmail: "<value>",
+                sessionId: 1,
+                type: "auto-rating",
+                code: "BAD",
+                userEmail: "user@email.com",
                 issueCategories: [
                   "Silent treatment",
                 ],
@@ -1928,10 +1965,11 @@ actions:
               const result = await syllableSDK.tools.create({
                 name: "Weather Fetcher",
                 definition: {
+                  type: "endpoint",
                   tool: {
                     function: {
-                      name: "weather_fetcher",
-                      description: "Fetches weather data",
+                      name: "get_weather",
+                      description: "Get the weather for a city",
                       parameters: {
 
                       },
@@ -1943,8 +1981,17 @@ actions:
                     argumentLocation: "path",
                   },
                   defaults: "<value>",
+                  staticParameters: [
+                    {
+                      name: "temperature_unit",
+                      description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
+                      required: true,
+                      type: "string",
+                      default: "fahrenheit",
+                    },
+                  ],
                 },
-                serviceId: 134365,
+                serviceId: 1,
               });
 
               // Handle the result
@@ -1968,10 +2015,11 @@ actions:
               const result = await syllableSDK.tools.update({
                 name: "Weather Fetcher",
                 definition: {
+                  type: "endpoint",
                   tool: {
                     function: {
-                      name: "weather_fetcher",
-                      description: "Fetches weather data",
+                      name: "get_weather",
+                      description: "Get the weather for a city",
                       parameters: {
 
                       },
@@ -1983,9 +2031,19 @@ actions:
                     argumentLocation: "path",
                   },
                   defaults: "<value>",
+                  staticParameters: [
+                    {
+                      name: "temperature_unit",
+                      description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
+                      required: true,
+                      type: "string",
+                      default: "fahrenheit",
+                    },
+                  ],
                 },
-                serviceId: 991464,
-                id: 627690,
+                serviceId: 1,
+                id: 1,
+                lastUpdatedComments: "Updated to use new API endpoint",
               });
 
               // Handle the result
