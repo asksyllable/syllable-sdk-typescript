@@ -18,7 +18,7 @@ let value: SessionData = {
       },
       toolCalls: [
         {
-          tollCallId: "<id>",
+          toolCallId: "<id>",
           toolName: "<value>",
           toolArguments: {},
           timestamp: new Date("2024-08-24T12:55:52.067Z"),
