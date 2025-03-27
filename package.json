@@ -1,7 +1,7 @@
 {
   "name": "syllable-sdk",
-  "version": "0.1.0-alpha.68",
-  "author": "Speakeasy",
+  "version": "0.1.0-alpha.69",
+  "author": "Syllable",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
