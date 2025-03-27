@@ -16,6 +16,8 @@ let value: ListResponsePromptResponse = {
       llmConfig: {
         version: "2024-05-13",
         apiVersion: "2024-06-01",
+        temperature: 1,
+        seed: 123,
       },
       id: 1,
       editComments:
