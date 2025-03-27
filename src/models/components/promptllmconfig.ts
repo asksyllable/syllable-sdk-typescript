@@ -33,6 +33,14 @@ export type PromptLlmConfig = {
    * Version of the API. (Currently only used for Azure OpenAI.)
    */
   apiVersion?: string | null | undefined;
+  /**
+   * Temperature parameter for the model. Determines randomness of responses - higher is more random, lower is more focused. Must be between 0.0 and 2.0, inclusive.
+   */
+  temperature?: number | null | undefined;
+  /**
+   * Controls the reproducibility of the job. The LLM will give the same or similar responses given the same inputs in multiple conversations with the same seed.
+   */
+  seed?: number | null | undefined;
 };
 
 /** @internal */
@@ -45,6 +53,8 @@ export const PromptLlmConfig$inboundSchema: z.ZodType<
   model: z.string().default("gpt-4o"),
   version: z.nullable(z.string()).optional(),
   api_version: z.nullable(z.string()).optional(),
+  temperature: z.nullable(z.number()).optional(),
+  seed: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "api_version": "apiVersion",
@@ -57,6 +67,8 @@ export type PromptLlmConfig$Outbound = {
   model: string;
   version?: string | null | undefined;
   api_version?: string | null | undefined;
+  temperature?: number | null | undefined;
+  seed?: number | null | undefined;
 };
 
 /** @internal */
@@ -69,6 +81,8 @@ export const PromptLlmConfig$outboundSchema: z.ZodType<
   model: z.string().default("gpt-4o"),
   version: z.nullable(z.string()).optional(),
   apiVersion: z.nullable(z.string()).optional(),
+  temperature: z.nullable(z.number()).optional(),
+  seed: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     apiVersion: "api_version",

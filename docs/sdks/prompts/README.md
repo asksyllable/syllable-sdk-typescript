@@ -132,6 +132,8 @@ async function run() {
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
+      temperature: 1,
+      seed: 123,
     },
   });
 
@@ -168,6 +170,8 @@ async function run() {
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
+      temperature: 1,
+      seed: 123,
     },
   });
 
@@ -229,6 +233,8 @@ async function run() {
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
+      temperature: 1,
+      seed: 123,
     },
     id: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
@@ -267,6 +273,8 @@ async function run() {
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
+      temperature: 1,
+      seed: 123,
     },
     id: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
