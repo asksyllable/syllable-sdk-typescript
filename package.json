@@ -4,6 +4,7 @@
   "author": "Syllable",
   "main": "./index.js",
   "sideEffects": false,
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/asksyllable/syllable-sdk-typescript.git"
