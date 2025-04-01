@@ -5,7 +5,7 @@
 ```typescript
 import { CustomMessageProperties } from "syllable-sdk/models/components";
 
-let value: CustomMessageProperties = "label";
+let value: CustomMessageProperties = "name";
 ```
 
 ## Values

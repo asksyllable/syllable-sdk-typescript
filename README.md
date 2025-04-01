@@ -196,6 +196,7 @@ run();
 
 ### [insights](docs/sdks/insights/README.md)
 
+* [list](docs/sdks/insights/README.md#list) - Insights List
 
 #### [insights.tools](docs/sdks/syllablesdktools/README.md)
 
@@ -229,6 +230,7 @@ run();
 * [getById](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 * [delete](docs/sdks/prompts/README.md#delete) - Delete Prompt
 * [promptsHistory](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
+* [promptGetSupportedLlms](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 
 ### [services](docs/sdks/services/README.md)
 
@@ -270,6 +272,11 @@ run();
 * [getById](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 
 
+### [takeouts](docs/sdks/takeouts/README.md)
+
+* [createTakeoutApiV1TakeoutsCreatePost](docs/sdks/takeouts/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
+* [getTakeoutApiV1TakeoutsGetJobIdGet](docs/sdks/takeouts/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
+
 ### [tools](docs/sdks/tools/README.md)
 
 * [list](docs/sdks/tools/README.md#list) - Tool List
@@ -280,12 +287,15 @@ run();
 
 ### [v1](docs/sdks/v1/README.md)
 
+* [list](docs/sdks/v1/README.md#list) - Insights List
 * [postListDashboard](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 * [postGetDashboard](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 * [~~postSessionEventsDashboard~~](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
 * [~~postSessionSummaryDashboard~~](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
 * [~~postSessionTransfersDashboard~~](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
 * [~~postSessionsDashboard~~](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
+* [createTakeoutApiV1TakeoutsCreatePost](docs/sdks/v1/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
+* [getTakeoutApiV1TakeoutsGetJobIdGet](docs/sdks/v1/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -333,6 +343,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
 - [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
+- [`insightsList`](docs/sdks/insights/README.md#list) - Insights List
 - [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
 - [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
 - [`insightsToolsInsightToolGetDefinitions`](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
@@ -352,6 +363,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
 - [`promptsGetById`](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 - [`promptsList`](docs/sdks/prompts/README.md#list) - Prompt List
+- [`promptsPromptGetSupportedLlms`](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 - [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
 - [`servicesCreate`](docs/sdks/services/README.md#create) - Create Service
@@ -372,11 +384,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 - [`sessionsSummaryGetById`](docs/sdks/summary/README.md#getbyid) - Get Session Summary By Id
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
+- [`takeoutsCreateTakeoutApiV1TakeoutsCreatePost`](docs/sdks/takeouts/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
+- [`takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet`](docs/sdks/takeouts/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
 - [`toolsCreate`](docs/sdks/tools/README.md#create) - Create Tool
 - [`toolsDelete`](docs/sdks/tools/README.md#delete) - Delete Tool
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`v1CreateTakeoutApiV1TakeoutsCreatePost`](docs/sdks/v1/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
+- [`v1GetTakeoutApiV1TakeoutsGetJobIdGet`](docs/sdks/v1/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
+- [`v1List`](docs/sdks/v1/README.md#list) - Insights List
 - [`v1PostGetDashboard`](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 - [`v1PostListDashboard`](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**

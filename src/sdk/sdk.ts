@@ -17,6 +17,7 @@ import { Services } from "./services.js";
 import { SessionDebug } from "./sessiondebug.js";
 import { SessionLabels } from "./sessionlabels.js";
 import { Sessions } from "./sessions.js";
+import { Takeouts } from "./takeouts.js";
 import { Tools } from "./tools.js";
 import { V1 } from "./v1.js";
 
@@ -49,6 +50,11 @@ export class SyllableSDK extends ClientSDK {
   private _insights?: Insights;
   get insights(): Insights {
     return (this._insights ??= new Insights(this._options));
+  }
+
+  private _v1?: V1;
+  get v1(): V1 {
+    return (this._v1 ??= new V1(this._options));
   }
 
   private _customMessages?: CustomMessages;
@@ -91,13 +97,13 @@ export class SyllableSDK extends ClientSDK {
     return (this._dashboards ??= new Dashboards(this._options));
   }
 
-  private _v1?: V1;
-  get v1(): V1 {
-    return (this._v1 ??= new V1(this._options));
-  }
-
   private _languageGroups?: LanguageGroups;
   get languageGroups(): LanguageGroups {
     return (this._languageGroups ??= new LanguageGroups(this._options));
+  }
+
+  private _takeouts?: Takeouts;
+  get takeouts(): Takeouts {
+    return (this._takeouts ??= new Takeouts(this._options));
   }
 }

@@ -6,6 +6,7 @@ import { promptsCreate } from "../funcs/promptsCreate.js";
 import { promptsDelete } from "../funcs/promptsDelete.js";
 import { promptsGetById } from "../funcs/promptsGetById.js";
 import { promptsList } from "../funcs/promptsList.js";
+import { promptsPromptGetSupportedLlms } from "../funcs/promptsPromptGetSupportedLlms.js";
 import { promptsPromptsHistory } from "../funcs/promptsPromptsHistory.js";
 import { promptsUpdate } from "../funcs/promptsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -112,6 +113,21 @@ export class Prompts extends ClientSDK {
     return unwrapAsync(promptsPromptsHistory(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Supported Llm Configs
+   *
+   * @remarks
+   * Get supported LLM configs.
+   */
+  async promptGetSupportedLlms(
+    options?: RequestOptions,
+  ): Promise<Array<components.SupportedLlm>> {
+    return unwrapAsync(promptsPromptGetSupportedLlms(
+      this,
       options,
     ));
   }

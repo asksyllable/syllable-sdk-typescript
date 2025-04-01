@@ -25,6 +25,8 @@ export * from "./generatesessionrecordingurls.js";
 export * from "./getsessiondatabysessionid.js";
 export * from "./getsessiondatabysid.js";
 export * from "./getsessiontoolcallresultbyid.js";
+export * from "./gettakeoutapiv1takeoutsgetjobidget.js";
+export * from "./insightslist.js";
 export * from "./insightstoolupdate.js";
 export * from "./insightsworkflowgetbyid.js";
 export * from "./insightsworkflowlist.js";

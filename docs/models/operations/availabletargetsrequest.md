@@ -8,7 +8,7 @@ import { AvailableTargetsRequest } from "syllable-sdk/models/operations";
 let value: AvailableTargetsRequest = {
   page: 0,
   searchFields: [
-    "channel_name",
+    "channel_id",
   ],
   searchFieldValues: [
     "Some Object Name",

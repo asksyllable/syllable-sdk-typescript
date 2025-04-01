@@ -30,7 +30,7 @@ export type PromptLlmConfig = {
    */
   version?: string | null | undefined;
   /**
-   * Version of the API. (Currently only used for Azure OpenAI.)
+   * Version of the provider's API.
    */
   apiVersion?: string | null | undefined;
   /**

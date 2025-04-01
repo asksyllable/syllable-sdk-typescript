@@ -910,6 +910,63 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/insights/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.list({
+                page: 0,
+                searchFields: [
+                  "insight_tool_id",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.list({
+                page: 0,
+                searchFields: [
+                  "insight_tool_id",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/insights/tool-definitions"]["get"]
     update:
       x-codeSamples:
@@ -1372,7 +1429,8 @@ actions:
                 type: "prompt_v1",
                 context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
                 tools: [
-                  "summary, hangup",
+                  "summary",
+                  "hangup",
                 ],
                 llmConfig: {
                   version: "2024-05-13",
@@ -1406,7 +1464,8 @@ actions:
                 type: "prompt_v1",
                 context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
                 tools: [
-                  "summary, hangup",
+                  "summary",
+                  "hangup",
                 ],
                 llmConfig: {
                   version: "2024-05-13",
@@ -1417,6 +1476,26 @@ actions:
                 id: 1,
                 editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
               });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/llms/supported"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.promptGetSupportedLlms();
 
               // Handle the result
               console.log(result);
@@ -1916,6 +1995,88 @@ actions:
             async function run() {
               const result = await syllableSDK.sessions.getById({
                 sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/takeouts/create"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.takeouts.createTakeoutApiV1TakeoutsCreatePost({
+                subOrganizationId: 38300,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.createTakeoutApiV1TakeoutsCreatePost({
+                subOrganizationId: 38300,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/takeouts/get/{job_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.takeouts.getTakeoutApiV1TakeoutsGetJobIdGet({
+                jobId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.getTakeoutApiV1TakeoutsGetJobIdGet({
+                jobId: "<id>",
               });
 
               // Handle the result

@@ -7,7 +7,7 @@ Names of tool fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { ToolProperties } from "syllable-sdk/models/components";
 
-let value: ToolProperties = "definition";
+let value: ToolProperties = "service_id";
 ```
 
 ## Values

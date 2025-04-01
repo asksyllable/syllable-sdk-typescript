@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: f0c760f1a14568b465d6d2264bcf1e0d
+  docChecksum: ed9aebd690e17fe79914cf30cec5a3d4
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.70
-  configChecksum: 93a876a9c766b86f96f6e0e4ac42815c
+  releaseVersion: 0.1.0-alpha.71
+  configChecksum: 326733b6bcb51d2882b7bc614029422c
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -70,11 +70,13 @@ generatedFiles:
   - docs/models/components/conditions.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
+  - docs/models/components/createtakeoutresponse.md
   - docs/models/components/custommessagecreaterequest.md
   - docs/models/components/custommessageproperties.md
   - docs/models/components/custommessageresponse.md
   - docs/models/components/custommessagerule.md
   - docs/models/components/custommessageupdaterequest.md
+  - docs/models/components/daotakeoutcreate.md
   - docs/models/components/dashboard.md
   - docs/models/components/dashboardproperties.md
   - docs/models/components/dashboardresponse.md
@@ -91,6 +93,8 @@ generatedFiles:
   - docs/models/components/dialogtoolcall.md
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
+  - docs/models/components/insightsoutput.md
+  - docs/models/components/insightsproperties.md
   - docs/models/components/insighttooldefinition.md
   - docs/models/components/insighttoolinput.md
   - docs/models/components/insighttoolinputtoolarguments.md
@@ -101,6 +105,7 @@ generatedFiles:
   - docs/models/components/insightworkflowoutput.md
   - docs/models/components/insightworkflowproperties.md
   - docs/models/components/internaltool.md
+  - docs/models/components/jsonvalue.md
   - docs/models/components/languagecode.md
   - docs/models/components/languageconfig.md
   - docs/models/components/languagegroupagentinfo.md
@@ -117,6 +122,7 @@ generatedFiles:
   - docs/models/components/listresponsedashboardresponse.md
   - docs/models/components/listresponsedatasourcemetadataresponse.md
   - docs/models/components/listresponseevent.md
+  - docs/models/components/listresponseinsightsoutput.md
   - docs/models/components/listresponseinsighttooloutput.md
   - docs/models/components/listresponseinsightworkflowoutput.md
   - docs/models/components/listresponselanguagegroupresponse.md
@@ -154,6 +160,9 @@ generatedFiles:
   - docs/models/components/sessiontranscriptionresponse.md
   - docs/models/components/statictoolparameter.md
   - docs/models/components/statictoolparametertype.md
+  - docs/models/components/supportedllm.md
+  - docs/models/components/takeoutrequeststatus.md
+  - docs/models/components/takeoutstatusresponse.md
   - docs/models/components/targetmodes.md
   - docs/models/components/testmessage.md
   - docs/models/components/testmessageresponse.md
@@ -203,6 +212,8 @@ generatedFiles:
   - docs/models/operations/getsessiondatabysessionidrequest.md
   - docs/models/operations/getsessiondatabysidrequest.md
   - docs/models/operations/getsessiontoolcallresultbyidrequest.md
+  - docs/models/operations/gettakeoutapiv1takeoutsgetjobidgetrequest.md
+  - docs/models/operations/insightslistrequest.md
   - docs/models/operations/insightstoolupdaterequest.md
   - docs/models/operations/insightsworkflowgetbyidrequest.md
   - docs/models/operations/insightsworkflowlistrequest.md
@@ -250,6 +261,7 @@ generatedFiles:
   - docs/sdks/summary/README.md
   - docs/sdks/syllablesdk/README.md
   - docs/sdks/syllablesdktools/README.md
+  - docs/sdks/takeouts/README.md
   - docs/sdks/targets/README.md
   - docs/sdks/test/README.md
   - docs/sdks/tools/README.md
@@ -292,6 +304,7 @@ generatedFiles:
   - src/funcs/dataSourcesList.ts
   - src/funcs/dataSourcesUpdate.ts
   - src/funcs/eventsList.ts
+  - src/funcs/insightsList.ts
   - src/funcs/insightsToolsCreate.ts
   - src/funcs/insightsToolsGetById.ts
   - src/funcs/insightsToolsInsightToolGetDefinitions.ts
@@ -311,6 +324,7 @@ generatedFiles:
   - src/funcs/promptsDelete.ts
   - src/funcs/promptsGetById.ts
   - src/funcs/promptsList.ts
+  - src/funcs/promptsPromptGetSupportedLlms.ts
   - src/funcs/promptsPromptsHistory.ts
   - src/funcs/promptsUpdate.ts
   - src/funcs/servicesCreate.ts
@@ -331,11 +345,16 @@ generatedFiles:
   - src/funcs/sessionsSessionRecordingStream.ts
   - src/funcs/sessionsSummaryGetById.ts
   - src/funcs/sessionsTranscriptGetById.ts
+  - src/funcs/takeoutsCreateTakeoutApiV1TakeoutsCreatePost.ts
+  - src/funcs/takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet.ts
   - src/funcs/toolsCreate.ts
   - src/funcs/toolsDelete.ts
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
+  - src/funcs/v1CreateTakeoutApiV1TakeoutsCreatePost.ts
+  - src/funcs/v1GetTakeoutApiV1TakeoutsGetJobIdGet.ts
+  - src/funcs/v1List.ts
   - src/funcs/v1PostGetDashboard.ts
   - src/funcs/v1PostListDashboard.ts
   - src/funcs/v1PostSessionEventsDashboard.ts
@@ -387,11 +406,13 @@ generatedFiles:
   - src/models/components/channeltargetupdaterequest.ts
   - src/models/components/conversation.ts
   - src/models/components/conversationproperties.ts
+  - src/models/components/createtakeoutresponse.ts
   - src/models/components/custommessagecreaterequest.ts
   - src/models/components/custommessageproperties.ts
   - src/models/components/custommessageresponse.ts
   - src/models/components/custommessagerule.ts
   - src/models/components/custommessageupdaterequest.ts
+  - src/models/components/daotakeoutcreate.ts
   - src/models/components/dashboard.ts
   - src/models/components/dashboardproperties.ts
   - src/models/components/dashboardresponse.ts
@@ -408,6 +429,8 @@ generatedFiles:
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
   - src/models/components/index.ts
+  - src/models/components/insightsoutput.ts
+  - src/models/components/insightsproperties.ts
   - src/models/components/insighttooldefinition.ts
   - src/models/components/insighttoolinput.ts
   - src/models/components/insighttooloutput.ts
@@ -432,6 +455,7 @@ generatedFiles:
   - src/models/components/listresponsedashboardresponse.ts
   - src/models/components/listresponsedatasourcemetadataresponse.ts
   - src/models/components/listresponseevent.ts
+  - src/models/components/listresponseinsightsoutput.ts
   - src/models/components/listresponseinsighttooloutput.ts
   - src/models/components/listresponseinsightworkflowoutput.ts
   - src/models/components/listresponselanguagegroupresponse.ts
@@ -467,6 +491,9 @@ generatedFiles:
   - src/models/components/sessiontranscriptionresponse.ts
   - src/models/components/statictoolparameter.ts
   - src/models/components/statictoolparametertype.ts
+  - src/models/components/supportedllm.ts
+  - src/models/components/takeoutrequeststatus.ts
+  - src/models/components/takeoutstatusresponse.ts
   - src/models/components/targetmodes.ts
   - src/models/components/testmessage.ts
   - src/models/components/testmessageresponse.ts
@@ -516,7 +543,9 @@ generatedFiles:
   - src/models/operations/getsessiondatabysessionid.ts
   - src/models/operations/getsessiondatabysid.ts
   - src/models/operations/getsessiontoolcallresultbyid.ts
+  - src/models/operations/gettakeoutapiv1takeoutsgetjobidget.ts
   - src/models/operations/index.ts
+  - src/models/operations/insightslist.ts
   - src/models/operations/insightstoolupdate.ts
   - src/models/operations/insightsworkflowgetbyid.ts
   - src/models/operations/insightsworkflowlist.ts
@@ -565,6 +594,7 @@ generatedFiles:
   - src/sdk/sessions.ts
   - src/sdk/summary.ts
   - src/sdk/syllablesdktools.ts
+  - src/sdk/takeouts.ts
   - src/sdk/targets.ts
   - src/sdk/test.ts
   - src/sdk/tools.ts
@@ -846,7 +876,7 @@ examples:
   prompts_create:
     speakeasy-default-prompts-create:
       requestBody:
-        application/json: {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "tools": ["summary, hangup"], "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "include_default_tools": true}
+        application/json: {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "tools": ["summary", "hangup"], "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "include_default_tools": true}
       responses:
         "200":
           application/json: {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "id": 1, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "agent_count": 5, "tools_full": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "post", "argument_location": "form"}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in celsius or fahrenheit.", "required": true, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}, {"id": 1, "name": "Test Prompt"}, {"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2023-07-06T00:30:20.403Z", "last_updated_by": "user@email.com"}, {"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "query"}, "defaults": {"key": {"transform": {"action": "default", "when": {"key": "key", "value": "value"}}}, "key1": {"transform": {"action": "default", "when": {"key": "key", "value": "value"}}}}, "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in celsius or fahrenheit.", "required": true, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}, {"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2023-01-20T11:09:16.789Z", "last_updated_by": "user@email.com"}]}
@@ -855,7 +885,7 @@ examples:
   prompts_update:
     speakeasy-default-prompts-update:
       requestBody:
-        application/json: {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "tools": ["summary, hangup"], "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "id": 1, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "include_default_tools": true}
+        application/json: {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "tools": ["summary", "hangup"], "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "id": 1, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "include_default_tools": true}
       responses:
         "200":
           application/json: {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "id": 1, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "agent_count": 5, "tools_full": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "post", "argument_location": "form"}, "defaults": {"key": {"transform": {"action": "default", "when": {"key": "key", "value": "value"}}}, "key1": {"transform": {"action": "default", "when": {"key": "key", "value": "value"}}}}, "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in celsius or fahrenheit.", "required": true, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}, {"id": 1, "name": "Test Agent"}, {"id": 1, "name": "Test Agent"}], "last_updated": "2024-05-04T18:16:40.936Z", "last_updated_by": "user@email.com"}, {"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "body"}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in celsius or fahrenheit.", "required": true, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}, {"id": 1, "name": "Test Agent"}], "last_updated": "2025-04-25T05:43:42.397Z", "last_updated_by": "user@email.com"}, {"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "post", "argument_location": "form"}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in celsius or fahrenheit.", "required": true, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}, {"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}, {"id": 1, "name": "Test Agent"}], "last_updated": "2023-05-02T19:54:17.078Z", "last_updated_by": "user@email.com"}]}
@@ -1398,5 +1428,33 @@ examples:
         "200":
           application/json: {"tool_name": "general_information_web", "tool_result": {"answer": "Syllable is a platform for building and managing AI voice agents..."}}
         "422": {}
+  insights_list:
+    speakeasy-default-insights-list:
+      parameters:
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["insight_tool_id"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: {"items": [{"id": 1, "session_id": 1, "insight_tool_id": 1, "insight_tool_version": 1, "insight_key": "summary", "string_value": "This is a summary of the call", "numeric_value": 1, "json_value": {}, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-02T00:00:00Z"}, {"id": 1, "session_id": 1, "insight_tool_id": 1, "insight_tool_version": 1, "insight_key": "summary", "string_value": "This is a summary of the call", "numeric_value": 1, "json_value": {}, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-02T00:00:00Z"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+        "422": {}
+  create_takeout_api_v1_takeouts_create_post:
+    speakeasy-default-create-takeout-api-v1-takeouts-create-post:
+      requestBody:
+        application/json: {"sub_organization_id": 38300}
+  get_takeout_api_v1_takeouts_get__job_id__get:
+    speakeasy-default-get-takeout-api-v1-takeouts-get-job-id-get:
+      parameters:
+        path:
+          job_id: "<id>"
+  prompt_get_supported_llms:
+    speakeasy-default-prompt-get-supported-llms:
+      responses:
+        "200":
+          application/json: [{"model": "gpt-4o", "display_name": "GPT-4o", "version": "2024-05-13", "api_version": "2024-06-01", "deprecated": false}]
 examplesVersion: 1.0.0
 generatedTests: {}
