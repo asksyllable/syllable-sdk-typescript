@@ -148,6 +148,7 @@ actions:
   - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}"]["delete"]["tags"]
     update:
       - "custom_messages"
+
   - target: $["paths"]["/api/v1/prompts/"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/prompts/"]["get"]["tags"]
@@ -178,6 +179,12 @@ actions:
   - target: $["paths"]["/api/v1/prompts/{prompt_id}/history"]["get"]["tags"]
     update:
       - "prompts"
+  - target: $["paths"]["/api/v1/prompts/llms/supported"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/prompts/llms/supported"]["get"]["tags"]
+    update:
+      - "prompts"
+
   - target: $["paths"]["/api/v1/services/"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/services/"]["get"]["tags"]
