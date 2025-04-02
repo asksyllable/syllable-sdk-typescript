@@ -8436,7 +8436,7 @@
           "V1"
         ],
         "summary": "Create Takeout",
-        "operationId": "create_takeout_api_v1_takeouts_create_post",
+        "operationId": "takeouts_create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8483,7 +8483,7 @@
           "V1"
         ],
         "summary": "Get Takeout",
-        "operationId": "get_takeout_api_v1_takeouts_get__job_id__get",
+        "operationId": "takeouts_get_by_id",
         "security": [
           {
             "APIKeyHeader": []
