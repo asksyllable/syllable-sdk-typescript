@@ -8,7 +8,7 @@ Information about a given tool invocation as part of a session.
 import { SessionAction } from "syllable-sdk/models/components";
 
 let value: SessionAction = {
-  timestamp: new Date("2024-04-09T13:04:59.510Z"),
+  timestamp: new Date("2024-05-23T01:53:16.665Z"),
 };
 ```
 

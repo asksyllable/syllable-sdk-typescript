@@ -19,7 +19,7 @@ Syllable SDK gives you the power of awesome AI agentry. 🚀
 
 ## Overview
 
-The Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI  
+The Syllable SDK provides a comprehensive set of tools and APIs to integrate powerful AI
 capabilities into your communication applications. Whether you're building chatbots, virtual
 assistants, or any other AI-driven solutions, Syllable SDK has got you covered.
 
@@ -195,6 +195,14 @@ run();
 
 * [list](docs/sdks/events/README.md#list) - Events List
 
+### [incidents](docs/sdks/incidents/README.md)
+
+* [getById](docs/sdks/incidents/README.md#getbyid) - Get Incident By Id
+* [update](docs/sdks/incidents/README.md#update) - Update Incident
+* [delete](docs/sdks/incidents/README.md#delete) - Delete Incident
+* [create](docs/sdks/incidents/README.md#create) - Create Incident
+* [list](docs/sdks/incidents/README.md#list) - List Incidents
+
 ### [insights](docs/sdks/insights/README.md)
 
 * [list](docs/sdks/insights/README.md#list) - Insights List
@@ -360,6 +368,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
 - [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
+- [`incidentsCreate`](docs/sdks/incidents/README.md#create) - Create Incident
+- [`incidentsDelete`](docs/sdks/incidents/README.md#delete) - Delete Incident
+- [`incidentsGetById`](docs/sdks/incidents/README.md#getbyid) - Get Incident By Id
+- [`incidentsList`](docs/sdks/incidents/README.md#list) - List Incidents
+- [`incidentsUpdate`](docs/sdks/incidents/README.md#update) - Update Incident
 - [`insightsList`](docs/sdks/insights/README.md#list) - Insights List
 - [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
 - [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id

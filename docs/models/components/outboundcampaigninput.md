@@ -13,7 +13,7 @@ let value: OutboundCampaignInput = {
   timezone: "America/New_York",
   source: "account@email.com",
   callerId: "19995551234",
-  retryInterval: "12h",
+  retryInterval: "7d",
   pauseSeconds: 30,
 };
 ```

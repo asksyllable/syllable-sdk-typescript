@@ -8,7 +8,7 @@ import { OutboundBatchListRequest } from "syllable-sdk/models/operations";
 let value: OutboundBatchListRequest = {
   page: 0,
   searchFields: [
-    "batch_id",
+    "campaign_id",
   ],
   searchFieldValues: [
     "Some Object Name",

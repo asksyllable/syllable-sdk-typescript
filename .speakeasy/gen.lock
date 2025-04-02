@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 3ca186710a6f2b873ae7e575c8c1cacf
+  docChecksum: bf9c22f0a17a03bd27e7d1b89d9318be
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.72
-  configChecksum: 7f0a51317b055a6b3818ada5f3881d8d
+  releaseVersion: 0.1.0-alpha.73
+  configChecksum: a23ac0a27f611d9be64d878c09e2efa2
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -162,6 +162,8 @@ generatedFiles:
   - docs/models/components/response.md
   - docs/models/components/security.md
   - docs/models/components/servicecreaterequest.md
+  - docs/models/components/serviceincidentrequest.md
+  - docs/models/components/serviceincidentresponse.md
   - docs/models/components/serviceproperties.md
   - docs/models/components/serviceresponse.md
   - docs/models/components/serviceupdaterequest.md
@@ -232,6 +234,10 @@ generatedFiles:
   - docs/models/operations/getsessiondatabysidrequest.md
   - docs/models/operations/getsessiontoolcallresultbyidrequest.md
   - docs/models/operations/gettakeoutapiv1takeoutsgetjobidgetrequest.md
+  - docs/models/operations/incidentdeleterequest.md
+  - docs/models/operations/incidentgetbyidrequest.md
+  - docs/models/operations/incidentlistrequest.md
+  - docs/models/operations/incidentupdaterequest.md
   - docs/models/operations/insightslistrequest.md
   - docs/models/operations/insightstoolupdaterequest.md
   - docs/models/operations/insightsworkflowdeleterequest.md
@@ -283,6 +289,7 @@ generatedFiles:
   - docs/sdks/datasources/README.md
   - docs/sdks/events/README.md
   - docs/sdks/fullsummary/README.md
+  - docs/sdks/incidents/README.md
   - docs/sdks/insights/README.md
   - docs/sdks/languagegroups/README.md
   - docs/sdks/outbound/README.md
@@ -336,6 +343,11 @@ generatedFiles:
   - src/funcs/dataSourcesList.ts
   - src/funcs/dataSourcesUpdate.ts
   - src/funcs/eventsList.ts
+  - src/funcs/incidentsCreate.ts
+  - src/funcs/incidentsDelete.ts
+  - src/funcs/incidentsGetById.ts
+  - src/funcs/incidentsList.ts
+  - src/funcs/incidentsUpdate.ts
   - src/funcs/insightsList.ts
   - src/funcs/insightsToolsCreate.ts
   - src/funcs/insightsToolsGetById.ts
@@ -529,6 +541,8 @@ generatedFiles:
   - src/models/components/requeststatus.ts
   - src/models/components/security.ts
   - src/models/components/servicecreaterequest.ts
+  - src/models/components/serviceincidentrequest.ts
+  - src/models/components/serviceincidentresponse.ts
   - src/models/components/serviceproperties.ts
   - src/models/components/serviceresponse.ts
   - src/models/components/serviceupdaterequest.ts
@@ -598,6 +612,10 @@ generatedFiles:
   - src/models/operations/getsessiondatabysid.ts
   - src/models/operations/getsessiontoolcallresultbyid.ts
   - src/models/operations/gettakeoutapiv1takeoutsgetjobidget.ts
+  - src/models/operations/incidentdelete.ts
+  - src/models/operations/incidentgetbyid.ts
+  - src/models/operations/incidentlist.ts
+  - src/models/operations/incidentupdate.ts
   - src/models/operations/index.ts
   - src/models/operations/insightslist.ts
   - src/models/operations/insightstoolupdate.ts
@@ -650,6 +668,7 @@ generatedFiles:
   - src/sdk/datasources.ts
   - src/sdk/events.ts
   - src/sdk/fullsummary.ts
+  - src/sdk/incidents.ts
   - src/sdk/index.ts
   - src/sdk/insights.ts
   - src/sdk/languagegroups.ts
@@ -1623,7 +1642,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: [{"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "account@email.com", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "30m", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}, {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "+19032900844", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "30m", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}]
+          application/json: [{"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "account@email.com", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "7d", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}, {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "+19032900844", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "30m", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}]
         "422": {}
   outbound_campaign_create:
     speakeasy-default-outbound-campaign-create:
@@ -1651,7 +1670,34 @@ examples:
         application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "account@email.com", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "12h", "pause_seconds": 30}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "account@email.com", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "12h", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "+19032900844", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "7d", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
+  incident_get_by_id:
+    speakeasy-default-incident-get-by-id:
+      parameters:
+        path:
+          incident_id: 931598
+  incident_update:
+    speakeasy-default-incident-update:
+      parameters:
+        path:
+          incident_id: 656776
+      requestBody:
+        application/json: {"organization_id": 857478, "sub_organization_id": 597129, "sub_organization": "<value>", "description": "hydrolyze for drat underneath sticky", "start_datetime": "2023-03-21T03:40:17.460Z", "resolution_datetime": "2023-06-16T09:40:21.633Z", "impact_category": "<value>", "sessions_impacted": 342070, "markdown": "<value>"}
+  incident_delete:
+    speakeasy-default-incident-delete:
+      parameters:
+        path:
+          incident_id: 545907
+  incident_create:
+    speakeasy-default-incident-create:
+      requestBody:
+        application/json: {"organization_id": 486589, "sub_organization_id": 638424, "sub_organization": "<value>", "description": "calmly fortunately bench around igloo scaffold", "start_datetime": "2025-04-13T05:49:58.922Z", "resolution_datetime": "2023-08-30T02:12:40.558Z", "impact_category": "<value>", "sessions_impacted": 449221, "markdown": "<value>"}
+  incident_list:
+    speakeasy-default-incident-list:
+      parameters:
+        query:
+          limit: 10
+          offset: 0
 examplesVersion: 1.0.0
 generatedTests: {}

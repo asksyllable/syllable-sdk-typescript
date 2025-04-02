@@ -910,6 +910,133 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/incidents/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.incidents.list({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/incidents/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.incidents.create({
+                organizationId: 486589,
+                subOrganizationId: 638424,
+                subOrganization: "<value>",
+                description: "calmly fortunately bench around igloo scaffold",
+                startDatetime: new Date("2025-04-13T05:49:58.922Z"),
+                resolutionDatetime: new Date("2023-08-30T02:12:40.558Z"),
+                impactCategory: "<value>",
+                sessionsImpacted: 449221,
+                markdown: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/incidents/{incident_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.incidents.delete({
+                incidentId: 545907,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/incidents/{incident_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.incidents.getById({
+                incidentId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/incidents/{incident_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.incidents.update({
+                incidentId: 656776,
+                serviceIncidentRequest: {
+                  organizationId: 857478,
+                  subOrganizationId: 597129,
+                  subOrganization: "<value>",
+                  description: "hydrolyze for drat underneath sticky",
+                  startDatetime: new Date("2023-03-21T03:40:17.460Z"),
+                  resolutionDatetime: new Date("2023-06-16T09:40:21.633Z"),
+                  impactCategory: "<value>",
+                  sessionsImpacted: 342070,
+                  markdown: "<value>",
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/insights/"]["get"]
     update:
       x-codeSamples:
