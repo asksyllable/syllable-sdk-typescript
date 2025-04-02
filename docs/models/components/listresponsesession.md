@@ -8,10 +8,10 @@ import { ListResponseSession } from "syllable-sdk/models/components";
 let value: ListResponseSession = {
   items: [
     {
-      timestamp: new Date("2024-07-03T10:50:11.552Z"),
+      timestamp: new Date("2025-07-16T15:56:01.395Z"),
       channelManagerService: "console",
-      channelManagerType: "voice_twilio_v1",
-      source: "+18042221111",
+      channelManagerType: "voice_sip_v1",
+      source: "user@email.com",
     },
   ],
   page: 0,

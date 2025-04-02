@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: ed9aebd690e17fe79914cf30cec5a3d4
+  docChecksum: bcd08c75f80048b43d3f9f963dd63d01
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.71
-  configChecksum: 326733b6bcb51d2882b7bc614029422c
+  releaseVersion: 0.1.0-alpha.72
+  configChecksum: 7f0a51317b055a6b3818ada5f3881d8d
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -32,6 +32,7 @@ features:
     retries: 2.83.0
     sdkHooks: 0.2.0
     unions: 2.85.8
+    uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -60,6 +61,13 @@ generatedFiles:
   - docs/models/components/attributes.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
+  - docs/models/components/batchdetails.md
+  - docs/models/components/batchproperties.md
+  - docs/models/components/batchstatus.md
+  - docs/models/components/bodyoutboundbatchdelete.md
+  - docs/models/components/bodyoutboundbatchupload.md
+  - docs/models/components/campaignproperties.md
+  - docs/models/components/campaignvariables.md
   - docs/models/components/channel.md
   - docs/models/components/channelproperties.md
   - docs/models/components/channelservices.md
@@ -67,6 +75,11 @@ generatedFiles:
   - docs/models/components/channeltargetproperties.md
   - docs/models/components/channeltargetresponse.md
   - docs/models/components/channeltargetupdaterequest.md
+  - docs/models/components/communicationbatch.md
+  - docs/models/components/communicationbatchinput.md
+  - docs/models/components/communicationrequest.md
+  - docs/models/components/communicationrequestrequestvariables.md
+  - docs/models/components/communicationrequestresult.md
   - docs/models/components/conditions.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
@@ -76,7 +89,6 @@ generatedFiles:
   - docs/models/components/custommessageresponse.md
   - docs/models/components/custommessagerule.md
   - docs/models/components/custommessageupdaterequest.md
-  - docs/models/components/daotakeoutcreate.md
   - docs/models/components/dashboard.md
   - docs/models/components/dashboardproperties.md
   - docs/models/components/dashboardresponse.md
@@ -93,8 +105,10 @@ generatedFiles:
   - docs/models/components/dialogtoolcall.md
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
+  - docs/models/components/filet.md
   - docs/models/components/insightsoutput.md
   - docs/models/components/insightsproperties.md
+  - docs/models/components/insightsworkflowqueuesession.md
   - docs/models/components/insighttooldefinition.md
   - docs/models/components/insighttoolinput.md
   - docs/models/components/insighttoolinputtoolarguments.md
@@ -133,6 +147,9 @@ generatedFiles:
   - docs/models/components/listresponsetoolresponse.md
   - docs/models/components/loc.md
   - docs/models/components/orderbydirection.md
+  - docs/models/components/outboundcampaign.md
+  - docs/models/components/outboundcampaigninput.md
+  - docs/models/components/outboundcampaigninputcampaignvariables.md
   - docs/models/components/promptcreaterequest.md
   - docs/models/components/prompthistory.md
   - docs/models/components/promptllmconfig.md
@@ -140,6 +157,8 @@ generatedFiles:
   - docs/models/components/promptproperties.md
   - docs/models/components/promptresponse.md
   - docs/models/components/promptupdaterequest.md
+  - docs/models/components/requeststatus.md
+  - docs/models/components/requestvariables.md
   - docs/models/components/response.md
   - docs/models/components/security.md
   - docs/models/components/servicecreaterequest.md
@@ -160,6 +179,7 @@ generatedFiles:
   - docs/models/components/sessiontranscriptionresponse.md
   - docs/models/components/statictoolparameter.md
   - docs/models/components/statictoolparametertype.md
+  - docs/models/components/statuscounts.md
   - docs/models/components/supportedllm.md
   - docs/models/components/takeoutrequeststatus.md
   - docs/models/components/takeoutstatusresponse.md
@@ -206,7 +226,6 @@ generatedFiles:
   - docs/models/operations/datasourcesdeleterequest.md
   - docs/models/operations/datasourcesgetbyidrequest.md
   - docs/models/operations/datasourceslistrequest.md
-  - docs/models/operations/directoryworkflowdeleterequest.md
   - docs/models/operations/eventslistrequest.md
   - docs/models/operations/generatesessionrecordingurlsrequest.md
   - docs/models/operations/getsessiondatabysessionidrequest.md
@@ -215,6 +234,7 @@ generatedFiles:
   - docs/models/operations/gettakeoutapiv1takeoutsgetjobidgetrequest.md
   - docs/models/operations/insightslistrequest.md
   - docs/models/operations/insightstoolupdaterequest.md
+  - docs/models/operations/insightsworkflowdeleterequest.md
   - docs/models/operations/insightsworkflowgetbyidrequest.md
   - docs/models/operations/insightsworkflowlistrequest.md
   - docs/models/operations/insightsworkflowupdaterequest.md
@@ -223,6 +243,17 @@ generatedFiles:
   - docs/models/operations/languagegroupsdeleterequest.md
   - docs/models/operations/languagegroupsgetbyidrequest.md
   - docs/models/operations/languagegroupslistrequest.md
+  - docs/models/operations/outboundbatchaddrequest.md
+  - docs/models/operations/outboundbatchdeleterequest.md
+  - docs/models/operations/outboundbatchgetbyidrequest.md
+  - docs/models/operations/outboundbatchlistrequest.md
+  - docs/models/operations/outboundbatchremoverequest.md
+  - docs/models/operations/outboundbatchresultsrequest.md
+  - docs/models/operations/outboundbatchupdaterequest.md
+  - docs/models/operations/outboundbatchuploadrequest.md
+  - docs/models/operations/outboundcampaigneditrequest.md
+  - docs/models/operations/outboundcampaignfetchallrequest.md
+  - docs/models/operations/outboundcampaignfetchonerequest.md
   - docs/models/operations/postgetdashboardrequest.md
   - docs/models/operations/postlistdashboardrequest.md
   - docs/models/operations/promptsdeleterequest.md
@@ -238,12 +269,13 @@ generatedFiles:
   - docs/models/operations/sessionlabelslistrequest.md
   - docs/models/operations/sessionrecordingstreamrequest.md
   - docs/models/operations/sessionslistrequest.md
-  - docs/models/operations/sessionsummarygetbyidrequest.md
   - docs/models/operations/sessiontranscriptgetbyidrequest.md
   - docs/models/operations/tooldeleterequest.md
   - docs/models/operations/toolgetbynamerequest.md
   - docs/models/operations/toollistrequest.md
   - docs/sdks/agents/README.md
+  - docs/sdks/batches/README.md
+  - docs/sdks/campaigns/README.md
   - docs/sdks/channels/README.md
   - docs/sdks/conversations/README.md
   - docs/sdks/custommessages/README.md
@@ -253,12 +285,12 @@ generatedFiles:
   - docs/sdks/fullsummary/README.md
   - docs/sdks/insights/README.md
   - docs/sdks/languagegroups/README.md
+  - docs/sdks/outbound/README.md
   - docs/sdks/prompts/README.md
   - docs/sdks/services/README.md
   - docs/sdks/sessiondebug/README.md
   - docs/sdks/sessionlabels/README.md
   - docs/sdks/sessions/README.md
-  - docs/sdks/summary/README.md
   - docs/sdks/syllablesdk/README.md
   - docs/sdks/syllablesdktools/README.md
   - docs/sdks/takeouts/README.md
@@ -314,12 +346,26 @@ generatedFiles:
   - src/funcs/insightsWorkflowsDelete.ts
   - src/funcs/insightsWorkflowsGetById.ts
   - src/funcs/insightsWorkflowsList.ts
+  - src/funcs/insightsWorkflowsQueueSessionsWorkflow.ts
   - src/funcs/insightsWorkflowsUpdate.ts
   - src/funcs/languageGroupsCreate.ts
   - src/funcs/languageGroupsDelete.ts
   - src/funcs/languageGroupsGetById.ts
   - src/funcs/languageGroupsList.ts
   - src/funcs/languageGroupsUpdate.ts
+  - src/funcs/outboundBatchesCreate.ts
+  - src/funcs/outboundBatchesDelete.ts
+  - src/funcs/outboundBatchesGetById.ts
+  - src/funcs/outboundBatchesList.ts
+  - src/funcs/outboundBatchesOutboundBatchAdd.ts
+  - src/funcs/outboundBatchesOutboundBatchRemove.ts
+  - src/funcs/outboundBatchesOutboundBatchResults.ts
+  - src/funcs/outboundBatchesUpdate.ts
+  - src/funcs/outboundBatchesUpload.ts
+  - src/funcs/outboundCampaignsOutboundCampaignEdit.ts
+  - src/funcs/outboundCampaignsOutboundCampaignFetchAll.ts
+  - src/funcs/outboundCampaignsOutboundCampaignFetchOne.ts
+  - src/funcs/outboundCampaignsOutboundCampaignNew.ts
   - src/funcs/promptsCreate.ts
   - src/funcs/promptsDelete.ts
   - src/funcs/promptsGetById.ts
@@ -343,7 +389,6 @@ generatedFiles:
   - src/funcs/sessionsGetById.ts
   - src/funcs/sessionsList.ts
   - src/funcs/sessionsSessionRecordingStream.ts
-  - src/funcs/sessionsSummaryGetById.ts
   - src/funcs/sessionsTranscriptGetById.ts
   - src/funcs/takeoutsCreateTakeoutApiV1TakeoutsCreatePost.ts
   - src/funcs/takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet.ts
@@ -352,9 +397,10 @@ generatedFiles:
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
-  - src/funcs/v1CreateTakeoutApiV1TakeoutsCreatePost.ts
-  - src/funcs/v1GetTakeoutApiV1TakeoutsGetJobIdGet.ts
+  - src/funcs/v1Create.ts
   - src/funcs/v1List.ts
+  - src/funcs/v1OutboundCampaignFetchAll.ts
+  - src/funcs/v1OutboundCampaignNew.ts
   - src/funcs/v1PostGetDashboard.ts
   - src/funcs/v1PostListDashboard.ts
   - src/funcs/v1PostSessionEventsDashboard.ts
@@ -397,6 +443,12 @@ generatedFiles:
   - src/models/components/agentwaitsound.ts
   - src/models/components/availabletarget.ts
   - src/models/components/availabletargetproperties.ts
+  - src/models/components/batchdetails.ts
+  - src/models/components/batchproperties.ts
+  - src/models/components/batchstatus.ts
+  - src/models/components/bodyoutboundbatchdelete.ts
+  - src/models/components/bodyoutboundbatchupload.ts
+  - src/models/components/campaignproperties.ts
   - src/models/components/channel.ts
   - src/models/components/channelproperties.ts
   - src/models/components/channelservices.ts
@@ -404,6 +456,10 @@ generatedFiles:
   - src/models/components/channeltargetproperties.ts
   - src/models/components/channeltargetresponse.ts
   - src/models/components/channeltargetupdaterequest.ts
+  - src/models/components/communicationbatch.ts
+  - src/models/components/communicationbatchinput.ts
+  - src/models/components/communicationrequest.ts
+  - src/models/components/communicationrequestresult.ts
   - src/models/components/conversation.ts
   - src/models/components/conversationproperties.ts
   - src/models/components/createtakeoutresponse.ts
@@ -412,7 +468,6 @@ generatedFiles:
   - src/models/components/custommessageresponse.ts
   - src/models/components/custommessagerule.ts
   - src/models/components/custommessageupdaterequest.ts
-  - src/models/components/daotakeoutcreate.ts
   - src/models/components/dashboard.ts
   - src/models/components/dashboardproperties.ts
   - src/models/components/dashboardresponse.ts
@@ -431,6 +486,7 @@ generatedFiles:
   - src/models/components/index.ts
   - src/models/components/insightsoutput.ts
   - src/models/components/insightsproperties.ts
+  - src/models/components/insightsworkflowqueuesession.ts
   - src/models/components/insighttooldefinition.ts
   - src/models/components/insighttoolinput.ts
   - src/models/components/insighttooloutput.ts
@@ -465,6 +521,8 @@ generatedFiles:
   - src/models/components/listresponsesessionlabel.ts
   - src/models/components/listresponsetoolresponse.ts
   - src/models/components/orderbydirection.ts
+  - src/models/components/outboundcampaign.ts
+  - src/models/components/outboundcampaigninput.ts
   - src/models/components/promptcreaterequest.ts
   - src/models/components/prompthistory.ts
   - src/models/components/promptllmconfig.ts
@@ -472,6 +530,7 @@ generatedFiles:
   - src/models/components/promptproperties.ts
   - src/models/components/promptresponse.ts
   - src/models/components/promptupdaterequest.ts
+  - src/models/components/requeststatus.ts
   - src/models/components/security.ts
   - src/models/components/servicecreaterequest.ts
   - src/models/components/serviceproperties.ts
@@ -537,7 +596,6 @@ generatedFiles:
   - src/models/operations/datasourcesdelete.ts
   - src/models/operations/datasourcesgetbyid.ts
   - src/models/operations/datasourceslist.ts
-  - src/models/operations/directoryworkflowdelete.ts
   - src/models/operations/eventslist.ts
   - src/models/operations/generatesessionrecordingurls.ts
   - src/models/operations/getsessiondatabysessionid.ts
@@ -547,6 +605,7 @@ generatedFiles:
   - src/models/operations/index.ts
   - src/models/operations/insightslist.ts
   - src/models/operations/insightstoolupdate.ts
+  - src/models/operations/insightsworkflowdelete.ts
   - src/models/operations/insightsworkflowgetbyid.ts
   - src/models/operations/insightsworkflowlist.ts
   - src/models/operations/insightsworkflowupdate.ts
@@ -555,6 +614,17 @@ generatedFiles:
   - src/models/operations/languagegroupsdelete.ts
   - src/models/operations/languagegroupsgetbyid.ts
   - src/models/operations/languagegroupslist.ts
+  - src/models/operations/outboundbatchadd.ts
+  - src/models/operations/outboundbatchdelete.ts
+  - src/models/operations/outboundbatchgetbyid.ts
+  - src/models/operations/outboundbatchlist.ts
+  - src/models/operations/outboundbatchremove.ts
+  - src/models/operations/outboundbatchresults.ts
+  - src/models/operations/outboundbatchupdate.ts
+  - src/models/operations/outboundbatchupload.ts
+  - src/models/operations/outboundcampaignedit.ts
+  - src/models/operations/outboundcampaignfetchall.ts
+  - src/models/operations/outboundcampaignfetchone.ts
   - src/models/operations/postgetdashboard.ts
   - src/models/operations/postlistdashboard.ts
   - src/models/operations/promptsdelete.ts
@@ -570,12 +640,13 @@ generatedFiles:
   - src/models/operations/sessionlabelslist.ts
   - src/models/operations/sessionrecordingstream.ts
   - src/models/operations/sessionslist.ts
-  - src/models/operations/sessionsummarygetbyid.ts
   - src/models/operations/sessiontranscriptgetbyid.ts
   - src/models/operations/tooldelete.ts
   - src/models/operations/toolgetbyname.ts
   - src/models/operations/toollist.ts
   - src/sdk/agents.ts
+  - src/sdk/batches.ts
+  - src/sdk/campaigns.ts
   - src/sdk/channels.ts
   - src/sdk/conversations.ts
   - src/sdk/custommessages.ts
@@ -586,13 +657,13 @@ generatedFiles:
   - src/sdk/index.ts
   - src/sdk/insights.ts
   - src/sdk/languagegroups.ts
+  - src/sdk/outbound.ts
   - src/sdk/prompts.ts
   - src/sdk/sdk.ts
   - src/sdk/services.ts
   - src/sdk/sessiondebug.ts
   - src/sdk/sessionlabels.ts
   - src/sdk/sessions.ts
-  - src/sdk/summary.ts
   - src/sdk/syllablesdktools.ts
   - src/sdk/takeouts.ts
   - src/sdk/targets.ts
@@ -1456,5 +1527,135 @@ examples:
       responses:
         "200":
           application/json: [{"model": "gpt-4o", "display_name": "GPT-4o", "version": "2024-05-13", "api_version": "2024-06-01", "deprecated": false}]
+  insights_workflow_delete:
+    speakeasy-default-insights-workflow-delete:
+      parameters:
+        path:
+          workflow_id: 545907
+  queue_sessions_workflow:
+    speakeasy-default-queue-sessions-workflow:
+      requestBody:
+        application/json: {"workflow_name": "summary-workflow", "session_id_list": ["[12334,23445,34556]"]}
+  outbound_batch_list:
+    speakeasy-default-outbound-batch-list:
+      parameters:
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["expires_on"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: [{"batch_id": "20250117.9", "campaign_id": 1, "expires_on": "2024-01-01T00:00:00Z", "count": 152, "created_at": "2024-01-01T00:00:00Z", "deleted_at": "2024-01-01T00:00:00Z", "deleted_reason": "User request", "last_worked_on": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}, {"batch_id": "20250117.9", "campaign_id": 1, "expires_on": "2024-01-01T00:00:00Z", "count": 152, "created_at": "2024-01-01T00:00:00Z", "deleted_at": "2024-01-01T00:00:00Z", "deleted_reason": "User request", "last_worked_on": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}]
+        "422": {}
+  outbound_batch_create:
+    speakeasy-default-outbound-batch-create:
+      requestBody:
+        application/json: {"batch_id": "20250117.9", "campaign_id": 1, "expires_on": "2024-01-01T00:00:00Z"}
+      responses:
+        "200":
+          application/json: {"batch_id": "20250117.9", "campaign_id": 1, "expires_on": "2024-01-01T00:00:00Z", "count": 152, "created_at": "2024-01-01T00:00:00Z", "deleted_at": "2024-01-01T00:00:00Z", "deleted_reason": "User request", "last_worked_on": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  outbound_campaign_fetch_all:
+    speakeasy-default-outbound-campaign-fetch-all:
+      parameters:
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["source"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: [{"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "+19032900844", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "12h", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}]
+        "422": {}
+  outbound_campaign_new:
+    speakeasy-default-outbound-campaign-new:
+      requestBody:
+        application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "+19032900844", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "7d", "pause_seconds": 30}
+      responses:
+        "200":
+          application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "+19032900844", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "12h", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  outbound_batch_get_by_id:
+    speakeasy-default-outbound-batch-get-by-id:
+      parameters:
+        path:
+          batch_id: "<id>"
+      responses:
+        "200":
+          application/json: {"batch_id": "20250117.9", "campaign_id": 1, "expires_on": "2024-01-01T00:00:00Z", "count": 152, "created_at": "2024-01-01T00:00:00Z", "deleted_at": "2024-01-01T00:00:00Z", "deleted_reason": "User request", "last_worked_on": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  outbound_batch_update:
+    speakeasy-default-outbound-batch-update:
+      parameters:
+        path:
+          batch_id: "<id>"
+      requestBody:
+        application/json: {"batch_id": "20250117.9", "campaign_id": 1, "expires_on": "2024-01-01T00:00:00Z", "count": 152, "created_at": "2024-01-01T00:00:00Z", "deleted_at": "2024-01-01T00:00:00Z", "deleted_reason": "User request", "last_worked_on": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+      responses:
+        "200":
+          application/json: {"batch_id": "20250117.9", "campaign_id": 1, "expires_on": "2024-01-01T00:00:00Z", "count": 152, "created_at": "2024-01-01T00:00:00Z", "deleted_at": "2024-01-01T00:00:00Z", "deleted_reason": "User request", "last_worked_on": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  outbound_batch_delete:
+    speakeasy-default-outbound-batch-delete:
+      parameters:
+        path:
+          batch_id: "<id>"
+      requestBody:
+        application/x-www-form-urlencoded: {"deleteReason": "<value>"}
+  outbound_batch_upload:
+    speakeasy-default-outbound-batch-upload:
+      parameters:
+        path:
+          batch_id: "<id>"
+      requestBody:
+        multipart/form-data: {"file": {"": "x-file: example.file"}}
+  outbound_batch_results:
+    speakeasy-default-outbound-batch-results:
+      parameters:
+        path:
+          batch_id: "<id>"
+      responses:
+        "200":
+          application/json: [{"batch_id": "20250117.9", "reference_id": "12345", "target": "user@email.com", "request_variables": {}, "call_manager_sid": "LMc4b16a9df2ce33d84b3d30581fe6598c", "created_at": "2024-01-01T00:00:00Z", "sent_at": "2024-01-02T00:00:00Z", "attempt_count": 0, "session_id": 1, "conversation_id": 1}, {"batch_id": "20250117.9", "reference_id": "12345", "target": "user@email.com", "request_variables": {}, "call_manager_sid": "LMc4b16a9df2ce33d84b3d30581fe6598c", "created_at": "2024-01-01T00:00:00Z", "sent_at": "2024-01-02T00:00:00Z", "attempt_count": 0, "session_id": 1, "conversation_id": 1}]
+        "422": {}
+  outbound_batch_add:
+    speakeasy-default-outbound-batch-add:
+      parameters:
+        path:
+          batch_id: "<id>"
+      requestBody:
+        application/json: {"batch_id": "20250117.9", "reference_id": "12345", "target": "user@email.com", "request_variables": {}}
+  outbound_batch_remove:
+    speakeasy-default-outbound-batch-remove:
+      parameters:
+        path:
+          batch_id: "<id>"
+      requestBody:
+        application/json: ["<value>", "<value>"]
+  outbound_campaign_fetch_one:
+    speakeasy-default-outbound-campaign-fetch-one:
+      parameters:
+        path:
+          campaign_id: "<id>"
+      responses:
+        "200":
+          application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "account@email.com", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "30m", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  outbound_campaign_edit:
+    speakeasy-default-outbound-campaign-edit:
+      parameters:
+        path:
+          campaign_id: 70379
+      requestBody:
+        application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "+19032900844", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "30m", "pause_seconds": 30}
+      responses:
+        "200":
+          application/json: {"campaign_name": "Outbound Campaign 1", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "timezone": "America/New_York", "source": "account@email.com", "caller_id": "19995551234", "rate": 5, "retry_count": 1, "retry_interval": "12h", "pause_seconds": 30, "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
 examplesVersion: 1.0.0
 generatedTests: {}

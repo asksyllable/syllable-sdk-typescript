@@ -6,6 +6,7 @@ import { insightsWorkflowsCreate } from "../funcs/insightsWorkflowsCreate.js";
 import { insightsWorkflowsDelete } from "../funcs/insightsWorkflowsDelete.js";
 import { insightsWorkflowsGetById } from "../funcs/insightsWorkflowsGetById.js";
 import { insightsWorkflowsList } from "../funcs/insightsWorkflowsList.js";
+import { insightsWorkflowsQueueSessionsWorkflow } from "../funcs/insightsWorkflowsQueueSessionsWorkflow.js";
 import { insightsWorkflowsUpdate } from "../funcs/insightsWorkflowsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -88,10 +89,27 @@ export class Workflows extends ClientSDK {
    * Delete a Insights workflow.
    */
   async delete(
-    request: operations.DirectoryWorkflowDeleteRequest,
+    request: operations.InsightsWorkflowDeleteRequest,
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(insightsWorkflowsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Queue Insights Workflow For Sessions
+   *
+   * @remarks
+   * Delete a Insights workflow.
+   */
+  async queueSessionsWorkflow(
+    request: components.InsightsWorkflowQueueSession,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(insightsWorkflowsQueueSessionsWorkflow(
       this,
       request,
       options,
