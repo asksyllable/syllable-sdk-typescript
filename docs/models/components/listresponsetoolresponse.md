@@ -20,10 +20,20 @@ let value: ListResponseToolResponse = {
         },
         endpoint: {
           url: "https://api.example.com",
-          method: "get",
-          argumentLocation: "body",
+          method: "post",
+          argumentLocation: "form",
         },
-        defaults: "<value>",
+        defaults: {
+          "key": {
+            transform: {
+              action: "default",
+              when: {
+                key: "key",
+                value: "value",
+              },
+            },
+          },
+        },
         staticParameters: [
           {
             name: "temperature_unit",
@@ -50,7 +60,7 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2024-09-16T16:21:25.240Z"),
+      lastUpdated: new Date("2023-07-20T20:59:34.122Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

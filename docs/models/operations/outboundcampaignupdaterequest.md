@@ -6,7 +6,7 @@
 import { OutboundCampaignUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundCampaignUpdateRequest = {
-  campaignId: 58029,
+  campaignId: 197054,
   outboundCampaignInput: {
     campaignName: "Outbound Campaign 1",
     campaignVariables: {},

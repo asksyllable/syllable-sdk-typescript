@@ -107,6 +107,8 @@ export * from "./promptupdaterequest.js";
 export * from "./requeststatus.js";
 export * from "./security.js";
 export * from "./servicecreaterequest.js";
+export * from "./serviceincidentrequest.js";
+export * from "./serviceincidentresponse.js";
 export * from "./serviceproperties.js";
 export * from "./serviceresponse.js";
 export * from "./serviceupdaterequest.js";
