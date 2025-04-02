@@ -543,13 +543,13 @@ actions:
     update:
       - "outbound.campaigns"
 
-  - target: $["paths"]["/api/v1/outbound/takeouts/create"]["post"]["tags"][*]
+  - target: $["paths"]["/api/v1/takeouts/create"]["post"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/outbound/takeouts/create"]["post"]["tags"]
+  - target: $["paths"]["/api/v1/takeouts/create"]["post"]["tags"]
     update:
       - "takeouts"
-  - target: $["paths"]["/api/v1/outbound/takeouts/get/{job_id}"]["get"]["tags"][*]
+  - target: $["paths"]["/api/v1/takeouts/get/{job_id}"]["get"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/outbound/takeouts/get/{job_id}"]["get"]["tags"]
+  - target: $["paths"]["/api/v1/takeouts/get/{job_id}"]["get"]["tags"]
     update:
       - "takeouts"
