@@ -6600,7 +6600,7 @@
         ],
         "summary": "Post List Dashboards",
         "description": "METHOD: POST\nURL: /dashboard/list\nARGUMENTS: None\nRETURNS: List of dashboards",
-        "operationId": "post_list_dashboard",
+        "operationId": "dashboards_list",
         "security": [
           {
             "APIKeyHeader": []
