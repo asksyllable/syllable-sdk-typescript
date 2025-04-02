@@ -6600,7 +6600,7 @@
         ],
         "summary": "Post List Dashboards",
         "description": "METHOD: POST\nURL: /dashboard/list\nARGUMENTS: None\nRETURNS: List of dashboards",
-        "operationId": "dashboards_list",
+        "operationId": "post_list_dashboard",
         "security": [
           {
             "APIKeyHeader": []
@@ -8436,17 +8436,7 @@
           "V1"
         ],
         "summary": "Create Takeout",
-        "operationId": "takeouts_create",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DaoTakeoutCreate"
-              }
-            }
-          },
-          "required": true
-        },
+        "operationId": "create_takeout_api_v1_takeouts_create_post",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -8454,16 +8444,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CreateTakeoutResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -8483,7 +8463,7 @@
           "V1"
         ],
         "summary": "Get Takeout",
-        "operationId": "takeouts_get_by_id",
+        "operationId": "get_takeout_api_v1_takeouts_get__job_id__get",
         "security": [
           {
             "APIKeyHeader": []
@@ -11186,30 +11166,6 @@
         ],
         "title": "CustomMessageUpdateRequest",
         "description": "Request model to update an existing custom message."
-      },
-      "DaoTakeoutCreate": {
-        "properties": {
-          "sub_organization_id": {
-            "type": "integer",
-            "title": "Sub Organization Id"
-          },
-          "requested_by": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Requested By"
-          }
-        },
-        "type": "object",
-        "required": [
-          "sub_organization_id"
-        ],
-        "title": "DaoTakeoutCreate"
       },
       "Dashboard": {
         "properties": {
@@ -14946,7 +14902,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.",
             "default": true,
             "examples": [
               true
@@ -15441,7 +15397,7 @@
           "include_default_tools": {
             "type": "boolean",
             "title": "Include Default Tools",
-            "description": "Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
+            "description": "Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.",
             "default": true,
             "examples": [
               true
