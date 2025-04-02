@@ -476,9 +476,9 @@ actions:
     update:
       - "session_debug"
 
-  - target: $["paths"]["/api/v1/outbound/batches/"]["get"]["tags"][*]
+  - target: $["paths"]["/api/v1/outbound/batches"]["get"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/outbound/batches/"]["get"]["tags"]
+  - target: $["paths"]["/api/v1/outbound/batches"]["get"]["tags"]
     update:
       - "outbound.batches"
   - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["get"]["tags"][*]
@@ -506,9 +506,9 @@ actions:
   - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/remove-requests"]["post"]["tags"]
     update:
       - "outbound.batches"
-  - target: $["paths"]["/api/v1/outbound/batches/"]["post"]["tags"][*]
+  - target: $["paths"]["/api/v1/outbound/batches"]["post"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/outbound/batches/"]["post"]["tags"]
+  - target: $["paths"]["/api/v1/outbound/batches"]["post"]["tags"]
     update:
       - "outbound.batches"
   - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["delete"]["tags"][*]
@@ -522,9 +522,9 @@ actions:
     update:
       - "outbound.batches"
 
-  - target: $["paths"]["/api/v1/outbound/campaigns/"]["get"]["tags"][*]
+  - target: $["paths"]["/api/v1/outbound/campaigns"]["get"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/outbound/campaigns/"]["get"]["tags"]
+  - target: $["paths"]["/api/v1/outbound/campaigns"]["get"]["tags"]
     update:
       - "outbound.campaigns"
   - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["get"]["tags"][*]
@@ -532,9 +532,9 @@ actions:
   - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["get"]["tags"]
     update:
       - "outbound.campaigns"
-  - target: $["paths"]["/api/v1/outbound/campaigns/"]["post"]["tags"][*]
+  - target: $["paths"]["/api/v1/outbound/campaigns"]["post"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/outbound/campaigns/"]["post"]["tags"]
+  - target: $["paths"]["/api/v1/outbound/campaigns"]["post"]["tags"]
     update:
       - "outbound.campaigns"
   - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["put"]["tags"][*]
