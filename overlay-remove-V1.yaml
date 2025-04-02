@@ -396,6 +396,11 @@ actions:
   - target: $["paths"]["/api/v1/insights/workflows/{workflow_id}"]["delete"]["tags"]
     update:
       - "insights.workflows"
+  - target: $["paths"]["/api/v1/insights/workflows/queue-session"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/insights/workflows/queue-session"]["post"]["tags"]
+    update:
+      - "insights.workflows"
   - target: $["paths"]["/api/v1/insights/tools"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/insights/tools"]["get"]["tags"]
@@ -463,6 +468,52 @@ actions:
   - target: $["paths"]["/api/v1/session_debug/tool_result/{session_id}/{tool_call_id}"]["get"]["tags"]
     update:
       - "session_debug"
+
+  - target: $["paths"]["/api/v1/outbound/batches/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/"]["get"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["get"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/results"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/results"]["get"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/upload_batch"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/upload_batch"]["post"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/requests"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/requests"]["post"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/remove-requests"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/remove-requests"]["post"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/"]["post"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["delete"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["delete"]["tags"]
+    update:
+      - "outbound.batches"
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["put"]["tags"]
+    update:
+      - "outbound.batches"
 
   - target: $["paths"]["/api/v1/outbound/campaigns/"]["get"]["tags"][*]
     remove: true
