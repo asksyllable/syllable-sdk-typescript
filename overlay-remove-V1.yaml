@@ -463,3 +463,24 @@ actions:
   - target: $["paths"]["/api/v1/session_debug/tool_result/{session_id}/{tool_call_id}"]["get"]["tags"]
     update:
       - "session_debug"
+
+  - target: $["paths"]["/api/v1/outbound/campaigns/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/campaigns/"]["get"]["tags"]
+    update:
+      - "outbound.campaigns"
+  - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["get"]["tags"]
+    update:
+      - "outbound.campaigns"
+  - target: $["paths"]["/api/v1/outbound/campaigns/"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/campaigns/"]["post"]["tags"]
+    update:
+      - "outbound.campaigns"
+  - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["put"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["put"]["tags"]
+    update:
+      - "outbound.campaigns"
