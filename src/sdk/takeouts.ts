@@ -14,12 +14,10 @@ export class Takeouts extends ClientSDK {
    * Create Takeout
    */
   async createTakeoutApiV1TakeoutsCreatePost(
-    request: components.DaoTakeoutCreate,
     options?: RequestOptions,
   ): Promise<components.CreateTakeoutResponse> {
     return unwrapAsync(takeoutsCreateTakeoutApiV1TakeoutsCreatePost(
       this,
-      request,
       options,
     ));
   }

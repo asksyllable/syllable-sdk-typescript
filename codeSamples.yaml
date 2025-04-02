@@ -940,33 +940,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.list({
-                page: 0,
-                searchFields: [
-                  "insight_tool_id",
-                ],
-                searchFieldValues: [
-                  "Some Object Name",
-                ],
-                startDatetime: "2023-01-01T00:00:00Z",
-                endDatetime: "2024-01-01T00:00:00Z",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/insights/tool-definitions"]["get"]
     update:
       x-codeSamples:
@@ -1145,6 +1118,31 @@ actions:
                 ],
                 conditions: {},
                 status: "ACTIVE",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/workflows/queue-session"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.workflows.queueSessionsWorkflow({
+                workflowName: "summary-workflow",
+                sessionIdList: [
+                  [12334,23445,34556],
+                ],
               });
 
               // Handle the result
@@ -1373,6 +1371,357 @@ actions:
             async function run() {
               const result = await syllableSDK.languageGroups.getById({
                 languageGroupId: 931598,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.list({
+                page: 0,
+                searchFields: [
+                  "expires_on",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.create({
+                batchId: "20250117.9",
+                campaignId: 1,
+                expiresOn: "2024-01-01T00:00:00Z",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.delete({
+                batchId: "<id>",
+                bodyOutboundBatchDelete: {
+                  deleteReason: "<value>",
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.getById({
+                batchId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.update({
+                batchId: "<id>",
+                communicationBatch: {
+                  batchId: "20250117.9",
+                  campaignId: 1,
+                  expiresOn: "2024-01-01T00:00:00Z",
+                  count: 152,
+                  createdAt: "2024-01-01T00:00:00Z",
+                  deletedAt: "2024-01-01T00:00:00Z",
+                  deletedReason: "User request",
+                  lastWorkedOn: "2024-01-01T00:00:00Z",
+                  lastUpdatedBy: "user@email.com",
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/remove-requests"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.outboundBatchRemove({
+                batchId: "<id>",
+                requestBody: [
+                  "<value>",
+                  "<value>",
+                ],
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/requests"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.outboundBatchAdd({
+                batchId: "<id>",
+                communicationRequest: {
+                  batchId: "20250117.9",
+                  referenceId: "12345",
+                  target: "user@email.com",
+                  requestVariables: {},
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/results"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.outboundBatchResults({
+                batchId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/batches/{batch_id}/upload_batch"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.batches.upload({
+                batchId: "<id>",
+                bodyOutboundBatchUpload: {
+                  file: await openAsBlob("example.file"),
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/campaigns"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.campaigns.list({
+                page: 0,
+                searchFields: [
+                  "timezone",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/campaigns"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.campaigns.create({
+                campaignName: "Outbound Campaign 1",
+                campaignVariables: {},
+                dailyStartTime: "09:00:00",
+                dailyEndTime: "17:00:00",
+                timezone: "America/New_York",
+                source: "+19032900844",
+                callerId: "19995551234",
+                retryInterval: "12h",
+                pauseSeconds: 30,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.campaigns.getById({
+                campaignId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.campaigns.update({
+                campaignId: 344620,
+                outboundCampaignInput: {
+                  campaignName: "Outbound Campaign 1",
+                  campaignVariables: {},
+                  dailyStartTime: "09:00:00",
+                  dailyEndTime: "17:00:00",
+                  timezone: "America/New_York",
+                  source: "account@email.com",
+                  callerId: "19995551234",
+                  retryInterval: "12h",
+                  pauseSeconds: 30,
+                },
               });
 
               // Handle the result
@@ -1936,28 +2285,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/sessions/summary/{session_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.sessions.summary.getById({
-                sessionId: "<id>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]
     update:
       x-codeSamples:
@@ -2015,28 +2342,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.takeouts.createTakeoutApiV1TakeoutsCreatePost({
-                subOrganizationId: 38300,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.createTakeoutApiV1TakeoutsCreatePost({
-                subOrganizationId: 38300,
-              });
+              const result = await syllableSDK.takeouts.createTakeoutApiV1TakeoutsCreatePost();
 
               // Handle the result
               console.log(result);
@@ -2057,25 +2363,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.takeouts.getTakeoutApiV1TakeoutsGetJobIdGet({
-                jobId: "<id>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.getTakeoutApiV1TakeoutsGetJobIdGet({
                 jobId: "<id>",
               });
 

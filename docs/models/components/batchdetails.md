@@ -1,0 +1,36 @@
+# BatchDetails
+
+## Example Usage
+
+```typescript
+import { BatchDetails } from "syllable-sdk/models/components";
+
+let value: BatchDetails = {
+  batchId: "20250117.9",
+  campaignId: 1,
+  expiresOn: "2024-01-01T00:00:00Z",
+  count: 152,
+  createdAt: "2024-01-01T00:00:00Z",
+  deletedAt: "2024-01-01T00:00:00Z",
+  deletedReason: "User request",
+  lastWorkedOn: "2024-01-01T00:00:00Z",
+  lastUpdatedBy: "user@email.com",
+  statusCounts: {},
+};
+```
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `batchId`                                                                                         | *string*                                                                                          | :heavy_check_mark:                                                                                | Unique ID for conversation batch                                                                  | 20250117.9                                                                                        |
+| `campaignId`                                                                                      | *number*                                                                                          | :heavy_check_mark:                                                                                | Unique ID for campaign                                                                            | 1                                                                                                 |
+| `expiresOn`                                                                                       | *string*                                                                                          | :heavy_minus_sign:                                                                                | Timestamp of batch expiration                                                                     | 2024-01-01T00:00:00Z                                                                              |
+| `status`                                                                                          | [components.BatchStatus](../../models/components/batchstatus.md)                                  | :heavy_minus_sign:                                                                                | Status of a communication batch.                                                                  |                                                                                                   |
+| `count`                                                                                           | *number*                                                                                          | :heavy_minus_sign:                                                                                | Number of requests in batch                                                                       | 152                                                                                               |
+| `createdAt`                                                                                       | *string*                                                                                          | :heavy_minus_sign:                                                                                | Timestamp of batch creation                                                                       | 2024-01-01T00:00:00Z                                                                              |
+| `deletedAt`                                                                                       | *string*                                                                                          | :heavy_minus_sign:                                                                                | Timestamp of batch deletion                                                                       | 2024-01-01T00:00:00Z                                                                              |
+| `deletedReason`                                                                                   | *string*                                                                                          | :heavy_minus_sign:                                                                                | Reason for batch deletion                                                                         | User request                                                                                      |
+| `lastWorkedOn`                                                                                    | *string*                                                                                          | :heavy_minus_sign:                                                                                | Timestamp of last batch activity                                                                  | 2024-01-01T00:00:00Z                                                                              |
+| `lastUpdatedBy`                                                                                   | *string*                                                                                          | :heavy_check_mark:                                                                                | Email of user who last updated campaign                                                           | user@email.com                                                                                    |
+| `statusCounts`                                                                                    | [components.StatusCounts](../../models/components/statuscounts.md)                                | :heavy_minus_sign:                                                                                | Counts of requests by status                                                                      | {<br/>"CANCELED": 7,<br/>"CONNECTED": 100,<br/>"DUPLICATE": 5,<br/>"FAILED": 10,<br/>"INITIATED": 20,<br/>"PENDING": 10<br/>} |

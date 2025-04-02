@@ -20,20 +20,10 @@ let value: ToolUpdateRequest = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "post",
-      argumentLocation: "body",
+      method: "get",
+      argumentLocation: "query",
     },
-    defaults: {
-      "key": {
-        transform: {
-          action: "default",
-          when: {
-            key: "key",
-            value: "value",
-          },
-        },
-      },
-    },
+    defaults: "<value>",
     staticParameters: [
       {
         name: "temperature_unit",

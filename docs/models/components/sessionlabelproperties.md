@@ -5,7 +5,7 @@
 ```typescript
 import { SessionLabelProperties } from "syllable-sdk/models/components";
 
-let value: SessionLabelProperties = "issue_categories";
+let value: SessionLabelProperties = "code";
 ```
 
 ## Values
