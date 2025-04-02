@@ -7638,7 +7638,7 @@
           "V1"
         ],
         "summary": "List Outbound Communication Campaigns",
-        "operationId": "outbound_campaign_list",
+        "operationId": "outbound_campaign_lis",
         "security": [
           {
             "APIKeyHeader": []
@@ -7864,7 +7864,7 @@
           "V1"
         ],
         "summary": "Create Outbound Communication Campaign",
-        "operationId": "outbound_campaign_create",
+        "operationId": "outbound_campaign_creat",
         "security": [
           {
             "APIKeyHeader": []
@@ -7919,7 +7919,7 @@
           "V1"
         ],
         "summary": "Get Outbound Communication Campaign",
-        "operationId": "outbound_campaign_get_by_id",
+        "operationId": "outbound_campaign_get_by_i",
         "security": [
           {
             "APIKeyHeader": []
@@ -7965,7 +7965,7 @@
           "V1"
         ],
         "summary": "Update Outbound Communication Campaign",
-        "operationId": "outbound_campaign_update",
+        "operationId": "outbound_campaign_updat",
         "security": [
           {
             "APIKeyHeader": []
