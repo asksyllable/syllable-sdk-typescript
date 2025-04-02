@@ -371,6 +371,13 @@ actions:
   - target: $["paths"]["/api/v1/data_sources/{data_source_id}"]["delete"]["tags"]
     update:
       - "data_sources"
+
+  - target: $["paths"]["/api/v1/insights/"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/insights/"]["get"]["tags"]
+    update:
+      - "insights"
+
   - target: $["paths"]["/api/v1/insights/workflows/"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/insights/workflows/"]["get"]["tags"]
