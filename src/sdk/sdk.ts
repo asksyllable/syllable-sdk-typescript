@@ -12,6 +12,7 @@ import { DataSources } from "./datasources.js";
 import { Events } from "./events.js";
 import { Insights } from "./insights.js";
 import { LanguageGroups } from "./languagegroups.js";
+import { Outbound } from "./outbound.js";
 import { Prompts } from "./prompts.js";
 import { Services } from "./services.js";
 import { SessionDebug } from "./sessiondebug.js";
@@ -52,11 +53,6 @@ export class SyllableSDK extends ClientSDK {
     return (this._insights ??= new Insights(this._options));
   }
 
-  private _v1?: V1;
-  get v1(): V1 {
-    return (this._v1 ??= new V1(this._options));
-  }
-
   private _customMessages?: CustomMessages;
   get customMessages(): CustomMessages {
     return (this._customMessages ??= new CustomMessages(this._options));
@@ -95,6 +91,16 @@ export class SyllableSDK extends ClientSDK {
   private _dashboards?: Dashboards;
   get dashboards(): Dashboards {
     return (this._dashboards ??= new Dashboards(this._options));
+  }
+
+  private _v1?: V1;
+  get v1(): V1 {
+    return (this._v1 ??= new V1(this._options));
+  }
+
+  private _outbound?: Outbound;
+  get outbound(): Outbound {
+    return (this._outbound ??= new Outbound(this._options));
   }
 
   private _languageGroups?: LanguageGroups;

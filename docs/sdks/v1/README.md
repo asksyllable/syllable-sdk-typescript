@@ -5,108 +5,16 @@
 
 ### Available Operations
 
-* [list](#list) - Insights List
 * [postListDashboard](#postlistdashboard) - Post List Dashboards
 * [postGetDashboard](#postgetdashboard) - Post Fetch Info
 * [~~postSessionEventsDashboard~~](#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
 * [~~postSessionSummaryDashboard~~](#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
 * [~~postSessionTransfersDashboard~~](#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
 * [~~postSessionsDashboard~~](#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
-* [createTakeoutApiV1TakeoutsCreatePost](#createtakeoutapiv1takeoutscreatepost) - Create Takeout
-* [getTakeoutApiV1TakeoutsGetJobIdGet](#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
-
-## list
-
-List the existing insight_tools
-
-### Example Usage
-
-```typescript
-import { SyllableSDK } from "syllable-sdk";
-
-const syllableSDK = new SyllableSDK({
-  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-});
-
-async function run() {
-  const result = await syllableSDK.v1.list({
-    page: 0,
-    searchFields: [
-      "insight_tool_id",
-    ],
-    searchFieldValues: [
-      "Some Object Name",
-    ],
-    startDatetime: "2023-01-01T00:00:00Z",
-    endDatetime: "2024-01-01T00:00:00Z",
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { v1List } from "syllable-sdk/funcs/v1List.js";
-
-// Use `SyllableSDKCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const syllableSDK = new SyllableSDKCore({
-  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-});
-
-async function run() {
-  const res = await v1List(syllableSDK, {
-    page: 0,
-    searchFields: [
-      "insight_tool_id",
-    ],
-    searchFieldValues: [
-      "Some Object Name",
-    ],
-    startDatetime: "2023-01-01T00:00:00Z",
-    endDatetime: "2024-01-01T00:00:00Z",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.InsightsListRequest](../../models/operations/insightslistrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.ListResponseInsightsOutput](../../models/components/listresponseinsightsoutput.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.HTTPValidationError | 422                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+* [list](#list) - List Outbound Communication Batches
+* [create](#create) - Create Outbound Communication Batch
+* [outboundCampaignLis](#outboundcampaignlis) - List Outbound Communication Campaigns
+* [outboundCampaignCreat](#outboundcampaigncreat) - Create Outbound Communication Campaign
 
 ## postListDashboard
 
@@ -592,9 +500,9 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## createTakeoutApiV1TakeoutsCreatePost
+## list
 
-Create Takeout
+List Outbound Communication Batches
 
 ### Example Usage
 
@@ -606,8 +514,16 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.v1.createTakeoutApiV1TakeoutsCreatePost({
-    subOrganizationId: 38300,
+  const result = await syllableSDK.v1.list({
+    page: 0,
+    searchFields: [
+      "expires_on",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
   });
 
   // Handle the result
@@ -623,7 +539,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { v1CreateTakeoutApiV1TakeoutsCreatePost } from "syllable-sdk/funcs/v1CreateTakeoutApiV1TakeoutsCreatePost.js";
+import { v1List } from "syllable-sdk/funcs/v1List.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -632,8 +548,16 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await v1CreateTakeoutApiV1TakeoutsCreatePost(syllableSDK, {
-    subOrganizationId: 38300,
+  const res = await v1List(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "expires_on",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
   });
 
   if (!res.ok) {
@@ -653,14 +577,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DaoTakeoutCreate](../../models/components/daotakeoutcreate.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.OutboundBatchListRequest](../../models/operations/outboundbatchlistrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.CreateTakeoutResponse](../../models/components/createtakeoutresponse.md)\>**
+**Promise\<[components.CommunicationBatch[]](../../models/.md)\>**
 
 ### Errors
 
@@ -669,9 +593,9 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getTakeoutApiV1TakeoutsGetJobIdGet
+## create
 
-Get Takeout
+Create Outbound Communication Batch
 
 ### Example Usage
 
@@ -683,8 +607,10 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.v1.getTakeoutApiV1TakeoutsGetJobIdGet({
-    jobId: "<id>",
+  const result = await syllableSDK.v1.create({
+    batchId: "20250117.9",
+    campaignId: 1,
+    expiresOn: "2024-01-01T00:00:00Z",
   });
 
   // Handle the result
@@ -700,7 +626,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { v1GetTakeoutApiV1TakeoutsGetJobIdGet } from "syllable-sdk/funcs/v1GetTakeoutApiV1TakeoutsGetJobIdGet.js";
+import { v1Create } from "syllable-sdk/funcs/v1Create.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -709,8 +635,10 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await v1GetTakeoutApiV1TakeoutsGetJobIdGet(syllableSDK, {
-    jobId: "<id>",
+  const res = await v1Create(syllableSDK, {
+    batchId: "20250117.9",
+    campaignId: 1,
+    expiresOn: "2024-01-01T00:00:00Z",
   });
 
   if (!res.ok) {
@@ -730,14 +658,200 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTakeoutApiV1TakeoutsGetJobIdGetRequest](../../models/operations/gettakeoutapiv1takeoutsgetjobidgetrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.CommunicationBatchInput](../../models/components/communicationbatchinput.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.TakeoutStatusResponse](../../models/components/takeoutstatusresponse.md)\>**
+**Promise\<[components.CommunicationBatch](../../models/components/communicationbatch.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## outboundCampaignLis
+
+List Outbound Communication Campaigns
+
+### Example Usage
+
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.v1.outboundCampaignLis({
+    page: 0,
+    searchFields: [
+      "id",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { v1OutboundCampaignLis } from "syllable-sdk/funcs/v1OutboundCampaignLis.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await v1OutboundCampaignLis(syllableSDK, {
+    page: 0,
+    searchFields: [
+      "id",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.OutboundCampaignLisRequest](../../models/operations/outboundcampaignlisrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.OutboundCampaign[]](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## outboundCampaignCreat
+
+Create Outbound Communication Campaign
+
+### Example Usage
+
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.v1.outboundCampaignCreat({
+    campaignName: "Outbound Campaign 1",
+    campaignVariables: {},
+    dailyStartTime: "09:00:00",
+    dailyEndTime: "17:00:00",
+    timezone: "America/New_York",
+    source: "account@email.com",
+    callerId: "19995551234",
+    retryInterval: "12h",
+    pauseSeconds: 30,
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { v1OutboundCampaignCreat } from "syllable-sdk/funcs/v1OutboundCampaignCreat.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await v1OutboundCampaignCreat(syllableSDK, {
+    campaignName: "Outbound Campaign 1",
+    campaignVariables: {},
+    dailyStartTime: "09:00:00",
+    dailyEndTime: "17:00:00",
+    timezone: "America/New_York",
+    source: "account@email.com",
+    callerId: "19995551234",
+    retryInterval: "12h",
+    pauseSeconds: 30,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.OutboundCampaignInput](../../models/components/outboundcampaigninput.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.OutboundCampaign](../../models/components/outboundcampaign.md)\>**
 
 ### Errors
 

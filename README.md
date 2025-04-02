@@ -44,6 +44,7 @@ assistants, or any other AI-driven solutions, Syllable SDK has got you covered.
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
+  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -213,6 +214,7 @@ run();
 * [getById](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 * [update](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 * [delete](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
+* [queueSessionsWorkflow](docs/sdks/workflows/README.md#queuesessionsworkflow) - Queue Insights Workflow For Sessions
 
 ### [languageGroups](docs/sdks/languagegroups/README.md)
 
@@ -221,6 +223,28 @@ run();
 * [update](docs/sdks/languagegroups/README.md#update) - Update Language Group
 * [getById](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
 * [delete](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
+
+### [outbound](docs/sdks/outbound/README.md)
+
+
+#### [outbound.batches](docs/sdks/batches/README.md)
+
+* [list](docs/sdks/batches/README.md#list) - List Outbound Communication Batches
+* [create](docs/sdks/batches/README.md#create) - Create Outbound Communication Batch
+* [getById](docs/sdks/batches/README.md#getbyid) - Get Outbound Communication Batch
+* [update](docs/sdks/batches/README.md#update) - Update Outbound Communication Batch
+* [delete](docs/sdks/batches/README.md#delete) - Delete Outbound Communication Batch
+* [upload](docs/sdks/batches/README.md#upload) - Upload Outbound Communication Batch
+* [outboundBatchResults](docs/sdks/batches/README.md#outboundbatchresults) - Fetch Outbound Communication Batch Results
+* [outboundBatchAdd](docs/sdks/batches/README.md#outboundbatchadd) - Create Outbound Communication Request
+* [outboundBatchRemove](docs/sdks/batches/README.md#outboundbatchremove) - Delete Requests By List Of Reference Ids
+
+#### [outbound.campaigns](docs/sdks/campaigns/README.md)
+
+* [outboundCampaignLis](docs/sdks/campaigns/README.md#outboundcampaignlis) - List Outbound Communication Campaigns
+* [outboundCampaignCreat](docs/sdks/campaigns/README.md#outboundcampaigncreat) - Create Outbound Communication Campaign
+* [outboundCampaignGetByI](docs/sdks/campaigns/README.md#outboundcampaigngetbyi) - Get Outbound Communication Campaign
+* [outboundCampaignUpdat](docs/sdks/campaigns/README.md#outboundcampaignupdat) - Update Outbound Communication Campaign
 
 ### [prompts](docs/sdks/prompts/README.md)
 
@@ -263,10 +287,6 @@ run();
 
 * [getById](docs/sdks/fullsummary/README.md#getbyid) - Get Full Session Summary By Id
 
-#### [sessions.summary](docs/sdks/summary/README.md)
-
-* [getById](docs/sdks/summary/README.md#getbyid) - Get Session Summary By Id
-
 #### [sessions.transcript](docs/sdks/transcript/README.md)
 
 * [getById](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
@@ -287,15 +307,16 @@ run();
 
 ### [v1](docs/sdks/v1/README.md)
 
-* [list](docs/sdks/v1/README.md#list) - Insights List
 * [postListDashboard](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 * [postGetDashboard](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 * [~~postSessionEventsDashboard~~](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
 * [~~postSessionSummaryDashboard~~](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
 * [~~postSessionTransfersDashboard~~](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
 * [~~postSessionsDashboard~~](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
-* [createTakeoutApiV1TakeoutsCreatePost](docs/sdks/v1/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
-* [getTakeoutApiV1TakeoutsGetJobIdGet](docs/sdks/v1/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
+* [list](docs/sdks/v1/README.md#list) - List Outbound Communication Batches
+* [create](docs/sdks/v1/README.md#create) - Create Outbound Communication Batch
+* [outboundCampaignLis](docs/sdks/v1/README.md#outboundcampaignlis) - List Outbound Communication Campaigns
+* [outboundCampaignCreat](docs/sdks/v1/README.md#outboundcampaigncreat) - Create Outbound Communication Campaign
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -353,12 +374,26 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsWorkflowsDelete`](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
 - [`insightsWorkflowsGetById`](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 - [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
+- [`insightsWorkflowsQueueSessionsWorkflow`](docs/sdks/workflows/README.md#queuesessionsworkflow) - Queue Insights Workflow For Sessions
 - [`insightsWorkflowsUpdate`](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 - [`languageGroupsCreate`](docs/sdks/languagegroups/README.md#create) - Create Language Group
 - [`languageGroupsDelete`](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
 - [`languageGroupsGetById`](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
 - [`languageGroupsList`](docs/sdks/languagegroups/README.md#list) - List Language Groups
 - [`languageGroupsUpdate`](docs/sdks/languagegroups/README.md#update) - Update Language Group
+- [`outboundBatchesCreate`](docs/sdks/batches/README.md#create) - Create Outbound Communication Batch
+- [`outboundBatchesDelete`](docs/sdks/batches/README.md#delete) - Delete Outbound Communication Batch
+- [`outboundBatchesGetById`](docs/sdks/batches/README.md#getbyid) - Get Outbound Communication Batch
+- [`outboundBatchesList`](docs/sdks/batches/README.md#list) - List Outbound Communication Batches
+- [`outboundBatchesOutboundBatchAdd`](docs/sdks/batches/README.md#outboundbatchadd) - Create Outbound Communication Request
+- [`outboundBatchesOutboundBatchRemove`](docs/sdks/batches/README.md#outboundbatchremove) - Delete Requests By List Of Reference Ids
+- [`outboundBatchesOutboundBatchResults`](docs/sdks/batches/README.md#outboundbatchresults) - Fetch Outbound Communication Batch Results
+- [`outboundBatchesUpdate`](docs/sdks/batches/README.md#update) - Update Outbound Communication Batch
+- [`outboundBatchesUpload`](docs/sdks/batches/README.md#upload) - Upload Outbound Communication Batch
+- [`outboundCampaignsOutboundCampaignCreat`](docs/sdks/campaigns/README.md#outboundcampaigncreat) - Create Outbound Communication Campaign
+- [`outboundCampaignsOutboundCampaignGetByI`](docs/sdks/campaigns/README.md#outboundcampaigngetbyi) - Get Outbound Communication Campaign
+- [`outboundCampaignsOutboundCampaignLis`](docs/sdks/campaigns/README.md#outboundcampaignlis) - List Outbound Communication Campaigns
+- [`outboundCampaignsOutboundCampaignUpdat`](docs/sdks/campaigns/README.md#outboundcampaignupdat) - Update Outbound Communication Campaign
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
 - [`promptsGetById`](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
@@ -382,7 +417,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsGetById`](docs/sdks/sessions/README.md#getbyid) - Get A Single Session By Id
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
-- [`sessionsSummaryGetById`](docs/sdks/summary/README.md#getbyid) - Get Session Summary By Id
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`takeoutsCreateTakeoutApiV1TakeoutsCreatePost`](docs/sdks/takeouts/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
 - [`takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet`](docs/sdks/takeouts/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
@@ -391,9 +425,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
-- [`v1CreateTakeoutApiV1TakeoutsCreatePost`](docs/sdks/v1/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
-- [`v1GetTakeoutApiV1TakeoutsGetJobIdGet`](docs/sdks/v1/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
-- [`v1List`](docs/sdks/v1/README.md#list) - Insights List
+- [`v1Create`](docs/sdks/v1/README.md#create) - Create Outbound Communication Batch
+- [`v1List`](docs/sdks/v1/README.md#list) - List Outbound Communication Batches
+- [`v1OutboundCampaignCreat`](docs/sdks/v1/README.md#outboundcampaigncreat) - Create Outbound Communication Campaign
+- [`v1OutboundCampaignLis`](docs/sdks/v1/README.md#outboundcampaignlis) - List Outbound Communication Campaigns
 - [`v1PostGetDashboard`](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
 - [`v1PostListDashboard`](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
@@ -407,6 +442,45 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
+>
+> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
+> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
+> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
+> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
+
+```typescript
+import { openAsBlob } from "node:fs";
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.outbound.batches.upload({
+    batchId: "<id>",
+    bodyOutboundBatchUpload: {
+      file: await openAsBlob("example.file"),
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries

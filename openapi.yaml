@@ -930,7 +930,6 @@ paths:
     get:
       tags:
         - "insights"
-        - "V1"
       summary: "Insights List"
       description: "List the existing insight_tools"
       operationId: "insights_list"
@@ -1282,7 +1281,7 @@ paths:
         - "insights.workflows"
       summary: "Delete Insights Workflow"
       description: "Delete a Insights workflow."
-      operationId: "directory_workflow_delete"
+      operationId: "insights_workflow_delete"
       security:
         - APIKeyHeader: []
       parameters:
@@ -1309,6 +1308,37 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+  "/api/v1/insights/workflows/queue-session":
+    post:
+      tags:
+        - "insights.workflows"
+      summary: "Queue Insights Workflow For Sessions"
+      description: "Delete a Insights workflow."
+      operationId: "queue_sessions_workflow"
+      requestBody:
+        content:
+          "application/json":
+            schema: {"$ref": "#/components/schemas/InsightsWorkflowQueueSession"}
+        required: true
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            "application/json":
+              schema: {}
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "Not Found"
+        "500":
+          description: "Internal Server Error"
+        "422":
+          description: "Validation Error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
+      security:
+        - APIKeyHeader: []
   "/api/v1/insights/tools":
     get:
       tags:
@@ -2635,34 +2665,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/SessionTranscriptionResponse"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-  "/api/v1/sessions/summary/{session_id}":
-    get:
-      tags:
-        - "sessions.summary"
-      summary: "Get Session Summary By Id"
-      operationId: "session_summary_get_by_id"
-      security:
-        - APIKeyHeader: []
-      parameters:
-        - name: "session_id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-            title: "Session Id"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            "application/json":
-              schema:
-                type: "string"
-                title: "Response Session Summary Get By Id"
         "422":
           description: "Validation Error"
           content:
@@ -4163,7 +4165,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
     post:
       tags:
         - "outbound.batches"
@@ -4192,12 +4193,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/outbound/batches/{batch_id}":
     get:
       tags:
         - "outbound.batches"
-        - "V1"
       summary: "Get Outbound Communication Batch"
       operationId: "outbound_batch_get_by_id"
       security:
@@ -4220,11 +4219,9 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
     put:
       tags:
         - "outbound.batches"
-        - "V1"
       summary: "Update Outbound Communication Batch"
       operationId: "outbound_batch_update"
       security:
@@ -4252,11 +4249,9 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
     delete:
       tags:
         - "outbound.batches"
-        - "V1"
       summary: "Delete Outbound Communication Batch"
       operationId: "outbound_batch_delete"
       security:
@@ -4284,12 +4279,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/outbound/batches/{batch_id}/upload_batch":
     post:
       tags:
         - "outbound.batches"
-        - "V1"
       summary: "Upload Outbound Communication Batch"
       operationId: "outbound_batch_upload"
       security:
@@ -4317,12 +4310,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/outbound/batches/{batch_id}/results":
     get:
       tags:
         - "outbound.batches"
-        - "V1"
       summary: "Fetch Outbound Communication Batch Results"
       operationId: "outbound_batch_results"
       security:
@@ -4348,12 +4339,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/outbound/batches/{batch_id}/requests":
     post:
       tags:
         - "outbound.batches"
-        - "V1"
       summary: "Create Outbound Communication Request"
       operationId: "outbound_batch_add"
       security:
@@ -4381,12 +4370,10 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/outbound/batches/{batch_id}/remove-requests":
     post:
       tags:
         - "outbound.batches"
-        - "V1"
       summary: "Delete Requests By List Of Reference Ids"
       operationId: "outbound_batch_remove"
       security:
@@ -4418,14 +4405,13 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/outbound/campaigns":
     get:
       tags:
         - "outbound.campaigns"
         - "V1"
       summary: "List Outbound Communication Campaigns"
-      operationId: "outbound_campaign_list"
+      operationId: "outbound_campaign_lis"
       security:
         - APIKeyHeader: []
       parameters:
@@ -4554,13 +4540,12 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
     post:
       tags:
         - "outbound.campaigns"
         - "V1"
       summary: "Create Outbound Communication Campaign"
-      operationId: "outbound_campaign_create"
+      operationId: "outbound_campaign_creat"
       security:
         - APIKeyHeader: []
       requestBody:
@@ -4583,14 +4568,12 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/outbound/campaigns/{campaign_id}":
     get:
       tags:
         - "outbound.campaigns"
-        - "V1"
       summary: "Get Outbound Communication Campaign"
-      operationId: "outbound_campaign_get_by_id"
+      operationId: "outbound_campaign_get_by_i"
       security:
         - APIKeyHeader: []
       parameters:
@@ -4611,13 +4594,11 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
     put:
       tags:
         - "outbound.campaigns"
-        - "V1"
       summary: "Update Outbound Communication Campaign"
-      operationId: "outbound_campaign_update"
+      operationId: "outbound_campaign_updat"
       security:
         - APIKeyHeader: []
       parameters:
@@ -4643,7 +4624,6 @@ paths:
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/HTTPValidationError"}
-      x-speakeasy-ignore: true
   "/api/v1/language_groups/":
     get:
       tags:
@@ -4885,32 +4865,20 @@ paths:
     post:
       tags:
         - "takeouts"
-        - "V1"
       summary: "Create Takeout"
       operationId: "create_takeout_api_v1_takeouts_create_post"
-      requestBody:
-        content:
-          "application/json":
-            schema: {"$ref": "#/components/schemas/DaoTakeoutCreate"}
-        required: true
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
               schema: {"$ref": "#/components/schemas/CreateTakeoutResponse"}
-        "422":
-          description: "Validation Error"
-          content:
-            "application/json":
-              schema: {"$ref": "#/components/schemas/HTTPValidationError"}
       security:
         - APIKeyHeader: []
   "/api/v1/takeouts/get/{job_id}":
     get:
       tags:
         - "takeouts"
-        - "V1"
       summary: "Get Takeout"
       operationId: "get_takeout_api_v1_takeouts_get__job_id__get"
       security:
@@ -6578,20 +6546,6 @@ components:
         - "id"
       title: "CustomMessageUpdateRequest"
       description: "Request model to update an existing custom message."
-    "DaoTakeoutCreate":
-      properties:
-        "sub_organization_id":
-          type: "integer"
-          title: "Sub Organization Id"
-        "requested_by":
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Requested By"
-      type: "object"
-      required:
-        - "sub_organization_id"
-      title: "DaoTakeoutCreate"
     "Dashboard":
       properties:
         "embedded_id":
@@ -7677,6 +7631,28 @@ components:
         - "insight_key"
         - "insight_tool_id"
       title: "InsightsProperties"
+    "InsightsWorkflowQueueSession":
+      properties:
+        "workflow_name":
+          type: "string"
+          title: "Workflow Name"
+          description: "Unique name for workflow"
+          examples:
+            - "summary-workflow"
+        "session_id_list":
+          items:
+            type: "integer"
+          type: "array"
+          title: "Session Id List"
+          description: "List of session identifiers"
+          examples:
+            - "[12334,23445,34556]"
+      type: "object"
+      required:
+        - "workflow_name"
+        - "session_id_list"
+      title: "InsightsWorkflowQueueSession"
+      description: "Session identifier for workflow queue."
     "InternalTool":
       properties:
         "type":
@@ -9947,9 +9923,7 @@ components:
           examples:
             - "GPT-4o"
         "version":
-          anyOf:
-            - type: "string"
-            - type: "null"
+          type: "string"
           title: "Version"
           description: "Model version."
           examples:

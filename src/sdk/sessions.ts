@@ -11,18 +11,12 @@ import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { FullSummary } from "./fullsummary.js";
-import { Summary } from "./summary.js";
 import { Transcript } from "./transcript.js";
 
 export class Sessions extends ClientSDK {
   private _transcript?: Transcript;
   get transcript(): Transcript {
     return (this._transcript ??= new Transcript(this._options));
-  }
-
-  private _summary?: Summary;
-  get summary(): Summary {
-    return (this._summary ??= new Summary(this._options));
   }
 
   private _fullSummary?: FullSummary;

@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  */
 export async function insightsWorkflowsDelete(
   client: SyllableSDKCore,
-  request: operations.DirectoryWorkflowDeleteRequest,
+  request: operations.InsightsWorkflowDeleteRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -50,7 +50,7 @@ export async function insightsWorkflowsDelete(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.DirectoryWorkflowDeleteRequest$outboundSchema.parse(value),
+      operations.InsightsWorkflowDeleteRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -80,7 +80,7 @@ export async function insightsWorkflowsDelete(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "directory_workflow_delete",
+    operationID: "insights_workflow_delete",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
