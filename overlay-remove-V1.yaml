@@ -535,3 +535,14 @@ actions:
   - target: $["paths"]["/api/v1/outbound/campaigns/{campaign_id}"]["put"]["tags"]
     update:
       - "outbound.campaigns"
+
+  - target: $["paths"]["/api/v1/outbound/takeouts/create"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/takeouts/create"]["post"]["tags"]
+    update:
+      - "takeouts"
+  - target: $["paths"]["/api/v1/outbound/takeouts/get/{job_id}"]["get"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/outbound/takeouts/get/{job_id}"]["get"]["tags"]
+    update:
+      - "takeouts"
