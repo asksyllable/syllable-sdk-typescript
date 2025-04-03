@@ -25,7 +25,7 @@ let value: ToolDetailResponse = {
     endpoint: {
       url: "https://api.example.com",
       method: "get",
-      argumentLocation: "query",
+      argumentLocation: "path",
     },
     defaults: {
       "key": {
@@ -64,7 +64,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2025-02-10T11:05:07.085Z"),
+  lastUpdated: new Date("2025-11-20T06:46:28.205Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",

@@ -8,10 +8,10 @@ A session is a building block of a conversation.
 import { Session } from "syllable-sdk/models/components";
 
 let value: Session = {
-  timestamp: new Date("2024-03-10T13:41:13.226Z"),
+  timestamp: new Date("2025-11-04T07:38:09.644Z"),
   channelManagerService: "console",
-  channelManagerType: "voice_twilio_v1",
-  source: "user@email.com",
+  channelManagerType: "voice_sip_v1",
+  source: "+18042221111",
 };
 ```
 
