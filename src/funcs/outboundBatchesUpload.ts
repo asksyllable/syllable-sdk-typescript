@@ -58,26 +58,29 @@ export async function outboundBatchesUpload(
   }
   const payload = parsed.value;
   const body = new FormData();
-
-  if (isBlobLike(payload.Body_outbound_batch_upload.file)) {
-    appendForm(body, "file", payload.Body_outbound_batch_upload.file);
-  } else if (
-    isReadableStream(payload.Body_outbound_batch_upload.file.content)
-  ) {
-    const buffer = await readableStreamToArrayBuffer(
-      payload.Body_outbound_batch_upload.file.content,
-    );
-    const blob = new Blob([buffer], { type: "application/octet-stream" });
-    appendForm(body, "file", blob);
-  } else {
-    appendForm(
-      body,
-      "file",
-      new Blob([payload.Body_outbound_batch_upload.file.content], {
-        type: "application/octet-stream",
-      }),
-      payload.Body_outbound_batch_upload.file.fileName,
-    );
+  if (payload.Body_outbound_batch_upload != null) {
+    if (payload.Body_outbound_batch_upload.file !== undefined) {
+      if (isBlobLike(payload.Body_outbound_batch_upload.file)) {
+        appendForm(body, "file", payload.Body_outbound_batch_upload.file);
+      } else if (
+        isReadableStream(payload.Body_outbound_batch_upload.file.content)
+      ) {
+        const buffer = await readableStreamToArrayBuffer(
+          payload.Body_outbound_batch_upload.file.content,
+        );
+        const blob = new Blob([buffer], { type: "application/octet-stream" });
+        appendForm(body, "file", blob);
+      } else {
+        appendForm(
+          body,
+          "file",
+          new Blob([payload.Body_outbound_batch_upload.file.content], {
+            type: "application/octet-stream",
+          }),
+          payload.Body_outbound_batch_upload.file.fileName,
+        );
+      }
+    }
   }
 
   const pathParams = {

@@ -197,11 +197,12 @@ run();
 
 ### [incidents](docs/sdks/incidents/README.md)
 
-* [getById](docs/sdks/incidents/README.md#getbyid) - Get Incident By Id
-* [update](docs/sdks/incidents/README.md#update) - Update Incident
-* [delete](docs/sdks/incidents/README.md#delete) - Delete Incident
-* [create](docs/sdks/incidents/README.md#create) - Create Incident
 * [list](docs/sdks/incidents/README.md#list) - List Incidents
+* [create](docs/sdks/incidents/README.md#create) - Create Incident
+* [update](docs/sdks/incidents/README.md#update) - Update Incident
+* [incidentGetOrganizations](docs/sdks/incidents/README.md#incidentgetorganizations) - Get Organizations
+* [getById](docs/sdks/incidents/README.md#getbyid) - Get Incident By Id
+* [delete](docs/sdks/incidents/README.md#delete) - Delete Incident
 
 ### [insights](docs/sdks/insights/README.md)
 
@@ -213,6 +214,7 @@ run();
 * [create](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
 * [getById](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
 * [update](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool
+* [insightsToolTest](docs/sdks/syllablesdktools/README.md#insightstooltest) - Test Insights Tool
 * [insightToolGetDefinitions](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
 
 #### [insights.workflows](docs/sdks/workflows/README.md)
@@ -243,9 +245,9 @@ run();
 * [update](docs/sdks/batches/README.md#update) - Update Outbound Communication Batch
 * [delete](docs/sdks/batches/README.md#delete) - Delete Outbound Communication Batch
 * [upload](docs/sdks/batches/README.md#upload) - Upload Outbound Communication Batch
-* [outboundBatchResults](docs/sdks/batches/README.md#outboundbatchresults) - Fetch Outbound Communication Batch Results
-* [outboundBatchAdd](docs/sdks/batches/README.md#outboundbatchadd) - Create Outbound Communication Request
-* [outboundBatchRemove](docs/sdks/batches/README.md#outboundbatchremove) - Delete Requests By List Of Reference Ids
+* [results](docs/sdks/batches/README.md#results) - Fetch Outbound Communication Batch Results
+* [add](docs/sdks/batches/README.md#add) - Create Outbound Communication Request
+* [remove](docs/sdks/batches/README.md#remove) - Delete Requests By List Of Reference Ids
 
 #### [outbound.campaigns](docs/sdks/campaigns/README.md)
 
@@ -302,8 +304,8 @@ run();
 
 ### [takeouts](docs/sdks/takeouts/README.md)
 
-* [createTakeoutApiV1TakeoutsCreatePost](docs/sdks/takeouts/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
-* [getTakeoutApiV1TakeoutsGetJobIdGet](docs/sdks/takeouts/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
+* [create](docs/sdks/takeouts/README.md#create) - Create Takeout
+* [takeoutsGetByJobId](docs/sdks/takeouts/README.md#takeoutsgetbyjobid) - Get Takeout
 
 ### [tools](docs/sdks/tools/README.md)
 
@@ -371,11 +373,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`incidentsCreate`](docs/sdks/incidents/README.md#create) - Create Incident
 - [`incidentsDelete`](docs/sdks/incidents/README.md#delete) - Delete Incident
 - [`incidentsGetById`](docs/sdks/incidents/README.md#getbyid) - Get Incident By Id
+- [`incidentsIncidentGetOrganizations`](docs/sdks/incidents/README.md#incidentgetorganizations) - Get Organizations
 - [`incidentsList`](docs/sdks/incidents/README.md#list) - List Incidents
 - [`incidentsUpdate`](docs/sdks/incidents/README.md#update) - Update Incident
 - [`insightsList`](docs/sdks/insights/README.md#list) - Insights List
 - [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
 - [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
+- [`insightsToolsInsightsToolTest`](docs/sdks/syllablesdktools/README.md#insightstooltest) - Test Insights Tool
 - [`insightsToolsInsightToolGetDefinitions`](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
 - [`insightsToolsList`](docs/sdks/syllablesdktools/README.md#list) - Insight Tool List
 - [`insightsToolsUpdate`](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool
@@ -390,13 +394,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`languageGroupsGetById`](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
 - [`languageGroupsList`](docs/sdks/languagegroups/README.md#list) - List Language Groups
 - [`languageGroupsUpdate`](docs/sdks/languagegroups/README.md#update) - Update Language Group
+- [`outboundBatchesAdd`](docs/sdks/batches/README.md#add) - Create Outbound Communication Request
 - [`outboundBatchesCreate`](docs/sdks/batches/README.md#create) - Create Outbound Communication Batch
 - [`outboundBatchesDelete`](docs/sdks/batches/README.md#delete) - Delete Outbound Communication Batch
 - [`outboundBatchesGetById`](docs/sdks/batches/README.md#getbyid) - Get Outbound Communication Batch
 - [`outboundBatchesList`](docs/sdks/batches/README.md#list) - List Outbound Communication Batches
-- [`outboundBatchesOutboundBatchAdd`](docs/sdks/batches/README.md#outboundbatchadd) - Create Outbound Communication Request
-- [`outboundBatchesOutboundBatchRemove`](docs/sdks/batches/README.md#outboundbatchremove) - Delete Requests By List Of Reference Ids
-- [`outboundBatchesOutboundBatchResults`](docs/sdks/batches/README.md#outboundbatchresults) - Fetch Outbound Communication Batch Results
+- [`outboundBatchesRemove`](docs/sdks/batches/README.md#remove) - Delete Requests By List Of Reference Ids
+- [`outboundBatchesResults`](docs/sdks/batches/README.md#results) - Fetch Outbound Communication Batch Results
 - [`outboundBatchesUpdate`](docs/sdks/batches/README.md#update) - Update Outbound Communication Batch
 - [`outboundBatchesUpload`](docs/sdks/batches/README.md#upload) - Upload Outbound Communication Batch
 - [`outboundCampaignsCreate`](docs/sdks/campaigns/README.md#create) - Create Outbound Communication Campaign
@@ -427,8 +431,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
-- [`takeoutsCreateTakeoutApiV1TakeoutsCreatePost`](docs/sdks/takeouts/README.md#createtakeoutapiv1takeoutscreatepost) - Create Takeout
-- [`takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet`](docs/sdks/takeouts/README.md#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
+- [`takeoutsCreate`](docs/sdks/takeouts/README.md#create) - Create Takeout
+- [`takeoutsTakeoutsGetByJobId`](docs/sdks/takeouts/README.md#takeoutsgetbyjobid) - Get Takeout
 - [`toolsCreate`](docs/sdks/tools/README.md#create) - Create Tool
 - [`toolsDelete`](docs/sdks/tools/README.md#delete) - Delete Tool
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info

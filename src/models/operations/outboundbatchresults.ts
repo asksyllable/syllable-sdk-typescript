@@ -10,6 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OutboundBatchResultsRequest = {
   batchId: string;
+  referenceId?: string | undefined;
+  status?: string | undefined;
 };
 
 /** @internal */
@@ -19,15 +21,20 @@ export const OutboundBatchResultsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   batch_id: z.string(),
+  reference_id: z.string().optional(),
+  status: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
+    "reference_id": "referenceId",
   });
 });
 
 /** @internal */
 export type OutboundBatchResultsRequest$Outbound = {
   batch_id: string;
+  reference_id?: string | undefined;
+  status?: string | undefined;
 };
 
 /** @internal */
@@ -37,9 +44,12 @@ export const OutboundBatchResultsRequest$outboundSchema: z.ZodType<
   OutboundBatchResultsRequest
 > = z.object({
   batchId: z.string(),
+  referenceId: z.string().optional(),
+  status: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
+    referenceId: "reference_id",
   });
 });
 

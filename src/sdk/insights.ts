@@ -25,7 +25,7 @@ export class Insights extends ClientSDK {
    * Insights List
    *
    * @remarks
-   * List the existing insight_tools
+   * List the evaluated insights for sessions.
    */
   async list(
     request: operations.InsightsListRequest,

@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IncidentDeleteRequest = {
   incidentId: number;
+  reason: string;
 };
 
 /** @internal */
@@ -19,6 +20,7 @@ export const IncidentDeleteRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   incident_id: z.number().int(),
+  reason: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "incident_id": "incidentId",
@@ -28,6 +30,7 @@ export const IncidentDeleteRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type IncidentDeleteRequest$Outbound = {
   incident_id: number;
+  reason: string;
 };
 
 /** @internal */
@@ -37,6 +40,7 @@ export const IncidentDeleteRequest$outboundSchema: z.ZodType<
   IncidentDeleteRequest
 > = z.object({
   incidentId: z.number().int(),
+  reason: z.string(),
 }).transform((v) => {
   return remap$(v, {
     incidentId: "incident_id",

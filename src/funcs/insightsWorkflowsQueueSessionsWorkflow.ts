@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Queue Insights Workflow For Sessions
  *
  * @remarks
- * Delete a Insights workflow.
+ * Manually queue sessions for insights workflow evaluation.
  */
 export async function insightsWorkflowsQueueSessionsWorkflow(
   client: SyllableSDKCore,

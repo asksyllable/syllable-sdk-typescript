@@ -14,7 +14,7 @@ export type FileT = {
 };
 
 export type BodyOutboundBatchUpload = {
-  file: FileT | Blob;
+  file?: FileT | Blob | undefined;
 };
 
 /** @internal */
@@ -83,12 +83,12 @@ export const BodyOutboundBatchUpload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  file: z.lazy(() => FileT$inboundSchema),
+  file: z.lazy(() => FileT$inboundSchema).optional(),
 });
 
 /** @internal */
 export type BodyOutboundBatchUpload$Outbound = {
-  file: FileT$Outbound | Blob;
+  file?: FileT$Outbound | Blob | undefined;
 };
 
 /** @internal */
@@ -97,7 +97,7 @@ export const BodyOutboundBatchUpload$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BodyOutboundBatchUpload
 > = z.object({
-  file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema),
+  file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema).optional(),
 });
 
 /**

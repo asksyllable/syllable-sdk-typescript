@@ -6,7 +6,7 @@
 import { InsightsWorkflowUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowUpdateRequest = {
-  workflowId: 262118,
+  workflowId: 58029,
   insightWorkflowInput: {
     name: "summary-workflow",
     description: "Default workflow - generates a summary of the call",

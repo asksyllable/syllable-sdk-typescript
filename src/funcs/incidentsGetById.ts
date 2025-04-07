@@ -36,7 +36,7 @@ export async function incidentsGetById(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ServiceIncidentResponse,
+    components.IncidentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -119,7 +119,7 @@ export async function incidentsGetById(
   };
 
   const [result] = await M.match<
-    components.ServiceIncidentResponse,
+    components.IncidentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -129,7 +129,7 @@ export async function incidentsGetById(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ServiceIncidentResponse$inboundSchema),
+    M.json(200, components.IncidentResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

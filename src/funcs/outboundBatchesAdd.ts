@@ -4,14 +4,13 @@
 
 import * as z from "zod";
 import { SyllableSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -26,15 +25,15 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Fetch Outbound Communication Batch Results
+ * Create Outbound Communication Request
  */
-export async function outboundBatchesOutboundBatchResults(
+export async function outboundBatchesAdd(
   client: SyllableSDKCore,
-  request: operations.OutboundBatchResultsRequest,
+  request: operations.OutboundBatchAddRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    Array<components.CommunicationRequestResult>,
+    any,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -47,15 +46,16 @@ export async function outboundBatchesOutboundBatchResults(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.OutboundBatchResultsRequest$outboundSchema.parse(value),
+    (value) => operations.OutboundBatchAddRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.CommunicationRequest, {
+    explode: true,
+  });
 
   const pathParams = {
     batch_id: encodeSimple("batch_id", payload.batch_id, {
@@ -64,11 +64,12 @@ export async function outboundBatchesOutboundBatchResults(
     }),
   };
 
-  const path = pathToFunc("/api/v1/outbound/batches/{batch_id}/results")(
+  const path = pathToFunc("/api/v1/outbound/batches/{batch_id}/requests")(
     pathParams,
   );
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -78,7 +79,7 @@ export async function outboundBatchesOutboundBatchResults(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "outbound_batch_results",
+    operationID: "outbound_batch_add",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -92,7 +93,7 @@ export async function outboundBatchesOutboundBatchResults(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -120,7 +121,7 @@ export async function outboundBatchesOutboundBatchResults(
   };
 
   const [result] = await M.match<
-    Array<components.CommunicationRequestResult>,
+    any,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -130,7 +131,7 @@ export async function outboundBatchesOutboundBatchResults(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.array(components.CommunicationRequestResult$inboundSchema)),
+    M.json(200, z.any()),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

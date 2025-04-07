@@ -447,7 +447,7 @@ run();
 
 ## queueSessionsWorkflow
 
-Delete a Insights workflow.
+Manually queue sessions for insights workflow evaluation.
 
 ### Example Usage
 

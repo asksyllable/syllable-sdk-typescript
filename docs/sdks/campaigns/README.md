@@ -96,7 +96,7 @@ run();
 
 ### Response
 
-**Promise\<[components.OutboundCampaign[]](../../models/.md)\>**
+**Promise\<[components.ListResponseOutboundCampaign](../../models/components/listresponseoutboundcampaign.md)\>**
 
 ### Errors
 
@@ -121,11 +121,13 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.outbound.campaigns.create({
     campaignName: "Outbound Campaign 1",
+    description: "This is a test campaign",
+    label: "test",
     campaignVariables: {},
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
     timezone: "America/New_York",
-    source: "+19032900844",
+    source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
     pauseSeconds: 30,
@@ -155,11 +157,13 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await outboundCampaignsCreate(syllableSDK, {
     campaignName: "Outbound Campaign 1",
+    description: "This is a test campaign",
+    label: "test",
     campaignVariables: {},
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
     timezone: "America/New_York",
-    source: "+19032900844",
+    source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
     pauseSeconds: 30,
@@ -293,6 +297,8 @@ async function run() {
     campaignId: 344620,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
+      description: "This is a test campaign",
+      label: "demo",
       campaignVariables: {},
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
@@ -330,6 +336,8 @@ async function run() {
     campaignId: 344620,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
+      description: "This is a test campaign",
+      label: "demo",
       campaignVariables: {},
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",

@@ -13,9 +13,9 @@ Operations related to outbound campaign batches
 * [update](#update) - Update Outbound Communication Batch
 * [delete](#delete) - Delete Outbound Communication Batch
 * [upload](#upload) - Upload Outbound Communication Batch
-* [outboundBatchResults](#outboundbatchresults) - Fetch Outbound Communication Batch Results
-* [outboundBatchAdd](#outboundbatchadd) - Create Outbound Communication Request
-* [outboundBatchRemove](#outboundbatchremove) - Delete Requests By List Of Reference Ids
+* [results](#results) - Fetch Outbound Communication Batch Results
+* [add](#add) - Create Outbound Communication Request
+* [remove](#remove) - Delete Requests By List Of Reference Ids
 
 ## list
 
@@ -101,7 +101,7 @@ run();
 
 ### Response
 
-**Promise\<[components.CommunicationBatch[]](../../models/.md)\>**
+**Promise\<[components.ListResponseCommunicationBatch](../../models/components/listresponsecommunicationbatch.md)\>**
 
 ### Errors
 
@@ -125,9 +125,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.batches.create({
-    batchId: "20250117.9",
+    batchId: "20250407.9",
     campaignId: 1,
-    expiresOn: "2024-01-01T00:00:00Z",
+    expiresOn: "2025-04-07T00:00:00Z",
   });
 
   // Handle the result
@@ -153,9 +153,9 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundBatchesCreate(syllableSDK, {
-    batchId: "20250117.9",
+    batchId: "20250407.9",
     campaignId: 1,
-    expiresOn: "2024-01-01T00:00:00Z",
+    expiresOn: "2025-04-07T00:00:00Z",
   });
 
   if (!res.ok) {
@@ -285,14 +285,14 @@ async function run() {
   const result = await syllableSDK.outbound.batches.update({
     batchId: "<id>",
     communicationBatch: {
-      batchId: "20250117.9",
+      batchId: "20250407.9",
       campaignId: 1,
-      expiresOn: "2024-01-01T00:00:00Z",
+      expiresOn: "2025-04-07T00:00:00Z",
       count: 152,
-      createdAt: "2024-01-01T00:00:00Z",
-      deletedAt: "2024-01-01T00:00:00Z",
+      createdAt: "2025-04-07T00:00:00Z",
+      deletedAt: "2025-04-07T00:00:00Z",
       deletedReason: "User request",
-      lastWorkedOn: "2024-01-01T00:00:00Z",
+      lastWorkedOn: "2025-04-07T00:00:00Z",
       lastUpdatedBy: "user@email.com",
     },
   });
@@ -322,14 +322,14 @@ async function run() {
   const res = await outboundBatchesUpdate(syllableSDK, {
     batchId: "<id>",
     communicationBatch: {
-      batchId: "20250117.9",
+      batchId: "20250407.9",
       campaignId: 1,
-      expiresOn: "2024-01-01T00:00:00Z",
+      expiresOn: "2025-04-07T00:00:00Z",
       count: 152,
-      createdAt: "2024-01-01T00:00:00Z",
-      deletedAt: "2024-01-01T00:00:00Z",
+      createdAt: "2025-04-07T00:00:00Z",
+      deletedAt: "2025-04-07T00:00:00Z",
       deletedReason: "User request",
-      lastWorkedOn: "2024-01-01T00:00:00Z",
+      lastWorkedOn: "2025-04-07T00:00:00Z",
       lastUpdatedBy: "user@email.com",
     },
   });
@@ -535,7 +535,7 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## outboundBatchResults
+## results
 
 Fetch Outbound Communication Batch Results
 
@@ -549,7 +549,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.outbound.batches.outboundBatchResults({
+  const result = await syllableSDK.outbound.batches.results({
     batchId: "<id>",
   });
 
@@ -566,7 +566,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { outboundBatchesOutboundBatchResults } from "syllable-sdk/funcs/outboundBatchesOutboundBatchResults.js";
+import { outboundBatchesResults } from "syllable-sdk/funcs/outboundBatchesResults.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -575,7 +575,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await outboundBatchesOutboundBatchResults(syllableSDK, {
+  const res = await outboundBatchesResults(syllableSDK, {
     batchId: "<id>",
   });
 
@@ -612,7 +612,7 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## outboundBatchAdd
+## add
 
 Create Outbound Communication Request
 
@@ -626,10 +626,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.outbound.batches.outboundBatchAdd({
+  const result = await syllableSDK.outbound.batches.add({
     batchId: "<id>",
     communicationRequest: {
-      batchId: "20250117.9",
       referenceId: "12345",
       target: "user@email.com",
       requestVariables: {},
@@ -649,7 +648,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { outboundBatchesOutboundBatchAdd } from "syllable-sdk/funcs/outboundBatchesOutboundBatchAdd.js";
+import { outboundBatchesAdd } from "syllable-sdk/funcs/outboundBatchesAdd.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -658,10 +657,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await outboundBatchesOutboundBatchAdd(syllableSDK, {
+  const res = await outboundBatchesAdd(syllableSDK, {
     batchId: "<id>",
     communicationRequest: {
-      batchId: "20250117.9",
       referenceId: "12345",
       target: "user@email.com",
       requestVariables: {},
@@ -701,7 +699,7 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## outboundBatchRemove
+## remove
 
 Delete Requests By List Of Reference Ids
 
@@ -715,7 +713,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.outbound.batches.outboundBatchRemove({
+  const result = await syllableSDK.outbound.batches.remove({
     batchId: "<id>",
     requestBody: [
       "<value>",
@@ -736,7 +734,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { outboundBatchesOutboundBatchRemove } from "syllable-sdk/funcs/outboundBatchesOutboundBatchRemove.js";
+import { outboundBatchesRemove } from "syllable-sdk/funcs/outboundBatchesRemove.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -745,7 +743,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await outboundBatchesOutboundBatchRemove(syllableSDK, {
+  const res = await outboundBatchesRemove(syllableSDK, {
     batchId: "<id>",
     requestBody: [
       "<value>",
