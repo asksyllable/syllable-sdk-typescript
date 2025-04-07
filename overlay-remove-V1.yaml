@@ -404,9 +404,9 @@ actions:
   - target: $["paths"]["/api/v1/incidents/"]["post"]["tags"]
     update:
       - "incidents"
-  - target: $["paths"]["/api/v1/incidents/]["put"]["tags"][*]
+  - target: $["paths"]["/api/v1/incidents/"]["put"]["tags"][*]
     remove: true
-  - target: $["paths"]["/api/v1/incidents/]["put"]["tags"]
+  - target: $["paths"]["/api/v1/incidents/"]["put"]["tags"]
     update:
       - "incidents"
 
