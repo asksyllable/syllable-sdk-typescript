@@ -460,7 +460,11 @@ actions:
   - target: $["paths"]["/api/v1/insights/tool-definitions"]["get"]["tags"]
     update:
       - "insights.tools"
-
+  - target: $["paths"]["/api/v1/insights/tools-test"]["post"]["tags"][*]
+    remove: true
+  - target: $["paths"]["/api/v1/insights/tools-test"]["post"]["tags"]
+    update:
+      - "insights.tools"
   - target: $["paths"]["/api/v1/language_groups/"]["get"]["tags"][*]
     remove: true
   - target: $["paths"]["/api/v1/language_groups/"]["get"]["tags"]
