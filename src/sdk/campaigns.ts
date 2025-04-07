@@ -18,7 +18,7 @@ export class Campaigns extends ClientSDK {
   async list(
     request: operations.OutboundCampaignListRequest,
     options?: RequestOptions,
-  ): Promise<Array<components.OutboundCampaign>> {
+  ): Promise<components.ListResponseOutboundCampaign> {
     return unwrapAsync(outboundCampaignsList(
       this,
       request,

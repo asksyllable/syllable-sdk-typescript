@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Update Insights Tool
  *
  * @remarks
- * Update a InsightTool.
+ * Update an Insights tool.
  */
 export async function insightsToolsUpdate(
   client: SyllableSDKCore,

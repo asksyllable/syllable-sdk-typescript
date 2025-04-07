@@ -4,6 +4,7 @@
 
 import { insightsToolsCreate } from "../funcs/insightsToolsCreate.js";
 import { insightsToolsGetById } from "../funcs/insightsToolsGetById.js";
+import { insightsToolsInsightsToolTest } from "../funcs/insightsToolsInsightsToolTest.js";
 import { insightsToolsInsightToolGetDefinitions } from "../funcs/insightsToolsInsightToolGetDefinitions.js";
 import { insightsToolsList } from "../funcs/insightsToolsList.js";
 import { insightsToolsUpdate } from "../funcs/insightsToolsUpdate.js";
@@ -34,7 +35,7 @@ export class SyllableSDKTools extends ClientSDK {
    * Create Insight Tool
    *
    * @remarks
-   * Create a new tool in the insights
+   * Create a new insight tool.
    */
   async create(
     request: components.InsightToolInput,
@@ -68,13 +69,30 @@ export class SyllableSDKTools extends ClientSDK {
    * Update Insights Tool
    *
    * @remarks
-   * Update a InsightTool.
+   * Update an Insights tool.
    */
   async update(
     request: operations.InsightsToolUpdateRequest,
     options?: RequestOptions,
   ): Promise<components.InsightToolOutput> {
     return unwrapAsync(insightsToolsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Test Insights Tool
+   *
+   * @remarks
+   * Manually run the given insight tool against a session and return the response.
+   */
+  async insightsToolTest(
+    request: components.InsightToolTestInput,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(insightsToolsInsightsToolTest(
       this,
       request,
       options,

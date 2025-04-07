@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -17,12 +18,16 @@ export const BodyOutboundBatchDelete$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  deleteReason: z.string(),
+  delete_reason: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "delete_reason": "deleteReason",
+  });
 });
 
 /** @internal */
 export type BodyOutboundBatchDelete$Outbound = {
-  deleteReason: string;
+  delete_reason: string;
 };
 
 /** @internal */
@@ -32,6 +37,10 @@ export const BodyOutboundBatchDelete$outboundSchema: z.ZodType<
   BodyOutboundBatchDelete
 > = z.object({
   deleteReason: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    deleteReason: "delete_reason",
+  });
 });
 
 /**

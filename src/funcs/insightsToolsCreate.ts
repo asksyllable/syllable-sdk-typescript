@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Create Insight Tool
  *
  * @remarks
- * Create a new tool in the insights
+ * Create a new insight tool.
  */
 export async function insightsToolsCreate(
   client: SyllableSDKCore,
@@ -98,7 +98,7 @@ export async function insightsToolsCreate(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["422", "4XX", "5XX"],
+    errorCodes: ["400", "422", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -124,8 +124,8 @@ export async function insightsToolsCreate(
   >(
     M.json(200, components.InsightToolOutput$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail("4XX"),
-    M.fail("5XX"),
+    M.fail([400, "4XX"]),
+    M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

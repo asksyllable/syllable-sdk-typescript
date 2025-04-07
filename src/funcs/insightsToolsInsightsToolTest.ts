@@ -4,13 +4,14 @@
 
 import * as z from "zod";
 import { SyllableSDKCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -21,15 +22,17 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete Requests By List Of Reference Ids
+ * Test Insights Tool
+ *
+ * @remarks
+ * Manually run the given insight tool against a session and return the response.
  */
-export async function outboundBatchesOutboundBatchRemove(
+export async function insightsToolsInsightsToolTest(
   client: SyllableSDKCore,
-  request: operations.OutboundBatchRemoveRequest,
+  request: components.InsightToolTestInput,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -46,26 +49,16 @@ export async function outboundBatchesOutboundBatchRemove(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.OutboundBatchRemoveRequest$outboundSchema.parse(value),
+    (value) => components.InsightToolTestInput$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.RequestBody, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const pathParams = {
-    batch_id: encodeSimple("batch_id", payload.batch_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc(
-    "/api/v1/outbound/batches/{batch_id}/remove-requests",
-  )(pathParams);
+  const path = pathToFunc("/api/v1/insights/tools-test")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -78,7 +71,7 @@ export async function outboundBatchesOutboundBatchRemove(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "outbound_batch_remove",
+    operationID: "insights_tool_test",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -106,7 +99,7 @@ export async function outboundBatchesOutboundBatchRemove(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["422", "4XX", "5XX"],
+    errorCodes: ["400", "404", "422", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -132,8 +125,8 @@ export async function outboundBatchesOutboundBatchRemove(
   >(
     M.json(200, z.any()),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail("4XX"),
-    M.fail("5XX"),
+    M.fail([400, 404, "4XX"]),
+    M.fail([500, "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

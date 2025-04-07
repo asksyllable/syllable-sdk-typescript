@@ -8,14 +8,14 @@ import { OutboundBatchUpdateRequest } from "syllable-sdk/models/operations";
 let value: OutboundBatchUpdateRequest = {
   batchId: "<id>",
   communicationBatch: {
-    batchId: "20250117.9",
+    batchId: "20250407.9",
     campaignId: 1,
-    expiresOn: "2024-01-01T00:00:00Z",
+    expiresOn: "2025-04-07T00:00:00Z",
     count: 152,
-    createdAt: "2024-01-01T00:00:00Z",
-    deletedAt: "2024-01-01T00:00:00Z",
+    createdAt: "2025-04-07T00:00:00Z",
+    deletedAt: "2025-04-07T00:00:00Z",
     deletedReason: "User request",
-    lastWorkedOn: "2024-01-01T00:00:00Z",
+    lastWorkedOn: "2025-04-07T00:00:00Z",
     lastUpdatedBy: "user@email.com",
   },
 };
