@@ -60,6 +60,14 @@ export type Conversation = {
    */
   llmVersion?: string | null | undefined;
   /**
+   * Temperature for the LLM used in the conversation (see PromptResponse.llm_config.temperature)
+   */
+  llmTemperature?: number | null | undefined;
+  /**
+   * Seed for the LLM used in the conversation (see PromptResponse.llm_config.seed).
+   */
+  llmSeed?: number | null | undefined;
+  /**
    * Whether the conversation occurred on the legacy Syllable system
    */
   isLegacy?: boolean | null | undefined;
@@ -82,6 +90,8 @@ export const Conversation$inboundSchema: z.ZodType<
   llm_provider: z.nullable(z.string()).optional(),
   llm_model: z.nullable(z.string()).optional(),
   llm_version: z.nullable(z.string()).optional(),
+  llm_temperature: z.nullable(z.number()).optional(),
+  llm_seed: z.nullable(z.number().int()).optional(),
   is_legacy: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -95,6 +105,8 @@ export const Conversation$inboundSchema: z.ZodType<
     "llm_provider": "llmProvider",
     "llm_model": "llmModel",
     "llm_version": "llmVersion",
+    "llm_temperature": "llmTemperature",
+    "llm_seed": "llmSeed",
     "is_legacy": "isLegacy",
   });
 });
@@ -112,6 +124,8 @@ export type Conversation$Outbound = {
   llm_provider?: string | null | undefined;
   llm_model?: string | null | undefined;
   llm_version?: string | null | undefined;
+  llm_temperature?: number | null | undefined;
+  llm_seed?: number | null | undefined;
   is_legacy?: boolean | null | undefined;
 };
 
@@ -132,6 +146,8 @@ export const Conversation$outboundSchema: z.ZodType<
   llmProvider: z.nullable(z.string()).optional(),
   llmModel: z.nullable(z.string()).optional(),
   llmVersion: z.nullable(z.string()).optional(),
+  llmTemperature: z.nullable(z.number()).optional(),
+  llmSeed: z.nullable(z.number().int()).optional(),
   isLegacy: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -145,6 +161,8 @@ export const Conversation$outboundSchema: z.ZodType<
     llmProvider: "llm_provider",
     llmModel: "llm_model",
     llmVersion: "llm_version",
+    llmTemperature: "llm_temperature",
+    llmSeed: "llm_seed",
     isLegacy: "is_legacy",
   });
 });

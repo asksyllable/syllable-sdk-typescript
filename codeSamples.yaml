@@ -923,7 +923,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.incidents.list({});
+              const result = await syllableSDK.incidents.list({
+                page: 0,
+                searchFields: [
+                  "start_datetime",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               // Handle the result
               console.log(result);
@@ -944,16 +954,69 @@ actions:
 
             async function run() {
               const result = await syllableSDK.incidents.create({
-                organizationId: 486589,
-                subOrganizationId: 638424,
-                subOrganization: "<value>",
-                description: "calmly fortunately bench around igloo scaffold",
-                startDatetime: new Date("2025-04-13T05:49:58.922Z"),
-                resolutionDatetime: new Date("2023-08-30T02:12:40.558Z"),
-                impactCategory: "<value>",
-                sessionsImpacted: 449221,
-                markdown: "<value>",
+                description: "Service outage in region X",
+                startDatetime: new Date("2023-10-01T08:00:00Z"),
+                resolutionDatetime: new Date("2023-10-01T12:00:00Z"),
+                impactCategory: "High",
+                sessionsImpacted: 1500,
+                markdown: "**Incident Details**",
+                organizationId: 123,
+                subOrganizationId: 456,
+                subOrganization: "SubOrg A",
               });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/incidents/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.incidents.update({
+                description: "Service outage in region X",
+                startDatetime: new Date("2023-10-01T08:00:00Z"),
+                resolutionDatetime: new Date("2023-10-01T12:00:00Z"),
+                impactCategory: "High",
+                sessionsImpacted: 1500,
+                markdown: "**Incident Details**",
+                organizationId: 123,
+                subOrganizationId: 456,
+                subOrganization: "SubOrg A",
+                id: 1,
+                createdAt: new Date("2023-10-01T08:00:00Z"),
+                updatedAt: new Date("2023-10-01T08:00:00Z"),
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/incidents/organizations"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.incidents.incidentGetOrganizations();
 
               // Handle the result
               console.log(result);
@@ -975,6 +1038,7 @@ actions:
             async function run() {
               const result = await syllableSDK.incidents.delete({
                 incidentId: 545907,
+                reason: "<value>",
               });
 
               // Handle the result
@@ -997,39 +1061,6 @@ actions:
             async function run() {
               const result = await syllableSDK.incidents.getById({
                 incidentId: 931598,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/incidents/{incident_id}"]["put"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.incidents.update({
-                incidentId: 656776,
-                serviceIncidentRequest: {
-                  organizationId: 857478,
-                  subOrganizationId: 597129,
-                  subOrganization: "<value>",
-                  description: "hydrolyze for drat underneath sticky",
-                  startDatetime: new Date("2023-03-21T03:40:17.460Z"),
-                  resolutionDatetime: new Date("2023-06-16T09:40:21.633Z"),
-                  impactCategory: "<value>",
-                  sessionsImpacted: 342070,
-                  markdown: "<value>",
-                },
               });
 
               // Handle the result
@@ -1136,6 +1167,29 @@ actions:
                 version: 1,
                 toolArguments: {},
                 insightToolDefinitionId: 1,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tools-test"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.insightsToolTest({
+                toolName: "summary-tool",
+                sessionId: 283467,
               });
 
               // Handle the result
@@ -1549,9 +1603,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250117.9",
+                batchId: "20250407.9",
                 campaignId: 1,
-                expiresOn: "2024-01-01T00:00:00Z",
+                expiresOn: "2025-04-07T00:00:00Z",
               });
 
               // Handle the result
@@ -1622,14 +1676,14 @@ actions:
               const result = await syllableSDK.outbound.batches.update({
                 batchId: "<id>",
                 communicationBatch: {
-                  batchId: "20250117.9",
+                  batchId: "20250407.9",
                   campaignId: 1,
-                  expiresOn: "2024-01-01T00:00:00Z",
+                  expiresOn: "2025-04-07T00:00:00Z",
                   count: 152,
-                  createdAt: "2024-01-01T00:00:00Z",
-                  deletedAt: "2024-01-01T00:00:00Z",
+                  createdAt: "2025-04-07T00:00:00Z",
+                  deletedAt: "2025-04-07T00:00:00Z",
                   deletedReason: "User request",
-                  lastWorkedOn: "2024-01-01T00:00:00Z",
+                  lastWorkedOn: "2025-04-07T00:00:00Z",
                   lastUpdatedBy: "user@email.com",
                 },
               });
@@ -1652,7 +1706,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.outbound.batches.outboundBatchRemove({
+              const result = await syllableSDK.outbound.batches.remove({
                 batchId: "<id>",
                 requestBody: [
                   "<value>",
@@ -1678,10 +1732,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.outbound.batches.outboundBatchAdd({
+              const result = await syllableSDK.outbound.batches.add({
                 batchId: "<id>",
                 communicationRequest: {
-                  batchId: "20250117.9",
                   referenceId: "12345",
                   target: "user@email.com",
                   requestVariables: {},
@@ -1706,7 +1759,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.outbound.batches.outboundBatchResults({
+              const result = await syllableSDK.outbound.batches.results({
                 batchId: "<id>",
               });
 
@@ -1721,7 +1774,6 @@ actions:
         - lang: typescript
           label: Typescript (SDK)
           source: |-
-            import { openAsBlob } from "node:fs";
             import { SyllableSDK } from "syllable-sdk";
 
             const syllableSDK = new SyllableSDK({
@@ -1731,9 +1783,6 @@ actions:
             async function run() {
               const result = await syllableSDK.outbound.batches.upload({
                 batchId: "<id>",
-                bodyOutboundBatchUpload: {
-                  file: await openAsBlob("example.file"),
-                },
               });
 
               // Handle the result
@@ -1786,11 +1835,13 @@ actions:
             async function run() {
               const result = await syllableSDK.outbound.campaigns.create({
                 campaignName: "Outbound Campaign 1",
+                description: "This is a test campaign",
+                label: "test",
                 campaignVariables: {},
                 dailyStartTime: "09:00:00",
                 dailyEndTime: "17:00:00",
                 timezone: "America/New_York",
-                source: "+19032900844",
+                source: "account@email.com",
                 callerId: "19995551234",
                 retryInterval: "12h",
                 pauseSeconds: 30,
@@ -1837,9 +1888,11 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.update({
-                campaignId: 344620,
+                campaignId: 991464,
                 outboundCampaignInput: {
                   campaignName: "Outbound Campaign 1",
+                  description: "This is a test campaign",
+                  label: "demo",
                   campaignVariables: {},
                   dailyStartTime: "09:00:00",
                   dailyEndTime: "17:00:00",
@@ -2469,7 +2522,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.takeouts.createTakeoutApiV1TakeoutsCreatePost();
+              const result = await syllableSDK.takeouts.create();
 
               // Handle the result
               console.log(result);
@@ -2489,7 +2542,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.takeouts.getTakeoutApiV1TakeoutsGetJobIdGet({
+              const result = await syllableSDK.takeouts.takeoutsGetByJobId({
                 jobId: "<id>",
               });
 

@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Insights List
  *
  * @remarks
- * List the existing insight_tools
+ * List the evaluated insights for sessions.
  */
 export async function insightsList(
   client: SyllableSDKCore,

@@ -7,11 +7,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RequestStatus,
-  RequestStatus$inboundSchema,
-  RequestStatus$outboundSchema,
-} from "./requeststatus.js";
 
 /**
  * Variables for request
@@ -20,10 +15,6 @@ export type CommunicationRequestRequestVariables = {};
 
 export type CommunicationRequest = {
   /**
-   * Unique ID for conversation batch
-   */
-  batchId: string;
-  /**
    * ID for target outreach (unique within batch)
    */
   referenceId: string;
@@ -31,10 +22,6 @@ export type CommunicationRequest = {
    * Target phone number or email address
    */
   target: string;
-  /**
-   * Status of a communication request.
-   */
-  requestStatus?: RequestStatus | undefined;
   /**
    * Variables for request
    */
@@ -100,28 +87,22 @@ export const CommunicationRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  batch_id: z.string(),
   reference_id: z.string(),
   target: z.string(),
-  request_status: RequestStatus$inboundSchema.optional(),
   request_variables: z.lazy(() =>
     CommunicationRequestRequestVariables$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    "batch_id": "batchId",
     "reference_id": "referenceId",
-    "request_status": "requestStatus",
     "request_variables": "requestVariables",
   });
 });
 
 /** @internal */
 export type CommunicationRequest$Outbound = {
-  batch_id: string;
   reference_id: string;
   target: string;
-  request_status?: string | undefined;
   request_variables: CommunicationRequestRequestVariables$Outbound;
 };
 
@@ -131,18 +112,14 @@ export const CommunicationRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CommunicationRequest
 > = z.object({
-  batchId: z.string(),
   referenceId: z.string(),
   target: z.string(),
-  requestStatus: RequestStatus$outboundSchema.optional(),
   requestVariables: z.lazy(() =>
     CommunicationRequestRequestVariables$outboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
-    batchId: "batch_id",
     referenceId: "reference_id",
-    requestStatus: "request_status",
     requestVariables: "request_variables",
   });
 });

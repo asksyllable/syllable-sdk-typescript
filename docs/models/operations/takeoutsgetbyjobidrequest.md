@@ -1,11 +1,11 @@
-# GetTakeoutApiV1TakeoutsGetJobIdGetRequest
+# TakeoutsGetByJobIdRequest
 
 ## Example Usage
 
 ```typescript
-import { GetTakeoutApiV1TakeoutsGetJobIdGetRequest } from "syllable-sdk/models/operations";
+import { TakeoutsGetByJobIdRequest } from "syllable-sdk/models/operations";
 
-let value: GetTakeoutApiV1TakeoutsGetJobIdGetRequest = {
+let value: TakeoutsGetByJobIdRequest = {
   jobId: "<id>",
 };
 ```

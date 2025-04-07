@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OutboundBatchUploadRequest = {
   batchId: string;
-  bodyOutboundBatchUpload: components.BodyOutboundBatchUpload;
+  bodyOutboundBatchUpload?: components.BodyOutboundBatchUpload | undefined;
 };
 
 /** @internal */
@@ -21,7 +21,8 @@ export const OutboundBatchUploadRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   batch_id: z.string(),
-  Body_outbound_batch_upload: components.BodyOutboundBatchUpload$inboundSchema,
+  Body_outbound_batch_upload: components.BodyOutboundBatchUpload$inboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
@@ -32,7 +33,9 @@ export const OutboundBatchUploadRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type OutboundBatchUploadRequest$Outbound = {
   batch_id: string;
-  Body_outbound_batch_upload: components.BodyOutboundBatchUpload$Outbound;
+  Body_outbound_batch_upload?:
+    | components.BodyOutboundBatchUpload$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -42,7 +45,8 @@ export const OutboundBatchUploadRequest$outboundSchema: z.ZodType<
   OutboundBatchUploadRequest
 > = z.object({
   batchId: z.string(),
-  bodyOutboundBatchUpload: components.BodyOutboundBatchUpload$outboundSchema,
+  bodyOutboundBatchUpload: components.BodyOutboundBatchUpload$outboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",

@@ -7,7 +7,7 @@ Names of session fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { SessionProperties } from "syllable-sdk/models/components";
 
-let value: SessionProperties = "agent_name";
+let value: SessionProperties = "channel_manager_type";
 ```
 
 ## Values

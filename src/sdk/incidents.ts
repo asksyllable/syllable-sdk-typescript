@@ -5,6 +5,7 @@
 import { incidentsCreate } from "../funcs/incidentsCreate.js";
 import { incidentsDelete } from "../funcs/incidentsDelete.js";
 import { incidentsGetById } from "../funcs/incidentsGetById.js";
+import { incidentsIncidentGetOrganizations } from "../funcs/incidentsIncidentGetOrganizations.js";
 import { incidentsList } from "../funcs/incidentsList.js";
 import { incidentsUpdate } from "../funcs/incidentsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -14,16 +15,33 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Incidents extends ClientSDK {
   /**
-   * Get Incident By Id
+   * List Incidents
    *
    * @remarks
-   * Get incident by ID
+   * List service incidents with pagination and filtering
    */
-  async getById(
-    request: operations.IncidentGetByIdRequest,
+  async list(
+    request: operations.IncidentListRequest,
     options?: RequestOptions,
-  ): Promise<components.ServiceIncidentResponse> {
-    return unwrapAsync(incidentsGetById(
+  ): Promise<components.ListResponseIncidentResponse> {
+    return unwrapAsync(incidentsList(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Incident
+   *
+   * @remarks
+   * Create a new incident
+   */
+  async create(
+    request: components.IncidentCreateRequest,
+    options?: RequestOptions,
+  ): Promise<components.IncidentResponse> {
+    return unwrapAsync(incidentsCreate(
       this,
       request,
       options,
@@ -37,10 +55,42 @@ export class Incidents extends ClientSDK {
    * Update an existing incident
    */
   async update(
-    request: operations.IncidentUpdateRequest,
+    request: components.IncidentUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.ServiceIncidentResponse> {
+  ): Promise<components.IncidentResponse> {
     return unwrapAsync(incidentsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Organizations
+   *
+   * @remarks
+   * Get all organizations
+   */
+  async incidentGetOrganizations(
+    options?: RequestOptions,
+  ): Promise<Array<components.IncidentOrganizationResponse>> {
+    return unwrapAsync(incidentsIncidentGetOrganizations(
+      this,
+      options,
+    ));
+  }
+
+  /**
+   * Get Incident By Id
+   *
+   * @remarks
+   * Get incident by ID
+   */
+  async getById(
+    request: operations.IncidentGetByIdRequest,
+    options?: RequestOptions,
+  ): Promise<components.IncidentResponse> {
+    return unwrapAsync(incidentsGetById(
       this,
       request,
       options,
@@ -58,40 +108,6 @@ export class Incidents extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(incidentsDelete(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create Incident
-   *
-   * @remarks
-   * Create a new incident
-   */
-  async create(
-    request: components.ServiceIncidentRequest,
-    options?: RequestOptions,
-  ): Promise<components.ServiceIncidentResponse> {
-    return unwrapAsync(incidentsCreate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List Incidents
-   *
-   * @remarks
-   * List service incidents with pagination
-   */
-  async list(
-    request: operations.IncidentListRequest,
-    options?: RequestOptions,
-  ): Promise<Array<components.ServiceIncidentResponse>> {
-    return unwrapAsync(incidentsList(
       this,
       request,
       options,

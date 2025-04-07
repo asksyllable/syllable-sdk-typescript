@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [createTakeoutApiV1TakeoutsCreatePost](#createtakeoutapiv1takeoutscreatepost) - Create Takeout
-* [getTakeoutApiV1TakeoutsGetJobIdGet](#gettakeoutapiv1takeoutsgetjobidget) - Get Takeout
+* [create](#create) - Create Takeout
+* [takeoutsGetByJobId](#takeoutsgetbyjobid) - Get Takeout
 
-## createTakeoutApiV1TakeoutsCreatePost
+## create
 
 Create Takeout
 
@@ -22,7 +22,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.takeouts.createTakeoutApiV1TakeoutsCreatePost();
+  const result = await syllableSDK.takeouts.create();
 
   // Handle the result
   console.log(result);
@@ -37,7 +37,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { takeoutsCreateTakeoutApiV1TakeoutsCreatePost } from "syllable-sdk/funcs/takeoutsCreateTakeoutApiV1TakeoutsCreatePost.js";
+import { takeoutsCreate } from "syllable-sdk/funcs/takeoutsCreate.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -46,7 +46,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await takeoutsCreateTakeoutApiV1TakeoutsCreatePost(syllableSDK);
+  const res = await takeoutsCreate(syllableSDK);
 
   if (!res.ok) {
     throw res.error;
@@ -79,7 +79,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getTakeoutApiV1TakeoutsGetJobIdGet
+## takeoutsGetByJobId
 
 Get Takeout
 
@@ -93,7 +93,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.takeouts.getTakeoutApiV1TakeoutsGetJobIdGet({
+  const result = await syllableSDK.takeouts.takeoutsGetByJobId({
     jobId: "<id>",
   });
 
@@ -110,7 +110,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet } from "syllable-sdk/funcs/takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet.js";
+import { takeoutsTakeoutsGetByJobId } from "syllable-sdk/funcs/takeoutsTakeoutsGetByJobId.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -119,7 +119,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await takeoutsGetTakeoutApiV1TakeoutsGetJobIdGet(syllableSDK, {
+  const res = await takeoutsTakeoutsGetByJobId(syllableSDK, {
     jobId: "<id>",
   });
 
@@ -140,7 +140,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTakeoutApiV1TakeoutsGetJobIdGetRequest](../../models/operations/gettakeoutapiv1takeoutsgetjobidgetrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.TakeoutsGetByJobIdRequest](../../models/operations/takeoutsgetbyjobidrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

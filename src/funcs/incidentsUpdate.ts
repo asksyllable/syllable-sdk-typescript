@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,7 +21,6 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -32,11 +31,11 @@ import { Result } from "../types/fp.js";
  */
 export async function incidentsUpdate(
   client: SyllableSDKCore,
-  request: operations.IncidentUpdateRequest,
+  request: components.IncidentUpdateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ServiceIncidentResponse,
+    components.IncidentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -49,25 +48,16 @@ export async function incidentsUpdate(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.IncidentUpdateRequest$outboundSchema.parse(value),
+    (value) => components.IncidentUpdateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.ServiceIncidentRequest, {
-    explode: true,
-  });
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const pathParams = {
-    incident_id: encodeSimple("incident_id", payload.incident_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/api/v1/incidents/{incident_id}")(pathParams);
+  const path = pathToFunc("/api/v1/incidents/")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -122,7 +112,7 @@ export async function incidentsUpdate(
   };
 
   const [result] = await M.match<
-    components.ServiceIncidentResponse,
+    components.IncidentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -132,7 +122,7 @@ export async function incidentsUpdate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ServiceIncidentResponse$inboundSchema),
+    M.json(200, components.IncidentResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

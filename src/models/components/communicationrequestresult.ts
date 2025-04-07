@@ -7,22 +7,15 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RequestStatus,
-  RequestStatus$inboundSchema,
-  RequestStatus$outboundSchema,
-} from "./requeststatus.js";
 
 /**
  * Variables for request
  */
 export type RequestVariables = {};
 
+export type Insights = {};
+
 export type CommunicationRequestResult = {
-  /**
-   * Unique ID for conversation batch
-   */
-  batchId: string;
   /**
    * ID for target outreach (unique within batch)
    */
@@ -32,17 +25,13 @@ export type CommunicationRequestResult = {
    */
   target: string;
   /**
-   * Status of a communication request.
-   */
-  requestStatus?: RequestStatus | undefined;
-  /**
    * Variables for request
    */
   requestVariables: RequestVariables;
   /**
-   * Call manager SID
+   * Channel manager SID
    */
-  callManagerSid?: string | null | undefined;
+  channelManagerSid?: string | null | undefined;
   /**
    * Timestamp of request creation
    */
@@ -63,6 +52,18 @@ export type CommunicationRequestResult = {
    * Unique ID for conversation
    */
   conversationId?: number | null | undefined;
+  /**
+   * Status of request in channel manager
+   */
+  channelManagerStatus?: string | null | undefined;
+  /**
+   * Status of session in insight workflow
+   */
+  insightsStatus?: string | null | undefined;
+  /**
+   * Insights from call
+   */
+  insights?: Insights | null | undefined;
 };
 
 /** @internal */
@@ -114,50 +115,96 @@ export function requestVariablesFromJSON(
 }
 
 /** @internal */
+export const Insights$inboundSchema: z.ZodType<
+  Insights,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type Insights$Outbound = {};
+
+/** @internal */
+export const Insights$outboundSchema: z.ZodType<
+  Insights$Outbound,
+  z.ZodTypeDef,
+  Insights
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Insights$ {
+  /** @deprecated use `Insights$inboundSchema` instead. */
+  export const inboundSchema = Insights$inboundSchema;
+  /** @deprecated use `Insights$outboundSchema` instead. */
+  export const outboundSchema = Insights$outboundSchema;
+  /** @deprecated use `Insights$Outbound` instead. */
+  export type Outbound = Insights$Outbound;
+}
+
+export function insightsToJSON(insights: Insights): string {
+  return JSON.stringify(Insights$outboundSchema.parse(insights));
+}
+
+export function insightsFromJSON(
+  jsonString: string,
+): SafeParseResult<Insights, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Insights$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Insights' from JSON`,
+  );
+}
+
+/** @internal */
 export const CommunicationRequestResult$inboundSchema: z.ZodType<
   CommunicationRequestResult,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  batch_id: z.string(),
   reference_id: z.string(),
   target: z.string(),
-  request_status: RequestStatus$inboundSchema.optional(),
   request_variables: z.lazy(() => RequestVariables$inboundSchema),
-  call_manager_sid: z.nullable(z.string()).optional(),
+  channel_manager_sid: z.nullable(z.string()).optional(),
   created_at: z.string().optional(),
   sent_at: z.nullable(z.string()).optional(),
   attempt_count: z.number().int().default(0),
   session_id: z.nullable(z.number().int()).optional(),
   conversation_id: z.nullable(z.number().int()).optional(),
+  channel_manager_status: z.nullable(z.string()).optional(),
+  insights_status: z.nullable(z.string()).optional(),
+  insights: z.nullable(z.lazy(() => Insights$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "batch_id": "batchId",
     "reference_id": "referenceId",
-    "request_status": "requestStatus",
     "request_variables": "requestVariables",
-    "call_manager_sid": "callManagerSid",
+    "channel_manager_sid": "channelManagerSid",
     "created_at": "createdAt",
     "sent_at": "sentAt",
     "attempt_count": "attemptCount",
     "session_id": "sessionId",
     "conversation_id": "conversationId",
+    "channel_manager_status": "channelManagerStatus",
+    "insights_status": "insightsStatus",
   });
 });
 
 /** @internal */
 export type CommunicationRequestResult$Outbound = {
-  batch_id: string;
   reference_id: string;
   target: string;
-  request_status?: string | undefined;
   request_variables: RequestVariables$Outbound;
-  call_manager_sid?: string | null | undefined;
+  channel_manager_sid?: string | null | undefined;
   created_at?: string | undefined;
   sent_at?: string | null | undefined;
   attempt_count: number;
   session_id?: number | null | undefined;
   conversation_id?: number | null | undefined;
+  channel_manager_status?: string | null | undefined;
+  insights_status?: string | null | undefined;
+  insights?: Insights$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -166,29 +213,30 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CommunicationRequestResult
 > = z.object({
-  batchId: z.string(),
   referenceId: z.string(),
   target: z.string(),
-  requestStatus: RequestStatus$outboundSchema.optional(),
   requestVariables: z.lazy(() => RequestVariables$outboundSchema),
-  callManagerSid: z.nullable(z.string()).optional(),
+  channelManagerSid: z.nullable(z.string()).optional(),
   createdAt: z.string().optional(),
   sentAt: z.nullable(z.string()).optional(),
   attemptCount: z.number().int().default(0),
   sessionId: z.nullable(z.number().int()).optional(),
   conversationId: z.nullable(z.number().int()).optional(),
+  channelManagerStatus: z.nullable(z.string()).optional(),
+  insightsStatus: z.nullable(z.string()).optional(),
+  insights: z.nullable(z.lazy(() => Insights$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
-    batchId: "batch_id",
     referenceId: "reference_id",
-    requestStatus: "request_status",
     requestVariables: "request_variables",
-    callManagerSid: "call_manager_sid",
+    channelManagerSid: "channel_manager_sid",
     createdAt: "created_at",
     sentAt: "sent_at",
     attemptCount: "attempt_count",
     sessionId: "session_id",
     conversationId: "conversation_id",
+    channelManagerStatus: "channel_manager_status",
+    insightsStatus: "insights_status",
   });
 });
 

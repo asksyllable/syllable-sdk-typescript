@@ -19,6 +19,14 @@ export type OutboundCampaign = {
    */
   campaignName: string;
   /**
+   * Description of campaign
+   */
+  description?: string | null | undefined;
+  /**
+   * Label for campaign
+   */
+  label?: string | null | undefined;
+  /**
    * Variables for campaign
    */
   campaignVariables: CampaignVariables;
@@ -131,6 +139,8 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   campaign_name: z.string(),
+  description: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
   campaign_variables: z.lazy(() => CampaignVariables$inboundSchema),
   daily_start_time: z.string(),
   daily_end_time: z.string(),
@@ -164,6 +174,8 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
 /** @internal */
 export type OutboundCampaign$Outbound = {
   campaign_name: string;
+  description?: string | null | undefined;
+  label?: string | null | undefined;
   campaign_variables: CampaignVariables$Outbound;
   daily_start_time: string;
   daily_end_time: string;
@@ -187,6 +199,8 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   OutboundCampaign
 > = z.object({
   campaignName: z.string(),
+  description: z.nullable(z.string()).optional(),
+  label: z.nullable(z.string()).optional(),
   campaignVariables: z.lazy(() => CampaignVariables$outboundSchema),
   dailyStartTime: z.string(),
   dailyEndTime: z.string(),

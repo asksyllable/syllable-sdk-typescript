@@ -31,11 +31,11 @@ import { Result } from "../types/fp.js";
  */
 export async function incidentsCreate(
   client: SyllableSDKCore,
-  request: components.ServiceIncidentRequest,
+  request: components.IncidentCreateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ServiceIncidentResponse,
+    components.IncidentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -48,7 +48,7 @@ export async function incidentsCreate(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.ServiceIncidentRequest$outboundSchema.parse(value),
+    (value) => components.IncidentCreateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -112,7 +112,7 @@ export async function incidentsCreate(
   };
 
   const [result] = await M.match<
-    components.ServiceIncidentResponse,
+    components.IncidentResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -122,7 +122,7 @@ export async function incidentsCreate(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ServiceIncidentResponse$inboundSchema),
+    M.json(200, components.IncidentResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
