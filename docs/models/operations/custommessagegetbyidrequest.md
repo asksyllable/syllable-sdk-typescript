@@ -6,7 +6,7 @@
 import { CustomMessageGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: CustomMessageGetByIdRequest = {
-  customMessageId: 696344,
+  customMessageId: 952792,
 };
 ```
 

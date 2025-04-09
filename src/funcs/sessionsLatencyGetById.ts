@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeFormQuery } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -25,21 +25,15 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Post List Dashboards
- *
- * @remarks
- * METHOD: POST
- * URL: /dashboard/list
- * ARGUMENTS: None
- * RETURNS: List of dashboards
+ * Inspect Latency For Session
  */
-export async function v1PostListDashboard(
+export async function sessionsLatencyGetById(
   client: SyllableSDKCore,
-  request: operations.PostListDashboardRequest,
+  request: operations.SessionLatencyGetByIdRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.ListResponseDashboardResponse,
+    components.InspectLatencyResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -52,7 +46,8 @@ export async function v1PostListDashboard(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.PostListDashboardRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.SessionLatencyGetByIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -61,19 +56,14 @@ export async function v1PostListDashboard(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/api/v1/dashboards/list")();
+  const pathParams = {
+    session_id: encodeSimple("session_id", payload.session_id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
 
-  const query = encodeFormQuery({
-    "end_datetime": payload.end_datetime,
-    "fields": payload.fields,
-    "limit": payload.limit,
-    "order_by": payload.order_by,
-    "order_by_direction": payload.order_by_direction,
-    "page": payload.page,
-    "search_field_values": payload.search_field_values,
-    "search_fields": payload.search_fields,
-    "start_datetime": payload.start_datetime,
-  });
+  const path = pathToFunc("/api/v1/sessions/latency/{session_id}")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -85,7 +75,7 @@ export async function v1PostListDashboard(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "post_list_dashboard",
+    operationID: "session_latency_get_by_id",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -99,11 +89,10 @@ export async function v1PostListDashboard(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -128,7 +117,7 @@ export async function v1PostListDashboard(
   };
 
   const [result] = await M.match<
-    components.ListResponseDashboardResponse,
+    components.InspectLatencyResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -138,7 +127,7 @@ export async function v1PostListDashboard(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ListResponseDashboardResponse$inboundSchema),
+    M.json(200, components.InspectLatencyResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

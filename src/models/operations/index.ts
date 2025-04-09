@@ -62,6 +62,7 @@ export * from "./sessionfullsummarygetbyid.js";
 export * from "./sessiongetbyid.js";
 export * from "./sessionlabelgetbyid.js";
 export * from "./sessionlabelslist.js";
+export * from "./sessionlatencygetbyid.js";
 export * from "./sessionrecordingstream.js";
 export * from "./sessionslist.js";
 export * from "./sessiontranscriptgetbyid.js";

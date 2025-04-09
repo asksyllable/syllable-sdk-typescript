@@ -7,7 +7,7 @@ import { CreateTakeoutResponse } from "syllable-sdk/models/components";
 
 let value: CreateTakeoutResponse = {
   jobId: "<id>",
-  createdAt: new Date("2025-05-19T21:25:27.801Z"),
+  createdAt: new Date("2023-03-05T14:23:56.519Z"),
 };
 ```
 

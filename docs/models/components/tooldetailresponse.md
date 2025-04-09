@@ -24,8 +24,8 @@ let value: ToolDetailResponse = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "get",
-      argumentLocation: "query",
+      method: "post",
+      argumentLocation: "body",
     },
     defaults: "<value>",
     staticParameters: [
@@ -54,7 +54,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2024-11-05T15:40:43.604Z"),
+  lastUpdated: new Date("2025-03-11T01:40:18.315Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",
