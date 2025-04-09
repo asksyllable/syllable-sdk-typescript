@@ -5,6 +5,11 @@ permissions:
   pull-requests: write
   statuses: write
 "on":
+  push:
+    branches:
+      - main
+    paths:
+      - openapi.json
   workflow_dispatch:
     inputs:
       force:
