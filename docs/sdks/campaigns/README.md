@@ -130,7 +130,9 @@ async function run() {
     source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
-    pauseSeconds: 30,
+    activeDays: [
+      "mon",
+    ],
   });
 
   // Handle the result
@@ -166,7 +168,9 @@ async function run() {
     source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
-    pauseSeconds: 30,
+    activeDays: [
+      "mon",
+    ],
   });
 
   if (!res.ok) {
@@ -217,7 +221,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.getById({
-    campaignId: "<id>",
+    campaignId: <id>,
   });
 
   // Handle the result
@@ -243,7 +247,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsGetById(syllableSDK, {
-    campaignId: "<id>",
+    campaignId: <id>,
   });
 
   if (!res.ok) {
@@ -306,7 +310,9 @@ async function run() {
       source: "account@email.com",
       callerId: "19995551234",
       retryInterval: "12h",
-      pauseSeconds: 30,
+      activeDays: [
+        "sun",
+      ],
     },
   });
 
@@ -345,7 +351,9 @@ async function run() {
       source: "account@email.com",
       callerId: "19995551234",
       retryInterval: "12h",
-      pauseSeconds: 30,
+      activeDays: [
+        "sun",
+      ],
     },
   });
 

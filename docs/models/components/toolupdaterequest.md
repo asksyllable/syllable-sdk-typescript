@@ -21,7 +21,7 @@ let value: ToolUpdateRequest = {
     endpoint: {
       url: "https://api.example.com",
       method: "post",
-      argumentLocation: "path",
+      argumentLocation: "query",
     },
     defaults: {
       "key": {

@@ -125,9 +125,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.batches.create({
-    batchId: "20250407.9",
+    batchId: "20250409.9",
     campaignId: 1,
-    expiresOn: "2025-04-07T00:00:00Z",
+    expiresOn: "2025-04-10T00:00:00Z",
   });
 
   // Handle the result
@@ -153,9 +153,9 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundBatchesCreate(syllableSDK, {
-    batchId: "20250407.9",
+    batchId: "20250409.9",
     campaignId: 1,
-    expiresOn: "2025-04-07T00:00:00Z",
+    expiresOn: "2025-04-10T00:00:00Z",
   });
 
   if (!res.ok) {
@@ -284,16 +284,9 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.outbound.batches.update({
     batchId: "<id>",
-    communicationBatch: {
-      batchId: "20250407.9",
-      campaignId: 1,
-      expiresOn: "2025-04-07T00:00:00Z",
-      count: 152,
-      createdAt: "2025-04-07T00:00:00Z",
-      deletedAt: "2025-04-07T00:00:00Z",
-      deletedReason: "User request",
-      lastWorkedOn: "2025-04-07T00:00:00Z",
-      lastUpdatedBy: "user@email.com",
+    communicationBatchUpdate: {
+      paused: false,
+      expiresOn: "2027-01-01T06:00:00Z",
     },
   });
 
@@ -321,16 +314,9 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await outboundBatchesUpdate(syllableSDK, {
     batchId: "<id>",
-    communicationBatch: {
-      batchId: "20250407.9",
-      campaignId: 1,
-      expiresOn: "2025-04-07T00:00:00Z",
-      count: 152,
-      createdAt: "2025-04-07T00:00:00Z",
-      deletedAt: "2025-04-07T00:00:00Z",
-      deletedReason: "User request",
-      lastWorkedOn: "2025-04-07T00:00:00Z",
-      lastUpdatedBy: "user@email.com",
+    communicationBatchUpdate: {
+      paused: false,
+      expiresOn: "2027-01-01T06:00:00Z",
     },
   });
 

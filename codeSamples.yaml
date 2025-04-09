@@ -657,25 +657,6 @@ actions:
             }
 
             run();
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.postGetDashboard({
-                dashboardName: "<value>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/dashboards/list"]["post"]
     update:
       x-codeSamples:
@@ -690,33 +671,6 @@ actions:
 
             async function run() {
               const result = await syllableSDK.dashboards.postListDashboard({
-                page: 0,
-                searchFields: [
-                  "name",
-                ],
-                searchFieldValues: [
-                  "Some Object Name",
-                ],
-                startDatetime: "2023-01-01T00:00:00Z",
-                endDatetime: "2024-01-01T00:00:00Z",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.v1.postListDashboard({
                 page: 0,
                 searchFields: [
                   "name",
@@ -1603,9 +1557,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250407.9",
+                batchId: "20250409.9",
                 campaignId: 1,
-                expiresOn: "2025-04-07T00:00:00Z",
+                expiresOn: "2025-04-10T00:00:00Z",
               });
 
               // Handle the result
@@ -1675,16 +1629,9 @@ actions:
             async function run() {
               const result = await syllableSDK.outbound.batches.update({
                 batchId: "<id>",
-                communicationBatch: {
-                  batchId: "20250407.9",
-                  campaignId: 1,
-                  expiresOn: "2025-04-07T00:00:00Z",
-                  count: 152,
-                  createdAt: "2025-04-07T00:00:00Z",
-                  deletedAt: "2025-04-07T00:00:00Z",
-                  deletedReason: "User request",
-                  lastWorkedOn: "2025-04-07T00:00:00Z",
-                  lastUpdatedBy: "user@email.com",
+                communicationBatchUpdate: {
+                  paused: false,
+                  expiresOn: "2027-01-01T06:00:00Z",
                 },
               });
 
@@ -1844,7 +1791,9 @@ actions:
                 source: "account@email.com",
                 callerId: "19995551234",
                 retryInterval: "12h",
-                pauseSeconds: 30,
+                activeDays: [
+                  "mon",
+                ],
               });
 
               // Handle the result
@@ -1866,7 +1815,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.getById({
-                campaignId: "<id>",
+                campaignId: 931598,
               });
 
               // Handle the result
@@ -1888,7 +1837,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.update({
-                campaignId: 991464,
+                campaignId: 627690,
                 outboundCampaignInput: {
                   campaignName: "Outbound Campaign 1",
                   description: "This is a test campaign",
@@ -1900,7 +1849,9 @@ actions:
                   source: "account@email.com",
                   callerId: "19995551234",
                   retryInterval: "12h",
-                  pauseSeconds: 30,
+                  activeDays: [
+                    "sun",
+                  ],
                 },
               });
 
@@ -2413,6 +2364,28 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessions.fullSummary.getById({
+                sessionId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/sessions/latency/{session_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.latency.getById({
                 sessionId: "<id>",
               });
 

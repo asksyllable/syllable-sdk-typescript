@@ -8,7 +8,7 @@ import { SessionLabelsListRequest } from "syllable-sdk/models/operations";
 let value: SessionLabelsListRequest = {
   page: 0,
   searchFields: [
-    "session_id_list",
+    "timestamp",
   ],
   searchFieldValues: [
     "Some Object Name",

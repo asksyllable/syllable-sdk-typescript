@@ -7,6 +7,11 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  DaysOfWeek,
+  DaysOfWeek$inboundSchema,
+  DaysOfWeek$outboundSchema,
+} from "./daysofweek.js";
 
 /**
  * Variables for campaign
@@ -51,9 +56,9 @@ export type OutboundCampaignInput = {
    */
   callerId: string | null;
   /**
-   * Target number of outreach calls per minute
+   * Target number of outreach calls per hour
    */
-  rate?: number | undefined;
+  hourlyRate?: number | undefined;
   /**
    * Number of retries per target
    */
@@ -63,9 +68,9 @@ export type OutboundCampaignInput = {
    */
   retryInterval?: string | null | undefined;
   /**
-   * How many seconds to pause between queueing calls. Useful when rate should be less than 1 per minute
+   * Days of the week when campaign is active
    */
-  pauseSeconds?: number | null | undefined;
+  activeDays: Array<DaysOfWeek>;
 };
 
 /** @internal */
@@ -139,10 +144,10 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   timezone: z.string(),
   source: z.nullable(z.string()).optional(),
   caller_id: z.nullable(z.string()),
-  rate: z.number().int().default(1),
+  hourly_rate: z.number().int().default(1),
   retry_count: z.number().int().default(0),
   retry_interval: z.nullable(z.string()).optional(),
-  pause_seconds: z.nullable(z.number().int()).optional(),
+  active_days: z.array(DaysOfWeek$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "campaign_name": "campaignName",
@@ -150,9 +155,10 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
     "daily_start_time": "dailyStartTime",
     "daily_end_time": "dailyEndTime",
     "caller_id": "callerId",
+    "hourly_rate": "hourlyRate",
     "retry_count": "retryCount",
     "retry_interval": "retryInterval",
-    "pause_seconds": "pauseSeconds",
+    "active_days": "activeDays",
   });
 });
 
@@ -167,10 +173,10 @@ export type OutboundCampaignInput$Outbound = {
   timezone: string;
   source?: string | null | undefined;
   caller_id: string | null;
-  rate: number;
+  hourly_rate: number;
   retry_count: number;
   retry_interval?: string | null | undefined;
-  pause_seconds?: number | null | undefined;
+  active_days: Array<string>;
 };
 
 /** @internal */
@@ -190,10 +196,10 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   timezone: z.string(),
   source: z.nullable(z.string()).optional(),
   callerId: z.nullable(z.string()),
-  rate: z.number().int().default(1),
+  hourlyRate: z.number().int().default(1),
   retryCount: z.number().int().default(0),
   retryInterval: z.nullable(z.string()).optional(),
-  pauseSeconds: z.nullable(z.number().int()).optional(),
+  activeDays: z.array(DaysOfWeek$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     campaignName: "campaign_name",
@@ -201,9 +207,10 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
     dailyStartTime: "daily_start_time",
     dailyEndTime: "daily_end_time",
     callerId: "caller_id",
+    hourlyRate: "hourly_rate",
     retryCount: "retry_count",
     retryInterval: "retry_interval",
-    pauseSeconds: "pause_seconds",
+    activeDays: "active_days",
   });
 });
 
