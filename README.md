@@ -297,6 +297,10 @@ run();
 
 * [getById](docs/sdks/fullsummary/README.md#getbyid) - Get Full Session Summary By Id
 
+#### [sessions.latency](docs/sdks/latency/README.md)
+
+* [getById](docs/sdks/latency/README.md#getbyid) - Inspect Latency For Session
+
 #### [sessions.transcript](docs/sdks/transcript/README.md)
 
 * [getById](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
@@ -314,15 +318,6 @@ run();
 * [update](docs/sdks/tools/README.md#update) - Update Tool
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
 * [delete](docs/sdks/tools/README.md#delete) - Delete Tool
-
-### [v1](docs/sdks/v1/README.md)
-
-* [postListDashboard](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
-* [postGetDashboard](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
-* [~~postSessionEventsDashboard~~](docs/sdks/v1/README.md#postsessioneventsdashboard) - Post Session Events :warning: **Deprecated**
-* [~~postSessionSummaryDashboard~~](docs/sdks/v1/README.md#postsessionsummarydashboard) - Post Session Summary :warning: **Deprecated**
-* [~~postSessionTransfersDashboard~~](docs/sdks/v1/README.md#postsessiontransfersdashboard) - Post Session Transfers :warning: **Deprecated**
-* [~~postSessionsDashboard~~](docs/sdks/v1/README.md#postsessionsdashboard) - Post Sessions :warning: **Deprecated**
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -428,6 +423,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsFullSummaryGetById`](docs/sdks/fullsummary/README.md#getbyid) - Get Full Session Summary By Id
 - [`sessionsGenerateSessionRecordingUrls`](docs/sdks/sessions/README.md#generatesessionrecordingurls) - Generate Recording Urls
 - [`sessionsGetById`](docs/sdks/sessions/README.md#getbyid) - Get A Single Session By Id
+- [`sessionsLatencyGetById`](docs/sdks/latency/README.md#getbyid) - Inspect Latency For Session
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
@@ -438,16 +434,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
-- [`v1PostGetDashboard`](docs/sdks/v1/README.md#postgetdashboard) - Post Fetch Info
-- [`v1PostListDashboard`](docs/sdks/v1/README.md#postlistdashboard) - Post List Dashboards
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
 - ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
 - ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
 - ~~[`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard)~~ - Post Session Transfers :warning: **Deprecated**
-- ~~[`v1PostSessionEventsDashboard`](docs/sdks/v1/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
-- ~~[`v1PostSessionsDashboard`](docs/sdks/v1/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
-- ~~[`v1PostSessionSummaryDashboard`](docs/sdks/v1/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
-- ~~[`v1PostSessionTransfersDashboard`](docs/sdks/v1/README.md#postsessiontransfersdashboard)~~ - Post Session Transfers :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

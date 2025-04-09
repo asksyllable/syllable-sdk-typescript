@@ -54,7 +54,7 @@ export async function outboundBatchesUpdate(
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.CommunicationBatch, {
+  const body = encodeJSON("body", payload.CommunicationBatchUpdate, {
     explode: true,
   });
 

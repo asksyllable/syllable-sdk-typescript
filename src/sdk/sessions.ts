@@ -11,6 +11,7 @@ import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { FullSummary } from "./fullsummary.js";
+import { Latency } from "./latency.js";
 import { Transcript } from "./transcript.js";
 
 export class Sessions extends ClientSDK {
@@ -22,6 +23,11 @@ export class Sessions extends ClientSDK {
   private _fullSummary?: FullSummary;
   get fullSummary(): FullSummary {
     return (this._fullSummary ??= new FullSummary(this._options));
+  }
+
+  private _latency?: Latency;
+  get latency(): Latency {
+    return (this._latency ??= new Latency(this._options));
   }
 
   /**

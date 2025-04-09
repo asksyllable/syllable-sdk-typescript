@@ -23,7 +23,17 @@ let value: ListResponseToolResponse = {
           method: "get",
           argumentLocation: "query",
         },
-        defaults: "<value>",
+        defaults: {
+          "key": {
+            transform: {
+              action: "default",
+              when: {
+                key: "key",
+                value: "value",
+              },
+            },
+          },
+        },
         staticParameters: [
           {
             name: "temperature_unit",
@@ -50,7 +60,7 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2024-04-22T16:59:27.579Z"),
+      lastUpdated: new Date("2024-09-15T17:37:32.983Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
