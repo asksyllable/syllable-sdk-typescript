@@ -1629,9 +1629,16 @@ actions:
             async function run() {
               const result = await syllableSDK.outbound.batches.update({
                 batchId: "<id>",
-                communicationBatchUpdate: {
-                  paused: false,
-                  expiresOn: "2027-01-01T06:00:00Z",
+                communicationBatch: {
+                  batchId: "20250409.9",
+                  campaignId: 1,
+                  expiresOn: "2025-04-10T00:00:00Z",
+                  count: 152,
+                  createdAt: "2025-04-09T00:00:00Z",
+                  deletedAt: "2025-04-09T00:00:00Z",
+                  deletedReason: "User request",
+                  lastWorkedOn: "2025-04-09T00:00:00Z",
+                  lastUpdatedBy: "user@email.com",
                 },
               });
 
@@ -1791,9 +1798,7 @@ actions:
                 source: "account@email.com",
                 callerId: "19995551234",
                 retryInterval: "12h",
-                activeDays: [
-                  "mon",
-                ],
+                pauseSeconds: 30,
               });
 
               // Handle the result
@@ -1815,7 +1820,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.getById({
-                campaignId: 931598,
+                campaignId: "<id>",
               });
 
               // Handle the result
@@ -1837,7 +1842,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.update({
-                campaignId: 627690,
+                campaignId: 991464,
                 outboundCampaignInput: {
                   campaignName: "Outbound Campaign 1",
                   description: "This is a test campaign",
@@ -1849,9 +1854,7 @@ actions:
                   source: "account@email.com",
                   callerId: "19995551234",
                   retryInterval: "12h",
-                  activeDays: [
-                    "sun",
-                  ],
+                  pauseSeconds: 30,
                 },
               });
 

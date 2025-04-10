@@ -31,9 +31,9 @@ export type CommunicationBatch = {
    */
   status?: BatchStatus | undefined;
   /**
-   * Name of file used to create batch
+   * Number of requests in batch
    */
-  uploadFilename?: string | null | undefined;
+  count?: number | null | undefined;
   /**
    * Timestamp of batch creation
    */
@@ -54,10 +54,6 @@ export type CommunicationBatch = {
    * Email of user who last updated campaign
    */
   lastUpdatedBy: string;
-  /**
-   * Error message if batch upload failed
-   */
-  errorMessage?: string | null | undefined;
 };
 
 /** @internal */
@@ -70,25 +66,22 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
   campaign_id: z.number().int(),
   expires_on: z.nullable(z.string()).optional(),
   status: BatchStatus$inboundSchema.optional(),
-  upload_filename: z.nullable(z.string()).optional(),
+  count: z.nullable(z.number().int()).optional(),
   created_at: z.string().optional(),
   deleted_at: z.nullable(z.string()).optional(),
   deleted_reason: z.nullable(z.string()).optional(),
   last_worked_on: z.nullable(z.string()).optional(),
   last_updated_by: z.string(),
-  error_message: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
     "campaign_id": "campaignId",
     "expires_on": "expiresOn",
-    "upload_filename": "uploadFilename",
     "created_at": "createdAt",
     "deleted_at": "deletedAt",
     "deleted_reason": "deletedReason",
     "last_worked_on": "lastWorkedOn",
     "last_updated_by": "lastUpdatedBy",
-    "error_message": "errorMessage",
   });
 });
 
@@ -98,13 +91,12 @@ export type CommunicationBatch$Outbound = {
   campaign_id: number;
   expires_on?: string | null | undefined;
   status?: string | undefined;
-  upload_filename?: string | null | undefined;
+  count?: number | null | undefined;
   created_at?: string | undefined;
   deleted_at?: string | null | undefined;
   deleted_reason?: string | null | undefined;
   last_worked_on?: string | null | undefined;
   last_updated_by: string;
-  error_message?: string | null | undefined;
 };
 
 /** @internal */
@@ -117,25 +109,22 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
   campaignId: z.number().int(),
   expiresOn: z.nullable(z.string()).optional(),
   status: BatchStatus$outboundSchema.optional(),
-  uploadFilename: z.nullable(z.string()).optional(),
+  count: z.nullable(z.number().int()).optional(),
   createdAt: z.string().optional(),
   deletedAt: z.nullable(z.string()).optional(),
   deletedReason: z.nullable(z.string()).optional(),
   lastWorkedOn: z.nullable(z.string()).optional(),
   lastUpdatedBy: z.string(),
-  errorMessage: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
     campaignId: "campaign_id",
     expiresOn: "expires_on",
-    uploadFilename: "upload_filename",
     createdAt: "created_at",
     deletedAt: "deleted_at",
     deletedReason: "deleted_reason",
     lastWorkedOn: "last_worked_on",
     lastUpdatedBy: "last_updated_by",
-    errorMessage: "error_message",
   });
 });
 

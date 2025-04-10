@@ -7,11 +7,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  RequestStatus,
-  RequestStatus$inboundSchema,
-  RequestStatus$outboundSchema,
-} from "./requeststatus.js";
 
 /**
  * Variables for request
@@ -57,10 +52,6 @@ export type CommunicationRequestResult = {
    * Unique ID for conversation
    */
   conversationId?: number | null | undefined;
-  /**
-   * Status of a communication request.
-   */
-  requestStatus?: RequestStatus | undefined;
   /**
    * Status of request in channel manager
    */
@@ -182,7 +173,6 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
   attempt_count: z.number().int().default(0),
   session_id: z.nullable(z.number().int()).optional(),
   conversation_id: z.nullable(z.number().int()).optional(),
-  request_status: RequestStatus$inboundSchema.optional(),
   channel_manager_status: z.nullable(z.string()).optional(),
   insights_status: z.nullable(z.string()).optional(),
   insights: z.nullable(z.lazy(() => Insights$inboundSchema)).optional(),
@@ -196,7 +186,6 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
     "attempt_count": "attemptCount",
     "session_id": "sessionId",
     "conversation_id": "conversationId",
-    "request_status": "requestStatus",
     "channel_manager_status": "channelManagerStatus",
     "insights_status": "insightsStatus",
   });
@@ -213,7 +202,6 @@ export type CommunicationRequestResult$Outbound = {
   attempt_count: number;
   session_id?: number | null | undefined;
   conversation_id?: number | null | undefined;
-  request_status?: string | undefined;
   channel_manager_status?: string | null | undefined;
   insights_status?: string | null | undefined;
   insights?: Insights$Outbound | null | undefined;
@@ -234,7 +222,6 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   attemptCount: z.number().int().default(0),
   sessionId: z.nullable(z.number().int()).optional(),
   conversationId: z.nullable(z.number().int()).optional(),
-  requestStatus: RequestStatus$outboundSchema.optional(),
   channelManagerStatus: z.nullable(z.string()).optional(),
   insightsStatus: z.nullable(z.string()).optional(),
   insights: z.nullable(z.lazy(() => Insights$outboundSchema)).optional(),
@@ -248,7 +235,6 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
     attemptCount: "attempt_count",
     sessionId: "session_id",
     conversationId: "conversation_id",
-    requestStatus: "request_status",
     channelManagerStatus: "channel_manager_status",
     insightsStatus: "insights_status",
   });

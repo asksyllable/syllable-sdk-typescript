@@ -12,7 +12,7 @@ export const BatchStatus = {
   Pending: "PENDING",
   Active: "ACTIVE",
   Paused: "PAUSED",
-  Failed: "FAILED",
+  Idle: "IDLE",
   Canceled: "CANCELED",
   Expired: "EXPIRED",
 } as const;
