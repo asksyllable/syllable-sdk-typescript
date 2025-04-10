@@ -1,10 +1,7 @@
 {
   "name": "syllable-sdk",
-  "version": "0.1.0-alpha.79",
+  "version": "0.1.0-alpha.77",
   "author": "Syllable",
-  "scripts": {
-    "prepare": "npm run build"
-  },
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
