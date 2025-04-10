@@ -11,6 +11,7 @@
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build": "tsc",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
@@ -24,7 +25,5 @@
     "typescript-eslint": "^8.22.0",
     "zod": "^3.23.4"
   },
-  "dependencies": {
-    
-  }
+  "dependencies": {}
 }
