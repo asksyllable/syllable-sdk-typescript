@@ -7,23 +7,16 @@ import { OutboundBatchUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundBatchUpdateRequest = {
   batchId: "<id>",
-  communicationBatch: {
-    batchId: "20250409.9",
-    campaignId: 1,
-    expiresOn: "2025-04-10T00:00:00Z",
-    count: 152,
-    createdAt: "2025-04-09T00:00:00Z",
-    deletedAt: "2025-04-09T00:00:00Z",
-    deletedReason: "User request",
-    lastWorkedOn: "2025-04-09T00:00:00Z",
-    lastUpdatedBy: "user@email.com",
+  communicationBatchUpdate: {
+    paused: true,
+    expiresOn: "2027-01-01T06:00:00Z",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `batchId`                                                                      | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `communicationBatch`                                                           | [components.CommunicationBatch](../../models/components/communicationbatch.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `batchId`                                                                                  | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `communicationBatchUpdate`                                                                 | [components.CommunicationBatchUpdate](../../models/components/communicationbatchupdate.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

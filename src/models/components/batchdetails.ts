@@ -33,9 +33,9 @@ export type BatchDetails = {
    */
   status?: BatchStatus | undefined;
   /**
-   * Number of requests in batch
+   * Name of file used to create batch
    */
-  count?: number | null | undefined;
+  uploadFilename?: string | null | undefined;
   /**
    * Timestamp of batch creation
    */
@@ -56,6 +56,10 @@ export type BatchDetails = {
    * Email of user who last updated campaign
    */
   lastUpdatedBy: string;
+  /**
+   * Error message if batch upload failed
+   */
+  errorMessage?: string | null | undefined;
   /**
    * Counts of requests by status
    */
@@ -116,12 +120,13 @@ export const BatchDetails$inboundSchema: z.ZodType<
   campaign_id: z.number().int(),
   expires_on: z.nullable(z.string()).optional(),
   status: BatchStatus$inboundSchema.optional(),
-  count: z.nullable(z.number().int()).optional(),
+  upload_filename: z.nullable(z.string()).optional(),
   created_at: z.string().optional(),
   deleted_at: z.nullable(z.string()).optional(),
   deleted_reason: z.nullable(z.string()).optional(),
   last_worked_on: z.nullable(z.string()).optional(),
   last_updated_by: z.string(),
+  error_message: z.nullable(z.string()).optional(),
   status_counts: z.nullable(z.lazy(() => StatusCounts$inboundSchema))
     .optional(),
 }).transform((v) => {
@@ -129,11 +134,13 @@ export const BatchDetails$inboundSchema: z.ZodType<
     "batch_id": "batchId",
     "campaign_id": "campaignId",
     "expires_on": "expiresOn",
+    "upload_filename": "uploadFilename",
     "created_at": "createdAt",
     "deleted_at": "deletedAt",
     "deleted_reason": "deletedReason",
     "last_worked_on": "lastWorkedOn",
     "last_updated_by": "lastUpdatedBy",
+    "error_message": "errorMessage",
     "status_counts": "statusCounts",
   });
 });
@@ -144,12 +151,13 @@ export type BatchDetails$Outbound = {
   campaign_id: number;
   expires_on?: string | null | undefined;
   status?: string | undefined;
-  count?: number | null | undefined;
+  upload_filename?: string | null | undefined;
   created_at?: string | undefined;
   deleted_at?: string | null | undefined;
   deleted_reason?: string | null | undefined;
   last_worked_on?: string | null | undefined;
   last_updated_by: string;
+  error_message?: string | null | undefined;
   status_counts?: StatusCounts$Outbound | null | undefined;
 };
 
@@ -163,12 +171,13 @@ export const BatchDetails$outboundSchema: z.ZodType<
   campaignId: z.number().int(),
   expiresOn: z.nullable(z.string()).optional(),
   status: BatchStatus$outboundSchema.optional(),
-  count: z.nullable(z.number().int()).optional(),
+  uploadFilename: z.nullable(z.string()).optional(),
   createdAt: z.string().optional(),
   deletedAt: z.nullable(z.string()).optional(),
   deletedReason: z.nullable(z.string()).optional(),
   lastWorkedOn: z.nullable(z.string()).optional(),
   lastUpdatedBy: z.string(),
+  errorMessage: z.nullable(z.string()).optional(),
   statusCounts: z.nullable(z.lazy(() => StatusCounts$outboundSchema))
     .optional(),
 }).transform((v) => {
@@ -176,11 +185,13 @@ export const BatchDetails$outboundSchema: z.ZodType<
     batchId: "batch_id",
     campaignId: "campaign_id",
     expiresOn: "expires_on",
+    uploadFilename: "upload_filename",
     createdAt: "created_at",
     deletedAt: "deleted_at",
     deletedReason: "deleted_reason",
     lastWorkedOn: "last_worked_on",
     lastUpdatedBy: "last_updated_by",
+    errorMessage: "error_message",
     statusCounts: "status_counts",
   });
 });

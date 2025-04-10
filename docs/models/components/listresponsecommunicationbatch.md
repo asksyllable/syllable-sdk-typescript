@@ -8,15 +8,16 @@ import { ListResponseCommunicationBatch } from "syllable-sdk/models/components";
 let value: ListResponseCommunicationBatch = {
   items: [
     {
-      batchId: "20250409.9",
+      batchId: "20250410.9",
       campaignId: 1,
-      expiresOn: "2025-04-10T00:00:00Z",
-      count: 152,
-      createdAt: "2025-04-09T00:00:00Z",
-      deletedAt: "2025-04-09T00:00:00Z",
+      expiresOn: "2025-04-11T00:00:00Z",
+      uploadFilename: "LATE_PAYMENTS_20250401.csv",
+      createdAt: "2025-04-10T00:00:00Z",
+      deletedAt: "2025-04-10T00:00:00Z",
       deletedReason: "User request",
-      lastWorkedOn: "2025-04-09T00:00:00Z",
+      lastWorkedOn: "2025-04-10T00:00:00Z",
       lastUpdatedBy: "user@email.com",
+      errorMessage: "Missing required fields",
     },
   ],
   page: 0,
