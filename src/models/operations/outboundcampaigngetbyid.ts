@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OutboundCampaignGetByIdRequest = {
-  campaignId: string;
+  campaignId: number;
 };
 
 /** @internal */
@@ -18,7 +18,7 @@ export const OutboundCampaignGetByIdRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  campaign_id: z.string(),
+  campaign_id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     "campaign_id": "campaignId",
@@ -27,7 +27,7 @@ export const OutboundCampaignGetByIdRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type OutboundCampaignGetByIdRequest$Outbound = {
-  campaign_id: string;
+  campaign_id: number;
 };
 
 /** @internal */
@@ -36,7 +36,7 @@ export const OutboundCampaignGetByIdRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OutboundCampaignGetByIdRequest
 > = z.object({
-  campaignId: z.string(),
+  campaignId: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     campaignId: "campaign_id",

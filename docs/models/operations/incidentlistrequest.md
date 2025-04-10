@@ -8,7 +8,7 @@ import { IncidentListRequest } from "syllable-sdk/models/operations";
 let value: IncidentListRequest = {
   page: 0,
   searchFields: [
-    "updated_at",
+    "markdown",
   ],
   searchFieldValues: [
     "Some Object Name",

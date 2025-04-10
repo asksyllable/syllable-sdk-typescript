@@ -6,7 +6,7 @@
 import { InsightsToolUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsToolUpdateRequest = {
-  toolId: 758379,
+  toolId: 185636,
   insightToolInput: {
     name: "summary-tool",
     description: "Default tool - generates a summary of the call",
