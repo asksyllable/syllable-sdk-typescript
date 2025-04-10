@@ -22,7 +22,7 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON:
+  additionalPackageJSON: {}
   author: Syllable
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
