@@ -38,15 +38,11 @@ export type OutboundCampaignInput = {
   /**
    * Start time of campaign each day
    */
-  dailyStartTime: string;
+  dailyStartTime?: string | null | undefined;
   /**
    * End time of campaign each day
    */
-  dailyEndTime: string;
-  /**
-   * Timezone of campaign
-   */
-  timezone: string;
+  dailyEndTime?: string | null | undefined;
   /**
    * Source phone number, email, or SMS number
    */
@@ -139,9 +135,8 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   campaign_variables: z.lazy(() =>
     OutboundCampaignInputCampaignVariables$inboundSchema
   ),
-  daily_start_time: z.string(),
-  daily_end_time: z.string(),
-  timezone: z.string(),
+  daily_start_time: z.nullable(z.string()).optional(),
+  daily_end_time: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
   caller_id: z.nullable(z.string()),
   hourly_rate: z.number().int().default(1),
@@ -168,9 +163,8 @@ export type OutboundCampaignInput$Outbound = {
   description?: string | null | undefined;
   label?: string | null | undefined;
   campaign_variables: OutboundCampaignInputCampaignVariables$Outbound;
-  daily_start_time: string;
-  daily_end_time: string;
-  timezone: string;
+  daily_start_time?: string | null | undefined;
+  daily_end_time?: string | null | undefined;
   source?: string | null | undefined;
   caller_id: string | null;
   hourly_rate: number;
@@ -191,9 +185,8 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   campaignVariables: z.lazy(() =>
     OutboundCampaignInputCampaignVariables$outboundSchema
   ),
-  dailyStartTime: z.string(),
-  dailyEndTime: z.string(),
-  timezone: z.string(),
+  dailyStartTime: z.nullable(z.string()).optional(),
+  dailyEndTime: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
   callerId: z.nullable(z.string()),
   hourlyRate: z.number().int().default(1),
