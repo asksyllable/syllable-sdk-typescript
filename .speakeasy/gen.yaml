@@ -17,14 +17,12 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.1.0-alpha.79
+  version: 0.1.0-alpha.77
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON:
-    scripts:
-      prepare: npm run build
   author: Syllable
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
