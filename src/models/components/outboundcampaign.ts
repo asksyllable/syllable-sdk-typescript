@@ -38,15 +38,11 @@ export type OutboundCampaign = {
   /**
    * Start time of campaign each day
    */
-  dailyStartTime: string;
+  dailyStartTime?: string | null | undefined;
   /**
    * End time of campaign each day
    */
-  dailyEndTime: string;
-  /**
-   * Timezone of campaign
-   */
-  timezone: string;
+  dailyEndTime?: string | null | undefined;
   /**
    * Source phone number, email, or SMS number
    */
@@ -75,6 +71,10 @@ export type OutboundCampaign = {
    * Unique ID for campaign
    */
   id: number;
+  /**
+   * ID of agent assigned to campaign
+   */
+  agentId?: number | null | undefined;
   /**
    * Timestamp of campaign creation
    */
@@ -147,9 +147,8 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   campaign_variables: z.lazy(() => CampaignVariables$inboundSchema),
-  daily_start_time: z.string(),
-  daily_end_time: z.string(),
-  timezone: z.string(),
+  daily_start_time: z.nullable(z.string()).optional(),
+  daily_end_time: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
   caller_id: z.nullable(z.string()),
   hourly_rate: z.number().int().default(1),
@@ -157,6 +156,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
   id: z.number().int(),
+  agent_id: z.nullable(z.number().int()).optional(),
   created_at: z.string().optional(),
   updated_at: z.string().optional(),
   last_updated_by: z.string(),
@@ -171,6 +171,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
     "retry_count": "retryCount",
     "retry_interval": "retryInterval",
     "active_days": "activeDays",
+    "agent_id": "agentId",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
@@ -183,9 +184,8 @@ export type OutboundCampaign$Outbound = {
   description?: string | null | undefined;
   label?: string | null | undefined;
   campaign_variables: CampaignVariables$Outbound;
-  daily_start_time: string;
-  daily_end_time: string;
-  timezone: string;
+  daily_start_time?: string | null | undefined;
+  daily_end_time?: string | null | undefined;
   source?: string | null | undefined;
   caller_id: string | null;
   hourly_rate: number;
@@ -193,6 +193,7 @@ export type OutboundCampaign$Outbound = {
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
   id: number;
+  agent_id?: number | null | undefined;
   created_at?: string | undefined;
   updated_at?: string | undefined;
   last_updated_by: string;
@@ -208,9 +209,8 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   campaignVariables: z.lazy(() => CampaignVariables$outboundSchema),
-  dailyStartTime: z.string(),
-  dailyEndTime: z.string(),
-  timezone: z.string(),
+  dailyStartTime: z.nullable(z.string()).optional(),
+  dailyEndTime: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
   callerId: z.nullable(z.string()),
   hourlyRate: z.number().int().default(1),
@@ -218,6 +218,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
   id: z.number().int(),
+  agentId: z.nullable(z.number().int()).optional(),
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
   lastUpdatedBy: z.string(),
@@ -232,6 +233,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
     retryCount: "retry_count",
     retryInterval: "retry_interval",
     activeDays: "active_days",
+    agentId: "agent_id",
     createdAt: "created_at",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",

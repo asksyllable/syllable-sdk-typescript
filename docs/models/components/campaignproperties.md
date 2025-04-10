@@ -11,5 +11,5 @@ let value: CampaignProperties = "campaign_name";
 ## Values
 
 ```typescript
-"id" | "campaign_name" | "campaign_variables" | "daily_start_time" | "daily_end_time" | "timezone" | "source"
+"id" | "campaign_name" | "campaign_variables" | "daily_start_time" | "daily_end_time" | "source" | "caller_id"
 ```

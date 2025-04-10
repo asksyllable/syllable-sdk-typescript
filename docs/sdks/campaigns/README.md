@@ -29,7 +29,7 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.list({
     page: 0,
     searchFields: [
-      "timezone",
+      "source",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -63,7 +63,7 @@ async function run() {
   const res = await outboundCampaignsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "timezone",
+      "source",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -126,7 +126,6 @@ async function run() {
     campaignVariables: {},
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    timezone: "America/New_York",
     source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
@@ -164,7 +163,6 @@ async function run() {
     campaignVariables: {},
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    timezone: "America/New_York",
     source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
@@ -306,7 +304,6 @@ async function run() {
       campaignVariables: {},
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      timezone: "America/New_York",
       source: "account@email.com",
       callerId: "19995551234",
       retryInterval: "12h",
@@ -347,7 +344,6 @@ async function run() {
       campaignVariables: {},
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      timezone: "America/New_York",
       source: "account@email.com",
       callerId: "19995551234",
       retryInterval: "12h",

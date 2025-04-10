@@ -11,8 +11,8 @@ export const CampaignProperties = {
   CampaignVariables: "campaign_variables",
   DailyStartTime: "daily_start_time",
   DailyEndTime: "daily_end_time",
-  Timezone: "timezone",
   Source: "source",
+  CallerId: "caller_id",
 } as const;
 export type CampaignProperties = ClosedEnum<typeof CampaignProperties>;
 
