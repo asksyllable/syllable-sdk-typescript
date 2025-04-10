@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OutboundBatchUpdateRequest = {
   batchId: string;
-  communicationBatchUpdate: components.CommunicationBatchUpdate;
+  communicationBatch: components.CommunicationBatch;
 };
 
 /** @internal */
@@ -21,18 +21,18 @@ export const OutboundBatchUpdateRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   batch_id: z.string(),
-  CommunicationBatchUpdate: components.CommunicationBatchUpdate$inboundSchema,
+  CommunicationBatch: components.CommunicationBatch$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
-    "CommunicationBatchUpdate": "communicationBatchUpdate",
+    "CommunicationBatch": "communicationBatch",
   });
 });
 
 /** @internal */
 export type OutboundBatchUpdateRequest$Outbound = {
   batch_id: string;
-  CommunicationBatchUpdate: components.CommunicationBatchUpdate$Outbound;
+  CommunicationBatch: components.CommunicationBatch$Outbound;
 };
 
 /** @internal */
@@ -42,11 +42,11 @@ export const OutboundBatchUpdateRequest$outboundSchema: z.ZodType<
   OutboundBatchUpdateRequest
 > = z.object({
   batchId: z.string(),
-  communicationBatchUpdate: components.CommunicationBatchUpdate$outboundSchema,
+  communicationBatch: components.CommunicationBatch$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
-    communicationBatchUpdate: "CommunicationBatchUpdate",
+    communicationBatch: "CommunicationBatch",
   });
 });
 

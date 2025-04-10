@@ -7,11 +7,11 @@ Status of a communication batch.
 ```typescript
 import { BatchStatus } from "syllable-sdk/models/components";
 
-let value: BatchStatus = "PAUSED";
+let value: BatchStatus = "CANCELED";
 ```
 
 ## Values
 
 ```typescript
-"PENDING" | "ACTIVE" | "PAUSED" | "FAILED" | "CANCELED" | "EXPIRED"
+"PENDING" | "ACTIVE" | "PAUSED" | "IDLE" | "CANCELED" | "EXPIRED"
 ```

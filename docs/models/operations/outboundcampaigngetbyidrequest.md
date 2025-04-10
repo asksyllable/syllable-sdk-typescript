@@ -6,7 +6,7 @@
 import { OutboundCampaignGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundCampaignGetByIdRequest = {
-  campaignId: 863856,
+  campaignId: "<id>",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: OutboundCampaignGetByIdRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `campaignId`       | *number*           | :heavy_check_mark: | N/A                |
+| `campaignId`       | *string*           | :heavy_check_mark: | N/A                |
