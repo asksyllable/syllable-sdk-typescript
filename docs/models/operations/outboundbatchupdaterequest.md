@@ -9,7 +9,7 @@ let value: OutboundBatchUpdateRequest = {
   batchId: "<id>",
   communicationBatchUpdate: {
     paused: true,
-    expiresOn: "2027-01-01T06:00:00Z",
+    expiresOn: new Date("2027-01-01T06:00:00Z"),
   },
 };
 ```

@@ -16,7 +16,7 @@ export type CommunicationBatchUpdate = {
   /**
    * Timestamp of batch expiration
    */
-  expiresOn?: string | null | undefined;
+  expiresOn?: Date | null | undefined;
 };
 
 /** @internal */
@@ -26,7 +26,9 @@ export const CommunicationBatchUpdate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   paused: z.nullable(z.boolean()).optional(),
-  expires_on: z.nullable(z.string()).optional(),
+  expires_on: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "expires_on": "expiresOn",
@@ -46,7 +48,7 @@ export const CommunicationBatchUpdate$outboundSchema: z.ZodType<
   CommunicationBatchUpdate
 > = z.object({
   paused: z.nullable(z.boolean()).optional(),
-  expiresOn: z.nullable(z.string()).optional(),
+  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     expiresOn: "expires_on",

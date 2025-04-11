@@ -1559,7 +1559,7 @@ actions:
               const result = await syllableSDK.outbound.batches.create({
                 batchId: "20250411.9",
                 campaignId: 1,
-                expiresOn: "2025-04-12T00:00:00Z",
+                expiresOn: new Date("2025-04-12T00:00:00Z"),
               });
 
               // Handle the result
@@ -1631,7 +1631,7 @@ actions:
                 batchId: "<id>",
                 communicationBatchUpdate: {
                   paused: false,
-                  expiresOn: "2027-01-01T06:00:00Z",
+                  expiresOn: new Date("2027-01-01T06:00:00Z"),
                 },
               });
 
