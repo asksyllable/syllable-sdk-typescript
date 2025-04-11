@@ -16,7 +16,14 @@ let value: BatchDetails = {
   lastWorkedOn: "2025-04-11T00:00:00Z",
   lastUpdatedBy: "user@email.com",
   errorMessage: "Missing required fields",
-  statusCounts: {},
+  statusCounts: {
+    "CANCELED": 7,
+    "CONNECTED": 100,
+    "DUPLICATE": 5,
+    "FAILED": 10,
+    "INITIATED": 20,
+    "PENDING": 10,
+  },
 };
 ```
 
@@ -35,4 +42,4 @@ let value: BatchDetails = {
 | `lastWorkedOn`                                                                                    | *string*                                                                                          | :heavy_minus_sign:                                                                                | Timestamp of last batch activity                                                                  | 2025-04-11T00:00:00Z                                                                              |
 | `lastUpdatedBy`                                                                                   | *string*                                                                                          | :heavy_check_mark:                                                                                | Email of user who last updated campaign                                                           | user@email.com                                                                                    |
 | `errorMessage`                                                                                    | *string*                                                                                          | :heavy_minus_sign:                                                                                | Error message if batch upload failed                                                              | Invalid file format                                                                               |
-| `statusCounts`                                                                                    | [components.StatusCounts](../../models/components/statuscounts.md)                                | :heavy_minus_sign:                                                                                | Counts of requests by status                                                                      | {<br/>"CANCELED": 7,<br/>"CONNECTED": 100,<br/>"DUPLICATE": 5,<br/>"FAILED": 10,<br/>"INITIATED": 20,<br/>"PENDING": 10<br/>} |
+| `statusCounts`                                                                                    | Record<string, *number*>                                                                          | :heavy_minus_sign:                                                                                | Counts of requests by status                                                                      | {<br/>"CANCELED": 7,<br/>"CONNECTED": 100,<br/>"DUPLICATE": 5,<br/>"FAILED": 10,<br/>"INITIATED": 20,<br/>"PENDING": 10<br/>} |

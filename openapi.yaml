@@ -6015,7 +6015,9 @@ components:
             - "Missing required fields"
         "status_counts":
           anyOf:
-            - type: "object"
+            - additionalProperties:
+                type: "integer"
+              type: "object"
             - type: "null"
           title: "Status Counts"
           description: "Counts of requests by status"

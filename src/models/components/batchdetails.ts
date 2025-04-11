@@ -13,8 +13,6 @@ import {
   BatchStatus$outboundSchema,
 } from "./batchstatus.js";
 
-export type StatusCounts = {};
-
 export type BatchDetails = {
   /**
    * Unique ID for conversation batch
@@ -63,52 +61,8 @@ export type BatchDetails = {
   /**
    * Counts of requests by status
    */
-  statusCounts?: StatusCounts | null | undefined;
+  statusCounts?: { [k: string]: number } | null | undefined;
 };
-
-/** @internal */
-export const StatusCounts$inboundSchema: z.ZodType<
-  StatusCounts,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type StatusCounts$Outbound = {};
-
-/** @internal */
-export const StatusCounts$outboundSchema: z.ZodType<
-  StatusCounts$Outbound,
-  z.ZodTypeDef,
-  StatusCounts
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatusCounts$ {
-  /** @deprecated use `StatusCounts$inboundSchema` instead. */
-  export const inboundSchema = StatusCounts$inboundSchema;
-  /** @deprecated use `StatusCounts$outboundSchema` instead. */
-  export const outboundSchema = StatusCounts$outboundSchema;
-  /** @deprecated use `StatusCounts$Outbound` instead. */
-  export type Outbound = StatusCounts$Outbound;
-}
-
-export function statusCountsToJSON(statusCounts: StatusCounts): string {
-  return JSON.stringify(StatusCounts$outboundSchema.parse(statusCounts));
-}
-
-export function statusCountsFromJSON(
-  jsonString: string,
-): SafeParseResult<StatusCounts, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StatusCounts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StatusCounts' from JSON`,
-  );
-}
 
 /** @internal */
 export const BatchDetails$inboundSchema: z.ZodType<
@@ -127,8 +81,7 @@ export const BatchDetails$inboundSchema: z.ZodType<
   last_worked_on: z.nullable(z.string()).optional(),
   last_updated_by: z.string(),
   error_message: z.nullable(z.string()).optional(),
-  status_counts: z.nullable(z.lazy(() => StatusCounts$inboundSchema))
-    .optional(),
+  status_counts: z.nullable(z.record(z.number().int())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
@@ -158,7 +111,7 @@ export type BatchDetails$Outbound = {
   last_worked_on?: string | null | undefined;
   last_updated_by: string;
   error_message?: string | null | undefined;
-  status_counts?: StatusCounts$Outbound | null | undefined;
+  status_counts?: { [k: string]: number } | null | undefined;
 };
 
 /** @internal */
@@ -178,8 +131,7 @@ export const BatchDetails$outboundSchema: z.ZodType<
   lastWorkedOn: z.nullable(z.string()).optional(),
   lastUpdatedBy: z.string(),
   errorMessage: z.nullable(z.string()).optional(),
-  statusCounts: z.nullable(z.lazy(() => StatusCounts$outboundSchema))
-    .optional(),
+  statusCounts: z.nullable(z.record(z.number().int())).optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
