@@ -108,7 +108,7 @@ export class Workflows extends ClientSDK {
   async queueSessionsWorkflow(
     request: components.InsightsWorkflowQueueSession,
     options?: RequestOptions,
-  ): Promise<any> {
+  ): Promise<operations.QueueSessionsWorkflowResponseQueueSessionsWorkflow> {
     return unwrapAsync(insightsWorkflowsQueueSessionsWorkflow(
       this,
       request,

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: ad573e2922fd1d8ab10fcd15927f6de7
+  docChecksum: f4a2ed2b03d5838e78b7d5a91b62c48d
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.80
-  configChecksum: 7a25b28bdeda93e312ffb78e32023b10
+  releaseVersion: 0.1.0-alpha.81
+  configChecksum: 6478988583000bd72d54eba974397122
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -279,6 +279,7 @@ generatedFiles:
   - docs/models/operations/promptsgetbyidrequest.md
   - docs/models/operations/promptshistoryrequest.md
   - docs/models/operations/promptslistrequest.md
+  - docs/models/operations/queuesessionsworkflowresponsequeuesessionsworkflow.md
   - docs/models/operations/servicedeleterequest.md
   - docs/models/operations/servicelistrequest.md
   - docs/models/operations/servicesgetbyidrequest.md
@@ -669,6 +670,7 @@ generatedFiles:
   - src/models/operations/promptsgetbyid.ts
   - src/models/operations/promptshistory.ts
   - src/models/operations/promptslist.ts
+  - src/models/operations/queuesessionsworkflow.ts
   - src/models/operations/servicedelete.ts
   - src/models/operations/servicelist.ts
   - src/models/operations/servicesgetbyid.ts

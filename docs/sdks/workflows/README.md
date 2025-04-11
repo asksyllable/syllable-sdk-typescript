@@ -519,7 +519,7 @@ run();
 
 ### Response
 
-**Promise\<[any](../../models/.md)\>**
+**Promise\<[operations.QueueSessionsWorkflowResponseQueueSessionsWorkflow](../../models/operations/queuesessionsworkflowresponsequeuesessionsworkflow.md)\>**
 
 ### Errors
 
