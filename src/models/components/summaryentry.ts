@@ -22,6 +22,7 @@ import {
 export type SummaryEntry = {
   category: LatencyCategory;
   subCategory?: string | null | undefined;
+  eventCount: number;
   sumMs: number;
   sumStr: string;
   averageMs: number;
@@ -36,6 +37,7 @@ export const SummaryEntry$inboundSchema: z.ZodType<
 > = z.object({
   category: LatencyCategory$inboundSchema,
   sub_category: z.nullable(z.string()).optional(),
+  event_count: z.number().int(),
   sum_ms: z.number(),
   sum_str: z.string(),
   average_ms: z.number(),
@@ -43,6 +45,7 @@ export const SummaryEntry$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "sub_category": "subCategory",
+    "event_count": "eventCount",
     "sum_ms": "sumMs",
     "sum_str": "sumStr",
     "average_ms": "averageMs",
@@ -54,6 +57,7 @@ export const SummaryEntry$inboundSchema: z.ZodType<
 export type SummaryEntry$Outbound = {
   category: string;
   sub_category?: string | null | undefined;
+  event_count: number;
   sum_ms: number;
   sum_str: string;
   average_ms: number;
@@ -68,6 +72,7 @@ export const SummaryEntry$outboundSchema: z.ZodType<
 > = z.object({
   category: LatencyCategory$outboundSchema,
   subCategory: z.nullable(z.string()).optional(),
+  eventCount: z.number().int(),
   sumMs: z.number(),
   sumStr: z.string(),
   averageMs: z.number(),
@@ -75,6 +80,7 @@ export const SummaryEntry$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     subCategory: "sub_category",
+    eventCount: "event_count",
     sumMs: "sum_ms",
     sumStr: "sum_str",
     averageMs: "average_ms",

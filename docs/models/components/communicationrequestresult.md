@@ -14,7 +14,7 @@ let value: CommunicationRequestResult = {
   sentAt: new Date("2025-04-11T00:00:00Z"),
   sessionId: 1,
   conversationId: 1,
-  channelManagerStatus: "COMPLETED",
+  channelManagerStatus: "NO_ANSWER",
   insightsStatus: "COMPLETED",
   insights: {},
 };

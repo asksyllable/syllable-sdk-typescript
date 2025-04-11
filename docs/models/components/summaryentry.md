@@ -10,9 +10,10 @@ import { SummaryEntry } from "syllable-sdk/models/components";
 
 let value: SummaryEntry = {
   category: "stt",
-  sumMs: 4358.65,
+  eventCount: 435865,
+  sumMs: 8919.24,
   sumStr: "<value>",
-  averageMs: 8919.24,
+  averageMs: 8061.94,
   averageStr: "<value>",
 };
 ```
@@ -23,6 +24,7 @@ let value: SummaryEntry = {
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `category`                                                               | [components.LatencyCategory](../../models/components/latencycategory.md) | :heavy_check_mark:                                                       | N/A                                                                      |
 | `subCategory`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `eventCount`                                                             | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `sumMs`                                                                  | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `sumStr`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `averageMs`                                                              | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
