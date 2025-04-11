@@ -55,6 +55,7 @@ export * from "./promptsdelete.js";
 export * from "./promptsgetbyid.js";
 export * from "./promptshistory.js";
 export * from "./promptslist.js";
+export * from "./queuesessionsworkflow.js";
 export * from "./servicedelete.js";
 export * from "./servicelist.js";
 export * from "./servicesgetbyid.js";
