@@ -40,11 +40,11 @@ export type CommunicationRequestResult = {
   /**
    * Timestamp of request creation
    */
-  createdAt?: string | undefined;
+  createdAt?: Date | undefined;
   /**
    * Timestamp at which request was sent
    */
-  sentAt?: string | null | undefined;
+  sentAt?: Date | null | undefined;
   /**
    * Number of attempts for request
    */
@@ -177,8 +177,11 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
   target: z.string(),
   request_variables: z.lazy(() => RequestVariables$inboundSchema),
   channel_manager_sid: z.nullable(z.string()).optional(),
-  created_at: z.string().optional(),
-  sent_at: z.nullable(z.string()).optional(),
+  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  sent_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   attempt_count: z.number().int().default(0),
   session_id: z.nullable(z.number().int()).optional(),
   conversation_id: z.nullable(z.number().int()).optional(),
@@ -229,8 +232,8 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   target: z.string(),
   requestVariables: z.lazy(() => RequestVariables$outboundSchema),
   channelManagerSid: z.nullable(z.string()).optional(),
-  createdAt: z.string().optional(),
-  sentAt: z.nullable(z.string()).optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  sentAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   attemptCount: z.number().int().default(0),
   sessionId: z.nullable(z.number().int()).optional(),
   conversationId: z.nullable(z.number().int()).optional(),

@@ -127,7 +127,7 @@ async function run() {
   const result = await syllableSDK.outbound.batches.create({
     batchId: "20250411.9",
     campaignId: 1,
-    expiresOn: "2025-04-12T00:00:00Z",
+    expiresOn: new Date("2025-04-12T00:00:00Z"),
   });
 
   // Handle the result
@@ -155,7 +155,7 @@ async function run() {
   const res = await outboundBatchesCreate(syllableSDK, {
     batchId: "20250411.9",
     campaignId: 1,
-    expiresOn: "2025-04-12T00:00:00Z",
+    expiresOn: new Date("2025-04-12T00:00:00Z"),
   });
 
   if (!res.ok) {
@@ -286,7 +286,7 @@ async function run() {
     batchId: "<id>",
     communicationBatchUpdate: {
       paused: false,
-      expiresOn: "2027-01-01T06:00:00Z",
+      expiresOn: new Date("2027-01-01T06:00:00Z"),
     },
   });
 
@@ -316,7 +316,7 @@ async function run() {
     batchId: "<id>",
     communicationBatchUpdate: {
       paused: false,
-      expiresOn: "2027-01-01T06:00:00Z",
+      expiresOn: new Date("2027-01-01T06:00:00Z"),
     },
   });
 

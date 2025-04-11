@@ -25,7 +25,7 @@ export type BatchDetails = {
   /**
    * Timestamp of batch expiration
    */
-  expiresOn?: string | null | undefined;
+  expiresOn?: Date | null | undefined;
   /**
    * Status of a communication batch.
    */
@@ -37,11 +37,11 @@ export type BatchDetails = {
   /**
    * Timestamp of batch creation
    */
-  createdAt?: string | undefined;
+  createdAt?: Date | undefined;
   /**
    * Timestamp of batch deletion
    */
-  deletedAt?: string | null | undefined;
+  deletedAt?: Date | null | undefined;
   /**
    * Reason for batch deletion
    */
@@ -49,7 +49,7 @@ export type BatchDetails = {
   /**
    * Timestamp of last batch activity
    */
-  lastWorkedOn?: string | null | undefined;
+  lastWorkedOn?: Date | null | undefined;
   /**
    * Email of user who last updated campaign
    */
@@ -72,13 +72,20 @@ export const BatchDetails$inboundSchema: z.ZodType<
 > = z.object({
   batch_id: z.string(),
   campaign_id: z.number().int(),
-  expires_on: z.nullable(z.string()).optional(),
+  expires_on: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   status: BatchStatus$inboundSchema.optional(),
   upload_filename: z.nullable(z.string()).optional(),
-  created_at: z.string().optional(),
-  deleted_at: z.nullable(z.string()).optional(),
+  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  deleted_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   deleted_reason: z.nullable(z.string()).optional(),
-  last_worked_on: z.nullable(z.string()).optional(),
+  last_worked_on: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   last_updated_by: z.string(),
   error_message: z.nullable(z.string()).optional(),
   status_counts: z.nullable(z.record(z.number().int())).optional(),
@@ -122,13 +129,13 @@ export const BatchDetails$outboundSchema: z.ZodType<
 > = z.object({
   batchId: z.string(),
   campaignId: z.number().int(),
-  expiresOn: z.nullable(z.string()).optional(),
+  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   status: BatchStatus$outboundSchema.optional(),
   uploadFilename: z.nullable(z.string()).optional(),
-  createdAt: z.string().optional(),
-  deletedAt: z.nullable(z.string()).optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   deletedReason: z.nullable(z.string()).optional(),
-  lastWorkedOn: z.nullable(z.string()).optional(),
+  lastWorkedOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   lastUpdatedBy: z.string(),
   errorMessage: z.nullable(z.string()).optional(),
   statusCounts: z.nullable(z.record(z.number().int())).optional(),

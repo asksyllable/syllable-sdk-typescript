@@ -78,11 +78,11 @@ export type OutboundCampaign = {
   /**
    * Timestamp of campaign creation
    */
-  createdAt?: string | undefined;
+  createdAt?: Date | undefined;
   /**
    * Timestamp of campaign update
    */
-  updatedAt?: string | undefined;
+  updatedAt?: Date | undefined;
   /**
    * Email of user who last updated campaign
    */
@@ -157,8 +157,10 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   active_days: z.array(DaysOfWeek$inboundSchema),
   id: z.number().int(),
   agent_id: z.nullable(z.number().int()).optional(),
-  created_at: z.string().optional(),
-  updated_at: z.string().optional(),
+  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
   last_updated_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -219,8 +221,8 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   activeDays: z.array(DaysOfWeek$outboundSchema),
   id: z.number().int(),
   agentId: z.nullable(z.number().int()).optional(),
-  createdAt: z.string().optional(),
-  updatedAt: z.string().optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  updatedAt: z.date().transform(v => v.toISOString()).optional(),
   lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
