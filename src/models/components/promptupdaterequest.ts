@@ -51,7 +51,7 @@ export type PromptUpdateRequest = {
    */
   editComments?: string | null | undefined;
   /**
-   * Whether to include the default tools (`summary`, `hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
+   * Whether to include the default tools (`hangup`, `summary`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
    */
   includeDefaultTools?: boolean | undefined;
 };
