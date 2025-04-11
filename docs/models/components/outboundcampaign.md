@@ -20,8 +20,8 @@ let value: OutboundCampaign = {
   ],
   id: 1,
   agentId: agent_id,
-  createdAt: "2025-04-10T00:00:00Z",
-  updatedAt: "2025-04-10T00:00:00Z",
+  createdAt: "2025-04-11T00:00:00Z",
+  updatedAt: "2025-04-11T00:00:00Z",
   lastUpdatedBy: "user@email.com",
 };
 ```
@@ -44,6 +44,6 @@ let value: OutboundCampaign = {
 | `activeDays`                                                                 | [components.DaysOfWeek](../../models/components/daysofweek.md)[]             | :heavy_check_mark:                                                           | Days of the week when campaign is active                                     | ["mon", "tue", "wed", "thu", "fri"]                                          |
 | `id`                                                                         | *number*                                                                     | :heavy_check_mark:                                                           | Unique ID for campaign                                                       | 1                                                                            |
 | `agentId`                                                                    | *number*                                                                     | :heavy_minus_sign:                                                           | ID of agent assigned to campaign                                             | agent_id                                                                     |
-| `createdAt`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | Timestamp of campaign creation                                               | 2025-04-10T00:00:00Z                                                         |
-| `updatedAt`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | Timestamp of campaign update                                                 | 2025-04-10T00:00:00Z                                                         |
+| `createdAt`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | Timestamp of campaign creation                                               | 2025-04-11T00:00:00Z                                                         |
+| `updatedAt`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | Timestamp of campaign update                                                 | 2025-04-11T00:00:00Z                                                         |
 | `lastUpdatedBy`                                                              | *string*                                                                     | :heavy_check_mark:                                                           | Email of user who last updated campaign                                      | user@email.com                                                               |

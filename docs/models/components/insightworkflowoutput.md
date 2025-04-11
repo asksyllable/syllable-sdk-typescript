@@ -32,13 +32,13 @@ let value: InsightWorkflowOutput = {
         toolParameters: {},
         toolResultSet: {},
       },
-      createdAt: new Date("2025-04-09T00:00:00Z"),
-      updatedAt: new Date("2025-04-10T00:00:00Z"),
+      createdAt: new Date("2025-04-10T00:00:00Z"),
+      updatedAt: new Date("2025-04-11T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  createdAt: new Date("2025-04-09T00:00:00Z"),
-  updatedAt: new Date("2025-04-10T00:00:00Z"),
+  createdAt: new Date("2025-04-10T00:00:00Z"),
+  updatedAt: new Date("2025-04-11T00:00:00Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```
@@ -54,6 +54,6 @@ let value: InsightWorkflowOutput = {
 | `status`                                                                                      | *string*                                                                                      | :heavy_check_mark:                                                                            | Status of the insight workflow                                                                | ACTIVE                                                                                        |
 | `id`                                                                                          | *number*                                                                                      | :heavy_check_mark:                                                                            | Internal ID of the insight workflow                                                           | 1                                                                                             |
 | `insightTools`                                                                                | [components.InsightToolOutput](../../models/components/insighttooloutput.md)[]                | :heavy_check_mark:                                                                            | List of insight tools used in the workflow                                                    |                                                                                               |
-| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp at which the insight workflow was created                                           | 2025-04-09T00:00:00Z                                                                          |
-| `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp of most recent update to the insight workflow                                       | 2025-04-10T00:00:00Z                                                                          |
+| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp at which the insight workflow was created                                           | 2025-04-10T00:00:00Z                                                                          |
+| `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp of most recent update to the insight workflow                                       | 2025-04-11T00:00:00Z                                                                          |
 | `lastUpdatedBy`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | Email of user who last updated Insight Workflow                                               | user@email.com                                                                                |

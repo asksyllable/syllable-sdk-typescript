@@ -6,9 +6,9 @@
 import { CommunicationBatchInput } from "syllable-sdk/models/components";
 
 let value: CommunicationBatchInput = {
-  batchId: "20250410.9",
+  batchId: "20250411.9",
   campaignId: 1,
-  expiresOn: "2025-04-11T00:00:00Z",
+  expiresOn: "2025-04-12T00:00:00Z",
 };
 ```
 
@@ -16,6 +16,6 @@ let value: CommunicationBatchInput = {
 
 | Field                            | Type                             | Required                         | Description                      | Example                          |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `batchId`                        | *string*                         | :heavy_check_mark:               | Unique ID for conversation batch | 20250410.9                       |
+| `batchId`                        | *string*                         | :heavy_check_mark:               | Unique ID for conversation batch | 20250411.9                       |
 | `campaignId`                     | *number*                         | :heavy_check_mark:               | Unique ID for campaign           | 1                                |
-| `expiresOn`                      | *string*                         | :heavy_minus_sign:               | Timestamp of batch expiration    | 2025-04-11T00:00:00Z             |
+| `expiresOn`                      | *string*                         | :heavy_minus_sign:               | Timestamp of batch expiration    | 2025-04-12T00:00:00Z             |
