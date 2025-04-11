@@ -15,7 +15,7 @@ let value: BatchDetails = {
   deletedReason: "User request",
   lastWorkedOn: new Date("2025-04-11T00:00:00Z"),
   lastUpdatedBy: "user@email.com",
-  errorMessage: "Missing required fields",
+  errorMessage: "Invalid file format",
   statusCounts: {
     "CANCELED": 7,
     "CONNECTED": 100,
