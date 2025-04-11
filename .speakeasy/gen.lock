@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: f0011a2fc4104d8a89086117c4fa2a9d
+  docChecksum: 5c92933046c6aa8d1155ba2d59ddaf69
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.86
-  configChecksum: 008978c3baa433a909bbca81434f46b6
+  releaseVersion: 0.1.0-alpha.87
+  configChecksum: d2228091c27c9c96ce01eef96a2a4efc
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -67,7 +67,6 @@ generatedFiles:
   - docs/models/components/bodyoutboundbatchdelete.md
   - docs/models/components/bodyoutboundbatchupload.md
   - docs/models/components/campaignproperties.md
-  - docs/models/components/campaignvariables.md
   - docs/models/components/channel.md
   - docs/models/components/channelproperties.md
   - docs/models/components/channelservices.md
@@ -165,7 +164,6 @@ generatedFiles:
   - docs/models/components/orderbydirection.md
   - docs/models/components/outboundcampaign.md
   - docs/models/components/outboundcampaigninput.md
-  - docs/models/components/outboundcampaigninputcampaignvariables.md
   - docs/models/components/promptcreaterequest.md
   - docs/models/components/prompthistory.md
   - docs/models/components/promptllmconfig.md
@@ -1670,15 +1668,15 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["tue"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}, {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["tue"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}, {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422": {}
   outbound_campaign_create:
     speakeasy-default-outbound-campaign-create:
       requestBody:
-        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"]}
+        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"]}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   outbound_campaign_get_by_id:
     speakeasy-default-outbound-campaign-get-by-id:
@@ -1687,7 +1685,7 @@ examples:
           campaign_id: "<id>"
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   outbound_campaign_update:
     speakeasy-default-outbound-campaign-update:
@@ -1695,10 +1693,10 @@ examples:
         path:
           campaign_id: 344620
       requestBody:
-        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["sun"]}
+        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["sun"]}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-11T00:00:00Z", "updated_at": "2025-04-11T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   incident_get_by_id:
     speakeasy-default-incident-get-by-id:

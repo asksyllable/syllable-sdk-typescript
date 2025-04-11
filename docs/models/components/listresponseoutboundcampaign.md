@@ -11,7 +11,10 @@ let value: ListResponseOutboundCampaign = {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
       label: "demo",
-      campaignVariables: {},
+      campaignVariables: {
+        "key": "value",
+        "key2": "value2",
+      },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
       source: "account@email.com",
