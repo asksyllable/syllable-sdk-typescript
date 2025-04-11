@@ -13,11 +13,6 @@ import {
   DaysOfWeek$outboundSchema,
 } from "./daysofweek.js";
 
-/**
- * Variables for campaign
- */
-export type OutboundCampaignInputCampaignVariables = {};
-
 export type OutboundCampaignInput = {
   /**
    * Human readable name of campaign
@@ -34,7 +29,7 @@ export type OutboundCampaignInput = {
   /**
    * Variables for campaign
    */
-  campaignVariables: OutboundCampaignInputCampaignVariables;
+  campaignVariables: { [k: string]: string };
   /**
    * Start time of campaign each day
    */
@@ -70,60 +65,6 @@ export type OutboundCampaignInput = {
 };
 
 /** @internal */
-export const OutboundCampaignInputCampaignVariables$inboundSchema: z.ZodType<
-  OutboundCampaignInputCampaignVariables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type OutboundCampaignInputCampaignVariables$Outbound = {};
-
-/** @internal */
-export const OutboundCampaignInputCampaignVariables$outboundSchema: z.ZodType<
-  OutboundCampaignInputCampaignVariables$Outbound,
-  z.ZodTypeDef,
-  OutboundCampaignInputCampaignVariables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundCampaignInputCampaignVariables$ {
-  /** @deprecated use `OutboundCampaignInputCampaignVariables$inboundSchema` instead. */
-  export const inboundSchema =
-    OutboundCampaignInputCampaignVariables$inboundSchema;
-  /** @deprecated use `OutboundCampaignInputCampaignVariables$outboundSchema` instead. */
-  export const outboundSchema =
-    OutboundCampaignInputCampaignVariables$outboundSchema;
-  /** @deprecated use `OutboundCampaignInputCampaignVariables$Outbound` instead. */
-  export type Outbound = OutboundCampaignInputCampaignVariables$Outbound;
-}
-
-export function outboundCampaignInputCampaignVariablesToJSON(
-  outboundCampaignInputCampaignVariables:
-    OutboundCampaignInputCampaignVariables,
-): string {
-  return JSON.stringify(
-    OutboundCampaignInputCampaignVariables$outboundSchema.parse(
-      outboundCampaignInputCampaignVariables,
-    ),
-  );
-}
-
-export function outboundCampaignInputCampaignVariablesFromJSON(
-  jsonString: string,
-): SafeParseResult<OutboundCampaignInputCampaignVariables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      OutboundCampaignInputCampaignVariables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OutboundCampaignInputCampaignVariables' from JSON`,
-  );
-}
-
-/** @internal */
 export const OutboundCampaignInput$inboundSchema: z.ZodType<
   OutboundCampaignInput,
   z.ZodTypeDef,
@@ -132,9 +73,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   campaign_name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  campaign_variables: z.lazy(() =>
-    OutboundCampaignInputCampaignVariables$inboundSchema
-  ),
+  campaign_variables: z.record(z.string()),
   daily_start_time: z.nullable(z.string()).optional(),
   daily_end_time: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
@@ -162,7 +101,7 @@ export type OutboundCampaignInput$Outbound = {
   campaign_name: string;
   description?: string | null | undefined;
   label?: string | null | undefined;
-  campaign_variables: OutboundCampaignInputCampaignVariables$Outbound;
+  campaign_variables: { [k: string]: string };
   daily_start_time?: string | null | undefined;
   daily_end_time?: string | null | undefined;
   source?: string | null | undefined;
@@ -182,9 +121,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   campaignName: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  campaignVariables: z.lazy(() =>
-    OutboundCampaignInputCampaignVariables$outboundSchema
-  ),
+  campaignVariables: z.record(z.string()),
   dailyStartTime: z.nullable(z.string()).optional(),
   dailyEndTime: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),

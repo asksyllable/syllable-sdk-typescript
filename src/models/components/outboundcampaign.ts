@@ -13,11 +13,6 @@ import {
   DaysOfWeek$outboundSchema,
 } from "./daysofweek.js";
 
-/**
- * Variables for campaign
- */
-export type CampaignVariables = {};
-
 export type OutboundCampaign = {
   /**
    * Human readable name of campaign
@@ -34,7 +29,7 @@ export type OutboundCampaign = {
   /**
    * Variables for campaign
    */
-  campaignVariables: CampaignVariables;
+  campaignVariables: { [k: string]: string };
   /**
    * Start time of campaign each day
    */
@@ -90,54 +85,6 @@ export type OutboundCampaign = {
 };
 
 /** @internal */
-export const CampaignVariables$inboundSchema: z.ZodType<
-  CampaignVariables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CampaignVariables$Outbound = {};
-
-/** @internal */
-export const CampaignVariables$outboundSchema: z.ZodType<
-  CampaignVariables$Outbound,
-  z.ZodTypeDef,
-  CampaignVariables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CampaignVariables$ {
-  /** @deprecated use `CampaignVariables$inboundSchema` instead. */
-  export const inboundSchema = CampaignVariables$inboundSchema;
-  /** @deprecated use `CampaignVariables$outboundSchema` instead. */
-  export const outboundSchema = CampaignVariables$outboundSchema;
-  /** @deprecated use `CampaignVariables$Outbound` instead. */
-  export type Outbound = CampaignVariables$Outbound;
-}
-
-export function campaignVariablesToJSON(
-  campaignVariables: CampaignVariables,
-): string {
-  return JSON.stringify(
-    CampaignVariables$outboundSchema.parse(campaignVariables),
-  );
-}
-
-export function campaignVariablesFromJSON(
-  jsonString: string,
-): SafeParseResult<CampaignVariables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CampaignVariables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CampaignVariables' from JSON`,
-  );
-}
-
-/** @internal */
 export const OutboundCampaign$inboundSchema: z.ZodType<
   OutboundCampaign,
   z.ZodTypeDef,
@@ -146,7 +93,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   campaign_name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  campaign_variables: z.lazy(() => CampaignVariables$inboundSchema),
+  campaign_variables: z.record(z.string()),
   daily_start_time: z.nullable(z.string()).optional(),
   daily_end_time: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
@@ -185,7 +132,7 @@ export type OutboundCampaign$Outbound = {
   campaign_name: string;
   description?: string | null | undefined;
   label?: string | null | undefined;
-  campaign_variables: CampaignVariables$Outbound;
+  campaign_variables: { [k: string]: string };
   daily_start_time?: string | null | undefined;
   daily_end_time?: string | null | undefined;
   source?: string | null | undefined;
@@ -210,7 +157,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   campaignName: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
-  campaignVariables: z.lazy(() => CampaignVariables$outboundSchema),
+  campaignVariables: z.record(z.string()),
   dailyStartTime: z.nullable(z.string()).optional(),
   dailyEndTime: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
