@@ -21,6 +21,10 @@ export type CommunicationBatchInput = {
    * Timestamp of batch expiration
    */
   expiresOn?: Date | null | undefined;
+  /**
+   * Whether the batch is on HOLD. When on HOLD, no outreach will be made.
+   */
+  paused?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -34,6 +38,7 @@ export const CommunicationBatchInput$inboundSchema: z.ZodType<
   expires_on: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  paused: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
@@ -47,6 +52,7 @@ export type CommunicationBatchInput$Outbound = {
   batch_id: string;
   campaign_id: number;
   expires_on?: string | null | undefined;
+  paused?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -58,6 +64,7 @@ export const CommunicationBatchInput$outboundSchema: z.ZodType<
   batchId: z.string(),
   campaignId: z.number().int(),
   expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  paused: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",

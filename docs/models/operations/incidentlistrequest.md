@@ -8,7 +8,7 @@ import { IncidentListRequest } from "syllable-sdk/models/operations";
 let value: IncidentListRequest = {
   page: 0,
   searchFields: [
-    "organization_id",
+    "sessions_impacted",
   ],
   searchFieldValues: [
     "Some Object Name",
