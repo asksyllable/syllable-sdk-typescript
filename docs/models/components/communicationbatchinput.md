@@ -9,6 +9,7 @@ let value: CommunicationBatchInput = {
   batchId: "20250414.9",
   campaignId: 1,
   expiresOn: new Date("2025-04-15T00:00:00Z"),
+  paused: false,
 };
 ```
 
@@ -19,3 +20,4 @@ let value: CommunicationBatchInput = {
 | `batchId`                                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | Unique ID for conversation batch                                                              | 20250414.9                                                                                    |
 | `campaignId`                                                                                  | *number*                                                                                      | :heavy_check_mark:                                                                            | Unique ID for campaign                                                                        | 1                                                                                             |
 | `expiresOn`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp of batch expiration                                                                 | 2025-04-15T00:00:00Z                                                                          |
+| `paused`                                                                                      | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | Whether the batch is on HOLD. When on HOLD, no outreach will be made.                         | true                                                                                          |

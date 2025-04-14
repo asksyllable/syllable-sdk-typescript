@@ -128,6 +128,7 @@ async function run() {
     batchId: "20250414.9",
     campaignId: 1,
     expiresOn: new Date("2025-04-15T00:00:00Z"),
+    paused: true,
   });
 
   // Handle the result
@@ -156,6 +157,7 @@ async function run() {
     batchId: "20250414.9",
     campaignId: 1,
     expiresOn: new Date("2025-04-15T00:00:00Z"),
+    paused: true,
   });
 
   if (!res.ok) {

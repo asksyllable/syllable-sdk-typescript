@@ -27,6 +27,10 @@ export type BatchDetails = {
    */
   expiresOn?: Date | null | undefined;
   /**
+   * Whether the batch is on HOLD. When on HOLD, no outreach will be made.
+   */
+  paused?: boolean | null | undefined;
+  /**
    * Status of a communication batch.
    */
   status?: BatchStatus | undefined;
@@ -75,6 +79,7 @@ export const BatchDetails$inboundSchema: z.ZodType<
   expires_on: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  paused: z.nullable(z.boolean()).optional(),
   status: BatchStatus$inboundSchema.optional(),
   upload_filename: z.nullable(z.string()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -110,6 +115,7 @@ export type BatchDetails$Outbound = {
   batch_id: string;
   campaign_id: number;
   expires_on?: string | null | undefined;
+  paused?: boolean | null | undefined;
   status?: string | undefined;
   upload_filename?: string | null | undefined;
   created_at?: string | undefined;
@@ -130,6 +136,7 @@ export const BatchDetails$outboundSchema: z.ZodType<
   batchId: z.string(),
   campaignId: z.number().int(),
   expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  paused: z.nullable(z.boolean()).optional(),
   status: BatchStatus$outboundSchema.optional(),
   uploadFilename: z.nullable(z.string()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
