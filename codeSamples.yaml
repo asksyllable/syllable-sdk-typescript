@@ -1754,7 +1754,7 @@ actions:
               const result = await syllableSDK.outbound.campaigns.list({
                 page: 0,
                 searchFields: [
-                  "source",
+                  "caller_id",
                 ],
                 searchFieldValues: [
                   "Some Object Name",

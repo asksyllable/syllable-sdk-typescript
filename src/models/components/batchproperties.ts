@@ -10,6 +10,7 @@ export const BatchProperties = {
   CampaignId: "campaign_id",
   Status: "status",
   ExpiresOn: "expires_on",
+  LastUpdatedAt: "last_updated_at",
 } as const;
 export type BatchProperties = ClosedEnum<typeof BatchProperties>;
 

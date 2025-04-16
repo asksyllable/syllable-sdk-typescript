@@ -13,6 +13,8 @@ export const CampaignProperties = {
   DailyEndTime: "daily_end_time",
   Source: "source",
   CallerId: "caller_id",
+  UpdatedAt: "updated_at",
+  Label: "label",
 } as const;
 export type CampaignProperties = ClosedEnum<typeof CampaignProperties>;
 
