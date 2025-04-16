@@ -1557,9 +1557,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250415.9",
+                batchId: "20250416.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-04-16T00:00:00Z"),
+                expiresOn: new Date("2025-04-17T00:00:00Z"),
                 paused: true,
               });
 
