@@ -60,6 +60,10 @@ export type IncidentResponse = {
    * Last update time of the incident
    */
   updatedAt?: Date | null | undefined;
+  /**
+   * The email of the user who last updated the incident
+   */
+  lastUpdatedBy: string | null;
 };
 
 /** @internal */
@@ -88,6 +92,7 @@ export const IncidentResponse$inboundSchema: z.ZodType<
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  last_updated_by: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "start_datetime": "startDatetime",
@@ -99,6 +104,7 @@ export const IncidentResponse$inboundSchema: z.ZodType<
     "sub_organization": "subOrganization",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
+    "last_updated_by": "lastUpdatedBy",
   });
 });
 
@@ -116,6 +122,7 @@ export type IncidentResponse$Outbound = {
   id: number;
   created_at?: string | null | undefined;
   updated_at?: string | null | undefined;
+  last_updated_by: string | null;
 };
 
 /** @internal */
@@ -136,6 +143,7 @@ export const IncidentResponse$outboundSchema: z.ZodType<
   id: z.number().int(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  lastUpdatedBy: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     startDatetime: "start_datetime",
@@ -147,6 +155,7 @@ export const IncidentResponse$outboundSchema: z.ZodType<
     subOrganization: "sub_organization",
     createdAt: "created_at",
     updatedAt: "updated_at",
+    lastUpdatedBy: "last_updated_by",
   });
 });
 

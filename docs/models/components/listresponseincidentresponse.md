@@ -20,6 +20,7 @@ let value: ListResponseIncidentResponse = {
       id: 1,
       createdAt: new Date("2023-10-01T08:00:00Z"),
       updatedAt: new Date("2023-10-01T08:00:00Z"),
+      lastUpdatedBy: "user@mail.com",
     },
   ],
   page: 0,

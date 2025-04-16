@@ -20,6 +20,7 @@ let value: IncidentResponse = {
   id: 1,
   createdAt: new Date("2023-10-01T08:00:00Z"),
   updatedAt: new Date("2023-10-01T08:00:00Z"),
+  lastUpdatedBy: "user@mail.com",
 };
 ```
 
@@ -39,3 +40,4 @@ let value: IncidentResponse = {
 | `id`                                                                                          | *number*                                                                                      | :heavy_check_mark:                                                                            | The ID of the incident to update                                                              | 1                                                                                             |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Creation time of the incident                                                                 | 2023-10-01T08:00:00Z                                                                          |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Last update time of the incident                                                              | 2023-10-01T08:00:00Z                                                                          |
+| `lastUpdatedBy`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | The email of the user who last updated the incident                                           | user@mail.com                                                                                 |
