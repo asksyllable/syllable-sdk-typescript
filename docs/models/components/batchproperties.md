@@ -11,5 +11,5 @@ let value: BatchProperties = "batch_id";
 ## Values
 
 ```typescript
-"batch_id" | "campaign_id" | "status" | "expires_on"
+"batch_id" | "campaign_id" | "status" | "expires_on" | "last_updated_at"
 ```

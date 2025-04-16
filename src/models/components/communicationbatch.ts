@@ -51,9 +51,9 @@ export type CommunicationBatch = {
    */
   deletedReason?: string | null | undefined;
   /**
-   * Timestamp of last batch activity
+   * Timestamp of last change to batch
    */
-  lastWorkedOn?: Date | null | undefined;
+  lastUpdatedAt?: Date | null | undefined;
   /**
    * Email of user who last updated campaign
    */
@@ -84,7 +84,7 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   deleted_reason: z.nullable(z.string()).optional(),
-  last_worked_on: z.nullable(
+  last_updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   last_updated_by: z.string(),
@@ -98,7 +98,7 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
     "created_at": "createdAt",
     "deleted_at": "deletedAt",
     "deleted_reason": "deletedReason",
-    "last_worked_on": "lastWorkedOn",
+    "last_updated_at": "lastUpdatedAt",
     "last_updated_by": "lastUpdatedBy",
     "error_message": "errorMessage",
   });
@@ -115,7 +115,7 @@ export type CommunicationBatch$Outbound = {
   created_at?: string | undefined;
   deleted_at?: string | null | undefined;
   deleted_reason?: string | null | undefined;
-  last_worked_on?: string | null | undefined;
+  last_updated_at?: string | null | undefined;
   last_updated_by: string;
   error_message?: string | null | undefined;
 };
@@ -135,7 +135,8 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   deletedReason: z.nullable(z.string()).optional(),
-  lastWorkedOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  lastUpdatedAt: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   lastUpdatedBy: z.string(),
   errorMessage: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -147,7 +148,7 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
     createdAt: "created_at",
     deletedAt: "deleted_at",
     deletedReason: "deleted_reason",
-    lastWorkedOn: "last_worked_on",
+    lastUpdatedAt: "last_updated_at",
     lastUpdatedBy: "last_updated_by",
     errorMessage: "error_message",
   });

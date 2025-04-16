@@ -16,7 +16,7 @@ let value: ListResponseCommunicationBatch = {
       createdAt: new Date("2025-04-16T00:00:00Z"),
       deletedAt: new Date("2025-04-16T00:00:00Z"),
       deletedReason: "User request",
-      lastWorkedOn: new Date("2025-04-16T00:00:00Z"),
+      lastUpdatedAt: new Date("2025-04-16T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
       errorMessage: "Invalid file format",
     },

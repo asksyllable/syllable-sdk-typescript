@@ -5,11 +5,11 @@
 ```typescript
 import { CampaignProperties } from "syllable-sdk/models/components";
 
-let value: CampaignProperties = "campaign_name";
+let value: CampaignProperties = "campaign_variables";
 ```
 
 ## Values
 
 ```typescript
-"id" | "campaign_name" | "campaign_variables" | "daily_start_time" | "daily_end_time" | "source" | "caller_id"
+"id" | "campaign_name" | "campaign_variables" | "daily_start_time" | "daily_end_time" | "source" | "caller_id" | "updated_at" | "label"
 ```

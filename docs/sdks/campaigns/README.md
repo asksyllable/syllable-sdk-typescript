@@ -29,7 +29,7 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.list({
     page: 0,
     searchFields: [
-      "source",
+      "caller_id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -63,7 +63,7 @@ async function run() {
   const res = await outboundCampaignsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "source",
+      "caller_id",
     ],
     searchFieldValues: [
       "Some Object Name",
