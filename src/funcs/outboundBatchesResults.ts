@@ -69,6 +69,7 @@ export async function outboundBatchesResults(
   );
 
   const query = encodeFormQuery({
+    "insights_status": payload.insights_status,
     "reference_id": payload.reference_id,
     "status": payload.status,
   });
