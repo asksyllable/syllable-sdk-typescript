@@ -17,3 +17,4 @@ let value: OutboundBatchResultsRequest = {
 | `batchId`          | *string*           | :heavy_check_mark: | N/A                |
 | `referenceId`      | *string*           | :heavy_minus_sign: | N/A                |
 | `status`           | *string*           | :heavy_minus_sign: | N/A                |
+| `insightsStatus`   | *string*           | :heavy_minus_sign: | N/A                |
