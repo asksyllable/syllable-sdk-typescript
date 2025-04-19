@@ -1557,9 +1557,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250417.9",
+                batchId: "20250419.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-04-18T00:00:00Z"),
+                expiresOn: new Date("2025-04-20T00:00:00Z"),
                 paused: true,
               });
 
@@ -2700,6 +2700,43 @@ actions:
               const result = await syllableSDK.tools.getByName({
                 toolName: "<value>",
               });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/users/delete_account"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.users.usersDeleteAccount();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.usersDeleteAccount();
 
               // Handle the result
               console.log(result);
