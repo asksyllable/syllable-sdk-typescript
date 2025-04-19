@@ -21,6 +21,8 @@ import { SessionLabels } from "./sessionlabels.js";
 import { Sessions } from "./sessions.js";
 import { Takeouts } from "./takeouts.js";
 import { Tools } from "./tools.js";
+import { Users } from "./users.js";
+import { V1 } from "./v1.js";
 
 export class SyllableSDK extends ClientSDK {
   private _agents?: Agents;
@@ -111,5 +113,15 @@ export class SyllableSDK extends ClientSDK {
   private _takeouts?: Takeouts;
   get takeouts(): Takeouts {
     return (this._takeouts ??= new Takeouts(this._options));
+  }
+
+  private _users?: Users;
+  get users(): Users {
+    return (this._users ??= new Users(this._options));
+  }
+
+  private _v1?: V1;
+  get v1(): V1 {
+    return (this._v1 ??= new V1(this._options));
   }
 }

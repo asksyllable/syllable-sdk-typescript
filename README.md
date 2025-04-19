@@ -319,6 +319,14 @@ run();
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
 * [delete](docs/sdks/tools/README.md#delete) - Delete Tool
 
+### [users](docs/sdks/users/README.md)
+
+* [usersDeleteAccount](docs/sdks/users/README.md#usersdeleteaccount) - Request Removal Of This Account
+
+### [v1](docs/sdks/v1/README.md)
+
+* [usersDeleteAccount](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -434,6 +442,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`usersUsersDeleteAccount`](docs/sdks/users/README.md#usersdeleteaccount) - Request Removal Of This Account
+- [`v1UsersDeleteAccount`](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
 - ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
 - ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
