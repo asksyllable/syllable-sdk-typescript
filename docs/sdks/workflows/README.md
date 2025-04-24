@@ -12,7 +12,9 @@ Operations related to insights workflows. An workflow is series of tool         
 * [getById](#getbyid) - Get Insight Workflow By Id
 * [update](#update) - Update Insights Workflow
 * [delete](#delete) - Delete Insights Workflow
-* [queueSessionsWorkflow](#queuesessionsworkflow) - Queue Insights Workflow For Sessions
+* [inactivate](#inactivate) - Update Insights Workflow
+* [activate](#activate) - Update Insights Workflow
+* [queueWork](#queuework) - Queue Insights Workflow For Sessions/Files
 
 ## list
 
@@ -123,12 +125,14 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.workflows.create({
     name: "summary-workflow",
+    source: "transfer",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
     ],
     conditions: {},
-    status: "ACTIVE",
+    startDatetime: new Date("2025-04-23T00:00:00Z"),
+    endDatetime: new Date("2025-04-24T00:00:00Z"),
   });
 
   // Handle the result
@@ -155,12 +159,14 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await insightsWorkflowsCreate(syllableSDK, {
     name: "summary-workflow",
+    source: "transfer",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
     ],
     conditions: {},
-    status: "ACTIVE",
+    startDatetime: new Date("2025-04-23T00:00:00Z"),
+    endDatetime: new Date("2025-04-24T00:00:00Z"),
   });
 
   if (!res.ok) {
@@ -291,12 +297,14 @@ async function run() {
     workflowId: 265006,
     insightWorkflowInput: {
       name: "summary-workflow",
+      source: "manual",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
       ],
       conditions: {},
-      status: "ACTIVE",
+      startDatetime: new Date("2025-04-23T00:00:00Z"),
+      endDatetime: new Date("2025-04-24T00:00:00Z"),
     },
   });
 
@@ -326,12 +334,14 @@ async function run() {
     workflowId: 265006,
     insightWorkflowInput: {
       name: "summary-workflow",
+      source: "manual",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
       ],
       conditions: {},
-      status: "ACTIVE",
+      startDatetime: new Date("2025-04-23T00:00:00Z"),
+      endDatetime: new Date("2025-04-24T00:00:00Z"),
     },
   });
 
@@ -445,7 +455,183 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## queueSessionsWorkflow
+## inactivate
+
+Update a InsightWorkflow.
+
+### Example Usage
+
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.insights.workflows.inactivate({
+    workflowId: 550727,
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { insightsWorkflowsInactivate } from "syllable-sdk/funcs/insightsWorkflowsInactivate.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await insightsWorkflowsInactivate(syllableSDK, {
+    workflowId: 550727,
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.InsightsWorkflowInactivateRequest](../../models/operations/insightsworkflowinactivaterequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.InsightWorkflowOutput](../../models/components/insightworkflowoutput.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## activate
+
+Update a InsightWorkflow.
+
+### Example Usage
+
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.insights.workflows.activate({
+    workflowId: 537910,
+    insightWorkflowActivate: {
+      isAcknowledged: true,
+      estimate: {
+        backfillCount: 100,
+        backfillDuration: 1000,
+        estimatedDailyCount: 10,
+        estimatedDailyDuration: 3674.11,
+        estimatedDailyCost: 45.25,
+        estimatedBackfillCost: 4561.00,
+      },
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { insightsWorkflowsActivate } from "syllable-sdk/funcs/insightsWorkflowsActivate.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await insightsWorkflowsActivate(syllableSDK, {
+    workflowId: 537910,
+    insightWorkflowActivate: {
+      isAcknowledged: true,
+      estimate: {
+        backfillCount: 100,
+        backfillDuration: 1000,
+        estimatedDailyCount: 10,
+        estimatedDailyDuration: 3674.11,
+        estimatedDailyCost: 45.25,
+        estimatedBackfillCost: 4561.00,
+      },
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.InsightsWorkflowActivateRequest](../../models/operations/insightsworkflowactivaterequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.InsightWorkflowOutput](../../models/components/insightworkflowoutput.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## queueWork
 
 Manually queue sessions for insights workflow evaluation.
 
@@ -459,10 +645,13 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.insights.workflows.queueSessionsWorkflow({
+  const result = await syllableSDK.insights.workflows.queueWork({
     workflowName: "summary-workflow",
     sessionIdList: [
       [12334,23445,34556],
+    ],
+    fileIdList: [
+      [1234,1678,2224],
     ],
   });
 
@@ -479,7 +668,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { insightsWorkflowsQueueSessionsWorkflow } from "syllable-sdk/funcs/insightsWorkflowsQueueSessionsWorkflow.js";
+import { insightsWorkflowsQueueWork } from "syllable-sdk/funcs/insightsWorkflowsQueueWork.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -488,10 +677,13 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await insightsWorkflowsQueueSessionsWorkflow(syllableSDK, {
+  const res = await insightsWorkflowsQueueWork(syllableSDK, {
     workflowName: "summary-workflow",
     sessionIdList: [
       [12334,23445,34556],
+    ],
+    fileIdList: [
+      [1234,1678,2224],
     ],
   });
 
@@ -519,7 +711,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.QueueSessionsWorkflowResponseQueueSessionsWorkflow](../../models/operations/queuesessionsworkflowresponsequeuesessionsworkflow.md)\>**
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 

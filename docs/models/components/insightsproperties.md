@@ -11,5 +11,5 @@ let value: InsightsProperties = "id";
 ## Values
 
 ```typescript
-"id" | "session_id" | "insight_key" | "insight_tool_id"
+"id" | "session_id" | "upload_file_id" | "workflow_id" | "upload_folder_id" | "insight_key" | "insight_tool_id"
 ```

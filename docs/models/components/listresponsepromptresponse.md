@@ -39,8 +39,8 @@ let value: ListResponsePromptResponse = {
             },
             endpoint: {
               url: "https://api.example.com",
-              method: "post",
-              argumentLocation: "body",
+              method: "get",
+              argumentLocation: "query",
             },
             defaults: {
               "key": {
@@ -79,7 +79,7 @@ let value: ListResponsePromptResponse = {
               name: "Test Agent",
             },
           ],
-          lastUpdated: new Date("2024-10-10T21:04:15.457Z"),
+          lastUpdated: new Date("2023-11-22T23:46:53.599Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],

@@ -26,7 +26,7 @@ async function run() {
   const result = await syllableSDK.insights.list({
     page: 0,
     searchFields: [
-      "insight_tool_id",
+      "insight_key",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -60,7 +60,7 @@ async function run() {
   const res = await insightsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "insight_tool_id",
+      "insight_key",
     ],
     searchFieldValues: [
       "Some Object Name",

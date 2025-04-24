@@ -19,7 +19,11 @@ export type InsightsWorkflowQueueSession = {
   /**
    * List of session identifiers
    */
-  sessionIdList: Array<number>;
+  sessionIdList?: Array<number> | null | undefined;
+  /**
+   * List of file IDs to be processed. This is only applicable for upload folders
+   */
+  fileIdList?: Array<number> | null | undefined;
 };
 
 /** @internal */
@@ -29,18 +33,21 @@ export const InsightsWorkflowQueueSession$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   workflow_name: z.string(),
-  session_id_list: z.array(z.number().int()),
+  session_id_list: z.nullable(z.array(z.number().int())).optional(),
+  file_id_list: z.nullable(z.array(z.number().int())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "workflow_name": "workflowName",
     "session_id_list": "sessionIdList",
+    "file_id_list": "fileIdList",
   });
 });
 
 /** @internal */
 export type InsightsWorkflowQueueSession$Outbound = {
   workflow_name: string;
-  session_id_list: Array<number>;
+  session_id_list?: Array<number> | null | undefined;
+  file_id_list?: Array<number> | null | undefined;
 };
 
 /** @internal */
@@ -50,11 +57,13 @@ export const InsightsWorkflowQueueSession$outboundSchema: z.ZodType<
   InsightsWorkflowQueueSession
 > = z.object({
   workflowName: z.string(),
-  sessionIdList: z.array(z.number().int()),
+  sessionIdList: z.nullable(z.array(z.number().int())).optional(),
+  fileIdList: z.nullable(z.array(z.number().int())).optional(),
 }).transform((v) => {
   return remap$(v, {
     workflowName: "workflow_name",
     sessionIdList: "session_id_list",
+    fileIdList: "file_id_list",
   });
 });
 

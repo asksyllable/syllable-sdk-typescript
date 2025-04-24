@@ -60,7 +60,7 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2024-03-22T06:32:58.021Z"),
+      lastUpdated: new Date("2025-07-26T23:03:04.026Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

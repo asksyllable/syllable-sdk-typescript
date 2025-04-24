@@ -9,12 +9,29 @@ let value: ListResponseInsightWorkflowOutput = {
   items: [
     {
       name: "summary-workflow",
+      source: "upload",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
       ],
-      conditions: {},
-      status: "ACTIVE",
+      conditions: {
+        minDuration: 120,
+        maxDuration: 600,
+        sampleRate: 2,
+        agentList: [
+          866324,
+          826325,
+        ],
+        promptList: [
+          "123324",
+        ],
+        folderList: [
+          16754,
+          67535,
+        ],
+      },
+      startDatetime: new Date("2025-04-23T00:00:00Z"),
+      endDatetime: new Date("2025-04-24T00:00:00Z"),
       id: 1,
       insightTools: [
         {
@@ -33,13 +50,22 @@ let value: ListResponseInsightWorkflowOutput = {
             toolParameters: {},
             toolResultSet: {},
           },
-          createdAt: new Date("2025-04-21T00:00:00Z"),
-          updatedAt: new Date("2025-04-22T00:00:00Z"),
+          createdAt: new Date("2025-04-23T00:00:00Z"),
+          updatedAt: new Date("2025-04-24T00:00:00Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
-      createdAt: new Date("2025-04-21T00:00:00Z"),
-      updatedAt: new Date("2025-04-22T00:00:00Z"),
+      status: "INACTIVE",
+      estimate: {
+        backfillCount: 100,
+        backfillDuration: 1000,
+        estimatedDailyCount: 10,
+        estimatedDailyDuration: 3674.11,
+        estimatedDailyCost: 45.25,
+        estimatedBackfillCost: 4561.00,
+      },
+      createdAt: new Date("2025-04-23T00:00:00Z"),
+      updatedAt: new Date("2025-04-24T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

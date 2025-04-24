@@ -208,6 +208,15 @@ run();
 
 * [list](docs/sdks/insights/README.md#list) - Insights List
 
+#### [insights.folders](docs/sdks/folders/README.md)
+
+* [list](docs/sdks/folders/README.md#list) - List Insights Upload Folders
+* [create](docs/sdks/folders/README.md#create) - Create Insights Upload Folder
+* [getById](docs/sdks/folders/README.md#getbyid) - Get Insights Folder Details
+* [update](docs/sdks/folders/README.md#update) - Update Insights Folder
+* [uploadFile](docs/sdks/folders/README.md#uploadfile) - Upload Insights  Upload Folder
+* [listFiles](docs/sdks/folders/README.md#listfiles) - Fetch Insights Upload Files
+
 #### [insights.tools](docs/sdks/syllablesdktools/README.md)
 
 * [list](docs/sdks/syllablesdktools/README.md#list) - Insight Tool List
@@ -224,7 +233,9 @@ run();
 * [getById](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 * [update](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 * [delete](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
-* [queueSessionsWorkflow](docs/sdks/workflows/README.md#queuesessionsworkflow) - Queue Insights Workflow For Sessions
+* [inactivate](docs/sdks/workflows/README.md#inactivate) - Update Insights Workflow
+* [activate](docs/sdks/workflows/README.md#activate) - Update Insights Workflow
+* [queueWork](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
 
 ### [languageGroups](docs/sdks/languagegroups/README.md)
 
@@ -379,6 +390,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`incidentsIncidentGetOrganizations`](docs/sdks/incidents/README.md#incidentgetorganizations) - Get Organizations
 - [`incidentsList`](docs/sdks/incidents/README.md#list) - List Incidents
 - [`incidentsUpdate`](docs/sdks/incidents/README.md#update) - Update Incident
+- [`insightsFoldersCreate`](docs/sdks/folders/README.md#create) - Create Insights Upload Folder
+- [`insightsFoldersGetById`](docs/sdks/folders/README.md#getbyid) - Get Insights Folder Details
+- [`insightsFoldersList`](docs/sdks/folders/README.md#list) - List Insights Upload Folders
+- [`insightsFoldersListFiles`](docs/sdks/folders/README.md#listfiles) - Fetch Insights Upload Files
+- [`insightsFoldersUpdate`](docs/sdks/folders/README.md#update) - Update Insights Folder
+- [`insightsFoldersUploadFile`](docs/sdks/folders/README.md#uploadfile) - Upload Insights  Upload Folder
 - [`insightsList`](docs/sdks/insights/README.md#list) - Insights List
 - [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
 - [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
@@ -386,11 +403,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsToolsInsightToolGetDefinitions`](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
 - [`insightsToolsList`](docs/sdks/syllablesdktools/README.md#list) - Insight Tool List
 - [`insightsToolsUpdate`](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool
+- [`insightsWorkflowsActivate`](docs/sdks/workflows/README.md#activate) - Update Insights Workflow
 - [`insightsWorkflowsCreate`](docs/sdks/workflows/README.md#create) - Create Insight Workflow
 - [`insightsWorkflowsDelete`](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
 - [`insightsWorkflowsGetById`](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
+- [`insightsWorkflowsInactivate`](docs/sdks/workflows/README.md#inactivate) - Update Insights Workflow
 - [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
-- [`insightsWorkflowsQueueSessionsWorkflow`](docs/sdks/workflows/README.md#queuesessionsworkflow) - Queue Insights Workflow For Sessions
+- [`insightsWorkflowsQueueWork`](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
 - [`insightsWorkflowsUpdate`](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 - [`languageGroupsCreate`](docs/sdks/languagegroups/README.md#create) - Create Language Group
 - [`languageGroupsDelete`](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
@@ -467,7 +486,6 @@ Certain SDK methods accept files as part of a multi-part request. It is possible
 > - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
 
 ```typescript
-import { openAsBlob } from "node:fs";
 import { SyllableSDK } from "syllable-sdk";
 
 const syllableSDK = new SyllableSDK({
@@ -475,11 +493,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.outbound.batches.upload({
-    batchId: "<id>",
-    bodyOutboundBatchUpload: {
-      file: await openAsBlob("example.file"),
-    },
+  const result = await syllableSDK.insights.folders.uploadFile({
+    folderId: 209119,
+    callId: "<id>",
   });
 
   // Handle the result

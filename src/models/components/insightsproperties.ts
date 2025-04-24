@@ -8,6 +8,9 @@ import { ClosedEnum } from "../../types/enums.js";
 export const InsightsProperties = {
   Id: "id",
   SessionId: "session_id",
+  UploadFileId: "upload_file_id",
+  WorkflowId: "workflow_id",
+  UploadFolderId: "upload_folder_id",
   InsightKey: "insight_key",
   InsightToolId: "insight_tool_id",
 } as const;

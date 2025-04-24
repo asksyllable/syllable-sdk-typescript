@@ -24,7 +24,11 @@ export type InsightsOutput = {
   /**
    * Unique ID for session
    */
-  sessionId: number;
+  sessionId?: number | null | undefined;
+  /**
+   * Unique ID for uploaded file
+   */
+  uploadFileId?: number | null | undefined;
   /**
    * Unique ID for insight tool
    */
@@ -110,7 +114,8 @@ export const InsightsOutput$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.number().int(),
-  session_id: z.number().int(),
+  session_id: z.nullable(z.number().int()).optional(),
+  upload_file_id: z.nullable(z.number().int()).optional(),
   insight_tool_id: z.number().int(),
   insight_tool_version: z.number().int(),
   insight_key: z.string(),
@@ -124,6 +129,7 @@ export const InsightsOutput$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "session_id": "sessionId",
+    "upload_file_id": "uploadFileId",
     "insight_tool_id": "insightToolId",
     "insight_tool_version": "insightToolVersion",
     "insight_key": "insightKey",
@@ -138,7 +144,8 @@ export const InsightsOutput$inboundSchema: z.ZodType<
 /** @internal */
 export type InsightsOutput$Outbound = {
   id: number;
-  session_id: number;
+  session_id?: number | null | undefined;
+  upload_file_id?: number | null | undefined;
   insight_tool_id: number;
   insight_tool_version: number;
   insight_key: string;
@@ -156,7 +163,8 @@ export const InsightsOutput$outboundSchema: z.ZodType<
   InsightsOutput
 > = z.object({
   id: z.number().int(),
-  sessionId: z.number().int(),
+  sessionId: z.nullable(z.number().int()).optional(),
+  uploadFileId: z.nullable(z.number().int()).optional(),
   insightToolId: z.number().int(),
   insightToolVersion: z.number().int(),
   insightKey: z.string(),
@@ -168,6 +176,7 @@ export const InsightsOutput$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
+    uploadFileId: "upload_file_id",
     insightToolId: "insight_tool_id",
     insightToolVersion: "insight_tool_version",
     insightKey: "insight_key",

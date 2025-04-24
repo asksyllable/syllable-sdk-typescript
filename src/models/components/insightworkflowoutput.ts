@@ -13,11 +13,18 @@ import {
   InsightToolOutput$Outbound,
   InsightToolOutput$outboundSchema,
 } from "./insighttooloutput.js";
-
-/**
- * Conditions for insight workflow to trigger on a given call recording.
- */
-export type Conditions = {};
+import {
+  InsightWorkflowCondition,
+  InsightWorkflowCondition$inboundSchema,
+  InsightWorkflowCondition$Outbound,
+  InsightWorkflowCondition$outboundSchema,
+} from "./insightworkflowcondition.js";
+import {
+  InsightWorkflowEstimate,
+  InsightWorkflowEstimate$inboundSchema,
+  InsightWorkflowEstimate$Outbound,
+  InsightWorkflowEstimate$outboundSchema,
+} from "./insightworkflowestimate.js";
 
 /**
  * Response model for an insight workflow.
@@ -28,6 +35,10 @@ export type InsightWorkflowOutput = {
    */
   name: string;
   /**
+   * Source of the insight workflow
+   */
+  source: string;
+  /**
    * Text description of insight workflow
    */
   description: string;
@@ -36,13 +47,17 @@ export type InsightWorkflowOutput = {
    */
   insightToolIds: Array<number>;
   /**
-   * Conditions for insight workflow to trigger on a given call recording.
+   * Model for the conditions that trigger an insight workflow.
    */
-  conditions: Conditions;
+  conditions: InsightWorkflowCondition;
   /**
-   * Status of the insight workflow
+   * Timestamp for when the insight workflow should start. An empty value indicates start on activation
    */
-  status: string;
+  startDatetime?: Date | null | undefined;
+  /**
+   * Timestamp of when the insight workflow should end. An empty value indicates no end
+   */
+  endDatetime?: Date | null | undefined;
   /**
    * Internal ID of the insight workflow
    */
@@ -51,6 +66,14 @@ export type InsightWorkflowOutput = {
    * List of insight tools used in the workflow
    */
   insightTools: Array<InsightToolOutput>;
+  /**
+   * Status of the insight workflow
+   */
+  status: string;
+  /**
+   * Response model for an insight workflow.
+   */
+  estimate: InsightWorkflowEstimate;
   /**
    * Timestamp at which the insight workflow was created
    */
@@ -66,62 +89,26 @@ export type InsightWorkflowOutput = {
 };
 
 /** @internal */
-export const Conditions$inboundSchema: z.ZodType<
-  Conditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type Conditions$Outbound = {};
-
-/** @internal */
-export const Conditions$outboundSchema: z.ZodType<
-  Conditions$Outbound,
-  z.ZodTypeDef,
-  Conditions
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Conditions$ {
-  /** @deprecated use `Conditions$inboundSchema` instead. */
-  export const inboundSchema = Conditions$inboundSchema;
-  /** @deprecated use `Conditions$outboundSchema` instead. */
-  export const outboundSchema = Conditions$outboundSchema;
-  /** @deprecated use `Conditions$Outbound` instead. */
-  export type Outbound = Conditions$Outbound;
-}
-
-export function conditionsToJSON(conditions: Conditions): string {
-  return JSON.stringify(Conditions$outboundSchema.parse(conditions));
-}
-
-export function conditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<Conditions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Conditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Conditions' from JSON`,
-  );
-}
-
-/** @internal */
 export const InsightWorkflowOutput$inboundSchema: z.ZodType<
   InsightWorkflowOutput,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: z.string(),
+  source: z.string(),
   description: z.string(),
   insight_tool_ids: z.array(z.number().int()),
-  conditions: z.lazy(() => Conditions$inboundSchema),
-  status: z.string(),
+  conditions: InsightWorkflowCondition$inboundSchema,
+  start_datetime: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  end_datetime: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   id: z.number().int(),
   insight_tools: z.array(InsightToolOutput$inboundSchema),
+  status: z.string(),
+  estimate: InsightWorkflowEstimate$inboundSchema,
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -130,6 +117,8 @@ export const InsightWorkflowOutput$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "insight_tool_ids": "insightToolIds",
+    "start_datetime": "startDatetime",
+    "end_datetime": "endDatetime",
     "insight_tools": "insightTools",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
@@ -140,12 +129,16 @@ export const InsightWorkflowOutput$inboundSchema: z.ZodType<
 /** @internal */
 export type InsightWorkflowOutput$Outbound = {
   name: string;
+  source: string;
   description: string;
   insight_tool_ids: Array<number>;
-  conditions: Conditions$Outbound;
-  status: string;
+  conditions: InsightWorkflowCondition$Outbound;
+  start_datetime?: string | null | undefined;
+  end_datetime?: string | null | undefined;
   id: number;
   insight_tools: Array<InsightToolOutput$Outbound>;
+  status: string;
+  estimate: InsightWorkflowEstimate$Outbound;
   created_at?: string | undefined;
   updated_at?: string | undefined;
   last_updated_by: string;
@@ -158,18 +151,25 @@ export const InsightWorkflowOutput$outboundSchema: z.ZodType<
   InsightWorkflowOutput
 > = z.object({
   name: z.string(),
+  source: z.string(),
   description: z.string(),
   insightToolIds: z.array(z.number().int()),
-  conditions: z.lazy(() => Conditions$outboundSchema),
-  status: z.string(),
+  conditions: InsightWorkflowCondition$outboundSchema,
+  startDatetime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  endDatetime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   id: z.number().int(),
   insightTools: z.array(InsightToolOutput$outboundSchema),
+  status: z.string(),
+  estimate: InsightWorkflowEstimate$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
   lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
     insightToolIds: "insight_tool_ids",
+    startDatetime: "start_datetime",
+    endDatetime: "end_datetime",
     insightTools: "insight_tools",
     createdAt: "created_at",
     updatedAt: "updated_at",
