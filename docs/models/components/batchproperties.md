@@ -5,7 +5,7 @@
 ```typescript
 import { BatchProperties } from "syllable-sdk/models/components";
 
-let value: BatchProperties = "batch_id";
+let value: BatchProperties = "status";
 ```
 
 ## Values

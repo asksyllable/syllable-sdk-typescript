@@ -8,38 +8,41 @@ import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type FileT = {
+export type BodyOutboundBatchUploadFile = {
   fileName: string;
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
 export type BodyOutboundBatchUpload = {
-  file?: FileT | Blob | undefined;
+  file?: BodyOutboundBatchUploadFile | Blob | undefined;
 };
 
 /** @internal */
-export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-  .object({
-    fileName: z.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
+export const BodyOutboundBatchUploadFile$inboundSchema: z.ZodType<
+  BodyOutboundBatchUploadFile,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fileName: z.string(),
+  content: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(Blob),
+    z.instanceof(ArrayBuffer),
+    z.instanceof(Uint8Array),
+  ]),
+});
 
 /** @internal */
-export type FileT$Outbound = {
+export type BodyOutboundBatchUploadFile$Outbound = {
   fileName: string;
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
 /** @internal */
-export const FileT$outboundSchema: z.ZodType<
-  FileT$Outbound,
+export const BodyOutboundBatchUploadFile$outboundSchema: z.ZodType<
+  BodyOutboundBatchUploadFile$Outbound,
   z.ZodTypeDef,
-  FileT
+  BodyOutboundBatchUploadFile
 > = z.object({
   fileName: z.string(),
   content: z.union([
@@ -54,26 +57,32 @@ export const FileT$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FileT$ {
-  /** @deprecated use `FileT$inboundSchema` instead. */
-  export const inboundSchema = FileT$inboundSchema;
-  /** @deprecated use `FileT$outboundSchema` instead. */
-  export const outboundSchema = FileT$outboundSchema;
-  /** @deprecated use `FileT$Outbound` instead. */
-  export type Outbound = FileT$Outbound;
+export namespace BodyOutboundBatchUploadFile$ {
+  /** @deprecated use `BodyOutboundBatchUploadFile$inboundSchema` instead. */
+  export const inboundSchema = BodyOutboundBatchUploadFile$inboundSchema;
+  /** @deprecated use `BodyOutboundBatchUploadFile$outboundSchema` instead. */
+  export const outboundSchema = BodyOutboundBatchUploadFile$outboundSchema;
+  /** @deprecated use `BodyOutboundBatchUploadFile$Outbound` instead. */
+  export type Outbound = BodyOutboundBatchUploadFile$Outbound;
 }
 
-export function fileToJSON(fileT: FileT): string {
-  return JSON.stringify(FileT$outboundSchema.parse(fileT));
+export function bodyOutboundBatchUploadFileToJSON(
+  bodyOutboundBatchUploadFile: BodyOutboundBatchUploadFile,
+): string {
+  return JSON.stringify(
+    BodyOutboundBatchUploadFile$outboundSchema.parse(
+      bodyOutboundBatchUploadFile,
+    ),
+  );
 }
 
-export function fileFromJSON(
+export function bodyOutboundBatchUploadFileFromJSON(
   jsonString: string,
-): SafeParseResult<FileT, SDKValidationError> {
+): SafeParseResult<BodyOutboundBatchUploadFile, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FileT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FileT' from JSON`,
+    (x) => BodyOutboundBatchUploadFile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BodyOutboundBatchUploadFile' from JSON`,
   );
 }
 
@@ -83,12 +92,12 @@ export const BodyOutboundBatchUpload$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  file: z.lazy(() => FileT$inboundSchema).optional(),
+  file: z.lazy(() => BodyOutboundBatchUploadFile$inboundSchema).optional(),
 });
 
 /** @internal */
 export type BodyOutboundBatchUpload$Outbound = {
-  file?: FileT$Outbound | Blob | undefined;
+  file?: BodyOutboundBatchUploadFile$Outbound | Blob | undefined;
 };
 
 /** @internal */
@@ -97,7 +106,9 @@ export const BodyOutboundBatchUpload$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BodyOutboundBatchUpload
 > = z.object({
-  file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema).optional(),
+  file: z.lazy(() => BodyOutboundBatchUploadFile$outboundSchema).or(
+    blobLikeSchema,
+  ).optional(),
 });
 
 /**

@@ -6,7 +6,7 @@
 import { CommunicationBatchUpdate } from "syllable-sdk/models/components";
 
 let value: CommunicationBatchUpdate = {
-  paused: false,
+  paused: true,
   expiresOn: new Date("2027-01-01T06:00:00Z"),
 };
 ```

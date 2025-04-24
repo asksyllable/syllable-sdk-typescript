@@ -9,12 +9,29 @@ import { InsightWorkflowOutput } from "syllable-sdk/models/components";
 
 let value: InsightWorkflowOutput = {
   name: "summary-workflow",
+  source: "agent",
   description: "Default workflow - generates a summary of the call",
   insightToolIds: [
     1,
   ],
-  conditions: {},
-  status: "ACTIVE",
+  conditions: {
+    minDuration: 120,
+    maxDuration: 600,
+    sampleRate: 2,
+    agentList: [
+      866324,
+      826325,
+    ],
+    promptList: [
+      "123324",
+    ],
+    folderList: [
+      16754,
+      67535,
+    ],
+  },
+  startDatetime: new Date("2025-04-23T00:00:00Z"),
+  endDatetime: new Date("2025-04-24T00:00:00Z"),
   id: 1,
   insightTools: [
     {
@@ -32,28 +49,41 @@ let value: InsightWorkflowOutput = {
         toolParameters: {},
         toolResultSet: {},
       },
-      createdAt: new Date("2025-04-21T00:00:00Z"),
-      updatedAt: new Date("2025-04-22T00:00:00Z"),
+      createdAt: new Date("2025-04-23T00:00:00Z"),
+      updatedAt: new Date("2025-04-24T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
-  createdAt: new Date("2025-04-21T00:00:00Z"),
-  updatedAt: new Date("2025-04-22T00:00:00Z"),
+  status: "INACTIVE",
+  estimate: {
+    backfillCount: 100,
+    backfillDuration: 1000,
+    estimatedDailyCount: 10,
+    estimatedDailyDuration: 3674.11,
+    estimatedDailyCost: 45.25,
+    estimatedBackfillCost: 4561.00,
+  },
+  createdAt: new Date("2025-04-23T00:00:00Z"),
+  updatedAt: new Date("2025-04-24T00:00:00Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```
 
 ## Fields
 
-| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `name`                                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | Human-readable name of insight workflow                                                       | summary-workflow                                                                              |
-| `description`                                                                                 | *string*                                                                                      | :heavy_check_mark:                                                                            | Text description of insight workflow                                                          | Default workflow - generates a summary of the call                                            |
-| `insightToolIds`                                                                              | *number*[]                                                                                    | :heavy_check_mark:                                                                            | List of IDs of insight tools used in the workflow                                             | [<br/>1<br/>]                                                                                 |
-| `conditions`                                                                                  | [components.Conditions](../../models/components/conditions.md)                                | :heavy_check_mark:                                                                            | Conditions for insight workflow to trigger on a given call recording.                         | {<br/>"trigger": "call_recording"<br/>}                                                       |
-| `status`                                                                                      | *string*                                                                                      | :heavy_check_mark:                                                                            | Status of the insight workflow                                                                | ACTIVE                                                                                        |
-| `id`                                                                                          | *number*                                                                                      | :heavy_check_mark:                                                                            | Internal ID of the insight workflow                                                           | 1                                                                                             |
-| `insightTools`                                                                                | [components.InsightToolOutput](../../models/components/insighttooloutput.md)[]                | :heavy_check_mark:                                                                            | List of insight tools used in the workflow                                                    |                                                                                               |
-| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp at which the insight workflow was created                                           | 2025-04-21T00:00:00Z                                                                          |
-| `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp of most recent update to the insight workflow                                       | 2025-04-22T00:00:00Z                                                                          |
-| `lastUpdatedBy`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | Email of user who last updated Insight Workflow                                               | user@email.com                                                                                |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `name`                                                                                             | *string*                                                                                           | :heavy_check_mark:                                                                                 | Human-readable name of insight workflow                                                            | summary-workflow                                                                                   |
+| `source`                                                                                           | *string*                                                                                           | :heavy_check_mark:                                                                                 | Source of the insight workflow                                                                     | agent                                                                                              |
+| `description`                                                                                      | *string*                                                                                           | :heavy_check_mark:                                                                                 | Text description of insight workflow                                                               | Default workflow - generates a summary of the call                                                 |
+| `insightToolIds`                                                                                   | *number*[]                                                                                         | :heavy_check_mark:                                                                                 | List of IDs of insight tools used in the workflow                                                  | [<br/>1<br/>]                                                                                      |
+| `conditions`                                                                                       | [components.InsightWorkflowCondition](../../models/components/insightworkflowcondition.md)         | :heavy_check_mark:                                                                                 | Model for the conditions that trigger an insight workflow.                                         |                                                                                                    |
+| `startDatetime`                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp for when the insight workflow should start. An empty value indicates start on activation | 2025-04-23T00:00:00Z                                                                               |
+| `endDatetime`                                                                                      | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp of when the insight workflow should end. An empty value indicates no end                 | 2025-04-24T00:00:00Z                                                                               |
+| `id`                                                                                               | *number*                                                                                           | :heavy_check_mark:                                                                                 | Internal ID of the insight workflow                                                                | 1                                                                                                  |
+| `insightTools`                                                                                     | [components.InsightToolOutput](../../models/components/insighttooloutput.md)[]                     | :heavy_check_mark:                                                                                 | List of insight tools used in the workflow                                                         |                                                                                                    |
+| `status`                                                                                           | *string*                                                                                           | :heavy_check_mark:                                                                                 | Status of the insight workflow                                                                     | ACTIVE                                                                                             |
+| `estimate`                                                                                         | [components.InsightWorkflowEstimate](../../models/components/insightworkflowestimate.md)           | :heavy_check_mark:                                                                                 | Response model for an insight workflow.                                                            |                                                                                                    |
+| `createdAt`                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp at which the insight workflow was created                                                | 2025-04-23T00:00:00Z                                                                               |
+| `updatedAt`                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp of most recent update to the insight workflow                                            | 2025-04-24T00:00:00Z                                                                               |
+| `lastUpdatedBy`                                                                                    | *string*                                                                                           | :heavy_check_mark:                                                                                 | Email of user who last updated Insight Workflow                                                    | user@email.com                                                                                     |

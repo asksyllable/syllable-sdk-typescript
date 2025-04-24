@@ -5,7 +5,7 @@
 ```typescript
 import { LatencyCategory } from "syllable-sdk/models/components";
 
-let value: LatencyCategory = "tool";
+let value: LatencyCategory = "tts";
 ```
 
 ## Values

@@ -7,11 +7,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-/**
- * Conditions for insight workflow to trigger on a given call recording.
- */
-export type InsightWorkflowInputConditions = {};
+import {
+  InsightWorkflowCondition,
+  InsightWorkflowCondition$inboundSchema,
+  InsightWorkflowCondition$Outbound,
+  InsightWorkflowCondition$outboundSchema,
+} from "./insightworkflowcondition.js";
 
 /**
  * Request model to create/update an insight workflow.
@@ -22,6 +23,10 @@ export type InsightWorkflowInput = {
    */
   name: string;
   /**
+   * Source of the insight workflow
+   */
+  source: string;
+  /**
    * Text description of insight workflow
    */
   description: string;
@@ -30,64 +35,18 @@ export type InsightWorkflowInput = {
    */
   insightToolIds: Array<number>;
   /**
-   * Conditions for insight workflow to trigger on a given call recording.
+   * Model for the conditions that trigger an insight workflow.
    */
-  conditions: InsightWorkflowInputConditions;
+  conditions: InsightWorkflowCondition;
   /**
-   * Status of the insight workflow
+   * Timestamp for when the insight workflow should start. An empty value indicates start on activation
    */
-  status: string;
+  startDatetime?: Date | null | undefined;
+  /**
+   * Timestamp of when the insight workflow should end. An empty value indicates no end
+   */
+  endDatetime?: Date | null | undefined;
 };
-
-/** @internal */
-export const InsightWorkflowInputConditions$inboundSchema: z.ZodType<
-  InsightWorkflowInputConditions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type InsightWorkflowInputConditions$Outbound = {};
-
-/** @internal */
-export const InsightWorkflowInputConditions$outboundSchema: z.ZodType<
-  InsightWorkflowInputConditions$Outbound,
-  z.ZodTypeDef,
-  InsightWorkflowInputConditions
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightWorkflowInputConditions$ {
-  /** @deprecated use `InsightWorkflowInputConditions$inboundSchema` instead. */
-  export const inboundSchema = InsightWorkflowInputConditions$inboundSchema;
-  /** @deprecated use `InsightWorkflowInputConditions$outboundSchema` instead. */
-  export const outboundSchema = InsightWorkflowInputConditions$outboundSchema;
-  /** @deprecated use `InsightWorkflowInputConditions$Outbound` instead. */
-  export type Outbound = InsightWorkflowInputConditions$Outbound;
-}
-
-export function insightWorkflowInputConditionsToJSON(
-  insightWorkflowInputConditions: InsightWorkflowInputConditions,
-): string {
-  return JSON.stringify(
-    InsightWorkflowInputConditions$outboundSchema.parse(
-      insightWorkflowInputConditions,
-    ),
-  );
-}
-
-export function insightWorkflowInputConditionsFromJSON(
-  jsonString: string,
-): SafeParseResult<InsightWorkflowInputConditions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InsightWorkflowInputConditions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InsightWorkflowInputConditions' from JSON`,
-  );
-}
 
 /** @internal */
 export const InsightWorkflowInput$inboundSchema: z.ZodType<
@@ -96,23 +55,33 @@ export const InsightWorkflowInput$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  source: z.string(),
   description: z.string(),
   insight_tool_ids: z.array(z.number().int()),
-  conditions: z.lazy(() => InsightWorkflowInputConditions$inboundSchema),
-  status: z.string(),
+  conditions: InsightWorkflowCondition$inboundSchema,
+  start_datetime: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  end_datetime: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "insight_tool_ids": "insightToolIds",
+    "start_datetime": "startDatetime",
+    "end_datetime": "endDatetime",
   });
 });
 
 /** @internal */
 export type InsightWorkflowInput$Outbound = {
   name: string;
+  source: string;
   description: string;
   insight_tool_ids: Array<number>;
-  conditions: InsightWorkflowInputConditions$Outbound;
-  status: string;
+  conditions: InsightWorkflowCondition$Outbound;
+  start_datetime?: string | null | undefined;
+  end_datetime?: string | null | undefined;
 };
 
 /** @internal */
@@ -122,13 +91,18 @@ export const InsightWorkflowInput$outboundSchema: z.ZodType<
   InsightWorkflowInput
 > = z.object({
   name: z.string(),
+  source: z.string(),
   description: z.string(),
   insightToolIds: z.array(z.number().int()),
-  conditions: z.lazy(() => InsightWorkflowInputConditions$outboundSchema),
-  status: z.string(),
+  conditions: InsightWorkflowCondition$outboundSchema,
+  startDatetime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  endDatetime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     insightToolIds: "insight_tool_ids",
+    startDatetime: "start_datetime",
+    endDatetime: "end_datetime",
   });
 });
 

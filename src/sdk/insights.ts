@@ -7,10 +7,16 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { Folders } from "./folders.js";
 import { SyllableSDKTools } from "./syllablesdktools.js";
 import { Workflows } from "./workflows.js";
 
 export class Insights extends ClientSDK {
+  private _folders?: Folders;
+  get folders(): Folders {
+    return (this._folders ??= new Folders(this._options));
+  }
+
   private _workflows?: Workflows;
   get workflows(): Workflows {
     return (this._workflows ??= new Workflows(this._options));

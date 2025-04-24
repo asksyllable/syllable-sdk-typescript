@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -25,18 +25,15 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Queue Insights Workflow For Sessions
- *
- * @remarks
- * Manually queue sessions for insights workflow evaluation.
+ * Update Insights Folder
  */
-export async function insightsWorkflowsQueueSessionsWorkflow(
+export async function insightsFoldersUpdate(
   client: SyllableSDKCore,
-  request: components.InsightsWorkflowQueueSession,
+  request: operations.InsightsFolderUpdateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.QueueSessionsWorkflowResponseQueueSessionsWorkflow,
+    components.InsightsFolder,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -50,16 +47,25 @@ export async function insightsWorkflowsQueueSessionsWorkflow(
   const parsed = safeParse(
     request,
     (value) =>
-      components.InsightsWorkflowQueueSession$outboundSchema.parse(value),
+      operations.InsightsFolderUpdateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.InsightsFolderInput, {
+    explode: true,
+  });
 
-  const path = pathToFunc("/api/v1/insights/workflows/queue-session")();
+  const pathParams = {
+    folder_id: encodeSimple("folder_id", payload.folder_id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/api/v1/insights/folders/{folder_id}")(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -72,7 +78,7 @@ export async function insightsWorkflowsQueueSessionsWorkflow(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "queue_sessions_workflow",
+    operationID: "insights_folder_update",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -86,7 +92,7 @@ export async function insightsWorkflowsQueueSessionsWorkflow(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "PUT",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -100,7 +106,7 @@ export async function insightsWorkflowsQueueSessionsWorkflow(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "404", "422", "4XX", "500", "5XX"],
+    errorCodes: ["422", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -114,7 +120,7 @@ export async function insightsWorkflowsQueueSessionsWorkflow(
   };
 
   const [result] = await M.match<
-    operations.QueueSessionsWorkflowResponseQueueSessionsWorkflow,
+    components.InsightsFolder,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -124,14 +130,10 @@ export async function insightsWorkflowsQueueSessionsWorkflow(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations
-        .QueueSessionsWorkflowResponseQueueSessionsWorkflow$inboundSchema,
-    ),
+    M.json(200, components.InsightsFolder$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail([400, 404, "4XX"]),
-    M.fail([500, "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;

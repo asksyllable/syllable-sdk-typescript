@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 3727656914634ef3726a053146229c6f
+  docChecksum: 3e8df9fe384122b5d0eb5c72147c3421
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.104
-  configChecksum: 192c49ce2608f104d9d2fbc453ba9979
+  releaseVersion: 0.1.0-alpha.105
+  configChecksum: e883c09e950b4d87fab3dbe9030ec10a
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -64,8 +64,10 @@ generatedFiles:
   - docs/models/components/batchdetails.md
   - docs/models/components/batchproperties.md
   - docs/models/components/batchstatus.md
+  - docs/models/components/bodyinsightsfolderuploadfile.md
   - docs/models/components/bodyoutboundbatchdelete.md
   - docs/models/components/bodyoutboundbatchupload.md
+  - docs/models/components/bodyoutboundbatchuploadfile.md
   - docs/models/components/campaignproperties.md
   - docs/models/components/channel.md
   - docs/models/components/channelproperties.md
@@ -80,7 +82,6 @@ generatedFiles:
   - docs/models/components/communicationrequest.md
   - docs/models/components/communicationrequestrequestvariables.md
   - docs/models/components/communicationrequestresult.md
-  - docs/models/components/conditions.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
   - docs/models/components/createtakeoutresponse.md
@@ -107,14 +108,21 @@ generatedFiles:
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
   - docs/models/components/filet.md
+  - docs/models/components/folderdetails.md
+  - docs/models/components/folderstats.md
   - docs/models/components/incidentcreaterequest.md
   - docs/models/components/incidentorganizationresponse.md
   - docs/models/components/incidentproperties.md
   - docs/models/components/incidentresponse.md
   - docs/models/components/incidentupdaterequest.md
   - docs/models/components/insights.md
+  - docs/models/components/insightsfolder.md
+  - docs/models/components/insightsfolderinput.md
+  - docs/models/components/insightsfolderproperties.md
   - docs/models/components/insightsoutput.md
   - docs/models/components/insightsproperties.md
+  - docs/models/components/insightsuploadfile.md
+  - docs/models/components/insightsuploadfileproperties.md
   - docs/models/components/insightsworkflowqueuesession.md
   - docs/models/components/insighttooldefinition.md
   - docs/models/components/insighttoolinput.md
@@ -122,8 +130,10 @@ generatedFiles:
   - docs/models/components/insighttooloutput.md
   - docs/models/components/insighttoolproperties.md
   - docs/models/components/insighttooltestinput.md
+  - docs/models/components/insightworkflowactivate.md
+  - docs/models/components/insightworkflowcondition.md
+  - docs/models/components/insightworkflowestimate.md
   - docs/models/components/insightworkflowinput.md
-  - docs/models/components/insightworkflowinputconditions.md
   - docs/models/components/insightworkflowoutput.md
   - docs/models/components/insightworkflowproperties.md
   - docs/models/components/inspectlatencyresponse.md
@@ -150,7 +160,9 @@ generatedFiles:
   - docs/models/components/listresponsedatasourcemetadataresponse.md
   - docs/models/components/listresponseevent.md
   - docs/models/components/listresponseincidentresponse.md
+  - docs/models/components/listresponseinsightsfolder.md
   - docs/models/components/listresponseinsightsoutput.md
+  - docs/models/components/listresponseinsightsuploadfile.md
   - docs/models/components/listresponseinsighttooloutput.md
   - docs/models/components/listresponseinsightworkflowoutput.md
   - docs/models/components/listresponselanguagegroupresponse.md
@@ -161,6 +173,7 @@ generatedFiles:
   - docs/models/components/listresponsesessionlabel.md
   - docs/models/components/listresponsetoolresponse.md
   - docs/models/components/loc.md
+  - docs/models/components/metadata.md
   - docs/models/components/orderbydirection.md
   - docs/models/components/outboundcampaign.md
   - docs/models/components/outboundcampaigninput.md
@@ -248,10 +261,17 @@ generatedFiles:
   - docs/models/operations/incidentdeleterequest.md
   - docs/models/operations/incidentgetbyidrequest.md
   - docs/models/operations/incidentlistrequest.md
+  - docs/models/operations/insightsfoldergetbyidrequest.md
+  - docs/models/operations/insightsfolderlistrequest.md
+  - docs/models/operations/insightsfolderupdaterequest.md
+  - docs/models/operations/insightsfolderuploadfilerequest.md
   - docs/models/operations/insightslistrequest.md
   - docs/models/operations/insightstoolupdaterequest.md
+  - docs/models/operations/insightsuploadlistfilesrequest.md
+  - docs/models/operations/insightsworkflowactivaterequest.md
   - docs/models/operations/insightsworkflowdeleterequest.md
   - docs/models/operations/insightsworkflowgetbyidrequest.md
+  - docs/models/operations/insightsworkflowinactivaterequest.md
   - docs/models/operations/insightsworkflowlistrequest.md
   - docs/models/operations/insightsworkflowupdaterequest.md
   - docs/models/operations/insighttoolgetbyidrequest.md
@@ -276,7 +296,6 @@ generatedFiles:
   - docs/models/operations/promptsgetbyidrequest.md
   - docs/models/operations/promptshistoryrequest.md
   - docs/models/operations/promptslistrequest.md
-  - docs/models/operations/queuesessionsworkflowresponsequeuesessionsworkflow.md
   - docs/models/operations/servicedeleterequest.md
   - docs/models/operations/servicelistrequest.md
   - docs/models/operations/servicesgetbyidrequest.md
@@ -301,6 +320,7 @@ generatedFiles:
   - docs/sdks/dashboards/README.md
   - docs/sdks/datasources/README.md
   - docs/sdks/events/README.md
+  - docs/sdks/folders/README.md
   - docs/sdks/fullsummary/README.md
   - docs/sdks/incidents/README.md
   - docs/sdks/insights/README.md
@@ -364,6 +384,12 @@ generatedFiles:
   - src/funcs/incidentsIncidentGetOrganizations.ts
   - src/funcs/incidentsList.ts
   - src/funcs/incidentsUpdate.ts
+  - src/funcs/insightsFoldersCreate.ts
+  - src/funcs/insightsFoldersGetById.ts
+  - src/funcs/insightsFoldersList.ts
+  - src/funcs/insightsFoldersListFiles.ts
+  - src/funcs/insightsFoldersUpdate.ts
+  - src/funcs/insightsFoldersUploadFile.ts
   - src/funcs/insightsList.ts
   - src/funcs/insightsToolsCreate.ts
   - src/funcs/insightsToolsGetById.ts
@@ -371,11 +397,13 @@ generatedFiles:
   - src/funcs/insightsToolsInsightsToolTest.ts
   - src/funcs/insightsToolsList.ts
   - src/funcs/insightsToolsUpdate.ts
+  - src/funcs/insightsWorkflowsActivate.ts
   - src/funcs/insightsWorkflowsCreate.ts
   - src/funcs/insightsWorkflowsDelete.ts
   - src/funcs/insightsWorkflowsGetById.ts
+  - src/funcs/insightsWorkflowsInactivate.ts
   - src/funcs/insightsWorkflowsList.ts
-  - src/funcs/insightsWorkflowsQueueSessionsWorkflow.ts
+  - src/funcs/insightsWorkflowsQueueWork.ts
   - src/funcs/insightsWorkflowsUpdate.ts
   - src/funcs/languageGroupsCreate.ts
   - src/funcs/languageGroupsDelete.ts
@@ -468,6 +496,7 @@ generatedFiles:
   - src/models/components/batchdetails.ts
   - src/models/components/batchproperties.ts
   - src/models/components/batchstatus.ts
+  - src/models/components/bodyinsightsfolderuploadfile.ts
   - src/models/components/bodyoutboundbatchdelete.ts
   - src/models/components/bodyoutboundbatchupload.ts
   - src/models/components/campaignproperties.ts
@@ -507,20 +536,29 @@ generatedFiles:
   - src/models/components/dialogtoolcall.ts
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
+  - src/models/components/folderdetails.ts
   - src/models/components/incidentcreaterequest.ts
   - src/models/components/incidentorganizationresponse.ts
   - src/models/components/incidentproperties.ts
   - src/models/components/incidentresponse.ts
   - src/models/components/incidentupdaterequest.ts
   - src/models/components/index.ts
+  - src/models/components/insightsfolder.ts
+  - src/models/components/insightsfolderinput.ts
+  - src/models/components/insightsfolderproperties.ts
   - src/models/components/insightsoutput.ts
   - src/models/components/insightsproperties.ts
+  - src/models/components/insightsuploadfile.ts
+  - src/models/components/insightsuploadfileproperties.ts
   - src/models/components/insightsworkflowqueuesession.ts
   - src/models/components/insighttooldefinition.ts
   - src/models/components/insighttoolinput.ts
   - src/models/components/insighttooloutput.ts
   - src/models/components/insighttoolproperties.ts
   - src/models/components/insighttooltestinput.ts
+  - src/models/components/insightworkflowactivate.ts
+  - src/models/components/insightworkflowcondition.ts
+  - src/models/components/insightworkflowestimate.ts
   - src/models/components/insightworkflowinput.ts
   - src/models/components/insightworkflowoutput.ts
   - src/models/components/insightworkflowproperties.ts
@@ -547,7 +585,9 @@ generatedFiles:
   - src/models/components/listresponsedatasourcemetadataresponse.ts
   - src/models/components/listresponseevent.ts
   - src/models/components/listresponseincidentresponse.ts
+  - src/models/components/listresponseinsightsfolder.ts
   - src/models/components/listresponseinsightsoutput.ts
+  - src/models/components/listresponseinsightsuploadfile.ts
   - src/models/components/listresponseinsighttooloutput.ts
   - src/models/components/listresponseinsightworkflowoutput.ts
   - src/models/components/listresponselanguagegroupresponse.ts
@@ -643,10 +683,17 @@ generatedFiles:
   - src/models/operations/incidentgetbyid.ts
   - src/models/operations/incidentlist.ts
   - src/models/operations/index.ts
+  - src/models/operations/insightsfoldergetbyid.ts
+  - src/models/operations/insightsfolderlist.ts
+  - src/models/operations/insightsfolderupdate.ts
+  - src/models/operations/insightsfolderuploadfile.ts
   - src/models/operations/insightslist.ts
   - src/models/operations/insightstoolupdate.ts
+  - src/models/operations/insightsuploadlistfiles.ts
+  - src/models/operations/insightsworkflowactivate.ts
   - src/models/operations/insightsworkflowdelete.ts
   - src/models/operations/insightsworkflowgetbyid.ts
+  - src/models/operations/insightsworkflowinactivate.ts
   - src/models/operations/insightsworkflowlist.ts
   - src/models/operations/insightsworkflowupdate.ts
   - src/models/operations/insighttoolgetbyid.ts
@@ -671,7 +718,6 @@ generatedFiles:
   - src/models/operations/promptsgetbyid.ts
   - src/models/operations/promptshistory.ts
   - src/models/operations/promptslist.ts
-  - src/models/operations/queuesessionsworkflow.ts
   - src/models/operations/servicedelete.ts
   - src/models/operations/servicelist.ts
   - src/models/operations/servicesgetbyid.ts
@@ -696,6 +742,7 @@ generatedFiles:
   - src/sdk/dashboards.ts
   - src/sdk/datasources.ts
   - src/sdk/events.ts
+  - src/sdk/folders.ts
   - src/sdk/fullsummary.ts
   - src/sdk/incidents.ts
   - src/sdk/index.ts
@@ -1374,15 +1421,15 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE", "id": 1, "insight_tools": [], "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"name": "summary-workflow", "source": "manual", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "INACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-workflow", "source": "upload", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422": {}
   insights_workflow_create:
     speakeasy-default-insights-workflow-create:
       requestBody:
-        application/json: {"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE"}
+        application/json: {"name": "summary-workflow", "source": "transfer", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "upload", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   insights_workflow_get_by_id:
     speakeasy-default-insights-workflow-get-by-id:
@@ -1391,7 +1438,7 @@ examples:
           workflow_id: 931598
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "manual", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "INACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   insights_workflow_update:
     speakeasy-default-insights-workflow-update:
@@ -1399,10 +1446,10 @@ examples:
         path:
           workflow_id: 265006
       requestBody:
-        application/json: {"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE"}
+        application/json: {"name": "summary-workflow", "source": "manual", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "status": "ACTIVE", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "upload", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   directory_workflow_delete:
     speakeasy-default-directory-workflow-delete:
@@ -1421,7 +1468,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422": {}
   insights_tool_create:
     speakeasy-default-insights-tool-create:
@@ -1429,7 +1476,7 @@ examples:
         application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1}
       responses:
         "200":
-          application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   insight_tool_get_by_id:
     speakeasy-default-insight-tool-get-by-id:
@@ -1438,7 +1485,7 @@ examples:
           tool_id: "<id>"
       responses:
         "200":
-          application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   insights_tool_update:
     speakeasy-default-insights-tool-update:
@@ -1449,7 +1496,7 @@ examples:
         application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1}
       responses:
         "200":
-          application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   insight_tool_get_definitions:
     speakeasy-default-insight-tool-get-definitions:
@@ -1551,13 +1598,13 @@ examples:
         query:
           page: 0
           limit: 25
-          search_fields: ["insight_tool_id"]
+          search_fields: ["insight_key"]
           search_field_values: ["Some Object Name"]
           start_datetime: "2023-01-01T00:00:00Z"
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"id": 1, "session_id": 1, "insight_tool_id": 1, "insight_tool_version": 1, "insight_key": "summary", "string_value": "This is a summary of the call", "numeric_value": 1, "json_value": {}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z"}, {"id": 1, "session_id": 1, "insight_tool_id": 1, "insight_tool_version": 1, "insight_key": "summary", "string_value": "This is a summary of the call", "numeric_value": 1, "json_value": {}, "created_at": "2025-04-21T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"id": 1, "session_id": 12341, "upload_file_id": 12535, "insight_tool_id": 34531, "insight_tool_version": 1, "insight_key": "summary", "string_value": "This is a summary of the call", "numeric_value": 1, "json_value": {}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z"}, {"id": 1, "session_id": 12341, "upload_file_id": 12535, "insight_tool_id": 34531, "insight_tool_version": 1, "insight_key": "summary", "string_value": "This is a summary of the call", "numeric_value": 1, "json_value": {}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422": {}
   create_takeout_api_v1_takeouts_create_post:
     speakeasy-default-create-takeout-api-v1-takeouts-create-post:
@@ -1594,15 +1641,15 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"batch_id": "20250422.9", "campaign_id": 1, "expires_on": "2025-04-23T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-22T00:00:00Z", "deleted_at": "2025-04-22T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Missing required fields"}, {"batch_id": "20250422.9", "campaign_id": 1, "expires_on": "2025-04-23T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-22T00:00:00Z", "deleted_at": "2025-04-22T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"batch_id": "20250424.9", "campaign_id": 1, "expires_on": "2025-04-25T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-24T00:00:00Z", "deleted_at": "2025-04-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Missing required fields"}, {"batch_id": "20250424.9", "campaign_id": 1, "expires_on": "2025-04-25T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-24T00:00:00Z", "deleted_at": "2025-04-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422": {}
   outbound_batch_create:
     speakeasy-default-outbound-batch-create:
       requestBody:
-        application/json: {"batch_id": "20250422.9", "campaign_id": 1, "expires_on": "2025-04-23T00:00:00Z", "paused": true}
+        application/json: {"batch_id": "20250424.9", "campaign_id": 1, "expires_on": "2025-04-25T00:00:00Z", "paused": true}
       responses:
         "200":
-          application/json: {"batch_id": "20250422.9", "campaign_id": 1, "expires_on": "2025-04-23T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-22T00:00:00Z", "deleted_at": "2025-04-22T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
+          application/json: {"batch_id": "20250424.9", "campaign_id": 1, "expires_on": "2025-04-25T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-24T00:00:00Z", "deleted_at": "2025-04-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
         "422": {}
   outbound_batch_get_by_id:
     speakeasy-default-outbound-batch-get-by-id:
@@ -1611,7 +1658,7 @@ examples:
           batch_id: "<id>"
       responses:
         "200":
-          application/json: {"batch_id": "20250422.9", "campaign_id": 1, "expires_on": "2025-04-23T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-22T00:00:00Z", "deleted_at": "2025-04-22T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Missing required fields", "status_counts": {"CANCELED": 7, "CONNECTED": 100, "DUPLICATE": 5, "FAILED": 10, "INITIATED": 20, "PENDING": 10}}
+          application/json: {"batch_id": "20250424.9", "campaign_id": 1, "expires_on": "2025-04-25T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-24T00:00:00Z", "deleted_at": "2025-04-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Missing required fields", "status_counts": {"CANCELED": 7, "CONNECTED": 100, "DUPLICATE": 5, "FAILED": 10, "INITIATED": 20, "PENDING": 10}}
         "422": {}
   outbound_batch_update:
     speakeasy-default-outbound-batch-update:
@@ -1622,7 +1669,7 @@ examples:
         application/json: {"paused": false, "expires_on": "2027-01-01T06:00:00Z"}
       responses:
         "200":
-          application/json: {"batch_id": "20250422.9", "campaign_id": 1, "expires_on": "2025-04-23T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-22T00:00:00Z", "deleted_at": "2025-04-22T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
+          application/json: {"batch_id": "20250424.9", "campaign_id": 1, "expires_on": "2025-04-25T00:00:00Z", "paused": false, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-04-24T00:00:00Z", "deleted_at": "2025-04-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
         "422": {}
   outbound_batch_delete:
     speakeasy-default-outbound-batch-delete:
@@ -1646,7 +1693,7 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: [{"reference_id": "12345", "target": "user@email.com", "request_variables": {}, "channel_manager_sid": "LMc4b16a9df2ce33d84b3d30581fe6598c", "created_at": "2025-04-21T00:00:00Z", "sent_at": "2025-04-22T00:00:00Z", "attempt_count": 0, "session_id": 1, "conversation_id": 1, "channel_manager_status": "FAILED", "insights_status": "PENDING"}, {"reference_id": "12345", "target": "user@email.com", "request_variables": {}, "channel_manager_sid": "LMc4b16a9df2ce33d84b3d30581fe6598c", "created_at": "2025-04-21T00:00:00Z", "sent_at": "2025-04-22T00:00:00Z", "attempt_count": 0, "session_id": 1, "conversation_id": 1, "channel_manager_status": "BUSY", "insights_status": "FAILED"}]
+          application/json: [{"reference_id": "12345", "target": "user@email.com", "request_variables": {}, "channel_manager_sid": "LMc4b16a9df2ce33d84b3d30581fe6598c", "created_at": "2025-04-23T00:00:00Z", "sent_at": "2025-04-24T00:00:00Z", "attempt_count": 0, "session_id": 1, "conversation_id": 1, "channel_manager_status": "FAILED", "insights_status": "PENDING"}, {"reference_id": "12345", "target": "user@email.com", "request_variables": {}, "channel_manager_sid": "LMc4b16a9df2ce33d84b3d30581fe6598c", "created_at": "2025-04-23T00:00:00Z", "sent_at": "2025-04-24T00:00:00Z", "attempt_count": 0, "session_id": 1, "conversation_id": 1, "channel_manager_status": "BUSY", "insights_status": "FAILED"}]
         "422": {}
   outbound_batch_add:
     speakeasy-default-outbound-batch-add:
@@ -1674,7 +1721,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["tue"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-22T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}, {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-22T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["tue"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-24T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-24T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422": {}
   outbound_campaign_create:
     speakeasy-default-outbound-campaign-create:
@@ -1682,7 +1729,7 @@ examples:
         application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"]}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-22T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "test", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-24T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   outbound_campaign_get_by_id:
     speakeasy-default-outbound-campaign-get-by-id:
@@ -1691,7 +1738,7 @@ examples:
           campaign_id: "<id>"
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-22T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-24T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   outbound_campaign_update:
     speakeasy-default-outbound-campaign-update:
@@ -1702,7 +1749,7 @@ examples:
         application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "account@email.com", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "12h", "active_days": ["sun"]}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-22T00:00:00Z", "updated_at": "2025-04-22T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "label": "demo", "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "7d", "active_days": ["mon"], "id": 1, "agent_id": "agent_id", "created_at": "2025-04-24T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422": {}
   incident_get_by_id:
     speakeasy-default-incident-get-by-id:
@@ -1771,5 +1818,98 @@ examples:
         path:
           session_id: "<id>"
   users_delete_account: {}
+  insights_folder_list:
+    speakeasy-default-insights-folder-list:
+      parameters:
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["name"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: {"items": [{"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+        "422": {}
+  insights_folder_create:
+    speakeasy-default-insights-folder-create:
+      requestBody:
+        application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints"}
+      responses:
+        "200":
+          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  insights_folder_get_by_id:
+    speakeasy-default-insights-folder-get-by-id:
+      parameters:
+        path:
+          folder_id: 931598
+      responses:
+        "200":
+          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com", "folder_stats": {}}
+        "422": {}
+  insights_folder_update:
+    speakeasy-default-insights-folder-update:
+      parameters:
+        path:
+          folder_id: 857478
+      requestBody:
+        application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints"}
+      responses:
+        "200":
+          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  insights_folder_upload_file:
+    speakeasy-default-insights-folder-upload-file:
+      parameters:
+        path:
+          folder_id: 209119
+        query:
+          call_id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": 182764, "folder_id": 182764, "filename": "customer-complaints.wav", "object_key": "UPLOAD_CALL_ID/recording/2025/04/22/15/00/ce7d212e-80b0-4f0b-9e01-74322f146611.mp3", "call_id": "12345", "agent_number": "1234567890", "customer_number": "0987654321", "duration": 305.5, "start_time": "2025-04-23T00:00:00Z", "end_time": "2025-04-24T00:00:00Z", "error_message": "File not found", "created_at": "2025-04-23T00:00:00Z"}
+        "422": {}
+  insights_upload_list_files:
+    speakeasy-default-insights-upload-list-files:
+      parameters:
+        path:
+          folder_id: 74439
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["start_time"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: {"items": [], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+        "422": {}
+  insights_workflow_inactivate:
+    speakeasy-default-insights-workflow-inactivate:
+      parameters:
+        path:
+          workflow_id: 550727
+      responses:
+        "200":
+          application/json: {"name": "summary-workflow", "source": "transfer", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 2, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535]}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  insights_workflow_activate:
+    speakeasy-default-insights-workflow-activate:
+      parameters:
+        path:
+          workflow_id: 537910
+      requestBody:
+        application/json: {"is_acknowledged": true, "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}}
+      responses:
+        "200":
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 2, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535]}, "start_datetime": "2025-04-23T00:00:00Z", "end_datetime": "2025-04-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}, {"name": "summary-tool", "description": "Default tool - generates a summary of the call", "version": 1, "tool_arguments": {}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {}, "tool_result_set": {}}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "INACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": "3674.11", "estimated_daily_cost": "45.25", "estimated_backfill_cost": "4561.00"}, "created_at": "2025-04-23T00:00:00Z", "updated_at": "2025-04-24T00:00:00Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  insights_workflow_queue_work:
+    speakeasy-default-insights-workflow-queue-work:
+      requestBody:
+        application/json: {"workflow_name": "summary-workflow", "session_id_list": ["[12334,23445,34556]"], "file_id_list": ["[1234,1678,2224]"]}
 examplesVersion: 1.0.0
 generatedTests: {}

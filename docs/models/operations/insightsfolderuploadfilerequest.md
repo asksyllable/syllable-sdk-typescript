@@ -1,0 +1,23 @@
+# InsightsFolderUploadFileRequest
+
+## Example Usage
+
+```typescript
+import { InsightsFolderUploadFileRequest } from "syllable-sdk/models/operations";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `folderId`                                                                                         | *number*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `callId`                                                                                           | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `agentNumber`                                                                                      | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `customerNumber`                                                                                   | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `startTime`                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `endTime`                                                                                          | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `duration`                                                                                         | *number*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `metadata`                                                                                         | *string*                                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `bodyInsightsFolderUploadFile`                                                                     | [components.BodyInsightsFolderUploadFile](../../models/components/bodyinsightsfolderuploadfile.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
