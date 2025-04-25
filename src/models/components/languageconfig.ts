@@ -43,7 +43,15 @@ export type LanguageConfig = {
    */
   voiceDisplayName: AgentVoiceDisplayName;
   /**
-   * DTMF code that should be used for the language in the menu generated from the language group
+   * Speed of the voice in the range of 0.25 to 4.0 (OpenAI and Google) or 0.7 to 1.2 (ElevenLabs). Standard speed is 1.0.
+   */
+  voiceSpeed?: number | null | undefined;
+  /**
+   * Pitch of the voice in the range of -20.0 to 20.0. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch. 0 means use the original pitch. Only supported for Google configs.
+   */
+  voicePitch?: number | null | undefined;
+  /**
+   * DTMF code that should be used for the language in the menu generated from the language group.
    */
   dtmfCode: number;
 };
@@ -57,12 +65,16 @@ export const LanguageConfig$inboundSchema: z.ZodType<
   language_code: LanguageCode$inboundSchema,
   voice_provider: TtsProvider$inboundSchema,
   voice_display_name: AgentVoiceDisplayName$inboundSchema,
+  voice_speed: z.nullable(z.number()).optional(),
+  voice_pitch: z.nullable(z.number()).optional(),
   dtmf_code: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     "language_code": "languageCode",
     "voice_provider": "voiceProvider",
     "voice_display_name": "voiceDisplayName",
+    "voice_speed": "voiceSpeed",
+    "voice_pitch": "voicePitch",
     "dtmf_code": "dtmfCode",
   });
 });
@@ -72,6 +84,8 @@ export type LanguageConfig$Outbound = {
   language_code: string;
   voice_provider: string;
   voice_display_name: string;
+  voice_speed?: number | null | undefined;
+  voice_pitch?: number | null | undefined;
   dtmf_code: number;
 };
 
@@ -84,12 +98,16 @@ export const LanguageConfig$outboundSchema: z.ZodType<
   languageCode: LanguageCode$outboundSchema,
   voiceProvider: TtsProvider$outboundSchema,
   voiceDisplayName: AgentVoiceDisplayName$outboundSchema,
+  voiceSpeed: z.nullable(z.number()).optional(),
+  voicePitch: z.nullable(z.number()).optional(),
   dtmfCode: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     languageCode: "language_code",
     voiceProvider: "voice_provider",
     voiceDisplayName: "voice_display_name",
+    voiceSpeed: "voice_speed",
+    voicePitch: "voice_pitch",
     dtmfCode: "dtmf_code",
   });
 });

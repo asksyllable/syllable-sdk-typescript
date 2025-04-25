@@ -9,12 +9,13 @@ import { ClosedEnum } from "../../types/enums.js";
  * Model for an agent voice.
  */
 export const AgentVoiceModel = {
-  MultilingualV2: "Multilingual_v2",
+  ElevenTurboV25: "Eleven_Turbo_v2_5",
   Neural2: "Neural2",
   Standard: "Standard",
   Studio: "Studio",
   WaveNet: "WaveNet",
-  Whisper: "Whisper",
+  Tts1: "tts-1",
+  Gpt4oMiniTts: "gpt-4o-mini-tts",
 } as const;
 /**
  * Model for an agent voice.
