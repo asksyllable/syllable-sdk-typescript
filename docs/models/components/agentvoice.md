@@ -12,7 +12,7 @@ let value: AgentVoice = {
   displayName: "Brian",
   varName: "openai:sage",
   gender: "female",
-  model: "WaveNet",
+  model: "tts-1",
   supportedLanguages: [
     {
       name: "Spanish",

@@ -1425,8 +1425,8 @@ actions:
                     67535,
                   ],
                 },
-                startDatetime: new Date("2025-04-23T00:00:00Z"),
-                endDatetime: new Date("2025-04-24T00:00:00Z"),
+                startDatetime: new Date("2025-04-24T00:00:00Z"),
+                endDatetime: new Date("2025-04-25T00:00:00Z"),
               });
 
               // Handle the result
@@ -1544,8 +1544,8 @@ actions:
                       67535,
                     ],
                   },
-                  startDatetime: new Date("2025-04-23T00:00:00Z"),
-                  endDatetime: new Date("2025-04-24T00:00:00Z"),
+                  startDatetime: new Date("2025-04-24T00:00:00Z"),
+                  endDatetime: new Date("2025-04-25T00:00:00Z"),
                 },
               });
 
@@ -1660,12 +1660,16 @@ actions:
                     languageCode: "en-US",
                     voiceProvider: "OpenAI",
                     voiceDisplayName: "Alloy",
+                    voiceSpeed: 1,
+                    voicePitch: 0,
                     dtmfCode: 1,
                   },
                   {
                     languageCode: "es-US",
                     voiceProvider: "Google",
                     voiceDisplayName: "Alejandro",
+                    voiceSpeed: 1,
+                    voicePitch: 0,
                     dtmfCode: 1,
                   },
                 ],
@@ -1698,12 +1702,16 @@ actions:
                     languageCode: "en-US",
                     voiceProvider: "OpenAI",
                     voiceDisplayName: "Alloy",
+                    voiceSpeed: 1,
+                    voicePitch: 0,
                     dtmfCode: 1,
                   },
                   {
                     languageCode: "es-US",
                     voiceProvider: "Google",
                     voiceDisplayName: "Alejandro",
+                    voiceSpeed: 1,
+                    voicePitch: 0,
                     dtmfCode: 1,
                   },
                 ],
@@ -1806,9 +1814,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250424.9",
+                batchId: "20250425.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-04-25T00:00:00Z"),
+                expiresOn: new Date("2025-04-26T00:00:00Z"),
                 paused: true,
               });
 
