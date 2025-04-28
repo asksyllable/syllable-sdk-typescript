@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 239783e1e667b63573b1fceb0ad0e072
+  docChecksum: 2cb19558a728b85a223c42fa5c7281a6
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.114
-  configChecksum: 349aa291f89179267d5d04afda6fabde
+  releaseVersion: 0.1.0-alpha.115
+  configChecksum: 154c3767a3b4d8fa0a2882cef1e2cc7e
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -235,7 +235,6 @@ generatedFiles:
   - docs/models/components/ttsprovider.md
   - docs/models/components/type.md
   - docs/models/components/validationerror.md
-  - docs/models/components/voicesamplecreaterequest.md
   - docs/models/errors/httpvalidationerror.md
   - docs/models/operations/agentdeleterequest.md
   - docs/models/operations/agentgetbyidrequest.md
@@ -409,7 +408,6 @@ generatedFiles:
   - src/funcs/languageGroupsCreate.ts
   - src/funcs/languageGroupsDelete.ts
   - src/funcs/languageGroupsGetById.ts
-  - src/funcs/languageGroupsLanguageGroupsCreateVoiceSample.ts
   - src/funcs/languageGroupsList.ts
   - src/funcs/languageGroupsUpdate.ts
   - src/funcs/outboundBatchesAdd.ts
@@ -654,7 +652,6 @@ generatedFiles:
   - src/models/components/toolupdaterequest.ts
   - src/models/components/ttsprovider.ts
   - src/models/components/validationerror.ts
-  - src/models/components/voicesamplecreaterequest.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/httpvalidationerror.ts
   - src/models/errors/index.ts

@@ -5,7 +5,6 @@
 import { languageGroupsCreate } from "../funcs/languageGroupsCreate.js";
 import { languageGroupsDelete } from "../funcs/languageGroupsDelete.js";
 import { languageGroupsGetById } from "../funcs/languageGroupsGetById.js";
-import { languageGroupsLanguageGroupsCreateVoiceSample } from "../funcs/languageGroupsLanguageGroupsCreateVoiceSample.js";
 import { languageGroupsList } from "../funcs/languageGroupsList.js";
 import { languageGroupsUpdate } from "../funcs/languageGroupsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -93,23 +92,6 @@ export class LanguageGroups extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(languageGroupsDelete(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create Voice Sample
-   *
-   * @remarks
-   * Generate voice sample.
-   */
-  async languageGroupsCreateVoiceSample(
-    request: components.VoiceSampleCreateRequest,
-    options?: RequestOptions,
-  ): Promise<any> {
-    return unwrapAsync(languageGroupsLanguageGroupsCreateVoiceSample(
       this,
       request,
       options,

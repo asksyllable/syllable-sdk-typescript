@@ -176,4 +176,3 @@ export * from "./toolresultdata.js";
 export * from "./toolupdaterequest.js";
 export * from "./ttsprovider.js";
 export * from "./validationerror.js";
-export * from "./voicesamplecreaterequest.js";
