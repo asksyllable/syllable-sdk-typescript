@@ -11,6 +11,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const PromptProperties = {
   Id: "id",
   Name: "name",
+  NameExact: "name_exact",
   Description: "description",
   NameDescription: "name_description",
   Context: "context",

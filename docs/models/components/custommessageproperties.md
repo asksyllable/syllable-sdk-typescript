@@ -11,5 +11,5 @@ let value: CustomMessageProperties = "updated_at";
 ## Values
 
 ```typescript
-"id" | "name" | "text" | "label" | "updated_at"
+"id" | "name" | "name_exact" | "text" | "label" | "updated_at"
 ```

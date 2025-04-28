@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const CustomMessageProperties = {
   Id: "id",
   Name: "name",
+  NameExact: "name_exact",
   Text: "text",
   Label: "label",
   UpdatedAt: "updated_at",
