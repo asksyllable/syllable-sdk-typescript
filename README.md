@@ -244,7 +244,6 @@ run();
 * [update](docs/sdks/languagegroups/README.md#update) - Update Language Group
 * [getById](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
 * [delete](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
-* [languageGroupsCreateVoiceSample](docs/sdks/languagegroups/README.md#languagegroupscreatevoicesample) - Create Voice Sample
 
 ### [outbound](docs/sdks/outbound/README.md)
 
@@ -415,7 +414,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`languageGroupsCreate`](docs/sdks/languagegroups/README.md#create) - Create Language Group
 - [`languageGroupsDelete`](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
 - [`languageGroupsGetById`](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
-- [`languageGroupsLanguageGroupsCreateVoiceSample`](docs/sdks/languagegroups/README.md#languagegroupscreatevoicesample) - Create Voice Sample
 - [`languageGroupsList`](docs/sdks/languagegroups/README.md#list) - List Language Groups
 - [`languageGroupsUpdate`](docs/sdks/languagegroups/README.md#update) - Update Language Group
 - [`outboundBatchesAdd`](docs/sdks/batches/README.md#add) - Create Outbound Communication Request
