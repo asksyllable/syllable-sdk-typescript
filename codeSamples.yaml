@@ -1425,8 +1425,8 @@ actions:
                     67535,
                   ],
                 },
-                startDatetime: new Date("2025-04-26T00:00:00Z"),
-                endDatetime: new Date("2025-04-27T00:00:00Z"),
+                startDatetime: new Date("2025-04-27T00:00:00Z"),
+                endDatetime: new Date("2025-04-28T00:00:00Z"),
               });
 
               // Handle the result
@@ -1544,8 +1544,8 @@ actions:
                       67535,
                     ],
                   },
-                  startDatetime: new Date("2025-04-26T00:00:00Z"),
-                  endDatetime: new Date("2025-04-27T00:00:00Z"),
+                  startDatetime: new Date("2025-04-27T00:00:00Z"),
+                  endDatetime: new Date("2025-04-28T00:00:00Z"),
                 },
               });
 
@@ -1725,6 +1725,32 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/language_groups/voices/sample"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.languageGroups.languageGroupsCreateVoiceSample({
+                languageCode: "en-US",
+                voiceProvider: "OpenAI",
+                voiceDisplayName: "Onyx",
+                voiceSpeed: 1,
+                voicePitch: 0,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["delete"]
     update:
       x-codeSamples:
@@ -1814,9 +1840,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250427.9",
+                batchId: "20250428.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-04-28T00:00:00Z"),
+                expiresOn: new Date("2025-04-29T00:00:00Z"),
                 paused: true,
               });
 
