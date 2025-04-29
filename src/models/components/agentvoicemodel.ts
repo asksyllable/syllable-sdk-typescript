@@ -9,7 +9,7 @@ import { ClosedEnum } from "../../types/enums.js";
  * Model for an agent voice.
  */
 export const AgentVoiceModel = {
-  ElevenTurboV25: "Eleven_Turbo_v2_5",
+  ElevenFlashV25: "eleven_flash_v2_5",
   Neural2: "Neural2",
   Standard: "Standard",
   Studio: "Studio",
