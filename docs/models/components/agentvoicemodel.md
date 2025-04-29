@@ -13,5 +13,5 @@ let value: AgentVoiceModel = "tts-1";
 ## Values
 
 ```typescript
-"Eleven_Turbo_v2_5" | "Neural2" | "Standard" | "Studio" | "WaveNet" | "tts-1" | "gpt-4o-mini-tts"
+"eleven_flash_v2_5" | "Neural2" | "Standard" | "Studio" | "WaveNet" | "tts-1" | "gpt-4o-mini-tts"
 ```
