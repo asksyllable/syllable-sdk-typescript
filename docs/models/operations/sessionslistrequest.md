@@ -8,7 +8,7 @@ import { SessionsListRequest } from "syllable-sdk/models/operations";
 let value: SessionsListRequest = {
   page: 0,
   searchFields: [
-    "source",
+    "agent_name",
   ],
   searchFieldValues: [
     "Some Object Name",
