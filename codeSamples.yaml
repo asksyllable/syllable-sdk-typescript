@@ -1425,8 +1425,8 @@ actions:
                     67535,
                   ],
                 },
-                startDatetime: new Date("2025-04-28T00:00:00Z"),
-                endDatetime: new Date("2025-04-29T00:00:00Z"),
+                startDatetime: new Date("2025-04-29T00:00:00Z"),
+                endDatetime: new Date("2025-04-30T00:00:00Z"),
               });
 
               // Handle the result
@@ -1544,8 +1544,8 @@ actions:
                       67535,
                     ],
                   },
-                  startDatetime: new Date("2025-04-28T00:00:00Z"),
-                  endDatetime: new Date("2025-04-29T00:00:00Z"),
+                  startDatetime: new Date("2025-04-29T00:00:00Z"),
+                  endDatetime: new Date("2025-04-30T00:00:00Z"),
                 },
               });
 
@@ -1840,9 +1840,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250429.9",
+                batchId: "20250430.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-04-30T00:00:00Z"),
+                expiresOn: new Date("2025-05-01T00:00:00Z"),
                 paused: true,
               });
 
