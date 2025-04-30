@@ -7,6 +7,7 @@ export * from "./agentgetbyid.js";
 export * from "./agentlist.js";
 export * from "./availabletargets.js";
 export * from "./channelslist.js";
+export * from "./channelstwiliogetbyid.js";
 export * from "./channeltargetscreate.js";
 export * from "./channeltargetsdelete.js";
 export * from "./channeltargetsgetbyid.js";

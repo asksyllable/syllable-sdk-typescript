@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: b90c49308c64f51b14e54de77f447225
+  docChecksum: 6ab6da033a60c392e845ac64def9d76d
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.122
-  configChecksum: 7fb51369ac790b444ac413a0fc7d098c
+  releaseVersion: 0.1.0-alpha.123
+  configChecksum: f13eee3be2fb88319eb21a9f13f0e61c
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -233,6 +233,10 @@ generatedFiles:
   - docs/models/components/toolresultset.md
   - docs/models/components/toolupdaterequest.md
   - docs/models/components/ttsprovider.md
+  - docs/models/components/twiliochannelconfigcreate.md
+  - docs/models/components/twiliochannelconfigupdate.md
+  - docs/models/components/twiliochannelcreaterequest.md
+  - docs/models/components/twiliochannelupdaterequest.md
   - docs/models/components/type.md
   - docs/models/components/validationerror.md
   - docs/models/components/voicesamplecreaterequest.md
@@ -242,6 +246,7 @@ generatedFiles:
   - docs/models/operations/agentlistrequest.md
   - docs/models/operations/availabletargetsrequest.md
   - docs/models/operations/channelslistrequest.md
+  - docs/models/operations/channelstwiliogetbyidrequest.md
   - docs/models/operations/channeltargetscreaterequest.md
   - docs/models/operations/channeltargetsdeleterequest.md
   - docs/models/operations/channeltargetsgetbyidrequest.md
@@ -354,13 +359,16 @@ generatedFiles:
   - src/funcs/agentsList.ts
   - src/funcs/agentsTestSendTestMessage.ts
   - src/funcs/agentsUpdate.ts
+  - src/funcs/channelsCreate.ts
   - src/funcs/channelsDelete.ts
+  - src/funcs/channelsGetById.ts
   - src/funcs/channelsList.ts
   - src/funcs/channelsTargetsAvailableTargets.ts
   - src/funcs/channelsTargetsCreate.ts
   - src/funcs/channelsTargetsGetById.ts
   - src/funcs/channelsTargetsList.ts
   - src/funcs/channelsTargetsUpdate.ts
+  - src/funcs/channelsUpdate.ts
   - src/funcs/conversationsList.ts
   - src/funcs/customMessagesCreate.ts
   - src/funcs/customMessagesDelete.ts
@@ -653,6 +661,10 @@ generatedFiles:
   - src/models/components/toolresultdata.ts
   - src/models/components/toolupdaterequest.ts
   - src/models/components/ttsprovider.ts
+  - src/models/components/twiliochannelconfigcreate.ts
+  - src/models/components/twiliochannelconfigupdate.ts
+  - src/models/components/twiliochannelcreaterequest.ts
+  - src/models/components/twiliochannelupdaterequest.ts
   - src/models/components/validationerror.ts
   - src/models/components/voicesamplecreaterequest.ts
   - src/models/errors/httpclienterrors.ts
@@ -665,6 +677,7 @@ generatedFiles:
   - src/models/operations/agentlist.ts
   - src/models/operations/availabletargets.ts
   - src/models/operations/channelslist.ts
+  - src/models/operations/channelstwiliogetbyid.ts
   - src/models/operations/channeltargetscreate.ts
   - src/models/operations/channeltargetsdelete.ts
   - src/models/operations/channeltargetsgetbyid.ts
@@ -859,7 +872,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"name": "syllable-webchat", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "id": 678317}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "[\"chat\",\"voice\"]", "id": 229716}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "[\"chat\",\"voice\"]", "id": 635532}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"name": "syllable-webchat", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "is_system_channel": false, "id": 678317}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "[\"chat\",\"voice\"]", "is_system_channel": false, "id": 229716}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "[\"chat\",\"voice\"]", "is_system_channel": false, "id": 635532}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422":
           application/json: {}
   channel_targets_delete:
@@ -1918,5 +1931,30 @@ examples:
     speakeasy-default-language-groups-create-voice-sample:
       requestBody:
         application/json: {"language_code": "en-US", "voice_provider": "OpenAI", "voice_display_name": "Onyx", "voice_speed": 1, "voice_pitch": 0}
+  channels_twilio_get_by_id:
+    speakeasy-default-channels-twilio-get-by-id:
+      parameters:
+        path:
+          channel_id: 931598
+      responses:
+        "200":
+          application/json: {"name": "syllable-webchat", "channel_service": "email", "supported_modes": "[\"chat\",\"voice\"]", "is_system_channel": false, "id": 467619}
+        "422": {}
+  channels_twilio_update:
+    speakeasy-default-channels-twilio-update:
+      requestBody:
+        application/json: {"id": 1, "name": "syllable-webchat", "config": {"account_sid": "AC123...", "auth_token": "sometoken"}}
+      responses:
+        "200":
+          application/json: {"name": "syllable-webchat", "channel_service": "webchat", "supported_modes": "[\"chat\",\"voice\"]", "is_system_channel": false, "id": 597129}
+        "422": {}
+  channels_twilio_create:
+    speakeasy-default-channels-twilio-create:
+      requestBody:
+        application/json: {"name": "syllable-webchat", "config": {"account_sid": "AC123...", "auth_token": "sometoken"}}
+      responses:
+        "200":
+          application/json: {"name": "syllable-webchat", "channel_service": "twilio", "supported_modes": "[\"chat\",\"voice\"]", "is_system_channel": false, "id": 638424}
+        "422": {}
 examplesVersion: 1.0.0
 generatedTests: {}
