@@ -6,7 +6,7 @@
 import { DataSourcesDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: DataSourcesDeleteRequest = {
-  dataSourceId: 253941,
+  dataSourceId: 213312,
   reason: "<value>",
 };
 ```

@@ -27,6 +27,10 @@ export type Channel = {
    */
   supportedModes?: string | null | undefined;
   /**
+   * Whether the channel is a built-in system channel (i.e., is not customizable)
+   */
+  isSystemChannel?: boolean | undefined;
+  /**
    * The channel ID
    */
   id: number;
@@ -38,11 +42,13 @@ export const Channel$inboundSchema: z.ZodType<Channel, z.ZodTypeDef, unknown> =
     name: z.string(),
     channel_service: ChannelServices$inboundSchema,
     supported_modes: z.nullable(z.string()).optional(),
+    is_system_channel: z.boolean().default(true),
     id: z.number().int(),
   }).transform((v) => {
     return remap$(v, {
       "channel_service": "channelService",
       "supported_modes": "supportedModes",
+      "is_system_channel": "isSystemChannel",
     });
   });
 
@@ -51,6 +57,7 @@ export type Channel$Outbound = {
   name: string;
   channel_service: string;
   supported_modes?: string | null | undefined;
+  is_system_channel: boolean;
   id: number;
 };
 
@@ -63,11 +70,13 @@ export const Channel$outboundSchema: z.ZodType<
   name: z.string(),
   channelService: ChannelServices$outboundSchema,
   supportedModes: z.nullable(z.string()).optional(),
+  isSystemChannel: z.boolean().default(true),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     channelService: "channel_service",
     supportedModes: "supported_modes",
+    isSystemChannel: "is_system_channel",
   });
 });
 

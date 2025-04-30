@@ -6,7 +6,7 @@
 import { InsightsWorkflowActivateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowActivateRequest = {
-  workflowId: 396060,
+  workflowId: 565421,
   insightWorkflowActivate: {
     isAcknowledged: true,
     estimate: {
