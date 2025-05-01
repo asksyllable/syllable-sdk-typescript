@@ -11,11 +11,29 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InsightsFolderUploadFileRequest = {
   folderId: number;
+  /**
+   * A unique identifier for the call
+   */
   callId: string;
+  /**
+   * The phone number or ID of the agent involved.
+   */
   agentNumber?: string | null | undefined;
+  /**
+   * The phone number or ID of the customer.
+   */
   customerNumber?: string | null | undefined;
+  /**
+   * The timestamp of the call's beginning
+   */
   startTime?: Date | null | undefined;
+  /**
+   * The timestamp of the call's end.
+   */
   endTime?: Date | null | undefined;
+  /**
+   * The call duration in seconds.
+   */
   duration?: number | null | undefined;
   metadata?: string | null | undefined;
   bodyInsightsFolderUploadFile?:
