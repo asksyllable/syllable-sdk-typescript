@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 8daee9c3d0730f5ce9d9d6e01c70c233
+  docChecksum: 6372d454ccf43b327c9c6405d34ed1b1
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.124
-  configChecksum: 073112fd45c88a361a1309f1b0a00b30
+  releaseVersion: 0.1.0-alpha.125
+  configChecksum: 13d8b50a2744d26c0861e7db8f585376
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
