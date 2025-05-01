@@ -10,9 +10,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OutboundBatchResultsRequest = {
   batchId: string;
-  referenceId?: string | undefined;
-  status?: string | undefined;
-  insightsStatus?: string | undefined;
+  referenceId?: string | null | undefined;
+  status?: string | null | undefined;
+  insightsStatus?: string | null | undefined;
 };
 
 /** @internal */
@@ -22,9 +22,9 @@ export const OutboundBatchResultsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   batch_id: z.string(),
-  reference_id: z.string().optional(),
-  status: z.string().optional(),
-  insights_status: z.string().optional(),
+  reference_id: z.nullable(z.string()).optional(),
+  status: z.nullable(z.string()).optional(),
+  insights_status: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
@@ -36,9 +36,9 @@ export const OutboundBatchResultsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type OutboundBatchResultsRequest$Outbound = {
   batch_id: string;
-  reference_id?: string | undefined;
-  status?: string | undefined;
-  insights_status?: string | undefined;
+  reference_id?: string | null | undefined;
+  status?: string | null | undefined;
+  insights_status?: string | null | undefined;
 };
 
 /** @internal */
@@ -48,9 +48,9 @@ export const OutboundBatchResultsRequest$outboundSchema: z.ZodType<
   OutboundBatchResultsRequest
 > = z.object({
   batchId: z.string(),
-  referenceId: z.string().optional(),
-  status: z.string().optional(),
-  insightsStatus: z.string().optional(),
+  referenceId: z.nullable(z.string()).optional(),
+  status: z.nullable(z.string()).optional(),
+  insightsStatus: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
