@@ -8,15 +8,23 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Parameters for tools that use this definition and their associated types
- */
-export type ToolParameters = {};
+export type ToolParameters4 = {};
 
-/**
- * Result key/types for insight tool definition
- */
-export type ToolResultSet = {};
+export type ToolParameters =
+  | ToolParameters4
+  | string
+  | number
+  | number
+  | Array<any>;
+
+export type ToolResultSet4 = {};
+
+export type ToolResultSet =
+  | ToolResultSet4
+  | string
+  | number
+  | number
+  | Array<any>;
 
 /**
  * Model for an insight tool definition. This is a template that can be used by multiple insight
@@ -44,29 +52,96 @@ export type InsightToolDefinition = {
   /**
    * Parameters for tools that use this definition and their associated types
    */
-  toolParameters: ToolParameters;
+  toolParameters: {
+    [k: string]: ToolParameters4 | string | number | number | Array<any>;
+  };
   /**
    * Result key/types for insight tool definition
    */
-  toolResultSet: ToolResultSet;
+  toolResultSet: {
+    [k: string]: ToolResultSet4 | string | number | number | Array<any>;
+  };
 };
+
+/** @internal */
+export const ToolParameters4$inboundSchema: z.ZodType<
+  ToolParameters4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type ToolParameters4$Outbound = {};
+
+/** @internal */
+export const ToolParameters4$outboundSchema: z.ZodType<
+  ToolParameters4$Outbound,
+  z.ZodTypeDef,
+  ToolParameters4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ToolParameters4$ {
+  /** @deprecated use `ToolParameters4$inboundSchema` instead. */
+  export const inboundSchema = ToolParameters4$inboundSchema;
+  /** @deprecated use `ToolParameters4$outboundSchema` instead. */
+  export const outboundSchema = ToolParameters4$outboundSchema;
+  /** @deprecated use `ToolParameters4$Outbound` instead. */
+  export type Outbound = ToolParameters4$Outbound;
+}
+
+export function toolParameters4ToJSON(
+  toolParameters4: ToolParameters4,
+): string {
+  return JSON.stringify(ToolParameters4$outboundSchema.parse(toolParameters4));
+}
+
+export function toolParameters4FromJSON(
+  jsonString: string,
+): SafeParseResult<ToolParameters4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ToolParameters4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ToolParameters4' from JSON`,
+  );
+}
 
 /** @internal */
 export const ToolParameters$inboundSchema: z.ZodType<
   ToolParameters,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([
+  z.lazy(() => ToolParameters4$inboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
 
 /** @internal */
-export type ToolParameters$Outbound = {};
+export type ToolParameters$Outbound =
+  | ToolParameters4$Outbound
+  | string
+  | number
+  | number
+  | Array<any>;
 
 /** @internal */
 export const ToolParameters$outboundSchema: z.ZodType<
   ToolParameters$Outbound,
   z.ZodTypeDef,
   ToolParameters
-> = z.object({});
+> = z.union([
+  z.lazy(() => ToolParameters4$outboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -96,21 +171,82 @@ export function toolParametersFromJSON(
 }
 
 /** @internal */
-export const ToolResultSet$inboundSchema: z.ZodType<
-  ToolResultSet,
+export const ToolResultSet4$inboundSchema: z.ZodType<
+  ToolResultSet4,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type ToolResultSet$Outbound = {};
+export type ToolResultSet4$Outbound = {};
+
+/** @internal */
+export const ToolResultSet4$outboundSchema: z.ZodType<
+  ToolResultSet4$Outbound,
+  z.ZodTypeDef,
+  ToolResultSet4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ToolResultSet4$ {
+  /** @deprecated use `ToolResultSet4$inboundSchema` instead. */
+  export const inboundSchema = ToolResultSet4$inboundSchema;
+  /** @deprecated use `ToolResultSet4$outboundSchema` instead. */
+  export const outboundSchema = ToolResultSet4$outboundSchema;
+  /** @deprecated use `ToolResultSet4$Outbound` instead. */
+  export type Outbound = ToolResultSet4$Outbound;
+}
+
+export function toolResultSet4ToJSON(toolResultSet4: ToolResultSet4): string {
+  return JSON.stringify(ToolResultSet4$outboundSchema.parse(toolResultSet4));
+}
+
+export function toolResultSet4FromJSON(
+  jsonString: string,
+): SafeParseResult<ToolResultSet4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ToolResultSet4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ToolResultSet4' from JSON`,
+  );
+}
+
+/** @internal */
+export const ToolResultSet$inboundSchema: z.ZodType<
+  ToolResultSet,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => ToolResultSet4$inboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type ToolResultSet$Outbound =
+  | ToolResultSet4$Outbound
+  | string
+  | number
+  | number
+  | Array<any>;
 
 /** @internal */
 export const ToolResultSet$outboundSchema: z.ZodType<
   ToolResultSet$Outbound,
   z.ZodTypeDef,
   ToolResultSet
-> = z.object({});
+> = z.union([
+  z.lazy(() => ToolResultSet4$outboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -149,8 +285,24 @@ export const InsightToolDefinition$inboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   description: z.string(),
-  tool_parameters: z.lazy(() => ToolParameters$inboundSchema),
-  tool_result_set: z.lazy(() => ToolResultSet$inboundSchema),
+  tool_parameters: z.record(
+    z.union([
+      z.lazy(() => ToolParameters4$inboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
+  tool_result_set: z.record(
+    z.union([
+      z.lazy(() => ToolResultSet4$inboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "tool_parameters": "toolParameters",
@@ -164,8 +316,22 @@ export type InsightToolDefinition$Outbound = {
   name: string;
   type: string;
   description: string;
-  tool_parameters: ToolParameters$Outbound;
-  tool_result_set: ToolResultSet$Outbound;
+  tool_parameters: {
+    [k: string]:
+      | ToolParameters4$Outbound
+      | string
+      | number
+      | number
+      | Array<any>;
+  };
+  tool_result_set: {
+    [k: string]:
+      | ToolResultSet4$Outbound
+      | string
+      | number
+      | number
+      | Array<any>;
+  };
 };
 
 /** @internal */
@@ -178,8 +344,24 @@ export const InsightToolDefinition$outboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   description: z.string(),
-  toolParameters: z.lazy(() => ToolParameters$outboundSchema),
-  toolResultSet: z.lazy(() => ToolResultSet$outboundSchema),
+  toolParameters: z.record(
+    z.union([
+      z.lazy(() => ToolParameters4$outboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
+  toolResultSet: z.record(
+    z.union([
+      z.lazy(() => ToolResultSet4$outboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
 }).transform((v) => {
   return remap$(v, {
     toolParameters: "tool_parameters",

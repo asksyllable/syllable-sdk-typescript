@@ -9,7 +9,7 @@ let value: ListResponseInsightWorkflowOutput = {
   items: [
     {
       name: "summary-workflow",
-      source: "upload",
+      source: "agent",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
@@ -30,15 +30,18 @@ let value: ListResponseInsightWorkflowOutput = {
           67535,
         ],
       },
-      startDatetime: new Date("2025-04-30T00:00:00Z"),
-      endDatetime: new Date("2025-05-01T00:00:00Z"),
+      startDatetime: new Date("2025-05-01T00:00:00Z"),
+      endDatetime: new Date("2025-05-02T00:00:00Z"),
       id: 1,
       insightTools: [
         {
           name: "summary-tool",
           description: "Default tool - generates a summary of the call",
           version: 1,
-          toolArguments: {},
+          toolArguments: {
+            "prompt":
+              "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
+          },
           insightToolDefinitionId: 1,
           id: 1,
           insightToolDefinition: {
@@ -47,11 +50,15 @@ let value: ListResponseInsightWorkflowOutput = {
             type: "<value>",
             description:
               "An LLM tool evaluates a transcript with a given prompt",
-            toolParameters: {},
-            toolResultSet: {},
+            toolParameters: {
+              "prompt": "string",
+            },
+            toolResultSet: {
+              "summary": "string",
+            },
           },
-          createdAt: new Date("2025-04-30T00:00:00Z"),
-          updatedAt: new Date("2025-05-01T00:00:00Z"),
+          createdAt: new Date("2025-05-01T00:00:00Z"),
+          updatedAt: new Date("2025-05-02T00:00:00Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
@@ -64,8 +71,8 @@ let value: ListResponseInsightWorkflowOutput = {
         estimatedDailyCost: 45.25,
         estimatedBackfillCost: 4561.00,
       },
-      createdAt: new Date("2025-04-30T00:00:00Z"),
-      updatedAt: new Date("2025-05-01T00:00:00Z"),
+      createdAt: new Date("2025-05-01T00:00:00Z"),
+      updatedAt: new Date("2025-05-02T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

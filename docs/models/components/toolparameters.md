@@ -1,16 +1,37 @@
 # ToolParameters
 
-Parameters for tools that use this definition and their associated types
 
-## Example Usage
+## Supported Types
+
+### `string`
 
 ```typescript
-import { ToolParameters } from "syllable-sdk/models/components";
-
-let value: ToolParameters = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 813798;
+```
+
+### `number`
+
+```typescript
+const value: number = 3965.06;
+```
+
+### `components.ToolParameters4`
+
+```typescript
+const value: components.ToolParameters4 = {};
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "<value>",
+];
+```
+

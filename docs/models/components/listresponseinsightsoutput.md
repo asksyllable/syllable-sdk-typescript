@@ -16,9 +16,14 @@ let value: ListResponseInsightsOutput = {
       insightKey: "summary",
       stringValue: "This is a summary of the call",
       numericValue: 1,
-      jsonValue: {},
-      createdAt: new Date("2025-04-30T00:00:00Z"),
-      updatedAt: new Date("2025-05-01T00:00:00Z"),
+      jsonValue: {
+        "content":
+          " was there anything else that I can assist you with other than this",
+        "role": "assistant",
+        "start_time": 289,
+      },
+      createdAt: new Date("2025-05-01T00:00:00Z"),
+      updatedAt: new Date("2025-05-02T00:00:00Z"),
     },
   ],
   page: 0,

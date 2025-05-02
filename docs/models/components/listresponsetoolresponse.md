@@ -20,7 +20,7 @@ let value: ListResponseToolResponse = {
         },
         endpoint: {
           url: "https://api.example.com",
-          method: "post",
+          method: "get",
           argumentLocation: "query",
         },
         defaults: {
@@ -60,7 +60,7 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2025-07-26T23:03:04.026Z"),
+      lastUpdated: new Date("2023-02-04T21:29:28.328Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

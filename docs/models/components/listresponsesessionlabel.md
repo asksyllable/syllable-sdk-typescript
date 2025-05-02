@@ -13,7 +13,7 @@ let value: ListResponseSessionLabel = {
       code: "BAD",
       userEmail: "user@email.com",
       issueCategories: [
-        "Silent treatment",
+        "Speech transcription (STT)",
       ],
       id: 1,
       timestamp: "2024-01-01T12:00:00Z",

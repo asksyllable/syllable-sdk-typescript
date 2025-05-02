@@ -1,16 +1,37 @@
 # InsightToolInputToolArguments
 
-Arguments for calling the insight tool
 
-## Example Usage
+## Supported Types
+
+### `string`
 
 ```typescript
-import { InsightToolInputToolArguments } from "syllable-sdk/models/components";
-
-let value: InsightToolInputToolArguments = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 501324;
+```
+
+### `number`
+
+```typescript
+const value: number = 9560.84;
+```
+
+### `components.ToolArguments4`
+
+```typescript
+const value: components.ToolArguments4 = {};
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "<value>",
+];
+```
+
