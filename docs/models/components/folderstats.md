@@ -1,16 +1,23 @@
 # FolderStats
 
-Meta-data of insight upload files associated with the folder
 
-## Example Usage
+## Supported Types
+
+### `string`
 
 ```typescript
-import { FolderStats } from "syllable-sdk/models/components";
-
-let value: FolderStats = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 962189;
+```
+
+### `number`
+
+```typescript
+const value: number = 2487.53;
+```
+

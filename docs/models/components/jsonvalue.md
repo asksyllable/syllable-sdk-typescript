@@ -1,16 +1,23 @@
 # JsonValue
 
-JSON value of insight tool result
 
-## Example Usage
+## Supported Types
+
+### `string`
 
 ```typescript
-import { JsonValue } from "syllable-sdk/models/components";
-
-let value: JsonValue = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 4695;
+```
+
+### `number`
+
+```typescript
+const value: number = 6778.17;
+```
+

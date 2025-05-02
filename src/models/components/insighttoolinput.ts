@@ -8,10 +8,14 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Arguments for calling the insight tool
- */
-export type InsightToolInputToolArguments = {};
+export type ToolArguments4 = {};
+
+export type InsightToolInputToolArguments =
+  | ToolArguments4
+  | string
+  | number
+  | number
+  | Array<any>;
 
 /**
  * Request model to create/update an insight tool.
@@ -32,7 +36,9 @@ export type InsightToolInput = {
   /**
    * Arguments for calling the insight tool
    */
-  toolArguments: InsightToolInputToolArguments;
+  toolArguments: {
+    [k: string]: ToolArguments4 | string | number | number | Array<any>;
+  };
   /**
    * Internal ID for the definition used by the insight tool
    */
@@ -40,21 +46,82 @@ export type InsightToolInput = {
 };
 
 /** @internal */
-export const InsightToolInputToolArguments$inboundSchema: z.ZodType<
-  InsightToolInputToolArguments,
+export const ToolArguments4$inboundSchema: z.ZodType<
+  ToolArguments4,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type InsightToolInputToolArguments$Outbound = {};
+export type ToolArguments4$Outbound = {};
+
+/** @internal */
+export const ToolArguments4$outboundSchema: z.ZodType<
+  ToolArguments4$Outbound,
+  z.ZodTypeDef,
+  ToolArguments4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ToolArguments4$ {
+  /** @deprecated use `ToolArguments4$inboundSchema` instead. */
+  export const inboundSchema = ToolArguments4$inboundSchema;
+  /** @deprecated use `ToolArguments4$outboundSchema` instead. */
+  export const outboundSchema = ToolArguments4$outboundSchema;
+  /** @deprecated use `ToolArguments4$Outbound` instead. */
+  export type Outbound = ToolArguments4$Outbound;
+}
+
+export function toolArguments4ToJSON(toolArguments4: ToolArguments4): string {
+  return JSON.stringify(ToolArguments4$outboundSchema.parse(toolArguments4));
+}
+
+export function toolArguments4FromJSON(
+  jsonString: string,
+): SafeParseResult<ToolArguments4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ToolArguments4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ToolArguments4' from JSON`,
+  );
+}
+
+/** @internal */
+export const InsightToolInputToolArguments$inboundSchema: z.ZodType<
+  InsightToolInputToolArguments,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => ToolArguments4$inboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type InsightToolInputToolArguments$Outbound =
+  | ToolArguments4$Outbound
+  | string
+  | number
+  | number
+  | Array<any>;
 
 /** @internal */
 export const InsightToolInputToolArguments$outboundSchema: z.ZodType<
   InsightToolInputToolArguments$Outbound,
   z.ZodTypeDef,
   InsightToolInputToolArguments
-> = z.object({});
+> = z.union([
+  z.lazy(() => ToolArguments4$outboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -98,7 +165,15 @@ export const InsightToolInput$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   version: z.number().int(),
-  tool_arguments: z.lazy(() => InsightToolInputToolArguments$inboundSchema),
+  tool_arguments: z.record(
+    z.union([
+      z.lazy(() => ToolArguments4$inboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
   insight_tool_definition_id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -112,7 +187,14 @@ export type InsightToolInput$Outbound = {
   name: string;
   description: string;
   version: number;
-  tool_arguments: InsightToolInputToolArguments$Outbound;
+  tool_arguments: {
+    [k: string]:
+      | ToolArguments4$Outbound
+      | string
+      | number
+      | number
+      | Array<any>;
+  };
   insight_tool_definition_id: number;
 };
 
@@ -125,7 +207,15 @@ export const InsightToolInput$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   version: z.number().int(),
-  toolArguments: z.lazy(() => InsightToolInputToolArguments$outboundSchema),
+  toolArguments: z.record(
+    z.union([
+      z.lazy(() => ToolArguments4$outboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
   insightToolDefinitionId: z.number().int(),
 }).transform((v) => {
   return remap$(v, {

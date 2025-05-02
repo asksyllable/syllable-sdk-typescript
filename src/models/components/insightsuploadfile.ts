@@ -8,7 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type Metadata = {};
+export type Metadata = string | number | number;
 
 /**
  * Response model for an insight upload file.
@@ -61,7 +61,7 @@ export type InsightsUploadFile = {
   /**
    * Meta-data associated with the uploaded file
    */
-  metadata?: Metadata | null | undefined;
+  metadata?: { [k: string]: string | number | number } | null | undefined;
   /**
    * Timestamp at which insight upload file was created
    */
@@ -73,17 +73,17 @@ export const Metadata$inboundSchema: z.ZodType<
   Metadata,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 
 /** @internal */
-export type Metadata$Outbound = {};
+export type Metadata$Outbound = string | number | number;
 
 /** @internal */
 export const Metadata$outboundSchema: z.ZodType<
   Metadata$Outbound,
   z.ZodTypeDef,
   Metadata
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 
 /**
  * @internal
@@ -133,7 +133,9 @@ export const InsightsUploadFile$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   error_message: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
+  metadata: z.nullable(
+    z.record(z.union([z.string(), z.number().int(), z.number()])),
+  ).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 }).transform((v) => {
@@ -163,7 +165,7 @@ export type InsightsUploadFile$Outbound = {
   start_time?: string | null | undefined;
   end_time?: string | null | undefined;
   error_message?: string | null | undefined;
-  metadata?: Metadata$Outbound | null | undefined;
+  metadata?: { [k: string]: string | number | number } | null | undefined;
   created_at?: string | undefined;
 };
 
@@ -184,7 +186,9 @@ export const InsightsUploadFile$outboundSchema: z.ZodType<
   startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   errorMessage: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
+  metadata: z.nullable(
+    z.record(z.union([z.string(), z.number().int(), z.number()])),
+  ).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
 }).transform((v) => {
   return remap$(v, {

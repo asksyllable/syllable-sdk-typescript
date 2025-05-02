@@ -8,10 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Meta-data of insight upload files associated with the folder
- */
-export type FolderStats = {};
+export type FolderStats = string | number | number;
 
 /**
  * Response model for an insight upload folder details.
@@ -48,7 +45,7 @@ export type FolderDetails = {
   /**
    * Meta-data of insight upload files associated with the folder
    */
-  folderStats: FolderStats;
+  folderStats: { [k: string]: string | number | number };
 };
 
 /** @internal */
@@ -56,17 +53,17 @@ export const FolderStats$inboundSchema: z.ZodType<
   FolderStats,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 
 /** @internal */
-export type FolderStats$Outbound = {};
+export type FolderStats$Outbound = string | number | number;
 
 /** @internal */
 export const FolderStats$outboundSchema: z.ZodType<
   FolderStats$Outbound,
   z.ZodTypeDef,
   FolderStats
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 
 /**
  * @internal
@@ -110,7 +107,7 @@ export const FolderDetails$inboundSchema: z.ZodType<
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   last_updated_by: z.string(),
-  folder_stats: z.lazy(() => FolderStats$inboundSchema),
+  folder_stats: z.record(z.union([z.string(), z.number().int(), z.number()])),
 }).transform((v) => {
   return remap$(v, {
     "created_at": "createdAt",
@@ -129,7 +126,7 @@ export type FolderDetails$Outbound = {
   created_at?: string | undefined;
   updated_at?: string | undefined;
   last_updated_by: string;
-  folder_stats: FolderStats$Outbound;
+  folder_stats: { [k: string]: string | number | number };
 };
 
 /** @internal */
@@ -145,7 +142,7 @@ export const FolderDetails$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
   lastUpdatedBy: z.string(),
-  folderStats: z.lazy(() => FolderStats$outboundSchema),
+  folderStats: z.record(z.union([z.string(), z.number().int(), z.number()])),
 }).transform((v) => {
   return remap$(v, {
     createdAt: "created_at",

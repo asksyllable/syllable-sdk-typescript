@@ -5,7 +5,7 @@
 ```typescript
 import { CampaignProperties } from "syllable-sdk/models/components";
 
-let value: CampaignProperties = "id";
+let value: CampaignProperties = "source";
 ```
 
 ## Values

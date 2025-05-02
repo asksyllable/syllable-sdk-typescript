@@ -20,7 +20,7 @@ let value: ToolCreateRequest = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "get",
+      method: "post",
       argumentLocation: "path",
     },
     defaults: "<value>",

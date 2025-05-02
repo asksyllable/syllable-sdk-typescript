@@ -1,16 +1,37 @@
 # ToolResultSet
 
-Result key/types for insight tool definition
 
-## Example Usage
+## Supported Types
+
+### `string`
 
 ```typescript
-import { ToolResultSet } from "syllable-sdk/models/components";
-
-let value: ToolResultSet = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 881104;
+```
+
+### `number`
+
+```typescript
+const value: number = 5812.73;
+```
+
+### `components.ToolResultSet4`
+
+```typescript
+const value: components.ToolResultSet4 = {};
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "<value>",
+];
+```
+

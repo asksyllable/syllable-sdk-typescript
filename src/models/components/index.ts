@@ -179,5 +179,7 @@ export * from "./twiliochannelconfigcreate.js";
 export * from "./twiliochannelconfigupdate.js";
 export * from "./twiliochannelcreaterequest.js";
 export * from "./twiliochannelupdaterequest.js";
+export * from "./twilionumberaddrequest.js";
+export * from "./twilionumberaddresponse.js";
 export * from "./validationerror.js";
 export * from "./voicesamplecreaterequest.js";
