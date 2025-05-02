@@ -9,7 +9,7 @@ let value: CommunicationBatchInput = {
   batchId: "20250502.9",
   campaignId: 1,
   expiresOn: new Date("2025-05-03T00:00:00Z"),
-  paused: true,
+  paused: false,
 };
 ```
 

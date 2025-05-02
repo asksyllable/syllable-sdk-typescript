@@ -6,8 +6,8 @@
 import { ChannelTargetsGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: ChannelTargetsGetByIdRequest = {
-  channelId: 586784,
-  targetId: 863856,
+  channelId: 213312,
+  targetId: 518201,
 };
 ```
 

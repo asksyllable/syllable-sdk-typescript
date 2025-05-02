@@ -6,7 +6,7 @@
 import { InsightsFolderGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsFolderGetByIdRequest = {
-  folderId: 765326,
+  folderId: 716860,
 };
 ```
 

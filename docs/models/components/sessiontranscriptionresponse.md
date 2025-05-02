@@ -12,14 +12,14 @@ let value: SessionTranscriptionResponse = {
   sessionId: "<id>",
   transcription: [
     {
-      timestamp: new Date("2025-12-30T17:40:17.979Z"),
-      lang: "en-US",
+      timestamp: new Date("2024-02-07T20:20:50.747Z"),
+      lang: "es-US",
       source: "agent",
     },
   ],
   actions: [
     {
-      timestamp: new Date("2023-06-28T02:12:50.953Z"),
+      timestamp: new Date("2025-06-02T14:07:36.077Z"),
     },
   ],
 };

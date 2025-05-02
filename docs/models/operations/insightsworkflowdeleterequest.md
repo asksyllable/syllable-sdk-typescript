@@ -6,7 +6,7 @@
 import { InsightsWorkflowDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowDeleteRequest = {
-  workflowId: 292147,
+  workflowId: 940432,
 };
 ```
 

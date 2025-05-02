@@ -6,7 +6,7 @@
 import { ChannelsTwilioGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: ChannelsTwilioGetByIdRequest = {
-  channelId: 25662,
+  channelId: 952792,
 };
 ```
 

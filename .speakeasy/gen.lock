@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: d299115f13a0282673e93207504fd5c6
+  docChecksum: f01347c53b25a9e785ddc3ea55978a5f
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.128
-  configChecksum: 3f2b0962494f96f17d7e9dea6828732a
+  releaseVersion: 0.1.0-alpha.129
+  configChecksum: 82bba57ee2994d8fa5ddbf9229cceeff
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -110,7 +110,6 @@ generatedFiles:
   - docs/models/components/filet.md
   - docs/models/components/folderdetails.md
   - docs/models/components/folderstats.md
-  - docs/models/components/four.md
   - docs/models/components/incidentcreaterequest.md
   - docs/models/components/incidentorganizationresponse.md
   - docs/models/components/incidentproperties.md
@@ -127,7 +126,6 @@ generatedFiles:
   - docs/models/components/insightsworkflowqueuesession.md
   - docs/models/components/insighttooldefinition.md
   - docs/models/components/insighttoolinput.md
-  - docs/models/components/insighttoolinputtoolarguments.md
   - docs/models/components/insighttooloutput.md
   - docs/models/components/insighttoolproperties.md
   - docs/models/components/insighttooltestinput.md
@@ -216,8 +214,6 @@ generatedFiles:
   - docs/models/components/testmessageresponse.md
   - docs/models/components/toolagentinfo.md
   - docs/models/components/toolargumentlocation.md
-  - docs/models/components/toolarguments.md
-  - docs/models/components/toolarguments4.md
   - docs/models/components/toolcreaterequest.md
   - docs/models/components/tooldefinition.md
   - docs/models/components/tooldetailresponse.md
@@ -225,16 +221,12 @@ generatedFiles:
   - docs/models/components/toolhttpendpoint.md
   - docs/models/components/toolhttpmethod.md
   - docs/models/components/toolparameterdefault.md
-  - docs/models/components/toolparameters.md
-  - docs/models/components/toolparameters4.md
   - docs/models/components/toolparametertransform.md
   - docs/models/components/toolparametertransformcondition.md
   - docs/models/components/toolpromptinfo.md
   - docs/models/components/toolproperties.md
   - docs/models/components/toolresponse.md
   - docs/models/components/toolresultdata.md
-  - docs/models/components/toolresultset.md
-  - docs/models/components/toolresultset4.md
   - docs/models/components/toolupdaterequest.md
   - docs/models/components/ttsprovider.md
   - docs/models/components/twiliochannelconfigcreate.md
