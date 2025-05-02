@@ -1,13 +1,13 @@
-# TwilioNumberCreateRequest
+# TwilioNumberAddRequest
 
 Request model for purchasing a Twilio number and associating it with a channel.
 
 ## Example Usage
 
 ```typescript
-import { TwilioNumberCreateRequest } from "syllable-sdk/models/components";
+import { TwilioNumberAddRequest } from "syllable-sdk/models/components";
 
-let value: TwilioNumberCreateRequest = {
+let value: TwilioNumberAddRequest = {
   friendlyName: "Support Line",
   areaCode: "804",
 };

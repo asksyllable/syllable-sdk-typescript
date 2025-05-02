@@ -1,13 +1,13 @@
-# TwilioNumberCreateResponse
+# TwilioNumberAddResponse
 
 Response model for purchasing a Twilio number and associating it with a channel.
 
 ## Example Usage
 
 ```typescript
-import { TwilioNumberCreateResponse } from "syllable-sdk/models/components";
+import { TwilioNumberAddResponse } from "syllable-sdk/models/components";
 
-let value: TwilioNumberCreateResponse = {
+let value: TwilioNumberAddResponse = {
   phoneNumber: "+18042221111",
 };
 ```
