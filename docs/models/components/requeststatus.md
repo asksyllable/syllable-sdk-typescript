@@ -7,7 +7,7 @@ Status of a communication request.
 ```typescript
 import { RequestStatus } from "syllable-sdk/models/components";
 
-let value: RequestStatus = "FAILED";
+let value: RequestStatus = "CONNECTED";
 ```
 
 ## Values

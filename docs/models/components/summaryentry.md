@@ -10,10 +10,10 @@ import { SummaryEntry } from "syllable-sdk/models/components";
 
 let value: SummaryEntry = {
   category: "tool",
-  eventCount: 998848,
-  sumMs: 1494.48,
+  eventCount: 866383,
+  sumMs: 9755.22,
   sumStr: "<value>",
-  averageMs: 8681.26,
+  averageMs: 8558.04,
   averageStr: "<value>",
 };
 ```

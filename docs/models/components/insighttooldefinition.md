@@ -13,8 +13,12 @@ let value: InsightToolDefinition = {
   name: "llm_tool",
   type: "<value>",
   description: "An LLM tool evaluates a transcript with a given prompt",
-  toolParameters: {},
-  toolResultSet: {},
+  toolParameters: {
+    "prompt": "string",
+  },
+  toolResultSet: {
+    "summary": "string",
+  },
 };
 ```
 
@@ -26,5 +30,5 @@ let value: InsightToolDefinition = {
 | `name`                                                                   | *string*                                                                 | :heavy_check_mark:                                                       | Human-readable name of insight tool definition                           | llm_tool                                                                 |
 | `type`                                                                   | *string*                                                                 | :heavy_check_mark:                                                       | Type of insight tool definition                                          |                                                                          |
 | `description`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | Text description of insight tool definition                              | An LLM tool evaluates a transcript with a given prompt                   |
-| `toolParameters`                                                         | [components.ToolParameters](../../models/components/toolparameters.md)   | :heavy_check_mark:                                                       | Parameters for tools that use this definition and their associated types | {<br/>"prompt": "string"<br/>}                                           |
-| `toolResultSet`                                                          | [components.ToolResultSet](../../models/components/toolresultset.md)     | :heavy_check_mark:                                                       | Result key/types for insight tool definition                             | {<br/>"summary": "string"<br/>}                                          |
+| `toolParameters`                                                         | Record<string, *components.ToolParameters*>                              | :heavy_check_mark:                                                       | Parameters for tools that use this definition and their associated types | {<br/>"prompt": "string"<br/>}                                           |
+| `toolResultSet`                                                          | Record<string, *components.ToolResultSet*>                               | :heavy_check_mark:                                                       | Result key/types for insight tool definition                             | {<br/>"summary": "string"<br/>}                                          |

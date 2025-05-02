@@ -14,10 +14,9 @@ import {
   InsightToolDefinition$outboundSchema,
 } from "./insighttooldefinition.js";
 
-/**
- * Arguments for calling the insight tool
- */
-export type ToolArguments = {};
+export type Four = {};
+
+export type ToolArguments = Four | string | number | number | Array<any>;
 
 /**
  * Response model for an insight tool.
@@ -38,7 +37,7 @@ export type InsightToolOutput = {
   /**
    * Arguments for calling the insight tool
    */
-  toolArguments: ToolArguments;
+  toolArguments: { [k: string]: Four | string | number | number | Array<any> };
   /**
    * Unique ID for insight tool definition used by insight tool
    */
@@ -66,21 +65,76 @@ export type InsightToolOutput = {
 };
 
 /** @internal */
+export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
+  .object({});
+
+/** @internal */
+export type Four$Outbound = {};
+
+/** @internal */
+export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
+  z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Four$ {
+  /** @deprecated use `Four$inboundSchema` instead. */
+  export const inboundSchema = Four$inboundSchema;
+  /** @deprecated use `Four$outboundSchema` instead. */
+  export const outboundSchema = Four$outboundSchema;
+  /** @deprecated use `Four$Outbound` instead. */
+  export type Outbound = Four$Outbound;
+}
+
+export function fourToJSON(four: Four): string {
+  return JSON.stringify(Four$outboundSchema.parse(four));
+}
+
+export function fourFromJSON(
+  jsonString: string,
+): SafeParseResult<Four, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Four$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Four' from JSON`,
+  );
+}
+
+/** @internal */
 export const ToolArguments$inboundSchema: z.ZodType<
   ToolArguments,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([
+  z.lazy(() => Four$inboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
 
 /** @internal */
-export type ToolArguments$Outbound = {};
+export type ToolArguments$Outbound =
+  | Four$Outbound
+  | string
+  | number
+  | number
+  | Array<any>;
 
 /** @internal */
 export const ToolArguments$outboundSchema: z.ZodType<
   ToolArguments$Outbound,
   z.ZodTypeDef,
   ToolArguments
-> = z.object({});
+> = z.union([
+  z.lazy(() => Four$outboundSchema),
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -118,7 +172,15 @@ export const InsightToolOutput$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   version: z.number().int(),
-  tool_arguments: z.lazy(() => ToolArguments$inboundSchema),
+  tool_arguments: z.record(
+    z.union([
+      z.lazy(() => Four$inboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
   insight_tool_definition_id: z.number().int(),
   id: z.number().int(),
   insight_tool_definition: z.nullable(InsightToolDefinition$inboundSchema)
@@ -144,7 +206,9 @@ export type InsightToolOutput$Outbound = {
   name: string;
   description: string;
   version: number;
-  tool_arguments: ToolArguments$Outbound;
+  tool_arguments: {
+    [k: string]: Four$Outbound | string | number | number | Array<any>;
+  };
   insight_tool_definition_id: number;
   id: number;
   insight_tool_definition?: InsightToolDefinition$Outbound | null | undefined;
@@ -162,7 +226,15 @@ export const InsightToolOutput$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   version: z.number().int(),
-  toolArguments: z.lazy(() => ToolArguments$outboundSchema),
+  toolArguments: z.record(
+    z.union([
+      z.lazy(() => Four$outboundSchema),
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.array(z.any()),
+    ]),
+  ),
   insightToolDefinitionId: z.number().int(),
   id: z.number().int(),
   insightToolDefinition: z.nullable(InsightToolDefinition$outboundSchema)

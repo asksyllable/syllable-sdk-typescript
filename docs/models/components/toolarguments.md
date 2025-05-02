@@ -1,16 +1,37 @@
 # ToolArguments
 
-Arguments for calling the insight tool
 
-## Example Usage
+## Supported Types
+
+### `string`
 
 ```typescript
-import { ToolArguments } from "syllable-sdk/models/components";
-
-let value: ToolArguments = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 699479;
+```
+
+### `number`
+
+```typescript
+const value: number = 2974.37;
+```
+
+### `components.Four`
+
+```typescript
+const value: components.Four = {};
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "<value>",
+];
+```
+
