@@ -324,7 +324,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.create({
+              const result = await syllableSDK.channels.twilio.create({
                 name: "syllable-webchat",
                 config: {
                   accountSid: "AC123...",
@@ -350,7 +350,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.update({
+              const result = await syllableSDK.channels.twilio.update({
                 id: 1,
                 name: "syllable-webchat",
                 config: {
@@ -377,7 +377,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.getById({
+              const result = await syllableSDK.channels.twilio.getById({
                 channelId: 931598,
               });
 
@@ -399,7 +399,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.channels.add({
+              const result = await syllableSDK.channels.twilio.numbers.add({
                 channelId: 551477,
                 twilioNumberAddRequest: {
                   friendlyName: "Support Line",

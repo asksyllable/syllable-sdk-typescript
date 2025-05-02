@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,15 +21,14 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Twilio Channel By Id
+ * Update Twilio Channel
  */
-export async function channelsGetById(
+export async function channelsTwilioUpdate(
   client: SyllableSDKCore,
-  request: operations.ChannelsTwilioGetByIdRequest,
+  request: components.TwilioChannelUpdateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -47,25 +46,19 @@ export async function channelsGetById(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ChannelsTwilioGetByIdRequest$outboundSchema.parse(value),
+      components.TwilioChannelUpdateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const pathParams = {
-    channel_id: encodeSimple("channel_id", payload.channel_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/api/v1/channels/twilio/{channel_id}")(pathParams);
+  const path = pathToFunc("/api/v1/channels/twilio/")();
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -75,7 +68,7 @@ export async function channelsGetById(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "channels_twilio_get_by_id",
+    operationID: "channels_twilio_update",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -89,7 +82,7 @@ export async function channelsGetById(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "PUT",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
