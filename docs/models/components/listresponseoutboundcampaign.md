@@ -17,11 +17,11 @@ let value: ListResponseOutboundCampaign = {
       },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      source: "account@email.com",
+      source: "+19032900844",
       callerId: "19995551234",
       retryInterval: "30m",
       activeDays: [
-        "fri",
+        "mon",
       ],
       id: 1,
       agentId: agent_id,
