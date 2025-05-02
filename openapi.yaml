@@ -409,7 +409,7 @@ paths:
   "/api/v1/channels/twilio/{channel_id}":
     get:
       tags:
-        - "channels"
+        - "channels.twilio"
       summary: "Get Twilio Channel By Id"
       operationId: "channels_twilio_get_by_id"
       security:
@@ -435,7 +435,7 @@ paths:
   "/api/v1/channels/twilio/":
     put:
       tags:
-        - "channels"
+        - "channels.twilio"
       summary: "Update Twilio Channel"
       operationId: "channels_twilio_update"
       requestBody:
@@ -458,7 +458,7 @@ paths:
         - APIKeyHeader: []
     post:
       tags:
-        - "channels"
+        - "channels.twilio"
       summary: "Create Twilio Channel"
       operationId: "channels_twilio_create"
       requestBody:
@@ -482,10 +482,10 @@ paths:
   "/api/v1/channels/twilio/{channel_id}/numbers":
     post:
       tags:
-        - "channels"
-      summary: "Create Twilio Number"
+        - "channels.twilio.numbers"
+      summary: "Add Twilio Number"
       description: "Purchase a Twilio number and associate it with a channel."
-      operationId: "channels_twilio_numbers_create_something"
+      operationId: "channels_twilio_numbers_add"
       security:
         - APIKeyHeader: []
       parameters:
@@ -499,13 +499,13 @@ paths:
         required: true
         content:
           "application/json":
-            schema: {"$ref": "#/components/schemas/TwilioNumberCreateRequest"}
+            schema: {"$ref": "#/components/schemas/TwilioNumberAddRequest"}
       responses:
         "200":
           description: "Successful Response"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/TwilioNumberCreateResponse"}
+              schema: {"$ref": "#/components/schemas/TwilioNumberAddResponse"}
         "422":
           description: "Validation Error"
           content:
@@ -12953,7 +12953,7 @@ components:
         - "id"
       title: "TwilioChannelUpdateRequest"
       description: "Request model for updating a Twilio channel."
-    "TwilioNumberCreateRequest":
+    "TwilioNumberAddRequest":
       properties:
         "friendly_name":
           type: "string"
@@ -12971,9 +12971,9 @@ components:
       required:
         - "friendly_name"
         - "area_code"
-      title: "TwilioNumberCreateRequest"
+      title: "TwilioNumberAddRequest"
       description: "Request model for purchasing a Twilio number and associating it with a channel."
-    "TwilioNumberCreateResponse":
+    "TwilioNumberAddResponse":
       properties:
         "phone_number":
           type: "string"
@@ -12984,7 +12984,7 @@ components:
       type: "object"
       required:
         - "phone_number"
-      title: "TwilioNumberCreateResponse"
+      title: "TwilioNumberAddResponse"
       description: "Response model for purchasing a Twilio number and associating it with a channel."
     "ValidationError":
       properties:
@@ -13047,6 +13047,10 @@ tags:
     description: "Operations for testing agents with live text.           These endpoints allow sending messages to an agent and receiving its responses."
   - name: "channels"
     description: "Operations related to channel configuration.           A channel is an organization-level point of communication, like a phone number or a web           chat. A channel can be associated with an agent by creating a channel target linking           them."
+  - name: "channels.twilio"
+    description: "Operations related to Twilio channel configuration."
+  - name: "channels.twilio.numbers"
+    description: "Operations related to setting up phone numbers in Twilio for use in channels."
   - name: "channels.targets"
     description: "Operations related to channel target configuration. A channel target           links a channel to an agent, allowing users to communicate with the agent through that           channel. For more information, see           [Console docs](https://docs.syllable.ai/Resources/Channels)."
   - name: "conversations"

@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request model for purchasing a Twilio number and associating it with a channel.
  */
-export type TwilioNumberCreateRequest = {
+export type TwilioNumberAddRequest = {
   /**
    * Friendly name for the Twilio number
    */
@@ -23,8 +23,8 @@ export type TwilioNumberCreateRequest = {
 };
 
 /** @internal */
-export const TwilioNumberCreateRequest$inboundSchema: z.ZodType<
-  TwilioNumberCreateRequest,
+export const TwilioNumberAddRequest$inboundSchema: z.ZodType<
+  TwilioNumberAddRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -38,16 +38,16 @@ export const TwilioNumberCreateRequest$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type TwilioNumberCreateRequest$Outbound = {
+export type TwilioNumberAddRequest$Outbound = {
   friendly_name: string;
   area_code: string;
 };
 
 /** @internal */
-export const TwilioNumberCreateRequest$outboundSchema: z.ZodType<
-  TwilioNumberCreateRequest$Outbound,
+export const TwilioNumberAddRequest$outboundSchema: z.ZodType<
+  TwilioNumberAddRequest$Outbound,
   z.ZodTypeDef,
-  TwilioNumberCreateRequest
+  TwilioNumberAddRequest
 > = z.object({
   friendlyName: z.string(),
   areaCode: z.string(),
@@ -62,29 +62,29 @@ export const TwilioNumberCreateRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TwilioNumberCreateRequest$ {
-  /** @deprecated use `TwilioNumberCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = TwilioNumberCreateRequest$inboundSchema;
-  /** @deprecated use `TwilioNumberCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = TwilioNumberCreateRequest$outboundSchema;
-  /** @deprecated use `TwilioNumberCreateRequest$Outbound` instead. */
-  export type Outbound = TwilioNumberCreateRequest$Outbound;
+export namespace TwilioNumberAddRequest$ {
+  /** @deprecated use `TwilioNumberAddRequest$inboundSchema` instead. */
+  export const inboundSchema = TwilioNumberAddRequest$inboundSchema;
+  /** @deprecated use `TwilioNumberAddRequest$outboundSchema` instead. */
+  export const outboundSchema = TwilioNumberAddRequest$outboundSchema;
+  /** @deprecated use `TwilioNumberAddRequest$Outbound` instead. */
+  export type Outbound = TwilioNumberAddRequest$Outbound;
 }
 
-export function twilioNumberCreateRequestToJSON(
-  twilioNumberCreateRequest: TwilioNumberCreateRequest,
+export function twilioNumberAddRequestToJSON(
+  twilioNumberAddRequest: TwilioNumberAddRequest,
 ): string {
   return JSON.stringify(
-    TwilioNumberCreateRequest$outboundSchema.parse(twilioNumberCreateRequest),
+    TwilioNumberAddRequest$outboundSchema.parse(twilioNumberAddRequest),
   );
 }
 
-export function twilioNumberCreateRequestFromJSON(
+export function twilioNumberAddRequestFromJSON(
   jsonString: string,
-): SafeParseResult<TwilioNumberCreateRequest, SDKValidationError> {
+): SafeParseResult<TwilioNumberAddRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => TwilioNumberCreateRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TwilioNumberCreateRequest' from JSON`,
+    (x) => TwilioNumberAddRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwilioNumberAddRequest' from JSON`,
   );
 }
