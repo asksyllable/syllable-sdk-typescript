@@ -8,10 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * JSON value of insight tool result
- */
-export type JsonValue = {};
+export type JsonValue = string | number | number;
 
 /**
  * Response model for an insight tool.
@@ -52,7 +49,7 @@ export type InsightsOutput = {
   /**
    * JSON value of insight tool result
    */
-  jsonValue: JsonValue;
+  jsonValue: { [k: string]: string | number | number };
   /**
    * Timestamp at which insight tool result was created
    */
@@ -68,17 +65,17 @@ export const JsonValue$inboundSchema: z.ZodType<
   JsonValue,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 
 /** @internal */
-export type JsonValue$Outbound = {};
+export type JsonValue$Outbound = string | number | number;
 
 /** @internal */
 export const JsonValue$outboundSchema: z.ZodType<
   JsonValue$Outbound,
   z.ZodTypeDef,
   JsonValue
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 
 /**
  * @internal
@@ -121,7 +118,7 @@ export const InsightsOutput$inboundSchema: z.ZodType<
   insight_key: z.string(),
   string_value: z.nullable(z.string()).optional(),
   numeric_value: z.nullable(z.number()).optional(),
-  json_value: z.lazy(() => JsonValue$inboundSchema),
+  json_value: z.record(z.union([z.string(), z.number().int(), z.number()])),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -151,7 +148,7 @@ export type InsightsOutput$Outbound = {
   insight_key: string;
   string_value?: string | null | undefined;
   numeric_value?: number | null | undefined;
-  json_value: JsonValue$Outbound;
+  json_value: { [k: string]: string | number | number };
   created_at?: string | undefined;
   updated_at?: string | undefined;
 };
@@ -170,7 +167,7 @@ export const InsightsOutput$outboundSchema: z.ZodType<
   insightKey: z.string(),
   stringValue: z.nullable(z.string()).optional(),
   numericValue: z.nullable(z.number()).optional(),
-  jsonValue: z.lazy(() => JsonValue$outboundSchema),
+  jsonValue: z.record(z.union([z.string(), z.number().int(), z.number()])),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
 }).transform((v) => {

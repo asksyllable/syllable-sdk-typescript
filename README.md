@@ -155,6 +155,7 @@ run();
 * [getById](docs/sdks/channels/README.md#getbyid) - Get Twilio Channel By Id
 * [update](docs/sdks/channels/README.md#update) - Update Twilio Channel
 * [create](docs/sdks/channels/README.md#create) - Create Twilio Channel
+* [channelsTwilioNumbersCreateSomething](docs/sdks/channels/README.md#channelstwilionumberscreatesomething) - Create Twilio Number
 * [delete](docs/sdks/channels/README.md#delete) - Delete Channel Target
 
 #### [channels.targets](docs/sdks/targets/README.md)
@@ -367,6 +368,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsList`](docs/sdks/agents/README.md#list) - Agent List
 - [`agentsTestSendTestMessage`](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 - [`agentsUpdate`](docs/sdks/agents/README.md#update) - Update Agent
+- [`channelsChannelsTwilioNumbersCreateSomething`](docs/sdks/channels/README.md#channelstwilionumberscreatesomething) - Create Twilio Number
 - [`channelsCreate`](docs/sdks/channels/README.md#create) - Create Twilio Channel
 - [`channelsDelete`](docs/sdks/channels/README.md#delete) - Delete Channel Target
 - [`channelsGetById`](docs/sdks/channels/README.md#getbyid) - Get Twilio Channel By Id

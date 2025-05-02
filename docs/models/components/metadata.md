@@ -1,14 +1,23 @@
 # Metadata
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Metadata } from "syllable-sdk/models/components";
-
-let value: Metadata = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 576157;
+```
+
+### `number`
+
+```typescript
+const value: number = 5920.42;
+```
+
