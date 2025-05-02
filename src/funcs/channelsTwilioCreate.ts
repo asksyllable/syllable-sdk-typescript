@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,22 +21,18 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Add Twilio Number
- *
- * @remarks
- * Purchase a Twilio number and associate it with a channel.
+ * Create Twilio Channel
  */
-export async function channelsAdd(
+export async function channelsTwilioCreate(
   client: SyllableSDKCore,
-  request: operations.ChannelsTwilioNumbersAddRequest,
+  request: components.TwilioChannelCreateRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.TwilioNumberAddResponse,
+    components.Channel,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -50,27 +46,16 @@ export async function channelsAdd(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ChannelsTwilioNumbersAddRequest$outboundSchema.parse(value),
+      components.TwilioChannelCreateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.TwilioNumberAddRequest, {
-    explode: true,
-  });
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const pathParams = {
-    channel_id: encodeSimple("channel_id", payload.channel_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/api/v1/channels/twilio/{channel_id}/numbers")(
-    pathParams,
-  );
+  const path = pathToFunc("/api/v1/channels/twilio/")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -83,7 +68,7 @@ export async function channelsAdd(
 
   const context = {
     baseURL: options?.serverURL ?? "",
-    operationID: "channels_twilio_numbers_add",
+    operationID: "channels_twilio_create",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
@@ -125,7 +110,7 @@ export async function channelsAdd(
   };
 
   const [result] = await M.match<
-    components.TwilioNumberAddResponse,
+    components.Channel,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -135,7 +120,7 @@ export async function channelsAdd(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.TwilioNumberAddResponse$inboundSchema),
+    M.json(200, components.Channel$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
