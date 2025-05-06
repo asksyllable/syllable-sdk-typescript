@@ -8,15 +8,15 @@ import { ListResponseCommunicationBatch } from "syllable-sdk/models/components";
 let value: ListResponseCommunicationBatch = {
   items: [
     {
-      batchId: "20250504.9",
+      batchId: "20250506.9",
       campaignId: 1,
-      expiresOn: new Date("2025-05-05T00:00:00Z"),
+      expiresOn: new Date("2025-05-07T00:00:00Z"),
       paused: false,
       uploadFilename: "LATE_PAYMENTS_20250401.csv",
-      createdAt: new Date("2025-05-04T00:00:00Z"),
-      deletedAt: new Date("2025-05-04T00:00:00Z"),
+      createdAt: new Date("2025-05-06T00:00:00Z"),
+      deletedAt: new Date("2025-05-06T00:00:00Z"),
       deletedReason: "User request",
-      lastUpdatedAt: new Date("2025-05-04T00:00:00Z"),
+      lastUpdatedAt: new Date("2025-05-06T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
       errorMessage: "Invalid file format",
     },
