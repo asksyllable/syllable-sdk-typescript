@@ -13,5 +13,5 @@ let value: ChannelProperties = "name";
 ## Values
 
 ```typescript
-"id" | "name" | "channel_service" | "supported_modes"
+"id" | "name" | "name_exact" | "channel_service" | "supported_modes"
 ```
