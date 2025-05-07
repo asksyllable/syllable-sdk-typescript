@@ -11,6 +11,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const ChannelProperties = {
   Id: "id",
   Name: "name",
+  NameExact: "name_exact",
   ChannelService: "channel_service",
   SupportedModes: "supported_modes",
 } as const;
