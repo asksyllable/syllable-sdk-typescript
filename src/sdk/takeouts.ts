@@ -4,6 +4,7 @@
 
 import { takeoutsCreate } from "../funcs/takeoutsCreate.js";
 import { takeoutsTakeoutsGetByJobId } from "../funcs/takeoutsTakeoutsGetByJobId.js";
+import { takeoutsTakeoutsGetFile } from "../funcs/takeoutsTakeoutsGetFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -30,6 +31,20 @@ export class Takeouts extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.TakeoutStatusResponse> {
     return unwrapAsync(takeoutsTakeoutsGetByJobId(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get File
+   */
+  async takeoutsGetFile(
+    request: operations.TakeoutsGetFileRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(takeoutsTakeoutsGetFile(
       this,
       request,
       options,

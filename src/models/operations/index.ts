@@ -76,6 +76,7 @@ export * from "./sessionrecordingstream.js";
 export * from "./sessionslist.js";
 export * from "./sessiontranscriptgetbyid.js";
 export * from "./takeoutsgetbyjobid.js";
+export * from "./takeoutsgetfile.js";
 export * from "./tooldelete.js";
 export * from "./toolgetbyname.js";
 export * from "./toollist.js";
