@@ -3,14 +3,14 @@
 
 ## Overview
 
-Operations related to insights tools. An insight is a tool that processes           conversation data to extract information and generate reports.
+Operations related to insights tool configurationss. An insight is a tool           that processes conversation data to extract information and generate reports.
 
 ### Available Operations
 
-* [list](#list) - Insight Tool List
-* [create](#create) - Create Insight Tool
-* [getById](#getbyid) - Get Insight Tool By Id
-* [update](#update) - Update Insights Tool
+* [list](#list) - List Insight Tool Configurations
+* [create](#create) - Create Insight Tool Configuration
+* [getById](#getbyid) - Get Insight Tool Config By Id
+* [update](#update) - Update Insights Tool Configuration
 * [insightsToolTest](#insightstooltest) - Test Insights Tool
 * [insightToolGetDefinitions](#insighttoolgetdefinitions) - Get Insight Tool Definitions
 
@@ -123,7 +123,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.tools.create({
     name: "summary-tool",
-    description: "Default tool - generates a summary of the call",
+    description: "This tool uses GPT4.1 to generate a summary of the call",
     version: 1,
     toolArguments: {
       "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
@@ -155,7 +155,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await insightsToolsCreate(syllableSDK, {
     name: "summary-tool",
-    description: "Default tool - generates a summary of the call",
+    description: "This tool uses GPT4.1 to generate a summary of the call",
     version: 1,
     toolArguments: {
       "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
@@ -291,7 +291,7 @@ async function run() {
     toolId: 198183,
     insightToolInput: {
       name: "summary-tool",
-      description: "Default tool - generates a summary of the call",
+      description: "This tool uses GPT4.1 to generate a summary of the call",
       version: 1,
       toolArguments: {
         "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
@@ -326,7 +326,7 @@ async function run() {
     toolId: 198183,
     insightToolInput: {
       name: "summary-tool",
-      description: "Default tool - generates a summary of the call",
+      description: "This tool uses GPT4.1 to generate a summary of the call",
       version: 1,
       toolArguments: {
         "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",

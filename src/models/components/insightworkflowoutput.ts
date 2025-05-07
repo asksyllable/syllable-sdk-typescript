@@ -43,7 +43,7 @@ export type InsightWorkflowOutput = {
    */
   description: string;
   /**
-   * List of IDs of insight tools used in the workflow
+   * List of IDs of insight tool configurations used in the workflow
    */
   insightToolIds: Array<number>;
   /**
@@ -63,7 +63,7 @@ export type InsightWorkflowOutput = {
    */
   id: number;
   /**
-   * List of insight tools used in the workflow
+   * List of insight tool configurations used in the workflow
    */
   insightTools: Array<InsightToolOutput>;
   /**

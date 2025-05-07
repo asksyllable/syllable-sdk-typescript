@@ -15,11 +15,11 @@ export type JsonValue = string | number | number;
  */
 export type InsightsOutput = {
   /**
-   * Unique ID for insight tool
+   * Unique ID of the insight
    */
   id: number;
   /**
-   * Unique ID for session
+   * Unique ID for the session
    */
   sessionId?: number | null | undefined;
   /**
@@ -27,11 +27,11 @@ export type InsightsOutput = {
    */
   uploadFileId?: number | null | undefined;
   /**
-   * Unique ID for insight tool
+   * Unique ID for insight tool configuration
    */
   insightToolId: number;
   /**
-   * Version of insight tool
+   * Version of insight tool configuration
    */
   insightToolVersion: number;
   /**

@@ -25,7 +25,7 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Insight Tool List
+ * List Insight Tool Configurations
  *
  * @remarks
  * List the existing insight_tools
@@ -58,7 +58,7 @@ export async function insightsToolsList(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/api/v1/insights/tools")();
+  const path = pathToFunc("/api/v1/insights/tool-configurations")();
 
   const query = encodeFormQuery({
     "end_datetime": payload.end_datetime,

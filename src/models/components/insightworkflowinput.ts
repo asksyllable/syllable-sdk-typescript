@@ -31,7 +31,7 @@ export type InsightWorkflowInput = {
    */
   description: string;
   /**
-   * List of IDs of insight tools used in the workflow
+   * List of IDs of insight tool configurations used in the workflow
    */
   insightToolIds: Array<number>;
   /**

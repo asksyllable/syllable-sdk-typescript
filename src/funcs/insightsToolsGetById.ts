@@ -25,7 +25,7 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Insight Tool By Id
+ * Get Insight Tool Config By Id
  *
  * @remarks
  * Get a InsightTool by Name.
@@ -65,7 +65,9 @@ export async function insightsToolsGetById(
     }),
   };
 
-  const path = pathToFunc("/api/v1/insights/tools/{tool_id}")(pathParams);
+  const path = pathToFunc("/api/v1/insights/tool-configurations/{tool_id}")(
+    pathParams,
+  );
 
   const headers = new Headers(compactMap({
     Accept: "application/json",

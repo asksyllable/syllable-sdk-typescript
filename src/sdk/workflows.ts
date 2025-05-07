@@ -88,7 +88,7 @@ export class Workflows extends ClientSDK {
    * Delete Insights Workflow
    *
    * @remarks
-   * Delete a Insights workflow.
+   * Delete an Insights workflow.
    */
   async delete(
     request: operations.InsightsWorkflowDeleteRequest,
@@ -102,10 +102,10 @@ export class Workflows extends ClientSDK {
   }
 
   /**
-   * Update Insights Workflow
+   * Inactivate Insights Workflow
    *
    * @remarks
-   * Update a InsightWorkflow.
+   * Inactivate an InsightWorkflow.
    */
   async inactivate(
     request: operations.InsightsWorkflowInactivateRequest,
@@ -119,10 +119,10 @@ export class Workflows extends ClientSDK {
   }
 
   /**
-   * Update Insights Workflow
+   * Activate Insights Workflow
    *
    * @remarks
-   * Update a InsightWorkflow.
+   * Activate an InsightWorkflow.
    */
   async activate(
     request: operations.InsightsWorkflowActivateRequest,

@@ -12,8 +12,8 @@ Operations related to insights workflows. An workflow is series of tool         
 * [getById](#getbyid) - Get Insight Workflow By Id
 * [update](#update) - Update Insights Workflow
 * [delete](#delete) - Delete Insights Workflow
-* [inactivate](#inactivate) - Update Insights Workflow
-* [activate](#activate) - Update Insights Workflow
+* [inactivate](#inactivate) - Inactivate Insights Workflow
+* [activate](#activate) - Activate Insights Workflow
 * [queueWork](#queuework) - Queue Insights Workflow For Sessions/Files
 
 ## list
@@ -380,7 +380,7 @@ run();
 
 ## delete
 
-Delete a Insights workflow.
+Delete an Insights workflow.
 
 ### Example Usage
 
@@ -457,7 +457,7 @@ run();
 
 ## inactivate
 
-Update a InsightWorkflow.
+Inactivate an InsightWorkflow.
 
 ### Example Usage
 
@@ -534,7 +534,7 @@ run();
 
 ## activate
 
-Update a InsightWorkflow.
+Activate an InsightWorkflow.
 
 ### Example Usage
 

@@ -229,10 +229,10 @@ run();
 
 #### [insights.tools](docs/sdks/syllablesdktools/README.md)
 
-* [list](docs/sdks/syllablesdktools/README.md#list) - Insight Tool List
-* [create](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
-* [getById](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
-* [update](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool
+* [list](docs/sdks/syllablesdktools/README.md#list) - List Insight Tool Configurations
+* [create](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool Configuration
+* [getById](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool Config By Id
+* [update](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool Configuration
 * [insightsToolTest](docs/sdks/syllablesdktools/README.md#insightstooltest) - Test Insights Tool
 * [insightToolGetDefinitions](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
 
@@ -243,8 +243,8 @@ run();
 * [getById](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 * [update](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 * [delete](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
-* [inactivate](docs/sdks/workflows/README.md#inactivate) - Update Insights Workflow
-* [activate](docs/sdks/workflows/README.md#activate) - Update Insights Workflow
+* [inactivate](docs/sdks/workflows/README.md#inactivate) - Inactivate Insights Workflow
+* [activate](docs/sdks/workflows/README.md#activate) - Activate Insights Workflow
 * [queueWork](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
 
 ### [languageGroups](docs/sdks/languagegroups/README.md)
@@ -412,17 +412,17 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsFoldersUpdate`](docs/sdks/folders/README.md#update) - Update Insights Folder
 - [`insightsFoldersUploadFile`](docs/sdks/folders/README.md#uploadfile) - Upload Insights  Upload Folder
 - [`insightsList`](docs/sdks/insights/README.md#list) - Insights List
-- [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool
-- [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool By Id
+- [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool Configuration
+- [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool Config By Id
 - [`insightsToolsInsightsToolTest`](docs/sdks/syllablesdktools/README.md#insightstooltest) - Test Insights Tool
 - [`insightsToolsInsightToolGetDefinitions`](docs/sdks/syllablesdktools/README.md#insighttoolgetdefinitions) - Get Insight Tool Definitions
-- [`insightsToolsList`](docs/sdks/syllablesdktools/README.md#list) - Insight Tool List
-- [`insightsToolsUpdate`](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool
-- [`insightsWorkflowsActivate`](docs/sdks/workflows/README.md#activate) - Update Insights Workflow
+- [`insightsToolsList`](docs/sdks/syllablesdktools/README.md#list) - List Insight Tool Configurations
+- [`insightsToolsUpdate`](docs/sdks/syllablesdktools/README.md#update) - Update Insights Tool Configuration
+- [`insightsWorkflowsActivate`](docs/sdks/workflows/README.md#activate) - Activate Insights Workflow
 - [`insightsWorkflowsCreate`](docs/sdks/workflows/README.md#create) - Create Insight Workflow
 - [`insightsWorkflowsDelete`](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
 - [`insightsWorkflowsGetById`](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
-- [`insightsWorkflowsInactivate`](docs/sdks/workflows/README.md#inactivate) - Update Insights Workflow
+- [`insightsWorkflowsInactivate`](docs/sdks/workflows/README.md#inactivate) - Inactivate Insights Workflow
 - [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
 - [`insightsWorkflowsQueueWork`](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
 - [`insightsWorkflowsUpdate`](docs/sdks/workflows/README.md#update) - Update Insights Workflow
