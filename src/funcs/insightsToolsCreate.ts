@@ -24,7 +24,7 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create Insight Tool
+ * Create Insight Tool Configuration
  *
  * @remarks
  * Create a new insight tool.
@@ -57,7 +57,7 @@ export async function insightsToolsCreate(
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/api/v1/insights/tools")();
+  const path = pathToFunc("/api/v1/insights/tool-configurations")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",

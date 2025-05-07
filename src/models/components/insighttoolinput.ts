@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Request model to create/update an insight tool.
+ * Request model to create/update an insight tool configuration.
  */
 export type InsightToolInput = {
   /**
@@ -17,11 +17,11 @@ export type InsightToolInput = {
    */
   name: string;
   /**
-   * Text description of insight tool
+   * Text description of insight tool configuration
    */
   description: string;
   /**
-   * Version number of insight tool
+   * Version number of insight tool configuration
    */
   version: number;
   /**
@@ -29,7 +29,7 @@ export type InsightToolInput = {
    */
   toolArguments?: any | undefined;
   /**
-   * Internal ID for the definition used by the insight tool
+   * Internal ID for the definition used by the insight tool configuration
    */
   insightToolDefinitionId: number;
 };

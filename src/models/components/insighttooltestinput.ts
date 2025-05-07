@@ -13,7 +13,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type InsightToolTestInput = {
   /**
-   * Human readable name of insight tool
+   * Human readable name of insight tool configuration
    */
   toolName: string;
   /**

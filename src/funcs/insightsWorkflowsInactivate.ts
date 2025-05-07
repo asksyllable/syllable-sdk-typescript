@@ -25,10 +25,10 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update Insights Workflow
+ * Inactivate Insights Workflow
  *
  * @remarks
- * Update a InsightWorkflow.
+ * Inactivate an InsightWorkflow.
  */
 export async function insightsWorkflowsInactivate(
   client: SyllableSDKCore,

@@ -15,7 +15,7 @@ import {
 } from "./insighttooldefinition.js";
 
 /**
- * Response model for an insight tool.
+ * Response model for an insight tool configuration.
  */
 export type InsightToolOutput = {
   /**
@@ -23,7 +23,7 @@ export type InsightToolOutput = {
    */
   name: string;
   /**
-   * Text description of insight tool
+   * Text description of insight tool configuration
    */
   description: string;
   /**
@@ -35,7 +35,7 @@ export type InsightToolOutput = {
    */
   toolArguments?: any | undefined;
   /**
-   * Unique ID for insight tool definition used by insight tool
+   * Unique ID for insight tool definition used by this tool configuration
    */
   insightToolDefinitionId: number;
   /**
@@ -47,15 +47,15 @@ export type InsightToolOutput = {
    */
   insightToolDefinition?: InsightToolDefinition | null | undefined;
   /**
-   * Timestamp of at which insight tool was created
+   * Timestamp of at which insight tool configuration was created
    */
   createdAt?: Date | undefined;
   /**
-   * Timestamp at which insight tool was last updated
+   * Timestamp at which insight tool configuration was last updated
    */
   updatedAt?: Date | undefined;
   /**
-   * Email of user who last updated insight tool
+   * Email of user who last updated insight tool configuration
    */
   lastUpdatedBy: string;
 };

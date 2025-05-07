@@ -9,7 +9,7 @@ let value: InsightsToolUpdateRequest = {
   toolId: 903720,
   insightToolInput: {
     name: "summary-tool",
-    description: "Default tool - generates a summary of the call",
+    description: "This tool uses GPT4.1 to generate a summary of the call",
     version: 1,
     toolArguments: {
       "prompt":

@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Delete Insights Workflow
  *
  * @remarks
- * Delete a Insights workflow.
+ * Delete an Insights workflow.
  */
 export async function insightsWorkflowsDelete(
   client: SyllableSDKCore,

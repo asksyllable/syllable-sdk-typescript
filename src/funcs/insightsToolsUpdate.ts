@@ -25,7 +25,7 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update Insights Tool
+ * Update Insights Tool Configuration
  *
  * @remarks
  * Update an Insights tool.
@@ -65,7 +65,9 @@ export async function insightsToolsUpdate(
     }),
   };
 
-  const path = pathToFunc("/api/v1/insights/tools/{tool_id}")(pathParams);
+  const path = pathToFunc("/api/v1/insights/tool-configurations/{tool_id}")(
+    pathParams,
+  );
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",

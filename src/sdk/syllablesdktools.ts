@@ -15,7 +15,7 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class SyllableSDKTools extends ClientSDK {
   /**
-   * Insight Tool List
+   * List Insight Tool Configurations
    *
    * @remarks
    * List the existing insight_tools
@@ -32,7 +32,7 @@ export class SyllableSDKTools extends ClientSDK {
   }
 
   /**
-   * Create Insight Tool
+   * Create Insight Tool Configuration
    *
    * @remarks
    * Create a new insight tool.
@@ -49,7 +49,7 @@ export class SyllableSDKTools extends ClientSDK {
   }
 
   /**
-   * Get Insight Tool By Id
+   * Get Insight Tool Config By Id
    *
    * @remarks
    * Get a InsightTool by Name.
@@ -66,7 +66,7 @@ export class SyllableSDKTools extends ClientSDK {
   }
 
   /**
-   * Update Insights Tool
+   * Update Insights Tool Configuration
    *
    * @remarks
    * Update an Insights tool.

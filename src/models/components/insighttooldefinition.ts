@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * Model for an insight tool definition. This is a template that can be used by multiple insight
  *
  * @remarks
- * tools, each providing their own parameter values.
+ * tool configurations, each providing their own parameter values.
  */
 export type InsightToolDefinition = {
   /**

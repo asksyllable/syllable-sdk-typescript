@@ -1310,27 +1310,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/insights/tool-definitions"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.insights.tools.insightToolGetDefinitions();
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/insights/tools"]["get"]
+  - target: $["paths"]["/api/v1/insights/tool-configurations"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -1360,7 +1340,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/insights/tools"]["post"]
+  - target: $["paths"]["/api/v1/insights/tool-configurations"]["post"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -1375,13 +1355,86 @@ actions:
             async function run() {
               const result = await syllableSDK.insights.tools.create({
                 name: "summary-tool",
-                description: "Default tool - generates a summary of the call",
+                description: "This tool uses GPT4.1 to generate a summary of the call",
                 version: 1,
                 toolArguments: {
                   "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
                 },
                 insightToolDefinitionId: 1,
               });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tool-configurations/{tool_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.getById({
+                toolId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tool-configurations/{tool_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.update({
+                toolId: 857478,
+                insightToolInput: {
+                  name: "summary-tool",
+                  description: "This tool uses GPT4.1 to generate a summary of the call",
+                  version: 1,
+                  toolArguments: {
+                    "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
+                  },
+                  insightToolDefinitionId: 1,
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tool-definitions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.insightToolGetDefinitions();
 
               // Handle the result
               console.log(result);
@@ -1404,59 +1457,6 @@ actions:
               const result = await syllableSDK.insights.tools.insightsToolTest({
                 toolName: "summary-tool",
                 sessionId: 283467,
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/insights/tools/{tool_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.insights.tools.getById({
-                toolId: "<id>",
-              });
-
-              // Handle the result
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/insights/tools/{tool_id}"]["put"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.insights.tools.update({
-                toolId: 857478,
-                insightToolInput: {
-                  name: "summary-tool",
-                  description: "Default tool - generates a summary of the call",
-                  version: 1,
-                  toolArguments: {
-                    "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
-                  },
-                  insightToolDefinitionId: 1,
-                },
               });
 
               // Handle the result
