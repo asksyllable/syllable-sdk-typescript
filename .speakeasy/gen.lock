@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 262ce9558005decab47bfe998c21722b
+  docChecksum: 7cd21a1d5ee23279fcd182e48fb84af5
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.135
-  configChecksum: 90964831e1f7982a02a8c79f85d9a092
+  releaseVersion: 0.1.0-alpha.136
+  configChecksum: 0250e3c14456931b722cf8e8a7e9f1f1
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -313,6 +313,7 @@ generatedFiles:
   - docs/models/operations/sessionslistrequest.md
   - docs/models/operations/sessiontranscriptgetbyidrequest.md
   - docs/models/operations/takeoutsgetbyjobidrequest.md
+  - docs/models/operations/takeoutsgetfilerequest.md
   - docs/models/operations/tooldeleterequest.md
   - docs/models/operations/toolgetbynamerequest.md
   - docs/models/operations/toollistrequest.md
@@ -462,6 +463,7 @@ generatedFiles:
   - src/funcs/sessionsTranscriptGetById.ts
   - src/funcs/takeoutsCreate.ts
   - src/funcs/takeoutsTakeoutsGetByJobId.ts
+  - src/funcs/takeoutsTakeoutsGetFile.ts
   - src/funcs/toolsCreate.ts
   - src/funcs/toolsDelete.ts
   - src/funcs/toolsGetByName.ts
@@ -751,6 +753,7 @@ generatedFiles:
   - src/models/operations/sessionslist.ts
   - src/models/operations/sessiontranscriptgetbyid.ts
   - src/models/operations/takeoutsgetbyjobid.ts
+  - src/models/operations/takeoutsgetfile.ts
   - src/models/operations/tooldelete.ts
   - src/models/operations/toolgetbyname.ts
   - src/models/operations/toollist.ts
@@ -1974,5 +1977,11 @@ examples:
         "200":
           application/json: {"phone_number": "+18042221111"}
         "422": {}
+  takeouts_get_file:
+    speakeasy-default-takeouts-get-file:
+      parameters:
+        path:
+          job_id: "<id>"
+          file_name: "example.file"
 examplesVersion: 1.0.0
 generatedTests: {}

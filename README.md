@@ -332,6 +332,7 @@ run();
 
 * [create](docs/sdks/takeouts/README.md#create) - Create Takeout
 * [takeoutsGetByJobId](docs/sdks/takeouts/README.md#takeoutsgetbyjobid) - Get Takeout
+* [takeoutsGetFile](docs/sdks/takeouts/README.md#takeoutsgetfile) - Get File
 
 ### [tools](docs/sdks/tools/README.md)
 
@@ -472,6 +473,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`takeoutsCreate`](docs/sdks/takeouts/README.md#create) - Create Takeout
 - [`takeoutsTakeoutsGetByJobId`](docs/sdks/takeouts/README.md#takeoutsgetbyjobid) - Get Takeout
+- [`takeoutsTakeoutsGetFile`](docs/sdks/takeouts/README.md#takeoutsgetfile) - Get File
 - [`toolsCreate`](docs/sdks/tools/README.md#create) - Create Tool
 - [`toolsDelete`](docs/sdks/tools/README.md#delete) - Delete Tool
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info

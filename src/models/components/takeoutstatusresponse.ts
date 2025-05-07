@@ -20,7 +20,7 @@ export type TakeoutStatusResponse = {
    */
   status: TakeoutRequestStatus;
   updatedAt: Date;
-  downloadLinks?: Array<string> | null | undefined;
+  fileNames?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -32,12 +32,12 @@ export const TakeoutStatusResponse$inboundSchema: z.ZodType<
   job_id: z.string(),
   status: TakeoutRequestStatus$inboundSchema,
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  download_links: z.nullable(z.array(z.string())).optional(),
+  file_names: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "job_id": "jobId",
     "updated_at": "updatedAt",
-    "download_links": "downloadLinks",
+    "file_names": "fileNames",
   });
 });
 
@@ -46,7 +46,7 @@ export type TakeoutStatusResponse$Outbound = {
   job_id: string;
   status: string;
   updated_at: string;
-  download_links?: Array<string> | null | undefined;
+  file_names?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -58,12 +58,12 @@ export const TakeoutStatusResponse$outboundSchema: z.ZodType<
   jobId: z.string(),
   status: TakeoutRequestStatus$outboundSchema,
   updatedAt: z.date().transform(v => v.toISOString()),
-  downloadLinks: z.nullable(z.array(z.string())).optional(),
+  fileNames: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     jobId: "job_id",
     updatedAt: "updated_at",
-    downloadLinks: "download_links",
+    fileNames: "file_names",
   });
 });
 
