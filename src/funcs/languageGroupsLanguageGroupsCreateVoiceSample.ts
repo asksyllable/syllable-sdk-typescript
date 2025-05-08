@@ -36,7 +36,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
   options?: RequestOptions,
 ): Promise<
   Result<
-    any,
+    string,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -62,7 +62,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
-    Accept: "application/json",
+    Accept: "audio/mpeg",
   }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
@@ -113,7 +113,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
   };
 
   const [result] = await M.match<
-    any,
+    string,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -123,7 +123,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.any()),
+    M.text(200, z.string(), { ctype: "audio/mpeg" }),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
