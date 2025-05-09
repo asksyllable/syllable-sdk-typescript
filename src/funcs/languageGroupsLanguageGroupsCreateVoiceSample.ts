@@ -62,7 +62,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
-    Accept: "audio/mpeg",
+    Accept: "application/octet-stream",
   }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
@@ -123,7 +123,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.text(200, z.string(), { ctype: "audio/mpeg" }),
+    M.text(200, z.string(), { ctype: "application/octet-stream" }),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
