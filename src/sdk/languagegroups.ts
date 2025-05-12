@@ -108,7 +108,7 @@ export class LanguageGroups extends ClientSDK {
   async languageGroupsCreateVoiceSample(
     request: components.VoiceSampleCreateRequest,
     options?: RequestOptions,
-  ): Promise<string> {
+  ): Promise<ReadableStream<Uint8Array>> {
     return unwrapAsync(languageGroupsLanguageGroupsCreateVoiceSample(
       this,
       request,
