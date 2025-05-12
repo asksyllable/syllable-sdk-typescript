@@ -36,7 +36,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
   options?: RequestOptions,
 ): Promise<
   Result<
-    string,
+    ReadableStream<Uint8Array>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -113,7 +113,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
   };
 
   const [result] = await M.match<
-    string,
+    ReadableStream<Uint8Array>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -123,7 +123,7 @@ export async function languageGroupsLanguageGroupsCreateVoiceSample(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.text(200, z.string(), { ctype: "application/octet-stream" }),
+    M.stream(200, z.instanceof(ReadableStream<Uint8Array>)),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

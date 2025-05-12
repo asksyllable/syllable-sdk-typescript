@@ -5822,6 +5822,8 @@ paths:
             "application/octet-stream":
               schema:
                 type: "string"
+                title: "bytes"
+                format: "binary"
         "422":
           description: "Validation Error"
           content:
