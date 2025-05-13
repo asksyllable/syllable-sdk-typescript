@@ -17,9 +17,13 @@ export type InsightToolTestInput = {
    */
   toolName: string;
   /**
-   * The session ID of the session to run the tool against
+   * The session ID of the session against which to run the tool
    */
-  sessionId: number;
+  sessionId?: number | null | undefined;
+  /**
+   * The file ID of the uploaded file against which to run the tool
+   */
+  uploadFileId?: number | null | undefined;
 };
 
 /** @internal */
@@ -29,18 +33,21 @@ export const InsightToolTestInput$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   tool_name: z.string(),
-  session_id: z.number().int(),
+  session_id: z.nullable(z.number().int()).optional(),
+  upload_file_id: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "tool_name": "toolName",
     "session_id": "sessionId",
+    "upload_file_id": "uploadFileId",
   });
 });
 
 /** @internal */
 export type InsightToolTestInput$Outbound = {
   tool_name: string;
-  session_id: number;
+  session_id?: number | null | undefined;
+  upload_file_id?: number | null | undefined;
 };
 
 /** @internal */
@@ -50,11 +57,13 @@ export const InsightToolTestInput$outboundSchema: z.ZodType<
   InsightToolTestInput
 > = z.object({
   toolName: z.string(),
-  sessionId: z.number().int(),
+  sessionId: z.nullable(z.number().int()).optional(),
+  uploadFileId: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     toolName: "tool_name",
     sessionId: "session_id",
+    uploadFileId: "upload_file_id",
   });
 });
 
