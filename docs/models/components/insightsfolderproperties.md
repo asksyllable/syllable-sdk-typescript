@@ -11,5 +11,5 @@ let value: InsightsFolderProperties = "label";
 ## Values
 
 ```typescript
-"id" | "name" | "label" | "updated_at"
+"id" | "name" | "name_exact" | "label" | "updated_at"
 ```

@@ -11,5 +11,5 @@ let value: InsightToolProperties = "insight_tool_definition_id";
 ## Values
 
 ```typescript
-"id" | "name" | "description" | "tool_arguments" | "insight_tool_definition_id" | "updated_at"
+"id" | "name" | "name_exact" | "description" | "tool_arguments" | "insight_tool_definition_id" | "updated_at"
 ```
