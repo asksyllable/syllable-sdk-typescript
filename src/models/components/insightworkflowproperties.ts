@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const InsightWorkflowProperties = {
   Id: "id",
   Name: "name",
+  NameExact: "name_exact",
   Description: "description",
   Status: "status",
   Conditions: "conditions",

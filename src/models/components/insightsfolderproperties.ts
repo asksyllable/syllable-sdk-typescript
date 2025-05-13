@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const InsightsFolderProperties = {
   Id: "id",
   Name: "name",
+  NameExact: "name_exact",
   Label: "label",
   UpdatedAt: "updated_at",
 } as const;

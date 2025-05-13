@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const InsightToolProperties = {
   Id: "id",
   Name: "name",
+  NameExact: "name_exact",
   Description: "description",
   ToolArguments: "tool_arguments",
   InsightToolDefinitionId: "insight_tool_definition_id",
