@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 0c91f219f8e6601aee784d7a505f0b05
+  docChecksum: f4d1da9e2e248839e6f128d499f4be8f
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.145
-  configChecksum: 18328f82ddeb66a131e0020efe8197dc
+  releaseVersion: 0.1.0-alpha.146
+  configChecksum: fafbe3aac2d37233e9626bf0e1a01390
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -1831,7 +1831,7 @@ examples:
   insights_tool_test:
     speakeasy-default-insights-tool-test:
       requestBody:
-        application/json: {"tool_name": "summary-tool", "session_id": "283467"}
+        application/json: {"tool_name": "summary-tool", "session_id": "283467", "upload_file_id": "283467"}
   takeouts_create: {}
   takeouts_get_by_job_id:
     speakeasy-default-takeouts-get-by-job-id:

@@ -385,6 +385,7 @@ async function run() {
   const result = await syllableSDK.insights.tools.insightsToolTest({
     toolName: "summary-tool",
     sessionId: 283467,
+    uploadFileId: 283467,
   });
 
   // Handle the result
@@ -412,6 +413,7 @@ async function run() {
   const res = await insightsToolsInsightsToolTest(syllableSDK, {
     toolName: "summary-tool",
     sessionId: 283467,
+    uploadFileId: 283467,
   });
 
   if (!res.ok) {
