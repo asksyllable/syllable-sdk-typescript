@@ -55,6 +55,7 @@ export * from "./outboundbatchremove.js";
 export * from "./outboundbatchresults.js";
 export * from "./outboundbatchupdate.js";
 export * from "./outboundbatchupload.js";
+export * from "./outboundcampaigndelete.js";
 export * from "./outboundcampaigngetbyid.js";
 export * from "./outboundcampaignlist.js";
 export * from "./outboundcampaignupdate.js";

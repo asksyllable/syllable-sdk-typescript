@@ -277,6 +277,7 @@ run();
 * [create](docs/sdks/campaigns/README.md#create) - Create Outbound Communication Campaign
 * [getById](docs/sdks/campaigns/README.md#getbyid) - Get Outbound Communication Campaign
 * [update](docs/sdks/campaigns/README.md#update) - Update Outbound Communication Campaign
+* [delete](docs/sdks/campaigns/README.md#delete) - Delete Outbound Communication Campaign
 
 ### [prompts](docs/sdks/prompts/README.md)
 
@@ -443,6 +444,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`outboundBatchesUpdate`](docs/sdks/batches/README.md#update) - Update Outbound Communication Batch
 - [`outboundBatchesUpload`](docs/sdks/batches/README.md#upload) - Upload Outbound Communication Batch
 - [`outboundCampaignsCreate`](docs/sdks/campaigns/README.md#create) - Create Outbound Communication Campaign
+- [`outboundCampaignsDelete`](docs/sdks/campaigns/README.md#delete) - Delete Outbound Communication Campaign
 - [`outboundCampaignsGetById`](docs/sdks/campaigns/README.md#getbyid) - Get Outbound Communication Campaign
 - [`outboundCampaignsList`](docs/sdks/campaigns/README.md#list) - List Outbound Communication Campaigns
 - [`outboundCampaignsUpdate`](docs/sdks/campaigns/README.md#update) - Update Outbound Communication Campaign

@@ -3,6 +3,7 @@
  */
 
 import { outboundCampaignsCreate } from "../funcs/outboundCampaignsCreate.js";
+import { outboundCampaignsDelete } from "../funcs/outboundCampaignsDelete.js";
 import { outboundCampaignsGetById } from "../funcs/outboundCampaignsGetById.js";
 import { outboundCampaignsList } from "../funcs/outboundCampaignsList.js";
 import { outboundCampaignsUpdate } from "../funcs/outboundCampaignsUpdate.js";
@@ -62,6 +63,20 @@ export class Campaigns extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.OutboundCampaign> {
     return unwrapAsync(outboundCampaignsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Outbound Communication Campaign
+   */
+  async delete(
+    request: operations.OutboundCampaignDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(outboundCampaignsDelete(
       this,
       request,
       options,
