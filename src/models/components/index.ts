@@ -68,6 +68,7 @@ export * from "./incidentproperties.js";
 export * from "./incidentresponse.js";
 export * from "./incidentupdaterequest.js";
 export * from "./insightsfolder.js";
+export * from "./insightsfolderfilemove.js";
 export * from "./insightsfolderinput.js";
 export * from "./insightsfolderproperties.js";
 export * from "./insightsoutput.js";

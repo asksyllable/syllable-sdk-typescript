@@ -3,9 +3,11 @@
  */
 
 import { insightsFoldersCreate } from "../funcs/insightsFoldersCreate.js";
+import { insightsFoldersDelete } from "../funcs/insightsFoldersDelete.js";
 import { insightsFoldersGetById } from "../funcs/insightsFoldersGetById.js";
 import { insightsFoldersList } from "../funcs/insightsFoldersList.js";
 import { insightsFoldersListFiles } from "../funcs/insightsFoldersListFiles.js";
+import { insightsFoldersMoveFiles } from "../funcs/insightsFoldersMoveFiles.js";
 import { insightsFoldersUpdate } from "../funcs/insightsFoldersUpdate.js";
 import { insightsFoldersUploadFile } from "../funcs/insightsFoldersUploadFile.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -57,6 +59,20 @@ export class Folders extends ClientSDK {
   }
 
   /**
+   * Delete Insights Folder
+   */
+  async delete(
+    request: operations.InsightsFolderDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<boolean> {
+    return unwrapAsync(insightsFoldersDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Update Insights Folder
    */
   async update(
@@ -92,6 +108,20 @@ export class Folders extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ListResponseInsightsUploadFile> {
     return unwrapAsync(insightsFoldersListFiles(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Move Insights Upload Files
+   */
+  async moveFiles(
+    request: operations.InsightsUploadMoveFilesRequest,
+    options?: RequestOptions,
+  ): Promise<Array<components.InsightsUploadFile>> {
+    return unwrapAsync(insightsFoldersMoveFiles(
       this,
       request,
       options,

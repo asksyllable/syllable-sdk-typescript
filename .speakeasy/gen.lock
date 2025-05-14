@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 9b68fd21122a0c79c73a04ba00e9b22e
+  docChecksum: cb5af5e9753382f1a3c5b49251306053
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.148
-  configChecksum: c3acfd281885a438e4444a453804774c
+  releaseVersion: 0.1.0-alpha.149
+  configChecksum: f330acf359e00fe972e99b77651d65f0
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -117,6 +117,7 @@ generatedFiles:
   - docs/models/components/incidentupdaterequest.md
   - docs/models/components/insights.md
   - docs/models/components/insightsfolder.md
+  - docs/models/components/insightsfolderfilemove.md
   - docs/models/components/insightsfolderinput.md
   - docs/models/components/insightsfolderproperties.md
   - docs/models/components/insightsoutput.md
@@ -266,13 +267,16 @@ generatedFiles:
   - docs/models/operations/incidentdeleterequest.md
   - docs/models/operations/incidentgetbyidrequest.md
   - docs/models/operations/incidentlistrequest.md
+  - docs/models/operations/insightsfolderdeleterequest.md
   - docs/models/operations/insightsfoldergetbyidrequest.md
   - docs/models/operations/insightsfolderlistrequest.md
   - docs/models/operations/insightsfolderupdaterequest.md
   - docs/models/operations/insightsfolderuploadfilerequest.md
   - docs/models/operations/insightslistrequest.md
+  - docs/models/operations/insightstooldeleterequest.md
   - docs/models/operations/insightstoolupdaterequest.md
   - docs/models/operations/insightsuploadlistfilesrequest.md
+  - docs/models/operations/insightsuploadmovefilesrequest.md
   - docs/models/operations/insightsworkflowactivaterequest.md
   - docs/models/operations/insightsworkflowdeleterequest.md
   - docs/models/operations/insightsworkflowgetbyidrequest.md
@@ -398,13 +402,16 @@ generatedFiles:
   - src/funcs/incidentsList.ts
   - src/funcs/incidentsUpdate.ts
   - src/funcs/insightsFoldersCreate.ts
+  - src/funcs/insightsFoldersDelete.ts
   - src/funcs/insightsFoldersGetById.ts
   - src/funcs/insightsFoldersList.ts
   - src/funcs/insightsFoldersListFiles.ts
+  - src/funcs/insightsFoldersMoveFiles.ts
   - src/funcs/insightsFoldersUpdate.ts
   - src/funcs/insightsFoldersUploadFile.ts
   - src/funcs/insightsList.ts
   - src/funcs/insightsToolsCreate.ts
+  - src/funcs/insightsToolsDelete.ts
   - src/funcs/insightsToolsGetById.ts
   - src/funcs/insightsToolsInsightToolGetDefinitions.ts
   - src/funcs/insightsToolsInsightsToolTest.ts
@@ -560,6 +567,7 @@ generatedFiles:
   - src/models/components/incidentupdaterequest.ts
   - src/models/components/index.ts
   - src/models/components/insightsfolder.ts
+  - src/models/components/insightsfolderfilemove.ts
   - src/models/components/insightsfolderinput.ts
   - src/models/components/insightsfolderproperties.ts
   - src/models/components/insightsoutput.ts
@@ -708,13 +716,16 @@ generatedFiles:
   - src/models/operations/incidentgetbyid.ts
   - src/models/operations/incidentlist.ts
   - src/models/operations/index.ts
+  - src/models/operations/insightsfolderdelete.ts
   - src/models/operations/insightsfoldergetbyid.ts
   - src/models/operations/insightsfolderlist.ts
   - src/models/operations/insightsfolderupdate.ts
   - src/models/operations/insightsfolderuploadfile.ts
   - src/models/operations/insightslist.ts
+  - src/models/operations/insightstooldelete.ts
   - src/models/operations/insightstoolupdate.ts
   - src/models/operations/insightsuploadlistfiles.ts
+  - src/models/operations/insightsuploadmovefiles.ts
   - src/models/operations/insightsworkflowactivate.ts
   - src/models/operations/insightsworkflowdelete.ts
   - src/models/operations/insightsworkflowgetbyid.ts
@@ -1991,5 +2002,26 @@ examples:
       parameters:
         path:
           campaign_id: 545907
+  insights_folder_delete:
+    speakeasy-default-insights-folder-delete:
+      parameters:
+        path:
+          folder_id: 545907
+  insights_upload_move_files:
+    speakeasy-default-insights-upload-move-files:
+      parameters:
+        path:
+          folder_id: 623467
+      requestBody:
+        application/json: {"destination_folder_id": 182764, "file_id_list": ["[12334,23445,34556]"]}
+      responses:
+        "200":
+          application/json: [{"id": 182764, "folder_id": 182764, "filename": "customer-complaints.wav", "object_key": "UPLOAD_CALL_ID/recording/2025/04/22/15/00/ce7d212e-80b0-4f0b-9e01-74322f146611.mp3", "call_id": "12345", "agent_number": "1234567890", "customer_number": "0987654321", "duration": 305.5, "start_time": "2025-05-13T00:00:00Z", "end_time": "2025-05-14T00:00:00Z", "error_message": "File not found", "metadata": {"duration": "00:10:00", "size": "10MB"}, "created_at": "2025-05-13T00:00:00Z"}]
+        "422": {}
+  insights_tool_delete:
+    speakeasy-default-insights-tool-delete:
+      parameters:
+        path:
+          tool_id: 545907
 examplesVersion: 1.0.0
 generatedTests: {}

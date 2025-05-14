@@ -1207,6 +1207,28 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/insights/folders/{folder_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.folders.delete({
+                folderId: 545907,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/insights/folders/{folder_id}"]["get"]
     update:
       x-codeSamples:
@@ -1280,6 +1302,34 @@ actions:
                 ],
                 startDatetime: "2023-01-01T00:00:00Z",
                 endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/folders/{folder_id}/move-files"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.folders.moveFiles({
+                folderId: 623467,
+                insightsFolderFileMove: {
+                  destinationFolderId: 182764,
+                  fileIdList: [
+                    [12334,23445,34556],
+                  ],
+                },
               });
 
               // Handle the result
@@ -1361,6 +1411,28 @@ actions:
                   "prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded",
                 },
                 insightToolDefinitionId: 1,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/insights/tool-configurations/{tool_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.tools.delete({
+                toolId: 545907,
               });
 
               // Handle the result
