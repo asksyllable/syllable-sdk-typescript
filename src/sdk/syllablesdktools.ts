@@ -3,6 +3,7 @@
  */
 
 import { insightsToolsCreate } from "../funcs/insightsToolsCreate.js";
+import { insightsToolsDelete } from "../funcs/insightsToolsDelete.js";
 import { insightsToolsGetById } from "../funcs/insightsToolsGetById.js";
 import { insightsToolsInsightsToolTest } from "../funcs/insightsToolsInsightsToolTest.js";
 import { insightsToolsInsightToolGetDefinitions } from "../funcs/insightsToolsInsightToolGetDefinitions.js";
@@ -59,6 +60,23 @@ export class SyllableSDKTools extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.InsightToolOutput> {
     return unwrapAsync(insightsToolsGetById(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Insight Tool Configuration
+   *
+   * @remarks
+   * Delete an Insights tool configuration.
+   */
+  async delete(
+    request: operations.InsightsToolDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(insightsToolsDelete(
       this,
       request,
       options,
