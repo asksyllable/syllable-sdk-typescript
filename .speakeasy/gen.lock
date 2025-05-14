@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 4c74c7f9f84be568dcddd6a724462a20
+  docChecksum: 9b68fd21122a0c79c73a04ba00e9b22e
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.147
-  configChecksum: 036e91fde834436efd4158a6264acecc
+  releaseVersion: 0.1.0-alpha.148
+  configChecksum: c3acfd281885a438e4444a453804774c
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -292,6 +292,7 @@ generatedFiles:
   - docs/models/operations/outboundbatchresultsrequest.md
   - docs/models/operations/outboundbatchupdaterequest.md
   - docs/models/operations/outboundbatchuploadrequest.md
+  - docs/models/operations/outboundcampaigndeleterequest.md
   - docs/models/operations/outboundcampaigngetbyidrequest.md
   - docs/models/operations/outboundcampaignlistrequest.md
   - docs/models/operations/outboundcampaignupdaterequest.md
@@ -433,6 +434,7 @@ generatedFiles:
   - src/funcs/outboundBatchesUpdate.ts
   - src/funcs/outboundBatchesUpload.ts
   - src/funcs/outboundCampaignsCreate.ts
+  - src/funcs/outboundCampaignsDelete.ts
   - src/funcs/outboundCampaignsGetById.ts
   - src/funcs/outboundCampaignsList.ts
   - src/funcs/outboundCampaignsUpdate.ts
@@ -732,6 +734,7 @@ generatedFiles:
   - src/models/operations/outboundbatchresults.ts
   - src/models/operations/outboundbatchupdate.ts
   - src/models/operations/outboundbatchupload.ts
+  - src/models/operations/outboundcampaigndelete.ts
   - src/models/operations/outboundcampaigngetbyid.ts
   - src/models/operations/outboundcampaignlist.ts
   - src/models/operations/outboundcampaignupdate.ts
@@ -1983,5 +1986,10 @@ examples:
         path:
           job_id: "<id>"
           file_name: "example.file"
+  outbound_campaign_delete:
+    speakeasy-default-outbound-campaign-delete:
+      parameters:
+        path:
+          campaign_id: 545907
 examplesVersion: 1.0.0
 generatedTests: {}
