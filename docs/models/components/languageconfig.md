@@ -11,7 +11,7 @@ import { LanguageConfig } from "syllable-sdk/models/components";
 let value: LanguageConfig = {
   languageCode: "zh-CN",
   voiceProvider: "ElevenLabs",
-  voiceDisplayName: "Sienna",
+  voiceDisplayName: "Tara",
   voiceSpeed: 1,
   voicePitch: 0,
   dtmfCode: 1,

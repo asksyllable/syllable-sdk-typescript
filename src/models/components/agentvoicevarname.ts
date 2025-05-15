@@ -6,7 +6,7 @@ import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * The variable name of an agent voice (used when procesing messages).
+ * The variable name of an agent voice (used when processing messages).
  */
 export const AgentVoiceVarName = {
   OpenaiAlloy: "openai:alloy",
@@ -49,7 +49,7 @@ export const AgentVoiceVarName = {
   WavenetFemaleViVNNeural2A: "wavenet:female/vi-VN-Neural2-A",
 } as const;
 /**
- * The variable name of an agent voice (used when procesing messages).
+ * The variable name of an agent voice (used when processing messages).
  */
 export type AgentVoiceVarName = ClosedEnum<typeof AgentVoiceVarName>;
 
