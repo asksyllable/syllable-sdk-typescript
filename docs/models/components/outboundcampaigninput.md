@@ -15,11 +15,11 @@ let value: OutboundCampaignInput = {
   },
   dailyStartTime: "09:00:00",
   dailyEndTime: "17:00:00",
-  source: "account@email.com",
+  source: "+19032900844",
   callerId: "19995551234",
-  retryInterval: "30m",
+  retryInterval: "7d",
   activeDays: [
-    "mon",
+    "wed",
   ],
 };
 ```

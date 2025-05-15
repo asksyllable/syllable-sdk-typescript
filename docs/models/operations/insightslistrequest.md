@@ -8,7 +8,7 @@ import { InsightsListRequest } from "syllable-sdk/models/operations";
 let value: InsightsListRequest = {
   page: 0,
   searchFields: [
-    "id",
+    "upload_file_id",
   ],
   searchFieldValues: [
     "Some Object Name",

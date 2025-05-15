@@ -6,7 +6,7 @@
 import { InsightsWorkflowUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowUpdateRequest = {
-  workflowId: 940432,
+  workflowId: 748664,
   insightWorkflowInput: {
     name: "summary-workflow",
     source: "manual",
@@ -30,8 +30,8 @@ let value: InsightsWorkflowUpdateRequest = {
         67535,
       ],
     },
-    startDatetime: new Date("2025-05-13T00:00:00Z"),
-    endDatetime: new Date("2025-05-14T00:00:00Z"),
+    startDatetime: new Date("2025-05-14T00:00:00Z"),
+    endDatetime: new Date("2025-05-15T00:00:00Z"),
   },
 };
 ```

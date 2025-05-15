@@ -9,7 +9,7 @@ let value: OutboundBatchAddRequest = {
   batchId: "<id>",
   communicationRequest: {
     referenceId: "12345",
-    target: "user@email.com",
+    target: "512-555-1234",
     requestVariables: {},
   },
 };

@@ -19,7 +19,7 @@ export type CommunicationRequest = {
    */
   referenceId: string;
   /**
-   * Target phone number or email address
+   * Target phone number
    */
   target: string;
   /**

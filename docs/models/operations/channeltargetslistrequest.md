@@ -8,7 +8,7 @@ import { ChannelTargetsListRequest } from "syllable-sdk/models/operations";
 let value: ChannelTargetsListRequest = {
   page: 0,
   searchFields: [
-    "updated_at",
+    "channel_name",
   ],
   searchFieldValues: [
     "Some Object Name",
