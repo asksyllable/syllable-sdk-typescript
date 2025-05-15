@@ -52,7 +52,7 @@ export type AgentVoice = {
    */
   displayName: AgentVoiceDisplayName;
   /**
-   * The variable name of an agent voice (used when procesing messages).
+   * The variable name of an agent voice (used when processing messages).
    */
   varName: AgentVoiceVarName;
   /**
