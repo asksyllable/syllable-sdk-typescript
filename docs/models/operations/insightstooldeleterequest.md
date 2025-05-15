@@ -6,7 +6,7 @@
 import { InsightsToolDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsToolDeleteRequest = {
-  toolId: 552193,
+  toolId: 961937,
 };
 ```
 
