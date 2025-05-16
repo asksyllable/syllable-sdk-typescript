@@ -72,6 +72,7 @@ let value: ListResponseInsightWorkflowOutput = {
         estimatedDailyCost: 45.25,
         estimatedBackfillCost: 4561.00,
       },
+      queueCount: 10,
       createdAt: new Date("2025-05-15T00:00:00Z"),
       updatedAt: new Date("2025-05-16T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
