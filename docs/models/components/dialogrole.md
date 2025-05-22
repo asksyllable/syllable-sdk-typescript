@@ -7,7 +7,7 @@ Role of dialog
 ```typescript
 import { DialogRole } from "syllable-sdk/models/components";
 
-let value: DialogRole = "agent";
+let value: DialogRole = "user";
 ```
 
 ## Values

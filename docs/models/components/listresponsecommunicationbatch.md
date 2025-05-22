@@ -11,7 +11,7 @@ let value: ListResponseCommunicationBatch = {
       batchId: "20250522.9",
       campaignId: 1,
       expiresOn: new Date("2025-05-23T00:00:00Z"),
-      paused: false,
+      paused: true,
       uploadFilename: "LATE_PAYMENTS_20250401.csv",
       createdAt: new Date("2025-05-22T00:00:00Z"),
       deletedAt: new Date("2025-05-22T00:00:00Z"),

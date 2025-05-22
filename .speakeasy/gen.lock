@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: d05fb2de38784107c9253f43c0aaa009
+  docChecksum: 56addc98eff9922ed2716b87973a32a9
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.157
-  configChecksum: 43b81fa83d6fc2fb86624e5a5f30fa36
+  releaseVersion: 0.1.0-alpha.158
+  configChecksum: b8825de2e223570a069c75f78c3488a8
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -46,6 +46,7 @@ generatedFiles:
   - docs/models/components/action.md
   - docs/models/components/agentcreate.md
   - docs/models/components/agentlanguage.md
+  - docs/models/components/agentlist.md
   - docs/models/components/agentproperties.md
   - docs/models/components/agentresponse.md
   - docs/models/components/agentsttprovider.md

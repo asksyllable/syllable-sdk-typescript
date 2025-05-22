@@ -15,9 +15,9 @@ let value: OutboundCampaignInput = {
   },
   dailyStartTime: "09:00:00",
   dailyEndTime: "17:00:00",
-  source: "+19032900844",
+  source: "account@email.com",
   callerId: "19995551234",
-  retryInterval: "7d",
+  retryInterval: "30m",
   activeDays: [
     "wed",
   ],
