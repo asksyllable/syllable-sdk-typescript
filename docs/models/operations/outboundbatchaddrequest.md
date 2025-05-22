@@ -10,7 +10,9 @@ let value: OutboundBatchAddRequest = {
   communicationRequest: {
     referenceId: "12345",
     target: "512-555-1234",
-    requestVariables: {},
+    requestVariables: {
+      "key": "<value>",
+    },
   },
 };
 ```
