@@ -19,8 +19,8 @@ let value: InsightsWorkflowUpdateRequest = {
       maxDuration: 600,
       sampleRate: 2,
       agentList: [
-        866324,
-        826325,
+        "866324",
+        "826325",
       ],
       promptList: [
         "123324",
