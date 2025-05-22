@@ -8,11 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Variables for request
- */
-export type CommunicationRequestRequestVariables = {};
-
 export type CommunicationRequest = {
   /**
    * ID for target outreach (unique within batch)
@@ -25,61 +20,8 @@ export type CommunicationRequest = {
   /**
    * Variables for request
    */
-  requestVariables: CommunicationRequestRequestVariables;
+  requestVariables: { [k: string]: string };
 };
-
-/** @internal */
-export const CommunicationRequestRequestVariables$inboundSchema: z.ZodType<
-  CommunicationRequestRequestVariables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CommunicationRequestRequestVariables$Outbound = {};
-
-/** @internal */
-export const CommunicationRequestRequestVariables$outboundSchema: z.ZodType<
-  CommunicationRequestRequestVariables$Outbound,
-  z.ZodTypeDef,
-  CommunicationRequestRequestVariables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommunicationRequestRequestVariables$ {
-  /** @deprecated use `CommunicationRequestRequestVariables$inboundSchema` instead. */
-  export const inboundSchema =
-    CommunicationRequestRequestVariables$inboundSchema;
-  /** @deprecated use `CommunicationRequestRequestVariables$outboundSchema` instead. */
-  export const outboundSchema =
-    CommunicationRequestRequestVariables$outboundSchema;
-  /** @deprecated use `CommunicationRequestRequestVariables$Outbound` instead. */
-  export type Outbound = CommunicationRequestRequestVariables$Outbound;
-}
-
-export function communicationRequestRequestVariablesToJSON(
-  communicationRequestRequestVariables: CommunicationRequestRequestVariables,
-): string {
-  return JSON.stringify(
-    CommunicationRequestRequestVariables$outboundSchema.parse(
-      communicationRequestRequestVariables,
-    ),
-  );
-}
-
-export function communicationRequestRequestVariablesFromJSON(
-  jsonString: string,
-): SafeParseResult<CommunicationRequestRequestVariables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CommunicationRequestRequestVariables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CommunicationRequestRequestVariables' from JSON`,
-  );
-}
 
 /** @internal */
 export const CommunicationRequest$inboundSchema: z.ZodType<
@@ -89,9 +31,7 @@ export const CommunicationRequest$inboundSchema: z.ZodType<
 > = z.object({
   reference_id: z.string(),
   target: z.string(),
-  request_variables: z.lazy(() =>
-    CommunicationRequestRequestVariables$inboundSchema
-  ),
+  request_variables: z.record(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "reference_id": "referenceId",
@@ -103,7 +43,7 @@ export const CommunicationRequest$inboundSchema: z.ZodType<
 export type CommunicationRequest$Outbound = {
   reference_id: string;
   target: string;
-  request_variables: CommunicationRequestRequestVariables$Outbound;
+  request_variables: { [k: string]: string };
 };
 
 /** @internal */
@@ -114,9 +54,7 @@ export const CommunicationRequest$outboundSchema: z.ZodType<
 > = z.object({
   referenceId: z.string(),
   target: z.string(),
-  requestVariables: z.lazy(() =>
-    CommunicationRequestRequestVariables$outboundSchema
-  ),
+  requestVariables: z.record(z.string()),
 }).transform((v) => {
   return remap$(v, {
     referenceId: "reference_id",

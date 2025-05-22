@@ -13,11 +13,6 @@ import {
   RequestStatus$outboundSchema,
 } from "./requeststatus.js";
 
-/**
- * Variables for request
- */
-export type RequestVariables = {};
-
 export type Insights = {};
 
 export type CommunicationRequestResult = {
@@ -32,7 +27,7 @@ export type CommunicationRequestResult = {
   /**
    * Variables for request
    */
-  requestVariables: RequestVariables;
+  requestVariables: { [k: string]: string };
   /**
    * Channel manager SID
    */
@@ -74,54 +69,6 @@ export type CommunicationRequestResult = {
    */
   insights?: Insights | null | undefined;
 };
-
-/** @internal */
-export const RequestVariables$inboundSchema: z.ZodType<
-  RequestVariables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type RequestVariables$Outbound = {};
-
-/** @internal */
-export const RequestVariables$outboundSchema: z.ZodType<
-  RequestVariables$Outbound,
-  z.ZodTypeDef,
-  RequestVariables
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestVariables$ {
-  /** @deprecated use `RequestVariables$inboundSchema` instead. */
-  export const inboundSchema = RequestVariables$inboundSchema;
-  /** @deprecated use `RequestVariables$outboundSchema` instead. */
-  export const outboundSchema = RequestVariables$outboundSchema;
-  /** @deprecated use `RequestVariables$Outbound` instead. */
-  export type Outbound = RequestVariables$Outbound;
-}
-
-export function requestVariablesToJSON(
-  requestVariables: RequestVariables,
-): string {
-  return JSON.stringify(
-    RequestVariables$outboundSchema.parse(requestVariables),
-  );
-}
-
-export function requestVariablesFromJSON(
-  jsonString: string,
-): SafeParseResult<RequestVariables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RequestVariables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RequestVariables' from JSON`,
-  );
-}
 
 /** @internal */
 export const Insights$inboundSchema: z.ZodType<
@@ -175,7 +122,7 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
 > = z.object({
   reference_id: z.string(),
   target: z.string(),
-  request_variables: z.lazy(() => RequestVariables$inboundSchema),
+  request_variables: z.record(z.string()),
   channel_manager_sid: z.nullable(z.string()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
@@ -209,7 +156,7 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
 export type CommunicationRequestResult$Outbound = {
   reference_id: string;
   target: string;
-  request_variables: RequestVariables$Outbound;
+  request_variables: { [k: string]: string };
   channel_manager_sid?: string | null | undefined;
   created_at?: string | undefined;
   sent_at?: string | null | undefined;
@@ -230,7 +177,7 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
 > = z.object({
   referenceId: z.string(),
   target: z.string(),
-  requestVariables: z.lazy(() => RequestVariables$outboundSchema),
+  requestVariables: z.record(z.string()),
   channelManagerSid: z.nullable(z.string()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   sentAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
