@@ -7,8 +7,8 @@ import { TakeoutStatusResponse } from "syllable-sdk/models/components";
 
 let value: TakeoutStatusResponse = {
   jobId: "<id>",
-  status: "in_progress",
-  updatedAt: new Date("2025-05-24T15:49:26.110Z"),
+  status: "failed",
+  updatedAt: new Date("2023-07-23T10:58:04.364Z"),
 };
 ```
 

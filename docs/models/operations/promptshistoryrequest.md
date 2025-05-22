@@ -6,7 +6,7 @@
 import { PromptsHistoryRequest } from "syllable-sdk/models/operations";
 
 let value: PromptsHistoryRequest = {
-  promptId: 669917,
+  promptId: 785153,
 };
 ```
 

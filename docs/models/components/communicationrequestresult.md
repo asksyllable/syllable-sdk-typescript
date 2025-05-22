@@ -17,7 +17,7 @@ let value: CommunicationRequestResult = {
   sessionId: 1,
   conversationId: 1,
   channelManagerStatus: "FAILED",
-  insightsStatus: "PROCESSING",
+  insightsStatus: "COMPLETED",
   insights: {},
 };
 ```

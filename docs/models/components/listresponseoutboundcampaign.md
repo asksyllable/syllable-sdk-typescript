@@ -19,9 +19,9 @@ let value: ListResponseOutboundCampaign = {
       dailyEndTime: "17:00:00",
       source: "+19032900844",
       callerId: "19995551234",
-      retryInterval: "30m",
+      retryInterval: "7d",
       activeDays: [
-        "fri",
+        "thu",
       ],
       id: 1,
       agentId: agent_id,

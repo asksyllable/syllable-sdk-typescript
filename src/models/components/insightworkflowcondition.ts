@@ -8,6 +8,8 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export type AgentList = string | number;
+
 /**
  * Model for the conditions that trigger an insight workflow.
  */
@@ -27,7 +29,7 @@ export type InsightWorkflowCondition = {
   /**
    * List of agent IDs
    */
-  agentList?: Array<string> | null | undefined;
+  agentList?: Array<string | number> | null | undefined;
   /**
    * List of prompts IDs
    */
@@ -39,6 +41,50 @@ export type InsightWorkflowCondition = {
 };
 
 /** @internal */
+export const AgentList$inboundSchema: z.ZodType<
+  AgentList,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number().int()]);
+
+/** @internal */
+export type AgentList$Outbound = string | number;
+
+/** @internal */
+export const AgentList$outboundSchema: z.ZodType<
+  AgentList$Outbound,
+  z.ZodTypeDef,
+  AgentList
+> = z.union([z.string(), z.number().int()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AgentList$ {
+  /** @deprecated use `AgentList$inboundSchema` instead. */
+  export const inboundSchema = AgentList$inboundSchema;
+  /** @deprecated use `AgentList$outboundSchema` instead. */
+  export const outboundSchema = AgentList$outboundSchema;
+  /** @deprecated use `AgentList$Outbound` instead. */
+  export type Outbound = AgentList$Outbound;
+}
+
+export function agentListToJSON(agentList: AgentList): string {
+  return JSON.stringify(AgentList$outboundSchema.parse(agentList));
+}
+
+export function agentListFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentList, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentList$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentList' from JSON`,
+  );
+}
+
+/** @internal */
 export const InsightWorkflowCondition$inboundSchema: z.ZodType<
   InsightWorkflowCondition,
   z.ZodTypeDef,
@@ -47,7 +93,8 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
   min_duration: z.nullable(z.number().int()).optional(),
   max_duration: z.nullable(z.number().int()).optional(),
   sample_rate: z.nullable(z.number().int()).optional(),
-  agent_list: z.nullable(z.array(z.string())).optional(),
+  agent_list: z.nullable(z.array(z.union([z.string(), z.number().int()])))
+    .optional(),
   prompt_list: z.nullable(z.array(z.string())).optional(),
   folder_list: z.nullable(z.array(z.number().int())).optional(),
 }).transform((v) => {
@@ -66,7 +113,7 @@ export type InsightWorkflowCondition$Outbound = {
   min_duration?: number | null | undefined;
   max_duration?: number | null | undefined;
   sample_rate?: number | null | undefined;
-  agent_list?: Array<string> | null | undefined;
+  agent_list?: Array<string | number> | null | undefined;
   prompt_list?: Array<string> | null | undefined;
   folder_list?: Array<number> | null | undefined;
 };
@@ -80,7 +127,8 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
   minDuration: z.nullable(z.number().int()).optional(),
   maxDuration: z.nullable(z.number().int()).optional(),
   sampleRate: z.nullable(z.number().int()).optional(),
-  agentList: z.nullable(z.array(z.string())).optional(),
+  agentList: z.nullable(z.array(z.union([z.string(), z.number().int()])))
+    .optional(),
   promptList: z.nullable(z.array(z.string())).optional(),
   folderList: z.nullable(z.array(z.number().int())).optional(),
 }).transform((v) => {

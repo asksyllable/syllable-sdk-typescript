@@ -9,11 +9,11 @@ let value: ListResponseSessionLabel = {
   items: [
     {
       sessionId: 1,
-      type: "human-rating",
-      code: "OK",
+      type: "auto-rating",
+      code: "BAD",
       userEmail: "user@email.com",
       issueCategories: [
-        "Speech transcription (STT)",
+        "Silent treatment",
       ],
       id: 1,
       timestamp: "2024-01-01T12:00:00Z",

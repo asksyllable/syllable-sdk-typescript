@@ -6,7 +6,7 @@
 import { SessionLabelGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: SessionLabelGetByIdRequest = {
-  sessionLabelId: 586410,
+  sessionLabelId: 63955,
 };
 ```
 
