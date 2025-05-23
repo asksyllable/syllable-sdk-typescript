@@ -227,7 +227,7 @@ run();
 
 ### Response
 
-**Promise\<[any](../../models/.md)\>**
+**Promise\<[string](../../models/.md)\>**
 
 ### Errors
 
