@@ -33,7 +33,7 @@ export async function takeoutsTakeoutsGetFile(
   options?: RequestOptions,
 ): Promise<
   Result<
-    any,
+    string,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -71,7 +71,7 @@ export async function takeoutsTakeoutsGetFile(
   );
 
   const headers = new Headers(compactMap({
-    Accept: "application/json",
+    Accept: "application/zip",
   }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);
@@ -122,7 +122,7 @@ export async function takeoutsTakeoutsGetFile(
   };
 
   const [result] = await M.match<
-    any,
+    string,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -132,7 +132,7 @@ export async function takeoutsTakeoutsGetFile(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.any()),
+    M.text(200, z.string(), { ctype: "application/zip" }),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
