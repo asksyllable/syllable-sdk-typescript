@@ -282,6 +282,10 @@ run();
 * [update](docs/sdks/campaigns/README.md#update) - Update Outbound Communication Campaign
 * [delete](docs/sdks/campaigns/README.md#delete) - Delete Outbound Communication Campaign
 
+### [permissions](docs/sdks/permissions/README.md)
+
+* [list](docs/sdks/permissions/README.md#list) - List Permissions
+
 ### [prompts](docs/sdks/prompts/README.md)
 
 * [list](docs/sdks/prompts/README.md#list) - Prompt List
@@ -454,6 +458,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`outboundCampaignsGetById`](docs/sdks/campaigns/README.md#getbyid) - Get Outbound Communication Campaign
 - [`outboundCampaignsList`](docs/sdks/campaigns/README.md#list) - List Outbound Communication Campaigns
 - [`outboundCampaignsUpdate`](docs/sdks/campaigns/README.md#update) - Update Outbound Communication Campaign
+- [`permissionsList`](docs/sdks/permissions/README.md#list) - List Permissions
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
 - [`promptsDelete`](docs/sdks/prompts/README.md#delete) - Delete Prompt
 - [`promptsGetById`](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id

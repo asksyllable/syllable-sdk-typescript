@@ -5,7 +5,7 @@
 ```typescript
 import { BatchProperties } from "syllable-sdk/models/components";
 
-let value: BatchProperties = "last_updated_at";
+let value: BatchProperties = "status";
 ```
 
 ## Values

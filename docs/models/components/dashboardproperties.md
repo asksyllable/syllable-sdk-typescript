@@ -7,7 +7,7 @@ Names of dashboard fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { DashboardProperties } from "syllable-sdk/models/components";
 
-let value: DashboardProperties = "name";
+let value: DashboardProperties = "rank";
 ```
 
 ## Values
