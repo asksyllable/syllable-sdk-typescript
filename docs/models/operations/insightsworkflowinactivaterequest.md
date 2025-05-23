@@ -6,7 +6,7 @@
 import { InsightsWorkflowInactivateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowInactivateRequest = {
-  workflowId: 584476,
+  workflowId: 552193,
 };
 ```
 

@@ -8,7 +8,10 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type AgentList = string | number;
+/**
+ * List of agent IDs
+ */
+export type AgentList = Array<number> | Array<string>;
 
 /**
  * Model for the conditions that trigger an insight workflow.
@@ -29,7 +32,7 @@ export type InsightWorkflowCondition = {
   /**
    * List of agent IDs
    */
-  agentList?: Array<string | number> | null | undefined;
+  agentList?: Array<number> | Array<string> | null | undefined;
   /**
    * List of prompts IDs
    */
@@ -45,17 +48,17 @@ export const AgentList$inboundSchema: z.ZodType<
   AgentList,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number().int()]);
+> = z.union([z.array(z.number().int()), z.array(z.string())]);
 
 /** @internal */
-export type AgentList$Outbound = string | number;
+export type AgentList$Outbound = Array<number> | Array<string>;
 
 /** @internal */
 export const AgentList$outboundSchema: z.ZodType<
   AgentList$Outbound,
   z.ZodTypeDef,
   AgentList
-> = z.union([z.string(), z.number().int()]);
+> = z.union([z.array(z.number().int()), z.array(z.string())]);
 
 /**
  * @internal
@@ -93,8 +96,9 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
   min_duration: z.nullable(z.number().int()).optional(),
   max_duration: z.nullable(z.number().int()).optional(),
   sample_rate: z.nullable(z.number().int()).optional(),
-  agent_list: z.nullable(z.array(z.union([z.string(), z.number().int()])))
-    .optional(),
+  agent_list: z.nullable(
+    z.union([z.array(z.number().int()), z.array(z.string())]),
+  ).optional(),
   prompt_list: z.nullable(z.array(z.string())).optional(),
   folder_list: z.nullable(z.array(z.number().int())).optional(),
 }).transform((v) => {
@@ -113,7 +117,7 @@ export type InsightWorkflowCondition$Outbound = {
   min_duration?: number | null | undefined;
   max_duration?: number | null | undefined;
   sample_rate?: number | null | undefined;
-  agent_list?: Array<string | number> | null | undefined;
+  agent_list?: Array<number> | Array<string> | null | undefined;
   prompt_list?: Array<string> | null | undefined;
   folder_list?: Array<number> | null | undefined;
 };
@@ -127,8 +131,9 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
   minDuration: z.nullable(z.number().int()).optional(),
   maxDuration: z.nullable(z.number().int()).optional(),
   sampleRate: z.nullable(z.number().int()).optional(),
-  agentList: z.nullable(z.array(z.union([z.string(), z.number().int()])))
-    .optional(),
+  agentList: z.nullable(
+    z.union([z.array(z.number().int()), z.array(z.string())]),
+  ).optional(),
   promptList: z.nullable(z.array(z.string())).optional(),
   folderList: z.nullable(z.array(z.number().int())).optional(),
 }).transform((v) => {
