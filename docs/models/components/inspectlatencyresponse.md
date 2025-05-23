@@ -13,12 +13,12 @@ let value: InspectLatencyResponse = {
   sessionId: "<id>",
   timeline: [
     {
-      timestamp: new Date("2025-12-30T17:40:17.979Z"),
-      measurementStart: new Date("2023-06-13T19:05:17.540Z"),
-      category: "http",
+      timestamp: new Date("2025-08-09T11:11:16.127Z"),
+      measurementStart: new Date("2023-06-28T02:12:50.953Z"),
+      category: "tool",
       label: "<value>",
       unitType: "minutes",
-      value: 6155.6,
+      value: 8480.09,
       valueStr: "<value>",
       timeDelta: "<value>",
     },

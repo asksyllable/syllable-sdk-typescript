@@ -125,6 +125,8 @@ export * from "./listresponsetoolresponse.js";
 export * from "./orderbydirection.js";
 export * from "./outboundcampaign.js";
 export * from "./outboundcampaigninput.js";
+export * from "./permissionresponse.js";
+export * from "./permissions.js";
 export * from "./promptcreaterequest.js";
 export * from "./prompthistory.js";
 export * from "./promptllmconfig.js";

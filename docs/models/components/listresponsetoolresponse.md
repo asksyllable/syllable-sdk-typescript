@@ -23,17 +23,7 @@ let value: ListResponseToolResponse = {
           method: "post",
           argumentLocation: "body",
         },
-        defaults: {
-          "key": {
-            transform: {
-              action: "default",
-              when: {
-                key: "key",
-                value: "value",
-              },
-            },
-          },
-        },
+        defaults: "<value>",
         staticParameters: [
           {
             name: "temperature_unit",
@@ -60,7 +50,7 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2023-03-01T13:18:23.203Z"),
+      lastUpdated: new Date("2023-01-21T07:11:50.213Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

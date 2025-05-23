@@ -16,7 +16,7 @@ let value: CommunicationBatch = {
   deletedReason: "User request",
   lastUpdatedAt: new Date("2025-05-23T00:00:00Z"),
   lastUpdatedBy: "user@email.com",
-  errorMessage: "Invalid file format",
+  errorMessage: "Missing required fields",
 };
 ```
 

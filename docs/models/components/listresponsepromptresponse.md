@@ -79,7 +79,7 @@ let value: ListResponsePromptResponse = {
               name: "Test Agent",
             },
           ],
-          lastUpdated: new Date("2025-01-29T00:21:03.404Z"),
+          lastUpdated: new Date("2024-07-03T10:50:11.552Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],

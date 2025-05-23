@@ -14,6 +14,7 @@ import { Incidents } from "./incidents.js";
 import { Insights } from "./insights.js";
 import { LanguageGroups } from "./languagegroups.js";
 import { Outbound } from "./outbound.js";
+import { Permissions } from "./permissions.js";
 import { Prompts } from "./prompts.js";
 import { Services } from "./services.js";
 import { SessionDebug } from "./sessiondebug.js";
@@ -63,6 +64,11 @@ export class SyllableSDK extends ClientSDK {
   private _customMessages?: CustomMessages;
   get customMessages(): CustomMessages {
     return (this._customMessages ??= new CustomMessages(this._options));
+  }
+
+  private _permissions?: Permissions;
+  get permissions(): Permissions {
+    return (this._permissions ??= new Permissions(this._options));
   }
 
   private _prompts?: Prompts;
