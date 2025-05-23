@@ -9,11 +9,11 @@ It contains the total and average latency for each category.
 import { SummaryEntry } from "syllable-sdk/models/components";
 
 let value: SummaryEntry = {
-  category: "http",
-  eventCount: 807319,
-  sumMs: 5691.01,
+  category: "tts",
+  eventCount: 848009,
+  sumMs: 8073.19,
   sumStr: "<value>",
-  averageMs: 4071.83,
+  averageMs: 5691.01,
   averageStr: "<value>",
 };
 ```

@@ -1,17 +1,25 @@
 # AgentList
 
+List of agent IDs
+
 
 ## Supported Types
 
-### `string`
+### `number[]`
 
 ```typescript
-const value: string = "<value>";
+const value: number[] = [
+  866324,
+  826325,
+];
 ```
 
-### `number`
+### `string[]`
 
 ```typescript
-const value: number = 699479;
+const value: string[] = [
+  "866324",
+  "826325",
+];
 ```
 

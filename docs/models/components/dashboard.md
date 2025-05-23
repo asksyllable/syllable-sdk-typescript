@@ -12,7 +12,7 @@ let value: Dashboard = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  supersetUrl: "https://musty-mountain.net",
+  supersetUrl: "https://pleased-lox.name",
 };
 ```
 
