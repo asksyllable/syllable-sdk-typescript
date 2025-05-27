@@ -19,8 +19,8 @@ let value: ListResponseInsightWorkflowOutput = {
         maxDuration: 600,
         sampleRate: 2,
         agentList: [
-          "866324",
-          "826325",
+          "Agnes.Wangeci",
+          "Dorice.Otaaba",
         ],
         promptList: [
           "123324",
@@ -30,8 +30,8 @@ let value: ListResponseInsightWorkflowOutput = {
           67535,
         ],
       },
-      startDatetime: new Date("2025-05-22T00:00:00Z"),
-      endDatetime: new Date("2025-05-23T00:00:00Z"),
+      startDatetime: new Date("2025-05-26T00:00:00Z"),
+      endDatetime: new Date("2025-05-27T00:00:00Z"),
       id: 1,
       insightTools: [
         {
@@ -58,12 +58,12 @@ let value: ListResponseInsightWorkflowOutput = {
               "summary": "string",
             },
           },
-          createdAt: new Date("2025-05-22T00:00:00Z"),
-          updatedAt: new Date("2025-05-23T00:00:00Z"),
+          createdAt: new Date("2025-05-26T00:00:00Z"),
+          updatedAt: new Date("2025-05-27T00:00:00Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
-      status: "INACTIVE",
+      status: "ACTIVE",
       estimate: {
         backfillCount: 100,
         backfillDuration: 1000,
@@ -73,8 +73,8 @@ let value: ListResponseInsightWorkflowOutput = {
         estimatedBackfillCost: 4561.00,
       },
       queueCount: 10,
-      createdAt: new Date("2025-05-22T00:00:00Z"),
-      updatedAt: new Date("2025-05-23T00:00:00Z"),
+      createdAt: new Date("2025-05-26T00:00:00Z"),
+      updatedAt: new Date("2025-05-27T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

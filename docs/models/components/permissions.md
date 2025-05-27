@@ -5,7 +5,7 @@
 ```typescript
 import { Permissions } from "syllable-sdk/models/components";
 
-let value: Permissions = "outbound_write";
+let value: Permissions = "prompts_read";
 ```
 
 ## Values

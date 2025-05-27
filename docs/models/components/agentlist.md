@@ -1,6 +1,6 @@
 # AgentList
 
-List of agent IDs
+List of agents
 
 
 ## Supported Types
@@ -9,8 +9,8 @@ List of agent IDs
 
 ```typescript
 const value: number[] = [
-  866324,
-  826325,
+  Agnes.Wangeci,
+  Dorice.Otaaba,
 ];
 ```
 
