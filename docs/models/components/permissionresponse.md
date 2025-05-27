@@ -8,7 +8,7 @@ Information about a permission.
 import { PermissionResponse } from "syllable-sdk/models/components";
 
 let value: PermissionResponse = {
-  name: "users_read",
+  name: "sa_incidents_delete",
   description: "Fetch agent information",
 };
 ```

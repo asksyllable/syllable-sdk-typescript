@@ -6,7 +6,7 @@
 import { InsightsFolderDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsFolderDeleteRequest = {
-  folderId: 488056,
+  folderId: 83422,
 };
 ```
 

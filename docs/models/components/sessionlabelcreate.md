@@ -11,7 +11,7 @@ let value: SessionLabelCreate = {
   code: "BAD",
   userEmail: "user@email.com",
   issueCategories: [
-    "Silent treatment",
+    "Speech transcription (STT)",
   ],
 };
 ```

@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * List of agent IDs
+ * List of agents
  */
 export type AgentList = Array<number> | Array<string>;
 
@@ -30,11 +30,11 @@ export type InsightWorkflowCondition = {
    */
   sampleRate?: number | null | undefined;
   /**
-   * List of agent IDs
+   * List of agents
    */
   agentList?: Array<number> | Array<string> | null | undefined;
   /**
-   * List of prompts IDs
+   * List of prompts
    */
   promptList?: Array<string> | null | undefined;
   /**
