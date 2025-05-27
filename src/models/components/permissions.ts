@@ -64,7 +64,7 @@ export const Permissions = {
   SaIncidentsWrite: "sa_incidents_write",
   SaIncidentsDelete: "sa_incidents_delete",
   SaPermissionsRead: "sa_permissions_read",
-  SuperAdminGlobal: "super_admin_global",
+  SyllableAdminGlobal: "syllable_admin_global",
 } as const;
 export type Permissions = ClosedEnum<typeof Permissions>;
 
