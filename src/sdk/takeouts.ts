@@ -43,7 +43,7 @@ export class Takeouts extends ClientSDK {
   async takeoutsGetFile(
     request: operations.TakeoutsGetFileRequest,
     options?: RequestOptions,
-  ): Promise<string> {
+  ): Promise<ReadableStream<Uint8Array>> {
     return unwrapAsync(takeoutsTakeoutsGetFile(
       this,
       request,
