@@ -13,5 +13,5 @@ let value: AgentProperties = "last_updated_by";
 ## Values
 
 ```typescript
-"id" | "name" | "name_exact" | "description" | "label" | "name_description" | "type" | "timezone" | "prompt_id" | "prompt_id_list" | "custom_message_id" | "languages" | "variables" | "prompt_tool_defaults" | "tool_headers" | "updated_at" | "last_updated_by"
+"id" | "name" | "name_exact" | "description" | "label" | "labels" | "name_description" | "type" | "timezone" | "prompt_id" | "prompt_id_list" | "custom_message_id" | "languages" | "variables" | "prompt_tool_defaults" | "tool_headers" | "updated_at" | "last_updated_by"
 ```

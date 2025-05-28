@@ -125,6 +125,10 @@ async function run() {
     name: "Weather agent",
     description: "Agent for answering questions about weather.",
     label: "Information",
+    labels: [
+      "Information",
+      "Weather",
+    ],
     type: "ca_v1",
     promptId: 1,
     customMessageId: 1,
@@ -181,6 +185,10 @@ async function run() {
     name: "Weather agent",
     description: "Agent for answering questions about weather.",
     label: "Information",
+    labels: [
+      "Information",
+      "Weather",
+    ],
     type: "ca_v1",
     promptId: 1,
     customMessageId: 1,
@@ -262,6 +270,10 @@ async function run() {
     name: "Weather agent",
     description: "Agent for answering questions about weather.",
     label: "Information",
+    labels: [
+      "Information",
+      "Weather",
+    ],
     type: "ca_v1",
     promptId: 1,
     customMessageId: 1,
@@ -319,6 +331,10 @@ async function run() {
     name: "Weather agent",
     description: "Agent for answering questions about weather.",
     label: "Information",
+    labels: [
+      "Information",
+      "Weather",
+    ],
     type: "ca_v1",
     promptId: 1,
     customMessageId: 1,
