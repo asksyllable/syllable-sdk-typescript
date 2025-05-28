@@ -33,7 +33,7 @@ export async function takeoutsTakeoutsGetFile(
   options?: RequestOptions,
 ): Promise<
   Result<
-    string,
+    ReadableStream<Uint8Array>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -122,7 +122,7 @@ export async function takeoutsTakeoutsGetFile(
   };
 
   const [result] = await M.match<
-    string,
+    ReadableStream<Uint8Array>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -132,7 +132,9 @@ export async function takeoutsTakeoutsGetFile(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.text(200, z.string(), { ctype: "application/zip" }),
+    M.stream(200, z.instanceof(ReadableStream<Uint8Array>), {
+      ctype: "application/zip",
+    }),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
