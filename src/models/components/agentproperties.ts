@@ -14,6 +14,7 @@ export const AgentProperties = {
   NameExact: "name_exact",
   Description: "description",
   Label: "label",
+  Labels: "labels",
   NameDescription: "name_description",
   Type: "type",
   Timezone: "timezone",

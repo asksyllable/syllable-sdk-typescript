@@ -37,9 +37,15 @@ export type AgentUpdate = {
    */
   description?: string | null | undefined;
   /**
-   * The agent label
+   * The agent label (DEPRECATED - use labels instead.)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   label?: string | null | undefined;
+  /**
+   * The agent labels
+   */
+  labels?: Array<string> | null | undefined;
   /**
    * The agent type. Must be "ca_v1" currently.
    */
@@ -105,6 +111,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   prompt_id: z.number().int(),
   custom_message_id: z.number().int(),
@@ -136,6 +143,7 @@ export type AgentUpdate$Outbound = {
   name: string;
   description?: string | null | undefined;
   label?: string | null | undefined;
+  labels?: Array<string> | null | undefined;
   type: string;
   prompt_id: number;
   custom_message_id: number;
@@ -160,6 +168,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   promptId: z.number().int(),
   customMessageId: z.number().int(),
