@@ -25,7 +25,7 @@ let value: ToolDetailResponse = {
     endpoint: {
       url: "https://api.example.com",
       method: "post",
-      argumentLocation: "path",
+      argumentLocation: "form",
     },
     defaults: "<value>",
     staticParameters: [
@@ -54,7 +54,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2024-03-12T10:48:24.554Z"),
+  lastUpdated: new Date("2023-08-18T23:43:47.903Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",
@@ -74,6 +74,6 @@ let value: ToolDetailResponse = {
 | `serviceName`                                                                                                | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | The name of the service to which the tool belongs                                                            |                                                                                                              |
 | `promptsInfo`                                                                                                | [components.ToolPromptInfo](../../models/components/toolpromptinfo.md)[]                                     | :heavy_minus_sign:                                                                                           | IDs and names of the prompts linked to the tool                                                              |                                                                                                              |
 | `agentsInfo`                                                                                                 | [components.ToolAgentInfo](../../models/components/toolagentinfo.md)[]                                       | :heavy_minus_sign:                                                                                           | IDs and names of the agents linked to the tool via a prompt                                                  |                                                                                                              |
-| `lastUpdated`                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                | :heavy_check_mark:                                                                                           | The timestamp of the most recent update to the service                                                       |                                                                                                              |
+| `lastUpdated`                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                | :heavy_check_mark:                                                                                           | The timestamp of the most recent update to the tool                                                          |                                                                                                              |
 | `lastUpdatedBy`                                                                                              | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The email of the user who last updated the tool                                                              | user@email.com                                                                                               |
 | `fields`                                                                                                     | *string*[]                                                                                                   | :heavy_check_mark:                                                                                           | Fields that the tool accepts as input                                                                        |                                                                                                              |

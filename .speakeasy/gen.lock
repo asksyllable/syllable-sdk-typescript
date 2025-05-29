@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 3170522e6be69845938c9709a18e11eb
+  docChecksum: 3d8e57e3ccf5e4408e5f57bdc3b825ef
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.167
-  configChecksum: 264b52a71175c08eb2dcfa466ead2ea7
+  releaseVersion: 0.1.0-alpha.168
+  configChecksum: 095cf387796d24363c4ef1b8425d049c
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -168,6 +168,7 @@ generatedFiles:
   - docs/models/components/listresponselanguagegroupresponse.md
   - docs/models/components/listresponseoutboundcampaign.md
   - docs/models/components/listresponsepromptresponse.md
+  - docs/models/components/listresponseroleresponse.md
   - docs/models/components/listresponseserviceresponse.md
   - docs/models/components/listresponsesession.md
   - docs/models/components/listresponsesessionlabel.md
@@ -178,7 +179,6 @@ generatedFiles:
   - docs/models/components/outboundcampaign.md
   - docs/models/components/outboundcampaigninput.md
   - docs/models/components/permissionresponse.md
-  - docs/models/components/permissions.md
   - docs/models/components/promptcreaterequest.md
   - docs/models/components/prompthistory.md
   - docs/models/components/promptllmconfig.md
@@ -188,6 +188,10 @@ generatedFiles:
   - docs/models/components/promptupdaterequest.md
   - docs/models/components/requeststatus.md
   - docs/models/components/response.md
+  - docs/models/components/rolecreaterequest.md
+  - docs/models/components/roleproperties.md
+  - docs/models/components/roleresponse.md
+  - docs/models/components/roleupdaterequest.md
   - docs/models/components/security.md
   - docs/models/components/servicecreaterequest.md
   - docs/models/components/serviceproperties.md
@@ -307,6 +311,9 @@ generatedFiles:
   - docs/models/operations/promptsgetbyidrequest.md
   - docs/models/operations/promptshistoryrequest.md
   - docs/models/operations/promptslistrequest.md
+  - docs/models/operations/rolesdeleterequest.md
+  - docs/models/operations/rolesgetbyidrequest.md
+  - docs/models/operations/roleslistrequest.md
   - docs/models/operations/servicedeleterequest.md
   - docs/models/operations/servicelistrequest.md
   - docs/models/operations/servicesgetbyidrequest.md
@@ -342,6 +349,7 @@ generatedFiles:
   - docs/sdks/outbound/README.md
   - docs/sdks/permissions/README.md
   - docs/sdks/prompts/README.md
+  - docs/sdks/roles/README.md
   - docs/sdks/services/README.md
   - docs/sdks/sessiondebug/README.md
   - docs/sdks/sessionlabels/README.md
@@ -455,6 +463,11 @@ generatedFiles:
   - src/funcs/promptsPromptGetSupportedLlms.ts
   - src/funcs/promptsPromptsHistory.ts
   - src/funcs/promptsUpdate.ts
+  - src/funcs/rolesCreate.ts
+  - src/funcs/rolesDelete.ts
+  - src/funcs/rolesGetById.ts
+  - src/funcs/rolesList.ts
+  - src/funcs/rolesUpdate.ts
   - src/funcs/servicesCreate.ts
   - src/funcs/servicesDelete.ts
   - src/funcs/servicesGetById.ts
@@ -620,6 +633,7 @@ generatedFiles:
   - src/models/components/listresponselanguagegroupresponse.ts
   - src/models/components/listresponseoutboundcampaign.ts
   - src/models/components/listresponsepromptresponse.ts
+  - src/models/components/listresponseroleresponse.ts
   - src/models/components/listresponseserviceresponse.ts
   - src/models/components/listresponsesession.ts
   - src/models/components/listresponsesessionlabel.ts
@@ -628,7 +642,6 @@ generatedFiles:
   - src/models/components/outboundcampaign.ts
   - src/models/components/outboundcampaigninput.ts
   - src/models/components/permissionresponse.ts
-  - src/models/components/permissions.ts
   - src/models/components/promptcreaterequest.ts
   - src/models/components/prompthistory.ts
   - src/models/components/promptllmconfig.ts
@@ -637,6 +650,10 @@ generatedFiles:
   - src/models/components/promptresponse.ts
   - src/models/components/promptupdaterequest.ts
   - src/models/components/requeststatus.ts
+  - src/models/components/rolecreaterequest.ts
+  - src/models/components/roleproperties.ts
+  - src/models/components/roleresponse.ts
+  - src/models/components/roleupdaterequest.ts
   - src/models/components/security.ts
   - src/models/components/servicecreaterequest.ts
   - src/models/components/serviceproperties.ts
@@ -760,6 +777,9 @@ generatedFiles:
   - src/models/operations/promptsgetbyid.ts
   - src/models/operations/promptshistory.ts
   - src/models/operations/promptslist.ts
+  - src/models/operations/rolesdelete.ts
+  - src/models/operations/rolesgetbyid.ts
+  - src/models/operations/roleslist.ts
   - src/models/operations/servicedelete.ts
   - src/models/operations/servicelist.ts
   - src/models/operations/servicesgetbyid.ts
@@ -796,6 +816,7 @@ generatedFiles:
   - src/sdk/outbound.ts
   - src/sdk/permissions.ts
   - src/sdk/prompts.ts
+  - src/sdk/roles.ts
   - src/sdk/sdk.ts
   - src/sdk/services.ts
   - src/sdk/sessiondebug.ts
@@ -2033,6 +2054,52 @@ examples:
     speakeasy-default-permissions-list:
       responses:
         "200":
-          application/json: [{"name": "organizations_write", "description": "Fetch agent information"}, {"name": "recording_download", "description": "Fetch agent information"}, {"name": "conversations_read", "description": "Fetch agent information"}]
+          application/json: [{"name": "agents_read", "description": "Fetch agent information"}, {"name": "agents_read", "description": "Fetch agent information"}, {"name": "agents_read", "description": "Fetch agent information"}]
+  roles_list:
+    speakeasy-default-roles-list:
+      parameters:
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["name"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: {"items": [{"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"], "id": 1, "last_updated_comments": "Updated to add delete permission", "is_system_role": false, "last_updated": "2024-08-22T19:26:20.850Z", "last_updated_by": "user@email.com"}, {"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"], "id": 1, "last_updated_comments": "Updated to add delete permission", "is_system_role": false, "last_updated": "2025-01-13T10:26:00.433Z", "last_updated_by": "user@email.com"}, {"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"], "id": 1, "last_updated_comments": "Updated to add delete permission", "is_system_role": false, "last_updated": "2023-07-14T18:23:27.528Z", "last_updated_by": "user@email.com"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+        "422": {}
+  roles_create:
+    speakeasy-default-roles-create:
+      requestBody:
+        application/json: {"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"]}
+      responses:
+        "200":
+          application/json: {"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"], "id": 1, "last_updated_comments": "Updated to add delete permission", "is_system_role": false, "last_updated": "2024-06-17T07:14:55.338Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  roles_update:
+    speakeasy-default-roles-update:
+      requestBody:
+        application/json: {"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"], "id": 1, "last_updated_comments": "Updated to add delete permission"}
+      responses:
+        "200":
+          application/json: {"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"], "id": 1, "last_updated_comments": "Updated to add delete permission", "is_system_role": false, "last_updated": "2025-07-28T19:04:48.565Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  roles_get_by_id:
+    speakeasy-default-roles-get-by-id:
+      parameters:
+        path:
+          role_id: 931598
+      responses:
+        "200":
+          application/json: {"name": "prompt_engineer", "description": "Role for users who can fetch and change prompts", "permissions": ["prompts_read", "prompts_write", "prompts_delete"], "id": 1, "last_updated_comments": "Updated to add delete permission", "is_system_role": false, "last_updated": "2024-07-07T13:01:26.809Z", "last_updated_by": "user@email.com"}
+        "422": {}
+  roles_delete:
+    speakeasy-default-roles-delete:
+      parameters:
+        path:
+          role_id: 545907
+        query:
+          reason: "<value>"
 examplesVersion: 1.0.0
 generatedTests: {}

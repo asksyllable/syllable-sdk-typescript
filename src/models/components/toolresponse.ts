@@ -69,7 +69,7 @@ export type ToolResponse = {
    */
   agentsInfo?: Array<ToolAgentInfo> | null | undefined;
   /**
-   * The timestamp of the most recent update to the service
+   * The timestamp of the most recent update to the tool
    */
   lastUpdated: Date;
   /**

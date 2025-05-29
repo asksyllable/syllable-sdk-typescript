@@ -8,18 +8,18 @@ import { OutboundCampaignInput } from "syllable-sdk/models/components";
 let value: OutboundCampaignInput = {
   campaignName: "Outbound Campaign 1",
   description: "This is a test campaign",
-  label: "demo",
+  label: "test",
   campaignVariables: {
     "key": "value",
     "key2": "value2",
   },
   dailyStartTime: "09:00:00",
   dailyEndTime: "17:00:00",
-  source: "+19032900844",
+  source: "account@email.com",
   callerId: "19995551234",
-  retryInterval: "7d",
+  retryInterval: "30m",
   activeDays: [
-    "tue",
+    "sun",
   ],
 };
 ```

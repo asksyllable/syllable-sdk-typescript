@@ -8,12 +8,12 @@ Data model for latency entries.
 import { LatencyEntry } from "syllable-sdk/models/components";
 
 let value: LatencyEntry = {
-  timestamp: new Date("2024-01-30T12:51:46.829Z"),
-  measurementStart: new Date("2025-03-11T01:40:18.315Z"),
-  category: "tts",
+  timestamp: new Date("2025-03-11T01:40:18.315Z"),
+  measurementStart: new Date("2023-07-08T02:32:49.310Z"),
+  category: "llm",
   label: "<value>",
-  unitType: "milliseconds",
-  value: 543.38,
+  unitType: "minutes",
+  value: 1999.96,
   valueStr: "<value>",
   timeDelta: "<value>",
 };

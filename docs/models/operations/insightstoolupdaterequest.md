@@ -6,7 +6,7 @@
 import { InsightsToolUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsToolUpdateRequest = {
-  toolId: 63955,
+  toolId: 485628,
   insightToolInput: {
     name: "summary-tool",
     description: "This tool uses GPT4.1 to generate a summary of the call",

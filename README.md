@@ -296,6 +296,14 @@ run();
 * [promptsHistory](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 * [promptGetSupportedLlms](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 
+### [roles](docs/sdks/roles/README.md)
+
+* [list](docs/sdks/roles/README.md#list) - List Roles
+* [create](docs/sdks/roles/README.md#create) - Create Role
+* [update](docs/sdks/roles/README.md#update) - Update Role
+* [getById](docs/sdks/roles/README.md#getbyid) - Get Role
+* [delete](docs/sdks/roles/README.md#delete) - Delete Role
+
 ### [services](docs/sdks/services/README.md)
 
 * [list](docs/sdks/services/README.md#list) - Service List
@@ -466,6 +474,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsPromptGetSupportedLlms`](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 - [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
+- [`rolesCreate`](docs/sdks/roles/README.md#create) - Create Role
+- [`rolesDelete`](docs/sdks/roles/README.md#delete) - Delete Role
+- [`rolesGetById`](docs/sdks/roles/README.md#getbyid) - Get Role
+- [`rolesList`](docs/sdks/roles/README.md#list) - List Roles
+- [`rolesUpdate`](docs/sdks/roles/README.md#update) - Update Role
 - [`servicesCreate`](docs/sdks/services/README.md#create) - Create Service
 - [`servicesDelete`](docs/sdks/services/README.md#delete) - Delete Service
 - [`servicesGetById`](docs/sdks/services/README.md#getbyid) - Get Service By Id
