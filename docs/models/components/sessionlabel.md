@@ -11,8 +11,8 @@ import { SessionLabel } from "syllable-sdk/models/components";
 
 let value: SessionLabel = {
   sessionId: 1,
-  type: "human-rating",
-  code: "OK",
+  type: "auto-rating",
+  code: "GOOD",
   userEmail: "user@email.com",
   issueCategories: [
     "Silent treatment",

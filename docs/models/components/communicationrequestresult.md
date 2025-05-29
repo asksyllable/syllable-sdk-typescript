@@ -7,7 +7,7 @@ import { CommunicationRequestResult } from "syllable-sdk/models/components";
 
 let value: CommunicationRequestResult = {
   referenceId: "12345",
-  target: "+15125551234",
+  target: "512-555-1234",
   requestVariables: {
     "key": "<value>",
   },
@@ -16,8 +16,8 @@ let value: CommunicationRequestResult = {
   sentAt: new Date("2025-05-29T00:00:00Z"),
   sessionId: 1,
   conversationId: 1,
-  channelManagerStatus: "FAILED",
-  insightsStatus: "COMPLETED",
+  channelManagerStatus: "NO_ANSWER",
+  insightsStatus: "FAILED",
   insights: {},
 };
 ```

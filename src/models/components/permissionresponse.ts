@@ -6,17 +6,15 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Permissions,
-  Permissions$inboundSchema,
-  Permissions$outboundSchema,
-} from "./permissions.js";
 
 /**
  * Information about a permission.
  */
 export type PermissionResponse = {
-  name: Permissions;
+  /**
+   * Name of the permission
+   */
+  name: string;
   /**
    * Description of the permission
    */
@@ -29,7 +27,7 @@ export const PermissionResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: Permissions$inboundSchema,
+  name: z.string(),
   description: z.string(),
 });
 
@@ -45,7 +43,7 @@ export const PermissionResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PermissionResponse
 > = z.object({
-  name: Permissions$outboundSchema,
+  name: z.string(),
   description: z.string(),
 });
 

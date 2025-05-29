@@ -8,9 +8,9 @@ Request model to generate a sample audio file for a given voice and language.
 import { VoiceSampleCreateRequest } from "syllable-sdk/models/components";
 
 let value: VoiceSampleCreateRequest = {
-  languageCode: "es-US",
-  voiceProvider: "OpenAI",
-  voiceDisplayName: "vi-VN-Neural2-A",
+  languageCode: "en-US",
+  voiceProvider: "Google",
+  voiceDisplayName: "Mila",
   voiceSpeed: 1,
   voicePitch: 0,
 };

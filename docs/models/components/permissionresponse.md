@@ -8,14 +8,14 @@ Information about a permission.
 import { PermissionResponse } from "syllable-sdk/models/components";
 
 let value: PermissionResponse = {
-  name: "sa_incidents_delete",
+  name: "agents_read",
   description: "Fetch agent information",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `name`                                                           | [components.Permissions](../../models/components/permissions.md) | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
-| `description`                                                    | *string*                                                         | :heavy_check_mark:                                               | Description of the permission                                    | Fetch agent information                                          |
+| Field                         | Type                          | Required                      | Description                   | Example                       |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `name`                        | *string*                      | :heavy_check_mark:            | Name of the permission        | agents_read                   |
+| `description`                 | *string*                      | :heavy_check_mark:            | Description of the permission | Fetch agent information       |
