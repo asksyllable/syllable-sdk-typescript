@@ -10,7 +10,7 @@ import { VoiceSampleCreateRequest } from "syllable-sdk/models/components";
 let value: VoiceSampleCreateRequest = {
   languageCode: "en-US",
   voiceProvider: "Google",
-  voiceDisplayName: "Mila",
+  voiceDisplayName: "Mark",
   voiceSpeed: 1,
   voicePitch: 0,
 };

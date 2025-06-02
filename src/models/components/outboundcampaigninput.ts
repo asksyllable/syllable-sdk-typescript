@@ -23,9 +23,15 @@ export type OutboundCampaignInput = {
    */
   description?: string | null | undefined;
   /**
-   * Label for campaign
+   * Label for campaign (DEPRECATED - use labels instead)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   label?: string | null | undefined;
+  /**
+   * Labels for campaign
+   */
+  labels?: Array<string> | null | undefined;
   /**
    * Variables for campaign
    */
@@ -73,6 +79,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   campaign_name: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   campaign_variables: z.record(z.string()),
   daily_start_time: z.nullable(z.string()).optional(),
   daily_end_time: z.nullable(z.string()).optional(),
@@ -101,6 +108,7 @@ export type OutboundCampaignInput$Outbound = {
   campaign_name: string;
   description?: string | null | undefined;
   label?: string | null | undefined;
+  labels?: Array<string> | null | undefined;
   campaign_variables: { [k: string]: string };
   daily_start_time?: string | null | undefined;
   daily_end_time?: string | null | undefined;
@@ -121,6 +129,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   campaignName: z.string(),
   description: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   campaignVariables: z.record(z.string()),
   dailyStartTime: z.nullable(z.string()).optional(),
   dailyEndTime: z.nullable(z.string()).optional(),

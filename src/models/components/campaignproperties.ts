@@ -15,6 +15,7 @@ export const CampaignProperties = {
   CallerId: "caller_id",
   UpdatedAt: "updated_at",
   Label: "label",
+  Labels: "labels",
 } as const;
 export type CampaignProperties = ClosedEnum<typeof CampaignProperties>;
 

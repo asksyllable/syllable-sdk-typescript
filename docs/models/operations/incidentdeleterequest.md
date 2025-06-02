@@ -6,7 +6,7 @@
 import { IncidentDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: IncidentDeleteRequest = {
-  incidentId: 748664,
+  incidentId: 355613,
   reason: "<value>",
 };
 ```
