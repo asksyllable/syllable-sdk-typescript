@@ -225,7 +225,7 @@ let value: ChannelTargetResponse = {
         {
           languageCode: "es-US",
           voiceProvider: "Google",
-          voiceDisplayName: "Alejandro",
+          voiceDisplayName: "es-US-Neural2-B",
           dtmfCode: 2,
         },
       ],

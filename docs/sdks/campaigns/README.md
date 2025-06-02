@@ -30,7 +30,7 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.list({
     page: 0,
     searchFields: [
-      "caller_id",
+      "updated_at",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -64,7 +64,7 @@ async function run() {
   const res = await outboundCampaignsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "caller_id",
+      "updated_at",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -124,6 +124,10 @@ async function run() {
     campaignName: "Outbound Campaign 1",
     description: "This is a test campaign",
     label: "test",
+    labels: [
+      "test",
+      "demo",
+    ],
     campaignVariables: {
       "key": "value",
       "key2": "value2",
@@ -164,6 +168,10 @@ async function run() {
     campaignName: "Outbound Campaign 1",
     description: "This is a test campaign",
     label: "test",
+    labels: [
+      "test",
+      "demo",
+    ],
     campaignVariables: {
       "key": "value",
       "key2": "value2",
@@ -308,6 +316,10 @@ async function run() {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
       label: "demo",
+      labels: [
+        "test",
+        "demo",
+      ],
       campaignVariables: {
         "key": "value",
         "key2": "value2",
@@ -351,6 +363,10 @@ async function run() {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
       label: "demo",
+      labels: [
+        "test",
+        "demo",
+      ],
       campaignVariables: {
         "key": "value",
         "key2": "value2",

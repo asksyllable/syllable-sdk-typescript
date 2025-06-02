@@ -1851,7 +1851,7 @@ actions:
                   {
                     languageCode: "es-US",
                     voiceProvider: "Google",
-                    voiceDisplayName: "Alejandro",
+                    voiceDisplayName: "es-US-Neural2-B",
                     voiceSpeed: 1,
                     voicePitch: 0,
                     dtmfCode: 1,
@@ -1893,7 +1893,7 @@ actions:
                   {
                     languageCode: "es-US",
                     voiceProvider: "Google",
-                    voiceDisplayName: "Alejandro",
+                    voiceDisplayName: "es-US-Neural2-B",
                     voiceSpeed: 1,
                     voicePitch: 0,
                     dtmfCode: 1,
@@ -2224,7 +2224,7 @@ actions:
               const result = await syllableSDK.outbound.campaigns.list({
                 page: 0,
                 searchFields: [
-                  "caller_id",
+                  "updated_at",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -2254,18 +2254,21 @@ actions:
               const result = await syllableSDK.outbound.campaigns.create({
                 campaignName: "Outbound Campaign 1",
                 description: "This is a test campaign",
-                label: "test",
+                labels: [
+                  "test",
+                  "demo",
+                ],
                 campaignVariables: {
                   "key": "value",
                   "key2": "value2",
                 },
                 dailyStartTime: "09:00:00",
                 dailyEndTime: "17:00:00",
-                source: "account@email.com",
+                source: "+19032900844",
                 callerId: "19995551234",
                 retryInterval: "12h",
                 activeDays: [
-                  "mon",
+                  "wed",
                 ],
               });
 
@@ -2332,11 +2335,14 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.update({
-                campaignId: 627690,
+                campaignId: 991464,
                 outboundCampaignInput: {
                   campaignName: "Outbound Campaign 1",
                   description: "This is a test campaign",
-                  label: "demo",
+                  labels: [
+                    "test",
+                    "demo",
+                  ],
                   campaignVariables: {
                     "key": "value",
                     "key2": "value2",
@@ -2347,7 +2353,7 @@ actions:
                   callerId: "19995551234",
                   retryInterval: "12h",
                   activeDays: [
-                    "sun",
+                    "wed",
                   ],
                 },
               });

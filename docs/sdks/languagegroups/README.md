@@ -136,7 +136,7 @@ async function run() {
       {
         languageCode: "es-US",
         voiceProvider: "Google",
-        voiceDisplayName: "Alejandro",
+        voiceDisplayName: "es-US-Neural2-B",
         voiceSpeed: 1,
         voicePitch: 0,
         dtmfCode: 1,
@@ -182,7 +182,7 @@ async function run() {
       {
         languageCode: "es-US",
         voiceProvider: "Google",
-        voiceDisplayName: "Alejandro",
+        voiceDisplayName: "es-US-Neural2-B",
         voiceSpeed: 1,
         voicePitch: 0,
         dtmfCode: 1,
@@ -253,7 +253,7 @@ async function run() {
       {
         languageCode: "es-US",
         voiceProvider: "Google",
-        voiceDisplayName: "Alejandro",
+        voiceDisplayName: "es-US-Neural2-B",
         voiceSpeed: 1,
         voicePitch: 0,
         dtmfCode: 1,
@@ -301,7 +301,7 @@ async function run() {
       {
         languageCode: "es-US",
         voiceProvider: "Google",
-        voiceDisplayName: "Alejandro",
+        voiceDisplayName: "es-US-Neural2-B",
         voiceSpeed: 1,
         voicePitch: 0,
         dtmfCode: 1,
