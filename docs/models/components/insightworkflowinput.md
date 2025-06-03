@@ -9,7 +9,7 @@ import { InsightWorkflowInput } from "syllable-sdk/models/components";
 
 let value: InsightWorkflowInput = {
   name: "summary-workflow",
-  source: "manual",
+  source: "transfer",
   description: "Default workflow - generates a summary of the call",
   insightToolIds: [
     1,

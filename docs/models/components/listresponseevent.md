@@ -8,7 +8,7 @@ import { ListResponseEvent } from "syllable-sdk/models/components";
 let value: ListResponseEvent = {
   items: [
     {
-      timestamp: new Date("2024-09-23T05:41:47.829Z"),
+      timestamp: new Date("2023-01-06T03:30:35.300Z"),
       source: "tool-call",
       category: "automation",
       type: "phone-transfer",

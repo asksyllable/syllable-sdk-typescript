@@ -6,7 +6,7 @@
 import { RolesDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: RolesDeleteRequest = {
-  roleId: 961571,
+  roleId: 981830,
   reason: "<value>",
 };
 ```

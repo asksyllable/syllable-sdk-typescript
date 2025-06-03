@@ -39,10 +39,20 @@ let value: ListResponsePromptResponse = {
             },
             endpoint: {
               url: "https://api.example.com",
-              method: "post",
+              method: "get",
               argumentLocation: "path",
             },
-            defaults: "<value>",
+            defaults: {
+              "key": {
+                transform: {
+                  action: "default",
+                  when: {
+                    key: "key",
+                    value: "value",
+                  },
+                },
+              },
+            },
             staticParameters: [
               {
                 name: "temperature_unit",
@@ -69,7 +79,7 @@ let value: ListResponsePromptResponse = {
               name: "Test Agent",
             },
           ],
-          lastUpdated: new Date("2024-10-26T14:34:01.576Z"),
+          lastUpdated: new Date("2024-09-21T11:03:04.845Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],

@@ -22,7 +22,7 @@ let value: OutboundCampaign = {
   callerId: "19995551234",
   retryInterval: "30m",
   activeDays: [
-    "wed",
+    "sun",
   ],
   id: 1,
   agentId: agent_id,

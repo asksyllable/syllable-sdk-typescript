@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: ed69a531c97371bbf9683b910c67ee80
+  docChecksum: 53d039df5dc25ea1f734cb75b0954d09
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.172
-  configChecksum: b4b0195fe51e9b14ea9f9f12e029eb2d
+  releaseVersion: 0.1.0-alpha.173
+  configChecksum: 7e124c2e67646181ab8c45cd5cfad523
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -239,8 +239,12 @@ generatedFiles:
   - docs/models/components/twiliochannelconfigupdate.md
   - docs/models/components/twiliochannelcreaterequest.md
   - docs/models/components/twiliochannelupdaterequest.md
+  - docs/models/components/twiliolistnumbersresponse.md
   - docs/models/components/twilionumberaddrequest.md
   - docs/models/components/twilionumberaddresponse.md
+  - docs/models/components/twilionumberupdaterequest.md
+  - docs/models/components/twilionumberupdateresponse.md
+  - docs/models/components/twiliophonenumber.md
   - docs/models/components/type.md
   - docs/models/components/validationerror.md
   - docs/models/components/voicesamplecreaterequest.md
@@ -252,6 +256,8 @@ generatedFiles:
   - docs/models/operations/channelslistrequest.md
   - docs/models/operations/channelstwiliogetbyidrequest.md
   - docs/models/operations/channelstwilionumbersaddrequest.md
+  - docs/models/operations/channelstwilionumberslistrequest.md
+  - docs/models/operations/channelstwilionumbersupdaterequest.md
   - docs/models/operations/channeltargetscreaterequest.md
   - docs/models/operations/channeltargetsdeleterequest.md
   - docs/models/operations/channeltargetsgetbyidrequest.md
@@ -386,6 +392,8 @@ generatedFiles:
   - src/funcs/channelsTwilioCreate.ts
   - src/funcs/channelsTwilioGetById.ts
   - src/funcs/channelsTwilioNumbersAdd.ts
+  - src/funcs/channelsTwilioNumbersList.ts
+  - src/funcs/channelsTwilioNumbersUpdate.ts
   - src/funcs/channelsTwilioUpdate.ts
   - src/funcs/conversationsList.ts
   - src/funcs/customMessagesCreate.ts
@@ -701,8 +709,12 @@ generatedFiles:
   - src/models/components/twiliochannelconfigupdate.ts
   - src/models/components/twiliochannelcreaterequest.ts
   - src/models/components/twiliochannelupdaterequest.ts
+  - src/models/components/twiliolistnumbersresponse.ts
   - src/models/components/twilionumberaddrequest.ts
   - src/models/components/twilionumberaddresponse.ts
+  - src/models/components/twilionumberupdaterequest.ts
+  - src/models/components/twilionumberupdateresponse.ts
+  - src/models/components/twiliophonenumber.ts
   - src/models/components/validationerror.ts
   - src/models/components/voicesamplecreaterequest.ts
   - src/models/errors/httpclienterrors.ts
@@ -717,6 +729,8 @@ generatedFiles:
   - src/models/operations/channelslist.ts
   - src/models/operations/channelstwiliogetbyid.ts
   - src/models/operations/channelstwilionumbersadd.ts
+  - src/models/operations/channelstwilionumberslist.ts
+  - src/models/operations/channelstwilionumbersupdate.ts
   - src/models/operations/channeltargetscreate.ts
   - src/models/operations/channeltargetsdelete.ts
   - src/models/operations/channeltargetsgetbyid.ts
@@ -2101,5 +2115,25 @@ examples:
           role_id: 545907
         query:
           reason: "<value>"
+  channels_twilio_numbers_update:
+    speakeasy-default-channels-twilio-numbers-update:
+      parameters:
+        path:
+          channel_id: 857478
+      requestBody:
+        application/json: {"friendly_name": "Support Line", "phone_sid": "PN123"}
+      responses:
+        "200":
+          application/json: {"phone_number": "+18042221111"}
+        "422": {}
+  channels_twilio_numbers_list:
+    speakeasy-default-channels-twilio-numbers-list:
+      parameters:
+        path:
+          channel_id: 768578
+      responses:
+        "200":
+          application/json: {"phone_numbers": [{"sid": "PN123", "phone_number": "+19876543210", "friendly_name": "Test number", "trunk_sid": "TK123"}]}
+        "422": {}
 examplesVersion: 1.0.0
 generatedTests: {}

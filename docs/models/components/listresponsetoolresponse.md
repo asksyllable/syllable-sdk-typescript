@@ -21,7 +21,7 @@ let value: ListResponseToolResponse = {
         endpoint: {
           url: "https://api.example.com",
           method: "post",
-          argumentLocation: "path",
+          argumentLocation: "form",
         },
         defaults: "<value>",
         staticParameters: [
@@ -50,7 +50,7 @@ let value: ListResponseToolResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2023-06-30T12:06:54.333Z"),
+      lastUpdated: new Date("2023-08-18T23:43:47.903Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

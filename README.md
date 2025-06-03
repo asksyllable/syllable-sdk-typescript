@@ -171,6 +171,8 @@ run();
 #### [channels.twilio.numbers](docs/sdks/numbers/README.md)
 
 * [add](docs/sdks/numbers/README.md#add) - Add Twilio Number
+* [update](docs/sdks/numbers/README.md#update) - Update Twilio Number
+* [list](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
 
 ### [conversations](docs/sdks/conversations/README.md)
 
@@ -401,6 +403,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`channelsTwilioCreate`](docs/sdks/twilio/README.md#create) - Create Twilio Channel
 - [`channelsTwilioGetById`](docs/sdks/twilio/README.md#getbyid) - Get Twilio Channel By Id
 - [`channelsTwilioNumbersAdd`](docs/sdks/numbers/README.md#add) - Add Twilio Number
+- [`channelsTwilioNumbersList`](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
+- [`channelsTwilioNumbersUpdate`](docs/sdks/numbers/README.md#update) - Update Twilio Number
 - [`channelsTwilioUpdate`](docs/sdks/twilio/README.md#update) - Update Twilio Channel
 - [`conversationsList`](docs/sdks/conversations/README.md#list) - Conversations List
 - [`customMessagesCreate`](docs/sdks/custommessages/README.md#create) - Create Custom Message
