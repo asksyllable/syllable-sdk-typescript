@@ -13,7 +13,9 @@ export const LanguageCode = {
   EnUS: "en-US",
   KoKR: "ko-KR",
   ZhCN: "zh-CN",
+  FaIR: "fa-IR",
   EsUS: "es-US",
+  ZhTW: "zh-TW",
   THTH: "th-TH",
   ViVN: "vi-VN",
 } as const;

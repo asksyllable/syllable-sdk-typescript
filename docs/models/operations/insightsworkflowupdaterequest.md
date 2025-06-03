@@ -30,8 +30,8 @@ let value: InsightsWorkflowUpdateRequest = {
         67535,
       ],
     },
-    startDatetime: new Date("2025-06-01T00:00:00Z"),
-    endDatetime: new Date("2025-06-02T00:00:00Z"),
+    startDatetime: new Date("2025-06-02T00:00:00Z"),
+    endDatetime: new Date("2025-06-03T00:00:00Z"),
   },
 };
 ```
