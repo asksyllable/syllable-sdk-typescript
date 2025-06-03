@@ -362,10 +362,20 @@ run();
 
 ### [users](docs/sdks/users/README.md)
 
+* [list](docs/sdks/users/README.md#list) - List Users
+* [create](docs/sdks/users/README.md#create) - Create User
+* [update](docs/sdks/users/README.md#update) - Update User
+* [delete](docs/sdks/users/README.md#delete) - Delete User
+* [usersGetByEmail](docs/sdks/users/README.md#usersgetbyemail) - Get User
 * [usersDeleteAccount](docs/sdks/users/README.md#usersdeleteaccount) - Request Removal Of This Account
 
 ### [v1](docs/sdks/v1/README.md)
 
+* [list](docs/sdks/v1/README.md#list) - List Users
+* [create](docs/sdks/v1/README.md#create) - Create User
+* [update](docs/sdks/v1/README.md#update) - Update User
+* [delete](docs/sdks/v1/README.md#delete) - Delete User
+* [usersGetByEmail](docs/sdks/v1/README.md#usersgetbyemail) - Get User
 * [usersDeleteAccount](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
 
 </details>
@@ -509,8 +519,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
+- [`usersCreate`](docs/sdks/users/README.md#create) - Create User
+- [`usersDelete`](docs/sdks/users/README.md#delete) - Delete User
+- [`usersList`](docs/sdks/users/README.md#list) - List Users
+- [`usersUpdate`](docs/sdks/users/README.md#update) - Update User
 - [`usersUsersDeleteAccount`](docs/sdks/users/README.md#usersdeleteaccount) - Request Removal Of This Account
+- [`usersUsersGetByEmail`](docs/sdks/users/README.md#usersgetbyemail) - Get User
+- [`v1Create`](docs/sdks/v1/README.md#create) - Create User
+- [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete User
+- [`v1List`](docs/sdks/v1/README.md#list) - List Users
+- [`v1Update`](docs/sdks/v1/README.md#update) - Update User
 - [`v1UsersDeleteAccount`](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
+- [`v1UsersGetByEmail`](docs/sdks/v1/README.md#usersgetbyemail) - Get User
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
 - ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
 - ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**

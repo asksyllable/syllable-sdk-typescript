@@ -22,6 +22,10 @@ import { Result } from "../types/fp.js";
 
 /**
  * Request Removal Of This Account
+ *
+ * @remarks
+ * Request removal of the account of the user calling this endpoint. Intended for removing trial
+ * accounts.
  */
 export async function usersUsersDeleteAccount(
   client: SyllableSDKCore,

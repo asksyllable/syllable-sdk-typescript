@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 53d039df5dc25ea1f734cb75b0954d09
+  docChecksum: 402331dd353b2c2a2992971bda59aec8
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.173
-  configChecksum: 7e124c2e67646181ab8c45cd5cfad523
+  releaseVersion: 0.1.0-alpha.174
+  configChecksum: 0ff2b4a79ac5f461e317e121b7fa60ca
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -173,6 +173,7 @@ generatedFiles:
   - docs/models/components/listresponsesession.md
   - docs/models/components/listresponsesessionlabel.md
   - docs/models/components/listresponsetoolresponse.md
+  - docs/models/components/listresponseuserresponse.md
   - docs/models/components/loc.md
   - docs/models/components/metadata.md
   - docs/models/components/orderbydirection.md
@@ -246,6 +247,11 @@ generatedFiles:
   - docs/models/components/twilionumberupdateresponse.md
   - docs/models/components/twiliophonenumber.md
   - docs/models/components/type.md
+  - docs/models/components/usercreaterequest.md
+  - docs/models/components/userdeleterequest.md
+  - docs/models/components/userproperties.md
+  - docs/models/components/userresponse.md
+  - docs/models/components/userupdaterequest.md
   - docs/models/components/validationerror.md
   - docs/models/components/voicesamplecreaterequest.md
   - docs/models/errors/httpvalidationerror.md
@@ -336,6 +342,8 @@ generatedFiles:
   - docs/models/operations/tooldeleterequest.md
   - docs/models/operations/toolgetbynamerequest.md
   - docs/models/operations/toollistrequest.md
+  - docs/models/operations/usersgetbyemailrequest.md
+  - docs/models/operations/userslistrequest.md
   - docs/sdks/agents/README.md
   - docs/sdks/batches/README.md
   - docs/sdks/campaigns/README.md
@@ -502,8 +510,18 @@ generatedFiles:
   - src/funcs/toolsGetByName.ts
   - src/funcs/toolsList.ts
   - src/funcs/toolsUpdate.ts
+  - src/funcs/usersCreate.ts
+  - src/funcs/usersDelete.ts
+  - src/funcs/usersList.ts
+  - src/funcs/usersUpdate.ts
   - src/funcs/usersUsersDeleteAccount.ts
+  - src/funcs/usersUsersGetByEmail.ts
+  - src/funcs/v1Create.ts
+  - src/funcs/v1Delete.ts
+  - src/funcs/v1List.ts
+  - src/funcs/v1Update.ts
   - src/funcs/v1UsersDeleteAccount.ts
+  - src/funcs/v1UsersGetByEmail.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -646,6 +664,7 @@ generatedFiles:
   - src/models/components/listresponsesession.ts
   - src/models/components/listresponsesessionlabel.ts
   - src/models/components/listresponsetoolresponse.ts
+  - src/models/components/listresponseuserresponse.ts
   - src/models/components/orderbydirection.ts
   - src/models/components/outboundcampaign.ts
   - src/models/components/outboundcampaigninput.ts
@@ -715,6 +734,11 @@ generatedFiles:
   - src/models/components/twilionumberupdaterequest.ts
   - src/models/components/twilionumberupdateresponse.ts
   - src/models/components/twiliophonenumber.ts
+  - src/models/components/usercreaterequest.ts
+  - src/models/components/userdeleterequest.ts
+  - src/models/components/userproperties.ts
+  - src/models/components/userresponse.ts
+  - src/models/components/userupdaterequest.ts
   - src/models/components/validationerror.ts
   - src/models/components/voicesamplecreaterequest.ts
   - src/models/errors/httpclienterrors.ts
@@ -810,6 +834,8 @@ generatedFiles:
   - src/models/operations/tooldelete.ts
   - src/models/operations/toolgetbyname.ts
   - src/models/operations/toollist.ts
+  - src/models/operations/usersgetbyemail.ts
+  - src/models/operations/userslist.ts
   - src/sdk/agents.ts
   - src/sdk/batches.ts
   - src/sdk/campaigns.ts
@@ -2134,6 +2160,49 @@ examples:
       responses:
         "200":
           application/json: {"phone_numbers": [{"sid": "PN123", "phone_number": "+19876543210", "friendly_name": "Test number", "trunk_sid": "TK123"}]}
+        "422": {}
+  users_list:
+    speakeasy-default-users-list:
+      parameters:
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["role_id"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: {"items": [{"email": "user@email.com", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned", "id": 1, "last_updated": "2025-01-13T10:26:00.433Z", "last_updated_by": "admin@email.com", "last_session_at": "2025-01-01T12:00:00Z"}, {"email": "user@email.com", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned", "id": 1, "last_updated": "2023-07-14T18:23:27.528Z", "last_updated_by": "admin@email.com", "last_session_at": "2025-01-01T12:00:00Z"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+        "422": {}
+  users_create:
+    speakeasy-default-users-create:
+      requestBody:
+        application/json: {"email": "user@email.com", "first_name": "Jane", "last_name": "Smith", "role_id": 1}
+      responses:
+        "200":
+          application/json: {"email": "user@email.com", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned", "id": 1, "last_updated": "2024-06-17T07:14:55.338Z", "last_updated_by": "admin@email.com", "last_session_at": "2025-01-01T12:00:00Z"}
+        "422": {}
+  users_update:
+    speakeasy-default-users-update:
+      requestBody:
+        application/json: {"email": "user@email.com", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned"}
+      responses:
+        "200":
+          application/json: {"email": "user@email.com", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned", "id": 1, "last_updated": "2025-07-28T19:04:48.565Z", "last_updated_by": "admin@email.com", "last_session_at": "2025-01-01T12:00:00Z"}
+        "422": {}
+  users_delete:
+    speakeasy-default-users-delete:
+      requestBody:
+        application/json: {"email": "user@email.com", "reason": "User left the organization"}
+  users_get_by_email:
+    speakeasy-default-users-get-by-email:
+      parameters:
+        path:
+          user_email: "<value>"
+      responses:
+        "200":
+          application/json: {"email": "user@email.com", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned", "id": 1, "last_updated": "2024-12-01T12:15:26.091Z", "last_updated_by": "admin@email.com", "last_session_at": "2025-01-01T12:00:00Z"}
         "422": {}
 examplesVersion: 1.0.0
 generatedTests: {}

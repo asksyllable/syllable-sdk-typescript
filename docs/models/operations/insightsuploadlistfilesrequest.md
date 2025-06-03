@@ -6,10 +6,10 @@
 import { InsightsUploadListFilesRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsUploadListFilesRequest = {
-  folderId: 63955,
+  folderId: 876506,
   page: 0,
   searchFields: [
-    "customer_number",
+    "agent_number",
   ],
   searchFieldValues: [
     "Some Object Name",

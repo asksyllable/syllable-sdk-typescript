@@ -89,3 +89,5 @@ export * from "./takeoutsgetfile.js";
 export * from "./tooldelete.js";
 export * from "./toolgetbyname.js";
 export * from "./toollist.js";
+export * from "./usersgetbyemail.js";
+export * from "./userslist.js";
