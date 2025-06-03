@@ -10,7 +10,7 @@ let value: ListResponseSessionLabel = {
     {
       sessionId: 1,
       type: "human-rating",
-      code: "BAD",
+      code: "N/A",
       userEmail: "user@email.com",
       issueCategories: [
         "Silent treatment",

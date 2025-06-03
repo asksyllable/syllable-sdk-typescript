@@ -5,7 +5,7 @@
 ```typescript
 import { InsightsFolderProperties } from "syllable-sdk/models/components";
 
-let value: InsightsFolderProperties = "label";
+let value: InsightsFolderProperties = "name";
 ```
 
 ## Values

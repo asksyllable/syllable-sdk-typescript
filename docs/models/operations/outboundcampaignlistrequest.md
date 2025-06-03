@@ -8,7 +8,7 @@ import { OutboundCampaignListRequest } from "syllable-sdk/models/operations";
 let value: OutboundCampaignListRequest = {
   page: 0,
   searchFields: [
-    "daily_start_time",
+    "label",
   ],
   searchFieldValues: [
     "Some Object Name",

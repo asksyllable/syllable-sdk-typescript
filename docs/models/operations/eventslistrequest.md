@@ -8,7 +8,7 @@ import { EventsListRequest } from "syllable-sdk/models/operations";
 let value: EventsListRequest = {
   page: 0,
   searchFields: [
-    "session_id",
+    "conversation_id",
   ],
   searchFieldValues: [
     "Some Object Name",

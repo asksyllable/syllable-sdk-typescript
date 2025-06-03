@@ -8,7 +8,7 @@ import { ListResponseConversation } from "syllable-sdk/models/components";
 let value: ListResponseConversation = {
   items: [
     {
-      timestamp: new Date("2024-03-30T00:46:25.708Z"),
+      timestamp: new Date("2023-05-25T10:48:39.501Z"),
       conversationId: "<id>",
     },
   ],

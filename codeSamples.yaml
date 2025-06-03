@@ -392,6 +392,28 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/channels/twilio/{channel_id}/numbers"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.twilio.numbers.list({
+                channelId: 768578,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/channels/twilio/{channel_id}/numbers"]["post"]
     update:
       x-codeSamples:
@@ -410,6 +432,32 @@ actions:
                 twilioNumberAddRequest: {
                   friendlyName: "Support Line",
                   areaCode: "804",
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/twilio/{channel_id}/numbers"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.twilio.numbers.update({
+                channelId: 857478,
+                twilioNumberUpdateRequest: {
+                  friendlyName: "Support Line",
+                  phoneSid: "PN123",
                 },
               });
 

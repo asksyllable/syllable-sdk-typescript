@@ -5,7 +5,7 @@
 ```typescript
 import { InsightsUploadFileProperties } from "syllable-sdk/models/components";
 
-let value: InsightsUploadFileProperties = "duration";
+let value: InsightsUploadFileProperties = "created_at";
 ```
 
 ## Values

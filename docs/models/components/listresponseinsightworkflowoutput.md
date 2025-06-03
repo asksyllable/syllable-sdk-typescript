@@ -9,7 +9,7 @@ let value: ListResponseInsightWorkflowOutput = {
   items: [
     {
       name: "summary-workflow",
-      source: "agent",
+      source: "upload",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
@@ -63,7 +63,7 @@ let value: ListResponseInsightWorkflowOutput = {
           lastUpdatedBy: "user@email.com",
         },
       ],
-      status: "ACTIVE",
+      status: "INACTIVE",
       estimate: {
         backfillCount: 100,
         backfillDuration: 1000,

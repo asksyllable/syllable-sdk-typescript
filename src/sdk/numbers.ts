@@ -3,6 +3,8 @@
  */
 
 import { channelsTwilioNumbersAdd } from "../funcs/channelsTwilioNumbersAdd.js";
+import { channelsTwilioNumbersList } from "../funcs/channelsTwilioNumbersList.js";
+import { channelsTwilioNumbersUpdate } from "../funcs/channelsTwilioNumbersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -20,6 +22,40 @@ export class Numbers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.TwilioNumberAddResponse> {
     return unwrapAsync(channelsTwilioNumbersAdd(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Twilio Number
+   *
+   * @remarks
+   * Update a Twilio number and associate it with a channel.
+   */
+  async update(
+    request: operations.ChannelsTwilioNumbersUpdateRequest,
+    options?: RequestOptions,
+  ): Promise<components.TwilioNumberUpdateResponse> {
+    return unwrapAsync(channelsTwilioNumbersUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Twilio Phone Numbers
+   *
+   * @remarks
+   * List Twilio phone numbers.
+   */
+  async list(
+    request: operations.ChannelsTwilioNumbersListRequest,
+    options?: RequestOptions,
+  ): Promise<components.TwilioListNumbersResponse> {
+    return unwrapAsync(channelsTwilioNumbersList(
       this,
       request,
       options,

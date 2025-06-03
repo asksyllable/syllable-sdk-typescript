@@ -9,6 +9,8 @@ export * from "./availabletargets.js";
 export * from "./channelslist.js";
 export * from "./channelstwiliogetbyid.js";
 export * from "./channelstwilionumbersadd.js";
+export * from "./channelstwilionumberslist.js";
+export * from "./channelstwilionumbersupdate.js";
 export * from "./channeltargetscreate.js";
 export * from "./channeltargetsdelete.js";
 export * from "./channeltargetsgetbyid.js";
