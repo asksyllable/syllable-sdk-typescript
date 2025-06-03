@@ -9,7 +9,7 @@ and their supported languages can be fetched from `GET /agents/voices/available/
 import { LanguageConfig } from "syllable-sdk/models/components";
 
 let value: LanguageConfig = {
-  languageCode: "zh-CN",
+  languageCode: "fa-IR",
   voiceProvider: "ElevenLabs",
   voiceDisplayName: "Tara",
   voiceSpeed: 1,
