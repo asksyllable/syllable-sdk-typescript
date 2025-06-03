@@ -6,7 +6,7 @@
 import { InsightsUploadMoveFilesRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsUploadMoveFilesRequest = {
-  folderId: 977496,
+  folderId: 961571,
   insightsFolderFileMove: {
     destinationFolderId: 182764,
     fileIdList: [
