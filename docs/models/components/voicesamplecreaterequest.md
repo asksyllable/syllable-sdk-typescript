@@ -10,7 +10,7 @@ import { VoiceSampleCreateRequest } from "syllable-sdk/models/components";
 let value: VoiceSampleCreateRequest = {
   languageCode: "zh-CN",
   voiceProvider: "ElevenLabs",
-  voiceDisplayName: "Fable",
+  voiceDisplayName: "Eric",
   voiceSpeed: 1,
   voicePitch: 0,
 };
