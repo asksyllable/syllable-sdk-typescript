@@ -128,8 +128,7 @@ async function run() {
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [
-      "summary",
-      "hangup",
+
     ],
     llmConfig: {
       version: "2024-05-13",
@@ -167,8 +166,7 @@ async function run() {
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [
-      "summary",
-      "hangup",
+  
     ],
     llmConfig: {
       version: "2024-05-13",
@@ -231,8 +229,7 @@ async function run() {
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [
-      "summary",
-      "hangup",
+
     ],
     llmConfig: {
       version: "2024-05-13",
@@ -272,8 +269,7 @@ async function run() {
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [
-      "summary",
-      "hangup",
+  
     ],
     llmConfig: {
       version: "2024-05-13",
