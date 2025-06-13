@@ -14,6 +14,7 @@ let value: ListResponseUserResponse = {
       roleId: 1,
       lastUpdatedComments: "Updated to change which role was assigned",
       id: 1,
+      roleName: "admin",
       lastUpdated: new Date("2024-07-21T01:08:24.125Z"),
       lastUpdatedBy: "admin@email.com",
       lastSessionAt: new Date("2025-01-01T12:00:00Z"),
