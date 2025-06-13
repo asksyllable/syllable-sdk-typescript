@@ -16,7 +16,7 @@ export class Permissions extends ClientSDK {
    */
   async list(
     options?: RequestOptions,
-  ): Promise<Array<components.PermissionResponse>> {
+  ): Promise<Array<components.PermissionGroupResponse>> {
     return unwrapAsync(permissionsList(
       this,
       options,

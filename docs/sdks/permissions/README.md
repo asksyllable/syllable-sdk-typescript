@@ -72,7 +72,7 @@ run();
 
 ### Response
 
-**Promise\<[components.PermissionResponse[]](../../models/.md)\>**
+**Promise\<[components.PermissionGroupResponse[]](../../models/.md)\>**
 
 ### Errors
 

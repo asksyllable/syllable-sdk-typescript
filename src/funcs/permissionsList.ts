@@ -32,7 +32,7 @@ export async function permissionsList(
   options?: RequestOptions,
 ): Promise<
   Result<
-    Array<components.PermissionResponse>,
+    Array<components.PermissionGroupResponse>,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -91,7 +91,7 @@ export async function permissionsList(
   const response = doResult.value;
 
   const [result] = await M.match<
-    Array<components.PermissionResponse>,
+    Array<components.PermissionGroupResponse>,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -100,7 +100,7 @@ export async function permissionsList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.array(components.PermissionResponse$inboundSchema)),
+    M.json(200, z.array(components.PermissionGroupResponse$inboundSchema)),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response);

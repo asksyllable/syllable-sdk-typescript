@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -16,9 +17,13 @@ export type PermissionResponse = {
    */
   name: string;
   /**
+   * Display name of the permission
+   */
+  displayName: string;
+  /**
    * Description of the permission
    */
-  description: string;
+  description?: string | null | undefined;
 };
 
 /** @internal */
@@ -28,13 +33,19 @@ export const PermissionResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  description: z.string(),
+  display_name: z.string(),
+  description: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "display_name": "displayName",
+  });
 });
 
 /** @internal */
 export type PermissionResponse$Outbound = {
   name: string;
-  description: string;
+  display_name: string;
+  description?: string | null | undefined;
 };
 
 /** @internal */
@@ -44,7 +55,12 @@ export const PermissionResponse$outboundSchema: z.ZodType<
   PermissionResponse
 > = z.object({
   name: z.string(),
-  description: z.string(),
+  displayName: z.string(),
+  description: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    displayName: "display_name",
+  });
 });
 
 /**
