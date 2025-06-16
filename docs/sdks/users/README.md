@@ -29,7 +29,7 @@ async function run() {
   const result = await syllableSDK.users.list({
     page: 0,
     searchFields: [
-      "role_id",
+      "email_first_name_last_name",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -63,7 +63,7 @@ async function run() {
   const res = await usersList(syllableSDK, {
     page: 0,
     searchFields: [
-      "role_id",
+      "email_first_name_last_name",
     ],
     searchFieldValues: [
       "Some Object Name",
