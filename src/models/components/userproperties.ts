@@ -14,6 +14,7 @@ export const UserProperties = {
   LastName: "last_name",
   RoleId: "role_id",
   EmailFirstNameLastName: "email_first_name_last_name",
+  LastUpdated: "last_updated",
 } as const;
 /**
  * Names of user fields supported for filtering/sorting on list endpoint.
