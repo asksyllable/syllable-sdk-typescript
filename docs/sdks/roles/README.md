@@ -367,7 +367,7 @@ run();
 
 ## delete
 
-Delete a role.
+Delete a role. Optionally, reassign existing users with that role to a new role.
 
 ### Example Usage
 

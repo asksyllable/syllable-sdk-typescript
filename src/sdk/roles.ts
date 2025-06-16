@@ -85,7 +85,7 @@ export class Roles extends ClientSDK {
    * Delete Role
    *
    * @remarks
-   * Delete a role.
+   * Delete a role. Optionally, reassign existing users with that role to a new role.
    */
   async delete(
     request: operations.RolesDeleteRequest,
