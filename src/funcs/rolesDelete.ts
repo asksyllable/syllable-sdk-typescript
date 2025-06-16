@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Delete Role
  *
  * @remarks
- * Delete a role.
+ * Delete a role. Optionally, reassign existing users with that role to a new role.
  */
 export async function rolesDelete(
   client: SyllableSDKCore,
@@ -68,6 +68,7 @@ export async function rolesDelete(
   const path = pathToFunc("/api/v1/roles/{role_id}")(pathParams);
 
   const query = encodeFormQuery({
+    "new_role_id": payload.new_role_id,
     "reason": payload.reason,
   });
 

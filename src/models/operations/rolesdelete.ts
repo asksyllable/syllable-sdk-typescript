@@ -9,8 +9,18 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RolesDeleteRequest = {
+  /**
+   * The ID of the role to delete
+   */
   roleId: number;
+  /**
+   * The reason for deleting the role
+   */
   reason: string;
+  /**
+   * Users with the deleted role will be reassigned to the new role, if a new role ID is provided
+   */
+  newRoleId?: number | null | undefined;
 };
 
 /** @internal */
@@ -21,9 +31,11 @@ export const RolesDeleteRequest$inboundSchema: z.ZodType<
 > = z.object({
   role_id: z.number().int(),
   reason: z.string(),
+  new_role_id: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "role_id": "roleId",
+    "new_role_id": "newRoleId",
   });
 });
 
@@ -31,6 +43,7 @@ export const RolesDeleteRequest$inboundSchema: z.ZodType<
 export type RolesDeleteRequest$Outbound = {
   role_id: number;
   reason: string;
+  new_role_id?: number | null | undefined;
 };
 
 /** @internal */
@@ -41,9 +54,11 @@ export const RolesDeleteRequest$outboundSchema: z.ZodType<
 > = z.object({
   roleId: z.number().int(),
   reason: z.string(),
+  newRoleId: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     roleId: "role_id",
+    newRoleId: "new_role_id",
   });
 });
 
