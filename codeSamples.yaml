@@ -1657,8 +1657,8 @@ actions:
                     67535,
                   ],
                 },
-                startDatetime: new Date("2025-06-19T00:00:00Z"),
-                endDatetime: new Date("2025-06-20T00:00:00Z"),
+                startDatetime: new Date("2025-06-22T00:00:00Z"),
+                endDatetime: new Date("2025-06-23T00:00:00Z"),
               });
 
               // Handle the result
@@ -1776,8 +1776,8 @@ actions:
                       67535,
                     ],
                   },
-                  startDatetime: new Date("2025-06-19T00:00:00Z"),
-                  endDatetime: new Date("2025-06-20T00:00:00Z"),
+                  startDatetime: new Date("2025-06-22T00:00:00Z"),
+                  endDatetime: new Date("2025-06-23T00:00:00Z"),
                 },
               });
 
@@ -2028,6 +2028,97 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/organizations/"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.delete();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/organizations/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.organizationsGet();
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/organizations/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.create({
+                logo: await openAsBlob("example.file"),
+                displayName: "My Great Org",
+                description: "An organization that does great things with agentic AI",
+                domains: "mygreatorg.com,mygreatorg.org",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/organizations/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.update({
+                displayName: "My Great Org",
+                description: "An organization that does great things with agentic AI",
+                domains: "mygreatorg.com,mygreatorg.org",
+                updateComments: "Updated the organization to add a new domain",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/outbound/batches"]["get"]
     update:
       x-codeSamples:
@@ -2072,9 +2163,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250620.9",
+                batchId: "20250623.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-06-21T00:00:00Z"),
+                expiresOn: new Date("2025-06-24T00:00:00Z"),
                 paused: true,
               });
 

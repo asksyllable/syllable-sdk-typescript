@@ -13,6 +13,7 @@ import { Events } from "./events.js";
 import { Incidents } from "./incidents.js";
 import { Insights } from "./insights.js";
 import { LanguageGroups } from "./languagegroups.js";
+import { Organizations } from "./organizations.js";
 import { Outbound } from "./outbound.js";
 import { Permissions } from "./permissions.js";
 import { Prompts } from "./prompts.js";
@@ -110,6 +111,11 @@ export class SyllableSDK extends ClientSDK {
   private _dashboards?: Dashboards;
   get dashboards(): Dashboards {
     return (this._dashboards ??= new Dashboards(this._options));
+  }
+
+  private _organizations?: Organizations;
+  get organizations(): Organizations {
+    return (this._organizations ??= new Organizations(this._options));
   }
 
   private _outbound?: Outbound;
