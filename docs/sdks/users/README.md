@@ -30,7 +30,7 @@ async function run() {
   const result = await syllableSDK.users.list({
     page: 0,
     searchFields: [
-      "email_first_name_last_name",
+      "activity_status",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -64,7 +64,7 @@ async function run() {
   const res = await usersList(syllableSDK, {
     page: 0,
     searchFields: [
-      "email_first_name_last_name",
+      "activity_status",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -121,7 +121,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.users.create({
-    email: "user@email.com",
+    email: "user@syllable.ai",
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
@@ -150,7 +150,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await usersCreate(syllableSDK, {
-    email: "user@email.com",
+    email: "user@syllable.ai",
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
@@ -204,7 +204,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.users.update({
-    email: "user@email.com",
+    email: "user@syllable.ai",
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
@@ -234,7 +234,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await usersUpdate(syllableSDK, {
-    email: "user@email.com",
+    email: "user@syllable.ai",
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
@@ -289,7 +289,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.users.delete({
-    email: "user@email.com",
+    email: "user@syllable.ai",
     reason: "User left the organization",
   });
 
@@ -316,7 +316,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await usersDelete(syllableSDK, {
-    email: "user@email.com",
+    email: "user@syllable.ai",
     reason: "User left the organization",
   });
 
