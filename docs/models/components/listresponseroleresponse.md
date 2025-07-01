@@ -8,7 +8,7 @@ import { ListResponseRoleResponse } from "syllable-sdk/models/components";
 let value: ListResponseRoleResponse = {
   items: [
     {
-      name: "prompt_engineer",
+      name: "Prompt Engineer",
       description: "Role for users who can fetch and change prompts",
       permissions: [
         "prompts_read",

@@ -10,7 +10,7 @@ import { AgentVoice } from "syllable-sdk/models/components";
 let value: AgentVoice = {
   provider: "ElevenLabs",
   displayName: "Callum",
-  varName: "openai:sage",
+  varName: "elevenlabs:Daniel",
   gender: "female",
   model: "tts-1",
   supportedLanguages: [
