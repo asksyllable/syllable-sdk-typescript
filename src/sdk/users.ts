@@ -8,6 +8,7 @@ import { usersList } from "../funcs/usersList.js";
 import { usersUpdate } from "../funcs/usersUpdate.js";
 import { usersUsersDeleteAccount } from "../funcs/usersUsersDeleteAccount.js";
 import { usersUsersGetByEmail } from "../funcs/usersUsersGetByEmail.js";
+import { usersUsersSendEmail } from "../funcs/usersUsersSendEmail.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -93,6 +94,23 @@ export class Users extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.UserResponse> {
     return unwrapAsync(usersUsersGetByEmail(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Send User Email
+   *
+   * @remarks
+   * Send a welcome email to a user.
+   */
+  async usersSendEmail(
+    request: operations.UsersSendEmailRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(usersUsersSendEmail(
       this,
       request,
       options,

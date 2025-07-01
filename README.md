@@ -374,6 +374,7 @@ run();
 * [update](docs/sdks/users/README.md#update) - Update User
 * [delete](docs/sdks/users/README.md#delete) - Delete User
 * [usersGetByEmail](docs/sdks/users/README.md#usersgetbyemail) - Get User
+* [usersSendEmail](docs/sdks/users/README.md#userssendemail) - Send User Email
 * [usersDeleteAccount](docs/sdks/users/README.md#usersdeleteaccount) - Request Removal Of This Account
 
 ### [v1](docs/sdks/v1/README.md)
@@ -383,6 +384,7 @@ run();
 * [update](docs/sdks/v1/README.md#update) - Update User
 * [delete](docs/sdks/v1/README.md#delete) - Delete User
 * [usersGetByEmail](docs/sdks/v1/README.md#usersgetbyemail) - Get User
+* [usersSendEmail](docs/sdks/v1/README.md#userssendemail) - Send User Email
 * [usersDeleteAccount](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
 
 </details>
@@ -536,12 +538,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`usersUpdate`](docs/sdks/users/README.md#update) - Update User
 - [`usersUsersDeleteAccount`](docs/sdks/users/README.md#usersdeleteaccount) - Request Removal Of This Account
 - [`usersUsersGetByEmail`](docs/sdks/users/README.md#usersgetbyemail) - Get User
+- [`usersUsersSendEmail`](docs/sdks/users/README.md#userssendemail) - Send User Email
 - [`v1Create`](docs/sdks/v1/README.md#create) - Create User
 - [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete User
 - [`v1List`](docs/sdks/v1/README.md#list) - List Users
 - [`v1Update`](docs/sdks/v1/README.md#update) - Update User
 - [`v1UsersDeleteAccount`](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
 - [`v1UsersGetByEmail`](docs/sdks/v1/README.md#usersgetbyemail) - Get User
+- [`v1UsersSendEmail`](docs/sdks/v1/README.md#userssendemail) - Send User Email
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
 - ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
 - ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**

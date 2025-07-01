@@ -121,7 +121,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.roles.create({
-    name: "prompt_engineer",
+    name: "Prompt Engineer",
     description: "Role for users who can fetch and change prompts",
     permissions: [
       "prompts_read",
@@ -153,7 +153,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await rolesCreate(syllableSDK, {
-    name: "prompt_engineer",
+    name: "Prompt Engineer",
     description: "Role for users who can fetch and change prompts",
     permissions: [
       "prompts_read",
@@ -210,7 +210,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.roles.update({
-    name: "prompt_engineer",
+    name: "Prompt Engineer",
     description: "Role for users who can fetch and change prompts",
     permissions: [
       "prompts_read",
@@ -244,7 +244,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await rolesUpdate(syllableSDK, {
-    name: "prompt_engineer",
+    name: "Prompt Engineer",
     description: "Role for users who can fetch and change prompts",
     permissions: [
       "prompts_read",

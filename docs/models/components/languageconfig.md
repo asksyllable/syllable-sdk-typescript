@@ -11,7 +11,7 @@ import { LanguageConfig } from "syllable-sdk/models/components";
 let value: LanguageConfig = {
   languageCode: "fa-IR",
   voiceProvider: "ElevenLabs",
-  voiceDisplayName: "vi-VN-Neural2-A",
+  voiceDisplayName: "yue-HK-Standard-C",
   voiceSpeed: 1,
   voicePitch: 0,
   dtmfCode: 1,

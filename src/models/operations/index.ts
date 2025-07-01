@@ -91,3 +91,4 @@ export * from "./toolgetbyname.js";
 export * from "./toollist.js";
 export * from "./usersgetbyemail.js";
 export * from "./userslist.js";
+export * from "./userssendemail.js";

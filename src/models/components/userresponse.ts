@@ -41,6 +41,10 @@ export type UserResponse = {
    */
   roleName: string;
   /**
+   * Whether the welcome email has been sent to the user
+   */
+  emailSent: boolean;
+  /**
    * The timestamp of the most recent update to the user
    */
   lastUpdated: Date;
@@ -67,6 +71,7 @@ export const UserResponse$inboundSchema: z.ZodType<
   last_updated_comments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   role_name: z.string(),
+  email_sent: z.boolean(),
   last_updated: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ),
@@ -81,6 +86,7 @@ export const UserResponse$inboundSchema: z.ZodType<
     "role_id": "roleId",
     "last_updated_comments": "lastUpdatedComments",
     "role_name": "roleName",
+    "email_sent": "emailSent",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
     "last_session_at": "lastSessionAt",
@@ -96,6 +102,7 @@ export type UserResponse$Outbound = {
   last_updated_comments?: string | null | undefined;
   id: number;
   role_name: string;
+  email_sent: boolean;
   last_updated: string;
   last_updated_by?: string | null | undefined;
   last_session_at?: string | null | undefined;
@@ -114,6 +121,7 @@ export const UserResponse$outboundSchema: z.ZodType<
   lastUpdatedComments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   roleName: z.string(),
+  emailSent: z.boolean(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
   lastSessionAt: z.nullable(z.date().transform(v => v.toISOString()))
@@ -125,6 +133,7 @@ export const UserResponse$outboundSchema: z.ZodType<
     roleId: "role_id",
     lastUpdatedComments: "last_updated_comments",
     roleName: "role_name",
+    emailSent: "email_sent",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
     lastSessionAt: "last_session_at",

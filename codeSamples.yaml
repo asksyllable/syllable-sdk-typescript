@@ -1657,8 +1657,8 @@ actions:
                     67535,
                   ],
                 },
-                startDatetime: new Date("2025-06-25T00:00:00Z"),
-                endDatetime: new Date("2025-06-26T00:00:00Z"),
+                startDatetime: new Date("2025-06-30T00:00:00Z"),
+                endDatetime: new Date("2025-07-01T00:00:00Z"),
               });
 
               // Handle the result
@@ -1776,8 +1776,8 @@ actions:
                       67535,
                     ],
                   },
-                  startDatetime: new Date("2025-06-25T00:00:00Z"),
-                  endDatetime: new Date("2025-06-26T00:00:00Z"),
+                  startDatetime: new Date("2025-06-30T00:00:00Z"),
+                  endDatetime: new Date("2025-07-01T00:00:00Z"),
                 },
               });
 
@@ -1973,7 +1973,7 @@ actions:
               const result = await syllableSDK.languageGroups.languageGroupsCreateVoiceSample({
                 languageCode: "en-US",
                 voiceProvider: "OpenAI",
-                voiceDisplayName: "Onyx",
+                voiceDisplayName: "Puck (Korean)",
                 voiceSpeed: 1,
                 voicePitch: 0,
               });
@@ -2163,9 +2163,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250626.9",
+                batchId: "20250701.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-06-27T00:00:00Z"),
+                expiresOn: new Date("2025-07-02T00:00:00Z"),
                 paused: true,
               });
 
@@ -2753,7 +2753,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.roles.create({
-                name: "prompt_engineer",
+                name: "Prompt Engineer",
                 description: "Role for users who can fetch and change prompts",
                 permissions: [
                   "prompts_read",
@@ -2781,7 +2781,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.roles.update({
-                name: "prompt_engineer",
+                name: "Prompt Engineer",
                 description: "Role for users who can fetch and change prompts",
                 permissions: [
                   "prompts_read",
@@ -3783,6 +3783,47 @@ actions:
 
             async function run() {
               const result = await syllableSDK.v1.usersGetByEmail({
+                userEmail: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/users/{user_email}/send_email"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.users.usersSendEmail({
+                userEmail: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.v1.usersSendEmail({
                 userEmail: "<value>",
               });
 
