@@ -8,7 +8,7 @@ Request model to delete a user.
 import { UserDeleteRequest } from "syllable-sdk/models/components";
 
 let value: UserDeleteRequest = {
-  email: "user@email.com",
+  email: "user@syllable.ai",
   reason: "User left the organization",
 };
 ```
@@ -17,5 +17,5 @@ let value: UserDeleteRequest = {
 
 | Field                                   | Type                                    | Required                                | Description                             | Example                                 |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| `email`                                 | *string*                                | :heavy_check_mark:                      | The email address of the user to delete | user@email.com                          |
+| `email`                                 | *string*                                | :heavy_check_mark:                      | The email address of the user to delete | user@syllable.ai                        |
 | `reason`                                | *string*                                | :heavy_check_mark:                      | The reason for deleting the user        | User left the organization              |

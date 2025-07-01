@@ -7,6 +7,11 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  UserActivityStatus,
+  UserActivityStatus$inboundSchema,
+  UserActivityStatus$outboundSchema,
+} from "./useractivitystatus.js";
 
 /**
  * Information about a user.
@@ -44,6 +49,7 @@ export type UserResponse = {
    * Whether the welcome email has been sent to the user
    */
   emailSent: boolean;
+  activityStatus: UserActivityStatus;
   /**
    * The timestamp of the most recent update to the user
    */
@@ -72,6 +78,7 @@ export const UserResponse$inboundSchema: z.ZodType<
   id: z.number().int(),
   role_name: z.string(),
   email_sent: z.boolean(),
+  activity_status: UserActivityStatus$inboundSchema,
   last_updated: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ),
@@ -87,6 +94,7 @@ export const UserResponse$inboundSchema: z.ZodType<
     "last_updated_comments": "lastUpdatedComments",
     "role_name": "roleName",
     "email_sent": "emailSent",
+    "activity_status": "activityStatus",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
     "last_session_at": "lastSessionAt",
@@ -103,6 +111,7 @@ export type UserResponse$Outbound = {
   id: number;
   role_name: string;
   email_sent: boolean;
+  activity_status: string;
   last_updated: string;
   last_updated_by?: string | null | undefined;
   last_session_at?: string | null | undefined;
@@ -122,6 +131,7 @@ export const UserResponse$outboundSchema: z.ZodType<
   id: z.number().int(),
   roleName: z.string(),
   emailSent: z.boolean(),
+  activityStatus: UserActivityStatus$outboundSchema,
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
   lastSessionAt: z.nullable(z.date().transform(v => v.toISOString()))
@@ -134,6 +144,7 @@ export const UserResponse$outboundSchema: z.ZodType<
     lastUpdatedComments: "last_updated_comments",
     roleName: "role_name",
     emailSent: "email_sent",
+    activityStatus: "activity_status",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
     lastSessionAt: "last_session_at",

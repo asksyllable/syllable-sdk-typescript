@@ -198,6 +198,7 @@ export * from "./twilionumberaddresponse.js";
 export * from "./twilionumberupdaterequest.js";
 export * from "./twilionumberupdateresponse.js";
 export * from "./twiliophonenumber.js";
+export * from "./useractivitystatus.js";
 export * from "./usercreaterequest.js";
 export * from "./userdeleterequest.js";
 export * from "./userproperties.js";

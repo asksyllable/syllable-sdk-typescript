@@ -3531,7 +3531,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.users.delete({
-                email: "user@email.com",
+                email: "user@syllable.ai",
                 reason: "User left the organization",
               });
 
@@ -3551,7 +3551,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.v1.delete({
-                email: "user@email.com",
+                email: "user@syllable.ai",
                 reason: "User left the organization",
               });
 
@@ -3576,7 +3576,7 @@ actions:
               const result = await syllableSDK.users.list({
                 page: 0,
                 searchFields: [
-                  "email_first_name_last_name",
+                  "activity_status",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -3603,7 +3603,7 @@ actions:
               const result = await syllableSDK.v1.list({
                 page: 0,
                 searchFields: [
-                  "email_first_name_last_name",
+                  "activity_status",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -3631,7 +3631,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.users.create({
-                email: "user@email.com",
+                email: "user@syllable.ai",
                 firstName: "Jane",
                 lastName: "Smith",
                 roleId: 1,
@@ -3653,7 +3653,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.v1.create({
-                email: "user@email.com",
+                email: "user@syllable.ai",
                 firstName: "Jane",
                 lastName: "Smith",
                 roleId: 1,
@@ -3678,7 +3678,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.users.update({
-                email: "user@email.com",
+                email: "user@syllable.ai",
                 firstName: "Jane",
                 lastName: "Smith",
                 roleId: 1,
@@ -3701,7 +3701,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.v1.update({
-                email: "user@email.com",
+                email: "user@syllable.ai",
                 firstName: "Jane",
                 lastName: "Smith",
                 roleId: 1,

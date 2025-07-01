@@ -13,7 +13,9 @@ export const UserProperties = {
   FirstName: "first_name",
   LastName: "last_name",
   RoleId: "role_id",
+  RoleName: "role_name",
   EmailFirstNameLastName: "email_first_name_last_name",
+  ActivityStatus: "activity_status",
   LastUpdated: "last_updated",
 } as const;
 /**
