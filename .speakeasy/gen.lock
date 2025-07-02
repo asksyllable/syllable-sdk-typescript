@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 3f0f6aa6e1fbdfdd14585f54c328338a
+  docChecksum: 2776644419fd9bca8715f5ceb6e6836d
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.195
-  configChecksum: 269b4dc593b18f7549905eae281f7ec1
+  releaseVersion: 0.1.0-alpha.196
+  configChecksum: 9e7f984d05fe46ac77eadfb193e353d1
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -179,6 +179,7 @@ generatedFiles:
   - docs/models/components/listresponsetoolresponse.md
   - docs/models/components/listresponseuserresponse.md
   - docs/models/components/loc.md
+  - docs/models/components/logintype.md
   - docs/models/components/logo.md
   - docs/models/components/metadata.md
   - docs/models/components/orderbydirection.md
@@ -684,6 +685,7 @@ generatedFiles:
   - src/models/components/listresponsesessionlabel.ts
   - src/models/components/listresponsetoolresponse.ts
   - src/models/components/listresponseuserresponse.ts
+  - src/models/components/logintype.ts
   - src/models/components/orderbydirection.ts
   - src/models/components/organizationresponse.ts
   - src/models/components/outboundcampaign.ts
@@ -2202,7 +2204,7 @@ examples:
   users_create:
     speakeasy-default-users-create:
       requestBody:
-        application/json: {"email": "user@syllable.ai", "first_name": "Jane", "last_name": "Smith", "role_id": 1}
+        application/json: {"email": "user@syllable.ai", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "login_type": "username_and_password"}
       responses:
         "200":
           application/json: {"email": "user@syllable.ai", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned", "id": 1, "role_name": "Admin", "email_sent": true, "activity_status": "invited", "last_updated": "2024-06-17T07:14:55.338Z", "last_updated_by": "admin@email.com", "last_session_at": "2025-01-01T12:00:00Z"}

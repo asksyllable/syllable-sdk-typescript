@@ -125,6 +125,7 @@ async function run() {
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
+    loginType: "username_and_password",
   });
 
   // Handle the result
@@ -154,6 +155,7 @@ async function run() {
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
+    loginType: "username_and_password",
   });
 
   if (!res.ok) {

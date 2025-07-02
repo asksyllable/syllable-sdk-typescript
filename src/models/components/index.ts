@@ -127,6 +127,7 @@ export * from "./listresponsesession.js";
 export * from "./listresponsesessionlabel.js";
 export * from "./listresponsetoolresponse.js";
 export * from "./listresponseuserresponse.js";
+export * from "./logintype.js";
 export * from "./orderbydirection.js";
 export * from "./organizationresponse.js";
 export * from "./outboundcampaign.js";
