@@ -7,6 +7,11 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  LoginType,
+  LoginType$inboundSchema,
+  LoginType$outboundSchema,
+} from "./logintype.js";
 
 /**
  * Request model to create a user.
@@ -28,6 +33,10 @@ export type UserCreateRequest = {
    * ID of the role assigned to the user
    */
   roleId: number;
+  /**
+   * The type of login to use for the user. If not provided, defaults to google for @gmail.com email addresses, and username and password otherwise.
+   */
+  loginType?: LoginType | null | undefined;
 };
 
 /** @internal */
@@ -40,11 +49,13 @@ export const UserCreateRequest$inboundSchema: z.ZodType<
   first_name: z.nullable(z.string()).optional(),
   last_name: z.nullable(z.string()).optional(),
   role_id: z.number().int(),
+  login_type: z.nullable(LoginType$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "first_name": "firstName",
     "last_name": "lastName",
     "role_id": "roleId",
+    "login_type": "loginType",
   });
 });
 
@@ -54,6 +65,7 @@ export type UserCreateRequest$Outbound = {
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
   role_id: number;
+  login_type?: string | null | undefined;
 };
 
 /** @internal */
@@ -66,11 +78,13 @@ export const UserCreateRequest$outboundSchema: z.ZodType<
   firstName: z.nullable(z.string()).optional(),
   lastName: z.nullable(z.string()).optional(),
   roleId: z.number().int(),
+  loginType: z.nullable(LoginType$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     firstName: "first_name",
     lastName: "last_name",
     roleId: "role_id",
+    loginType: "login_type",
   });
 });
 
