@@ -27,6 +27,12 @@ import {
   ToolHttpEndpoint$outboundSchema,
 } from "./toolhttpendpoint.js";
 import {
+  ToolOptions,
+  ToolOptions$inboundSchema,
+  ToolOptions$Outbound,
+  ToolOptions$outboundSchema,
+} from "./tooloptions.js";
+import {
   ToolParameterDefault,
   ToolParameterDefault$inboundSchema,
   ToolParameterDefault$Outbound,
@@ -71,9 +77,13 @@ export type ToolDefinition = {
    */
   staticParameters?: Array<StaticToolParameter> | null | undefined;
   /**
-   * The optional result of the tool call. Only used for `context` tools.
+   * The optional result of the tool call.
    */
   result?: any | null | undefined;
+  /**
+   * The options for the tool. Ie allows to propagate the tool result to the caller via propagate_tool_result flag.
+   */
+  options?: ToolOptions | null | undefined;
 };
 
 /** @internal */
@@ -157,6 +167,7 @@ export const ToolDefinition$inboundSchema: z.ZodType<
   static_parameters: z.nullable(z.array(StaticToolParameter$inboundSchema))
     .optional(),
   result: z.nullable(z.any()).optional(),
+  options: z.nullable(ToolOptions$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "static_parameters": "staticParameters",
@@ -175,6 +186,7 @@ export type ToolDefinition$Outbound = {
     | undefined;
   static_parameters?: Array<StaticToolParameter$Outbound> | null | undefined;
   result?: any | null | undefined;
+  options?: ToolOptions$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -192,6 +204,7 @@ export const ToolDefinition$outboundSchema: z.ZodType<
   staticParameters: z.nullable(z.array(StaticToolParameter$outboundSchema))
     .optional(),
   result: z.nullable(z.any()).optional(),
+  options: z.nullable(ToolOptions$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     staticParameters: "static_parameters",
