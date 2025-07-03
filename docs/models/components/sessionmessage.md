@@ -17,6 +17,10 @@ let value: SessionMessage = {
       toolArguments: {
         "question": "Tell me about Syllable.ai!",
       },
+      toolResult: {
+        "answer":
+          "Syllable is a platform for building and managing AI voice agents...",
+      },
       timestamp: new Date("2024-06-19T00:00:00"),
     },
   ],

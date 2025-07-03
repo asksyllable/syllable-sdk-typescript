@@ -180,6 +180,7 @@ export * from "./tooldetailresponse.js";
 export * from "./toolfunction.js";
 export * from "./toolhttpendpoint.js";
 export * from "./toolhttpmethod.js";
+export * from "./tooloptions.js";
 export * from "./toolparameterdefault.js";
 export * from "./toolparametertransform.js";
 export * from "./toolparametertransformcondition.js";
