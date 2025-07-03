@@ -9,11 +9,6 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The response from the agent
- */
-export type Response = {};
-
-/**
  * Response from an agent in a test chat.
  */
 export type TestMessageResponse = {
@@ -32,56 +27,12 @@ export type TestMessageResponse = {
   /**
    * The response from the agent
    */
-  response?: Response | undefined;
+  response?: any | null | undefined;
   /**
    * The text of the response
    */
   responseText?: string | undefined;
 };
-
-/** @internal */
-export const Response$inboundSchema: z.ZodType<
-  Response,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type Response$Outbound = {};
-
-/** @internal */
-export const Response$outboundSchema: z.ZodType<
-  Response$Outbound,
-  z.ZodTypeDef,
-  Response
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Response$ {
-  /** @deprecated use `Response$inboundSchema` instead. */
-  export const inboundSchema = Response$inboundSchema;
-  /** @deprecated use `Response$outboundSchema` instead. */
-  export const outboundSchema = Response$outboundSchema;
-  /** @deprecated use `Response$Outbound` instead. */
-  export type Outbound = Response$Outbound;
-}
-
-export function responseToJSON(response: Response): string {
-  return JSON.stringify(Response$outboundSchema.parse(response));
-}
-
-export function responseFromJSON(
-  jsonString: string,
-): SafeParseResult<Response, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Response$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Response' from JSON`,
-  );
-}
 
 /** @internal */
 export const TestMessageResponse$inboundSchema: z.ZodType<
@@ -92,7 +43,7 @@ export const TestMessageResponse$inboundSchema: z.ZodType<
   test_id: z.string(),
   agent_id: z.string(),
   text: z.string().optional(),
-  response: z.lazy(() => Response$inboundSchema).optional(),
+  response: z.nullable(z.any()).optional(),
   response_text: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -107,7 +58,7 @@ export type TestMessageResponse$Outbound = {
   test_id: string;
   agent_id: string;
   text?: string | undefined;
-  response?: Response$Outbound | undefined;
+  response?: any | null | undefined;
   response_text?: string | undefined;
 };
 
@@ -120,7 +71,7 @@ export const TestMessageResponse$outboundSchema: z.ZodType<
   testId: z.string(),
   agentId: z.string(),
   text: z.string().optional(),
-  response: z.lazy(() => Response$outboundSchema).optional(),
+  response: z.nullable(z.any()).optional(),
   responseText: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
