@@ -6,7 +6,7 @@
 import { AgentGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: AgentGetByIdRequest = {
-  agentId: 488056,
+  agentId: 560197,
 };
 ```
 

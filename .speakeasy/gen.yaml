@@ -7,31 +7,42 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 typescript:
-  version: 0.1.0-alpha.199
+  version: 0.1.0-alpha.200
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Syllable
+  baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
+  enableMCPServer: true
   enableReactQuery: false
   enumFormat: union
   envVarPrefix: SYLLABLESDK
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  generateExamples: true
   imports:
     option: openapi
     paths:
@@ -41,6 +52,7 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
+  jsonpath: legacy
   maxMethodParams: 0
   methodArguments: require-security-and-request
   moduleFormat: commonjs

@@ -13,6 +13,7 @@ let value: ChannelTargetCreateRequest = {
   target: "+19995551234",
   targetMode: "chat",
   fallbackTarget: "+19995551235",
+  isTest: true,
 };
 ```
 

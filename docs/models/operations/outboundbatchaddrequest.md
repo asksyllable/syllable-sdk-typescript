@@ -7,13 +7,6 @@ import { OutboundBatchAddRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundBatchAddRequest = {
   batchId: "<id>",
-  communicationRequest: {
-    referenceId: "12345",
-    target: "512-555-1234",
-    requestVariables: {
-      "key": "<value>",
-    },
-  },
 };
 ```
 

@@ -30,7 +30,7 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.list({
     page: 0,
     searchFields: [
-      "updated_at",
+      "id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -39,7 +39,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -64,7 +63,7 @@ async function run() {
   const res = await outboundCampaignsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "updated_at",
+      "id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -72,15 +71,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -123,7 +119,6 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.create({
     campaignName: "Outbound Campaign 1",
     description: "This is a test campaign",
-    label: "test",
     labels: [
       "test",
       "demo",
@@ -134,15 +129,20 @@ async function run() {
     },
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    source: "account@email.com",
+    source: "+19032900844",
     callerId: "19995551234",
-    retryInterval: "12h",
+    hourlyRate: 25,
+    retryCount: 1,
+    retryInterval: "30m",
     activeDays: [
       "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -167,7 +167,6 @@ async function run() {
   const res = await outboundCampaignsCreate(syllableSDK, {
     campaignName: "Outbound Campaign 1",
     description: "This is a test campaign",
-    label: "test",
     labels: [
       "test",
       "demo",
@@ -178,22 +177,25 @@ async function run() {
     },
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    source: "account@email.com",
+    source: "+19032900844",
     callerId: "19995551234",
-    retryInterval: "12h",
+    hourlyRate: 25,
+    retryCount: 1,
+    retryInterval: "30m",
     activeDays: [
       "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -234,10 +236,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.getById({
-    campaignId: <id>,
+    campaignId: 11227,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -260,17 +261,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsGetById(syllableSDK, {
-    campaignId: <id>,
+    campaignId: 11227,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -311,11 +309,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.update({
-    campaignId: 344620,
+    campaignId: 679645,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
-      label: "demo",
       labels: [
         "test",
         "demo",
@@ -326,16 +323,21 @@ async function run() {
       },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      source: "account@email.com",
+      source: "+19032900844",
       callerId: "19995551234",
-      retryInterval: "12h",
+      hourlyRate: 25,
+      retryCount: 1,
+      retryInterval: "30m",
       activeDays: [
-        "sun",
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
       ],
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -358,11 +360,10 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsUpdate(syllableSDK, {
-    campaignId: 344620,
+    campaignId: 679645,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
-      label: "demo",
       labels: [
         "test",
         "demo",
@@ -373,23 +374,26 @@ async function run() {
       },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      source: "account@email.com",
+      source: "+19032900844",
       callerId: "19995551234",
-      retryInterval: "12h",
+      hourlyRate: 25,
+      retryCount: 1,
+      retryInterval: "30m",
       activeDays: [
-        "sun",
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -430,10 +434,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.delete({
-    campaignId: 545907,
+    campaignId: 439537,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -456,17 +459,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsDelete(syllableSDK, {
-    campaignId: 545907,
+    campaignId: 439537,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

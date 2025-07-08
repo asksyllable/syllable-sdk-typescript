@@ -39,7 +39,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +71,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataSourcesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -137,7 +133,6 @@ async function run() {
     "The Best Pizza, 789 Circle Dr.",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -175,15 +170,12 @@ async function run() {
     "\n" +
     "The Best Pizza, 789 Circle Dr.",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataSourcesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -242,7 +234,6 @@ async function run() {
     "The Best Pizza, 789 Circle Dr.",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -282,15 +273,12 @@ async function run() {
     "\n" +
     "The Best Pizza, 789 Circle Dr.",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataSourcesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -331,10 +319,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.dataSources.getById({
-    dataSourceId: 931598,
+    dataSourceId: 87219,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -357,17 +344,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dataSourcesGetById(syllableSDK, {
-    dataSourceId: 931598,
+    dataSourceId: 87219,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataSourcesGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -408,11 +392,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.dataSources.delete({
-    dataSourceId: 545907,
+    dataSourceId: 509584,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -435,18 +418,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dataSourcesDelete(syllableSDK, {
-    dataSourceId: 545907,
+    dataSourceId: 509584,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataSourcesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

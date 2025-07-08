@@ -26,7 +26,7 @@ async function run() {
   const result = await syllableSDK.insights.list({
     page: 0,
     searchFields: [
-      "insight_key",
+      "upload_file_id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -35,7 +35,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -60,7 +59,7 @@ async function run() {
   const res = await insightsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "insight_key",
+      "upload_file_id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -68,15 +67,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

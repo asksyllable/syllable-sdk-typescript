@@ -44,9 +44,9 @@ let value: PromptResponse = {
         endpoint: {
           url: "https://api.example.com",
           method: "post",
-          argumentLocation: "body",
+          argumentLocation: "form",
         },
-        defaults: "<value>",
+        defaults: {},
         staticParameters: [
           {
             name: "temperature_unit",
@@ -73,7 +73,7 @@ let value: PromptResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2023-12-12T17:01:38.434Z"),
+      lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

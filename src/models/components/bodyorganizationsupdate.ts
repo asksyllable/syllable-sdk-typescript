@@ -16,21 +16,21 @@ export type Logo = {
 
 export type BodyOrganizationsUpdate = {
   /**
+   * The organization logo image file to upload. Must be a PNG file and 120x120 pixels. If not provided, the logo will not be updated.
+   */
+  logo?: Logo | Blob | undefined;
+  /**
    * The human-readable display name of the organization
    */
   displayName: string;
-  /**
-   * Comma-delimited list of domains that users at the organization may have in their email addresses
-   */
-  domains: string;
   /**
    * Description of the organization
    */
   description?: string | null | undefined;
   /**
-   * The organization logo image file to upload. Must be a PNG file and 120x120 pixels. If not provided, the logo will not be updated.
+   * Comma-delimited list of domains that users at the organization may have in their email addresses
    */
-  logo?: Logo | Blob | undefined;
+  domains: string;
   /**
    * Comments about the update
    */
@@ -100,10 +100,10 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  display_name: z.string(),
-  domains: z.string(),
-  description: z.nullable(z.string()).optional(),
   logo: z.lazy(() => Logo$inboundSchema).optional(),
+  display_name: z.string(),
+  description: z.nullable(z.string()).optional(),
+  domains: z.string(),
   update_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -114,10 +114,10 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
 
 /** @internal */
 export type BodyOrganizationsUpdate$Outbound = {
-  display_name: string;
-  domains: string;
-  description?: string | null | undefined;
   logo?: Logo$Outbound | Blob | undefined;
+  display_name: string;
+  description?: string | null | undefined;
+  domains: string;
   update_comments?: string | null | undefined;
 };
 
@@ -127,10 +127,10 @@ export const BodyOrganizationsUpdate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BodyOrganizationsUpdate
 > = z.object({
-  displayName: z.string(),
-  domains: z.string(),
-  description: z.nullable(z.string()).optional(),
   logo: z.lazy(() => Logo$outboundSchema).or(blobLikeSchema).optional(),
+  displayName: z.string(),
+  description: z.nullable(z.string()).optional(),
+  domains: z.string(),
   updateComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

@@ -28,7 +28,6 @@ async function run() {
     channelManagerSid: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -54,15 +53,12 @@ async function run() {
     channelManagerService: "<value>",
     channelManagerSid: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionDebugGetSessionDataBySid failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -103,10 +99,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.sessionDebug.getSessionDataBySessionId({
-    sessionId: 744354,
+    sessionId: 303182,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -129,17 +124,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await sessionDebugGetSessionDataBySessionId(syllableSDK, {
-    sessionId: 744354,
+    sessionId: 303182,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionDebugGetSessionDataBySessionId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -180,11 +172,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.sessionDebug.getSessionToolCallResultById({
-    sessionId: 187795,
+    sessionId: 832133,
     toolCallId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -207,18 +198,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await sessionDebugGetSessionToolCallResultById(syllableSDK, {
-    sessionId: 187795,
+    sessionId: 832133,
     toolCallId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionDebugGetSessionToolCallResultById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

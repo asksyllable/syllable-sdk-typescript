@@ -6,26 +6,7 @@
 import { ListResponseInsightsOutput } from "syllable-sdk/models/components";
 
 let value: ListResponseInsightsOutput = {
-  items: [
-    {
-      id: 1,
-      sessionId: 12341,
-      uploadFileId: 12535,
-      insightToolId: 34531,
-      insightToolVersion: 1,
-      insightKey: "summary",
-      stringValue: "This is a summary of the call",
-      numericValue: 1,
-      jsonValue: {
-        "content":
-          " was there anything else that I can assist you with other than this",
-        "role": "assistant",
-        "start_time": 289,
-      },
-      createdAt: new Date("2025-07-06T00:00:00Z"),
-      updatedAt: new Date("2025-07-07T00:00:00Z"),
-    },
-  ],
+  items: [],
   page: 0,
   pageSize: 25,
   totalPages: 4,

@@ -41,7 +41,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -74,15 +73,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -127,9 +123,7 @@ async function run() {
     description: "Prompt for a weather agent.",
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
-    tools: [
-
-    ],
+    tools: [],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -138,7 +132,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -165,9 +158,7 @@ async function run() {
     description: "Prompt for a weather agent.",
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
-    tools: [
-  
-    ],
+    tools: [],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -175,15 +166,12 @@ async function run() {
       seed: 123,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -228,9 +216,7 @@ async function run() {
     description: "Prompt for a weather agent.",
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
-    tools: [
-
-    ],
+    tools: [],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -241,7 +227,6 @@ async function run() {
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -268,9 +253,7 @@ async function run() {
     description: "Prompt for a weather agent.",
     type: "prompt_v1",
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
-    tools: [
-  
-    ],
+    tools: [],
     llmConfig: {
       version: "2024-05-13",
       apiVersion: "2024-06-01",
@@ -280,15 +263,12 @@ async function run() {
     id: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -329,10 +309,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.prompts.getById({
-    promptId: 931598,
+    promptId: 417330,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -355,17 +334,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await promptsGetById(syllableSDK, {
-    promptId: 931598,
+    promptId: 417330,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -406,11 +382,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.prompts.delete({
-    promptId: 545907,
+    promptId: 982839,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -433,18 +408,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await promptsDelete(syllableSDK, {
-    promptId: 545907,
+    promptId: 982839,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -485,10 +457,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.prompts.promptsHistory({
-    promptId: 627932,
+    promptId: 922849,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -511,17 +482,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await promptsPromptsHistory(syllableSDK, {
-    promptId: 627932,
+    promptId: 922849,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptsPromptsHistory failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -563,7 +531,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.prompts.promptGetSupportedLlms();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -586,15 +553,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await promptsPromptGetSupportedLlms(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("promptsPromptGetSupportedLlms failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

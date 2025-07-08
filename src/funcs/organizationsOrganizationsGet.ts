@@ -16,8 +16,10 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import { SDKError } from "../models/errors/sdkerror.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { SyllableSDKError } from "../models/errors/syllablesdkerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -26,20 +28,46 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Fetch the current organization.
  */
-export async function organizationsOrganizationsGet(
+export function organizationsOrganizationsGet(
+  client: SyllableSDKCore,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    components.OrganizationResponse,
+    | SyllableSDKError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
   client: SyllableSDKCore,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    components.OrganizationResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    Result<
+      components.OrganizationResponse,
+      | SyllableSDKError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    APICall,
+  ]
 > {
   const path = pathToFunc("/api/v1/organizations/")();
 
@@ -52,7 +80,8 @@ export async function organizationsOrganizationsGet(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? "",
+    options: client._options,
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "organizations_get",
     oAuth2Scopes: [],
 
@@ -71,10 +100,11 @@ export async function organizationsOrganizationsGet(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -85,27 +115,28 @@ export async function organizationsOrganizationsGet(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
   const [result] = await M.match<
     components.OrganizationResponse,
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | SyllableSDKError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, components.OrganizationResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response);
+  )(response, req);
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

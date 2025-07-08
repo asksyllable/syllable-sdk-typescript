@@ -37,7 +37,7 @@ let value: AgentCreate = {
     "Authorization": "Basic sometoken",
   },
   sttProvider: "Google STT V1",
-  waitSound: "Keyboard 2",
+  waitSound: "No Sound",
 };
 ```
 
