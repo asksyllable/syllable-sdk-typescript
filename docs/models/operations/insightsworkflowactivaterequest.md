@@ -6,18 +6,7 @@
 import { InsightsWorkflowActivateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowActivateRequest = {
-  workflowId: 347233,
-  insightWorkflowActivate: {
-    isAcknowledged: true,
-    estimate: {
-      backfillCount: 100,
-      backfillDuration: 1000,
-      estimatedDailyCount: 10,
-      estimatedDailyDuration: 3674.11,
-      estimatedDailyCost: 45.25,
-      estimatedBackfillCost: 4561.00,
-    },
-  },
+  workflowId: 630775,
 };
 ```
 

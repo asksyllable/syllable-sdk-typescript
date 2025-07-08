@@ -31,7 +31,7 @@ async function run() {
   const result = await syllableSDK.incidents.list({
     page: 0,
     searchFields: [
-      "start_datetime",
+      "updated_at",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -40,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -65,7 +64,7 @@ async function run() {
   const res = await incidentsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "start_datetime",
+      "updated_at",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -73,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -133,7 +129,6 @@ async function run() {
     subOrganization: "SubOrg A",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -166,15 +161,12 @@ async function run() {
     subOrganizationId: 456,
     subOrganization: "SubOrg A",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -229,7 +221,6 @@ async function run() {
     updatedAt: new Date("2023-10-01T08:00:00Z"),
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -265,15 +256,12 @@ async function run() {
     createdAt: new Date("2023-10-01T08:00:00Z"),
     updatedAt: new Date("2023-10-01T08:00:00Z"),
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -315,7 +303,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.incidents.incidentGetOrganizations();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -338,15 +325,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await incidentsIncidentGetOrganizations(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsIncidentGetOrganizations failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -385,10 +369,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.incidents.getById({
-    incidentId: 931598,
+    incidentId: 835824,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -411,17 +394,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await incidentsGetById(syllableSDK, {
-    incidentId: 931598,
+    incidentId: 835824,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -462,11 +442,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.incidents.delete({
-    incidentId: 545907,
+    incidentId: 400877,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -489,18 +468,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await incidentsDelete(syllableSDK, {
-    incidentId: 545907,
+    incidentId: 400877,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

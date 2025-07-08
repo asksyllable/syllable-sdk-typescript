@@ -25,7 +25,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.takeouts.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,15 +47,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await takeoutsCreate(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("takeoutsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -98,7 +94,6 @@ async function run() {
     jobId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -123,15 +118,12 @@ async function run() {
   const res = await takeoutsTakeoutsGetByJobId(syllableSDK, {
     jobId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("takeoutsTakeoutsGetByJobId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -176,7 +168,6 @@ async function run() {
     fileName: "example.file",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -202,15 +193,12 @@ async function run() {
     jobId: "<id>",
     fileName: "example.file",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("takeoutsTakeoutsGetFile failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

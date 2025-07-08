@@ -11,7 +11,7 @@ let value: OrganizationResponse = {
   domains: "mygreatorg.com,myothergreatorg.org",
   id: 1,
   lastUpdatedComments: "Updated to add an additional domain",
-  lastUpdated: new Date("2024-08-11T02:10:46.448Z"),
+  lastUpdated: new Date("2024-06-29T21:52:21.732Z"),
   logoStr: "<value>",
 };
 ```

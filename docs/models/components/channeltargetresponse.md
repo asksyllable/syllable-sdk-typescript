@@ -16,6 +16,7 @@ let value: ChannelTargetResponse = {
   target: "+19995551234",
   targetMode: "email",
   fallbackTarget: "+19995551235",
+  isTest: true,
   id: 1,
   channelName: "+19995551234",
   updatedAt: new Date("2024-01-01T00:00:00Z"),
@@ -49,7 +50,7 @@ let value: ChannelTargetResponse = {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V2",
+    sttProvider: "Google STT V1",
     waitSound: "No Sound",
     id: 1,
     updatedAt: new Date("2024-01-01T00:00:00Z"),
@@ -87,19 +88,9 @@ let value: ChannelTargetResponse = {
             endpoint: {
               url: "https://api.example.com",
               method: "post",
-              argumentLocation: "path",
+              argumentLocation: "form",
             },
-            defaults: {
-              "key": {
-                transform: {
-                  action: "default",
-                  when: {
-                    key: "key",
-                    value: "value",
-                  },
-                },
-              },
-            },
+            defaults: {},
             staticParameters: [
               {
                 name: "temperature_unit",
@@ -126,121 +117,14 @@ let value: ChannelTargetResponse = {
               name: "Test Agent",
             },
           ],
-          lastUpdated: new Date("2025-10-31T08:20:58.047Z"),
+          lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
     },
-    customMessage: {
-      name: "Customer service greeting",
-      text:
-        "Hello and thank you for calling customer service. How can I help you today?",
-      label: "Customer service",
-      rules: [
-        {
-          description: "Closed on New Year's Day",
-          timeRangeStart: "09:00",
-          timeRangeEnd: "17:00",
-          date: "2025-01-01",
-          invert: false,
-          text: "Hello, thank you for calling. Sorry, we're closed today.",
-        },
-        {
-          description: "Closed on weekends",
-          timeRangeStart: "09:00",
-          timeRangeEnd: "17:00",
-          daysOfWeek: [
-            "sa",
-            "su",
-          ],
-          invert: false,
-          text:
-            "Hello, thank you for calling. Sorry, we're closed on weekends.",
-        },
-      ],
-      id: 1,
-      updatedAt: new Date("2024-01-01T00:00:00Z"),
-      agentCount: 1,
-      lastUpdatedBy: "user@email.com",
-    },
-    channelTargets: [],
-    tools: [
-      {
-        name: "Weather Fetcher",
-        definition: {
-          type: "endpoint",
-          tool: {
-            function: {
-              name: "get_weather",
-              description: "Get the weather for a city",
-              parameters: {},
-            },
-          },
-          endpoint: {
-            url: "https://api.example.com",
-            method: "post",
-            argumentLocation: "form",
-          },
-          defaults: "<value>",
-          staticParameters: [
-            {
-              name: "temperature_unit",
-              description:
-                "Whether the temperature information should be fetched in Celsius or Fahrenheit",
-              required: false,
-              type: "string",
-              default: "fahrenheit",
-            },
-          ],
-        },
-        serviceId: 1,
-        id: 1,
-        lastUpdatedComments: "Updated to use new API endpoint",
-        promptsInfo: [
-          {
-            id: 1,
-            name: "Test Prompt",
-          },
-        ],
-        agentsInfo: [
-          {
-            id: 1,
-            name: "Test Agent",
-          },
-        ],
-        lastUpdated: new Date("2025-02-03T14:29:27.520Z"),
-        lastUpdatedBy: "user@email.com",
-      },
-    ],
-    languageGroup: {
-      name: "Call Center 1 Languages",
-      description: "Languages spoken by operators at Call Center 1",
-      languageConfigs: [
-        {
-          languageCode: "en-US",
-          voiceProvider: "OpenAI",
-          voiceDisplayName: "Alloy",
-          dtmfCode: 1,
-        },
-        {
-          languageCode: "es-US",
-          voiceProvider: "Google",
-          voiceDisplayName: "es-US-Neural2-B",
-          dtmfCode: 2,
-        },
-      ],
-      skipCurrentLanguageInMessage: true,
-      id: 1,
-      editComments: "Added Spanish support.",
-      agentsInfo: [
-        {
-          id: 1,
-          name: "Test Agent",
-        },
-      ],
-      updatedAt: new Date("2024-01-01T00:00:00Z"),
-      lastUpdatedBy: "user@mail.com",
-    },
+    customMessage: null,
+    tools: null,
+    languageGroup: null,
   },
 };
 ```

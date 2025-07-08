@@ -7,7 +7,7 @@ Names of data source fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { DataSourceProperties } from "syllable-sdk/models/components";
 
-let value: DataSourceProperties = "name";
+let value: DataSourceProperties = "chunk";
 ```
 
 ## Values

@@ -6,27 +6,7 @@
 import { OutboundCampaignUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundCampaignUpdateRequest = {
-  campaignId: 132487,
-  outboundCampaignInput: {
-    campaignName: "Outbound Campaign 1",
-    description: "This is a test campaign",
-    labels: [
-      "test",
-      "demo",
-    ],
-    campaignVariables: {
-      "key": "value",
-      "key2": "value2",
-    },
-    dailyStartTime: "09:00:00",
-    dailyEndTime: "17:00:00",
-    source: "+19032900844",
-    callerId: "19995551234",
-    retryInterval: "7d",
-    activeDays: [
-      "mon",
-    ],
-  },
+  campaignId: 607945,
 };
 ```
 

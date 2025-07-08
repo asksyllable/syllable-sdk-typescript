@@ -42,7 +42,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -75,15 +74,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -125,17 +121,31 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.workflows.create({
     name: "summary-workflow",
-    source: "transfer",
+    source: "agent",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
     ],
-    conditions: {},
-    startDatetime: new Date("2025-07-06T00:00:00Z"),
-    endDatetime: new Date("2025-07-07T00:00:00Z"),
+    conditions: {
+      minDuration: 120,
+      maxDuration: 600,
+      sampleRate: 2,
+      agentList: [
+        866324,
+        826325,
+      ],
+      promptList: [
+        "123324",
+      ],
+      folderList: [
+        16754,
+        67535,
+      ],
+    },
+    startDatetime: new Date("2025-07-07T00:00:00Z"),
+    endDatetime: new Date("2025-07-08T00:00:00Z"),
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -159,24 +169,36 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await insightsWorkflowsCreate(syllableSDK, {
     name: "summary-workflow",
-    source: "transfer",
+    source: "agent",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
     ],
-    conditions: {},
-    startDatetime: new Date("2025-07-06T00:00:00Z"),
-    endDatetime: new Date("2025-07-07T00:00:00Z"),
+    conditions: {
+      minDuration: 120,
+      maxDuration: 600,
+      sampleRate: 2,
+      agentList: [
+        866324,
+        826325,
+      ],
+      promptList: [
+        "123324",
+      ],
+      folderList: [
+        16754,
+        67535,
+      ],
+    },
+    startDatetime: new Date("2025-07-07T00:00:00Z"),
+    endDatetime: new Date("2025-07-08T00:00:00Z"),
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -217,10 +239,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.getById({
-    workflowId: 931598,
+    workflowId: 788857,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -243,17 +264,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsGetById(syllableSDK, {
-    workflowId: 931598,
+    workflowId: 788857,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -294,21 +312,35 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.update({
-    workflowId: 265006,
+    workflowId: 673493,
     insightWorkflowInput: {
       name: "summary-workflow",
-      source: "manual",
+      source: "agent",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
       ],
-      conditions: {},
-      startDatetime: new Date("2025-07-06T00:00:00Z"),
-      endDatetime: new Date("2025-07-07T00:00:00Z"),
+      conditions: {
+        minDuration: 120,
+        maxDuration: 600,
+        sampleRate: 2,
+        agentList: [
+          866324,
+          826325,
+        ],
+        promptList: [
+          "123324",
+        ],
+        folderList: [
+          16754,
+          67535,
+        ],
+      },
+      startDatetime: new Date("2025-07-07T00:00:00Z"),
+      endDatetime: new Date("2025-07-08T00:00:00Z"),
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -331,28 +363,40 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsUpdate(syllableSDK, {
-    workflowId: 265006,
+    workflowId: 673493,
     insightWorkflowInput: {
       name: "summary-workflow",
-      source: "manual",
+      source: "agent",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
       ],
-      conditions: {},
-      startDatetime: new Date("2025-07-06T00:00:00Z"),
-      endDatetime: new Date("2025-07-07T00:00:00Z"),
+      conditions: {
+        minDuration: 120,
+        maxDuration: 600,
+        sampleRate: 2,
+        agentList: [
+          866324,
+          826325,
+        ],
+        promptList: [
+          "123324",
+        ],
+        folderList: [
+          16754,
+          67535,
+        ],
+      },
+      startDatetime: new Date("2025-07-07T00:00:00Z"),
+      endDatetime: new Date("2025-07-08T00:00:00Z"),
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -393,10 +437,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.delete({
-    workflowId: 545907,
+    workflowId: 609419,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -419,17 +462,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsDelete(syllableSDK, {
-    workflowId: 545907,
+    workflowId: 609419,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -470,10 +510,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.inactivate({
-    workflowId: 550727,
+    workflowId: 248768,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -496,17 +535,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsInactivate(syllableSDK, {
-    workflowId: 550727,
+    workflowId: 248768,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsInactivate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -547,7 +583,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.activate({
-    workflowId: 537910,
+    workflowId: 303095,
     insightWorkflowActivate: {
       isAcknowledged: true,
       estimate: {
@@ -556,12 +592,11 @@ async function run() {
         estimatedDailyCount: 10,
         estimatedDailyDuration: 3674.11,
         estimatedDailyCost: 45.25,
-        estimatedBackfillCost: 4561.00,
+        estimatedBackfillCost: 4561,
       },
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -584,7 +619,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsActivate(syllableSDK, {
-    workflowId: 537910,
+    workflowId: 303095,
     insightWorkflowActivate: {
       isAcknowledged: true,
       estimate: {
@@ -593,19 +628,16 @@ async function run() {
         estimatedDailyCount: 10,
         estimatedDailyDuration: 3674.11,
         estimatedDailyCost: 45.25,
-        estimatedBackfillCost: 4561.00,
+        estimatedBackfillCost: 4561,
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsActivate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -648,14 +680,17 @@ async function run() {
   const result = await syllableSDK.insights.workflows.queueWork({
     workflowName: "summary-workflow",
     sessionIdList: [
-      [12334,23445,34556],
+      12334,
+      23445,
+      34556,
     ],
     fileIdList: [
-      [1234,1678,2224],
+      1234,
+      1678,
+      2224,
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -680,21 +715,22 @@ async function run() {
   const res = await insightsWorkflowsQueueWork(syllableSDK, {
     workflowName: "summary-workflow",
     sessionIdList: [
-      [12334,23445,34556],
+      12334,
+      23445,
+      34556,
     ],
     fileIdList: [
-      [1234,1678,2224],
+      1234,
+      1678,
+      2224,
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsQueueWork failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

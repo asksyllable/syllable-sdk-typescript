@@ -39,7 +39,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +71,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -125,7 +121,6 @@ async function run() {
     description: "Service containing tools for fetching weather information",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -151,15 +146,12 @@ async function run() {
     name: "Weather tools",
     description: "Service containing tools for fetching weather information",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -206,7 +198,6 @@ async function run() {
     lastUpdatedComments: "Updated description to correct typo",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -234,15 +225,12 @@ async function run() {
     id: 1,
     lastUpdatedComments: "Updated description to correct typo",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -283,10 +271,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.services.getById({
-    serviceId: 931598,
+    serviceId: 902529,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -309,17 +296,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await servicesGetById(syllableSDK, {
-    serviceId: 931598,
+    serviceId: 902529,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -360,11 +344,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.services.delete({
-    serviceId: 545907,
+    serviceId: 754999,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -387,18 +370,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await servicesDelete(syllableSDK, {
-    serviceId: 545907,
+    serviceId: 754999,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -7,7 +7,7 @@ Speech-to-text providers supported by agents.
 ```typescript
 import { AgentSttProvider } from "syllable-sdk/models/components";
 
-let value: AgentSttProvider = "Google STT V2";
+let value: AgentSttProvider = "Google STT V1";
 ```
 
 ## Values

@@ -5,7 +5,7 @@
 ```typescript
 import { UserActivityStatus } from "syllable-sdk/models/components";
 
-let value: UserActivityStatus = "not_invited";
+let value: UserActivityStatus = "invited";
 ```
 
 ## Values

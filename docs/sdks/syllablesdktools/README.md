@@ -41,7 +41,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -74,15 +73,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -132,7 +128,6 @@ async function run() {
     insightToolDefinitionId: 1,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -163,15 +158,12 @@ async function run() {
     },
     insightToolDefinitionId: 1,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -215,7 +207,6 @@ async function run() {
     toolId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -240,15 +231,12 @@ async function run() {
   const res = await insightsToolsGetById(syllableSDK, {
     toolId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -289,10 +277,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.tools.delete({
-    toolId: 545907,
+    toolId: 770449,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -315,17 +302,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsToolsDelete(syllableSDK, {
-    toolId: 545907,
+    toolId: 770449,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -366,7 +350,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.tools.update({
-    toolId: 198183,
+    toolId: 368362,
     insightToolInput: {
       name: "summary-tool",
       description: "This tool uses GPT4.1 to generate a summary of the call",
@@ -378,7 +362,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -401,7 +384,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsToolsUpdate(syllableSDK, {
-    toolId: 198183,
+    toolId: 368362,
     insightToolInput: {
       name: "summary-tool",
       description: "This tool uses GPT4.1 to generate a summary of the call",
@@ -412,15 +395,12 @@ async function run() {
       insightToolDefinitionId: 1,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -466,7 +446,6 @@ async function run() {
     uploadFileId: 283467,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -493,15 +472,12 @@ async function run() {
     sessionId: 283467,
     uploadFileId: 283467,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsInsightsToolTest failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -543,7 +519,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.tools.insightToolGetDefinitions();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -566,15 +541,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsToolsInsightToolGetDefinitions(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsInsightToolGetDefinitions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

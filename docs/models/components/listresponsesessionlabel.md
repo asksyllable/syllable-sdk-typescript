@@ -6,19 +6,7 @@
 import { ListResponseSessionLabel } from "syllable-sdk/models/components";
 
 let value: ListResponseSessionLabel = {
-  items: [
-    {
-      sessionId: 1,
-      type: "human-rating",
-      code: "N/A",
-      userEmail: "user@email.com",
-      issueCategories: [
-        "Silent treatment",
-      ],
-      id: 1,
-      timestamp: "2024-01-01T12:00:00Z",
-    },
-  ],
+  items: [],
   page: 0,
   pageSize: 25,
   totalPages: 4,

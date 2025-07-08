@@ -10,29 +10,7 @@ let value: SessionData = {
   source: "+1234567890",
   target: "+1239876543",
   isTest: false,
-  messages: [
-    {
-      role: "user",
-      dialog: {
-        text: "Tell me about Syllable.ai!",
-      },
-      toolCalls: [
-        {
-          toolCallId: "call_arbitrary_id",
-          toolName: "general_information_web",
-          toolArguments: {
-            "question": "Tell me about Syllable.ai!",
-          },
-          toolResult: {
-            "answer":
-              "Syllable is a platform for building and managing AI voice agents...",
-          },
-          timestamp: new Date("2024-06-19T00:00:00"),
-        },
-      ],
-      timestamp: new Date("2024-06-19T00:00:00"),
-    },
-  ],
+  messages: [],
 };
 ```
 
