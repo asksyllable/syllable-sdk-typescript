@@ -26,9 +26,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.getById({
-    channelId: 627671,
+    channelId: 931598,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -51,14 +52,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioGetById(syllableSDK, {
-    channelId: 627671,
+    channelId: 931598,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTwilioGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -101,9 +105,13 @@ async function run() {
   const result = await syllableSDK.channels.twilio.update({
     id: 1,
     name: "syllable-webchat",
-    config: null,
+    config: {
+      accountSid: "AC123...",
+      authToken: "sometoken",
+    },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -128,14 +136,20 @@ async function run() {
   const res = await channelsTwilioUpdate(syllableSDK, {
     id: 1,
     name: "syllable-webchat",
-    config: null,
+    config: {
+      accountSid: "AC123...",
+      authToken: "sometoken",
+    },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTwilioUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -183,6 +197,7 @@ async function run() {
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -211,12 +226,15 @@ async function run() {
       authToken: "sometoken",
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTwilioCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

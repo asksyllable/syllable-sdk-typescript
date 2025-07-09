@@ -17,10 +17,8 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { SyllableSDKError } from "../models/errors/syllablesdkerror.js";
-import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -29,46 +27,20 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Get all organizations
  */
-export function incidentsIncidentGetOrganizations(
-  client: SyllableSDKCore,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    Array<components.IncidentOrganizationResponse>,
-    | SyllableSDKError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
-  >
-> {
-  return new APIPromise($do(
-    client,
-    options,
-  ));
-}
-
-async function $do(
+export async function incidentsIncidentGetOrganizations(
   client: SyllableSDKCore,
   options?: RequestOptions,
 ): Promise<
-  [
-    Result<
-      Array<components.IncidentOrganizationResponse>,
-      | SyllableSDKError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
-    >,
-    APICall,
-  ]
+  Result<
+    Array<components.IncidentOrganizationResponse>,
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
   const path = pathToFunc("/api/v1/incidents/organizations")();
 
@@ -81,8 +53,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    options: client._options,
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    baseURL: options?.serverURL ?? "",
     operationID: "incident_get_organizations",
     oAuth2Scopes: [],
 
@@ -101,11 +72,10 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [requestRes, { status: "invalid" }];
+    return requestRes;
   }
   const req = requestRes.value;
 
@@ -116,28 +86,27 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [doResult, { status: "request-error", request: req }];
+    return doResult;
   }
   const response = doResult.value;
 
   const [result] = await M.match<
     Array<components.IncidentOrganizationResponse>,
-    | SyllableSDKError
-    | ResponseValidationError
-    | ConnectionError
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
     | RequestAbortedError
     | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    | ConnectionError
   >(
     M.json(200, z.array(components.IncidentOrganizationResponse$inboundSchema)),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, req);
+  )(response);
   if (!result.ok) {
-    return [result, { status: "complete", request: req, response }];
+    return result;
   }
 
-  return [result, { status: "complete", request: req, response }];
+  return result;
 }

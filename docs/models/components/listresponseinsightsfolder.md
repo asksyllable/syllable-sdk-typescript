@@ -6,7 +6,17 @@
 import { ListResponseInsightsFolder } from "syllable-sdk/models/components";
 
 let value: ListResponseInsightsFolder = {
-  items: [],
+  items: [
+    {
+      name: "customer-complaints",
+      label: "support",
+      description: "Call recordings related to customer complaints",
+      id: 182764,
+      createdAt: new Date("2025-07-08T00:00:00Z"),
+      updatedAt: new Date("2025-07-09T00:00:00Z"),
+      lastUpdatedBy: "user@email.com",
+    },
+  ],
   page: 0,
   pageSize: 25,
   totalPages: 4,

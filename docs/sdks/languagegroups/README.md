@@ -40,6 +40,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -72,12 +73,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("languageGroupsList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -125,18 +129,23 @@ async function run() {
         languageCode: "en-US",
         voiceProvider: "OpenAI",
         voiceDisplayName: "Alloy",
+        voiceSpeed: 1,
+        voicePitch: 0,
         dtmfCode: 1,
       },
       {
         languageCode: "es-US",
         voiceProvider: "Google",
         voiceDisplayName: "es-US-Neural2-B",
-        dtmfCode: 2,
+        voiceSpeed: 1,
+        voicePitch: 0,
+        dtmfCode: 1,
       },
     ],
     skipCurrentLanguageInMessage: true,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -166,23 +175,30 @@ async function run() {
         languageCode: "en-US",
         voiceProvider: "OpenAI",
         voiceDisplayName: "Alloy",
+        voiceSpeed: 1,
+        voicePitch: 0,
         dtmfCode: 1,
       },
       {
         languageCode: "es-US",
         voiceProvider: "Google",
         voiceDisplayName: "es-US-Neural2-B",
-        dtmfCode: 2,
+        voiceSpeed: 1,
+        voicePitch: 0,
+        dtmfCode: 1,
       },
     ],
     skipCurrentLanguageInMessage: true,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("languageGroupsCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -230,13 +246,17 @@ async function run() {
         languageCode: "en-US",
         voiceProvider: "OpenAI",
         voiceDisplayName: "Alloy",
+        voiceSpeed: 1,
+        voicePitch: 0,
         dtmfCode: 1,
       },
       {
         languageCode: "es-US",
         voiceProvider: "Google",
         voiceDisplayName: "es-US-Neural2-B",
-        dtmfCode: 2,
+        voiceSpeed: 1,
+        voicePitch: 0,
+        dtmfCode: 1,
       },
     ],
     skipCurrentLanguageInMessage: true,
@@ -244,6 +264,7 @@ async function run() {
     editComments: "Added Spanish support.",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -273,25 +294,32 @@ async function run() {
         languageCode: "en-US",
         voiceProvider: "OpenAI",
         voiceDisplayName: "Alloy",
+        voiceSpeed: 1,
+        voicePitch: 0,
         dtmfCode: 1,
       },
       {
         languageCode: "es-US",
         voiceProvider: "Google",
         voiceDisplayName: "es-US-Neural2-B",
-        dtmfCode: 2,
+        voiceSpeed: 1,
+        voicePitch: 0,
+        dtmfCode: 1,
       },
     ],
     skipCurrentLanguageInMessage: true,
     id: 1,
     editComments: "Added Spanish support.",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("languageGroupsUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -332,9 +360,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.languageGroups.getById({
-    languageGroupId: 453313,
+    languageGroupId: 931598,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -357,14 +386,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await languageGroupsGetById(syllableSDK, {
-    languageGroupId: 453313,
+    languageGroupId: 931598,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("languageGroupsGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -405,10 +437,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.languageGroups.delete({
-    languageGroupId: 572805,
+    languageGroupId: 545907,
     reason: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -431,15 +464,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await languageGroupsDelete(syllableSDK, {
-    languageGroupId: 572805,
+    languageGroupId: 545907,
     reason: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("languageGroupsDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -480,13 +516,14 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.languageGroups.languageGroupsCreateVoiceSample({
-    languageCode: "fa-IR",
-    voiceProvider: "Google",
-    voiceDisplayName: "Eric",
+    languageCode: "en-US",
+    voiceProvider: "OpenAI",
+    voiceDisplayName: "Puck (Korean)",
     voiceSpeed: 1,
     voicePitch: 0,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -509,18 +546,21 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await languageGroupsLanguageGroupsCreateVoiceSample(syllableSDK, {
-    languageCode: "fa-IR",
-    voiceProvider: "Google",
-    voiceDisplayName: "Eric",
+    languageCode: "en-US",
+    voiceProvider: "OpenAI",
+    voiceDisplayName: "Puck (Korean)",
     voiceSpeed: 1,
     voicePitch: 0,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("languageGroupsLanguageGroupsCreateVoiceSample failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

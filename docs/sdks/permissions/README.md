@@ -25,6 +25,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.permissions.list();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -47,12 +48,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await permissionsList(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("permissionsList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

@@ -6,7 +6,14 @@
 import { ListResponseChannel } from "syllable-sdk/models/components";
 
 let value: ListResponseChannel = {
-  items: [],
+  items: [
+    {
+      name: "syllable-webchat",
+      channelService: "twilio",
+      supportedModes: "[\"chat\",\"voice\"]",
+      id: 976762,
+    },
+  ],
   page: 0,
   pageSize: 25,
   totalPages: 4,

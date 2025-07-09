@@ -8,7 +8,7 @@ import { UsersListRequest } from "syllable-sdk/models/operations";
 let value: UsersListRequest = {
   page: 0,
   searchFields: [
-    "last_updated",
+    "email",
   ],
   searchFieldValues: [
     "Some Object Name",

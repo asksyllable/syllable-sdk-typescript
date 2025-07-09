@@ -9,7 +9,7 @@ import { InsightWorkflowInput } from "syllable-sdk/models/components";
 
 let value: InsightWorkflowInput = {
   name: "summary-workflow",
-  source: "agent",
+  source: "transfer",
   description: "Default workflow - generates a summary of the call",
   insightToolIds: [
     1,
@@ -19,8 +19,8 @@ let value: InsightWorkflowInput = {
     maxDuration: 600,
     sampleRate: 2,
     agentList: [
-      866324,
-      826325,
+      "Agnes.Wangeci",
+      "Dorice.Otaaba",
     ],
     promptList: [
       "123324",
@@ -30,8 +30,8 @@ let value: InsightWorkflowInput = {
       67535,
     ],
   },
-  startDatetime: new Date("2025-07-07T00:00:00Z"),
-  endDatetime: new Date("2025-07-08T00:00:00Z"),
+  startDatetime: new Date("2025-07-08T00:00:00Z"),
+  endDatetime: new Date("2025-07-09T00:00:00Z"),
 };
 ```
 
@@ -44,5 +44,5 @@ let value: InsightWorkflowInput = {
 | `description`                                                                                      | *string*                                                                                           | :heavy_check_mark:                                                                                 | Text description of insight workflow                                                               | Default workflow - generates a summary of the call                                                 |
 | `insightToolIds`                                                                                   | *number*[]                                                                                         | :heavy_check_mark:                                                                                 | List of IDs of insight tool configurations used in the workflow                                    | [<br/>1<br/>]                                                                                      |
 | `conditions`                                                                                       | [components.InsightWorkflowCondition](../../models/components/insightworkflowcondition.md)         | :heavy_check_mark:                                                                                 | Model for the conditions that trigger an insight workflow.                                         |                                                                                                    |
-| `startDatetime`                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp for when the insight workflow should start. An empty value indicates start on activation | 2025-07-07T00:00:00Z                                                                               |
-| `endDatetime`                                                                                      | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp of when the insight workflow should end. An empty value indicates no end                 | 2025-07-08T00:00:00Z                                                                               |
+| `startDatetime`                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp for when the insight workflow should start. An empty value indicates start on activation | 2025-07-08T00:00:00Z                                                                               |
+| `endDatetime`                                                                                      | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_minus_sign:                                                                                 | Timestamp of when the insight workflow should end. An empty value indicates no end                 | 2025-07-09T00:00:00Z                                                                               |

@@ -88,91 +88,6 @@ yarn add syllable-sdk zod
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
-
-
-
-### Model Context Protocol (MCP) Server
-
-This SDK is also an installable MCP server where the various SDK methods are
-exposed as tools that can be invoked by AI applications.
-
-> Node.js v20 or greater is required to run the MCP server from npm.
-
-<details>
-<summary>Claude installation steps</summary>
-
-Add the following server definition to your `claude_desktop_config.json` file:
-
-```json
-{
-  "mcpServers": {
-    "SyllableSDK": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "syllable-sdk",
-        "--",
-        "mcp", "start",
-        "--api-key-header", "..."
-      ]
-    }
-  }
-}
-```
-
-</details>
-
-<details>
-<summary>Cursor installation steps</summary>
-
-Create a `.cursor/mcp.json` file in your project root with the following content:
-
-```json
-{
-  "mcpServers": {
-    "SyllableSDK": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "syllable-sdk",
-        "--",
-        "mcp", "start",
-        "--api-key-header", "..."
-      ]
-    }
-  }
-}
-```
-
-</details>
-
-You can also run MCP servers as a standalone binary with no additional dependencies. You must pull these binaries from available Github releases:
-
-```bash
-curl -L -o mcp-server \
-    https://github.com/{org}/{repo}/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
-chmod +x mcp-server
-```
-
-If the repo is a private repo you must add your Github PAT to download a release `-H "Authorization: Bearer {GITHUB_PAT}"`.
-
-
-```json
-{
-  "mcpServers": {
-    "Todos": {
-      "command": "./DOWNLOAD/PATH/mcp-server",
-      "args": [
-        "start"
-      ]
-    }
-  }
-}
-```
-
-For a full list of server arguments, run:
-
-```sh
-npx -y --package syllable-sdk -- mcp start --help
-```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -206,6 +121,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -617,19 +533,19 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
 - [`usersCreate`](docs/sdks/users/README.md#create) - Create User
-- [`usersCreate`](docs/sdks/v1/README.md#create) - Create User
 - [`usersDelete`](docs/sdks/users/README.md#delete) - Delete User
-- [`usersDelete`](docs/sdks/v1/README.md#delete) - Delete User
 - [`usersList`](docs/sdks/users/README.md#list) - List Users
-- [`usersList`](docs/sdks/v1/README.md#list) - List Users
 - [`usersUpdate`](docs/sdks/users/README.md#update) - Update User
-- [`usersUpdate`](docs/sdks/v1/README.md#update) - Update User
 - [`usersUsersDeleteAccount`](docs/sdks/users/README.md#usersdeleteaccount) - Request Removal Of This Account
-- [`usersUsersDeleteAccount`](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
 - [`usersUsersGetByEmail`](docs/sdks/users/README.md#usersgetbyemail) - Get User
-- [`usersUsersGetByEmail`](docs/sdks/v1/README.md#usersgetbyemail) - Get User
 - [`usersUsersSendEmail`](docs/sdks/users/README.md#userssendemail) - Send User Email
-- [`usersUsersSendEmail`](docs/sdks/v1/README.md#userssendemail) - Send User Email
+- [`v1Create`](docs/sdks/v1/README.md#create) - Create User
+- [`v1Delete`](docs/sdks/v1/README.md#delete) - Delete User
+- [`v1List`](docs/sdks/v1/README.md#list) - List Users
+- [`v1Update`](docs/sdks/v1/README.md#update) - Update User
+- [`v1UsersDeleteAccount`](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
+- [`v1UsersGetByEmail`](docs/sdks/v1/README.md#usersgetbyemail) - Get User
+- [`v1UsersSendEmail`](docs/sdks/v1/README.md#userssendemail) - Send User Email
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
 - ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
 - ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
@@ -661,10 +577,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.folders.uploadFile({
-    folderId: 444923,
+    folderId: 209119,
     callId: "<id>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -710,6 +627,7 @@ async function run() {
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -748,6 +666,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -759,29 +678,30 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts) is the base class for all HTTP error responses. It has the following properties:
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `list` method may throw the following errors:
 
-| Property            | Type       | Description                                                                             |
-| ------------------- | ---------- | --------------------------------------------------------------------------------------- |
-| `error.message`     | `string`   | Error message                                                                           |
-| `error.statusCode`  | `number`   | HTTP response status code eg `404`                                                      |
-| `error.headers`     | `Headers`  | HTTP response headers                                                                   |
-| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned.                                  |
-| `error.rawResponse` | `Response` | Raw HTTP response                                                                       |
-| `error.data$`       |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
+| Error Type                 | Status Code | Content Type     |
+| -------------------------- | ----------- | ---------------- |
+| errors.HTTPValidationError | 422         | application/json |
+| errors.SDKError            | 4XX, 5XX    | \*/\*            |
 
-### Example
+If the method throws an error and it is not captured by the known errors, it will default to throwing a `SDKError`.
+
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
-import * as errors from "syllable-sdk/models/errors";
+import {
+  HTTPValidationError,
+  SDKValidationError,
+} from "syllable-sdk/models/errors";
 
 const syllableSDK = new SyllableSDK({
   apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
 });
 
 async function run() {
+  let result;
   try {
-    const result = await syllableSDK.agents.list({
+    result = await syllableSDK.agents.list({
       page: 0,
       searchFields: [
         "name",
@@ -793,18 +713,26 @@ async function run() {
       endDatetime: "2024-01-01T00:00:00Z",
     });
 
+    // Handle the result
     console.log(result);
-  } catch (error) {
-    // The base class for HTTP error responses
-    if (error instanceof errors.SyllableSDKError) {
-      console.log(error.message);
-      console.log(error.statusCode);
-      console.log(error.body);
-      console.log(error.headers);
-
-      // Depending on the method different errors may be thrown
-      if (error instanceof errors.HTTPValidationError) {
-        console.log(error.data$.detail); // ValidationError[]
+  } catch (err) {
+    switch (true) {
+      // The server response does not match the expected SDK schema
+      case (err instanceof SDKValidationError): {
+        // Pretty-print will provide a human-readable multi-line error message
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      case (err instanceof HTTPValidationError): {
+        // Handle err.data$: HTTPValidationErrorData
+        console.error(err);
+        return;
+      }
+      default: {
+        // Other errors such as network errors, see HTTPClientErrors for more details
+        throw err;
       }
     }
   }
@@ -814,29 +742,17 @@ run();
 
 ```
 
-### Error Classes
-**Primary errors:**
-* [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
-  * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
+Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted multi-line string since validation errors can list many issues and the plain error string may be difficult read when debugging.
 
-<details><summary>Less common errors (6)</summary>
+In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `models/errors/httpclienterrors.ts` module:
 
-<br />
-
-**Network errors:**
-* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
-* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
-* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
-* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
-* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
-
-
-**Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
-
-</details>
-
-\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
+| HTTP Client Error                                    | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- |
+| RequestAbortedError                                  | HTTP request was aborted by the client               |
+| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
+| ConnectionError                                      | HTTP client was unable to make a request to a server |
+| InvalidRequestError                                  | Any input used to create a request is invalid        |
+| UnexpectedClientError                                | Unrecognised or unexpected error                     |
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -844,7 +760,7 @@ run();
 
 ### Override Server URL Per-Client
 
-The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -866,6 +782,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -955,6 +872,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 

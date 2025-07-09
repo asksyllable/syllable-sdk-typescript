@@ -4,27 +4,24 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
-import { SyllableSDKError } from "./syllablesdkerror.js";
 
 export type HTTPValidationErrorData = {
   detail?: Array<components.ValidationError> | undefined;
 };
 
-export class HTTPValidationError extends SyllableSDKError {
+export class HTTPValidationError extends Error {
   detail?: Array<components.ValidationError> | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: HTTPValidationErrorData;
 
-  constructor(
-    err: HTTPValidationErrorData,
-    httpMeta: { response: Response; request: Request; body: string },
-  ) {
+  constructor(err: HTTPValidationErrorData) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message, httpMeta);
+    super(message);
     this.data$ = err;
+
     if (err.detail != null) this.detail = err.detail;
 
     this.name = "HTTPValidationError";
@@ -38,16 +35,9 @@ export const HTTPValidationError$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   detail: z.array(components.ValidationError$inboundSchema).optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
 })
   .transform((v) => {
-    return new HTTPValidationError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
+    return new HTTPValidationError(v);
   });
 
 /** @internal */

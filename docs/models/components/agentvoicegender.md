@@ -7,7 +7,7 @@ Gender for an agent voice.
 ```typescript
 import { AgentVoiceGender } from "syllable-sdk/models/components";
 
-let value: AgentVoiceGender = "male";
+let value: AgentVoiceGender = "female";
 ```
 
 ## Values

@@ -9,8 +9,8 @@ List of agents
 
 ```typescript
 const value: number[] = [
-  866324,
-  826325,
+  Agnes.Wangeci,
+  Dorice.Otaaba,
 ];
 ```
 

@@ -10,14 +10,10 @@ import { InsightsWorkflowQueueSession } from "syllable-sdk/models/components";
 let value: InsightsWorkflowQueueSession = {
   workflowName: "summary-workflow",
   sessionIdList: [
-    12334,
-    23445,
-    34556,
+    [12334, 23445, 34556],
   ],
   fileIdList: [
-    1234,
-    1678,
-    2224,
+    [1234, 1678, 2224],
   ],
 };
 ```

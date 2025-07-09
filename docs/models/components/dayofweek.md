@@ -7,7 +7,7 @@ Available options for day of the week for use in message rules.
 ```typescript
 import { DayOfWeek } from "syllable-sdk/models/components";
 
-let value: DayOfWeek = "we";
+let value: DayOfWeek = "fr";
 ```
 
 ## Values

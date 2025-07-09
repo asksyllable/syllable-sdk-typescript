@@ -16,10 +16,8 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { SyllableSDKError } from "../models/errors/syllablesdkerror.js";
-import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -34,46 +32,20 @@ import { Result } from "../types/fp.js";
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export function dashboardsPostSessionEventsDashboard(
-  client: SyllableSDKCore,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    components.Dashboard,
-    | SyllableSDKError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
-  >
-> {
-  return new APIPromise($do(
-    client,
-    options,
-  ));
-}
-
-async function $do(
+export async function dashboardsPostSessionEventsDashboard(
   client: SyllableSDKCore,
   options?: RequestOptions,
 ): Promise<
-  [
-    Result<
-      components.Dashboard,
-      | SyllableSDKError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
-    >,
-    APICall,
-  ]
+  Result<
+    components.Dashboard,
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
   const path = pathToFunc("/api/v1/dashboards/session_events")();
 
@@ -86,8 +58,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    options: client._options,
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    baseURL: options?.serverURL ?? "",
     operationID: "post_session_events_dashboard",
     oAuth2Scopes: [],
 
@@ -106,11 +77,10 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [requestRes, { status: "invalid" }];
+    return requestRes;
   }
   const req = requestRes.value;
 
@@ -121,28 +91,27 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [doResult, { status: "request-error", request: req }];
+    return doResult;
   }
   const response = doResult.value;
 
   const [result] = await M.match<
     components.Dashboard,
-    | SyllableSDKError
-    | ResponseValidationError
-    | ConnectionError
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
     | RequestAbortedError
     | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    | ConnectionError
   >(
     M.json(200, components.Dashboard$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, req);
+  )(response);
   if (!result.ok) {
-    return [result, { status: "complete", request: req, response }];
+    return result;
   }
 
-  return [result, { status: "complete", request: req, response }];
+  return result;
 }

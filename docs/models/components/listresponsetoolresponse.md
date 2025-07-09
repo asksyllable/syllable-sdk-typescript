@@ -6,7 +6,54 @@
 import { ListResponseToolResponse } from "syllable-sdk/models/components";
 
 let value: ListResponseToolResponse = {
-  items: [],
+  items: [
+    {
+      name: "Weather Fetcher",
+      definition: {
+        type: "endpoint",
+        tool: {
+          function: {
+            name: "get_weather",
+            description: "Get the weather for a city",
+            parameters: {},
+          },
+        },
+        endpoint: {
+          url: "https://api.example.com",
+          method: "post",
+          argumentLocation: "form",
+        },
+        defaults: "<value>",
+        staticParameters: [
+          {
+            name: "temperature_unit",
+            description:
+              "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+            required: false,
+            type: "string",
+            default: "fahrenheit",
+          },
+        ],
+      },
+      serviceId: 1,
+      id: 1,
+      lastUpdatedComments: "Updated to use new API endpoint",
+      promptsInfo: [
+        {
+          id: 1,
+          name: "Test Prompt",
+        },
+      ],
+      agentsInfo: [
+        {
+          id: 1,
+          name: "Test Agent",
+        },
+      ],
+      lastUpdated: new Date("2023-08-18T23:43:47.903Z"),
+      lastUpdatedBy: "user@email.com",
+    },
+  ],
   page: 0,
   pageSize: 25,
   totalPages: 4,

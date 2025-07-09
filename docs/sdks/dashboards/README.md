@@ -43,6 +43,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -75,12 +76,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("dashboardsPostListDashboard failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -127,6 +131,7 @@ async function run() {
     dashboardName: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -151,12 +156,15 @@ async function run() {
   const res = await dashboardsPostGetDashboard(syllableSDK, {
     dashboardName: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("dashboardsPostGetDashboard failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -204,6 +212,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionEventsDashboard();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -226,12 +235,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionEventsDashboard(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("dashboardsPostSessionEventsDashboard failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -277,6 +289,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionSummaryDashboard();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -299,12 +312,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionSummaryDashboard(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("dashboardsPostSessionSummaryDashboard failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -350,6 +366,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionTransfersDashboard();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -372,12 +389,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionTransfersDashboard(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("dashboardsPostSessionTransfersDashboard failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -423,6 +443,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionsDashboard();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -445,12 +466,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionsDashboard(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("dashboardsPostSessionsDashboard failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

@@ -39,6 +39,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -71,12 +72,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("rolesList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -126,6 +130,7 @@ async function run() {
     ],
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -156,12 +161,15 @@ async function run() {
       "prompts_delete",
     ],
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("rolesCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -213,6 +221,7 @@ async function run() {
     lastUpdatedComments: "Updated to add delete permission",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -245,12 +254,15 @@ async function run() {
     id: 1,
     lastUpdatedComments: "Updated to add delete permission",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("rolesUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -291,9 +303,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.roles.getById({
-    roleId: 324660,
+    roleId: 931598,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -316,14 +329,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await rolesGetById(syllableSDK, {
-    roleId: 324660,
+    roleId: 931598,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("rolesGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -364,10 +380,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.roles.delete({
-    roleId: 458987,
+    roleId: 545907,
     reason: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -390,15 +407,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await rolesDelete(syllableSDK, {
-    roleId: 458987,
+    roleId: 545907,
     reason: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("rolesDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

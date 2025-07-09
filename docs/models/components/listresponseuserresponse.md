@@ -6,7 +6,22 @@
 import { ListResponseUserResponse } from "syllable-sdk/models/components";
 
 let value: ListResponseUserResponse = {
-  items: [],
+  items: [
+    {
+      email: "user@syllable.ai",
+      firstName: "Jane",
+      lastName: "Smith",
+      roleId: 1,
+      lastUpdatedComments: "Updated to change which role was assigned",
+      id: 1,
+      roleName: "Admin",
+      emailSent: true,
+      activityStatus: "not_invited",
+      lastUpdated: new Date("2025-02-24T16:16:37.395Z"),
+      lastUpdatedBy: "admin@email.com",
+      lastSessionAt: new Date("2025-01-01T12:00:00Z"),
+    },
+  ],
   page: 0,
   pageSize: 25,
   totalPages: 4,

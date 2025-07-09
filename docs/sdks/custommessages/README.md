@@ -39,6 +39,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -71,12 +72,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("customMessagesList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -126,23 +130,35 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on weekends",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
+        date: "2025-01-01",
         daysOfWeek: [
-          "sa",
-          "su",
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -174,28 +190,42 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on weekends",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
+        date: "2025-01-01",
         daysOfWeek: [
-          "sa",
-          "su",
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("customMessagesCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -245,24 +275,36 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on weekends",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
+        date: "2025-01-01",
         daysOfWeek: [
-          "sa",
-          "su",
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
     id: 1,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -294,29 +336,43 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
+        daysOfWeek: [
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
+        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on weekends",
+        description: "Closed on New Year's Day",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
+        date: "2025-01-01",
         daysOfWeek: [
-          "sa",
-          "su",
+          "mo",
+          "tu",
+          "we",
+          "th",
+          "fr",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
+        text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
     ],
     id: 1,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("customMessagesUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -357,9 +413,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.customMessages.getById({
-    customMessageId: 909433,
+    customMessageId: 931598,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -382,14 +439,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await customMessagesGetById(syllableSDK, {
-    customMessageId: 909433,
+    customMessageId: 931598,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("customMessagesGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -430,10 +490,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.customMessages.delete({
-    customMessageId: 729986,
+    customMessageId: 545907,
     reason: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -456,15 +517,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await customMessagesDelete(syllableSDK, {
-    customMessageId: 729986,
+    customMessageId: 545907,
     reason: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("customMessagesDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

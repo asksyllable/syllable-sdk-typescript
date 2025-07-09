@@ -33,7 +33,7 @@ export const ToolParameterTransformCondition$inboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  operator: z.nullable(z.literal("eq").default("eq")).optional(),
+  operator: z.nullable(z.literal("eq")).optional(),
 });
 
 /** @internal */

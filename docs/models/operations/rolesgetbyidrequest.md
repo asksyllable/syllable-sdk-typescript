@@ -6,7 +6,7 @@
 import { RolesGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: RolesGetByIdRequest = {
-  roleId: 328451,
+  roleId: 822118,
 };
 ```
 

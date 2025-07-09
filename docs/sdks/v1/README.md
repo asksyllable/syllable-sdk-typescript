@@ -39,6 +39,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -51,7 +52,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { usersList } from "syllable-sdk/funcs/usersList.js";
+import { v1List } from "syllable-sdk/funcs/v1List.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -60,7 +61,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await usersList(syllableSDK, {
+  const res = await v1List(syllableSDK, {
     page: 0,
     searchFields: [
       "activity_status",
@@ -71,12 +72,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -124,6 +128,7 @@ async function run() {
     loginType: "username_and_password",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -136,7 +141,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { usersCreate } from "syllable-sdk/funcs/usersCreate.js";
+import { v1Create } from "syllable-sdk/funcs/v1Create.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -145,19 +150,22 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await usersCreate(syllableSDK, {
+  const res = await v1Create(syllableSDK, {
     email: "user@syllable.ai",
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
     loginType: "username_and_password",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -205,6 +213,7 @@ async function run() {
     lastUpdatedComments: "Updated to change which role was assigned",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -217,7 +226,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { usersUpdate } from "syllable-sdk/funcs/usersUpdate.js";
+import { v1Update } from "syllable-sdk/funcs/v1Update.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -226,19 +235,22 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await usersUpdate(syllableSDK, {
+  const res = await v1Update(syllableSDK, {
     email: "user@syllable.ai",
     firstName: "Jane",
     lastName: "Smith",
     roleId: 1,
     lastUpdatedComments: "Updated to change which role was assigned",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -283,6 +295,7 @@ async function run() {
     reason: "User left the organization",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -295,7 +308,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { usersDelete } from "syllable-sdk/funcs/usersDelete.js";
+import { v1Delete } from "syllable-sdk/funcs/v1Delete.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -304,16 +317,19 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await usersDelete(syllableSDK, {
+  const res = await v1Delete(syllableSDK, {
     email: "user@syllable.ai",
     reason: "User left the organization",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -357,6 +373,7 @@ async function run() {
     userEmail: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -369,7 +386,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { usersUsersGetByEmail } from "syllable-sdk/funcs/usersUsersGetByEmail.js";
+import { v1UsersGetByEmail } from "syllable-sdk/funcs/v1UsersGetByEmail.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -378,15 +395,18 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await usersUsersGetByEmail(syllableSDK, {
+  const res = await v1UsersGetByEmail(syllableSDK, {
     userEmail: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUsersGetByEmail failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -430,6 +450,7 @@ async function run() {
     userEmail: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -442,7 +463,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { usersUsersSendEmail } from "syllable-sdk/funcs/usersUsersSendEmail.js";
+import { v1UsersSendEmail } from "syllable-sdk/funcs/v1UsersSendEmail.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -451,15 +472,18 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await usersUsersSendEmail(syllableSDK, {
+  const res = await v1UsersSendEmail(syllableSDK, {
     userEmail: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUsersSendEmail failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -502,6 +526,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.v1.usersDeleteAccount();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -514,7 +539,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SyllableSDKCore } from "syllable-sdk/core.js";
-import { usersUsersDeleteAccount } from "syllable-sdk/funcs/usersUsersDeleteAccount.js";
+import { v1UsersDeleteAccount } from "syllable-sdk/funcs/v1UsersDeleteAccount.js";
 
 // Use `SyllableSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -523,13 +548,16 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await usersUsersDeleteAccount(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUsersDeleteAccount failed:", res.error);
+  const res = await v1UsersDeleteAccount(syllableSDK);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

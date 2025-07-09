@@ -7,7 +7,7 @@ Names of agent fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { AgentProperties } from "syllable-sdk/models/components";
 
-let value: AgentProperties = "timezone";
+let value: AgentProperties = "last_updated_by";
 ```
 
 ## Values

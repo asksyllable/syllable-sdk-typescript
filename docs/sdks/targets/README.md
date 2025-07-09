@@ -30,7 +30,7 @@ async function run() {
   const result = await syllableSDK.channels.targets.availableTargets({
     page: 0,
     searchFields: [
-      "target",
+      "channel_name",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -39,6 +39,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -63,7 +64,7 @@ async function run() {
   const res = await channelsTargetsAvailableTargets(syllableSDK, {
     page: 0,
     searchFields: [
-      "target",
+      "channel_name",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -71,12 +72,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTargetsAvailableTargets failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -119,7 +123,7 @@ async function run() {
   const result = await syllableSDK.channels.targets.list({
     page: 0,
     searchFields: [
-      "agent_id",
+      "fallback_target",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -128,6 +132,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -152,7 +157,7 @@ async function run() {
   const res = await channelsTargetsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "agent_id",
+      "fallback_target",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -160,12 +165,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTargetsList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -206,17 +214,17 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.targets.create({
-    channelId: 824809,
+    channelId: 638424,
     channelTargetCreateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
-      targetMode: "email",
+      targetMode: "chat",
       fallbackTarget: "+19995551235",
-      isTest: true,
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -239,22 +247,24 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTargetsCreate(syllableSDK, {
-    channelId: 824809,
+    channelId: 638424,
     channelTargetCreateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
-      targetMode: "email",
+      targetMode: "chat",
       fallbackTarget: "+19995551235",
-      isTest: true,
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTargetsCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -295,10 +305,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.targets.getById({
-    channelId: 184507,
-    targetId: 235358,
+    channelId: 931598,
+    targetId: 505057,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -321,15 +332,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTargetsGetById(syllableSDK, {
-    channelId: 184507,
-    targetId: 235358,
+    channelId: 931598,
+    targetId: 505057,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTargetsGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -370,19 +384,19 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.targets.update({
-    channelId: 508167,
-    targetId: 880236,
+    channelId: 597129,
+    targetId: 344620,
     channelTargetUpdateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
       targetMode: "email",
       fallbackTarget: "+19995551235",
-      isTest: true,
       id: 1,
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -405,24 +419,26 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTargetsUpdate(syllableSDK, {
-    channelId: 508167,
-    targetId: 880236,
+    channelId: 597129,
+    targetId: 344620,
     channelTargetUpdateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
       targetMode: "email",
       fallbackTarget: "+19995551235",
-      isTest: true,
       id: 1,
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTargetsUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

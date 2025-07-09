@@ -7,7 +7,7 @@ import { TwilioPhoneNumber } from "syllable-sdk/models/components";
 
 let value: TwilioPhoneNumber = {
   sid: "<id>",
-  phoneNumber: "973.789.1824",
+  phoneNumber: "(413) 506-5250",
   friendlyName: "<value>",
   trunkSid: "<id>",
 };
