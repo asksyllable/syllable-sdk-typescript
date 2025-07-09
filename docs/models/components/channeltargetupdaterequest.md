@@ -11,9 +11,8 @@ let value: ChannelTargetUpdateRequest = {
   agentId: 1,
   channelId: 1,
   target: "+19995551234",
-  targetMode: "chat",
+  targetMode: "sms",
   fallbackTarget: "+19995551235",
-  isTest: true,
   id: 1,
 };
 ```

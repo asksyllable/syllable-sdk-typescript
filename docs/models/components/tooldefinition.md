@@ -23,12 +23,11 @@ let value: ToolDefinition = {
   },
   defaults: {
     "key": {
-      "transform": {
-        "action": "default",
-        "when": {
-          "key": "key",
-          "value": "value",
-          "operator": "eq",
+      transform: {
+        action: "default",
+        when: {
+          key: "key",
+          value: "value",
         },
       },
     },

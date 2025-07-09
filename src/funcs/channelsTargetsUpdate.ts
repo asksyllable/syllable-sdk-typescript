@@ -19,11 +19,9 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
-import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import { SyllableSDKError } from "../models/errors/syllablesdkerror.js";
 import * as operations from "../models/operations/index.js";
-import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -32,51 +30,22 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Update channel target by ID
  */
-export function channelsTargetsUpdate(
-  client: SyllableSDKCore,
-  request: operations.ChannelTargetsUpdateRequest,
-  options?: RequestOptions,
-): APIPromise<
-  Result<
-    components.ChannelTargetResponse,
-    | errors.HTTPValidationError
-    | SyllableSDKError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
-  >
-> {
-  return new APIPromise($do(
-    client,
-    request,
-    options,
-  ));
-}
-
-async function $do(
+export async function channelsTargetsUpdate(
   client: SyllableSDKCore,
   request: operations.ChannelTargetsUpdateRequest,
   options?: RequestOptions,
 ): Promise<
-  [
-    Result<
-      components.ChannelTargetResponse,
-      | errors.HTTPValidationError
-      | SyllableSDKError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
-    >,
-    APICall,
-  ]
+  Result<
+    components.ChannelTargetResponse,
+    | errors.HTTPValidationError
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
   const parsed = safeParse(
     request,
@@ -85,7 +54,7 @@ async function $do(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return [parsed, { status: "invalid" }];
+    return parsed;
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.ChannelTargetUpdateRequest, {
@@ -117,8 +86,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    options: client._options,
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    baseURL: options?.serverURL ?? "",
     operationID: "channel_targets_update",
     oAuth2Scopes: [],
 
@@ -138,11 +106,10 @@ async function $do(
     path: path,
     headers: headers,
     body: body,
-    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [requestRes, { status: "invalid" }];
+    return requestRes;
   }
   const req = requestRes.value;
 
@@ -153,7 +120,7 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [doResult, { status: "request-error", request: req }];
+    return doResult;
   }
   const response = doResult.value;
 
@@ -164,23 +131,22 @@ async function $do(
   const [result] = await M.match<
     components.ChannelTargetResponse,
     | errors.HTTPValidationError
-    | SyllableSDKError
-    | ResponseValidationError
-    | ConnectionError
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
     | RequestAbortedError
     | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+    | ConnectionError
   >(
     M.json(200, components.ChannelTargetResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, req, { extraFields: responseFields });
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return [result, { status: "complete", request: req, response }];
+    return result;
   }
 
-  return [result, { status: "complete", request: req, response }];
+  return result;
 }

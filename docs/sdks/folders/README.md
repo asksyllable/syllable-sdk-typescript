@@ -42,6 +42,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -74,12 +75,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -125,6 +129,7 @@ async function run() {
     description: "Call recordings related to customer complaints",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -151,12 +156,15 @@ async function run() {
     label: "support",
     description: "Call recordings related to customer complaints",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -197,9 +205,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.folders.getById({
-    folderId: 982079,
+    folderId: 931598,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -222,14 +231,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsFoldersGetById(syllableSDK, {
-    folderId: 982079,
+    folderId: 931598,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -270,9 +282,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.folders.delete({
-    folderId: 410792,
+    folderId: 545907,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -295,14 +308,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsFoldersDelete(syllableSDK, {
-    folderId: 410792,
+    folderId: 545907,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -343,7 +359,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.folders.update({
-    folderId: 567518,
+    folderId: 857478,
     insightsFolderInput: {
       name: "customer-complaints",
       label: "support",
@@ -351,6 +367,7 @@ async function run() {
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -373,19 +390,22 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsFoldersUpdate(syllableSDK, {
-    folderId: 567518,
+    folderId: 857478,
     insightsFolderInput: {
       name: "customer-complaints",
       label: "support",
       description: "Call recordings related to customer complaints",
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -426,10 +446,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.folders.uploadFile({
-    folderId: 444923,
+    folderId: 209119,
     callId: "<id>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -452,15 +473,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsFoldersUploadFile(syllableSDK, {
-    folderId: 444923,
+    folderId: 209119,
     callId: "<id>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersUploadFile failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -501,10 +525,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.folders.listFiles({
-    folderId: 55293,
+    folderId: 74439,
     page: 0,
     searchFields: [
-      "customer_number",
+      "start_time",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -513,6 +537,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -535,10 +560,10 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsFoldersListFiles(syllableSDK, {
-    folderId: 55293,
+    folderId: 74439,
     page: 0,
     searchFields: [
-      "customer_number",
+      "start_time",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -546,12 +571,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersListFiles failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -592,17 +620,16 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.folders.moveFiles({
-    folderId: 815114,
+    folderId: 623467,
     insightsFolderFileMove: {
       destinationFolderId: 182764,
       fileIdList: [
-        12334,
-        23445,
-        34556,
+        [12334,23445,34556],
       ],
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -625,22 +652,23 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsFoldersMoveFiles(syllableSDK, {
-    folderId: 815114,
+    folderId: 623467,
     insightsFolderFileMove: {
       destinationFolderId: 182764,
       fileIdList: [
-        12334,
-        23445,
-        34556,
+        [12334,23445,34556],
       ],
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("insightsFoldersMoveFiles failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

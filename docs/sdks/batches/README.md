@@ -34,7 +34,7 @@ async function run() {
   const result = await syllableSDK.outbound.batches.list({
     page: 0,
     searchFields: [
-      "last_updated_at",
+      "expires_on",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -43,6 +43,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -67,7 +68,7 @@ async function run() {
   const res = await outboundBatchesList(syllableSDK, {
     page: 0,
     searchFields: [
-      "last_updated_at",
+      "expires_on",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -75,12 +76,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -121,12 +125,13 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.batches.create({
-    batchId: "20250708.9",
+    batchId: "20250709.9",
     campaignId: 1,
-    expiresOn: new Date("2025-07-09T00:00:00Z"),
+    expiresOn: new Date("2025-07-10T00:00:00Z"),
     paused: true,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -149,17 +154,20 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundBatchesCreate(syllableSDK, {
-    batchId: "20250708.9",
+    batchId: "20250709.9",
     campaignId: 1,
-    expiresOn: new Date("2025-07-09T00:00:00Z"),
+    expiresOn: new Date("2025-07-10T00:00:00Z"),
     paused: true,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -203,6 +211,7 @@ async function run() {
     batchId: "<id>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -227,12 +236,15 @@ async function run() {
   const res = await outboundBatchesGetById(syllableSDK, {
     batchId: "<id>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -275,11 +287,12 @@ async function run() {
   const result = await syllableSDK.outbound.batches.update({
     batchId: "<id>",
     communicationBatchUpdate: {
-      paused: true,
+      paused: false,
       expiresOn: new Date("2027-01-01T06:00:00Z"),
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -304,16 +317,19 @@ async function run() {
   const res = await outboundBatchesUpdate(syllableSDK, {
     batchId: "<id>",
     communicationBatchUpdate: {
-      paused: true,
+      paused: false,
       expiresOn: new Date("2027-01-01T06:00:00Z"),
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -360,6 +376,7 @@ async function run() {
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -387,12 +404,15 @@ async function run() {
       deleteReason: "<value>",
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -436,6 +456,7 @@ async function run() {
     batchId: "<id>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -460,12 +481,15 @@ async function run() {
   const res = await outboundBatchesUpload(syllableSDK, {
     batchId: "<id>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesUpload failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -509,6 +533,7 @@ async function run() {
     batchId: "<id>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -533,12 +558,15 @@ async function run() {
   const res = await outboundBatchesResults(syllableSDK, {
     batchId: "<id>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesResults failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -582,13 +610,15 @@ async function run() {
     batchId: "<id>",
     communicationRequest: {
       referenceId: "12345",
-      target: "512-555-1234",
+      target: "+15125551234",
       requestVariables: {
-
+        "key": "<value>",
+        "key1": "<value>",
       },
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -614,18 +644,22 @@ async function run() {
     batchId: "<id>",
     communicationRequest: {
       referenceId: "12345",
-      target: "512-555-1234",
+      target: "+15125551234",
       requestVariables: {
-  
+        "key": "<value>",
+        "key1": "<value>",
       },
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesAdd failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -668,11 +702,12 @@ async function run() {
   const result = await syllableSDK.outbound.batches.remove({
     batchId: "<id>",
     requestBody: [
-      "<value 1>",
-      "<value 2>",
+      "<value>",
+      "<value>",
     ],
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -697,16 +732,19 @@ async function run() {
   const res = await outboundBatchesRemove(syllableSDK, {
     batchId: "<id>",
     requestBody: [
-      "<value 1>",
-      "<value 2>",
+      "<value>",
+      "<value>",
     ],
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundBatchesRemove failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

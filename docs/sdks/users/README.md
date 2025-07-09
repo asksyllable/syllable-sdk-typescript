@@ -39,6 +39,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -71,12 +72,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -124,6 +128,7 @@ async function run() {
     loginType: "username_and_password",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -152,12 +157,15 @@ async function run() {
     roleId: 1,
     loginType: "username_and_password",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -205,6 +213,7 @@ async function run() {
     lastUpdatedComments: "Updated to change which role was assigned",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -233,12 +242,15 @@ async function run() {
     roleId: 1,
     lastUpdatedComments: "Updated to change which role was assigned",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -283,6 +295,7 @@ async function run() {
     reason: "User left the organization",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -308,12 +321,15 @@ async function run() {
     email: "user@syllable.ai",
     reason: "User left the organization",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -357,6 +373,7 @@ async function run() {
     userEmail: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -381,12 +398,15 @@ async function run() {
   const res = await usersUsersGetByEmail(syllableSDK, {
     userEmail: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUsersGetByEmail failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -430,6 +450,7 @@ async function run() {
     userEmail: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -454,12 +475,15 @@ async function run() {
   const res = await usersUsersSendEmail(syllableSDK, {
     userEmail: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUsersSendEmail failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -502,6 +526,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.users.usersDeleteAccount();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -524,12 +549,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await usersUsersDeleteAccount(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("usersUsersDeleteAccount failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

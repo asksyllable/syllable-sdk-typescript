@@ -6,7 +6,7 @@
 import { ServiceDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: ServiceDeleteRequest = {
-  serviceId: 340238,
+  serviceId: 224317,
   reason: "<value>",
 };
 ```

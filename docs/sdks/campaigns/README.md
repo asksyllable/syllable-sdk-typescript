@@ -30,7 +30,7 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.list({
     page: 0,
     searchFields: [
-      "id",
+      "updated_at",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -39,6 +39,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -63,7 +64,7 @@ async function run() {
   const res = await outboundCampaignsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "id",
+      "updated_at",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -71,12 +72,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundCampaignsList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -131,18 +135,13 @@ async function run() {
     dailyEndTime: "17:00:00",
     source: "+19032900844",
     callerId: "19995551234",
-    hourlyRate: 25,
-    retryCount: 1,
-    retryInterval: "30m",
+    retryInterval: "12h",
     activeDays: [
-      "mon",
-      "tue",
       "wed",
-      "thu",
-      "fri",
     ],
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -179,23 +178,20 @@ async function run() {
     dailyEndTime: "17:00:00",
     source: "+19032900844",
     callerId: "19995551234",
-    hourlyRate: 25,
-    retryCount: 1,
-    retryInterval: "30m",
+    retryInterval: "12h",
     activeDays: [
-      "mon",
-      "tue",
       "wed",
-      "thu",
-      "fri",
     ],
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundCampaignsCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -236,9 +232,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.getById({
-    campaignId: 11227,
+    campaignId: 931598,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -261,14 +258,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsGetById(syllableSDK, {
-    campaignId: 11227,
+    campaignId: 931598,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundCampaignsGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -309,7 +309,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.update({
-    campaignId: 679645,
+    campaignId: 991464,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
@@ -323,21 +323,16 @@ async function run() {
       },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      source: "+19032900844",
+      source: "account@email.com",
       callerId: "19995551234",
-      hourlyRate: 25,
-      retryCount: 1,
-      retryInterval: "30m",
+      retryInterval: "12h",
       activeDays: [
-        "mon",
-        "tue",
         "wed",
-        "thu",
-        "fri",
       ],
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -360,7 +355,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsUpdate(syllableSDK, {
-    campaignId: 679645,
+    campaignId: 991464,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
@@ -374,26 +369,23 @@ async function run() {
       },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      source: "+19032900844",
+      source: "account@email.com",
       callerId: "19995551234",
-      hourlyRate: 25,
-      retryCount: 1,
-      retryInterval: "30m",
+      retryInterval: "12h",
       activeDays: [
-        "mon",
-        "tue",
         "wed",
-        "thu",
-        "fri",
       ],
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundCampaignsUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -434,9 +426,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.delete({
-    campaignId: 439537,
+    campaignId: 545907,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -459,14 +452,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsDelete(syllableSDK, {
-    campaignId: 439537,
+    campaignId: 545907,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("outboundCampaignsDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

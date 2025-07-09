@@ -6,7 +6,7 @@
 import { GetSessionDataBySessionIdRequest } from "syllable-sdk/models/operations";
 
 let value: GetSessionDataBySessionIdRequest = {
-  sessionId: 856471,
+  sessionId: 960835,
 };
 ```
 

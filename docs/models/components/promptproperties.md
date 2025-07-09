@@ -7,7 +7,7 @@ Names of prompt fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { PromptProperties } from "syllable-sdk/models/components";
 
-let value: PromptProperties = "name_description";
+let value: PromptProperties = "llm_config";
 ```
 
 ## Values

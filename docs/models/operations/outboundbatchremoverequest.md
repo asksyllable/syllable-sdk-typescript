@@ -7,6 +7,9 @@ import { OutboundBatchRemoveRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundBatchRemoveRequest = {
   batchId: "<id>",
+  requestBody: [
+    "<value>",
+  ],
 };
 ```
 

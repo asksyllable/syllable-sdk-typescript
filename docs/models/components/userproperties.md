@@ -7,7 +7,7 @@ Names of user fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { UserProperties } from "syllable-sdk/models/components";
 
-let value: UserProperties = "role_id";
+let value: UserProperties = "first_name";
 ```
 
 ## Values

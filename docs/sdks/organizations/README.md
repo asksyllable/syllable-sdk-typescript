@@ -28,6 +28,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.organizations.organizationsGet();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -50,12 +51,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await organizationsOrganizationsGet(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("organizationsOrganizationsGet failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -95,11 +99,12 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.organizations.update({
     displayName: "My Great Org",
-    description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    description: "An organization that does great things with agentic AI",
     updateComments: "Updated the organization to add a new domain",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -123,16 +128,19 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await organizationsUpdate(syllableSDK, {
     displayName: "My Great Org",
-    description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    description: "An organization that does great things with agentic AI",
     updateComments: "Updated the organization to add a new domain",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("organizationsUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -174,12 +182,13 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.organizations.create({
-    logo: await openAsBlob("example.file"),
     displayName: "My Great Org",
-    description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    logo: await openAsBlob("example.file"),
+    description: "An organization that does great things with agentic AI",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -203,17 +212,20 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await organizationsCreate(syllableSDK, {
-    logo: await openAsBlob("example.file"),
     displayName: "My Great Org",
-    description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    logo: await openAsBlob("example.file"),
+    description: "An organization that does great things with agentic AI",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("organizationsCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -255,6 +267,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.organizations.delete();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -277,12 +290,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await organizationsDelete(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("organizationsDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

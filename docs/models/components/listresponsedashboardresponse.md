@@ -6,7 +6,14 @@
 import { ListResponseDashboardResponse } from "syllable-sdk/models/components";
 
 let value: ListResponseDashboardResponse = {
-  items: [],
+  items: [
+    {
+      name: "session_summary",
+      displayName: "Session Summary",
+      rank: 0,
+      label: "dashboard",
+    },
+  ],
   page: 0,
   pageSize: 25,
   totalPages: 4,

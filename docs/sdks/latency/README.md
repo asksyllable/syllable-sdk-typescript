@@ -25,6 +25,7 @@ async function run() {
     sessionId: "<id>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -49,12 +50,15 @@ async function run() {
   const res = await sessionsLatencyGetById(syllableSDK, {
     sessionId: "<id>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("sessionsLatencyGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

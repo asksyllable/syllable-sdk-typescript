@@ -26,13 +26,14 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.numbers.add({
-    channelId: 314558,
+    channelId: 551477,
     twilioNumberAddRequest: {
       friendlyName: "Support Line",
       areaCode: "804",
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -55,18 +56,21 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioNumbersAdd(syllableSDK, {
-    channelId: 314558,
+    channelId: 551477,
     twilioNumberAddRequest: {
       friendlyName: "Support Line",
       areaCode: "804",
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTwilioNumbersAdd failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -107,13 +111,14 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.numbers.update({
-    channelId: 815949,
+    channelId: 857478,
     twilioNumberUpdateRequest: {
       friendlyName: "Support Line",
       phoneSid: "PN123",
     },
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -136,18 +141,21 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioNumbersUpdate(syllableSDK, {
-    channelId: 815949,
+    channelId: 857478,
     twilioNumberUpdateRequest: {
       friendlyName: "Support Line",
       phoneSid: "PN123",
     },
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTwilioNumbersUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -188,9 +196,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.numbers.list({
-    channelId: 739627,
+    channelId: 768578,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -213,14 +222,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioNumbersList(syllableSDK, {
-    channelId: 739627,
+    channelId: 768578,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("channelsTwilioNumbersList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

@@ -31,6 +31,7 @@ async function run() {
     agentId: "<id>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -59,12 +60,15 @@ async function run() {
     testId: "<id>",
     agentId: "<id>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("agentsTestSendTestMessage failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

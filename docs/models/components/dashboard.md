@@ -12,7 +12,7 @@ let value: Dashboard = {
   embeddedId: "<id>",
   guestToken: "<value>",
   name: "<value>",
-  supersetUrl: "https://primary-convection.net",
+  supersetUrl: "https://bitter-platter.info/",
 };
 ```
 

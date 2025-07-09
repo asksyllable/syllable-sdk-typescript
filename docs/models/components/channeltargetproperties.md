@@ -8,7 +8,7 @@ endpoint.
 ```typescript
 import { ChannelTargetProperties } from "syllable-sdk/models/components";
 
-let value: ChannelTargetProperties = "channel_name";
+let value: ChannelTargetProperties = "updated_at";
 ```
 
 ## Values

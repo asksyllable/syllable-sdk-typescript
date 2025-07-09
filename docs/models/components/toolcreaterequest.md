@@ -21,9 +21,9 @@ let value: ToolCreateRequest = {
     endpoint: {
       url: "https://api.example.com",
       method: "post",
-      argumentLocation: "form",
+      argumentLocation: "path",
     },
-    defaults: {},
+    defaults: "<value>",
     staticParameters: [
       {
         name: "temperature_unit",

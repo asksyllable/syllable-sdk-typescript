@@ -6,7 +6,7 @@
 import { SessionMessage } from "syllable-sdk/models/components";
 
 let value: SessionMessage = {
-  role: "agent",
+  role: "user",
   dialog: {
     text: "Tell me about Syllable.ai!",
   },

@@ -7,7 +7,7 @@ Enum representing days of the week.
 ```typescript
 import { DaysOfWeek } from "syllable-sdk/models/components";
 
-let value: DaysOfWeek = "sun";
+let value: DaysOfWeek = "tue";
 ```
 
 ## Values

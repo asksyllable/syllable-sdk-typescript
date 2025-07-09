@@ -40,6 +40,7 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -72,12 +73,15 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("agentsList failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -146,10 +150,11 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V1",
-    waitSound: "No Sound",
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 1",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -200,15 +205,18 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V1",
-    waitSound: "No Sound",
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 1",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("agentsCreate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -259,7 +267,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
-    timezone: "America/New_York",
+    timezone: "America/Chicago",
     promptToolDefaults: [
       {
         toolName: "get_weather",
@@ -277,11 +285,12 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V1",
-    waitSound: "No Sound",
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 1",
     id: 1,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -314,7 +323,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
-    timezone: "America/New_York",
+    timezone: "America/Chicago",
     promptToolDefaults: [
       {
         toolName: "get_weather",
@@ -332,16 +341,19 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V1",
-    waitSound: "No Sound",
+    sttProvider: "Google STT V2",
+    waitSound: "Keyboard 1",
     id: 1,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("agentsUpdate failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -382,9 +394,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.agents.getById({
-    agentId: 910445,
+    agentId: 931598,
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -407,14 +420,17 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsGetById(syllableSDK, {
-    agentId: 910445,
+    agentId: 931598,
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("agentsGetById failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -455,10 +471,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.agents.delete({
-    agentId: 78115,
+    agentId: 545907,
     reason: "<value>",
   });
 
+  // Handle the result
   console.log(result);
 }
 
@@ -481,15 +498,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsDelete(syllableSDK, {
-    agentId: 78115,
+    agentId: 545907,
     reason: "<value>",
   });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("agentsDelete failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -531,6 +551,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.agents.agentGetAvailableVoices();
 
+  // Handle the result
   console.log(result);
 }
 
@@ -553,12 +574,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsAgentGetAvailableVoices(syllableSDK);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("agentsAgentGetAvailableVoices failed:", res.error);
+
+  if (!res.ok) {
+    throw res.error;
   }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

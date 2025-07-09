@@ -12,7 +12,7 @@ let value: StaticToolParameter = {
   description:
     "Whether the temperature information should be fetched in celsius or fahrenheit.",
   required: true,
-  type: "boolean",
+  type: "string",
   default: "fahrenheit",
 };
 ```

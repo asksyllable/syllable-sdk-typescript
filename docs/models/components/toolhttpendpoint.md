@@ -9,7 +9,7 @@ import { ToolHttpEndpoint } from "syllable-sdk/models/components";
 
 let value: ToolHttpEndpoint = {
   url: "https://api.example.com",
-  method: "get",
+  method: "post",
   argumentLocation: "path",
 };
 ```

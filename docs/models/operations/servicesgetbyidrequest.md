@@ -6,7 +6,7 @@
 import { ServicesGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: ServicesGetByIdRequest = {
-  serviceId: 472782,
+  serviceId: 511319,
 };
 ```
 

@@ -13,7 +13,7 @@ let value: InsightWorkflowEstimate = {
   estimatedDailyCount: 10,
   estimatedDailyDuration: 3674.11,
   estimatedDailyCost: 45.25,
-  estimatedBackfillCost: 4561,
+  estimatedBackfillCost: 4561.00,
 };
 ```
 
