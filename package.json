@@ -1,6 +1,6 @@
 {
   "name": "syllable-sdk",
-  "version": "0.1.0-alpha.201",
+  "version": "0.1.0-alpha.202",
   "author": "Syllable",
   "main": "./index.js",
   "sideEffects": false,
