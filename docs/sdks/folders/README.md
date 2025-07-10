@@ -528,7 +528,7 @@ async function run() {
     folderId: 74439,
     page: 0,
     searchFields: [
-      "start_time",
+      "filename",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -563,7 +563,7 @@ async function run() {
     folderId: 74439,
     page: 0,
     searchFields: [
-      "start_time",
+      "filename",
     ],
     searchFieldValues: [
       "Some Object Name",
