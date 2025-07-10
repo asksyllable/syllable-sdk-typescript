@@ -35,15 +35,15 @@ export type InsightWorkflowOutput = {
    */
   name: string;
   /**
-   * Source of the insight workflow
+   * Source of the workflow
    */
   source: string;
   /**
-   * Text description of insight workflow
+   * Text description of workflow
    */
   description: string;
   /**
-   * List of IDs of insight tool configurations used in the workflow
+   * Ordered list of IDs of tool configurations to be executed in the workflow
    */
   insightToolIds: Array<number>;
   /**
@@ -51,11 +51,11 @@ export type InsightWorkflowOutput = {
    */
   conditions: InsightWorkflowCondition;
   /**
-   * Timestamp for when the insight workflow should start. An empty value indicates start on activation
+   * Target session timestamp the workflow (backfill) should start. An empty value indicates start on activation - live sessions only
    */
   startDatetime?: Date | null | undefined;
   /**
-   * Timestamp of when the insight workflow should end. An empty value indicates no end
+   * Target session timestamp the workflow (backfill) should end. An empty value indicates no end, i.e., include live sessions until deactivation
    */
   endDatetime?: Date | null | undefined;
   /**

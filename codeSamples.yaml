@@ -1636,7 +1636,7 @@ actions:
             async function run() {
               const result = await syllableSDK.insights.workflows.create({
                 name: "summary-workflow",
-                source: "transfer",
+                source: "upload",
                 description: "Default workflow - generates a summary of the call",
                 insightToolIds: [
                   1,
@@ -1656,6 +1656,10 @@ actions:
                     16754,
                     67535,
                   ],
+                  sheetInfo: {
+                    "sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go",
+                    "sheet_name": "Q1 Sales Data",
+                  },
                 },
                 startDatetime: new Date("2025-07-09T00:00:00Z"),
                 endDatetime: new Date("2025-07-10T00:00:00Z"),
@@ -1775,6 +1779,10 @@ actions:
                       16754,
                       67535,
                     ],
+                    sheetInfo: {
+                      "sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go",
+                      "sheet_name": "Q1 Sales Data",
+                    },
                   },
                   startDatetime: new Date("2025-07-09T00:00:00Z"),
                   endDatetime: new Date("2025-07-10T00:00:00Z"),
