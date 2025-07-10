@@ -150,7 +150,7 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V2",
+    sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",
   });
 
@@ -205,7 +205,7 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V2",
+    sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",
   });
 
@@ -285,7 +285,7 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V2",
+    sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",
     id: 1,
   });
@@ -341,7 +341,7 @@ async function run() {
     toolHeaders: {
       "Authorization": "Basic sometoken",
     },
-    sttProvider: "Google STT V2",
+    sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",
     id: 1,
   });
