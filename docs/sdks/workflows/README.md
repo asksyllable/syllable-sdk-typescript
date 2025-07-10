@@ -125,7 +125,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.workflows.create({
     name: "summary-workflow",
-    source: "transfer",
+    source: "upload",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
@@ -145,6 +145,10 @@ async function run() {
         16754,
         67535,
       ],
+      sheetInfo: {
+        "sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go",
+        "sheet_name": "Q1 Sales Data",
+      },
     },
     startDatetime: new Date("2025-07-09T00:00:00Z"),
     endDatetime: new Date("2025-07-10T00:00:00Z"),
@@ -174,7 +178,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await insightsWorkflowsCreate(syllableSDK, {
     name: "summary-workflow",
-    source: "transfer",
+    source: "upload",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
@@ -194,6 +198,10 @@ async function run() {
         16754,
         67535,
       ],
+      sheetInfo: {
+        "sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go",
+        "sheet_name": "Q1 Sales Data",
+      },
     },
     startDatetime: new Date("2025-07-09T00:00:00Z"),
     endDatetime: new Date("2025-07-10T00:00:00Z"),
@@ -347,6 +355,10 @@ async function run() {
           16754,
           67535,
         ],
+        sheetInfo: {
+          "sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go",
+          "sheet_name": "Q1 Sales Data",
+        },
       },
       startDatetime: new Date("2025-07-09T00:00:00Z"),
       endDatetime: new Date("2025-07-10T00:00:00Z"),
@@ -399,6 +411,10 @@ async function run() {
           16754,
           67535,
         ],
+        sheetInfo: {
+          "sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go",
+          "sheet_name": "Q1 Sales Data",
+        },
       },
       startDatetime: new Date("2025-07-09T00:00:00Z"),
       endDatetime: new Date("2025-07-10T00:00:00Z"),

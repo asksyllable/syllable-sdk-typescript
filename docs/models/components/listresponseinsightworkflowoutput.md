@@ -9,7 +9,7 @@ let value: ListResponseInsightWorkflowOutput = {
   items: [
     {
       name: "summary-workflow",
-      source: "upload",
+      source: "sheet",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
@@ -29,6 +29,10 @@ let value: ListResponseInsightWorkflowOutput = {
           16754,
           67535,
         ],
+        sheetInfo: {
+          "sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go",
+          "sheet_name": "Q1 Sales Data",
+        },
       },
       startDatetime: new Date("2025-07-09T00:00:00Z"),
       endDatetime: new Date("2025-07-10T00:00:00Z"),

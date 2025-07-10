@@ -41,6 +41,10 @@ export type InsightWorkflowCondition = {
    * List of folder IDs
    */
   folderList?: Array<number> | null | undefined;
+  /**
+   * Information about the sheet to be used for the workflow
+   */
+  sheetInfo?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -101,6 +105,7 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
   ).optional(),
   prompt_list: z.nullable(z.array(z.string())).optional(),
   folder_list: z.nullable(z.array(z.number().int())).optional(),
+  sheet_info: z.nullable(z.record(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "min_duration": "minDuration",
@@ -109,6 +114,7 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
     "agent_list": "agentList",
     "prompt_list": "promptList",
     "folder_list": "folderList",
+    "sheet_info": "sheetInfo",
   });
 });
 
@@ -120,6 +126,7 @@ export type InsightWorkflowCondition$Outbound = {
   agent_list?: Array<number> | Array<string> | null | undefined;
   prompt_list?: Array<string> | null | undefined;
   folder_list?: Array<number> | null | undefined;
+  sheet_info?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -136,6 +143,7 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
   ).optional(),
   promptList: z.nullable(z.array(z.string())).optional(),
   folderList: z.nullable(z.array(z.number().int())).optional(),
+  sheetInfo: z.nullable(z.record(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     minDuration: "min_duration",
@@ -144,6 +152,7 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
     agentList: "agent_list",
     promptList: "prompt_list",
     folderList: "folder_list",
+    sheetInfo: "sheet_info",
   });
 });
 
