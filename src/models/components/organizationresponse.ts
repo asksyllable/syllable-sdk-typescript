@@ -30,6 +30,10 @@ export type OrganizationResponse = {
    */
   lastUpdatedComments?: string | null | undefined;
   /**
+   * The slug of the organization used for URLs in the Console UI
+   */
+  slug: string;
+  /**
    * The timestamp of the most recent update to the organization
    */
   lastUpdated: Date;
@@ -51,6 +55,7 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
   domains: z.string(),
   id: z.number().int(),
   last_updated_comments: z.nullable(z.string()).optional(),
+  slug: z.string(),
   last_updated: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ),
@@ -73,6 +78,7 @@ export type OrganizationResponse$Outbound = {
   domains: string;
   id: number;
   last_updated_comments?: string | null | undefined;
+  slug: string;
   last_updated: string;
   last_updated_by?: string | null | undefined;
   logo_str: string | null;
@@ -89,6 +95,7 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
   domains: z.string(),
   id: z.number().int(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
+  slug: z.string(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
   logoStr: z.nullable(z.string()),

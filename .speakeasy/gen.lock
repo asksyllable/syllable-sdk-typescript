@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 277cd93acec492a06fc24242df20328f
+  docChecksum: 8d17afa3d47f8cfc996717c68e63c693
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.205
-  configChecksum: fcce211b5de9c23513edc82a071ed7ab
+  releaseVersion: 0.1.0-alpha.206
+  configChecksum: 0c3642ec73a2b76be6debe5f7eb7fe1f
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -1849,14 +1849,14 @@ examples:
     speakeasy-default-organizations-get:
       responses:
         "200":
-          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "id": 1, "last_updated_comments": "Updated to add an additional domain", "last_updated": "2024-08-23T06:13:43.580Z", "logo_str": "<value>"}
+          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "id": 1, "last_updated_comments": "Updated to add an additional domain", "slug": "my-great-org", "last_updated": "2024-08-23T06:13:43.580Z", "logo_str": "<value>"}
   organizations_update:
     speakeasy-default-organizations-update:
       requestBody:
         multipart/form-data: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI", "domains": "mygreatorg.com,mygreatorg.org", "update_comments": "Updated the organization to add a new domain"}
       responses:
         "200":
-          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "id": 1, "last_updated_comments": "Updated to add an additional domain", "last_updated": "2025-07-28T19:04:48.565Z", "logo_str": "<value>"}
+          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "id": 1, "last_updated_comments": "Updated to add an additional domain", "slug": "my-great-org", "last_updated": "2025-07-28T19:04:48.565Z", "logo_str": "<value>"}
         "422": {}
   organizations_create:
     speakeasy-default-organizations-create:
@@ -1864,7 +1864,7 @@ examples:
         multipart/form-data: {"logo": {"": "x-file: example.file"}, "display_name": "My Great Org", "description": "An organization that does great things with agentic AI", "domains": "mygreatorg.com,mygreatorg.org"}
       responses:
         "200":
-          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "id": 1, "last_updated_comments": "Updated to add an additional domain", "last_updated": "2024-06-17T07:14:55.338Z", "logo_str": "<value>"}
+          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "id": 1, "last_updated_comments": "Updated to add an additional domain", "slug": "my-great-org", "last_updated": "2024-06-17T07:14:55.338Z", "logo_str": "<value>"}
         "422": {}
   organizations_delete: {}
   outbound_batch_list:
