@@ -41,7 +41,10 @@ export type OrganizationResponse = {
    * The email of the user who most recently updated the organization
    */
   lastUpdatedBy?: string | null | undefined;
-  logoStr: string | null;
+  /**
+   * CDN URL. The org will always have a logo, but this value will be null on a response to an update where no logo was provided on the request
+   */
+  logoUrl?: string | null | undefined;
 };
 
 /** @internal */
@@ -60,14 +63,14 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
     new Date(v)
   ),
   last_updated_by: z.nullable(z.string()).optional(),
-  logo_str: z.nullable(z.string()),
+  logo_url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
     "last_updated_comments": "lastUpdatedComments",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
-    "logo_str": "logoStr",
+    "logo_url": "logoUrl",
   });
 });
 
@@ -81,7 +84,7 @@ export type OrganizationResponse$Outbound = {
   slug: string;
   last_updated: string;
   last_updated_by?: string | null | undefined;
-  logo_str: string | null;
+  logo_url?: string | null | undefined;
 };
 
 /** @internal */
@@ -98,14 +101,14 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
   slug: z.string(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
-  logoStr: z.nullable(z.string()),
+  logoUrl: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
     lastUpdatedComments: "last_updated_comments",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
-    logoStr: "logo_str",
+    logoUrl: "logo_url",
   });
 });
 
