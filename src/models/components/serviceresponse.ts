@@ -7,11 +7,20 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ToolAuthType,
+  ToolAuthType$inboundSchema,
+  ToolAuthType$outboundSchema,
+} from "./toolauthtype.js";
 
 /**
  * Response model for service operations. A service is a collection of tools.
  */
 export type ServiceResponse = {
+  /**
+   * The internal ID of the service
+   */
+  id: number;
   /**
    * The name of the service
    */
@@ -21,9 +30,13 @@ export type ServiceResponse = {
    */
   description: string;
   /**
-   * The internal ID of the service
+   * The type of authentication to use for the service's tools
    */
-  id: number;
+  authType?: ToolAuthType | null | undefined;
+  /**
+   * Auth value keys (values omitted for security)
+   */
+  authValueKeys?: Array<string> | null | undefined;
   /**
    * Free text providing comment about what was updated
    */
@@ -48,9 +61,11 @@ export const ServiceResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  id: z.number().int(),
   name: z.string(),
   description: z.string(),
-  id: z.number().int(),
+  auth_type: z.nullable(ToolAuthType$inboundSchema).optional(),
+  auth_value_keys: z.nullable(z.array(z.string())).optional(),
   last_updated_comments: z.nullable(z.string()).optional(),
   last_updated: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
@@ -59,6 +74,8 @@ export const ServiceResponse$inboundSchema: z.ZodType<
   tools: z.array(z.string()),
 }).transform((v) => {
   return remap$(v, {
+    "auth_type": "authType",
+    "auth_value_keys": "authValueKeys",
     "last_updated_comments": "lastUpdatedComments",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
@@ -67,9 +84,11 @@ export const ServiceResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ServiceResponse$Outbound = {
+  id: number;
   name: string;
   description: string;
-  id: number;
+  auth_type?: string | null | undefined;
+  auth_value_keys?: Array<string> | null | undefined;
   last_updated_comments?: string | null | undefined;
   last_updated: string;
   last_updated_by: string;
@@ -82,15 +101,19 @@ export const ServiceResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ServiceResponse
 > = z.object({
+  id: z.number().int(),
   name: z.string(),
   description: z.string(),
-  id: z.number().int(),
+  authType: z.nullable(ToolAuthType$outboundSchema).optional(),
+  authValueKeys: z.nullable(z.array(z.string())).optional(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
   tools: z.array(z.string()),
 }).transform((v) => {
   return remap$(v, {
+    authType: "auth_type",
+    authValueKeys: "auth_value_keys",
     lastUpdatedComments: "last_updated_comments",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",

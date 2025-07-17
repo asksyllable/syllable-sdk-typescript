@@ -47,7 +47,7 @@ let value: ChannelTargetResponse = {
       "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "Authorization": "Basic sometoken",
+      "some-header": "some-value",
     },
     sttProvider: "Google STT V1",
     waitSound: "No Sound",

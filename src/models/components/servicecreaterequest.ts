@@ -3,9 +3,17 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ToolAuthType,
+  ToolAuthType$inboundSchema,
+  ToolAuthType$outboundSchema,
+} from "./toolauthtype.js";
+
+export type AuthValues = {};
 
 /**
  * Request model to create a service.
@@ -19,7 +27,59 @@ export type ServiceCreateRequest = {
    * The description of the service
    */
   description: string;
+  /**
+   * The type of authentication to use for the service's tools
+   */
+  authType?: ToolAuthType | null | undefined;
+  /**
+   * The values to use for the authentication. Should contain "username" and "password" keys if auth type is basic, "token" key if auth type is bearer, or arbitrary header keys if auth type is custom_headers. On an update, leave a value for a given key null and the value in the database will not be updated. (If a key is omitted entirely, any existing value for that key will be removed.)
+   */
+  authValues?: AuthValues | null | undefined;
 };
+
+/** @internal */
+export const AuthValues$inboundSchema: z.ZodType<
+  AuthValues,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type AuthValues$Outbound = {};
+
+/** @internal */
+export const AuthValues$outboundSchema: z.ZodType<
+  AuthValues$Outbound,
+  z.ZodTypeDef,
+  AuthValues
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AuthValues$ {
+  /** @deprecated use `AuthValues$inboundSchema` instead. */
+  export const inboundSchema = AuthValues$inboundSchema;
+  /** @deprecated use `AuthValues$outboundSchema` instead. */
+  export const outboundSchema = AuthValues$outboundSchema;
+  /** @deprecated use `AuthValues$Outbound` instead. */
+  export type Outbound = AuthValues$Outbound;
+}
+
+export function authValuesToJSON(authValues: AuthValues): string {
+  return JSON.stringify(AuthValues$outboundSchema.parse(authValues));
+}
+
+export function authValuesFromJSON(
+  jsonString: string,
+): SafeParseResult<AuthValues, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AuthValues$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthValues' from JSON`,
+  );
+}
 
 /** @internal */
 export const ServiceCreateRequest$inboundSchema: z.ZodType<
@@ -29,12 +89,21 @@ export const ServiceCreateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.string(),
+  auth_type: z.nullable(ToolAuthType$inboundSchema).optional(),
+  auth_values: z.nullable(z.lazy(() => AuthValues$inboundSchema)).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "auth_type": "authType",
+    "auth_values": "authValues",
+  });
 });
 
 /** @internal */
 export type ServiceCreateRequest$Outbound = {
   name: string;
   description: string;
+  auth_type?: string | null | undefined;
+  auth_values?: AuthValues$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -45,6 +114,13 @@ export const ServiceCreateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.string(),
+  authType: z.nullable(ToolAuthType$outboundSchema).optional(),
+  authValues: z.nullable(z.lazy(() => AuthValues$outboundSchema)).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    authType: "auth_type",
+    authValues: "auth_values",
+  });
 });
 
 /**

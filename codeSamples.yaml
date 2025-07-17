@@ -73,7 +73,7 @@ actions:
                   "vars.location_name": "Main Street Pizza",
                 },
                 toolHeaders: {
-                  "Authorization": "Basic sometoken",
+                  "some-header": "some-value",
                 },
                 sttProvider: "Google STT V1",
                 waitSound: "Keyboard 1",
@@ -124,7 +124,7 @@ actions:
                   "vars.location_name": "Main Street Pizza",
                 },
                 toolHeaders: {
-                  "Authorization": "Basic sometoken",
+                  "some-header": "some-value",
                 },
                 sttProvider: "Google STT V1",
                 waitSound: "Keyboard 1",
@@ -1661,8 +1661,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-07-15T00:00:00Z"),
-                endDatetime: new Date("2025-07-16T00:00:00Z"),
+                startDatetime: new Date("2025-07-16T00:00:00Z"),
+                endDatetime: new Date("2025-07-17T00:00:00Z"),
               });
 
               // Handle the result
@@ -1784,8 +1784,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-07-15T00:00:00Z"),
-                  endDatetime: new Date("2025-07-16T00:00:00Z"),
+                  startDatetime: new Date("2025-07-16T00:00:00Z"),
+                  endDatetime: new Date("2025-07-17T00:00:00Z"),
                 },
               });
 
@@ -2171,9 +2171,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250716.9",
+                batchId: "20250717.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-07-17T00:00:00Z"),
+                expiresOn: new Date("2025-07-18T00:00:00Z"),
                 paused: true,
               });
 
@@ -2896,6 +2896,7 @@ actions:
               const result = await syllableSDK.services.create({
                 name: "Weather tools",
                 description: "Service containing tools for fetching weather information",
+                authType: "basic",
               });
 
               // Handle the result
@@ -2919,6 +2920,7 @@ actions:
               const result = await syllableSDK.services.update({
                 name: "Weather tools",
                 description: "Service containing tools for fetching weather information",
+                authType: "basic",
                 id: 1,
                 lastUpdatedComments: "Updated description to correct typo",
               });
