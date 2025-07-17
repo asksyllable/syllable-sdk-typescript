@@ -8,9 +8,14 @@ import { ListResponseServiceResponse } from "syllable-sdk/models/components";
 let value: ListResponseServiceResponse = {
   items: [
     {
+      id: 1,
       name: "Weather tools",
       description: "Service containing tools for fetching weather information",
-      id: 1,
+      authType: "basic",
+      authValueKeys: [
+        "username",
+        "password",
+      ],
       lastUpdatedComments: "Updated description to correct typo",
       lastUpdated: new Date("2024-01-01T12:00:00Z"),
       lastUpdatedBy: "user@email.com",

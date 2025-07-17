@@ -174,6 +174,7 @@ export * from "./testmessage.js";
 export * from "./testmessageresponse.js";
 export * from "./toolagentinfo.js";
 export * from "./toolargumentlocation.js";
+export * from "./toolauthtype.js";
 export * from "./toolcreaterequest.js";
 export * from "./tooldefinition.js";
 export * from "./tooldetailresponse.js";

@@ -148,7 +148,7 @@ async function run() {
       "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "Authorization": "Basic sometoken",
+      "some-header": "some-value",
     },
     sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",
@@ -203,7 +203,7 @@ async function run() {
       "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "Authorization": "Basic sometoken",
+      "some-header": "some-value",
     },
     sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",
@@ -283,7 +283,7 @@ async function run() {
       "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "Authorization": "Basic sometoken",
+      "some-header": "some-value",
     },
     sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",
@@ -339,7 +339,7 @@ async function run() {
       "vars.location_name": "Main Street Pizza",
     },
     toolHeaders: {
-      "Authorization": "Basic sometoken",
+      "some-header": "some-value",
     },
     sttProvider: "Google STT V1",
     waitSound: "Keyboard 1",

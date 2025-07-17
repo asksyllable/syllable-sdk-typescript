@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to service configuration. A service is a collection of           tools.
+Operations related to service configuration. A service is a collection of           tools. You can specify an authentication method and values on a service, and any linked           tools will use that auth information to generate headers for HTTP calls.
 
 ### Available Operations
 
@@ -123,6 +123,7 @@ async function run() {
   const result = await syllableSDK.services.create({
     name: "Weather tools",
     description: "Service containing tools for fetching weather information",
+    authType: "basic",
   });
 
   // Handle the result
@@ -150,6 +151,7 @@ async function run() {
   const res = await servicesCreate(syllableSDK, {
     name: "Weather tools",
     description: "Service containing tools for fetching weather information",
+    authType: "basic",
   });
 
   if (!res.ok) {
@@ -202,6 +204,7 @@ async function run() {
   const result = await syllableSDK.services.update({
     name: "Weather tools",
     description: "Service containing tools for fetching weather information",
+    authType: "basic",
     id: 1,
     lastUpdatedComments: "Updated description to correct typo",
   });
@@ -231,6 +234,7 @@ async function run() {
   const res = await servicesUpdate(syllableSDK, {
     name: "Weather tools",
     description: "Service containing tools for fetching weather information",
+    authType: "basic",
     id: 1,
     lastUpdatedComments: "Updated description to correct typo",
   });
