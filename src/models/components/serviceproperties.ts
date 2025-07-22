@@ -12,7 +12,7 @@ export const ServiceProperties = {
   Id: "id",
   Name: "name",
   Description: "description",
-  UpdatedAt: "updated_at",
+  LastUpdated: "last_updated",
   LastUpdatedBy: "last_updated_by",
 } as const;
 /**

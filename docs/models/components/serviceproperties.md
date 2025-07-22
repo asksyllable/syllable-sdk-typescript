@@ -13,5 +13,5 @@ let value: ServiceProperties = "name";
 ## Values
 
 ```typescript
-"id" | "name" | "description" | "updated_at" | "last_updated_by"
+"id" | "name" | "description" | "last_updated" | "last_updated_by"
 ```
