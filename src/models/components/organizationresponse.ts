@@ -20,7 +20,7 @@ export type OrganizationResponse = {
   /**
    * Comma-delimited list of domains that users at the organization may have in their email addresses.
    */
-  domains: string;
+  domains?: string | null | undefined;
   /**
    * The internal ID of the organization.
    */
@@ -55,7 +55,7 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
 > = z.object({
   display_name: z.string(),
   description: z.nullable(z.string()).optional(),
-  domains: z.string(),
+  domains: z.nullable(z.string()).optional(),
   id: z.number().int(),
   last_updated_comments: z.nullable(z.string()).optional(),
   slug: z.string(),
@@ -78,7 +78,7 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
 export type OrganizationResponse$Outbound = {
   display_name: string;
   description?: string | null | undefined;
-  domains: string;
+  domains?: string | null | undefined;
   id: number;
   last_updated_comments?: string | null | undefined;
   slug: string;
@@ -95,7 +95,7 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
 > = z.object({
   displayName: z.string(),
   description: z.nullable(z.string()).optional(),
-  domains: z.string(),
+  domains: z.nullable(z.string()).optional(),
   id: z.number().int(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
   slug: z.string(),

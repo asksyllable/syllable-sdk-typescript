@@ -61,7 +61,6 @@ export async function organizationsCreate(
   const body = new FormData();
 
   appendForm(body, "display_name", payload.display_name);
-  appendForm(body, "domains", payload.domains);
   if (isBlobLike(payload.logo)) {
     appendForm(body, "logo", payload.logo);
   } else if (isReadableStream(payload.logo.content)) {
@@ -78,6 +77,9 @@ export async function organizationsCreate(
   }
   if (payload.description !== undefined) {
     appendForm(body, "description", payload.description);
+  }
+  if (payload.domains !== undefined) {
+    appendForm(body, "domains", payload.domains);
   }
 
   const path = pathToFunc("/api/v1/organizations/")();

@@ -99,8 +99,8 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.organizations.update({
     displayName: "My Great Org",
-    domains: "mygreatorg.com,mygreatorg.org",
     description: "An organization that does great things with agentic AI",
+    domains: "mygreatorg.com,mygreatorg.org",
     updateComments: "Updated the organization to add a new domain",
   });
 
@@ -128,8 +128,8 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await organizationsUpdate(syllableSDK, {
     displayName: "My Great Org",
-    domains: "mygreatorg.com,mygreatorg.org",
     description: "An organization that does great things with agentic AI",
+    domains: "mygreatorg.com,mygreatorg.org",
     updateComments: "Updated the organization to add a new domain",
   });
 
@@ -183,9 +183,9 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.organizations.create({
     displayName: "My Great Org",
-    domains: "mygreatorg.com,mygreatorg.org",
     logo: await openAsBlob("example.file"),
     description: "An organization that does great things with agentic AI",
+    domains: "mygreatorg.com,mygreatorg.org",
   });
 
   // Handle the result
@@ -213,9 +213,9 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await organizationsCreate(syllableSDK, {
     displayName: "My Great Org",
-    domains: "mygreatorg.com,mygreatorg.org",
     logo: await openAsBlob("example.file"),
     description: "An organization that does great things with agentic AI",
+    domains: "mygreatorg.com,mygreatorg.org",
   });
 
   if (!res.ok) {

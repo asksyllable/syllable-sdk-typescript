@@ -61,9 +61,11 @@ export async function organizationsUpdate(
   const body = new FormData();
 
   appendForm(body, "display_name", payload.display_name);
-  appendForm(body, "domains", payload.domains);
   if (payload.description !== undefined) {
     appendForm(body, "description", payload.description);
+  }
+  if (payload.domains !== undefined) {
+    appendForm(body, "domains", payload.domains);
   }
   if (payload.logo !== undefined) {
     if (isBlobLike(payload.logo)) {
