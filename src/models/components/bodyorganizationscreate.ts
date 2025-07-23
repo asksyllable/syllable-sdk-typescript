@@ -20,10 +20,6 @@ export type BodyOrganizationsCreate = {
    */
   displayName: string;
   /**
-   * Comma-delimited list of domains that users at the organization may have in their email addresses
-   */
-  domains: string;
-  /**
    * The organization logo image file to upload. Must be a PNG file and 120x120 pixels.
    */
   logo: BodyOrganizationsCreateLogo | Blob;
@@ -31,6 +27,10 @@ export type BodyOrganizationsCreate = {
    * Description of the organization
    */
   description?: string | null | undefined;
+  /**
+   * Comma-delimited list of domains that users at the organization may have in their email addresses
+   */
+  domains?: string | null | undefined;
 };
 
 /** @internal */
@@ -109,9 +109,9 @@ export const BodyOrganizationsCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   display_name: z.string(),
-  domains: z.string(),
   logo: z.lazy(() => BodyOrganizationsCreateLogo$inboundSchema),
   description: z.nullable(z.string()).optional(),
+  domains: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
@@ -121,9 +121,9 @@ export const BodyOrganizationsCreate$inboundSchema: z.ZodType<
 /** @internal */
 export type BodyOrganizationsCreate$Outbound = {
   display_name: string;
-  domains: string;
   logo: BodyOrganizationsCreateLogo$Outbound | Blob;
   description?: string | null | undefined;
+  domains?: string | null | undefined;
 };
 
 /** @internal */
@@ -133,11 +133,11 @@ export const BodyOrganizationsCreate$outboundSchema: z.ZodType<
   BodyOrganizationsCreate
 > = z.object({
   displayName: z.string(),
-  domains: z.string(),
   logo: z.lazy(() => BodyOrganizationsCreateLogo$outboundSchema).or(
     blobLikeSchema,
   ),
   description: z.nullable(z.string()).optional(),
+  domains: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",

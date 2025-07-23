@@ -20,13 +20,13 @@ export type BodyOrganizationsUpdate = {
    */
   displayName: string;
   /**
-   * Comma-delimited list of domains that users at the organization may have in their email addresses
-   */
-  domains: string;
-  /**
    * Description of the organization
    */
   description?: string | null | undefined;
+  /**
+   * Comma-delimited list of domains that users at the organization may have in their email addresses
+   */
+  domains?: string | null | undefined;
   /**
    * The organization logo image file to upload. Must be a PNG file and 120x120 pixels. If not provided, the logo will not be updated.
    */
@@ -101,8 +101,8 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   display_name: z.string(),
-  domains: z.string(),
   description: z.nullable(z.string()).optional(),
+  domains: z.nullable(z.string()).optional(),
   logo: z.lazy(() => Logo$inboundSchema).optional(),
   update_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -115,8 +115,8 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
 /** @internal */
 export type BodyOrganizationsUpdate$Outbound = {
   display_name: string;
-  domains: string;
   description?: string | null | undefined;
+  domains?: string | null | undefined;
   logo?: Logo$Outbound | Blob | undefined;
   update_comments?: string | null | undefined;
 };
@@ -128,8 +128,8 @@ export const BodyOrganizationsUpdate$outboundSchema: z.ZodType<
   BodyOrganizationsUpdate
 > = z.object({
   displayName: z.string(),
-  domains: z.string(),
   description: z.nullable(z.string()).optional(),
+  domains: z.nullable(z.string()).optional(),
   logo: z.lazy(() => Logo$outboundSchema).or(blobLikeSchema).optional(),
   updateComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
