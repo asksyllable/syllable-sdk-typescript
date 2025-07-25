@@ -13,8 +13,6 @@ import {
   RequestStatus$outboundSchema,
 } from "./requeststatus.js";
 
-export type Insights = {};
-
 export type CommunicationRequestResult = {
   /**
    * ID for target outreach (unique within batch)
@@ -67,52 +65,8 @@ export type CommunicationRequestResult = {
   /**
    * Insights from call
    */
-  insights?: Insights | null | undefined;
+  insights?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const Insights$inboundSchema: z.ZodType<
-  Insights,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type Insights$Outbound = {};
-
-/** @internal */
-export const Insights$outboundSchema: z.ZodType<
-  Insights$Outbound,
-  z.ZodTypeDef,
-  Insights
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Insights$ {
-  /** @deprecated use `Insights$inboundSchema` instead. */
-  export const inboundSchema = Insights$inboundSchema;
-  /** @deprecated use `Insights$outboundSchema` instead. */
-  export const outboundSchema = Insights$outboundSchema;
-  /** @deprecated use `Insights$Outbound` instead. */
-  export type Outbound = Insights$Outbound;
-}
-
-export function insightsToJSON(insights: Insights): string {
-  return JSON.stringify(Insights$outboundSchema.parse(insights));
-}
-
-export function insightsFromJSON(
-  jsonString: string,
-): SafeParseResult<Insights, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Insights$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Insights' from JSON`,
-  );
-}
 
 /** @internal */
 export const CommunicationRequestResult$inboundSchema: z.ZodType<
@@ -135,7 +89,7 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
   request_status: RequestStatus$inboundSchema.optional(),
   channel_manager_status: z.nullable(z.string()).optional(),
   insights_status: z.nullable(z.string()).optional(),
-  insights: z.nullable(z.lazy(() => Insights$inboundSchema)).optional(),
+  insights: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "reference_id": "referenceId",
@@ -166,7 +120,7 @@ export type CommunicationRequestResult$Outbound = {
   request_status?: string | undefined;
   channel_manager_status?: string | null | undefined;
   insights_status?: string | null | undefined;
-  insights?: Insights$Outbound | null | undefined;
+  insights?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -187,7 +141,7 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   requestStatus: RequestStatus$outboundSchema.optional(),
   channelManagerStatus: z.nullable(z.string()).optional(),
   insightsStatus: z.nullable(z.string()).optional(),
-  insights: z.nullable(z.lazy(() => Insights$outboundSchema)).optional(),
+  insights: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
     referenceId: "reference_id",
