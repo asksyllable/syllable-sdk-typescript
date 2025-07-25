@@ -30,9 +30,9 @@ export type ServiceCreateRequest = {
    */
   authType?: ToolAuthType | null | undefined;
   /**
-   * The values to use for the authentication. Should contain "username" and "password" keys if auth type is basic, "token" key if auth type is bearer, or arbitrary header keys if auth type is custom_headers. On an update, leave a value for a given key null and the value in the database will not be updated. (If a key is omitted entirely, any existing value for that key will be removed.)
+   * The values to use for the authentication, as a dict. Should contain "username" and "password" keys if auth type is basic, "token" key if auth type is bearer, or arbitrary header keys if auth type is custom_headers. On an update, leave a value for a given key null and the value in the database will not be updated. (If a key is omitted entirely, any existing value for that key will be removed.)
    */
-  authValues?: { [k: string]: string } | null | undefined;
+  authValues?: any | null | undefined;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const ServiceCreateRequest$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   auth_type: z.nullable(ToolAuthType$inboundSchema).optional(),
-  auth_values: z.nullable(z.record(z.string())).optional(),
+  auth_values: z.nullable(z.any()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "auth_type": "authType",
@@ -57,7 +57,7 @@ export type ServiceCreateRequest$Outbound = {
   name: string;
   description: string;
   auth_type?: string | null | undefined;
-  auth_values?: { [k: string]: string } | null | undefined;
+  auth_values?: any | null | undefined;
 };
 
 /** @internal */
@@ -69,7 +69,7 @@ export const ServiceCreateRequest$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   authType: z.nullable(ToolAuthType$outboundSchema).optional(),
-  authValues: z.nullable(z.record(z.string())).optional(),
+  authValues: z.nullable(z.any()).optional(),
 }).transform((v) => {
   return remap$(v, {
     authType: "auth_type",
