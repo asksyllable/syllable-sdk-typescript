@@ -179,6 +179,8 @@ async function run() {
       "51": "d",
       "52": "\"",
       "53": "}",
+      "password": "my-password",
+      "username": "my-username",
     },
   });
 
@@ -263,6 +265,8 @@ async function run() {
       "51": "d",
       "52": "\"",
       "53": "}",
+      "password": "my-password",
+      "username": "my-username",
     },
   });
 
@@ -372,6 +376,8 @@ async function run() {
       "51": "d",
       "52": "\"",
       "53": "}",
+      "password": "my-password",
+      "username": "my-username",
     },
     id: 1,
     lastUpdatedComments: "Updated description to correct typo",
@@ -458,6 +464,8 @@ async function run() {
       "51": "d",
       "52": "\"",
       "53": "}",
+      "password": "my-password",
+      "username": "my-username",
     },
     id: 1,
     lastUpdatedComments: "Updated description to correct typo",
