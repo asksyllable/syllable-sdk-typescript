@@ -1661,8 +1661,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-07-23T00:00:00Z"),
-                endDatetime: new Date("2025-07-24T00:00:00Z"),
+                startDatetime: new Date("2025-07-24T00:00:00Z"),
+                endDatetime: new Date("2025-07-25T00:00:00Z"),
               });
 
               // Handle the result
@@ -1784,8 +1784,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-07-23T00:00:00Z"),
-                  endDatetime: new Date("2025-07-24T00:00:00Z"),
+                  startDatetime: new Date("2025-07-24T00:00:00Z"),
+                  endDatetime: new Date("2025-07-25T00:00:00Z"),
                 },
               });
 
@@ -2171,9 +2171,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250724.9",
+                batchId: "20250725.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-07-25T00:00:00Z"),
+                expiresOn: new Date("2025-07-26T00:00:00Z"),
                 paused: true,
               });
 

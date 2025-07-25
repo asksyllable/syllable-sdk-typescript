@@ -8,8 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type Attributes = {};
-
 /**
  * An event represents a specific occurrence during a session.
  */
@@ -53,52 +51,8 @@ export type Event = {
   /**
    * Arbitrary additional metadata for the event
    */
-  attributes?: Attributes | null | undefined;
+  attributes?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const Attributes$inboundSchema: z.ZodType<
-  Attributes,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type Attributes$Outbound = {};
-
-/** @internal */
-export const Attributes$outboundSchema: z.ZodType<
-  Attributes$Outbound,
-  z.ZodTypeDef,
-  Attributes
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Attributes$ {
-  /** @deprecated use `Attributes$inboundSchema` instead. */
-  export const inboundSchema = Attributes$inboundSchema;
-  /** @deprecated use `Attributes$outboundSchema` instead. */
-  export const outboundSchema = Attributes$outboundSchema;
-  /** @deprecated use `Attributes$Outbound` instead. */
-  export type Outbound = Attributes$Outbound;
-}
-
-export function attributesToJSON(attributes: Attributes): string {
-  return JSON.stringify(Attributes$outboundSchema.parse(attributes));
-}
-
-export function attributesFromJSON(
-  jsonString: string,
-): SafeParseResult<Attributes, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Attributes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Attributes' from JSON`,
-  );
-}
 
 /** @internal */
 export const Event$inboundSchema: z.ZodType<Event, z.ZodTypeDef, unknown> = z
@@ -114,7 +68,7 @@ export const Event$inboundSchema: z.ZodType<Event, z.ZodTypeDef, unknown> = z
     type: z.nullable(z.string()).optional(),
     user_id: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
-    attributes: z.nullable(z.lazy(() => Attributes$inboundSchema)).optional(),
+    attributes: z.nullable(z.record(z.any())).optional(),
   }).transform((v) => {
     return remap$(v, {
       "session_id": "sessionId",
@@ -135,7 +89,7 @@ export type Event$Outbound = {
   type?: string | null | undefined;
   user_id?: string | null | undefined;
   description?: string | null | undefined;
-  attributes?: Attributes$Outbound | null | undefined;
+  attributes?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -153,7 +107,7 @@ export const Event$outboundSchema: z.ZodType<
   type: z.nullable(z.string()).optional(),
   userId: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
-  attributes: z.nullable(z.lazy(() => Attributes$outboundSchema)).optional(),
+  attributes: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
