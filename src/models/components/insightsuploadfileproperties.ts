@@ -7,6 +7,7 @@ import { ClosedEnum } from "../../types/enums.js";
 
 export const InsightsUploadFileProperties = {
   Filename: "filename",
+  FilenameExact: "filename_exact",
   CallId: "call_id",
   AgentNumber: "agent_number",
   CustomerNumber: "customer_number",
