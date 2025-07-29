@@ -7,7 +7,7 @@ Status of a takeout request.
 ```typescript
 import { TakeoutRequestStatus } from "syllable-sdk/models/components";
 
-let value: TakeoutRequestStatus = "completed";
+let value: TakeoutRequestStatus = "pending";
 ```
 
 ## Values

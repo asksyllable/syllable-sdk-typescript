@@ -7,7 +7,7 @@ Status of a communication request.
 ```typescript
 import { RequestStatus } from "syllable-sdk/models/components";
 
-let value: RequestStatus = "DUPLICATE";
+let value: RequestStatus = "INVALID";
 ```
 
 ## Values

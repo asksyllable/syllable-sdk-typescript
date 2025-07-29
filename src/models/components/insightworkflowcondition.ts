@@ -9,6 +9,11 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
+ * Sample rate as a percentage of calls
+ */
+export type SampleRate = number | number;
+
+/**
  * List of agents
  */
 export type AgentList = Array<number> | Array<string>;
@@ -28,7 +33,7 @@ export type InsightWorkflowCondition = {
   /**
    * Sample rate as a percentage of calls
    */
-  sampleRate?: number | null | undefined;
+  sampleRate?: number | number | null | undefined;
   /**
    * List of agents
    */
@@ -46,6 +51,50 @@ export type InsightWorkflowCondition = {
    */
   sheetInfo?: { [k: string]: string } | null | undefined;
 };
+
+/** @internal */
+export const SampleRate$inboundSchema: z.ZodType<
+  SampleRate,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number().int(), z.number()]);
+
+/** @internal */
+export type SampleRate$Outbound = number | number;
+
+/** @internal */
+export const SampleRate$outboundSchema: z.ZodType<
+  SampleRate$Outbound,
+  z.ZodTypeDef,
+  SampleRate
+> = z.union([z.number().int(), z.number()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SampleRate$ {
+  /** @deprecated use `SampleRate$inboundSchema` instead. */
+  export const inboundSchema = SampleRate$inboundSchema;
+  /** @deprecated use `SampleRate$outboundSchema` instead. */
+  export const outboundSchema = SampleRate$outboundSchema;
+  /** @deprecated use `SampleRate$Outbound` instead. */
+  export type Outbound = SampleRate$Outbound;
+}
+
+export function sampleRateToJSON(sampleRate: SampleRate): string {
+  return JSON.stringify(SampleRate$outboundSchema.parse(sampleRate));
+}
+
+export function sampleRateFromJSON(
+  jsonString: string,
+): SafeParseResult<SampleRate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SampleRate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SampleRate' from JSON`,
+  );
+}
 
 /** @internal */
 export const AgentList$inboundSchema: z.ZodType<
@@ -99,7 +148,7 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
 > = z.object({
   min_duration: z.nullable(z.number().int()).optional(),
   max_duration: z.nullable(z.number().int()).optional(),
-  sample_rate: z.nullable(z.number().int()).optional(),
+  sample_rate: z.nullable(z.union([z.number().int(), z.number()])).optional(),
   agent_list: z.nullable(
     z.union([z.array(z.number().int()), z.array(z.string())]),
   ).optional(),
@@ -122,7 +171,7 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
 export type InsightWorkflowCondition$Outbound = {
   min_duration?: number | null | undefined;
   max_duration?: number | null | undefined;
-  sample_rate?: number | null | undefined;
+  sample_rate?: number | number | null | undefined;
   agent_list?: Array<number> | Array<string> | null | undefined;
   prompt_list?: Array<string> | null | undefined;
   folder_list?: Array<number> | null | undefined;
@@ -137,7 +186,7 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
 > = z.object({
   minDuration: z.nullable(z.number().int()).optional(),
   maxDuration: z.nullable(z.number().int()).optional(),
-  sampleRate: z.nullable(z.number().int()).optional(),
+  sampleRate: z.nullable(z.union([z.number().int(), z.number()])).optional(),
   agentList: z.nullable(
     z.union([z.array(z.number().int()), z.array(z.string())]),
   ).optional(),

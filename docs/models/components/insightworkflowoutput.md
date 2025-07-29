@@ -9,7 +9,7 @@ import { InsightWorkflowOutput } from "syllable-sdk/models/components";
 
 let value: InsightWorkflowOutput = {
   name: "summary-workflow",
-  source: "manual",
+  source: "sheet",
   description: "Default workflow - generates a summary of the call",
   insightToolIds: [
     1,
@@ -17,7 +17,7 @@ let value: InsightWorkflowOutput = {
   conditions: {
     minDuration: 120,
     maxDuration: 600,
-    sampleRate: 2,
+    sampleRate: 0.1,
     agentList: [
       "Agnes.Wangeci",
       "Dorice.Otaaba",

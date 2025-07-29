@@ -12,7 +12,7 @@ let value: SessionData = {
   isTest: false,
   messages: [
     {
-      role: "user",
+      role: "agent",
       dialog: {
         text: "Tell me about Syllable.ai!",
       },

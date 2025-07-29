@@ -21,7 +21,7 @@ let value: ToolUpdateRequest = {
     endpoint: {
       url: "https://api.example.com",
       method: "get",
-      argumentLocation: "form",
+      argumentLocation: "body",
     },
     defaults: "<value>",
     staticParameters: [
