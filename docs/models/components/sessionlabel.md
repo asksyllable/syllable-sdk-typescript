@@ -11,11 +11,11 @@ import { SessionLabel } from "syllable-sdk/models/components";
 
 let value: SessionLabel = {
   sessionId: 1,
-  type: "auto-rating",
+  type: "human-rating",
   code: "N/A",
   userEmail: "user@email.com",
   issueCategories: [
-    "Speech transcription (STT)",
+    "Silent treatment",
   ],
   id: 1,
   timestamp: "2024-01-01T12:00:00Z",

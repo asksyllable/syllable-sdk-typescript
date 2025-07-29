@@ -133,10 +133,10 @@ async function run() {
     conditions: {
       minDuration: 120,
       maxDuration: 600,
-      sampleRate: 2,
+      sampleRate: 0.1,
       agentList: [
-        "866324",
-        "826325",
+        866324,
+        826325,
       ],
       promptList: [
         "123324",
@@ -186,10 +186,10 @@ async function run() {
     conditions: {
       minDuration: 120,
       maxDuration: 600,
-      sampleRate: 2,
+      sampleRate: 0.1,
       agentList: [
-        "866324",
-        "826325",
+        866324,
+        826325,
       ],
       promptList: [
         "123324",
@@ -343,10 +343,10 @@ async function run() {
       conditions: {
         minDuration: 120,
         maxDuration: 600,
-        sampleRate: 2,
+        sampleRate: 0.1,
         agentList: [
-          "866324",
-          "826325",
+          "Agnes.Wangeci",
+          "Dorice.Otaaba",
         ],
         promptList: [
           "123324",
@@ -399,10 +399,10 @@ async function run() {
       conditions: {
         minDuration: 120,
         maxDuration: 600,
-        sampleRate: 2,
+        sampleRate: 0.1,
         agentList: [
-          "866324",
-          "826325",
+          "Agnes.Wangeci",
+          "Dorice.Otaaba",
         ],
         promptList: [
           "123324",

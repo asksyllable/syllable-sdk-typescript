@@ -6,10 +6,10 @@
 import { InsightsWorkflowUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowUpdateRequest = {
-  workflowId: 874288,
+  workflowId: 148141,
   insightWorkflowInput: {
     name: "summary-workflow",
-    source: "transfer",
+    source: "manual",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
@@ -17,10 +17,10 @@ let value: InsightsWorkflowUpdateRequest = {
     conditions: {
       minDuration: 120,
       maxDuration: 600,
-      sampleRate: 2,
+      sampleRate: 0.1,
       agentList: [
-        "Agnes.Wangeci",
-        "Dorice.Otaaba",
+        866324,
+        826325,
       ],
       promptList: [
         "123324",

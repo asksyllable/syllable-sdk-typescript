@@ -7,7 +7,7 @@ Names of service fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { ServiceProperties } from "syllable-sdk/models/components";
 
-let value: ServiceProperties = "name";
+let value: ServiceProperties = "last_updated_by";
 ```
 
 ## Values

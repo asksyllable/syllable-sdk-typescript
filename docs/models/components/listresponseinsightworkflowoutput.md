@@ -17,7 +17,7 @@ let value: ListResponseInsightWorkflowOutput = {
       conditions: {
         minDuration: 120,
         maxDuration: 600,
-        sampleRate: 2,
+        sampleRate: 10,
         agentList: [
           "Agnes.Wangeci",
           "Dorice.Otaaba",

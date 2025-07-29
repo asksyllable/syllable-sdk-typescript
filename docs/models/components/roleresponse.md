@@ -18,7 +18,7 @@ let value: RoleResponse = {
   id: 1,
   lastUpdatedComments: "Updated to add delete permission",
   isSystemRole: false,
-  lastUpdated: new Date("2024-04-17T20:01:49.892Z"),
+  lastUpdated: new Date("2025-02-10T11:05:07.085Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```

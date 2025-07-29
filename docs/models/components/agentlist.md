@@ -9,8 +9,8 @@ List of agents
 
 ```typescript
 const value: number[] = [
-  Agnes.Wangeci,
-  Dorice.Otaaba,
+  866324,
+  826325,
 ];
 ```
 
@@ -18,8 +18,8 @@ const value: number[] = [
 
 ```typescript
 const value: string[] = [
-  "866324",
-  "826325",
+  "Agnes.Wangeci",
+  "Dorice.Otaaba",
 ];
 ```
 

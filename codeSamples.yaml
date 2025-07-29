@@ -1644,10 +1644,10 @@ actions:
                 conditions: {
                   minDuration: 120,
                   maxDuration: 600,
-                  sampleRate: 2,
+                  sampleRate: 0.1,
                   agentList: [
-                    "866324",
-                    "826325",
+                    866324,
+                    826325,
                   ],
                   promptList: [
                     "123324",
@@ -1756,7 +1756,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.update({
-                workflowId: 991464,
+                workflowId: 488852,
                 insightWorkflowInput: {
                   name: "summary-workflow",
                   source: "manual",
@@ -1767,10 +1767,10 @@ actions:
                   conditions: {
                     minDuration: 120,
                     maxDuration: 600,
-                    sampleRate: 2,
+                    sampleRate: 0.1,
                     agentList: [
-                      "866324",
-                      "826325",
+                      "Agnes.Wangeci",
+                      "Dorice.Otaaba",
                     ],
                     promptList: [
                       "123324",

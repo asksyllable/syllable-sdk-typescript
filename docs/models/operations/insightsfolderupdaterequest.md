@@ -6,7 +6,7 @@
 import { InsightsFolderUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsFolderUpdateRequest = {
-  folderId: 231701,
+  folderId: 293020,
   insightsFolderInput: {
     name: "customer-complaints",
     label: "support",
