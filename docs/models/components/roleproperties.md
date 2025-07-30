@@ -7,7 +7,7 @@ Names of role fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { RoleProperties } from "syllable-sdk/models/components";
 
-let value: RoleProperties = "name";
+let value: RoleProperties = "updated_at";
 ```
 
 ## Values

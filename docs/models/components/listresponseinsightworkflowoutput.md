@@ -9,7 +9,7 @@ let value: ListResponseInsightWorkflowOutput = {
   items: [
     {
       name: "summary-workflow",
-      source: "sheet",
+      source: "upload",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
@@ -34,8 +34,8 @@ let value: ListResponseInsightWorkflowOutput = {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2025-07-28T00:00:00Z"),
-      endDatetime: new Date("2025-07-29T00:00:00Z"),
+      startDatetime: new Date("2025-07-29T00:00:00Z"),
+      endDatetime: new Date("2025-07-30T00:00:00Z"),
       id: 1,
       insightTools: [
         {
@@ -62,12 +62,12 @@ let value: ListResponseInsightWorkflowOutput = {
               "summary": "string",
             },
           },
-          createdAt: new Date("2025-07-28T00:00:00Z"),
-          updatedAt: new Date("2025-07-29T00:00:00Z"),
+          createdAt: new Date("2025-07-29T00:00:00Z"),
+          updatedAt: new Date("2025-07-30T00:00:00Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
-      status: "INACTIVE",
+      status: "ACTIVE",
       estimate: {
         backfillCount: 100,
         backfillDuration: 1000,
@@ -77,8 +77,8 @@ let value: ListResponseInsightWorkflowOutput = {
         estimatedBackfillCost: 4561.00,
       },
       queueCount: 10,
-      createdAt: new Date("2025-07-28T00:00:00Z"),
-      updatedAt: new Date("2025-07-29T00:00:00Z"),
+      createdAt: new Date("2025-07-29T00:00:00Z"),
+      updatedAt: new Date("2025-07-30T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

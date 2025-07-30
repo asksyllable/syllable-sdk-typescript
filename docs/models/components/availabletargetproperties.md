@@ -7,7 +7,7 @@ Names of target fields supported for filtering/sorting on available targets list
 ```typescript
 import { AvailableTargetProperties } from "syllable-sdk/models/components";
 
-let value: AvailableTargetProperties = "channel_name";
+let value: AvailableTargetProperties = "channel_id";
 ```
 
 ## Values

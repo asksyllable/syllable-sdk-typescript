@@ -257,6 +257,71 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/channels/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.create({
+                name: "twilio",
+                channelService: "twilio",
+                supportedModes: "chat,voice",
+                config: {
+                  accountSid: "AC123...",
+                  authToken: "sometoken",
+                  telephony: {
+                    preInputTimeout: 1.2,
+                    overallInputTimeout: 20,
+                  },
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/channels/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.update({
+                name: "twilio",
+                channelService: "webchat",
+                supportedModes: "chat,voice",
+                config: {
+                  accountSid: "AC123...",
+                  authToken: "sometoken",
+                  telephony: {
+                    preInputTimeout: 1.2,
+                    overallInputTimeout: 20,
+                  },
+                },
+                id: 1,
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/channels/available-targets"]["get"]
     update:
       x-codeSamples:
@@ -1661,8 +1726,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-07-28T00:00:00Z"),
-                endDatetime: new Date("2025-07-29T00:00:00Z"),
+                startDatetime: new Date("2025-07-29T00:00:00Z"),
+                endDatetime: new Date("2025-07-30T00:00:00Z"),
               });
 
               // Handle the result
@@ -1784,8 +1849,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-07-28T00:00:00Z"),
-                  endDatetime: new Date("2025-07-29T00:00:00Z"),
+                  startDatetime: new Date("2025-07-29T00:00:00Z"),
+                  endDatetime: new Date("2025-07-30T00:00:00Z"),
                 },
               });
 
@@ -2171,9 +2236,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250729.9",
+                batchId: "20250730.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-07-30T00:00:00Z"),
+                expiresOn: new Date("2025-07-31T00:00:00Z"),
                 paused: true,
               });
 

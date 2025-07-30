@@ -7,7 +7,7 @@ import { CommunicationRequest } from "syllable-sdk/models/components";
 
 let value: CommunicationRequest = {
   referenceId: "12345",
-  target: "+15125551234",
+  target: "512-555-1234",
   requestVariables: {
     "key": "<value>",
   },
