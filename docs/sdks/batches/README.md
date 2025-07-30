@@ -125,9 +125,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.batches.create({
-    batchId: "20250729.9",
+    batchId: "20250730.9",
     campaignId: 1,
-    expiresOn: new Date("2025-07-30T00:00:00Z"),
+    expiresOn: new Date("2025-07-31T00:00:00Z"),
     paused: true,
   });
 
@@ -154,9 +154,9 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundBatchesCreate(syllableSDK, {
-    batchId: "20250729.9",
+    batchId: "20250730.9",
     campaignId: 1,
-    expiresOn: new Date("2025-07-30T00:00:00Z"),
+    expiresOn: new Date("2025-07-31T00:00:00Z"),
     paused: true,
   });
 

@@ -168,6 +168,8 @@ run();
 ### [channels](docs/sdks/channels/README.md)
 
 * [list](docs/sdks/channels/README.md#list) - Get Channels
+* [create](docs/sdks/channels/README.md#create) - Create Channel
+* [update](docs/sdks/channels/README.md#update) - Update Channel
 * [delete](docs/sdks/channels/README.md#delete) - Delete Channel Target
 
 #### [channels.targets](docs/sdks/targets/README.md)
@@ -428,6 +430,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsList`](docs/sdks/agents/README.md#list) - Agent List
 - [`agentsTestSendTestMessage`](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 - [`agentsUpdate`](docs/sdks/agents/README.md#update) - Update Agent
+- [`channelsCreate`](docs/sdks/channels/README.md#create) - Create Channel
 - [`channelsDelete`](docs/sdks/channels/README.md#delete) - Delete Channel Target
 - [`channelsList`](docs/sdks/channels/README.md#list) - Get Channels
 - [`channelsTargetsAvailableTargets`](docs/sdks/targets/README.md#availabletargets) - Available Targets List
@@ -441,6 +444,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`channelsTwilioNumbersList`](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
 - [`channelsTwilioNumbersUpdate`](docs/sdks/numbers/README.md#update) - Update Twilio Number
 - [`channelsTwilioUpdate`](docs/sdks/twilio/README.md#update) - Update Twilio Channel
+- [`channelsUpdate`](docs/sdks/channels/README.md#update) - Update Channel
 - [`conversationsList`](docs/sdks/conversations/README.md#list) - Conversations List
 - [`customMessagesCreate`](docs/sdks/custommessages/README.md#create) - Create Custom Message
 - [`customMessagesDelete`](docs/sdks/custommessages/README.md#delete) - Delete Custom Message

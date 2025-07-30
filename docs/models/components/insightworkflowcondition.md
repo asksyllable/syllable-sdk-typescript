@@ -12,8 +12,8 @@ let value: InsightWorkflowCondition = {
   maxDuration: 600,
   sampleRate: 0.1,
   agentList: [
-    866324,
-    826325,
+    "Agnes.Wangeci",
+    "Dorice.Otaaba",
   ],
   promptList: [
     "123324",

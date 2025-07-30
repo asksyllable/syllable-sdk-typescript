@@ -23,7 +23,17 @@ let value: ToolUpdateRequest = {
       method: "get",
       argumentLocation: "body",
     },
-    defaults: "<value>",
+    defaults: {
+      "key": {
+        transform: {
+          action: "default",
+          when: {
+            key: "key",
+            value: "value",
+          },
+        },
+      },
+    },
     staticParameters: [
       {
         name: "temperature_unit",

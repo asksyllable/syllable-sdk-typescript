@@ -27,7 +27,17 @@ let value: ToolDetailResponse = {
       method: "get",
       argumentLocation: "path",
     },
-    defaults: "<value>",
+    defaults: {
+      "key": {
+        transform: {
+          action: "default",
+          when: {
+            key: "key",
+            value: "value",
+          },
+        },
+      },
+    },
     staticParameters: [
       {
         name: "temperature_unit",
@@ -54,7 +64,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2024-08-11T02:10:46.448Z"),
+  lastUpdated: new Date("2025-12-21T09:52:32.421Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value>",

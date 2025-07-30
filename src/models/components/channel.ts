@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  ChannelConfigView,
+  ChannelConfigView$inboundSchema,
+  ChannelConfigView$Outbound,
+  ChannelConfigView$outboundSchema,
+} from "./channelconfigview.js";
+import {
   ChannelServices,
   ChannelServices$inboundSchema,
   ChannelServices$outboundSchema,
@@ -34,6 +40,10 @@ export type Channel = {
    * The channel ID
    */
   id: number;
+  /**
+   * Configuration for the channel
+   */
+  config?: ChannelConfigView | null | undefined;
 };
 
 /** @internal */
@@ -44,6 +54,7 @@ export const Channel$inboundSchema: z.ZodType<Channel, z.ZodTypeDef, unknown> =
     supported_modes: z.nullable(z.string()).optional(),
     is_system_channel: z.boolean().default(true),
     id: z.number().int(),
+    config: z.nullable(ChannelConfigView$inboundSchema).optional(),
   }).transform((v) => {
     return remap$(v, {
       "channel_service": "channelService",
@@ -59,6 +70,7 @@ export type Channel$Outbound = {
   supported_modes?: string | null | undefined;
   is_system_channel: boolean;
   id: number;
+  config?: ChannelConfigView$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -72,6 +84,7 @@ export const Channel$outboundSchema: z.ZodType<
   supportedModes: z.nullable(z.string()).optional(),
   isSystemChannel: z.boolean().default(true),
   id: z.number().int(),
+  config: z.nullable(ChannelConfigView$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     channelService: "channel_service",

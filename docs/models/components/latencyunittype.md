@@ -5,7 +5,7 @@
 ```typescript
 import { LatencyUnitType } from "syllable-sdk/models/components";
 
-let value: LatencyUnitType = "seconds";
+let value: LatencyUnitType = "minutes";
 ```
 
 ## Values

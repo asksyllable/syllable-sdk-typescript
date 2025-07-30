@@ -5,7 +5,7 @@
 ```typescript
 import { CampaignProperties } from "syllable-sdk/models/components";
 
-let value: CampaignProperties = "daily_end_time";
+let value: CampaignProperties = "source";
 ```
 
 ## Values

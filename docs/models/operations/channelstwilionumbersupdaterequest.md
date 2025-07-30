@@ -6,7 +6,7 @@
 import { ChannelsTwilioNumbersUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: ChannelsTwilioNumbersUpdateRequest = {
-  channelId: 292147,
+  channelId: 100294,
   twilioNumberUpdateRequest: {
     friendlyName: "Support Line",
     phoneSid: "PN123",

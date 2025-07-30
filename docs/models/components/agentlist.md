@@ -18,8 +18,8 @@ const value: number[] = [
 
 ```typescript
 const value: string[] = [
-  "Agnes.Wangeci",
-  "Dorice.Otaaba",
+  "866324",
+  "826325",
 ];
 ```
 

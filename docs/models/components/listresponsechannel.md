@@ -10,8 +10,14 @@ let value: ListResponseChannel = {
     {
       name: "syllable-webchat",
       channelService: "twilio",
-      supportedModes: "[\"chat\",\"voice\"]",
+      supportedModes: "chat,voice",
       id: 976762,
+      config: {
+        telephony: {
+          preInputTimeout: 1.2,
+          overallInputTimeout: 20,
+        },
+      },
     },
   ],
   page: 0,

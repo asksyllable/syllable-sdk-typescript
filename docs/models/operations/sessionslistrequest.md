@@ -8,7 +8,7 @@ import { SessionsListRequest } from "syllable-sdk/models/operations";
 let value: SessionsListRequest = {
   page: 0,
   searchFields: [
-    "channel_manager_service",
+    "timestamp",
   ],
   searchFieldValues: [
     "Some Object Name",
