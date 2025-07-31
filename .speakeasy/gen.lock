@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 5e6fe6c46972d9e9b51cf09a2d6f53c5
+  docChecksum: 032181cbb45ee8663ed1fc47477c329c
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.224
-  configChecksum: 6d8161e131d1e33d9f33f800a2c8fd7e
+  releaseVersion: 0.1.0-alpha.225
+  configChecksum: 551bec64d274329810bde10b47f72540
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2086,7 +2086,7 @@ examples:
   users_create:
     speakeasy-default-users-create:
       requestBody:
-        application/json: {"email": "user@syllable.ai", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "login_type": "username_and_password"}
+        application/json: {"email": "user@syllable.ai", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "login_type": "username_and_password", "skip_auth": false}
       responses:
         "200":
           application/json: {"email": "user@syllable.ai", "first_name": "Jane", "last_name": "Smith", "role_id": 1, "last_updated_comments": "Updated to change which role was assigned", "id": 1, "role_name": "Admin", "email_sent": true, "activity_status": "invited", "last_updated": "2024-11-30T17:06:07.804Z", "last_updated_by": "admin@email.com", "last_session_at": "2025-01-01T12:00:00Z"}
@@ -2117,6 +2117,8 @@ examples:
       parameters:
         path:
           user_email: "<value>"
+        query:
+          skip_auth: false
   users_delete_account: {}
   channels_create:
     speakeasy-default-channels-create:
