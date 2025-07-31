@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UsersSendEmailRequest = {
   userEmail: string;
+  skipAuth?: boolean | undefined;
 };
 
 /** @internal */
@@ -19,15 +20,18 @@ export const UsersSendEmailRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   user_email: z.string(),
+  skip_auth: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "user_email": "userEmail",
+    "skip_auth": "skipAuth",
   });
 });
 
 /** @internal */
 export type UsersSendEmailRequest$Outbound = {
   user_email: string;
+  skip_auth: boolean;
 };
 
 /** @internal */
@@ -37,9 +41,11 @@ export const UsersSendEmailRequest$outboundSchema: z.ZodType<
   UsersSendEmailRequest
 > = z.object({
   userEmail: z.string(),
+  skipAuth: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     userEmail: "user_email",
+    skipAuth: "skip_auth",
   });
 });
 

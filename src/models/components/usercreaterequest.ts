@@ -37,6 +37,10 @@ export type UserCreateRequest = {
    * The type of login to use for the user. If not provided, defaults to google for @gmail.com email addresses, and username and password otherwise.
    */
   loginType?: LoginType | null | undefined;
+  /**
+   * Whether to skip authentication for the user.
+   */
+  skipAuth?: boolean | undefined;
 };
 
 /** @internal */
@@ -50,12 +54,14 @@ export const UserCreateRequest$inboundSchema: z.ZodType<
   last_name: z.nullable(z.string()).optional(),
   role_id: z.number().int(),
   login_type: z.nullable(LoginType$inboundSchema).optional(),
+  skip_auth: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "first_name": "firstName",
     "last_name": "lastName",
     "role_id": "roleId",
     "login_type": "loginType",
+    "skip_auth": "skipAuth",
   });
 });
 
@@ -66,6 +72,7 @@ export type UserCreateRequest$Outbound = {
   last_name?: string | null | undefined;
   role_id: number;
   login_type?: string | null | undefined;
+  skip_auth: boolean;
 };
 
 /** @internal */
@@ -79,12 +86,14 @@ export const UserCreateRequest$outboundSchema: z.ZodType<
   lastName: z.nullable(z.string()).optional(),
   roleId: z.number().int(),
   loginType: z.nullable(LoginType$outboundSchema).optional(),
+  skipAuth: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     firstName: "first_name",
     lastName: "last_name",
     roleId: "role_id",
     loginType: "login_type",
+    skipAuth: "skip_auth",
   });
 });
 
