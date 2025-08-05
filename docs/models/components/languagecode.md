@@ -13,5 +13,5 @@ let value: LanguageCode = "yue-HK";
 ## Values
 
 ```typescript
-"yue-HK" | "en-US" | "ko-KR" | "zh-CN" | "fa-IR" | "es-US" | "th-TH" | "vi-VN"
+"yue-HK" | "en-US" | "ko-KR" | "zh-CN" | "fa-IR" | "es-US" | "th-TH" | "vi-VN" | "bs-BA" | "sw"
 ```

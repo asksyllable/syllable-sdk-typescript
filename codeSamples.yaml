@@ -2044,7 +2044,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.languageGroups.languageGroupsCreateVoiceSample({
-                languageCode: "en-US",
+                languageCode: "ko-KR",
                 voiceProvider: "OpenAI",
                 voiceDisplayName: "Sarah",
                 voiceSpeed: 1,

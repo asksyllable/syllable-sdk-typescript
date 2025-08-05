@@ -17,6 +17,8 @@ export const LanguageCode = {
   EsUS: "es-US",
   THTH: "th-TH",
   ViVN: "vi-VN",
+  BsBA: "bs-BA",
+  Sw: "sw",
 } as const;
 /**
  * BCP 47 codes of languages that Syllable supports.
