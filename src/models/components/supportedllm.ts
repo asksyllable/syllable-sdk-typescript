@@ -32,7 +32,7 @@ export type SupportedLlm = {
   /**
    * Model version.
    */
-  version?: string | undefined;
+  version?: string | null | undefined;
   /**
    * Version of the provider's API.
    */
@@ -52,7 +52,7 @@ export const SupportedLlm$inboundSchema: z.ZodType<
   provider: PromptLlmProvider$inboundSchema.optional(),
   model: z.string().default("gpt-4o"),
   display_name: z.string(),
-  version: z.string().optional(),
+  version: z.nullable(z.string()).optional(),
   api_version: z.nullable(z.string()).optional(),
   deprecated: z.boolean(),
 }).transform((v) => {
@@ -67,7 +67,7 @@ export type SupportedLlm$Outbound = {
   provider?: string | undefined;
   model: string;
   display_name: string;
-  version?: string | undefined;
+  version?: string | null | undefined;
   api_version?: string | null | undefined;
   deprecated: boolean;
 };
@@ -81,7 +81,7 @@ export const SupportedLlm$outboundSchema: z.ZodType<
   provider: PromptLlmProvider$outboundSchema.optional(),
   model: z.string().default("gpt-4o"),
   displayName: z.string(),
-  version: z.string().optional(),
+  version: z.nullable(z.string()).optional(),
   apiVersion: z.nullable(z.string()).optional(),
   deprecated: z.boolean(),
 }).transform((v) => {
