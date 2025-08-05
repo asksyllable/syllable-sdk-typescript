@@ -37,6 +37,13 @@ export const AgentVoiceVarName = {
   ElevenlabsRoger: "elevenlabs:Roger",
   ElevenlabsSarah: "elevenlabs:Sarah",
   ElevenlabsWill: "elevenlabs:Will",
+  WavenetFemaleEnUSChirp3HDAchernar: "wavenet:female/en-US-Chirp3-HD-Achernar",
+  WavenetFemaleKoKRChirp3HDAchernar: "wavenet:female/ko-KR-Chirp3-HD-Achernar",
+  WavenetFemaleCmnCNChirp3HDAchernar:
+    "wavenet:female/cmn-CN-Chirp3-HD-Achernar",
+  WavenetFemaleEsUSChirp3HDAchernar: "wavenet:female/es-US-Chirp3-HD-Achernar",
+  WavenetFemaleTHTHChirp3HDAchernar: "wavenet:female/th-TH-Chirp3-HD-Achernar",
+  WavenetFemaleViVNChirp3HDAchernar: "wavenet:female/vi-VN-Chirp3-HD-Achernar",
   WavenetFemaleEnUSChirp3HDAoede: "wavenet:female/en-US-Chirp3-HD-Aoede",
   WavenetFemaleKoKRChirp3HDAoede: "wavenet:female/ko-KR-Chirp3-HD-Aoede",
   WavenetFemaleCmnCNChirp3HDAoede: "wavenet:female/cmn-CN-Chirp3-HD-Aoede",
@@ -44,6 +51,18 @@ export const AgentVoiceVarName = {
   WavenetFemaleTHTHChirp3HDAoede: "wavenet:female/th-TH-Chirp3-HD-Aoede",
   WavenetFemaleViVNChirp3HDAoede: "wavenet:female/vi-VN-Chirp3-HD-Aoede",
   WavenetMaleEsUSNeural2B: "wavenet:male/es-US-Neural2-B",
+  WavenetFemaleEnUSChirp3HDCallirrhoe:
+    "wavenet:female/en-US-Chirp3-HD-Callirrhoe",
+  WavenetFemaleKoKRChirp3HDCallirrhoe:
+    "wavenet:female/ko-KR-Chirp3-HD-Callirrhoe",
+  WavenetFemaleCmnCNChirp3HDCallirrhoe:
+    "wavenet:female/cmn-CN-Chirp3-HD-Callirrhoe",
+  WavenetFemaleEsUSChirp3HDCallirrhoe:
+    "wavenet:female/es-US-Chirp3-HD-Callirrhoe",
+  WavenetFemaleTHTHChirp3HDCallirrhoe:
+    "wavenet:female/th-TH-Chirp3-HD-Callirrhoe",
+  WavenetFemaleViVNChirp3HDCallirrhoe:
+    "wavenet:female/vi-VN-Chirp3-HD-Callirrhoe",
   WavenetMaleEnUSChirp3HDCharon: "wavenet:male/en-US-Chirp3-HD-Charon",
   WavenetMaleKoKRChirp3HDCharon: "wavenet:male/ko-KR-Chirp3-HD-Charon",
   WavenetMaleCmnCNChirp3HDCharon: "wavenet:male/cmn-CN-Chirp3-HD-Charon",
@@ -89,6 +108,24 @@ export const AgentVoiceVarName = {
   WavenetMaleViVNChirp3HDPuck: "wavenet:male/vi-VN-Chirp3-HD-Puck",
   WavenetFemaleKoKRNeural2A: "wavenet:female/ko-KR-Neural2-A",
   WavenetFemaleViVNNeural2A: "wavenet:female/vi-VN-Neural2-A",
+  WavenetMaleEnUSChirp3HDUmbriel: "wavenet:male/en-US-Chirp3-HD-Umbriel",
+  WavenetMaleKoKRChirp3HDUmbriel: "wavenet:male/ko-KR-Chirp3-HD-Umbriel",
+  WavenetMaleCmnCNChirp3HDUmbriel: "wavenet:male/cmn-CN-Chirp3-HD-Umbriel",
+  WavenetMaleEsUSChirp3HDUmbriel: "wavenet:male/es-US-Chirp3-HD-Umbriel",
+  WavenetMaleTHTHChirp3HDUmbriel: "wavenet:male/th-TH-Chirp3-HD-Umbriel",
+  WavenetMaleViVNChirp3HDUmbriel: "wavenet:male/vi-VN-Chirp3-HD-Umbriel",
+  WavenetFemaleEnUSChirp3HDVindemiatrix:
+    "wavenet:female/en-US-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleKoKRChirp3HDVindemiatrix:
+    "wavenet:female/ko-KR-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleCmnCNChirp3HDVindemiatrix:
+    "wavenet:female/cmn-CN-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleEsUSChirp3HDVindemiatrix:
+    "wavenet:female/es-US-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleTHTHChirp3HDVindemiatrix:
+    "wavenet:female/th-TH-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleViVNChirp3HDVindemiatrix:
+    "wavenet:female/vi-VN-Chirp3-HD-Vindemiatrix",
   WavenetFemaleEnUSChirp3HDZephyr: "wavenet:female/en-US-Chirp3-HD-Zephyr",
   WavenetFemaleKoKRChirp3HDZephyr: "wavenet:female/ko-KR-Chirp3-HD-Zephyr",
   WavenetFemaleCmnCNChirp3HDZephyr: "wavenet:female/cmn-CN-Chirp3-HD-Zephyr",
