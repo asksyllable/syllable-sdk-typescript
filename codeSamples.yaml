@@ -2046,7 +2046,7 @@ actions:
               const result = await syllableSDK.languageGroups.languageGroupsCreateVoiceSample({
                 languageCode: "en-US",
                 voiceProvider: "OpenAI",
-                voiceDisplayName: "Puck (Korean)",
+                voiceDisplayName: "Sarah",
                 voiceSpeed: 1,
                 voicePitch: 0,
               });
