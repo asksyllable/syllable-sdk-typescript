@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 2dafce4534dfcffb701d56d97fa6ed56
+  docChecksum: 3a183e5b6cddb0d0a9043581a431132e
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.232
-  configChecksum: fbca822932de0820d21c0e80b2b33fbd
+  releaseVersion: 0.1.0-alpha.233
+  configChecksum: 893c36aee15b4bd9f4947aca28dcb5c4
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -194,6 +194,7 @@ generatedFiles:
   - docs/models/components/permissionresponse.md
   - docs/models/components/promptcreaterequest.md
   - docs/models/components/prompthistory.md
+  - docs/models/components/prompthistorylinkedtool.md
   - docs/models/components/promptllmconfig.md
   - docs/models/components/promptllmprovider.md
   - docs/models/components/promptproperties.md
@@ -707,6 +708,7 @@ generatedFiles:
   - src/models/components/permissionresponse.ts
   - src/models/components/promptcreaterequest.ts
   - src/models/components/prompthistory.ts
+  - src/models/components/prompthistorylinkedtool.ts
   - src/models/components/promptllmconfig.ts
   - src/models/components/promptllmprovider.ts
   - src/models/components/promptproperties.ts
@@ -1568,7 +1570,7 @@ examples:
           prompt_id: 627932
       responses:
         "200":
-          application/json: [{"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com"}, {"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com"}]
+          application/json: [{"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "version_number": 1, "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com", "linked_tools": [{"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}, {"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}], "is_pre_enhancements": true}, {"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "version_number": 1, "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com", "linked_tools": [{"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}, {"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}], "is_pre_enhancements": true}]
         "422": {}
   prompt_get_supported_llms:
     speakeasy-default-prompt-get-supported-llms:
