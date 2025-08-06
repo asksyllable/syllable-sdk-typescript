@@ -140,6 +140,7 @@ export * from "./permissiongroupresponse.js";
 export * from "./permissionresponse.js";
 export * from "./promptcreaterequest.js";
 export * from "./prompthistory.js";
+export * from "./prompthistorylinkedtool.js";
 export * from "./promptllmconfig.js";
 export * from "./promptllmprovider.js";
 export * from "./promptproperties.js";

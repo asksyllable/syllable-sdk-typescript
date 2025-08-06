@@ -104,7 +104,7 @@ export class Prompts extends ClientSDK {
    * Get Prompt History
    *
    * @remarks
-   * Get a prompt by ID
+   * Get a list of historical versions of a prompt by its ID
    */
   async promptsHistory(
     request: operations.PromptsHistoryRequest,

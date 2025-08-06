@@ -7,13 +7,19 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  PromptHistoryLinkedTool,
+  PromptHistoryLinkedTool$inboundSchema,
+  PromptHistoryLinkedTool$Outbound,
+  PromptHistoryLinkedTool$outboundSchema,
+} from "./prompthistorylinkedtool.js";
 
 /**
- * Record of a change to a prompt. Values reflect post-change state.
+ * Record of a specific version of a prompt.
  */
 export type PromptHistory = {
   /**
-   * Timestamp of the change
+   * Timestamp of the change resulting in this version
    */
   timestamp: Date;
   /**
@@ -21,29 +27,41 @@ export type PromptHistory = {
    */
   promptId: string;
   /**
-   * Text of the prompt
+   * Version number of this version. Starts at 1 when prompt is created, and incremented on each change.
+   */
+  versionNumber: number;
+  /**
+   * Text of the prompt at this version
    */
   promptText: string;
   /**
-   * Description of the prompt
+   * Description of the prompt at this version
    */
   promptDescription?: string | null | undefined;
   /**
-   * Name of the prompt
+   * Name of the prompt at this version
    */
   promptName: string;
   /**
-   * String representation of LLM config for the prompt
+   * String representation of LLM config for the prompt at this version
    */
   llmConfig?: string | null | undefined;
   /**
-   * Comments describing the change
+   * Comments describing the change that resulted in this version
    */
   comments?: string | null | undefined;
   /**
-   * Email address of the user who made the change
+   * Email address of the user who made the change that resulted in this version
    */
   userEmail: string;
+  /**
+   * Tools that were linked to this version of the prompt
+   */
+  linkedTools?: Array<PromptHistoryLinkedTool> | undefined;
+  /**
+   * Whether this version of the prompt was created before history of tool-prompt linking was tracked
+   */
+  isPreEnhancements: boolean;
 };
 
 /** @internal */
@@ -54,20 +72,26 @@ export const PromptHistory$inboundSchema: z.ZodType<
 > = z.object({
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   prompt_id: z.string(),
+  version_number: z.number().int(),
   prompt_text: z.string(),
   prompt_description: z.nullable(z.string()).optional(),
   prompt_name: z.string(),
   llm_config: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
   user_email: z.string(),
+  linked_tools: z.array(PromptHistoryLinkedTool$inboundSchema).optional(),
+  is_pre_enhancements: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
+    "version_number": "versionNumber",
     "prompt_text": "promptText",
     "prompt_description": "promptDescription",
     "prompt_name": "promptName",
     "llm_config": "llmConfig",
     "user_email": "userEmail",
+    "linked_tools": "linkedTools",
+    "is_pre_enhancements": "isPreEnhancements",
   });
 });
 
@@ -75,12 +99,15 @@ export const PromptHistory$inboundSchema: z.ZodType<
 export type PromptHistory$Outbound = {
   timestamp: string;
   prompt_id: string;
+  version_number: number;
   prompt_text: string;
   prompt_description?: string | null | undefined;
   prompt_name: string;
   llm_config?: string | null | undefined;
   comments?: string | null | undefined;
   user_email: string;
+  linked_tools?: Array<PromptHistoryLinkedTool$Outbound> | undefined;
+  is_pre_enhancements: boolean;
 };
 
 /** @internal */
@@ -91,20 +118,26 @@ export const PromptHistory$outboundSchema: z.ZodType<
 > = z.object({
   timestamp: z.date().transform(v => v.toISOString()),
   promptId: z.string(),
+  versionNumber: z.number().int(),
   promptText: z.string(),
   promptDescription: z.nullable(z.string()).optional(),
   promptName: z.string(),
   llmConfig: z.nullable(z.string()).optional(),
   comments: z.nullable(z.string()).optional(),
   userEmail: z.string(),
+  linkedTools: z.array(PromptHistoryLinkedTool$outboundSchema).optional(),
+  isPreEnhancements: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
+    versionNumber: "version_number",
     promptText: "prompt_text",
     promptDescription: "prompt_description",
     promptName: "prompt_name",
     llmConfig: "llm_config",
     userEmail: "user_email",
+    linkedTools: "linked_tools",
+    isPreEnhancements: "is_pre_enhancements",
   });
 });
 
