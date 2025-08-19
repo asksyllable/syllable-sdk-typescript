@@ -72,6 +72,7 @@ let value: ChannelTargetResponse = {
       lastUpdated: "2024-01-01T12:00:00Z",
       lastUpdatedBy: "user@email.com",
       agentCount: 5,
+      versionNumber: 1,
       toolsFull: [
         {
           name: "Weather Fetcher",

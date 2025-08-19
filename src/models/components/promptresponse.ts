@@ -77,6 +77,10 @@ export type PromptResponse = {
    */
   agentCount?: number | null | undefined;
   /**
+   * The version number of the current version of the prompt
+   */
+  versionNumber?: number | null | undefined;
+  /**
    * Full definitions of tools to which the prompt has access
    */
   toolsFull?: Array<ToolResponse> | null | undefined;
@@ -99,6 +103,7 @@ export const PromptResponse$inboundSchema: z.ZodType<
   last_updated: z.nullable(z.string()),
   last_updated_by: z.nullable(z.string()).optional(),
   agent_count: z.nullable(z.number().int()).optional(),
+  version_number: z.nullable(z.number().int()).optional(),
   tools_full: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -107,6 +112,7 @@ export const PromptResponse$inboundSchema: z.ZodType<
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
     "agent_count": "agentCount",
+    "version_number": "versionNumber",
     "tools_full": "toolsFull",
   });
 });
@@ -124,6 +130,7 @@ export type PromptResponse$Outbound = {
   last_updated: string | null;
   last_updated_by?: string | null | undefined;
   agent_count?: number | null | undefined;
+  version_number?: number | null | undefined;
   tools_full?: Array<ToolResponse$Outbound> | null | undefined;
 };
 
@@ -144,6 +151,7 @@ export const PromptResponse$outboundSchema: z.ZodType<
   lastUpdated: z.nullable(z.string()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
   agentCount: z.nullable(z.number().int()).optional(),
+  versionNumber: z.nullable(z.number().int()).optional(),
   toolsFull: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -152,6 +160,7 @@ export const PromptResponse$outboundSchema: z.ZodType<
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
     agentCount: "agent_count",
+    versionNumber: "version_number",
     toolsFull: "tools_full",
   });
 });
