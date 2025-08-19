@@ -11,5 +11,5 @@ let value: ToolAuthType = "basic";
 ## Values
 
 ```typescript
-"basic" | "bearer" | "custom_headers"
+"basic" | "bearer" | "custom_headers" | "oauth2"
 ```

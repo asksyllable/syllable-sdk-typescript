@@ -9,6 +9,7 @@ export const ToolAuthType = {
   Basic: "basic",
   Bearer: "bearer",
   CustomHeaders: "custom_headers",
+  Oauth2: "oauth2",
 } as const;
 export type ToolAuthType = ClosedEnum<typeof ToolAuthType>;
 
