@@ -13,6 +13,12 @@ import {
   PromptHistoryLinkedTool$Outbound,
   PromptHistoryLinkedTool$outboundSchema,
 } from "./prompthistorylinkedtool.js";
+import {
+  PromptLlmConfig,
+  PromptLlmConfig$inboundSchema,
+  PromptLlmConfig$Outbound,
+  PromptLlmConfig$outboundSchema,
+} from "./promptllmconfig.js";
 
 /**
  * Record of a specific version of a prompt.
@@ -45,7 +51,7 @@ export type PromptHistory = {
   /**
    * String representation of LLM config for the prompt at this version
    */
-  llmConfig?: string | null | undefined;
+  llmConfig?: PromptLlmConfig | null | undefined;
   /**
    * Comments describing the change that resulted in this version
    */
@@ -76,7 +82,7 @@ export const PromptHistory$inboundSchema: z.ZodType<
   prompt_text: z.string(),
   prompt_description: z.nullable(z.string()).optional(),
   prompt_name: z.string(),
-  llm_config: z.nullable(z.string()).optional(),
+  llm_config: z.nullable(PromptLlmConfig$inboundSchema).optional(),
   comments: z.nullable(z.string()).optional(),
   user_email: z.string(),
   linked_tools: z.array(PromptHistoryLinkedTool$inboundSchema).optional(),
@@ -103,7 +109,7 @@ export type PromptHistory$Outbound = {
   prompt_text: string;
   prompt_description?: string | null | undefined;
   prompt_name: string;
-  llm_config?: string | null | undefined;
+  llm_config?: PromptLlmConfig$Outbound | null | undefined;
   comments?: string | null | undefined;
   user_email: string;
   linked_tools?: Array<PromptHistoryLinkedTool$Outbound> | undefined;
@@ -122,7 +128,7 @@ export const PromptHistory$outboundSchema: z.ZodType<
   promptText: z.string(),
   promptDescription: z.nullable(z.string()).optional(),
   promptName: z.string(),
-  llmConfig: z.nullable(z.string()).optional(),
+  llmConfig: z.nullable(PromptLlmConfig$outboundSchema).optional(),
   comments: z.nullable(z.string()).optional(),
   userEmail: z.string(),
   linkedTools: z.array(PromptHistoryLinkedTool$outboundSchema).optional(),
