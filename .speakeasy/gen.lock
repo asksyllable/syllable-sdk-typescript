@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 8215208328f49505b1a645169f8b6511
+  docChecksum: 9eae22ec38de4c9832ac3750bf7283cc
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.242
-  configChecksum: f8cc081ca924cad7ed7cf5f012bedf00
+  releaseVersion: 0.1.0-alpha.243
+  configChecksum: e2c5c41054d34b1ec514a8d018d42879
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -1570,7 +1570,7 @@ examples:
           prompt_id: 627932
       responses:
         "200":
-          application/json: [{"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "version_number": 1, "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com", "linked_tools": [{"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}, {"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}], "is_pre_enhancements": true}, {"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "version_number": 1, "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com", "linked_tools": [{"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}, {"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}], "is_pre_enhancements": true}]
+          application/json: [{"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "version_number": 1, "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com", "linked_tools": [{"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}, {"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}], "is_pre_enhancements": true}, {"timestamp": "2024-01-01T12:00:00Z", "prompt_id": "1", "version_number": 1, "prompt_text": "You are a weather agent. Answer the user's questions about weather and nothing else.", "prompt_description": "Prompt for a weather agent.", "prompt_name": "Weather Agent Prompt", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "user_email": "user@email.com", "linked_tools": [{"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}, {"tool_id": 1, "current_tool_name": "hangup", "out_of_date": false, "deleted": false}], "is_pre_enhancements": true}]
         "422": {}
   prompt_get_supported_llms:
     speakeasy-default-prompt-get-supported-llms:
