@@ -9,7 +9,6 @@ import { ClosedEnum } from "../../types/enums.js";
  * Speech-to-text providers supported by agents.
  */
 export const AgentSttProvider = {
-  GoogleSTTV2Chirp2: "Google STT V2 (Chirp 2)",
   GoogleSTTV2: "Google STT V2",
   GoogleSTTV1: "Google STT V1",
   DeepgramNova2: "Deepgram Nova 2",
