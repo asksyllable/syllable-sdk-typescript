@@ -49,7 +49,7 @@ let value: ChannelTargetResponse = {
     toolHeaders: {
       "some-header": "some-value",
     },
-    sttProvider: "Google STT V1",
+    sttProvider: "Google STT V2",
     waitSound: "No Sound",
     id: 1,
     updatedAt: new Date("2024-01-01T00:00:00Z"),
