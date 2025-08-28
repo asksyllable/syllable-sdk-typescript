@@ -285,7 +285,7 @@ async function run() {
     toolHeaders: {
       "some-header": "some-value",
     },
-    sttProvider: "Google STT V1",
+    sttProvider: "Google STT V2",
     waitSound: "Keyboard 1",
     id: 1,
   });
@@ -341,7 +341,7 @@ async function run() {
     toolHeaders: {
       "some-header": "some-value",
     },
-    sttProvider: "Google STT V1",
+    sttProvider: "Google STT V2",
     waitSound: "Keyboard 1",
     id: 1,
   });
