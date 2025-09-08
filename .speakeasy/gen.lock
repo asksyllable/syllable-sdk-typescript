@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 8e4144acdd43d561fd0adf239f10c540
+  docChecksum: 7d684d1b2d8814dd3be98996f4a6c82e
   docVersion: 0.0.2
   speakeasyVersion: 1.493.2
   generationVersion: 2.512.4
-  releaseVersion: 0.1.0-alpha.257
-  configChecksum: d34064a812deb743aad78e8646e0e836
+  releaseVersion: 0.1.0-alpha.258
+  configChecksum: 5aa9cf2db6545cbc619d30840143b4dd
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -993,7 +993,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 678317, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "chat,voice", "is_system_channel": false, "id": 229716, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "chat,voice", "is_system_channel": false, "id": 635532, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 678317, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "chat,voice", "is_system_channel": false, "id": 229716, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}, {"name": "syllable-webchat", "channel_service": "sip", "supported_modes": "chat,voice", "is_system_channel": false, "id": 635532, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422": {}
   channel_targets_delete:
     speakeasy-default-channel-targets-delete:
@@ -1009,7 +1009,7 @@ examples:
           channel_id: 931598
       responses:
         "200":
-          application/json: {"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 467619, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}
+          application/json: {"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 467619, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}
         "422": {}
   channels_twilio_update:
     speakeasy-default-channels-twilio-update:
@@ -1017,7 +1017,7 @@ examples:
         application/json: {"id": 1, "name": "syllable-webchat", "config": {"account_sid": "AC123...", "auth_token": "sometoken"}}
       responses:
         "200":
-          application/json: {"name": "syllable-webchat", "channel_service": "webchat", "supported_modes": "chat,voice", "is_system_channel": false, "id": 597129, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}
+          application/json: {"name": "syllable-webchat", "channel_service": "webchat", "supported_modes": "chat,voice", "is_system_channel": false, "id": 597129, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}
         "422": {}
   channels_twilio_create:
     speakeasy-default-channels-twilio-create:
@@ -1025,7 +1025,7 @@ examples:
         application/json: {"name": "syllable-webchat", "config": {"account_sid": "AC123...", "auth_token": "sometoken"}}
       responses:
         "200":
-          application/json: {"name": "syllable-webchat", "channel_service": "twilio", "supported_modes": "chat,voice", "is_system_channel": false, "id": 638424, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}
+          application/json: {"name": "syllable-webchat", "channel_service": "twilio", "supported_modes": "chat,voice", "is_system_channel": false, "id": 638424, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}
         "422": {}
   channels_twilio_numbers_add:
     speakeasy-default-channels-twilio-numbers-add:
@@ -2125,18 +2125,18 @@ examples:
   channels_create:
     speakeasy-default-channels-create:
       requestBody:
-        application/json: {"name": "twilio", "channel_service": "twilio", "supported_modes": "chat,voice", "is_system_channel": false, "config": {"account_sid": "AC123...", "auth_token": "sometoken", "telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}
+        application/json: {"name": "twilio", "channel_service": "twilio", "supported_modes": "chat,voice", "is_system_channel": false, "config": {"account_sid": "AC123...", "auth_token": "sometoken", "telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}
       responses:
         "200":
-          application/json: {"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 417458, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}
+          application/json: {"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 417458, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}
         "422": {}
   channels_update:
     speakeasy-default-channels-update:
       requestBody:
-        application/json: {"name": "twilio", "channel_service": "webchat", "supported_modes": "chat,voice", "is_system_channel": false, "config": {"account_sid": "AC123...", "auth_token": "sometoken", "telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}, "id": 1}
+        application/json: {"name": "twilio", "channel_service": "webchat", "supported_modes": "chat,voice", "is_system_channel": false, "config": {"account_sid": "AC123...", "auth_token": "sometoken", "telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}, "id": 1}
       responses:
         "200":
-          application/json: {"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 344620, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20}}}
+          application/json: {"name": "syllable-webchat", "channel_service": "email", "supported_modes": "chat,voice", "is_system_channel": false, "id": 344620, "config": {"telephony": {"pre_input_timeout": 1.2, "overall_input_timeout": 20, "interruptibility": "dtmf_only", "passive_speech_input_enabled": true, "passive_input_start": 0.5}}}
         "422": {}
 examplesVersion: 1.0.0
 generatedTests: {}

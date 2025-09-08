@@ -129,6 +129,9 @@ async function run() {
       telephony: {
         preInputTimeout: 1.2,
         overallInputTimeout: 20,
+        interruptibility: "dtmf_only",
+        passiveSpeechInputEnabled: true,
+        passiveInputStart: 0.5,
       },
     },
   });
@@ -165,6 +168,9 @@ async function run() {
       telephony: {
         preInputTimeout: 1.2,
         overallInputTimeout: 20,
+        interruptibility: "dtmf_only",
+        passiveSpeechInputEnabled: true,
+        passiveInputStart: 0.5,
       },
     },
   });
@@ -226,6 +232,9 @@ async function run() {
       telephony: {
         preInputTimeout: 1.2,
         overallInputTimeout: 20,
+        interruptibility: "dtmf_only",
+        passiveSpeechInputEnabled: true,
+        passiveInputStart: 0.5,
       },
     },
     id: 1,
@@ -263,6 +272,9 @@ async function run() {
       telephony: {
         preInputTimeout: 1.2,
         overallInputTimeout: 20,
+        interruptibility: "dtmf_only",
+        passiveSpeechInputEnabled: true,
+        passiveInputStart: 0.5,
       },
     },
     id: 1,
