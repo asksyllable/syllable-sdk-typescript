@@ -23,6 +23,14 @@ export type OutboundCampaignInput = {
    */
   description?: string | null | undefined;
   /**
+   * Mode of the campaign (e.g. voice, sms)
+   */
+  mode?: string | null | undefined;
+  /**
+   * Time to live for SMS session in minutes
+   */
+  smsSessionTtl?: number | null | undefined;
+  /**
    * Label for campaign (DEPRECATED - use labels instead)
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -78,6 +86,8 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
 > = z.object({
   campaign_name: z.string(),
   description: z.nullable(z.string()).optional(),
+  mode: z.nullable(z.string()).optional(),
+  sms_session_ttl: z.nullable(z.number().int()).optional(),
   label: z.nullable(z.string()).optional(),
   labels: z.nullable(z.array(z.string())).optional(),
   campaign_variables: z.record(z.string()),
@@ -92,6 +102,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "campaign_name": "campaignName",
+    "sms_session_ttl": "smsSessionTtl",
     "campaign_variables": "campaignVariables",
     "daily_start_time": "dailyStartTime",
     "daily_end_time": "dailyEndTime",
@@ -107,6 +118,8 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
 export type OutboundCampaignInput$Outbound = {
   campaign_name: string;
   description?: string | null | undefined;
+  mode?: string | null | undefined;
+  sms_session_ttl?: number | null | undefined;
   label?: string | null | undefined;
   labels?: Array<string> | null | undefined;
   campaign_variables: { [k: string]: string };
@@ -128,6 +141,8 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
 > = z.object({
   campaignName: z.string(),
   description: z.nullable(z.string()).optional(),
+  mode: z.nullable(z.string()).optional(),
+  smsSessionTtl: z.nullable(z.number().int()).optional(),
   label: z.nullable(z.string()).optional(),
   labels: z.nullable(z.array(z.string())).optional(),
   campaignVariables: z.record(z.string()),
@@ -142,6 +157,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     campaignName: "campaign_name",
+    smsSessionTtl: "sms_session_ttl",
     campaignVariables: "campaign_variables",
     dailyStartTime: "daily_start_time",
     dailyEndTime: "daily_end_time",

@@ -6,7 +6,7 @@
 import { OutboundCampaignDeleteRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundCampaignDeleteRequest = {
-  campaignId: 727044,
+  campaignId: 301598,
 };
 ```
 

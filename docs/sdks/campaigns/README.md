@@ -123,6 +123,8 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.create({
     campaignName: "Outbound Campaign 1",
     description: "This is a test campaign",
+    mode: "voice",
+    smsSessionTtl: 720,
     labels: [
       "test",
       "demo",
@@ -133,11 +135,11 @@ async function run() {
     },
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    source: "+19032900844",
+    source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
     activeDays: [
-      "wed",
+      "mon",
     ],
   });
 
@@ -166,6 +168,8 @@ async function run() {
   const res = await outboundCampaignsCreate(syllableSDK, {
     campaignName: "Outbound Campaign 1",
     description: "This is a test campaign",
+    mode: "voice",
+    smsSessionTtl: 720,
     labels: [
       "test",
       "demo",
@@ -176,11 +180,11 @@ async function run() {
     },
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    source: "+19032900844",
+    source: "account@email.com",
     callerId: "19995551234",
     retryInterval: "12h",
     activeDays: [
-      "wed",
+      "mon",
     ],
   });
 
@@ -313,6 +317,8 @@ async function run() {
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
+      mode: "sms",
+      smsSessionTtl: 720,
       labels: [
         "test",
         "demo",
@@ -327,7 +333,7 @@ async function run() {
       callerId: "19995551234",
       retryInterval: "12h",
       activeDays: [
-        "wed",
+        "sun",
       ],
     },
   });
@@ -359,6 +365,8 @@ async function run() {
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
+      mode: "sms",
+      smsSessionTtl: 720,
       labels: [
         "test",
         "demo",
@@ -373,7 +381,7 @@ async function run() {
       callerId: "19995551234",
       retryInterval: "12h",
       activeDays: [
-        "wed",
+        "sun",
       ],
     },
   });
