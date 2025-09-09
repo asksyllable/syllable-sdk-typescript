@@ -16,8 +16,8 @@ let value: UserResponse = {
   id: 1,
   roleName: "Admin",
   emailSent: true,
-  activityStatus: "active",
-  lastUpdated: new Date("2025-09-17T11:26:38.524Z"),
+  activityStatus: "invited",
+  lastUpdated: new Date("2024-10-02T14:03:30.664Z"),
   lastUpdatedBy: "admin@email.com",
   lastSessionAt: new Date("2025-01-01T12:00:00Z"),
 };

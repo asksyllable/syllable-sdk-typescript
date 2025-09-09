@@ -6,7 +6,7 @@
 import { OutboundCampaignGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: OutboundCampaignGetByIdRequest = {
-  campaignId: 672048,
+  campaignId: 557369,
 };
 ```
 

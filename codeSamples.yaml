@@ -1732,8 +1732,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-09-07T00:00:00Z"),
-                endDatetime: new Date("2025-09-08T00:00:00Z"),
+                startDatetime: new Date("2025-09-08T00:00:00Z"),
+                endDatetime: new Date("2025-09-09T00:00:00Z"),
               });
 
               // Handle the result
@@ -1855,8 +1855,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-09-07T00:00:00Z"),
-                  endDatetime: new Date("2025-09-08T00:00:00Z"),
+                  startDatetime: new Date("2025-09-08T00:00:00Z"),
+                  endDatetime: new Date("2025-09-09T00:00:00Z"),
                 },
               });
 
@@ -2242,9 +2242,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250908.9",
+                batchId: "20250909.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-09-09T00:00:00Z"),
+                expiresOn: new Date("2025-09-10T00:00:00Z"),
                 paused: true,
               });
 
@@ -2472,6 +2472,8 @@ actions:
               const result = await syllableSDK.outbound.campaigns.create({
                 campaignName: "Outbound Campaign 1",
                 description: "This is a test campaign",
+                mode: "voice",
+                smsSessionTtl: 720,
                 labels: [
                   "test",
                   "demo",
@@ -2482,11 +2484,11 @@ actions:
                 },
                 dailyStartTime: "09:00:00",
                 dailyEndTime: "17:00:00",
-                source: "+19032900844",
+                source: "account@email.com",
                 callerId: "19995551234",
                 retryInterval: "12h",
                 activeDays: [
-                  "wed",
+                  "mon",
                 ],
               });
 
@@ -2553,10 +2555,12 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.update({
-                campaignId: 991464,
+                campaignId: 627690,
                 outboundCampaignInput: {
                   campaignName: "Outbound Campaign 1",
                   description: "This is a test campaign",
+                  mode: "sms",
+                  smsSessionTtl: 720,
                   labels: [
                     "test",
                     "demo",
@@ -2571,7 +2575,7 @@ actions:
                   callerId: "19995551234",
                   retryInterval: "12h",
                   activeDays: [
-                    "wed",
+                    "sun",
                   ],
                 },
               });

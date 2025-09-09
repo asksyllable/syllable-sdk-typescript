@@ -12,6 +12,7 @@ export const CampaignProperties = {
   DailyStartTime: "daily_start_time",
   DailyEndTime: "daily_end_time",
   Source: "source",
+  Mode: "mode",
   CallerId: "caller_id",
   UpdatedAt: "updated_at",
   Label: "label",

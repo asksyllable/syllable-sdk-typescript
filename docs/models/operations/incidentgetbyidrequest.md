@@ -6,7 +6,7 @@
 import { IncidentGetByIdRequest } from "syllable-sdk/models/operations";
 
 let value: IncidentGetByIdRequest = {
-  incidentId: 799203,
+  incidentId: 293020,
 };
 ```
 

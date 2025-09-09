@@ -8,7 +8,7 @@ import { ConversationsListRequest } from "syllable-sdk/models/operations";
 let value: ConversationsListRequest = {
   page: 0,
   searchFields: [
-    "agent_name",
+    "is_legacy",
   ],
   searchFieldValues: [
     "Some Object Name",
