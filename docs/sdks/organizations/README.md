@@ -101,6 +101,7 @@ async function run() {
     displayName: "My Great Org",
     description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    samlProviderId: "saml.syllablesso",
     updateComments: "Updated the organization to add a new domain",
   });
 
@@ -130,6 +131,7 @@ async function run() {
     displayName: "My Great Org",
     description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    samlProviderId: "saml.syllablesso",
     updateComments: "Updated the organization to add a new domain",
   });
 
@@ -186,6 +188,7 @@ async function run() {
     logo: await openAsBlob("example.file"),
     description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    samlProviderId: "saml.syllablesso",
   });
 
   // Handle the result
@@ -216,6 +219,7 @@ async function run() {
     logo: await openAsBlob("example.file"),
     description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
+    samlProviderId: "saml.syllablesso",
   });
 
   if (!res.ok) {

@@ -32,6 +32,10 @@ export type BodyOrganizationsUpdate = {
    */
   logo?: Logo | Blob | undefined;
   /**
+   * SAML provider ID for user authentication
+   */
+  samlProviderId?: string | null | undefined;
+  /**
    * Comments about the update
    */
   updateComments?: string | null | undefined;
@@ -104,10 +108,12 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
   logo: z.lazy(() => Logo$inboundSchema).optional(),
+  saml_provider_id: z.nullable(z.string()).optional(),
   update_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
+    "saml_provider_id": "samlProviderId",
     "update_comments": "updateComments",
   });
 });
@@ -118,6 +124,7 @@ export type BodyOrganizationsUpdate$Outbound = {
   description?: string | null | undefined;
   domains?: string | null | undefined;
   logo?: Logo$Outbound | Blob | undefined;
+  saml_provider_id?: string | null | undefined;
   update_comments?: string | null | undefined;
 };
 
@@ -131,10 +138,12 @@ export const BodyOrganizationsUpdate$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
   logo: z.lazy(() => Logo$outboundSchema).or(blobLikeSchema).optional(),
+  samlProviderId: z.nullable(z.string()).optional(),
   updateComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
+    samlProviderId: "saml_provider_id",
     updateComments: "update_comments",
   });
 });

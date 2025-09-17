@@ -1732,8 +1732,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-09-10T00:00:00Z"),
-                endDatetime: new Date("2025-09-11T00:00:00Z"),
+                startDatetime: new Date("2025-09-16T00:00:00Z"),
+                endDatetime: new Date("2025-09-17T00:00:00Z"),
               });
 
               // Handle the result
@@ -1855,8 +1855,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-09-10T00:00:00Z"),
-                  endDatetime: new Date("2025-09-11T00:00:00Z"),
+                  startDatetime: new Date("2025-09-16T00:00:00Z"),
+                  endDatetime: new Date("2025-09-17T00:00:00Z"),
                 },
               });
 
@@ -2166,6 +2166,7 @@ actions:
                 displayName: "My Great Org",
                 description: "An organization that does great things with agentic AI",
                 domains: "mygreatorg.com,mygreatorg.org",
+                samlProviderId: "saml.syllablesso",
               });
 
               // Handle the result
@@ -2190,6 +2191,7 @@ actions:
                 displayName: "My Great Org",
                 description: "An organization that does great things with agentic AI",
                 domains: "mygreatorg.com,mygreatorg.org",
+                samlProviderId: "saml.syllablesso",
                 updateComments: "Updated the organization to add a new domain",
               });
 
@@ -2242,9 +2244,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250911.9",
+                batchId: "20250917.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-09-12T00:00:00Z"),
+                expiresOn: new Date("2025-09-18T00:00:00Z"),
                 paused: true,
               });
 

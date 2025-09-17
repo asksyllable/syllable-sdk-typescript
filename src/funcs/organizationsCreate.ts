@@ -81,6 +81,9 @@ export async function organizationsCreate(
   if (payload.domains !== undefined) {
     appendForm(body, "domains", payload.domains);
   }
+  if (payload.saml_provider_id !== undefined) {
+    appendForm(body, "saml_provider_id", payload.saml_provider_id);
+  }
 
   const path = pathToFunc("/api/v1/organizations/")();
 

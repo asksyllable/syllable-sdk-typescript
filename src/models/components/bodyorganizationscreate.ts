@@ -31,6 +31,10 @@ export type BodyOrganizationsCreate = {
    * Comma-delimited list of domains that users at the organization may have in their email addresses
    */
   domains?: string | null | undefined;
+  /**
+   * SAML provider ID for user authentication
+   */
+  samlProviderId?: string | null | undefined;
 };
 
 /** @internal */
@@ -112,9 +116,11 @@ export const BodyOrganizationsCreate$inboundSchema: z.ZodType<
   logo: z.lazy(() => BodyOrganizationsCreateLogo$inboundSchema),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
+  saml_provider_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
+    "saml_provider_id": "samlProviderId",
   });
 });
 
@@ -124,6 +130,7 @@ export type BodyOrganizationsCreate$Outbound = {
   logo: BodyOrganizationsCreateLogo$Outbound | Blob;
   description?: string | null | undefined;
   domains?: string | null | undefined;
+  saml_provider_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -138,9 +145,11 @@ export const BodyOrganizationsCreate$outboundSchema: z.ZodType<
   ),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
+  samlProviderId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
+    samlProviderId: "saml_provider_id",
   });
 });
 
