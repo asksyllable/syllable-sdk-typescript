@@ -22,6 +22,10 @@ export type OrganizationResponse = {
    */
   domains?: string | null | undefined;
   /**
+   * SAML provider ID for user authentication
+   */
+  samlProviderId?: string | null | undefined;
+  /**
    * The internal ID of the organization.
    */
   id: number;
@@ -56,6 +60,7 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
   display_name: z.string(),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
+  saml_provider_id: z.nullable(z.string()).optional(),
   id: z.number().int(),
   last_updated_comments: z.nullable(z.string()).optional(),
   slug: z.string(),
@@ -67,6 +72,7 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
+    "saml_provider_id": "samlProviderId",
     "last_updated_comments": "lastUpdatedComments",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
@@ -79,6 +85,7 @@ export type OrganizationResponse$Outbound = {
   display_name: string;
   description?: string | null | undefined;
   domains?: string | null | undefined;
+  saml_provider_id?: string | null | undefined;
   id: number;
   last_updated_comments?: string | null | undefined;
   slug: string;
@@ -96,6 +103,7 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
   displayName: z.string(),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
+  samlProviderId: z.nullable(z.string()).optional(),
   id: z.number().int(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
   slug: z.string(),
@@ -105,6 +113,7 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
+    samlProviderId: "saml_provider_id",
     lastUpdatedComments: "last_updated_comments",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",

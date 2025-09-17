@@ -83,6 +83,9 @@ export async function organizationsUpdate(
       );
     }
   }
+  if (payload.saml_provider_id !== undefined) {
+    appendForm(body, "saml_provider_id", payload.saml_provider_id);
+  }
   if (payload.update_comments !== undefined) {
     appendForm(body, "update_comments", payload.update_comments);
   }
