@@ -61,9 +61,13 @@ export type Session = {
    */
   promptName?: string | null | undefined;
   /**
-   * Version of the prompt used by the agent with which the session occurred
+   * Legacy prompt version timestamp used by the agent with which the session occurred
    */
   promptVersion?: string | null | undefined;
+  /**
+   * Prompt version number used by the agent with which the session occurred (new system)
+   */
+  promptVersionNumber?: number | null | undefined;
   /**
    * Duration of the session in seconds
    */
@@ -108,6 +112,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     prompt_id: z.nullable(z.string()).optional(),
     prompt_name: z.nullable(z.string()).optional(),
     prompt_version: z.nullable(z.string()).optional(),
+    prompt_version_number: z.nullable(z.number().int()).optional(),
     duration: z.nullable(z.number()).optional(),
     session_label_id: z.nullable(z.string()).optional(),
     source: z.nullable(z.string()).optional(),
@@ -128,6 +133,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "prompt_id": "promptId",
       "prompt_name": "promptName",
       "prompt_version": "promptVersion",
+      "prompt_version_number": "promptVersionNumber",
       "session_label_id": "sessionLabelId",
       "is_legacy": "isLegacy",
       "is_test": "isTest",
@@ -149,6 +155,7 @@ export type Session$Outbound = {
   prompt_id?: string | null | undefined;
   prompt_name?: string | null | undefined;
   prompt_version?: string | null | undefined;
+  prompt_version_number?: number | null | undefined;
   duration?: number | null | undefined;
   session_label_id?: string | null | undefined;
   source?: string | null | undefined;
@@ -176,6 +183,7 @@ export const Session$outboundSchema: z.ZodType<
   promptId: z.nullable(z.string()).optional(),
   promptName: z.nullable(z.string()).optional(),
   promptVersion: z.nullable(z.string()).optional(),
+  promptVersionNumber: z.nullable(z.number().int()).optional(),
   duration: z.nullable(z.number()).optional(),
   sessionLabelId: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
@@ -196,6 +204,7 @@ export const Session$outboundSchema: z.ZodType<
     promptId: "prompt_id",
     promptName: "prompt_name",
     promptVersion: "prompt_version",
+    promptVersionNumber: "prompt_version_number",
     sessionLabelId: "session_label_id",
     isLegacy: "is_legacy",
     isTest: "is_test",
