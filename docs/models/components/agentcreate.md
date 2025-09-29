@@ -37,7 +37,7 @@ let value: AgentCreate = {
     "some-header": "some-value",
   },
   sttProvider: "Google STT V2 (Chirp 2)",
-  waitSound: "Keyboard 2",
+  waitSound: "No Sound",
 };
 ```
 

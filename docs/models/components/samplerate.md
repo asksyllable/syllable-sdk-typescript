@@ -14,6 +14,6 @@ const value: number = 0.1;
 ### `number`
 
 ```typescript
-const value: number = 10;
+const value: number = 0.1;
 ```
 

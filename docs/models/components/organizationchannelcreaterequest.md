@@ -9,8 +9,9 @@ import { OrganizationChannelCreateRequest } from "syllable-sdk/models/components
 
 let value: OrganizationChannelCreateRequest = {
   name: "twilio",
-  channelService: "sip",
+  channelService: "twilio",
   supportedModes: "chat,voice",
+  isSystemChannel: false,
   config: {
     accountSid: "AC123...",
     authToken: "sometoken",

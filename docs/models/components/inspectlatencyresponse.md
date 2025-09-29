@@ -11,18 +11,7 @@ import { InspectLatencyResponse } from "syllable-sdk/models/components";
 
 let value: InspectLatencyResponse = {
   sessionId: "<id>",
-  timeline: [
-    {
-      timestamp: new Date("2025-10-14T04:15:01.236Z"),
-      measurementStart: new Date("2025-02-11T00:54:59.142Z"),
-      category: "tts",
-      label: "<value>",
-      unitType: "minutes",
-      value: 6214.79,
-      valueStr: "<value>",
-      timeDelta: "<value>",
-    },
-  ],
+  timeline: [],
 };
 ```
 

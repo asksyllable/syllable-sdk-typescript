@@ -13,7 +13,7 @@ let value: OrganizationResponse = {
   id: 1,
   lastUpdatedComments: "Updated to add an additional domain",
   slug: "my-great-org",
-  lastUpdated: new Date("2023-12-17T17:43:52.087Z"),
+  lastUpdated: new Date("2024-06-29T21:52:21.732Z"),
   logoUrl: "https://image.png",
 };
 ```

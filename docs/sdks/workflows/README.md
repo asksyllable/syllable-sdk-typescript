@@ -22,6 +22,7 @@ List the existing insight_workflows
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_list" method="get" path="/api/v1/insights/workflows/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -42,7 +43,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -75,15 +75,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -115,6 +112,7 @@ Create a new tool in the insights
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_create" method="post" path="/api/v1/insights/workflows/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -125,7 +123,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.workflows.create({
     name: "summary-workflow",
-    source: "upload",
+    source: "agent",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
@@ -150,11 +148,10 @@ async function run() {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2025-09-24T00:00:00Z"),
-    endDatetime: new Date("2025-09-25T00:00:00Z"),
+    startDatetime: new Date("2025-09-28T00:00:00Z"),
+    endDatetime: new Date("2025-09-29T00:00:00Z"),
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -178,7 +175,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await insightsWorkflowsCreate(syllableSDK, {
     name: "summary-workflow",
-    source: "upload",
+    source: "agent",
     description: "Default workflow - generates a summary of the call",
     insightToolIds: [
       1,
@@ -203,18 +200,15 @@ async function run() {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2025-09-24T00:00:00Z"),
-    endDatetime: new Date("2025-09-25T00:00:00Z"),
+    startDatetime: new Date("2025-09-28T00:00:00Z"),
+    endDatetime: new Date("2025-09-29T00:00:00Z"),
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -246,6 +240,7 @@ Get a InsightWorkflow by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_get_by_id" method="get" path="/api/v1/insights/workflows/{workflow_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -255,10 +250,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.getById({
-    workflowId: 931598,
+    workflowId: 788857,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -281,17 +275,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsGetById(syllableSDK, {
-    workflowId: 931598,
+    workflowId: 788857,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -323,6 +314,7 @@ Update a InsightWorkflow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_update" method="put" path="/api/v1/insights/workflows/{workflow_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -332,10 +324,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.update({
-    workflowId: 991464,
+    workflowId: 673493,
     insightWorkflowInput: {
       name: "summary-workflow",
-      source: "manual",
+      source: "agent",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
@@ -345,8 +337,8 @@ async function run() {
         maxDuration: 600,
         sampleRate: 0.1,
         agentList: [
-          "Agnes.Wangeci",
-          "Dorice.Otaaba",
+          866324,
+          826325,
         ],
         promptList: [
           "123324",
@@ -360,12 +352,11 @@ async function run() {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2025-09-24T00:00:00Z"),
-      endDatetime: new Date("2025-09-25T00:00:00Z"),
+      startDatetime: new Date("2025-09-28T00:00:00Z"),
+      endDatetime: new Date("2025-09-29T00:00:00Z"),
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -388,10 +379,10 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsUpdate(syllableSDK, {
-    workflowId: 991464,
+    workflowId: 673493,
     insightWorkflowInput: {
       name: "summary-workflow",
-      source: "manual",
+      source: "agent",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
@@ -401,8 +392,8 @@ async function run() {
         maxDuration: 600,
         sampleRate: 0.1,
         agentList: [
-          "Agnes.Wangeci",
-          "Dorice.Otaaba",
+          866324,
+          826325,
         ],
         promptList: [
           "123324",
@@ -416,19 +407,16 @@ async function run() {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2025-09-24T00:00:00Z"),
-      endDatetime: new Date("2025-09-25T00:00:00Z"),
+      startDatetime: new Date("2025-09-28T00:00:00Z"),
+      endDatetime: new Date("2025-09-29T00:00:00Z"),
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -460,6 +448,7 @@ Delete an Insights workflow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_delete" method="delete" path="/api/v1/insights/workflows/{workflow_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -469,10 +458,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.delete({
-    workflowId: 545907,
+    workflowId: 609419,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -495,17 +483,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsDelete(syllableSDK, {
-    workflowId: 545907,
+    workflowId: 609419,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -537,6 +522,7 @@ Inactivate an InsightWorkflow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_inactivate" method="put" path="/api/v1/insights/workflows/{workflow_id}/inactivate" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -546,10 +532,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.inactivate({
-    workflowId: 550727,
+    workflowId: 248768,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -572,17 +557,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsInactivate(syllableSDK, {
-    workflowId: 550727,
+    workflowId: 248768,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsInactivate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -614,6 +596,7 @@ Activate an InsightWorkflow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_activate" method="put" path="/api/v1/insights/workflows/{workflow_id}/activate" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -623,7 +606,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.workflows.activate({
-    workflowId: 537910,
+    workflowId: 303095,
     insightWorkflowActivate: {
       isAcknowledged: true,
       estimate: {
@@ -632,12 +615,11 @@ async function run() {
         estimatedDailyCount: 10,
         estimatedDailyDuration: 3674.11,
         estimatedDailyCost: 45.25,
-        estimatedBackfillCost: 4561.00,
+        estimatedBackfillCost: 4561,
       },
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -660,7 +642,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsWorkflowsActivate(syllableSDK, {
-    workflowId: 537910,
+    workflowId: 303095,
     insightWorkflowActivate: {
       isAcknowledged: true,
       estimate: {
@@ -669,19 +651,16 @@ async function run() {
         estimatedDailyCount: 10,
         estimatedDailyDuration: 3674.11,
         estimatedDailyCost: 45.25,
-        estimatedBackfillCost: 4561.00,
+        estimatedBackfillCost: 4561,
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsActivate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -713,6 +692,7 @@ Manually queue sessions for insights workflow evaluation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_queue_work" method="post" path="/api/v1/insights/workflows/queue-work" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -724,14 +704,17 @@ async function run() {
   const result = await syllableSDK.insights.workflows.queueWork({
     workflowName: "summary-workflow",
     sessionIdList: [
-      [12334,23445,34556],
+      12334,
+      23445,
+      34556,
     ],
     fileIdList: [
-      [1234,1678,2224],
+      1234,
+      1678,
+      2224,
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -756,21 +739,22 @@ async function run() {
   const res = await insightsWorkflowsQueueWork(syllableSDK, {
     workflowName: "summary-workflow",
     sessionIdList: [
-      [12334,23445,34556],
+      12334,
+      23445,
+      34556,
     ],
     fileIdList: [
-      [1234,1678,2224],
+      1234,
+      1678,
+      2224,
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsQueueWork failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

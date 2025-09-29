@@ -23,7 +23,7 @@ let value: ToolCreateRequest = {
       method: "post",
       argumentLocation: "form",
     },
-    defaults: "<value>",
+    defaults: {},
     staticParameters: [
       {
         name: "temperature_unit",

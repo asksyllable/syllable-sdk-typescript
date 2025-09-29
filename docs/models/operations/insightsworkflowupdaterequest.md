@@ -6,7 +6,7 @@
 import { InsightsWorkflowUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: InsightsWorkflowUpdateRequest = {
-  workflowId: 368584,
+  workflowId: 373066,
   insightWorkflowInput: {
     name: "summary-workflow",
     source: "agent",
@@ -17,7 +17,7 @@ let value: InsightsWorkflowUpdateRequest = {
     conditions: {
       minDuration: 120,
       maxDuration: 600,
-      sampleRate: 10,
+      sampleRate: 0.1,
       agentList: [
         866324,
         826325,
@@ -34,8 +34,8 @@ let value: InsightsWorkflowUpdateRequest = {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2025-09-24T00:00:00Z"),
-    endDatetime: new Date("2025-09-25T00:00:00Z"),
+    startDatetime: new Date("2025-09-28T00:00:00Z"),
+    endDatetime: new Date("2025-09-29T00:00:00Z"),
   },
 };
 ```

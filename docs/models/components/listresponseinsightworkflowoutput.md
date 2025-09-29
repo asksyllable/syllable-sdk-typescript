@@ -9,7 +9,7 @@ let value: ListResponseInsightWorkflowOutput = {
   items: [
     {
       name: "summary-workflow",
-      source: "upload",
+      source: "agent",
       description: "Default workflow - generates a summary of the call",
       insightToolIds: [
         1,
@@ -17,10 +17,10 @@ let value: ListResponseInsightWorkflowOutput = {
       conditions: {
         minDuration: 120,
         maxDuration: 600,
-        sampleRate: 10,
+        sampleRate: 0.1,
         agentList: [
-          "Agnes.Wangeci",
-          "Dorice.Otaaba",
+          866324,
+          826325,
         ],
         promptList: [
           "123324",
@@ -34,8 +34,8 @@ let value: ListResponseInsightWorkflowOutput = {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2025-09-24T00:00:00Z"),
-      endDatetime: new Date("2025-09-25T00:00:00Z"),
+      startDatetime: new Date("2025-09-28T00:00:00Z"),
+      endDatetime: new Date("2025-09-29T00:00:00Z"),
       id: 1,
       insightTools: [
         {
@@ -62,8 +62,8 @@ let value: ListResponseInsightWorkflowOutput = {
               "summary": "string",
             },
           },
-          createdAt: new Date("2025-09-24T00:00:00Z"),
-          updatedAt: new Date("2025-09-25T00:00:00Z"),
+          createdAt: new Date("2025-09-28T00:00:00Z"),
+          updatedAt: new Date("2025-09-29T00:00:00Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
@@ -74,11 +74,11 @@ let value: ListResponseInsightWorkflowOutput = {
         estimatedDailyCount: 10,
         estimatedDailyDuration: 3674.11,
         estimatedDailyCost: 45.25,
-        estimatedBackfillCost: 4561.00,
+        estimatedBackfillCost: 4561,
       },
       queueCount: 10,
-      createdAt: new Date("2025-09-24T00:00:00Z"),
-      updatedAt: new Date("2025-09-25T00:00:00Z"),
+      createdAt: new Date("2025-09-28T00:00:00Z"),
+      updatedAt: new Date("2025-09-29T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

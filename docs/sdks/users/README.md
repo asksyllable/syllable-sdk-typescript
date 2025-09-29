@@ -19,6 +19,7 @@ List the existing users.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="users_list" method="get" path="/api/v1/users/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -39,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Create a new user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="users_create" method="post" path="/api/v1/users/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -128,7 +126,6 @@ async function run() {
     loginType: "username_and_password",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -157,15 +154,12 @@ async function run() {
     roleId: 1,
     loginType: "username_and_password",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -197,6 +191,7 @@ Update an existing user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="users_update" method="put" path="/api/v1/users/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -213,7 +208,6 @@ async function run() {
     lastUpdatedComments: "Updated to change which role was assigned",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -242,15 +236,12 @@ async function run() {
     roleId: 1,
     lastUpdatedComments: "Updated to change which role was assigned",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -282,6 +273,7 @@ Delete a user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="users_delete" method="delete" path="/api/v1/users/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -295,7 +287,6 @@ async function run() {
     reason: "User left the organization",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -321,15 +312,12 @@ async function run() {
     email: "user@syllable.ai",
     reason: "User left the organization",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -361,6 +349,7 @@ Fetch a given user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="users_get_by_email" method="get" path="/api/v1/users/{user_email}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -373,7 +362,6 @@ async function run() {
     userEmail: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -398,15 +386,12 @@ async function run() {
   const res = await usersUsersGetByEmail(syllableSDK, {
     userEmail: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersUsersGetByEmail failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -438,6 +423,7 @@ Send a welcome email to a user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="users_send_email" method="post" path="/api/v1/users/{user_email}/send_email" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -450,7 +436,6 @@ async function run() {
     userEmail: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -475,15 +460,12 @@ async function run() {
   const res = await usersUsersSendEmail(syllableSDK, {
     userEmail: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersUsersSendEmail failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -516,6 +498,7 @@ accounts.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="users_delete_account" method="delete" path="/api/v1/users/delete_account" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -526,7 +509,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.users.usersDeleteAccount();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -549,15 +531,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await usersUsersDeleteAccount(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersUsersDeleteAccount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

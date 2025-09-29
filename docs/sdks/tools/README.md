@@ -19,6 +19,7 @@ List the existing tools
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="tool_list" method="get" path="/api/v1/tools/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -39,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("toolsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Create a new tool
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="tool_create" method="post" path="/api/v1/tools/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -135,15 +133,15 @@ async function run() {
       },
       endpoint: {
         url: "https://api.example.com",
-        method: "get",
+        method: "post",
         argumentLocation: "path",
       },
       defaults: "<value>",
       staticParameters: [
         {
           name: "temperature_unit",
-          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
-          required: true,
+          description: "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+          required: false,
           type: "string",
           default: "fahrenheit",
         },
@@ -152,7 +150,6 @@ async function run() {
     serviceId: 1,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -189,15 +186,15 @@ async function run() {
       },
       endpoint: {
         url: "https://api.example.com",
-        method: "get",
+        method: "post",
         argumentLocation: "path",
       },
       defaults: "<value>",
       staticParameters: [
         {
           name: "temperature_unit",
-          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
-          required: true,
+          description: "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+          required: false,
           type: "string",
           default: "fahrenheit",
         },
@@ -205,15 +202,12 @@ async function run() {
     },
     serviceId: 1,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("toolsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -245,6 +239,7 @@ Update an existing tool
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="tool_update" method="put" path="/api/v1/tools/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -268,15 +263,15 @@ async function run() {
       },
       endpoint: {
         url: "https://api.example.com",
-        method: "post",
-        argumentLocation: "path",
+        method: "get",
+        argumentLocation: "form",
       },
       defaults: "<value>",
       staticParameters: [
         {
           name: "temperature_unit",
-          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
-          required: true,
+          description: "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+          required: false,
           type: "string",
           default: "fahrenheit",
         },
@@ -287,7 +282,6 @@ async function run() {
     lastUpdatedComments: "Updated to use new API endpoint",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -324,15 +318,15 @@ async function run() {
       },
       endpoint: {
         url: "https://api.example.com",
-        method: "post",
-        argumentLocation: "path",
+        method: "get",
+        argumentLocation: "form",
       },
       defaults: "<value>",
       staticParameters: [
         {
           name: "temperature_unit",
-          description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
-          required: true,
+          description: "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+          required: false,
           type: "string",
           default: "fahrenheit",
         },
@@ -342,15 +336,12 @@ async function run() {
     id: 1,
     lastUpdatedComments: "Updated to use new API endpoint",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("toolsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -382,6 +373,7 @@ Get the details of a specific tool
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="tool_get_by_name" method="get" path="/api/v1/tools/{tool_name}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -394,7 +386,6 @@ async function run() {
     toolName: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -419,15 +410,12 @@ async function run() {
   const res = await toolsGetByName(syllableSDK, {
     toolName: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("toolsGetByName failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -459,6 +447,7 @@ Delete a tool.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="tool_delete" method="delete" path="/api/v1/tools/{tool_name}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -472,7 +461,6 @@ async function run() {
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -498,15 +486,12 @@ async function run() {
     toolName: "<value>",
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("toolsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

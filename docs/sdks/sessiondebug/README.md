@@ -15,6 +15,7 @@ Get Session Data By Sid
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_session_data_by_sid" method="get" path="/api/v1/session_debug/sid/{channel_manager_service}/{channel_manager_sid}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -28,7 +29,6 @@ async function run() {
     channelManagerSid: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -54,15 +54,12 @@ async function run() {
     channelManagerService: "<value>",
     channelManagerSid: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionDebugGetSessionDataBySid failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -94,6 +91,7 @@ Get Session Data By Session Id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_session_data_by_session_id" method="get" path="/api/v1/session_debug/session_id/{session_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -103,10 +101,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.sessionDebug.getSessionDataBySessionId({
-    sessionId: 744354,
+    sessionId: 303182,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -129,17 +126,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await sessionDebugGetSessionDataBySessionId(syllableSDK, {
-    sessionId: 744354,
+    sessionId: 303182,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionDebugGetSessionDataBySessionId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -171,6 +165,7 @@ Get Session Tool Call Result By Id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_session_tool_call_result_by_id" method="get" path="/api/v1/session_debug/tool_result/{session_id}/{tool_call_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -180,11 +175,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.sessionDebug.getSessionToolCallResultById({
-    sessionId: 187795,
+    sessionId: 832133,
     toolCallId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -207,18 +201,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await sessionDebugGetSessionToolCallResultById(syllableSDK, {
-    sessionId: 187795,
+    sessionId: 832133,
     toolCallId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionDebugGetSessionToolCallResultById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

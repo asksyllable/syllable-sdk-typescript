@@ -15,6 +15,7 @@ Get all available permissions in the system.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="permissions_list" method="get" path="/api/v1/permissions/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -25,7 +26,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.permissions.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,15 +48,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await permissionsList(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("permissionsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -43,6 +43,10 @@ export type PromptCreateRequest = {
    */
   llmConfig: PromptLlmConfig;
   /**
+   * Whether session end functionality is enabled for this prompt
+   */
+  sessionEndEnabled?: boolean | undefined;
+  /**
    * Whether to include the default tools (`hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.
    */
   includeDefaultTools?: boolean | undefined;
@@ -60,10 +64,12 @@ export const PromptCreateRequest$inboundSchema: z.ZodType<
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
+  session_end_enabled: z.boolean().default(false),
   include_default_tools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     "llm_config": "llmConfig",
+    "session_end_enabled": "sessionEndEnabled",
     "include_default_tools": "includeDefaultTools",
   });
 });
@@ -76,6 +82,7 @@ export type PromptCreateRequest$Outbound = {
   context?: string | null | undefined;
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
+  session_end_enabled: boolean;
   include_default_tools: boolean;
 };
 
@@ -91,10 +98,12 @@ export const PromptCreateRequest$outboundSchema: z.ZodType<
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
+  sessionEndEnabled: z.boolean().default(false),
   includeDefaultTools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
+    sessionEndEnabled: "session_end_enabled",
     includeDefaultTools: "include_default_tools",
   });
 });

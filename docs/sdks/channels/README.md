@@ -18,6 +18,7 @@ Get Channels
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_list" method="get" path="/api/v1/channels/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -38,7 +39,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -71,15 +71,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -111,6 +108,7 @@ Create Channel
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_create" method="post" path="/api/v1/channels/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -121,8 +119,9 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.channels.create({
     name: "twilio",
-    channelService: "twilio",
+    channelService: "sip",
     supportedModes: "chat,voice",
+    isSystemChannel: false,
     config: {
       accountSid: "AC123...",
       authToken: "sometoken",
@@ -136,7 +135,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -160,8 +158,9 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await channelsCreate(syllableSDK, {
     name: "twilio",
-    channelService: "twilio",
+    channelService: "sip",
     supportedModes: "chat,voice",
+    isSystemChannel: false,
     config: {
       accountSid: "AC123...",
       authToken: "sometoken",
@@ -174,15 +173,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -214,6 +210,7 @@ Update Channel
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_update" method="put" path="/api/v1/channels/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -224,8 +221,9 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.channels.update({
     name: "twilio",
-    channelService: "webchat",
+    channelService: "sip",
     supportedModes: "chat,voice",
+    isSystemChannel: false,
     config: {
       accountSid: "AC123...",
       authToken: "sometoken",
@@ -240,7 +238,6 @@ async function run() {
     id: 1,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -264,8 +261,9 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await channelsUpdate(syllableSDK, {
     name: "twilio",
-    channelService: "webchat",
+    channelService: "sip",
     supportedModes: "chat,voice",
+    isSystemChannel: false,
     config: {
       accountSid: "AC123...",
       authToken: "sometoken",
@@ -279,15 +277,12 @@ async function run() {
     },
     id: 1,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -319,6 +314,7 @@ Hard-delete a channel target by ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channel_targets_delete" method="delete" path="/api/v1/channels/{channel_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -332,7 +328,6 @@ async function run() {
     targetId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -358,15 +353,12 @@ async function run() {
     channelId: "<id>",
     targetId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

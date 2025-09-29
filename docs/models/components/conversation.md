@@ -9,7 +9,7 @@ more sessions.
 import { Conversation } from "syllable-sdk/models/components";
 
 let value: Conversation = {
-  timestamp: new Date("2023-07-20T18:39:56.110Z"),
+  timestamp: new Date("2023-03-29T08:06:26.678Z"),
   conversationId: "<id>",
 };
 ```

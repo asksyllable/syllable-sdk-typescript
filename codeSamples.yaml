@@ -28,7 +28,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -75,11 +74,10 @@ actions:
                 toolHeaders: {
                   "some-header": "some-value",
                 },
-                sttProvider: "Google STT V1",
-                waitSound: "Keyboard 1",
+                sttProvider: "Google STT V2 (Chirp 2)",
+                waitSound: "No Sound",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -108,7 +106,7 @@ actions:
                 promptId: 1,
                 customMessageId: 1,
                 languageGroupId: 1,
-                timezone: "America/Chicago",
+                timezone: "America/New_York",
                 promptToolDefaults: [
                   {
                     toolName: "get_weather",
@@ -126,12 +124,11 @@ actions:
                 toolHeaders: {
                   "some-header": "some-value",
                 },
-                sttProvider: "Google STT V2",
-                waitSound: "Keyboard 1",
+                sttProvider: "Google STT V2 (Chirp 2)",
+                waitSound: "No Sound",
                 id: 1,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -157,7 +154,6 @@ actions:
                 agentId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -177,7 +173,6 @@ actions:
             async function run() {
               const result = await syllableSDK.agents.agentGetAvailableVoices();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -196,11 +191,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.agents.delete({
-                agentId: 545907,
+                agentId: 78115,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -219,10 +213,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.agents.getById({
-                agentId: 931598,
+                agentId: 910445,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -252,7 +245,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -272,8 +264,9 @@ actions:
             async function run() {
               const result = await syllableSDK.channels.create({
                 name: "twilio",
-                channelService: "twilio",
+                channelService: "sip",
                 supportedModes: "chat,voice",
+                isSystemChannel: false,
                 config: {
                   accountSid: "AC123...",
                   authToken: "sometoken",
@@ -287,7 +280,6 @@ actions:
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -307,8 +299,9 @@ actions:
             async function run() {
               const result = await syllableSDK.channels.update({
                 name: "twilio",
-                channelService: "webchat",
+                channelService: "sip",
                 supportedModes: "chat,voice",
+                isSystemChannel: false,
                 config: {
                   accountSid: "AC123...",
                   authToken: "sometoken",
@@ -323,7 +316,6 @@ actions:
                 id: 1,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -344,7 +336,7 @@ actions:
               const result = await syllableSDK.channels.targets.availableTargets({
                 page: 0,
                 searchFields: [
-                  "channel_name",
+                  "target",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -353,7 +345,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -374,7 +365,7 @@ actions:
               const result = await syllableSDK.channels.targets.list({
                 page: 0,
                 searchFields: [
-                  "fallback_target",
+                  "agent_id",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -383,7 +374,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -409,7 +399,6 @@ actions:
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -430,13 +419,9 @@ actions:
               const result = await syllableSDK.channels.twilio.update({
                 id: 1,
                 name: "syllable-webchat",
-                config: {
-                  accountSid: "AC123...",
-                  authToken: "sometoken",
-                },
+                config: null,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -455,10 +440,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.twilio.getById({
-                channelId: 931598,
+                channelId: 627671,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -477,10 +461,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.twilio.numbers.list({
-                channelId: 768578,
+                channelId: 739627,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -499,14 +482,13 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.twilio.numbers.add({
-                channelId: 551477,
+                channelId: 314558,
                 twilioNumberAddRequest: {
                   friendlyName: "Support Line",
                   areaCode: "804",
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -525,14 +507,13 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.twilio.numbers.update({
-                channelId: 857478,
+                channelId: 815949,
                 twilioNumberUpdateRequest: {
                   friendlyName: "Support Line",
                   phoneSid: "PN123",
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -555,7 +536,6 @@ actions:
                 targetId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -574,17 +554,17 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.create({
-                channelId: 638424,
+                channelId: 824809,
                 channelTargetCreateRequest: {
                   agentId: 1,
                   channelId: 1,
                   target: "+19995551234",
-                  targetMode: "chat",
+                  targetMode: "email",
                   fallbackTarget: "+19995551235",
+                  isTest: true,
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -603,11 +583,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.getById({
-                channelId: 931598,
-                targetId: 505057,
+                channelId: 184507,
+                targetId: 235358,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -626,19 +605,19 @@ actions:
 
             async function run() {
               const result = await syllableSDK.channels.targets.update({
-                channelId: 597129,
-                targetId: 344620,
+                channelId: 508167,
+                targetId: 880236,
                 channelTargetUpdateRequest: {
                   agentId: 1,
                   channelId: 1,
                   target: "+19995551234",
                   targetMode: "email",
                   fallbackTarget: "+19995551235",
+                  isTest: true,
                   id: 1,
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -659,7 +638,7 @@ actions:
               const result = await syllableSDK.conversations.list({
                 page: 0,
                 searchFields: [
-                  "llm_model",
+                  "agent_name",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -668,7 +647,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -698,7 +676,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -726,35 +703,23 @@ actions:
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
                     date: "2025-01-01",
-                    daysOfWeek: [
-                      "mo",
-                      "tu",
-                      "we",
-                      "th",
-                      "fr",
-                    ],
                     invert: false,
                     text: "Hello, thank you for calling. Sorry, we're closed today.",
                   },
                   {
-                    description: "Closed on New Year's Day",
+                    description: "Closed on weekends",
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
-                    date: "2025-01-01",
                     daysOfWeek: [
-                      "mo",
-                      "tu",
-                      "we",
-                      "th",
-                      "fr",
+                      "sa",
+                      "su",
                     ],
                     invert: false,
-                    text: "Hello, thank you for calling. Sorry, we're closed today.",
+                    text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
                   },
                 ],
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -782,36 +747,24 @@ actions:
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
                     date: "2025-01-01",
-                    daysOfWeek: [
-                      "mo",
-                      "tu",
-                      "we",
-                      "th",
-                      "fr",
-                    ],
                     invert: false,
                     text: "Hello, thank you for calling. Sorry, we're closed today.",
                   },
                   {
-                    description: "Closed on New Year's Day",
+                    description: "Closed on weekends",
                     timeRangeStart: "09:00",
                     timeRangeEnd: "17:00",
-                    date: "2025-01-01",
                     daysOfWeek: [
-                      "mo",
-                      "tu",
-                      "we",
-                      "th",
-                      "fr",
+                      "sa",
+                      "su",
                     ],
                     invert: false,
-                    text: "Hello, thank you for calling. Sorry, we're closed today.",
+                    text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
                   },
                 ],
                 id: 1,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -830,11 +783,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.customMessages.delete({
-                customMessageId: 545907,
+                customMessageId: 729986,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -853,10 +805,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.customMessages.getById({
-                customMessageId: 931598,
+                customMessageId: 909433,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -878,7 +829,6 @@ actions:
                 dashboardName: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -908,7 +858,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -938,7 +887,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -973,7 +921,6 @@ actions:
                 "The Best Pizza, 789 Circle Dr.",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1010,7 +957,6 @@ actions:
                 "The Best Pizza, 789 Circle Dr.",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1029,11 +975,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.dataSources.delete({
-                dataSourceId: 545907,
+                dataSourceId: 509584,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1052,10 +997,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.dataSources.getById({
-                dataSourceId: 931598,
+                dataSourceId: 87219,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1076,7 +1020,7 @@ actions:
               const result = await syllableSDK.events.list({
                 page: 0,
                 searchFields: [
-                  "user_id",
+                  "description",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -1085,7 +1029,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1106,7 +1049,7 @@ actions:
               const result = await syllableSDK.incidents.list({
                 page: 0,
                 searchFields: [
-                  "start_datetime",
+                  "updated_at",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -1115,7 +1058,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1145,7 +1087,6 @@ actions:
                 subOrganization: "SubOrg A",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1178,7 +1119,6 @@ actions:
                 updatedAt: new Date("2023-10-01T08:00:00Z"),
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1198,7 +1138,6 @@ actions:
             async function run() {
               const result = await syllableSDK.incidents.incidentGetOrganizations();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1217,11 +1156,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.incidents.delete({
-                incidentId: 545907,
+                incidentId: 400877,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1240,10 +1178,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.incidents.getById({
-                incidentId: 931598,
+                incidentId: 835824,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1264,7 +1201,7 @@ actions:
               const result = await syllableSDK.insights.list({
                 page: 0,
                 searchFields: [
-                  "insight_key",
+                  "upload_file_id",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -1273,7 +1210,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1303,7 +1239,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1327,7 +1262,6 @@ actions:
                 description: "Call recordings related to customer complaints",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1346,10 +1280,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.folders.delete({
-                folderId: 545907,
+                folderId: 410792,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1368,10 +1301,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.folders.getById({
-                folderId: 931598,
+                folderId: 982079,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1390,7 +1322,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.folders.update({
-                folderId: 857478,
+                folderId: 567518,
                 insightsFolderInput: {
                   name: "customer-complaints",
                   label: "support",
@@ -1398,7 +1330,6 @@ actions:
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1417,10 +1348,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.folders.listFiles({
-                folderId: 74439,
+                folderId: 55293,
                 page: 0,
                 searchFields: [
-                  "start_time",
+                  "customer_number",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -1429,7 +1360,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1448,16 +1378,17 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.folders.moveFiles({
-                folderId: 623467,
+                folderId: 815114,
                 insightsFolderFileMove: {
                   destinationFolderId: 182764,
                   fileIdList: [
-                    [12334,23445,34556],
+                    12334,
+                    23445,
+                    34556,
                   ],
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1476,11 +1407,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.folders.uploadFile({
-                folderId: 209119,
+                folderId: 444923,
                 callId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1510,7 +1440,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1538,7 +1467,6 @@ actions:
                 insightToolDefinitionId: 1,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1557,10 +1485,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.tools.delete({
-                toolId: 545907,
+                toolId: 770449,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1582,7 +1509,6 @@ actions:
                 toolId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1601,7 +1527,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.tools.update({
-                toolId: 857478,
+                toolId: 368362,
                 insightToolInput: {
                   name: "summary-tool",
                   description: "This tool uses GPT4.1 to generate a summary of the call",
@@ -1613,7 +1539,6 @@ actions:
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1633,7 +1558,6 @@ actions:
             async function run() {
               const result = await syllableSDK.insights.tools.insightToolGetDefinitions();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1657,7 +1581,6 @@ actions:
                 uploadFileId: 283467,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1687,7 +1610,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1707,7 +1629,7 @@ actions:
             async function run() {
               const result = await syllableSDK.insights.workflows.create({
                 name: "summary-workflow",
-                source: "upload",
+                source: "agent",
                 description: "Default workflow - generates a summary of the call",
                 insightToolIds: [
                   1,
@@ -1732,11 +1654,10 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-09-24T00:00:00Z"),
-                endDatetime: new Date("2025-09-25T00:00:00Z"),
+                startDatetime: new Date("2025-09-28T00:00:00Z"),
+                endDatetime: new Date("2025-09-29T00:00:00Z"),
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1757,14 +1678,17 @@ actions:
               const result = await syllableSDK.insights.workflows.queueWork({
                 workflowName: "summary-workflow",
                 sessionIdList: [
-                  [12334,23445,34556],
+                  12334,
+                  23445,
+                  34556,
                 ],
                 fileIdList: [
-                  [1234,1678,2224],
+                  1234,
+                  1678,
+                  2224,
                 ],
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1783,10 +1707,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.delete({
-                workflowId: 545907,
+                workflowId: 609419,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1805,10 +1728,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.getById({
-                workflowId: 931598,
+                workflowId: 788857,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1827,10 +1749,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.update({
-                workflowId: 488852,
+                workflowId: 673493,
                 insightWorkflowInput: {
                   name: "summary-workflow",
-                  source: "manual",
+                  source: "agent",
                   description: "Default workflow - generates a summary of the call",
                   insightToolIds: [
                     1,
@@ -1840,8 +1762,8 @@ actions:
                     maxDuration: 600,
                     sampleRate: 0.1,
                     agentList: [
-                      "Agnes.Wangeci",
-                      "Dorice.Otaaba",
+                      866324,
+                      826325,
                     ],
                     promptList: [
                       "123324",
@@ -1855,12 +1777,11 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-09-24T00:00:00Z"),
-                  endDatetime: new Date("2025-09-25T00:00:00Z"),
+                  startDatetime: new Date("2025-09-28T00:00:00Z"),
+                  endDatetime: new Date("2025-09-29T00:00:00Z"),
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1879,7 +1800,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.activate({
-                workflowId: 537910,
+                workflowId: 303095,
                 insightWorkflowActivate: {
                   isAcknowledged: true,
                   estimate: {
@@ -1888,12 +1809,11 @@ actions:
                     estimatedDailyCount: 10,
                     estimatedDailyDuration: 3674.11,
                     estimatedDailyCost: 45.25,
-                    estimatedBackfillCost: 4561.00,
+                    estimatedBackfillCost: 4561,
                   },
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1912,10 +1832,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.insights.workflows.inactivate({
-                workflowId: 550727,
+                workflowId: 248768,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1945,7 +1864,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -1971,23 +1889,18 @@ actions:
                     languageCode: "en-US",
                     voiceProvider: "OpenAI",
                     voiceDisplayName: "Alloy",
-                    voiceSpeed: 1,
-                    voicePitch: 0,
                     dtmfCode: 1,
                   },
                   {
                     languageCode: "es-US",
                     voiceProvider: "Google",
                     voiceDisplayName: "es-US-Neural2-B",
-                    voiceSpeed: 1,
-                    voicePitch: 0,
-                    dtmfCode: 1,
+                    dtmfCode: 2,
                   },
                 ],
                 skipCurrentLanguageInMessage: true,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2013,17 +1926,13 @@ actions:
                     languageCode: "en-US",
                     voiceProvider: "OpenAI",
                     voiceDisplayName: "Alloy",
-                    voiceSpeed: 1,
-                    voicePitch: 0,
                     dtmfCode: 1,
                   },
                   {
                     languageCode: "es-US",
                     voiceProvider: "Google",
                     voiceDisplayName: "es-US-Neural2-B",
-                    voiceSpeed: 1,
-                    voicePitch: 0,
-                    dtmfCode: 1,
+                    dtmfCode: 2,
                   },
                 ],
                 skipCurrentLanguageInMessage: true,
@@ -2031,7 +1940,6 @@ actions:
                 editComments: "Added Spanish support.",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2050,14 +1958,13 @@ actions:
 
             async function run() {
               const result = await syllableSDK.languageGroups.languageGroupsCreateVoiceSample({
-                languageCode: "ko-KR",
-                voiceProvider: "OpenAI",
-                voiceDisplayName: "Sarah",
+                languageCode: "es-US",
+                voiceProvider: "Google",
+                voiceDisplayName: "en-US-Neural2-D",
                 voiceSpeed: 1,
                 voicePitch: 0,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2076,11 +1983,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.languageGroups.delete({
-                languageGroupId: 545907,
+                languageGroupId: 572805,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2099,10 +2005,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.languageGroups.getById({
-                languageGroupId: 931598,
+                languageGroupId: 453313,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2122,7 +2027,6 @@ actions:
             async function run() {
               const result = await syllableSDK.organizations.delete();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2142,7 +2046,6 @@ actions:
             async function run() {
               const result = await syllableSDK.organizations.organizationsGet();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2169,7 +2072,6 @@ actions:
                 samlProviderId: "saml.syllablesso",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2195,7 +2097,6 @@ actions:
                 updateComments: "Updated the organization to add a new domain",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2216,7 +2117,7 @@ actions:
               const result = await syllableSDK.outbound.batches.list({
                 page: 0,
                 searchFields: [
-                  "expires_on",
+                  "last_updated_at",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -2225,7 +2126,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2244,13 +2144,12 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20250925.9",
+                batchId: "20250929.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-09-26T00:00:00Z"),
+                expiresOn: new Date("2025-09-30T00:00:00Z"),
                 paused: true,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2275,7 +2174,6 @@ actions:
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2297,7 +2195,6 @@ actions:
                 batchId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2318,12 +2215,11 @@ actions:
               const result = await syllableSDK.outbound.batches.update({
                 batchId: "<id>",
                 communicationBatchUpdate: {
-                  paused: false,
+                  paused: true,
                   expiresOn: new Date("2027-01-01T06:00:00Z"),
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2344,12 +2240,11 @@ actions:
               const result = await syllableSDK.outbound.batches.remove({
                 batchId: "<id>",
                 requestBody: [
-                  "<value>",
-                  "<value>",
+                  "<value 1>",
+                  "<value 2>",
                 ],
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2371,15 +2266,13 @@ actions:
                 batchId: "<id>",
                 communicationRequest: {
                   referenceId: "12345",
-                  target: "+15125551234",
+                  target: "512-555-1234",
                   requestVariables: {
-                    "key": "<value>",
-                    "key1": "<value>",
+
                   },
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2401,7 +2294,6 @@ actions:
                 batchId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2423,7 +2315,6 @@ actions:
                 batchId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2444,7 +2335,7 @@ actions:
               const result = await syllableSDK.outbound.campaigns.list({
                 page: 0,
                 searchFields: [
-                  "updated_at",
+                  "id",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -2453,7 +2344,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2486,15 +2376,20 @@ actions:
                 },
                 dailyStartTime: "09:00:00",
                 dailyEndTime: "17:00:00",
-                source: "account@email.com",
+                source: "+19032900844",
                 callerId: "19995551234",
-                retryInterval: "12h",
+                hourlyRate: 25,
+                retryCount: 1,
+                retryInterval: "30m",
                 activeDays: [
                   "mon",
+                  "tue",
+                  "wed",
+                  "thu",
+                  "fri",
                 ],
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2513,10 +2408,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.delete({
-                campaignId: 545907,
+                campaignId: 439537,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2535,10 +2429,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.getById({
-                campaignId: 931598,
+                campaignId: 11227,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2557,11 +2450,11 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.update({
-                campaignId: 627690,
+                campaignId: 679645,
                 outboundCampaignInput: {
                   campaignName: "Outbound Campaign 1",
                   description: "This is a test campaign",
-                  mode: "sms",
+                  mode: "voice",
                   smsSessionTtl: 720,
                   labels: [
                     "test",
@@ -2573,16 +2466,21 @@ actions:
                   },
                   dailyStartTime: "09:00:00",
                   dailyEndTime: "17:00:00",
-                  source: "account@email.com",
+                  source: "+19032900844",
                   callerId: "19995551234",
-                  retryInterval: "12h",
+                  hourlyRate: 25,
+                  retryCount: 1,
+                  retryInterval: "30m",
                   activeDays: [
-                    "sun",
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
                   ],
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2602,7 +2500,6 @@ actions:
             async function run() {
               const result = await syllableSDK.permissions.list();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2632,7 +2529,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2655,9 +2551,7 @@ actions:
                 description: "Prompt for a weather agent.",
                 type: "prompt_v1",
                 context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
-                tools: [
-
-                ],
+                tools: [],
                 llmConfig: {
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -2666,7 +2560,6 @@ actions:
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2689,9 +2582,7 @@ actions:
                 description: "Prompt for a weather agent.",
                 type: "prompt_v1",
                 context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
-                tools: [
-
-                ],
+                tools: [],
                 llmConfig: {
                   version: "2024-05-13",
                   apiVersion: "2024-06-01",
@@ -2702,7 +2593,6 @@ actions:
                 editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2722,7 +2612,6 @@ actions:
             async function run() {
               const result = await syllableSDK.prompts.promptGetSupportedLlms();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2741,11 +2630,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.prompts.delete({
-                promptId: 545907,
+                promptId: 982839,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2764,10 +2652,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.prompts.getById({
-                promptId: 931598,
+                promptId: 417330,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2786,10 +2673,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.prompts.promptsHistory({
-                promptId: 627932,
+                promptId: 922849,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2819,7 +2705,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2847,7 +2732,6 @@ actions:
                 ],
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2877,7 +2761,6 @@ actions:
                 lastUpdatedComments: "Updated to add delete permission",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2896,11 +2779,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.roles.delete({
-                roleId: 545907,
+                roleId: 458987,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2919,10 +2801,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.roles.getById({
-                roleId: 931598,
+                roleId: 324660,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2952,7 +2833,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -2980,7 +2860,6 @@ actions:
                 },
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3010,7 +2889,6 @@ actions:
                 lastUpdatedComments: "Updated description to correct typo",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3029,11 +2907,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.services.delete({
-                serviceId: 545907,
+                serviceId: 754999,
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3052,10 +2929,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.services.getById({
-                serviceId: 931598,
+                serviceId: 902529,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3074,10 +2950,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessionDebug.getSessionDataBySessionId({
-                sessionId: 744354,
+                sessionId: 303182,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3100,7 +2975,6 @@ actions:
                 channelManagerSid: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3119,11 +2993,10 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessionDebug.getSessionToolCallResultById({
-                sessionId: 187795,
+                sessionId: 832133,
                 toolCallId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3144,7 +3017,7 @@ actions:
               const result = await syllableSDK.sessionLabels.list({
                 page: 0,
                 searchFields: [
-                  "issue_categories",
+                  "code",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -3153,7 +3026,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3174,14 +3046,13 @@ actions:
               const result = await syllableSDK.sessionLabels.create({
                 sessionId: 1,
                 type: "auto-rating",
-                code: "BAD",
+                code: "GOOD",
                 userEmail: "user@email.com",
                 issueCategories: [
                   "Silent treatment",
                 ],
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3200,10 +3071,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.sessionLabels.getById({
-                sessionLabelId: 931598,
+                sessionLabelId: 491550,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3224,7 +3094,7 @@ actions:
               const result = await syllableSDK.sessions.list({
                 page: 0,
                 searchFields: [
-                  "target",
+                  "conversation_id",
                 ],
                 searchFieldValues: [
                   "Some Object Name",
@@ -3233,7 +3103,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3255,7 +3124,6 @@ actions:
                 sessionId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3277,7 +3145,6 @@ actions:
                 sessionId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3299,7 +3166,6 @@ actions:
                 token: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3321,7 +3187,6 @@ actions:
                 sessionId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3343,7 +3208,6 @@ actions:
                 sessionId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3365,7 +3229,6 @@ actions:
                 sessionId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3385,7 +3248,6 @@ actions:
             async function run() {
               const result = await syllableSDK.takeouts.create();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3407,7 +3269,6 @@ actions:
                 jobId: "<id>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3430,7 +3291,6 @@ actions:
                 fileName: "example.file",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3460,7 +3320,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3493,15 +3352,15 @@ actions:
                   },
                   endpoint: {
                     url: "https://api.example.com",
-                    method: "get",
+                    method: "post",
                     argumentLocation: "path",
                   },
                   defaults: "<value>",
                   staticParameters: [
                     {
                       name: "temperature_unit",
-                      description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
-                      required: true,
+                      description: "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+                      required: false,
                       type: "string",
                       default: "fahrenheit",
                     },
@@ -3510,7 +3369,6 @@ actions:
                 serviceId: 1,
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3543,15 +3401,15 @@ actions:
                   },
                   endpoint: {
                     url: "https://api.example.com",
-                    method: "post",
-                    argumentLocation: "path",
+                    method: "get",
+                    argumentLocation: "form",
                   },
                   defaults: "<value>",
                   staticParameters: [
                     {
                       name: "temperature_unit",
-                      description: "Whether the temperature information should be fetched in celsius or fahrenheit.",
-                      required: true,
+                      description: "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+                      required: false,
                       type: "string",
                       default: "fahrenheit",
                     },
@@ -3562,7 +3420,6 @@ actions:
                 lastUpdatedComments: "Updated to use new API endpoint",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3585,7 +3442,6 @@ actions:
                 reason: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3607,7 +3463,6 @@ actions:
                 toolName: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3630,7 +3485,6 @@ actions:
                 reason: "User left the organization",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3650,7 +3504,6 @@ actions:
                 reason: "User left the organization",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3680,7 +3533,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3707,7 +3559,6 @@ actions:
                 endDatetime: "2024-01-01T00:00:00Z",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3733,7 +3584,6 @@ actions:
                 loginType: "username_and_password",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3756,7 +3606,6 @@ actions:
                 loginType: "username_and_password",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3782,7 +3631,6 @@ actions:
                 lastUpdatedComments: "Updated to change which role was assigned",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3805,7 +3653,6 @@ actions:
                 lastUpdatedComments: "Updated to change which role was assigned",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3825,7 +3672,6 @@ actions:
             async function run() {
               const result = await syllableSDK.users.usersDeleteAccount();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3842,7 +3688,6 @@ actions:
             async function run() {
               const result = await syllableSDK.v1.usersDeleteAccount();
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3864,7 +3709,6 @@ actions:
                 userEmail: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3883,7 +3727,6 @@ actions:
                 userEmail: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3905,7 +3748,6 @@ actions:
                 userEmail: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 
@@ -3924,7 +3766,6 @@ actions:
                 userEmail: "<value>",
               });
 
-              // Handle the result
               console.log(result);
             }
 

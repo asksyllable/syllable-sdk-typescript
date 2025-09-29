@@ -19,6 +19,7 @@ List the existing custom_messages
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="custom_messages_list" method="get" path="/api/v1/custom_messages/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -39,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customMessagesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Create a new custom message
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="custom_messages_create" method="post" path="/api/v1/custom_messages/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -130,35 +128,23 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
-        daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
-        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on New Year's Day",
+        description: "Closed on weekends",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
-        date: "2025-01-01",
         daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
+          "sa",
+          "su",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed today.",
+        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -190,42 +176,28 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
-        daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
-        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on New Year's Day",
+        description: "Closed on weekends",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
-        date: "2025-01-01",
         daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
+          "sa",
+          "su",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed today.",
+        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customMessagesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -257,6 +229,7 @@ Update a custom message
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="custom_messages_update" method="put" path="/api/v1/custom_messages/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -275,36 +248,24 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
-        daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
-        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on New Year's Day",
+        description: "Closed on weekends",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
-        date: "2025-01-01",
         daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
+          "sa",
+          "su",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed today.",
+        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
     id: 1,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -336,43 +297,29 @@ async function run() {
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
         date: "2025-01-01",
-        daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
-        ],
         invert: false,
         text: "Hello, thank you for calling. Sorry, we're closed today.",
       },
       {
-        description: "Closed on New Year's Day",
+        description: "Closed on weekends",
         timeRangeStart: "09:00",
         timeRangeEnd: "17:00",
-        date: "2025-01-01",
         daysOfWeek: [
-          "mo",
-          "tu",
-          "we",
-          "th",
-          "fr",
+          "sa",
+          "su",
         ],
         invert: false,
-        text: "Hello, thank you for calling. Sorry, we're closed today.",
+        text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
     id: 1,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customMessagesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -404,6 +351,7 @@ Get the custom message by its ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="custom_message_get_by_id" method="get" path="/api/v1/custom_messages/{custom_message_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -413,10 +361,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.customMessages.getById({
-    customMessageId: 931598,
+    customMessageId: 909433,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -439,17 +386,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await customMessagesGetById(syllableSDK, {
-    customMessageId: 931598,
+    customMessageId: 909433,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customMessagesGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -481,6 +425,7 @@ Delete custom message by ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="custom_messages_delete" method="delete" path="/api/v1/custom_messages/{custom_message_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -490,11 +435,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.customMessages.delete({
-    customMessageId: 545907,
+    customMessageId: 729986,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -517,18 +461,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await customMessagesDelete(syllableSDK, {
-    customMessageId: 545907,
+    customMessageId: 729986,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customMessagesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

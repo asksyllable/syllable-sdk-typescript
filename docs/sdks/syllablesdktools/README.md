@@ -21,6 +21,7 @@ List the existing insight_tools
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insight_tool_list" method="get" path="/api/v1/insights/tool-configurations" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -41,7 +42,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -74,15 +74,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -114,6 +111,7 @@ Create a new insight tool.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_tool_create" method="post" path="/api/v1/insights/tool-configurations" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -132,7 +130,6 @@ async function run() {
     insightToolDefinitionId: 1,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -163,15 +160,12 @@ async function run() {
     },
     insightToolDefinitionId: 1,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -203,6 +197,7 @@ Get a InsightTool by Name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insight_tool_get_by_id" method="get" path="/api/v1/insights/tool-configurations/{tool_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -215,7 +210,6 @@ async function run() {
     toolId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -240,15 +234,12 @@ async function run() {
   const res = await insightsToolsGetById(syllableSDK, {
     toolId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -280,6 +271,7 @@ Delete an Insights tool configuration.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_tool_delete" method="delete" path="/api/v1/insights/tool-configurations/{tool_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -289,10 +281,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.tools.delete({
-    toolId: 545907,
+    toolId: 770449,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -315,17 +306,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsToolsDelete(syllableSDK, {
-    toolId: 545907,
+    toolId: 770449,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -357,6 +345,7 @@ Update an Insights tool.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_tool_update" method="put" path="/api/v1/insights/tool-configurations/{tool_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -366,7 +355,7 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.insights.tools.update({
-    toolId: 857478,
+    toolId: 368362,
     insightToolInput: {
       name: "summary-tool",
       description: "This tool uses GPT4.1 to generate a summary of the call",
@@ -378,7 +367,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -401,7 +389,7 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsToolsUpdate(syllableSDK, {
-    toolId: 857478,
+    toolId: 368362,
     insightToolInput: {
       name: "summary-tool",
       description: "This tool uses GPT4.1 to generate a summary of the call",
@@ -412,15 +400,12 @@ async function run() {
       insightToolDefinitionId: 1,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -452,6 +437,7 @@ Manually run the given insight tool against a session and return the response.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights_tool_test" method="post" path="/api/v1/insights/tools-test" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -466,7 +452,6 @@ async function run() {
     uploadFileId: 283467,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -493,15 +478,12 @@ async function run() {
     sessionId: 283467,
     uploadFileId: 283467,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsInsightsToolTest failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -533,6 +515,7 @@ Get a InsightTool by Name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insight_tool_get_definitions" method="get" path="/api/v1/insights/tool-definitions" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -543,7 +526,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.tools.insightToolGetDefinitions();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -566,15 +548,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await insightsToolsInsightToolGetDefinitions(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsToolsInsightToolGetDefinitions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

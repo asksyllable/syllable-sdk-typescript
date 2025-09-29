@@ -19,6 +19,7 @@ List the available phone numbers
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="available_targets" method="get" path="/api/v1/channels/available-targets" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -30,7 +31,7 @@ async function run() {
   const result = await syllableSDK.channels.targets.availableTargets({
     page: 0,
     searchFields: [
-      "channel_name",
+      "target",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -39,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -64,7 +64,7 @@ async function run() {
   const res = await channelsTargetsAvailableTargets(syllableSDK, {
     page: 0,
     searchFields: [
-      "channel_name",
+      "target",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -72,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTargetsAvailableTargets failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Get Channel Targets
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channel_targets_list" method="get" path="/api/v1/channels/targets" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -123,7 +121,7 @@ async function run() {
   const result = await syllableSDK.channels.targets.list({
     page: 0,
     searchFields: [
-      "fallback_target",
+      "agent_id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -132,7 +130,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -157,7 +154,7 @@ async function run() {
   const res = await channelsTargetsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "fallback_target",
+      "agent_id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -165,15 +162,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTargetsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -205,6 +199,7 @@ Assign A Channel Target
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channel_targets_create" method="post" path="/api/v1/channels/{channel_id}/targets" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -214,17 +209,17 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.targets.create({
-    channelId: 638424,
+    channelId: 824809,
     channelTargetCreateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
-      targetMode: "chat",
+      targetMode: "email",
       fallbackTarget: "+19995551235",
+      isTest: true,
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -247,24 +242,22 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTargetsCreate(syllableSDK, {
-    channelId: 638424,
+    channelId: 824809,
     channelTargetCreateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
-      targetMode: "chat",
+      targetMode: "email",
       fallbackTarget: "+19995551235",
+      isTest: true,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTargetsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -296,6 +289,7 @@ Get A Channel Target
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channel_targets_get_by_id" method="get" path="/api/v1/channels/{channel_id}/targets/{target_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -305,11 +299,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.targets.getById({
-    channelId: 931598,
-    targetId: 505057,
+    channelId: 184507,
+    targetId: 235358,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -332,18 +325,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTargetsGetById(syllableSDK, {
-    channelId: 931598,
-    targetId: 505057,
+    channelId: 184507,
+    targetId: 235358,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTargetsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -375,6 +365,7 @@ Update channel target by ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channel_targets_update" method="put" path="/api/v1/channels/{channel_id}/targets/{target_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -384,19 +375,19 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.targets.update({
-    channelId: 597129,
-    targetId: 344620,
+    channelId: 508167,
+    targetId: 880236,
     channelTargetUpdateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
       targetMode: "email",
       fallbackTarget: "+19995551235",
+      isTest: true,
       id: 1,
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -419,26 +410,24 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTargetsUpdate(syllableSDK, {
-    channelId: 597129,
-    targetId: 344620,
+    channelId: 508167,
+    targetId: 880236,
     channelTargetUpdateRequest: {
       agentId: 1,
       channelId: 1,
       target: "+19995551234",
       targetMode: "email",
       fallbackTarget: "+19995551235",
+      isTest: true,
       id: 1,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTargetsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

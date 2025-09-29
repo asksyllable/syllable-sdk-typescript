@@ -6,14 +6,7 @@
 import { ListResponseSession } from "syllable-sdk/models/components";
 
 let value: ListResponseSession = {
-  items: [
-    {
-      timestamp: new Date("2025-02-03T09:09:59.216Z"),
-      channelManagerService: "hedy",
-      channelManagerType: "web_chat_v1",
-      source: "user@email.com",
-    },
-  ],
+  items: [],
   page: 0,
   pageSize: 25,
   totalPages: 4,

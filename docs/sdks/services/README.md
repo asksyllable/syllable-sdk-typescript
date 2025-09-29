@@ -19,6 +19,7 @@ List the existing services
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="service_list" method="get" path="/api/v1/services/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -39,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Create a new service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="service_create" method="post" path="/api/v1/services/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -125,66 +123,11 @@ async function run() {
     description: "Service containing tools for fetching weather information",
     authType: "basic",
     authValues: {
-      "0": "{",
-      "1": "\"",
-      "2": "u",
-      "3": "s",
-      "4": "e",
-      "5": "r",
-      "6": "n",
-      "7": "a",
-      "8": "m",
-      "9": "e",
-      "10": "\"",
-      "11": ":",
-      "12": " ",
-      "13": "\"",
-      "14": "m",
-      "15": "y",
-      "16": "-",
-      "17": "u",
-      "18": "s",
-      "19": "e",
-      "20": "r",
-      "21": "n",
-      "22": "a",
-      "23": "m",
-      "24": "e",
-      "25": "\"",
-      "26": ",",
-      "27": " ",
-      "28": "\"",
-      "29": "p",
-      "30": "a",
-      "31": "s",
-      "32": "s",
-      "33": "w",
-      "34": "o",
-      "35": "r",
-      "36": "d",
-      "37": "\"",
-      "38": ":",
-      "39": " ",
-      "40": "\"",
-      "41": "m",
-      "42": "y",
-      "43": "-",
-      "44": "p",
-      "45": "a",
-      "46": "s",
-      "47": "s",
-      "48": "w",
-      "49": "o",
-      "50": "r",
-      "51": "d",
-      "52": "\"",
-      "53": "}",
       "password": "my-password",
       "username": "my-username",
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -211,73 +154,16 @@ async function run() {
     description: "Service containing tools for fetching weather information",
     authType: "basic",
     authValues: {
-      "0": "{",
-      "1": "\"",
-      "2": "u",
-      "3": "s",
-      "4": "e",
-      "5": "r",
-      "6": "n",
-      "7": "a",
-      "8": "m",
-      "9": "e",
-      "10": "\"",
-      "11": ":",
-      "12": " ",
-      "13": "\"",
-      "14": "m",
-      "15": "y",
-      "16": "-",
-      "17": "u",
-      "18": "s",
-      "19": "e",
-      "20": "r",
-      "21": "n",
-      "22": "a",
-      "23": "m",
-      "24": "e",
-      "25": "\"",
-      "26": ",",
-      "27": " ",
-      "28": "\"",
-      "29": "p",
-      "30": "a",
-      "31": "s",
-      "32": "s",
-      "33": "w",
-      "34": "o",
-      "35": "r",
-      "36": "d",
-      "37": "\"",
-      "38": ":",
-      "39": " ",
-      "40": "\"",
-      "41": "m",
-      "42": "y",
-      "43": "-",
-      "44": "p",
-      "45": "a",
-      "46": "s",
-      "47": "s",
-      "48": "w",
-      "49": "o",
-      "50": "r",
-      "51": "d",
-      "52": "\"",
-      "53": "}",
       "password": "my-password",
       "username": "my-username",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -309,6 +195,7 @@ Update an existing service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="service_update" method="put" path="/api/v1/services/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -322,60 +209,6 @@ async function run() {
     description: "Service containing tools for fetching weather information",
     authType: "basic",
     authValues: {
-      "0": "{",
-      "1": "\"",
-      "2": "u",
-      "3": "s",
-      "4": "e",
-      "5": "r",
-      "6": "n",
-      "7": "a",
-      "8": "m",
-      "9": "e",
-      "10": "\"",
-      "11": ":",
-      "12": " ",
-      "13": "\"",
-      "14": "m",
-      "15": "y",
-      "16": "-",
-      "17": "u",
-      "18": "s",
-      "19": "e",
-      "20": "r",
-      "21": "n",
-      "22": "a",
-      "23": "m",
-      "24": "e",
-      "25": "\"",
-      "26": ",",
-      "27": " ",
-      "28": "\"",
-      "29": "p",
-      "30": "a",
-      "31": "s",
-      "32": "s",
-      "33": "w",
-      "34": "o",
-      "35": "r",
-      "36": "d",
-      "37": "\"",
-      "38": ":",
-      "39": " ",
-      "40": "\"",
-      "41": "m",
-      "42": "y",
-      "43": "-",
-      "44": "p",
-      "45": "a",
-      "46": "s",
-      "47": "s",
-      "48": "w",
-      "49": "o",
-      "50": "r",
-      "51": "d",
-      "52": "\"",
-      "53": "}",
       "password": "my-password",
       "username": "my-username",
     },
@@ -383,7 +216,6 @@ async function run() {
     lastUpdatedComments: "Updated description to correct typo",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -410,75 +242,18 @@ async function run() {
     description: "Service containing tools for fetching weather information",
     authType: "basic",
     authValues: {
-      "0": "{",
-      "1": "\"",
-      "2": "u",
-      "3": "s",
-      "4": "e",
-      "5": "r",
-      "6": "n",
-      "7": "a",
-      "8": "m",
-      "9": "e",
-      "10": "\"",
-      "11": ":",
-      "12": " ",
-      "13": "\"",
-      "14": "m",
-      "15": "y",
-      "16": "-",
-      "17": "u",
-      "18": "s",
-      "19": "e",
-      "20": "r",
-      "21": "n",
-      "22": "a",
-      "23": "m",
-      "24": "e",
-      "25": "\"",
-      "26": ",",
-      "27": " ",
-      "28": "\"",
-      "29": "p",
-      "30": "a",
-      "31": "s",
-      "32": "s",
-      "33": "w",
-      "34": "o",
-      "35": "r",
-      "36": "d",
-      "37": "\"",
-      "38": ":",
-      "39": " ",
-      "40": "\"",
-      "41": "m",
-      "42": "y",
-      "43": "-",
-      "44": "p",
-      "45": "a",
-      "46": "s",
-      "47": "s",
-      "48": "w",
-      "49": "o",
-      "50": "r",
-      "51": "d",
-      "52": "\"",
-      "53": "}",
       "password": "my-password",
       "username": "my-username",
     },
     id: 1,
     lastUpdatedComments: "Updated description to correct typo",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -510,6 +285,7 @@ Get a service by its ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="services_get_by_id" method="get" path="/api/v1/services/{service_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -519,10 +295,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.services.getById({
-    serviceId: 931598,
+    serviceId: 902529,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -545,17 +320,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await servicesGetById(syllableSDK, {
-    serviceId: 931598,
+    serviceId: 902529,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -587,6 +359,7 @@ Delete a service. A service with linked tools cannot be deleted.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="service_delete" method="delete" path="/api/v1/services/{service_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -596,11 +369,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.services.delete({
-    serviceId: 545907,
+    serviceId: 754999,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -623,18 +395,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await servicesDelete(syllableSDK, {
-    serviceId: 545907,
+    serviceId: 754999,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("servicesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -16,13 +16,13 @@ export type BodyOrganizationsCreateLogo = {
 
 export type BodyOrganizationsCreate = {
   /**
-   * The human-readable display name of the organization
-   */
-  displayName: string;
-  /**
    * The organization logo image file to upload. Must be a PNG file and 120x120 pixels.
    */
   logo: BodyOrganizationsCreateLogo | Blob;
+  /**
+   * The human-readable display name of the organization
+   */
+  displayName: string;
   /**
    * Description of the organization
    */
@@ -112,8 +112,8 @@ export const BodyOrganizationsCreate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  display_name: z.string(),
   logo: z.lazy(() => BodyOrganizationsCreateLogo$inboundSchema),
+  display_name: z.string(),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
   saml_provider_id: z.nullable(z.string()).optional(),
@@ -126,8 +126,8 @@ export const BodyOrganizationsCreate$inboundSchema: z.ZodType<
 
 /** @internal */
 export type BodyOrganizationsCreate$Outbound = {
-  display_name: string;
   logo: BodyOrganizationsCreateLogo$Outbound | Blob;
+  display_name: string;
   description?: string | null | undefined;
   domains?: string | null | undefined;
   saml_provider_id?: string | null | undefined;
@@ -139,10 +139,10 @@ export const BodyOrganizationsCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BodyOrganizationsCreate
 > = z.object({
-  displayName: z.string(),
   logo: z.lazy(() => BodyOrganizationsCreateLogo$outboundSchema).or(
     blobLikeSchema,
   ),
+  displayName: z.string(),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
   samlProviderId: z.nullable(z.string()).optional(),

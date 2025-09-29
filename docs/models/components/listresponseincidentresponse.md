@@ -6,23 +6,7 @@
 import { ListResponseIncidentResponse } from "syllable-sdk/models/components";
 
 let value: ListResponseIncidentResponse = {
-  items: [
-    {
-      description: "Service outage in region X",
-      startDatetime: new Date("2023-10-01T08:00:00Z"),
-      resolutionDatetime: new Date("2023-10-01T12:00:00Z"),
-      impactCategory: "High",
-      sessionsImpacted: 1500,
-      markdown: "**Incident Details**",
-      organizationId: 123,
-      subOrganizationId: 456,
-      subOrganization: "SubOrg A",
-      id: 1,
-      createdAt: new Date("2023-10-01T08:00:00Z"),
-      updatedAt: new Date("2023-10-01T08:00:00Z"),
-      lastUpdatedBy: "user@mail.com",
-    },
-  ],
+  items: [],
   page: 0,
   pageSize: 25,
   totalPages: 4,
