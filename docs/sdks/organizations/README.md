@@ -18,6 +18,7 @@ Fetch the current organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="organizations_get" method="get" path="/api/v1/organizations/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -28,7 +29,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.organizations.organizationsGet();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -51,15 +51,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await organizationsOrganizationsGet(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("organizationsOrganizationsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -89,6 +86,7 @@ Update the current organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="organizations_update" method="put" path="/api/v1/organizations/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -105,7 +103,6 @@ async function run() {
     updateComments: "Updated the organization to add a new domain",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -134,15 +131,12 @@ async function run() {
     samlProviderId: "saml.syllablesso",
     updateComments: "Updated the organization to add a new domain",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("organizationsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -174,6 +168,7 @@ Create a new organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="organizations_create" method="post" path="/api/v1/organizations/" -->
 ```typescript
 import { openAsBlob } from "node:fs";
 import { SyllableSDK } from "syllable-sdk";
@@ -184,14 +179,13 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.organizations.create({
-    displayName: "My Great Org",
     logo: await openAsBlob("example.file"),
+    displayName: "My Great Org",
     description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
     samlProviderId: "saml.syllablesso",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -215,21 +209,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await organizationsCreate(syllableSDK, {
-    displayName: "My Great Org",
     logo: await openAsBlob("example.file"),
+    displayName: "My Great Org",
     description: "An organization that does great things with agentic AI",
     domains: "mygreatorg.com,mygreatorg.org",
     samlProviderId: "saml.syllablesso",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("organizationsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -261,6 +252,7 @@ Delete the current organization and all its users.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="organizations_delete" method="delete" path="/api/v1/organizations/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -271,7 +263,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.organizations.delete();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -294,15 +285,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await organizationsDelete(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("organizationsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

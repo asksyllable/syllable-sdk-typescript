@@ -7,7 +7,7 @@ Names of agent fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { IncidentProperties } from "syllable-sdk/models/components";
 
-let value: IncidentProperties = "impact_category";
+let value: IncidentProperties = "sessions_impacted";
 ```
 
 ## Values

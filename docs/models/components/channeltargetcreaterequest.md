@@ -11,8 +11,9 @@ let value: ChannelTargetCreateRequest = {
   agentId: 1,
   channelId: 1,
   target: "+19995551234",
-  targetMode: "voice",
+  targetMode: "chat",
   fallbackTarget: "+19995551235",
+  isTest: true,
 };
 ```
 

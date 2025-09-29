@@ -20,6 +20,7 @@ List the existing agents
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="agent_list" method="get" path="/api/v1/agents/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -40,7 +41,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -73,15 +73,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -113,6 +110,7 @@ Create a new agent
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="agent_create" method="post" path="/api/v1/agents/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -150,11 +148,10 @@ async function run() {
     toolHeaders: {
       "some-header": "some-value",
     },
-    sttProvider: "Google STT V1",
-    waitSound: "Keyboard 1",
+    sttProvider: "Google STT V2 (Chirp 2)",
+    waitSound: "No Sound",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -205,18 +202,15 @@ async function run() {
     toolHeaders: {
       "some-header": "some-value",
     },
-    sttProvider: "Google STT V1",
-    waitSound: "Keyboard 1",
+    sttProvider: "Google STT V2 (Chirp 2)",
+    waitSound: "No Sound",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -248,6 +242,7 @@ Update an existing agent
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="agent_update" method="put" path="/api/v1/agents/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -267,7 +262,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
-    timezone: "America/Chicago",
+    timezone: "America/New_York",
     promptToolDefaults: [
       {
         toolName: "get_weather",
@@ -285,12 +280,11 @@ async function run() {
     toolHeaders: {
       "some-header": "some-value",
     },
-    sttProvider: "Google STT V2",
-    waitSound: "Keyboard 1",
+    sttProvider: "Google STT V2 (Chirp 2)",
+    waitSound: "No Sound",
     id: 1,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -323,7 +317,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
-    timezone: "America/Chicago",
+    timezone: "America/New_York",
     promptToolDefaults: [
       {
         toolName: "get_weather",
@@ -341,19 +335,16 @@ async function run() {
     toolHeaders: {
       "some-header": "some-value",
     },
-    sttProvider: "Google STT V2",
-    waitSound: "Keyboard 1",
+    sttProvider: "Google STT V2 (Chirp 2)",
+    waitSound: "No Sound",
     id: 1,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -385,6 +376,7 @@ Get an agent by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="agent_get_by_id" method="get" path="/api/v1/agents/{agent_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -394,10 +386,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.agents.getById({
-    agentId: 931598,
+    agentId: 910445,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -420,17 +411,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsGetById(syllableSDK, {
-    agentId: 931598,
+    agentId: 910445,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -462,6 +450,7 @@ Delete Agent
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="agent_delete" method="delete" path="/api/v1/agents/{agent_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -471,11 +460,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.agents.delete({
-    agentId: 545907,
+    agentId: 78115,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -498,18 +486,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsDelete(syllableSDK, {
-    agentId: 545907,
+    agentId: 78115,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -541,6 +526,7 @@ Get available agent voices.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="agent_get_available_voices" method="get" path="/api/v1/agents/voices/available" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -551,7 +537,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.agents.agentGetAvailableVoices();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -574,15 +559,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await agentsAgentGetAvailableVoices(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsAgentGetAvailableVoices failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

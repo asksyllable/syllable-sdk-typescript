@@ -24,20 +24,10 @@ let value: ToolDetailResponse = {
     },
     endpoint: {
       url: "https://api.example.com",
-      method: "get",
-      argumentLocation: "path",
+      method: "post",
+      argumentLocation: "form",
     },
-    defaults: {
-      "key": {
-        transform: {
-          action: "default",
-          when: {
-            key: "key",
-            value: "value",
-          },
-        },
-      },
-    },
+    defaults: {},
     staticParameters: [
       {
         name: "temperature_unit",
@@ -64,10 +54,11 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2025-12-21T09:52:32.421Z"),
+  lastUpdated: new Date("2024-09-11T09:25:15.031Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```

@@ -19,6 +19,7 @@ List Outbound Communication Campaigns
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="outbound_campaign_list" method="get" path="/api/v1/outbound/campaigns" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -30,7 +31,7 @@ async function run() {
   const result = await syllableSDK.outbound.campaigns.list({
     page: 0,
     searchFields: [
-      "updated_at",
+      "id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -39,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -64,7 +64,7 @@ async function run() {
   const res = await outboundCampaignsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "updated_at",
+      "id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -72,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Create Outbound Communication Campaign
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="outbound_campaign_create" method="post" path="/api/v1/outbound/campaigns" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -135,15 +133,20 @@ async function run() {
     },
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    source: "account@email.com",
+    source: "+19032900844",
     callerId: "19995551234",
-    retryInterval: "12h",
+    hourlyRate: 25,
+    retryCount: 1,
+    retryInterval: "30m",
     activeDays: [
       "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -180,22 +183,25 @@ async function run() {
     },
     dailyStartTime: "09:00:00",
     dailyEndTime: "17:00:00",
-    source: "account@email.com",
+    source: "+19032900844",
     callerId: "19995551234",
-    retryInterval: "12h",
+    hourlyRate: 25,
+    retryCount: 1,
+    retryInterval: "30m",
     activeDays: [
       "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -227,6 +233,7 @@ Get Outbound Communication Campaign
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="outbound_campaign_get_by_id" method="get" path="/api/v1/outbound/campaigns/{campaign_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -236,10 +243,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.getById({
-    campaignId: 931598,
+    campaignId: 11227,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -262,17 +268,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsGetById(syllableSDK, {
-    campaignId: 931598,
+    campaignId: 11227,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -304,6 +307,7 @@ Update Outbound Communication Campaign
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="outbound_campaign_update" method="put" path="/api/v1/outbound/campaigns/{campaign_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -313,11 +317,11 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.update({
-    campaignId: 991464,
+    campaignId: 679645,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
-      mode: "sms",
+      mode: "voice",
       smsSessionTtl: 720,
       labels: [
         "test",
@@ -329,16 +333,21 @@ async function run() {
       },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      source: "account@email.com",
+      source: "+19032900844",
       callerId: "19995551234",
-      retryInterval: "12h",
+      hourlyRate: 25,
+      retryCount: 1,
+      retryInterval: "30m",
       activeDays: [
-        "sun",
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
       ],
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -361,11 +370,11 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsUpdate(syllableSDK, {
-    campaignId: 991464,
+    campaignId: 679645,
     outboundCampaignInput: {
       campaignName: "Outbound Campaign 1",
       description: "This is a test campaign",
-      mode: "sms",
+      mode: "voice",
       smsSessionTtl: 720,
       labels: [
         "test",
@@ -377,23 +386,26 @@ async function run() {
       },
       dailyStartTime: "09:00:00",
       dailyEndTime: "17:00:00",
-      source: "account@email.com",
+      source: "+19032900844",
       callerId: "19995551234",
-      retryInterval: "12h",
+      hourlyRate: 25,
+      retryCount: 1,
+      retryInterval: "30m",
       activeDays: [
-        "sun",
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -425,6 +437,7 @@ Delete Outbound Communication Campaign
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="outbound_campaign_delete" method="delete" path="/api/v1/outbound/campaigns/{campaign_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -434,10 +447,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.outbound.campaigns.delete({
-    campaignId: 545907,
+    campaignId: 439537,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -460,17 +472,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await outboundCampaignsDelete(syllableSDK, {
-    campaignId: 545907,
+    campaignId: 439537,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

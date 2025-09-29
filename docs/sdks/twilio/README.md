@@ -17,6 +17,7 @@ Get Twilio Channel By Id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_twilio_get_by_id" method="get" path="/api/v1/channels/twilio/{channel_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -26,10 +27,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.getById({
-    channelId: 931598,
+    channelId: 627671,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -52,17 +52,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioGetById(syllableSDK, {
-    channelId: 931598,
+    channelId: 627671,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTwilioGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -94,6 +91,7 @@ Update Twilio Channel
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_twilio_update" method="put" path="/api/v1/channels/twilio/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -105,13 +103,9 @@ async function run() {
   const result = await syllableSDK.channels.twilio.update({
     id: 1,
     name: "syllable-webchat",
-    config: {
-      accountSid: "AC123...",
-      authToken: "sometoken",
-    },
+    config: null,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -136,20 +130,14 @@ async function run() {
   const res = await channelsTwilioUpdate(syllableSDK, {
     id: 1,
     name: "syllable-webchat",
-    config: {
-      accountSid: "AC123...",
-      authToken: "sometoken",
-    },
+    config: null,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTwilioUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -181,6 +169,7 @@ Create Twilio Channel
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_twilio_create" method="post" path="/api/v1/channels/twilio/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -197,7 +186,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -226,15 +214,12 @@ async function run() {
       authToken: "sometoken",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTwilioCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

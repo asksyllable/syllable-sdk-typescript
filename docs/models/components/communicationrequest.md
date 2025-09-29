@@ -10,6 +10,8 @@ let value: CommunicationRequest = {
   target: "512-555-1234",
   requestVariables: {
     "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
   },
 };
 ```

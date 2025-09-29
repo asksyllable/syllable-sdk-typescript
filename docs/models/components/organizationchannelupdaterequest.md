@@ -11,6 +11,7 @@ let value: OrganizationChannelUpdateRequest = {
   name: "twilio",
   channelService: "twilio",
   supportedModes: "chat,voice",
+  isSystemChannel: false,
   config: {
     accountSid: "AC123...",
     authToken: "sometoken",

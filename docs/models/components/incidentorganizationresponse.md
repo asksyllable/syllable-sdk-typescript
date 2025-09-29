@@ -6,9 +6,9 @@
 import { IncidentOrganizationResponse } from "syllable-sdk/models/components";
 
 let value: IncidentOrganizationResponse = {
-  id: 576157,
+  id: 78142,
   name: "<value>",
-  displayName: "Laron44",
+  displayName: "Rigoberto.Funk11",
 };
 ```
 

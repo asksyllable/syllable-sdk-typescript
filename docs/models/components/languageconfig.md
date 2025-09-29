@@ -9,9 +9,9 @@ and their supported languages can be fetched from `GET /agents/voices/available/
 import { LanguageConfig } from "syllable-sdk/models/components";
 
 let value: LanguageConfig = {
-  languageCode: "es-US",
+  languageCode: "fa-IR",
   voiceProvider: "ElevenLabs",
-  voiceDisplayName: "vi-VN-Neural2-A",
+  voiceDisplayName: "en-US-Studio-O",
   voiceSpeed: 1,
   voicePitch: 0,
   dtmfCode: 1,

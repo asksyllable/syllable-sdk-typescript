@@ -17,6 +17,7 @@ Get Label By Id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="session_label_get_by_id" method="get" path="/api/v1/session_labels/{session_label_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -26,10 +27,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.sessionLabels.getById({
-    sessionLabelId: 931598,
+    sessionLabelId: 491550,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -52,17 +52,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await sessionLabelsGetById(syllableSDK, {
-    sessionLabelId: 931598,
+    sessionLabelId: 491550,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionLabelsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -94,6 +91,7 @@ Create a new label
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="session_label_create" method="post" path="/api/v1/session_labels/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -105,14 +103,13 @@ async function run() {
   const result = await syllableSDK.sessionLabels.create({
     sessionId: 1,
     type: "auto-rating",
-    code: "BAD",
+    code: "GOOD",
     userEmail: "user@email.com",
     issueCategories: [
       "Silent treatment",
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -137,21 +134,18 @@ async function run() {
   const res = await sessionLabelsCreate(syllableSDK, {
     sessionId: 1,
     type: "auto-rating",
-    code: "BAD",
+    code: "GOOD",
     userEmail: "user@email.com",
     issueCategories: [
       "Silent treatment",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionLabelsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -183,6 +177,7 @@ Session Labels List
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="session_labels_list" method="get" path="/api/v1/session_labels/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -194,7 +189,7 @@ async function run() {
   const result = await syllableSDK.sessionLabels.list({
     page: 0,
     searchFields: [
-      "issue_categories",
+      "code",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -203,7 +198,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -228,7 +222,7 @@ async function run() {
   const res = await sessionLabelsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "issue_categories",
+      "code",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -236,15 +230,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionLabelsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -15,6 +15,7 @@ Create Takeout
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="takeouts_create" method="post" path="/api/v1/takeouts/create" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -25,7 +26,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.takeouts.create();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,15 +48,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await takeoutsCreate(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("takeoutsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -86,6 +83,7 @@ Get Takeout
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="takeouts_get_by_job_id" method="get" path="/api/v1/takeouts/get/{job_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -98,7 +96,6 @@ async function run() {
     jobId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -123,15 +120,12 @@ async function run() {
   const res = await takeoutsTakeoutsGetByJobId(syllableSDK, {
     jobId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("takeoutsTakeoutsGetByJobId failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -163,6 +157,7 @@ Get File
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="takeouts_get_file" method="get" path="/api/v1/takeouts/get/{job_id}/file/{file_name}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -176,7 +171,6 @@ async function run() {
     fileName: "example.file",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -202,15 +196,12 @@ async function run() {
     jobId: "<id>",
     fileName: "example.file",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("takeoutsTakeoutsGetFile failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

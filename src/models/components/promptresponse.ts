@@ -57,6 +57,10 @@ export type PromptResponse = {
    */
   llmConfig: PromptLlmConfig;
   /**
+   * Whether session end functionality is enabled for this prompt
+   */
+  sessionEndEnabled?: boolean | undefined;
+  /**
    * The internal ID of the prompt
    */
   id: number;
@@ -98,6 +102,7 @@ export const PromptResponse$inboundSchema: z.ZodType<
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
+  session_end_enabled: z.boolean().default(false),
   id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
   last_updated: z.nullable(z.string()),
@@ -108,6 +113,7 @@ export const PromptResponse$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "llm_config": "llmConfig",
+    "session_end_enabled": "sessionEndEnabled",
     "edit_comments": "editComments",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
@@ -125,6 +131,7 @@ export type PromptResponse$Outbound = {
   context?: string | null | undefined;
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
+  session_end_enabled: boolean;
   id: number;
   edit_comments?: string | null | undefined;
   last_updated: string | null;
@@ -146,6 +153,7 @@ export const PromptResponse$outboundSchema: z.ZodType<
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
+  sessionEndEnabled: z.boolean().default(false),
   id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
   lastUpdated: z.nullable(z.string()),
@@ -156,6 +164,7 @@ export const PromptResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
+    sessionEndEnabled: "session_end_enabled",
     editComments: "edit_comments",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",

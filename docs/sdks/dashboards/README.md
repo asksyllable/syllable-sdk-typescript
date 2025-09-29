@@ -23,6 +23,7 @@ RETURNS: List of dashboards
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_list_dashboard" method="post" path="/api/v1/dashboards/list" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -43,7 +44,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -76,15 +76,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dashboardsPostListDashboard failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -119,6 +116,7 @@ RETURNS: Dashboard info for embedding
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_get_dashboard" method="post" path="/api/v1/dashboards/fetch_info" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -131,7 +129,6 @@ async function run() {
     dashboardName: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -156,15 +153,12 @@ async function run() {
   const res = await dashboardsPostGetDashboard(syllableSDK, {
     dashboardName: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dashboardsPostGetDashboard failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -202,6 +196,7 @@ DEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_session_events_dashboard" method="post" path="/api/v1/dashboards/session_events" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -212,7 +207,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionEventsDashboard();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -235,15 +229,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionEventsDashboard(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dashboardsPostSessionEventsDashboard failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -279,6 +270,7 @@ DEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_session_summary_dashboard" method="post" path="/api/v1/dashboards/session_summary" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -289,7 +281,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionSummaryDashboard();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -312,15 +303,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionSummaryDashboard(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dashboardsPostSessionSummaryDashboard failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -356,6 +344,7 @@ DEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_session_transfers_dashboard" method="post" path="/api/v1/dashboards/session_transfers" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -366,7 +355,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionTransfersDashboard();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -389,15 +377,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionTransfersDashboard(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dashboardsPostSessionTransfersDashboard failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -433,6 +418,7 @@ DEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_sessions_dashboard" method="post" path="/api/v1/dashboards/sessions" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -443,7 +429,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.dashboards.postSessionsDashboard();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -466,15 +451,12 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await dashboardsPostSessionsDashboard(syllableSDK);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dashboardsPostSessionsDashboard failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

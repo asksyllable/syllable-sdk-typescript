@@ -6,35 +6,7 @@
 import { ListResponseOutboundCampaign } from "syllable-sdk/models/components";
 
 let value: ListResponseOutboundCampaign = {
-  items: [
-    {
-      campaignName: "Outbound Campaign 1",
-      description: "This is a test campaign",
-      mode: "sms",
-      smsSessionTtl: 720,
-      labels: [
-        "test",
-        "demo",
-      ],
-      campaignVariables: {
-        "key": "value",
-        "key2": "value2",
-      },
-      dailyStartTime: "09:00:00",
-      dailyEndTime: "17:00:00",
-      source: "+19032900844",
-      callerId: "19995551234",
-      retryInterval: "30m",
-      activeDays: [
-        "wed",
-      ],
-      id: 1,
-      agentId: agent_id,
-      createdAt: new Date("2025-09-25T00:00:00Z"),
-      updatedAt: new Date("2025-09-25T00:00:00Z"),
-      lastUpdatedBy: "user@email.com",
-    },
-  ],
+  items: [],
   page: 0,
   pageSize: 25,
   totalPages: 4,

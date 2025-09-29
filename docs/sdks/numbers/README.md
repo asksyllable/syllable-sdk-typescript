@@ -17,6 +17,7 @@ Purchase a Twilio number and associate it with a channel.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_twilio_numbers_add" method="post" path="/api/v1/channels/twilio/{channel_id}/numbers" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -26,14 +27,13 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.numbers.add({
-    channelId: 551477,
+    channelId: 314558,
     twilioNumberAddRequest: {
       friendlyName: "Support Line",
       areaCode: "804",
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -56,21 +56,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioNumbersAdd(syllableSDK, {
-    channelId: 551477,
+    channelId: 314558,
     twilioNumberAddRequest: {
       friendlyName: "Support Line",
       areaCode: "804",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTwilioNumbersAdd failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -102,6 +99,7 @@ Update a Twilio number and associate it with a channel.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_twilio_numbers_update" method="put" path="/api/v1/channels/twilio/{channel_id}/numbers" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -111,14 +109,13 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.numbers.update({
-    channelId: 857478,
+    channelId: 815949,
     twilioNumberUpdateRequest: {
       friendlyName: "Support Line",
       phoneSid: "PN123",
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -141,21 +138,18 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioNumbersUpdate(syllableSDK, {
-    channelId: 857478,
+    channelId: 815949,
     twilioNumberUpdateRequest: {
       friendlyName: "Support Line",
       phoneSid: "PN123",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTwilioNumbersUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -187,6 +181,7 @@ List Twilio phone numbers.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="channels_twilio_numbers_list" method="get" path="/api/v1/channels/twilio/{channel_id}/numbers" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -196,10 +191,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.channels.twilio.numbers.list({
-    channelId: 768578,
+    channelId: 739627,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -222,17 +216,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await channelsTwilioNumbersList(syllableSDK, {
-    channelId: 768578,
+    channelId: 739627,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("channelsTwilioNumbersList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

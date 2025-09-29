@@ -19,6 +19,7 @@ List the existing roles.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="roles_list" method="get" path="/api/v1/roles/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -39,7 +40,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +72,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("rolesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Create a new role.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="roles_create" method="post" path="/api/v1/roles/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -130,7 +128,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -161,15 +158,12 @@ async function run() {
       "prompts_delete",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("rolesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -201,6 +195,7 @@ Update an existing role.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="roles_update" method="put" path="/api/v1/roles/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -221,7 +216,6 @@ async function run() {
     lastUpdatedComments: "Updated to add delete permission",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -254,15 +248,12 @@ async function run() {
     id: 1,
     lastUpdatedComments: "Updated to add delete permission",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("rolesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -294,6 +285,7 @@ Fetch a given role.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="roles_get_by_id" method="get" path="/api/v1/roles/{role_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -303,10 +295,9 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.roles.getById({
-    roleId: 931598,
+    roleId: 324660,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -329,17 +320,14 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await rolesGetById(syllableSDK, {
-    roleId: 931598,
+    roleId: 324660,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("rolesGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -371,6 +359,7 @@ Delete a role. Optionally, reassign existing users with that role to a new role.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="roles_delete" method="delete" path="/api/v1/roles/{role_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -380,11 +369,10 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.roles.delete({
-    roleId: 545907,
+    roleId: 458987,
     reason: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -407,18 +395,15 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await rolesDelete(syllableSDK, {
-    roleId: 545907,
+    roleId: 458987,
     reason: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("rolesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -18,6 +18,7 @@ Sessions List
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="sessions_list" method="get" path="/api/v1/sessions/" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -29,7 +30,7 @@ async function run() {
   const result = await syllableSDK.sessions.list({
     page: 0,
     searchFields: [
-      "target",
+      "conversation_id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -38,7 +39,6 @@ async function run() {
     endDatetime: "2024-01-01T00:00:00Z",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -63,7 +63,7 @@ async function run() {
   const res = await sessionsList(syllableSDK, {
     page: 0,
     searchFields: [
-      "target",
+      "conversation_id",
     ],
     searchFieldValues: [
       "Some Object Name",
@@ -71,15 +71,12 @@ async function run() {
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -111,6 +108,7 @@ Get A Single Session By Id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="session_get_by_id" method="get" path="/api/v1/sessions/{session_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -123,7 +121,6 @@ async function run() {
     sessionId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -148,15 +145,12 @@ async function run() {
   const res = await sessionsGetById(syllableSDK, {
     sessionId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionsGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -188,6 +182,7 @@ Generate Recording Urls
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="generate_session_recording_urls" method="post" path="/api/v1/sessions/recording/{session_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -200,7 +195,6 @@ async function run() {
     sessionId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -225,15 +219,12 @@ async function run() {
   const res = await sessionsGenerateSessionRecordingUrls(syllableSDK, {
     sessionId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionsGenerateSessionRecordingUrls failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -265,6 +256,7 @@ Stream Recording
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="session_recording_stream" method="get" path="/api/v1/sessions/recording/stream" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -277,7 +269,6 @@ async function run() {
     token: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -302,15 +293,12 @@ async function run() {
   const res = await sessionsSessionRecordingStream(syllableSDK, {
     token: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionsSessionRecordingStream failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

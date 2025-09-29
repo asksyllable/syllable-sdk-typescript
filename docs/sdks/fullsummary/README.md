@@ -13,6 +13,7 @@ Get Full Session Summary By Id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="session_full_summary_get_by_id" method="get" path="/api/v1/sessions/full-summary/{session_id}" -->
 ```typescript
 import { SyllableSDK } from "syllable-sdk";
 
@@ -25,7 +26,6 @@ async function run() {
     sessionId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,15 +50,12 @@ async function run() {
   const res = await sessionsFullSummaryGetById(syllableSDK, {
     sessionId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sessionsFullSummaryGetById failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

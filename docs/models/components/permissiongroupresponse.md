@@ -11,13 +11,7 @@ let value: PermissionGroupResponse = {
   name: "Agents",
   description:
     "View agents, create and edit agent configurations, and delete agents.",
-  permissions: [
-    {
-      name: "agents_read",
-      displayName: "View",
-      description: "Fetch agent information",
-    },
-  ],
+  permissions: [],
 };
 ```
 

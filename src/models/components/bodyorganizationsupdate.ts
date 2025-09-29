@@ -16,6 +16,10 @@ export type Logo = {
 
 export type BodyOrganizationsUpdate = {
   /**
+   * The organization logo image file to upload. Must be a PNG file and 120x120 pixels. If not provided, the logo will not be updated.
+   */
+  logo?: Logo | Blob | undefined;
+  /**
    * The human-readable display name of the organization
    */
   displayName: string;
@@ -27,10 +31,6 @@ export type BodyOrganizationsUpdate = {
    * Comma-delimited list of domains that users at the organization may have in their email addresses
    */
   domains?: string | null | undefined;
-  /**
-   * The organization logo image file to upload. Must be a PNG file and 120x120 pixels. If not provided, the logo will not be updated.
-   */
-  logo?: Logo | Blob | undefined;
   /**
    * SAML provider ID for user authentication
    */
@@ -104,10 +104,10 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  logo: z.lazy(() => Logo$inboundSchema).optional(),
   display_name: z.string(),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
-  logo: z.lazy(() => Logo$inboundSchema).optional(),
   saml_provider_id: z.nullable(z.string()).optional(),
   update_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -120,10 +120,10 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
 
 /** @internal */
 export type BodyOrganizationsUpdate$Outbound = {
+  logo?: Logo$Outbound | Blob | undefined;
   display_name: string;
   description?: string | null | undefined;
   domains?: string | null | undefined;
-  logo?: Logo$Outbound | Blob | undefined;
   saml_provider_id?: string | null | undefined;
   update_comments?: string | null | undefined;
 };
@@ -134,10 +134,10 @@ export const BodyOrganizationsUpdate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BodyOrganizationsUpdate
 > = z.object({
+  logo: z.lazy(() => Logo$outboundSchema).or(blobLikeSchema).optional(),
   displayName: z.string(),
   description: z.nullable(z.string()).optional(),
   domains: z.nullable(z.string()).optional(),
-  logo: z.lazy(() => Logo$outboundSchema).or(blobLikeSchema).optional(),
   samlProviderId: z.nullable(z.string()).optional(),
   updateComments: z.nullable(z.string()).optional(),
 }).transform((v) => {

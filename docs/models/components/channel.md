@@ -7,9 +7,10 @@ import { Channel } from "syllable-sdk/models/components";
 
 let value: Channel = {
   name: "syllable-webchat",
-  channelService: "email",
+  channelService: "twilio",
   supportedModes: "chat,voice",
-  id: 739264,
+  isSystemChannel: false,
+  id: 704730,
   config: {
     telephony: {
       preInputTimeout: 1.2,

@@ -9,7 +9,7 @@ import { InsightWorkflowInput } from "syllable-sdk/models/components";
 
 let value: InsightWorkflowInput = {
   name: "summary-workflow",
-  source: "upload",
+  source: "agent",
   description: "Default workflow - generates a summary of the call",
   insightToolIds: [
     1,
@@ -17,10 +17,10 @@ let value: InsightWorkflowInput = {
   conditions: {
     minDuration: 120,
     maxDuration: 600,
-    sampleRate: 10,
+    sampleRate: 0.1,
     agentList: [
-      "Agnes.Wangeci",
-      "Dorice.Otaaba",
+      866324,
+      826325,
     ],
     promptList: [
       "123324",
@@ -34,8 +34,8 @@ let value: InsightWorkflowInput = {
       "sheet_name": "Q1 Sales Data",
     },
   },
-  startDatetime: new Date("2025-09-24T00:00:00Z"),
-  endDatetime: new Date("2025-09-25T00:00:00Z"),
+  startDatetime: new Date("2025-09-28T00:00:00Z"),
+  endDatetime: new Date("2025-09-29T00:00:00Z"),
 };
 ```
 
@@ -48,5 +48,5 @@ let value: InsightWorkflowInput = {
 | `description`                                                                                                                                | *string*                                                                                                                                     | :heavy_check_mark:                                                                                                                           | Text description of workflow                                                                                                                 | Default workflow - generates a summary of the call                                                                                           |
 | `insightToolIds`                                                                                                                             | *number*[]                                                                                                                                   | :heavy_check_mark:                                                                                                                           | Ordered list of IDs of tool configurations to be executed in the workflow                                                                    | [<br/>1<br/>]                                                                                                                                |
 | `conditions`                                                                                                                                 | [components.InsightWorkflowCondition](../../models/components/insightworkflowcondition.md)                                                   | :heavy_check_mark:                                                                                                                           | Model for the conditions that trigger an insight workflow.                                                                                   |                                                                                                                                              |
-| `startDatetime`                                                                                                                              | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                | :heavy_minus_sign:                                                                                                                           | Target session timestamp the workflow (backfill) should start. An empty value indicates start on activation - live sessions only             | 2025-09-24T00:00:00Z                                                                                                                         |
-| `endDatetime`                                                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                | :heavy_minus_sign:                                                                                                                           | Target session timestamp the workflow (backfill) should end. An empty value indicates no end, i.e., include live sessions until deactivation | 2025-09-25T00:00:00Z                                                                                                                         |
+| `startDatetime`                                                                                                                              | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                | :heavy_minus_sign:                                                                                                                           | Target session timestamp the workflow (backfill) should start. An empty value indicates start on activation - live sessions only             | 2025-09-28T00:00:00Z                                                                                                                         |
+| `endDatetime`                                                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                | :heavy_minus_sign:                                                                                                                           | Target session timestamp the workflow (backfill) should end. An empty value indicates no end, i.e., include live sessions until deactivation | 2025-09-29T00:00:00Z                                                                                                                         |
