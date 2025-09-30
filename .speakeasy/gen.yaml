@@ -30,9 +30,7 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON:
-    files:
-      - '*.mts'
+  additionalPackageJSON: {}
   author: Syllable
   baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
