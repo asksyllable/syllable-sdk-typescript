@@ -25,14 +25,21 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.1.0-alpha.274
+  version: 0.1.0-alpha.275
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON: {
-    files: ["FUNCTIONS.md", "RUNTIMES.md", "REACT_QUERY.md", "**/*.ts", "**/*.js", "**/*.mjs", "**/*.json", "**/*.map"]
-  }
+  additionalPackageJSON:
+    files:
+      - FUNCTIONS.md
+      - RUNTIMES.md
+      - REACT_QUERY.md
+      - '**/*.ts'
+      - '**/*.js'
+      - '**/*.mjs'
+      - '**/*.json'
+      - '**/*.map'
   author: Syllable
   baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
