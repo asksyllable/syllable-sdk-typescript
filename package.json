@@ -1,6 +1,6 @@
 {
   "name": "syllable-sdk",
-  "version": "0.1.0-alpha.275",
+  "version": "0.1.0-alpha.276",
   "author": "Syllable",
   "files": [
     "FUNCTIONS.md",
@@ -9,6 +9,7 @@
     "**/*.ts",
     "**/*.js",
     "**/*.mjs",
+    "**/*.mts",
     "**/*.json",
     "**/*.map"
   ],
