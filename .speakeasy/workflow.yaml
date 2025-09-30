@@ -13,6 +13,9 @@ targets:
     syllable-sdk:
         target: typescript
         source: SyllableSDK-OAS
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             output: codeSamples.yaml
             registry:
