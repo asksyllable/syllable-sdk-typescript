@@ -38,6 +38,7 @@ typescript:
       - '**/*.ts'
       - '**/*.js'
       - '**/*.mjs'
+      - '**/*.mts'
       - '**/*.json'
       - '**/*.map'
   author: Syllable
