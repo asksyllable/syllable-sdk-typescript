@@ -30,17 +30,7 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON:
-    files:
-      - FUNCTIONS.md
-      - RUNTIMES.md
-      - REACT_QUERY.md
-      - '**/*.ts'
-      - '**/*.js'
-      - '**/*.mjs'
-      - '**/*.mts'
-      - '**/*.json'
-      - '**/*.map'
+  additionalPackageJSON: {}
   author: Syllable
   baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
