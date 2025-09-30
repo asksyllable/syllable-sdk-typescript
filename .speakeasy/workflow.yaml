@@ -15,7 +15,7 @@ targets:
         source: SyllableSDK-OAS
         publish:
             npm:
-                token: bad-token # $npm_token
+                token: $npm_token
         codeSamples:
             output: codeSamples.yaml
             registry:
