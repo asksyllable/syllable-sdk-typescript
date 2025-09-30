@@ -2847,3 +2847,13 @@ Based on:
 - [typescript v0.1.0-alpha.279] .
 ### Releases
 - [NPM v0.1.0-alpha.279] https://www.npmjs.com/package/syllable-sdk/v/0.1.0-alpha.279 - .
+
+## 2025-09-30 22:07:04
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.631.5 (2.716.16) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.0.0-rc.1] .
+### Releases
+- [NPM v1.0.0-rc.1] https://www.npmjs.com/package/syllable-sdk/v/1.0.0-rc.1 - .
