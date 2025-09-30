@@ -25,13 +25,14 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.1.0-alpha.272
+  version: 0.1.0-alpha.273
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON:
-    files: ["*.mts"]
+    files:
+      - '*.mts'
   author: Syllable
   baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
