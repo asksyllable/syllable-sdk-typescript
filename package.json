@@ -1,7 +1,10 @@
 {
   "name": "syllable-sdk",
-  "version": "0.1.0-alpha.272",
+  "version": "0.1.0-alpha.273",
   "author": "Syllable",
+  "files": [
+    "*.mts"
+  ],
   "bin": {
     "mcp": "bin/mcp-server.js"
   },

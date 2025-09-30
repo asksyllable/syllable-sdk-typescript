@@ -3,10 +3,10 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: 7c190c6b41417dadd28ae3f7fbd29b3a
   docVersion: 0.0.2
-  speakeasyVersion: 1.631.4
+  speakeasyVersion: 1.631.5
   generationVersion: 2.716.16
-  releaseVersion: 0.1.0-alpha.272
-  configChecksum: d03a2b3ff1a6a3f25a14d8a36401b8ba
+  releaseVersion: 0.1.0-alpha.273
+  configChecksum: fcfb3accd7f874695ec02d54d63e740b
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2566,4 +2566,3 @@ examples:
           application/json: "<value>"
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.agents.list()`:  `response.items.[].prompt.sessionEndEnabled` **Added**\n* `syllablesdk.agents.create()`:  `response.prompt.sessionEndEnabled` **Added**\n* `syllablesdk.agents.update()`:  `response.prompt.sessionEndEnabled` **Added**\n* `syllablesdk.agents.getById()`:  `response.prompt.sessionEndEnabled` **Added**\n* `syllablesdk.channels.targets.list()`:  `response.items.[].agent.prompt.sessionEndEnabled` **Added**\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt.sessionEndEnabled` **Added**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt.sessionEndEnabled` **Added**\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt.sessionEndEnabled` **Added**\n* `syllablesdk.prompts.list()`: \n  *  `request` **Changed**\n  *  `response.items.[].sessionEndEnabled` **Added**\n* `syllablesdk.prompts.create()`: \n  *  `request.sessionEndEnabled` **Added**\n  *  `response.session_end_enabled` **Added**\n* `syllablesdk.prompts.update()`: \n  *  `request.sessionEndEnabled` **Added**\n  *  `response.session_end_enabled` **Added**\n* `syllablesdk.prompts.getById()`:  `response.session_end_enabled` **Added**\n"
