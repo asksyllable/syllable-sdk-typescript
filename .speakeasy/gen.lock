@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.2
   speakeasyVersion: 1.631.5
   generationVersion: 2.716.16
-  releaseVersion: 0.1.0-alpha.274
-  configChecksum: 7caf33f0ffbe20274f7929835f5fcdd2
+  releaseVersion: 0.1.0-alpha.275
+  configChecksum: 0b642061d1ace0fb63a5889bbb9e4892
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true

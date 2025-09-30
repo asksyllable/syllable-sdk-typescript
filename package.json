@@ -1,7 +1,17 @@
 {
   "name": "syllable-sdk",
-  "version": "0.1.0-alpha.274",
+  "version": "0.1.0-alpha.275",
   "author": "Syllable",
+  "files": [
+    "FUNCTIONS.md",
+    "RUNTIMES.md",
+    "REACT_QUERY.md",
+    "**/*.ts",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.json",
+    "**/*.map"
+  ],
   "bin": {
     "mcp": "bin/mcp-server.js"
   },
