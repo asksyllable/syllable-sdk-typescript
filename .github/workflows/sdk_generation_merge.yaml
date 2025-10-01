@@ -1,6 +1,6 @@
 name: Auto-merge Speakeasy Bot PR to generate SDK
 
-on: pull_request
+# on: pull_request
 
 permissions:
   contents: write
