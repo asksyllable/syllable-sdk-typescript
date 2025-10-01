@@ -13,7 +13,7 @@ on:
         type: string
         required: false
       target:
-        description: 'Target SDK to graduate (default: syllable-sdk)'
+        description: 'optionally: set a specific target to generate, default is all'
         type: string
   
 
