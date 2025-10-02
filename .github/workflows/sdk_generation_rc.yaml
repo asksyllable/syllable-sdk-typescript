@@ -1,4 +1,4 @@
-name: Generate
+name: Generate SDK for Release Candidate
 permissions:
   checks: write
   contents: write
