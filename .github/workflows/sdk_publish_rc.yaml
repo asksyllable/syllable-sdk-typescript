@@ -9,8 +9,6 @@ permissions:
     types: [closed]
     branches:
       - main
-    paths:
-      - ".speakeasy/gen.yaml"
   workflow_dispatch: {}
 jobs:
   check-rc-version:
