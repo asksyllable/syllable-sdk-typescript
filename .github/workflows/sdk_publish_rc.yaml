@@ -8,8 +8,6 @@ permissions:
   push:
     branches:
       - main
-    paths:
-      - ".speakeasy/gen.yaml"
   workflow_dispatch: {}
 jobs:
   check-rc-version:
@@ -20,6 +18,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      
+      - name: Debug push info
+        run: |
+          echo "=== Push Debug Info ==="
+          echo "Push Actor: ${{ github.actor }}"
+          echo "Push Ref: ${{ github.ref }}"
+          echo "Push Head Commit: ${{ github.sha }}"
+          echo "======================"
       
       - name: Check if version is RC
         id: check
@@ -37,13 +43,13 @@ jobs:
             echo "❌ Stable version detected: $VERSION - skipping RC publish"
           fi
 
-  publish:
-    needs: check-rc-version
-    if: needs.check-rc-version.outputs.is_rc == 'true'
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
-    with:
-      target: syllable-sdk
-    secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      npm_token: ${{ secrets.NPM_TOKEN }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+  # publish:
+  #   needs: check-rc-version
+  #   if: needs.check-rc-version.outputs.is_rc == 'true'
+  #   uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+  #   with:
+  #     target: syllable-sdk
+  #   secrets:
+  #     github_access_token: ${{ secrets.GITHUB_TOKEN }}
+  #     npm_token: ${{ secrets.NPM_TOKEN }}
+  #     speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
