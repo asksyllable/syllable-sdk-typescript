@@ -1,26 +1,26 @@
-name: Auto-merge Speakeasy Bot PR to generate SDK
+# name: Auto-merge Speakeasy Bot PR to generate SDK
 
 # on: pull_request
 
-permissions:
-  contents: write
-  pull-requests: write
+# permissions:
+#   contents: write
+#   pull-requests: write
 
-jobs:
-  print-details:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print PR details
-        run: echo "GitHub author ${{ github.actor }}"
-      - name: Print PR URL
-        run: echo "PR URL ${{ github.event.pull_request.html_url }}"
+# jobs:
+#   print-details:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print PR details
+#         run: echo "GitHub author ${{ github.actor }}"
+#       - name: Print PR URL
+#         run: echo "PR URL ${{ github.event.pull_request.html_url }}"
 
-  auto-merge:
-    runs-on: ubuntu-latest
-    if: ${{ github.actor == 'speakeasy-github[bot]' }}
-    steps:
-      - name: Enable Auto-Merge
-        run: gh pr merge --auto --rebase "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#   auto-merge:
+#     runs-on: ubuntu-latest
+#     if: ${{ github.actor == 'speakeasy-github[bot]' }}
+#     steps:
+#       - name: Enable Auto-Merge
+#         run: gh pr merge --auto --rebase "$PR_URL"
+#         env:
+#           PR_URL: ${{ github.event.pull_request.html_url }}
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
