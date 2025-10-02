@@ -1,0 +1,27 @@
+name: Publish
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+"on":
+  workflow_dispatch: {}
+jobs:
+  publish:
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+    with:
+      target: syllable-sdk
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+  refresh-mintlify-docs:
+    name: Refresh Mintlify Docs
+    runs-on: ubuntu-latest
+    needs: publish
+    steps:
+      - name: Call mintlify API
+        run: |
+          curl --request POST \
+          --url https://api.mintlify.com/v1/project/update/${{ secrets.MINTLIFY_PROJECT_ID}} \
+          --header 'Authorization: Bearer ${{ secrets.MINTLIFY_API_TOKEN}}'
