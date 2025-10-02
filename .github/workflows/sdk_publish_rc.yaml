@@ -32,7 +32,7 @@ jobs:
           echo "PR Title: $PR_TITLE"
           
           # Check if PR title contains "RC" (case insensitive)
-          if echo "$PR_TITLE" | grep -qi "-rc"; then
+          if echo "$PR_TITLE" | grep -qi "Generate SDK for Release Candidate"; then
             echo "is_rc=true" >> $GITHUB_OUTPUT
             echo "✅ RC detected in PR title - will publish"
           else
