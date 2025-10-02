@@ -15,14 +15,21 @@ permissions:
 jobs:
   check-rc-version:
     runs-on: ubuntu-latest
-    if: |
-      github.event.pull_request.merged == true &&
-      github.actor == 'speakeasy-github[bot]'
+    if: github.event.pull_request.merged == true
     outputs:
       is_rc: ${{ steps.check.outputs.is_rc }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Debug PR info
+        run: |
+          echo "=== PR Debug Info ==="
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "PR Author: ${{ github.event.pull_request.user.login }}"
+          echo "PR Actor: ${{ github.actor }}"
+          echo "PR Merged: ${{ github.event.pull_request.merged }}"
+          echo "===================="
       
       - name: Check if PR is RC
         id: check
