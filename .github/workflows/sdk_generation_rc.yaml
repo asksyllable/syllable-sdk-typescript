@@ -1,0 +1,78 @@
+name: Generate
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+"on":
+  push:
+    branches:
+      - main
+    paths:
+      - openapi.json
+      - overlay-remove-V1.yaml
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force generation of SDKs
+        type: boolean
+        default: false
+      set_version:
+        description: optionally set a specific SDK version
+        type: string
+      target:
+        description: 'optionally: set a specific target to generate, default is all'
+        type: string
+jobs:
+  compute-rc-version:
+    runs-on: ubuntu-latest
+    outputs:
+      rc_version: ${{ steps.compute.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Compute RC version
+        id: compute
+        run: |
+          # If set_version is provided manually, use it
+          if [ -n "${{ github.event.inputs.set_version }}" ]; then
+            echo "version=${{ github.event.inputs.set_version }}" >> $GITHUB_OUTPUT
+            echo "Using manually provided version: ${{ github.event.inputs.set_version }}"
+            exit 0
+          fi
+          
+          # Extract current version from gen.yaml
+          VERSION=$(grep -E '^\s*version:\s*' .speakeasy/gen.yaml | sed 's/.*version:\s*//' | tr -d ' ')
+          echo "Current version in gen.yaml: $VERSION"
+          
+          # Check if version already has RC suffix
+          if [[ $VERSION == *"-rc"* ]]; then
+            # RC version: let it use the default behavior (no set_version)
+            echo "version=" >> $GITHUB_OUTPUT
+            echo "Version already has RC suffix, letting workflow use default: $VERSION"
+          else
+            # Non-RC version: increment patch and add -rc.1
+            # Parse version components
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+            
+            # Increment patch version
+            NEW_PATCH=$((PATCH + 1))
+            NEW_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}-rc.1"
+            
+            echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+            echo "Non-RC version detected. Incrementing $VERSION -> $NEW_VERSION"
+          fi
+
+  generate:
+    needs: compute-rc-version
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
+    with:
+      force: ${{ github.event.inputs.force }}
+      mode: pr
+      set_version: ${{ needs.compute-rc-version.outputs.rc_version }}
+      target: ${{ github.event.inputs.target }}
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
