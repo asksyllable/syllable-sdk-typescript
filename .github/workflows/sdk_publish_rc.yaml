@@ -9,6 +9,8 @@ permissions:
     types: [closed]
     branches:
       - main
+    paths:
+      - ".speakeasy/gen.yaml"
   workflow_dispatch: {}
 jobs:
   check-rc-version:
@@ -22,18 +24,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Check if version is RC
+      - name: Check if PR is RC
         id: check
         run: |
-          VERSION=$(grep -E '^\s*version:\s*' .speakeasy/gen.yaml | sed 's/.*version:\s*//' | tr -d ' ')
-          echo "Version in gen.yaml: $VERSION"
+          # Check PR title for RC indicator
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "PR Title: $PR_TITLE"
           
-          if [[ $VERSION == *"-rc"* ]]; then
+          # Check if PR title contains "RC" (case insensitive)
+          if echo "$PR_TITLE" | grep -qi "-rc"; then
             echo "is_rc=true" >> $GITHUB_OUTPUT
-            echo "✅ RC version detected: $VERSION - will publish"
+            echo "✅ RC detected in PR title - will publish"
           else
             echo "is_rc=false" >> $GITHUB_OUTPUT
-            echo "❌ Stable version detected: $VERSION - skipping RC publish"
+            echo "❌ No RC in PR title - skipping RC publish"
           fi
 
   publish:
