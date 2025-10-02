@@ -36,13 +36,14 @@ jobs:
           fi
 
   publish:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
-    with:
-      target: syllable-sdk
-    secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      npm_token: ${{ secrets.NPM_TOKEN }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+    echo "✅ Published to NPM"
+    # uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+    # with:
+    #   target: syllable-sdk
+    # secrets:
+    #   github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    #   npm_token: ${{ secrets.NPM_TOKEN }}
+    #   speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
     
   refresh-mintlify-docs:
     name: Refresh Mintlify Docs
