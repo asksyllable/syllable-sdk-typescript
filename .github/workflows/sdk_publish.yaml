@@ -1,4 +1,4 @@
-name: Publish Release Candidate
+name: Publish
 permissions:
   checks: write
   contents: write
@@ -29,10 +29,10 @@ jobs:
           # Check if version contains RC
           if [[ $VERSION == *"-rc"* ]]; then
             echo "is_rc=true" >> $GITHUB_OUTPUT
-            echo "✅ RC version detected: $VERSION - will publish"
+            echo "✅ RC version detected: $VERSION - will publish (no docs refresh)"
           else
             echo "is_rc=false" >> $GITHUB_OUTPUT
-            echo "❌ Stable version detected: $VERSION - skipping RC publish"
+            echo "✅ Stable version detected: $VERSION - will publish (with docs refresh)"
           fi
 
   publish:
