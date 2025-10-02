@@ -1,0 +1,52 @@
+name: Publish Release Candidate
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+"on":
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+    paths:
+      - ".speakeasy/gen.yaml"
+  workflow_dispatch: {}
+jobs:
+  check-rc-version:
+    runs-on: ubuntu-latest
+    if: |
+      github.event.pull_request.merged == true &&
+      github.actor == 'speakeasy-github[bot]'
+    outputs:
+      is_rc: ${{ steps.check.outputs.is_rc }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check if PR is RC
+        id: check
+        run: |
+          # Check PR title for RC indicator
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "PR Title: $PR_TITLE"
+          
+          # Check if PR title contains "RC" (case insensitive)
+          if echo "$PR_TITLE" | grep -qi "-rc"; then
+            echo "is_rc=true" >> $GITHUB_OUTPUT
+            echo "✅ RC detected in PR title - will publish"
+          else
+            echo "is_rc=false" >> $GITHUB_OUTPUT
+            echo "❌ No RC in PR title - skipping RC publish"
+          fi
+
+  publish:
+    needs: check-rc-version
+    if: needs.check-rc-version.outputs.is_rc == 'true'
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+    with:
+      target: syllable-sdk
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
