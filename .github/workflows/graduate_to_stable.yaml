@@ -1,4 +1,4 @@
-name: Graduate to Stable and Publish
+name: Graduate to Stable Version
 permissions:
   checks: write
   contents: write
