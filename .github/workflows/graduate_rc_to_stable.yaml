@@ -1,4 +1,4 @@
-name: Graduate to Stable Version
+name: Graduate SDK RC to Stable Version
 permissions:
   checks: write
   contents: write
