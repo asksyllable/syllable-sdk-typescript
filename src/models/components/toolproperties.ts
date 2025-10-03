@@ -14,7 +14,7 @@ export const ToolProperties = {
   ServiceName: "service_name",
   Definition: "definition",
   ServiceId: "service_id",
-  UpdatedAt: "updated_at",
+  LastUpdated: "last_updated",
   LastUpdatedBy: "last_updated_by",
 } as const;
 /**

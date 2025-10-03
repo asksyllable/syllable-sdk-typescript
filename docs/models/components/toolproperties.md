@@ -13,5 +13,5 @@ let value: ToolProperties = "service_id";
 ## Values
 
 ```typescript
-"id" | "name" | "service_name" | "definition" | "service_id" | "updated_at" | "last_updated_by"
+"id" | "name" | "service_name" | "definition" | "service_id" | "last_updated" | "last_updated_by"
 ```
