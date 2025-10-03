@@ -36,19 +36,13 @@ jobs:
           fi
 
   publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test - Would publish to NPM
-        run: |
-          echo "✅ Would publish to NPM here"
-          echo "Target: syllable-sdk"
-    # uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
-    # with:
-    #   target: syllable-sdk
-    # secrets:
-    #   github_access_token: ${{ secrets.GITHUB_TOKEN }}
-    #   npm_token: ${{ secrets.NPM_TOKEN }}
-    #   speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+    with:
+      target: syllable-sdk
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
     
   refresh-mintlify-docs:
     name: Refresh Mintlify Docs
@@ -56,15 +50,8 @@ jobs:
     needs: [check-rc-version, publish]
     if: needs.check-rc-version.outputs.is_rc == 'false'
     steps:
-      - name: Test - Would call Mintlify API
+      - name: Call mintlify API
         run: |
-          echo "✅ This is a stable version - would refresh Mintlify docs"
-          echo "Project ID: ${{ secrets.MINTLIFY_PROJECT_ID}}"
-          echo "API Token: [HIDDEN]"
-          echo "Would call: https://api.mintlify.com/v1/project/update/${{ secrets.MINTLIFY_PROJECT_ID}}"
-    # steps:
-    #   - name: Call mintlify API
-    #     run: |
-    #       curl --request POST \
-    #       --url https://api.mintlify.com/v1/project/update/${{ secrets.MINTLIFY_PROJECT_ID}} \
-    #       --header 'Authorization: Bearer ${{ secrets.MINTLIFY_API_TOKEN}}'
+          curl --request POST \
+          --url https://api.mintlify.com/v1/project/update/${{ secrets.MINTLIFY_PROJECT_ID}} \
+          --header 'Authorization: Bearer ${{ secrets.MINTLIFY_API_TOKEN}}'
