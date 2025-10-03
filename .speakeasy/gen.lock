@@ -3,10 +3,10 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: 1fd90b0bf0c55ad2ffd1ee11e1c37bd0
   docVersion: 0.0.2
-  speakeasyVersion: 1.634.0
+  speakeasyVersion: 1.634.1
   generationVersion: 2.721.0
-  releaseVersion: 1.0.1-rc.1
-  configChecksum: f5aded326b91ebf351330a377359603a
+  releaseVersion: 1.0.1-rc.2
+  configChecksum: 6df65a8033bcbe668fd5852c67c90f13
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
