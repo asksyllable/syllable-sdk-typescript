@@ -13,6 +13,7 @@ permissions:
 jobs:
   check-rc-version:
     runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
     outputs:
       is_rc: ${{ steps.check.outputs.is_rc }}
     steps:
@@ -36,6 +37,7 @@ jobs:
           fi
 
   publish:
+    needs: check-rc-version
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     with:
       target: syllable-sdk
