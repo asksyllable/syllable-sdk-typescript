@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.2
   speakeasyVersion: 1.636.0
   generationVersion: 2.723.2
-  releaseVersion: 1.0.1-rc.6
-  configChecksum: c7d53277929d4c66be82fbb28f494c07
+  releaseVersion: 1.0.1
+  configChecksum: 7d8b364213e898ea99ece2bde28cb977
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2582,6 +2582,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `syllablesdk.pronunciations.pronunciationsUploadCsv()`: **Added**
