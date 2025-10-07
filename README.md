@@ -367,9 +367,6 @@ run();
 * [create](docs/sdks/organizations/README.md#create) - Create Organization
 * [delete](docs/sdks/organizations/README.md#delete) - Delete Current Organization
 
-### [outbound](docs/sdks/outbound/README.md)
-
-
 #### [outbound.batches](docs/sdks/batches/README.md)
 
 * [list](docs/sdks/batches/README.md#list) - List Outbound Communication Batches
@@ -450,7 +447,6 @@ run();
 #### [sessions.transcript](docs/sdks/transcript/README.md)
 
 * [getById](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
-
 
 ### [takeouts](docs/sdks/takeouts/README.md)
 
