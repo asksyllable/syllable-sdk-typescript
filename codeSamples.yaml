@@ -2680,6 +2680,28 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/pronunciations/csv"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.pronunciations.pronunciationsUploadCsv({
+                file: await openAsBlob("example.file"),
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/roles/"]["get"]
     update:
       x-codeSamples:
