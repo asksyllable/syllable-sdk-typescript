@@ -17,6 +17,7 @@ import { Organizations } from "./organizations.js";
 import { Outbound } from "./outbound.js";
 import { Permissions } from "./permissions.js";
 import { Prompts } from "./prompts.js";
+import { Pronunciations } from "./pronunciations.js";
 import { Roles } from "./roles.js";
 import { Services } from "./services.js";
 import { SessionDebug } from "./sessiondebug.js";
@@ -76,6 +77,11 @@ export class SyllableSDK extends ClientSDK {
   private _prompts?: Prompts;
   get prompts(): Prompts {
     return (this._prompts ??= new Prompts(this._options));
+  }
+
+  private _pronunciations?: Pronunciations;
+  get pronunciations(): Pronunciations {
+    return (this._pronunciations ??= new Pronunciations(this._options));
   }
 
   private _roles?: Roles;

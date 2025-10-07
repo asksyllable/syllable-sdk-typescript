@@ -401,6 +401,10 @@ run();
 * [promptsHistory](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 * [promptGetSupportedLlms](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 
+### [pronunciations](docs/sdks/pronunciations/README.md)
+
+* [pronunciationsUploadCsv](docs/sdks/pronunciations/README.md#pronunciationsuploadcsv) - Upload Pronunciations Csv
+
 ### [roles](docs/sdks/roles/README.md)
 
 * [list](docs/sdks/roles/README.md#list) - List Roles
@@ -598,6 +602,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsPromptGetSupportedLlms`](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 - [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
+- [`pronunciationsPronunciationsUploadCsv`](docs/sdks/pronunciations/README.md#pronunciationsuploadcsv) - Upload Pronunciations Csv
 - [`rolesCreate`](docs/sdks/roles/README.md#create) - Create Role
 - [`rolesDelete`](docs/sdks/roles/README.md#delete) - Delete Role
 - [`rolesGetById`](docs/sdks/roles/README.md#getbyid) - Get Role

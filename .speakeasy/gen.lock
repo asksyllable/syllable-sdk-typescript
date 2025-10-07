@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 55e827bf506ca32be5d15f286443f868
+  docChecksum: a86cd3959527775462d93b818d1503d0
   docVersion: 0.0.2
-  speakeasyVersion: 1.635.3
-  generationVersion: 2.722.5
-  releaseVersion: 1.0.1-rc.5
-  configChecksum: 888723732e2843ec2e7b004a8bf52c94
+  speakeasyVersion: 1.636.0
+  generationVersion: 2.723.2
+  releaseVersion: 1.0.1-rc.6
+  configChecksum: c7d53277929d4c66be82fbb28f494c07
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -74,6 +74,8 @@ generatedFiles:
   - docs/models/components/bodyoutboundbatchdelete.md
   - docs/models/components/bodyoutboundbatchupload.md
   - docs/models/components/bodyoutboundbatchuploadfile.md
+  - docs/models/components/bodypronunciationsuploadcsv.md
+  - docs/models/components/bodypronunciationsuploadcsvfile.md
   - docs/models/components/campaignproperties.md
   - docs/models/components/channel.md
   - docs/models/components/channelconfigview.md
@@ -201,6 +203,7 @@ generatedFiles:
   - docs/models/components/promptproperties.md
   - docs/models/components/promptresponse.md
   - docs/models/components/promptupdaterequest.md
+  - docs/models/components/pronunciationscsvuploadresponse.md
   - docs/models/components/requeststatus.md
   - docs/models/components/rolecreaterequest.md
   - docs/models/components/roleproperties.md
@@ -382,6 +385,7 @@ generatedFiles:
   - docs/sdks/organizations/README.md
   - docs/sdks/permissions/README.md
   - docs/sdks/prompts/README.md
+  - docs/sdks/pronunciations/README.md
   - docs/sdks/roles/README.md
   - docs/sdks/services/README.md
   - docs/sdks/sessiondebug/README.md
@@ -507,6 +511,7 @@ generatedFiles:
   - src/funcs/promptsPromptGetSupportedLlms.ts
   - src/funcs/promptsPromptsHistory.ts
   - src/funcs/promptsUpdate.ts
+  - src/funcs/pronunciationsPronunciationsUploadCsv.ts
   - src/funcs/rolesCreate.ts
   - src/funcs/rolesDelete.ts
   - src/funcs/rolesGetById.ts
@@ -680,6 +685,7 @@ generatedFiles:
   - src/mcp-server/tools/promptsPromptGetSupportedLlms.ts
   - src/mcp-server/tools/promptsPromptsHistory.ts
   - src/mcp-server/tools/promptsUpdate.ts
+  - src/mcp-server/tools/pronunciationsPronunciationsUploadCsv.ts
   - src/mcp-server/tools/rolesCreate.ts
   - src/mcp-server/tools/rolesDelete.ts
   - src/mcp-server/tools/rolesGetById.ts
@@ -743,6 +749,7 @@ generatedFiles:
   - src/models/components/bodyorganizationsupdate.ts
   - src/models/components/bodyoutboundbatchdelete.ts
   - src/models/components/bodyoutboundbatchupload.ts
+  - src/models/components/bodypronunciationsuploadcsv.ts
   - src/models/components/campaignproperties.ts
   - src/models/components/channel.ts
   - src/models/components/channelconfigview.ts
@@ -863,6 +870,7 @@ generatedFiles:
   - src/models/components/promptproperties.ts
   - src/models/components/promptresponse.ts
   - src/models/components/promptupdaterequest.ts
+  - src/models/components/pronunciationscsvuploadresponse.ts
   - src/models/components/requeststatus.ts
   - src/models/components/rolecreaterequest.ts
   - src/models/components/roleproperties.ts
@@ -1051,6 +1059,7 @@ generatedFiles:
   - src/sdk/outbound.ts
   - src/sdk/permissions.ts
   - src/sdk/prompts.ts
+  - src/sdk/pronunciations.ts
   - src/sdk/roles.ts
   - src/sdk/sdk.ts
   - src/sdk/services.ts
@@ -2562,5 +2571,17 @@ examples:
       responses:
         "200":
           application/json: "<value>"
+  pronunciations_upload_csv:
+    speakeasy-default-pronunciations-upload-csv:
+      requestBody:
+        multipart/form-data: {"file": "x-file: example.file"}
+      responses:
+        "202":
+          application/json: {"revision": 669092}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `syllablesdk.pronunciations.pronunciationsUploadCsv()`: **Added**
