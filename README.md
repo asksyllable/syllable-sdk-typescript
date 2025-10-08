@@ -407,6 +407,7 @@ run();
 * [pronunciationsGetMetadata](docs/sdks/pronunciations/README.md#pronunciationsgetmetadata) - Get Pronunciations Metadata
 * [pronunciationsDownloadCsv](docs/sdks/pronunciations/README.md#pronunciationsdownloadcsv) - Download Pronunciations Csv
 * [pronunciationsUploadCsv](docs/sdks/pronunciations/README.md#pronunciationsuploadcsv) - Upload Pronunciations Csv
+* [pronunciationsDeleteCsv](docs/sdks/pronunciations/README.md#pronunciationsdeletecsv) - Delete Pronunciations Dictionary
 
 ### [roles](docs/sdks/roles/README.md)
 
@@ -605,6 +606,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsPromptGetSupportedLlms`](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 - [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
+- [`pronunciationsPronunciationsDeleteCsv`](docs/sdks/pronunciations/README.md#pronunciationsdeletecsv) - Delete Pronunciations Dictionary
 - [`pronunciationsPronunciationsDownloadCsv`](docs/sdks/pronunciations/README.md#pronunciationsdownloadcsv) - Download Pronunciations Csv
 - [`pronunciationsPronunciationsGet`](docs/sdks/pronunciations/README.md#pronunciationsget) - Get Pronunciations Dictionary
 - [`pronunciationsPronunciationsGetMetadata`](docs/sdks/pronunciations/README.md#pronunciationsgetmetadata) - Get Pronunciations Metadata

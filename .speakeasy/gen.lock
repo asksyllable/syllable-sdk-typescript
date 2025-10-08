@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 8c0e0f1527f96fc4f302ce734bb2d4c8
+  docChecksum: ef205e454f3ff18419f26f9c16c532f0
   docVersion: 0.0.2
-  speakeasyVersion: 1.636.1
-  generationVersion: 2.723.4
-  releaseVersion: 1.0.2-rc.1
-  configChecksum: 8a439fbc4533a9893b5f4cc0e989d8f2
+  speakeasyVersion: 1.636.2
+  generationVersion: 2.723.8
+  releaseVersion: 1.0.2-rc.2
+  configChecksum: df9e606ad8700056fd5a03607f3ab576
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -517,6 +517,7 @@ generatedFiles:
   - src/funcs/promptsPromptGetSupportedLlms.ts
   - src/funcs/promptsPromptsHistory.ts
   - src/funcs/promptsUpdate.ts
+  - src/funcs/pronunciationsPronunciationsDeleteCsv.ts
   - src/funcs/pronunciationsPronunciationsDownloadCsv.ts
   - src/funcs/pronunciationsPronunciationsGet.ts
   - src/funcs/pronunciationsPronunciationsGetMetadata.ts
@@ -694,6 +695,7 @@ generatedFiles:
   - src/mcp-server/tools/promptsPromptGetSupportedLlms.ts
   - src/mcp-server/tools/promptsPromptsHistory.ts
   - src/mcp-server/tools/promptsUpdate.ts
+  - src/mcp-server/tools/pronunciationsPronunciationsDeleteCsv.ts
   - src/mcp-server/tools/pronunciationsPronunciationsDownloadCsv.ts
   - src/mcp-server/tools/pronunciationsPronunciationsGet.ts
   - src/mcp-server/tools/pronunciationsPronunciationsGetMetadata.ts
@@ -2608,10 +2610,9 @@ examples:
         "200":
           application/json: {"entries": 636257, "hash": "<value>"}
   pronunciations_download_csv: {}
+  pronunciations_delete_csv: {}
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `syllablesdk.pronunciations.pronunciationsGet()`: **Added**
-  * `syllablesdk.pronunciations.pronunciationsGetMetadata()`: **Added**
-  * `syllablesdk.pronunciations.pronunciationsDownloadCsv()`: **Added**
+  * `syllablesdk.pronunciations.pronunciationsDeleteCsv()`: **Added**
