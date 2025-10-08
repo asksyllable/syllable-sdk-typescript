@@ -1654,8 +1654,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-10-06T00:00:00Z"),
-                endDatetime: new Date("2025-10-07T00:00:00Z"),
+                startDatetime: new Date("2025-10-07T00:00:00Z"),
+                endDatetime: new Date("2025-10-08T00:00:00Z"),
               });
 
               console.log(result);
@@ -1777,8 +1777,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-10-06T00:00:00Z"),
-                  endDatetime: new Date("2025-10-07T00:00:00Z"),
+                  startDatetime: new Date("2025-10-07T00:00:00Z"),
+                  endDatetime: new Date("2025-10-08T00:00:00Z"),
                 },
               });
 
@@ -2144,9 +2144,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20251007.9",
+                batchId: "20251008.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-10-08T00:00:00Z"),
+                expiresOn: new Date("2025-10-09T00:00:00Z"),
                 paused: true,
               });
 
@@ -2680,6 +2680,44 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/pronunciations"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.pronunciations.pronunciationsGet();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/pronunciations/csv"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              await syllableSDK.pronunciations.pronunciationsDownloadCsv();
+
+
+            }
+
+            run();
   - target: $["paths"]["/api/v1/pronunciations/csv"]["post"]
     update:
       x-codeSamples:
@@ -2697,6 +2735,25 @@ actions:
               const result = await syllableSDK.pronunciations.pronunciationsUploadCsv({
                 file: await openAsBlob("example.file"),
               });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/pronunciations/metadata"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.pronunciations.pronunciationsGetMetadata();
 
               console.log(result);
             }
