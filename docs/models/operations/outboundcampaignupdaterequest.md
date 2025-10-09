@@ -34,6 +34,12 @@ let value: OutboundCampaignUpdateRequest = {
       "thu",
       "fri",
     ],
+    voicemailDetection: {
+      "voicemail_detection_overall_timeout": 30,
+      "voicemail_detection_post_speech_timeout": 1.2,
+      "voicemail_detection_pre_speech_timeout": 5,
+      "voicemail_detection_speech_threshold": 2.4,
+    },
   },
 };
 ```

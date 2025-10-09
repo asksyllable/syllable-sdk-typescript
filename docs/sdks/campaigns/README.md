@@ -145,6 +145,12 @@ async function run() {
       "thu",
       "fri",
     ],
+    voicemailDetection: {
+      "voicemail_detection_overall_timeout": 30,
+      "voicemail_detection_post_speech_timeout": 1.2,
+      "voicemail_detection_pre_speech_timeout": 5,
+      "voicemail_detection_speech_threshold": 2.4,
+    },
   });
 
   console.log(result);
@@ -195,6 +201,12 @@ async function run() {
       "thu",
       "fri",
     ],
+    voicemailDetection: {
+      "voicemail_detection_overall_timeout": 30,
+      "voicemail_detection_post_speech_timeout": 1.2,
+      "voicemail_detection_pre_speech_timeout": 5,
+      "voicemail_detection_speech_threshold": 2.4,
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -345,6 +357,12 @@ async function run() {
         "thu",
         "fri",
       ],
+      voicemailDetection: {
+        "voicemail_detection_overall_timeout": 30,
+        "voicemail_detection_post_speech_timeout": 1.2,
+        "voicemail_detection_pre_speech_timeout": 5,
+        "voicemail_detection_speech_threshold": 2.4,
+      },
     },
   });
 
@@ -398,6 +416,12 @@ async function run() {
         "thu",
         "fri",
       ],
+      voicemailDetection: {
+        "voicemail_detection_overall_timeout": 30,
+        "voicemail_detection_post_speech_timeout": 1.2,
+        "voicemail_detection_pre_speech_timeout": 5,
+        "voicemail_detection_speech_threshold": 2.4,
+      },
     },
   });
   if (res.ok) {
