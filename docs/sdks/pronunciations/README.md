@@ -162,9 +162,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  await syllableSDK.pronunciations.pronunciationsDownloadCsv();
+  const result = await syllableSDK.pronunciations.pronunciationsDownloadCsv();
 
-
+  console.log(result);
 }
 
 run();
@@ -188,7 +188,7 @@ async function run() {
   const res = await pronunciationsPronunciationsDownloadCsv(syllableSDK);
   if (res.ok) {
     const { value: result } = res;
-    
+    console.log(result);
   } else {
     console.log("pronunciationsPronunciationsDownloadCsv failed:", res.error);
   }
@@ -207,7 +207,7 @@ run();
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[operations.PronunciationsDownloadCsvResponse](../../models/operations/pronunciationsdownloadcsvresponse.md)\>**
 
 ### Errors
 

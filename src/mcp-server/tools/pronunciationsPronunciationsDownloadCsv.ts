@@ -21,6 +21,8 @@ export const tool$pronunciationsPronunciationsDownloadCsv: ToolDefinition = {
       };
     }
 
-    return formatResult(void 0, apiCall);
+    const value = result.value.result;
+
+    return formatResult(value, apiCall);
   },
 };

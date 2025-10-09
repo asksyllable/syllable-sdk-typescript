@@ -70,6 +70,7 @@ export * from "./promptsdelete.js";
 export * from "./promptsgetbyid.js";
 export * from "./promptshistory.js";
 export * from "./promptslist.js";
+export * from "./pronunciationsdownloadcsv.js";
 export * from "./rolesdelete.js";
 export * from "./rolesgetbyid.js";
 export * from "./roleslist.js";

@@ -9,6 +9,7 @@ import { pronunciationsPronunciationsGetMetadata } from "../funcs/pronunciations
 import { pronunciationsPronunciationsUploadCsv } from "../funcs/pronunciationsPronunciationsUploadCsv.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Pronunciations extends ClientSDK {
@@ -41,7 +42,7 @@ export class Pronunciations extends ClientSDK {
    */
   async pronunciationsDownloadCsv(
     options?: RequestOptions,
-  ): Promise<void> {
+  ): Promise<operations.PronunciationsDownloadCsvResponse> {
     return unwrapAsync(pronunciationsPronunciationsDownloadCsv(
       this,
       options,
