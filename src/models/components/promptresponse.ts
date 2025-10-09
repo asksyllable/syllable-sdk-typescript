@@ -61,13 +61,13 @@ export type PromptResponse = {
    */
   sessionEndEnabled?: boolean | undefined;
   /**
-   * The internal ID of the prompt
-   */
-  id: number;
-  /**
    * The comments for the most recent edit to the prompt
    */
   editComments?: string | null | undefined;
+  /**
+   * The internal ID of the prompt
+   */
+  id: number;
   /**
    * The last updated date of the prompt
    */
@@ -103,8 +103,8 @@ export const PromptResponse$inboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
   session_end_enabled: z.boolean().default(false),
-  id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
   last_updated: z.nullable(z.string()),
   last_updated_by: z.nullable(z.string()).optional(),
   agent_count: z.nullable(z.number().int()).optional(),
@@ -132,8 +132,8 @@ export type PromptResponse$Outbound = {
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
   session_end_enabled: boolean;
-  id: number;
   edit_comments?: string | null | undefined;
+  id: number;
   last_updated: string | null;
   last_updated_by?: string | null | undefined;
   agent_count?: number | null | undefined;
@@ -154,8 +154,8 @@ export const PromptResponse$outboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
   sessionEndEnabled: z.boolean().default(false),
-  id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
   lastUpdated: z.nullable(z.string()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
   agentCount: z.nullable(z.number().int()).optional(),

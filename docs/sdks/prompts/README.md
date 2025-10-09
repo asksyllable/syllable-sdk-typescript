@@ -132,6 +132,7 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
+    editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
 
   console.log(result);
@@ -167,6 +168,7 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
+    editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -226,8 +228,8 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
-    id: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
+    id: 1,
   });
 
   console.log(result);
@@ -263,8 +265,8 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
-    id: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
+    id: 1,
   });
   if (res.ok) {
     const { value: result } = res;
