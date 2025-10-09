@@ -45,21 +45,15 @@ export type IncidentUpdateRequest = {
    */
   subOrganizationId?: number | null | undefined;
   /**
-   * The name of the sub-organization
+   * The name of the sub-organization (DEPRECATED)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   subOrganization?: string | null | undefined;
   /**
    * The ID of the incident to update
    */
   id: number;
-  /**
-   * Creation time of the incident
-   */
-  createdAt?: Date | null | undefined;
-  /**
-   * Last update time of the incident
-   */
-  updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -82,12 +76,6 @@ export const IncidentUpdateRequest$inboundSchema: z.ZodType<
   sub_organization_id: z.nullable(z.number().int()).optional(),
   sub_organization: z.nullable(z.string()).optional(),
   id: z.number().int(),
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "start_datetime": "startDatetime",
@@ -97,8 +85,6 @@ export const IncidentUpdateRequest$inboundSchema: z.ZodType<
     "organization_id": "organizationId",
     "sub_organization_id": "subOrganizationId",
     "sub_organization": "subOrganization",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
   });
 });
 
@@ -114,8 +100,6 @@ export type IncidentUpdateRequest$Outbound = {
   sub_organization_id?: number | null | undefined;
   sub_organization?: string | null | undefined;
   id: number;
-  created_at?: string | null | undefined;
-  updated_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -134,8 +118,6 @@ export const IncidentUpdateRequest$outboundSchema: z.ZodType<
   subOrganizationId: z.nullable(z.number().int()).optional(),
   subOrganization: z.nullable(z.string()).optional(),
   id: z.number().int(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
     startDatetime: "start_datetime",
@@ -145,8 +127,6 @@ export const IncidentUpdateRequest$outboundSchema: z.ZodType<
     organizationId: "organization_id",
     subOrganizationId: "sub_organization_id",
     subOrganization: "sub_organization",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
   });
 });
 
