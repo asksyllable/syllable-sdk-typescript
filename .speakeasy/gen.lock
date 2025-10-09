@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 915da75e3308088612326687207fdd52
+  docChecksum: 82cfd1400d33c954db96ff721112fc06
   docVersion: 0.0.2
   speakeasyVersion: 1.636.2
   generationVersion: 2.723.8
-  releaseVersion: 1.0.2-rc.3
-  configChecksum: d38006505c130afe1c8a11f2bbeefc4b
+  releaseVersion: 1.0.2-rc.4
+  configChecksum: d348894939d4ceb2000472782ef9b02f
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -350,6 +350,7 @@ generatedFiles:
   - docs/models/operations/promptsgetbyidrequest.md
   - docs/models/operations/promptshistoryrequest.md
   - docs/models/operations/promptslistrequest.md
+  - docs/models/operations/pronunciationsdownloadcsvresponse.md
   - docs/models/operations/rolesdeleterequest.md
   - docs/models/operations/rolesgetbyidrequest.md
   - docs/models/operations/roleslistrequest.md
@@ -1035,6 +1036,7 @@ generatedFiles:
   - src/models/operations/promptsgetbyid.ts
   - src/models/operations/promptshistory.ts
   - src/models/operations/promptslist.ts
+  - src/models/operations/pronunciationsdownloadcsv.ts
   - src/models/operations/rolesdelete.ts
   - src/models/operations/rolesgetbyid.ts
   - src/models/operations/roleslist.ts
@@ -2609,7 +2611,14 @@ examples:
       responses:
         "200":
           application/json: {"entries": 636257, "hash": "<value>"}
-  pronunciations_download_csv: {}
+  pronunciations_download_csv:
+    speakeasy-default-pronunciations-download-csv:
+      responses:
+        "200":
+          text/csv: "x-file: example.file"
   pronunciations_delete_csv: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `syllablesdk.pronunciations.pronunciationsDownloadCsv()`:  `response.status[200].content[text/csv` **Added**

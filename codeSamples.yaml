@@ -2731,9 +2731,9 @@ actions:
             });
 
             async function run() {
-              await syllableSDK.pronunciations.pronunciationsDownloadCsv();
+              const result = await syllableSDK.pronunciations.pronunciationsDownloadCsv();
 
-
+              console.log(result);
             }
 
             run();
