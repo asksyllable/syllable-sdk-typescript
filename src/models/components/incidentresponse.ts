@@ -45,7 +45,9 @@ export type IncidentResponse = {
    */
   subOrganizationId?: number | null | undefined;
   /**
-   * The name of the sub-organization
+   * The name of the sub-organization (DEPRECATED)
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   subOrganization?: string | null | undefined;
   /**

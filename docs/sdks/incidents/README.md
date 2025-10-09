@@ -128,7 +128,6 @@ async function run() {
     markdown: "**Incident Details**",
     organizationId: 123,
     subOrganizationId: 456,
-    subOrganization: "SubOrg A",
   });
 
   console.log(result);
@@ -161,7 +160,6 @@ async function run() {
     markdown: "**Incident Details**",
     organizationId: 123,
     subOrganizationId: 456,
-    subOrganization: "SubOrg A",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -218,10 +216,7 @@ async function run() {
     markdown: "**Incident Details**",
     organizationId: 123,
     subOrganizationId: 456,
-    subOrganization: "SubOrg A",
     id: 1,
-    createdAt: new Date("2023-10-01T08:00:00Z"),
-    updatedAt: new Date("2023-10-01T08:00:00Z"),
   });
 
   console.log(result);
@@ -254,10 +249,7 @@ async function run() {
     markdown: "**Incident Details**",
     organizationId: 123,
     subOrganizationId: 456,
-    subOrganization: "SubOrg A",
     id: 1,
-    createdAt: new Date("2023-10-01T08:00:00Z"),
-    updatedAt: new Date("2023-10-01T08:00:00Z"),
   });
   if (res.ok) {
     const { value: result } = res;
