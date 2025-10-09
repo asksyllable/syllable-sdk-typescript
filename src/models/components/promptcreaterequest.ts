@@ -47,6 +47,10 @@ export type PromptCreateRequest = {
    */
   sessionEndEnabled?: boolean | undefined;
   /**
+   * The comments for the most recent edit to the prompt
+   */
+  editComments?: string | null | undefined;
+  /**
    * Whether to include the default tools (`hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.
    */
   includeDefaultTools?: boolean | undefined;
@@ -65,11 +69,13 @@ export const PromptCreateRequest$inboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
   session_end_enabled: z.boolean().default(false),
+  edit_comments: z.nullable(z.string()).optional(),
   include_default_tools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     "llm_config": "llmConfig",
     "session_end_enabled": "sessionEndEnabled",
+    "edit_comments": "editComments",
     "include_default_tools": "includeDefaultTools",
   });
 });
@@ -83,6 +89,7 @@ export type PromptCreateRequest$Outbound = {
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
   session_end_enabled: boolean;
+  edit_comments?: string | null | undefined;
   include_default_tools: boolean;
 };
 
@@ -99,11 +106,13 @@ export const PromptCreateRequest$outboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
   sessionEndEnabled: z.boolean().default(false),
+  editComments: z.nullable(z.string()).optional(),
   includeDefaultTools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
     sessionEndEnabled: "session_end_enabled",
+    editComments: "edit_comments",
     includeDefaultTools: "include_default_tools",
   });
 });

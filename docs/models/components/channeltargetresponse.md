@@ -67,9 +67,9 @@ let value: ChannelTargetResponse = {
         temperature: 1,
         seed: 123,
       },
-      id: 1,
       editComments:
         "Updated prompt text to include requirement to not answer questions that aren't about weather.",
+      id: 1,
       lastUpdated: "2024-01-01T12:00:00Z",
       lastUpdatedBy: "user@email.com",
       agentCount: 5,

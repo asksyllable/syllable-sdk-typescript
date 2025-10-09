@@ -47,13 +47,13 @@ export type PromptUpdateRequest = {
    */
   sessionEndEnabled?: boolean | undefined;
   /**
-   * The internal ID of the prompt
-   */
-  id: number;
-  /**
    * The comments for the most recent edit to the prompt
    */
   editComments?: string | null | undefined;
+  /**
+   * The internal ID of the prompt
+   */
+  id: number;
   /**
    * Whether to include the default tools (`hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
    */
@@ -73,8 +73,8 @@ export const PromptUpdateRequest$inboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
   session_end_enabled: z.boolean().default(false),
-  id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
   include_default_tools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
@@ -94,8 +94,8 @@ export type PromptUpdateRequest$Outbound = {
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
   session_end_enabled: boolean;
-  id: number;
   edit_comments?: string | null | undefined;
+  id: number;
   include_default_tools: boolean;
 };
 
@@ -112,8 +112,8 @@ export const PromptUpdateRequest$outboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
   sessionEndEnabled: z.boolean().default(false),
-  id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
   includeDefaultTools: z.boolean().default(true),
 }).transform((v) => {
   return remap$(v, {
