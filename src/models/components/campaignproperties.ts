@@ -17,6 +17,7 @@ export const CampaignProperties = {
   UpdatedAt: "updated_at",
   Label: "label",
   Labels: "labels",
+  VoicemailDetection: "voicemail_detection",
 } as const;
 export type CampaignProperties = ClosedEnum<typeof CampaignProperties>;
 

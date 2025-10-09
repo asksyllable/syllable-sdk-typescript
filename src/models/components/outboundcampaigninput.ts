@@ -76,6 +76,10 @@ export type OutboundCampaignInput = {
    * Days of the week when campaign is active
    */
   activeDays: Array<DaysOfWeek>;
+  /**
+   * Config for voicemail detection for voice campaigns
+   */
+  voicemailDetection?: { [k: string]: number } | null | undefined;
 };
 
 /** @internal */
@@ -99,6 +103,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   retry_count: z.number().int().default(0),
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
+  voicemail_detection: z.nullable(z.record(z.number())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "campaign_name": "campaignName",
@@ -111,6 +116,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
     "retry_count": "retryCount",
     "retry_interval": "retryInterval",
     "active_days": "activeDays",
+    "voicemail_detection": "voicemailDetection",
   });
 });
 
@@ -131,6 +137,7 @@ export type OutboundCampaignInput$Outbound = {
   retry_count: number;
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
+  voicemail_detection?: { [k: string]: number } | null | undefined;
 };
 
 /** @internal */
@@ -154,6 +161,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   retryCount: z.number().int().default(0),
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
+  voicemailDetection: z.nullable(z.record(z.number())).optional(),
 }).transform((v) => {
   return remap$(v, {
     campaignName: "campaign_name",
@@ -166,6 +174,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
     retryCount: "retry_count",
     retryInterval: "retry_interval",
     activeDays: "active_days",
+    voicemailDetection: "voicemail_detection",
   });
 });
 

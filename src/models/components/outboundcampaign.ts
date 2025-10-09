@@ -77,6 +77,10 @@ export type OutboundCampaign = {
    */
   activeDays: Array<DaysOfWeek>;
   /**
+   * Config for voicemail detection for voice campaigns
+   */
+  voicemailDetection?: { [k: string]: number } | null | undefined;
+  /**
    * Unique ID for campaign
    */
   id: number;
@@ -119,6 +123,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   retry_count: z.number().int().default(0),
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
+  voicemail_detection: z.nullable(z.record(z.number())).optional(),
   id: z.number().int(),
   agent_id: z.nullable(z.number().int()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -138,6 +143,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
     "retry_count": "retryCount",
     "retry_interval": "retryInterval",
     "active_days": "activeDays",
+    "voicemail_detection": "voicemailDetection",
     "agent_id": "agentId",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
@@ -162,6 +168,7 @@ export type OutboundCampaign$Outbound = {
   retry_count: number;
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
+  voicemail_detection?: { [k: string]: number } | null | undefined;
   id: number;
   agent_id?: number | null | undefined;
   created_at?: string | undefined;
@@ -190,6 +197,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   retryCount: z.number().int().default(0),
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
+  voicemailDetection: z.nullable(z.record(z.number())).optional(),
   id: z.number().int(),
   agentId: z.nullable(z.number().int()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
@@ -207,6 +215,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
     retryCount: "retry_count",
     retryInterval: "retry_interval",
     activeDays: "active_days",
+    voicemailDetection: "voicemail_detection",
     agentId: "agent_id",
     createdAt: "created_at",
     updatedAt: "updated_at",
