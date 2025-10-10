@@ -13,7 +13,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type DictionaryMetadata = {
   entries: number;
   hash: string;
-  source?: string | null | undefined;
+  source?: string | undefined;
 };
 
 /** @internal */
@@ -24,14 +24,14 @@ export const DictionaryMetadata$inboundSchema: z.ZodType<
 > = z.object({
   entries: z.number().int(),
   hash: z.string(),
-  source: z.nullable(z.string()).optional(),
+  source: z.string().default(""),
 });
 
 /** @internal */
 export type DictionaryMetadata$Outbound = {
   entries: number;
   hash: string;
-  source?: string | null | undefined;
+  source: string;
 };
 
 /** @internal */
@@ -42,7 +42,7 @@ export const DictionaryMetadata$outboundSchema: z.ZodType<
 > = z.object({
   entries: z.number().int(),
   hash: z.string(),
-  source: z.nullable(z.string()).optional(),
+  source: z.string().default(""),
 });
 
 /**

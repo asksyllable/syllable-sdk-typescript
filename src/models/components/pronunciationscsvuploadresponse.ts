@@ -13,10 +13,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type PronunciationsCsvUploadResponse = {
   revision: number;
-  hash?: string | null | undefined;
-  entries?: number | null | undefined;
+  hash: string;
+  entries: number;
   uploadedAt?: Date | undefined;
-  uploadedBy?: string | null | undefined;
+  uploadedBy: string;
 };
 
 /** @internal */
@@ -26,11 +26,11 @@ export const PronunciationsCsvUploadResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   revision: z.number().int(),
-  hash: z.nullable(z.string()).optional(),
-  entries: z.nullable(z.number().int()).optional(),
+  hash: z.string(),
+  entries: z.number().int(),
   uploaded_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
-  uploaded_by: z.nullable(z.string()).optional(),
+  uploaded_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "uploaded_at": "uploadedAt",
@@ -41,10 +41,10 @@ export const PronunciationsCsvUploadResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type PronunciationsCsvUploadResponse$Outbound = {
   revision: number;
-  hash?: string | null | undefined;
-  entries?: number | null | undefined;
+  hash: string;
+  entries: number;
   uploaded_at?: string | undefined;
-  uploaded_by?: string | null | undefined;
+  uploaded_by: string;
 };
 
 /** @internal */
@@ -54,10 +54,10 @@ export const PronunciationsCsvUploadResponse$outboundSchema: z.ZodType<
   PronunciationsCsvUploadResponse
 > = z.object({
   revision: z.number().int(),
-  hash: z.nullable(z.string()).optional(),
-  entries: z.nullable(z.number().int()).optional(),
+  hash: z.string(),
+  entries: z.number().int(),
   uploadedAt: z.date().transform(v => v.toISOString()).optional(),
-  uploadedBy: z.nullable(z.string()).optional(),
+  uploadedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
     uploadedAt: "uploaded_at",
