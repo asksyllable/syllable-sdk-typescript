@@ -13,69 +13,23 @@ import {
   MatchType$outboundSchema,
 } from "./matchtype.js";
 
-export type Language = string | Array<string>;
-
 /**
  * A single text replacement rule.
  */
 export type PronunciationOverride = {
   text: string;
   replacement: string;
-  language?: string | Array<string> | null | undefined;
-  provider?: string | null | undefined;
-  voice?: string | null | undefined;
+  languages?: Array<string> | undefined;
+  provider?: string | undefined;
+  voice?: string | undefined;
   /**
    * Matching strategy for override text.
    */
   matchType?: MatchType | undefined;
   matchOptions?: Array<string> | undefined;
   enabled?: boolean | undefined;
-  notes?: string | null | undefined;
+  notes?: string | undefined;
 };
-
-/** @internal */
-export const Language$inboundSchema: z.ZodType<
-  Language,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.array(z.string())]);
-
-/** @internal */
-export type Language$Outbound = string | Array<string>;
-
-/** @internal */
-export const Language$outboundSchema: z.ZodType<
-  Language$Outbound,
-  z.ZodTypeDef,
-  Language
-> = z.union([z.string(), z.array(z.string())]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Language$ {
-  /** @deprecated use `Language$inboundSchema` instead. */
-  export const inboundSchema = Language$inboundSchema;
-  /** @deprecated use `Language$outboundSchema` instead. */
-  export const outboundSchema = Language$outboundSchema;
-  /** @deprecated use `Language$Outbound` instead. */
-  export type Outbound = Language$Outbound;
-}
-
-export function languageToJSON(language: Language): string {
-  return JSON.stringify(Language$outboundSchema.parse(language));
-}
-
-export function languageFromJSON(
-  jsonString: string,
-): SafeParseResult<Language, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Language$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Language' from JSON`,
-  );
-}
 
 /** @internal */
 export const PronunciationOverride$inboundSchema: z.ZodType<
@@ -85,13 +39,13 @@ export const PronunciationOverride$inboundSchema: z.ZodType<
 > = z.object({
   text: z.string(),
   replacement: z.string(),
-  language: z.nullable(z.union([z.string(), z.array(z.string())])).optional(),
-  provider: z.nullable(z.string()).optional(),
-  voice: z.nullable(z.string()).optional(),
+  languages: z.array(z.string()).optional(),
+  provider: z.string().default(""),
+  voice: z.string().default(""),
   match_type: MatchType$inboundSchema.optional(),
   match_options: z.array(z.string()).optional(),
   enabled: z.boolean().default(true),
-  notes: z.nullable(z.string()).optional(),
+  notes: z.string().default(""),
 }).transform((v) => {
   return remap$(v, {
     "match_type": "matchType",
@@ -103,13 +57,13 @@ export const PronunciationOverride$inboundSchema: z.ZodType<
 export type PronunciationOverride$Outbound = {
   text: string;
   replacement: string;
-  language?: string | Array<string> | null | undefined;
-  provider?: string | null | undefined;
-  voice?: string | null | undefined;
+  languages?: Array<string> | undefined;
+  provider: string;
+  voice: string;
   match_type?: string | undefined;
   match_options?: Array<string> | undefined;
   enabled: boolean;
-  notes?: string | null | undefined;
+  notes: string;
 };
 
 /** @internal */
@@ -120,13 +74,13 @@ export const PronunciationOverride$outboundSchema: z.ZodType<
 > = z.object({
   text: z.string(),
   replacement: z.string(),
-  language: z.nullable(z.union([z.string(), z.array(z.string())])).optional(),
-  provider: z.nullable(z.string()).optional(),
-  voice: z.nullable(z.string()).optional(),
+  languages: z.array(z.string()).optional(),
+  provider: z.string().default(""),
+  voice: z.string().default(""),
   matchType: MatchType$outboundSchema.optional(),
   matchOptions: z.array(z.string()).optional(),
   enabled: z.boolean().default(true),
-  notes: z.nullable(z.string()).optional(),
+  notes: z.string().default(""),
 }).transform((v) => {
   return remap$(v, {
     matchType: "match_type",
