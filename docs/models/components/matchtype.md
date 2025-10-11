@@ -13,5 +13,5 @@ let value: MatchType = "exact";
 ## Values
 
 ```typescript
-"exact"
+"exact" | "substring"
 ```

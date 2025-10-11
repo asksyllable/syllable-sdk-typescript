@@ -10,6 +10,7 @@ import { ClosedEnum } from "../../types/enums.js";
  */
 export const MatchType = {
   Exact: "exact",
+  Substring: "substring",
 } as const;
 /**
  * Matching strategy for override text.
