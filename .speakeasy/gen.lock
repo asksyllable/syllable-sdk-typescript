@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 9449913bc3fbd9951f3c8416f4eb1957
+  docChecksum: ed84a74ec462e041e06b496e4334cd58
   docVersion: 0.0.2
   speakeasyVersion: 1.636.3
   generationVersion: 2.723.11
-  releaseVersion: 1.0.2-rc.10
-  configChecksum: 0d5382b53f32b277069bc318354f51b9
+  releaseVersion: 1.0.2-rc.11
+  configChecksum: 84edfba535df4d7d4f726b5471117126
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2490,7 +2490,7 @@ examples:
   language_groups_create_voice_sample:
     speakeasy-default-language-groups-create-voice-sample:
       requestBody:
-        application/json: {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "en-US-Neural2-D", "voice_speed": 1, "voice_pitch": 0}
+        application/json: {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "en-US-Neural2-D", "voice_speed": 1, "voice_pitch": 0, "text": "", "apply_pronunciation_overrides": false}
       responses:
         "200":
           application/octet-stream: "x-file: example.file"
@@ -2618,3 +2618,6 @@ examples:
   pronunciations_delete_csv: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `syllablesdk.languageGroups.languageGroupsCreateVoiceSample()`:  `request` **Changed**

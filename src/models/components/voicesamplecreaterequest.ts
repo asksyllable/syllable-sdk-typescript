@@ -47,6 +47,14 @@ export type VoiceSampleCreateRequest = {
    * Pitch of the voice in the range of -20.0 to 20.0. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch. 0 means use the original pitch. Only supported for Google configs.
    */
   voicePitch?: number | null | undefined;
+  /**
+   * Text to generate for this voice.
+   */
+  text?: string | undefined;
+  /**
+   * Apply TTS pronunciation fixes.
+   */
+  applyPronunciationOverrides?: boolean | undefined;
 };
 
 /** @internal */
@@ -60,6 +68,8 @@ export const VoiceSampleCreateRequest$inboundSchema: z.ZodType<
   voice_display_name: AgentVoiceDisplayName$inboundSchema,
   voice_speed: z.nullable(z.number()).optional(),
   voice_pitch: z.nullable(z.number()).optional(),
+  text: z.string().default(""),
+  apply_pronunciation_overrides: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "language_code": "languageCode",
@@ -67,6 +77,7 @@ export const VoiceSampleCreateRequest$inboundSchema: z.ZodType<
     "voice_display_name": "voiceDisplayName",
     "voice_speed": "voiceSpeed",
     "voice_pitch": "voicePitch",
+    "apply_pronunciation_overrides": "applyPronunciationOverrides",
   });
 });
 
@@ -77,6 +88,8 @@ export type VoiceSampleCreateRequest$Outbound = {
   voice_display_name: string;
   voice_speed?: number | null | undefined;
   voice_pitch?: number | null | undefined;
+  text: string;
+  apply_pronunciation_overrides: boolean;
 };
 
 /** @internal */
@@ -90,6 +103,8 @@ export const VoiceSampleCreateRequest$outboundSchema: z.ZodType<
   voiceDisplayName: AgentVoiceDisplayName$outboundSchema,
   voiceSpeed: z.nullable(z.number()).optional(),
   voicePitch: z.nullable(z.number()).optional(),
+  text: z.string().default(""),
+  applyPronunciationOverrides: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     languageCode: "language_code",
@@ -97,6 +112,7 @@ export const VoiceSampleCreateRequest$outboundSchema: z.ZodType<
     voiceDisplayName: "voice_display_name",
     voiceSpeed: "voice_speed",
     voicePitch: "voice_pitch",
+    applyPronunciationOverrides: "apply_pronunciation_overrides",
   });
 });
 
