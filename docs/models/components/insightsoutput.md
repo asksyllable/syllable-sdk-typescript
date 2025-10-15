@@ -24,7 +24,10 @@ let value: InsightsOutput = {
   },
   createdAt: new Date("2025-10-14T00:00:00Z"),
   updatedAt: new Date("2025-10-15T00:00:00Z"),
-  uploadFileMetadata: {},
+  uploadFileMetadata: {
+    "duration": "00:10:00",
+    "size": "10MB",
+  },
 };
 ```
 
@@ -43,4 +46,4 @@ let value: InsightsOutput = {
 | `jsonValue`                                                                                                                  | Record<string, *components.JsonValue*>                                                                                       | :heavy_check_mark:                                                                                                           | JSON value of insight tool result                                                                                            | {<br/>"content": " was there anything else that I can assist you with other than this",<br/>"role": "assistant",<br/>"start_time": 289<br/>} |
 | `createdAt`                                                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                | :heavy_minus_sign:                                                                                                           | Timestamp at which insight tool result was created                                                                           | 2025-10-14T00:00:00Z                                                                                                         |
 | `updatedAt`                                                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                | :heavy_minus_sign:                                                                                                           | Timestamp at which insight tool result was last updated                                                                      | 2025-10-15T00:00:00Z                                                                                                         |
-| `uploadFileMetadata`                                                                                                         | [components.UploadFileMetadata](../../models/components/uploadfilemetadata.md)                                               | :heavy_minus_sign:                                                                                                           | Metadata associated with the uploaded file                                                                                   | {<br/>"duration": "00:10:00",<br/>"size": "10MB"<br/>}                                                                       |
+| `uploadFileMetadata`                                                                                                         | *any*                                                                                                                        | :heavy_minus_sign:                                                                                                           | Metadata associated with the uploaded file                                                                                   | {<br/>"duration": "00:10:00",<br/>"size": "10MB"<br/>}                                                                       |
