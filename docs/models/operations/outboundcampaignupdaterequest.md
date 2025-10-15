@@ -36,9 +36,8 @@ let value: OutboundCampaignUpdateRequest = {
     ],
     voicemailDetection: {
       "voicemail_detection_overall_timeout": 30,
-      "voicemail_detection_post_speech_timeout": 1.2,
-      "voicemail_detection_pre_speech_timeout": 5,
-      "voicemail_detection_speech_threshold": 2.4,
+      "voicemail_detection_post_speech_timeout": 1.75,
+      "voicemail_detection_pre_speech_timeout": 3.5,
     },
   },
 };
