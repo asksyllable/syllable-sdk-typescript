@@ -77,7 +77,7 @@ export type OutboundCampaign = {
    */
   activeDays: Array<DaysOfWeek>;
   /**
-   * Config for voicemail detection for voice campaigns
+   * Config for voicemail detection for voice campaigns. Set to None to disable.
    */
   voicemailDetection?: { [k: string]: number } | null | undefined;
   /**
