@@ -10,6 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type JsonValue = string | number | number;
 
+export type UploadFileMetadata = {};
+
 /**
  * Response model for an insight tool.
  */
@@ -58,6 +60,10 @@ export type InsightsOutput = {
    * Timestamp at which insight tool result was last updated
    */
   updatedAt?: Date | undefined;
+  /**
+   * Metadata associated with the uploaded file
+   */
+  uploadFileMetadata?: UploadFileMetadata | null | undefined;
 };
 
 /** @internal */
@@ -105,6 +111,54 @@ export function jsonValueFromJSON(
 }
 
 /** @internal */
+export const UploadFileMetadata$inboundSchema: z.ZodType<
+  UploadFileMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type UploadFileMetadata$Outbound = {};
+
+/** @internal */
+export const UploadFileMetadata$outboundSchema: z.ZodType<
+  UploadFileMetadata$Outbound,
+  z.ZodTypeDef,
+  UploadFileMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UploadFileMetadata$ {
+  /** @deprecated use `UploadFileMetadata$inboundSchema` instead. */
+  export const inboundSchema = UploadFileMetadata$inboundSchema;
+  /** @deprecated use `UploadFileMetadata$outboundSchema` instead. */
+  export const outboundSchema = UploadFileMetadata$outboundSchema;
+  /** @deprecated use `UploadFileMetadata$Outbound` instead. */
+  export type Outbound = UploadFileMetadata$Outbound;
+}
+
+export function uploadFileMetadataToJSON(
+  uploadFileMetadata: UploadFileMetadata,
+): string {
+  return JSON.stringify(
+    UploadFileMetadata$outboundSchema.parse(uploadFileMetadata),
+  );
+}
+
+export function uploadFileMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFileMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFileMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFileMetadata' from JSON`,
+  );
+}
+
+/** @internal */
 export const InsightsOutput$inboundSchema: z.ZodType<
   InsightsOutput,
   z.ZodTypeDef,
@@ -123,6 +177,9 @@ export const InsightsOutput$inboundSchema: z.ZodType<
     .optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  upload_file_metadata: z.nullable(
+    z.lazy(() => UploadFileMetadata$inboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "session_id": "sessionId",
@@ -135,6 +192,7 @@ export const InsightsOutput$inboundSchema: z.ZodType<
     "json_value": "jsonValue",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
+    "upload_file_metadata": "uploadFileMetadata",
   });
 });
 
@@ -151,6 +209,7 @@ export type InsightsOutput$Outbound = {
   json_value: { [k: string]: string | number | number };
   created_at?: string | undefined;
   updated_at?: string | undefined;
+  upload_file_metadata?: UploadFileMetadata$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -170,6 +229,9 @@ export const InsightsOutput$outboundSchema: z.ZodType<
   jsonValue: z.record(z.union([z.string(), z.number().int(), z.number()])),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  uploadFileMetadata: z.nullable(
+    z.lazy(() => UploadFileMetadata$outboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
@@ -182,6 +244,7 @@ export const InsightsOutput$outboundSchema: z.ZodType<
     jsonValue: "json_value",
     createdAt: "created_at",
     updatedAt: "updated_at",
+    uploadFileMetadata: "upload_file_metadata",
   });
 });
 
