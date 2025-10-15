@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 4a5765b3bb21aec73920dc44d297245e
+  docChecksum: c452c12068a71804f3fc40512551bac9
   docVersion: 0.0.2
   speakeasyVersion: 1.636.3
   generationVersion: 2.723.11
-  releaseVersion: 1.0.3-rc.1
-  configChecksum: cc607e7d7980a44ac5f693252515d3d1
+  releaseVersion: 1.0.3-rc.2
+  configChecksum: c7c618ed7ad6378260fbd0d36d9508cd
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -271,6 +271,7 @@ generatedFiles:
   - docs/models/components/twilionumberupdateresponse.md
   - docs/models/components/twiliophonenumber.md
   - docs/models/components/type.md
+  - docs/models/components/uploadfilemetadata.md
   - docs/models/components/useractivitystatus.md
   - docs/models/components/usercreaterequest.md
   - docs/models/components/userdeleterequest.md
@@ -2618,3 +2619,6 @@ examples:
   pronunciations_delete_csv: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `syllablesdk.insights.list()`:  `response.items.[].uploadFileMetadata` **Added**
