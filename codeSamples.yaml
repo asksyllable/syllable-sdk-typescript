@@ -270,6 +270,10 @@ actions:
                 config: {
                   accountSid: "AC123...",
                   authToken: "sometoken",
+                  providerCredentials: {
+                    "api_key": "atk123",
+                    "username": "test_username",
+                  },
                   telephony: {
                     preInputTimeout: 1.2,
                     overallInputTimeout: 20,
@@ -305,6 +309,10 @@ actions:
                 config: {
                   accountSid: "AC123...",
                   authToken: "sometoken",
+                  providerCredentials: {
+                    "api_key": "atk123",
+                    "username": "test_username",
+                  },
                   telephony: {
                     preInputTimeout: 1.2,
                     overallInputTimeout: 20,
@@ -1650,8 +1658,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-10-14T00:00:00Z"),
-                endDatetime: new Date("2025-10-15T00:00:00Z"),
+                startDatetime: new Date("2025-10-15T00:00:00Z"),
+                endDatetime: new Date("2025-10-16T00:00:00Z"),
               });
 
               console.log(result);
@@ -1773,8 +1781,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-10-14T00:00:00Z"),
-                  endDatetime: new Date("2025-10-15T00:00:00Z"),
+                  startDatetime: new Date("2025-10-15T00:00:00Z"),
+                  endDatetime: new Date("2025-10-16T00:00:00Z"),
                 },
               });
 
@@ -2140,9 +2148,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20251015.9",
+                batchId: "20251016.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-10-16T00:00:00Z"),
+                expiresOn: new Date("2025-10-17T00:00:00Z"),
                 paused: true,
               });
 

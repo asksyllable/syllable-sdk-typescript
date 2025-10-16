@@ -13,6 +13,7 @@ export const ChannelServices = {
   Twilio: "twilio",
   Email: "email",
   Webchat: "webchat",
+  Africastalking: "africastalking",
 } as const;
 /**
  * The communication service for a channel.
