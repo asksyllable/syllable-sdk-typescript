@@ -93,3 +93,6 @@ export * from "./toollist.js";
 export * from "./usersgetbyemail.js";
 export * from "./userslist.js";
 export * from "./userssendemail.js";
+export * from "./voicegroupsdelete.js";
+export * from "./voicegroupsgetbyid.js";
+export * from "./voicegroupslist.js";

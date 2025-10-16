@@ -351,14 +351,14 @@ run();
 * [activate](docs/sdks/workflows/README.md#activate) - Activate Insights Workflow
 * [queueWork](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
 
-### [languageGroups](docs/sdks/languagegroups/README.md)
+### [~~languageGroups~~](docs/sdks/languagegroups/README.md)
 
-* [list](docs/sdks/languagegroups/README.md#list) - List Language Groups
-* [create](docs/sdks/languagegroups/README.md#create) - Create Language Group
-* [update](docs/sdks/languagegroups/README.md#update) - Update Language Group
-* [getById](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
-* [delete](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
-* [languageGroupsCreateVoiceSample](docs/sdks/languagegroups/README.md#languagegroupscreatevoicesample) - Create Voice Sample
+* [~~list~~](docs/sdks/languagegroups/README.md#list) - List Language Groups :warning: **Deprecated**
+* [~~create~~](docs/sdks/languagegroups/README.md#create) - Create Language Group :warning: **Deprecated**
+* [~~update~~](docs/sdks/languagegroups/README.md#update) - Update Language Group :warning: **Deprecated**
+* [~~getById~~](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group :warning: **Deprecated**
+* [~~delete~~](docs/sdks/languagegroups/README.md#delete) - Delete Language Group :warning: **Deprecated**
+* [~~languageGroupsCreateVoiceSample~~](docs/sdks/languagegroups/README.md#languagegroupscreatevoicesample) - Create Voice Sample :warning: **Deprecated**
 
 ### [organizations](docs/sdks/organizations/README.md)
 
@@ -490,6 +490,15 @@ run();
 * [usersSendEmail](docs/sdks/v1/README.md#userssendemail) - Send User Email
 * [usersDeleteAccount](docs/sdks/v1/README.md#usersdeleteaccount) - Request Removal Of This Account
 
+### [voiceGroups](docs/sdks/voicegroups/README.md)
+
+* [list](docs/sdks/voicegroups/README.md#list) - List Voice Groups
+* [create](docs/sdks/voicegroups/README.md#create) - Create Voice Group
+* [update](docs/sdks/voicegroups/README.md#update) - Update Voice Group
+* [getById](docs/sdks/voicegroups/README.md#getbyid) - Get Voice Group
+* [delete](docs/sdks/voicegroups/README.md#delete) - Delete Voice Group
+* [voiceGroupsCreateVoiceSample](docs/sdks/voicegroups/README.md#voicegroupscreatevoicesample) - Create Voice Sample
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -574,12 +583,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
 - [`insightsWorkflowsQueueWork`](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
 - [`insightsWorkflowsUpdate`](docs/sdks/workflows/README.md#update) - Update Insights Workflow
-- [`languageGroupsCreate`](docs/sdks/languagegroups/README.md#create) - Create Language Group
-- [`languageGroupsDelete`](docs/sdks/languagegroups/README.md#delete) - Delete Language Group
-- [`languageGroupsGetById`](docs/sdks/languagegroups/README.md#getbyid) - Get Language Group
-- [`languageGroupsLanguageGroupsCreateVoiceSample`](docs/sdks/languagegroups/README.md#languagegroupscreatevoicesample) - Create Voice Sample
-- [`languageGroupsList`](docs/sdks/languagegroups/README.md#list) - List Language Groups
-- [`languageGroupsUpdate`](docs/sdks/languagegroups/README.md#update) - Update Language Group
 - [`organizationsCreate`](docs/sdks/organizations/README.md#create) - Create Organization
 - [`organizationsDelete`](docs/sdks/organizations/README.md#delete) - Delete Current Organization
 - [`organizationsOrganizationsGet`](docs/sdks/organizations/README.md#organizationsget) - Get Current Organization
@@ -656,10 +659,22 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`usersUsersGetByEmail`](docs/sdks/v1/README.md#usersgetbyemail) - Get User
 - [`usersUsersSendEmail`](docs/sdks/users/README.md#userssendemail) - Send User Email
 - [`usersUsersSendEmail`](docs/sdks/v1/README.md#userssendemail) - Send User Email
+- [`voiceGroupsCreate`](docs/sdks/voicegroups/README.md#create) - Create Voice Group
+- [`voiceGroupsDelete`](docs/sdks/voicegroups/README.md#delete) - Delete Voice Group
+- [`voiceGroupsGetById`](docs/sdks/voicegroups/README.md#getbyid) - Get Voice Group
+- [`voiceGroupsList`](docs/sdks/voicegroups/README.md#list) - List Voice Groups
+- [`voiceGroupsUpdate`](docs/sdks/voicegroups/README.md#update) - Update Voice Group
+- [`voiceGroupsVoiceGroupsCreateVoiceSample`](docs/sdks/voicegroups/README.md#voicegroupscreatevoicesample) - Create Voice Sample
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
 - ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
 - ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
 - ~~[`dashboardsPostSessionTransfersDashboard`](docs/sdks/dashboards/README.md#postsessiontransfersdashboard)~~ - Post Session Transfers :warning: **Deprecated**
+- ~~[`languageGroupsCreate`](docs/sdks/languagegroups/README.md#create)~~ - Create Language Group :warning: **Deprecated**
+- ~~[`languageGroupsDelete`](docs/sdks/languagegroups/README.md#delete)~~ - Delete Language Group :warning: **Deprecated**
+- ~~[`languageGroupsGetById`](docs/sdks/languagegroups/README.md#getbyid)~~ - Get Language Group :warning: **Deprecated**
+- ~~[`languageGroupsLanguageGroupsCreateVoiceSample`](docs/sdks/languagegroups/README.md#languagegroupscreatevoicesample)~~ - Create Voice Sample :warning: **Deprecated**
+- ~~[`languageGroupsList`](docs/sdks/languagegroups/README.md#list)~~ - List Language Groups :warning: **Deprecated**
+- ~~[`languageGroupsUpdate`](docs/sdks/languagegroups/README.md#update)~~ - Update Language Group :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

@@ -1843,179 +1843,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/api/v1/language_groups/"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.languageGroups.list({
-                page: 0,
-                searchFields: [
-                  "name",
-                ],
-                searchFieldValues: [
-                  "Some Object Name",
-                ],
-                startDatetime: "2023-01-01T00:00:00Z",
-                endDatetime: "2024-01-01T00:00:00Z",
-              });
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/language_groups/"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.languageGroups.create({
-                name: "Call Center 1 Languages",
-                description: "Languages spoken by operators at Call Center 1",
-                languageConfigs: [
-                  {
-                    languageCode: "en-US",
-                    voiceProvider: "OpenAI",
-                    voiceDisplayName: "Alloy",
-                    dtmfCode: 1,
-                  },
-                  {
-                    languageCode: "es-US",
-                    voiceProvider: "Google",
-                    voiceDisplayName: "es-US-Neural2-B",
-                    dtmfCode: 2,
-                  },
-                ],
-                skipCurrentLanguageInMessage: true,
-              });
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/language_groups/"]["put"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.languageGroups.update({
-                name: "Call Center 1 Languages",
-                description: "Languages spoken by operators at Call Center 1",
-                languageConfigs: [
-                  {
-                    languageCode: "en-US",
-                    voiceProvider: "OpenAI",
-                    voiceDisplayName: "Alloy",
-                    dtmfCode: 1,
-                  },
-                  {
-                    languageCode: "es-US",
-                    voiceProvider: "Google",
-                    voiceDisplayName: "es-US-Neural2-B",
-                    dtmfCode: 2,
-                  },
-                ],
-                skipCurrentLanguageInMessage: true,
-                id: 1,
-                editComments: "Added Spanish support.",
-              });
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/language_groups/voices/sample"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.languageGroups.languageGroupsCreateVoiceSample({
-                languageCode: "es-US",
-                voiceProvider: "Google",
-                voiceDisplayName: "en-US-Neural2-D",
-                voiceSpeed: 1,
-                voicePitch: 0,
-              });
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.languageGroups.delete({
-                languageGroupId: 572805,
-                reason: "<value>",
-              });
-
-              console.log(result);
-            }
-
-            run();
-  - target: $["paths"]["/api/v1/language_groups/{language_group_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: Typescript (SDK)
-          source: |-
-            import { SyllableSDK } from "syllable-sdk";
-
-            const syllableSDK = new SyllableSDK({
-              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
-            });
-
-            async function run() {
-              const result = await syllableSDK.languageGroups.getById({
-                languageGroupId: 453313,
-              });
-
-              console.log(result);
-            }
-
-            run();
   - target: $["paths"]["/api/v1/organizations/"]["delete"]
     update:
       x-codeSamples:
@@ -3877,6 +3704,179 @@ actions:
             async function run() {
               const result = await syllableSDK.v1.usersSendEmail({
                 userEmail: "<value>",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/voice_groups/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.voiceGroups.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/voice_groups/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.voiceGroups.create({
+                name: "Call Center 1 Languages",
+                description: "Languages spoken by operators at Call Center 1",
+                languageConfigs: [
+                  {
+                    languageCode: "en-US",
+                    voiceProvider: "OpenAI",
+                    voiceDisplayName: "Alloy",
+                    dtmfCode: 1,
+                  },
+                  {
+                    languageCode: "es-US",
+                    voiceProvider: "Google",
+                    voiceDisplayName: "es-US-Neural2-B",
+                    dtmfCode: 2,
+                  },
+                ],
+                skipCurrentLanguageInMessage: true,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/voice_groups/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.voiceGroups.update({
+                name: "Call Center 1 Languages",
+                description: "Languages spoken by operators at Call Center 1",
+                languageConfigs: [
+                  {
+                    languageCode: "en-US",
+                    voiceProvider: "OpenAI",
+                    voiceDisplayName: "Alloy",
+                    dtmfCode: 1,
+                  },
+                  {
+                    languageCode: "es-US",
+                    voiceProvider: "Google",
+                    voiceDisplayName: "es-US-Neural2-B",
+                    dtmfCode: 2,
+                  },
+                ],
+                skipCurrentLanguageInMessage: true,
+                id: 1,
+                editComments: "Added Spanish support.",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/voice_groups/voices/sample"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.voiceGroups.voiceGroupsCreateVoiceSample({
+                languageCode: "fa-IR",
+                voiceProvider: "Google",
+                voiceDisplayName: "Vindemiatrix (English)",
+                voiceSpeed: 1,
+                voicePitch: 0,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/voice_groups/{voice_group_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.voiceGroups.delete({
+                voiceGroupId: 225046,
+                reason: "<value>",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/voice_groups/{voice_group_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.voiceGroups.getById({
+                voiceGroupId: 431245,
               });
 
               console.log(result);

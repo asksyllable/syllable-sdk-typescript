@@ -29,7 +29,9 @@ import { Result } from "../types/fp.js";
  * Update Language Group
  *
  * @remarks
- * Update an existing language group
+ * Deprecated alias for `PUT /api/v1/voice_groups/`.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function languageGroupsUpdate(
   client: SyllableSDKCore,

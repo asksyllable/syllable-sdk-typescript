@@ -1,0 +1,38 @@
+# VoiceGroupCreateRequest
+
+Request model to create a voice group.
+
+## Example Usage
+
+```typescript
+import { VoiceGroupCreateRequest } from "syllable-sdk/models/components";
+
+let value: VoiceGroupCreateRequest = {
+  name: "Call Center 1 Languages",
+  description: "Languages spoken by operators at Call Center 1",
+  languageConfigs: [
+    {
+      languageCode: "en-US",
+      voiceProvider: "OpenAI",
+      voiceDisplayName: "Alloy",
+      dtmfCode: 1,
+    },
+    {
+      languageCode: "es-US",
+      voiceProvider: "Google",
+      voiceDisplayName: "es-US-Neural2-B",
+      dtmfCode: 2,
+    },
+  ],
+  skipCurrentLanguageInMessage: true,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                          | Type                                                                                                                                                                                                                           | Required                                                                                                                                                                                                                       | Description                                                                                                                                                                                                                    | Example                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `name`                                                                                                                                                                                                                         | *string*                                                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                                                             | The name of the language group.                                                                                                                                                                                                | Call Center 1 Languages                                                                                                                                                                                                        |
+| `description`                                                                                                                                                                                                                  | *string*                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                             | Description of the language group.                                                                                                                                                                                             | Languages spoken by operators at Call Center 1                                                                                                                                                                                 |
+| `languageConfigs`                                                                                                                                                                                                              | [components.LanguageConfig](../../models/components/languageconfig.md)[]                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                                                             | Voice and DTMF configurations for each language in the group.                                                                                                                                                                  | [<br/>{<br/>"dtmf_code": 1,<br/>"language_code": "en-US",<br/>"voice_display_name": "Alloy",<br/>"voice_provider": "OpenAI"<br/>},<br/>{<br/>"dtmf_code": 2,<br/>"language_code": "es-US",<br/>"voice_display_name": "es-US-Neural2-B",<br/>"voice_provider": "Google"<br/>}<br/>] |
+| `skipCurrentLanguageInMessage`                                                                                                                                                                                                 | *boolean*                                                                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                             | Whether a custom message using the language group to generate a language DTMF menu should skip the agent's current language in the menu.                                                                                       | true                                                                                                                                                                                                                           |

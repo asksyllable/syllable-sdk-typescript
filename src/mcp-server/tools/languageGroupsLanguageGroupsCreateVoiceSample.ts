@@ -7,7 +7,7 @@ import * as components from "../../models/components/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: components.VoiceSampleCreateRequest$inboundSchema,
+  request: components.LanguageSampleCreateRequest$inboundSchema,
 };
 
 export const tool$languageGroupsLanguageGroupsCreateVoiceSample: ToolDefinition<
@@ -16,7 +16,7 @@ export const tool$languageGroupsLanguageGroupsCreateVoiceSample: ToolDefinition<
   name: "language-groups-language-groups-create-voice-sample",
   description: `Create Voice Sample
 
-Generate voice sample.`,
+Deprecated alias for \`POST /api/v1/voice_groups/voices/sample\`.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] =

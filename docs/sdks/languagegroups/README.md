@@ -7,16 +7,18 @@ Operations related to language groups. A language group is a           collectio
 
 ### Available Operations
 
-* [list](#list) - List Language Groups
-* [create](#create) - Create Language Group
-* [update](#update) - Update Language Group
-* [getById](#getbyid) - Get Language Group
-* [delete](#delete) - Delete Language Group
-* [languageGroupsCreateVoiceSample](#languagegroupscreatevoicesample) - Create Voice Sample
+* [~~list~~](#list) - List Language Groups :warning: **Deprecated**
+* [~~create~~](#create) - Create Language Group :warning: **Deprecated**
+* [~~update~~](#update) - Update Language Group :warning: **Deprecated**
+* [~~getById~~](#getbyid) - Get Language Group :warning: **Deprecated**
+* [~~delete~~](#delete) - Delete Language Group :warning: **Deprecated**
+* [~~languageGroupsCreateVoiceSample~~](#languagegroupscreatevoicesample) - Create Voice Sample :warning: **Deprecated**
 
-## list
+## ~~list~~
 
-Fetch language groups.
+Deprecated alias for `GET /api/v1/voice_groups/`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -104,9 +106,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## create
+## ~~create~~
 
-Create a new language group.
+Deprecated alias for `POST /api/v1/voice_groups/`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -210,9 +214,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## update
+## ~~update~~
 
-Update an existing language group
+Deprecated alias for `PUT /api/v1/voice_groups/`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -320,9 +326,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## getById
+## ~~getById~~
 
-Fetch a given language group.
+Deprecated alias for `GET /api/v1/voice_groups/{voice_group_id}`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -394,9 +402,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## delete
+## ~~delete~~
 
-Delete a language group.
+Deprecated alias for `DELETE /api/v1/voice_groups/{voice_group_id}`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -470,9 +480,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## languageGroupsCreateVoiceSample
+## ~~languageGroupsCreateVoiceSample~~
 
-Generate voice sample.
+Deprecated alias for `POST /api/v1/voice_groups/voices/sample`.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -536,7 +548,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.VoiceSampleCreateRequest](../../models/components/voicesamplecreaterequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.LanguageSampleCreateRequest](../../models/components/languagesamplecreaterequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

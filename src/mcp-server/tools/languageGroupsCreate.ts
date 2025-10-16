@@ -14,7 +14,7 @@ export const tool$languageGroupsCreate: ToolDefinition<typeof args> = {
   name: "language-groups-create",
   description: `Create Language Group
 
-Create a new language group.`,
+Deprecated alias for \`POST /api/v1/voice_groups/\`.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await languageGroupsCreate(

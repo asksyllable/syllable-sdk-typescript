@@ -15,7 +15,7 @@ import {
 } from "./languageconfig.js";
 
 /**
- * Request model to create a language group.
+ * Request model to create a voice group.
  */
 export type LanguageGroupCreateRequest = {
   /**

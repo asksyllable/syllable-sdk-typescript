@@ -21,12 +21,12 @@ import {
 } from "./languagegroupagentinfo.js";
 
 /**
- * Response model for language group operations.
+ * Response model for voice group operations.
  *
  * @remarks
- * A language group is a collection of language, voice, and DTMF configuration that can be
+ * A voice group is a collection of language, voice, and DTMF configuration that can be
  * linked to an agent to define the languages and voices it supports. For more information, see
- * [Console docs](https://docs.syllable.ai/Resources/LanguageGroups).
+ * [Console docs](https://docs.syllable.ai/Resources/VoiceGroups).
  */
 export type LanguageGroupResponse = {
   /**

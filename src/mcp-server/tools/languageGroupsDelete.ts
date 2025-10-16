@@ -14,7 +14,7 @@ export const tool$languageGroupsDelete: ToolDefinition<typeof args> = {
   name: "language-groups-delete",
   description: `Delete Language Group
 
-Delete a language group.`,
+Deprecated alias for \`DELETE /api/v1/voice_groups/{voice_group_id}\`.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await languageGroupsDelete(
