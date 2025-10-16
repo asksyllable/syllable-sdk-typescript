@@ -13,5 +13,5 @@ let value: ChannelServices = "email";
 ## Values
 
 ```typescript
-"sip" | "twilio" | "email" | "webchat"
+"sip" | "twilio" | "email" | "webchat" | "africastalking"
 ```

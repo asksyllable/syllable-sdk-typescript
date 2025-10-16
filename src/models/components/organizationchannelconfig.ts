@@ -27,6 +27,10 @@ export type OrganizationChannelConfig = {
    */
   authToken?: string | null | undefined;
   /**
+   * Provider-specific credentials. Initially to be used for AfricasTalking creds.In a future this would be used for Twilio creds too (removing the account_sid and auth_token fields).
+   */
+  providerCredentials?: { [k: string]: string } | null | undefined;
+  /**
    * Telephony configurations to be applied to the targets under the channel
    */
   telephony?: TelephonyConfigurations | null | undefined;
@@ -40,11 +44,13 @@ export const OrganizationChannelConfig$inboundSchema: z.ZodType<
 > = z.object({
   account_sid: z.nullable(z.string()).optional(),
   auth_token: z.nullable(z.string()).optional(),
+  provider_credentials: z.nullable(z.record(z.string())).optional(),
   telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_sid": "accountSid",
     "auth_token": "authToken",
+    "provider_credentials": "providerCredentials",
   });
 });
 
@@ -52,6 +58,7 @@ export const OrganizationChannelConfig$inboundSchema: z.ZodType<
 export type OrganizationChannelConfig$Outbound = {
   account_sid?: string | null | undefined;
   auth_token?: string | null | undefined;
+  provider_credentials?: { [k: string]: string } | null | undefined;
   telephony?: TelephonyConfigurations$Outbound | null | undefined;
 };
 
@@ -63,11 +70,13 @@ export const OrganizationChannelConfig$outboundSchema: z.ZodType<
 > = z.object({
   accountSid: z.nullable(z.string()).optional(),
   authToken: z.nullable(z.string()).optional(),
+  providerCredentials: z.nullable(z.record(z.string())).optional(),
   telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountSid: "account_sid",
     authToken: "auth_token",
+    providerCredentials: "provider_credentials",
   });
 });
 

@@ -15,6 +15,10 @@ let value: OrganizationChannelUpdateRequest = {
   config: {
     accountSid: "AC123...",
     authToken: "sometoken",
+    providerCredentials: {
+      "api_key": "atk123",
+      "username": "test_username",
+    },
     telephony: {
       preInputTimeout: 1.2,
       overallInputTimeout: 20,
