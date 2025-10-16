@@ -14,7 +14,7 @@ export const tool$languageGroupsUpdate: ToolDefinition<typeof args> = {
   name: "language-groups-update",
   description: `Update Language Group
 
-Update an existing language group`,
+Deprecated alias for \`PUT /api/v1/voice_groups/\`.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await languageGroupsUpdate(

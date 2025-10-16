@@ -14,7 +14,7 @@ export const tool$languageGroupsGetById: ToolDefinition<typeof args> = {
   name: "language-groups-get-by-id",
   description: `Get Language Group
 
-Fetch a given language group.`,
+Deprecated alias for \`GET /api/v1/voice_groups/{voice_group_id}\`.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await languageGroupsGetById(

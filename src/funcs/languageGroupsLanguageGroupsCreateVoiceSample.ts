@@ -30,11 +30,13 @@ import { Result } from "../types/fp.js";
  * Create Voice Sample
  *
  * @remarks
- * Generate voice sample.
+ * Deprecated alias for `POST /api/v1/voice_groups/voices/sample`.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function languageGroupsLanguageGroupsCreateVoiceSample(
   client: SyllableSDKCore,
-  request: components.VoiceSampleCreateRequest,
+  request: components.LanguageSampleCreateRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -59,7 +61,7 @@ export function languageGroupsLanguageGroupsCreateVoiceSample(
 
 async function $do(
   client: SyllableSDKCore,
-  request: components.VoiceSampleCreateRequest,
+  request: components.LanguageSampleCreateRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -80,7 +82,8 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.VoiceSampleCreateRequest$outboundSchema.parse(value),
+    (value) =>
+      components.LanguageSampleCreateRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

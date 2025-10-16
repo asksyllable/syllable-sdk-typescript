@@ -27,6 +27,7 @@ import { Takeouts } from "./takeouts.js";
 import { Tools } from "./tools.js";
 import { Users } from "./users.js";
 import { V1 } from "./v1.js";
+import { VoiceGroups } from "./voicegroups.js";
 
 export class SyllableSDK extends ClientSDK {
   private _agents?: Agents;
@@ -132,6 +133,11 @@ export class SyllableSDK extends ClientSDK {
   private _languageGroups?: LanguageGroups;
   get languageGroups(): LanguageGroups {
     return (this._languageGroups ??= new LanguageGroups(this._options));
+  }
+
+  private _voiceGroups?: VoiceGroups;
+  get voiceGroups(): VoiceGroups {
+    return (this._voiceGroups ??= new VoiceGroups(this._options));
   }
 
   private _takeouts?: Takeouts;

@@ -18,7 +18,9 @@ export class LanguageGroups extends ClientSDK {
    * List Language Groups
    *
    * @remarks
-   * Fetch language groups.
+   * Deprecated alias for `GET /api/v1/voice_groups/`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async list(
     request: operations.LanguageGroupsListRequest,
@@ -35,7 +37,9 @@ export class LanguageGroups extends ClientSDK {
    * Create Language Group
    *
    * @remarks
-   * Create a new language group.
+   * Deprecated alias for `POST /api/v1/voice_groups/`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async create(
     request: components.LanguageGroupCreateRequest,
@@ -52,7 +56,9 @@ export class LanguageGroups extends ClientSDK {
    * Update Language Group
    *
    * @remarks
-   * Update an existing language group
+   * Deprecated alias for `PUT /api/v1/voice_groups/`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async update(
     request: components.LanguageGroupUpdateRequest,
@@ -69,7 +75,9 @@ export class LanguageGroups extends ClientSDK {
    * Get Language Group
    *
    * @remarks
-   * Fetch a given language group.
+   * Deprecated alias for `GET /api/v1/voice_groups/{voice_group_id}`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getById(
     request: operations.LanguageGroupsGetByIdRequest,
@@ -86,7 +94,9 @@ export class LanguageGroups extends ClientSDK {
    * Delete Language Group
    *
    * @remarks
-   * Delete a language group.
+   * Deprecated alias for `DELETE /api/v1/voice_groups/{voice_group_id}`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async delete(
     request: operations.LanguageGroupsDeleteRequest,
@@ -103,10 +113,12 @@ export class LanguageGroups extends ClientSDK {
    * Create Voice Sample
    *
    * @remarks
-   * Generate voice sample.
+   * Deprecated alias for `POST /api/v1/voice_groups/voices/sample`.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async languageGroupsCreateVoiceSample(
-    request: components.VoiceSampleCreateRequest,
+    request: components.LanguageSampleCreateRequest,
     options?: RequestOptions,
   ): Promise<ReadableStream<Uint8Array>> {
     return unwrapAsync(languageGroupsLanguageGroupsCreateVoiceSample(

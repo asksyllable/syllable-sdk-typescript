@@ -30,7 +30,9 @@ import { Result } from "../types/fp.js";
  * List Language Groups
  *
  * @remarks
- * Fetch language groups.
+ * Deprecated alias for `GET /api/v1/voice_groups/`.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function languageGroupsList(
   client: SyllableSDKCore,

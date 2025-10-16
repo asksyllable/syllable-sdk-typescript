@@ -6,7 +6,7 @@ import * as z from "zod";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * Names of language group fields supported for filtering/sorting on list endpoint.
+ * Deprecated enum mirroring `VoiceGroupProperties` values.
  */
 export const LanguageGroupProperties = {
   Name: "name",
@@ -16,7 +16,7 @@ export const LanguageGroupProperties = {
   LastUpdatedBy: "last_updated_by",
 } as const;
 /**
- * Names of language group fields supported for filtering/sorting on list endpoint.
+ * Deprecated enum mirroring `VoiceGroupProperties` values.
  */
 export type LanguageGroupProperties = ClosedEnum<
   typeof LanguageGroupProperties

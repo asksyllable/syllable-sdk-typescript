@@ -1,6 +1,6 @@
 # LanguageGroupCreateRequest
 
-Request model to create a language group.
+Request model to create a voice group.
 
 ## Example Usage
 

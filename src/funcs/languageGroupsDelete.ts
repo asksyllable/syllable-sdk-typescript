@@ -30,7 +30,9 @@ import { Result } from "../types/fp.js";
  * Delete Language Group
  *
  * @remarks
- * Delete a language group.
+ * Deprecated alias for `DELETE /api/v1/voice_groups/{voice_group_id}`.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function languageGroupsDelete(
   client: SyllableSDKCore,

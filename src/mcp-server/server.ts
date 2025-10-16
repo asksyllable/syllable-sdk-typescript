@@ -158,6 +158,12 @@ import { tool$usersUpdate } from "./tools/usersUpdate.js";
 import { tool$usersUsersDeleteAccount } from "./tools/usersUsersDeleteAccount.js";
 import { tool$usersUsersGetByEmail } from "./tools/usersUsersGetByEmail.js";
 import { tool$usersUsersSendEmail } from "./tools/usersUsersSendEmail.js";
+import { tool$voiceGroupsCreate } from "./tools/voiceGroupsCreate.js";
+import { tool$voiceGroupsDelete } from "./tools/voiceGroupsDelete.js";
+import { tool$voiceGroupsGetById } from "./tools/voiceGroupsGetById.js";
+import { tool$voiceGroupsList } from "./tools/voiceGroupsList.js";
+import { tool$voiceGroupsUpdate } from "./tools/voiceGroupsUpdate.js";
+import { tool$voiceGroupsVoiceGroupsCreateVoiceSample } from "./tools/voiceGroupsVoiceGroupsCreateVoiceSample.js";
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
@@ -169,7 +175,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.4-rc.1",
+    version: "1.0.4-rc.2",
   });
 
   const client = new SyllableSDKCore({
@@ -282,6 +288,12 @@ export function createMCPServer(deps: {
   tool(tool$languageGroupsGetById);
   tool(tool$languageGroupsDelete);
   tool(tool$languageGroupsLanguageGroupsCreateVoiceSample);
+  tool(tool$voiceGroupsList);
+  tool(tool$voiceGroupsCreate);
+  tool(tool$voiceGroupsUpdate);
+  tool(tool$voiceGroupsGetById);
+  tool(tool$voiceGroupsDelete);
+  tool(tool$voiceGroupsVoiceGroupsCreateVoiceSample);
   tool(tool$takeoutsCreate);
   tool(tool$takeoutsTakeoutsGetByJobId);
   tool(tool$takeoutsTakeoutsGetFile);
