@@ -3,10 +3,10 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: bd47803da25a795876d7a706b09aba43
   docVersion: 0.0.2
-  speakeasyVersion: 1.636.3
-  generationVersion: 2.723.11
-  releaseVersion: 1.0.4-rc.2
-  configChecksum: 7c8b899de11f499c6c3ea19ceb8e63cb
+  speakeasyVersion: 1.637.0
+  generationVersion: 2.727.4
+  releaseVersion: 1.0.4
+  configChecksum: 1c58bb940d0b0a72ff6c4f9cb47fcd4f
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.26
+    core: 3.22.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -2714,17 +2714,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `syllablesdk.voiceGroups.list()`: **Added**
-  * `syllablesdk.voiceGroups.create()`: **Added**
-  * `syllablesdk.voiceGroups.update()`: **Added**
-  * `syllablesdk.voiceGroups.getById()`: **Added**
-  * `syllablesdk.voiceGroups.delete()`: **Added**
-  * `syllablesdk.voiceGroups.voiceGroupsCreateVoiceSample()`: **Added**
-  * `syllablesdk.languageGroups.list()`: **Deprecated**
-  * `syllablesdk.languageGroups.create()`: **Deprecated**
-  * `syllablesdk.languageGroups.update()`: **Deprecated**
-  * `syllablesdk.languageGroups.getById()`: **Deprecated**
-  * `syllablesdk.languageGroups.delete()`: **Deprecated**
-  * `syllablesdk.languageGroups.languageGroupsCreateVoiceSample()`: **Deprecated**
