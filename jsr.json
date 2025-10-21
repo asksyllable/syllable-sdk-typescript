@@ -2,7 +2,7 @@
 
 {
   "name": "syllable-sdk",
-  "version": "1.0.5-rc.1",
+  "version": "1.0.5-rc.2",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    

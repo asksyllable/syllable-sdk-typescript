@@ -1,6 +1,6 @@
 {
   "name": "syllable-sdk",
-  "version": "1.0.5-rc.1",
+  "version": "1.0.5-rc.2",
   "author": "Syllable",
   "bin": {
     "mcp": "bin/mcp-server.js"
