@@ -3829,7 +3829,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.voiceGroups.voiceGroupsCreateVoiceSample({
-                languageCode: "fa-IR",
+                languageCode: "es-US",
                 voiceProvider: "Google",
                 voiceDisplayName: "Vindemiatrix (English)",
                 voiceSpeed: 1,
