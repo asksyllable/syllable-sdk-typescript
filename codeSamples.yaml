@@ -3831,7 +3831,7 @@ actions:
               const result = await syllableSDK.voiceGroups.voiceGroupsCreateVoiceSample({
                 languageCode: "es-US",
                 voiceProvider: "Google",
-                voiceDisplayName: "Vindemiatrix (English)",
+                voiceDisplayName: "Vindemiatrix (Gujarati)",
                 voiceSpeed: 1,
                 voicePitch: 0,
               });
