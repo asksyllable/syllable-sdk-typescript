@@ -3,10 +3,10 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: 8ae39a2edcd50039554bce44364be282
   docVersion: 0.0.2
-  speakeasyVersion: 1.639.0
+  speakeasyVersion: 1.639.1
   generationVersion: 2.730.0
-  releaseVersion: 1.0.6-rc.1
-  configChecksum: fc2c953333a423ab719d7dbb9c019cba
+  releaseVersion: 1.0.6
+  configChecksum: 95032486e58e3a4372891d0b8b1955b8
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2823,12 +2823,3 @@ examples:
           application/json: "<value>"
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `syllablesdk.directory.list()`: **Added**
-  * `syllablesdk.directory.create()`: **Added**
-  * `syllablesdk.directory.getById()`: **Added**
-  * `syllablesdk.directory.update()`: **Added**
-  * `syllablesdk.directory.delete()`: **Added**
-  * `syllablesdk.directory.directoryMemberBulkLoad()`: **Added**
-  * `syllablesdk.directory.directoryMemberDownload()`: **Added**
