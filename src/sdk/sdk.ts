@@ -9,6 +9,7 @@ import { Conversations } from "./conversations.js";
 import { CustomMessages } from "./custommessages.js";
 import { Dashboards } from "./dashboards.js";
 import { DataSources } from "./datasources.js";
+import { Directory } from "./directory.js";
 import { Events } from "./events.js";
 import { Incidents } from "./incidents.js";
 import { Insights } from "./insights.js";
@@ -113,6 +114,11 @@ export class SyllableSDK extends ClientSDK {
   private _tools?: Tools;
   get tools(): Tools {
     return (this._tools ??= new Tools(this._options));
+  }
+
+  private _directory?: Directory;
+  get directory(): Directory {
+    return (this._directory ??= new Directory(this._options));
   }
 
   private _dashboards?: Dashboards;

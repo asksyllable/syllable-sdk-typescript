@@ -1012,6 +1012,182 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/directory_members/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.create({
+                name: "Jane Doe",
+                type: "contact",
+                extensions: [
+                  {
+                    name: "work",
+                    numbers: [
+                      {},
+                    ],
+                  },
+                ],
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/download/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberDownload();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/upload/"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { openAsBlob } from "node:fs";
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberBulkLoad({
+                file: await openAsBlob("example.file"),
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.delete({
+                memberId: 569311,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.getById({
+                memberId: 562571,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.update({
+                memberId: 941217,
+                directoryMember: {
+                  name: "Jane Doe",
+                  type: "contact",
+                  extensions: [
+                    {
+                      name: "work",
+                      numbers: [
+                        {},
+                      ],
+                    },
+                  ],
+                  id: 1,
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/events/"]["get"]
     update:
       x-codeSamples:
@@ -1658,8 +1834,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-10-21T00:00:00Z"),
-                endDatetime: new Date("2025-10-22T00:00:00Z"),
+                startDatetime: new Date("2025-10-22T00:00:00Z"),
+                endDatetime: new Date("2025-10-23T00:00:00Z"),
               });
 
               console.log(result);
@@ -1781,8 +1957,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-10-21T00:00:00Z"),
-                  endDatetime: new Date("2025-10-22T00:00:00Z"),
+                  startDatetime: new Date("2025-10-22T00:00:00Z"),
+                  endDatetime: new Date("2025-10-23T00:00:00Z"),
                 },
               });
 
@@ -1975,9 +2151,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20251022.9",
+                batchId: "20251023.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-10-23T00:00:00Z"),
+                expiresOn: new Date("2025-10-24T00:00:00Z"),
                 paused: true,
               });
 

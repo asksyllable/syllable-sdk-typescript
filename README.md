@@ -302,6 +302,16 @@ run();
 * [getById](docs/sdks/datasources/README.md#getbyid) - Get Data Source
 * [delete](docs/sdks/datasources/README.md#delete) - Delete Data Source
 
+### [directory](docs/sdks/directory/README.md)
+
+* [list](docs/sdks/directory/README.md#list) - Directory Member List
+* [create](docs/sdks/directory/README.md#create) - Create Directory Member
+* [getById](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
+* [update](docs/sdks/directory/README.md#update) - Update Directory Member
+* [delete](docs/sdks/directory/README.md#delete) - Delete Directory Member
+* [directoryMemberBulkLoad](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
+* [directoryMemberDownload](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
+
 ### [events](docs/sdks/events/README.md)
 
 * [list](docs/sdks/events/README.md#list) - Events List
@@ -552,6 +562,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dataSourcesGetById`](docs/sdks/datasources/README.md#getbyid) - Get Data Source
 - [`dataSourcesList`](docs/sdks/datasources/README.md#list) - List Data Sources
 - [`dataSourcesUpdate`](docs/sdks/datasources/README.md#update) - Update Data Source
+- [`directoryCreate`](docs/sdks/directory/README.md#create) - Create Directory Member
+- [`directoryDelete`](docs/sdks/directory/README.md#delete) - Delete Directory Member
+- [`directoryDirectoryMemberBulkLoad`](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
+- [`directoryDirectoryMemberDownload`](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
+- [`directoryGetById`](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
+- [`directoryList`](docs/sdks/directory/README.md#list) - Directory Member List
+- [`directoryUpdate`](docs/sdks/directory/README.md#update) - Update Directory Member
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
 - [`incidentsCreate`](docs/sdks/incidents/README.md#create) - Create Incident
 - [`incidentsDelete`](docs/sdks/incidents/README.md#delete) - Delete Incident

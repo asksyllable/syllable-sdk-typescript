@@ -27,7 +27,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.5
+  version: 1.0.6-rc.1
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -68,3 +68,4 @@ typescript:
   templateVersion: v2
   usageSDKInitImports: []
   useIndexModules: true
+  zodVersion: v3
