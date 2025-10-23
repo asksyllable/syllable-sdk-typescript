@@ -1,0 +1,15 @@
+# DirectoryMemberProperties
+
+## Example Usage
+
+```typescript
+import { DirectoryMemberProperties } from "syllable-sdk/models/components";
+
+let value: DirectoryMemberProperties = "updated_at";
+```
+
+## Values
+
+```typescript
+"id" | "name" | "type" | "extensions" | "contact_tags" | "updated_at"
+```

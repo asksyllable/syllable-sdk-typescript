@@ -52,6 +52,13 @@ import { tool$dataSourcesDelete } from "./tools/dataSourcesDelete.js";
 import { tool$dataSourcesGetById } from "./tools/dataSourcesGetById.js";
 import { tool$dataSourcesList } from "./tools/dataSourcesList.js";
 import { tool$dataSourcesUpdate } from "./tools/dataSourcesUpdate.js";
+import { tool$directoryCreate } from "./tools/directoryCreate.js";
+import { tool$directoryDelete } from "./tools/directoryDelete.js";
+import { tool$directoryDirectoryMemberBulkLoad } from "./tools/directoryDirectoryMemberBulkLoad.js";
+import { tool$directoryDirectoryMemberDownload } from "./tools/directoryDirectoryMemberDownload.js";
+import { tool$directoryGetById } from "./tools/directoryGetById.js";
+import { tool$directoryList } from "./tools/directoryList.js";
+import { tool$directoryUpdate } from "./tools/directoryUpdate.js";
 import { tool$eventsList } from "./tools/eventsList.js";
 import { tool$incidentsCreate } from "./tools/incidentsCreate.js";
 import { tool$incidentsDelete } from "./tools/incidentsDelete.js";
@@ -175,7 +182,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.5",
+    version: "1.0.6-rc.1",
   });
 
   const client = new SyllableSDKCore({
@@ -272,6 +279,13 @@ export function createMCPServer(deps: {
   tool(tool$toolsUpdate);
   tool(tool$toolsGetByName);
   tool(tool$toolsDelete);
+  tool(tool$directoryList);
+  tool(tool$directoryCreate);
+  tool(tool$directoryGetById);
+  tool(tool$directoryUpdate);
+  tool(tool$directoryDelete);
+  tool(tool$directoryDirectoryMemberBulkLoad);
+  tool(tool$directoryDirectoryMemberDownload);
   tool(tool$dashboardsPostListDashboard);
   tool(tool$dashboardsPostGetDashboard);
   tool(tool$dashboardsPostSessionEventsDashboard);
