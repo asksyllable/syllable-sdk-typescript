@@ -5,11 +5,11 @@
 ```typescript
 import { DirectoryMemberProperties } from "syllable-sdk/models/components";
 
-let value: DirectoryMemberProperties = "updated_at";
+let value: DirectoryMemberProperties = "contact_tags";
 ```
 
 ## Values
 
 ```typescript
-"id" | "name" | "type" | "extensions" | "contact_tags" | "updated_at"
+"id" | "name" | "name_exact" | "type" | "extensions" | "contact_tags" | "updated_at"
 ```

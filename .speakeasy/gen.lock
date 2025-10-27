@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 0dc1907dd0acc49571e22d63f1ac807d
+  docChecksum: 50613c8b13c2726131c14418518f96fb
   docVersion: 0.0.2
   speakeasyVersion: 1.640.0
   generationVersion: 2.730.5
-  releaseVersion: 1.0.7-rc.2
-  configChecksum: d43854f22ad796eb2b80cb83535a20a2
+  releaseVersion: 1.0.7-rc.3
+  configChecksum: eda79014e4f20739f0788daf147c811f
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2823,3 +2823,6 @@ examples:
           application/json: "<value>"
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `syllablesdk.directory.list()`:  `request` **Changed**
