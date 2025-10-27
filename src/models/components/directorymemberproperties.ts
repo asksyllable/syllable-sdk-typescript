@@ -8,6 +8,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const DirectoryMemberProperties = {
   Id: "id",
   Name: "name",
+  NameExact: "name_exact",
   Type: "type",
   Extensions: "extensions",
   ContactTags: "contact_tags",
