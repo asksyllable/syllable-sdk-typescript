@@ -131,6 +131,7 @@ async function run() {
         ],
       },
     ],
+    contactTags: {},
   });
 
   console.log(result);
@@ -165,6 +166,7 @@ async function run() {
         ],
       },
     ],
+    contactTags: {},
   });
   if (res.ok) {
     const { value: result } = res;
@@ -299,7 +301,10 @@ async function run() {
           ],
         },
       ],
+      contactTags: {},
       id: 1,
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
+      lastUpdatedBy: "user@email.com",
     },
   });
 
@@ -337,7 +342,10 @@ async function run() {
           ],
         },
       ],
+      contactTags: {},
       id: 1,
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
+      lastUpdatedBy: "user@email.com",
     },
   });
   if (res.ok) {

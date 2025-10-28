@@ -32,13 +32,22 @@ export type DirectoryMember = {
    * List of extensions for the directory member
    */
   extensions?: Array<DirectoryExtension> | null | undefined;
+  /**
+   * Tags for the directory member
+   */
   contactTags?: ContactTags | null | undefined;
-  updatedAt?: Date | null | undefined;
-  lastUpdatedBy?: string | null | undefined;
   /**
    * Internal ID of the directory member
    */
   id?: number | null | undefined;
+  /**
+   * Timestamp of most recent update
+   */
+  updatedAt: Date;
+  /**
+   * Email of the user who last updated the directory member
+   */
+  lastUpdatedBy?: string | null | undefined;
 };
 
 /** @internal */
@@ -95,11 +104,9 @@ export const DirectoryMember$inboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
   contact_tags: z.nullable(z.lazy(() => ContactTags$inboundSchema)).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  last_updated_by: z.nullable(z.string()).optional(),
   id: z.nullable(z.number().int()).optional(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  last_updated_by: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "contact_tags": "contactTags",
@@ -114,9 +121,9 @@ export type DirectoryMember$Outbound = {
   type: string;
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
   contact_tags?: ContactTags$Outbound | null | undefined;
-  updated_at?: string | null | undefined;
-  last_updated_by?: string | null | undefined;
   id?: number | null | undefined;
+  updated_at: string;
+  last_updated_by?: string | null | undefined;
 };
 
 /** @internal */
@@ -129,9 +136,9 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
   contactTags: z.nullable(z.lazy(() => ContactTags$outboundSchema)).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  lastUpdatedBy: z.nullable(z.string()).optional(),
   id: z.nullable(z.number().int()).optional(),
+  updatedAt: z.date().transform(v => v.toISOString()),
+  lastUpdatedBy: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contactTags: "contact_tags",

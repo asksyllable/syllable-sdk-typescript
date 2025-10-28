@@ -1065,6 +1065,7 @@ actions:
                     ],
                   },
                 ],
+                contactTags: {},
               });
 
               console.log(result);
@@ -1180,7 +1181,10 @@ actions:
                       ],
                     },
                   ],
+                  contactTags: {},
                   id: 1,
+                  updatedAt: new Date("2024-01-01T00:00:00Z"),
+                  lastUpdatedBy: "user@email.com",
                 },
               });
 
@@ -1834,8 +1838,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-10-26T00:00:00Z"),
-                endDatetime: new Date("2025-10-27T00:00:00Z"),
+                startDatetime: new Date("2025-10-27T00:00:00Z"),
+                endDatetime: new Date("2025-10-28T00:00:00Z"),
               });
 
               console.log(result);
@@ -1957,8 +1961,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-10-26T00:00:00Z"),
-                  endDatetime: new Date("2025-10-27T00:00:00Z"),
+                  startDatetime: new Date("2025-10-27T00:00:00Z"),
+                  endDatetime: new Date("2025-10-28T00:00:00Z"),
                 },
               });
 
@@ -2151,9 +2155,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20251027.9",
+                batchId: "20251028.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-10-28T00:00:00Z"),
+                expiresOn: new Date("2025-10-29T00:00:00Z"),
                 paused: true,
               });
 
