@@ -3494,7 +3494,7 @@ actions:
                   },
                   endpoint: {
                     url: "https://api.example.com",
-                    method: "post",
+                    method: "delete",
                     argumentLocation: "path",
                   },
                   defaults: "<value>",
@@ -3543,7 +3543,7 @@ actions:
                   },
                   endpoint: {
                     url: "https://api.example.com",
-                    method: "get",
+                    method: "post",
                     argumentLocation: "form",
                   },
                   defaults: "<value>",
