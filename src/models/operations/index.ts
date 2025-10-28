@@ -26,6 +26,7 @@ export * from "./datasourceslist.js";
 export * from "./directorymemberdelete.js";
 export * from "./directorymembergetbyid.js";
 export * from "./directorymemberlist.js";
+export * from "./directorymembertestextension.js";
 export * from "./directorymemberupdate.js";
 export * from "./eventslist.js";
 export * from "./generatesessionrecordingurls.js";

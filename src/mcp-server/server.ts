@@ -56,6 +56,7 @@ import { tool$directoryCreate } from "./tools/directoryCreate.js";
 import { tool$directoryDelete } from "./tools/directoryDelete.js";
 import { tool$directoryDirectoryMemberBulkLoad } from "./tools/directoryDirectoryMemberBulkLoad.js";
 import { tool$directoryDirectoryMemberDownload } from "./tools/directoryDirectoryMemberDownload.js";
+import { tool$directoryDirectoryMemberTestExtension } from "./tools/directoryDirectoryMemberTestExtension.js";
 import { tool$directoryGetById } from "./tools/directoryGetById.js";
 import { tool$directoryList } from "./tools/directoryList.js";
 import { tool$directoryUpdate } from "./tools/directoryUpdate.js";
@@ -182,7 +183,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.7-rc.4",
+    version: "1.0.7-rc.5",
   });
 
   const client = new SyllableSDKCore({
@@ -284,6 +285,7 @@ export function createMCPServer(deps: {
   tool(tool$directoryGetById);
   tool(tool$directoryUpdate);
   tool(tool$directoryDelete);
+  tool(tool$directoryDirectoryMemberTestExtension);
   tool(tool$directoryDirectoryMemberBulkLoad);
   tool(tool$directoryDirectoryMemberDownload);
   tool(tool$dashboardsPostListDashboard);

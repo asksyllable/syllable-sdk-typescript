@@ -6,6 +6,7 @@ import { directoryCreate } from "../funcs/directoryCreate.js";
 import { directoryDelete } from "../funcs/directoryDelete.js";
 import { directoryDirectoryMemberBulkLoad } from "../funcs/directoryDirectoryMemberBulkLoad.js";
 import { directoryDirectoryMemberDownload } from "../funcs/directoryDirectoryMemberDownload.js";
+import { directoryDirectoryMemberTestExtension } from "../funcs/directoryDirectoryMemberTestExtension.js";
 import { directoryGetById } from "../funcs/directoryGetById.js";
 import { directoryList } from "../funcs/directoryList.js";
 import { directoryUpdate } from "../funcs/directoryUpdate.js";
@@ -94,6 +95,23 @@ export class Directory extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(directoryDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Test Directory Member Extension
+   *
+   * @remarks
+   * Test directory member extension at a specific timestamp and language.
+   */
+  async directoryMemberTestExtension(
+    request: operations.DirectoryMemberTestExtensionRequest,
+    options?: RequestOptions,
+  ): Promise<components.DirectoryMemberTestResponse> {
+    return unwrapAsync(directoryDirectoryMemberTestExtension(
       this,
       request,
       options,
