@@ -1192,6 +1192,28 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}/test"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberTestExtension({
+                memberId: 922412,
+                timestamp: new Date("2024-07-02T14:32:47.235Z"),
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/events/"]["get"]
     update:
       x-codeSamples:
