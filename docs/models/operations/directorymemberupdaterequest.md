@@ -18,7 +18,10 @@ let value: DirectoryMemberUpdateRequest = {
         ],
       },
     ],
+    contactTags: {},
     id: 1,
+    updatedAt: new Date("2024-01-01T00:00:00Z"),
+    lastUpdatedBy: "user@email.com",
   },
 };
 ```
