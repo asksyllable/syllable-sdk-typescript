@@ -11,6 +11,8 @@ import { ClosedEnum } from "../../types/enums.js";
 export const ToolHttpMethod = {
   Get: "get",
   Post: "post",
+  Put: "put",
+  Delete: "delete",
 } as const;
 /**
  * The HTTP method to use for a tool HTTP request.
