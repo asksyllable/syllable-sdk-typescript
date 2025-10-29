@@ -14,8 +14,6 @@ import {
   DirectoryExtension$outboundSchema,
 } from "./directoryextension.js";
 
-export type DirectoryMemberCreateContactTags = {};
-
 /**
  * Request model to create a directory member.
  */
@@ -35,58 +33,8 @@ export type DirectoryMemberCreate = {
   /**
    * Tags for the directory member
    */
-  contactTags?: DirectoryMemberCreateContactTags | null | undefined;
+  contactTags?: { [k: string]: Array<string> } | null | undefined;
 };
-
-/** @internal */
-export const DirectoryMemberCreateContactTags$inboundSchema: z.ZodType<
-  DirectoryMemberCreateContactTags,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type DirectoryMemberCreateContactTags$Outbound = {};
-
-/** @internal */
-export const DirectoryMemberCreateContactTags$outboundSchema: z.ZodType<
-  DirectoryMemberCreateContactTags$Outbound,
-  z.ZodTypeDef,
-  DirectoryMemberCreateContactTags
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberCreateContactTags$ {
-  /** @deprecated use `DirectoryMemberCreateContactTags$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMemberCreateContactTags$inboundSchema;
-  /** @deprecated use `DirectoryMemberCreateContactTags$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMemberCreateContactTags$outboundSchema;
-  /** @deprecated use `DirectoryMemberCreateContactTags$Outbound` instead. */
-  export type Outbound = DirectoryMemberCreateContactTags$Outbound;
-}
-
-export function directoryMemberCreateContactTagsToJSON(
-  directoryMemberCreateContactTags: DirectoryMemberCreateContactTags,
-): string {
-  return JSON.stringify(
-    DirectoryMemberCreateContactTags$outboundSchema.parse(
-      directoryMemberCreateContactTags,
-    ),
-  );
-}
-
-export function directoryMemberCreateContactTagsFromJSON(
-  jsonString: string,
-): SafeParseResult<DirectoryMemberCreateContactTags, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DirectoryMemberCreateContactTags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DirectoryMemberCreateContactTags' from JSON`,
-  );
-}
 
 /** @internal */
 export const DirectoryMemberCreate$inboundSchema: z.ZodType<
@@ -97,9 +45,7 @@ export const DirectoryMemberCreate$inboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
-  contact_tags: z.nullable(
-    z.lazy(() => DirectoryMemberCreateContactTags$inboundSchema),
-  ).optional(),
+  contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
 }).transform((v) => {
   return remap$(v, {
     "contact_tags": "contactTags",
@@ -111,7 +57,7 @@ export type DirectoryMemberCreate$Outbound = {
   name: string;
   type: string;
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
-  contact_tags?: DirectoryMemberCreateContactTags$Outbound | null | undefined;
+  contact_tags?: { [k: string]: Array<string> } | null | undefined;
 };
 
 /** @internal */
@@ -123,9 +69,7 @@ export const DirectoryMemberCreate$outboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
-  contactTags: z.nullable(
-    z.lazy(() => DirectoryMemberCreateContactTags$outboundSchema),
-  ).optional(),
+  contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
 }).transform((v) => {
   return remap$(v, {
     contactTags: "contact_tags",
