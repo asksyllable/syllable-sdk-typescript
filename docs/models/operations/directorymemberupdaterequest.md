@@ -14,7 +14,14 @@ let value: DirectoryMemberUpdateRequest = {
       {
         name: "work",
         numbers: [
-          {},
+          {
+            number: "+1234567890",
+            rules: [
+              {
+                "language": "en",
+              },
+            ],
+          },
         ],
       },
     ],

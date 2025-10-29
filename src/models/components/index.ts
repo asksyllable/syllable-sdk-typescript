@@ -67,6 +67,7 @@ export * from "./dialogrole.js";
 export * from "./dialogtoolcall.js";
 export * from "./dictionarymetadata.js";
 export * from "./directoryextension.js";
+export * from "./directoryextensionnumber.js";
 export * from "./directorymember.js";
 export * from "./directorymembercreate.js";
 export * from "./directorymemberproperties.js";
