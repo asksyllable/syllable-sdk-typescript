@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.2
   speakeasyVersion: 1.642.2
   generationVersion: 2.731.6
-  releaseVersion: 1.0.7-rc.9
-  configChecksum: 2a3265369479e7b290b181c0a702b597
+  releaseVersion: 1.0.7
+  configChecksum: cf43189c1b678f022aea182d5c18c36d
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2840,4 +2840,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.directory.list()`:  `response.items.[].contactTags` **Changed** **Breaking** :warning:\n* `syllablesdk.directory.create()`: \n  *  `request.contactTags` **Changed** **Breaking** :warning:\n  *  `response.contact_tags` **Changed** **Breaking** :warning:\n* `syllablesdk.directory.getById()`:  `response.contact_tags` **Changed** **Breaking** :warning:\n* `syllablesdk.directory.update()`: \n  *  `request.directoryMember.contactTags` **Changed** **Breaking** :warning:\n  *  `response.contact_tags` **Changed** **Breaking** :warning:\n"
