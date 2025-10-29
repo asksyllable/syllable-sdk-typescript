@@ -6,54 +6,23 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export type Numbers = {};
+import {
+  DirectoryExtensionNumber,
+  DirectoryExtensionNumber$inboundSchema,
+  DirectoryExtensionNumber$Outbound,
+  DirectoryExtensionNumber$outboundSchema,
+} from "./directoryextensionnumber.js";
 
 export type DirectoryExtension = {
+  /**
+   * Directory extension name
+   */
   name: string;
-  numbers?: Array<Numbers> | null | undefined;
+  /**
+   * Directory extension numbers.
+   */
+  numbers?: Array<DirectoryExtensionNumber> | null | undefined;
 };
-
-/** @internal */
-export const Numbers$inboundSchema: z.ZodType<Numbers, z.ZodTypeDef, unknown> =
-  z.object({});
-
-/** @internal */
-export type Numbers$Outbound = {};
-
-/** @internal */
-export const Numbers$outboundSchema: z.ZodType<
-  Numbers$Outbound,
-  z.ZodTypeDef,
-  Numbers
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Numbers$ {
-  /** @deprecated use `Numbers$inboundSchema` instead. */
-  export const inboundSchema = Numbers$inboundSchema;
-  /** @deprecated use `Numbers$outboundSchema` instead. */
-  export const outboundSchema = Numbers$outboundSchema;
-  /** @deprecated use `Numbers$Outbound` instead. */
-  export type Outbound = Numbers$Outbound;
-}
-
-export function numbersToJSON(numbers: Numbers): string {
-  return JSON.stringify(Numbers$outboundSchema.parse(numbers));
-}
-
-export function numbersFromJSON(
-  jsonString: string,
-): SafeParseResult<Numbers, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Numbers$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Numbers' from JSON`,
-  );
-}
 
 /** @internal */
 export const DirectoryExtension$inboundSchema: z.ZodType<
@@ -62,13 +31,14 @@ export const DirectoryExtension$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  numbers: z.nullable(z.array(z.lazy(() => Numbers$inboundSchema))).optional(),
+  numbers: z.nullable(z.array(DirectoryExtensionNumber$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
 export type DirectoryExtension$Outbound = {
   name: string;
-  numbers?: Array<Numbers$Outbound> | null | undefined;
+  numbers?: Array<DirectoryExtensionNumber$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -78,7 +48,8 @@ export const DirectoryExtension$outboundSchema: z.ZodType<
   DirectoryExtension
 > = z.object({
   name: z.string(),
-  numbers: z.nullable(z.array(z.lazy(() => Numbers$outboundSchema))).optional(),
+  numbers: z.nullable(z.array(DirectoryExtensionNumber$outboundSchema))
+    .optional(),
 });
 
 /**
