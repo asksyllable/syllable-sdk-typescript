@@ -14,8 +14,6 @@ import {
   DirectoryExtension$outboundSchema,
 } from "./directoryextension.js";
 
-export type ContactTags = {};
-
 /**
  * Model for a directory member (i.e. a contact).
  */
@@ -35,7 +33,7 @@ export type DirectoryMember = {
   /**
    * Tags for the directory member
    */
-  contactTags?: ContactTags | null | undefined;
+  contactTags?: { [k: string]: Array<string> } | null | undefined;
   /**
    * Internal ID of the directory member
    */
@@ -51,50 +49,6 @@ export type DirectoryMember = {
 };
 
 /** @internal */
-export const ContactTags$inboundSchema: z.ZodType<
-  ContactTags,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ContactTags$Outbound = {};
-
-/** @internal */
-export const ContactTags$outboundSchema: z.ZodType<
-  ContactTags$Outbound,
-  z.ZodTypeDef,
-  ContactTags
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContactTags$ {
-  /** @deprecated use `ContactTags$inboundSchema` instead. */
-  export const inboundSchema = ContactTags$inboundSchema;
-  /** @deprecated use `ContactTags$outboundSchema` instead. */
-  export const outboundSchema = ContactTags$outboundSchema;
-  /** @deprecated use `ContactTags$Outbound` instead. */
-  export type Outbound = ContactTags$Outbound;
-}
-
-export function contactTagsToJSON(contactTags: ContactTags): string {
-  return JSON.stringify(ContactTags$outboundSchema.parse(contactTags));
-}
-
-export function contactTagsFromJSON(
-  jsonString: string,
-): SafeParseResult<ContactTags, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ContactTags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContactTags' from JSON`,
-  );
-}
-
-/** @internal */
 export const DirectoryMember$inboundSchema: z.ZodType<
   DirectoryMember,
   z.ZodTypeDef,
@@ -103,7 +57,7 @@ export const DirectoryMember$inboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
-  contact_tags: z.nullable(z.lazy(() => ContactTags$inboundSchema)).optional(),
+  contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
   id: z.nullable(z.number().int()).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -122,7 +76,7 @@ export type DirectoryMember$Outbound = {
   name: string;
   type: string;
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
-  contact_tags?: ContactTags$Outbound | null | undefined;
+  contact_tags?: { [k: string]: Array<string> } | null | undefined;
   id?: number | null | undefined;
   updated_at?: string | null | undefined;
   last_updated_by?: string | null | undefined;
@@ -137,7 +91,7 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   name: z.string(),
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
-  contactTags: z.nullable(z.lazy(() => ContactTags$outboundSchema)).optional(),
+  contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
   id: z.nullable(z.number().int()).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   lastUpdatedBy: z.nullable(z.string()).optional(),
