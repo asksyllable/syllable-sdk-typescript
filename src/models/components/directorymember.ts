@@ -43,7 +43,7 @@ export type DirectoryMember = {
   /**
    * Timestamp of most recent update
    */
-  updatedAt: Date;
+  updatedAt?: Date | null | undefined;
   /**
    * Email of the user who last updated the directory member
    */
@@ -105,7 +105,9 @@ export const DirectoryMember$inboundSchema: z.ZodType<
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
   contact_tags: z.nullable(z.lazy(() => ContactTags$inboundSchema)).optional(),
   id: z.nullable(z.number().int()).optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   last_updated_by: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -122,7 +124,7 @@ export type DirectoryMember$Outbound = {
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
   contact_tags?: ContactTags$Outbound | null | undefined;
   id?: number | null | undefined;
-  updated_at: string;
+  updated_at?: string | null | undefined;
   last_updated_by?: string | null | undefined;
 };
 
@@ -137,7 +139,7 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
   contactTags: z.nullable(z.lazy(() => ContactTags$outboundSchema)).optional(),
   id: z.nullable(z.number().int()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()),
+  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   lastUpdatedBy: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
