@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberUpdateRequest = {
   memberId: number;
-  directoryMember: components.DirectoryMember;
+  directoryMemberUpdate: components.DirectoryMemberUpdate;
 };
 
 /** @internal */
@@ -21,18 +21,18 @@ export const DirectoryMemberUpdateRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   member_id: z.number().int(),
-  DirectoryMember: components.DirectoryMember$inboundSchema,
+  DirectoryMemberUpdate: components.DirectoryMemberUpdate$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "member_id": "memberId",
-    "DirectoryMember": "directoryMember",
+    "DirectoryMemberUpdate": "directoryMemberUpdate",
   });
 });
 
 /** @internal */
 export type DirectoryMemberUpdateRequest$Outbound = {
   member_id: number;
-  DirectoryMember: components.DirectoryMember$Outbound;
+  DirectoryMemberUpdate: components.DirectoryMemberUpdate$Outbound;
 };
 
 /** @internal */
@@ -42,11 +42,11 @@ export const DirectoryMemberUpdateRequest$outboundSchema: z.ZodType<
   DirectoryMemberUpdateRequest
 > = z.object({
   memberId: z.number().int(),
-  directoryMember: components.DirectoryMember$outboundSchema,
+  directoryMemberUpdate: components.DirectoryMemberUpdate$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     memberId: "member_id",
-    directoryMember: "DirectoryMember",
+    directoryMemberUpdate: "DirectoryMemberUpdate",
   });
 });
 
