@@ -1184,7 +1184,7 @@ actions:
             async function run() {
               const result = await syllableSDK.directory.update({
                 memberId: 941217,
-                directoryMember: {
+                directoryMemberUpdate: {
                   name: "Jane Doe",
                   type: "contact",
                   extensions: [
@@ -1211,8 +1211,6 @@ actions:
                     ],
                   },
                   id: 1,
-                  updatedAt: new Date("2024-01-01T00:00:00Z"),
-                  lastUpdatedBy: "user@email.com",
                 },
               });
 
@@ -1888,8 +1886,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-10-28T00:00:00Z"),
-                endDatetime: new Date("2025-10-29T00:00:00Z"),
+                startDatetime: new Date("2025-10-29T00:00:00Z"),
+                endDatetime: new Date("2025-10-30T00:00:00Z"),
               });
 
               console.log(result);
@@ -2011,8 +2009,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-10-28T00:00:00Z"),
-                  endDatetime: new Date("2025-10-29T00:00:00Z"),
+                  startDatetime: new Date("2025-10-29T00:00:00Z"),
+                  endDatetime: new Date("2025-10-30T00:00:00Z"),
                 },
               });
 
@@ -2205,9 +2203,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20251029.9",
+                batchId: "20251030.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-10-30T00:00:00Z"),
+                expiresOn: new Date("2025-10-31T00:00:00Z"),
                 paused: true,
               });
 

@@ -72,6 +72,7 @@ export * from "./directorymember.js";
 export * from "./directorymembercreate.js";
 export * from "./directorymemberproperties.js";
 export * from "./directorymembertestresponse.js";
+export * from "./directorymemberupdate.js";
 export * from "./event.js";
 export * from "./eventproperties.js";
 export * from "./folderdetails.js";

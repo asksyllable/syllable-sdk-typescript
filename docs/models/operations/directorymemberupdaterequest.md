@@ -7,7 +7,7 @@ import { DirectoryMemberUpdateRequest } from "syllable-sdk/models/operations";
 
 let value: DirectoryMemberUpdateRequest = {
   memberId: 394864,
-  directoryMember: {
+  directoryMemberUpdate: {
     name: "Jane Doe",
     type: "contact",
     extensions: [
@@ -34,15 +34,13 @@ let value: DirectoryMemberUpdateRequest = {
       ],
     },
     id: 1,
-    updatedAt: new Date("2024-01-01T00:00:00Z"),
-    lastUpdatedBy: "user@email.com",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `memberId`                                                               | *number*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `directoryMember`                                                        | [components.DirectoryMember](../../models/components/directorymember.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `memberId`                                                                           | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `directoryMemberUpdate`                                                              | [components.DirectoryMemberUpdate](../../models/components/directorymemberupdate.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

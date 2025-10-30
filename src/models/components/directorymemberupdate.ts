@@ -15,9 +15,9 @@ import {
 } from "./directoryextension.js";
 
 /**
- * Model for a directory member (i.e. a contact).
+ * Request model to update a directory member.
  */
-export type DirectoryMember = {
+export type DirectoryMemberUpdate = {
   /**
    * Name of the directory member
    */
@@ -38,19 +38,11 @@ export type DirectoryMember = {
    * Internal ID of the directory member
    */
   id: number;
-  /**
-   * Timestamp of most recent update
-   */
-  updatedAt: Date;
-  /**
-   * Email of the user who last updated the directory member
-   */
-  lastUpdatedBy?: string | null | undefined;
 };
 
 /** @internal */
-export const DirectoryMember$inboundSchema: z.ZodType<
-  DirectoryMember,
+export const DirectoryMemberUpdate$inboundSchema: z.ZodType<
+  DirectoryMemberUpdate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -59,45 +51,35 @@ export const DirectoryMember$inboundSchema: z.ZodType<
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
   contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
   id: z.number().int(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  last_updated_by: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "contact_tags": "contactTags",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
   });
 });
 
 /** @internal */
-export type DirectoryMember$Outbound = {
+export type DirectoryMemberUpdate$Outbound = {
   name: string;
   type: string;
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
   contact_tags?: { [k: string]: Array<string> } | null | undefined;
   id: number;
-  updated_at: string;
-  last_updated_by?: string | null | undefined;
 };
 
 /** @internal */
-export const DirectoryMember$outboundSchema: z.ZodType<
-  DirectoryMember$Outbound,
+export const DirectoryMemberUpdate$outboundSchema: z.ZodType<
+  DirectoryMemberUpdate$Outbound,
   z.ZodTypeDef,
-  DirectoryMember
+  DirectoryMemberUpdate
 > = z.object({
   name: z.string(),
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
   contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
   id: z.number().int(),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contactTags: "contact_tags",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
   });
 });
 
@@ -105,27 +87,29 @@ export const DirectoryMember$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DirectoryMember$ {
-  /** @deprecated use `DirectoryMember$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMember$inboundSchema;
-  /** @deprecated use `DirectoryMember$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMember$outboundSchema;
-  /** @deprecated use `DirectoryMember$Outbound` instead. */
-  export type Outbound = DirectoryMember$Outbound;
+export namespace DirectoryMemberUpdate$ {
+  /** @deprecated use `DirectoryMemberUpdate$inboundSchema` instead. */
+  export const inboundSchema = DirectoryMemberUpdate$inboundSchema;
+  /** @deprecated use `DirectoryMemberUpdate$outboundSchema` instead. */
+  export const outboundSchema = DirectoryMemberUpdate$outboundSchema;
+  /** @deprecated use `DirectoryMemberUpdate$Outbound` instead. */
+  export type Outbound = DirectoryMemberUpdate$Outbound;
 }
 
-export function directoryMemberToJSON(
-  directoryMember: DirectoryMember,
+export function directoryMemberUpdateToJSON(
+  directoryMemberUpdate: DirectoryMemberUpdate,
 ): string {
-  return JSON.stringify(DirectoryMember$outboundSchema.parse(directoryMember));
+  return JSON.stringify(
+    DirectoryMemberUpdate$outboundSchema.parse(directoryMemberUpdate),
+  );
 }
 
-export function directoryMemberFromJSON(
+export function directoryMemberUpdateFromJSON(
   jsonString: string,
-): SafeParseResult<DirectoryMember, SDKValidationError> {
+): SafeParseResult<DirectoryMemberUpdate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DirectoryMember$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DirectoryMember' from JSON`,
+    (x) => DirectoryMemberUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DirectoryMemberUpdate' from JSON`,
   );
 }

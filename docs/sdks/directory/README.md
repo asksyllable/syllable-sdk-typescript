@@ -319,7 +319,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.directory.update({
     memberId: 941217,
-    directoryMember: {
+    directoryMemberUpdate: {
       name: "Jane Doe",
       type: "contact",
       extensions: [
@@ -346,8 +346,6 @@ async function run() {
         ],
       },
       id: 1,
-      updatedAt: new Date("2024-01-01T00:00:00Z"),
-      lastUpdatedBy: "user@email.com",
     },
   });
 
@@ -374,7 +372,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await directoryUpdate(syllableSDK, {
     memberId: 941217,
-    directoryMember: {
+    directoryMemberUpdate: {
       name: "Jane Doe",
       type: "contact",
       extensions: [
@@ -401,8 +399,6 @@ async function run() {
         ],
       },
       id: 1,
-      updatedAt: new Date("2024-01-01T00:00:00Z"),
-      lastUpdatedBy: "user@email.com",
     },
   });
   if (res.ok) {

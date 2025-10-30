@@ -88,7 +88,9 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.DirectoryMember, { explode: true });
+  const body = encodeJSON("body", payload.DirectoryMemberUpdate, {
+    explode: true,
+  });
 
   const pathParams = {
     member_id: encodeSimple("member_id", payload.member_id, {
