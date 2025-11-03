@@ -27,13 +27,14 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.8-rc.1
+  version: 1.0.8-rc.2
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
+  additionalScripts: {}
   author: Syllable
   baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
