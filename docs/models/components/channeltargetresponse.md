@@ -67,11 +67,58 @@ let value: ChannelTargetResponse = {
         temperature: 1,
         seed: 123,
       },
+      sessionEndToolId: 1,
       editComments:
         "Updated prompt text to include requirement to not answer questions that aren't about weather.",
       id: 1,
       lastUpdated: "2024-01-01T12:00:00Z",
       lastUpdatedBy: "user@email.com",
+      sessionEndTool: {
+        name: "Weather Fetcher",
+        definition: {
+          type: "endpoint",
+          tool: {
+            function: {
+              name: "get_weather",
+              description: "Get the weather for a city",
+              parameters: {},
+            },
+          },
+          endpoint: {
+            url: "https://api.example.com",
+            method: "delete",
+            argumentLocation: "form",
+          },
+          defaults: {},
+          staticParameters: [
+            {
+              name: "temperature_unit",
+              description:
+                "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+              required: false,
+              type: "string",
+              default: "fahrenheit",
+            },
+          ],
+        },
+        serviceId: 1,
+        id: 1,
+        lastUpdatedComments: "Updated to use new API endpoint",
+        promptsInfo: [
+          {
+            id: 1,
+            name: "Test Prompt",
+          },
+        ],
+        agentsInfo: [
+          {
+            id: 1,
+            name: "Test Agent",
+          },
+        ],
+        lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
+        lastUpdatedBy: "user@email.com",
+      },
       agentCount: 5,
       versionNumber: 1,
       toolsFull: [
@@ -118,14 +165,111 @@ let value: ChannelTargetResponse = {
               name: "Test Agent",
             },
           ],
-          lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
+          lastUpdated: new Date("2024-10-08T13:31:38.455Z"),
           lastUpdatedBy: "user@email.com",
         },
       ],
     },
-    customMessage: null,
-    tools: null,
-    languageGroup: null,
+    customMessage: {
+      name: "Customer service greeting",
+      text:
+        "Hello and thank you for calling customer service. How can I help you today?",
+      label: "Customer service",
+      rules: [
+        {
+          description: "Closed on New Year's Day",
+          timeRangeStart: "09:00",
+          timeRangeEnd: "17:00",
+          date: "2025-01-01",
+          invert: false,
+          text: "Hello, thank you for calling. Sorry, we're closed today.",
+        },
+        {
+          description: "Closed on weekends",
+          timeRangeStart: "09:00",
+          timeRangeEnd: "17:00",
+          daysOfWeek: [
+            "sa",
+            "su",
+          ],
+          invert: false,
+          text:
+            "Hello, thank you for calling. Sorry, we're closed on weekends.",
+        },
+      ],
+      id: 1,
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
+      agentCount: 1,
+      lastUpdatedBy: "user@email.com",
+    },
+    channelTargets: null,
+    tools: [
+      {
+        name: "Weather Fetcher",
+        definition: {
+          type: "endpoint",
+          tool: {
+            function: {
+              name: "get_weather",
+              description: "Get the weather for a city",
+              parameters: {},
+            },
+          },
+          endpoint: {
+            url: "https://api.example.com",
+            method: "delete",
+            argumentLocation: "form",
+          },
+          defaults: {},
+          staticParameters: [
+            {
+              name: "temperature_unit",
+              description:
+                "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+              required: false,
+              type: "string",
+              default: "fahrenheit",
+            },
+          ],
+        },
+        serviceId: 1,
+        id: 1,
+        lastUpdatedComments: "Updated to use new API endpoint",
+        promptsInfo: null,
+        agentsInfo: null,
+        lastUpdated: new Date("2025-02-02T22:31:30.922Z"),
+        lastUpdatedBy: "user@email.com",
+      },
+    ],
+    languageGroup: {
+      name: "Call Center 1 Languages",
+      description: "Languages spoken by operators at Call Center 1",
+      languageConfigs: [
+        {
+          languageCode: "en-US",
+          voiceProvider: "OpenAI",
+          voiceDisplayName: "Alloy",
+          dtmfCode: 1,
+        },
+        {
+          languageCode: "es-US",
+          voiceProvider: "Google",
+          voiceDisplayName: "es-US-Neural2-B",
+          dtmfCode: 2,
+        },
+      ],
+      skipCurrentLanguageInMessage: true,
+      id: 1,
+      editComments: "Added Spanish support.",
+      agentsInfo: [
+        {
+          id: 1,
+          name: "Test Agent",
+        },
+      ],
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
+      lastUpdatedBy: "user@mail.com",
+    },
   },
 };
 ```

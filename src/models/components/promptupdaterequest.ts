@@ -47,6 +47,10 @@ export type PromptUpdateRequest = {
    */
   sessionEndEnabled?: boolean | undefined;
   /**
+   * ID of the optional session end tool associated with the prompt
+   */
+  sessionEndToolId?: number | null | undefined;
+  /**
    * The comments for the most recent edit to the prompt
    */
   editComments?: string | null | undefined;
@@ -73,6 +77,7 @@ export const PromptUpdateRequest$inboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
   session_end_enabled: z.boolean().default(false),
+  session_end_tool_id: z.nullable(z.number().int()).optional(),
   edit_comments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   include_default_tools: z.boolean().default(true),
@@ -80,6 +85,7 @@ export const PromptUpdateRequest$inboundSchema: z.ZodType<
   return remap$(v, {
     "llm_config": "llmConfig",
     "session_end_enabled": "sessionEndEnabled",
+    "session_end_tool_id": "sessionEndToolId",
     "edit_comments": "editComments",
     "include_default_tools": "includeDefaultTools",
   });
@@ -94,6 +100,7 @@ export type PromptUpdateRequest$Outbound = {
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
   session_end_enabled: boolean;
+  session_end_tool_id?: number | null | undefined;
   edit_comments?: string | null | undefined;
   id: number;
   include_default_tools: boolean;
@@ -112,6 +119,7 @@ export const PromptUpdateRequest$outboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
   sessionEndEnabled: z.boolean().default(false),
+  sessionEndToolId: z.nullable(z.number().int()).optional(),
   editComments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   includeDefaultTools: z.boolean().default(true),
@@ -119,6 +127,7 @@ export const PromptUpdateRequest$outboundSchema: z.ZodType<
   return remap$(v, {
     llmConfig: "llm_config",
     sessionEndEnabled: "session_end_enabled",
+    sessionEndToolId: "session_end_tool_id",
     editComments: "edit_comments",
     includeDefaultTools: "include_default_tools",
   });

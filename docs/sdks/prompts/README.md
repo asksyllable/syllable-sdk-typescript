@@ -132,6 +132,7 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
+    sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
 
@@ -168,6 +169,7 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
+    sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   });
   if (res.ok) {
@@ -228,6 +230,7 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
+    sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
     id: 1,
   });
@@ -265,6 +268,7 @@ async function run() {
       temperature: 1,
       seed: 123,
     },
+    sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
     id: 1,
   });

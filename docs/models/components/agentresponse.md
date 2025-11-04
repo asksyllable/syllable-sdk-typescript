@@ -57,11 +57,58 @@ let value: AgentResponse = {
       temperature: 1,
       seed: 123,
     },
+    sessionEndToolId: 1,
     editComments:
       "Updated prompt text to include requirement to not answer questions that aren't about weather.",
     id: 1,
     lastUpdated: "2024-01-01T12:00:00Z",
     lastUpdatedBy: "user@email.com",
+    sessionEndTool: {
+      name: "Weather Fetcher",
+      definition: {
+        type: "endpoint",
+        tool: {
+          function: {
+            name: "get_weather",
+            description: "Get the weather for a city",
+            parameters: {},
+          },
+        },
+        endpoint: {
+          url: "https://api.example.com",
+          method: "delete",
+          argumentLocation: "form",
+        },
+        defaults: {},
+        staticParameters: [
+          {
+            name: "temperature_unit",
+            description:
+              "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+            required: false,
+            type: "string",
+            default: "fahrenheit",
+          },
+        ],
+      },
+      serviceId: 1,
+      id: 1,
+      lastUpdatedComments: "Updated to use new API endpoint",
+      promptsInfo: [
+        {
+          id: 1,
+          name: "Test Prompt",
+        },
+      ],
+      agentsInfo: [
+        {
+          id: 1,
+          name: "Test Agent",
+        },
+      ],
+      lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
+      lastUpdatedBy: "user@email.com",
+    },
     agentCount: 5,
     versionNumber: 1,
     toolsFull: [
@@ -108,7 +155,7 @@ let value: AgentResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
+        lastUpdated: new Date("2024-10-08T13:31:38.455Z"),
         lastUpdatedBy: "user@email.com",
       },
     ],
@@ -144,126 +191,7 @@ let value: AgentResponse = {
     agentCount: 1,
     lastUpdatedBy: "user@email.com",
   },
-  channelTargets: [
-    {
-      agentId: 1,
-      channelId: 1,
-      target: "+19995551234",
-      targetMode: "sms",
-      fallbackTarget: "+19995551235",
-      isTest: true,
-      id: 1,
-      channelName: "+19995551234",
-      updatedAt: new Date("2024-01-01T00:00:00Z"),
-      lastUpdatedBy: "user@email.com",
-      agent: {
-        name: "Weather agent",
-        description: "Agent for answering questions about weather.",
-        labels: [
-          "Information",
-          "Weather",
-        ],
-        type: "ca_v1",
-        promptId: 1,
-        customMessageId: 1,
-        languageGroupId: 1,
-        timezone: "America/New_York",
-        promptToolDefaults: [
-          {
-            toolName: "get_weather",
-            defaultValues: [
-              {
-                fieldName: "temperature_unit",
-                defaultValue: "fahrenheit",
-              },
-            ],
-          },
-        ],
-        variables: {
-          "vars.location_name": "Main Street Pizza",
-        },
-        toolHeaders: {
-          "some-header": "some-value",
-        },
-        sttProvider: "Google STT V2 (Chirp 2)",
-        waitSound: "No Sound",
-        id: 1,
-        updatedAt: new Date("2024-01-01T00:00:00Z"),
-        lastUpdatedBy: "user@email.com",
-        prompt: {
-          name: "Weather Agent Prompt",
-          description: "Prompt for a weather agent.",
-          type: "prompt_v1",
-          context:
-            "You are a weather agent. Answer the user's questions about weather and nothing else.",
-          llmConfig: {
-            version: "2024-05-13",
-            apiVersion: "2024-06-01",
-            temperature: 1,
-            seed: 123,
-          },
-          editComments:
-            "Updated prompt text to include requirement to not answer questions that aren't about weather.",
-          id: 1,
-          lastUpdated: "2024-01-01T12:00:00Z",
-          lastUpdatedBy: "user@email.com",
-          agentCount: 5,
-          versionNumber: 1,
-          toolsFull: [
-            {
-              name: "Weather Fetcher",
-              definition: {
-                type: "endpoint",
-                tool: {
-                  function: {
-                    name: "get_weather",
-                    description: "Get the weather for a city",
-                    parameters: {},
-                  },
-                },
-                endpoint: {
-                  url: "https://api.example.com",
-                  method: "delete",
-                  argumentLocation: "form",
-                },
-                defaults: {},
-                staticParameters: [
-                  {
-                    name: "temperature_unit",
-                    description:
-                      "Whether the temperature information should be fetched in Celsius or Fahrenheit",
-                    required: false,
-                    type: "string",
-                    default: "fahrenheit",
-                  },
-                ],
-              },
-              serviceId: 1,
-              id: 1,
-              lastUpdatedComments: "Updated to use new API endpoint",
-              promptsInfo: [
-                {
-                  id: 1,
-                  name: "Test Prompt",
-                },
-              ],
-              agentsInfo: [
-                {
-                  id: 1,
-                  name: "Test Agent",
-                },
-              ],
-              lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
-              lastUpdatedBy: "user@email.com",
-            },
-          ],
-        },
-        customMessage: null,
-        tools: null,
-        languageGroup: null,
-      },
-    },
-  ],
+  channelTargets: null,
   tools: [
     {
       name: "Weather Fetcher",
@@ -296,19 +224,9 @@ let value: AgentResponse = {
       serviceId: 1,
       id: 1,
       lastUpdatedComments: "Updated to use new API endpoint",
-      promptsInfo: [
-        {
-          id: 1,
-          name: "Test Prompt",
-        },
-      ],
-      agentsInfo: [
-        {
-          id: 1,
-          name: "Test Agent",
-        },
-      ],
-      lastUpdated: new Date("2025-04-26T21:36:54.796Z"),
+      promptsInfo: null,
+      agentsInfo: null,
+      lastUpdated: new Date("2025-02-02T22:31:30.922Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

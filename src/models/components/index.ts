@@ -51,6 +51,7 @@ export * from "./custommessageproperties.js";
 export * from "./custommessageresponse.js";
 export * from "./custommessagerule.js";
 export * from "./custommessageupdaterequest.js";
+export * from "./daotoolresponse.js";
 export * from "./dashboard.js";
 export * from "./dashboardproperties.js";
 export * from "./dashboardresponse.js";
