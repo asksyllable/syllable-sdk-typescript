@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DaoToolResponse,
+  DaoToolResponse$inboundSchema,
+  DaoToolResponse$Outbound,
+  DaoToolResponse$outboundSchema,
+} from "./daotoolresponse.js";
+import {
   PromptLlmConfig,
   PromptLlmConfig$inboundSchema,
   PromptLlmConfig$Outbound,
@@ -61,6 +67,10 @@ export type PromptResponse = {
    */
   sessionEndEnabled?: boolean | undefined;
   /**
+   * ID of the optional session end tool associated with the prompt
+   */
+  sessionEndToolId?: number | null | undefined;
+  /**
    * The comments for the most recent edit to the prompt
    */
   editComments?: string | null | undefined;
@@ -76,6 +86,10 @@ export type PromptResponse = {
    * Email address of the user who most recently updated the prompt
    */
   lastUpdatedBy?: string | null | undefined;
+  /**
+   * The session end tool associated with the prompt
+   */
+  sessionEndTool?: DaoToolResponse | null | undefined;
   /**
    * The number of agents using the prompt
    */
@@ -103,10 +117,12 @@ export const PromptResponse$inboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llm_config: PromptLlmConfig$inboundSchema,
   session_end_enabled: z.boolean().default(false),
+  session_end_tool_id: z.nullable(z.number().int()).optional(),
   edit_comments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   last_updated: z.nullable(z.string()),
   last_updated_by: z.nullable(z.string()).optional(),
+  session_end_tool: z.nullable(DaoToolResponse$inboundSchema).optional(),
   agent_count: z.nullable(z.number().int()).optional(),
   version_number: z.nullable(z.number().int()).optional(),
   tools_full: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
@@ -114,9 +130,11 @@ export const PromptResponse$inboundSchema: z.ZodType<
   return remap$(v, {
     "llm_config": "llmConfig",
     "session_end_enabled": "sessionEndEnabled",
+    "session_end_tool_id": "sessionEndToolId",
     "edit_comments": "editComments",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
+    "session_end_tool": "sessionEndTool",
     "agent_count": "agentCount",
     "version_number": "versionNumber",
     "tools_full": "toolsFull",
@@ -132,10 +150,12 @@ export type PromptResponse$Outbound = {
   tools?: Array<string> | undefined;
   llm_config: PromptLlmConfig$Outbound;
   session_end_enabled: boolean;
+  session_end_tool_id?: number | null | undefined;
   edit_comments?: string | null | undefined;
   id: number;
   last_updated: string | null;
   last_updated_by?: string | null | undefined;
+  session_end_tool?: DaoToolResponse$Outbound | null | undefined;
   agent_count?: number | null | undefined;
   version_number?: number | null | undefined;
   tools_full?: Array<ToolResponse$Outbound> | null | undefined;
@@ -154,10 +174,12 @@ export const PromptResponse$outboundSchema: z.ZodType<
   tools: z.array(z.string()).optional(),
   llmConfig: PromptLlmConfig$outboundSchema,
   sessionEndEnabled: z.boolean().default(false),
+  sessionEndToolId: z.nullable(z.number().int()).optional(),
   editComments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   lastUpdated: z.nullable(z.string()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
+  sessionEndTool: z.nullable(DaoToolResponse$outboundSchema).optional(),
   agentCount: z.nullable(z.number().int()).optional(),
   versionNumber: z.nullable(z.number().int()).optional(),
   toolsFull: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
@@ -165,9 +187,11 @@ export const PromptResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     llmConfig: "llm_config",
     sessionEndEnabled: "session_end_enabled",
+    sessionEndToolId: "session_end_tool_id",
     editComments: "edit_comments",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
+    sessionEndTool: "session_end_tool",
     agentCount: "agent_count",
     versionNumber: "version_number",
     toolsFull: "tools_full",

@@ -23,11 +23,58 @@ let value: PromptResponse = {
     temperature: 1,
     seed: 123,
   },
+  sessionEndToolId: 1,
   editComments:
     "Updated prompt text to include requirement to not answer questions that aren't about weather.",
   id: 1,
   lastUpdated: "2024-01-01T12:00:00Z",
   lastUpdatedBy: "user@email.com",
+  sessionEndTool: {
+    name: "Weather Fetcher",
+    definition: {
+      type: "endpoint",
+      tool: {
+        function: {
+          name: "get_weather",
+          description: "Get the weather for a city",
+          parameters: {},
+        },
+      },
+      endpoint: {
+        url: "https://api.example.com",
+        method: "delete",
+        argumentLocation: "form",
+      },
+      defaults: {},
+      staticParameters: [
+        {
+          name: "temperature_unit",
+          description:
+            "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+          required: false,
+          type: "string",
+          default: "fahrenheit",
+        },
+      ],
+    },
+    serviceId: 1,
+    id: 1,
+    lastUpdatedComments: "Updated to use new API endpoint",
+    promptsInfo: [
+      {
+        id: 1,
+        name: "Test Prompt",
+      },
+    ],
+    agentsInfo: [
+      {
+        id: 1,
+        name: "Test Agent",
+      },
+    ],
+    lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
+    lastUpdatedBy: "user@email.com",
+  },
   agentCount: 5,
   versionNumber: 1,
   toolsFull: [
@@ -74,7 +121,7 @@ let value: PromptResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
+      lastUpdated: new Date("2024-10-08T13:31:38.455Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],
@@ -92,10 +139,12 @@ let value: PromptResponse = {
 | ~~`tools`~~                                                                                                                                                                                                                             | *string*[]                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Names of the tools to which the prompt has access (DEPRECATED - use information from full tools field instead) | hangup                                                                                                                                                                                                                                  |
 | `llmConfig`                                                                                                                                                                                                                             | [components.PromptLlmConfig](../../models/components/promptllmconfig.md)                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                      | LLM configuration for a prompt.                                                                                                                                                                                                         |                                                                                                                                                                                                                                         |
 | `sessionEndEnabled`                                                                                                                                                                                                                     | *boolean*                                                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                      | Whether session end functionality is enabled for this prompt                                                                                                                                                                            | false                                                                                                                                                                                                                                   |
+| `sessionEndToolId`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                      | ID of the optional session end tool associated with the prompt                                                                                                                                                                          | 1                                                                                                                                                                                                                                       |
 | `editComments`                                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                      | The comments for the most recent edit to the prompt                                                                                                                                                                                     | Updated prompt text to include requirement to not answer questions that aren't about weather.                                                                                                                                           |
 | `id`                                                                                                                                                                                                                                    | *number*                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                      | The internal ID of the prompt                                                                                                                                                                                                           | 1                                                                                                                                                                                                                                       |
 | `lastUpdated`                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                      | The last updated date of the prompt                                                                                                                                                                                                     | 2024-01-01T12:00:00Z                                                                                                                                                                                                                    |
 | `lastUpdatedBy`                                                                                                                                                                                                                         | *string*                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                      | Email address of the user who most recently updated the prompt                                                                                                                                                                          | user@email.com                                                                                                                                                                                                                          |
+| `sessionEndTool`                                                                                                                                                                                                                        | [components.DaoToolResponse](../../models/components/daotoolresponse.md)                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                      | The session end tool associated with the prompt                                                                                                                                                                                         |                                                                                                                                                                                                                                         |
 | `agentCount`                                                                                                                                                                                                                            | *number*                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                      | The number of agents using the prompt                                                                                                                                                                                                   | 5                                                                                                                                                                                                                                       |
 | `versionNumber`                                                                                                                                                                                                                         | *number*                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                      | The version number of the current version of the prompt                                                                                                                                                                                 | 1                                                                                                                                                                                                                                       |
 | `toolsFull`                                                                                                                                                                                                                             | [components.ToolResponse](../../models/components/toolresponse.md)[]                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                      | Full definitions of tools to which the prompt has access                                                                                                                                                                                |                                                                                                                                                                                                                                         |

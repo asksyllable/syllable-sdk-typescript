@@ -19,61 +19,61 @@ let value: ListResponsePromptResponse = {
         temperature: 1,
         seed: 123,
       },
+      sessionEndToolId: 1,
       editComments:
         "Updated prompt text to include requirement to not answer questions that aren't about weather.",
       id: 1,
       lastUpdated: "2024-01-01T12:00:00Z",
       lastUpdatedBy: "user@email.com",
+      sessionEndTool: {
+        name: "Weather Fetcher",
+        definition: {
+          type: "endpoint",
+          tool: {
+            function: {
+              name: "get_weather",
+              description: "Get the weather for a city",
+              parameters: {},
+            },
+          },
+          endpoint: {
+            url: "https://api.example.com",
+            method: "delete",
+            argumentLocation: "form",
+          },
+          defaults: {},
+          staticParameters: [
+            {
+              name: "temperature_unit",
+              description:
+                "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+              required: false,
+              type: "string",
+              default: "fahrenheit",
+            },
+          ],
+        },
+        serviceId: 1,
+        id: 1,
+        lastUpdatedComments: "Updated to use new API endpoint",
+        promptsInfo: [
+          {
+            id: 1,
+            name: "Test Prompt",
+          },
+        ],
+        agentsInfo: [
+          {
+            id: 1,
+            name: "Test Agent",
+          },
+        ],
+        lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
+        lastUpdatedBy: "user@email.com",
+      },
       agentCount: 5,
       versionNumber: 1,
-      toolsFull: [
-        {
-          name: "Weather Fetcher",
-          definition: {
-            type: "endpoint",
-            tool: {
-              function: {
-                name: "get_weather",
-                description: "Get the weather for a city",
-                parameters: {},
-              },
-            },
-            endpoint: {
-              url: "https://api.example.com",
-              method: "delete",
-              argumentLocation: "form",
-            },
-            defaults: {},
-            staticParameters: [
-              {
-                name: "temperature_unit",
-                description:
-                  "Whether the temperature information should be fetched in Celsius or Fahrenheit",
-                required: false,
-                type: "string",
-                default: "fahrenheit",
-              },
-            ],
-          },
-          serviceId: 1,
-          id: 1,
-          lastUpdatedComments: "Updated to use new API endpoint",
-          promptsInfo: [
-            {
-              id: 1,
-              name: "Test Prompt",
-            },
-          ],
-          agentsInfo: [
-            {
-              id: 1,
-              name: "Test Agent",
-            },
-          ],
-          lastUpdated: new Date("2025-12-18T09:18:28.600Z"),
-          lastUpdatedBy: "user@email.com",
-        },
-      ],
+      toolsFull: null,
     },
   ],
   page: 0,
