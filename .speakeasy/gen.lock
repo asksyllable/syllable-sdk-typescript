@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.2
   speakeasyVersion: 1.648.1
   generationVersion: 2.739.1
-  releaseVersion: 1.0.8-rc.3
-  configChecksum: afa84740f901757a4caa619d8e207e26
+  releaseVersion: 1.0.8
+  configChecksum: 59217d9665d5ca7e9a04797285332739
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2844,4 +2844,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.agents.list()`:  `response.items.[].prompt` **Changed**\n* `syllablesdk.agents.create()`:  `response.prompt` **Changed**\n* `syllablesdk.agents.update()`:  `response.prompt` **Changed**\n* `syllablesdk.agents.getById()`:  `response.prompt` **Changed**\n* `syllablesdk.channels.targets.list()`:  `response.items.[].agent.prompt` **Changed**\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt` **Changed**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt` **Changed**\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt` **Changed**\n* `syllablesdk.prompts.list()`:  `response.items.[]` **Changed**\n* `syllablesdk.prompts.create()`: \n  *  `request.sessionEndToolId` **Added**\n  *  `response` **Changed**\n* `syllablesdk.prompts.update()`: \n  *  `request.sessionEndToolId` **Added**\n  *  `response` **Changed**\n* `syllablesdk.prompts.getById()`:  `response` **Changed**\n"
