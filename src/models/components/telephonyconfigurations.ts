@@ -41,6 +41,10 @@ export type TelephonyConfigurations = {
    * Waiting time to start passive input (in seconds) after start of assistant speech
    */
   passiveInputStart?: number | null | undefined;
+  /**
+   * Whether asynchronous mode is enabled for the conversation
+   */
+  asyncEnabled?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -57,6 +61,7 @@ export const TelephonyConfigurations$inboundSchema: z.ZodType<
   interruptibility: z.nullable(z.string()).optional(),
   passive_speech_input_enabled: z.nullable(z.boolean()).optional(),
   passive_input_start: z.nullable(z.number()).optional(),
+  async_enabled: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "pre_input_timeout": "preInputTimeout",
@@ -66,6 +71,7 @@ export const TelephonyConfigurations$inboundSchema: z.ZodType<
     "output_padding": "outputPadding",
     "passive_speech_input_enabled": "passiveSpeechInputEnabled",
     "passive_input_start": "passiveInputStart",
+    "async_enabled": "asyncEnabled",
   });
 });
 
@@ -79,6 +85,7 @@ export type TelephonyConfigurations$Outbound = {
   interruptibility?: string | null | undefined;
   passive_speech_input_enabled?: boolean | null | undefined;
   passive_input_start?: number | null | undefined;
+  async_enabled?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -95,6 +102,7 @@ export const TelephonyConfigurations$outboundSchema: z.ZodType<
   interruptibility: z.nullable(z.string()).optional(),
   passiveSpeechInputEnabled: z.nullable(z.boolean()).optional(),
   passiveInputStart: z.nullable(z.number()).optional(),
+  asyncEnabled: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     preInputTimeout: "pre_input_timeout",
@@ -104,6 +112,7 @@ export const TelephonyConfigurations$outboundSchema: z.ZodType<
     outputPadding: "output_padding",
     passiveSpeechInputEnabled: "passive_speech_input_enabled",
     passiveInputStart: "passive_input_start",
+    asyncEnabled: "async_enabled",
   });
 });
 
