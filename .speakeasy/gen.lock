@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.2
   speakeasyVersion: 1.649.0
   generationVersion: 2.739.1
-  releaseVersion: 1.0.9-rc.2
-  configChecksum: 7718f70584b7c8360b4505f69cc06d4a
+  releaseVersion: 1.0.9
+  configChecksum: aec258e011984ba68b95aea0400ed39a
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2844,7 +2844,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `syllablesdk.channels.twilio.update()`: **Deprecated**
-  * `syllablesdk.channels.twilio.create()`: **Deprecated**
