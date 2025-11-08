@@ -24,7 +24,6 @@ export const OutboundBatchGetByIdRequest$inboundSchema: z.ZodType<
     "batch_id": "batchId",
   });
 });
-
 /** @internal */
 export type OutboundBatchGetByIdRequest$Outbound = {
   batch_id: string;
@@ -43,19 +42,6 @@ export const OutboundBatchGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundBatchGetByIdRequest$ {
-  /** @deprecated use `OutboundBatchGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundBatchGetByIdRequest$inboundSchema;
-  /** @deprecated use `OutboundBatchGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundBatchGetByIdRequest$outboundSchema;
-  /** @deprecated use `OutboundBatchGetByIdRequest$Outbound` instead. */
-  export type Outbound = OutboundBatchGetByIdRequest$Outbound;
-}
-
 export function outboundBatchGetByIdRequestToJSON(
   outboundBatchGetByIdRequest: OutboundBatchGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function outboundBatchGetByIdRequestToJSON(
     ),
   );
 }
-
 export function outboundBatchGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundBatchGetByIdRequest, SDKValidationError> {

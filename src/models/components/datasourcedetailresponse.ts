@@ -83,7 +83,6 @@ export const DataSourceDetailResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type DataSourceDetailResponse$Outbound = {
   name: string;
@@ -123,19 +122,6 @@ export const DataSourceDetailResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataSourceDetailResponse$ {
-  /** @deprecated use `DataSourceDetailResponse$inboundSchema` instead. */
-  export const inboundSchema = DataSourceDetailResponse$inboundSchema;
-  /** @deprecated use `DataSourceDetailResponse$outboundSchema` instead. */
-  export const outboundSchema = DataSourceDetailResponse$outboundSchema;
-  /** @deprecated use `DataSourceDetailResponse$Outbound` instead. */
-  export type Outbound = DataSourceDetailResponse$Outbound;
-}
-
 export function dataSourceDetailResponseToJSON(
   dataSourceDetailResponse: DataSourceDetailResponse,
 ): string {
@@ -143,7 +129,6 @@ export function dataSourceDetailResponseToJSON(
     DataSourceDetailResponse$outboundSchema.parse(dataSourceDetailResponse),
   );
 }
-
 export function dataSourceDetailResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DataSourceDetailResponse, SDKValidationError> {

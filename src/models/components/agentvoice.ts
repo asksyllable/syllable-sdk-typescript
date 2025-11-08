@@ -93,7 +93,6 @@ export const AgentVoice$inboundSchema: z.ZodType<
     "supported_languages": "supportedLanguages",
   });
 });
-
 /** @internal */
 export type AgentVoice$Outbound = {
   provider: string;
@@ -126,23 +125,9 @@ export const AgentVoice$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentVoice$ {
-  /** @deprecated use `AgentVoice$inboundSchema` instead. */
-  export const inboundSchema = AgentVoice$inboundSchema;
-  /** @deprecated use `AgentVoice$outboundSchema` instead. */
-  export const outboundSchema = AgentVoice$outboundSchema;
-  /** @deprecated use `AgentVoice$Outbound` instead. */
-  export type Outbound = AgentVoice$Outbound;
-}
-
 export function agentVoiceToJSON(agentVoice: AgentVoice): string {
   return JSON.stringify(AgentVoice$outboundSchema.parse(agentVoice));
 }
-
 export function agentVoiceFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentVoice, SDKValidationError> {

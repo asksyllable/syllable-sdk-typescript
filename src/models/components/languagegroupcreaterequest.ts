@@ -52,7 +52,6 @@ export const LanguageGroupCreateRequest$inboundSchema: z.ZodType<
     "skip_current_language_in_message": "skipCurrentLanguageInMessage",
   });
 });
-
 /** @internal */
 export type LanguageGroupCreateRequest$Outbound = {
   name: string;
@@ -78,19 +77,6 @@ export const LanguageGroupCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupCreateRequest$ {
-  /** @deprecated use `LanguageGroupCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupCreateRequest$inboundSchema;
-  /** @deprecated use `LanguageGroupCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupCreateRequest$outboundSchema;
-  /** @deprecated use `LanguageGroupCreateRequest$Outbound` instead. */
-  export type Outbound = LanguageGroupCreateRequest$Outbound;
-}
-
 export function languageGroupCreateRequestToJSON(
   languageGroupCreateRequest: LanguageGroupCreateRequest,
 ): string {
@@ -98,7 +84,6 @@ export function languageGroupCreateRequestToJSON(
     LanguageGroupCreateRequest$outboundSchema.parse(languageGroupCreateRequest),
   );
 }
-
 export function languageGroupCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageGroupCreateRequest, SDKValidationError> {

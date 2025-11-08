@@ -24,7 +24,6 @@ export const ChannelsTwilioGetByIdRequest$inboundSchema: z.ZodType<
     "channel_id": "channelId",
   });
 });
-
 /** @internal */
 export type ChannelsTwilioGetByIdRequest$Outbound = {
   channel_id: number;
@@ -43,19 +42,6 @@ export const ChannelsTwilioGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelsTwilioGetByIdRequest$ {
-  /** @deprecated use `ChannelsTwilioGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = ChannelsTwilioGetByIdRequest$inboundSchema;
-  /** @deprecated use `ChannelsTwilioGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = ChannelsTwilioGetByIdRequest$outboundSchema;
-  /** @deprecated use `ChannelsTwilioGetByIdRequest$Outbound` instead. */
-  export type Outbound = ChannelsTwilioGetByIdRequest$Outbound;
-}
-
 export function channelsTwilioGetByIdRequestToJSON(
   channelsTwilioGetByIdRequest: ChannelsTwilioGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function channelsTwilioGetByIdRequestToJSON(
     ),
   );
 }
-
 export function channelsTwilioGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelsTwilioGetByIdRequest, SDKValidationError> {

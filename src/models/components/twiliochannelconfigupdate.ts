@@ -36,7 +36,6 @@ export const TwilioChannelConfigUpdate$inboundSchema: z.ZodType<
     "auth_token": "authToken",
   });
 });
-
 /** @internal */
 export type TwilioChannelConfigUpdate$Outbound = {
   account_sid?: string | null | undefined;
@@ -58,19 +57,6 @@ export const TwilioChannelConfigUpdate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TwilioChannelConfigUpdate$ {
-  /** @deprecated use `TwilioChannelConfigUpdate$inboundSchema` instead. */
-  export const inboundSchema = TwilioChannelConfigUpdate$inboundSchema;
-  /** @deprecated use `TwilioChannelConfigUpdate$outboundSchema` instead. */
-  export const outboundSchema = TwilioChannelConfigUpdate$outboundSchema;
-  /** @deprecated use `TwilioChannelConfigUpdate$Outbound` instead. */
-  export type Outbound = TwilioChannelConfigUpdate$Outbound;
-}
-
 export function twilioChannelConfigUpdateToJSON(
   twilioChannelConfigUpdate: TwilioChannelConfigUpdate,
 ): string {
@@ -78,7 +64,6 @@ export function twilioChannelConfigUpdateToJSON(
     TwilioChannelConfigUpdate$outboundSchema.parse(twilioChannelConfigUpdate),
   );
 }
-
 export function twilioChannelConfigUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<TwilioChannelConfigUpdate, SDKValidationError> {

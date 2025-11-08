@@ -38,7 +38,6 @@ export const CommunicationRequest$inboundSchema: z.ZodType<
     "request_variables": "requestVariables",
   });
 });
-
 /** @internal */
 export type CommunicationRequest$Outbound = {
   reference_id: string;
@@ -62,19 +61,6 @@ export const CommunicationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommunicationRequest$ {
-  /** @deprecated use `CommunicationRequest$inboundSchema` instead. */
-  export const inboundSchema = CommunicationRequest$inboundSchema;
-  /** @deprecated use `CommunicationRequest$outboundSchema` instead. */
-  export const outboundSchema = CommunicationRequest$outboundSchema;
-  /** @deprecated use `CommunicationRequest$Outbound` instead. */
-  export type Outbound = CommunicationRequest$Outbound;
-}
-
 export function communicationRequestToJSON(
   communicationRequest: CommunicationRequest,
 ): string {
@@ -82,7 +68,6 @@ export function communicationRequestToJSON(
     CommunicationRequest$outboundSchema.parse(communicationRequest),
   );
 }
-
 export function communicationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CommunicationRequest, SDKValidationError> {

@@ -42,7 +42,6 @@ export const AgentToolDefaults$inboundSchema: z.ZodType<
     "default_values": "defaultValues",
   });
 });
-
 /** @internal */
 export type AgentToolDefaults$Outbound = {
   tool_name: string;
@@ -64,19 +63,6 @@ export const AgentToolDefaults$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentToolDefaults$ {
-  /** @deprecated use `AgentToolDefaults$inboundSchema` instead. */
-  export const inboundSchema = AgentToolDefaults$inboundSchema;
-  /** @deprecated use `AgentToolDefaults$outboundSchema` instead. */
-  export const outboundSchema = AgentToolDefaults$outboundSchema;
-  /** @deprecated use `AgentToolDefaults$Outbound` instead. */
-  export type Outbound = AgentToolDefaults$Outbound;
-}
-
 export function agentToolDefaultsToJSON(
   agentToolDefaults: AgentToolDefaults,
 ): string {
@@ -84,7 +70,6 @@ export function agentToolDefaultsToJSON(
     AgentToolDefaults$outboundSchema.parse(agentToolDefaults),
   );
 }
-
 export function agentToolDefaultsFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentToolDefaults, SDKValidationError> {

@@ -54,7 +54,6 @@ export const FolderStats$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number().int(), z.number()]);
-
 /** @internal */
 export type FolderStats$Outbound = string | number | number;
 
@@ -65,23 +64,9 @@ export const FolderStats$outboundSchema: z.ZodType<
   FolderStats
 > = z.union([z.string(), z.number().int(), z.number()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FolderStats$ {
-  /** @deprecated use `FolderStats$inboundSchema` instead. */
-  export const inboundSchema = FolderStats$inboundSchema;
-  /** @deprecated use `FolderStats$outboundSchema` instead. */
-  export const outboundSchema = FolderStats$outboundSchema;
-  /** @deprecated use `FolderStats$Outbound` instead. */
-  export type Outbound = FolderStats$Outbound;
-}
-
 export function folderStatsToJSON(folderStats: FolderStats): string {
   return JSON.stringify(FolderStats$outboundSchema.parse(folderStats));
 }
-
 export function folderStatsFromJSON(
   jsonString: string,
 ): SafeParseResult<FolderStats, SDKValidationError> {
@@ -116,7 +101,6 @@ export const FolderDetails$inboundSchema: z.ZodType<
     "folder_stats": "folderStats",
   });
 });
-
 /** @internal */
 export type FolderDetails$Outbound = {
   name: string;
@@ -152,23 +136,9 @@ export const FolderDetails$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FolderDetails$ {
-  /** @deprecated use `FolderDetails$inboundSchema` instead. */
-  export const inboundSchema = FolderDetails$inboundSchema;
-  /** @deprecated use `FolderDetails$outboundSchema` instead. */
-  export const outboundSchema = FolderDetails$outboundSchema;
-  /** @deprecated use `FolderDetails$Outbound` instead. */
-  export type Outbound = FolderDetails$Outbound;
-}
-
 export function folderDetailsToJSON(folderDetails: FolderDetails): string {
   return JSON.stringify(FolderDetails$outboundSchema.parse(folderDetails));
 }
-
 export function folderDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<FolderDetails, SDKValidationError> {

@@ -30,7 +30,6 @@ export const LanguageGroupAgentInfo$inboundSchema: z.ZodType<
   id: z.number().int(),
   name: z.string(),
 });
-
 /** @internal */
 export type LanguageGroupAgentInfo$Outbound = {
   id: number;
@@ -47,19 +46,6 @@ export const LanguageGroupAgentInfo$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupAgentInfo$ {
-  /** @deprecated use `LanguageGroupAgentInfo$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupAgentInfo$inboundSchema;
-  /** @deprecated use `LanguageGroupAgentInfo$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupAgentInfo$outboundSchema;
-  /** @deprecated use `LanguageGroupAgentInfo$Outbound` instead. */
-  export type Outbound = LanguageGroupAgentInfo$Outbound;
-}
-
 export function languageGroupAgentInfoToJSON(
   languageGroupAgentInfo: LanguageGroupAgentInfo,
 ): string {
@@ -67,7 +53,6 @@ export function languageGroupAgentInfoToJSON(
     LanguageGroupAgentInfo$outboundSchema.parse(languageGroupAgentInfo),
   );
 }
-
 export function languageGroupAgentInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageGroupAgentInfo, SDKValidationError> {

@@ -24,7 +24,6 @@ export const InsightsFolderGetByIdRequest$inboundSchema: z.ZodType<
     "folder_id": "folderId",
   });
 });
-
 /** @internal */
 export type InsightsFolderGetByIdRequest$Outbound = {
   folder_id: number;
@@ -43,19 +42,6 @@ export const InsightsFolderGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsFolderGetByIdRequest$ {
-  /** @deprecated use `InsightsFolderGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsFolderGetByIdRequest$inboundSchema;
-  /** @deprecated use `InsightsFolderGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsFolderGetByIdRequest$outboundSchema;
-  /** @deprecated use `InsightsFolderGetByIdRequest$Outbound` instead. */
-  export type Outbound = InsightsFolderGetByIdRequest$Outbound;
-}
-
 export function insightsFolderGetByIdRequestToJSON(
   insightsFolderGetByIdRequest: InsightsFolderGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function insightsFolderGetByIdRequestToJSON(
     ),
   );
 }
-
 export function insightsFolderGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsFolderGetByIdRequest, SDKValidationError> {

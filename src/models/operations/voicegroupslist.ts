@@ -77,7 +77,6 @@ export const VoiceGroupsListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type VoiceGroupsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -121,19 +120,6 @@ export const VoiceGroupsListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceGroupsListRequest$ {
-  /** @deprecated use `VoiceGroupsListRequest$inboundSchema` instead. */
-  export const inboundSchema = VoiceGroupsListRequest$inboundSchema;
-  /** @deprecated use `VoiceGroupsListRequest$outboundSchema` instead. */
-  export const outboundSchema = VoiceGroupsListRequest$outboundSchema;
-  /** @deprecated use `VoiceGroupsListRequest$Outbound` instead. */
-  export type Outbound = VoiceGroupsListRequest$Outbound;
-}
-
 export function voiceGroupsListRequestToJSON(
   voiceGroupsListRequest: VoiceGroupsListRequest,
 ): string {
@@ -141,7 +127,6 @@ export function voiceGroupsListRequestToJSON(
     VoiceGroupsListRequest$outboundSchema.parse(voiceGroupsListRequest),
   );
 }
-
 export function voiceGroupsListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<VoiceGroupsListRequest, SDKValidationError> {

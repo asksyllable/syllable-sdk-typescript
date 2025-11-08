@@ -24,7 +24,6 @@ export const ToolGetByNameRequest$inboundSchema: z.ZodType<
     "tool_name": "toolName",
   });
 });
-
 /** @internal */
 export type ToolGetByNameRequest$Outbound = {
   tool_name: string;
@@ -43,19 +42,6 @@ export const ToolGetByNameRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolGetByNameRequest$ {
-  /** @deprecated use `ToolGetByNameRequest$inboundSchema` instead. */
-  export const inboundSchema = ToolGetByNameRequest$inboundSchema;
-  /** @deprecated use `ToolGetByNameRequest$outboundSchema` instead. */
-  export const outboundSchema = ToolGetByNameRequest$outboundSchema;
-  /** @deprecated use `ToolGetByNameRequest$Outbound` instead. */
-  export type Outbound = ToolGetByNameRequest$Outbound;
-}
-
 export function toolGetByNameRequestToJSON(
   toolGetByNameRequest: ToolGetByNameRequest,
 ): string {
@@ -63,7 +49,6 @@ export function toolGetByNameRequestToJSON(
     ToolGetByNameRequest$outboundSchema.parse(toolGetByNameRequest),
   );
 }
-
 export function toolGetByNameRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolGetByNameRequest, SDKValidationError> {

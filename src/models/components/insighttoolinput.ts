@@ -51,7 +51,6 @@ export const InsightToolInput$inboundSchema: z.ZodType<
     "insight_tool_definition_id": "insightToolDefinitionId",
   });
 });
-
 /** @internal */
 export type InsightToolInput$Outbound = {
   name: string;
@@ -79,19 +78,6 @@ export const InsightToolInput$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightToolInput$ {
-  /** @deprecated use `InsightToolInput$inboundSchema` instead. */
-  export const inboundSchema = InsightToolInput$inboundSchema;
-  /** @deprecated use `InsightToolInput$outboundSchema` instead. */
-  export const outboundSchema = InsightToolInput$outboundSchema;
-  /** @deprecated use `InsightToolInput$Outbound` instead. */
-  export type Outbound = InsightToolInput$Outbound;
-}
-
 export function insightToolInputToJSON(
   insightToolInput: InsightToolInput,
 ): string {
@@ -99,7 +85,6 @@ export function insightToolInputToJSON(
     InsightToolInput$outboundSchema.parse(insightToolInput),
   );
 }
-
 export function insightToolInputFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightToolInput, SDKValidationError> {

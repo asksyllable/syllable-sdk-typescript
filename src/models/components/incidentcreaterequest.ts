@@ -82,7 +82,6 @@ export const IncidentCreateRequest$inboundSchema: z.ZodType<
     "sub_organization": "subOrganization",
   });
 });
-
 /** @internal */
 export type IncidentCreateRequest$Outbound = {
   description: string;
@@ -123,19 +122,6 @@ export const IncidentCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncidentCreateRequest$ {
-  /** @deprecated use `IncidentCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = IncidentCreateRequest$inboundSchema;
-  /** @deprecated use `IncidentCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = IncidentCreateRequest$outboundSchema;
-  /** @deprecated use `IncidentCreateRequest$Outbound` instead. */
-  export type Outbound = IncidentCreateRequest$Outbound;
-}
-
 export function incidentCreateRequestToJSON(
   incidentCreateRequest: IncidentCreateRequest,
 ): string {
@@ -143,7 +129,6 @@ export function incidentCreateRequestToJSON(
     IncidentCreateRequest$outboundSchema.parse(incidentCreateRequest),
   );
 }
-
 export function incidentCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<IncidentCreateRequest, SDKValidationError> {

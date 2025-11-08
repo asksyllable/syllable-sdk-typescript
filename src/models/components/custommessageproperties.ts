@@ -21,19 +21,7 @@ export type CustomMessageProperties = ClosedEnum<
 export const CustomMessageProperties$inboundSchema: z.ZodNativeEnum<
   typeof CustomMessageProperties
 > = z.nativeEnum(CustomMessageProperties);
-
 /** @internal */
 export const CustomMessageProperties$outboundSchema: z.ZodNativeEnum<
   typeof CustomMessageProperties
 > = CustomMessageProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessageProperties$ {
-  /** @deprecated use `CustomMessageProperties$inboundSchema` instead. */
-  export const inboundSchema = CustomMessageProperties$inboundSchema;
-  /** @deprecated use `CustomMessageProperties$outboundSchema` instead. */
-  export const outboundSchema = CustomMessageProperties$outboundSchema;
-}

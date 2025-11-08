@@ -75,7 +75,6 @@ export const SessionsListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type SessionsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const SessionsListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionsListRequest$ {
-  /** @deprecated use `SessionsListRequest$inboundSchema` instead. */
-  export const inboundSchema = SessionsListRequest$inboundSchema;
-  /** @deprecated use `SessionsListRequest$outboundSchema` instead. */
-  export const outboundSchema = SessionsListRequest$outboundSchema;
-  /** @deprecated use `SessionsListRequest$Outbound` instead. */
-  export type Outbound = SessionsListRequest$Outbound;
-}
-
 export function sessionsListRequestToJSON(
   sessionsListRequest: SessionsListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function sessionsListRequestToJSON(
     SessionsListRequest$outboundSchema.parse(sessionsListRequest),
   );
 }
-
 export function sessionsListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionsListRequest, SDKValidationError> {

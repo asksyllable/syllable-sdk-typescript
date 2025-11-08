@@ -16,19 +16,7 @@ export type UserActivityStatus = ClosedEnum<typeof UserActivityStatus>;
 export const UserActivityStatus$inboundSchema: z.ZodNativeEnum<
   typeof UserActivityStatus
 > = z.nativeEnum(UserActivityStatus);
-
 /** @internal */
 export const UserActivityStatus$outboundSchema: z.ZodNativeEnum<
   typeof UserActivityStatus
 > = UserActivityStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserActivityStatus$ {
-  /** @deprecated use `UserActivityStatus$inboundSchema` instead. */
-  export const inboundSchema = UserActivityStatus$inboundSchema;
-  /** @deprecated use `UserActivityStatus$outboundSchema` instead. */
-  export const outboundSchema = UserActivityStatus$outboundSchema;
-}

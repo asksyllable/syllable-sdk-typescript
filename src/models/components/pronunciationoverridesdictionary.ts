@@ -69,7 +69,6 @@ export const PronunciationOverridesDictionary$inboundSchema: z.ZodType<
   voices: z.record(VoiceDisplayInfo$inboundSchema).optional(),
   metadata: DictionaryMetadata$inboundSchema,
 });
-
 /** @internal */
 export type PronunciationOverridesDictionary$Outbound = {
   type: string;
@@ -90,19 +89,6 @@ export const PronunciationOverridesDictionary$outboundSchema: z.ZodType<
   metadata: DictionaryMetadata$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PronunciationOverridesDictionary$ {
-  /** @deprecated use `PronunciationOverridesDictionary$inboundSchema` instead. */
-  export const inboundSchema = PronunciationOverridesDictionary$inboundSchema;
-  /** @deprecated use `PronunciationOverridesDictionary$outboundSchema` instead. */
-  export const outboundSchema = PronunciationOverridesDictionary$outboundSchema;
-  /** @deprecated use `PronunciationOverridesDictionary$Outbound` instead. */
-  export type Outbound = PronunciationOverridesDictionary$Outbound;
-}
-
 export function pronunciationOverridesDictionaryToJSON(
   pronunciationOverridesDictionary: PronunciationOverridesDictionary,
 ): string {
@@ -112,7 +98,6 @@ export function pronunciationOverridesDictionaryToJSON(
     ),
   );
 }
-
 export function pronunciationOverridesDictionaryFromJSON(
   jsonString: string,
 ): SafeParseResult<PronunciationOverridesDictionary, SDKValidationError> {

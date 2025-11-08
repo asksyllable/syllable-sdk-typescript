@@ -32,7 +32,6 @@ export const OutboundBatchResultsRequest$inboundSchema: z.ZodType<
     "insights_status": "insightsStatus",
   });
 });
-
 /** @internal */
 export type OutboundBatchResultsRequest$Outbound = {
   batch_id: string;
@@ -59,19 +58,6 @@ export const OutboundBatchResultsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundBatchResultsRequest$ {
-  /** @deprecated use `OutboundBatchResultsRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundBatchResultsRequest$inboundSchema;
-  /** @deprecated use `OutboundBatchResultsRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundBatchResultsRequest$outboundSchema;
-  /** @deprecated use `OutboundBatchResultsRequest$Outbound` instead. */
-  export type Outbound = OutboundBatchResultsRequest$Outbound;
-}
-
 export function outboundBatchResultsRequestToJSON(
   outboundBatchResultsRequest: OutboundBatchResultsRequest,
 ): string {
@@ -81,7 +67,6 @@ export function outboundBatchResultsRequestToJSON(
     ),
   );
 }
-
 export function outboundBatchResultsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundBatchResultsRequest, SDKValidationError> {

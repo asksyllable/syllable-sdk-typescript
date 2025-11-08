@@ -22,19 +22,7 @@ export type DirectoryMemberProperties = ClosedEnum<
 export const DirectoryMemberProperties$inboundSchema: z.ZodNativeEnum<
   typeof DirectoryMemberProperties
 > = z.nativeEnum(DirectoryMemberProperties);
-
 /** @internal */
 export const DirectoryMemberProperties$outboundSchema: z.ZodNativeEnum<
   typeof DirectoryMemberProperties
 > = DirectoryMemberProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberProperties$ {
-  /** @deprecated use `DirectoryMemberProperties$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMemberProperties$inboundSchema;
-  /** @deprecated use `DirectoryMemberProperties$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMemberProperties$outboundSchema;
-}

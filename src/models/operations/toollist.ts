@@ -75,7 +75,6 @@ export const ToolListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type ToolListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,25 +116,11 @@ export const ToolListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolListRequest$ {
-  /** @deprecated use `ToolListRequest$inboundSchema` instead. */
-  export const inboundSchema = ToolListRequest$inboundSchema;
-  /** @deprecated use `ToolListRequest$outboundSchema` instead. */
-  export const outboundSchema = ToolListRequest$outboundSchema;
-  /** @deprecated use `ToolListRequest$Outbound` instead. */
-  export type Outbound = ToolListRequest$Outbound;
-}
-
 export function toolListRequestToJSON(
   toolListRequest: ToolListRequest,
 ): string {
   return JSON.stringify(ToolListRequest$outboundSchema.parse(toolListRequest));
 }
-
 export function toolListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolListRequest, SDKValidationError> {

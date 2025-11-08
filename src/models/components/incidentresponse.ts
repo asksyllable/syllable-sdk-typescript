@@ -109,7 +109,6 @@ export const IncidentResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type IncidentResponse$Outbound = {
   description: string;
@@ -161,19 +160,6 @@ export const IncidentResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncidentResponse$ {
-  /** @deprecated use `IncidentResponse$inboundSchema` instead. */
-  export const inboundSchema = IncidentResponse$inboundSchema;
-  /** @deprecated use `IncidentResponse$outboundSchema` instead. */
-  export const outboundSchema = IncidentResponse$outboundSchema;
-  /** @deprecated use `IncidentResponse$Outbound` instead. */
-  export type Outbound = IncidentResponse$Outbound;
-}
-
 export function incidentResponseToJSON(
   incidentResponse: IncidentResponse,
 ): string {
@@ -181,7 +167,6 @@ export function incidentResponseToJSON(
     IncidentResponse$outboundSchema.parse(incidentResponse),
   );
 }
-
 export function incidentResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<IncidentResponse, SDKValidationError> {

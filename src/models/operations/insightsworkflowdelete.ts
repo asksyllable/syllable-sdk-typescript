@@ -24,7 +24,6 @@ export const InsightsWorkflowDeleteRequest$inboundSchema: z.ZodType<
     "workflow_id": "workflowId",
   });
 });
-
 /** @internal */
 export type InsightsWorkflowDeleteRequest$Outbound = {
   workflow_id: number;
@@ -43,19 +42,6 @@ export const InsightsWorkflowDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsWorkflowDeleteRequest$ {
-  /** @deprecated use `InsightsWorkflowDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsWorkflowDeleteRequest$inboundSchema;
-  /** @deprecated use `InsightsWorkflowDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsWorkflowDeleteRequest$outboundSchema;
-  /** @deprecated use `InsightsWorkflowDeleteRequest$Outbound` instead. */
-  export type Outbound = InsightsWorkflowDeleteRequest$Outbound;
-}
-
 export function insightsWorkflowDeleteRequestToJSON(
   insightsWorkflowDeleteRequest: InsightsWorkflowDeleteRequest,
 ): string {
@@ -65,7 +51,6 @@ export function insightsWorkflowDeleteRequestToJSON(
     ),
   );
 }
-
 export function insightsWorkflowDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsWorkflowDeleteRequest, SDKValidationError> {

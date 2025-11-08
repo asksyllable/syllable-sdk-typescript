@@ -71,7 +71,6 @@ export const SessionLabel$inboundSchema: z.ZodType<
     "issue_categories": "issueCategories",
   });
 });
-
 /** @internal */
 export type SessionLabel$Outbound = {
   session_id: number;
@@ -106,23 +105,9 @@ export const SessionLabel$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionLabel$ {
-  /** @deprecated use `SessionLabel$inboundSchema` instead. */
-  export const inboundSchema = SessionLabel$inboundSchema;
-  /** @deprecated use `SessionLabel$outboundSchema` instead. */
-  export const outboundSchema = SessionLabel$outboundSchema;
-  /** @deprecated use `SessionLabel$Outbound` instead. */
-  export type Outbound = SessionLabel$Outbound;
-}
-
 export function sessionLabelToJSON(sessionLabel: SessionLabel): string {
   return JSON.stringify(SessionLabel$outboundSchema.parse(sessionLabel));
 }
-
 export function sessionLabelFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionLabel, SDKValidationError> {

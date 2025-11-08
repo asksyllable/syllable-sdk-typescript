@@ -27,19 +27,7 @@ export type UserProperties = ClosedEnum<typeof UserProperties>;
 export const UserProperties$inboundSchema: z.ZodNativeEnum<
   typeof UserProperties
 > = z.nativeEnum(UserProperties);
-
 /** @internal */
 export const UserProperties$outboundSchema: z.ZodNativeEnum<
   typeof UserProperties
 > = UserProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserProperties$ {
-  /** @deprecated use `UserProperties$inboundSchema` instead. */
-  export const inboundSchema = UserProperties$inboundSchema;
-  /** @deprecated use `UserProperties$outboundSchema` instead. */
-  export const outboundSchema = UserProperties$outboundSchema;
-}

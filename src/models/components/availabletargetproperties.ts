@@ -24,19 +24,7 @@ export type AvailableTargetProperties = ClosedEnum<
 export const AvailableTargetProperties$inboundSchema: z.ZodNativeEnum<
   typeof AvailableTargetProperties
 > = z.nativeEnum(AvailableTargetProperties);
-
 /** @internal */
 export const AvailableTargetProperties$outboundSchema: z.ZodNativeEnum<
   typeof AvailableTargetProperties
 > = AvailableTargetProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AvailableTargetProperties$ {
-  /** @deprecated use `AvailableTargetProperties$inboundSchema` instead. */
-  export const inboundSchema = AvailableTargetProperties$inboundSchema;
-  /** @deprecated use `AvailableTargetProperties$outboundSchema` instead. */
-  export const outboundSchema = AvailableTargetProperties$outboundSchema;
-}

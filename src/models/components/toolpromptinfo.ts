@@ -30,7 +30,6 @@ export const ToolPromptInfo$inboundSchema: z.ZodType<
   id: z.number().int(),
   name: z.string(),
 });
-
 /** @internal */
 export type ToolPromptInfo$Outbound = {
   id: number;
@@ -47,23 +46,9 @@ export const ToolPromptInfo$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolPromptInfo$ {
-  /** @deprecated use `ToolPromptInfo$inboundSchema` instead. */
-  export const inboundSchema = ToolPromptInfo$inboundSchema;
-  /** @deprecated use `ToolPromptInfo$outboundSchema` instead. */
-  export const outboundSchema = ToolPromptInfo$outboundSchema;
-  /** @deprecated use `ToolPromptInfo$Outbound` instead. */
-  export type Outbound = ToolPromptInfo$Outbound;
-}
-
 export function toolPromptInfoToJSON(toolPromptInfo: ToolPromptInfo): string {
   return JSON.stringify(ToolPromptInfo$outboundSchema.parse(toolPromptInfo));
 }
-
 export function toolPromptInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolPromptInfo, SDKValidationError> {

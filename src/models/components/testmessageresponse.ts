@@ -52,7 +52,6 @@ export const TestMessageResponse$inboundSchema: z.ZodType<
     "response_text": "responseText",
   });
 });
-
 /** @internal */
 export type TestMessageResponse$Outbound = {
   test_id: string;
@@ -81,19 +80,6 @@ export const TestMessageResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TestMessageResponse$ {
-  /** @deprecated use `TestMessageResponse$inboundSchema` instead. */
-  export const inboundSchema = TestMessageResponse$inboundSchema;
-  /** @deprecated use `TestMessageResponse$outboundSchema` instead. */
-  export const outboundSchema = TestMessageResponse$outboundSchema;
-  /** @deprecated use `TestMessageResponse$Outbound` instead. */
-  export type Outbound = TestMessageResponse$Outbound;
-}
-
 export function testMessageResponseToJSON(
   testMessageResponse: TestMessageResponse,
 ): string {
@@ -101,7 +87,6 @@ export function testMessageResponseToJSON(
     TestMessageResponse$outboundSchema.parse(testMessageResponse),
   );
 }
-
 export function testMessageResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<TestMessageResponse, SDKValidationError> {

@@ -100,7 +100,6 @@ export const UserResponse$inboundSchema: z.ZodType<
     "last_session_at": "lastSessionAt",
   });
 });
-
 /** @internal */
 export type UserResponse$Outbound = {
   email: string;
@@ -151,23 +150,9 @@ export const UserResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserResponse$ {
-  /** @deprecated use `UserResponse$inboundSchema` instead. */
-  export const inboundSchema = UserResponse$inboundSchema;
-  /** @deprecated use `UserResponse$outboundSchema` instead. */
-  export const outboundSchema = UserResponse$outboundSchema;
-  /** @deprecated use `UserResponse$Outbound` instead. */
-  export type Outbound = UserResponse$Outbound;
-}
-
 export function userResponseToJSON(userResponse: UserResponse): string {
   return JSON.stringify(UserResponse$outboundSchema.parse(userResponse));
 }
-
 export function userResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<UserResponse, SDKValidationError> {

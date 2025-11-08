@@ -21,18 +21,6 @@ export type TtsProvider = ClosedEnum<typeof TtsProvider>;
 /** @internal */
 export const TtsProvider$inboundSchema: z.ZodNativeEnum<typeof TtsProvider> = z
   .nativeEnum(TtsProvider);
-
 /** @internal */
 export const TtsProvider$outboundSchema: z.ZodNativeEnum<typeof TtsProvider> =
   TtsProvider$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TtsProvider$ {
-  /** @deprecated use `TtsProvider$inboundSchema` instead. */
-  export const inboundSchema = TtsProvider$inboundSchema;
-  /** @deprecated use `TtsProvider$outboundSchema` instead. */
-  export const outboundSchema = TtsProvider$outboundSchema;
-}

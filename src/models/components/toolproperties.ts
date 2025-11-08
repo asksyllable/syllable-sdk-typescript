@@ -26,19 +26,7 @@ export type ToolProperties = ClosedEnum<typeof ToolProperties>;
 export const ToolProperties$inboundSchema: z.ZodNativeEnum<
   typeof ToolProperties
 > = z.nativeEnum(ToolProperties);
-
 /** @internal */
 export const ToolProperties$outboundSchema: z.ZodNativeEnum<
   typeof ToolProperties
 > = ToolProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolProperties$ {
-  /** @deprecated use `ToolProperties$inboundSchema` instead. */
-  export const inboundSchema = ToolProperties$inboundSchema;
-  /** @deprecated use `ToolProperties$outboundSchema` instead. */
-  export const outboundSchema = ToolProperties$outboundSchema;
-}

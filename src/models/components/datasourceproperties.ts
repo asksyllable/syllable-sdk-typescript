@@ -26,19 +26,7 @@ export type DataSourceProperties = ClosedEnum<typeof DataSourceProperties>;
 export const DataSourceProperties$inboundSchema: z.ZodNativeEnum<
   typeof DataSourceProperties
 > = z.nativeEnum(DataSourceProperties);
-
 /** @internal */
 export const DataSourceProperties$outboundSchema: z.ZodNativeEnum<
   typeof DataSourceProperties
 > = DataSourceProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataSourceProperties$ {
-  /** @deprecated use `DataSourceProperties$inboundSchema` instead. */
-  export const inboundSchema = DataSourceProperties$inboundSchema;
-  /** @deprecated use `DataSourceProperties$outboundSchema` instead. */
-  export const outboundSchema = DataSourceProperties$outboundSchema;
-}

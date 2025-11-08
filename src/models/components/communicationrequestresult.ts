@@ -76,7 +76,6 @@ export const Insights$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type Insights$Outbound = {};
 
@@ -87,23 +86,9 @@ export const Insights$outboundSchema: z.ZodType<
   Insights
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Insights$ {
-  /** @deprecated use `Insights$inboundSchema` instead. */
-  export const inboundSchema = Insights$inboundSchema;
-  /** @deprecated use `Insights$outboundSchema` instead. */
-  export const outboundSchema = Insights$outboundSchema;
-  /** @deprecated use `Insights$Outbound` instead. */
-  export type Outbound = Insights$Outbound;
-}
-
 export function insightsToJSON(insights: Insights): string {
   return JSON.stringify(Insights$outboundSchema.parse(insights));
 }
-
 export function insightsFromJSON(
   jsonString: string,
 ): SafeParseResult<Insights, SDKValidationError> {
@@ -151,7 +136,6 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
     "insights_status": "insightsStatus",
   });
 });
-
 /** @internal */
 export type CommunicationRequestResult$Outbound = {
   reference_id: string;
@@ -204,19 +188,6 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommunicationRequestResult$ {
-  /** @deprecated use `CommunicationRequestResult$inboundSchema` instead. */
-  export const inboundSchema = CommunicationRequestResult$inboundSchema;
-  /** @deprecated use `CommunicationRequestResult$outboundSchema` instead. */
-  export const outboundSchema = CommunicationRequestResult$outboundSchema;
-  /** @deprecated use `CommunicationRequestResult$Outbound` instead. */
-  export type Outbound = CommunicationRequestResult$Outbound;
-}
-
 export function communicationRequestResultToJSON(
   communicationRequestResult: CommunicationRequestResult,
 ): string {
@@ -224,7 +195,6 @@ export function communicationRequestResultToJSON(
     CommunicationRequestResult$outboundSchema.parse(communicationRequestResult),
   );
 }
-
 export function communicationRequestResultFromJSON(
   jsonString: string,
 ): SafeParseResult<CommunicationRequestResult, SDKValidationError> {

@@ -50,7 +50,6 @@ export const AvailableTarget$inboundSchema: z.ZodType<
     "channel_name": "channelName",
   });
 });
-
 /** @internal */
 export type AvailableTarget$Outbound = {
   organization_id: number;
@@ -77,25 +76,11 @@ export const AvailableTarget$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AvailableTarget$ {
-  /** @deprecated use `AvailableTarget$inboundSchema` instead. */
-  export const inboundSchema = AvailableTarget$inboundSchema;
-  /** @deprecated use `AvailableTarget$outboundSchema` instead. */
-  export const outboundSchema = AvailableTarget$outboundSchema;
-  /** @deprecated use `AvailableTarget$Outbound` instead. */
-  export type Outbound = AvailableTarget$Outbound;
-}
-
 export function availableTargetToJSON(
   availableTarget: AvailableTarget,
 ): string {
   return JSON.stringify(AvailableTarget$outboundSchema.parse(availableTarget));
 }
-
 export function availableTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<AvailableTarget, SDKValidationError> {

@@ -70,7 +70,6 @@ export const RoleResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type RoleResponse$Outbound = {
   name: string;
@@ -106,23 +105,9 @@ export const RoleResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoleResponse$ {
-  /** @deprecated use `RoleResponse$inboundSchema` instead. */
-  export const inboundSchema = RoleResponse$inboundSchema;
-  /** @deprecated use `RoleResponse$outboundSchema` instead. */
-  export const outboundSchema = RoleResponse$outboundSchema;
-  /** @deprecated use `RoleResponse$Outbound` instead. */
-  export type Outbound = RoleResponse$Outbound;
-}
-
 export function roleResponseToJSON(roleResponse: RoleResponse): string {
   return JSON.stringify(RoleResponse$outboundSchema.parse(roleResponse));
 }
-
 export function roleResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<RoleResponse, SDKValidationError> {

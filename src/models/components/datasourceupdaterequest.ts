@@ -66,7 +66,6 @@ export const DataSourceUpdateRequest$inboundSchema: z.ZodType<
     "edit_comments": "editComments",
   });
 });
-
 /** @internal */
 export type DataSourceUpdateRequest$Outbound = {
   name: string;
@@ -100,19 +99,6 @@ export const DataSourceUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataSourceUpdateRequest$ {
-  /** @deprecated use `DataSourceUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = DataSourceUpdateRequest$inboundSchema;
-  /** @deprecated use `DataSourceUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = DataSourceUpdateRequest$outboundSchema;
-  /** @deprecated use `DataSourceUpdateRequest$Outbound` instead. */
-  export type Outbound = DataSourceUpdateRequest$Outbound;
-}
-
 export function dataSourceUpdateRequestToJSON(
   dataSourceUpdateRequest: DataSourceUpdateRequest,
 ): string {
@@ -120,7 +106,6 @@ export function dataSourceUpdateRequestToJSON(
     DataSourceUpdateRequest$outboundSchema.parse(dataSourceUpdateRequest),
   );
 }
-
 export function dataSourceUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DataSourceUpdateRequest, SDKValidationError> {

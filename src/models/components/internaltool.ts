@@ -41,7 +41,6 @@ export const InternalTool$inboundSchema: z.ZodType<
   type: z.literal("function").default("function"),
   function: ToolFunction$inboundSchema,
 });
-
 /** @internal */
 export type InternalTool$Outbound = {
   type: "function";
@@ -58,23 +57,9 @@ export const InternalTool$outboundSchema: z.ZodType<
   function: ToolFunction$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InternalTool$ {
-  /** @deprecated use `InternalTool$inboundSchema` instead. */
-  export const inboundSchema = InternalTool$inboundSchema;
-  /** @deprecated use `InternalTool$outboundSchema` instead. */
-  export const outboundSchema = InternalTool$outboundSchema;
-  /** @deprecated use `InternalTool$Outbound` instead. */
-  export type Outbound = InternalTool$Outbound;
-}
-
 export function internalToolToJSON(internalTool: InternalTool): string {
   return JSON.stringify(InternalTool$outboundSchema.parse(internalTool));
 }
-
 export function internalToolFromJSON(
   jsonString: string,
 ): SafeParseResult<InternalTool, SDKValidationError> {

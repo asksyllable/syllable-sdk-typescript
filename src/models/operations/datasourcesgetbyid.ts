@@ -24,7 +24,6 @@ export const DataSourcesGetByIdRequest$inboundSchema: z.ZodType<
     "data_source_id": "dataSourceId",
   });
 });
-
 /** @internal */
 export type DataSourcesGetByIdRequest$Outbound = {
   data_source_id: number;
@@ -43,19 +42,6 @@ export const DataSourcesGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataSourcesGetByIdRequest$ {
-  /** @deprecated use `DataSourcesGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = DataSourcesGetByIdRequest$inboundSchema;
-  /** @deprecated use `DataSourcesGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = DataSourcesGetByIdRequest$outboundSchema;
-  /** @deprecated use `DataSourcesGetByIdRequest$Outbound` instead. */
-  export type Outbound = DataSourcesGetByIdRequest$Outbound;
-}
-
 export function dataSourcesGetByIdRequestToJSON(
   dataSourcesGetByIdRequest: DataSourcesGetByIdRequest,
 ): string {
@@ -63,7 +49,6 @@ export function dataSourcesGetByIdRequestToJSON(
     DataSourcesGetByIdRequest$outboundSchema.parse(dataSourcesGetByIdRequest),
   );
 }
-
 export function dataSourcesGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DataSourcesGetByIdRequest, SDKValidationError> {

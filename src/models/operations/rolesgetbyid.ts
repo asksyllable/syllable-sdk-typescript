@@ -24,7 +24,6 @@ export const RolesGetByIdRequest$inboundSchema: z.ZodType<
     "role_id": "roleId",
   });
 });
-
 /** @internal */
 export type RolesGetByIdRequest$Outbound = {
   role_id: number;
@@ -43,19 +42,6 @@ export const RolesGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RolesGetByIdRequest$ {
-  /** @deprecated use `RolesGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = RolesGetByIdRequest$inboundSchema;
-  /** @deprecated use `RolesGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = RolesGetByIdRequest$outboundSchema;
-  /** @deprecated use `RolesGetByIdRequest$Outbound` instead. */
-  export type Outbound = RolesGetByIdRequest$Outbound;
-}
-
 export function rolesGetByIdRequestToJSON(
   rolesGetByIdRequest: RolesGetByIdRequest,
 ): string {
@@ -63,7 +49,6 @@ export function rolesGetByIdRequestToJSON(
     RolesGetByIdRequest$outboundSchema.parse(rolesGetByIdRequest),
   );
 }
-
 export function rolesGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RolesGetByIdRequest, SDKValidationError> {

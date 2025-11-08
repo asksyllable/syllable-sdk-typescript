@@ -16,18 +16,6 @@ export type ToolAuthType = ClosedEnum<typeof ToolAuthType>;
 /** @internal */
 export const ToolAuthType$inboundSchema: z.ZodNativeEnum<typeof ToolAuthType> =
   z.nativeEnum(ToolAuthType);
-
 /** @internal */
 export const ToolAuthType$outboundSchema: z.ZodNativeEnum<typeof ToolAuthType> =
   ToolAuthType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolAuthType$ {
-  /** @deprecated use `ToolAuthType$inboundSchema` instead. */
-  export const inboundSchema = ToolAuthType$inboundSchema;
-  /** @deprecated use `ToolAuthType$outboundSchema` instead. */
-  export const outboundSchema = ToolAuthType$outboundSchema;
-}

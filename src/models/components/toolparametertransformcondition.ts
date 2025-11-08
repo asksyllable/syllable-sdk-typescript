@@ -35,7 +35,6 @@ export const ToolParameterTransformCondition$inboundSchema: z.ZodType<
   value: z.string(),
   operator: z.nullable(z.literal("eq").default("eq")).optional(),
 });
-
 /** @internal */
 export type ToolParameterTransformCondition$Outbound = {
   key: string;
@@ -54,19 +53,6 @@ export const ToolParameterTransformCondition$outboundSchema: z.ZodType<
   operator: z.nullable(z.literal("eq")),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolParameterTransformCondition$ {
-  /** @deprecated use `ToolParameterTransformCondition$inboundSchema` instead. */
-  export const inboundSchema = ToolParameterTransformCondition$inboundSchema;
-  /** @deprecated use `ToolParameterTransformCondition$outboundSchema` instead. */
-  export const outboundSchema = ToolParameterTransformCondition$outboundSchema;
-  /** @deprecated use `ToolParameterTransformCondition$Outbound` instead. */
-  export type Outbound = ToolParameterTransformCondition$Outbound;
-}
-
 export function toolParameterTransformConditionToJSON(
   toolParameterTransformCondition: ToolParameterTransformCondition,
 ): string {
@@ -76,7 +62,6 @@ export function toolParameterTransformConditionToJSON(
     ),
   );
 }
-
 export function toolParameterTransformConditionFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolParameterTransformCondition, SDKValidationError> {

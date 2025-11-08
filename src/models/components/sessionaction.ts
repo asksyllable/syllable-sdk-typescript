@@ -53,7 +53,6 @@ export const SessionAction$inboundSchema: z.ZodType<
     "tool_error": "toolError",
   });
 });
-
 /** @internal */
 export type SessionAction$Outbound = {
   timestamp: string;
@@ -83,23 +82,9 @@ export const SessionAction$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionAction$ {
-  /** @deprecated use `SessionAction$inboundSchema` instead. */
-  export const inboundSchema = SessionAction$inboundSchema;
-  /** @deprecated use `SessionAction$outboundSchema` instead. */
-  export const outboundSchema = SessionAction$outboundSchema;
-  /** @deprecated use `SessionAction$Outbound` instead. */
-  export type Outbound = SessionAction$Outbound;
-}
-
 export function sessionActionToJSON(sessionAction: SessionAction): string {
   return JSON.stringify(SessionAction$outboundSchema.parse(sessionAction));
 }
-
 export function sessionActionFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionAction, SDKValidationError> {

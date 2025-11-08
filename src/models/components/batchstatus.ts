@@ -24,18 +24,6 @@ export type BatchStatus = ClosedEnum<typeof BatchStatus>;
 /** @internal */
 export const BatchStatus$inboundSchema: z.ZodNativeEnum<typeof BatchStatus> = z
   .nativeEnum(BatchStatus);
-
 /** @internal */
 export const BatchStatus$outboundSchema: z.ZodNativeEnum<typeof BatchStatus> =
   BatchStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BatchStatus$ {
-  /** @deprecated use `BatchStatus$inboundSchema` instead. */
-  export const inboundSchema = BatchStatus$inboundSchema;
-  /** @deprecated use `BatchStatus$outboundSchema` instead. */
-  export const outboundSchema = BatchStatus$outboundSchema;
-}

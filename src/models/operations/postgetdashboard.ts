@@ -24,7 +24,6 @@ export const PostGetDashboardRequest$inboundSchema: z.ZodType<
     "dashboard_name": "dashboardName",
   });
 });
-
 /** @internal */
 export type PostGetDashboardRequest$Outbound = {
   dashboard_name: string;
@@ -43,19 +42,6 @@ export const PostGetDashboardRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostGetDashboardRequest$ {
-  /** @deprecated use `PostGetDashboardRequest$inboundSchema` instead. */
-  export const inboundSchema = PostGetDashboardRequest$inboundSchema;
-  /** @deprecated use `PostGetDashboardRequest$outboundSchema` instead. */
-  export const outboundSchema = PostGetDashboardRequest$outboundSchema;
-  /** @deprecated use `PostGetDashboardRequest$Outbound` instead. */
-  export type Outbound = PostGetDashboardRequest$Outbound;
-}
-
 export function postGetDashboardRequestToJSON(
   postGetDashboardRequest: PostGetDashboardRequest,
 ): string {
@@ -63,7 +49,6 @@ export function postGetDashboardRequestToJSON(
     PostGetDashboardRequest$outboundSchema.parse(postGetDashboardRequest),
   );
 }
-
 export function postGetDashboardRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PostGetDashboardRequest, SDKValidationError> {

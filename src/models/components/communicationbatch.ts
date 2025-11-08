@@ -103,7 +103,6 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
     "error_message": "errorMessage",
   });
 });
-
 /** @internal */
 export type CommunicationBatch$Outbound = {
   batch_id: string;
@@ -154,19 +153,6 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommunicationBatch$ {
-  /** @deprecated use `CommunicationBatch$inboundSchema` instead. */
-  export const inboundSchema = CommunicationBatch$inboundSchema;
-  /** @deprecated use `CommunicationBatch$outboundSchema` instead. */
-  export const outboundSchema = CommunicationBatch$outboundSchema;
-  /** @deprecated use `CommunicationBatch$Outbound` instead. */
-  export type Outbound = CommunicationBatch$Outbound;
-}
-
 export function communicationBatchToJSON(
   communicationBatch: CommunicationBatch,
 ): string {
@@ -174,7 +160,6 @@ export function communicationBatchToJSON(
     CommunicationBatch$outboundSchema.parse(communicationBatch),
   );
 }
-
 export function communicationBatchFromJSON(
   jsonString: string,
 ): SafeParseResult<CommunicationBatch, SDKValidationError> {

@@ -132,7 +132,6 @@ export const AgentCreate$inboundSchema: z.ZodType<
     "wait_sound": "waitSound",
   });
 });
-
 /** @internal */
 export type AgentCreate$Outbound = {
   name: string;
@@ -188,23 +187,9 @@ export const AgentCreate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentCreate$ {
-  /** @deprecated use `AgentCreate$inboundSchema` instead. */
-  export const inboundSchema = AgentCreate$inboundSchema;
-  /** @deprecated use `AgentCreate$outboundSchema` instead. */
-  export const outboundSchema = AgentCreate$outboundSchema;
-  /** @deprecated use `AgentCreate$Outbound` instead. */
-  export type Outbound = AgentCreate$Outbound;
-}
-
 export function agentCreateToJSON(agentCreate: AgentCreate): string {
   return JSON.stringify(AgentCreate$outboundSchema.parse(agentCreate));
 }
-
 export function agentCreateFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentCreate, SDKValidationError> {

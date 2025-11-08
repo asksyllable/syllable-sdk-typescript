@@ -24,7 +24,6 @@ export const OutboundCampaignDeleteRequest$inboundSchema: z.ZodType<
     "campaign_id": "campaignId",
   });
 });
-
 /** @internal */
 export type OutboundCampaignDeleteRequest$Outbound = {
   campaign_id: number;
@@ -43,19 +42,6 @@ export const OutboundCampaignDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundCampaignDeleteRequest$ {
-  /** @deprecated use `OutboundCampaignDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundCampaignDeleteRequest$inboundSchema;
-  /** @deprecated use `OutboundCampaignDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundCampaignDeleteRequest$outboundSchema;
-  /** @deprecated use `OutboundCampaignDeleteRequest$Outbound` instead. */
-  export type Outbound = OutboundCampaignDeleteRequest$Outbound;
-}
-
 export function outboundCampaignDeleteRequestToJSON(
   outboundCampaignDeleteRequest: OutboundCampaignDeleteRequest,
 ): string {
@@ -65,7 +51,6 @@ export function outboundCampaignDeleteRequestToJSON(
     ),
   );
 }
-
 export function outboundCampaignDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundCampaignDeleteRequest, SDKValidationError> {

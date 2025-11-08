@@ -21,19 +21,7 @@ export type OrderByDirection = ClosedEnum<typeof OrderByDirection>;
 export const OrderByDirection$inboundSchema: z.ZodNativeEnum<
   typeof OrderByDirection
 > = z.nativeEnum(OrderByDirection);
-
 /** @internal */
 export const OrderByDirection$outboundSchema: z.ZodNativeEnum<
   typeof OrderByDirection
 > = OrderByDirection$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrderByDirection$ {
-  /** @deprecated use `OrderByDirection$inboundSchema` instead. */
-  export const inboundSchema = OrderByDirection$inboundSchema;
-  /** @deprecated use `OrderByDirection$outboundSchema` instead. */
-  export const outboundSchema = OrderByDirection$outboundSchema;
-}

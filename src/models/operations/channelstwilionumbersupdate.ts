@@ -28,7 +28,6 @@ export const ChannelsTwilioNumbersUpdateRequest$inboundSchema: z.ZodType<
     "TwilioNumberUpdateRequest": "twilioNumberUpdateRequest",
   });
 });
-
 /** @internal */
 export type ChannelsTwilioNumbersUpdateRequest$Outbound = {
   channel_id: number;
@@ -51,20 +50,6 @@ export const ChannelsTwilioNumbersUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelsTwilioNumbersUpdateRequest$ {
-  /** @deprecated use `ChannelsTwilioNumbersUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = ChannelsTwilioNumbersUpdateRequest$inboundSchema;
-  /** @deprecated use `ChannelsTwilioNumbersUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    ChannelsTwilioNumbersUpdateRequest$outboundSchema;
-  /** @deprecated use `ChannelsTwilioNumbersUpdateRequest$Outbound` instead. */
-  export type Outbound = ChannelsTwilioNumbersUpdateRequest$Outbound;
-}
-
 export function channelsTwilioNumbersUpdateRequestToJSON(
   channelsTwilioNumbersUpdateRequest: ChannelsTwilioNumbersUpdateRequest,
 ): string {
@@ -74,7 +59,6 @@ export function channelsTwilioNumbersUpdateRequestToJSON(
     ),
   );
 }
-
 export function channelsTwilioNumbersUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelsTwilioNumbersUpdateRequest, SDKValidationError> {

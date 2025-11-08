@@ -61,7 +61,6 @@ export const SupportedLlm$inboundSchema: z.ZodType<
     "api_version": "apiVersion",
   });
 });
-
 /** @internal */
 export type SupportedLlm$Outbound = {
   provider?: string | undefined;
@@ -91,23 +90,9 @@ export const SupportedLlm$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SupportedLlm$ {
-  /** @deprecated use `SupportedLlm$inboundSchema` instead. */
-  export const inboundSchema = SupportedLlm$inboundSchema;
-  /** @deprecated use `SupportedLlm$outboundSchema` instead. */
-  export const outboundSchema = SupportedLlm$outboundSchema;
-  /** @deprecated use `SupportedLlm$Outbound` instead. */
-  export type Outbound = SupportedLlm$Outbound;
-}
-
 export function supportedLlmToJSON(supportedLlm: SupportedLlm): string {
   return JSON.stringify(SupportedLlm$outboundSchema.parse(supportedLlm));
 }
-
 export function supportedLlmFromJSON(
   jsonString: string,
 ): SafeParseResult<SupportedLlm, SDKValidationError> {

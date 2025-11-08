@@ -21,19 +21,7 @@ export type AgentVoiceGender = ClosedEnum<typeof AgentVoiceGender>;
 export const AgentVoiceGender$inboundSchema: z.ZodNativeEnum<
   typeof AgentVoiceGender
 > = z.nativeEnum(AgentVoiceGender);
-
 /** @internal */
 export const AgentVoiceGender$outboundSchema: z.ZodNativeEnum<
   typeof AgentVoiceGender
 > = AgentVoiceGender$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentVoiceGender$ {
-  /** @deprecated use `AgentVoiceGender$inboundSchema` instead. */
-  export const inboundSchema = AgentVoiceGender$inboundSchema;
-  /** @deprecated use `AgentVoiceGender$outboundSchema` instead. */
-  export const outboundSchema = AgentVoiceGender$outboundSchema;
-}

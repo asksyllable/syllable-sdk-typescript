@@ -26,7 +26,6 @@ export const DictionaryMetadata$inboundSchema: z.ZodType<
   hash: z.string(),
   source: z.string().default(""),
 });
-
 /** @internal */
 export type DictionaryMetadata$Outbound = {
   entries: number;
@@ -45,19 +44,6 @@ export const DictionaryMetadata$outboundSchema: z.ZodType<
   source: z.string().default(""),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DictionaryMetadata$ {
-  /** @deprecated use `DictionaryMetadata$inboundSchema` instead. */
-  export const inboundSchema = DictionaryMetadata$inboundSchema;
-  /** @deprecated use `DictionaryMetadata$outboundSchema` instead. */
-  export const outboundSchema = DictionaryMetadata$outboundSchema;
-  /** @deprecated use `DictionaryMetadata$Outbound` instead. */
-  export type Outbound = DictionaryMetadata$Outbound;
-}
-
 export function dictionaryMetadataToJSON(
   dictionaryMetadata: DictionaryMetadata,
 ): string {
@@ -65,7 +51,6 @@ export function dictionaryMetadataToJSON(
     DictionaryMetadata$outboundSchema.parse(dictionaryMetadata),
   );
 }
-
 export function dictionaryMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<DictionaryMetadata, SDKValidationError> {

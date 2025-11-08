@@ -64,7 +64,6 @@ export const ChannelTargetCreateRequest$inboundSchema: z.ZodType<
     "is_test": "isTest",
   });
 });
-
 /** @internal */
 export type ChannelTargetCreateRequest$Outbound = {
   agent_id: number;
@@ -97,19 +96,6 @@ export const ChannelTargetCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelTargetCreateRequest$ {
-  /** @deprecated use `ChannelTargetCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = ChannelTargetCreateRequest$inboundSchema;
-  /** @deprecated use `ChannelTargetCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = ChannelTargetCreateRequest$outboundSchema;
-  /** @deprecated use `ChannelTargetCreateRequest$Outbound` instead. */
-  export type Outbound = ChannelTargetCreateRequest$Outbound;
-}
-
 export function channelTargetCreateRequestToJSON(
   channelTargetCreateRequest: ChannelTargetCreateRequest,
 ): string {
@@ -117,7 +103,6 @@ export function channelTargetCreateRequestToJSON(
     ChannelTargetCreateRequest$outboundSchema.parse(channelTargetCreateRequest),
   );
 }
-
 export function channelTargetCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelTargetCreateRequest, SDKValidationError> {

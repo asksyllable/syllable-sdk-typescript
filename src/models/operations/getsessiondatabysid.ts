@@ -27,7 +27,6 @@ export const GetSessionDataBySidRequest$inboundSchema: z.ZodType<
     "channel_manager_sid": "channelManagerSid",
   });
 });
-
 /** @internal */
 export type GetSessionDataBySidRequest$Outbound = {
   channel_manager_service: string;
@@ -49,19 +48,6 @@ export const GetSessionDataBySidRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSessionDataBySidRequest$ {
-  /** @deprecated use `GetSessionDataBySidRequest$inboundSchema` instead. */
-  export const inboundSchema = GetSessionDataBySidRequest$inboundSchema;
-  /** @deprecated use `GetSessionDataBySidRequest$outboundSchema` instead. */
-  export const outboundSchema = GetSessionDataBySidRequest$outboundSchema;
-  /** @deprecated use `GetSessionDataBySidRequest$Outbound` instead. */
-  export type Outbound = GetSessionDataBySidRequest$Outbound;
-}
-
 export function getSessionDataBySidRequestToJSON(
   getSessionDataBySidRequest: GetSessionDataBySidRequest,
 ): string {
@@ -69,7 +55,6 @@ export function getSessionDataBySidRequestToJSON(
     GetSessionDataBySidRequest$outboundSchema.parse(getSessionDataBySidRequest),
   );
 }
-
 export function getSessionDataBySidRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSessionDataBySidRequest, SDKValidationError> {

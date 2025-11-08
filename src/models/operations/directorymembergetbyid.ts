@@ -24,7 +24,6 @@ export const DirectoryMemberGetByIdRequest$inboundSchema: z.ZodType<
     "member_id": "memberId",
   });
 });
-
 /** @internal */
 export type DirectoryMemberGetByIdRequest$Outbound = {
   member_id: number;
@@ -43,19 +42,6 @@ export const DirectoryMemberGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberGetByIdRequest$ {
-  /** @deprecated use `DirectoryMemberGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMemberGetByIdRequest$inboundSchema;
-  /** @deprecated use `DirectoryMemberGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMemberGetByIdRequest$outboundSchema;
-  /** @deprecated use `DirectoryMemberGetByIdRequest$Outbound` instead. */
-  export type Outbound = DirectoryMemberGetByIdRequest$Outbound;
-}
-
 export function directoryMemberGetByIdRequestToJSON(
   directoryMemberGetByIdRequest: DirectoryMemberGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function directoryMemberGetByIdRequestToJSON(
     ),
   );
 }
-
 export function directoryMemberGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryMemberGetByIdRequest, SDKValidationError> {

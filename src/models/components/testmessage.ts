@@ -72,7 +72,6 @@ export const TestMessage$inboundSchema: z.ZodType<
     "session_start": "sessionStart",
   });
 });
-
 /** @internal */
 export type TestMessage$Outbound = {
   service_name: string;
@@ -110,23 +109,9 @@ export const TestMessage$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TestMessage$ {
-  /** @deprecated use `TestMessage$inboundSchema` instead. */
-  export const inboundSchema = TestMessage$inboundSchema;
-  /** @deprecated use `TestMessage$outboundSchema` instead. */
-  export const outboundSchema = TestMessage$outboundSchema;
-  /** @deprecated use `TestMessage$Outbound` instead. */
-  export type Outbound = TestMessage$Outbound;
-}
-
 export function testMessageToJSON(testMessage: TestMessage): string {
   return JSON.stringify(TestMessage$outboundSchema.parse(testMessage));
 }
-
 export function testMessageFromJSON(
   jsonString: string,
 ): SafeParseResult<TestMessage, SDKValidationError> {

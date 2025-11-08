@@ -77,7 +77,6 @@ export const LanguageGroupsListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type LanguageGroupsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -121,19 +120,6 @@ export const LanguageGroupsListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupsListRequest$ {
-  /** @deprecated use `LanguageGroupsListRequest$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupsListRequest$inboundSchema;
-  /** @deprecated use `LanguageGroupsListRequest$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupsListRequest$outboundSchema;
-  /** @deprecated use `LanguageGroupsListRequest$Outbound` instead. */
-  export type Outbound = LanguageGroupsListRequest$Outbound;
-}
-
 export function languageGroupsListRequestToJSON(
   languageGroupsListRequest: LanguageGroupsListRequest,
 ): string {
@@ -141,7 +127,6 @@ export function languageGroupsListRequestToJSON(
     LanguageGroupsListRequest$outboundSchema.parse(languageGroupsListRequest),
   );
 }
-
 export function languageGroupsListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageGroupsListRequest, SDKValidationError> {

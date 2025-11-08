@@ -37,7 +37,6 @@ export const PronunciationsCsvUploadResponse$inboundSchema: z.ZodType<
     "uploaded_by": "uploadedBy",
   });
 });
-
 /** @internal */
 export type PronunciationsCsvUploadResponse$Outbound = {
   revision: number;
@@ -65,19 +64,6 @@ export const PronunciationsCsvUploadResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PronunciationsCsvUploadResponse$ {
-  /** @deprecated use `PronunciationsCsvUploadResponse$inboundSchema` instead. */
-  export const inboundSchema = PronunciationsCsvUploadResponse$inboundSchema;
-  /** @deprecated use `PronunciationsCsvUploadResponse$outboundSchema` instead. */
-  export const outboundSchema = PronunciationsCsvUploadResponse$outboundSchema;
-  /** @deprecated use `PronunciationsCsvUploadResponse$Outbound` instead. */
-  export type Outbound = PronunciationsCsvUploadResponse$Outbound;
-}
-
 export function pronunciationsCsvUploadResponseToJSON(
   pronunciationsCsvUploadResponse: PronunciationsCsvUploadResponse,
 ): string {
@@ -87,7 +73,6 @@ export function pronunciationsCsvUploadResponseToJSON(
     ),
   );
 }
-
 export function pronunciationsCsvUploadResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<PronunciationsCsvUploadResponse, SDKValidationError> {

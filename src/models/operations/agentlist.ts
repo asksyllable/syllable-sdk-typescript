@@ -75,7 +75,6 @@ export const AgentListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type AgentListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const AgentListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentListRequest$ {
-  /** @deprecated use `AgentListRequest$inboundSchema` instead. */
-  export const inboundSchema = AgentListRequest$inboundSchema;
-  /** @deprecated use `AgentListRequest$outboundSchema` instead. */
-  export const outboundSchema = AgentListRequest$outboundSchema;
-  /** @deprecated use `AgentListRequest$Outbound` instead. */
-  export type Outbound = AgentListRequest$Outbound;
-}
-
 export function agentListRequestToJSON(
   agentListRequest: AgentListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function agentListRequestToJSON(
     AgentListRequest$outboundSchema.parse(agentListRequest),
   );
 }
-
 export function agentListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentListRequest, SDKValidationError> {

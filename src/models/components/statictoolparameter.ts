@@ -50,7 +50,6 @@ export const StaticToolParameter$inboundSchema: z.ZodType<
   type: StaticToolParameterType$inboundSchema,
   default: z.nullable(z.any()).optional(),
 });
-
 /** @internal */
 export type StaticToolParameter$Outbound = {
   name: string;
@@ -73,19 +72,6 @@ export const StaticToolParameter$outboundSchema: z.ZodType<
   default: z.nullable(z.any()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StaticToolParameter$ {
-  /** @deprecated use `StaticToolParameter$inboundSchema` instead. */
-  export const inboundSchema = StaticToolParameter$inboundSchema;
-  /** @deprecated use `StaticToolParameter$outboundSchema` instead. */
-  export const outboundSchema = StaticToolParameter$outboundSchema;
-  /** @deprecated use `StaticToolParameter$Outbound` instead. */
-  export type Outbound = StaticToolParameter$Outbound;
-}
-
 export function staticToolParameterToJSON(
   staticToolParameter: StaticToolParameter,
 ): string {
@@ -93,7 +79,6 @@ export function staticToolParameterToJSON(
     StaticToolParameter$outboundSchema.parse(staticToolParameter),
   );
 }
-
 export function staticToolParameterFromJSON(
   jsonString: string,
 ): SafeParseResult<StaticToolParameter, SDKValidationError> {

@@ -51,7 +51,6 @@ export const ServiceCreateRequest$inboundSchema: z.ZodType<
     "auth_values": "authValues",
   });
 });
-
 /** @internal */
 export type ServiceCreateRequest$Outbound = {
   name: string;
@@ -77,19 +76,6 @@ export const ServiceCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ServiceCreateRequest$ {
-  /** @deprecated use `ServiceCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = ServiceCreateRequest$inboundSchema;
-  /** @deprecated use `ServiceCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = ServiceCreateRequest$outboundSchema;
-  /** @deprecated use `ServiceCreateRequest$Outbound` instead. */
-  export type Outbound = ServiceCreateRequest$Outbound;
-}
-
 export function serviceCreateRequestToJSON(
   serviceCreateRequest: ServiceCreateRequest,
 ): string {
@@ -97,7 +83,6 @@ export function serviceCreateRequestToJSON(
     ServiceCreateRequest$outboundSchema.parse(serviceCreateRequest),
   );
 }
-
 export function serviceCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ServiceCreateRequest, SDKValidationError> {

@@ -28,7 +28,6 @@ export const OutboundCampaignUpdateRequest$inboundSchema: z.ZodType<
     "OutboundCampaignInput": "outboundCampaignInput",
   });
 });
-
 /** @internal */
 export type OutboundCampaignUpdateRequest$Outbound = {
   campaign_id: number;
@@ -50,19 +49,6 @@ export const OutboundCampaignUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundCampaignUpdateRequest$ {
-  /** @deprecated use `OutboundCampaignUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundCampaignUpdateRequest$inboundSchema;
-  /** @deprecated use `OutboundCampaignUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundCampaignUpdateRequest$outboundSchema;
-  /** @deprecated use `OutboundCampaignUpdateRequest$Outbound` instead. */
-  export type Outbound = OutboundCampaignUpdateRequest$Outbound;
-}
-
 export function outboundCampaignUpdateRequestToJSON(
   outboundCampaignUpdateRequest: OutboundCampaignUpdateRequest,
 ): string {
@@ -72,7 +58,6 @@ export function outboundCampaignUpdateRequestToJSON(
     ),
   );
 }
-
 export function outboundCampaignUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundCampaignUpdateRequest, SDKValidationError> {

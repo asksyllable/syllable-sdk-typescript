@@ -150,7 +150,6 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type OutboundCampaign$Outbound = {
   campaign_name: string;
@@ -223,19 +222,6 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundCampaign$ {
-  /** @deprecated use `OutboundCampaign$inboundSchema` instead. */
-  export const inboundSchema = OutboundCampaign$inboundSchema;
-  /** @deprecated use `OutboundCampaign$outboundSchema` instead. */
-  export const outboundSchema = OutboundCampaign$outboundSchema;
-  /** @deprecated use `OutboundCampaign$Outbound` instead. */
-  export type Outbound = OutboundCampaign$Outbound;
-}
-
 export function outboundCampaignToJSON(
   outboundCampaign: OutboundCampaign,
 ): string {
@@ -243,7 +229,6 @@ export function outboundCampaignToJSON(
     OutboundCampaign$outboundSchema.parse(outboundCampaign),
   );
 }
-
 export function outboundCampaignFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundCampaign, SDKValidationError> {

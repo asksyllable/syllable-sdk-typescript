@@ -24,7 +24,6 @@ export const CustomMessageGetByIdRequest$inboundSchema: z.ZodType<
     "custom_message_id": "customMessageId",
   });
 });
-
 /** @internal */
 export type CustomMessageGetByIdRequest$Outbound = {
   custom_message_id: number;
@@ -43,19 +42,6 @@ export const CustomMessageGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessageGetByIdRequest$ {
-  /** @deprecated use `CustomMessageGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = CustomMessageGetByIdRequest$inboundSchema;
-  /** @deprecated use `CustomMessageGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = CustomMessageGetByIdRequest$outboundSchema;
-  /** @deprecated use `CustomMessageGetByIdRequest$Outbound` instead. */
-  export type Outbound = CustomMessageGetByIdRequest$Outbound;
-}
-
 export function customMessageGetByIdRequestToJSON(
   customMessageGetByIdRequest: CustomMessageGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function customMessageGetByIdRequestToJSON(
     ),
   );
 }
-
 export function customMessageGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomMessageGetByIdRequest, SDKValidationError> {

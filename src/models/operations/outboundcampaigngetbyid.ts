@@ -24,7 +24,6 @@ export const OutboundCampaignGetByIdRequest$inboundSchema: z.ZodType<
     "campaign_id": "campaignId",
   });
 });
-
 /** @internal */
 export type OutboundCampaignGetByIdRequest$Outbound = {
   campaign_id: number;
@@ -43,19 +42,6 @@ export const OutboundCampaignGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundCampaignGetByIdRequest$ {
-  /** @deprecated use `OutboundCampaignGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundCampaignGetByIdRequest$inboundSchema;
-  /** @deprecated use `OutboundCampaignGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundCampaignGetByIdRequest$outboundSchema;
-  /** @deprecated use `OutboundCampaignGetByIdRequest$Outbound` instead. */
-  export type Outbound = OutboundCampaignGetByIdRequest$Outbound;
-}
-
 export function outboundCampaignGetByIdRequestToJSON(
   outboundCampaignGetByIdRequest: OutboundCampaignGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function outboundCampaignGetByIdRequestToJSON(
     ),
   );
 }
-
 export function outboundCampaignGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundCampaignGetByIdRequest, SDKValidationError> {

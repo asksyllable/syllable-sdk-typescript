@@ -26,7 +26,6 @@ export const LanguageGroupsDeleteRequest$inboundSchema: z.ZodType<
     "language_group_id": "languageGroupId",
   });
 });
-
 /** @internal */
 export type LanguageGroupsDeleteRequest$Outbound = {
   language_group_id: number;
@@ -47,19 +46,6 @@ export const LanguageGroupsDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupsDeleteRequest$ {
-  /** @deprecated use `LanguageGroupsDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupsDeleteRequest$inboundSchema;
-  /** @deprecated use `LanguageGroupsDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupsDeleteRequest$outboundSchema;
-  /** @deprecated use `LanguageGroupsDeleteRequest$Outbound` instead. */
-  export type Outbound = LanguageGroupsDeleteRequest$Outbound;
-}
-
 export function languageGroupsDeleteRequestToJSON(
   languageGroupsDeleteRequest: LanguageGroupsDeleteRequest,
 ): string {
@@ -69,7 +55,6 @@ export function languageGroupsDeleteRequestToJSON(
     ),
   );
 }
-
 export function languageGroupsDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageGroupsDeleteRequest, SDKValidationError> {

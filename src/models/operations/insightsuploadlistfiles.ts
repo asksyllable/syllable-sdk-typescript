@@ -81,7 +81,6 @@ export const InsightsUploadListFilesRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type InsightsUploadListFilesRequest$Outbound = {
   folder_id: number;
@@ -129,19 +128,6 @@ export const InsightsUploadListFilesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsUploadListFilesRequest$ {
-  /** @deprecated use `InsightsUploadListFilesRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsUploadListFilesRequest$inboundSchema;
-  /** @deprecated use `InsightsUploadListFilesRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsUploadListFilesRequest$outboundSchema;
-  /** @deprecated use `InsightsUploadListFilesRequest$Outbound` instead. */
-  export type Outbound = InsightsUploadListFilesRequest$Outbound;
-}
-
 export function insightsUploadListFilesRequestToJSON(
   insightsUploadListFilesRequest: InsightsUploadListFilesRequest,
 ): string {
@@ -151,7 +137,6 @@ export function insightsUploadListFilesRequestToJSON(
     ),
   );
 }
-
 export function insightsUploadListFilesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsUploadListFilesRequest, SDKValidationError> {

@@ -20,19 +20,7 @@ export type InsightToolProperties = ClosedEnum<typeof InsightToolProperties>;
 export const InsightToolProperties$inboundSchema: z.ZodNativeEnum<
   typeof InsightToolProperties
 > = z.nativeEnum(InsightToolProperties);
-
 /** @internal */
 export const InsightToolProperties$outboundSchema: z.ZodNativeEnum<
   typeof InsightToolProperties
 > = InsightToolProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightToolProperties$ {
-  /** @deprecated use `InsightToolProperties$inboundSchema` instead. */
-  export const inboundSchema = InsightToolProperties$inboundSchema;
-  /** @deprecated use `InsightToolProperties$outboundSchema` instead. */
-  export const outboundSchema = InsightToolProperties$outboundSchema;
-}

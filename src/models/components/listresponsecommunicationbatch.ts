@@ -55,7 +55,6 @@ export const ListResponseCommunicationBatch$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseCommunicationBatch$Outbound = {
   items: Array<CommunicationBatch$Outbound>;
@@ -84,19 +83,6 @@ export const ListResponseCommunicationBatch$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseCommunicationBatch$ {
-  /** @deprecated use `ListResponseCommunicationBatch$inboundSchema` instead. */
-  export const inboundSchema = ListResponseCommunicationBatch$inboundSchema;
-  /** @deprecated use `ListResponseCommunicationBatch$outboundSchema` instead. */
-  export const outboundSchema = ListResponseCommunicationBatch$outboundSchema;
-  /** @deprecated use `ListResponseCommunicationBatch$Outbound` instead. */
-  export type Outbound = ListResponseCommunicationBatch$Outbound;
-}
-
 export function listResponseCommunicationBatchToJSON(
   listResponseCommunicationBatch: ListResponseCommunicationBatch,
 ): string {
@@ -106,7 +92,6 @@ export function listResponseCommunicationBatchToJSON(
     ),
   );
 }
-
 export function listResponseCommunicationBatchFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseCommunicationBatch, SDKValidationError> {

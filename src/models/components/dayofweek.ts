@@ -25,18 +25,6 @@ export type DayOfWeek = ClosedEnum<typeof DayOfWeek>;
 /** @internal */
 export const DayOfWeek$inboundSchema: z.ZodNativeEnum<typeof DayOfWeek> = z
   .nativeEnum(DayOfWeek);
-
 /** @internal */
 export const DayOfWeek$outboundSchema: z.ZodNativeEnum<typeof DayOfWeek> =
   DayOfWeek$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DayOfWeek$ {
-  /** @deprecated use `DayOfWeek$inboundSchema` instead. */
-  export const inboundSchema = DayOfWeek$inboundSchema;
-  /** @deprecated use `DayOfWeek$outboundSchema` instead. */
-  export const outboundSchema = DayOfWeek$outboundSchema;
-}

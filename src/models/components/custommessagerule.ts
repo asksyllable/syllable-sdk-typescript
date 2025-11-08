@@ -70,7 +70,6 @@ export const CustomMessageRule$inboundSchema: z.ZodType<
     "days_of_week": "daysOfWeek",
   });
 });
-
 /** @internal */
 export type CustomMessageRule$Outbound = {
   description: string;
@@ -103,19 +102,6 @@ export const CustomMessageRule$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessageRule$ {
-  /** @deprecated use `CustomMessageRule$inboundSchema` instead. */
-  export const inboundSchema = CustomMessageRule$inboundSchema;
-  /** @deprecated use `CustomMessageRule$outboundSchema` instead. */
-  export const outboundSchema = CustomMessageRule$outboundSchema;
-  /** @deprecated use `CustomMessageRule$Outbound` instead. */
-  export type Outbound = CustomMessageRule$Outbound;
-}
-
 export function customMessageRuleToJSON(
   customMessageRule: CustomMessageRule,
 ): string {
@@ -123,7 +109,6 @@ export function customMessageRuleToJSON(
     CustomMessageRule$outboundSchema.parse(customMessageRule),
   );
 }
-
 export function customMessageRuleFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomMessageRule, SDKValidationError> {

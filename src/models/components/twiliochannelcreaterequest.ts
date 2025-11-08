@@ -36,7 +36,6 @@ export const TwilioChannelCreateRequest$inboundSchema: z.ZodType<
   name: z.string(),
   config: TwilioChannelConfigCreate$inboundSchema,
 });
-
 /** @internal */
 export type TwilioChannelCreateRequest$Outbound = {
   name: string;
@@ -53,19 +52,6 @@ export const TwilioChannelCreateRequest$outboundSchema: z.ZodType<
   config: TwilioChannelConfigCreate$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TwilioChannelCreateRequest$ {
-  /** @deprecated use `TwilioChannelCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = TwilioChannelCreateRequest$inboundSchema;
-  /** @deprecated use `TwilioChannelCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = TwilioChannelCreateRequest$outboundSchema;
-  /** @deprecated use `TwilioChannelCreateRequest$Outbound` instead. */
-  export type Outbound = TwilioChannelCreateRequest$Outbound;
-}
-
 export function twilioChannelCreateRequestToJSON(
   twilioChannelCreateRequest: TwilioChannelCreateRequest,
 ): string {
@@ -73,7 +59,6 @@ export function twilioChannelCreateRequestToJSON(
     TwilioChannelCreateRequest$outboundSchema.parse(twilioChannelCreateRequest),
   );
 }
-
 export function twilioChannelCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<TwilioChannelCreateRequest, SDKValidationError> {

@@ -24,19 +24,7 @@ export type DashboardProperties = ClosedEnum<typeof DashboardProperties>;
 export const DashboardProperties$inboundSchema: z.ZodNativeEnum<
   typeof DashboardProperties
 > = z.nativeEnum(DashboardProperties);
-
 /** @internal */
 export const DashboardProperties$outboundSchema: z.ZodNativeEnum<
   typeof DashboardProperties
 > = DashboardProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DashboardProperties$ {
-  /** @deprecated use `DashboardProperties$inboundSchema` instead. */
-  export const inboundSchema = DashboardProperties$inboundSchema;
-  /** @deprecated use `DashboardProperties$outboundSchema` instead. */
-  export const outboundSchema = DashboardProperties$outboundSchema;
-}

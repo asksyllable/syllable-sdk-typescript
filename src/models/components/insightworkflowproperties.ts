@@ -23,19 +23,7 @@ export type InsightWorkflowProperties = ClosedEnum<
 export const InsightWorkflowProperties$inboundSchema: z.ZodNativeEnum<
   typeof InsightWorkflowProperties
 > = z.nativeEnum(InsightWorkflowProperties);
-
 /** @internal */
 export const InsightWorkflowProperties$outboundSchema: z.ZodNativeEnum<
   typeof InsightWorkflowProperties
 > = InsightWorkflowProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightWorkflowProperties$ {
-  /** @deprecated use `InsightWorkflowProperties$inboundSchema` instead. */
-  export const inboundSchema = InsightWorkflowProperties$inboundSchema;
-  /** @deprecated use `InsightWorkflowProperties$outboundSchema` instead. */
-  export const outboundSchema = InsightWorkflowProperties$outboundSchema;
-}

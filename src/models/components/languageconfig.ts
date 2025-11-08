@@ -78,7 +78,6 @@ export const LanguageConfig$inboundSchema: z.ZodType<
     "dtmf_code": "dtmfCode",
   });
 });
-
 /** @internal */
 export type LanguageConfig$Outbound = {
   language_code: string;
@@ -112,23 +111,9 @@ export const LanguageConfig$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageConfig$ {
-  /** @deprecated use `LanguageConfig$inboundSchema` instead. */
-  export const inboundSchema = LanguageConfig$inboundSchema;
-  /** @deprecated use `LanguageConfig$outboundSchema` instead. */
-  export const outboundSchema = LanguageConfig$outboundSchema;
-  /** @deprecated use `LanguageConfig$Outbound` instead. */
-  export type Outbound = LanguageConfig$Outbound;
-}
-
 export function languageConfigToJSON(languageConfig: LanguageConfig): string {
   return JSON.stringify(LanguageConfig$outboundSchema.parse(languageConfig));
 }
-
 export function languageConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageConfig, SDKValidationError> {

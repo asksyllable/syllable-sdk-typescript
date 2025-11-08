@@ -24,19 +24,7 @@ export type VoiceGroupProperties = ClosedEnum<typeof VoiceGroupProperties>;
 export const VoiceGroupProperties$inboundSchema: z.ZodNativeEnum<
   typeof VoiceGroupProperties
 > = z.nativeEnum(VoiceGroupProperties);
-
 /** @internal */
 export const VoiceGroupProperties$outboundSchema: z.ZodNativeEnum<
   typeof VoiceGroupProperties
 > = VoiceGroupProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceGroupProperties$ {
-  /** @deprecated use `VoiceGroupProperties$inboundSchema` instead. */
-  export const inboundSchema = VoiceGroupProperties$inboundSchema;
-  /** @deprecated use `VoiceGroupProperties$outboundSchema` instead. */
-  export const outboundSchema = VoiceGroupProperties$outboundSchema;
-}

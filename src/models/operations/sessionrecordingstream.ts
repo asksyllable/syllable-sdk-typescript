@@ -19,7 +19,6 @@ export const SessionRecordingStreamRequest$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string(),
 });
-
 /** @internal */
 export type SessionRecordingStreamRequest$Outbound = {
   token: string;
@@ -34,19 +33,6 @@ export const SessionRecordingStreamRequest$outboundSchema: z.ZodType<
   token: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionRecordingStreamRequest$ {
-  /** @deprecated use `SessionRecordingStreamRequest$inboundSchema` instead. */
-  export const inboundSchema = SessionRecordingStreamRequest$inboundSchema;
-  /** @deprecated use `SessionRecordingStreamRequest$outboundSchema` instead. */
-  export const outboundSchema = SessionRecordingStreamRequest$outboundSchema;
-  /** @deprecated use `SessionRecordingStreamRequest$Outbound` instead. */
-  export type Outbound = SessionRecordingStreamRequest$Outbound;
-}
-
 export function sessionRecordingStreamRequestToJSON(
   sessionRecordingStreamRequest: SessionRecordingStreamRequest,
 ): string {
@@ -56,7 +42,6 @@ export function sessionRecordingStreamRequestToJSON(
     ),
   );
 }
-
 export function sessionRecordingStreamRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionRecordingStreamRequest, SDKValidationError> {

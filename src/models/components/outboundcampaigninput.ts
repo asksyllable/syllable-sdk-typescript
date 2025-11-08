@@ -119,7 +119,6 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
     "voicemail_detection": "voicemailDetection",
   });
 });
-
 /** @internal */
 export type OutboundCampaignInput$Outbound = {
   campaign_name: string;
@@ -178,19 +177,6 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundCampaignInput$ {
-  /** @deprecated use `OutboundCampaignInput$inboundSchema` instead. */
-  export const inboundSchema = OutboundCampaignInput$inboundSchema;
-  /** @deprecated use `OutboundCampaignInput$outboundSchema` instead. */
-  export const outboundSchema = OutboundCampaignInput$outboundSchema;
-  /** @deprecated use `OutboundCampaignInput$Outbound` instead. */
-  export type Outbound = OutboundCampaignInput$Outbound;
-}
-
 export function outboundCampaignInputToJSON(
   outboundCampaignInput: OutboundCampaignInput,
 ): string {
@@ -198,7 +184,6 @@ export function outboundCampaignInputToJSON(
     OutboundCampaignInput$outboundSchema.parse(outboundCampaignInput),
   );
 }
-
 export function outboundCampaignInputFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundCampaignInput, SDKValidationError> {

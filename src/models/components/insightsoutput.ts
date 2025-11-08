@@ -70,7 +70,6 @@ export const JsonValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number().int(), z.number()]);
-
 /** @internal */
 export type JsonValue$Outbound = string | number | number;
 
@@ -81,23 +80,9 @@ export const JsonValue$outboundSchema: z.ZodType<
   JsonValue
 > = z.union([z.string(), z.number().int(), z.number()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JsonValue$ {
-  /** @deprecated use `JsonValue$inboundSchema` instead. */
-  export const inboundSchema = JsonValue$inboundSchema;
-  /** @deprecated use `JsonValue$outboundSchema` instead. */
-  export const outboundSchema = JsonValue$outboundSchema;
-  /** @deprecated use `JsonValue$Outbound` instead. */
-  export type Outbound = JsonValue$Outbound;
-}
-
 export function jsonValueToJSON(jsonValue: JsonValue): string {
   return JSON.stringify(JsonValue$outboundSchema.parse(jsonValue));
 }
-
 export function jsonValueFromJSON(
   jsonString: string,
 ): SafeParseResult<JsonValue, SDKValidationError> {
@@ -143,7 +128,6 @@ export const InsightsOutput$inboundSchema: z.ZodType<
     "upload_file_metadata": "uploadFileMetadata",
   });
 });
-
 /** @internal */
 export type InsightsOutput$Outbound = {
   id: number;
@@ -194,23 +178,9 @@ export const InsightsOutput$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsOutput$ {
-  /** @deprecated use `InsightsOutput$inboundSchema` instead. */
-  export const inboundSchema = InsightsOutput$inboundSchema;
-  /** @deprecated use `InsightsOutput$outboundSchema` instead. */
-  export const outboundSchema = InsightsOutput$outboundSchema;
-  /** @deprecated use `InsightsOutput$Outbound` instead. */
-  export type Outbound = InsightsOutput$Outbound;
-}
-
 export function insightsOutputToJSON(insightsOutput: InsightsOutput): string {
   return JSON.stringify(InsightsOutput$outboundSchema.parse(insightsOutput));
 }
-
 export function insightsOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsOutput, SDKValidationError> {

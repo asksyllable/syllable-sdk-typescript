@@ -23,19 +23,7 @@ export type ConversationProperties = ClosedEnum<typeof ConversationProperties>;
 export const ConversationProperties$inboundSchema: z.ZodNativeEnum<
   typeof ConversationProperties
 > = z.nativeEnum(ConversationProperties);
-
 /** @internal */
 export const ConversationProperties$outboundSchema: z.ZodNativeEnum<
   typeof ConversationProperties
 > = ConversationProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConversationProperties$ {
-  /** @deprecated use `ConversationProperties$inboundSchema` instead. */
-  export const inboundSchema = ConversationProperties$inboundSchema;
-  /** @deprecated use `ConversationProperties$outboundSchema` instead. */
-  export const outboundSchema = ConversationProperties$outboundSchema;
-}

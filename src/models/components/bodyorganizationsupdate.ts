@@ -52,7 +52,6 @@ export const Logo$inboundSchema: z.ZodType<Logo, z.ZodTypeDef, unknown> = z
       z.instanceof(Uint8Array),
     ]),
   });
-
 /** @internal */
 export type Logo$Outbound = {
   fileName: string;
@@ -71,23 +70,9 @@ export const Logo$outboundSchema: z.ZodType<Logo$Outbound, z.ZodTypeDef, Logo> =
     ]),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Logo$ {
-  /** @deprecated use `Logo$inboundSchema` instead. */
-  export const inboundSchema = Logo$inboundSchema;
-  /** @deprecated use `Logo$outboundSchema` instead. */
-  export const outboundSchema = Logo$outboundSchema;
-  /** @deprecated use `Logo$Outbound` instead. */
-  export type Outbound = Logo$Outbound;
-}
-
 export function logoToJSON(logo: Logo): string {
   return JSON.stringify(Logo$outboundSchema.parse(logo));
 }
-
 export function logoFromJSON(
   jsonString: string,
 ): SafeParseResult<Logo, SDKValidationError> {
@@ -117,7 +102,6 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
     "update_comments": "updateComments",
   });
 });
-
 /** @internal */
 export type BodyOrganizationsUpdate$Outbound = {
   logo?: Logo$Outbound | Blob | undefined;
@@ -148,19 +132,6 @@ export const BodyOrganizationsUpdate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyOrganizationsUpdate$ {
-  /** @deprecated use `BodyOrganizationsUpdate$inboundSchema` instead. */
-  export const inboundSchema = BodyOrganizationsUpdate$inboundSchema;
-  /** @deprecated use `BodyOrganizationsUpdate$outboundSchema` instead. */
-  export const outboundSchema = BodyOrganizationsUpdate$outboundSchema;
-  /** @deprecated use `BodyOrganizationsUpdate$Outbound` instead. */
-  export type Outbound = BodyOrganizationsUpdate$Outbound;
-}
-
 export function bodyOrganizationsUpdateToJSON(
   bodyOrganizationsUpdate: BodyOrganizationsUpdate,
 ): string {
@@ -168,7 +139,6 @@ export function bodyOrganizationsUpdateToJSON(
     BodyOrganizationsUpdate$outboundSchema.parse(bodyOrganizationsUpdate),
   );
 }
-
 export function bodyOrganizationsUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyOrganizationsUpdate, SDKValidationError> {

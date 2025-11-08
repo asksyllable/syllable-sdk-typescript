@@ -36,7 +36,6 @@ export const DirectoryMemberTestExtensionRequest$inboundSchema: z.ZodType<
     "language_code": "languageCode",
   });
 });
-
 /** @internal */
 export type DirectoryMemberTestExtensionRequest$Outbound = {
   member_id: number;
@@ -60,21 +59,6 @@ export const DirectoryMemberTestExtensionRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberTestExtensionRequest$ {
-  /** @deprecated use `DirectoryMemberTestExtensionRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    DirectoryMemberTestExtensionRequest$inboundSchema;
-  /** @deprecated use `DirectoryMemberTestExtensionRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    DirectoryMemberTestExtensionRequest$outboundSchema;
-  /** @deprecated use `DirectoryMemberTestExtensionRequest$Outbound` instead. */
-  export type Outbound = DirectoryMemberTestExtensionRequest$Outbound;
-}
-
 export function directoryMemberTestExtensionRequestToJSON(
   directoryMemberTestExtensionRequest: DirectoryMemberTestExtensionRequest,
 ): string {
@@ -84,7 +68,6 @@ export function directoryMemberTestExtensionRequestToJSON(
     ),
   );
 }
-
 export function directoryMemberTestExtensionRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryMemberTestExtensionRequest, SDKValidationError> {

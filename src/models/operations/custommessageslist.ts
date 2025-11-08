@@ -77,7 +77,6 @@ export const CustomMessagesListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type CustomMessagesListRequest$Outbound = {
   page?: number | null | undefined;
@@ -121,19 +120,6 @@ export const CustomMessagesListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessagesListRequest$ {
-  /** @deprecated use `CustomMessagesListRequest$inboundSchema` instead. */
-  export const inboundSchema = CustomMessagesListRequest$inboundSchema;
-  /** @deprecated use `CustomMessagesListRequest$outboundSchema` instead. */
-  export const outboundSchema = CustomMessagesListRequest$outboundSchema;
-  /** @deprecated use `CustomMessagesListRequest$Outbound` instead. */
-  export type Outbound = CustomMessagesListRequest$Outbound;
-}
-
 export function customMessagesListRequestToJSON(
   customMessagesListRequest: CustomMessagesListRequest,
 ): string {
@@ -141,7 +127,6 @@ export function customMessagesListRequestToJSON(
     CustomMessagesListRequest$outboundSchema.parse(customMessagesListRequest),
   );
 }
-
 export function customMessagesListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomMessagesListRequest, SDKValidationError> {

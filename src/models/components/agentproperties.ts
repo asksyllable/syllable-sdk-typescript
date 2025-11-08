@@ -37,19 +37,7 @@ export type AgentProperties = ClosedEnum<typeof AgentProperties>;
 export const AgentProperties$inboundSchema: z.ZodNativeEnum<
   typeof AgentProperties
 > = z.nativeEnum(AgentProperties);
-
 /** @internal */
 export const AgentProperties$outboundSchema: z.ZodNativeEnum<
   typeof AgentProperties
 > = AgentProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentProperties$ {
-  /** @deprecated use `AgentProperties$inboundSchema` instead. */
-  export const inboundSchema = AgentProperties$inboundSchema;
-  /** @deprecated use `AgentProperties$outboundSchema` instead. */
-  export const outboundSchema = AgentProperties$outboundSchema;
-}

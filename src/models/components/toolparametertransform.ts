@@ -58,21 +58,9 @@ export type ToolParameterTransform = {
 /** @internal */
 export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
   .nativeEnum(Action);
-
 /** @internal */
 export const Action$outboundSchema: z.ZodNativeEnum<typeof Action> =
   Action$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Action$ {
-  /** @deprecated use `Action$inboundSchema` instead. */
-  export const inboundSchema = Action$inboundSchema;
-  /** @deprecated use `Action$outboundSchema` instead. */
-  export const outboundSchema = Action$outboundSchema;
-}
 
 /** @internal */
 export const ToolParameterTransform$inboundSchema: z.ZodType<
@@ -85,7 +73,6 @@ export const ToolParameterTransform$inboundSchema: z.ZodType<
   value: z.nullable(z.any()).optional(),
   format: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type ToolParameterTransform$Outbound = {
   action: string;
@@ -106,19 +93,6 @@ export const ToolParameterTransform$outboundSchema: z.ZodType<
   format: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolParameterTransform$ {
-  /** @deprecated use `ToolParameterTransform$inboundSchema` instead. */
-  export const inboundSchema = ToolParameterTransform$inboundSchema;
-  /** @deprecated use `ToolParameterTransform$outboundSchema` instead. */
-  export const outboundSchema = ToolParameterTransform$outboundSchema;
-  /** @deprecated use `ToolParameterTransform$Outbound` instead. */
-  export type Outbound = ToolParameterTransform$Outbound;
-}
-
 export function toolParameterTransformToJSON(
   toolParameterTransform: ToolParameterTransform,
 ): string {
@@ -126,7 +100,6 @@ export function toolParameterTransformToJSON(
     ToolParameterTransform$outboundSchema.parse(toolParameterTransform),
   );
 }
-
 export function toolParameterTransformFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolParameterTransform, SDKValidationError> {

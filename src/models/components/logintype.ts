@@ -20,18 +20,6 @@ export type LoginType = ClosedEnum<typeof LoginType>;
 /** @internal */
 export const LoginType$inboundSchema: z.ZodNativeEnum<typeof LoginType> = z
   .nativeEnum(LoginType);
-
 /** @internal */
 export const LoginType$outboundSchema: z.ZodNativeEnum<typeof LoginType> =
   LoginType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LoginType$ {
-  /** @deprecated use `LoginType$inboundSchema` instead. */
-  export const inboundSchema = LoginType$inboundSchema;
-  /** @deprecated use `LoginType$outboundSchema` instead. */
-  export const outboundSchema = LoginType$outboundSchema;
-}

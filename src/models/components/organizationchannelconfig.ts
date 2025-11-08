@@ -53,7 +53,6 @@ export const OrganizationChannelConfig$inboundSchema: z.ZodType<
     "provider_credentials": "providerCredentials",
   });
 });
-
 /** @internal */
 export type OrganizationChannelConfig$Outbound = {
   account_sid?: string | null | undefined;
@@ -80,19 +79,6 @@ export const OrganizationChannelConfig$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrganizationChannelConfig$ {
-  /** @deprecated use `OrganizationChannelConfig$inboundSchema` instead. */
-  export const inboundSchema = OrganizationChannelConfig$inboundSchema;
-  /** @deprecated use `OrganizationChannelConfig$outboundSchema` instead. */
-  export const outboundSchema = OrganizationChannelConfig$outboundSchema;
-  /** @deprecated use `OrganizationChannelConfig$Outbound` instead. */
-  export type Outbound = OrganizationChannelConfig$Outbound;
-}
-
 export function organizationChannelConfigToJSON(
   organizationChannelConfig: OrganizationChannelConfig,
 ): string {
@@ -100,7 +86,6 @@ export function organizationChannelConfigToJSON(
     OrganizationChannelConfig$outboundSchema.parse(organizationChannelConfig),
   );
 }
-
 export function organizationChannelConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<OrganizationChannelConfig, SDKValidationError> {

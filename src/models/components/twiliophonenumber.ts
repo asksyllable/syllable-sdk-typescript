@@ -44,7 +44,6 @@ export const TwilioPhoneNumber$inboundSchema: z.ZodType<
     "trunk_sid": "trunkSid",
   });
 });
-
 /** @internal */
 export type TwilioPhoneNumber$Outbound = {
   sid: string;
@@ -71,19 +70,6 @@ export const TwilioPhoneNumber$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TwilioPhoneNumber$ {
-  /** @deprecated use `TwilioPhoneNumber$inboundSchema` instead. */
-  export const inboundSchema = TwilioPhoneNumber$inboundSchema;
-  /** @deprecated use `TwilioPhoneNumber$outboundSchema` instead. */
-  export const outboundSchema = TwilioPhoneNumber$outboundSchema;
-  /** @deprecated use `TwilioPhoneNumber$Outbound` instead. */
-  export type Outbound = TwilioPhoneNumber$Outbound;
-}
-
 export function twilioPhoneNumberToJSON(
   twilioPhoneNumber: TwilioPhoneNumber,
 ): string {
@@ -91,7 +77,6 @@ export function twilioPhoneNumberToJSON(
     TwilioPhoneNumber$outboundSchema.parse(twilioPhoneNumber),
   );
 }
-
 export function twilioPhoneNumberFromJSON(
   jsonString: string,
 ): SafeParseResult<TwilioPhoneNumber, SDKValidationError> {

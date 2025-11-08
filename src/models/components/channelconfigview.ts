@@ -28,7 +28,6 @@ export const ChannelConfigView$inboundSchema: z.ZodType<
 > = z.object({
   telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ChannelConfigView$Outbound = {
   telephony?: TelephonyConfigurations$Outbound | null | undefined;
@@ -43,19 +42,6 @@ export const ChannelConfigView$outboundSchema: z.ZodType<
   telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelConfigView$ {
-  /** @deprecated use `ChannelConfigView$inboundSchema` instead. */
-  export const inboundSchema = ChannelConfigView$inboundSchema;
-  /** @deprecated use `ChannelConfigView$outboundSchema` instead. */
-  export const outboundSchema = ChannelConfigView$outboundSchema;
-  /** @deprecated use `ChannelConfigView$Outbound` instead. */
-  export type Outbound = ChannelConfigView$Outbound;
-}
-
 export function channelConfigViewToJSON(
   channelConfigView: ChannelConfigView,
 ): string {
@@ -63,7 +49,6 @@ export function channelConfigViewToJSON(
     ChannelConfigView$outboundSchema.parse(channelConfigView),
   );
 }
-
 export function channelConfigViewFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelConfigView, SDKValidationError> {

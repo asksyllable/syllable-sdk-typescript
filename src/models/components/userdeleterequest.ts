@@ -30,7 +30,6 @@ export const UserDeleteRequest$inboundSchema: z.ZodType<
   email: z.string(),
   reason: z.string(),
 });
-
 /** @internal */
 export type UserDeleteRequest$Outbound = {
   email: string;
@@ -47,19 +46,6 @@ export const UserDeleteRequest$outboundSchema: z.ZodType<
   reason: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserDeleteRequest$ {
-  /** @deprecated use `UserDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = UserDeleteRequest$inboundSchema;
-  /** @deprecated use `UserDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = UserDeleteRequest$outboundSchema;
-  /** @deprecated use `UserDeleteRequest$Outbound` instead. */
-  export type Outbound = UserDeleteRequest$Outbound;
-}
-
 export function userDeleteRequestToJSON(
   userDeleteRequest: UserDeleteRequest,
 ): string {
@@ -67,7 +53,6 @@ export function userDeleteRequestToJSON(
     UserDeleteRequest$outboundSchema.parse(userDeleteRequest),
   );
 }
-
 export function userDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UserDeleteRequest, SDKValidationError> {

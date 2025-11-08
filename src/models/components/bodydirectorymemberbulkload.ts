@@ -31,7 +31,6 @@ export const BodyDirectoryMemberBulkLoadFile$inboundSchema: z.ZodType<
     z.instanceof(Uint8Array),
   ]),
 });
-
 /** @internal */
 export type BodyDirectoryMemberBulkLoadFile$Outbound = {
   fileName: string;
@@ -53,19 +52,6 @@ export const BodyDirectoryMemberBulkLoadFile$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyDirectoryMemberBulkLoadFile$ {
-  /** @deprecated use `BodyDirectoryMemberBulkLoadFile$inboundSchema` instead. */
-  export const inboundSchema = BodyDirectoryMemberBulkLoadFile$inboundSchema;
-  /** @deprecated use `BodyDirectoryMemberBulkLoadFile$outboundSchema` instead. */
-  export const outboundSchema = BodyDirectoryMemberBulkLoadFile$outboundSchema;
-  /** @deprecated use `BodyDirectoryMemberBulkLoadFile$Outbound` instead. */
-  export type Outbound = BodyDirectoryMemberBulkLoadFile$Outbound;
-}
-
 export function bodyDirectoryMemberBulkLoadFileToJSON(
   bodyDirectoryMemberBulkLoadFile: BodyDirectoryMemberBulkLoadFile,
 ): string {
@@ -75,7 +61,6 @@ export function bodyDirectoryMemberBulkLoadFileToJSON(
     ),
   );
 }
-
 export function bodyDirectoryMemberBulkLoadFileFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyDirectoryMemberBulkLoadFile, SDKValidationError> {
@@ -94,7 +79,6 @@ export const BodyDirectoryMemberBulkLoad$inboundSchema: z.ZodType<
 > = z.object({
   file: z.lazy(() => BodyDirectoryMemberBulkLoadFile$inboundSchema),
 });
-
 /** @internal */
 export type BodyDirectoryMemberBulkLoad$Outbound = {
   file: BodyDirectoryMemberBulkLoadFile$Outbound | Blob;
@@ -111,19 +95,6 @@ export const BodyDirectoryMemberBulkLoad$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyDirectoryMemberBulkLoad$ {
-  /** @deprecated use `BodyDirectoryMemberBulkLoad$inboundSchema` instead. */
-  export const inboundSchema = BodyDirectoryMemberBulkLoad$inboundSchema;
-  /** @deprecated use `BodyDirectoryMemberBulkLoad$outboundSchema` instead. */
-  export const outboundSchema = BodyDirectoryMemberBulkLoad$outboundSchema;
-  /** @deprecated use `BodyDirectoryMemberBulkLoad$Outbound` instead. */
-  export type Outbound = BodyDirectoryMemberBulkLoad$Outbound;
-}
-
 export function bodyDirectoryMemberBulkLoadToJSON(
   bodyDirectoryMemberBulkLoad: BodyDirectoryMemberBulkLoad,
 ): string {
@@ -133,7 +104,6 @@ export function bodyDirectoryMemberBulkLoadToJSON(
     ),
   );
 }
-
 export function bodyDirectoryMemberBulkLoadFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyDirectoryMemberBulkLoad, SDKValidationError> {

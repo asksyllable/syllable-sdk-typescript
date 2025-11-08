@@ -31,18 +31,6 @@ export type LanguageCode = ClosedEnum<typeof LanguageCode>;
 /** @internal */
 export const LanguageCode$inboundSchema: z.ZodNativeEnum<typeof LanguageCode> =
   z.nativeEnum(LanguageCode);
-
 /** @internal */
 export const LanguageCode$outboundSchema: z.ZodNativeEnum<typeof LanguageCode> =
   LanguageCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageCode$ {
-  /** @deprecated use `LanguageCode$inboundSchema` instead. */
-  export const inboundSchema = LanguageCode$inboundSchema;
-  /** @deprecated use `LanguageCode$outboundSchema` instead. */
-  export const outboundSchema = LanguageCode$outboundSchema;
-}

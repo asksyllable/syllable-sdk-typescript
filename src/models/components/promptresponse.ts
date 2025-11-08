@@ -140,7 +140,6 @@ export const PromptResponse$inboundSchema: z.ZodType<
     "tools_full": "toolsFull",
   });
 });
-
 /** @internal */
 export type PromptResponse$Outbound = {
   name: string;
@@ -198,23 +197,9 @@ export const PromptResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptResponse$ {
-  /** @deprecated use `PromptResponse$inboundSchema` instead. */
-  export const inboundSchema = PromptResponse$inboundSchema;
-  /** @deprecated use `PromptResponse$outboundSchema` instead. */
-  export const outboundSchema = PromptResponse$outboundSchema;
-  /** @deprecated use `PromptResponse$Outbound` instead. */
-  export type Outbound = PromptResponse$Outbound;
-}
-
 export function promptResponseToJSON(promptResponse: PromptResponse): string {
   return JSON.stringify(PromptResponse$outboundSchema.parse(promptResponse));
 }
-
 export function promptResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<PromptResponse, SDKValidationError> {

@@ -139,7 +139,6 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "is_test": "isTest",
     });
   });
-
 /** @internal */
 export type Session$Outbound = {
   timestamp: string;
@@ -211,23 +210,9 @@ export const Session$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Session$ {
-  /** @deprecated use `Session$inboundSchema` instead. */
-  export const inboundSchema = Session$inboundSchema;
-  /** @deprecated use `Session$outboundSchema` instead. */
-  export const outboundSchema = Session$outboundSchema;
-  /** @deprecated use `Session$Outbound` instead. */
-  export type Outbound = Session$Outbound;
-}
-
 export function sessionToJSON(session: Session): string {
   return JSON.stringify(Session$outboundSchema.parse(session));
 }
-
 export function sessionFromJSON(
   jsonString: string,
 ): SafeParseResult<Session, SDKValidationError> {

@@ -52,7 +52,6 @@ export const SummaryEntry$inboundSchema: z.ZodType<
     "average_str": "averageStr",
   });
 });
-
 /** @internal */
 export type SummaryEntry$Outbound = {
   category: string;
@@ -88,23 +87,9 @@ export const SummaryEntry$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SummaryEntry$ {
-  /** @deprecated use `SummaryEntry$inboundSchema` instead. */
-  export const inboundSchema = SummaryEntry$inboundSchema;
-  /** @deprecated use `SummaryEntry$outboundSchema` instead. */
-  export const outboundSchema = SummaryEntry$outboundSchema;
-  /** @deprecated use `SummaryEntry$Outbound` instead. */
-  export type Outbound = SummaryEntry$Outbound;
-}
-
 export function summaryEntryToJSON(summaryEntry: SummaryEntry): string {
   return JSON.stringify(SummaryEntry$outboundSchema.parse(summaryEntry));
 }
-
 export function summaryEntryFromJSON(
   jsonString: string,
 ): SafeParseResult<SummaryEntry, SDKValidationError> {

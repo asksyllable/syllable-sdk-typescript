@@ -75,7 +75,6 @@ export const RolesListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type RolesListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const RolesListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RolesListRequest$ {
-  /** @deprecated use `RolesListRequest$inboundSchema` instead. */
-  export const inboundSchema = RolesListRequest$inboundSchema;
-  /** @deprecated use `RolesListRequest$outboundSchema` instead. */
-  export const outboundSchema = RolesListRequest$outboundSchema;
-  /** @deprecated use `RolesListRequest$Outbound` instead. */
-  export type Outbound = RolesListRequest$Outbound;
-}
-
 export function rolesListRequestToJSON(
   rolesListRequest: RolesListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function rolesListRequestToJSON(
     RolesListRequest$outboundSchema.parse(rolesListRequest),
   );
 }
-
 export function rolesListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RolesListRequest, SDKValidationError> {

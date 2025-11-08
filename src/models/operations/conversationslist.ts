@@ -77,7 +77,6 @@ export const ConversationsListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type ConversationsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -121,19 +120,6 @@ export const ConversationsListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConversationsListRequest$ {
-  /** @deprecated use `ConversationsListRequest$inboundSchema` instead. */
-  export const inboundSchema = ConversationsListRequest$inboundSchema;
-  /** @deprecated use `ConversationsListRequest$outboundSchema` instead. */
-  export const outboundSchema = ConversationsListRequest$outboundSchema;
-  /** @deprecated use `ConversationsListRequest$Outbound` instead. */
-  export type Outbound = ConversationsListRequest$Outbound;
-}
-
 export function conversationsListRequestToJSON(
   conversationsListRequest: ConversationsListRequest,
 ): string {
@@ -141,7 +127,6 @@ export function conversationsListRequestToJSON(
     ConversationsListRequest$outboundSchema.parse(conversationsListRequest),
   );
 }
-
 export function conversationsListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ConversationsListRequest, SDKValidationError> {

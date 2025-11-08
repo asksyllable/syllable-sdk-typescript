@@ -26,7 +26,6 @@ export const CustomMessagesDeleteRequest$inboundSchema: z.ZodType<
     "custom_message_id": "customMessageId",
   });
 });
-
 /** @internal */
 export type CustomMessagesDeleteRequest$Outbound = {
   custom_message_id: number;
@@ -47,19 +46,6 @@ export const CustomMessagesDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessagesDeleteRequest$ {
-  /** @deprecated use `CustomMessagesDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = CustomMessagesDeleteRequest$inboundSchema;
-  /** @deprecated use `CustomMessagesDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = CustomMessagesDeleteRequest$outboundSchema;
-  /** @deprecated use `CustomMessagesDeleteRequest$Outbound` instead. */
-  export type Outbound = CustomMessagesDeleteRequest$Outbound;
-}
-
 export function customMessagesDeleteRequestToJSON(
   customMessagesDeleteRequest: CustomMessagesDeleteRequest,
 ): string {
@@ -69,7 +55,6 @@ export function customMessagesDeleteRequestToJSON(
     ),
   );
 }
-
 export function customMessagesDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomMessagesDeleteRequest, SDKValidationError> {

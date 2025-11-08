@@ -24,7 +24,6 @@ export const TakeoutsGetByJobIdRequest$inboundSchema: z.ZodType<
     "job_id": "jobId",
   });
 });
-
 /** @internal */
 export type TakeoutsGetByJobIdRequest$Outbound = {
   job_id: string;
@@ -43,19 +42,6 @@ export const TakeoutsGetByJobIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TakeoutsGetByJobIdRequest$ {
-  /** @deprecated use `TakeoutsGetByJobIdRequest$inboundSchema` instead. */
-  export const inboundSchema = TakeoutsGetByJobIdRequest$inboundSchema;
-  /** @deprecated use `TakeoutsGetByJobIdRequest$outboundSchema` instead. */
-  export const outboundSchema = TakeoutsGetByJobIdRequest$outboundSchema;
-  /** @deprecated use `TakeoutsGetByJobIdRequest$Outbound` instead. */
-  export type Outbound = TakeoutsGetByJobIdRequest$Outbound;
-}
-
 export function takeoutsGetByJobIdRequestToJSON(
   takeoutsGetByJobIdRequest: TakeoutsGetByJobIdRequest,
 ): string {
@@ -63,7 +49,6 @@ export function takeoutsGetByJobIdRequestToJSON(
     TakeoutsGetByJobIdRequest$outboundSchema.parse(takeoutsGetByJobIdRequest),
   );
 }
-
 export function takeoutsGetByJobIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<TakeoutsGetByJobIdRequest, SDKValidationError> {

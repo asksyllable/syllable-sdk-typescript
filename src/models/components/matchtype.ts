@@ -20,18 +20,6 @@ export type MatchType = ClosedEnum<typeof MatchType>;
 /** @internal */
 export const MatchType$inboundSchema: z.ZodNativeEnum<typeof MatchType> = z
   .nativeEnum(MatchType);
-
 /** @internal */
 export const MatchType$outboundSchema: z.ZodNativeEnum<typeof MatchType> =
   MatchType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MatchType$ {
-  /** @deprecated use `MatchType$inboundSchema` instead. */
-  export const inboundSchema = MatchType$inboundSchema;
-  /** @deprecated use `MatchType$outboundSchema` instead. */
-  export const outboundSchema = MatchType$outboundSchema;
-}

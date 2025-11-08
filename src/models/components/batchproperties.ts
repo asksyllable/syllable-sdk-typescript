@@ -18,19 +18,7 @@ export type BatchProperties = ClosedEnum<typeof BatchProperties>;
 export const BatchProperties$inboundSchema: z.ZodNativeEnum<
   typeof BatchProperties
 > = z.nativeEnum(BatchProperties);
-
 /** @internal */
 export const BatchProperties$outboundSchema: z.ZodNativeEnum<
   typeof BatchProperties
 > = BatchProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BatchProperties$ {
-  /** @deprecated use `BatchProperties$inboundSchema` instead. */
-  export const inboundSchema = BatchProperties$inboundSchema;
-  /** @deprecated use `BatchProperties$outboundSchema` instead. */
-  export const outboundSchema = BatchProperties$outboundSchema;
-}

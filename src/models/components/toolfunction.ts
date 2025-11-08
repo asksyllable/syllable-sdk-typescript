@@ -40,7 +40,6 @@ export const ToolFunction$inboundSchema: z.ZodType<
   description: z.string(),
   parameters: z.any().optional(),
 });
-
 /** @internal */
 export type ToolFunction$Outbound = {
   name: string;
@@ -59,23 +58,9 @@ export const ToolFunction$outboundSchema: z.ZodType<
   parameters: z.any().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolFunction$ {
-  /** @deprecated use `ToolFunction$inboundSchema` instead. */
-  export const inboundSchema = ToolFunction$inboundSchema;
-  /** @deprecated use `ToolFunction$outboundSchema` instead. */
-  export const outboundSchema = ToolFunction$outboundSchema;
-  /** @deprecated use `ToolFunction$Outbound` instead. */
-  export type Outbound = ToolFunction$Outbound;
-}
-
 export function toolFunctionToJSON(toolFunction: ToolFunction): string {
   return JSON.stringify(ToolFunction$outboundSchema.parse(toolFunction));
 }
-
 export function toolFunctionFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolFunction, SDKValidationError> {

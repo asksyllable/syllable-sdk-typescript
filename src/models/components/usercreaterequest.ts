@@ -64,7 +64,6 @@ export const UserCreateRequest$inboundSchema: z.ZodType<
     "skip_auth": "skipAuth",
   });
 });
-
 /** @internal */
 export type UserCreateRequest$Outbound = {
   email: string;
@@ -97,19 +96,6 @@ export const UserCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserCreateRequest$ {
-  /** @deprecated use `UserCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = UserCreateRequest$inboundSchema;
-  /** @deprecated use `UserCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = UserCreateRequest$outboundSchema;
-  /** @deprecated use `UserCreateRequest$Outbound` instead. */
-  export type Outbound = UserCreateRequest$Outbound;
-}
-
 export function userCreateRequestToJSON(
   userCreateRequest: UserCreateRequest,
 ): string {
@@ -117,7 +103,6 @@ export function userCreateRequestToJSON(
     UserCreateRequest$outboundSchema.parse(userCreateRequest),
   );
 }
-
 export function userCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UserCreateRequest, SDKValidationError> {

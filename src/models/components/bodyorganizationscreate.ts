@@ -51,7 +51,6 @@ export const BodyOrganizationsCreateLogo$inboundSchema: z.ZodType<
     z.instanceof(Uint8Array),
   ]),
 });
-
 /** @internal */
 export type BodyOrganizationsCreateLogo$Outbound = {
   fileName: string;
@@ -73,19 +72,6 @@ export const BodyOrganizationsCreateLogo$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyOrganizationsCreateLogo$ {
-  /** @deprecated use `BodyOrganizationsCreateLogo$inboundSchema` instead. */
-  export const inboundSchema = BodyOrganizationsCreateLogo$inboundSchema;
-  /** @deprecated use `BodyOrganizationsCreateLogo$outboundSchema` instead. */
-  export const outboundSchema = BodyOrganizationsCreateLogo$outboundSchema;
-  /** @deprecated use `BodyOrganizationsCreateLogo$Outbound` instead. */
-  export type Outbound = BodyOrganizationsCreateLogo$Outbound;
-}
-
 export function bodyOrganizationsCreateLogoToJSON(
   bodyOrganizationsCreateLogo: BodyOrganizationsCreateLogo,
 ): string {
@@ -95,7 +81,6 @@ export function bodyOrganizationsCreateLogoToJSON(
     ),
   );
 }
-
 export function bodyOrganizationsCreateLogoFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyOrganizationsCreateLogo, SDKValidationError> {
@@ -123,7 +108,6 @@ export const BodyOrganizationsCreate$inboundSchema: z.ZodType<
     "saml_provider_id": "samlProviderId",
   });
 });
-
 /** @internal */
 export type BodyOrganizationsCreate$Outbound = {
   logo: BodyOrganizationsCreateLogo$Outbound | Blob;
@@ -153,19 +137,6 @@ export const BodyOrganizationsCreate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyOrganizationsCreate$ {
-  /** @deprecated use `BodyOrganizationsCreate$inboundSchema` instead. */
-  export const inboundSchema = BodyOrganizationsCreate$inboundSchema;
-  /** @deprecated use `BodyOrganizationsCreate$outboundSchema` instead. */
-  export const outboundSchema = BodyOrganizationsCreate$outboundSchema;
-  /** @deprecated use `BodyOrganizationsCreate$Outbound` instead. */
-  export type Outbound = BodyOrganizationsCreate$Outbound;
-}
-
 export function bodyOrganizationsCreateToJSON(
   bodyOrganizationsCreate: BodyOrganizationsCreate,
 ): string {
@@ -173,7 +144,6 @@ export function bodyOrganizationsCreateToJSON(
     BodyOrganizationsCreate$outboundSchema.parse(bodyOrganizationsCreate),
   );
 }
-
 export function bodyOrganizationsCreateFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyOrganizationsCreate, SDKValidationError> {

@@ -35,7 +35,6 @@ export const SessionRecordingResponse$inboundSchema: z.ZodType<
     "session_id": "sessionId",
   });
 });
-
 /** @internal */
 export type SessionRecordingResponse$Outbound = {
   session_id?: string | null | undefined;
@@ -56,19 +55,6 @@ export const SessionRecordingResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionRecordingResponse$ {
-  /** @deprecated use `SessionRecordingResponse$inboundSchema` instead. */
-  export const inboundSchema = SessionRecordingResponse$inboundSchema;
-  /** @deprecated use `SessionRecordingResponse$outboundSchema` instead. */
-  export const outboundSchema = SessionRecordingResponse$outboundSchema;
-  /** @deprecated use `SessionRecordingResponse$Outbound` instead. */
-  export type Outbound = SessionRecordingResponse$Outbound;
-}
-
 export function sessionRecordingResponseToJSON(
   sessionRecordingResponse: SessionRecordingResponse,
 ): string {
@@ -76,7 +62,6 @@ export function sessionRecordingResponseToJSON(
     SessionRecordingResponse$outboundSchema.parse(sessionRecordingResponse),
   );
 }
-
 export function sessionRecordingResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionRecordingResponse, SDKValidationError> {

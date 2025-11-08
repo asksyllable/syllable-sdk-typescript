@@ -74,7 +74,6 @@ export const Metadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number().int(), z.number()]);
-
 /** @internal */
 export type Metadata$Outbound = string | number | number;
 
@@ -85,23 +84,9 @@ export const Metadata$outboundSchema: z.ZodType<
   Metadata
 > = z.union([z.string(), z.number().int(), z.number()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Metadata$ {
-  /** @deprecated use `Metadata$inboundSchema` instead. */
-  export const inboundSchema = Metadata$inboundSchema;
-  /** @deprecated use `Metadata$outboundSchema` instead. */
-  export const outboundSchema = Metadata$outboundSchema;
-  /** @deprecated use `Metadata$Outbound` instead. */
-  export type Outbound = Metadata$Outbound;
-}
-
 export function metadataToJSON(metadata: Metadata): string {
   return JSON.stringify(Metadata$outboundSchema.parse(metadata));
 }
-
 export function metadataFromJSON(
   jsonString: string,
 ): SafeParseResult<Metadata, SDKValidationError> {
@@ -151,7 +136,6 @@ export const InsightsUploadFile$inboundSchema: z.ZodType<
     "created_at": "createdAt",
   });
 });
-
 /** @internal */
 export type InsightsUploadFile$Outbound = {
   id: number;
@@ -204,19 +188,6 @@ export const InsightsUploadFile$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsUploadFile$ {
-  /** @deprecated use `InsightsUploadFile$inboundSchema` instead. */
-  export const inboundSchema = InsightsUploadFile$inboundSchema;
-  /** @deprecated use `InsightsUploadFile$outboundSchema` instead. */
-  export const outboundSchema = InsightsUploadFile$outboundSchema;
-  /** @deprecated use `InsightsUploadFile$Outbound` instead. */
-  export type Outbound = InsightsUploadFile$Outbound;
-}
-
 export function insightsUploadFileToJSON(
   insightsUploadFile: InsightsUploadFile,
 ): string {
@@ -224,7 +195,6 @@ export function insightsUploadFileToJSON(
     InsightsUploadFile$outboundSchema.parse(insightsUploadFile),
   );
 }
-
 export function insightsUploadFileFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsUploadFile, SDKValidationError> {

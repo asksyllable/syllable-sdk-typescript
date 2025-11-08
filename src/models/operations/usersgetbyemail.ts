@@ -24,7 +24,6 @@ export const UsersGetByEmailRequest$inboundSchema: z.ZodType<
     "user_email": "userEmail",
   });
 });
-
 /** @internal */
 export type UsersGetByEmailRequest$Outbound = {
   user_email: string;
@@ -43,19 +42,6 @@ export const UsersGetByEmailRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UsersGetByEmailRequest$ {
-  /** @deprecated use `UsersGetByEmailRequest$inboundSchema` instead. */
-  export const inboundSchema = UsersGetByEmailRequest$inboundSchema;
-  /** @deprecated use `UsersGetByEmailRequest$outboundSchema` instead. */
-  export const outboundSchema = UsersGetByEmailRequest$outboundSchema;
-  /** @deprecated use `UsersGetByEmailRequest$Outbound` instead. */
-  export type Outbound = UsersGetByEmailRequest$Outbound;
-}
-
 export function usersGetByEmailRequestToJSON(
   usersGetByEmailRequest: UsersGetByEmailRequest,
 ): string {
@@ -63,7 +49,6 @@ export function usersGetByEmailRequestToJSON(
     UsersGetByEmailRequest$outboundSchema.parse(usersGetByEmailRequest),
   );
 }
-
 export function usersGetByEmailRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UsersGetByEmailRequest, SDKValidationError> {

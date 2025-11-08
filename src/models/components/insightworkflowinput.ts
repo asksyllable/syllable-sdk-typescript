@@ -72,7 +72,6 @@ export const InsightWorkflowInput$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type InsightWorkflowInput$Outbound = {
   name: string;
@@ -106,19 +105,6 @@ export const InsightWorkflowInput$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightWorkflowInput$ {
-  /** @deprecated use `InsightWorkflowInput$inboundSchema` instead. */
-  export const inboundSchema = InsightWorkflowInput$inboundSchema;
-  /** @deprecated use `InsightWorkflowInput$outboundSchema` instead. */
-  export const outboundSchema = InsightWorkflowInput$outboundSchema;
-  /** @deprecated use `InsightWorkflowInput$Outbound` instead. */
-  export type Outbound = InsightWorkflowInput$Outbound;
-}
-
 export function insightWorkflowInputToJSON(
   insightWorkflowInput: InsightWorkflowInput,
 ): string {
@@ -126,7 +112,6 @@ export function insightWorkflowInputToJSON(
     InsightWorkflowInput$outboundSchema.parse(insightWorkflowInput),
   );
 }
-
 export function insightWorkflowInputFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightWorkflowInput, SDKValidationError> {

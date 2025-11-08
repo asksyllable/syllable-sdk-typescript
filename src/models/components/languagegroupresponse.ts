@@ -93,7 +93,6 @@ export const LanguageGroupResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type LanguageGroupResponse$Outbound = {
   name: string;
@@ -134,19 +133,6 @@ export const LanguageGroupResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupResponse$ {
-  /** @deprecated use `LanguageGroupResponse$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupResponse$inboundSchema;
-  /** @deprecated use `LanguageGroupResponse$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupResponse$outboundSchema;
-  /** @deprecated use `LanguageGroupResponse$Outbound` instead. */
-  export type Outbound = LanguageGroupResponse$Outbound;
-}
-
 export function languageGroupResponseToJSON(
   languageGroupResponse: LanguageGroupResponse,
 ): string {
@@ -154,7 +140,6 @@ export function languageGroupResponseToJSON(
     LanguageGroupResponse$outboundSchema.parse(languageGroupResponse),
   );
 }
-
 export function languageGroupResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageGroupResponse, SDKValidationError> {

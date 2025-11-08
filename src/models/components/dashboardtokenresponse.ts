@@ -63,7 +63,6 @@ export const DashboardTokenResponse$inboundSchema: z.ZodType<
     "superset_url": "supersetUrl",
   });
 });
-
 /** @internal */
 export type DashboardTokenResponse$Outbound = {
   embedded_id: string;
@@ -97,19 +96,6 @@ export const DashboardTokenResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DashboardTokenResponse$ {
-  /** @deprecated use `DashboardTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = DashboardTokenResponse$inboundSchema;
-  /** @deprecated use `DashboardTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = DashboardTokenResponse$outboundSchema;
-  /** @deprecated use `DashboardTokenResponse$Outbound` instead. */
-  export type Outbound = DashboardTokenResponse$Outbound;
-}
-
 export function dashboardTokenResponseToJSON(
   dashboardTokenResponse: DashboardTokenResponse,
 ): string {
@@ -117,7 +103,6 @@ export function dashboardTokenResponseToJSON(
     DashboardTokenResponse$outboundSchema.parse(dashboardTokenResponse),
   );
 }
-
 export function dashboardTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DashboardTokenResponse, SDKValidationError> {

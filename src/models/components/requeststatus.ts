@@ -26,19 +26,7 @@ export type RequestStatus = ClosedEnum<typeof RequestStatus>;
 export const RequestStatus$inboundSchema: z.ZodNativeEnum<
   typeof RequestStatus
 > = z.nativeEnum(RequestStatus);
-
 /** @internal */
 export const RequestStatus$outboundSchema: z.ZodNativeEnum<
   typeof RequestStatus
 > = RequestStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestStatus$ {
-  /** @deprecated use `RequestStatus$inboundSchema` instead. */
-  export const inboundSchema = RequestStatus$inboundSchema;
-  /** @deprecated use `RequestStatus$outboundSchema` instead. */
-  export const outboundSchema = RequestStatus$outboundSchema;
-}

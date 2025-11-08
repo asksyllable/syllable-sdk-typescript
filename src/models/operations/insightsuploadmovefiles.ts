@@ -28,7 +28,6 @@ export const InsightsUploadMoveFilesRequest$inboundSchema: z.ZodType<
     "InsightsFolderFileMove": "insightsFolderFileMove",
   });
 });
-
 /** @internal */
 export type InsightsUploadMoveFilesRequest$Outbound = {
   folder_id: number;
@@ -50,19 +49,6 @@ export const InsightsUploadMoveFilesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsUploadMoveFilesRequest$ {
-  /** @deprecated use `InsightsUploadMoveFilesRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsUploadMoveFilesRequest$inboundSchema;
-  /** @deprecated use `InsightsUploadMoveFilesRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsUploadMoveFilesRequest$outboundSchema;
-  /** @deprecated use `InsightsUploadMoveFilesRequest$Outbound` instead. */
-  export type Outbound = InsightsUploadMoveFilesRequest$Outbound;
-}
-
 export function insightsUploadMoveFilesRequestToJSON(
   insightsUploadMoveFilesRequest: InsightsUploadMoveFilesRequest,
 ): string {
@@ -72,7 +58,6 @@ export function insightsUploadMoveFilesRequestToJSON(
     ),
   );
 }
-
 export function insightsUploadMoveFilesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsUploadMoveFilesRequest, SDKValidationError> {

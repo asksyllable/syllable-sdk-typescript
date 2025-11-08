@@ -27,7 +27,6 @@ export const ChannelTargetsDeleteRequest$inboundSchema: z.ZodType<
     "target_id": "targetId",
   });
 });
-
 /** @internal */
 export type ChannelTargetsDeleteRequest$Outbound = {
   channel_id: string;
@@ -49,19 +48,6 @@ export const ChannelTargetsDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelTargetsDeleteRequest$ {
-  /** @deprecated use `ChannelTargetsDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = ChannelTargetsDeleteRequest$inboundSchema;
-  /** @deprecated use `ChannelTargetsDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = ChannelTargetsDeleteRequest$outboundSchema;
-  /** @deprecated use `ChannelTargetsDeleteRequest$Outbound` instead. */
-  export type Outbound = ChannelTargetsDeleteRequest$Outbound;
-}
-
 export function channelTargetsDeleteRequestToJSON(
   channelTargetsDeleteRequest: ChannelTargetsDeleteRequest,
 ): string {
@@ -71,7 +57,6 @@ export function channelTargetsDeleteRequestToJSON(
     ),
   );
 }
-
 export function channelTargetsDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelTargetsDeleteRequest, SDKValidationError> {

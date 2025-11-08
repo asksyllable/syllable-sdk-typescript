@@ -35,7 +35,6 @@ export const AgentLanguage$inboundSchema: z.ZodType<
   name: z.string(),
   code: LanguageCode$inboundSchema,
 });
-
 /** @internal */
 export type AgentLanguage$Outbound = {
   name: string;
@@ -52,23 +51,9 @@ export const AgentLanguage$outboundSchema: z.ZodType<
   code: LanguageCode$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentLanguage$ {
-  /** @deprecated use `AgentLanguage$inboundSchema` instead. */
-  export const inboundSchema = AgentLanguage$inboundSchema;
-  /** @deprecated use `AgentLanguage$outboundSchema` instead. */
-  export const outboundSchema = AgentLanguage$outboundSchema;
-  /** @deprecated use `AgentLanguage$Outbound` instead. */
-  export type Outbound = AgentLanguage$Outbound;
-}
-
 export function agentLanguageToJSON(agentLanguage: AgentLanguage): string {
   return JSON.stringify(AgentLanguage$outboundSchema.parse(agentLanguage));
 }
-
 export function agentLanguageFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentLanguage, SDKValidationError> {

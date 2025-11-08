@@ -24,7 +24,6 @@ export const InsightsFolderDeleteRequest$inboundSchema: z.ZodType<
     "folder_id": "folderId",
   });
 });
-
 /** @internal */
 export type InsightsFolderDeleteRequest$Outbound = {
   folder_id: number;
@@ -43,19 +42,6 @@ export const InsightsFolderDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsFolderDeleteRequest$ {
-  /** @deprecated use `InsightsFolderDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsFolderDeleteRequest$inboundSchema;
-  /** @deprecated use `InsightsFolderDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsFolderDeleteRequest$outboundSchema;
-  /** @deprecated use `InsightsFolderDeleteRequest$Outbound` instead. */
-  export type Outbound = InsightsFolderDeleteRequest$Outbound;
-}
-
 export function insightsFolderDeleteRequestToJSON(
   insightsFolderDeleteRequest: InsightsFolderDeleteRequest,
 ): string {
@@ -65,7 +51,6 @@ export function insightsFolderDeleteRequestToJSON(
     ),
   );
 }
-
 export function insightsFolderDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsFolderDeleteRequest, SDKValidationError> {

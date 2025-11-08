@@ -55,7 +55,6 @@ export const ListResponseDirectoryMember$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseDirectoryMember$Outbound = {
   items: Array<DirectoryMember$Outbound>;
@@ -84,19 +83,6 @@ export const ListResponseDirectoryMember$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseDirectoryMember$ {
-  /** @deprecated use `ListResponseDirectoryMember$inboundSchema` instead. */
-  export const inboundSchema = ListResponseDirectoryMember$inboundSchema;
-  /** @deprecated use `ListResponseDirectoryMember$outboundSchema` instead. */
-  export const outboundSchema = ListResponseDirectoryMember$outboundSchema;
-  /** @deprecated use `ListResponseDirectoryMember$Outbound` instead. */
-  export type Outbound = ListResponseDirectoryMember$Outbound;
-}
-
 export function listResponseDirectoryMemberToJSON(
   listResponseDirectoryMember: ListResponseDirectoryMember,
 ): string {
@@ -106,7 +92,6 @@ export function listResponseDirectoryMemberToJSON(
     ),
   );
 }
-
 export function listResponseDirectoryMemberFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseDirectoryMember, SDKValidationError> {

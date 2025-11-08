@@ -35,7 +35,6 @@ export const RoleCreateRequest$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   permissions: z.array(z.string()),
 });
-
 /** @internal */
 export type RoleCreateRequest$Outbound = {
   name: string;
@@ -54,19 +53,6 @@ export const RoleCreateRequest$outboundSchema: z.ZodType<
   permissions: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoleCreateRequest$ {
-  /** @deprecated use `RoleCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = RoleCreateRequest$inboundSchema;
-  /** @deprecated use `RoleCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = RoleCreateRequest$outboundSchema;
-  /** @deprecated use `RoleCreateRequest$Outbound` instead. */
-  export type Outbound = RoleCreateRequest$Outbound;
-}
-
 export function roleCreateRequestToJSON(
   roleCreateRequest: RoleCreateRequest,
 ): string {
@@ -74,7 +60,6 @@ export function roleCreateRequestToJSON(
     RoleCreateRequest$outboundSchema.parse(roleCreateRequest),
   );
 }
-
 export function roleCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RoleCreateRequest, SDKValidationError> {

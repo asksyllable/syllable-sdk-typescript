@@ -77,7 +77,6 @@ export const DataSourcesListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type DataSourcesListRequest$Outbound = {
   page?: number | null | undefined;
@@ -121,19 +120,6 @@ export const DataSourcesListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataSourcesListRequest$ {
-  /** @deprecated use `DataSourcesListRequest$inboundSchema` instead. */
-  export const inboundSchema = DataSourcesListRequest$inboundSchema;
-  /** @deprecated use `DataSourcesListRequest$outboundSchema` instead. */
-  export const outboundSchema = DataSourcesListRequest$outboundSchema;
-  /** @deprecated use `DataSourcesListRequest$Outbound` instead. */
-  export type Outbound = DataSourcesListRequest$Outbound;
-}
-
 export function dataSourcesListRequestToJSON(
   dataSourcesListRequest: DataSourcesListRequest,
 ): string {
@@ -141,7 +127,6 @@ export function dataSourcesListRequestToJSON(
     DataSourcesListRequest$outboundSchema.parse(dataSourcesListRequest),
   );
 }
-
 export function dataSourcesListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DataSourcesListRequest, SDKValidationError> {

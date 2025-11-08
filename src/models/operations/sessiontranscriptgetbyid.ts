@@ -24,7 +24,6 @@ export const SessionTranscriptGetByIdRequest$inboundSchema: z.ZodType<
     "session_id": "sessionId",
   });
 });
-
 /** @internal */
 export type SessionTranscriptGetByIdRequest$Outbound = {
   session_id: string;
@@ -43,19 +42,6 @@ export const SessionTranscriptGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionTranscriptGetByIdRequest$ {
-  /** @deprecated use `SessionTranscriptGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = SessionTranscriptGetByIdRequest$inboundSchema;
-  /** @deprecated use `SessionTranscriptGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = SessionTranscriptGetByIdRequest$outboundSchema;
-  /** @deprecated use `SessionTranscriptGetByIdRequest$Outbound` instead. */
-  export type Outbound = SessionTranscriptGetByIdRequest$Outbound;
-}
-
 export function sessionTranscriptGetByIdRequestToJSON(
   sessionTranscriptGetByIdRequest: SessionTranscriptGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function sessionTranscriptGetByIdRequestToJSON(
     ),
   );
 }
-
 export function sessionTranscriptGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionTranscriptGetByIdRequest, SDKValidationError> {

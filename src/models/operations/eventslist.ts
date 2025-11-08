@@ -75,7 +75,6 @@ export const EventsListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type EventsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const EventsListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventsListRequest$ {
-  /** @deprecated use `EventsListRequest$inboundSchema` instead. */
-  export const inboundSchema = EventsListRequest$inboundSchema;
-  /** @deprecated use `EventsListRequest$outboundSchema` instead. */
-  export const outboundSchema = EventsListRequest$outboundSchema;
-  /** @deprecated use `EventsListRequest$Outbound` instead. */
-  export type Outbound = EventsListRequest$Outbound;
-}
-
 export function eventsListRequestToJSON(
   eventsListRequest: EventsListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function eventsListRequestToJSON(
     EventsListRequest$outboundSchema.parse(eventsListRequest),
   );
 }
-
 export function eventsListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<EventsListRequest, SDKValidationError> {

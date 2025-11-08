@@ -35,19 +35,7 @@ export type SessionProperties = ClosedEnum<typeof SessionProperties>;
 export const SessionProperties$inboundSchema: z.ZodNativeEnum<
   typeof SessionProperties
 > = z.nativeEnum(SessionProperties);
-
 /** @internal */
 export const SessionProperties$outboundSchema: z.ZodNativeEnum<
   typeof SessionProperties
 > = SessionProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionProperties$ {
-  /** @deprecated use `SessionProperties$inboundSchema` instead. */
-  export const inboundSchema = SessionProperties$inboundSchema;
-  /** @deprecated use `SessionProperties$outboundSchema` instead. */
-  export const outboundSchema = SessionProperties$outboundSchema;
-}

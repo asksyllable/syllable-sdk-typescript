@@ -41,7 +41,6 @@ export const InsightWorkflowActivate$inboundSchema: z.ZodType<
     "is_acknowledged": "isAcknowledged",
   });
 });
-
 /** @internal */
 export type InsightWorkflowActivate$Outbound = {
   is_acknowledged: boolean;
@@ -62,19 +61,6 @@ export const InsightWorkflowActivate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightWorkflowActivate$ {
-  /** @deprecated use `InsightWorkflowActivate$inboundSchema` instead. */
-  export const inboundSchema = InsightWorkflowActivate$inboundSchema;
-  /** @deprecated use `InsightWorkflowActivate$outboundSchema` instead. */
-  export const outboundSchema = InsightWorkflowActivate$outboundSchema;
-  /** @deprecated use `InsightWorkflowActivate$Outbound` instead. */
-  export type Outbound = InsightWorkflowActivate$Outbound;
-}
-
 export function insightWorkflowActivateToJSON(
   insightWorkflowActivate: InsightWorkflowActivate,
 ): string {
@@ -82,7 +68,6 @@ export function insightWorkflowActivateToJSON(
     InsightWorkflowActivate$outboundSchema.parse(insightWorkflowActivate),
   );
 }
-
 export function insightWorkflowActivateFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightWorkflowActivate, SDKValidationError> {

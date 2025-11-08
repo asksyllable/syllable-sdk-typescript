@@ -27,7 +27,6 @@ export const PronunciationsDownloadCsvResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
 /** @internal */
 export type PronunciationsDownloadCsvResponse$Outbound = {
   Headers: { [k: string]: Array<string> };
@@ -49,20 +48,6 @@ export const PronunciationsDownloadCsvResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PronunciationsDownloadCsvResponse$ {
-  /** @deprecated use `PronunciationsDownloadCsvResponse$inboundSchema` instead. */
-  export const inboundSchema = PronunciationsDownloadCsvResponse$inboundSchema;
-  /** @deprecated use `PronunciationsDownloadCsvResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PronunciationsDownloadCsvResponse$outboundSchema;
-  /** @deprecated use `PronunciationsDownloadCsvResponse$Outbound` instead. */
-  export type Outbound = PronunciationsDownloadCsvResponse$Outbound;
-}
-
 export function pronunciationsDownloadCsvResponseToJSON(
   pronunciationsDownloadCsvResponse: PronunciationsDownloadCsvResponse,
 ): string {
@@ -72,7 +57,6 @@ export function pronunciationsDownloadCsvResponseToJSON(
     ),
   );
 }
-
 export function pronunciationsDownloadCsvResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<PronunciationsDownloadCsvResponse, SDKValidationError> {

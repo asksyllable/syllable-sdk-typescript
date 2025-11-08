@@ -25,19 +25,7 @@ export type StaticToolParameterType = ClosedEnum<
 export const StaticToolParameterType$inboundSchema: z.ZodNativeEnum<
   typeof StaticToolParameterType
 > = z.nativeEnum(StaticToolParameterType);
-
 /** @internal */
 export const StaticToolParameterType$outboundSchema: z.ZodNativeEnum<
   typeof StaticToolParameterType
 > = StaticToolParameterType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StaticToolParameterType$ {
-  /** @deprecated use `StaticToolParameterType$inboundSchema` instead. */
-  export const inboundSchema = StaticToolParameterType$inboundSchema;
-  /** @deprecated use `StaticToolParameterType$outboundSchema` instead. */
-  export const outboundSchema = StaticToolParameterType$outboundSchema;
-}

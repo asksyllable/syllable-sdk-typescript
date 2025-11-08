@@ -47,7 +47,6 @@ export const InspectLatencyResponse$inboundSchema: z.ZodType<
     "session_id": "sessionId",
   });
 });
-
 /** @internal */
 export type InspectLatencyResponse$Outbound = {
   session_id: string;
@@ -70,19 +69,6 @@ export const InspectLatencyResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InspectLatencyResponse$ {
-  /** @deprecated use `InspectLatencyResponse$inboundSchema` instead. */
-  export const inboundSchema = InspectLatencyResponse$inboundSchema;
-  /** @deprecated use `InspectLatencyResponse$outboundSchema` instead. */
-  export const outboundSchema = InspectLatencyResponse$outboundSchema;
-  /** @deprecated use `InspectLatencyResponse$Outbound` instead. */
-  export type Outbound = InspectLatencyResponse$Outbound;
-}
-
 export function inspectLatencyResponseToJSON(
   inspectLatencyResponse: InspectLatencyResponse,
 ): string {
@@ -90,7 +76,6 @@ export function inspectLatencyResponseToJSON(
     InspectLatencyResponse$outboundSchema.parse(inspectLatencyResponse),
   );
 }
-
 export function inspectLatencyResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<InspectLatencyResponse, SDKValidationError> {

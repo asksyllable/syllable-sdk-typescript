@@ -27,19 +27,7 @@ export type AgentVoiceModel = ClosedEnum<typeof AgentVoiceModel>;
 export const AgentVoiceModel$inboundSchema: z.ZodNativeEnum<
   typeof AgentVoiceModel
 > = z.nativeEnum(AgentVoiceModel);
-
 /** @internal */
 export const AgentVoiceModel$outboundSchema: z.ZodNativeEnum<
   typeof AgentVoiceModel
 > = AgentVoiceModel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentVoiceModel$ {
-  /** @deprecated use `AgentVoiceModel$inboundSchema` instead. */
-  export const inboundSchema = AgentVoiceModel$inboundSchema;
-  /** @deprecated use `AgentVoiceModel$outboundSchema` instead. */
-  export const outboundSchema = AgentVoiceModel$outboundSchema;
-}

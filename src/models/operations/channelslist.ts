@@ -75,7 +75,6 @@ export const ChannelsListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type ChannelsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const ChannelsListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelsListRequest$ {
-  /** @deprecated use `ChannelsListRequest$inboundSchema` instead. */
-  export const inboundSchema = ChannelsListRequest$inboundSchema;
-  /** @deprecated use `ChannelsListRequest$outboundSchema` instead. */
-  export const outboundSchema = ChannelsListRequest$outboundSchema;
-  /** @deprecated use `ChannelsListRequest$Outbound` instead. */
-  export type Outbound = ChannelsListRequest$Outbound;
-}
-
 export function channelsListRequestToJSON(
   channelsListRequest: ChannelsListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function channelsListRequestToJSON(
     ChannelsListRequest$outboundSchema.parse(channelsListRequest),
   );
 }
-
 export function channelsListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelsListRequest, SDKValidationError> {

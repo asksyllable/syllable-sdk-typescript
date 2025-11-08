@@ -30,7 +30,6 @@ export const ToolOptions$inboundSchema: z.ZodType<
     "propagate_tool_result": "propagateToolResult",
   });
 });
-
 /** @internal */
 export type ToolOptions$Outbound = {
   propagate_tool_result: boolean;
@@ -49,23 +48,9 @@ export const ToolOptions$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolOptions$ {
-  /** @deprecated use `ToolOptions$inboundSchema` instead. */
-  export const inboundSchema = ToolOptions$inboundSchema;
-  /** @deprecated use `ToolOptions$outboundSchema` instead. */
-  export const outboundSchema = ToolOptions$outboundSchema;
-  /** @deprecated use `ToolOptions$Outbound` instead. */
-  export type Outbound = ToolOptions$Outbound;
-}
-
 export function toolOptionsToJSON(toolOptions: ToolOptions): string {
   return JSON.stringify(ToolOptions$outboundSchema.parse(toolOptions));
 }
-
 export function toolOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolOptions, SDKValidationError> {
