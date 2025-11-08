@@ -100,7 +100,6 @@ export const PromptHistory$inboundSchema: z.ZodType<
     "is_pre_enhancements": "isPreEnhancements",
   });
 });
-
 /** @internal */
 export type PromptHistory$Outbound = {
   timestamp: string;
@@ -147,23 +146,9 @@ export const PromptHistory$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptHistory$ {
-  /** @deprecated use `PromptHistory$inboundSchema` instead. */
-  export const inboundSchema = PromptHistory$inboundSchema;
-  /** @deprecated use `PromptHistory$outboundSchema` instead. */
-  export const outboundSchema = PromptHistory$outboundSchema;
-  /** @deprecated use `PromptHistory$Outbound` instead. */
-  export type Outbound = PromptHistory$Outbound;
-}
-
 export function promptHistoryToJSON(promptHistory: PromptHistory): string {
   return JSON.stringify(PromptHistory$outboundSchema.parse(promptHistory));
 }
-
 export function promptHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<PromptHistory, SDKValidationError> {

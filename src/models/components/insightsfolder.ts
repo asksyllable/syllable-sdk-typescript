@@ -64,7 +64,6 @@ export const InsightsFolder$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type InsightsFolder$Outbound = {
   name: string;
@@ -97,23 +96,9 @@ export const InsightsFolder$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsFolder$ {
-  /** @deprecated use `InsightsFolder$inboundSchema` instead. */
-  export const inboundSchema = InsightsFolder$inboundSchema;
-  /** @deprecated use `InsightsFolder$outboundSchema` instead. */
-  export const outboundSchema = InsightsFolder$outboundSchema;
-  /** @deprecated use `InsightsFolder$Outbound` instead. */
-  export type Outbound = InsightsFolder$Outbound;
-}
-
 export function insightsFolderToJSON(insightsFolder: InsightsFolder): string {
   return JSON.stringify(InsightsFolder$outboundSchema.parse(insightsFolder));
 }
-
 export function insightsFolderFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsFolder, SDKValidationError> {

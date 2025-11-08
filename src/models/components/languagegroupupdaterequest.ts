@@ -63,7 +63,6 @@ export const LanguageGroupUpdateRequest$inboundSchema: z.ZodType<
     "edit_comments": "editComments",
   });
 });
-
 /** @internal */
 export type LanguageGroupUpdateRequest$Outbound = {
   name: string;
@@ -94,19 +93,6 @@ export const LanguageGroupUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupUpdateRequest$ {
-  /** @deprecated use `LanguageGroupUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupUpdateRequest$inboundSchema;
-  /** @deprecated use `LanguageGroupUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupUpdateRequest$outboundSchema;
-  /** @deprecated use `LanguageGroupUpdateRequest$Outbound` instead. */
-  export type Outbound = LanguageGroupUpdateRequest$Outbound;
-}
-
 export function languageGroupUpdateRequestToJSON(
   languageGroupUpdateRequest: LanguageGroupUpdateRequest,
 ): string {
@@ -114,7 +100,6 @@ export function languageGroupUpdateRequestToJSON(
     LanguageGroupUpdateRequest$outboundSchema.parse(languageGroupUpdateRequest),
   );
 }
-
 export function languageGroupUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageGroupUpdateRequest, SDKValidationError> {

@@ -55,7 +55,6 @@ export const DataSourceCreateRequest$inboundSchema: z.ZodType<
     "chunk_delimiter": "chunkDelimiter",
   });
 });
-
 /** @internal */
 export type DataSourceCreateRequest$Outbound = {
   name: string;
@@ -84,19 +83,6 @@ export const DataSourceCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataSourceCreateRequest$ {
-  /** @deprecated use `DataSourceCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = DataSourceCreateRequest$inboundSchema;
-  /** @deprecated use `DataSourceCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = DataSourceCreateRequest$outboundSchema;
-  /** @deprecated use `DataSourceCreateRequest$Outbound` instead. */
-  export type Outbound = DataSourceCreateRequest$Outbound;
-}
-
 export function dataSourceCreateRequestToJSON(
   dataSourceCreateRequest: DataSourceCreateRequest,
 ): string {
@@ -104,7 +90,6 @@ export function dataSourceCreateRequestToJSON(
     DataSourceCreateRequest$outboundSchema.parse(dataSourceCreateRequest),
   );
 }
-
 export function dataSourceCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DataSourceCreateRequest, SDKValidationError> {

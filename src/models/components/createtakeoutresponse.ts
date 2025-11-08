@@ -27,7 +27,6 @@ export const CreateTakeoutResponse$inboundSchema: z.ZodType<
     "created_at": "createdAt",
   });
 });
-
 /** @internal */
 export type CreateTakeoutResponse$Outbound = {
   job_id: string;
@@ -49,19 +48,6 @@ export const CreateTakeoutResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateTakeoutResponse$ {
-  /** @deprecated use `CreateTakeoutResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateTakeoutResponse$inboundSchema;
-  /** @deprecated use `CreateTakeoutResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateTakeoutResponse$outboundSchema;
-  /** @deprecated use `CreateTakeoutResponse$Outbound` instead. */
-  export type Outbound = CreateTakeoutResponse$Outbound;
-}
-
 export function createTakeoutResponseToJSON(
   createTakeoutResponse: CreateTakeoutResponse,
 ): string {
@@ -69,7 +55,6 @@ export function createTakeoutResponseToJSON(
     CreateTakeoutResponse$outboundSchema.parse(createTakeoutResponse),
   );
 }
-
 export function createTakeoutResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateTakeoutResponse, SDKValidationError> {

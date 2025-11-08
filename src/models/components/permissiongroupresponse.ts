@@ -41,7 +41,6 @@ export const PermissionGroupResponse$inboundSchema: z.ZodType<
   description: z.string(),
   permissions: z.array(PermissionResponse$inboundSchema),
 });
-
 /** @internal */
 export type PermissionGroupResponse$Outbound = {
   name: string;
@@ -60,19 +59,6 @@ export const PermissionGroupResponse$outboundSchema: z.ZodType<
   permissions: z.array(PermissionResponse$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PermissionGroupResponse$ {
-  /** @deprecated use `PermissionGroupResponse$inboundSchema` instead. */
-  export const inboundSchema = PermissionGroupResponse$inboundSchema;
-  /** @deprecated use `PermissionGroupResponse$outboundSchema` instead. */
-  export const outboundSchema = PermissionGroupResponse$outboundSchema;
-  /** @deprecated use `PermissionGroupResponse$Outbound` instead. */
-  export type Outbound = PermissionGroupResponse$Outbound;
-}
-
 export function permissionGroupResponseToJSON(
   permissionGroupResponse: PermissionGroupResponse,
 ): string {
@@ -80,7 +66,6 @@ export function permissionGroupResponseToJSON(
     PermissionGroupResponse$outboundSchema.parse(permissionGroupResponse),
   );
 }
-
 export function permissionGroupResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<PermissionGroupResponse, SDKValidationError> {

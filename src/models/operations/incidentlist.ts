@@ -76,7 +76,6 @@ export const IncidentListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type IncidentListRequest$Outbound = {
   page?: number | null | undefined;
@@ -119,19 +118,6 @@ export const IncidentListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncidentListRequest$ {
-  /** @deprecated use `IncidentListRequest$inboundSchema` instead. */
-  export const inboundSchema = IncidentListRequest$inboundSchema;
-  /** @deprecated use `IncidentListRequest$outboundSchema` instead. */
-  export const outboundSchema = IncidentListRequest$outboundSchema;
-  /** @deprecated use `IncidentListRequest$Outbound` instead. */
-  export type Outbound = IncidentListRequest$Outbound;
-}
-
 export function incidentListRequestToJSON(
   incidentListRequest: IncidentListRequest,
 ): string {
@@ -139,7 +125,6 @@ export function incidentListRequestToJSON(
     IncidentListRequest$outboundSchema.parse(incidentListRequest),
   );
 }
-
 export function incidentListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<IncidentListRequest, SDKValidationError> {

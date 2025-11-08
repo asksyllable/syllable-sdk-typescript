@@ -24,7 +24,6 @@ export const SessionLabelGetByIdRequest$inboundSchema: z.ZodType<
     "session_label_id": "sessionLabelId",
   });
 });
-
 /** @internal */
 export type SessionLabelGetByIdRequest$Outbound = {
   session_label_id: number;
@@ -43,19 +42,6 @@ export const SessionLabelGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionLabelGetByIdRequest$ {
-  /** @deprecated use `SessionLabelGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = SessionLabelGetByIdRequest$inboundSchema;
-  /** @deprecated use `SessionLabelGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = SessionLabelGetByIdRequest$outboundSchema;
-  /** @deprecated use `SessionLabelGetByIdRequest$Outbound` instead. */
-  export type Outbound = SessionLabelGetByIdRequest$Outbound;
-}
-
 export function sessionLabelGetByIdRequestToJSON(
   sessionLabelGetByIdRequest: SessionLabelGetByIdRequest,
 ): string {
@@ -63,7 +49,6 @@ export function sessionLabelGetByIdRequestToJSON(
     SessionLabelGetByIdRequest$outboundSchema.parse(sessionLabelGetByIdRequest),
   );
 }
-
 export function sessionLabelGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionLabelGetByIdRequest, SDKValidationError> {

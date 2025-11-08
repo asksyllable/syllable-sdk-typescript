@@ -59,7 +59,6 @@ export const InsightToolDefinition$inboundSchema: z.ZodType<
     "tool_result_set": "toolResultSet",
   });
 });
-
 /** @internal */
 export type InsightToolDefinition$Outbound = {
   id: number;
@@ -89,19 +88,6 @@ export const InsightToolDefinition$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightToolDefinition$ {
-  /** @deprecated use `InsightToolDefinition$inboundSchema` instead. */
-  export const inboundSchema = InsightToolDefinition$inboundSchema;
-  /** @deprecated use `InsightToolDefinition$outboundSchema` instead. */
-  export const outboundSchema = InsightToolDefinition$outboundSchema;
-  /** @deprecated use `InsightToolDefinition$Outbound` instead. */
-  export type Outbound = InsightToolDefinition$Outbound;
-}
-
 export function insightToolDefinitionToJSON(
   insightToolDefinition: InsightToolDefinition,
 ): string {
@@ -109,7 +95,6 @@ export function insightToolDefinitionToJSON(
     InsightToolDefinition$outboundSchema.parse(insightToolDefinition),
   );
 }
-
 export function insightToolDefinitionFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightToolDefinition, SDKValidationError> {

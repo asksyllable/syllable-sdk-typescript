@@ -35,7 +35,6 @@ export const InsightsFolderInput$inboundSchema: z.ZodType<
   label: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type InsightsFolderInput$Outbound = {
   name: string;
@@ -54,19 +53,6 @@ export const InsightsFolderInput$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsFolderInput$ {
-  /** @deprecated use `InsightsFolderInput$inboundSchema` instead. */
-  export const inboundSchema = InsightsFolderInput$inboundSchema;
-  /** @deprecated use `InsightsFolderInput$outboundSchema` instead. */
-  export const outboundSchema = InsightsFolderInput$outboundSchema;
-  /** @deprecated use `InsightsFolderInput$Outbound` instead. */
-  export type Outbound = InsightsFolderInput$Outbound;
-}
-
 export function insightsFolderInputToJSON(
   insightsFolderInput: InsightsFolderInput,
 ): string {
@@ -74,7 +60,6 @@ export function insightsFolderInputToJSON(
     InsightsFolderInput$outboundSchema.parse(insightsFolderInput),
   );
 }
-
 export function insightsFolderInputFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsFolderInput, SDKValidationError> {

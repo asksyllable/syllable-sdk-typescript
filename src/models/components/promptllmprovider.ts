@@ -22,19 +22,7 @@ export type PromptLlmProvider = ClosedEnum<typeof PromptLlmProvider>;
 export const PromptLlmProvider$inboundSchema: z.ZodNativeEnum<
   typeof PromptLlmProvider
 > = z.nativeEnum(PromptLlmProvider);
-
 /** @internal */
 export const PromptLlmProvider$outboundSchema: z.ZodNativeEnum<
   typeof PromptLlmProvider
 > = PromptLlmProvider$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptLlmProvider$ {
-  /** @deprecated use `PromptLlmProvider$inboundSchema` instead. */
-  export const inboundSchema = PromptLlmProvider$inboundSchema;
-  /** @deprecated use `PromptLlmProvider$outboundSchema` instead. */
-  export const outboundSchema = PromptLlmProvider$outboundSchema;
-}

@@ -62,7 +62,6 @@ export const Channel$inboundSchema: z.ZodType<Channel, z.ZodTypeDef, unknown> =
       "is_system_channel": "isSystemChannel",
     });
   });
-
 /** @internal */
 export type Channel$Outbound = {
   name: string;
@@ -93,23 +92,9 @@ export const Channel$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Channel$ {
-  /** @deprecated use `Channel$inboundSchema` instead. */
-  export const inboundSchema = Channel$inboundSchema;
-  /** @deprecated use `Channel$outboundSchema` instead. */
-  export const outboundSchema = Channel$outboundSchema;
-  /** @deprecated use `Channel$Outbound` instead. */
-  export type Outbound = Channel$Outbound;
-}
-
 export function channelToJSON(channel: Channel): string {
   return JSON.stringify(Channel$outboundSchema.parse(channel));
 }
-
 export function channelFromJSON(
   jsonString: string,
 ): SafeParseResult<Channel, SDKValidationError> {

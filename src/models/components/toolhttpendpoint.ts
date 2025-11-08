@@ -56,7 +56,6 @@ export const ToolHttpEndpoint$inboundSchema: z.ZodType<
     "argument_location": "argumentLocation",
   });
 });
-
 /** @internal */
 export type ToolHttpEndpoint$Outbound = {
   url: string;
@@ -79,19 +78,6 @@ export const ToolHttpEndpoint$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolHttpEndpoint$ {
-  /** @deprecated use `ToolHttpEndpoint$inboundSchema` instead. */
-  export const inboundSchema = ToolHttpEndpoint$inboundSchema;
-  /** @deprecated use `ToolHttpEndpoint$outboundSchema` instead. */
-  export const outboundSchema = ToolHttpEndpoint$outboundSchema;
-  /** @deprecated use `ToolHttpEndpoint$Outbound` instead. */
-  export type Outbound = ToolHttpEndpoint$Outbound;
-}
-
 export function toolHttpEndpointToJSON(
   toolHttpEndpoint: ToolHttpEndpoint,
 ): string {
@@ -99,7 +85,6 @@ export function toolHttpEndpointToJSON(
     ToolHttpEndpoint$outboundSchema.parse(toolHttpEndpoint),
   );
 }
-
 export function toolHttpEndpointFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolHttpEndpoint, SDKValidationError> {

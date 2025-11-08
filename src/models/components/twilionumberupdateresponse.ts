@@ -30,7 +30,6 @@ export const TwilioNumberUpdateResponse$inboundSchema: z.ZodType<
     "phone_number": "phoneNumber",
   });
 });
-
 /** @internal */
 export type TwilioNumberUpdateResponse$Outbound = {
   phone_number: string;
@@ -49,19 +48,6 @@ export const TwilioNumberUpdateResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TwilioNumberUpdateResponse$ {
-  /** @deprecated use `TwilioNumberUpdateResponse$inboundSchema` instead. */
-  export const inboundSchema = TwilioNumberUpdateResponse$inboundSchema;
-  /** @deprecated use `TwilioNumberUpdateResponse$outboundSchema` instead. */
-  export const outboundSchema = TwilioNumberUpdateResponse$outboundSchema;
-  /** @deprecated use `TwilioNumberUpdateResponse$Outbound` instead. */
-  export type Outbound = TwilioNumberUpdateResponse$Outbound;
-}
-
 export function twilioNumberUpdateResponseToJSON(
   twilioNumberUpdateResponse: TwilioNumberUpdateResponse,
 ): string {
@@ -69,7 +55,6 @@ export function twilioNumberUpdateResponseToJSON(
     TwilioNumberUpdateResponse$outboundSchema.parse(twilioNumberUpdateResponse),
   );
 }
-
 export function twilioNumberUpdateResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<TwilioNumberUpdateResponse, SDKValidationError> {

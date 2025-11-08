@@ -22,7 +22,6 @@ export const DirectoryMemberTestResponse$inboundSchema: z.ZodType<
 > = z.object({
   extension: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type DirectoryMemberTestResponse$Outbound = {
   extension?: string | null | undefined;
@@ -37,19 +36,6 @@ export const DirectoryMemberTestResponse$outboundSchema: z.ZodType<
   extension: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberTestResponse$ {
-  /** @deprecated use `DirectoryMemberTestResponse$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMemberTestResponse$inboundSchema;
-  /** @deprecated use `DirectoryMemberTestResponse$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMemberTestResponse$outboundSchema;
-  /** @deprecated use `DirectoryMemberTestResponse$Outbound` instead. */
-  export type Outbound = DirectoryMemberTestResponse$Outbound;
-}
-
 export function directoryMemberTestResponseToJSON(
   directoryMemberTestResponse: DirectoryMemberTestResponse,
 ): string {
@@ -59,7 +45,6 @@ export function directoryMemberTestResponseToJSON(
     ),
   );
 }
-
 export function directoryMemberTestResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryMemberTestResponse, SDKValidationError> {

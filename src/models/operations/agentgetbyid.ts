@@ -24,7 +24,6 @@ export const AgentGetByIdRequest$inboundSchema: z.ZodType<
     "agent_id": "agentId",
   });
 });
-
 /** @internal */
 export type AgentGetByIdRequest$Outbound = {
   agent_id: number;
@@ -43,19 +42,6 @@ export const AgentGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentGetByIdRequest$ {
-  /** @deprecated use `AgentGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = AgentGetByIdRequest$inboundSchema;
-  /** @deprecated use `AgentGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = AgentGetByIdRequest$outboundSchema;
-  /** @deprecated use `AgentGetByIdRequest$Outbound` instead. */
-  export type Outbound = AgentGetByIdRequest$Outbound;
-}
-
 export function agentGetByIdRequestToJSON(
   agentGetByIdRequest: AgentGetByIdRequest,
 ): string {
@@ -63,7 +49,6 @@ export function agentGetByIdRequestToJSON(
     AgentGetByIdRequest$outboundSchema.parse(agentGetByIdRequest),
   );
 }
-
 export function agentGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentGetByIdRequest, SDKValidationError> {

@@ -28,7 +28,6 @@ export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
       z.instanceof(Uint8Array),
     ]),
   });
-
 /** @internal */
 export type FileT$Outbound = {
   fileName: string;
@@ -50,23 +49,9 @@ export const FileT$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileT$ {
-  /** @deprecated use `FileT$inboundSchema` instead. */
-  export const inboundSchema = FileT$inboundSchema;
-  /** @deprecated use `FileT$outboundSchema` instead. */
-  export const outboundSchema = FileT$outboundSchema;
-  /** @deprecated use `FileT$Outbound` instead. */
-  export type Outbound = FileT$Outbound;
-}
-
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
 }
-
 export function fileFromJSON(
   jsonString: string,
 ): SafeParseResult<FileT, SDKValidationError> {
@@ -85,7 +70,6 @@ export const BodyInsightsFolderUploadFile$inboundSchema: z.ZodType<
 > = z.object({
   file: z.lazy(() => FileT$inboundSchema).optional(),
 });
-
 /** @internal */
 export type BodyInsightsFolderUploadFile$Outbound = {
   file?: FileT$Outbound | Blob | undefined;
@@ -100,19 +84,6 @@ export const BodyInsightsFolderUploadFile$outboundSchema: z.ZodType<
   file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyInsightsFolderUploadFile$ {
-  /** @deprecated use `BodyInsightsFolderUploadFile$inboundSchema` instead. */
-  export const inboundSchema = BodyInsightsFolderUploadFile$inboundSchema;
-  /** @deprecated use `BodyInsightsFolderUploadFile$outboundSchema` instead. */
-  export const outboundSchema = BodyInsightsFolderUploadFile$outboundSchema;
-  /** @deprecated use `BodyInsightsFolderUploadFile$Outbound` instead. */
-  export type Outbound = BodyInsightsFolderUploadFile$Outbound;
-}
-
 export function bodyInsightsFolderUploadFileToJSON(
   bodyInsightsFolderUploadFile: BodyInsightsFolderUploadFile,
 ): string {
@@ -122,7 +93,6 @@ export function bodyInsightsFolderUploadFileToJSON(
     ),
   );
 }
-
 export function bodyInsightsFolderUploadFileFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyInsightsFolderUploadFile, SDKValidationError> {

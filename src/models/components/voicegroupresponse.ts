@@ -93,7 +93,6 @@ export const VoiceGroupResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type VoiceGroupResponse$Outbound = {
   name: string;
@@ -134,19 +133,6 @@ export const VoiceGroupResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceGroupResponse$ {
-  /** @deprecated use `VoiceGroupResponse$inboundSchema` instead. */
-  export const inboundSchema = VoiceGroupResponse$inboundSchema;
-  /** @deprecated use `VoiceGroupResponse$outboundSchema` instead. */
-  export const outboundSchema = VoiceGroupResponse$outboundSchema;
-  /** @deprecated use `VoiceGroupResponse$Outbound` instead. */
-  export type Outbound = VoiceGroupResponse$Outbound;
-}
-
 export function voiceGroupResponseToJSON(
   voiceGroupResponse: VoiceGroupResponse,
 ): string {
@@ -154,7 +140,6 @@ export function voiceGroupResponseToJSON(
     VoiceGroupResponse$outboundSchema.parse(voiceGroupResponse),
   );
 }
-
 export function voiceGroupResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<VoiceGroupResponse, SDKValidationError> {

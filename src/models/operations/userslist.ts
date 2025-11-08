@@ -75,7 +75,6 @@ export const UsersListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type UsersListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const UsersListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UsersListRequest$ {
-  /** @deprecated use `UsersListRequest$inboundSchema` instead. */
-  export const inboundSchema = UsersListRequest$inboundSchema;
-  /** @deprecated use `UsersListRequest$outboundSchema` instead. */
-  export const outboundSchema = UsersListRequest$outboundSchema;
-  /** @deprecated use `UsersListRequest$Outbound` instead. */
-  export type Outbound = UsersListRequest$Outbound;
-}
-
 export function usersListRequestToJSON(
   usersListRequest: UsersListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function usersListRequestToJSON(
     UsersListRequest$outboundSchema.parse(usersListRequest),
   );
 }
-
 export function usersListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UsersListRequest, SDKValidationError> {

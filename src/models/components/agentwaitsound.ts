@@ -23,19 +23,7 @@ export type AgentWaitSound = ClosedEnum<typeof AgentWaitSound>;
 export const AgentWaitSound$inboundSchema: z.ZodNativeEnum<
   typeof AgentWaitSound
 > = z.nativeEnum(AgentWaitSound);
-
 /** @internal */
 export const AgentWaitSound$outboundSchema: z.ZodNativeEnum<
   typeof AgentWaitSound
 > = AgentWaitSound$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentWaitSound$ {
-  /** @deprecated use `AgentWaitSound$inboundSchema` instead. */
-  export const inboundSchema = AgentWaitSound$inboundSchema;
-  /** @deprecated use `AgentWaitSound$outboundSchema` instead. */
-  export const outboundSchema = AgentWaitSound$outboundSchema;
-}

@@ -75,7 +75,6 @@ export const ServiceListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type ServiceListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const ServiceListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ServiceListRequest$ {
-  /** @deprecated use `ServiceListRequest$inboundSchema` instead. */
-  export const inboundSchema = ServiceListRequest$inboundSchema;
-  /** @deprecated use `ServiceListRequest$outboundSchema` instead. */
-  export const outboundSchema = ServiceListRequest$outboundSchema;
-  /** @deprecated use `ServiceListRequest$Outbound` instead. */
-  export type Outbound = ServiceListRequest$Outbound;
-}
-
 export function serviceListRequestToJSON(
   serviceListRequest: ServiceListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function serviceListRequestToJSON(
     ServiceListRequest$outboundSchema.parse(serviceListRequest),
   );
 }
-
 export function serviceListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ServiceListRequest, SDKValidationError> {

@@ -27,7 +27,6 @@ export const OutboundBatchRemoveRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type OutboundBatchRemoveRequest$Outbound = {
   batch_id: string;
@@ -49,19 +48,6 @@ export const OutboundBatchRemoveRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundBatchRemoveRequest$ {
-  /** @deprecated use `OutboundBatchRemoveRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundBatchRemoveRequest$inboundSchema;
-  /** @deprecated use `OutboundBatchRemoveRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundBatchRemoveRequest$outboundSchema;
-  /** @deprecated use `OutboundBatchRemoveRequest$Outbound` instead. */
-  export type Outbound = OutboundBatchRemoveRequest$Outbound;
-}
-
 export function outboundBatchRemoveRequestToJSON(
   outboundBatchRemoveRequest: OutboundBatchRemoveRequest,
 ): string {
@@ -69,7 +55,6 @@ export function outboundBatchRemoveRequestToJSON(
     OutboundBatchRemoveRequest$outboundSchema.parse(outboundBatchRemoveRequest),
   );
 }
-
 export function outboundBatchRemoveRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundBatchRemoveRequest, SDKValidationError> {

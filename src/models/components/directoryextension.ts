@@ -34,7 +34,6 @@ export const DirectoryExtension$inboundSchema: z.ZodType<
   numbers: z.nullable(z.array(DirectoryExtensionNumber$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type DirectoryExtension$Outbound = {
   name: string;
@@ -52,19 +51,6 @@ export const DirectoryExtension$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryExtension$ {
-  /** @deprecated use `DirectoryExtension$inboundSchema` instead. */
-  export const inboundSchema = DirectoryExtension$inboundSchema;
-  /** @deprecated use `DirectoryExtension$outboundSchema` instead. */
-  export const outboundSchema = DirectoryExtension$outboundSchema;
-  /** @deprecated use `DirectoryExtension$Outbound` instead. */
-  export type Outbound = DirectoryExtension$Outbound;
-}
-
 export function directoryExtensionToJSON(
   directoryExtension: DirectoryExtension,
 ): string {
@@ -72,7 +58,6 @@ export function directoryExtensionToJSON(
     DirectoryExtension$outboundSchema.parse(directoryExtension),
   );
 }
-
 export function directoryExtensionFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryExtension, SDKValidationError> {

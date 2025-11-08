@@ -42,7 +42,6 @@ export const InsightToolTestInput$inboundSchema: z.ZodType<
     "upload_file_id": "uploadFileId",
   });
 });
-
 /** @internal */
 export type InsightToolTestInput$Outbound = {
   tool_name: string;
@@ -67,19 +66,6 @@ export const InsightToolTestInput$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightToolTestInput$ {
-  /** @deprecated use `InsightToolTestInput$inboundSchema` instead. */
-  export const inboundSchema = InsightToolTestInput$inboundSchema;
-  /** @deprecated use `InsightToolTestInput$outboundSchema` instead. */
-  export const outboundSchema = InsightToolTestInput$outboundSchema;
-  /** @deprecated use `InsightToolTestInput$Outbound` instead. */
-  export type Outbound = InsightToolTestInput$Outbound;
-}
-
 export function insightToolTestInputToJSON(
   insightToolTestInput: InsightToolTestInput,
 ): string {
@@ -87,7 +73,6 @@ export function insightToolTestInputToJSON(
     InsightToolTestInput$outboundSchema.parse(insightToolTestInput),
   );
 }
-
 export function insightToolTestInputFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightToolTestInput, SDKValidationError> {

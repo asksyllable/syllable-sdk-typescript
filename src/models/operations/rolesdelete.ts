@@ -38,7 +38,6 @@ export const RolesDeleteRequest$inboundSchema: z.ZodType<
     "new_role_id": "newRoleId",
   });
 });
-
 /** @internal */
 export type RolesDeleteRequest$Outbound = {
   role_id: number;
@@ -62,19 +61,6 @@ export const RolesDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RolesDeleteRequest$ {
-  /** @deprecated use `RolesDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = RolesDeleteRequest$inboundSchema;
-  /** @deprecated use `RolesDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = RolesDeleteRequest$outboundSchema;
-  /** @deprecated use `RolesDeleteRequest$Outbound` instead. */
-  export type Outbound = RolesDeleteRequest$Outbound;
-}
-
 export function rolesDeleteRequestToJSON(
   rolesDeleteRequest: RolesDeleteRequest,
 ): string {
@@ -82,7 +68,6 @@ export function rolesDeleteRequestToJSON(
     RolesDeleteRequest$outboundSchema.parse(rolesDeleteRequest),
   );
 }
-
 export function rolesDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RolesDeleteRequest, SDKValidationError> {

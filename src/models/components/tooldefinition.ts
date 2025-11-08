@@ -90,21 +90,9 @@ export type ToolDefinition = {
 export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
   Type,
 );
-
 /** @internal */
 export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
   Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
-}
 
 /** @internal */
 export const Defaults$inboundSchema: z.ZodType<
@@ -112,7 +100,6 @@ export const Defaults$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]);
-
 /** @internal */
 export type Defaults$Outbound = any | {
   [k: string]: ToolParameterDefault$Outbound;
@@ -125,23 +112,9 @@ export const Defaults$outboundSchema: z.ZodType<
   Defaults
 > = z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Defaults$ {
-  /** @deprecated use `Defaults$inboundSchema` instead. */
-  export const inboundSchema = Defaults$inboundSchema;
-  /** @deprecated use `Defaults$outboundSchema` instead. */
-  export const outboundSchema = Defaults$outboundSchema;
-  /** @deprecated use `Defaults$Outbound` instead. */
-  export type Outbound = Defaults$Outbound;
-}
-
 export function defaultsToJSON(defaults: Defaults): string {
   return JSON.stringify(Defaults$outboundSchema.parse(defaults));
 }
-
 export function defaultsFromJSON(
   jsonString: string,
 ): SafeParseResult<Defaults, SDKValidationError> {
@@ -173,7 +146,6 @@ export const ToolDefinition$inboundSchema: z.ZodType<
     "static_parameters": "staticParameters",
   });
 });
-
 /** @internal */
 export type ToolDefinition$Outbound = {
   type?: string | null | undefined;
@@ -211,23 +183,9 @@ export const ToolDefinition$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolDefinition$ {
-  /** @deprecated use `ToolDefinition$inboundSchema` instead. */
-  export const inboundSchema = ToolDefinition$inboundSchema;
-  /** @deprecated use `ToolDefinition$outboundSchema` instead. */
-  export const outboundSchema = ToolDefinition$outboundSchema;
-  /** @deprecated use `ToolDefinition$Outbound` instead. */
-  export type Outbound = ToolDefinition$Outbound;
-}
-
 export function toolDefinitionToJSON(toolDefinition: ToolDefinition): string {
   return JSON.stringify(ToolDefinition$outboundSchema.parse(toolDefinition));
 }
-
 export function toolDefinitionFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolDefinition, SDKValidationError> {

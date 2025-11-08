@@ -103,7 +103,6 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type ChannelTargetResponse$Outbound = {
   agent_id: number;
@@ -149,19 +148,6 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelTargetResponse$ {
-  /** @deprecated use `ChannelTargetResponse$inboundSchema` instead. */
-  export const inboundSchema = ChannelTargetResponse$inboundSchema;
-  /** @deprecated use `ChannelTargetResponse$outboundSchema` instead. */
-  export const outboundSchema = ChannelTargetResponse$outboundSchema;
-  /** @deprecated use `ChannelTargetResponse$Outbound` instead. */
-  export type Outbound = ChannelTargetResponse$Outbound;
-}
-
 export function channelTargetResponseToJSON(
   channelTargetResponse: ChannelTargetResponse,
 ): string {
@@ -169,7 +155,6 @@ export function channelTargetResponseToJSON(
     ChannelTargetResponse$outboundSchema.parse(channelTargetResponse),
   );
 }
-
 export function channelTargetResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelTargetResponse, SDKValidationError> {

@@ -24,7 +24,6 @@ export const VoiceGroupsGetByIdRequest$inboundSchema: z.ZodType<
     "voice_group_id": "voiceGroupId",
   });
 });
-
 /** @internal */
 export type VoiceGroupsGetByIdRequest$Outbound = {
   voice_group_id: number;
@@ -43,19 +42,6 @@ export const VoiceGroupsGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceGroupsGetByIdRequest$ {
-  /** @deprecated use `VoiceGroupsGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = VoiceGroupsGetByIdRequest$inboundSchema;
-  /** @deprecated use `VoiceGroupsGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = VoiceGroupsGetByIdRequest$outboundSchema;
-  /** @deprecated use `VoiceGroupsGetByIdRequest$Outbound` instead. */
-  export type Outbound = VoiceGroupsGetByIdRequest$Outbound;
-}
-
 export function voiceGroupsGetByIdRequestToJSON(
   voiceGroupsGetByIdRequest: VoiceGroupsGetByIdRequest,
 ): string {
@@ -63,7 +49,6 @@ export function voiceGroupsGetByIdRequestToJSON(
     VoiceGroupsGetByIdRequest$outboundSchema.parse(voiceGroupsGetByIdRequest),
   );
 }
-
 export function voiceGroupsGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<VoiceGroupsGetByIdRequest, SDKValidationError> {

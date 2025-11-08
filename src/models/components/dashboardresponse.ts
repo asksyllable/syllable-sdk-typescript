@@ -45,7 +45,6 @@ export const DashboardResponse$inboundSchema: z.ZodType<
     "display_name": "displayName",
   });
 });
-
 /** @internal */
 export type DashboardResponse$Outbound = {
   name: string;
@@ -70,19 +69,6 @@ export const DashboardResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DashboardResponse$ {
-  /** @deprecated use `DashboardResponse$inboundSchema` instead. */
-  export const inboundSchema = DashboardResponse$inboundSchema;
-  /** @deprecated use `DashboardResponse$outboundSchema` instead. */
-  export const outboundSchema = DashboardResponse$outboundSchema;
-  /** @deprecated use `DashboardResponse$Outbound` instead. */
-  export type Outbound = DashboardResponse$Outbound;
-}
-
 export function dashboardResponseToJSON(
   dashboardResponse: DashboardResponse,
 ): string {
@@ -90,7 +76,6 @@ export function dashboardResponseToJSON(
     DashboardResponse$outboundSchema.parse(dashboardResponse),
   );
 }
-
 export function dashboardResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DashboardResponse, SDKValidationError> {

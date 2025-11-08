@@ -30,7 +30,6 @@ export const SessionSummaryResponse$inboundSchema: z.ZodType<
   summary: z.nullable(z.string()).optional(),
   rating: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type SessionSummaryResponse$Outbound = {
   summary?: string | null | undefined;
@@ -47,19 +46,6 @@ export const SessionSummaryResponse$outboundSchema: z.ZodType<
   rating: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionSummaryResponse$ {
-  /** @deprecated use `SessionSummaryResponse$inboundSchema` instead. */
-  export const inboundSchema = SessionSummaryResponse$inboundSchema;
-  /** @deprecated use `SessionSummaryResponse$outboundSchema` instead. */
-  export const outboundSchema = SessionSummaryResponse$outboundSchema;
-  /** @deprecated use `SessionSummaryResponse$Outbound` instead. */
-  export type Outbound = SessionSummaryResponse$Outbound;
-}
-
 export function sessionSummaryResponseToJSON(
   sessionSummaryResponse: SessionSummaryResponse,
 ): string {
@@ -67,7 +53,6 @@ export function sessionSummaryResponseToJSON(
     SessionSummaryResponse$outboundSchema.parse(sessionSummaryResponse),
   );
 }
-
 export function sessionSummaryResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionSummaryResponse, SDKValidationError> {

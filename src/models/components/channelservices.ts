@@ -24,19 +24,7 @@ export type ChannelServices = ClosedEnum<typeof ChannelServices>;
 export const ChannelServices$inboundSchema: z.ZodNativeEnum<
   typeof ChannelServices
 > = z.nativeEnum(ChannelServices);
-
 /** @internal */
 export const ChannelServices$outboundSchema: z.ZodNativeEnum<
   typeof ChannelServices
 > = ChannelServices$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelServices$ {
-  /** @deprecated use `ChannelServices$inboundSchema` instead. */
-  export const inboundSchema = ChannelServices$inboundSchema;
-  /** @deprecated use `ChannelServices$outboundSchema` instead. */
-  export const outboundSchema = ChannelServices$outboundSchema;
-}

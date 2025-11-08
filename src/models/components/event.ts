@@ -62,7 +62,6 @@ export const Attributes$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type Attributes$Outbound = {};
 
@@ -73,23 +72,9 @@ export const Attributes$outboundSchema: z.ZodType<
   Attributes
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Attributes$ {
-  /** @deprecated use `Attributes$inboundSchema` instead. */
-  export const inboundSchema = Attributes$inboundSchema;
-  /** @deprecated use `Attributes$outboundSchema` instead. */
-  export const outboundSchema = Attributes$outboundSchema;
-  /** @deprecated use `Attributes$Outbound` instead. */
-  export type Outbound = Attributes$Outbound;
-}
-
 export function attributesToJSON(attributes: Attributes): string {
   return JSON.stringify(Attributes$outboundSchema.parse(attributes));
 }
-
 export function attributesFromJSON(
   jsonString: string,
 ): SafeParseResult<Attributes, SDKValidationError> {
@@ -123,7 +108,6 @@ export const Event$inboundSchema: z.ZodType<Event, z.ZodTypeDef, unknown> = z
       "user_id": "userId",
     });
   });
-
 /** @internal */
 export type Event$Outbound = {
   timestamp: string;
@@ -163,23 +147,9 @@ export const Event$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event$ {
-  /** @deprecated use `Event$inboundSchema` instead. */
-  export const inboundSchema = Event$inboundSchema;
-  /** @deprecated use `Event$outboundSchema` instead. */
-  export const outboundSchema = Event$outboundSchema;
-  /** @deprecated use `Event$Outbound` instead. */
-  export type Outbound = Event$Outbound;
-}
-
 export function eventToJSON(event: Event): string {
   return JSON.stringify(Event$outboundSchema.parse(event));
 }
-
 export function eventFromJSON(
   jsonString: string,
 ): SafeParseResult<Event, SDKValidationError> {

@@ -24,7 +24,6 @@ export const PromptsHistoryRequest$inboundSchema: z.ZodType<
     "prompt_id": "promptId",
   });
 });
-
 /** @internal */
 export type PromptsHistoryRequest$Outbound = {
   prompt_id: number;
@@ -43,19 +42,6 @@ export const PromptsHistoryRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptsHistoryRequest$ {
-  /** @deprecated use `PromptsHistoryRequest$inboundSchema` instead. */
-  export const inboundSchema = PromptsHistoryRequest$inboundSchema;
-  /** @deprecated use `PromptsHistoryRequest$outboundSchema` instead. */
-  export const outboundSchema = PromptsHistoryRequest$outboundSchema;
-  /** @deprecated use `PromptsHistoryRequest$Outbound` instead. */
-  export type Outbound = PromptsHistoryRequest$Outbound;
-}
-
 export function promptsHistoryRequestToJSON(
   promptsHistoryRequest: PromptsHistoryRequest,
 ): string {
@@ -63,7 +49,6 @@ export function promptsHistoryRequestToJSON(
     PromptsHistoryRequest$outboundSchema.parse(promptsHistoryRequest),
   );
 }
-
 export function promptsHistoryRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PromptsHistoryRequest, SDKValidationError> {

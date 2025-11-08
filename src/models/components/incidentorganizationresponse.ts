@@ -28,7 +28,6 @@ export const IncidentOrganizationResponse$inboundSchema: z.ZodType<
     "display_name": "displayName",
   });
 });
-
 /** @internal */
 export type IncidentOrganizationResponse$Outbound = {
   id: number;
@@ -51,19 +50,6 @@ export const IncidentOrganizationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncidentOrganizationResponse$ {
-  /** @deprecated use `IncidentOrganizationResponse$inboundSchema` instead. */
-  export const inboundSchema = IncidentOrganizationResponse$inboundSchema;
-  /** @deprecated use `IncidentOrganizationResponse$outboundSchema` instead. */
-  export const outboundSchema = IncidentOrganizationResponse$outboundSchema;
-  /** @deprecated use `IncidentOrganizationResponse$Outbound` instead. */
-  export type Outbound = IncidentOrganizationResponse$Outbound;
-}
-
 export function incidentOrganizationResponseToJSON(
   incidentOrganizationResponse: IncidentOrganizationResponse,
 ): string {
@@ -73,7 +59,6 @@ export function incidentOrganizationResponseToJSON(
     ),
   );
 }
-
 export function incidentOrganizationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<IncidentOrganizationResponse, SDKValidationError> {

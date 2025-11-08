@@ -75,7 +75,6 @@ export const OutboundBatchListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type OutboundBatchListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const OutboundBatchListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundBatchListRequest$ {
-  /** @deprecated use `OutboundBatchListRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundBatchListRequest$inboundSchema;
-  /** @deprecated use `OutboundBatchListRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundBatchListRequest$outboundSchema;
-  /** @deprecated use `OutboundBatchListRequest$Outbound` instead. */
-  export type Outbound = OutboundBatchListRequest$Outbound;
-}
-
 export function outboundBatchListRequestToJSON(
   outboundBatchListRequest: OutboundBatchListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function outboundBatchListRequestToJSON(
     OutboundBatchListRequest$outboundSchema.parse(outboundBatchListRequest),
   );
 }
-
 export function outboundBatchListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundBatchListRequest, SDKValidationError> {

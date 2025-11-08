@@ -24,7 +24,6 @@ export const InsightsToolDeleteRequest$inboundSchema: z.ZodType<
     "tool_id": "toolId",
   });
 });
-
 /** @internal */
 export type InsightsToolDeleteRequest$Outbound = {
   tool_id: number;
@@ -43,19 +42,6 @@ export const InsightsToolDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsToolDeleteRequest$ {
-  /** @deprecated use `InsightsToolDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsToolDeleteRequest$inboundSchema;
-  /** @deprecated use `InsightsToolDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsToolDeleteRequest$outboundSchema;
-  /** @deprecated use `InsightsToolDeleteRequest$Outbound` instead. */
-  export type Outbound = InsightsToolDeleteRequest$Outbound;
-}
-
 export function insightsToolDeleteRequestToJSON(
   insightsToolDeleteRequest: InsightsToolDeleteRequest,
 ): string {
@@ -63,7 +49,6 @@ export function insightsToolDeleteRequestToJSON(
     InsightsToolDeleteRequest$outboundSchema.parse(insightsToolDeleteRequest),
   );
 }
-
 export function insightsToolDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsToolDeleteRequest, SDKValidationError> {

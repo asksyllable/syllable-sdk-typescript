@@ -24,19 +24,7 @@ export type TakeoutRequestStatus = ClosedEnum<typeof TakeoutRequestStatus>;
 export const TakeoutRequestStatus$inboundSchema: z.ZodNativeEnum<
   typeof TakeoutRequestStatus
 > = z.nativeEnum(TakeoutRequestStatus);
-
 /** @internal */
 export const TakeoutRequestStatus$outboundSchema: z.ZodNativeEnum<
   typeof TakeoutRequestStatus
 > = TakeoutRequestStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TakeoutRequestStatus$ {
-  /** @deprecated use `TakeoutRequestStatus$inboundSchema` instead. */
-  export const inboundSchema = TakeoutRequestStatus$inboundSchema;
-  /** @deprecated use `TakeoutRequestStatus$outboundSchema` instead. */
-  export const outboundSchema = TakeoutRequestStatus$outboundSchema;
-}

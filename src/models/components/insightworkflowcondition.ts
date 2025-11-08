@@ -58,7 +58,6 @@ export const SampleRate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.number().int(), z.number()]);
-
 /** @internal */
 export type SampleRate$Outbound = number | number;
 
@@ -69,23 +68,9 @@ export const SampleRate$outboundSchema: z.ZodType<
   SampleRate
 > = z.union([z.number().int(), z.number()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SampleRate$ {
-  /** @deprecated use `SampleRate$inboundSchema` instead. */
-  export const inboundSchema = SampleRate$inboundSchema;
-  /** @deprecated use `SampleRate$outboundSchema` instead. */
-  export const outboundSchema = SampleRate$outboundSchema;
-  /** @deprecated use `SampleRate$Outbound` instead. */
-  export type Outbound = SampleRate$Outbound;
-}
-
 export function sampleRateToJSON(sampleRate: SampleRate): string {
   return JSON.stringify(SampleRate$outboundSchema.parse(sampleRate));
 }
-
 export function sampleRateFromJSON(
   jsonString: string,
 ): SafeParseResult<SampleRate, SDKValidationError> {
@@ -102,7 +87,6 @@ export const AgentList$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.array(z.number().int()), z.array(z.string())]);
-
 /** @internal */
 export type AgentList$Outbound = Array<number> | Array<string>;
 
@@ -113,23 +97,9 @@ export const AgentList$outboundSchema: z.ZodType<
   AgentList
 > = z.union([z.array(z.number().int()), z.array(z.string())]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentList$ {
-  /** @deprecated use `AgentList$inboundSchema` instead. */
-  export const inboundSchema = AgentList$inboundSchema;
-  /** @deprecated use `AgentList$outboundSchema` instead. */
-  export const outboundSchema = AgentList$outboundSchema;
-  /** @deprecated use `AgentList$Outbound` instead. */
-  export type Outbound = AgentList$Outbound;
-}
-
 export function agentListToJSON(agentList: AgentList): string {
   return JSON.stringify(AgentList$outboundSchema.parse(agentList));
 }
-
 export function agentListFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentList, SDKValidationError> {
@@ -166,7 +136,6 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
     "sheet_info": "sheetInfo",
   });
 });
-
 /** @internal */
 export type InsightWorkflowCondition$Outbound = {
   min_duration?: number | null | undefined;
@@ -205,19 +174,6 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightWorkflowCondition$ {
-  /** @deprecated use `InsightWorkflowCondition$inboundSchema` instead. */
-  export const inboundSchema = InsightWorkflowCondition$inboundSchema;
-  /** @deprecated use `InsightWorkflowCondition$outboundSchema` instead. */
-  export const outboundSchema = InsightWorkflowCondition$outboundSchema;
-  /** @deprecated use `InsightWorkflowCondition$Outbound` instead. */
-  export type Outbound = InsightWorkflowCondition$Outbound;
-}
-
 export function insightWorkflowConditionToJSON(
   insightWorkflowCondition: InsightWorkflowCondition,
 ): string {
@@ -225,7 +181,6 @@ export function insightWorkflowConditionToJSON(
     InsightWorkflowCondition$outboundSchema.parse(insightWorkflowCondition),
   );
 }
-
 export function insightWorkflowConditionFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightWorkflowCondition, SDKValidationError> {

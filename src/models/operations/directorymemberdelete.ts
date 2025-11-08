@@ -24,7 +24,6 @@ export const DirectoryMemberDeleteRequest$inboundSchema: z.ZodType<
     "member_id": "memberId",
   });
 });
-
 /** @internal */
 export type DirectoryMemberDeleteRequest$Outbound = {
   member_id: number;
@@ -43,19 +42,6 @@ export const DirectoryMemberDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberDeleteRequest$ {
-  /** @deprecated use `DirectoryMemberDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMemberDeleteRequest$inboundSchema;
-  /** @deprecated use `DirectoryMemberDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMemberDeleteRequest$outboundSchema;
-  /** @deprecated use `DirectoryMemberDeleteRequest$Outbound` instead. */
-  export type Outbound = DirectoryMemberDeleteRequest$Outbound;
-}
-
 export function directoryMemberDeleteRequestToJSON(
   directoryMemberDeleteRequest: DirectoryMemberDeleteRequest,
 ): string {
@@ -65,7 +51,6 @@ export function directoryMemberDeleteRequestToJSON(
     ),
   );
 }
-
 export function directoryMemberDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryMemberDeleteRequest, SDKValidationError> {

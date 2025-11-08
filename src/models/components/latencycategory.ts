@@ -18,19 +18,7 @@ export type LatencyCategory = ClosedEnum<typeof LatencyCategory>;
 export const LatencyCategory$inboundSchema: z.ZodNativeEnum<
   typeof LatencyCategory
 > = z.nativeEnum(LatencyCategory);
-
 /** @internal */
 export const LatencyCategory$outboundSchema: z.ZodNativeEnum<
   typeof LatencyCategory
 > = LatencyCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LatencyCategory$ {
-  /** @deprecated use `LatencyCategory$inboundSchema` instead. */
-  export const inboundSchema = LatencyCategory$inboundSchema;
-  /** @deprecated use `LatencyCategory$outboundSchema` instead. */
-  export const outboundSchema = LatencyCategory$outboundSchema;
-}

@@ -27,7 +27,6 @@ export const GetSessionToolCallResultByIdRequest$inboundSchema: z.ZodType<
     "tool_call_id": "toolCallId",
   });
 });
-
 /** @internal */
 export type GetSessionToolCallResultByIdRequest$Outbound = {
   session_id: number;
@@ -49,21 +48,6 @@ export const GetSessionToolCallResultByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSessionToolCallResultByIdRequest$ {
-  /** @deprecated use `GetSessionToolCallResultByIdRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetSessionToolCallResultByIdRequest$inboundSchema;
-  /** @deprecated use `GetSessionToolCallResultByIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetSessionToolCallResultByIdRequest$outboundSchema;
-  /** @deprecated use `GetSessionToolCallResultByIdRequest$Outbound` instead. */
-  export type Outbound = GetSessionToolCallResultByIdRequest$Outbound;
-}
-
 export function getSessionToolCallResultByIdRequestToJSON(
   getSessionToolCallResultByIdRequest: GetSessionToolCallResultByIdRequest,
 ): string {
@@ -73,7 +57,6 @@ export function getSessionToolCallResultByIdRequestToJSON(
     ),
   );
 }
-
 export function getSessionToolCallResultByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSessionToolCallResultByIdRequest, SDKValidationError> {

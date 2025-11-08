@@ -24,19 +24,7 @@ export type AgentSttProvider = ClosedEnum<typeof AgentSttProvider>;
 export const AgentSttProvider$inboundSchema: z.ZodNativeEnum<
   typeof AgentSttProvider
 > = z.nativeEnum(AgentSttProvider);
-
 /** @internal */
 export const AgentSttProvider$outboundSchema: z.ZodNativeEnum<
   typeof AgentSttProvider
 > = AgentSttProvider$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentSttProvider$ {
-  /** @deprecated use `AgentSttProvider$inboundSchema` instead. */
-  export const inboundSchema = AgentSttProvider$inboundSchema;
-  /** @deprecated use `AgentSttProvider$outboundSchema` instead. */
-  export const outboundSchema = AgentSttProvider$outboundSchema;
-}

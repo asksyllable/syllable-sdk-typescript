@@ -137,7 +137,6 @@ export const AgentUpdate$inboundSchema: z.ZodType<
     "wait_sound": "waitSound",
   });
 });
-
 /** @internal */
 export type AgentUpdate$Outbound = {
   name: string;
@@ -195,23 +194,9 @@ export const AgentUpdate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentUpdate$ {
-  /** @deprecated use `AgentUpdate$inboundSchema` instead. */
-  export const inboundSchema = AgentUpdate$inboundSchema;
-  /** @deprecated use `AgentUpdate$outboundSchema` instead. */
-  export const outboundSchema = AgentUpdate$outboundSchema;
-  /** @deprecated use `AgentUpdate$Outbound` instead. */
-  export type Outbound = AgentUpdate$Outbound;
-}
-
 export function agentUpdateToJSON(agentUpdate: AgentUpdate): string {
   return JSON.stringify(AgentUpdate$outboundSchema.parse(agentUpdate));
 }
-
 export function agentUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentUpdate, SDKValidationError> {

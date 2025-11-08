@@ -24,7 +24,6 @@ export const SessionFullSummaryGetByIdRequest$inboundSchema: z.ZodType<
     "session_id": "sessionId",
   });
 });
-
 /** @internal */
 export type SessionFullSummaryGetByIdRequest$Outbound = {
   session_id: string;
@@ -43,19 +42,6 @@ export const SessionFullSummaryGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionFullSummaryGetByIdRequest$ {
-  /** @deprecated use `SessionFullSummaryGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = SessionFullSummaryGetByIdRequest$inboundSchema;
-  /** @deprecated use `SessionFullSummaryGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = SessionFullSummaryGetByIdRequest$outboundSchema;
-  /** @deprecated use `SessionFullSummaryGetByIdRequest$Outbound` instead. */
-  export type Outbound = SessionFullSummaryGetByIdRequest$Outbound;
-}
-
 export function sessionFullSummaryGetByIdRequestToJSON(
   sessionFullSummaryGetByIdRequest: SessionFullSummaryGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function sessionFullSummaryGetByIdRequestToJSON(
     ),
   );
 }
-
 export function sessionFullSummaryGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionFullSummaryGetByIdRequest, SDKValidationError> {

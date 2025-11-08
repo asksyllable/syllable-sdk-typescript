@@ -55,7 +55,6 @@ export const ListResponseInsightsFolder$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseInsightsFolder$Outbound = {
   items: Array<InsightsFolder$Outbound>;
@@ -84,19 +83,6 @@ export const ListResponseInsightsFolder$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseInsightsFolder$ {
-  /** @deprecated use `ListResponseInsightsFolder$inboundSchema` instead. */
-  export const inboundSchema = ListResponseInsightsFolder$inboundSchema;
-  /** @deprecated use `ListResponseInsightsFolder$outboundSchema` instead. */
-  export const outboundSchema = ListResponseInsightsFolder$outboundSchema;
-  /** @deprecated use `ListResponseInsightsFolder$Outbound` instead. */
-  export type Outbound = ListResponseInsightsFolder$Outbound;
-}
-
 export function listResponseInsightsFolderToJSON(
   listResponseInsightsFolder: ListResponseInsightsFolder,
 ): string {
@@ -104,7 +90,6 @@ export function listResponseInsightsFolderToJSON(
     ListResponseInsightsFolder$outboundSchema.parse(listResponseInsightsFolder),
   );
 }
-
 export function listResponseInsightsFolderFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseInsightsFolder, SDKValidationError> {

@@ -50,7 +50,6 @@ export const DialogToolCall$inboundSchema: z.ZodType<
     "tool_result": "toolResult",
   });
 });
-
 /** @internal */
 export type DialogToolCall$Outbound = {
   tool_call_id: string;
@@ -80,23 +79,9 @@ export const DialogToolCall$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DialogToolCall$ {
-  /** @deprecated use `DialogToolCall$inboundSchema` instead. */
-  export const inboundSchema = DialogToolCall$inboundSchema;
-  /** @deprecated use `DialogToolCall$outboundSchema` instead. */
-  export const outboundSchema = DialogToolCall$outboundSchema;
-  /** @deprecated use `DialogToolCall$Outbound` instead. */
-  export type Outbound = DialogToolCall$Outbound;
-}
-
 export function dialogToolCallToJSON(dialogToolCall: DialogToolCall): string {
   return JSON.stringify(DialogToolCall$outboundSchema.parse(dialogToolCall));
 }
-
 export function dialogToolCallFromJSON(
   jsonString: string,
 ): SafeParseResult<DialogToolCall, SDKValidationError> {

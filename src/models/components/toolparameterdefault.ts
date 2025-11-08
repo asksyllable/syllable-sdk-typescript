@@ -37,7 +37,6 @@ export const ToolParameterDefault$inboundSchema: z.ZodType<
 > = z.object({
   transform: ToolParameterTransform$inboundSchema,
 });
-
 /** @internal */
 export type ToolParameterDefault$Outbound = {
   transform: ToolParameterTransform$Outbound;
@@ -52,19 +51,6 @@ export const ToolParameterDefault$outboundSchema: z.ZodType<
   transform: ToolParameterTransform$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolParameterDefault$ {
-  /** @deprecated use `ToolParameterDefault$inboundSchema` instead. */
-  export const inboundSchema = ToolParameterDefault$inboundSchema;
-  /** @deprecated use `ToolParameterDefault$outboundSchema` instead. */
-  export const outboundSchema = ToolParameterDefault$outboundSchema;
-  /** @deprecated use `ToolParameterDefault$Outbound` instead. */
-  export type Outbound = ToolParameterDefault$Outbound;
-}
-
 export function toolParameterDefaultToJSON(
   toolParameterDefault: ToolParameterDefault,
 ): string {
@@ -72,7 +58,6 @@ export function toolParameterDefaultToJSON(
     ToolParameterDefault$outboundSchema.parse(toolParameterDefault),
   );
 }
-
 export function toolParameterDefaultFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolParameterDefault, SDKValidationError> {

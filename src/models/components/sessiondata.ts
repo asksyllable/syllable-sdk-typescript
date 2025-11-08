@@ -54,7 +54,6 @@ export const SessionData$inboundSchema: z.ZodType<
     "is_test": "isTest",
   });
 });
-
 /** @internal */
 export type SessionData$Outbound = {
   session_id: number;
@@ -82,23 +81,9 @@ export const SessionData$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionData$ {
-  /** @deprecated use `SessionData$inboundSchema` instead. */
-  export const inboundSchema = SessionData$inboundSchema;
-  /** @deprecated use `SessionData$outboundSchema` instead. */
-  export const outboundSchema = SessionData$outboundSchema;
-  /** @deprecated use `SessionData$Outbound` instead. */
-  export type Outbound = SessionData$Outbound;
-}
-
 export function sessionDataToJSON(sessionData: SessionData): string {
   return JSON.stringify(SessionData$outboundSchema.parse(sessionData));
 }
-
 export function sessionDataFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionData, SDKValidationError> {

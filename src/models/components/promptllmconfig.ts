@@ -60,7 +60,6 @@ export const PromptLlmConfig$inboundSchema: z.ZodType<
     "api_version": "apiVersion",
   });
 });
-
 /** @internal */
 export type PromptLlmConfig$Outbound = {
   provider?: string | undefined;
@@ -89,25 +88,11 @@ export const PromptLlmConfig$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptLlmConfig$ {
-  /** @deprecated use `PromptLlmConfig$inboundSchema` instead. */
-  export const inboundSchema = PromptLlmConfig$inboundSchema;
-  /** @deprecated use `PromptLlmConfig$outboundSchema` instead. */
-  export const outboundSchema = PromptLlmConfig$outboundSchema;
-  /** @deprecated use `PromptLlmConfig$Outbound` instead. */
-  export type Outbound = PromptLlmConfig$Outbound;
-}
-
 export function promptLlmConfigToJSON(
   promptLlmConfig: PromptLlmConfig,
 ): string {
   return JSON.stringify(PromptLlmConfig$outboundSchema.parse(promptLlmConfig));
 }
-
 export function promptLlmConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<PromptLlmConfig, SDKValidationError> {

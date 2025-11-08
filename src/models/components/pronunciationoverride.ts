@@ -52,7 +52,6 @@ export const PronunciationOverride$inboundSchema: z.ZodType<
     "match_options": "matchOptions",
   });
 });
-
 /** @internal */
 export type PronunciationOverride$Outbound = {
   text: string;
@@ -88,19 +87,6 @@ export const PronunciationOverride$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PronunciationOverride$ {
-  /** @deprecated use `PronunciationOverride$inboundSchema` instead. */
-  export const inboundSchema = PronunciationOverride$inboundSchema;
-  /** @deprecated use `PronunciationOverride$outboundSchema` instead. */
-  export const outboundSchema = PronunciationOverride$outboundSchema;
-  /** @deprecated use `PronunciationOverride$Outbound` instead. */
-  export type Outbound = PronunciationOverride$Outbound;
-}
-
 export function pronunciationOverrideToJSON(
   pronunciationOverride: PronunciationOverride,
 ): string {
@@ -108,7 +94,6 @@ export function pronunciationOverrideToJSON(
     PronunciationOverride$outboundSchema.parse(pronunciationOverride),
   );
 }
-
 export function pronunciationOverrideFromJSON(
   jsonString: string,
 ): SafeParseResult<PronunciationOverride, SDKValidationError> {

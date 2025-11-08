@@ -40,7 +40,6 @@ export const TakeoutStatusResponse$inboundSchema: z.ZodType<
     "file_names": "fileNames",
   });
 });
-
 /** @internal */
 export type TakeoutStatusResponse$Outbound = {
   job_id: string;
@@ -67,19 +66,6 @@ export const TakeoutStatusResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TakeoutStatusResponse$ {
-  /** @deprecated use `TakeoutStatusResponse$inboundSchema` instead. */
-  export const inboundSchema = TakeoutStatusResponse$inboundSchema;
-  /** @deprecated use `TakeoutStatusResponse$outboundSchema` instead. */
-  export const outboundSchema = TakeoutStatusResponse$outboundSchema;
-  /** @deprecated use `TakeoutStatusResponse$Outbound` instead. */
-  export type Outbound = TakeoutStatusResponse$Outbound;
-}
-
 export function takeoutStatusResponseToJSON(
   takeoutStatusResponse: TakeoutStatusResponse,
 ): string {
@@ -87,7 +73,6 @@ export function takeoutStatusResponseToJSON(
     TakeoutStatusResponse$outboundSchema.parse(takeoutStatusResponse),
   );
 }
-
 export function takeoutStatusResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<TakeoutStatusResponse, SDKValidationError> {

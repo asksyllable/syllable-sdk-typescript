@@ -26,7 +26,6 @@ export const AgentDeleteRequest$inboundSchema: z.ZodType<
     "agent_id": "agentId",
   });
 });
-
 /** @internal */
 export type AgentDeleteRequest$Outbound = {
   agent_id: number;
@@ -47,19 +46,6 @@ export const AgentDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentDeleteRequest$ {
-  /** @deprecated use `AgentDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = AgentDeleteRequest$inboundSchema;
-  /** @deprecated use `AgentDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = AgentDeleteRequest$outboundSchema;
-  /** @deprecated use `AgentDeleteRequest$Outbound` instead. */
-  export type Outbound = AgentDeleteRequest$Outbound;
-}
-
 export function agentDeleteRequestToJSON(
   agentDeleteRequest: AgentDeleteRequest,
 ): string {
@@ -67,7 +53,6 @@ export function agentDeleteRequestToJSON(
     AgentDeleteRequest$outboundSchema.parse(agentDeleteRequest),
   );
 }
-
 export function agentDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentDeleteRequest, SDKValidationError> {

@@ -58,7 +58,6 @@ export const LatencyEntry$inboundSchema: z.ZodType<
     "time_delta": "timeDelta",
   });
 });
-
 /** @internal */
 export type LatencyEntry$Outbound = {
   timestamp: string;
@@ -96,23 +95,9 @@ export const LatencyEntry$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LatencyEntry$ {
-  /** @deprecated use `LatencyEntry$inboundSchema` instead. */
-  export const inboundSchema = LatencyEntry$inboundSchema;
-  /** @deprecated use `LatencyEntry$outboundSchema` instead. */
-  export const outboundSchema = LatencyEntry$outboundSchema;
-  /** @deprecated use `LatencyEntry$Outbound` instead. */
-  export type Outbound = LatencyEntry$Outbound;
-}
-
 export function latencyEntryToJSON(latencyEntry: LatencyEntry): string {
   return JSON.stringify(LatencyEntry$outboundSchema.parse(latencyEntry));
 }
-
 export function latencyEntryFromJSON(
   jsonString: string,
 ): SafeParseResult<LatencyEntry, SDKValidationError> {

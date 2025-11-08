@@ -68,7 +68,6 @@ export const OrganizationChannelUpdateRequest$inboundSchema: z.ZodType<
     "is_system_channel": "isSystemChannel",
   });
 });
-
 /** @internal */
 export type OrganizationChannelUpdateRequest$Outbound = {
   name: string;
@@ -99,19 +98,6 @@ export const OrganizationChannelUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrganizationChannelUpdateRequest$ {
-  /** @deprecated use `OrganizationChannelUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = OrganizationChannelUpdateRequest$inboundSchema;
-  /** @deprecated use `OrganizationChannelUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = OrganizationChannelUpdateRequest$outboundSchema;
-  /** @deprecated use `OrganizationChannelUpdateRequest$Outbound` instead. */
-  export type Outbound = OrganizationChannelUpdateRequest$Outbound;
-}
-
 export function organizationChannelUpdateRequestToJSON(
   organizationChannelUpdateRequest: OrganizationChannelUpdateRequest,
 ): string {
@@ -121,7 +107,6 @@ export function organizationChannelUpdateRequestToJSON(
     ),
   );
 }
-
 export function organizationChannelUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OrganizationChannelUpdateRequest, SDKValidationError> {

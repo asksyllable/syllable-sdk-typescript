@@ -35,19 +35,7 @@ export type ToolArgumentLocation = ClosedEnum<typeof ToolArgumentLocation>;
 export const ToolArgumentLocation$inboundSchema: z.ZodNativeEnum<
   typeof ToolArgumentLocation
 > = z.nativeEnum(ToolArgumentLocation);
-
 /** @internal */
 export const ToolArgumentLocation$outboundSchema: z.ZodNativeEnum<
   typeof ToolArgumentLocation
 > = ToolArgumentLocation$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolArgumentLocation$ {
-  /** @deprecated use `ToolArgumentLocation$inboundSchema` instead. */
-  export const inboundSchema = ToolArgumentLocation$inboundSchema;
-  /** @deprecated use `ToolArgumentLocation$outboundSchema` instead. */
-  export const outboundSchema = ToolArgumentLocation$outboundSchema;
-}

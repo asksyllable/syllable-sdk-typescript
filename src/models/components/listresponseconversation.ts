@@ -55,7 +55,6 @@ export const ListResponseConversation$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseConversation$Outbound = {
   items: Array<Conversation$Outbound>;
@@ -84,19 +83,6 @@ export const ListResponseConversation$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseConversation$ {
-  /** @deprecated use `ListResponseConversation$inboundSchema` instead. */
-  export const inboundSchema = ListResponseConversation$inboundSchema;
-  /** @deprecated use `ListResponseConversation$outboundSchema` instead. */
-  export const outboundSchema = ListResponseConversation$outboundSchema;
-  /** @deprecated use `ListResponseConversation$Outbound` instead. */
-  export type Outbound = ListResponseConversation$Outbound;
-}
-
 export function listResponseConversationToJSON(
   listResponseConversation: ListResponseConversation,
 ): string {
@@ -104,7 +90,6 @@ export function listResponseConversationToJSON(
     ListResponseConversation$outboundSchema.parse(listResponseConversation),
   );
 }
-
 export function listResponseConversationFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseConversation, SDKValidationError> {

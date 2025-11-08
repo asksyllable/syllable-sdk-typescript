@@ -55,7 +55,6 @@ export const ListResponseRoleResponse$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseRoleResponse$Outbound = {
   items: Array<RoleResponse$Outbound>;
@@ -84,19 +83,6 @@ export const ListResponseRoleResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseRoleResponse$ {
-  /** @deprecated use `ListResponseRoleResponse$inboundSchema` instead. */
-  export const inboundSchema = ListResponseRoleResponse$inboundSchema;
-  /** @deprecated use `ListResponseRoleResponse$outboundSchema` instead. */
-  export const outboundSchema = ListResponseRoleResponse$outboundSchema;
-  /** @deprecated use `ListResponseRoleResponse$Outbound` instead. */
-  export type Outbound = ListResponseRoleResponse$Outbound;
-}
-
 export function listResponseRoleResponseToJSON(
   listResponseRoleResponse: ListResponseRoleResponse,
 ): string {
@@ -104,7 +90,6 @@ export function listResponseRoleResponseToJSON(
     ListResponseRoleResponse$outboundSchema.parse(listResponseRoleResponse),
   );
 }
-
 export function listResponseRoleResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseRoleResponse, SDKValidationError> {

@@ -56,7 +56,6 @@ export const SessionMessage$inboundSchema: z.ZodType<
     "tool_calls": "toolCalls",
   });
 });
-
 /** @internal */
 export type SessionMessage$Outbound = {
   role: string;
@@ -81,23 +80,9 @@ export const SessionMessage$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionMessage$ {
-  /** @deprecated use `SessionMessage$inboundSchema` instead. */
-  export const inboundSchema = SessionMessage$inboundSchema;
-  /** @deprecated use `SessionMessage$outboundSchema` instead. */
-  export const outboundSchema = SessionMessage$outboundSchema;
-  /** @deprecated use `SessionMessage$Outbound` instead. */
-  export type Outbound = SessionMessage$Outbound;
-}
-
 export function sessionMessageToJSON(sessionMessage: SessionMessage): string {
   return JSON.stringify(SessionMessage$outboundSchema.parse(sessionMessage));
 }
-
 export function sessionMessageFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionMessage, SDKValidationError> {

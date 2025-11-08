@@ -27,7 +27,6 @@ export const ChannelTargetsGetByIdRequest$inboundSchema: z.ZodType<
     "target_id": "targetId",
   });
 });
-
 /** @internal */
 export type ChannelTargetsGetByIdRequest$Outbound = {
   channel_id: number;
@@ -49,19 +48,6 @@ export const ChannelTargetsGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelTargetsGetByIdRequest$ {
-  /** @deprecated use `ChannelTargetsGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = ChannelTargetsGetByIdRequest$inboundSchema;
-  /** @deprecated use `ChannelTargetsGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = ChannelTargetsGetByIdRequest$outboundSchema;
-  /** @deprecated use `ChannelTargetsGetByIdRequest$Outbound` instead. */
-  export type Outbound = ChannelTargetsGetByIdRequest$Outbound;
-}
-
 export function channelTargetsGetByIdRequestToJSON(
   channelTargetsGetByIdRequest: ChannelTargetsGetByIdRequest,
 ): string {
@@ -71,7 +57,6 @@ export function channelTargetsGetByIdRequestToJSON(
     ),
   );
 }
-
 export function channelTargetsGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelTargetsGetByIdRequest, SDKValidationError> {

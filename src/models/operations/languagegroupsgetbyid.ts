@@ -24,7 +24,6 @@ export const LanguageGroupsGetByIdRequest$inboundSchema: z.ZodType<
     "language_group_id": "languageGroupId",
   });
 });
-
 /** @internal */
 export type LanguageGroupsGetByIdRequest$Outbound = {
   language_group_id: number;
@@ -43,19 +42,6 @@ export const LanguageGroupsGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupsGetByIdRequest$ {
-  /** @deprecated use `LanguageGroupsGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupsGetByIdRequest$inboundSchema;
-  /** @deprecated use `LanguageGroupsGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupsGetByIdRequest$outboundSchema;
-  /** @deprecated use `LanguageGroupsGetByIdRequest$Outbound` instead. */
-  export type Outbound = LanguageGroupsGetByIdRequest$Outbound;
-}
-
 export function languageGroupsGetByIdRequestToJSON(
   languageGroupsGetByIdRequest: LanguageGroupsGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function languageGroupsGetByIdRequestToJSON(
     ),
   );
 }
-
 export function languageGroupsGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<LanguageGroupsGetByIdRequest, SDKValidationError> {

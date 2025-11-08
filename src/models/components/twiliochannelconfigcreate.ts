@@ -36,7 +36,6 @@ export const TwilioChannelConfigCreate$inboundSchema: z.ZodType<
     "auth_token": "authToken",
   });
 });
-
 /** @internal */
 export type TwilioChannelConfigCreate$Outbound = {
   account_sid: string;
@@ -58,19 +57,6 @@ export const TwilioChannelConfigCreate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TwilioChannelConfigCreate$ {
-  /** @deprecated use `TwilioChannelConfigCreate$inboundSchema` instead. */
-  export const inboundSchema = TwilioChannelConfigCreate$inboundSchema;
-  /** @deprecated use `TwilioChannelConfigCreate$outboundSchema` instead. */
-  export const outboundSchema = TwilioChannelConfigCreate$outboundSchema;
-  /** @deprecated use `TwilioChannelConfigCreate$Outbound` instead. */
-  export type Outbound = TwilioChannelConfigCreate$Outbound;
-}
-
 export function twilioChannelConfigCreateToJSON(
   twilioChannelConfigCreate: TwilioChannelConfigCreate,
 ): string {
@@ -78,7 +64,6 @@ export function twilioChannelConfigCreateToJSON(
     TwilioChannelConfigCreate$outboundSchema.parse(twilioChannelConfigCreate),
   );
 }
-
 export function twilioChannelConfigCreateFromJSON(
   jsonString: string,
 ): SafeParseResult<TwilioChannelConfigCreate, SDKValidationError> {

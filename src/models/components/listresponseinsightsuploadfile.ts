@@ -55,7 +55,6 @@ export const ListResponseInsightsUploadFile$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseInsightsUploadFile$Outbound = {
   items: Array<InsightsUploadFile$Outbound>;
@@ -84,19 +83,6 @@ export const ListResponseInsightsUploadFile$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseInsightsUploadFile$ {
-  /** @deprecated use `ListResponseInsightsUploadFile$inboundSchema` instead. */
-  export const inboundSchema = ListResponseInsightsUploadFile$inboundSchema;
-  /** @deprecated use `ListResponseInsightsUploadFile$outboundSchema` instead. */
-  export const outboundSchema = ListResponseInsightsUploadFile$outboundSchema;
-  /** @deprecated use `ListResponseInsightsUploadFile$Outbound` instead. */
-  export type Outbound = ListResponseInsightsUploadFile$Outbound;
-}
-
 export function listResponseInsightsUploadFileToJSON(
   listResponseInsightsUploadFile: ListResponseInsightsUploadFile,
 ): string {
@@ -106,7 +92,6 @@ export function listResponseInsightsUploadFileToJSON(
     ),
   );
 }
-
 export function listResponseInsightsUploadFileFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseInsightsUploadFile, SDKValidationError> {

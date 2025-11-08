@@ -56,7 +56,6 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
   id: z.number().int(),
   type: z.string().default("greeting"),
 });
-
 /** @internal */
 export type CustomMessageUpdateRequest$Outbound = {
   name: string;
@@ -81,19 +80,6 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
   type: z.string().default("greeting"),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessageUpdateRequest$ {
-  /** @deprecated use `CustomMessageUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = CustomMessageUpdateRequest$inboundSchema;
-  /** @deprecated use `CustomMessageUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = CustomMessageUpdateRequest$outboundSchema;
-  /** @deprecated use `CustomMessageUpdateRequest$Outbound` instead. */
-  export type Outbound = CustomMessageUpdateRequest$Outbound;
-}
-
 export function customMessageUpdateRequestToJSON(
   customMessageUpdateRequest: CustomMessageUpdateRequest,
 ): string {
@@ -101,7 +87,6 @@ export function customMessageUpdateRequestToJSON(
     CustomMessageUpdateRequest$outboundSchema.parse(customMessageUpdateRequest),
   );
 }
-
 export function customMessageUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomMessageUpdateRequest, SDKValidationError> {

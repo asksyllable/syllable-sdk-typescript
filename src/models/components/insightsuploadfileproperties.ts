@@ -24,19 +24,7 @@ export type InsightsUploadFileProperties = ClosedEnum<
 export const InsightsUploadFileProperties$inboundSchema: z.ZodNativeEnum<
   typeof InsightsUploadFileProperties
 > = z.nativeEnum(InsightsUploadFileProperties);
-
 /** @internal */
 export const InsightsUploadFileProperties$outboundSchema: z.ZodNativeEnum<
   typeof InsightsUploadFileProperties
 > = InsightsUploadFileProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsUploadFileProperties$ {
-  /** @deprecated use `InsightsUploadFileProperties$inboundSchema` instead. */
-  export const inboundSchema = InsightsUploadFileProperties$inboundSchema;
-  /** @deprecated use `InsightsUploadFileProperties$outboundSchema` instead. */
-  export const outboundSchema = InsightsUploadFileProperties$outboundSchema;
-}

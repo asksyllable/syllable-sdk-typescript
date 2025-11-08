@@ -30,7 +30,6 @@ export const ToolAgentInfo$inboundSchema: z.ZodType<
   id: z.number().int(),
   name: z.string(),
 });
-
 /** @internal */
 export type ToolAgentInfo$Outbound = {
   id: number;
@@ -47,23 +46,9 @@ export const ToolAgentInfo$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolAgentInfo$ {
-  /** @deprecated use `ToolAgentInfo$inboundSchema` instead. */
-  export const inboundSchema = ToolAgentInfo$inboundSchema;
-  /** @deprecated use `ToolAgentInfo$outboundSchema` instead. */
-  export const outboundSchema = ToolAgentInfo$outboundSchema;
-  /** @deprecated use `ToolAgentInfo$Outbound` instead. */
-  export type Outbound = ToolAgentInfo$Outbound;
-}
-
 export function toolAgentInfoToJSON(toolAgentInfo: ToolAgentInfo): string {
   return JSON.stringify(ToolAgentInfo$outboundSchema.parse(toolAgentInfo));
 }
-
 export function toolAgentInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolAgentInfo, SDKValidationError> {

@@ -68,7 +68,6 @@ export const DirectoryMember$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type DirectoryMember$Outbound = {
   name: string;
@@ -101,25 +100,11 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMember$ {
-  /** @deprecated use `DirectoryMember$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMember$inboundSchema;
-  /** @deprecated use `DirectoryMember$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMember$outboundSchema;
-  /** @deprecated use `DirectoryMember$Outbound` instead. */
-  export type Outbound = DirectoryMember$Outbound;
-}
-
 export function directoryMemberToJSON(
   directoryMember: DirectoryMember,
 ): string {
   return JSON.stringify(DirectoryMember$outboundSchema.parse(directoryMember));
 }
-
 export function directoryMemberFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryMember, SDKValidationError> {

@@ -40,7 +40,6 @@ export const PermissionResponse$inboundSchema: z.ZodType<
     "display_name": "displayName",
   });
 });
-
 /** @internal */
 export type PermissionResponse$Outbound = {
   name: string;
@@ -63,19 +62,6 @@ export const PermissionResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PermissionResponse$ {
-  /** @deprecated use `PermissionResponse$inboundSchema` instead. */
-  export const inboundSchema = PermissionResponse$inboundSchema;
-  /** @deprecated use `PermissionResponse$outboundSchema` instead. */
-  export const outboundSchema = PermissionResponse$outboundSchema;
-  /** @deprecated use `PermissionResponse$Outbound` instead. */
-  export type Outbound = PermissionResponse$Outbound;
-}
-
 export function permissionResponseToJSON(
   permissionResponse: PermissionResponse,
 ): string {
@@ -83,7 +69,6 @@ export function permissionResponseToJSON(
     PermissionResponse$outboundSchema.parse(permissionResponse),
   );
 }
-
 export function permissionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<PermissionResponse, SDKValidationError> {

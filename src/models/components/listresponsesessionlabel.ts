@@ -55,7 +55,6 @@ export const ListResponseSessionLabel$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseSessionLabel$Outbound = {
   items: Array<SessionLabel$Outbound>;
@@ -84,19 +83,6 @@ export const ListResponseSessionLabel$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseSessionLabel$ {
-  /** @deprecated use `ListResponseSessionLabel$inboundSchema` instead. */
-  export const inboundSchema = ListResponseSessionLabel$inboundSchema;
-  /** @deprecated use `ListResponseSessionLabel$outboundSchema` instead. */
-  export const outboundSchema = ListResponseSessionLabel$outboundSchema;
-  /** @deprecated use `ListResponseSessionLabel$Outbound` instead. */
-  export type Outbound = ListResponseSessionLabel$Outbound;
-}
-
 export function listResponseSessionLabelToJSON(
   listResponseSessionLabel: ListResponseSessionLabel,
 ): string {
@@ -104,7 +90,6 @@ export function listResponseSessionLabelToJSON(
     ListResponseSessionLabel$outboundSchema.parse(listResponseSessionLabel),
   );
 }
-
 export function listResponseSessionLabelFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseSessionLabel, SDKValidationError> {

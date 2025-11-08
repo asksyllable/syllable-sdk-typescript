@@ -53,7 +53,6 @@ export const UserUpdateRequest$inboundSchema: z.ZodType<
     "last_updated_comments": "lastUpdatedComments",
   });
 });
-
 /** @internal */
 export type UserUpdateRequest$Outbound = {
   email: string;
@@ -83,19 +82,6 @@ export const UserUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserUpdateRequest$ {
-  /** @deprecated use `UserUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = UserUpdateRequest$inboundSchema;
-  /** @deprecated use `UserUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = UserUpdateRequest$outboundSchema;
-  /** @deprecated use `UserUpdateRequest$Outbound` instead. */
-  export type Outbound = UserUpdateRequest$Outbound;
-}
-
 export function userUpdateRequestToJSON(
   userUpdateRequest: UserUpdateRequest,
 ): string {
@@ -103,7 +89,6 @@ export function userUpdateRequestToJSON(
     UserUpdateRequest$outboundSchema.parse(userUpdateRequest),
   );
 }
-
 export function userUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UserUpdateRequest, SDKValidationError> {

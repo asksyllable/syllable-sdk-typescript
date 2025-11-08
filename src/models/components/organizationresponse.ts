@@ -79,7 +79,6 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
     "logo_url": "logoUrl",
   });
 });
-
 /** @internal */
 export type OrganizationResponse$Outbound = {
   display_name: string;
@@ -121,19 +120,6 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrganizationResponse$ {
-  /** @deprecated use `OrganizationResponse$inboundSchema` instead. */
-  export const inboundSchema = OrganizationResponse$inboundSchema;
-  /** @deprecated use `OrganizationResponse$outboundSchema` instead. */
-  export const outboundSchema = OrganizationResponse$outboundSchema;
-  /** @deprecated use `OrganizationResponse$Outbound` instead. */
-  export type Outbound = OrganizationResponse$Outbound;
-}
-
 export function organizationResponseToJSON(
   organizationResponse: OrganizationResponse,
 ): string {
@@ -141,7 +127,6 @@ export function organizationResponseToJSON(
     OrganizationResponse$outboundSchema.parse(organizationResponse),
   );
 }
-
 export function organizationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<OrganizationResponse, SDKValidationError> {

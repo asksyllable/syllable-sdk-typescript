@@ -31,19 +31,7 @@ export type IncidentProperties = ClosedEnum<typeof IncidentProperties>;
 export const IncidentProperties$inboundSchema: z.ZodNativeEnum<
   typeof IncidentProperties
 > = z.nativeEnum(IncidentProperties);
-
 /** @internal */
 export const IncidentProperties$outboundSchema: z.ZodNativeEnum<
   typeof IncidentProperties
 > = IncidentProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncidentProperties$ {
-  /** @deprecated use `IncidentProperties$inboundSchema` instead. */
-  export const inboundSchema = IncidentProperties$inboundSchema;
-  /** @deprecated use `IncidentProperties$outboundSchema` instead. */
-  export const outboundSchema = IncidentProperties$outboundSchema;
-}

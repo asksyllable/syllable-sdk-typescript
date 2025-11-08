@@ -87,7 +87,6 @@ export const IncidentUpdateRequest$inboundSchema: z.ZodType<
     "sub_organization": "subOrganization",
   });
 });
-
 /** @internal */
 export type IncidentUpdateRequest$Outbound = {
   description: string;
@@ -130,19 +129,6 @@ export const IncidentUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncidentUpdateRequest$ {
-  /** @deprecated use `IncidentUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = IncidentUpdateRequest$inboundSchema;
-  /** @deprecated use `IncidentUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = IncidentUpdateRequest$outboundSchema;
-  /** @deprecated use `IncidentUpdateRequest$Outbound` instead. */
-  export type Outbound = IncidentUpdateRequest$Outbound;
-}
-
 export function incidentUpdateRequestToJSON(
   incidentUpdateRequest: IncidentUpdateRequest,
 ): string {
@@ -150,7 +136,6 @@ export function incidentUpdateRequestToJSON(
     IncidentUpdateRequest$outboundSchema.parse(incidentUpdateRequest),
   );
 }
-
 export function incidentUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<IncidentUpdateRequest, SDKValidationError> {

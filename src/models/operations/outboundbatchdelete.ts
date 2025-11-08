@@ -28,7 +28,6 @@ export const OutboundBatchDeleteRequest$inboundSchema: z.ZodType<
     "Body_outbound_batch_delete": "bodyOutboundBatchDelete",
   });
 });
-
 /** @internal */
 export type OutboundBatchDeleteRequest$Outbound = {
   batch_id: string;
@@ -50,19 +49,6 @@ export const OutboundBatchDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundBatchDeleteRequest$ {
-  /** @deprecated use `OutboundBatchDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundBatchDeleteRequest$inboundSchema;
-  /** @deprecated use `OutboundBatchDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundBatchDeleteRequest$outboundSchema;
-  /** @deprecated use `OutboundBatchDeleteRequest$Outbound` instead. */
-  export type Outbound = OutboundBatchDeleteRequest$Outbound;
-}
-
 export function outboundBatchDeleteRequestToJSON(
   outboundBatchDeleteRequest: OutboundBatchDeleteRequest,
 ): string {
@@ -70,7 +56,6 @@ export function outboundBatchDeleteRequestToJSON(
     OutboundBatchDeleteRequest$outboundSchema.parse(outboundBatchDeleteRequest),
   );
 }
-
 export function outboundBatchDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundBatchDeleteRequest, SDKValidationError> {

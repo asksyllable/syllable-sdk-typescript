@@ -34,7 +34,6 @@ export const BodyPronunciationsUploadCsvFile$inboundSchema: z.ZodType<
     z.instanceof(Uint8Array),
   ]),
 });
-
 /** @internal */
 export type BodyPronunciationsUploadCsvFile$Outbound = {
   fileName: string;
@@ -56,19 +55,6 @@ export const BodyPronunciationsUploadCsvFile$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyPronunciationsUploadCsvFile$ {
-  /** @deprecated use `BodyPronunciationsUploadCsvFile$inboundSchema` instead. */
-  export const inboundSchema = BodyPronunciationsUploadCsvFile$inboundSchema;
-  /** @deprecated use `BodyPronunciationsUploadCsvFile$outboundSchema` instead. */
-  export const outboundSchema = BodyPronunciationsUploadCsvFile$outboundSchema;
-  /** @deprecated use `BodyPronunciationsUploadCsvFile$Outbound` instead. */
-  export type Outbound = BodyPronunciationsUploadCsvFile$Outbound;
-}
-
 export function bodyPronunciationsUploadCsvFileToJSON(
   bodyPronunciationsUploadCsvFile: BodyPronunciationsUploadCsvFile,
 ): string {
@@ -78,7 +64,6 @@ export function bodyPronunciationsUploadCsvFileToJSON(
     ),
   );
 }
-
 export function bodyPronunciationsUploadCsvFileFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyPronunciationsUploadCsvFile, SDKValidationError> {
@@ -97,7 +82,6 @@ export const BodyPronunciationsUploadCsv$inboundSchema: z.ZodType<
 > = z.object({
   file: z.lazy(() => BodyPronunciationsUploadCsvFile$inboundSchema),
 });
-
 /** @internal */
 export type BodyPronunciationsUploadCsv$Outbound = {
   file: BodyPronunciationsUploadCsvFile$Outbound | Blob;
@@ -114,19 +98,6 @@ export const BodyPronunciationsUploadCsv$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyPronunciationsUploadCsv$ {
-  /** @deprecated use `BodyPronunciationsUploadCsv$inboundSchema` instead. */
-  export const inboundSchema = BodyPronunciationsUploadCsv$inboundSchema;
-  /** @deprecated use `BodyPronunciationsUploadCsv$outboundSchema` instead. */
-  export const outboundSchema = BodyPronunciationsUploadCsv$outboundSchema;
-  /** @deprecated use `BodyPronunciationsUploadCsv$Outbound` instead. */
-  export type Outbound = BodyPronunciationsUploadCsv$Outbound;
-}
-
 export function bodyPronunciationsUploadCsvToJSON(
   bodyPronunciationsUploadCsv: BodyPronunciationsUploadCsv,
 ): string {
@@ -136,7 +107,6 @@ export function bodyPronunciationsUploadCsvToJSON(
     ),
   );
 }
-
 export function bodyPronunciationsUploadCsvFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyPronunciationsUploadCsv, SDKValidationError> {

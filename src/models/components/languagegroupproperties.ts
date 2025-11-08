@@ -26,19 +26,7 @@ export type LanguageGroupProperties = ClosedEnum<
 export const LanguageGroupProperties$inboundSchema: z.ZodNativeEnum<
   typeof LanguageGroupProperties
 > = z.nativeEnum(LanguageGroupProperties);
-
 /** @internal */
 export const LanguageGroupProperties$outboundSchema: z.ZodNativeEnum<
   typeof LanguageGroupProperties
 > = LanguageGroupProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LanguageGroupProperties$ {
-  /** @deprecated use `LanguageGroupProperties$inboundSchema` instead. */
-  export const inboundSchema = LanguageGroupProperties$inboundSchema;
-  /** @deprecated use `LanguageGroupProperties$outboundSchema` instead. */
-  export const outboundSchema = LanguageGroupProperties$outboundSchema;
-}

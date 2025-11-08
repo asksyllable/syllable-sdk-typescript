@@ -28,7 +28,6 @@ export const InsightsWorkflowActivateRequest$inboundSchema: z.ZodType<
     "InsightWorkflowActivate": "insightWorkflowActivate",
   });
 });
-
 /** @internal */
 export type InsightsWorkflowActivateRequest$Outbound = {
   workflow_id: number;
@@ -50,19 +49,6 @@ export const InsightsWorkflowActivateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsWorkflowActivateRequest$ {
-  /** @deprecated use `InsightsWorkflowActivateRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsWorkflowActivateRequest$inboundSchema;
-  /** @deprecated use `InsightsWorkflowActivateRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsWorkflowActivateRequest$outboundSchema;
-  /** @deprecated use `InsightsWorkflowActivateRequest$Outbound` instead. */
-  export type Outbound = InsightsWorkflowActivateRequest$Outbound;
-}
-
 export function insightsWorkflowActivateRequestToJSON(
   insightsWorkflowActivateRequest: InsightsWorkflowActivateRequest,
 ): string {
@@ -72,7 +58,6 @@ export function insightsWorkflowActivateRequestToJSON(
     ),
   );
 }
-
 export function insightsWorkflowActivateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsWorkflowActivateRequest, SDKValidationError> {

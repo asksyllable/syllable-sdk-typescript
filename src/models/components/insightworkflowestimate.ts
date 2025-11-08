@@ -60,7 +60,6 @@ export const InsightWorkflowEstimate$inboundSchema: z.ZodType<
     "estimated_backfill_cost": "estimatedBackfillCost",
   });
 });
-
 /** @internal */
 export type InsightWorkflowEstimate$Outbound = {
   backfill_count: number;
@@ -94,19 +93,6 @@ export const InsightWorkflowEstimate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightWorkflowEstimate$ {
-  /** @deprecated use `InsightWorkflowEstimate$inboundSchema` instead. */
-  export const inboundSchema = InsightWorkflowEstimate$inboundSchema;
-  /** @deprecated use `InsightWorkflowEstimate$outboundSchema` instead. */
-  export const outboundSchema = InsightWorkflowEstimate$outboundSchema;
-  /** @deprecated use `InsightWorkflowEstimate$Outbound` instead. */
-  export type Outbound = InsightWorkflowEstimate$Outbound;
-}
-
 export function insightWorkflowEstimateToJSON(
   insightWorkflowEstimate: InsightWorkflowEstimate,
 ): string {
@@ -114,7 +100,6 @@ export function insightWorkflowEstimateToJSON(
     InsightWorkflowEstimate$outboundSchema.parse(insightWorkflowEstimate),
   );
 }
-
 export function insightWorkflowEstimateFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightWorkflowEstimate, SDKValidationError> {

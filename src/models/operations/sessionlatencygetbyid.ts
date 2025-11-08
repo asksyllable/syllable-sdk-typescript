@@ -24,7 +24,6 @@ export const SessionLatencyGetByIdRequest$inboundSchema: z.ZodType<
     "session_id": "sessionId",
   });
 });
-
 /** @internal */
 export type SessionLatencyGetByIdRequest$Outbound = {
   session_id: string;
@@ -43,19 +42,6 @@ export const SessionLatencyGetByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionLatencyGetByIdRequest$ {
-  /** @deprecated use `SessionLatencyGetByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = SessionLatencyGetByIdRequest$inboundSchema;
-  /** @deprecated use `SessionLatencyGetByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = SessionLatencyGetByIdRequest$outboundSchema;
-  /** @deprecated use `SessionLatencyGetByIdRequest$Outbound` instead. */
-  export type Outbound = SessionLatencyGetByIdRequest$Outbound;
-}
-
 export function sessionLatencyGetByIdRequestToJSON(
   sessionLatencyGetByIdRequest: SessionLatencyGetByIdRequest,
 ): string {
@@ -65,7 +51,6 @@ export function sessionLatencyGetByIdRequestToJSON(
     ),
   );
 }
-
 export function sessionLatencyGetByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionLatencyGetByIdRequest, SDKValidationError> {

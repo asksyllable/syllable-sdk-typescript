@@ -27,7 +27,6 @@ export const TakeoutsGetFileRequest$inboundSchema: z.ZodType<
     "file_name": "fileName",
   });
 });
-
 /** @internal */
 export type TakeoutsGetFileRequest$Outbound = {
   job_id: string;
@@ -49,19 +48,6 @@ export const TakeoutsGetFileRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TakeoutsGetFileRequest$ {
-  /** @deprecated use `TakeoutsGetFileRequest$inboundSchema` instead. */
-  export const inboundSchema = TakeoutsGetFileRequest$inboundSchema;
-  /** @deprecated use `TakeoutsGetFileRequest$outboundSchema` instead. */
-  export const outboundSchema = TakeoutsGetFileRequest$outboundSchema;
-  /** @deprecated use `TakeoutsGetFileRequest$Outbound` instead. */
-  export type Outbound = TakeoutsGetFileRequest$Outbound;
-}
-
 export function takeoutsGetFileRequestToJSON(
   takeoutsGetFileRequest: TakeoutsGetFileRequest,
 ): string {
@@ -69,7 +55,6 @@ export function takeoutsGetFileRequestToJSON(
     TakeoutsGetFileRequest$outboundSchema.parse(takeoutsGetFileRequest),
   );
 }
-
 export function takeoutsGetFileRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<TakeoutsGetFileRequest, SDKValidationError> {

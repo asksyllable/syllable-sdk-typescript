@@ -56,7 +56,6 @@ export const DirectoryMemberUpdate$inboundSchema: z.ZodType<
     "contact_tags": "contactTags",
   });
 });
-
 /** @internal */
 export type DirectoryMemberUpdate$Outbound = {
   name: string;
@@ -83,19 +82,6 @@ export const DirectoryMemberUpdate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberUpdate$ {
-  /** @deprecated use `DirectoryMemberUpdate$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMemberUpdate$inboundSchema;
-  /** @deprecated use `DirectoryMemberUpdate$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMemberUpdate$outboundSchema;
-  /** @deprecated use `DirectoryMemberUpdate$Outbound` instead. */
-  export type Outbound = DirectoryMemberUpdate$Outbound;
-}
-
 export function directoryMemberUpdateToJSON(
   directoryMemberUpdate: DirectoryMemberUpdate,
 ): string {
@@ -103,7 +89,6 @@ export function directoryMemberUpdateToJSON(
     DirectoryMemberUpdate$outboundSchema.parse(directoryMemberUpdate),
   );
 }
-
 export function directoryMemberUpdateFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryMemberUpdate, SDKValidationError> {

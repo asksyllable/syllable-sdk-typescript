@@ -57,7 +57,6 @@ export const ToolUpdateRequest$inboundSchema: z.ZodType<
     "last_updated_comments": "lastUpdatedComments",
   });
 });
-
 /** @internal */
 export type ToolUpdateRequest$Outbound = {
   name: string;
@@ -85,19 +84,6 @@ export const ToolUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolUpdateRequest$ {
-  /** @deprecated use `ToolUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = ToolUpdateRequest$inboundSchema;
-  /** @deprecated use `ToolUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = ToolUpdateRequest$outboundSchema;
-  /** @deprecated use `ToolUpdateRequest$Outbound` instead. */
-  export type Outbound = ToolUpdateRequest$Outbound;
-}
-
 export function toolUpdateRequestToJSON(
   toolUpdateRequest: ToolUpdateRequest,
 ): string {
@@ -105,7 +91,6 @@ export function toolUpdateRequestToJSON(
     ToolUpdateRequest$outboundSchema.parse(toolUpdateRequest),
   );
 }
-
 export function toolUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolUpdateRequest, SDKValidationError> {

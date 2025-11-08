@@ -18,19 +18,7 @@ export type LatencyUnitType = ClosedEnum<typeof LatencyUnitType>;
 export const LatencyUnitType$inboundSchema: z.ZodNativeEnum<
   typeof LatencyUnitType
 > = z.nativeEnum(LatencyUnitType);
-
 /** @internal */
 export const LatencyUnitType$outboundSchema: z.ZodNativeEnum<
   typeof LatencyUnitType
 > = LatencyUnitType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LatencyUnitType$ {
-  /** @deprecated use `LatencyUnitType$inboundSchema` instead. */
-  export const inboundSchema = LatencyUnitType$inboundSchema;
-  /** @deprecated use `LatencyUnitType$outboundSchema` instead. */
-  export const outboundSchema = LatencyUnitType$outboundSchema;
-}

@@ -24,19 +24,7 @@ export type ServiceProperties = ClosedEnum<typeof ServiceProperties>;
 export const ServiceProperties$inboundSchema: z.ZodNativeEnum<
   typeof ServiceProperties
 > = z.nativeEnum(ServiceProperties);
-
 /** @internal */
 export const ServiceProperties$outboundSchema: z.ZodNativeEnum<
   typeof ServiceProperties
 > = ServiceProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ServiceProperties$ {
-  /** @deprecated use `ServiceProperties$inboundSchema` instead. */
-  export const inboundSchema = ServiceProperties$inboundSchema;
-  /** @deprecated use `ServiceProperties$outboundSchema` instead. */
-  export const outboundSchema = ServiceProperties$outboundSchema;
-}

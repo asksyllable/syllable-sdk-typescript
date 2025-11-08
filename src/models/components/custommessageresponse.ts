@@ -85,7 +85,6 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type CustomMessageResponse$Outbound = {
   name: string;
@@ -122,19 +121,6 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomMessageResponse$ {
-  /** @deprecated use `CustomMessageResponse$inboundSchema` instead. */
-  export const inboundSchema = CustomMessageResponse$inboundSchema;
-  /** @deprecated use `CustomMessageResponse$outboundSchema` instead. */
-  export const outboundSchema = CustomMessageResponse$outboundSchema;
-  /** @deprecated use `CustomMessageResponse$Outbound` instead. */
-  export type Outbound = CustomMessageResponse$Outbound;
-}
-
 export function customMessageResponseToJSON(
   customMessageResponse: CustomMessageResponse,
 ): string {
@@ -142,7 +128,6 @@ export function customMessageResponseToJSON(
     CustomMessageResponse$outboundSchema.parse(customMessageResponse),
   );
 }
-
 export function customMessageResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomMessageResponse, SDKValidationError> {

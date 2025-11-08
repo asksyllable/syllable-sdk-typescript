@@ -76,7 +76,6 @@ export const OutboundCampaignListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type OutboundCampaignListRequest$Outbound = {
   page?: number | null | undefined;
@@ -119,19 +118,6 @@ export const OutboundCampaignListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutboundCampaignListRequest$ {
-  /** @deprecated use `OutboundCampaignListRequest$inboundSchema` instead. */
-  export const inboundSchema = OutboundCampaignListRequest$inboundSchema;
-  /** @deprecated use `OutboundCampaignListRequest$outboundSchema` instead. */
-  export const outboundSchema = OutboundCampaignListRequest$outboundSchema;
-  /** @deprecated use `OutboundCampaignListRequest$Outbound` instead. */
-  export type Outbound = OutboundCampaignListRequest$Outbound;
-}
-
 export function outboundCampaignListRequestToJSON(
   outboundCampaignListRequest: OutboundCampaignListRequest,
 ): string {
@@ -141,7 +127,6 @@ export function outboundCampaignListRequestToJSON(
     ),
   );
 }
-
 export function outboundCampaignListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<OutboundCampaignListRequest, SDKValidationError> {

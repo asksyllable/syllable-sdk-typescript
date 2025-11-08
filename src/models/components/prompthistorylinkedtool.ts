@@ -47,7 +47,6 @@ export const PromptHistoryLinkedTool$inboundSchema: z.ZodType<
     "out_of_date": "outOfDate",
   });
 });
-
 /** @internal */
 export type PromptHistoryLinkedTool$Outbound = {
   tool_id: number;
@@ -74,19 +73,6 @@ export const PromptHistoryLinkedTool$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptHistoryLinkedTool$ {
-  /** @deprecated use `PromptHistoryLinkedTool$inboundSchema` instead. */
-  export const inboundSchema = PromptHistoryLinkedTool$inboundSchema;
-  /** @deprecated use `PromptHistoryLinkedTool$outboundSchema` instead. */
-  export const outboundSchema = PromptHistoryLinkedTool$outboundSchema;
-  /** @deprecated use `PromptHistoryLinkedTool$Outbound` instead. */
-  export type Outbound = PromptHistoryLinkedTool$Outbound;
-}
-
 export function promptHistoryLinkedToolToJSON(
   promptHistoryLinkedTool: PromptHistoryLinkedTool,
 ): string {
@@ -94,7 +80,6 @@ export function promptHistoryLinkedToolToJSON(
     PromptHistoryLinkedTool$outboundSchema.parse(promptHistoryLinkedTool),
   );
 }
-
 export function promptHistoryLinkedToolFromJSON(
   jsonString: string,
 ): SafeParseResult<PromptHistoryLinkedTool, SDKValidationError> {

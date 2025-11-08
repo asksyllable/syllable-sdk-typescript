@@ -78,7 +78,6 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type DirectoryMemberListRequest$Outbound = {
   page?: number | null | undefined;
@@ -123,19 +122,6 @@ export const DirectoryMemberListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DirectoryMemberListRequest$ {
-  /** @deprecated use `DirectoryMemberListRequest$inboundSchema` instead. */
-  export const inboundSchema = DirectoryMemberListRequest$inboundSchema;
-  /** @deprecated use `DirectoryMemberListRequest$outboundSchema` instead. */
-  export const outboundSchema = DirectoryMemberListRequest$outboundSchema;
-  /** @deprecated use `DirectoryMemberListRequest$Outbound` instead. */
-  export type Outbound = DirectoryMemberListRequest$Outbound;
-}
-
 export function directoryMemberListRequestToJSON(
   directoryMemberListRequest: DirectoryMemberListRequest,
 ): string {
@@ -143,7 +129,6 @@ export function directoryMemberListRequestToJSON(
     DirectoryMemberListRequest$outboundSchema.parse(directoryMemberListRequest),
   );
 }
-
 export function directoryMemberListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DirectoryMemberListRequest, SDKValidationError> {

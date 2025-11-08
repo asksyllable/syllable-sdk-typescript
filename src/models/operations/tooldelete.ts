@@ -26,7 +26,6 @@ export const ToolDeleteRequest$inboundSchema: z.ZodType<
     "tool_name": "toolName",
   });
 });
-
 /** @internal */
 export type ToolDeleteRequest$Outbound = {
   tool_name: string;
@@ -47,19 +46,6 @@ export const ToolDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolDeleteRequest$ {
-  /** @deprecated use `ToolDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = ToolDeleteRequest$inboundSchema;
-  /** @deprecated use `ToolDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = ToolDeleteRequest$outboundSchema;
-  /** @deprecated use `ToolDeleteRequest$Outbound` instead. */
-  export type Outbound = ToolDeleteRequest$Outbound;
-}
-
 export function toolDeleteRequestToJSON(
   toolDeleteRequest: ToolDeleteRequest,
 ): string {
@@ -67,7 +53,6 @@ export function toolDeleteRequestToJSON(
     ToolDeleteRequest$outboundSchema.parse(toolDeleteRequest),
   );
 }
-
 export function toolDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolDeleteRequest, SDKValidationError> {

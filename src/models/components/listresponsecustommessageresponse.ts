@@ -55,7 +55,6 @@ export const ListResponseCustomMessageResponse$inboundSchema: z.ZodType<
     "total_count": "totalCount",
   });
 });
-
 /** @internal */
 export type ListResponseCustomMessageResponse$Outbound = {
   items: Array<CustomMessageResponse$Outbound>;
@@ -84,20 +83,6 @@ export const ListResponseCustomMessageResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListResponseCustomMessageResponse$ {
-  /** @deprecated use `ListResponseCustomMessageResponse$inboundSchema` instead. */
-  export const inboundSchema = ListResponseCustomMessageResponse$inboundSchema;
-  /** @deprecated use `ListResponseCustomMessageResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    ListResponseCustomMessageResponse$outboundSchema;
-  /** @deprecated use `ListResponseCustomMessageResponse$Outbound` instead. */
-  export type Outbound = ListResponseCustomMessageResponse$Outbound;
-}
-
 export function listResponseCustomMessageResponseToJSON(
   listResponseCustomMessageResponse: ListResponseCustomMessageResponse,
 ): string {
@@ -107,7 +92,6 @@ export function listResponseCustomMessageResponseToJSON(
     ),
   );
 }
-
 export function listResponseCustomMessageResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ListResponseCustomMessageResponse, SDKValidationError> {

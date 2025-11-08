@@ -80,7 +80,6 @@ export const VoiceSampleCreateRequest$inboundSchema: z.ZodType<
     "apply_pronunciation_overrides": "applyPronunciationOverrides",
   });
 });
-
 /** @internal */
 export type VoiceSampleCreateRequest$Outbound = {
   language_code: string;
@@ -116,19 +115,6 @@ export const VoiceSampleCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceSampleCreateRequest$ {
-  /** @deprecated use `VoiceSampleCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = VoiceSampleCreateRequest$inboundSchema;
-  /** @deprecated use `VoiceSampleCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = VoiceSampleCreateRequest$outboundSchema;
-  /** @deprecated use `VoiceSampleCreateRequest$Outbound` instead. */
-  export type Outbound = VoiceSampleCreateRequest$Outbound;
-}
-
 export function voiceSampleCreateRequestToJSON(
   voiceSampleCreateRequest: VoiceSampleCreateRequest,
 ): string {
@@ -136,7 +122,6 @@ export function voiceSampleCreateRequestToJSON(
     VoiceSampleCreateRequest$outboundSchema.parse(voiceSampleCreateRequest),
   );
 }
-
 export function voiceSampleCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<VoiceSampleCreateRequest, SDKValidationError> {

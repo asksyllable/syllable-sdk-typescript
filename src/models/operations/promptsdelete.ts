@@ -26,7 +26,6 @@ export const PromptsDeleteRequest$inboundSchema: z.ZodType<
     "prompt_id": "promptId",
   });
 });
-
 /** @internal */
 export type PromptsDeleteRequest$Outbound = {
   prompt_id: number;
@@ -47,19 +46,6 @@ export const PromptsDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptsDeleteRequest$ {
-  /** @deprecated use `PromptsDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = PromptsDeleteRequest$inboundSchema;
-  /** @deprecated use `PromptsDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = PromptsDeleteRequest$outboundSchema;
-  /** @deprecated use `PromptsDeleteRequest$Outbound` instead. */
-  export type Outbound = PromptsDeleteRequest$Outbound;
-}
-
 export function promptsDeleteRequestToJSON(
   promptsDeleteRequest: PromptsDeleteRequest,
 ): string {
@@ -67,7 +53,6 @@ export function promptsDeleteRequestToJSON(
     PromptsDeleteRequest$outboundSchema.parse(promptsDeleteRequest),
   );
 }
-
 export function promptsDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PromptsDeleteRequest, SDKValidationError> {

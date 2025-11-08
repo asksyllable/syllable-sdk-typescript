@@ -24,7 +24,6 @@ export const GenerateSessionRecordingUrlsRequest$inboundSchema: z.ZodType<
     "session_id": "sessionId",
   });
 });
-
 /** @internal */
 export type GenerateSessionRecordingUrlsRequest$Outbound = {
   session_id: string;
@@ -43,21 +42,6 @@ export const GenerateSessionRecordingUrlsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GenerateSessionRecordingUrlsRequest$ {
-  /** @deprecated use `GenerateSessionRecordingUrlsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GenerateSessionRecordingUrlsRequest$inboundSchema;
-  /** @deprecated use `GenerateSessionRecordingUrlsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GenerateSessionRecordingUrlsRequest$outboundSchema;
-  /** @deprecated use `GenerateSessionRecordingUrlsRequest$Outbound` instead. */
-  export type Outbound = GenerateSessionRecordingUrlsRequest$Outbound;
-}
-
 export function generateSessionRecordingUrlsRequestToJSON(
   generateSessionRecordingUrlsRequest: GenerateSessionRecordingUrlsRequest,
 ): string {
@@ -67,7 +51,6 @@ export function generateSessionRecordingUrlsRequestToJSON(
     ),
   );
 }
-
 export function generateSessionRecordingUrlsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GenerateSessionRecordingUrlsRequest, SDKValidationError> {

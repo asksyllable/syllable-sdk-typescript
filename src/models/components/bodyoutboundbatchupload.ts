@@ -31,7 +31,6 @@ export const BodyOutboundBatchUploadFile$inboundSchema: z.ZodType<
     z.instanceof(Uint8Array),
   ]),
 });
-
 /** @internal */
 export type BodyOutboundBatchUploadFile$Outbound = {
   fileName: string;
@@ -53,19 +52,6 @@ export const BodyOutboundBatchUploadFile$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyOutboundBatchUploadFile$ {
-  /** @deprecated use `BodyOutboundBatchUploadFile$inboundSchema` instead. */
-  export const inboundSchema = BodyOutboundBatchUploadFile$inboundSchema;
-  /** @deprecated use `BodyOutboundBatchUploadFile$outboundSchema` instead. */
-  export const outboundSchema = BodyOutboundBatchUploadFile$outboundSchema;
-  /** @deprecated use `BodyOutboundBatchUploadFile$Outbound` instead. */
-  export type Outbound = BodyOutboundBatchUploadFile$Outbound;
-}
-
 export function bodyOutboundBatchUploadFileToJSON(
   bodyOutboundBatchUploadFile: BodyOutboundBatchUploadFile,
 ): string {
@@ -75,7 +61,6 @@ export function bodyOutboundBatchUploadFileToJSON(
     ),
   );
 }
-
 export function bodyOutboundBatchUploadFileFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyOutboundBatchUploadFile, SDKValidationError> {
@@ -94,7 +79,6 @@ export const BodyOutboundBatchUpload$inboundSchema: z.ZodType<
 > = z.object({
   file: z.lazy(() => BodyOutboundBatchUploadFile$inboundSchema).optional(),
 });
-
 /** @internal */
 export type BodyOutboundBatchUpload$Outbound = {
   file?: BodyOutboundBatchUploadFile$Outbound | Blob | undefined;
@@ -111,19 +95,6 @@ export const BodyOutboundBatchUpload$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyOutboundBatchUpload$ {
-  /** @deprecated use `BodyOutboundBatchUpload$inboundSchema` instead. */
-  export const inboundSchema = BodyOutboundBatchUpload$inboundSchema;
-  /** @deprecated use `BodyOutboundBatchUpload$outboundSchema` instead. */
-  export const outboundSchema = BodyOutboundBatchUpload$outboundSchema;
-  /** @deprecated use `BodyOutboundBatchUpload$Outbound` instead. */
-  export type Outbound = BodyOutboundBatchUpload$Outbound;
-}
-
 export function bodyOutboundBatchUploadToJSON(
   bodyOutboundBatchUpload: BodyOutboundBatchUpload,
 ): string {
@@ -131,7 +102,6 @@ export function bodyOutboundBatchUploadToJSON(
     BodyOutboundBatchUpload$outboundSchema.parse(bodyOutboundBatchUpload),
   );
 }
-
 export function bodyOutboundBatchUploadFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyOutboundBatchUpload, SDKValidationError> {

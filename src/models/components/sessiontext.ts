@@ -40,7 +40,6 @@ export const SessionText$inboundSchema: z.ZodType<
   source: z.nullable(z.string()).optional(),
   text: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type SessionText$Outbound = {
   timestamp: string;
@@ -61,23 +60,9 @@ export const SessionText$outboundSchema: z.ZodType<
   text: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionText$ {
-  /** @deprecated use `SessionText$inboundSchema` instead. */
-  export const inboundSchema = SessionText$inboundSchema;
-  /** @deprecated use `SessionText$outboundSchema` instead. */
-  export const outboundSchema = SessionText$outboundSchema;
-  /** @deprecated use `SessionText$Outbound` instead. */
-  export type Outbound = SessionText$Outbound;
-}
-
 export function sessionTextToJSON(sessionText: SessionText): string {
   return JSON.stringify(SessionText$outboundSchema.parse(sessionText));
 }
-
 export function sessionTextFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionText, SDKValidationError> {

@@ -63,7 +63,6 @@ export const VoiceGroupUpdateRequest$inboundSchema: z.ZodType<
     "edit_comments": "editComments",
   });
 });
-
 /** @internal */
 export type VoiceGroupUpdateRequest$Outbound = {
   name: string;
@@ -94,19 +93,6 @@ export const VoiceGroupUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceGroupUpdateRequest$ {
-  /** @deprecated use `VoiceGroupUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = VoiceGroupUpdateRequest$inboundSchema;
-  /** @deprecated use `VoiceGroupUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = VoiceGroupUpdateRequest$outboundSchema;
-  /** @deprecated use `VoiceGroupUpdateRequest$Outbound` instead. */
-  export type Outbound = VoiceGroupUpdateRequest$Outbound;
-}
-
 export function voiceGroupUpdateRequestToJSON(
   voiceGroupUpdateRequest: VoiceGroupUpdateRequest,
 ): string {
@@ -114,7 +100,6 @@ export function voiceGroupUpdateRequestToJSON(
     VoiceGroupUpdateRequest$outboundSchema.parse(voiceGroupUpdateRequest),
   );
 }
-
 export function voiceGroupUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<VoiceGroupUpdateRequest, SDKValidationError> {

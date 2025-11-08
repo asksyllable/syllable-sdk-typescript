@@ -46,7 +46,6 @@ export const ToolCreateRequest$inboundSchema: z.ZodType<
     "service_id": "serviceId",
   });
 });
-
 /** @internal */
 export type ToolCreateRequest$Outbound = {
   name: string;
@@ -69,19 +68,6 @@ export const ToolCreateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolCreateRequest$ {
-  /** @deprecated use `ToolCreateRequest$inboundSchema` instead. */
-  export const inboundSchema = ToolCreateRequest$inboundSchema;
-  /** @deprecated use `ToolCreateRequest$outboundSchema` instead. */
-  export const outboundSchema = ToolCreateRequest$outboundSchema;
-  /** @deprecated use `ToolCreateRequest$Outbound` instead. */
-  export type Outbound = ToolCreateRequest$Outbound;
-}
-
 export function toolCreateRequestToJSON(
   toolCreateRequest: ToolCreateRequest,
 ): string {
@@ -89,7 +75,6 @@ export function toolCreateRequestToJSON(
     ToolCreateRequest$outboundSchema.parse(toolCreateRequest),
   );
 }
-
 export function toolCreateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolCreateRequest, SDKValidationError> {

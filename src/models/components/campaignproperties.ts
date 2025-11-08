@@ -25,19 +25,7 @@ export type CampaignProperties = ClosedEnum<typeof CampaignProperties>;
 export const CampaignProperties$inboundSchema: z.ZodNativeEnum<
   typeof CampaignProperties
 > = z.nativeEnum(CampaignProperties);
-
 /** @internal */
 export const CampaignProperties$outboundSchema: z.ZodNativeEnum<
   typeof CampaignProperties
 > = CampaignProperties$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CampaignProperties$ {
-  /** @deprecated use `CampaignProperties$inboundSchema` instead. */
-  export const inboundSchema = CampaignProperties$inboundSchema;
-  /** @deprecated use `CampaignProperties$outboundSchema` instead. */
-  export const outboundSchema = CampaignProperties$outboundSchema;
-}

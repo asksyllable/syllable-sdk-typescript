@@ -112,7 +112,6 @@ export const ToolDetailResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type ToolDetailResponse$Outbound = {
   name: string;
@@ -157,19 +156,6 @@ export const ToolDetailResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolDetailResponse$ {
-  /** @deprecated use `ToolDetailResponse$inboundSchema` instead. */
-  export const inboundSchema = ToolDetailResponse$inboundSchema;
-  /** @deprecated use `ToolDetailResponse$outboundSchema` instead. */
-  export const outboundSchema = ToolDetailResponse$outboundSchema;
-  /** @deprecated use `ToolDetailResponse$Outbound` instead. */
-  export type Outbound = ToolDetailResponse$Outbound;
-}
-
 export function toolDetailResponseToJSON(
   toolDetailResponse: ToolDetailResponse,
 ): string {
@@ -177,7 +163,6 @@ export function toolDetailResponseToJSON(
     ToolDetailResponse$outboundSchema.parse(toolDetailResponse),
   );
 }
-
 export function toolDetailResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolDetailResponse, SDKValidationError> {

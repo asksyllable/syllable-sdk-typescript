@@ -27,7 +27,6 @@ export const BodyOrganizationsDelete$inboundSchema: z.ZodType<
     "delete_comments": "deleteComments",
   });
 });
-
 /** @internal */
 export type BodyOrganizationsDelete$Outbound = {
   delete_comments?: string | null | undefined;
@@ -46,19 +45,6 @@ export const BodyOrganizationsDelete$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BodyOrganizationsDelete$ {
-  /** @deprecated use `BodyOrganizationsDelete$inboundSchema` instead. */
-  export const inboundSchema = BodyOrganizationsDelete$inboundSchema;
-  /** @deprecated use `BodyOrganizationsDelete$outboundSchema` instead. */
-  export const outboundSchema = BodyOrganizationsDelete$outboundSchema;
-  /** @deprecated use `BodyOrganizationsDelete$Outbound` instead. */
-  export type Outbound = BodyOrganizationsDelete$Outbound;
-}
-
 export function bodyOrganizationsDeleteToJSON(
   bodyOrganizationsDelete: BodyOrganizationsDelete,
 ): string {
@@ -66,7 +52,6 @@ export function bodyOrganizationsDeleteToJSON(
     BodyOrganizationsDelete$outboundSchema.parse(bodyOrganizationsDelete),
   );
 }
-
 export function bodyOrganizationsDeleteFromJSON(
   jsonString: string,
 ): SafeParseResult<BodyOrganizationsDelete, SDKValidationError> {

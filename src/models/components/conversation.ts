@@ -110,7 +110,6 @@ export const Conversation$inboundSchema: z.ZodType<
     "is_legacy": "isLegacy",
   });
 });
-
 /** @internal */
 export type Conversation$Outbound = {
   timestamp: string;
@@ -167,23 +166,9 @@ export const Conversation$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Conversation$ {
-  /** @deprecated use `Conversation$inboundSchema` instead. */
-  export const inboundSchema = Conversation$inboundSchema;
-  /** @deprecated use `Conversation$outboundSchema` instead. */
-  export const outboundSchema = Conversation$outboundSchema;
-  /** @deprecated use `Conversation$Outbound` instead. */
-  export type Outbound = Conversation$Outbound;
-}
-
 export function conversationToJSON(conversation: Conversation): string {
   return JSON.stringify(Conversation$outboundSchema.parse(conversation));
 }
-
 export function conversationFromJSON(
   jsonString: string,
 ): SafeParseResult<Conversation, SDKValidationError> {

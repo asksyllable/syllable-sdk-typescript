@@ -74,7 +74,6 @@ export const TelephonyConfigurations$inboundSchema: z.ZodType<
     "async_enabled": "asyncEnabled",
   });
 });
-
 /** @internal */
 export type TelephonyConfigurations$Outbound = {
   pre_input_timeout?: number | null | undefined;
@@ -116,19 +115,6 @@ export const TelephonyConfigurations$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TelephonyConfigurations$ {
-  /** @deprecated use `TelephonyConfigurations$inboundSchema` instead. */
-  export const inboundSchema = TelephonyConfigurations$inboundSchema;
-  /** @deprecated use `TelephonyConfigurations$outboundSchema` instead. */
-  export const outboundSchema = TelephonyConfigurations$outboundSchema;
-  /** @deprecated use `TelephonyConfigurations$Outbound` instead. */
-  export type Outbound = TelephonyConfigurations$Outbound;
-}
-
 export function telephonyConfigurationsToJSON(
   telephonyConfigurations: TelephonyConfigurations,
 ): string {
@@ -136,7 +122,6 @@ export function telephonyConfigurationsToJSON(
     TelephonyConfigurations$outboundSchema.parse(telephonyConfigurations),
   );
 }
-
 export function telephonyConfigurationsFromJSON(
   jsonString: string,
 ): SafeParseResult<TelephonyConfigurations, SDKValidationError> {

@@ -81,7 +81,6 @@ export const ServiceResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type ServiceResponse$Outbound = {
   id: number;
@@ -120,25 +119,11 @@ export const ServiceResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ServiceResponse$ {
-  /** @deprecated use `ServiceResponse$inboundSchema` instead. */
-  export const inboundSchema = ServiceResponse$inboundSchema;
-  /** @deprecated use `ServiceResponse$outboundSchema` instead. */
-  export const outboundSchema = ServiceResponse$outboundSchema;
-  /** @deprecated use `ServiceResponse$Outbound` instead. */
-  export type Outbound = ServiceResponse$Outbound;
-}
-
 export function serviceResponseToJSON(
   serviceResponse: ServiceResponse,
 ): string {
   return JSON.stringify(ServiceResponse$outboundSchema.parse(serviceResponse));
 }
-
 export function serviceResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ServiceResponse, SDKValidationError> {

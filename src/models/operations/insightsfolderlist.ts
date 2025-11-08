@@ -77,7 +77,6 @@ export const InsightsFolderListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type InsightsFolderListRequest$Outbound = {
   page?: number | null | undefined;
@@ -122,19 +121,6 @@ export const InsightsFolderListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsFolderListRequest$ {
-  /** @deprecated use `InsightsFolderListRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsFolderListRequest$inboundSchema;
-  /** @deprecated use `InsightsFolderListRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsFolderListRequest$outboundSchema;
-  /** @deprecated use `InsightsFolderListRequest$Outbound` instead. */
-  export type Outbound = InsightsFolderListRequest$Outbound;
-}
-
 export function insightsFolderListRequestToJSON(
   insightsFolderListRequest: InsightsFolderListRequest,
 ): string {
@@ -142,7 +128,6 @@ export function insightsFolderListRequestToJSON(
     InsightsFolderListRequest$outboundSchema.parse(insightsFolderListRequest),
   );
 }
-
 export function insightsFolderListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsFolderListRequest, SDKValidationError> {

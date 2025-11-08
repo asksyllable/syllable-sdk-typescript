@@ -29,7 +29,6 @@ export const VoiceDisplayInfo$inboundSchema: z.ZodType<
     "display_name": "displayName",
   });
 });
-
 /** @internal */
 export type VoiceDisplayInfo$Outbound = {
   display_name: string;
@@ -50,19 +49,6 @@ export const VoiceDisplayInfo$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceDisplayInfo$ {
-  /** @deprecated use `VoiceDisplayInfo$inboundSchema` instead. */
-  export const inboundSchema = VoiceDisplayInfo$inboundSchema;
-  /** @deprecated use `VoiceDisplayInfo$outboundSchema` instead. */
-  export const outboundSchema = VoiceDisplayInfo$outboundSchema;
-  /** @deprecated use `VoiceDisplayInfo$Outbound` instead. */
-  export type Outbound = VoiceDisplayInfo$Outbound;
-}
-
 export function voiceDisplayInfoToJSON(
   voiceDisplayInfo: VoiceDisplayInfo,
 ): string {
@@ -70,7 +56,6 @@ export function voiceDisplayInfoToJSON(
     VoiceDisplayInfo$outboundSchema.parse(voiceDisplayInfo),
   );
 }
-
 export function voiceDisplayInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<VoiceDisplayInfo, SDKValidationError> {

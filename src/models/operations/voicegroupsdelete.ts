@@ -26,7 +26,6 @@ export const VoiceGroupsDeleteRequest$inboundSchema: z.ZodType<
     "voice_group_id": "voiceGroupId",
   });
 });
-
 /** @internal */
 export type VoiceGroupsDeleteRequest$Outbound = {
   voice_group_id: number;
@@ -47,19 +46,6 @@ export const VoiceGroupsDeleteRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VoiceGroupsDeleteRequest$ {
-  /** @deprecated use `VoiceGroupsDeleteRequest$inboundSchema` instead. */
-  export const inboundSchema = VoiceGroupsDeleteRequest$inboundSchema;
-  /** @deprecated use `VoiceGroupsDeleteRequest$outboundSchema` instead. */
-  export const outboundSchema = VoiceGroupsDeleteRequest$outboundSchema;
-  /** @deprecated use `VoiceGroupsDeleteRequest$Outbound` instead. */
-  export type Outbound = VoiceGroupsDeleteRequest$Outbound;
-}
-
 export function voiceGroupsDeleteRequestToJSON(
   voiceGroupsDeleteRequest: VoiceGroupsDeleteRequest,
 ): string {
@@ -67,7 +53,6 @@ export function voiceGroupsDeleteRequestToJSON(
     VoiceGroupsDeleteRequest$outboundSchema.parse(voiceGroupsDeleteRequest),
   );
 }
-
 export function voiceGroupsDeleteRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<VoiceGroupsDeleteRequest, SDKValidationError> {

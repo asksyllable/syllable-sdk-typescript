@@ -75,7 +75,6 @@ export const PromptsListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type PromptsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -117,19 +116,6 @@ export const PromptsListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptsListRequest$ {
-  /** @deprecated use `PromptsListRequest$inboundSchema` instead. */
-  export const inboundSchema = PromptsListRequest$inboundSchema;
-  /** @deprecated use `PromptsListRequest$outboundSchema` instead. */
-  export const outboundSchema = PromptsListRequest$outboundSchema;
-  /** @deprecated use `PromptsListRequest$Outbound` instead. */
-  export type Outbound = PromptsListRequest$Outbound;
-}
-
 export function promptsListRequestToJSON(
   promptsListRequest: PromptsListRequest,
 ): string {
@@ -137,7 +123,6 @@ export function promptsListRequestToJSON(
     PromptsListRequest$outboundSchema.parse(promptsListRequest),
   );
 }
-
 export function promptsListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PromptsListRequest, SDKValidationError> {

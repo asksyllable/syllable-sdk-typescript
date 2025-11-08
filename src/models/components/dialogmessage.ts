@@ -22,7 +22,6 @@ export const DialogMessage$inboundSchema: z.ZodType<
 > = z.object({
   text: z.string(),
 });
-
 /** @internal */
 export type DialogMessage$Outbound = {
   text: string;
@@ -37,23 +36,9 @@ export const DialogMessage$outboundSchema: z.ZodType<
   text: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DialogMessage$ {
-  /** @deprecated use `DialogMessage$inboundSchema` instead. */
-  export const inboundSchema = DialogMessage$inboundSchema;
-  /** @deprecated use `DialogMessage$outboundSchema` instead. */
-  export const outboundSchema = DialogMessage$outboundSchema;
-  /** @deprecated use `DialogMessage$Outbound` instead. */
-  export type Outbound = DialogMessage$Outbound;
-}
-
 export function dialogMessageToJSON(dialogMessage: DialogMessage): string {
   return JSON.stringify(DialogMessage$outboundSchema.parse(dialogMessage));
 }
-
 export function dialogMessageFromJSON(
   jsonString: string,
 ): SafeParseResult<DialogMessage, SDKValidationError> {

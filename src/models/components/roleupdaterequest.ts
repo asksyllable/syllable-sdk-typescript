@@ -50,7 +50,6 @@ export const RoleUpdateRequest$inboundSchema: z.ZodType<
     "last_updated_comments": "lastUpdatedComments",
   });
 });
-
 /** @internal */
 export type RoleUpdateRequest$Outbound = {
   name: string;
@@ -77,19 +76,6 @@ export const RoleUpdateRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RoleUpdateRequest$ {
-  /** @deprecated use `RoleUpdateRequest$inboundSchema` instead. */
-  export const inboundSchema = RoleUpdateRequest$inboundSchema;
-  /** @deprecated use `RoleUpdateRequest$outboundSchema` instead. */
-  export const outboundSchema = RoleUpdateRequest$outboundSchema;
-  /** @deprecated use `RoleUpdateRequest$Outbound` instead. */
-  export type Outbound = RoleUpdateRequest$Outbound;
-}
-
 export function roleUpdateRequestToJSON(
   roleUpdateRequest: RoleUpdateRequest,
 ): string {
@@ -97,7 +83,6 @@ export function roleUpdateRequestToJSON(
     RoleUpdateRequest$outboundSchema.parse(roleUpdateRequest),
   );
 }
-
 export function roleUpdateRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RoleUpdateRequest, SDKValidationError> {

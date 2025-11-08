@@ -77,7 +77,6 @@ export const InsightToolListRequest$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
   });
 });
-
 /** @internal */
 export type InsightToolListRequest$Outbound = {
   page?: number | null | undefined;
@@ -121,19 +120,6 @@ export const InsightToolListRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightToolListRequest$ {
-  /** @deprecated use `InsightToolListRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightToolListRequest$inboundSchema;
-  /** @deprecated use `InsightToolListRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightToolListRequest$outboundSchema;
-  /** @deprecated use `InsightToolListRequest$Outbound` instead. */
-  export type Outbound = InsightToolListRequest$Outbound;
-}
-
 export function insightToolListRequestToJSON(
   insightToolListRequest: InsightToolListRequest,
 ): string {
@@ -141,7 +127,6 @@ export function insightToolListRequestToJSON(
     InsightToolListRequest$outboundSchema.parse(insightToolListRequest),
   );
 }
-
 export function insightToolListRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightToolListRequest, SDKValidationError> {

@@ -98,7 +98,6 @@ export const DaoToolResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
   });
 });
-
 /** @internal */
 export type DaoToolResponse$Outbound = {
   name: string;
@@ -141,25 +140,11 @@ export const DaoToolResponse$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DaoToolResponse$ {
-  /** @deprecated use `DaoToolResponse$inboundSchema` instead. */
-  export const inboundSchema = DaoToolResponse$inboundSchema;
-  /** @deprecated use `DaoToolResponse$outboundSchema` instead. */
-  export const outboundSchema = DaoToolResponse$outboundSchema;
-  /** @deprecated use `DaoToolResponse$Outbound` instead. */
-  export type Outbound = DaoToolResponse$Outbound;
-}
-
 export function daoToolResponseToJSON(
   daoToolResponse: DaoToolResponse,
 ): string {
   return JSON.stringify(DaoToolResponse$outboundSchema.parse(daoToolResponse));
 }
-
 export function daoToolResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DaoToolResponse, SDKValidationError> {
