@@ -264,8 +264,8 @@ run();
 #### [channels.twilio](docs/sdks/twilio/README.md)
 
 * [getById](docs/sdks/twilio/README.md#getbyid) - Get Twilio Channel By Id
-* [update](docs/sdks/twilio/README.md#update) - Update Twilio Channel
-* [create](docs/sdks/twilio/README.md#create) - Create Twilio Channel
+* [~~update~~](docs/sdks/twilio/README.md#update) - Update Twilio Channel :warning: **Deprecated**
+* [~~create~~](docs/sdks/twilio/README.md#create) - Create Twilio Channel :warning: **Deprecated**
 
 #### [channels.twilio.numbers](docs/sdks/numbers/README.md)
 
@@ -543,12 +543,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`channelsTargetsGetById`](docs/sdks/targets/README.md#getbyid) - Get A Channel Target
 - [`channelsTargetsList`](docs/sdks/targets/README.md#list) - Get Channel Targets
 - [`channelsTargetsUpdate`](docs/sdks/targets/README.md#update) - Edit Channel Target
-- [`channelsTwilioCreate`](docs/sdks/twilio/README.md#create) - Create Twilio Channel
 - [`channelsTwilioGetById`](docs/sdks/twilio/README.md#getbyid) - Get Twilio Channel By Id
 - [`channelsTwilioNumbersAdd`](docs/sdks/numbers/README.md#add) - Add Twilio Number
 - [`channelsTwilioNumbersList`](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
 - [`channelsTwilioNumbersUpdate`](docs/sdks/numbers/README.md#update) - Update Twilio Number
-- [`channelsTwilioUpdate`](docs/sdks/twilio/README.md#update) - Update Twilio Channel
 - [`channelsUpdate`](docs/sdks/channels/README.md#update) - Update Channel
 - [`conversationsList`](docs/sdks/conversations/README.md#list) - Conversations List
 - [`customMessagesCreate`](docs/sdks/custommessages/README.md#create) - Create Custom Message
@@ -684,6 +682,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`voiceGroupsList`](docs/sdks/voicegroups/README.md#list) - List Voice Groups
 - [`voiceGroupsUpdate`](docs/sdks/voicegroups/README.md#update) - Update Voice Group
 - [`voiceGroupsVoiceGroupsCreateVoiceSample`](docs/sdks/voicegroups/README.md#voicegroupscreatevoicesample) - Create Voice Sample
+- ~~[`channelsTwilioCreate`](docs/sdks/twilio/README.md#create)~~ - Create Twilio Channel :warning: **Deprecated**
+- ~~[`channelsTwilioUpdate`](docs/sdks/twilio/README.md#update)~~ - Update Twilio Channel :warning: **Deprecated**
 - ~~[`dashboardsPostSessionEventsDashboard`](docs/sdks/dashboards/README.md#postsessioneventsdashboard)~~ - Post Session Events :warning: **Deprecated**
 - ~~[`dashboardsPostSessionsDashboard`](docs/sdks/dashboards/README.md#postsessionsdashboard)~~ - Post Sessions :warning: **Deprecated**
 - ~~[`dashboardsPostSessionSummaryDashboard`](docs/sdks/dashboards/README.md#postsessionsummarydashboard)~~ - Post Session Summary :warning: **Deprecated**
