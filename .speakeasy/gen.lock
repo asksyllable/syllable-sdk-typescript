@@ -3,10 +3,10 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: 8b19e3363529310db340190b5de2d490
   docVersion: 0.0.2
-  speakeasyVersion: 1.653.0
-  generationVersion: 2.748.0
-  releaseVersion: 1.0.10-rc.4
-  configChecksum: e5e77c022b29399d8c46b3d80aebfa4f
+  speakeasyVersion: 1.653.2
+  generationVersion: 2.748.4
+  releaseVersion: 1.0.10
+  configChecksum: d3ada36ebfc1018cf638d0e2e697fd62
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2844,4 +2844,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.channels.list()`:  `response.items.[].config.telephony.asyncEnabled` **Added**\n* `syllablesdk.channels.create()`: \n  *  `request.config.telephony.asyncEnabled` **Added**\n  *  `response.config.telephony.asyncEnabled` **Added**\n* `syllablesdk.channels.update()`: \n  *  `request.config.telephony.asyncEnabled` **Added**\n  *  `response.config.telephony.asyncEnabled` **Added**\n* `syllablesdk.channels.twilio.getById()`:  `response.config.telephony.asyncEnabled` **Added**\n* `syllablesdk.channels.twilio.update()`: **Deprecated**\n* `syllablesdk.channels.twilio.update()`:  `response.config.telephony.asyncEnabled` **Added**\n* `syllablesdk.channels.twilio.create()`: **Deprecated**\n* `syllablesdk.channels.twilio.create()`:  `response.config.telephony.asyncEnabled` **Added**\n"
