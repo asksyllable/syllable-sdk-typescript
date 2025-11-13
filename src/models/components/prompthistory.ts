@@ -65,6 +65,10 @@ export type PromptHistory = {
    */
   linkedTools?: Array<PromptHistoryLinkedTool> | undefined;
   /**
+   * Session end tool that was configured on this version of the prompt, if any
+   */
+  sessionEndTool?: PromptHistoryLinkedTool | null | undefined;
+  /**
    * Whether this version of the prompt was created before history of tool-prompt linking was tracked
    */
   isPreEnhancements: boolean;
@@ -86,6 +90,8 @@ export const PromptHistory$inboundSchema: z.ZodType<
   comments: z.nullable(z.string()).optional(),
   user_email: z.string(),
   linked_tools: z.array(PromptHistoryLinkedTool$inboundSchema).optional(),
+  session_end_tool: z.nullable(PromptHistoryLinkedTool$inboundSchema)
+    .optional(),
   is_pre_enhancements: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
@@ -97,6 +103,7 @@ export const PromptHistory$inboundSchema: z.ZodType<
     "llm_config": "llmConfig",
     "user_email": "userEmail",
     "linked_tools": "linkedTools",
+    "session_end_tool": "sessionEndTool",
     "is_pre_enhancements": "isPreEnhancements",
   });
 });
@@ -112,6 +119,7 @@ export type PromptHistory$Outbound = {
   comments?: string | null | undefined;
   user_email: string;
   linked_tools?: Array<PromptHistoryLinkedTool$Outbound> | undefined;
+  session_end_tool?: PromptHistoryLinkedTool$Outbound | null | undefined;
   is_pre_enhancements: boolean;
 };
 
@@ -131,6 +139,7 @@ export const PromptHistory$outboundSchema: z.ZodType<
   comments: z.nullable(z.string()).optional(),
   userEmail: z.string(),
   linkedTools: z.array(PromptHistoryLinkedTool$outboundSchema).optional(),
+  sessionEndTool: z.nullable(PromptHistoryLinkedTool$outboundSchema).optional(),
   isPreEnhancements: z.boolean(),
 }).transform((v) => {
   return remap$(v, {
@@ -142,6 +151,7 @@ export const PromptHistory$outboundSchema: z.ZodType<
     llmConfig: "llm_config",
     userEmail: "user_email",
     linkedTools: "linked_tools",
+    sessionEndTool: "session_end_tool",
     isPreEnhancements: "is_pre_enhancements",
   });
 });
