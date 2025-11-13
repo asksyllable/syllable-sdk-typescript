@@ -32,6 +32,12 @@ let value: PromptHistory = {
       deleted: false,
     },
   ],
+  sessionEndTool: {
+    toolId: 1,
+    currentToolName: "hangup",
+    outOfDate: false,
+    deleted: false,
+  },
   isPreEnhancements: true,
 };
 ```
@@ -50,4 +56,5 @@ let value: PromptHistory = {
 | `comments`                                                                                          | *string*                                                                                            | :heavy_minus_sign:                                                                                  | Comments describing the change that resulted in this version                                        | Updated prompt text to include requirement to not answer questions that aren't about weather.       |
 | `userEmail`                                                                                         | *string*                                                                                            | :heavy_check_mark:                                                                                  | Email address of the user who made the change that resulted in this version                         | user@email.com                                                                                      |
 | `linkedTools`                                                                                       | [components.PromptHistoryLinkedTool](../../models/components/prompthistorylinkedtool.md)[]          | :heavy_minus_sign:                                                                                  | Tools that were linked to this version of the prompt                                                |                                                                                                     |
+| `sessionEndTool`                                                                                    | [components.PromptHistoryLinkedTool](../../models/components/prompthistorylinkedtool.md)            | :heavy_minus_sign:                                                                                  | Session end tool that was configured on this version of the prompt, if any                          |                                                                                                     |
 | `isPreEnhancements`                                                                                 | *boolean*                                                                                           | :heavy_check_mark:                                                                                  | Whether this version of the prompt was created before history of tool-prompt linking was tracked    | true                                                                                                |
