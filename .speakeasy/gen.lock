@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.2
   speakeasyVersion: 1.656.2
   generationVersion: 2.753.6
-  releaseVersion: 1.0.11-rc.4
-  configChecksum: 8617c77f4e4ab688b5a58dbf3febf0dd
+  releaseVersion: 1.0.11
+  configChecksum: ace18b830ccdcb0c0485963b1863ff3b
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2844,6 +2844,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `syllablesdk.prompts.promptsHistory()`:  `response.[].sessionEndTool` **Added**
