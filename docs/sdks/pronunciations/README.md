@@ -207,7 +207,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.PronunciationsDownloadCsvResponse](../../models/operations/pronunciationsdownloadcsvresponse.md)\>**
+**Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
 
 ### Errors
 
