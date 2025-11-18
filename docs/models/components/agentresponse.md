@@ -186,6 +186,7 @@ let value: AgentResponse = {
         text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
+    config: {},
     id: 1,
     updatedAt: new Date("2024-01-01T00:00:00Z"),
     agentCount: 1,
