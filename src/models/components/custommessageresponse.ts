@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CustomMessageConfig,
+  CustomMessageConfig$inboundSchema,
+  CustomMessageConfig$Outbound,
+  CustomMessageConfig$outboundSchema,
+} from "./custommessageconfig.js";
+import {
   CustomMessageRule,
   CustomMessageRule$inboundSchema,
   CustomMessageRule$Outbound,
@@ -42,6 +48,10 @@ export type CustomMessageResponse = {
    */
   rules?: Array<CustomMessageRule> | undefined;
   /**
+   * Additional configuration options for the message.
+   */
+  config?: CustomMessageConfig | undefined;
+  /**
    * The ID of the custom message
    */
   id: number;
@@ -73,6 +83,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   text: z.string(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
+  config: CustomMessageConfig$inboundSchema.optional(),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   agent_count: z.nullable(z.number().int()).optional(),
@@ -91,6 +102,7 @@ export type CustomMessageResponse$Outbound = {
   text: string;
   label?: string | null | undefined;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
+  config?: CustomMessageConfig$Outbound | undefined;
   id: number;
   updated_at: string;
   agent_count?: number | null | undefined;
@@ -108,6 +120,7 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   text: z.string(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
+  config: CustomMessageConfig$outboundSchema.optional(),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   agentCount: z.nullable(z.number().int()).optional(),

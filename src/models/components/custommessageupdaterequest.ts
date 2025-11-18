@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CustomMessageConfig,
+  CustomMessageConfig$inboundSchema,
+  CustomMessageConfig$Outbound,
+  CustomMessageConfig$outboundSchema,
+} from "./custommessageconfig.js";
+import {
   CustomMessageRule,
   CustomMessageRule$inboundSchema,
   CustomMessageRule$Outbound,
@@ -34,6 +40,10 @@ export type CustomMessageUpdateRequest = {
    */
   rules?: Array<CustomMessageRule> | undefined;
   /**
+   * Additional configuration options for the message.
+   */
+  config?: CustomMessageConfig | undefined;
+  /**
    * The ID of the custom message
    */
   id: number;
@@ -53,6 +63,7 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
   text: z.string(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
+  config: CustomMessageConfig$inboundSchema.optional(),
   id: z.number().int(),
   type: z.string().default("greeting"),
 });
@@ -62,6 +73,7 @@ export type CustomMessageUpdateRequest$Outbound = {
   text: string;
   label?: string | null | undefined;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
+  config?: CustomMessageConfig$Outbound | undefined;
   id: number;
   type: string;
 };
@@ -76,6 +88,7 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
   text: z.string(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
+  config: CustomMessageConfig$outboundSchema.optional(),
   id: z.number().int(),
   type: z.string().default("greeting"),
 });

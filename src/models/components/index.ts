@@ -46,6 +46,7 @@ export * from "./communicationrequestresult.js";
 export * from "./conversation.js";
 export * from "./conversationproperties.js";
 export * from "./createtakeoutresponse.js";
+export * from "./custommessageconfig.js";
 export * from "./custommessagecreaterequest.js";
 export * from "./custommessageproperties.js";
 export * from "./custommessageresponse.js";
