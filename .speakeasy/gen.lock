@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.2
   speakeasyVersion: 1.658.2
   generationVersion: 2.755.9
-  releaseVersion: 1.0.12-rc.4
-  configChecksum: d5d79452f9015db2dd902645f2695dc3
+  releaseVersion: 1.0.12
+  configChecksum: f27809dfde02ffb6489f1180cc23c08e
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2844,4 +2844,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.agents.list()`:  `response.items.[].customMessage.config` **Added**\n* `syllablesdk.agents.create()`:  `response.custom_message.config` **Added**\n* `syllablesdk.agents.update()`:  `response.custom_message.config` **Added**\n* `syllablesdk.agents.getById()`:  `response.custom_message.config` **Added**\n* `syllablesdk.channels.targets.list()`:  `response.items.[].agent.customMessage.config` **Added**\n* `syllablesdk.channels.targets.create()`:  `response.agent.customMessage.config` **Added**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.customMessage.config` **Added**\n* `syllablesdk.channels.targets.update()`:  `response.agent.customMessage.config` **Added**\n* `syllablesdk.customMessages.list()`:  `response.items.[].config` **Added**\n* `syllablesdk.customMessages.create()`: \n  *  `request.config` **Added**\n  *  `response.config` **Added**\n* `syllablesdk.customMessages.update()`: \n  *  `request.config` **Added**\n  *  `response.config` **Added**\n* `syllablesdk.customMessages.getById()`:  `response.config` **Added**\n"
