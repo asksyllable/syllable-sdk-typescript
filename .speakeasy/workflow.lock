@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:2a96ec2bc3e9fff124a2e2d632507f2a91b655acede1bda0322e1607c2043e27
         tags:
             - latest
-            - speakeasy-sdk-regen-1763478059
+            - speakeasy-sdk-regen-1763516032
             - 0.0.2
 targets:
     syllable-sdk:
@@ -15,7 +15,7 @@ targets:
         sourceRevisionDigest: sha256:2568143751160f7b632a12f770d448abca8af825d3b210c02d7515e319aed617
         sourceBlobDigest: sha256:2a96ec2bc3e9fff124a2e2d632507f2a91b655acede1bda0322e1607c2043e27
         codeSamplesNamespace: code-samples-typescript-sdk-syllable-sdk-oas
-        codeSamplesRevisionDigest: sha256:ffb2085c75a33b5a013a988c7b4368f54a94bcb68e5d0fb209b1d6c3a3dadd1a
+        codeSamplesRevisionDigest: sha256:3d61fbf2a552a9af242013853acdc004c0f9850116ad2f0c0e0007fc44858273
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
