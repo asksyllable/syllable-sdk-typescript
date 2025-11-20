@@ -143,7 +143,6 @@ async function run() {
         text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
-    config: {},
   });
 
   console.log(result);
@@ -192,7 +191,6 @@ async function run() {
         text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
-    config: {},
   });
   if (res.ok) {
     const { value: result } = res;
@@ -265,7 +263,6 @@ async function run() {
         text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
-    config: {},
     id: 1,
   });
 
@@ -315,7 +312,6 @@ async function run() {
         text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
-    config: {},
     id: 1,
   });
   if (res.ok) {
