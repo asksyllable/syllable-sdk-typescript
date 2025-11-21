@@ -9,6 +9,12 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  Context,
+  Context$inboundSchema,
+  Context$Outbound,
+  Context$outboundSchema,
+} from "./context.js";
+import {
   InternalTool,
   InternalTool$inboundSchema,
   InternalTool$Outbound,
@@ -68,6 +74,10 @@ export type ToolDefinition = {
    * The configuration for an HTTP API call.
    */
   endpoint?: ToolHttpEndpoint | null | undefined;
+  /**
+   * The configuration for a context tool.
+   */
+  context?: Context | null | undefined;
   /**
    * The default values for the parameters of the function/tool call.
    */
@@ -134,6 +144,7 @@ export const ToolDefinition$inboundSchema: z.ZodType<
   type: z.nullable(Type$inboundSchema).optional(),
   tool: InternalTool$inboundSchema,
   endpoint: z.nullable(ToolHttpEndpoint$inboundSchema).optional(),
+  context: z.nullable(Context$inboundSchema).optional(),
   defaults: z.nullable(
     z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]),
   ).optional(),
@@ -151,6 +162,7 @@ export type ToolDefinition$Outbound = {
   type?: string | null | undefined;
   tool: InternalTool$Outbound;
   endpoint?: ToolHttpEndpoint$Outbound | null | undefined;
+  context?: Context$Outbound | null | undefined;
   defaults?:
     | any
     | { [k: string]: ToolParameterDefault$Outbound }
@@ -170,6 +182,7 @@ export const ToolDefinition$outboundSchema: z.ZodType<
   type: z.nullable(Type$outboundSchema).optional(),
   tool: InternalTool$outboundSchema,
   endpoint: z.nullable(ToolHttpEndpoint$outboundSchema).optional(),
+  context: z.nullable(Context$outboundSchema).optional(),
   defaults: z.nullable(
     z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]),
   ).optional(),
