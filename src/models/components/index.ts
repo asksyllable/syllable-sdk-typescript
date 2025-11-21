@@ -43,6 +43,8 @@ export * from "./communicationbatchinput.js";
 export * from "./communicationbatchupdate.js";
 export * from "./communicationrequest.js";
 export * from "./communicationrequestresult.js";
+export * from "./context.js";
+export * from "./contexttask.js";
 export * from "./conversation.js";
 export * from "./conversationproperties.js";
 export * from "./createtakeoutresponse.js";
