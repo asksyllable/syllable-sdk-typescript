@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: fb4b15ac33985c820aba7414611b3fc7
+  docChecksum: 0fe0eb4b29f819d8023719fbdd64950e
   docVersion: 0.0.2
   speakeasyVersion: 1.660.0
   generationVersion: 2.760.2
-  releaseVersion: 1.0.13-rc.5
-  configChecksum: ea43acff445c3b8075762331b256eaa3
+  releaseVersion: 1.0.13-rc.6
+  configChecksum: 7a6da8e154c7c72e0c59bf967246f7e6
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -2934,4 +2934,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.tools.create()`: \n  *  `request.definition.context.task` **Changed** **Breaking** :warning:\n  *  `response.definition.context.task` **Changed**\n* `syllablesdk.tools.update()`: \n  *  `request.definition.context.task` **Changed** **Breaking** :warning:\n  *  `response.definition.context.task` **Changed**\n* `syllablesdk.prompts.list()`:  `response.items.[].sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.prompts.create()`:  `response.session_end_tool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.list()`:  `response.items.[].agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.agents.list()`:  `response.items.[].prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.agents.getById()`:  `response.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.prompts.update()`:  `response.session_end_tool.definition.context.task` **Changed**\n* `syllablesdk.prompts.getById()`:  `response.session_end_tool.definition.context.task` **Changed**\n* `syllablesdk.tools.list()`:  `response.items.[].definition.context.task` **Changed**\n* `syllablesdk.agents.update()`:  `response.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.agents.create()`:  `response.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.tools.getByName()`:  `response.definition.context.task` **Changed**\n"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `syllablesdk.sessions.list()`:  `response.items.[].userTerminated` **Added**
+  * `syllablesdk.sessions.getById()`:  `response.user_terminated` **Added**

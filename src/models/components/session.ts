@@ -92,6 +92,10 @@ export type Session = {
    * Whether the session is a test session
    */
   isTest?: boolean | null | undefined;
+  /**
+   * Whether the voice session was ended by the recipient (outbound) / caller (inbound). False if the user was transferred or there was an error. Unset if the session was not a voice session.
+   */
+  userTerminated?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -119,6 +123,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     target: z.nullable(z.string()).optional(),
     is_legacy: z.nullable(z.boolean()).optional(),
     is_test: z.nullable(z.boolean()).optional(),
+    user_terminated: z.nullable(z.boolean()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "session_id": "sessionId",
@@ -137,6 +142,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "session_label_id": "sessionLabelId",
       "is_legacy": "isLegacy",
       "is_test": "isTest",
+      "user_terminated": "userTerminated",
     });
   });
 /** @internal */
@@ -161,6 +167,7 @@ export type Session$Outbound = {
   target?: string | null | undefined;
   is_legacy?: boolean | null | undefined;
   is_test?: boolean | null | undefined;
+  user_terminated?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -189,6 +196,7 @@ export const Session$outboundSchema: z.ZodType<
   target: z.nullable(z.string()).optional(),
   isLegacy: z.nullable(z.boolean()).optional(),
   isTest: z.nullable(z.boolean()).optional(),
+  userTerminated: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
@@ -207,6 +215,7 @@ export const Session$outboundSchema: z.ZodType<
     sessionLabelId: "session_label_id",
     isLegacy: "is_legacy",
     isTest: "is_test",
+    userTerminated: "user_terminated",
   });
 });
 
