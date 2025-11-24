@@ -1,19 +1,18 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 885ffbaf1aa9b5b0bef923646aeb5b95
+  docChecksum: fb4b15ac33985c820aba7414611b3fc7
   docVersion: 0.0.2
   speakeasyVersion: 1.660.0
   generationVersion: 2.760.2
-  releaseVersion: 1.0.13-rc.4
-  configChecksum: 7d7413cd4721404fff712e22a6e37dd7
+  releaseVersion: 1.0.13-rc.5
+  configChecksum: ea43acff445c3b8075762331b256eaa3
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
     core: 3.26.9
     defaultEnabledRetries: 0.1.0
@@ -61,6 +60,7 @@ generatedFiles:
   - docs/models/components/agentvoicevarname.md
   - docs/models/components/agentwaitsound.md
   - docs/models/components/attributes.md
+  - docs/models/components/autopopulate.md
   - docs/models/components/availabletarget.md
   - docs/models/components/availabletargetproperties.md
   - docs/models/components/batchdetails.md
@@ -69,6 +69,7 @@ generatedFiles:
   - docs/models/components/bodydirectorymemberbulkload.md
   - docs/models/components/bodydirectorymemberbulkloadfile.md
   - docs/models/components/bodyinsightsfolderuploadfile.md
+  - docs/models/components/bodyinsightsfolderuploadfilefile.md
   - docs/models/components/bodyorganizationscreate.md
   - docs/models/components/bodyorganizationscreatelogo.md
   - docs/models/components/bodyorganizationsdelete.md
@@ -78,7 +79,12 @@ generatedFiles:
   - docs/models/components/bodyoutboundbatchuploadfile.md
   - docs/models/components/bodypronunciationsuploadcsv.md
   - docs/models/components/bodypronunciationsuploadcsvfile.md
+  - docs/models/components/callaction.md
+  - docs/models/components/callactionif.md
+  - docs/models/components/callactionif1.md
   - docs/models/components/campaignproperties.md
+  - docs/models/components/caseexpression.md
+  - docs/models/components/celexpression.md
   - docs/models/components/channel.md
   - docs/models/components/channelconfigview.md
   - docs/models/components/channelproperties.md
@@ -92,8 +98,13 @@ generatedFiles:
   - docs/models/components/communicationbatchupdate.md
   - docs/models/components/communicationrequest.md
   - docs/models/components/communicationrequestresult.md
+  - docs/models/components/conditionaltext.md
+  - docs/models/components/conditionaltextif.md
+  - docs/models/components/conditionaltextif1.md
+  - docs/models/components/conditionalvalue.md
   - docs/models/components/context.md
-  - docs/models/components/contexttask.md
+  - docs/models/components/contexttaskmetadata.md
+  - docs/models/components/contexttoolinfo.md
   - docs/models/components/conversation.md
   - docs/models/components/conversationproperties.md
   - docs/models/components/createtakeoutresponse.md
@@ -126,16 +137,31 @@ generatedFiles:
   - docs/models/components/directorymemberproperties.md
   - docs/models/components/directorymembertestresponse.md
   - docs/models/components/directorymemberupdate.md
+  - docs/models/components/enter.md
   - docs/models/components/event.md
   - docs/models/components/eventproperties.md
+  - docs/models/components/eventtask.md
+  - docs/models/components/eventtaskevents.md
+  - docs/models/components/eventtaskeventsstart.md
+  - docs/models/components/expression.md
+  - docs/models/components/expression1.md
+  - docs/models/components/expressiontask.md
+  - docs/models/components/expressiontaskevents.md
   - docs/models/components/filet.md
   - docs/models/components/folderdetails.md
   - docs/models/components/folderstats.md
+  - docs/models/components/if.md
+  - docs/models/components/if1.md
   - docs/models/components/incidentcreaterequest.md
   - docs/models/components/incidentorganizationresponse.md
   - docs/models/components/incidentproperties.md
   - docs/models/components/incidentresponse.md
   - docs/models/components/incidentupdaterequest.md
+  - docs/models/components/incrementaction.md
+  - docs/models/components/incrementactionif.md
+  - docs/models/components/incrementactionif1.md
+  - docs/models/components/inputparameter.md
+  - docs/models/components/inputparametertype.md
   - docs/models/components/insights.md
   - docs/models/components/insightsfolder.md
   - docs/models/components/insightsfolderfilemove.md
@@ -158,7 +184,10 @@ generatedFiles:
   - docs/models/components/insightworkflowoutput.md
   - docs/models/components/insightworkflowproperties.md
   - docs/models/components/inspectlatencyresponse.md
+  - docs/models/components/instructions.md
   - docs/models/components/internaltool.md
+  - docs/models/components/jmespathexpression.md
+  - docs/models/components/jmespathexpressiontype.md
   - docs/models/components/jsonvalue.md
   - docs/models/components/languagecode.md
   - docs/models/components/languageconfig.md
@@ -198,11 +227,17 @@ generatedFiles:
   - docs/models/components/listresponsetoolresponse.md
   - docs/models/components/listresponseuserresponse.md
   - docs/models/components/listresponsevoicegroupresponse.md
+  - docs/models/components/loadtoolfromfiletask.md
   - docs/models/components/loc.md
   - docs/models/components/logintype.md
   - docs/models/components/logo.md
   - docs/models/components/matchtype.md
   - docs/models/components/metadata.md
+  - docs/models/components/next.md
+  - docs/models/components/nextstep.md
+  - docs/models/components/nextstepif.md
+  - docs/models/components/nextstepif1.md
+  - docs/models/components/one.md
   - docs/models/components/orderbydirection.md
   - docs/models/components/organizationchannelconfig.md
   - docs/models/components/organizationchannelcreaterequest.md
@@ -224,11 +259,18 @@ generatedFiles:
   - docs/models/components/pronunciationoverridesdictionary.md
   - docs/models/components/pronunciationscsvuploadresponse.md
   - docs/models/components/requeststatus.md
+  - docs/models/components/role.md
   - docs/models/components/rolecreaterequest.md
   - docs/models/components/roleproperties.md
   - docs/models/components/roleresponse.md
   - docs/models/components/roleupdaterequest.md
   - docs/models/components/samplerate.md
+  - docs/models/components/saveaction.md
+  - docs/models/components/saveactionif.md
+  - docs/models/components/saveactionif1.md
+  - docs/models/components/sayaction.md
+  - docs/models/components/sayactionif.md
+  - docs/models/components/sayactionif1.md
   - docs/models/components/security.md
   - docs/models/components/servicecreaterequest.md
   - docs/models/components/serviceproperties.md
@@ -246,14 +288,28 @@ generatedFiles:
   - docs/models/components/sessionsummaryresponse.md
   - docs/models/components/sessiontext.md
   - docs/models/components/sessiontranscriptionresponse.md
+  - docs/models/components/setvalueaction.md
+  - docs/models/components/setvalueactionif.md
+  - docs/models/components/setvalueactionif1.md
+  - docs/models/components/setvalueactionvaluefrom.md
+  - docs/models/components/setvalueactionvaluefrom1.md
+  - docs/models/components/start.md
   - docs/models/components/statictoolparameter.md
   - docs/models/components/statictoolparametertype.md
+  - docs/models/components/step.md
+  - docs/models/components/stepeventactions.md
+  - docs/models/components/stepeventactionsstart.md
+  - docs/models/components/stepeventactionssubmit.md
+  - docs/models/components/stepstask.md
+  - docs/models/components/steptools.md
+  - docs/models/components/submit.md
   - docs/models/components/summaryentry.md
   - docs/models/components/supportedllm.md
   - docs/models/components/takeoutrequeststatus.md
   - docs/models/components/takeoutstatusresponse.md
   - docs/models/components/targetmodes.md
   - docs/models/components/task.md
+  - docs/models/components/task1.md
   - docs/models/components/telephonyconfigurations.md
   - docs/models/components/testmessage.md
   - docs/models/components/testmessageresponse.md
@@ -286,6 +342,7 @@ generatedFiles:
   - docs/models/components/twilionumberupdaterequest.md
   - docs/models/components/twilionumberupdateresponse.md
   - docs/models/components/twiliophonenumber.md
+  - docs/models/components/two.md
   - docs/models/components/type.md
   - docs/models/components/useractivitystatus.md
   - docs/models/components/usercreaterequest.md
@@ -294,6 +351,11 @@ generatedFiles:
   - docs/models/components/userresponse.md
   - docs/models/components/userupdaterequest.md
   - docs/models/components/validationerror.md
+  - docs/models/components/valuefrom.md
+  - docs/models/components/valuefrom1.md
+  - docs/models/components/variable.md
+  - docs/models/components/variabletype.md
+  - docs/models/components/variablevaluefrom.md
   - docs/models/components/voicedisplayinfo.md
   - docs/models/components/voicegroupcreaterequest.md
   - docs/models/components/voicegroupproperties.md
@@ -822,7 +884,10 @@ generatedFiles:
   - src/models/components/bodyoutboundbatchdelete.ts
   - src/models/components/bodyoutboundbatchupload.ts
   - src/models/components/bodypronunciationsuploadcsv.ts
+  - src/models/components/callaction.ts
   - src/models/components/campaignproperties.ts
+  - src/models/components/caseexpression.ts
+  - src/models/components/celexpression.ts
   - src/models/components/channel.ts
   - src/models/components/channelconfigview.ts
   - src/models/components/channelproperties.ts
@@ -836,8 +901,11 @@ generatedFiles:
   - src/models/components/communicationbatchupdate.ts
   - src/models/components/communicationrequest.ts
   - src/models/components/communicationrequestresult.ts
+  - src/models/components/conditionaltext.ts
+  - src/models/components/conditionalvalue.ts
   - src/models/components/context.ts
-  - src/models/components/contexttask.ts
+  - src/models/components/contexttaskmetadata.ts
+  - src/models/components/contexttoolinfo.ts
   - src/models/components/conversation.ts
   - src/models/components/conversationproperties.ts
   - src/models/components/createtakeoutresponse.ts
@@ -871,13 +939,19 @@ generatedFiles:
   - src/models/components/directorymemberupdate.ts
   - src/models/components/event.ts
   - src/models/components/eventproperties.ts
+  - src/models/components/eventtask.ts
+  - src/models/components/eventtaskevents.ts
+  - src/models/components/expressiontask.ts
+  - src/models/components/expressiontaskevents.ts
   - src/models/components/folderdetails.ts
   - src/models/components/incidentcreaterequest.ts
   - src/models/components/incidentorganizationresponse.ts
   - src/models/components/incidentproperties.ts
   - src/models/components/incidentresponse.ts
   - src/models/components/incidentupdaterequest.ts
+  - src/models/components/incrementaction.ts
   - src/models/components/index.ts
+  - src/models/components/inputparameter.ts
   - src/models/components/insightsfolder.ts
   - src/models/components/insightsfolderfilemove.ts
   - src/models/components/insightsfolderinput.ts
@@ -900,6 +974,7 @@ generatedFiles:
   - src/models/components/insightworkflowproperties.ts
   - src/models/components/inspectlatencyresponse.ts
   - src/models/components/internaltool.ts
+  - src/models/components/jmespathexpression.ts
   - src/models/components/languagecode.ts
   - src/models/components/languageconfig.ts
   - src/models/components/languagegroupagentinfo.ts
@@ -938,8 +1013,10 @@ generatedFiles:
   - src/models/components/listresponsetoolresponse.ts
   - src/models/components/listresponseuserresponse.ts
   - src/models/components/listresponsevoicegroupresponse.ts
+  - src/models/components/loadtoolfromfiletask.ts
   - src/models/components/logintype.ts
   - src/models/components/matchtype.ts
+  - src/models/components/nextstep.ts
   - src/models/components/orderbydirection.ts
   - src/models/components/organizationchannelconfig.ts
   - src/models/components/organizationchannelcreaterequest.ts
@@ -965,6 +1042,8 @@ generatedFiles:
   - src/models/components/roleproperties.ts
   - src/models/components/roleresponse.ts
   - src/models/components/roleupdaterequest.ts
+  - src/models/components/saveaction.ts
+  - src/models/components/sayaction.ts
   - src/models/components/security.ts
   - src/models/components/servicecreaterequest.ts
   - src/models/components/serviceproperties.ts
@@ -982,8 +1061,13 @@ generatedFiles:
   - src/models/components/sessionsummaryresponse.ts
   - src/models/components/sessiontext.ts
   - src/models/components/sessiontranscriptionresponse.ts
+  - src/models/components/setvalueaction.ts
   - src/models/components/statictoolparameter.ts
   - src/models/components/statictoolparametertype.ts
+  - src/models/components/step.ts
+  - src/models/components/stepeventactions.ts
+  - src/models/components/stepstask.ts
+  - src/models/components/steptools.ts
   - src/models/components/summaryentry.ts
   - src/models/components/supportedllm.ts
   - src/models/components/takeoutrequeststatus.ts
@@ -1028,6 +1112,7 @@ generatedFiles:
   - src/models/components/userresponse.ts
   - src/models/components/userupdaterequest.ts
   - src/models/components/validationerror.ts
+  - src/models/components/variable.ts
   - src/models/components/voicedisplayinfo.ts
   - src/models/components/voicegroupcreaterequest.ts
   - src/models/components/voicegroupproperties.ts
@@ -1615,7 +1700,7 @@ examples:
         application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints"}
       responses:
         "200":
-          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_folder_get_by_id:
@@ -1625,7 +1710,7 @@ examples:
           folder_id: 982079
       responses:
         "200":
-          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com", "folder_stats": {"count": 10, "total_duration": "10:00:00", "total_size": "213MB"}}
+          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com", "folder_stats": {"count": 10, "total_duration": "10:00:00", "total_size": "213MB"}}
         "422":
           application/json: {}
   insights_folder_delete:
@@ -1647,7 +1732,7 @@ examples:
         application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints"}
       responses:
         "200":
-          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "customer-complaints", "label": "support", "description": "Call recordings related to customer complaints", "id": 182764, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_folder_upload_file:
@@ -1659,7 +1744,7 @@ examples:
           call_id: "<id>"
       responses:
         "200":
-          application/json: {"id": 182764, "folder_id": 182764, "filename": "customer-complaints.wav", "object_key": "UPLOAD_CALL_ID/recording/2025/04/22/15/00/ce7d212e-80b0-4f0b-9e01-74322f146611.mp3", "call_id": "12345", "agent_number": "1234567890", "customer_number": "0987654321", "duration": 305.5, "start_time": "2025-11-20T00:00:00Z", "end_time": "2025-11-21T00:00:00Z", "error_message": "File not found", "metadata": {"duration": "00:10:00", "size": "10MB"}, "created_at": "2025-11-20T00:00:00Z"}
+          application/json: {"id": 182764, "folder_id": 182764, "filename": "customer-complaints.wav", "object_key": "UPLOAD_CALL_ID/recording/2025/04/22/15/00/ce7d212e-80b0-4f0b-9e01-74322f146611.mp3", "call_id": "12345", "agent_number": "1234567890", "customer_number": "0987654321", "duration": 305.5, "start_time": "2025-11-23T00:00:00Z", "end_time": "2025-11-24T00:00:00Z", "error_message": "File not found", "metadata": {"duration": "00:10:00", "size": "10MB"}, "created_at": "2025-11-23T00:00:00Z"}
         "422":
           application/json: {}
   insights_upload_list_files:
@@ -1709,10 +1794,10 @@ examples:
   insights_workflow_create:
     speakeasy-default-insights-workflow-create:
       requestBody:
-        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-20T00:00:00Z", "end_datetime": "2025-11-21T00:00:00Z"}
+        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-23T00:00:00Z", "end_datetime": "2025-11-24T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-20T00:00:00Z", "end_datetime": "2025-11-21T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-23T00:00:00Z", "end_datetime": "2025-11-24T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_get_by_id:
@@ -1722,7 +1807,7 @@ examples:
           workflow_id: 788857
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-20T00:00:00Z", "end_datetime": "2025-11-21T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-23T00:00:00Z", "end_datetime": "2025-11-24T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_update:
@@ -1731,10 +1816,10 @@ examples:
         path:
           workflow_id: 673493
       requestBody:
-        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-20T00:00:00Z", "end_datetime": "2025-11-21T00:00:00Z"}
+        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-23T00:00:00Z", "end_datetime": "2025-11-24T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-20T00:00:00Z", "end_datetime": "2025-11-21T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-23T00:00:00Z", "end_datetime": "2025-11-24T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_delete:
@@ -1754,7 +1839,7 @@ examples:
           workflow_id: 248768
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-20T00:00:00Z", "end_datetime": "2025-11-21T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-23T00:00:00Z", "end_datetime": "2025-11-24T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_activate:
@@ -1766,7 +1851,7 @@ examples:
         application/json: {"is_acknowledged": true, "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-20T00:00:00Z", "end_datetime": "2025-11-21T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2025-11-23T00:00:00Z", "end_datetime": "2025-11-24T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_queue_work:
@@ -1799,7 +1884,7 @@ examples:
         application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1}
       responses:
         "200":
-          application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insight_tool_get_by_id:
@@ -1809,7 +1894,7 @@ examples:
           tool_id: "<id>"
       responses:
         "200":
-          application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_tool_delete:
@@ -1831,7 +1916,7 @@ examples:
         application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1}
       responses:
         "200":
-          application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": null, "created_at": "2025-11-20T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": null, "created_at": "2025-11-23T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_tool_test:
@@ -2377,10 +2462,10 @@ examples:
   outbound_batch_create:
     speakeasy-default-outbound-batch-create:
       requestBody:
-        application/json: {"batch_id": "20251121.9", "campaign_id": 1, "expires_on": "2025-11-22T00:00:00Z", "paused": true}
+        application/json: {"batch_id": "20251124.9", "campaign_id": 1, "expires_on": "2025-11-25T00:00:00Z", "paused": true}
       responses:
         "200":
-          application/json: {"batch_id": "20251121.9", "campaign_id": 1, "expires_on": "2025-11-22T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-11-21T00:00:00Z", "deleted_at": "2025-11-21T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
+          application/json: {"batch_id": "20251124.9", "campaign_id": 1, "expires_on": "2025-11-25T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-11-24T00:00:00Z", "deleted_at": "2025-11-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
         "422":
           application/json: {}
   outbound_batch_get_by_id:
@@ -2390,7 +2475,7 @@ examples:
           batch_id: "<id>"
       responses:
         "200":
-          application/json: {"batch_id": "20251121.9", "campaign_id": 1, "expires_on": "2025-11-22T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-11-21T00:00:00Z", "deleted_at": "2025-11-21T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format", "status_counts": {"CANCELED": 7, "CONNECTED": 100, "DUPLICATE": 5, "FAILED": 10, "INITIATED": 20, "PENDING": 10}}
+          application/json: {"batch_id": "20251124.9", "campaign_id": 1, "expires_on": "2025-11-25T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-11-24T00:00:00Z", "deleted_at": "2025-11-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format", "status_counts": {"CANCELED": 7, "CONNECTED": 100, "DUPLICATE": 5, "FAILED": 10, "INITIATED": 20, "PENDING": 10}}
         "422":
           application/json: {}
   outbound_batch_update:
@@ -2402,7 +2487,7 @@ examples:
         application/json: {"paused": true, "expires_on": "2027-01-01T06:00:00Z"}
       responses:
         "200":
-          application/json: {"batch_id": "20251121.9", "campaign_id": 1, "expires_on": "2025-11-22T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-11-21T00:00:00Z", "deleted_at": "2025-11-21T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
+          application/json: {"batch_id": "20251124.9", "campaign_id": 1, "expires_on": "2025-11-25T00:00:00Z", "paused": true, "upload_filename": "LATE_PAYMENTS_20250401.csv", "created_at": "2025-11-24T00:00:00Z", "deleted_at": "2025-11-24T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
         "422":
           application/json: {}
   outbound_batch_delete:
@@ -2482,7 +2567,7 @@ examples:
         application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}, "id": 1, "agent_id": null, "created_at": "2025-11-21T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}, "id": 1, "agent_id": null, "created_at": "2025-11-24T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   outbound_campaign_get_by_id:
@@ -2492,7 +2577,7 @@ examples:
           campaign_id: 11227
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}, "id": 1, "agent_id": null, "created_at": "2025-11-21T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}, "id": 1, "agent_id": null, "created_at": "2025-11-24T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   outbound_campaign_update:
@@ -2504,7 +2589,7 @@ examples:
         application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}, "id": 1, "agent_id": null, "created_at": "2025-11-21T00:00:00Z", "updated_at": "2025-11-21T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_post_speech_timeout": 1.75, "voicemail_detection_pre_speech_timeout": 3.5}, "id": 1, "agent_id": null, "created_at": "2025-11-24T00:00:00Z", "updated_at": "2025-11-24T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   outbound_campaign_delete:
@@ -2849,4 +2934,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.agents.list()`:  `response.items.[].prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.agents.create()`:  `response.prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.agents.update()`:  `response.prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.agents.getById()`:  `response.prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.channels.targets.list()`:  `response.items.[].agent.prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt.sessionEndTool.definition.context` **Added**\n* `syllablesdk.prompts.list()`:  `response.items.[].sessionEndTool.definition.context` **Added**\n* `syllablesdk.prompts.create()`:  `response.session_end_tool.definition.context` **Added**\n* `syllablesdk.prompts.update()`:  `response.session_end_tool.definition.context` **Added**\n* `syllablesdk.prompts.getById()`:  `response.session_end_tool.definition.context` **Added**\n* `syllablesdk.tools.list()`:  `response.items.[].definition.context` **Added**\n* `syllablesdk.tools.create()`: \n  *  `request.definition.context` **Added**\n  *  `response.definition.context` **Added**\n* `syllablesdk.tools.update()`: \n  *  `request.definition.context` **Added**\n  *  `response.definition.context` **Added**\n* `syllablesdk.tools.getByName()`:  `response.definition.context` **Added**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `syllablesdk.tools.create()`: \n  *  `request.definition.context.task` **Changed** **Breaking** :warning:\n  *  `response.definition.context.task` **Changed**\n* `syllablesdk.tools.update()`: \n  *  `request.definition.context.task` **Changed** **Breaking** :warning:\n  *  `response.definition.context.task` **Changed**\n* `syllablesdk.prompts.list()`:  `response.items.[].sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.prompts.create()`:  `response.session_end_tool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.list()`:  `response.items.[].agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.agents.list()`:  `response.items.[].prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.agents.getById()`:  `response.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.prompts.update()`:  `response.session_end_tool.definition.context.task` **Changed**\n* `syllablesdk.prompts.getById()`:  `response.session_end_tool.definition.context.task` **Changed**\n* `syllablesdk.tools.list()`:  `response.items.[].definition.context.task` **Changed**\n* `syllablesdk.agents.update()`:  `response.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.agents.create()`:  `response.prompt.sessionEndTool.definition.context.task` **Changed**\n* `syllablesdk.tools.getByName()`:  `response.definition.context.task` **Changed**\n"

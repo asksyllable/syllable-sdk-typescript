@@ -5,17 +5,19 @@ Task implementation details
 
 ## Supported Types
 
-### `components.ContextTask`
+### `components.Task1`
 
 ```typescript
-const value: components.ContextTask = {};
+const value: components.Task1 = {};
 ```
 
-### `components.ContextTask[]`
+### `components.Two[]`
 
 ```typescript
-const value: components.ContextTask[] = [
-  {},
+const value: components.Two[] = [
+  {
+    file: "<value>",
+  },
 ];
 ```
 
