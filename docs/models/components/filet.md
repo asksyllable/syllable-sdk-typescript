@@ -1,16 +1,22 @@
 # FileT
 
-## Example Usage
+The local path of the tool definition JSON file.
+
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { FileT } from "syllable-sdk/models/components";
-
-// No examples available for this model
+const value: string = "<value>";
 ```
 
-## Fields
+### `string[]`
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `fileName`                   | *string*                     | :heavy_check_mark:           | N/A                          |
-| `content`                    | *ReadableStream<Uint8Array>* | :heavy_check_mark:           | N/A                          |
+```typescript
+const value: string[] = [
+  "<value 1>",
+  "<value 2>",
+];
+```
+

@@ -1,7 +1,5 @@
 # Context
 
-Context configuration carried alongside a context tool call.
-
 ## Example Usage
 
 ```typescript

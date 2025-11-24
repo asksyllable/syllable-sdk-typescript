@@ -8,37 +8,40 @@ import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type FileT = {
+export type BodyInsightsFolderUploadFileFile = {
   fileName: string;
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
 export type BodyInsightsFolderUploadFile = {
-  file?: FileT | Blob | undefined;
+  file?: BodyInsightsFolderUploadFileFile | Blob | undefined;
 };
 
 /** @internal */
-export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-  .object({
-    fileName: z.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
+export const BodyInsightsFolderUploadFileFile$inboundSchema: z.ZodType<
+  BodyInsightsFolderUploadFileFile,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fileName: z.string(),
+  content: z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(Blob),
+    z.instanceof(ArrayBuffer),
+    z.instanceof(Uint8Array),
+  ]),
+});
 /** @internal */
-export type FileT$Outbound = {
+export type BodyInsightsFolderUploadFileFile$Outbound = {
   fileName: string;
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
 /** @internal */
-export const FileT$outboundSchema: z.ZodType<
-  FileT$Outbound,
+export const BodyInsightsFolderUploadFileFile$outboundSchema: z.ZodType<
+  BodyInsightsFolderUploadFileFile$Outbound,
   z.ZodTypeDef,
-  FileT
+  BodyInsightsFolderUploadFileFile
 > = z.object({
   fileName: z.string(),
   content: z.union([
@@ -49,16 +52,22 @@ export const FileT$outboundSchema: z.ZodType<
   ]),
 });
 
-export function fileToJSON(fileT: FileT): string {
-  return JSON.stringify(FileT$outboundSchema.parse(fileT));
+export function bodyInsightsFolderUploadFileFileToJSON(
+  bodyInsightsFolderUploadFileFile: BodyInsightsFolderUploadFileFile,
+): string {
+  return JSON.stringify(
+    BodyInsightsFolderUploadFileFile$outboundSchema.parse(
+      bodyInsightsFolderUploadFileFile,
+    ),
+  );
 }
-export function fileFromJSON(
+export function bodyInsightsFolderUploadFileFileFromJSON(
   jsonString: string,
-): SafeParseResult<FileT, SDKValidationError> {
+): SafeParseResult<BodyInsightsFolderUploadFileFile, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FileT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FileT' from JSON`,
+    (x) => BodyInsightsFolderUploadFileFile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BodyInsightsFolderUploadFileFile' from JSON`,
   );
 }
 
@@ -68,11 +77,11 @@ export const BodyInsightsFolderUploadFile$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  file: z.lazy(() => FileT$inboundSchema).optional(),
+  file: z.lazy(() => BodyInsightsFolderUploadFileFile$inboundSchema).optional(),
 });
 /** @internal */
 export type BodyInsightsFolderUploadFile$Outbound = {
-  file?: FileT$Outbound | Blob | undefined;
+  file?: BodyInsightsFolderUploadFileFile$Outbound | Blob | undefined;
 };
 
 /** @internal */
@@ -81,7 +90,9 @@ export const BodyInsightsFolderUploadFile$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BodyInsightsFolderUploadFile
 > = z.object({
-  file: z.lazy(() => FileT$outboundSchema).or(blobLikeSchema).optional(),
+  file: z.lazy(() => BodyInsightsFolderUploadFileFile$outboundSchema).or(
+    blobLikeSchema,
+  ).optional(),
 });
 
 export function bodyInsightsFolderUploadFileToJSON(
