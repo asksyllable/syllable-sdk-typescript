@@ -91,17 +91,11 @@ export const ValueFrom1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(
-    z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-  ),
+  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
   JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("jmespath") }),
   ),
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-  ),
+  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 /** @internal */
 export type ValueFrom1$Outbound =
@@ -115,17 +109,11 @@ export const ValueFrom1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ValueFrom1
 > = z.union([
-  CelExpression$outboundSchema.and(
-    z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-  ),
+  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
   JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("jmespath") }),
   ),
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-  ),
+  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 
 export function valueFrom1ToJSON(valueFrom1: ValueFrom1): string {
@@ -144,17 +132,11 @@ export function valueFrom1FromJSON(
 /** @internal */
 export const If1$inboundSchema: z.ZodType<If1, z.ZodTypeDef, unknown> = z.union(
   [
-    CelExpression$inboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
   ],
 );
 /** @internal */
@@ -166,17 +148,11 @@ export type If1$Outbound =
 /** @internal */
 export const If1$outboundSchema: z.ZodType<If1$Outbound, z.ZodTypeDef, If1> = z
   .union([
-    CelExpression$outboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
   ]);
 
 export function if1ToJSON(if1: If1): string {
@@ -196,17 +172,11 @@ export function if1FromJSON(
 export const If$inboundSchema: z.ZodType<If, z.ZodTypeDef, unknown> = z.union([
   z.lazy(() => CaseExpression$inboundSchema),
   z.union([
-    CelExpression$inboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
   ]),
   z.string(),
 ]);
@@ -223,20 +193,12 @@ export const If$outboundSchema: z.ZodType<If$Outbound, z.ZodTypeDef, If> = z
   .union([
     z.lazy(() => CaseExpression$outboundSchema),
     z.union([
-      CelExpression$outboundSchema.and(
-        z.object({ type: z.literal("cel") }).transform((v) => ({
-          type: v.type,
-        })),
+      CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
       ),
       JMESPathExpression$outboundSchema.and(
-        z.object({ type: z.literal("jmespath") }).transform((v) => ({
-          type: v.type,
-        })),
-      ),
-      JMESPathExpression$outboundSchema.and(
-        z.object({ type: z.literal("jp") }).transform((v) => ({
-          type: v.type,
-        })),
+        z.object({ type: z.literal("jp") }),
       ),
     ]),
     z.string(),
@@ -266,20 +228,12 @@ export const ConditionalValue$inboundSchema: z.ZodType<
     z.union([
       z.lazy(() => CaseExpression$inboundSchema),
       z.union([
-        CelExpression$inboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),
@@ -289,20 +243,12 @@ export const ConditionalValue$inboundSchema: z.ZodType<
     z.union([
       z.lazy(() => CaseExpression$inboundSchema),
       z.union([
-        CelExpression$inboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),
@@ -345,20 +291,12 @@ export const ConditionalValue$outboundSchema: z.ZodType<
     z.union([
       z.lazy(() => CaseExpression$outboundSchema),
       z.union([
-        CelExpression$outboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),
@@ -368,20 +306,12 @@ export const ConditionalValue$outboundSchema: z.ZodType<
     z.union([
       z.lazy(() => CaseExpression$outboundSchema),
       z.union([
-        CelExpression$outboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),
@@ -418,17 +348,11 @@ export const ValueFrom$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CaseExpression$inboundSchema),
   z.union([
-    CelExpression$inboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
   ]),
   z.string(),
 ]);
@@ -448,17 +372,11 @@ export const ValueFrom$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CaseExpression$outboundSchema),
   z.union([
-    CelExpression$outboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
   ]),
   z.string(),
 ]);

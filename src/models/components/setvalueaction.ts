@@ -96,17 +96,11 @@ export const SetValueActionValueFrom1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(
-    z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-  ),
+  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
   JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("jmespath") }),
   ),
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-  ),
+  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 /** @internal */
 export type SetValueActionValueFrom1$Outbound =
@@ -120,17 +114,11 @@ export const SetValueActionValueFrom1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SetValueActionValueFrom1
 > = z.union([
-  CelExpression$outboundSchema.and(
-    z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-  ),
+  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
   JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("jmespath") }),
   ),
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-  ),
+  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 
 export function setValueActionValueFrom1ToJSON(
@@ -158,17 +146,11 @@ export const SetValueActionValueFrom$inboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$inboundSchema,
   z.union([
-    CelExpression$inboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
   ]),
   z.string(),
 ]);
@@ -188,17 +170,11 @@ export const SetValueActionValueFrom$outboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
-    CelExpression$outboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
   ]),
   z.string(),
 ]);
@@ -226,17 +202,11 @@ export const SetValueActionIf1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(
-    z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-  ),
+  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
   JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("jmespath") }),
   ),
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-  ),
+  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 /** @internal */
 export type SetValueActionIf1$Outbound =
@@ -250,17 +220,11 @@ export const SetValueActionIf1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SetValueActionIf1
 > = z.union([
-  CelExpression$outboundSchema.and(
-    z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-  ),
+  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
   JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("jmespath") }),
   ),
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-  ),
+  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 
 export function setValueActionIf1ToJSON(
@@ -288,17 +252,11 @@ export const SetValueActionIf$inboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$inboundSchema,
   z.union([
-    CelExpression$inboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
   ]),
   z.string(),
 ]);
@@ -318,17 +276,11 @@ export const SetValueActionIf$outboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
-    CelExpression$outboundSchema.and(
-      z.object({ type: z.literal("cel") }).transform((v) => ({ type: v.type })),
-    ),
+    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
     JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("jmespath") }),
     ),
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jp") }).transform((v) => ({ type: v.type })),
-    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
   ]),
   z.string(),
 ]);
@@ -361,20 +313,12 @@ export const SetValueAction$inboundSchema: z.ZodType<
     z.union([
       CaseExpression$inboundSchema,
       z.union([
-        CelExpression$inboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),
@@ -384,20 +328,12 @@ export const SetValueAction$inboundSchema: z.ZodType<
     z.union([
       CaseExpression$inboundSchema,
       z.union([
-        CelExpression$inboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),
@@ -444,20 +380,12 @@ export const SetValueAction$outboundSchema: z.ZodType<
     z.union([
       CaseExpression$outboundSchema,
       z.union([
-        CelExpression$outboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),
@@ -467,20 +395,12 @@ export const SetValueAction$outboundSchema: z.ZodType<
     z.union([
       CaseExpression$outboundSchema,
       z.union([
-        CelExpression$outboundSchema.and(
-          z.object({ type: z.literal("cel") }).transform((v) => ({
-            type: v.type,
-          })),
+        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
         ),
         JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("jp") }),
         ),
       ]),
       z.string(),

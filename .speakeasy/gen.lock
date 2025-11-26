@@ -3,10 +3,10 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: 0fe0eb4b29f819d8023719fbdd64950e
   docVersion: 0.0.2
-  speakeasyVersion: 1.660.0
-  generationVersion: 2.760.2
-  releaseVersion: 1.0.13-rc.6
-  configChecksum: 7a6da8e154c7c72e0c59bf967246f7e6
+  speakeasyVersion: 1.661.2
+  generationVersion: 2.763.3
+  releaseVersion: 1.0.13
+  configChecksum: 7d6ecb56cb434df2e2b3dd16a43f1f70
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.9
+    core: 3.26.10
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -2934,7 +2934,3 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `syllablesdk.sessions.list()`:  `response.items.[].userTerminated` **Added**
-  * `syllablesdk.sessions.getById()`:  `response.user_terminated` **Added**

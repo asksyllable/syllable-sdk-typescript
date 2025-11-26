@@ -81,25 +81,13 @@ export type Context = {
 export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z.union(
   [
     LoadToolFromFileTask$inboundSchema.and(
-      z.object({ type: z.literal("import") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("import") }),
     ),
-    EventTask$inboundSchema.and(
-      z.object({ type: z.literal("event") }).transform((v) => ({
-        type: v.type,
-      })),
-    ),
+    EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
     ExpressionTask$inboundSchema.and(
-      z.object({ type: z.literal("expression") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("expression") }),
     ),
-    StepsTask$inboundSchema.and(
-      z.object({ type: z.literal("steps") }).transform((v) => ({
-        type: v.type,
-      })),
-    ),
+    StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
   ],
 );
 /** @internal */
@@ -113,25 +101,13 @@ export type Two$Outbound =
 export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
   .union([
     LoadToolFromFileTask$outboundSchema.and(
-      z.object({ type: z.literal("import") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("import") }),
     ),
-    EventTask$outboundSchema.and(
-      z.object({ type: z.literal("event") }).transform((v) => ({
-        type: v.type,
-      })),
-    ),
+    EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
     ExpressionTask$outboundSchema.and(
-      z.object({ type: z.literal("expression") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("expression") }),
     ),
-    StepsTask$outboundSchema.and(
-      z.object({ type: z.literal("steps") }).transform((v) => ({
-        type: v.type,
-      })),
-    ),
+    StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
   ]);
 
 export function twoToJSON(two: Two): string {
@@ -151,25 +127,13 @@ export function twoFromJSON(
 export const Task1$inboundSchema: z.ZodType<Task1, z.ZodTypeDef, unknown> = z
   .union([
     LoadToolFromFileTask$inboundSchema.and(
-      z.object({ type: z.literal("import") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("import") }),
     ),
-    EventTask$inboundSchema.and(
-      z.object({ type: z.literal("event") }).transform((v) => ({
-        type: v.type,
-      })),
-    ),
+    EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
     ExpressionTask$inboundSchema.and(
-      z.object({ type: z.literal("expression") }).transform((v) => ({
-        type: v.type,
-      })),
+      z.object({ type: z.literal("expression") }),
     ),
-    StepsTask$inboundSchema.and(
-      z.object({ type: z.literal("steps") }).transform((v) => ({
-        type: v.type,
-      })),
-    ),
+    StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
   ]);
 /** @internal */
 export type Task1$Outbound =
@@ -185,21 +149,13 @@ export const Task1$outboundSchema: z.ZodType<
   Task1
 > = z.union([
   LoadToolFromFileTask$outboundSchema.and(
-    z.object({ type: z.literal("import") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("import") }),
   ),
-  EventTask$outboundSchema.and(
-    z.object({ type: z.literal("event") }).transform((v) => ({ type: v.type })),
-  ),
+  EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
   ExpressionTask$outboundSchema.and(
-    z.object({ type: z.literal("expression") }).transform((v) => ({
-      type: v.type,
-    })),
+    z.object({ type: z.literal("expression") }),
   ),
-  StepsTask$outboundSchema.and(
-    z.object({ type: z.literal("steps") }).transform((v) => ({ type: v.type })),
-  ),
+  StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
 ]);
 
 export function task1ToJSON(task1: Task1): string {
@@ -220,48 +176,24 @@ export const Task$inboundSchema: z.ZodType<Task, z.ZodTypeDef, unknown> = z
   .union([
     z.union([
       LoadToolFromFileTask$inboundSchema.and(
-        z.object({ type: z.literal("import") }).transform((v) => ({
-          type: v.type,
-        })),
+        z.object({ type: z.literal("import") }),
       ),
-      EventTask$inboundSchema.and(
-        z.object({ type: z.literal("event") }).transform((v) => ({
-          type: v.type,
-        })),
-      ),
+      EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
       ExpressionTask$inboundSchema.and(
-        z.object({ type: z.literal("expression") }).transform((v) => ({
-          type: v.type,
-        })),
+        z.object({ type: z.literal("expression") }),
       ),
-      StepsTask$inboundSchema.and(
-        z.object({ type: z.literal("steps") }).transform((v) => ({
-          type: v.type,
-        })),
-      ),
+      StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
     ]),
     z.array(
       z.union([
         LoadToolFromFileTask$inboundSchema.and(
-          z.object({ type: z.literal("import") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("import") }),
         ),
-        EventTask$inboundSchema.and(
-          z.object({ type: z.literal("event") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
+        EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
         ExpressionTask$inboundSchema.and(
-          z.object({ type: z.literal("expression") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("expression") }),
         ),
-        StepsTask$inboundSchema.and(
-          z.object({ type: z.literal("steps") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
+        StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
       ]),
     ),
   ]);
@@ -283,48 +215,24 @@ export const Task$outboundSchema: z.ZodType<Task$Outbound, z.ZodTypeDef, Task> =
   z.union([
     z.union([
       LoadToolFromFileTask$outboundSchema.and(
-        z.object({ type: z.literal("import") }).transform((v) => ({
-          type: v.type,
-        })),
+        z.object({ type: z.literal("import") }),
       ),
-      EventTask$outboundSchema.and(
-        z.object({ type: z.literal("event") }).transform((v) => ({
-          type: v.type,
-        })),
-      ),
+      EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
       ExpressionTask$outboundSchema.and(
-        z.object({ type: z.literal("expression") }).transform((v) => ({
-          type: v.type,
-        })),
+        z.object({ type: z.literal("expression") }),
       ),
-      StepsTask$outboundSchema.and(
-        z.object({ type: z.literal("steps") }).transform((v) => ({
-          type: v.type,
-        })),
-      ),
+      StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
     ]),
     z.array(
       z.union([
         LoadToolFromFileTask$outboundSchema.and(
-          z.object({ type: z.literal("import") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("import") }),
         ),
-        EventTask$outboundSchema.and(
-          z.object({ type: z.literal("event") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
+        EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
         ExpressionTask$outboundSchema.and(
-          z.object({ type: z.literal("expression") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("expression") }),
         ),
-        StepsTask$outboundSchema.and(
-          z.object({ type: z.literal("steps") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
+        StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
       ]),
     ),
   ]);
@@ -349,48 +257,24 @@ export const Context$inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> =
       z.union([
         z.union([
           LoadToolFromFileTask$inboundSchema.and(
-            z.object({ type: z.literal("import") }).transform((v) => ({
-              type: v.type,
-            })),
+            z.object({ type: z.literal("import") }),
           ),
-          EventTask$inboundSchema.and(
-            z.object({ type: z.literal("event") }).transform((v) => ({
-              type: v.type,
-            })),
-          ),
+          EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
           ExpressionTask$inboundSchema.and(
-            z.object({ type: z.literal("expression") }).transform((v) => ({
-              type: v.type,
-            })),
+            z.object({ type: z.literal("expression") }),
           ),
-          StepsTask$inboundSchema.and(
-            z.object({ type: z.literal("steps") }).transform((v) => ({
-              type: v.type,
-            })),
-          ),
+          StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
         ]),
         z.array(
           z.union([
             LoadToolFromFileTask$inboundSchema.and(
-              z.object({ type: z.literal("import") }).transform((v) => ({
-                type: v.type,
-              })),
+              z.object({ type: z.literal("import") }),
             ),
-            EventTask$inboundSchema.and(
-              z.object({ type: z.literal("event") }).transform((v) => ({
-                type: v.type,
-              })),
-            ),
+            EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
             ExpressionTask$inboundSchema.and(
-              z.object({ type: z.literal("expression") }).transform((v) => ({
-                type: v.type,
-              })),
+              z.object({ type: z.literal("expression") }),
             ),
-            StepsTask$inboundSchema.and(
-              z.object({ type: z.literal("steps") }).transform((v) => ({
-                type: v.type,
-              })),
-            ),
+            StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
           ]),
         ),
       ]),
@@ -423,48 +307,24 @@ export const Context$outboundSchema: z.ZodType<
     z.union([
       z.union([
         LoadToolFromFileTask$outboundSchema.and(
-          z.object({ type: z.literal("import") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("import") }),
         ),
-        EventTask$outboundSchema.and(
-          z.object({ type: z.literal("event") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
+        EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
         ExpressionTask$outboundSchema.and(
-          z.object({ type: z.literal("expression") }).transform((v) => ({
-            type: v.type,
-          })),
+          z.object({ type: z.literal("expression") }),
         ),
-        StepsTask$outboundSchema.and(
-          z.object({ type: z.literal("steps") }).transform((v) => ({
-            type: v.type,
-          })),
-        ),
+        StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
       ]),
       z.array(
         z.union([
           LoadToolFromFileTask$outboundSchema.and(
-            z.object({ type: z.literal("import") }).transform((v) => ({
-              type: v.type,
-            })),
+            z.object({ type: z.literal("import") }),
           ),
-          EventTask$outboundSchema.and(
-            z.object({ type: z.literal("event") }).transform((v) => ({
-              type: v.type,
-            })),
-          ),
+          EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
           ExpressionTask$outboundSchema.and(
-            z.object({ type: z.literal("expression") }).transform((v) => ({
-              type: v.type,
-            })),
+            z.object({ type: z.literal("expression") }),
           ),
-          StepsTask$outboundSchema.and(
-            z.object({ type: z.literal("steps") }).transform((v) => ({
-              type: v.type,
-            })),
-          ),
+          StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
         ]),
       ),
     ]),
