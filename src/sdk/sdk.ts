@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Agents } from "./agents.js";
 import { Channels } from "./channels.js";
+import { ConversationConfig } from "./conversationconfig.js";
 import { Conversations } from "./conversations.js";
 import { CustomMessages } from "./custommessages.js";
 import { Dashboards } from "./dashboards.js";
@@ -44,6 +45,11 @@ export class SyllableSDK extends ClientSDK {
   private _conversations?: Conversations;
   get conversations(): Conversations {
     return (this._conversations ??= new Conversations(this._options));
+  }
+
+  private _conversationConfig?: ConversationConfig;
+  get conversationConfig(): ConversationConfig {
+    return (this._conversationConfig ??= new ConversationConfig(this._options));
   }
 
   private _dataSources?: DataSources;

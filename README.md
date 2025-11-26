@@ -273,6 +273,11 @@ run();
 * [update](docs/sdks/numbers/README.md#update) - Update Twilio Number
 * [list](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
 
+### [conversationConfig](docs/sdks/conversationconfig/README.md)
+
+* [getBridgePhrasesConfig](docs/sdks/conversationconfig/README.md#getbridgephrasesconfig) - Get Bridge Phrases Config
+* [updateBridgePhrasesConfig](docs/sdks/conversationconfig/README.md#updatebridgephrasesconfig) - Update Bridge Phrases Config
+
 ### [conversations](docs/sdks/conversations/README.md)
 
 * [list](docs/sdks/conversations/README.md#list) - Conversations List
@@ -548,6 +553,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`channelsTwilioNumbersList`](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
 - [`channelsTwilioNumbersUpdate`](docs/sdks/numbers/README.md#update) - Update Twilio Number
 - [`channelsUpdate`](docs/sdks/channels/README.md#update) - Update Channel
+- [`conversationConfigGetBridgePhrasesConfig`](docs/sdks/conversationconfig/README.md#getbridgephrasesconfig) - Get Bridge Phrases Config
+- [`conversationConfigUpdateBridgePhrasesConfig`](docs/sdks/conversationconfig/README.md#updatebridgephrasesconfig) - Update Bridge Phrases Config
 - [`conversationsList`](docs/sdks/conversations/README.md#list) - Conversations List
 - [`customMessagesCreate`](docs/sdks/custommessages/README.md#create) - Create Custom Message
 - [`customMessagesDelete`](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
