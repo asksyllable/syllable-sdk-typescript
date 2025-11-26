@@ -1,14 +1,14 @@
-# DictionaryMetadata
+# SchemasTtsV1PronunciationsDictionaryMetadata
 
 Audit metadata associated with a dictionary.
 
 ## Example Usage
 
 ```typescript
-import { DictionaryMetadata } from "syllable-sdk/models/components";
+import { SchemasTtsV1PronunciationsDictionaryMetadata } from "syllable-sdk/models/components";
 
-let value: DictionaryMetadata = {
-  entries: 368007,
+let value: SchemasTtsV1PronunciationsDictionaryMetadata = {
+  entries: 814900,
   hash: "<value>",
 };
 ```

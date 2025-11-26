@@ -3,8 +3,10 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -16,21 +18,28 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { SyllableSDKError } from "../models/errors/syllablesdkerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Pronunciations Metadata
+ * Update Bridge Phrases Config
+ *
+ * @remarks
+ * Update the bridge phrases configuration.
  */
-export function pronunciationsPronunciationsGetMetadata(
+export function conversationConfigUpdateBridgePhrasesConfig(
   client: SyllableSDKCore,
+  request: operations.UpdateBridgePhrasesConfigRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.SchemasTtsV1PronunciationsDictionaryMetadata,
+    components.BridgePhrasesConfig,
+    | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -43,17 +52,20 @@ export function pronunciationsPronunciationsGetMetadata(
 > {
   return new APIPromise($do(
     client,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: SyllableSDKCore,
+  request: operations.UpdateBridgePhrasesConfigRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.SchemasTtsV1PronunciationsDictionaryMetadata,
+      components.BridgePhrasesConfig,
+      | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
       | ConnectionError
@@ -66,9 +78,29 @@ async function $do(
     APICall,
   ]
 > {
-  const path = pathToFunc("/api/v1/pronunciations/metadata")();
+  const parsed = safeParse(
+    request,
+    (value) =>
+      operations.UpdateBridgePhrasesConfigRequest$outboundSchema.parse(value),
+    "Input validation failed",
+  );
+  if (!parsed.ok) {
+    return [parsed, { status: "invalid" }];
+  }
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.BridgePhrasesConfig, {
+    explode: true,
+  });
+
+  const path = pathToFunc("/api/v1/conversation-config/bridges")();
+
+  const query = encodeFormQuery({
+    "agent_id": payload.agent_id,
+    "tool_name": payload.tool_name,
+  });
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -79,7 +111,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "pronunciations_get_metadata",
+    operationID: "update_bridge_phrases_config",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -93,10 +125,12 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "PUT",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
+    body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -107,7 +141,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["4XX", "5XX"],
+    errorCodes: ["422", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -116,8 +150,13 @@ async function $do(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
-    components.SchemasTtsV1PronunciationsDictionaryMetadata,
+    components.BridgePhrasesConfig,
+    | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -127,13 +166,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(
-      200,
-      components.SchemasTtsV1PronunciationsDictionaryMetadata$inboundSchema,
-    ),
+    M.json(200, components.BridgePhrasesConfig$inboundSchema),
+    M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, req);
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

@@ -35,6 +35,8 @@ import { tool$channelsTwilioNumbersList } from "./tools/channelsTwilioNumbersLis
 import { tool$channelsTwilioNumbersUpdate } from "./tools/channelsTwilioNumbersUpdate.js";
 import { tool$channelsTwilioUpdate } from "./tools/channelsTwilioUpdate.js";
 import { tool$channelsUpdate } from "./tools/channelsUpdate.js";
+import { tool$conversationConfigGetBridgePhrasesConfig } from "./tools/conversationConfigGetBridgePhrasesConfig.js";
+import { tool$conversationConfigUpdateBridgePhrasesConfig } from "./tools/conversationConfigUpdateBridgePhrasesConfig.js";
 import { tool$conversationsList } from "./tools/conversationsList.js";
 import { tool$customMessagesCreate } from "./tools/customMessagesCreate.js";
 import { tool$customMessagesDelete } from "./tools/customMessagesDelete.js";
@@ -183,7 +185,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.13",
+    version: "1.0.14-rc.1",
   });
 
   const client = new SyllableSDKCore({
@@ -224,6 +226,8 @@ export function createMCPServer(deps: {
   tool(tool$channelsUpdate);
   tool(tool$channelsDelete);
   tool(tool$conversationsList);
+  tool(tool$conversationConfigGetBridgePhrasesConfig);
+  tool(tool$conversationConfigUpdateBridgePhrasesConfig);
   tool(tool$dataSourcesList);
   tool(tool$dataSourcesCreate);
   tool(tool$dataSourcesUpdate);
