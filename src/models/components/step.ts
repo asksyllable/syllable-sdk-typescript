@@ -63,7 +63,7 @@ export type Step = {
    */
   inputs?: Array<InputParameter> | undefined;
   /**
-   * Actions to perform when events occur (enter, submit).
+   * Actions to perform when events occur (enter, presubmit, submit).
    */
   on?: StepEventActions | undefined;
   /**

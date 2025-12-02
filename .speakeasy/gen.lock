@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 2924eeca65f46ce2a350c89e151245ed
+  docChecksum: 36772f92b4638ce62aaabcf694ce560c
   docVersion: 0.0.2
-  speakeasyVersion: 1.666.0
-  generationVersion: 2.768.0
-  releaseVersion: 1.0.14-rc.2
-  configChecksum: c9b3ddbd31b90c67644163590bf9b694
+  speakeasyVersion: 1.666.2
+  generationVersion: 2.768.1
+  releaseVersion: 1.0.14-rc.3
+  configChecksum: 47165f9ce468db73803e3eba1d42e414
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.13
+    core: 3.26.14
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -247,6 +247,7 @@ generatedFiles:
   - docs/models/components/outboundcampaigninput.md
   - docs/models/components/permissiongroupresponse.md
   - docs/models/components/permissionresponse.md
+  - docs/models/components/presubmit.md
   - docs/models/components/promptcreaterequest.md
   - docs/models/components/prompthistory.md
   - docs/models/components/prompthistorylinkedtool.md
@@ -2964,3 +2965,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.agents.list()`:  `response.items.[].prompt.sessionEndTool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.agents.create()`:  `response.prompt.sessionEndTool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.agents.update()`:  `response.prompt.sessionEndTool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.agents.getById()`:  `response.prompt.sessionEndTool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.channels.targets.list()`:  `response.items.[].agent.prompt.sessionEndTool.definition.context.task.[array].[].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt.sessionEndTool.definition.context.task.[array].[].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt.sessionEndTool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt.sessionEndTool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.prompts.list()`:  `response.items.[].sessionEndTool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.prompts.create()`:  `response.session_end_tool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.prompts.update()`:  `response.session_end_tool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.prompts.getById()`:  `response.session_end_tool.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.tools.list()`:  `response.items.[].definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.tools.create()`: \n  *  `request.definition.context.task.[array].[].[steps].steps.[].on.presubmit` **Added**\n  *  `response.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.tools.update()`: \n  *  `request.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n  *  `response.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n* `syllablesdk.tools.getByName()`:  `response.definition.context.task.[1].[steps].steps.[].on.presubmit` **Added**\n"
