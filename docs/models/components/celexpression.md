@@ -9,6 +9,7 @@ import { CelExpression } from "syllable-sdk/models/components";
 
 let value: CelExpression = {
   expression: "<value>",
+  type: "cel",
 };
 ```
 
@@ -17,4 +18,4 @@ let value: CelExpression = {
 | Field                              | Type                               | Required                           | Description                        |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | `expression`                       | *string*                           | :heavy_check_mark:                 | The expression to evaluate.        |
-| `type`                             | *string*                           | :heavy_minus_sign:                 | Google Common Expression Language. |
+| `type`                             | *"cel"*                            | :heavy_check_mark:                 | Google Common Expression Language. |

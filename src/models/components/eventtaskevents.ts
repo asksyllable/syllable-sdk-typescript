@@ -38,11 +38,11 @@ import {
 } from "./setvalueaction.js";
 
 export type EventTaskEventsStart =
-  | (CallAction & { action: "call" })
-  | (IncrementAction & { action: "inc" })
-  | (SayAction & { action: "say" })
-  | (SetValueAction & { action: "set" })
-  | (SaveAction & { action: "save" });
+  | CallAction
+  | IncrementAction
+  | SaveAction
+  | SayAction
+  | SetValueAction;
 
 export type EventTaskEvents = {
   /**
@@ -50,11 +50,7 @@ export type EventTaskEvents = {
    */
   start?:
     | Array<
-      | (CallAction & { action: "call" })
-      | (IncrementAction & { action: "inc" })
-      | (SayAction & { action: "say" })
-      | (SetValueAction & { action: "set" })
-      | (SaveAction & { action: "save" })
+      CallAction | IncrementAction | SaveAction | SayAction | SetValueAction
     >
     | null
     | undefined;
@@ -66,19 +62,19 @@ export const EventTaskEventsStart$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CallAction$inboundSchema.and(z.object({ action: z.literal("call") })),
-  IncrementAction$inboundSchema.and(z.object({ action: z.literal("inc") })),
-  SayAction$inboundSchema.and(z.object({ action: z.literal("say") })),
-  SetValueAction$inboundSchema.and(z.object({ action: z.literal("set") })),
-  SaveAction$inboundSchema.and(z.object({ action: z.literal("save") })),
+  CallAction$inboundSchema,
+  IncrementAction$inboundSchema,
+  SaveAction$inboundSchema,
+  SayAction$inboundSchema,
+  SetValueAction$inboundSchema,
 ]);
 /** @internal */
 export type EventTaskEventsStart$Outbound =
-  | (CallAction$Outbound & { action: "call" })
-  | (IncrementAction$Outbound & { action: "inc" })
-  | (SayAction$Outbound & { action: "say" })
-  | (SetValueAction$Outbound & { action: "set" })
-  | (SaveAction$Outbound & { action: "save" });
+  | CallAction$Outbound
+  | IncrementAction$Outbound
+  | SaveAction$Outbound
+  | SayAction$Outbound
+  | SetValueAction$Outbound;
 
 /** @internal */
 export const EventTaskEventsStart$outboundSchema: z.ZodType<
@@ -86,11 +82,11 @@ export const EventTaskEventsStart$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EventTaskEventsStart
 > = z.union([
-  CallAction$outboundSchema.and(z.object({ action: z.literal("call") })),
-  IncrementAction$outboundSchema.and(z.object({ action: z.literal("inc") })),
-  SayAction$outboundSchema.and(z.object({ action: z.literal("say") })),
-  SetValueAction$outboundSchema.and(z.object({ action: z.literal("set") })),
-  SaveAction$outboundSchema.and(z.object({ action: z.literal("save") })),
+  CallAction$outboundSchema,
+  IncrementAction$outboundSchema,
+  SaveAction$outboundSchema,
+  SayAction$outboundSchema,
+  SetValueAction$outboundSchema,
 ]);
 
 export function eventTaskEventsStartToJSON(
@@ -119,15 +115,11 @@ export const EventTaskEvents$inboundSchema: z.ZodType<
   start: z.nullable(
     z.array(
       z.union([
-        CallAction$inboundSchema.and(z.object({ action: z.literal("call") })),
-        IncrementAction$inboundSchema.and(
-          z.object({ action: z.literal("inc") }),
-        ),
-        SayAction$inboundSchema.and(z.object({ action: z.literal("say") })),
-        SetValueAction$inboundSchema.and(
-          z.object({ action: z.literal("set") }),
-        ),
-        SaveAction$inboundSchema.and(z.object({ action: z.literal("save") })),
+        CallAction$inboundSchema,
+        IncrementAction$inboundSchema,
+        SaveAction$inboundSchema,
+        SayAction$inboundSchema,
+        SetValueAction$inboundSchema,
       ]),
     ),
   ).optional(),
@@ -136,11 +128,11 @@ export const EventTaskEvents$inboundSchema: z.ZodType<
 export type EventTaskEvents$Outbound = {
   start?:
     | Array<
-      | (CallAction$Outbound & { action: "call" })
-      | (IncrementAction$Outbound & { action: "inc" })
-      | (SayAction$Outbound & { action: "say" })
-      | (SetValueAction$Outbound & { action: "set" })
-      | (SaveAction$Outbound & { action: "save" })
+      | CallAction$Outbound
+      | IncrementAction$Outbound
+      | SaveAction$Outbound
+      | SayAction$Outbound
+      | SetValueAction$Outbound
     >
     | null
     | undefined;
@@ -155,15 +147,11 @@ export const EventTaskEvents$outboundSchema: z.ZodType<
   start: z.nullable(
     z.array(
       z.union([
-        CallAction$outboundSchema.and(z.object({ action: z.literal("call") })),
-        IncrementAction$outboundSchema.and(
-          z.object({ action: z.literal("inc") }),
-        ),
-        SayAction$outboundSchema.and(z.object({ action: z.literal("say") })),
-        SetValueAction$outboundSchema.and(
-          z.object({ action: z.literal("set") }),
-        ),
-        SaveAction$outboundSchema.and(z.object({ action: z.literal("save") })),
+        CallAction$outboundSchema,
+        IncrementAction$outboundSchema,
+        SaveAction$outboundSchema,
+        SayAction$outboundSchema,
+        SetValueAction$outboundSchema,
       ]),
     ),
   ).optional(),

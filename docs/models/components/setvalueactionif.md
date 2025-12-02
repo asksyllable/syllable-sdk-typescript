@@ -10,6 +10,7 @@ An expression that must evaluate to true for the action to be applied.
 ```typescript
 const value: components.SetValueActionIf1 = {
   expression: "<value>",
+  type: "cel",
 };
 ```
 

@@ -5,7 +5,9 @@
 ```typescript
 import { ExpressionTask } from "syllable-sdk/models/components";
 
-let value: ExpressionTask = {};
+let value: ExpressionTask = {
+  type: "expression",
+};
 ```
 
 ## Fields
@@ -17,8 +19,8 @@ let value: ExpressionTask = {};
 | `variables`                                                                        | [components.Variable](../../models/components/variable.md)[]                       | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `metadata`                                                                         | [components.ContextTaskMetadata](../../models/components/contexttaskmetadata.md)   | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `tool`                                                                             | [components.ContextToolInfo](../../models/components/contexttoolinfo.md)           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `type`                                                                             | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `version`                                                                          | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `type`                                                                             | *"expression"*                                                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `version`                                                                          | *"v1alpha"*                                                                        | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `inputs`                                                                           | [components.InputParameter](../../models/components/inputparameter.md)[]           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `expression`                                                                       | *components.Expression*                                                            | :heavy_minus_sign:                                                                 | N/A                                                                                |
 | `output`                                                                           | *any*                                                                              | :heavy_minus_sign:                                                                 | N/A                                                                                |

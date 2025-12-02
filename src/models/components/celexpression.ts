@@ -18,7 +18,7 @@ export type CelExpression = {
   /**
    * Google Common Expression Language.
    */
-  type?: "cel" | undefined;
+  type: "cel";
 };
 
 /** @internal */
@@ -28,7 +28,7 @@ export const CelExpression$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   expression: z.string(),
-  type: z.literal("cel").default("cel"),
+  type: z.literal("cel"),
 });
 /** @internal */
 export type CelExpression$Outbound = {
@@ -43,7 +43,7 @@ export const CelExpression$outboundSchema: z.ZodType<
   CelExpression
 > = z.object({
   expression: z.string(),
-  type: z.literal("cel").default("cel" as const),
+  type: z.literal("cel"),
 });
 
 export function celExpressionToJSON(celExpression: CelExpression): string {

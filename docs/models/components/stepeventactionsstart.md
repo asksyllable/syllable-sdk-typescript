@@ -7,6 +7,7 @@
 
 ```typescript
 const value: components.CallAction = {
+  action: "call",
   name: "<value>",
 };
 ```
@@ -15,6 +16,7 @@ const value: components.CallAction = {
 
 ```typescript
 const value: components.IncrementAction = {
+  action: "inc",
   name: "<value>",
 };
 ```
@@ -22,7 +24,9 @@ const value: components.IncrementAction = {
 ### `components.SaveAction`
 
 ```typescript
-const value: components.SaveAction = {};
+const value: components.SaveAction = {
+  action: "save",
+};
 ```
 
 ### `components.SayAction`
@@ -30,6 +34,7 @@ const value: components.SaveAction = {};
 ```typescript
 const value: components.SayAction = {
   text: "<value>",
+  action: "say",
 };
 ```
 
@@ -37,6 +42,7 @@ const value: components.SayAction = {
 
 ```typescript
 const value: components.SetValueAction = {
+  action: "set",
   name: "<value>",
 };
 ```

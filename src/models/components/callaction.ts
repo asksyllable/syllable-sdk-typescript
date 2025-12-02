@@ -27,7 +27,7 @@ import {
 } from "./jmespathexpression.js";
 
 export type CallActionIf1 =
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
 
@@ -36,7 +36,7 @@ export type CallActionIf1 =
  */
 export type CallActionIf =
   | CaseExpression
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" })
   | string;
@@ -52,13 +52,13 @@ export type CallAction = {
    */
   if?:
     | CaseExpression
-    | (CelExpression & { type: "cel" })
+    | CelExpression
     | (JMESPathExpression & { type: "jmespath" })
     | (JMESPathExpression & { type: "jp" })
     | string
     | null
     | undefined;
-  action?: "call" | undefined;
+  action: "call";
   /**
    * The name of the tool to call.
    */
@@ -79,7 +79,7 @@ export const CallActionIf1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$inboundSchema,
   JMESPathExpression$inboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -87,7 +87,7 @@ export const CallActionIf1$inboundSchema: z.ZodType<
 ]);
 /** @internal */
 export type CallActionIf1$Outbound =
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
@@ -97,7 +97,7 @@ export const CallActionIf1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CallActionIf1
 > = z.union([
-  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -125,7 +125,7 @@ export const CallActionIf$inboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$inboundSchema,
   z.union([
-    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$inboundSchema,
     JMESPathExpression$inboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -136,7 +136,7 @@ export const CallActionIf$inboundSchema: z.ZodType<
 /** @internal */
 export type CallActionIf$Outbound =
   | CaseExpression$Outbound
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" })
   | string;
@@ -149,7 +149,7 @@ export const CallActionIf$outboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
-    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$outboundSchema,
     JMESPathExpression$outboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -210,7 +210,7 @@ export const CallAction$inboundSchema: z.ZodType<
     z.union([
       CaseExpression$inboundSchema,
       z.union([
-        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$inboundSchema,
         JMESPathExpression$inboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -221,7 +221,7 @@ export const CallAction$inboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-  action: z.literal("call").default("call"),
+  action: z.literal("call"),
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
   auto_populate: z.union([z.boolean(), z.string()]).optional(),
@@ -234,7 +234,7 @@ export const CallAction$inboundSchema: z.ZodType<
 export type CallAction$Outbound = {
   if?:
     | CaseExpression$Outbound
-    | (CelExpression$Outbound & { type: "cel" })
+    | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
     | (JMESPathExpression$Outbound & { type: "jp" })
     | string
@@ -256,7 +256,7 @@ export const CallAction$outboundSchema: z.ZodType<
     z.union([
       CaseExpression$outboundSchema,
       z.union([
-        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$outboundSchema,
         JMESPathExpression$outboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -267,7 +267,7 @@ export const CallAction$outboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-  action: z.literal("call").default("call" as const),
+  action: z.literal("call"),
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
   autoPopulate: z.union([z.boolean(), z.string()]).optional(),

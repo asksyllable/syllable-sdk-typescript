@@ -38,18 +38,18 @@ import {
 } from "./setvalueaction.js";
 
 export type Start =
-  | (CallAction & { action: "call" })
-  | (IncrementAction & { action: "inc" })
-  | (SayAction & { action: "say" })
-  | (SetValueAction & { action: "set" })
-  | (SaveAction & { action: "save" });
+  | CallAction
+  | IncrementAction
+  | SaveAction
+  | SayAction
+  | SetValueAction;
 
 export type Submit =
-  | (CallAction & { action: "call" })
-  | (IncrementAction & { action: "inc" })
-  | (SayAction & { action: "say" })
-  | (SetValueAction & { action: "set" })
-  | (SaveAction & { action: "save" });
+  | CallAction
+  | IncrementAction
+  | SaveAction
+  | SayAction
+  | SetValueAction;
 
 /**
  * Actions to perform when events occur (enter, submit).
@@ -60,11 +60,7 @@ export type ExpressionTaskEvents = {
    */
   start?:
     | Array<
-      | (CallAction & { action: "call" })
-      | (IncrementAction & { action: "inc" })
-      | (SayAction & { action: "say" })
-      | (SetValueAction & { action: "set" })
-      | (SaveAction & { action: "save" })
+      CallAction | IncrementAction | SaveAction | SayAction | SetValueAction
     >
     | null
     | undefined;
@@ -73,11 +69,7 @@ export type ExpressionTaskEvents = {
    */
   submit?:
     | Array<
-      | (CallAction & { action: "call" })
-      | (IncrementAction & { action: "inc" })
-      | (SayAction & { action: "say" })
-      | (SetValueAction & { action: "set" })
-      | (SaveAction & { action: "save" })
+      CallAction | IncrementAction | SaveAction | SayAction | SetValueAction
     >
     | null
     | undefined;
@@ -86,19 +78,19 @@ export type ExpressionTaskEvents = {
 /** @internal */
 export const Start$inboundSchema: z.ZodType<Start, z.ZodTypeDef, unknown> = z
   .union([
-    CallAction$inboundSchema.and(z.object({ action: z.literal("call") })),
-    IncrementAction$inboundSchema.and(z.object({ action: z.literal("inc") })),
-    SayAction$inboundSchema.and(z.object({ action: z.literal("say") })),
-    SetValueAction$inboundSchema.and(z.object({ action: z.literal("set") })),
-    SaveAction$inboundSchema.and(z.object({ action: z.literal("save") })),
+    CallAction$inboundSchema,
+    IncrementAction$inboundSchema,
+    SaveAction$inboundSchema,
+    SayAction$inboundSchema,
+    SetValueAction$inboundSchema,
   ]);
 /** @internal */
 export type Start$Outbound =
-  | (CallAction$Outbound & { action: "call" })
-  | (IncrementAction$Outbound & { action: "inc" })
-  | (SayAction$Outbound & { action: "say" })
-  | (SetValueAction$Outbound & { action: "set" })
-  | (SaveAction$Outbound & { action: "save" });
+  | CallAction$Outbound
+  | IncrementAction$Outbound
+  | SaveAction$Outbound
+  | SayAction$Outbound
+  | SetValueAction$Outbound;
 
 /** @internal */
 export const Start$outboundSchema: z.ZodType<
@@ -106,11 +98,11 @@ export const Start$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Start
 > = z.union([
-  CallAction$outboundSchema.and(z.object({ action: z.literal("call") })),
-  IncrementAction$outboundSchema.and(z.object({ action: z.literal("inc") })),
-  SayAction$outboundSchema.and(z.object({ action: z.literal("say") })),
-  SetValueAction$outboundSchema.and(z.object({ action: z.literal("set") })),
-  SaveAction$outboundSchema.and(z.object({ action: z.literal("save") })),
+  CallAction$outboundSchema,
+  IncrementAction$outboundSchema,
+  SaveAction$outboundSchema,
+  SayAction$outboundSchema,
+  SetValueAction$outboundSchema,
 ]);
 
 export function startToJSON(start: Start): string {
@@ -129,19 +121,19 @@ export function startFromJSON(
 /** @internal */
 export const Submit$inboundSchema: z.ZodType<Submit, z.ZodTypeDef, unknown> = z
   .union([
-    CallAction$inboundSchema.and(z.object({ action: z.literal("call") })),
-    IncrementAction$inboundSchema.and(z.object({ action: z.literal("inc") })),
-    SayAction$inboundSchema.and(z.object({ action: z.literal("say") })),
-    SetValueAction$inboundSchema.and(z.object({ action: z.literal("set") })),
-    SaveAction$inboundSchema.and(z.object({ action: z.literal("save") })),
+    CallAction$inboundSchema,
+    IncrementAction$inboundSchema,
+    SaveAction$inboundSchema,
+    SayAction$inboundSchema,
+    SetValueAction$inboundSchema,
   ]);
 /** @internal */
 export type Submit$Outbound =
-  | (CallAction$Outbound & { action: "call" })
-  | (IncrementAction$Outbound & { action: "inc" })
-  | (SayAction$Outbound & { action: "say" })
-  | (SetValueAction$Outbound & { action: "set" })
-  | (SaveAction$Outbound & { action: "save" });
+  | CallAction$Outbound
+  | IncrementAction$Outbound
+  | SaveAction$Outbound
+  | SayAction$Outbound
+  | SetValueAction$Outbound;
 
 /** @internal */
 export const Submit$outboundSchema: z.ZodType<
@@ -149,11 +141,11 @@ export const Submit$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Submit
 > = z.union([
-  CallAction$outboundSchema.and(z.object({ action: z.literal("call") })),
-  IncrementAction$outboundSchema.and(z.object({ action: z.literal("inc") })),
-  SayAction$outboundSchema.and(z.object({ action: z.literal("say") })),
-  SetValueAction$outboundSchema.and(z.object({ action: z.literal("set") })),
-  SaveAction$outboundSchema.and(z.object({ action: z.literal("save") })),
+  CallAction$outboundSchema,
+  IncrementAction$outboundSchema,
+  SaveAction$outboundSchema,
+  SayAction$outboundSchema,
+  SetValueAction$outboundSchema,
 ]);
 
 export function submitToJSON(submit: Submit): string {
@@ -178,30 +170,22 @@ export const ExpressionTaskEvents$inboundSchema: z.ZodType<
   start: z.nullable(
     z.array(
       z.union([
-        CallAction$inboundSchema.and(z.object({ action: z.literal("call") })),
-        IncrementAction$inboundSchema.and(
-          z.object({ action: z.literal("inc") }),
-        ),
-        SayAction$inboundSchema.and(z.object({ action: z.literal("say") })),
-        SetValueAction$inboundSchema.and(
-          z.object({ action: z.literal("set") }),
-        ),
-        SaveAction$inboundSchema.and(z.object({ action: z.literal("save") })),
+        CallAction$inboundSchema,
+        IncrementAction$inboundSchema,
+        SaveAction$inboundSchema,
+        SayAction$inboundSchema,
+        SetValueAction$inboundSchema,
       ]),
     ),
   ).optional(),
   submit: z.nullable(
     z.array(
       z.union([
-        CallAction$inboundSchema.and(z.object({ action: z.literal("call") })),
-        IncrementAction$inboundSchema.and(
-          z.object({ action: z.literal("inc") }),
-        ),
-        SayAction$inboundSchema.and(z.object({ action: z.literal("say") })),
-        SetValueAction$inboundSchema.and(
-          z.object({ action: z.literal("set") }),
-        ),
-        SaveAction$inboundSchema.and(z.object({ action: z.literal("save") })),
+        CallAction$inboundSchema,
+        IncrementAction$inboundSchema,
+        SaveAction$inboundSchema,
+        SayAction$inboundSchema,
+        SetValueAction$inboundSchema,
       ]),
     ),
   ).optional(),
@@ -210,21 +194,21 @@ export const ExpressionTaskEvents$inboundSchema: z.ZodType<
 export type ExpressionTaskEvents$Outbound = {
   start?:
     | Array<
-      | (CallAction$Outbound & { action: "call" })
-      | (IncrementAction$Outbound & { action: "inc" })
-      | (SayAction$Outbound & { action: "say" })
-      | (SetValueAction$Outbound & { action: "set" })
-      | (SaveAction$Outbound & { action: "save" })
+      | CallAction$Outbound
+      | IncrementAction$Outbound
+      | SaveAction$Outbound
+      | SayAction$Outbound
+      | SetValueAction$Outbound
     >
     | null
     | undefined;
   submit?:
     | Array<
-      | (CallAction$Outbound & { action: "call" })
-      | (IncrementAction$Outbound & { action: "inc" })
-      | (SayAction$Outbound & { action: "say" })
-      | (SetValueAction$Outbound & { action: "set" })
-      | (SaveAction$Outbound & { action: "save" })
+      | CallAction$Outbound
+      | IncrementAction$Outbound
+      | SaveAction$Outbound
+      | SayAction$Outbound
+      | SetValueAction$Outbound
     >
     | null
     | undefined;
@@ -239,30 +223,22 @@ export const ExpressionTaskEvents$outboundSchema: z.ZodType<
   start: z.nullable(
     z.array(
       z.union([
-        CallAction$outboundSchema.and(z.object({ action: z.literal("call") })),
-        IncrementAction$outboundSchema.and(
-          z.object({ action: z.literal("inc") }),
-        ),
-        SayAction$outboundSchema.and(z.object({ action: z.literal("say") })),
-        SetValueAction$outboundSchema.and(
-          z.object({ action: z.literal("set") }),
-        ),
-        SaveAction$outboundSchema.and(z.object({ action: z.literal("save") })),
+        CallAction$outboundSchema,
+        IncrementAction$outboundSchema,
+        SaveAction$outboundSchema,
+        SayAction$outboundSchema,
+        SetValueAction$outboundSchema,
       ]),
     ),
   ).optional(),
   submit: z.nullable(
     z.array(
       z.union([
-        CallAction$outboundSchema.and(z.object({ action: z.literal("call") })),
-        IncrementAction$outboundSchema.and(
-          z.object({ action: z.literal("inc") }),
-        ),
-        SayAction$outboundSchema.and(z.object({ action: z.literal("say") })),
-        SetValueAction$outboundSchema.and(
-          z.object({ action: z.literal("set") }),
-        ),
-        SaveAction$outboundSchema.and(z.object({ action: z.literal("save") })),
+        CallAction$outboundSchema,
+        IncrementAction$outboundSchema,
+        SaveAction$outboundSchema,
+        SayAction$outboundSchema,
+        SetValueAction$outboundSchema,
       ]),
     ),
   ).optional(),

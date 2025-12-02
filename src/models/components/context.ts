@@ -31,48 +31,34 @@ import {
   StepsTask$outboundSchema,
 } from "./stepstask.js";
 
-export type Two =
-  | (LoadToolFromFileTask & { type: "import" })
-  | (EventTask & { type: "event" })
-  | (ExpressionTask & { type: "expression" })
-  | (StepsTask & { type: "steps" });
+export type Two = EventTask | ExpressionTask | LoadToolFromFileTask | StepsTask;
 
 export type Task1 =
-  | (LoadToolFromFileTask & { type: "import" })
-  | (EventTask & { type: "event" })
-  | (ExpressionTask & { type: "expression" })
-  | (StepsTask & { type: "steps" });
+  | EventTask
+  | ExpressionTask
+  | LoadToolFromFileTask
+  | StepsTask;
 
 /**
  * Task implementation details
  */
 export type Task =
-  | (LoadToolFromFileTask & { type: "import" })
-  | (EventTask & { type: "event" })
-  | (ExpressionTask & { type: "expression" })
-  | (StepsTask & { type: "steps" })
-  | Array<
-    | (LoadToolFromFileTask & { type: "import" })
-    | (EventTask & { type: "event" })
-    | (ExpressionTask & { type: "expression" })
-    | (StepsTask & { type: "steps" })
-  >;
+  | EventTask
+  | ExpressionTask
+  | LoadToolFromFileTask
+  | StepsTask
+  | Array<EventTask | ExpressionTask | LoadToolFromFileTask | StepsTask>;
 
 export type Context = {
   /**
    * Task implementation details
    */
   task?:
-    | (LoadToolFromFileTask & { type: "import" })
-    | (EventTask & { type: "event" })
-    | (ExpressionTask & { type: "expression" })
-    | (StepsTask & { type: "steps" })
-    | Array<
-      | (LoadToolFromFileTask & { type: "import" })
-      | (EventTask & { type: "event" })
-      | (ExpressionTask & { type: "expression" })
-      | (StepsTask & { type: "steps" })
-    >
+    | EventTask
+    | ExpressionTask
+    | LoadToolFromFileTask
+    | StepsTask
+    | Array<EventTask | ExpressionTask | LoadToolFromFileTask | StepsTask>
     | null
     | undefined;
 };
@@ -80,34 +66,26 @@ export type Context = {
 /** @internal */
 export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z.union(
   [
-    LoadToolFromFileTask$inboundSchema.and(
-      z.object({ type: z.literal("import") }),
-    ),
-    EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
-    ExpressionTask$inboundSchema.and(
-      z.object({ type: z.literal("expression") }),
-    ),
-    StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
+    EventTask$inboundSchema,
+    ExpressionTask$inboundSchema,
+    LoadToolFromFileTask$inboundSchema,
+    StepsTask$inboundSchema,
   ],
 );
 /** @internal */
 export type Two$Outbound =
-  | (LoadToolFromFileTask$Outbound & { type: "import" })
-  | (EventTask$Outbound & { type: "event" })
-  | (ExpressionTask$Outbound & { type: "expression" })
-  | (StepsTask$Outbound & { type: "steps" });
+  | EventTask$Outbound
+  | ExpressionTask$Outbound
+  | LoadToolFromFileTask$Outbound
+  | StepsTask$Outbound;
 
 /** @internal */
 export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
   .union([
-    LoadToolFromFileTask$outboundSchema.and(
-      z.object({ type: z.literal("import") }),
-    ),
-    EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
-    ExpressionTask$outboundSchema.and(
-      z.object({ type: z.literal("expression") }),
-    ),
-    StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
+    EventTask$outboundSchema,
+    ExpressionTask$outboundSchema,
+    LoadToolFromFileTask$outboundSchema,
+    StepsTask$outboundSchema,
   ]);
 
 export function twoToJSON(two: Two): string {
@@ -126,21 +104,17 @@ export function twoFromJSON(
 /** @internal */
 export const Task1$inboundSchema: z.ZodType<Task1, z.ZodTypeDef, unknown> = z
   .union([
-    LoadToolFromFileTask$inboundSchema.and(
-      z.object({ type: z.literal("import") }),
-    ),
-    EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
-    ExpressionTask$inboundSchema.and(
-      z.object({ type: z.literal("expression") }),
-    ),
-    StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
+    EventTask$inboundSchema,
+    ExpressionTask$inboundSchema,
+    LoadToolFromFileTask$inboundSchema,
+    StepsTask$inboundSchema,
   ]);
 /** @internal */
 export type Task1$Outbound =
-  | (LoadToolFromFileTask$Outbound & { type: "import" })
-  | (EventTask$Outbound & { type: "event" })
-  | (ExpressionTask$Outbound & { type: "expression" })
-  | (StepsTask$Outbound & { type: "steps" });
+  | EventTask$Outbound
+  | ExpressionTask$Outbound
+  | LoadToolFromFileTask$Outbound
+  | StepsTask$Outbound;
 
 /** @internal */
 export const Task1$outboundSchema: z.ZodType<
@@ -148,14 +122,10 @@ export const Task1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Task1
 > = z.union([
-  LoadToolFromFileTask$outboundSchema.and(
-    z.object({ type: z.literal("import") }),
-  ),
-  EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
-  ExpressionTask$outboundSchema.and(
-    z.object({ type: z.literal("expression") }),
-  ),
-  StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
+  EventTask$outboundSchema,
+  ExpressionTask$outboundSchema,
+  LoadToolFromFileTask$outboundSchema,
+  StepsTask$outboundSchema,
 ]);
 
 export function task1ToJSON(task1: Task1): string {
@@ -175,64 +145,48 @@ export function task1FromJSON(
 export const Task$inboundSchema: z.ZodType<Task, z.ZodTypeDef, unknown> = z
   .union([
     z.union([
-      LoadToolFromFileTask$inboundSchema.and(
-        z.object({ type: z.literal("import") }),
-      ),
-      EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
-      ExpressionTask$inboundSchema.and(
-        z.object({ type: z.literal("expression") }),
-      ),
-      StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
+      EventTask$inboundSchema,
+      ExpressionTask$inboundSchema,
+      LoadToolFromFileTask$inboundSchema,
+      StepsTask$inboundSchema,
     ]),
     z.array(
       z.union([
-        LoadToolFromFileTask$inboundSchema.and(
-          z.object({ type: z.literal("import") }),
-        ),
-        EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
-        ExpressionTask$inboundSchema.and(
-          z.object({ type: z.literal("expression") }),
-        ),
-        StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
+        EventTask$inboundSchema,
+        ExpressionTask$inboundSchema,
+        LoadToolFromFileTask$inboundSchema,
+        StepsTask$inboundSchema,
       ]),
     ),
   ]);
 /** @internal */
 export type Task$Outbound =
-  | (LoadToolFromFileTask$Outbound & { type: "import" })
-  | (EventTask$Outbound & { type: "event" })
-  | (ExpressionTask$Outbound & { type: "expression" })
-  | (StepsTask$Outbound & { type: "steps" })
+  | EventTask$Outbound
+  | ExpressionTask$Outbound
+  | LoadToolFromFileTask$Outbound
+  | StepsTask$Outbound
   | Array<
-    | (LoadToolFromFileTask$Outbound & { type: "import" })
-    | (EventTask$Outbound & { type: "event" })
-    | (ExpressionTask$Outbound & { type: "expression" })
-    | (StepsTask$Outbound & { type: "steps" })
+    | EventTask$Outbound
+    | ExpressionTask$Outbound
+    | LoadToolFromFileTask$Outbound
+    | StepsTask$Outbound
   >;
 
 /** @internal */
 export const Task$outboundSchema: z.ZodType<Task$Outbound, z.ZodTypeDef, Task> =
   z.union([
     z.union([
-      LoadToolFromFileTask$outboundSchema.and(
-        z.object({ type: z.literal("import") }),
-      ),
-      EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
-      ExpressionTask$outboundSchema.and(
-        z.object({ type: z.literal("expression") }),
-      ),
-      StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
+      EventTask$outboundSchema,
+      ExpressionTask$outboundSchema,
+      LoadToolFromFileTask$outboundSchema,
+      StepsTask$outboundSchema,
     ]),
     z.array(
       z.union([
-        LoadToolFromFileTask$outboundSchema.and(
-          z.object({ type: z.literal("import") }),
-        ),
-        EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
-        ExpressionTask$outboundSchema.and(
-          z.object({ type: z.literal("expression") }),
-        ),
-        StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
+        EventTask$outboundSchema,
+        ExpressionTask$outboundSchema,
+        LoadToolFromFileTask$outboundSchema,
+        StepsTask$outboundSchema,
       ]),
     ),
   ]);
@@ -256,25 +210,17 @@ export const Context$inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> =
     task: z.nullable(
       z.union([
         z.union([
-          LoadToolFromFileTask$inboundSchema.and(
-            z.object({ type: z.literal("import") }),
-          ),
-          EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
-          ExpressionTask$inboundSchema.and(
-            z.object({ type: z.literal("expression") }),
-          ),
-          StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
+          EventTask$inboundSchema,
+          ExpressionTask$inboundSchema,
+          LoadToolFromFileTask$inboundSchema,
+          StepsTask$inboundSchema,
         ]),
         z.array(
           z.union([
-            LoadToolFromFileTask$inboundSchema.and(
-              z.object({ type: z.literal("import") }),
-            ),
-            EventTask$inboundSchema.and(z.object({ type: z.literal("event") })),
-            ExpressionTask$inboundSchema.and(
-              z.object({ type: z.literal("expression") }),
-            ),
-            StepsTask$inboundSchema.and(z.object({ type: z.literal("steps") })),
+            EventTask$inboundSchema,
+            ExpressionTask$inboundSchema,
+            LoadToolFromFileTask$inboundSchema,
+            StepsTask$inboundSchema,
           ]),
         ),
       ]),
@@ -283,15 +229,15 @@ export const Context$inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> =
 /** @internal */
 export type Context$Outbound = {
   task?:
-    | (LoadToolFromFileTask$Outbound & { type: "import" })
-    | (EventTask$Outbound & { type: "event" })
-    | (ExpressionTask$Outbound & { type: "expression" })
-    | (StepsTask$Outbound & { type: "steps" })
+    | EventTask$Outbound
+    | ExpressionTask$Outbound
+    | LoadToolFromFileTask$Outbound
+    | StepsTask$Outbound
     | Array<
-      | (LoadToolFromFileTask$Outbound & { type: "import" })
-      | (EventTask$Outbound & { type: "event" })
-      | (ExpressionTask$Outbound & { type: "expression" })
-      | (StepsTask$Outbound & { type: "steps" })
+      | EventTask$Outbound
+      | ExpressionTask$Outbound
+      | LoadToolFromFileTask$Outbound
+      | StepsTask$Outbound
     >
     | null
     | undefined;
@@ -306,25 +252,17 @@ export const Context$outboundSchema: z.ZodType<
   task: z.nullable(
     z.union([
       z.union([
-        LoadToolFromFileTask$outboundSchema.and(
-          z.object({ type: z.literal("import") }),
-        ),
-        EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
-        ExpressionTask$outboundSchema.and(
-          z.object({ type: z.literal("expression") }),
-        ),
-        StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
+        EventTask$outboundSchema,
+        ExpressionTask$outboundSchema,
+        LoadToolFromFileTask$outboundSchema,
+        StepsTask$outboundSchema,
       ]),
       z.array(
         z.union([
-          LoadToolFromFileTask$outboundSchema.and(
-            z.object({ type: z.literal("import") }),
-          ),
-          EventTask$outboundSchema.and(z.object({ type: z.literal("event") })),
-          ExpressionTask$outboundSchema.and(
-            z.object({ type: z.literal("expression") }),
-          ),
-          StepsTask$outboundSchema.and(z.object({ type: z.literal("steps") })),
+          EventTask$outboundSchema,
+          ExpressionTask$outboundSchema,
+          LoadToolFromFileTask$outboundSchema,
+          StepsTask$outboundSchema,
         ]),
       ),
     ]),

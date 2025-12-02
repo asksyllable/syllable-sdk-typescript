@@ -42,7 +42,7 @@ export type LoadToolFromFileTask = {
   variables?: Array<Variable> | null | undefined;
   metadata?: ContextTaskMetadata | null | undefined;
   tool?: ContextToolInfo | null | undefined;
-  type?: "import" | undefined;
+  type: "import";
   version?: "v1alpha" | undefined;
   /**
    * The local path of the tool definition JSON file.
@@ -87,7 +87,7 @@ export const LoadToolFromFileTask$inboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("import").default("import"),
+  type: z.literal("import"),
   version: z.literal("v1alpha").default("v1alpha"),
   file: z.union([z.string(), z.array(z.string())]),
 });
@@ -114,7 +114,7 @@ export const LoadToolFromFileTask$outboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("import").default("import" as const),
+  type: z.literal("import"),
   version: z.literal("v1alpha").default("v1alpha" as const),
   file: z.union([z.string(), z.array(z.string())]),
 });

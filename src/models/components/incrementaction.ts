@@ -26,7 +26,7 @@ import {
 } from "./jmespathexpression.js";
 
 export type IncrementActionIf1 =
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
 
@@ -35,7 +35,7 @@ export type IncrementActionIf1 =
  */
 export type IncrementActionIf =
   | CaseExpression
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" })
   | string;
@@ -46,13 +46,13 @@ export type IncrementAction = {
    */
   if?:
     | CaseExpression
-    | (CelExpression & { type: "cel" })
+    | CelExpression
     | (JMESPathExpression & { type: "jmespath" })
     | (JMESPathExpression & { type: "jp" })
     | string
     | null
     | undefined;
-  action?: "inc" | undefined;
+  action: "inc";
   /**
    * Numeric destination path to increment.
    */
@@ -69,7 +69,7 @@ export const IncrementActionIf1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$inboundSchema,
   JMESPathExpression$inboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -77,7 +77,7 @@ export const IncrementActionIf1$inboundSchema: z.ZodType<
 ]);
 /** @internal */
 export type IncrementActionIf1$Outbound =
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
@@ -87,7 +87,7 @@ export const IncrementActionIf1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   IncrementActionIf1
 > = z.union([
-  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -119,7 +119,7 @@ export const IncrementActionIf$inboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$inboundSchema,
   z.union([
-    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$inboundSchema,
     JMESPathExpression$inboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -130,7 +130,7 @@ export const IncrementActionIf$inboundSchema: z.ZodType<
 /** @internal */
 export type IncrementActionIf$Outbound =
   | CaseExpression$Outbound
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" })
   | string;
@@ -143,7 +143,7 @@ export const IncrementActionIf$outboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
-    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$outboundSchema,
     JMESPathExpression$outboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -179,7 +179,7 @@ export const IncrementAction$inboundSchema: z.ZodType<
     z.union([
       CaseExpression$inboundSchema,
       z.union([
-        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$inboundSchema,
         JMESPathExpression$inboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -190,7 +190,7 @@ export const IncrementAction$inboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-  action: z.literal("inc").default("inc"),
+  action: z.literal("inc"),
   name: z.string(),
   by: z.number().int().default(1),
 });
@@ -198,7 +198,7 @@ export const IncrementAction$inboundSchema: z.ZodType<
 export type IncrementAction$Outbound = {
   if?:
     | CaseExpression$Outbound
-    | (CelExpression$Outbound & { type: "cel" })
+    | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
     | (JMESPathExpression$Outbound & { type: "jp" })
     | string
@@ -219,7 +219,7 @@ export const IncrementAction$outboundSchema: z.ZodType<
     z.union([
       CaseExpression$outboundSchema,
       z.union([
-        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$outboundSchema,
         JMESPathExpression$outboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -230,7 +230,7 @@ export const IncrementAction$outboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-  action: z.literal("inc").default("inc" as const),
+  action: z.literal("inc"),
   name: z.string(),
   by: z.number().int().default(1),
 });
