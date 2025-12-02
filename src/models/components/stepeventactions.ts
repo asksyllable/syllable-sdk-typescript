@@ -51,6 +51,8 @@ export type Enter =
   | SayAction
   | SetValueAction;
 
+export type Presubmit = IncrementAction | SaveAction | SetValueAction;
+
 export type StepEventActionsSubmit =
   | CallAction
   | IncrementAction
@@ -59,7 +61,7 @@ export type StepEventActionsSubmit =
   | SetValueAction;
 
 /**
- * Actions to perform when events occur (enter, submit).
+ * Actions to perform when events occur (enter, presubmit, submit).
  */
 export type StepEventActions = {
   /**
@@ -78,6 +80,13 @@ export type StepEventActions = {
     | Array<
       CallAction | IncrementAction | SaveAction | SayAction | SetValueAction
     >
+    | null
+    | undefined;
+  /**
+   * Actions to execute before validation (data-mutation only: set, inc, save). Use this to set default values for required fields that would otherwise fail validation.
+   */
+  presubmit?:
+    | Array<IncrementAction | SaveAction | SetValueAction>
     | null
     | undefined;
   /**
@@ -185,6 +194,46 @@ export function enterFromJSON(
 }
 
 /** @internal */
+export const Presubmit$inboundSchema: z.ZodType<
+  Presubmit,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  IncrementAction$inboundSchema,
+  SaveAction$inboundSchema,
+  SetValueAction$inboundSchema,
+]);
+/** @internal */
+export type Presubmit$Outbound =
+  | IncrementAction$Outbound
+  | SaveAction$Outbound
+  | SetValueAction$Outbound;
+
+/** @internal */
+export const Presubmit$outboundSchema: z.ZodType<
+  Presubmit$Outbound,
+  z.ZodTypeDef,
+  Presubmit
+> = z.union([
+  IncrementAction$outboundSchema,
+  SaveAction$outboundSchema,
+  SetValueAction$outboundSchema,
+]);
+
+export function presubmitToJSON(presubmit: Presubmit): string {
+  return JSON.stringify(Presubmit$outboundSchema.parse(presubmit));
+}
+export function presubmitFromJSON(
+  jsonString: string,
+): SafeParseResult<Presubmit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Presubmit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Presubmit' from JSON`,
+  );
+}
+
+/** @internal */
 export const StepEventActionsSubmit$inboundSchema: z.ZodType<
   StepEventActionsSubmit,
   z.ZodTypeDef,
@@ -262,6 +311,15 @@ export const StepEventActions$inboundSchema: z.ZodType<
       ]),
     ),
   ).optional(),
+  presubmit: z.nullable(
+    z.array(
+      z.union([
+        IncrementAction$inboundSchema,
+        SaveAction$inboundSchema,
+        SetValueAction$inboundSchema,
+      ]),
+    ),
+  ).optional(),
   submit: z.nullable(
     z.array(
       z.union([
@@ -293,6 +351,12 @@ export type StepEventActions$Outbound = {
       | SaveAction$Outbound
       | SayAction$Outbound
       | SetValueAction$Outbound
+    >
+    | null
+    | undefined;
+  presubmit?:
+    | Array<
+      IncrementAction$Outbound | SaveAction$Outbound | SetValueAction$Outbound
     >
     | null
     | undefined;
@@ -332,6 +396,15 @@ export const StepEventActions$outboundSchema: z.ZodType<
         IncrementAction$outboundSchema,
         SaveAction$outboundSchema,
         SayAction$outboundSchema,
+        SetValueAction$outboundSchema,
+      ]),
+    ),
+  ).optional(),
+  presubmit: z.nullable(
+    z.array(
+      z.union([
+        IncrementAction$outboundSchema,
+        SaveAction$outboundSchema,
         SetValueAction$outboundSchema,
       ]),
     ),
