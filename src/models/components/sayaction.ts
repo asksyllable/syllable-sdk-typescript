@@ -27,7 +27,7 @@ import {
 } from "./jmespathexpression.js";
 
 export type SayActionIf1 =
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
 
@@ -36,7 +36,7 @@ export type SayActionIf1 =
  */
 export type SayActionIf =
   | CaseExpression
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" })
   | string;
@@ -59,7 +59,7 @@ export type SayAction = {
    */
   if?:
     | CaseExpression
-    | (CelExpression & { type: "cel" })
+    | CelExpression
     | (JMESPathExpression & { type: "jmespath" })
     | (JMESPathExpression & { type: "jp" })
     | string
@@ -69,7 +69,7 @@ export type SayAction = {
    * Text to apply if the condition is true.
    */
   text: string;
-  action?: "say" | undefined;
+  action: "say";
   /**
    * The role of the message.
    */
@@ -82,7 +82,7 @@ export const SayActionIf1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$inboundSchema,
   JMESPathExpression$inboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -90,7 +90,7 @@ export const SayActionIf1$inboundSchema: z.ZodType<
 ]);
 /** @internal */
 export type SayActionIf1$Outbound =
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
@@ -100,7 +100,7 @@ export const SayActionIf1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SayActionIf1
 > = z.union([
-  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -128,7 +128,7 @@ export const SayActionIf$inboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$inboundSchema,
   z.union([
-    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$inboundSchema,
     JMESPathExpression$inboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -139,7 +139,7 @@ export const SayActionIf$inboundSchema: z.ZodType<
 /** @internal */
 export type SayActionIf$Outbound =
   | CaseExpression$Outbound
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" })
   | string;
@@ -152,7 +152,7 @@ export const SayActionIf$outboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
-    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$outboundSchema,
     JMESPathExpression$outboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -192,7 +192,7 @@ export const SayAction$inboundSchema: z.ZodType<
     z.union([
       CaseExpression$inboundSchema,
       z.union([
-        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$inboundSchema,
         JMESPathExpression$inboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -204,14 +204,14 @@ export const SayAction$inboundSchema: z.ZodType<
     ]),
   ).optional(),
   text: z.string(),
-  action: z.literal("say").default("say"),
+  action: z.literal("say"),
   role: Role$inboundSchema.default("assistant"),
 });
 /** @internal */
 export type SayAction$Outbound = {
   if?:
     | CaseExpression$Outbound
-    | (CelExpression$Outbound & { type: "cel" })
+    | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
     | (JMESPathExpression$Outbound & { type: "jp" })
     | string
@@ -232,7 +232,7 @@ export const SayAction$outboundSchema: z.ZodType<
     z.union([
       CaseExpression$outboundSchema,
       z.union([
-        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$outboundSchema,
         JMESPathExpression$outboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -244,7 +244,7 @@ export const SayAction$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   text: z.string(),
-  action: z.literal("say").default("say" as const),
+  action: z.literal("say"),
   role: Role$outboundSchema.default("assistant"),
 });
 

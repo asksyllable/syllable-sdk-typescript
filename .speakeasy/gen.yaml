@@ -28,7 +28,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.14-rc.1
+  version: 1.0.14-rc.2
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -40,7 +40,7 @@ typescript:
   author: Syllable
   baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
-  constFieldsAlwaysOptional: true
+  constFieldsAlwaysOptional: false
   defaultErrorName: SDKError
   enableCustomCodeRegions: false
   enableMCPServer: true
@@ -52,6 +52,7 @@ typescript:
   flatteningOrder: parameters-first
   formStringArrayEncodeMode: encoded-string
   forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   generateExamples: true
   imports:
     option: openapi
@@ -69,8 +70,10 @@ typescript:
   methodArguments: require-security-and-request
   modelPropertyCasing: camel
   moduleFormat: commonjs
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: syllable-sdk
+  preApplyUnionDiscriminators: true
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

@@ -10,6 +10,7 @@ Expression to compute initial value (mutually exclusive with value).
 ```typescript
 const value: components.One = {
   expression: "<value>",
+  type: "cel",
 };
 ```
 

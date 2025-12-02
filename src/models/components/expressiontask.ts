@@ -56,13 +56,13 @@ import {
 } from "./variable.js";
 
 export type Expression1 =
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
 
 export type Expression =
   | CaseExpression
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" })
   | string;
@@ -76,12 +76,12 @@ export type ExpressionTask = {
   variables?: Array<Variable> | null | undefined;
   metadata?: ContextTaskMetadata | null | undefined;
   tool?: ContextToolInfo | null | undefined;
-  type?: "expression" | undefined;
+  type: "expression";
   version?: "v1alpha" | undefined;
   inputs?: Array<InputParameter> | undefined;
   expression?:
     | CaseExpression
-    | (CelExpression & { type: "cel" })
+    | CelExpression
     | (JMESPathExpression & { type: "jmespath" })
     | (JMESPathExpression & { type: "jp" })
     | string
@@ -100,7 +100,7 @@ export const Expression1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$inboundSchema,
   JMESPathExpression$inboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -108,7 +108,7 @@ export const Expression1$inboundSchema: z.ZodType<
 ]);
 /** @internal */
 export type Expression1$Outbound =
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
@@ -118,7 +118,7 @@ export const Expression1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Expression1
 > = z.union([
-  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -146,7 +146,7 @@ export const Expression$inboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$inboundSchema,
   z.union([
-    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$inboundSchema,
     JMESPathExpression$inboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -157,7 +157,7 @@ export const Expression$inboundSchema: z.ZodType<
 /** @internal */
 export type Expression$Outbound =
   | CaseExpression$Outbound
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" })
   | string;
@@ -170,7 +170,7 @@ export const Expression$outboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
-    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$outboundSchema,
     JMESPathExpression$outboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -203,14 +203,14 @@ export const ExpressionTask$inboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("expression").default("expression"),
+  type: z.literal("expression"),
   version: z.literal("v1alpha").default("v1alpha"),
   inputs: z.array(InputParameter$inboundSchema).optional(),
   expression: z.nullable(
     z.union([
       CaseExpression$inboundSchema,
       z.union([
-        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$inboundSchema,
         JMESPathExpression$inboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -236,7 +236,7 @@ export type ExpressionTask$Outbound = {
   inputs?: Array<InputParameter$Outbound> | undefined;
   expression?:
     | CaseExpression$Outbound
-    | (CelExpression$Outbound & { type: "cel" })
+    | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
     | (JMESPathExpression$Outbound & { type: "jp" })
     | string
@@ -257,14 +257,14 @@ export const ExpressionTask$outboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("expression").default("expression" as const),
+  type: z.literal("expression"),
   version: z.literal("v1alpha").default("v1alpha" as const),
   inputs: z.array(InputParameter$outboundSchema).optional(),
   expression: z.nullable(
     z.union([
       CaseExpression$outboundSchema,
       z.union([
-        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$outboundSchema,
         JMESPathExpression$outboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),

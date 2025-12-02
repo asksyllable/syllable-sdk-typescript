@@ -40,7 +40,7 @@ export type EventTask = {
   variables?: Array<Variable> | null | undefined;
   metadata?: ContextTaskMetadata | null | undefined;
   tool?: ContextToolInfo | null | undefined;
-  type?: "event" | undefined;
+  type: "event";
   version?: "v1alpha" | undefined;
   on?: EventTaskEvents | undefined;
 };
@@ -56,7 +56,7 @@ export const EventTask$inboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("event").default("event"),
+  type: z.literal("event"),
   version: z.literal("v1alpha").default("v1alpha"),
   on: EventTaskEvents$inboundSchema.optional(),
 });
@@ -83,7 +83,7 @@ export const EventTask$outboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("event").default("event" as const),
+  type: z.literal("event"),
   version: z.literal("v1alpha").default("v1alpha" as const),
   on: EventTaskEvents$outboundSchema.optional(),
 });

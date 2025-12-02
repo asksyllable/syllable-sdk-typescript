@@ -8,6 +8,7 @@
 ```typescript
 const value: components.CelExpression = {
   expression: "<value>",
+  type: "cel",
 };
 ```
 

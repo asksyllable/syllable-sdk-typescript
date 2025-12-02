@@ -40,7 +40,7 @@ export type StepsTask = {
   variables?: Array<Variable> | null | undefined;
   metadata?: ContextTaskMetadata | null | undefined;
   tool?: ContextToolInfo | null | undefined;
-  type?: "steps" | undefined;
+  type: "steps";
   version?: "v1alpha" | undefined;
   steps?: Array<Step> | undefined;
 };
@@ -56,7 +56,7 @@ export const StepsTask$inboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("steps").default("steps"),
+  type: z.literal("steps"),
   version: z.literal("v1alpha").default("v1alpha"),
   steps: z.array(Step$inboundSchema).optional(),
 });
@@ -83,7 +83,7 @@ export const StepsTask$outboundSchema: z.ZodType<
   variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
   metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
   tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("steps").default("steps" as const),
+  type: z.literal("steps"),
   version: z.literal("v1alpha").default("v1alpha" as const),
   steps: z.array(Step$outboundSchema).optional(),
 });

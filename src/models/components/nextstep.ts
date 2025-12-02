@@ -26,7 +26,7 @@ import {
 } from "./jmespathexpression.js";
 
 export type NextStepIf1 =
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
 
@@ -35,7 +35,7 @@ export type NextStepIf1 =
  */
 export type NextStepIf =
   | CaseExpression
-  | (CelExpression & { type: "cel" })
+  | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" })
   | string;
@@ -49,7 +49,7 @@ export type NextStep = {
    */
   if?:
     | CaseExpression
-    | (CelExpression & { type: "cel" })
+    | CelExpression
     | (JMESPathExpression & { type: "jmespath" })
     | (JMESPathExpression & { type: "jp" })
     | string
@@ -71,7 +71,7 @@ export const NextStepIf1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$inboundSchema,
   JMESPathExpression$inboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -79,7 +79,7 @@ export const NextStepIf1$inboundSchema: z.ZodType<
 ]);
 /** @internal */
 export type NextStepIf1$Outbound =
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
@@ -89,7 +89,7 @@ export const NextStepIf1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NextStepIf1
 > = z.union([
-  CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+  CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
     z.object({ type: z.literal("jmespath") }),
   ),
@@ -117,7 +117,7 @@ export const NextStepIf$inboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$inboundSchema,
   z.union([
-    CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$inboundSchema,
     JMESPathExpression$inboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -128,7 +128,7 @@ export const NextStepIf$inboundSchema: z.ZodType<
 /** @internal */
 export type NextStepIf$Outbound =
   | CaseExpression$Outbound
-  | (CelExpression$Outbound & { type: "cel" })
+  | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" })
   | string;
@@ -141,7 +141,7 @@ export const NextStepIf$outboundSchema: z.ZodType<
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
-    CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+    CelExpression$outboundSchema,
     JMESPathExpression$outboundSchema.and(
       z.object({ type: z.literal("jmespath") }),
     ),
@@ -173,7 +173,7 @@ export const NextStep$inboundSchema: z.ZodType<
     z.union([
       CaseExpression$inboundSchema,
       z.union([
-        CelExpression$inboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$inboundSchema,
         JMESPathExpression$inboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),
@@ -191,7 +191,7 @@ export const NextStep$inboundSchema: z.ZodType<
 export type NextStep$Outbound = {
   if?:
     | CaseExpression$Outbound
-    | (CelExpression$Outbound & { type: "cel" })
+    | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
     | (JMESPathExpression$Outbound & { type: "jp" })
     | string
@@ -211,7 +211,7 @@ export const NextStep$outboundSchema: z.ZodType<
     z.union([
       CaseExpression$outboundSchema,
       z.union([
-        CelExpression$outboundSchema.and(z.object({ type: z.literal("cel") })),
+        CelExpression$outboundSchema,
         JMESPathExpression$outboundSchema.and(
           z.object({ type: z.literal("jmespath") }),
         ),

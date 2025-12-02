@@ -33,13 +33,13 @@ export const ToolParameterTransformCondition$inboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  operator: z.nullable(z.literal("eq").default("eq")).optional(),
+  operator: z.nullable(z.literal("eq")).optional(),
 });
 /** @internal */
 export type ToolParameterTransformCondition$Outbound = {
   key: string;
   value: string;
-  operator: "eq" | null;
+  operator?: "eq" | null | undefined;
 };
 
 /** @internal */
@@ -50,7 +50,7 @@ export const ToolParameterTransformCondition$outboundSchema: z.ZodType<
 > = z.object({
   key: z.string(),
   value: z.string(),
-  operator: z.nullable(z.literal("eq")),
+  operator: z.nullable(z.literal("eq")).optional(),
 });
 
 export function toolParameterTransformConditionToJSON(
