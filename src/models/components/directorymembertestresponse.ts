@@ -9,9 +9,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberTestResponse = {
   /**
-   * Extension to which the user will be transferred if they call at the provided timestamp in the given language
+   * Extension to which the user will be transferred if they call at the provided timestamp in the given language, or a status message if no rules match
    */
   extension?: string | null | undefined;
+  /**
+   * Status message if no rules match
+   */
+  status?: string | null | undefined;
 };
 
 /** @internal */
@@ -21,10 +25,12 @@ export const DirectoryMemberTestResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   extension: z.nullable(z.string()).optional(),
+  status: z.nullable(z.string()).optional(),
 });
 /** @internal */
 export type DirectoryMemberTestResponse$Outbound = {
   extension?: string | null | undefined;
+  status?: string | null | undefined;
 };
 
 /** @internal */
@@ -34,6 +40,7 @@ export const DirectoryMemberTestResponse$outboundSchema: z.ZodType<
   DirectoryMemberTestResponse
 > = z.object({
   extension: z.nullable(z.string()).optional(),
+  status: z.nullable(z.string()).optional(),
 });
 
 export function directoryMemberTestResponseToJSON(
