@@ -12,9 +12,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type DirectoryMemberTestExtensionRequest = {
   memberId: number;
   /**
-   * Timestamp for test
+   * Timestamp for test in ISO 8601 format (e.g., 2025-12-04T14:29:39)
    */
-  timestamp: Date;
+  timestamp: string;
   /**
    * Optional language code for test
    */
@@ -28,7 +28,7 @@ export const DirectoryMemberTestExtensionRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   member_id: z.number().int(),
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  timestamp: z.string(),
   language_code: z.nullable(components.LanguageCode$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -50,7 +50,7 @@ export const DirectoryMemberTestExtensionRequest$outboundSchema: z.ZodType<
   DirectoryMemberTestExtensionRequest
 > = z.object({
   memberId: z.number().int(),
-  timestamp: z.date().transform(v => v.toISOString()),
+  timestamp: z.string(),
   languageCode: z.nullable(components.LanguageCode$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {

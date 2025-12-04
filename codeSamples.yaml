@@ -1225,7 +1225,7 @@ actions:
             async function run() {
               const result = await syllableSDK.directory.directoryMemberTestExtension({
                 memberId: 922412,
-                timestamp: new Date("2024-07-02T14:32:47.235Z"),
+                timestamp: "<value>",
               });
 
               console.log(result);
