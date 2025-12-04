@@ -7,14 +7,14 @@ import { DirectoryMemberTestExtensionRequest } from "syllable-sdk/models/operati
 
 let value: DirectoryMemberTestExtensionRequest = {
   memberId: 720397,
-  timestamp: new Date("2024-04-16T12:45:11.747Z"),
+  timestamp: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `memberId`                                                                                    | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `timestamp`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | Timestamp for test                                                                            |
-| `languageCode`                                                                                | [components.LanguageCode](../../models/components/languagecode.md)                            | :heavy_minus_sign:                                                                            | Optional language code for test                                                               |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `memberId`                                                         | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `timestamp`                                                        | *string*                                                           | :heavy_check_mark:                                                 | Timestamp for test in ISO 8601 format (e.g., 2025-12-04T14:29:39)  |
+| `languageCode`                                                     | [components.LanguageCode](../../models/components/languagecode.md) | :heavy_minus_sign:                                                 | Optional language code for test                                    |

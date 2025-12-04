@@ -523,7 +523,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.directory.directoryMemberTestExtension({
     memberId: 922412,
-    timestamp: new Date("2024-07-02T14:32:47.235Z"),
+    timestamp: "2024-07-02T14:32:47.235Z",
   });
 
   console.log(result);
@@ -549,7 +549,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await directoryDirectoryMemberTestExtension(syllableSDK, {
     memberId: 922412,
-    timestamp: new Date("2024-07-02T14:32:47.235Z"),
+    timestamp: "2024-07-02T14:32:47.235Z",
   });
   if (res.ok) {
     const { value: result } = res;
