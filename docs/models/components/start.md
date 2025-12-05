@@ -21,14 +21,6 @@ const value: components.IncrementAction = {
 };
 ```
 
-### `components.SaveAction`
-
-```typescript
-const value: components.SaveAction = {
-  action: "save",
-};
-```
-
 ### `components.SayAction`
 
 ```typescript

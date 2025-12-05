@@ -13,6 +13,12 @@ import {
   CallAction$outboundSchema,
 } from "./callaction.js";
 import {
+  GetValueAction,
+  GetValueAction$inboundSchema,
+  GetValueAction$Outbound,
+  GetValueAction$outboundSchema,
+} from "./getvalueaction.js";
+import {
   IncrementAction,
   IncrementAction$inboundSchema,
   IncrementAction$Outbound,
@@ -40,18 +46,21 @@ import {
 export type StepEventActionsStart =
   | CallAction
   | IncrementAction
-  | SaveAction
   | SayAction
   | SetValueAction;
 
 export type Enter =
   | CallAction
+  | GetValueAction
   | IncrementAction
-  | SaveAction
   | SayAction
   | SetValueAction;
 
-export type Presubmit = IncrementAction | SaveAction | SetValueAction;
+export type Presubmit =
+  | GetValueAction
+  | IncrementAction
+  | SaveAction
+  | SetValueAction;
 
 export type StepEventActionsSubmit =
   | CallAction
@@ -68,9 +77,7 @@ export type StepEventActions = {
    * Actions to execute on the first input from the user.
    */
   start?:
-    | Array<
-      CallAction | IncrementAction | SaveAction | SayAction | SetValueAction
-    >
+    | Array<CallAction | IncrementAction | SayAction | SetValueAction>
     | null
     | undefined;
   /**
@@ -78,7 +85,7 @@ export type StepEventActions = {
    */
   enter?:
     | Array<
-      CallAction | IncrementAction | SaveAction | SayAction | SetValueAction
+      CallAction | GetValueAction | IncrementAction | SayAction | SetValueAction
     >
     | null
     | undefined;
@@ -86,7 +93,7 @@ export type StepEventActions = {
    * Actions to execute before validation (data-mutation only: set, inc, save). Use this to set default values for required fields that would otherwise fail validation.
    */
   presubmit?:
-    | Array<IncrementAction | SaveAction | SetValueAction>
+    | Array<GetValueAction | IncrementAction | SaveAction | SetValueAction>
     | null
     | undefined;
   /**
@@ -108,7 +115,6 @@ export const StepEventActionsStart$inboundSchema: z.ZodType<
 > = z.union([
   CallAction$inboundSchema,
   IncrementAction$inboundSchema,
-  SaveAction$inboundSchema,
   SayAction$inboundSchema,
   SetValueAction$inboundSchema,
 ]);
@@ -116,7 +122,6 @@ export const StepEventActionsStart$inboundSchema: z.ZodType<
 export type StepEventActionsStart$Outbound =
   | CallAction$Outbound
   | IncrementAction$Outbound
-  | SaveAction$Outbound
   | SayAction$Outbound
   | SetValueAction$Outbound;
 
@@ -128,7 +133,6 @@ export const StepEventActionsStart$outboundSchema: z.ZodType<
 > = z.union([
   CallAction$outboundSchema,
   IncrementAction$outboundSchema,
-  SaveAction$outboundSchema,
   SayAction$outboundSchema,
   SetValueAction$outboundSchema,
 ]);
@@ -154,16 +158,16 @@ export function stepEventActionsStartFromJSON(
 export const Enter$inboundSchema: z.ZodType<Enter, z.ZodTypeDef, unknown> = z
   .union([
     CallAction$inboundSchema,
+    GetValueAction$inboundSchema,
     IncrementAction$inboundSchema,
-    SaveAction$inboundSchema,
     SayAction$inboundSchema,
     SetValueAction$inboundSchema,
   ]);
 /** @internal */
 export type Enter$Outbound =
   | CallAction$Outbound
+  | GetValueAction$Outbound
   | IncrementAction$Outbound
-  | SaveAction$Outbound
   | SayAction$Outbound
   | SetValueAction$Outbound;
 
@@ -174,8 +178,8 @@ export const Enter$outboundSchema: z.ZodType<
   Enter
 > = z.union([
   CallAction$outboundSchema,
+  GetValueAction$outboundSchema,
   IncrementAction$outboundSchema,
-  SaveAction$outboundSchema,
   SayAction$outboundSchema,
   SetValueAction$outboundSchema,
 ]);
@@ -199,12 +203,14 @@ export const Presubmit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  GetValueAction$inboundSchema,
   IncrementAction$inboundSchema,
   SaveAction$inboundSchema,
   SetValueAction$inboundSchema,
 ]);
 /** @internal */
 export type Presubmit$Outbound =
+  | GetValueAction$Outbound
   | IncrementAction$Outbound
   | SaveAction$Outbound
   | SetValueAction$Outbound;
@@ -215,6 +221,7 @@ export const Presubmit$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Presubmit
 > = z.union([
+  GetValueAction$outboundSchema,
   IncrementAction$outboundSchema,
   SaveAction$outboundSchema,
   SetValueAction$outboundSchema,
@@ -294,7 +301,6 @@ export const StepEventActions$inboundSchema: z.ZodType<
       z.union([
         CallAction$inboundSchema,
         IncrementAction$inboundSchema,
-        SaveAction$inboundSchema,
         SayAction$inboundSchema,
         SetValueAction$inboundSchema,
       ]),
@@ -304,8 +310,8 @@ export const StepEventActions$inboundSchema: z.ZodType<
     z.array(
       z.union([
         CallAction$inboundSchema,
+        GetValueAction$inboundSchema,
         IncrementAction$inboundSchema,
-        SaveAction$inboundSchema,
         SayAction$inboundSchema,
         SetValueAction$inboundSchema,
       ]),
@@ -314,6 +320,7 @@ export const StepEventActions$inboundSchema: z.ZodType<
   presubmit: z.nullable(
     z.array(
       z.union([
+        GetValueAction$inboundSchema,
         IncrementAction$inboundSchema,
         SaveAction$inboundSchema,
         SetValueAction$inboundSchema,
@@ -338,7 +345,6 @@ export type StepEventActions$Outbound = {
     | Array<
       | CallAction$Outbound
       | IncrementAction$Outbound
-      | SaveAction$Outbound
       | SayAction$Outbound
       | SetValueAction$Outbound
     >
@@ -347,8 +353,8 @@ export type StepEventActions$Outbound = {
   enter?:
     | Array<
       | CallAction$Outbound
+      | GetValueAction$Outbound
       | IncrementAction$Outbound
-      | SaveAction$Outbound
       | SayAction$Outbound
       | SetValueAction$Outbound
     >
@@ -356,7 +362,10 @@ export type StepEventActions$Outbound = {
     | undefined;
   presubmit?:
     | Array<
-      IncrementAction$Outbound | SaveAction$Outbound | SetValueAction$Outbound
+      | GetValueAction$Outbound
+      | IncrementAction$Outbound
+      | SaveAction$Outbound
+      | SetValueAction$Outbound
     >
     | null
     | undefined;
@@ -383,7 +392,6 @@ export const StepEventActions$outboundSchema: z.ZodType<
       z.union([
         CallAction$outboundSchema,
         IncrementAction$outboundSchema,
-        SaveAction$outboundSchema,
         SayAction$outboundSchema,
         SetValueAction$outboundSchema,
       ]),
@@ -393,8 +401,8 @@ export const StepEventActions$outboundSchema: z.ZodType<
     z.array(
       z.union([
         CallAction$outboundSchema,
+        GetValueAction$outboundSchema,
         IncrementAction$outboundSchema,
-        SaveAction$outboundSchema,
         SayAction$outboundSchema,
         SetValueAction$outboundSchema,
       ]),
@@ -403,6 +411,7 @@ export const StepEventActions$outboundSchema: z.ZodType<
   presubmit: z.nullable(
     z.array(
       z.union([
+        GetValueAction$outboundSchema,
         IncrementAction$outboundSchema,
         SaveAction$outboundSchema,
         SetValueAction$outboundSchema,

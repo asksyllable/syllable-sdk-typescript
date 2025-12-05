@@ -12,20 +12,20 @@ const value: components.CallAction = {
 };
 ```
 
+### `components.GetValueAction`
+
+```typescript
+const value: components.GetValueAction = {
+  action: "get",
+};
+```
+
 ### `components.IncrementAction`
 
 ```typescript
 const value: components.IncrementAction = {
   action: "inc",
   name: "<value>",
-};
-```
-
-### `components.SaveAction`
-
-```typescript
-const value: components.SaveAction = {
-  action: "save",
 };
 ```
 

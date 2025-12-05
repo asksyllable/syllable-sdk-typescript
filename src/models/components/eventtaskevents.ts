@@ -19,12 +19,6 @@ import {
   IncrementAction$outboundSchema,
 } from "./incrementaction.js";
 import {
-  SaveAction,
-  SaveAction$inboundSchema,
-  SaveAction$Outbound,
-  SaveAction$outboundSchema,
-} from "./saveaction.js";
-import {
   SayAction,
   SayAction$inboundSchema,
   SayAction$Outbound,
@@ -40,7 +34,6 @@ import {
 export type EventTaskEventsStart =
   | CallAction
   | IncrementAction
-  | SaveAction
   | SayAction
   | SetValueAction;
 
@@ -49,9 +42,7 @@ export type EventTaskEvents = {
    * Actions to execute on the first input from the user.
    */
   start?:
-    | Array<
-      CallAction | IncrementAction | SaveAction | SayAction | SetValueAction
-    >
+    | Array<CallAction | IncrementAction | SayAction | SetValueAction>
     | null
     | undefined;
 };
@@ -64,7 +55,6 @@ export const EventTaskEventsStart$inboundSchema: z.ZodType<
 > = z.union([
   CallAction$inboundSchema,
   IncrementAction$inboundSchema,
-  SaveAction$inboundSchema,
   SayAction$inboundSchema,
   SetValueAction$inboundSchema,
 ]);
@@ -72,7 +62,6 @@ export const EventTaskEventsStart$inboundSchema: z.ZodType<
 export type EventTaskEventsStart$Outbound =
   | CallAction$Outbound
   | IncrementAction$Outbound
-  | SaveAction$Outbound
   | SayAction$Outbound
   | SetValueAction$Outbound;
 
@@ -84,7 +73,6 @@ export const EventTaskEventsStart$outboundSchema: z.ZodType<
 > = z.union([
   CallAction$outboundSchema,
   IncrementAction$outboundSchema,
-  SaveAction$outboundSchema,
   SayAction$outboundSchema,
   SetValueAction$outboundSchema,
 ]);
@@ -117,7 +105,6 @@ export const EventTaskEvents$inboundSchema: z.ZodType<
       z.union([
         CallAction$inboundSchema,
         IncrementAction$inboundSchema,
-        SaveAction$inboundSchema,
         SayAction$inboundSchema,
         SetValueAction$inboundSchema,
       ]),
@@ -130,7 +117,6 @@ export type EventTaskEvents$Outbound = {
     | Array<
       | CallAction$Outbound
       | IncrementAction$Outbound
-      | SaveAction$Outbound
       | SayAction$Outbound
       | SetValueAction$Outbound
     >
@@ -149,7 +135,6 @@ export const EventTaskEvents$outboundSchema: z.ZodType<
       z.union([
         CallAction$outboundSchema,
         IncrementAction$outboundSchema,
-        SaveAction$outboundSchema,
         SayAction$outboundSchema,
         SetValueAction$outboundSchema,
       ]),

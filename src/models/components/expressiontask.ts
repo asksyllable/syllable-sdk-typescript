@@ -89,7 +89,7 @@ export type ExpressionTask = {
     | undefined;
   output?: any | null | undefined;
   /**
-   * Actions to perform when events occur (enter, submit).
+   * Actions to perform when events occur (start, submit).
    */
   on?: ExpressionTaskEvents | undefined;
 };

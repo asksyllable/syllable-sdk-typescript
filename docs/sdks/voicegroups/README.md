@@ -1,5 +1,4 @@
 # VoiceGroups
-(*voiceGroups*)
 
 ## Overview
 

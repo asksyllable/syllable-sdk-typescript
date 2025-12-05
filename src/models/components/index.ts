@@ -89,6 +89,7 @@ export * from "./eventtaskevents.js";
 export * from "./expressiontask.js";
 export * from "./expressiontaskevents.js";
 export * from "./folderdetails.js";
+export * from "./getvalueaction.js";
 export * from "./incidentcreaterequest.js";
 export * from "./incidentorganizationresponse.js";
 export * from "./incidentproperties.js";

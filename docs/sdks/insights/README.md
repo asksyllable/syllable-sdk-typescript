@@ -1,5 +1,4 @@
 # Insights
-(*insights*)
 
 ## Overview
 
