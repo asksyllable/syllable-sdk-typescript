@@ -1,5 +1,4 @@
-# SyllableSDKTools
-(*insights.tools*)
+# Insights.Tools
 
 ## Overview
 

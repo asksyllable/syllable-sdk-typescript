@@ -1,5 +1,4 @@
 # CustomMessages
-(*customMessages*)
 
 ## Overview
 

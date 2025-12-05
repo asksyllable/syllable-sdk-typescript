@@ -1,5 +1,4 @@
 # DataSources
-(*dataSources*)
 
 ## Overview
 

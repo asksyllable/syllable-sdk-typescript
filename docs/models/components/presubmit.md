@@ -3,6 +3,14 @@
 
 ## Supported Types
 
+### `components.GetValueAction`
+
+```typescript
+const value: components.GetValueAction = {
+  action: "get",
+};
+```
+
 ### `components.IncrementAction`
 
 ```typescript

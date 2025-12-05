@@ -1,5 +1,4 @@
 # SessionDebug
-(*sessionDebug*)
 
 ## Overview
 

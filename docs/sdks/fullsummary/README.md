@@ -1,5 +1,4 @@
-# FullSummary
-(*sessions.fullSummary*)
+# Sessions.FullSummary
 
 ## Overview
 
