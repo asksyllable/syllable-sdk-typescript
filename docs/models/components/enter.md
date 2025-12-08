@@ -15,9 +15,7 @@ const value: components.CallAction = {
 ### `components.GetValueAction`
 
 ```typescript
-const value: components.GetValueAction = {
-  action: "get",
-};
+const value: components.GetValueAction = {};
 ```
 
 ### `components.IncrementAction`
@@ -27,6 +25,12 @@ const value: components.IncrementAction = {
   action: "inc",
   name: "<value>",
 };
+```
+
+### `components.GetValueAction`
+
+```typescript
+const value: components.GetValueAction = {};
 ```
 
 ### `components.SayAction`

@@ -17,7 +17,7 @@ import {
 /**
  * The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value," and `remove` means "remove the parameter value."
  */
-export const Action = {
+export const ToolParameterTransformAction = {
   Default: "default",
   Override: "override",
   Remove: "remove",
@@ -25,7 +25,9 @@ export const Action = {
 /**
  * The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value," and `remove` means "remove the parameter value."
  */
-export type Action = ClosedEnum<typeof Action>;
+export type ToolParameterTransformAction = ClosedEnum<
+  typeof ToolParameterTransformAction
+>;
 
 /**
  * A transform to be applied to the value of a tool parameter.
@@ -40,7 +42,7 @@ export type ToolParameterTransform = {
   /**
    * The action to perform on the tool parameter value: `default` means only set the value (using the `format` field) if the parameter doesn't exist or is empty, `override` means always set the value," and `remove` means "remove the parameter value."
    */
-  action?: Action | undefined;
+  action?: ToolParameterTransformAction | undefined;
   /**
    * Only apply the transform if the condition is met.
    */
@@ -56,11 +58,13 @@ export type ToolParameterTransform = {
 };
 
 /** @internal */
-export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
-  .nativeEnum(Action);
+export const ToolParameterTransformAction$inboundSchema: z.ZodNativeEnum<
+  typeof ToolParameterTransformAction
+> = z.nativeEnum(ToolParameterTransformAction);
 /** @internal */
-export const Action$outboundSchema: z.ZodNativeEnum<typeof Action> =
-  Action$inboundSchema;
+export const ToolParameterTransformAction$outboundSchema: z.ZodNativeEnum<
+  typeof ToolParameterTransformAction
+> = ToolParameterTransformAction$inboundSchema;
 
 /** @internal */
 export const ToolParameterTransform$inboundSchema: z.ZodType<
@@ -68,7 +72,7 @@ export const ToolParameterTransform$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: Action$inboundSchema.default("default"),
+  action: ToolParameterTransformAction$inboundSchema.default("default"),
   when: z.nullable(ToolParameterTransformCondition$inboundSchema).optional(),
   value: z.nullable(z.any()).optional(),
   format: z.nullable(z.string()).optional(),
@@ -87,7 +91,7 @@ export const ToolParameterTransform$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ToolParameterTransform
 > = z.object({
-  action: Action$outboundSchema.default("default"),
+  action: ToolParameterTransformAction$outboundSchema.default("default"),
   when: z.nullable(ToolParameterTransformCondition$outboundSchema).optional(),
   value: z.nullable(z.any()).optional(),
   format: z.nullable(z.string()).optional(),

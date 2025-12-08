@@ -51,14 +51,16 @@ export type StepEventActionsStart =
 
 export type Enter =
   | CallAction
-  | GetValueAction
+  | (GetValueAction & { action: "get" })
   | IncrementAction
+  | (GetValueAction & { action: "load" })
   | SayAction
   | SetValueAction;
 
 export type Presubmit =
-  | GetValueAction
+  | (GetValueAction & { action: "get" })
   | IncrementAction
+  | (GetValueAction & { action: "load" })
   | SaveAction
   | SetValueAction;
 
@@ -85,7 +87,12 @@ export type StepEventActions = {
    */
   enter?:
     | Array<
-      CallAction | GetValueAction | IncrementAction | SayAction | SetValueAction
+      | CallAction
+      | (GetValueAction & { action: "get" })
+      | IncrementAction
+      | (GetValueAction & { action: "load" })
+      | SayAction
+      | SetValueAction
     >
     | null
     | undefined;
@@ -93,7 +100,13 @@ export type StepEventActions = {
    * Actions to execute before validation (data-mutation only: set, inc, save). Use this to set default values for required fields that would otherwise fail validation.
    */
   presubmit?:
-    | Array<GetValueAction | IncrementAction | SaveAction | SetValueAction>
+    | Array<
+      | (GetValueAction & { action: "get" })
+      | IncrementAction
+      | (GetValueAction & { action: "load" })
+      | SaveAction
+      | SetValueAction
+    >
     | null
     | undefined;
   /**
@@ -158,16 +171,18 @@ export function stepEventActionsStartFromJSON(
 export const Enter$inboundSchema: z.ZodType<Enter, z.ZodTypeDef, unknown> = z
   .union([
     CallAction$inboundSchema,
-    GetValueAction$inboundSchema,
+    GetValueAction$inboundSchema.and(z.object({ action: z.literal("get") })),
     IncrementAction$inboundSchema,
+    GetValueAction$inboundSchema.and(z.object({ action: z.literal("load") })),
     SayAction$inboundSchema,
     SetValueAction$inboundSchema,
   ]);
 /** @internal */
 export type Enter$Outbound =
   | CallAction$Outbound
-  | GetValueAction$Outbound
+  | (GetValueAction$Outbound & { action: "get" })
   | IncrementAction$Outbound
+  | (GetValueAction$Outbound & { action: "load" })
   | SayAction$Outbound
   | SetValueAction$Outbound;
 
@@ -178,8 +193,9 @@ export const Enter$outboundSchema: z.ZodType<
   Enter
 > = z.union([
   CallAction$outboundSchema,
-  GetValueAction$outboundSchema,
+  GetValueAction$outboundSchema.and(z.object({ action: z.literal("get") })),
   IncrementAction$outboundSchema,
+  GetValueAction$outboundSchema.and(z.object({ action: z.literal("load") })),
   SayAction$outboundSchema,
   SetValueAction$outboundSchema,
 ]);
@@ -203,15 +219,17 @@ export const Presubmit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  GetValueAction$inboundSchema,
+  GetValueAction$inboundSchema.and(z.object({ action: z.literal("get") })),
   IncrementAction$inboundSchema,
+  GetValueAction$inboundSchema.and(z.object({ action: z.literal("load") })),
   SaveAction$inboundSchema,
   SetValueAction$inboundSchema,
 ]);
 /** @internal */
 export type Presubmit$Outbound =
-  | GetValueAction$Outbound
+  | (GetValueAction$Outbound & { action: "get" })
   | IncrementAction$Outbound
+  | (GetValueAction$Outbound & { action: "load" })
   | SaveAction$Outbound
   | SetValueAction$Outbound;
 
@@ -221,8 +239,9 @@ export const Presubmit$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Presubmit
 > = z.union([
-  GetValueAction$outboundSchema,
+  GetValueAction$outboundSchema.and(z.object({ action: z.literal("get") })),
   IncrementAction$outboundSchema,
+  GetValueAction$outboundSchema.and(z.object({ action: z.literal("load") })),
   SaveAction$outboundSchema,
   SetValueAction$outboundSchema,
 ]);
@@ -310,8 +329,13 @@ export const StepEventActions$inboundSchema: z.ZodType<
     z.array(
       z.union([
         CallAction$inboundSchema,
-        GetValueAction$inboundSchema,
+        GetValueAction$inboundSchema.and(
+          z.object({ action: z.literal("get") }),
+        ),
         IncrementAction$inboundSchema,
+        GetValueAction$inboundSchema.and(
+          z.object({ action: z.literal("load") }),
+        ),
         SayAction$inboundSchema,
         SetValueAction$inboundSchema,
       ]),
@@ -320,8 +344,13 @@ export const StepEventActions$inboundSchema: z.ZodType<
   presubmit: z.nullable(
     z.array(
       z.union([
-        GetValueAction$inboundSchema,
+        GetValueAction$inboundSchema.and(
+          z.object({ action: z.literal("get") }),
+        ),
         IncrementAction$inboundSchema,
+        GetValueAction$inboundSchema.and(
+          z.object({ action: z.literal("load") }),
+        ),
         SaveAction$inboundSchema,
         SetValueAction$inboundSchema,
       ]),
@@ -353,8 +382,9 @@ export type StepEventActions$Outbound = {
   enter?:
     | Array<
       | CallAction$Outbound
-      | GetValueAction$Outbound
+      | (GetValueAction$Outbound & { action: "get" })
       | IncrementAction$Outbound
+      | (GetValueAction$Outbound & { action: "load" })
       | SayAction$Outbound
       | SetValueAction$Outbound
     >
@@ -362,8 +392,9 @@ export type StepEventActions$Outbound = {
     | undefined;
   presubmit?:
     | Array<
-      | GetValueAction$Outbound
+      | (GetValueAction$Outbound & { action: "get" })
       | IncrementAction$Outbound
+      | (GetValueAction$Outbound & { action: "load" })
       | SaveAction$Outbound
       | SetValueAction$Outbound
     >
@@ -401,8 +432,13 @@ export const StepEventActions$outboundSchema: z.ZodType<
     z.array(
       z.union([
         CallAction$outboundSchema,
-        GetValueAction$outboundSchema,
+        GetValueAction$outboundSchema.and(
+          z.object({ action: z.literal("get") }),
+        ),
         IncrementAction$outboundSchema,
+        GetValueAction$outboundSchema.and(
+          z.object({ action: z.literal("load") }),
+        ),
         SayAction$outboundSchema,
         SetValueAction$outboundSchema,
       ]),
@@ -411,8 +447,13 @@ export const StepEventActions$outboundSchema: z.ZodType<
   presubmit: z.nullable(
     z.array(
       z.union([
-        GetValueAction$outboundSchema,
+        GetValueAction$outboundSchema.and(
+          z.object({ action: z.literal("get") }),
+        ),
         IncrementAction$outboundSchema,
+        GetValueAction$outboundSchema.and(
+          z.object({ action: z.literal("load") }),
+        ),
         SaveAction$outboundSchema,
         SetValueAction$outboundSchema,
       ]),
