@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -56,6 +57,18 @@ export type GetValueActionIf =
   | (JMESPathExpression & { type: "jp" })
   | string;
 
+/**
+ * Populate default input values.
+ */
+export const Action = {
+  Get: "get",
+  Load: "load",
+} as const;
+/**
+ * Populate default input values.
+ */
+export type Action = ClosedEnum<typeof Action>;
+
 export type GetValueAction = {
   /**
    * Initial value of the variable.
@@ -83,7 +96,10 @@ export type GetValueAction = {
     | string
     | null
     | undefined;
-  action: "get";
+  /**
+   * Populate default input values.
+   */
+  action?: Action | undefined;
   /**
    * Input field names to populate; None populates all step inputs.
    */
@@ -307,6 +323,13 @@ export function getValueActionIfFromJSON(
 }
 
 /** @internal */
+export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
+  .nativeEnum(Action);
+/** @internal */
+export const Action$outboundSchema: z.ZodNativeEnum<typeof Action> =
+  Action$inboundSchema;
+
+/** @internal */
 export const GetValueAction$inboundSchema: z.ZodType<
   GetValueAction,
   z.ZodTypeDef,
@@ -343,7 +366,7 @@ export const GetValueAction$inboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-  action: z.literal("get"),
+  action: Action$inboundSchema.default("get"),
   inputs: z.nullable(z.array(z.string())).optional(),
   overwrite: z.boolean().default(false),
 }).transform((v) => {
@@ -370,7 +393,7 @@ export type GetValueAction$Outbound = {
     | string
     | null
     | undefined;
-  action: "get";
+  action: string;
   inputs?: Array<string> | null | undefined;
   overwrite: boolean;
 };
@@ -412,7 +435,7 @@ export const GetValueAction$outboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-  action: z.literal("get"),
+  action: Action$outboundSchema.default("get"),
   inputs: z.nullable(z.array(z.string())).optional(),
   overwrite: z.boolean().default(false),
 }).transform((v) => {
