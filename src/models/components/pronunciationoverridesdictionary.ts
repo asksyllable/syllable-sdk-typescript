@@ -7,17 +7,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DictionaryMetadata,
+  DictionaryMetadata$inboundSchema,
+  DictionaryMetadata$Outbound,
+  DictionaryMetadata$outboundSchema,
+} from "./dictionarymetadata.js";
+import {
   PronunciationOverride,
   PronunciationOverride$inboundSchema,
   PronunciationOverride$Outbound,
   PronunciationOverride$outboundSchema,
 } from "./pronunciationoverride.js";
-import {
-  SchemasTtsV1PronunciationsDictionaryMetadata,
-  SchemasTtsV1PronunciationsDictionaryMetadata$inboundSchema,
-  SchemasTtsV1PronunciationsDictionaryMetadata$Outbound,
-  SchemasTtsV1PronunciationsDictionaryMetadata$outboundSchema,
-} from "./schemasttsv1pronunciationsdictionarymetadata.js";
 import {
   VoiceDisplayInfo,
   VoiceDisplayInfo$inboundSchema,
@@ -55,7 +55,7 @@ export type PronunciationOverridesDictionary = {
   /**
    * Audit metadata associated with a dictionary.
    */
-  metadata: SchemasTtsV1PronunciationsDictionaryMetadata;
+  metadata: DictionaryMetadata;
 };
 
 /** @internal */
@@ -67,14 +67,14 @@ export const PronunciationOverridesDictionary$inboundSchema: z.ZodType<
   type: z.string().default("pronunciations_v1"),
   pronunciations: z.array(PronunciationOverride$inboundSchema),
   voices: z.record(VoiceDisplayInfo$inboundSchema).optional(),
-  metadata: SchemasTtsV1PronunciationsDictionaryMetadata$inboundSchema,
+  metadata: DictionaryMetadata$inboundSchema,
 });
 /** @internal */
 export type PronunciationOverridesDictionary$Outbound = {
   type: string;
   pronunciations: Array<PronunciationOverride$Outbound>;
   voices?: { [k: string]: VoiceDisplayInfo$Outbound } | undefined;
-  metadata: SchemasTtsV1PronunciationsDictionaryMetadata$Outbound;
+  metadata: DictionaryMetadata$Outbound;
 };
 
 /** @internal */
@@ -86,7 +86,7 @@ export const PronunciationOverridesDictionary$outboundSchema: z.ZodType<
   type: z.string().default("pronunciations_v1"),
   pronunciations: z.array(PronunciationOverride$outboundSchema),
   voices: z.record(VoiceDisplayInfo$outboundSchema).optional(),
-  metadata: SchemasTtsV1PronunciationsDictionaryMetadata$outboundSchema,
+  metadata: DictionaryMetadata$outboundSchema,
 });
 
 export function pronunciationOverridesDictionaryToJSON(

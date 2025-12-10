@@ -7,12 +7,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  SchemasCortexV1BridgePhrasesDictionaryMetadata,
-  SchemasCortexV1BridgePhrasesDictionaryMetadata$inboundSchema,
-  SchemasCortexV1BridgePhrasesDictionaryMetadata$Outbound,
-  SchemasCortexV1BridgePhrasesDictionaryMetadata$outboundSchema,
-} from "./schemascortexv1bridgephrasesdictionarymetadata.js";
 
 /**
  * Configuration for conversational bridge phrases.
@@ -30,10 +24,6 @@ export type BridgePhrasesConfig = {
    * Messages to say when a tool call is in progress.
    */
   toolResponses?: Array<string> | undefined;
-  /**
-   * Metadata for the bridge phrases dictionary.
-   */
-  metadata?: SchemasCortexV1BridgePhrasesDictionaryMetadata | undefined;
 };
 
 /** @internal */
@@ -45,8 +35,6 @@ export const BridgePhrasesConfig$inboundSchema: z.ZodType<
   first_slow_messages: z.array(z.string()).optional(),
   very_slow_messages: z.array(z.string()).optional(),
   tool_responses: z.array(z.string()).optional(),
-  metadata: SchemasCortexV1BridgePhrasesDictionaryMetadata$inboundSchema
-    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "first_slow_messages": "firstSlowMessages",
@@ -59,9 +47,6 @@ export type BridgePhrasesConfig$Outbound = {
   first_slow_messages?: Array<string> | undefined;
   very_slow_messages?: Array<string> | undefined;
   tool_responses?: Array<string> | undefined;
-  metadata?:
-    | SchemasCortexV1BridgePhrasesDictionaryMetadata$Outbound
-    | undefined;
 };
 
 /** @internal */
@@ -73,8 +58,6 @@ export const BridgePhrasesConfig$outboundSchema: z.ZodType<
   firstSlowMessages: z.array(z.string()).optional(),
   verySlowMessages: z.array(z.string()).optional(),
   toolResponses: z.array(z.string()).optional(),
-  metadata: SchemasCortexV1BridgePhrasesDictionaryMetadata$outboundSchema
-    .optional(),
 }).transform((v) => {
   return remap$(v, {
     firstSlowMessages: "first_slow_messages",

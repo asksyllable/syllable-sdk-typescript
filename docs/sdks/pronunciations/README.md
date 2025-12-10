@@ -138,7 +138,7 @@ run();
 
 ### Response
 
-**Promise\<[components.SchemasTtsV1PronunciationsDictionaryMetadata](../../models/components/schemasttsv1pronunciationsdictionarymetadata.md)\>**
+**Promise\<[components.DictionaryMetadata](../../models/components/dictionarymetadata.md)\>**
 
 ### Errors
 

@@ -30,7 +30,7 @@ export function pronunciationsPronunciationsGetMetadata(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.SchemasTtsV1PronunciationsDictionaryMetadata,
+    components.DictionaryMetadata,
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -53,7 +53,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      components.SchemasTtsV1PronunciationsDictionaryMetadata,
+      components.DictionaryMetadata,
       | SyllableSDKError
       | ResponseValidationError
       | ConnectionError
@@ -117,7 +117,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    components.SchemasTtsV1PronunciationsDictionaryMetadata,
+    components.DictionaryMetadata,
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -127,10 +127,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(
-      200,
-      components.SchemasTtsV1PronunciationsDictionaryMetadata$inboundSchema,
-    ),
+    M.json(200, components.DictionaryMetadata$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req);

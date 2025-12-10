@@ -29,7 +29,7 @@ export class Pronunciations extends ClientSDK {
    */
   async pronunciationsGetMetadata(
     options?: RequestOptions,
-  ): Promise<components.SchemasTtsV1PronunciationsDictionaryMetadata> {
+  ): Promise<components.DictionaryMetadata> {
     return unwrapAsync(pronunciationsPronunciationsGetMetadata(
       this,
       options,
