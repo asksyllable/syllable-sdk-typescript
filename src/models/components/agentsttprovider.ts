@@ -10,6 +10,7 @@ import { ClosedEnum } from "../../types/enums.js";
  */
 export const AgentSttProvider = {
   GoogleSTTV2Chirp2: "Google STT V2 (Chirp 2)",
+  DeepgramNova3OnPrem: "Deepgram Nova 3 (On-Prem)",
   DeepgramNova3: "Deepgram Nova 3",
   GoogleSTTV2: "Google STT V2",
   GoogleSTTV1: "Google STT V1",
