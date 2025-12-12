@@ -4,6 +4,7 @@ permissions:
   contents: write
   pull-requests: write
   statuses: write
+  id-token: write
 "on":
   workflow_run:
     workflows: ["Auto-merge Speakeasy Bot PR to generate SDK"]
