@@ -1,13 +1,12 @@
-# DirectoryMemberUpdateRequest
+# DirectoryMemberCreateRequest
 
 ## Example Usage
 
 ```typescript
-import { DirectoryMemberUpdateRequest } from "syllable-sdk/models/operations";
+import { DirectoryMemberCreateRequest } from "syllable-sdk/models/operations";
 
-let value: DirectoryMemberUpdateRequest = {
-  memberId: 394864,
-  directoryMemberUpdate: {
+let value: DirectoryMemberCreateRequest = {
+  directoryMemberCreate: {
     name: "Jane Doe",
     type: "contact",
     extensions: [
@@ -33,7 +32,6 @@ let value: DirectoryMemberUpdateRequest = {
         "value2",
       ],
     },
-    id: 1,
   },
 };
 ```
@@ -42,6 +40,5 @@ let value: DirectoryMemberUpdateRequest = {
 
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `memberId`                                                                                                         | *number*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `responseFormat`                                                                                                   | [components.DirectoryResponseFormat](../../models/components/directoryresponseformat.md)                           | :heavy_minus_sign:                                                                                                 | Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values. |
-| `directoryMemberUpdate`                                                                                            | [components.DirectoryMemberUpdate](../../models/components/directorymemberupdate.md)                               | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `directoryMemberCreate`                                                                                            | [components.DirectoryMemberCreate](../../models/components/directorymembercreate.md)                               | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

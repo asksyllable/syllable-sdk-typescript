@@ -1017,17 +1017,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.list({
-                page: 0,
-                searchFields: [
-                  "name",
-                ],
-                searchFieldValues: [
-                  "Some Object Name",
-                ],
-                startDatetime: "2023-01-01T00:00:00Z",
-                endDatetime: "2024-01-01T00:00:00Z",
-              });
+              const result = await syllableSDK.directory.list({});
 
               console.log(result);
             }
@@ -1047,30 +1037,32 @@ actions:
 
             async function run() {
               const result = await syllableSDK.directory.create({
-                name: "Jane Doe",
-                type: "contact",
-                extensions: [
-                  {
-                    name: "work",
-                    numbers: [
-                      {
-                        number: "+1234567890",
-                        rules: [
-                          {
-                            "language": "en",
-                          },
-                        ],
-                      },
+                directoryMemberCreate: {
+                  name: "Jane Doe",
+                  type: "contact",
+                  extensions: [
+                    {
+                      name: "work",
+                      numbers: [
+                        {
+                          number: "+1234567890",
+                          rules: [
+                            {
+                              "language": "en",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  contactTags: {
+                    "tag1": [
+                      "value1",
+                    ],
+                    "tag2": [
+                      "value2",
                     ],
                   },
-                ],
-                contactTags: {
-                  "tag1": [
-                    "value1",
-                  ],
-                  "tag2": [
-                    "value2",
-                  ],
                 },
               });
 
@@ -1091,7 +1083,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.directoryMemberDownload();
+              const result = await syllableSDK.directory.directoryMemberDownload({});
 
               console.log(result);
             }
@@ -1878,8 +1870,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-12-11T00:00:00Z"),
-                endDatetime: new Date("2025-12-12T00:00:00Z"),
+                startDatetime: new Date("2025-12-12T00:00:00Z"),
+                endDatetime: new Date("2025-12-13T00:00:00Z"),
               });
 
               console.log(result);
@@ -2001,8 +1993,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-12-11T00:00:00Z"),
-                  endDatetime: new Date("2025-12-12T00:00:00Z"),
+                  startDatetime: new Date("2025-12-12T00:00:00Z"),
+                  endDatetime: new Date("2025-12-13T00:00:00Z"),
                 },
               });
 
@@ -2195,9 +2187,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20251212.9",
+                batchId: "20251213.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-12-13T00:00:00Z"),
+                expiresOn: new Date("2025-12-14T00:00:00Z"),
                 paused: true,
               });
 

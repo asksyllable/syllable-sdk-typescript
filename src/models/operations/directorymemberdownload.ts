@@ -9,8 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DirectoryMemberGetByIdRequest = {
-  memberId: number;
+export type DirectoryMemberDownloadRequest = {
   /**
    * Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values.
    */
@@ -18,55 +17,50 @@ export type DirectoryMemberGetByIdRequest = {
 };
 
 /** @internal */
-export const DirectoryMemberGetByIdRequest$inboundSchema: z.ZodType<
-  DirectoryMemberGetByIdRequest,
+export const DirectoryMemberDownloadRequest$inboundSchema: z.ZodType<
+  DirectoryMemberDownloadRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  member_id: z.number().int(),
   response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
-    "member_id": "memberId",
     "response_format": "responseFormat",
   });
 });
 /** @internal */
-export type DirectoryMemberGetByIdRequest$Outbound = {
-  member_id: number;
+export type DirectoryMemberDownloadRequest$Outbound = {
   response_format?: string | undefined;
 };
 
 /** @internal */
-export const DirectoryMemberGetByIdRequest$outboundSchema: z.ZodType<
-  DirectoryMemberGetByIdRequest$Outbound,
+export const DirectoryMemberDownloadRequest$outboundSchema: z.ZodType<
+  DirectoryMemberDownloadRequest$Outbound,
   z.ZodTypeDef,
-  DirectoryMemberGetByIdRequest
+  DirectoryMemberDownloadRequest
 > = z.object({
-  memberId: z.number().int(),
   responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
-    memberId: "member_id",
     responseFormat: "response_format",
   });
 });
 
-export function directoryMemberGetByIdRequestToJSON(
-  directoryMemberGetByIdRequest: DirectoryMemberGetByIdRequest,
+export function directoryMemberDownloadRequestToJSON(
+  directoryMemberDownloadRequest: DirectoryMemberDownloadRequest,
 ): string {
   return JSON.stringify(
-    DirectoryMemberGetByIdRequest$outboundSchema.parse(
-      directoryMemberGetByIdRequest,
+    DirectoryMemberDownloadRequest$outboundSchema.parse(
+      directoryMemberDownloadRequest,
     ),
   );
 }
-export function directoryMemberGetByIdRequestFromJSON(
+export function directoryMemberDownloadRequestFromJSON(
   jsonString: string,
-): SafeParseResult<DirectoryMemberGetByIdRequest, SDKValidationError> {
+): SafeParseResult<DirectoryMemberDownloadRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DirectoryMemberGetByIdRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DirectoryMemberGetByIdRequest' from JSON`,
+    (x) => DirectoryMemberDownloadRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DirectoryMemberDownloadRequest' from JSON`,
   );
 }

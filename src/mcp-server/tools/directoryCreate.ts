@@ -3,11 +3,11 @@
  */
 
 import { directoryCreate } from "../../funcs/directoryCreate.js";
-import * as components from "../../models/components/index.js";
+import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: components.DirectoryMemberCreate$inboundSchema,
+  request: operations.DirectoryMemberCreateRequest$inboundSchema,
 };
 
 export const tool$directoryCreate: ToolDefinition<typeof args> = {

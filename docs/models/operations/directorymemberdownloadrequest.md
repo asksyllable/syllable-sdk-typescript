@@ -1,18 +1,15 @@
-# DirectoryMemberGetByIdRequest
+# DirectoryMemberDownloadRequest
 
 ## Example Usage
 
 ```typescript
-import { DirectoryMemberGetByIdRequest } from "syllable-sdk/models/operations";
+import { DirectoryMemberDownloadRequest } from "syllable-sdk/models/operations";
 
-let value: DirectoryMemberGetByIdRequest = {
-  memberId: 809530,
-};
+let value: DirectoryMemberDownloadRequest = {};
 ```
 
 ## Fields
 
 | Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `memberId`                                                                                                         | *number*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `responseFormat`                                                                                                   | [components.DirectoryResponseFormat](../../models/components/directoryresponseformat.md)                           | :heavy_minus_sign:                                                                                                 | Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values. |

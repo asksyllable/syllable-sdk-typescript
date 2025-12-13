@@ -11,6 +11,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberUpdateRequest = {
   memberId: number;
+  /**
+   * Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values.
+   */
+  responseFormat?: components.DirectoryResponseFormat | undefined;
   directoryMemberUpdate: components.DirectoryMemberUpdate;
 };
 
@@ -21,16 +25,19 @@ export const DirectoryMemberUpdateRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   member_id: z.number().int(),
+  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
   DirectoryMemberUpdate: components.DirectoryMemberUpdate$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "member_id": "memberId",
+    "response_format": "responseFormat",
     "DirectoryMemberUpdate": "directoryMemberUpdate",
   });
 });
 /** @internal */
 export type DirectoryMemberUpdateRequest$Outbound = {
   member_id: number;
+  response_format?: string | undefined;
   DirectoryMemberUpdate: components.DirectoryMemberUpdate$Outbound;
 };
 
@@ -41,10 +48,12 @@ export const DirectoryMemberUpdateRequest$outboundSchema: z.ZodType<
   DirectoryMemberUpdateRequest
 > = z.object({
   memberId: z.number().int(),
+  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
   directoryMemberUpdate: components.DirectoryMemberUpdate$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     memberId: "member_id",
+    responseFormat: "response_format",
     directoryMemberUpdate: "DirectoryMemberUpdate",
   });
 });

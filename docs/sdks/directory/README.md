@@ -121,30 +121,32 @@ const syllableSDK = new SyllableSDK({
 
 async function run() {
   const result = await syllableSDK.directory.create({
-    name: "Jane Doe",
-    type: "contact",
-    extensions: [
-      {
-        name: "work",
-        numbers: [
-          {
-            number: "+1234567890",
-            rules: [
-              {
-                "language": "en",
-              },
-            ],
-          },
+    directoryMemberCreate: {
+      name: "Jane Doe",
+      type: "contact",
+      extensions: [
+        {
+          name: "work",
+          numbers: [
+            {
+              number: "+1234567890",
+              rules: [
+                {
+                  "language": "en",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      contactTags: {
+        "tag1": [
+          "value1",
+        ],
+        "tag2": [
+          "value2",
         ],
       },
-    ],
-    contactTags: {
-      "tag1": [
-        "value1",
-      ],
-      "tag2": [
-        "value2",
-      ],
     },
   });
 
@@ -170,30 +172,32 @@ const syllableSDK = new SyllableSDKCore({
 
 async function run() {
   const res = await directoryCreate(syllableSDK, {
-    name: "Jane Doe",
-    type: "contact",
-    extensions: [
-      {
-        name: "work",
-        numbers: [
-          {
-            number: "+1234567890",
-            rules: [
-              {
-                "language": "en",
-              },
-            ],
-          },
+    directoryMemberCreate: {
+      name: "Jane Doe",
+      type: "contact",
+      extensions: [
+        {
+          name: "work",
+          numbers: [
+            {
+              number: "+1234567890",
+              rules: [
+                {
+                  "language": "en",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      contactTags: {
+        "tag1": [
+          "value1",
+        ],
+        "tag2": [
+          "value2",
         ],
       },
-    ],
-    contactTags: {
-      "tag1": [
-        "value1",
-      ],
-      "tag2": [
-        "value2",
-      ],
     },
   });
   if (res.ok) {
@@ -211,7 +215,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DirectoryMemberCreate](../../models/components/directorymembercreate.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DirectoryMemberCreateRequest](../../models/operations/directorymembercreaterequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -672,7 +676,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.directory.directoryMemberDownload();
+  const result = await syllableSDK.directory.directoryMemberDownload({});
 
   console.log(result);
 }
@@ -695,7 +699,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await directoryDirectoryMemberDownload(syllableSDK);
+  const res = await directoryDirectoryMemberDownload(syllableSDK, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -711,6 +715,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DirectoryMemberDownloadRequest](../../models/operations/directorymemberdownloadrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -721,6 +726,7 @@ run();
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |

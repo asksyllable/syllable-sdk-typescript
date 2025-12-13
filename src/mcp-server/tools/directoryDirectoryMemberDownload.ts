@@ -3,16 +3,25 @@
  */
 
 import { directoryDirectoryMemberDownload } from "../../funcs/directoryDirectoryMemberDownload.js";
+import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-export const tool$directoryDirectoryMemberDownload: ToolDefinition = {
+const args = {
+  request: operations.DirectoryMemberDownloadRequest$inboundSchema,
+};
+
+export const tool$directoryDirectoryMemberDownload: ToolDefinition<
+  typeof args
+> = {
   name: "directory-directory-member-download",
   description: `Download Directory Members
 
 Download the entire directory as a JSON file.`,
-  tool: async (client, ctx) => {
+  args,
+  tool: async (client, args, ctx) => {
     const [result, apiCall] = await directoryDirectoryMemberDownload(
       client,
+      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

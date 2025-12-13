@@ -9,64 +9,64 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type DirectoryMemberGetByIdRequest = {
-  memberId: number;
+export type DirectoryMemberCreateRequest = {
   /**
    * Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values.
    */
   responseFormat?: components.DirectoryResponseFormat | undefined;
+  directoryMemberCreate: components.DirectoryMemberCreate;
 };
 
 /** @internal */
-export const DirectoryMemberGetByIdRequest$inboundSchema: z.ZodType<
-  DirectoryMemberGetByIdRequest,
+export const DirectoryMemberCreateRequest$inboundSchema: z.ZodType<
+  DirectoryMemberCreateRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  member_id: z.number().int(),
   response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
+  DirectoryMemberCreate: components.DirectoryMemberCreate$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "member_id": "memberId",
     "response_format": "responseFormat",
+    "DirectoryMemberCreate": "directoryMemberCreate",
   });
 });
 /** @internal */
-export type DirectoryMemberGetByIdRequest$Outbound = {
-  member_id: number;
+export type DirectoryMemberCreateRequest$Outbound = {
   response_format?: string | undefined;
+  DirectoryMemberCreate: components.DirectoryMemberCreate$Outbound;
 };
 
 /** @internal */
-export const DirectoryMemberGetByIdRequest$outboundSchema: z.ZodType<
-  DirectoryMemberGetByIdRequest$Outbound,
+export const DirectoryMemberCreateRequest$outboundSchema: z.ZodType<
+  DirectoryMemberCreateRequest$Outbound,
   z.ZodTypeDef,
-  DirectoryMemberGetByIdRequest
+  DirectoryMemberCreateRequest
 > = z.object({
-  memberId: z.number().int(),
   responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
+  directoryMemberCreate: components.DirectoryMemberCreate$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    memberId: "member_id",
     responseFormat: "response_format",
+    directoryMemberCreate: "DirectoryMemberCreate",
   });
 });
 
-export function directoryMemberGetByIdRequestToJSON(
-  directoryMemberGetByIdRequest: DirectoryMemberGetByIdRequest,
+export function directoryMemberCreateRequestToJSON(
+  directoryMemberCreateRequest: DirectoryMemberCreateRequest,
 ): string {
   return JSON.stringify(
-    DirectoryMemberGetByIdRequest$outboundSchema.parse(
-      directoryMemberGetByIdRequest,
+    DirectoryMemberCreateRequest$outboundSchema.parse(
+      directoryMemberCreateRequest,
     ),
   );
 }
-export function directoryMemberGetByIdRequestFromJSON(
+export function directoryMemberCreateRequestFromJSON(
   jsonString: string,
-): SafeParseResult<DirectoryMemberGetByIdRequest, SDKValidationError> {
+): SafeParseResult<DirectoryMemberCreateRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DirectoryMemberGetByIdRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DirectoryMemberGetByIdRequest' from JSON`,
+    (x) => DirectoryMemberCreateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DirectoryMemberCreateRequest' from JSON`,
   );
 }
