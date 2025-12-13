@@ -40,7 +40,7 @@ export class Directory extends ClientSDK {
    * Create a new member in the directory
    */
   async create(
-    request: components.DirectoryMemberCreate,
+    request: operations.DirectoryMemberCreateRequest,
     options?: RequestOptions,
   ): Promise<components.DirectoryMember> {
     return unwrapAsync(directoryCreate(
@@ -142,10 +142,12 @@ export class Directory extends ClientSDK {
    * Download the entire directory as a JSON file.
    */
   async directoryMemberDownload(
+    request: operations.DirectoryMemberDownloadRequest,
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(directoryDirectoryMemberDownload(
       this,
+      request,
       options,
     ));
   }

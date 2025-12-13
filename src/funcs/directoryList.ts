@@ -99,6 +99,7 @@ async function $do(
     "order_by": payload.order_by,
     "order_by_direction": payload.order_by_direction,
     "page": payload.page,
+    "response_format": payload.response_format,
     "search_field_values": payload.search_field_values,
     "search_fields": payload.search_fields,
     "start_datetime": payload.start_datetime,

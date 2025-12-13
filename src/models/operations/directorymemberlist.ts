@@ -11,39 +11,43 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberListRequest = {
   /**
-   * The page number from which to start (0-based)
+   * Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values.
+   */
+  responseFormat?: components.DirectoryResponseFormat | undefined;
+  /**
+   * Page number (0-based)
    */
   page?: number | null | undefined;
   /**
-   * The maximum number of items to return
+   * Items per page
    */
   limit?: number | undefined;
   /**
-   * String names of fields to search. Correspond by index to search field values
+   * Fields to search; aligns with search_field_values
    */
   searchFields?: Array<components.DirectoryMemberProperties> | undefined;
   /**
-   * Values of fields to search. Correspond by index to search fields. Unless field name contains "list", an individual search field value cannot be a list
+   * Values for search_fields in matching order
    */
   searchFieldValues?: Array<string> | undefined;
   /**
-   * The field whose value should be used to order the results
+   * Field to order results by
    */
   orderBy?: components.DirectoryMemberProperties | null | undefined;
   /**
-   * The direction in which to order the results
+   * Direction to order results
    */
   orderByDirection?: components.OrderByDirection | null | undefined;
   /**
-   * The fields to include in the response
+   * Fields to include in response
    */
   fields?: Array<components.DirectoryMemberProperties> | null | undefined;
   /**
-   * The start datetime for filtering results
+   * Start datetime for filtering results
    */
   startDatetime?: string | null | undefined;
   /**
-   * The end datetime for filtering results
+   * End datetime for filtering results
    */
   endDatetime?: string | null | undefined;
 };
@@ -54,6 +58,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
   search_fields: z.array(components.DirectoryMemberProperties$inboundSchema)
@@ -70,6 +75,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
   end_datetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "response_format": "responseFormat",
     "search_fields": "searchFields",
     "search_field_values": "searchFieldValues",
     "order_by": "orderBy",
@@ -80,6 +86,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type DirectoryMemberListRequest$Outbound = {
+  response_format?: string | undefined;
   page?: number | null | undefined;
   limit: number;
   search_fields?: Array<string> | undefined;
@@ -97,6 +104,7 @@ export const DirectoryMemberListRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DirectoryMemberListRequest
 > = z.object({
+  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
   searchFields: z.array(components.DirectoryMemberProperties$outboundSchema)
@@ -113,6 +121,7 @@ export const DirectoryMemberListRequest$outboundSchema: z.ZodType<
   endDatetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    responseFormat: "response_format",
     searchFields: "search_fields",
     searchFieldValues: "search_field_values",
     orderBy: "order_by",
