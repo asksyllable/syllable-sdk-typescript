@@ -17,14 +17,14 @@ let value: InsightsUploadFile = {
   agentNumber: "1234567890",
   customerNumber: "0987654321",
   duration: 305.5,
-  startTime: new Date("2025-12-12T00:00:00Z"),
-  endTime: new Date("2025-12-13T00:00:00Z"),
+  startTime: new Date("2025-12-14T00:00:00Z"),
+  endTime: new Date("2025-12-15T00:00:00Z"),
   errorMessage: "File not found",
   metadata: {
     "duration": "00:10:00",
     "size": "10MB",
   },
-  createdAt: new Date("2025-12-12T00:00:00Z"),
+  createdAt: new Date("2025-12-14T00:00:00Z"),
 };
 ```
 
@@ -40,8 +40,8 @@ let value: InsightsUploadFile = {
 | `agentNumber`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | Agent number associated with the uploaded file                                                | 1234567890                                                                                    |
 | `customerNumber`                                                                              | *string*                                                                                      | :heavy_minus_sign:                                                                            | Customer number associated with the uploaded file                                             | 0987654321                                                                                    |
 | `duration`                                                                                    | *number*                                                                                      | :heavy_minus_sign:                                                                            | Length in seconds of the uploaded recording                                                   | 305.5                                                                                         |
-| `startTime`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Start time of the uploaded file                                                               | 2025-12-12T00:00:00Z                                                                          |
-| `endTime`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | End time of the uploaded file                                                                 | 2025-12-13T00:00:00Z                                                                          |
+| `startTime`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Start time of the uploaded file                                                               | 2025-12-14T00:00:00Z                                                                          |
+| `endTime`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | End time of the uploaded file                                                                 | 2025-12-15T00:00:00Z                                                                          |
 | `errorMessage`                                                                                | *string*                                                                                      | :heavy_minus_sign:                                                                            | Error message associated with the uploaded file                                               | File not found                                                                                |
 | `metadata`                                                                                    | Record<string, *components.Metadata*>                                                         | :heavy_minus_sign:                                                                            | Meta-data associated with the uploaded file                                                   | {<br/>"duration": "00:10:00",<br/>"size": "10MB"<br/>}                                        |
-| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp at which insight upload file was created                                            | 2025-12-12T00:00:00Z                                                                          |
+| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Timestamp at which insight upload file was created                                            | 2025-12-14T00:00:00Z                                                                          |
