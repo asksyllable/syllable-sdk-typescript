@@ -119,6 +119,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.customMessages.create({
     name: "Customer service greeting",
+    preamble: "If this is an emergency, please hang up and call 911.",
     text: "Hello and thank you for calling customer service. How can I help you today?",
     label: "Customer service",
     rules: [
@@ -167,6 +168,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await customMessagesCreate(syllableSDK, {
     name: "Customer service greeting",
+    preamble: "If this is an emergency, please hang up and call 911.",
     text: "Hello and thank you for calling customer service. How can I help you today?",
     label: "Customer service",
     rules: [
@@ -239,6 +241,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.customMessages.update({
     name: "Customer service greeting",
+    preamble: "If this is an emergency, please hang up and call 911.",
     text: "Hello and thank you for calling customer service. How can I help you today?",
     label: "Customer service",
     rules: [
@@ -288,6 +291,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await customMessagesUpdate(syllableSDK, {
     name: "Customer service greeting",
+    preamble: "If this is an emergency, please hang up and call 911.",
     text: "Hello and thank you for calling customer service. How can I help you today?",
     label: "Customer service",
     rules: [
