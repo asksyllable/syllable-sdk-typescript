@@ -162,6 +162,7 @@ let value: AgentResponse = {
   },
   customMessage: {
     name: "Customer service greeting",
+    preamble: "If this is an emergency, please hang up and call 911.",
     text:
       "Hello and thank you for calling customer service. How can I help you today?",
     label: "Customer service",

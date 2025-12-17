@@ -30,6 +30,10 @@ export type CustomMessageResponse = {
    */
   name: string;
   /**
+   * An optional preamble that will be delivered before the main message, regardless of whether the current time and date match a rule or the system uses the default message. Cannot contain the "{{"{{"}} language.mode }}" tag. In the case of a voice conversation, the user will not be able to interrupt the preamble. Can be used for e.g. legal disclaimers that the user must always see/hear.
+   */
+  preamble?: string | null | undefined;
+  /**
    * The default message that the agent will deliver if no rules are set or no rules match the current timestamp.
    */
   text: string;
@@ -70,6 +74,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  preamble: z.nullable(z.string()).optional(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
@@ -88,6 +93,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type CustomMessageResponse$Outbound = {
   name: string;
+  preamble?: string | null | undefined;
   text: string;
   label?: string | null | undefined;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
@@ -105,6 +111,7 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   CustomMessageResponse
 > = z.object({
   name: z.string(),
+  preamble: z.nullable(z.string()).optional(),
   text: z.string(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
