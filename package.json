@@ -1,6 +1,6 @@
 {
   "name": "syllable-sdk",
-  "version": "1.0.18-rc.1",
+  "version": "1.0.18-rc.2",
   "author": "Syllable",
   "bin": {
     "mcp": "bin/mcp-server.js"
@@ -33,7 +33,7 @@
     "typescript-eslint": "^8.26.0"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
+    "@modelcontextprotocol/sdk": "^1.24.0",
     "zod": "^3.25.0 || ^4.0.0"
   }
 }
