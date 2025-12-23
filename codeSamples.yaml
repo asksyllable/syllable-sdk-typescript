@@ -914,13 +914,7 @@ actions:
                 ],
                 chunk: false,
                 chunkDelimiter: "",
-                text: "The following are names and addresses of pizza shops.\n" +
-                "\n" +
-                "Cool Pizza, 123 Main St.\n" +
-                "\n" +
-                "Really Good Pizza, 456 Water St.\n" +
-                "\n" +
-                "The Best Pizza, 789 Circle Dr.",
+                text: "The following are names and addresses of pizza shops.\n\nCool Pizza, 123 Main St.\n\nReally Good Pizza, 456 Water St.\n\nThe Best Pizza, 789 Circle Dr.",
               });
 
               console.log(result);
@@ -950,13 +944,7 @@ actions:
                 chunkDelimiter: "",
                 id: 1,
                 editComments: "Added new info",
-                text: "The following are names and addresses of pizza shops.\n" +
-                "\n" +
-                "Cool Pizza, 123 Main St.\n" +
-                "\n" +
-                "Really Good Pizza, 456 Water St.\n" +
-                "\n" +
-                "The Best Pizza, 789 Circle Dr.",
+                text: "The following are names and addresses of pizza shops.\n\nCool Pizza, 123 Main St.\n\nReally Good Pizza, 456 Water St.\n\nThe Best Pizza, 789 Circle Dr.",
               });
 
               console.log(result);
@@ -1872,8 +1860,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2025-12-21T00:00:00Z"),
-                endDatetime: new Date("2025-12-22T00:00:00Z"),
+                startDatetime: new Date("2025-12-22T00:00:00Z"),
+                endDatetime: new Date("2025-12-23T00:00:00Z"),
               });
 
               console.log(result);
@@ -1995,8 +1983,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2025-12-21T00:00:00Z"),
-                  endDatetime: new Date("2025-12-22T00:00:00Z"),
+                  startDatetime: new Date("2025-12-22T00:00:00Z"),
+                  endDatetime: new Date("2025-12-23T00:00:00Z"),
                 },
               });
 
@@ -2189,9 +2177,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20251222.9",
+                batchId: "20251223.9",
                 campaignId: 1,
-                expiresOn: new Date("2025-12-23T00:00:00Z"),
+                expiresOn: new Date("2025-12-24T00:00:00Z"),
                 paused: true,
               });
 

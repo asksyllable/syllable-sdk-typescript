@@ -22,7 +22,7 @@ export type CustomMessageCreateRequest = {
    */
   name: string;
   /**
-   * An optional preamble that will be delivered before the main message, regardless of whether the current time and date match a rule or the system uses the default message. Cannot contain the "{{"{{"}} language.mode }}" tag. In the case of a voice conversation, the user will not be able to interrupt the preamble. Can be used for e.g. legal disclaimers that the user must always see/hear.
+   * An optional preamble that will be delivered before the main message, regardless of whether the current time and date match a rule or the system uses the default message. Cannot contain the "{{ language.mode }}" tag. In the case of a voice conversation, the user will not be able to interrupt the preamble. Can be used for e.g. legal disclaimers that the user must always see/hear.
    */
   preamble?: string | null | undefined;
   /**
