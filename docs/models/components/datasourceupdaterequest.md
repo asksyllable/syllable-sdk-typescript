@@ -17,13 +17,8 @@ let value: DataSourceUpdateRequest = {
   chunkDelimiter: "",
   id: 1,
   editComments: "Added new info",
-  text: "The following are names and addresses of pizza shops.\n"
-    + "\n"
-    + "Cool Pizza, 123 Main St.\n"
-    + "\n"
-    + "Really Good Pizza, 456 Water St.\n"
-    + "\n"
-    + "The Best Pizza, 789 Circle Dr.",
+  text:
+    "The following are names and addresses of pizza shops.\n\nCool Pizza, 123 Main St.\n\nReally Good Pizza, 456 Water St.\n\nThe Best Pizza, 789 Circle Dr.",
 };
 ```
 
