@@ -48,7 +48,7 @@ let value: DaoToolResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2024-03-19T17:39:51.491Z"),
+  lastUpdated: new Date("2025-03-19T17:39:51.491Z"),
   lastUpdatedBy: "user@email.com",
 };
 ```
