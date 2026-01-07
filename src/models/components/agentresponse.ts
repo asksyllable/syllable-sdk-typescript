@@ -83,7 +83,7 @@ export type AgentResponse = {
   /**
    * Internal ID of the custom message that should be delivered at the beginning of a conversation with the agent
    */
-  customMessageId: number;
+  customMessageId?: number | null | undefined;
   /**
    * Internal ID of the language group associated with the agent
    */
@@ -168,7 +168,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
   labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   prompt_id: z.number().int(),
-  custom_message_id: z.number().int(),
+  custom_message_id: z.nullable(z.number().int()).optional(),
   language_group_id: z.nullable(z.number().int()).optional(),
   timezone: z.string(),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
@@ -213,7 +213,7 @@ export type AgentResponse$Outbound = {
   labels?: Array<string> | null | undefined;
   type: string;
   prompt_id: number;
-  custom_message_id: number;
+  custom_message_id?: number | null | undefined;
   language_group_id?: number | null | undefined;
   timezone: string;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
@@ -245,7 +245,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
   labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   promptId: z.number().int(),
-  customMessageId: z.number().int(),
+  customMessageId: z.nullable(z.number().int()).optional(),
   languageGroupId: z.nullable(z.number().int()).optional(),
   timezone: z.string(),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),

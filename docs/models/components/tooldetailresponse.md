@@ -54,7 +54,7 @@ let value: ToolDetailResponse = {
       name: "Test Agent",
     },
   ],
-  lastUpdated: new Date("2024-09-11T09:25:15.031Z"),
+  lastUpdated: new Date("2025-09-11T09:25:15.031Z"),
   lastUpdatedBy: "user@email.com",
   fields: [
     "<value 1>",
