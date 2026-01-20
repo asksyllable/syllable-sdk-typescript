@@ -147,8 +147,8 @@ async function run() {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2026-01-16T00:00:00Z"),
-    endDatetime: new Date("2026-01-17T00:00:00Z"),
+    startDatetime: new Date("2026-01-19T00:00:00Z"),
+    endDatetime: new Date("2026-01-20T00:00:00Z"),
   });
 
   console.log(result);
@@ -199,8 +199,8 @@ async function run() {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2026-01-16T00:00:00Z"),
-    endDatetime: new Date("2026-01-17T00:00:00Z"),
+    startDatetime: new Date("2026-01-19T00:00:00Z"),
+    endDatetime: new Date("2026-01-20T00:00:00Z"),
   });
   if (res.ok) {
     const { value: result } = res;
@@ -351,8 +351,8 @@ async function run() {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2026-01-16T00:00:00Z"),
-      endDatetime: new Date("2026-01-17T00:00:00Z"),
+      startDatetime: new Date("2026-01-19T00:00:00Z"),
+      endDatetime: new Date("2026-01-20T00:00:00Z"),
     },
   });
 
@@ -406,8 +406,8 @@ async function run() {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2026-01-16T00:00:00Z"),
-      endDatetime: new Date("2026-01-17T00:00:00Z"),
+      startDatetime: new Date("2026-01-19T00:00:00Z"),
+      endDatetime: new Date("2026-01-20T00:00:00Z"),
     },
   });
   if (res.ok) {
