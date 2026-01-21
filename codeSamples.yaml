@@ -281,6 +281,9 @@ actions:
                     passiveSpeechInputEnabled: true,
                     passiveInputStart: 0.5,
                   },
+                  email: {
+                    sendingDomain: "mail.example.com",
+                  },
                 },
               });
 
@@ -319,6 +322,9 @@ actions:
                     interruptibility: "dtmf_only",
                     passiveSpeechInputEnabled: true,
                     passiveInputStart: 0.5,
+                  },
+                  email: {
+                    sendingDomain: "mail.example.com",
                   },
                 },
                 id: 1,
@@ -1860,8 +1866,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2026-01-19T00:00:00Z"),
-                endDatetime: new Date("2026-01-20T00:00:00Z"),
+                startDatetime: new Date("2026-01-20T00:00:00Z"),
+                endDatetime: new Date("2026-01-21T00:00:00Z"),
               });
 
               console.log(result);
@@ -1983,8 +1989,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2026-01-19T00:00:00Z"),
-                  endDatetime: new Date("2026-01-20T00:00:00Z"),
+                  startDatetime: new Date("2026-01-20T00:00:00Z"),
+                  endDatetime: new Date("2026-01-21T00:00:00Z"),
                 },
               });
 
@@ -2177,9 +2183,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20260120.9",
+                batchId: "20260121.9",
                 campaignId: 1,
-                expiresOn: new Date("2026-01-21T00:00:00Z"),
+                expiresOn: new Date("2026-01-22T00:00:00Z"),
                 paused: true,
               });
 

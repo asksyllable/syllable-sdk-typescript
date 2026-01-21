@@ -26,6 +26,9 @@ let value: OrganizationChannelUpdateRequest = {
       passiveSpeechInputEnabled: true,
       passiveInputStart: 0.5,
     },
+    email: {
+      sendingDomain: "mail.example.com",
+    },
   },
   id: 1,
 };
