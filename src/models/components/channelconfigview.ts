@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  EmailConfigurations,
+  EmailConfigurations$inboundSchema,
+  EmailConfigurations$Outbound,
+  EmailConfigurations$outboundSchema,
+} from "./emailconfigurations.js";
+import {
   TelephonyConfigurations,
   TelephonyConfigurations$inboundSchema,
   TelephonyConfigurations$Outbound,
@@ -18,6 +24,10 @@ export type ChannelConfigView = {
    * Telephony configurations to be applied to targets belonging to the channel.       Only applies to voice supported channels.
    */
   telephony?: TelephonyConfigurations | null | undefined;
+  /**
+   * Email configurations for email channels. Only applies to email channels.
+   */
+  email?: EmailConfigurations | null | undefined;
 };
 
 /** @internal */
@@ -27,10 +37,12 @@ export const ChannelConfigView$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
+  email: z.nullable(EmailConfigurations$inboundSchema).optional(),
 });
 /** @internal */
 export type ChannelConfigView$Outbound = {
   telephony?: TelephonyConfigurations$Outbound | null | undefined;
+  email?: EmailConfigurations$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -40,6 +52,7 @@ export const ChannelConfigView$outboundSchema: z.ZodType<
   ChannelConfigView
 > = z.object({
   telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
+  email: z.nullable(EmailConfigurations$outboundSchema).optional(),
 });
 
 export function channelConfigViewToJSON(

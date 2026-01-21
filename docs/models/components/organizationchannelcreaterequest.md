@@ -26,6 +26,9 @@ let value: OrganizationChannelCreateRequest = {
       passiveSpeechInputEnabled: true,
       passiveInputStart: 0.5,
     },
+    email: {
+      sendingDomain: "mail.example.com",
+    },
   },
 };
 ```

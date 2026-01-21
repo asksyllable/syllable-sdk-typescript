@@ -135,6 +135,9 @@ async function run() {
         passiveSpeechInputEnabled: true,
         passiveInputStart: 0.5,
       },
+      email: {
+        sendingDomain: "mail.example.com",
+      },
     },
   });
 
@@ -177,6 +180,9 @@ async function run() {
         interruptibility: "dtmf_only",
         passiveSpeechInputEnabled: true,
         passiveInputStart: 0.5,
+      },
+      email: {
+        sendingDomain: "mail.example.com",
       },
     },
   });
@@ -245,6 +251,9 @@ async function run() {
         passiveSpeechInputEnabled: true,
         passiveInputStart: 0.5,
       },
+      email: {
+        sendingDomain: "mail.example.com",
+      },
     },
     id: 1,
   });
@@ -288,6 +297,9 @@ async function run() {
         interruptibility: "dtmf_only",
         passiveSpeechInputEnabled: true,
         passiveInputStart: 0.5,
+      },
+      email: {
+        sendingDomain: "mail.example.com",
       },
     },
     id: 1,

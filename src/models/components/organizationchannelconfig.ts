@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  EmailConfigurations,
+  EmailConfigurations$inboundSchema,
+  EmailConfigurations$Outbound,
+  EmailConfigurations$outboundSchema,
+} from "./emailconfigurations.js";
+import {
   TelephonyConfigurations,
   TelephonyConfigurations$inboundSchema,
   TelephonyConfigurations$Outbound,
@@ -34,6 +40,10 @@ export type OrganizationChannelConfig = {
    * Telephony configurations to be applied to the targets under the channel
    */
   telephony?: TelephonyConfigurations | null | undefined;
+  /**
+   * Email configurations (required for email channels)
+   */
+  email?: EmailConfigurations | null | undefined;
 };
 
 /** @internal */
@@ -46,6 +56,7 @@ export const OrganizationChannelConfig$inboundSchema: z.ZodType<
   auth_token: z.nullable(z.string()).optional(),
   provider_credentials: z.nullable(z.record(z.string())).optional(),
   telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
+  email: z.nullable(EmailConfigurations$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_sid": "accountSid",
@@ -59,6 +70,7 @@ export type OrganizationChannelConfig$Outbound = {
   auth_token?: string | null | undefined;
   provider_credentials?: { [k: string]: string } | null | undefined;
   telephony?: TelephonyConfigurations$Outbound | null | undefined;
+  email?: EmailConfigurations$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -71,6 +83,7 @@ export const OrganizationChannelConfig$outboundSchema: z.ZodType<
   authToken: z.nullable(z.string()).optional(),
   providerCredentials: z.nullable(z.record(z.string())).optional(),
   telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
+  email: z.nullable(EmailConfigurations$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountSid: "account_sid",
