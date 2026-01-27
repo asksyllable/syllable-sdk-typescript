@@ -147,8 +147,8 @@ async function run() {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2026-01-20T00:00:00Z"),
-    endDatetime: new Date("2026-01-21T00:00:00Z"),
+    startDatetime: new Date("2026-01-26T00:00:00Z"),
+    endDatetime: new Date("2026-01-27T00:00:00Z"),
   });
 
   console.log(result);
@@ -199,8 +199,8 @@ async function run() {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2026-01-20T00:00:00Z"),
-    endDatetime: new Date("2026-01-21T00:00:00Z"),
+    startDatetime: new Date("2026-01-26T00:00:00Z"),
+    endDatetime: new Date("2026-01-27T00:00:00Z"),
   });
   if (res.ok) {
     const { value: result } = res;
@@ -351,8 +351,8 @@ async function run() {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2026-01-20T00:00:00Z"),
-      endDatetime: new Date("2026-01-21T00:00:00Z"),
+      startDatetime: new Date("2026-01-26T00:00:00Z"),
+      endDatetime: new Date("2026-01-27T00:00:00Z"),
     },
   });
 
@@ -406,8 +406,8 @@ async function run() {
           "sheet_name": "Q1 Sales Data",
         },
       },
-      startDatetime: new Date("2026-01-20T00:00:00Z"),
-      endDatetime: new Date("2026-01-21T00:00:00Z"),
+      startDatetime: new Date("2026-01-26T00:00:00Z"),
+      endDatetime: new Date("2026-01-27T00:00:00Z"),
     },
   });
   if (res.ok) {
@@ -702,16 +702,6 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.workflows.queueWork({
     workflowName: "summary-workflow",
-    sessionIdList: [
-      12334,
-      23445,
-      34556,
-    ],
-    fileIdList: [
-      1234,
-      1678,
-      2224,
-    ],
   });
 
   console.log(result);
@@ -737,16 +727,6 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await insightsWorkflowsQueueWork(syllableSDK, {
     workflowName: "summary-workflow",
-    sessionIdList: [
-      12334,
-      23445,
-      34556,
-    ],
-    fileIdList: [
-      1234,
-      1678,
-      2224,
-    ],
   });
   if (res.ok) {
     const { value: result } = res;

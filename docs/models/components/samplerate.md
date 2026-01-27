@@ -8,7 +8,7 @@ Sample rate as a percentage of calls
 ### `number`
 
 ```typescript
-const value: number = 0.1;
+const value: number = 10;
 ```
 
 ### `number`
