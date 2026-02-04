@@ -322,7 +322,7 @@ run();
 
 ### Response
 
-**Promise\<[boolean](../../models/.md)\>**
+**Promise\<[boolean](../../models/responseinsightsfolderdelete.md)\>**
 
 ### Errors
 
