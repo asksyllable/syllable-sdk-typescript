@@ -217,7 +217,7 @@ run();
 
 ### Response
 
-**Promise\<[ReadableStream<Uint8Array>](../../models/.md)\>**
+**Promise\<[ReadableStream<Uint8Array>](../../models/bytes.md)\>**
 
 ### Errors
 
