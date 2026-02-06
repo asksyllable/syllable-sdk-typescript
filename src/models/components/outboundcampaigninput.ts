@@ -23,7 +23,7 @@ export type OutboundCampaignInput = {
    */
   description?: string | null | undefined;
   /**
-   * Mode of the campaign (e.g. voice, sms)
+   * Mode of the campaign (e.g. voice, sms, email)
    */
   mode?: string | null | undefined;
   /**
