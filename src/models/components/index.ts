@@ -29,6 +29,7 @@ export * from "./bodyorganizationsupdate.js";
 export * from "./bodyoutboundbatchdelete.js";
 export * from "./bodyoutboundbatchupload.js";
 export * from "./bodypronunciationsuploadcsv.js";
+export * from "./bridgephrasemessages.js";
 export * from "./bridgephrasesconfig.js";
 export * from "./callaction.js";
 export * from "./campaignproperties.js";

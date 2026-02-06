@@ -7,22 +7,11 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  BridgePhraseMessages,
-  BridgePhraseMessages$inboundSchema,
-  BridgePhraseMessages$Outbound,
-  BridgePhraseMessages$outboundSchema,
-} from "./bridgephrasemessages.js";
 
 /**
- * Configuration for conversational bridge phrases.
- *
- * @remarks
- *
- * Top-level fields are the default (English) phrases.
- * The `localized` dict provides per-language overrides keyed by BCP-47 language tag.
+ * Bridge phrase message lists for a single language.
  */
-export type BridgePhrasesConfig = {
+export type BridgePhraseMessages = {
   /**
    * Messages to say when the agent is first delayed.
    */
@@ -35,22 +24,17 @@ export type BridgePhrasesConfig = {
    * Messages to say when a tool call is in progress.
    */
   toolResponses?: Array<string> | undefined;
-  /**
-   * Per-language overrides keyed by BCP-47 tag (e.g. "es-US").
-   */
-  localized?: { [k: string]: BridgePhraseMessages } | undefined;
 };
 
 /** @internal */
-export const BridgePhrasesConfig$inboundSchema: z.ZodType<
-  BridgePhrasesConfig,
+export const BridgePhraseMessages$inboundSchema: z.ZodType<
+  BridgePhraseMessages,
   z.ZodTypeDef,
   unknown
 > = z.object({
   first_slow_messages: z.array(z.string()).optional(),
   very_slow_messages: z.array(z.string()).optional(),
   tool_responses: z.array(z.string()).optional(),
-  localized: z.record(BridgePhraseMessages$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "first_slow_messages": "firstSlowMessages",
@@ -59,23 +43,21 @@ export const BridgePhrasesConfig$inboundSchema: z.ZodType<
   });
 });
 /** @internal */
-export type BridgePhrasesConfig$Outbound = {
+export type BridgePhraseMessages$Outbound = {
   first_slow_messages?: Array<string> | undefined;
   very_slow_messages?: Array<string> | undefined;
   tool_responses?: Array<string> | undefined;
-  localized?: { [k: string]: BridgePhraseMessages$Outbound } | undefined;
 };
 
 /** @internal */
-export const BridgePhrasesConfig$outboundSchema: z.ZodType<
-  BridgePhrasesConfig$Outbound,
+export const BridgePhraseMessages$outboundSchema: z.ZodType<
+  BridgePhraseMessages$Outbound,
   z.ZodTypeDef,
-  BridgePhrasesConfig
+  BridgePhraseMessages
 > = z.object({
   firstSlowMessages: z.array(z.string()).optional(),
   verySlowMessages: z.array(z.string()).optional(),
   toolResponses: z.array(z.string()).optional(),
-  localized: z.record(BridgePhraseMessages$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     firstSlowMessages: "first_slow_messages",
@@ -84,19 +66,19 @@ export const BridgePhrasesConfig$outboundSchema: z.ZodType<
   });
 });
 
-export function bridgePhrasesConfigToJSON(
-  bridgePhrasesConfig: BridgePhrasesConfig,
+export function bridgePhraseMessagesToJSON(
+  bridgePhraseMessages: BridgePhraseMessages,
 ): string {
   return JSON.stringify(
-    BridgePhrasesConfig$outboundSchema.parse(bridgePhrasesConfig),
+    BridgePhraseMessages$outboundSchema.parse(bridgePhraseMessages),
   );
 }
-export function bridgePhrasesConfigFromJSON(
+export function bridgePhraseMessagesFromJSON(
   jsonString: string,
-): SafeParseResult<BridgePhrasesConfig, SDKValidationError> {
+): SafeParseResult<BridgePhraseMessages, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BridgePhrasesConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BridgePhrasesConfig' from JSON`,
+    (x) => BridgePhraseMessages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BridgePhraseMessages' from JSON`,
   );
 }
