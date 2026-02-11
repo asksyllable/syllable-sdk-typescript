@@ -1013,7 +1013,17 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.directory.list({});
+              const result = await syllableSDK.directory.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
 
               console.log(result);
             }
@@ -1213,7 +1223,7 @@ actions:
             async function run() {
               const result = await syllableSDK.directory.directoryMemberTestExtension({
                 memberId: 922412,
-                timestamp: "<value>",
+                timestamp: "2024-07-02T14:32:47.235Z",
               });
 
               console.log(result);
@@ -1864,8 +1874,8 @@ actions:
                     "sheet_name": "Q1 Sales Data",
                   },
                 },
-                startDatetime: new Date("2026-02-06T00:00:00Z"),
-                endDatetime: new Date("2026-02-07T00:00:00Z"),
+                startDatetime: new Date("2026-02-03T00:00:00Z"),
+                endDatetime: new Date("2026-02-04T00:00:00Z"),
               });
 
               console.log(result);
@@ -1977,8 +1987,8 @@ actions:
                       "sheet_name": "Q1 Sales Data",
                     },
                   },
-                  startDatetime: new Date("2026-02-06T00:00:00Z"),
-                  endDatetime: new Date("2026-02-07T00:00:00Z"),
+                  startDatetime: new Date("2026-02-03T00:00:00Z"),
+                  endDatetime: new Date("2026-02-04T00:00:00Z"),
                 },
               });
 
@@ -2171,9 +2181,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.batches.create({
-                batchId: "20260207.9",
+                batchId: "20260204.9",
                 campaignId: 1,
-                expiresOn: new Date("2026-02-08T00:00:00Z"),
+                expiresOn: new Date("2026-02-05T00:00:00Z"),
                 paused: true,
               });
 
@@ -2404,7 +2414,7 @@ actions:
                 dailyStartTime: "09:00:00",
                 dailyEndTime: "17:00:00",
                 source: "+19032900844",
-                callerId: "<id>",
+                callerId: "19995551234",
                 hourlyRate: 25,
                 retryCount: 1,
                 retryInterval: "30m",
@@ -2482,7 +2492,7 @@ actions:
 
             async function run() {
               const result = await syllableSDK.outbound.campaigns.update({
-                campaignId: 667849,
+                campaignId: 679645,
                 outboundCampaignInput: {
                   campaignName: "Outbound Campaign 1",
                   description: "This is a test campaign",
@@ -2499,7 +2509,7 @@ actions:
                   dailyStartTime: "09:00:00",
                   dailyEndTime: "17:00:00",
                   source: "+19032900844",
-                  callerId: "<id>",
+                  callerId: "19995551234",
                   hourlyRate: 25,
                   retryCount: 1,
                   retryInterval: "30m",
@@ -3490,7 +3500,7 @@ actions:
                   },
                   endpoint: {
                     url: "https://api.example.com",
-                    method: "delete",
+                    method: "post",
                     argumentLocation: "path",
                   },
                   defaults: "<value>",
@@ -3539,7 +3549,7 @@ actions:
                   },
                   endpoint: {
                     url: "https://api.example.com",
-                    method: "post",
+                    method: "get",
                     argumentLocation: "form",
                   },
                   defaults: "<value>",
@@ -4027,9 +4037,9 @@ actions:
 
             async function run() {
               const result = await syllableSDK.voiceGroups.voiceGroupsCreateVoiceSample({
-                languageCode: "es-US",
+                languageCode: "fa-IR",
                 voiceProvider: "Google",
-                voiceDisplayName: "Vindemiatrix (Gujarati)",
+                voiceDisplayName: "Vindemiatrix (English)",
                 voiceSpeed: 1,
                 voicePitch: 0,
               });
