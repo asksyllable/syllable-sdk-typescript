@@ -7,11 +7,11 @@ Status of a communication request.
 ```typescript
 import { RequestStatus } from "syllable-sdk/models/components";
 
-let value: RequestStatus = "CONNECTED";
+let value: RequestStatus = "SENT";
 ```
 
 ## Values
 
 ```typescript
-"PENDING" | "DUPLICATE" | "INITIATED" | "CONNECTED" | "CALL_COMPLETED" | "FAILED" | "CANCELED" | "INVALID"
+"PENDING" | "DUPLICATE" | "INITIATED" | "CONNECTED" | "SENT" | "CALL_COMPLETED" | "FAILED" | "CANCELED" | "INVALID"
 ```
