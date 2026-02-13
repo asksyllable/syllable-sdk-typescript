@@ -13,6 +13,7 @@ export const RequestStatus = {
   Duplicate: "DUPLICATE",
   Initiated: "INITIATED",
   Connected: "CONNECTED",
+  Sent: "SENT",
   CallCompleted: "CALL_COMPLETED",
   Failed: "FAILED",
   Canceled: "CANCELED",
