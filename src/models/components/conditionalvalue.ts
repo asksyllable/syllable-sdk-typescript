@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,7 +25,7 @@ import {
   JMESPathExpression$outboundSchema,
 } from "./jmespathexpression.js";
 
-export type ValueFrom1 =
+export type Valuefrom1 =
   | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
@@ -78,7 +77,7 @@ export type ConditionalValue = {
 /**
  * Expression to compute initial value (mutually exclusive with value).
  */
-export type ValueFrom =
+export type Valuefrom =
   | CaseExpression
   | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
@@ -86,8 +85,8 @@ export type ValueFrom =
   | string;
 
 /** @internal */
-export const ValueFrom1$inboundSchema: z.ZodType<
-  ValueFrom1,
+export const Valuefrom1$inboundSchema: z.ZodType<
+  Valuefrom1,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -98,16 +97,16 @@ export const ValueFrom1$inboundSchema: z.ZodType<
   JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 /** @internal */
-export type ValueFrom1$Outbound =
+export type Valuefrom1$Outbound =
   | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
 /** @internal */
-export const ValueFrom1$outboundSchema: z.ZodType<
-  ValueFrom1$Outbound,
+export const Valuefrom1$outboundSchema: z.ZodType<
+  Valuefrom1$Outbound,
   z.ZodTypeDef,
-  ValueFrom1
+  Valuefrom1
 > = z.union([
   CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
@@ -116,16 +115,16 @@ export const ValueFrom1$outboundSchema: z.ZodType<
   JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 
-export function valueFrom1ToJSON(valueFrom1: ValueFrom1): string {
-  return JSON.stringify(ValueFrom1$outboundSchema.parse(valueFrom1));
+export function valuefrom1ToJSON(valuefrom1: Valuefrom1): string {
+  return JSON.stringify(Valuefrom1$outboundSchema.parse(valuefrom1));
 }
-export function valueFrom1FromJSON(
+export function valuefrom1FromJSON(
   jsonString: string,
-): SafeParseResult<ValueFrom1, SDKValidationError> {
+): SafeParseResult<Valuefrom1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ValueFrom1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ValueFrom1' from JSON`,
+    (x) => Valuefrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Valuefrom1' from JSON`,
   );
 }
 
@@ -224,7 +223,7 @@ export const ConditionalValue$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   value: z.nullable(z.any()).optional(),
-  value_from: z.nullable(
+  valueFrom: z.nullable(
     z.union([
       z.lazy(() => CaseExpression$inboundSchema),
       z.union([
@@ -254,15 +253,11 @@ export const ConditionalValue$inboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "value_from": "valueFrom",
-  });
 });
 /** @internal */
 export type ConditionalValue$Outbound = {
   value?: any | null | undefined;
-  value_from?:
+  valueFrom?:
     | CaseExpression$Outbound
     | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
@@ -317,10 +312,6 @@ export const ConditionalValue$outboundSchema: z.ZodType<
       z.string(),
     ]),
   ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    valueFrom: "value_from",
-  });
 });
 
 export function conditionalValueToJSON(
@@ -341,8 +332,8 @@ export function conditionalValueFromJSON(
 }
 
 /** @internal */
-export const ValueFrom$inboundSchema: z.ZodType<
-  ValueFrom,
+export const Valuefrom$inboundSchema: z.ZodType<
+  Valuefrom,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -357,7 +348,7 @@ export const ValueFrom$inboundSchema: z.ZodType<
   z.string(),
 ]);
 /** @internal */
-export type ValueFrom$Outbound =
+export type Valuefrom$Outbound =
   | CaseExpression$Outbound
   | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
@@ -365,10 +356,10 @@ export type ValueFrom$Outbound =
   | string;
 
 /** @internal */
-export const ValueFrom$outboundSchema: z.ZodType<
-  ValueFrom$Outbound,
+export const Valuefrom$outboundSchema: z.ZodType<
+  Valuefrom$Outbound,
   z.ZodTypeDef,
-  ValueFrom
+  Valuefrom
 > = z.union([
   z.lazy(() => CaseExpression$outboundSchema),
   z.union([
@@ -381,15 +372,15 @@ export const ValueFrom$outboundSchema: z.ZodType<
   z.string(),
 ]);
 
-export function valueFromToJSON(valueFrom: ValueFrom): string {
-  return JSON.stringify(ValueFrom$outboundSchema.parse(valueFrom));
+export function valuefromToJSON(valuefrom: Valuefrom): string {
+  return JSON.stringify(Valuefrom$outboundSchema.parse(valuefrom));
 }
-export function valueFromFromJSON(
+export function valuefromFromJSON(
   jsonString: string,
-): SafeParseResult<ValueFrom, SDKValidationError> {
+): SafeParseResult<Valuefrom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ValueFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ValueFrom' from JSON`,
+    (x) => Valuefrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Valuefrom' from JSON`,
   );
 }

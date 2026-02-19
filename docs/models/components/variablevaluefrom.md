@@ -1,4 +1,4 @@
-# VariableValueFrom
+# VariableValuefrom
 
 Expression to compute initial value (mutually exclusive with value).
 

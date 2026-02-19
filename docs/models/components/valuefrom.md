@@ -1,14 +1,14 @@
-# ValueFrom
+# Valuefrom
 
 Expression to compute initial value (mutually exclusive with value).
 
 
 ## Supported Types
 
-### `components.ValueFrom1`
+### `components.Valuefrom1`
 
 ```typescript
-const value: components.ValueFrom1 = {
+const value: components.Valuefrom1 = {
   expression: "<value>",
   type: "jmespath",
 };

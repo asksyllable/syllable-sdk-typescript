@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -27,7 +26,7 @@ import {
   JMESPathExpression$outboundSchema,
 } from "./jmespathexpression.js";
 
-export type GetValueActionValueFrom1 =
+export type GetValueActionValuefrom1 =
   | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
@@ -35,7 +34,7 @@ export type GetValueActionValueFrom1 =
 /**
  * Expression to compute initial value (mutually exclusive with value).
  */
-export type GetValueActionValueFrom =
+export type GetValueActionValuefrom =
   | CaseExpression
   | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
@@ -111,8 +110,8 @@ export type GetValueAction = {
 };
 
 /** @internal */
-export const GetValueActionValueFrom1$inboundSchema: z.ZodType<
-  GetValueActionValueFrom1,
+export const GetValueActionValuefrom1$inboundSchema: z.ZodType<
+  GetValueActionValuefrom1,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -123,16 +122,16 @@ export const GetValueActionValueFrom1$inboundSchema: z.ZodType<
   JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 /** @internal */
-export type GetValueActionValueFrom1$Outbound =
+export type GetValueActionValuefrom1$Outbound =
   | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
 /** @internal */
-export const GetValueActionValueFrom1$outboundSchema: z.ZodType<
-  GetValueActionValueFrom1$Outbound,
+export const GetValueActionValuefrom1$outboundSchema: z.ZodType<
+  GetValueActionValuefrom1$Outbound,
   z.ZodTypeDef,
-  GetValueActionValueFrom1
+  GetValueActionValuefrom1
 > = z.union([
   CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
@@ -141,26 +140,26 @@ export const GetValueActionValueFrom1$outboundSchema: z.ZodType<
   JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 
-export function getValueActionValueFrom1ToJSON(
-  getValueActionValueFrom1: GetValueActionValueFrom1,
+export function getValueActionValuefrom1ToJSON(
+  getValueActionValuefrom1: GetValueActionValuefrom1,
 ): string {
   return JSON.stringify(
-    GetValueActionValueFrom1$outboundSchema.parse(getValueActionValueFrom1),
+    GetValueActionValuefrom1$outboundSchema.parse(getValueActionValuefrom1),
   );
 }
-export function getValueActionValueFrom1FromJSON(
+export function getValueActionValuefrom1FromJSON(
   jsonString: string,
-): SafeParseResult<GetValueActionValueFrom1, SDKValidationError> {
+): SafeParseResult<GetValueActionValuefrom1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetValueActionValueFrom1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetValueActionValueFrom1' from JSON`,
+    (x) => GetValueActionValuefrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetValueActionValuefrom1' from JSON`,
   );
 }
 
 /** @internal */
-export const GetValueActionValueFrom$inboundSchema: z.ZodType<
-  GetValueActionValueFrom,
+export const GetValueActionValuefrom$inboundSchema: z.ZodType<
+  GetValueActionValuefrom,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -175,7 +174,7 @@ export const GetValueActionValueFrom$inboundSchema: z.ZodType<
   z.string(),
 ]);
 /** @internal */
-export type GetValueActionValueFrom$Outbound =
+export type GetValueActionValuefrom$Outbound =
   | CaseExpression$Outbound
   | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
@@ -183,10 +182,10 @@ export type GetValueActionValueFrom$Outbound =
   | string;
 
 /** @internal */
-export const GetValueActionValueFrom$outboundSchema: z.ZodType<
-  GetValueActionValueFrom$Outbound,
+export const GetValueActionValuefrom$outboundSchema: z.ZodType<
+  GetValueActionValuefrom$Outbound,
   z.ZodTypeDef,
-  GetValueActionValueFrom
+  GetValueActionValuefrom
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
@@ -199,20 +198,20 @@ export const GetValueActionValueFrom$outboundSchema: z.ZodType<
   z.string(),
 ]);
 
-export function getValueActionValueFromToJSON(
-  getValueActionValueFrom: GetValueActionValueFrom,
+export function getValueActionValuefromToJSON(
+  getValueActionValuefrom: GetValueActionValuefrom,
 ): string {
   return JSON.stringify(
-    GetValueActionValueFrom$outboundSchema.parse(getValueActionValueFrom),
+    GetValueActionValuefrom$outboundSchema.parse(getValueActionValuefrom),
   );
 }
-export function getValueActionValueFromFromJSON(
+export function getValueActionValuefromFromJSON(
   jsonString: string,
-): SafeParseResult<GetValueActionValueFrom, SDKValidationError> {
+): SafeParseResult<GetValueActionValuefrom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetValueActionValueFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetValueActionValueFrom' from JSON`,
+    (x) => GetValueActionValuefrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetValueActionValuefrom' from JSON`,
   );
 }
 
@@ -336,7 +335,7 @@ export const GetValueAction$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   value: z.nullable(z.any()).optional(),
-  value_from: z.nullable(
+  valueFrom: z.nullable(
     z.union([
       CaseExpression$inboundSchema,
       z.union([
@@ -369,15 +368,11 @@ export const GetValueAction$inboundSchema: z.ZodType<
   action: Action$inboundSchema.default("get"),
   inputs: z.nullable(z.array(z.string())).optional(),
   overwrite: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "value_from": "valueFrom",
-  });
 });
 /** @internal */
 export type GetValueAction$Outbound = {
   value?: any | null | undefined;
-  value_from?:
+  valueFrom?:
     | CaseExpression$Outbound
     | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
@@ -438,10 +433,6 @@ export const GetValueAction$outboundSchema: z.ZodType<
   action: Action$outboundSchema.default("get"),
   inputs: z.nullable(z.array(z.string())).optional(),
   overwrite: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    valueFrom: "value_from",
-  });
 });
 
 export function getValueActionToJSON(getValueAction: GetValueAction): string {

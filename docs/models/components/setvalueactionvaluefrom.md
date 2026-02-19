@@ -1,16 +1,16 @@
-# SetValueActionValueFrom
+# SetValueActionValuefrom
 
 Expression to compute initial value (mutually exclusive with value).
 
 
 ## Supported Types
 
-### `components.SetValueActionValueFrom1`
+### `components.SetValueActionValuefrom1`
 
 ```typescript
-const value: components.SetValueActionValueFrom1 = {
+const value: components.SetValueActionValuefrom1 = {
   expression: "<value>",
-  type: "jp",
+  type: "cel",
 };
 ```
 

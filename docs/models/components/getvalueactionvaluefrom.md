@@ -1,16 +1,16 @@
-# GetValueActionValueFrom
+# GetValueActionValuefrom
 
 Expression to compute initial value (mutually exclusive with value).
 
 
 ## Supported Types
 
-### `components.GetValueActionValueFrom1`
+### `components.GetValueActionValuefrom1`
 
 ```typescript
-const value: components.GetValueActionValueFrom1 = {
+const value: components.GetValueActionValuefrom1 = {
   expression: "<value>",
-  type: "jmespath",
+  type: "jp",
 };
 ```
 

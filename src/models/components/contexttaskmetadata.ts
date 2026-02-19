@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,16 +22,12 @@ export const ContextTaskMetadata$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   priority: z.nullable(z.number().int()).optional(),
-  parent_tool_name: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "parent_tool_name": "parentToolName",
-  });
+  parentToolName: z.nullable(z.string()).optional(),
 });
 /** @internal */
 export type ContextTaskMetadata$Outbound = {
   priority?: number | null | undefined;
-  parent_tool_name?: string | null | undefined;
+  parentToolName?: string | null | undefined;
 };
 
 /** @internal */
@@ -43,10 +38,6 @@ export const ContextTaskMetadata$outboundSchema: z.ZodType<
 > = z.object({
   priority: z.nullable(z.number().int()).optional(),
   parentToolName: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    parentToolName: "parent_tool_name",
-  });
 });
 
 export function contextTaskMetadataToJSON(

@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,17 +33,13 @@ export const StepTools$inboundSchema: z.ZodType<
 > = z.object({
   call: z.nullable(z.boolean()).optional(),
   allow: z.nullable(z.array(z.string())).optional(),
-  allow_go_to_step: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "allow_go_to_step": "allowGoToStep",
-  });
+  allowGoToStep: z.nullable(z.boolean()).optional(),
 });
 /** @internal */
 export type StepTools$Outbound = {
   call?: boolean | null | undefined;
   allow?: Array<string> | null | undefined;
-  allow_go_to_step?: boolean | null | undefined;
+  allowGoToStep?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -56,10 +51,6 @@ export const StepTools$outboundSchema: z.ZodType<
   call: z.nullable(z.boolean()).optional(),
   allow: z.nullable(z.array(z.string())).optional(),
   allowGoToStep: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    allowGoToStep: "allow_go_to_step",
-  });
 });
 
 export function stepToolsToJSON(stepTools: StepTools): string {
