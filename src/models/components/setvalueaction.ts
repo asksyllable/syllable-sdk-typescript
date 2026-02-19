@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,7 +25,7 @@ import {
   JMESPathExpression$outboundSchema,
 } from "./jmespathexpression.js";
 
-export type SetValueActionValueFrom1 =
+export type SetValueActionValuefrom1 =
   | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
@@ -34,7 +33,7 @@ export type SetValueActionValueFrom1 =
 /**
  * Expression to compute initial value (mutually exclusive with value).
  */
-export type SetValueActionValueFrom =
+export type SetValueActionValuefrom =
   | CaseExpression
   | CelExpression
   | (JMESPathExpression & { type: "jmespath" })
@@ -91,8 +90,8 @@ export type SetValueAction = {
 };
 
 /** @internal */
-export const SetValueActionValueFrom1$inboundSchema: z.ZodType<
-  SetValueActionValueFrom1,
+export const SetValueActionValuefrom1$inboundSchema: z.ZodType<
+  SetValueActionValuefrom1,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -103,16 +102,16 @@ export const SetValueActionValueFrom1$inboundSchema: z.ZodType<
   JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 /** @internal */
-export type SetValueActionValueFrom1$Outbound =
+export type SetValueActionValuefrom1$Outbound =
   | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
   | (JMESPathExpression$Outbound & { type: "jp" });
 
 /** @internal */
-export const SetValueActionValueFrom1$outboundSchema: z.ZodType<
-  SetValueActionValueFrom1$Outbound,
+export const SetValueActionValuefrom1$outboundSchema: z.ZodType<
+  SetValueActionValuefrom1$Outbound,
   z.ZodTypeDef,
-  SetValueActionValueFrom1
+  SetValueActionValuefrom1
 > = z.union([
   CelExpression$outboundSchema,
   JMESPathExpression$outboundSchema.and(
@@ -121,26 +120,26 @@ export const SetValueActionValueFrom1$outboundSchema: z.ZodType<
   JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
 ]);
 
-export function setValueActionValueFrom1ToJSON(
-  setValueActionValueFrom1: SetValueActionValueFrom1,
+export function setValueActionValuefrom1ToJSON(
+  setValueActionValuefrom1: SetValueActionValuefrom1,
 ): string {
   return JSON.stringify(
-    SetValueActionValueFrom1$outboundSchema.parse(setValueActionValueFrom1),
+    SetValueActionValuefrom1$outboundSchema.parse(setValueActionValuefrom1),
   );
 }
-export function setValueActionValueFrom1FromJSON(
+export function setValueActionValuefrom1FromJSON(
   jsonString: string,
-): SafeParseResult<SetValueActionValueFrom1, SDKValidationError> {
+): SafeParseResult<SetValueActionValuefrom1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SetValueActionValueFrom1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SetValueActionValueFrom1' from JSON`,
+    (x) => SetValueActionValuefrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SetValueActionValuefrom1' from JSON`,
   );
 }
 
 /** @internal */
-export const SetValueActionValueFrom$inboundSchema: z.ZodType<
-  SetValueActionValueFrom,
+export const SetValueActionValuefrom$inboundSchema: z.ZodType<
+  SetValueActionValuefrom,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -155,7 +154,7 @@ export const SetValueActionValueFrom$inboundSchema: z.ZodType<
   z.string(),
 ]);
 /** @internal */
-export type SetValueActionValueFrom$Outbound =
+export type SetValueActionValuefrom$Outbound =
   | CaseExpression$Outbound
   | CelExpression$Outbound
   | (JMESPathExpression$Outbound & { type: "jmespath" })
@@ -163,10 +162,10 @@ export type SetValueActionValueFrom$Outbound =
   | string;
 
 /** @internal */
-export const SetValueActionValueFrom$outboundSchema: z.ZodType<
-  SetValueActionValueFrom$Outbound,
+export const SetValueActionValuefrom$outboundSchema: z.ZodType<
+  SetValueActionValuefrom$Outbound,
   z.ZodTypeDef,
-  SetValueActionValueFrom
+  SetValueActionValuefrom
 > = z.union([
   CaseExpression$outboundSchema,
   z.union([
@@ -179,20 +178,20 @@ export const SetValueActionValueFrom$outboundSchema: z.ZodType<
   z.string(),
 ]);
 
-export function setValueActionValueFromToJSON(
-  setValueActionValueFrom: SetValueActionValueFrom,
+export function setValueActionValuefromToJSON(
+  setValueActionValuefrom: SetValueActionValuefrom,
 ): string {
   return JSON.stringify(
-    SetValueActionValueFrom$outboundSchema.parse(setValueActionValueFrom),
+    SetValueActionValuefrom$outboundSchema.parse(setValueActionValuefrom),
   );
 }
-export function setValueActionValueFromFromJSON(
+export function setValueActionValuefromFromJSON(
   jsonString: string,
-): SafeParseResult<SetValueActionValueFrom, SDKValidationError> {
+): SafeParseResult<SetValueActionValuefrom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SetValueActionValueFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SetValueActionValueFrom' from JSON`,
+    (x) => SetValueActionValuefrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SetValueActionValuefrom' from JSON`,
   );
 }
 
@@ -309,7 +308,7 @@ export const SetValueAction$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   value: z.nullable(z.any()).optional(),
-  value_from: z.nullable(
+  valueFrom: z.nullable(
     z.union([
       CaseExpression$inboundSchema,
       z.union([
@@ -341,15 +340,11 @@ export const SetValueAction$inboundSchema: z.ZodType<
   ).optional(),
   action: z.literal("set"),
   name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "value_from": "valueFrom",
-  });
 });
 /** @internal */
 export type SetValueAction$Outbound = {
   value?: any | null | undefined;
-  value_from?:
+  valueFrom?:
     | CaseExpression$Outbound
     | CelExpression$Outbound
     | (JMESPathExpression$Outbound & { type: "jmespath" })
@@ -408,10 +403,6 @@ export const SetValueAction$outboundSchema: z.ZodType<
   ).optional(),
   action: z.literal("set"),
   name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    valueFrom: "value_from",
-  });
 });
 
 export function setValueActionToJSON(setValueAction: SetValueAction): string {

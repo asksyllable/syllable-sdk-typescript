@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -44,7 +43,7 @@ export type CallActionIf =
 /**
  * Auto-population strategy: True (hybrid - synthetic or LLM), False (always LLM), "required" (synthetic only if all required args available, else LLM)
  */
-export type AutoPopulate = boolean | string;
+export type Autopopulate = boolean | string;
 
 export type CallAction = {
   /**
@@ -172,31 +171,31 @@ export function callActionIfFromJSON(
 }
 
 /** @internal */
-export const AutoPopulate$inboundSchema: z.ZodType<
-  AutoPopulate,
+export const Autopopulate$inboundSchema: z.ZodType<
+  Autopopulate,
   z.ZodTypeDef,
   unknown
 > = z.union([z.boolean(), z.string()]);
 /** @internal */
-export type AutoPopulate$Outbound = boolean | string;
+export type Autopopulate$Outbound = boolean | string;
 
 /** @internal */
-export const AutoPopulate$outboundSchema: z.ZodType<
-  AutoPopulate$Outbound,
+export const Autopopulate$outboundSchema: z.ZodType<
+  Autopopulate$Outbound,
   z.ZodTypeDef,
-  AutoPopulate
+  Autopopulate
 > = z.union([z.boolean(), z.string()]);
 
-export function autoPopulateToJSON(autoPopulate: AutoPopulate): string {
-  return JSON.stringify(AutoPopulate$outboundSchema.parse(autoPopulate));
+export function autopopulateToJSON(autopopulate: Autopopulate): string {
+  return JSON.stringify(Autopopulate$outboundSchema.parse(autopopulate));
 }
-export function autoPopulateFromJSON(
+export function autopopulateFromJSON(
   jsonString: string,
-): SafeParseResult<AutoPopulate, SDKValidationError> {
+): SafeParseResult<Autopopulate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AutoPopulate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AutoPopulate' from JSON`,
+    (x) => Autopopulate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Autopopulate' from JSON`,
   );
 }
 
@@ -224,11 +223,7 @@ export const CallAction$inboundSchema: z.ZodType<
   action: z.literal("call"),
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
-  auto_populate: z.union([z.boolean(), z.string()]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "auto_populate": "autoPopulate",
-  });
+  autoPopulate: z.union([z.boolean(), z.string()]).optional(),
 });
 /** @internal */
 export type CallAction$Outbound = {
@@ -243,7 +238,7 @@ export type CallAction$Outbound = {
   action: "call";
   name: string;
   arguments?: { [k: string]: any } | null | undefined;
-  auto_populate?: boolean | string | undefined;
+  autoPopulate?: boolean | string | undefined;
 };
 
 /** @internal */
@@ -271,10 +266,6 @@ export const CallAction$outboundSchema: z.ZodType<
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
   autoPopulate: z.union([z.boolean(), z.string()]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    autoPopulate: "auto_populate",
-  });
 });
 
 export function callActionToJSON(callAction: CallAction): string {
