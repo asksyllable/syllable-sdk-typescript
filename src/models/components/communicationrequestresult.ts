@@ -13,7 +13,7 @@ import {
   RequestStatus$outboundSchema,
 } from "./requeststatus.js";
 
-export type Insights = {};
+export type Insights = string | number | number;
 
 export type CommunicationRequestResult = {
   /**
@@ -67,7 +67,7 @@ export type CommunicationRequestResult = {
   /**
    * Insights from call
    */
-  insights?: Insights | null | undefined;
+  insights?: { [k: string]: string | number | number } | null | undefined;
 };
 
 /** @internal */
@@ -75,16 +75,16 @@ export const Insights$inboundSchema: z.ZodType<
   Insights,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 /** @internal */
-export type Insights$Outbound = {};
+export type Insights$Outbound = string | number | number;
 
 /** @internal */
 export const Insights$outboundSchema: z.ZodType<
   Insights$Outbound,
   z.ZodTypeDef,
   Insights
-> = z.object({});
+> = z.union([z.string(), z.number().int(), z.number()]);
 
 export function insightsToJSON(insights: Insights): string {
   return JSON.stringify(Insights$outboundSchema.parse(insights));
@@ -120,7 +120,9 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
   request_status: RequestStatus$inboundSchema.optional(),
   channel_manager_status: z.nullable(z.string()).optional(),
   insights_status: z.nullable(z.string()).optional(),
-  insights: z.nullable(z.lazy(() => Insights$inboundSchema)).optional(),
+  insights: z.nullable(
+    z.record(z.union([z.string(), z.number().int(), z.number()])),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "reference_id": "referenceId",
@@ -150,7 +152,7 @@ export type CommunicationRequestResult$Outbound = {
   request_status?: string | undefined;
   channel_manager_status?: string | null | undefined;
   insights_status?: string | null | undefined;
-  insights?: Insights$Outbound | null | undefined;
+  insights?: { [k: string]: string | number | number } | null | undefined;
 };
 
 /** @internal */
@@ -171,7 +173,9 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   requestStatus: RequestStatus$outboundSchema.optional(),
   channelManagerStatus: z.nullable(z.string()).optional(),
   insightsStatus: z.nullable(z.string()).optional(),
-  insights: z.nullable(z.lazy(() => Insights$outboundSchema)).optional(),
+  insights: z.nullable(
+    z.record(z.union([z.string(), z.number().int(), z.number()])),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     referenceId: "reference_id",

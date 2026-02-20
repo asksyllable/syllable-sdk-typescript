@@ -1,14 +1,23 @@
 # Insights
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Insights } from "syllable-sdk/models/components";
-
-let value: Insights = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 128403;
+```
+
+### `number`
+
+```typescript
+const value: number = 1284.03;
+```
+

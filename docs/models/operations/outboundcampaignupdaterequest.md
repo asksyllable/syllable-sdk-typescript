@@ -25,6 +25,7 @@ let value: OutboundCampaignUpdateRequest = {
     source: "+19032900844",
     callerId: "<id>",
     hourlyRate: 25,
+    maxDailyCalls: 2500,
     retryCount: 1,
     retryInterval: "30m",
     activeDays: [

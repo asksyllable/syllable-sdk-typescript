@@ -135,6 +135,7 @@ async function run() {
     source: "+19032900844",
     callerId: "19995551234",
     hourlyRate: 25,
+    maxDailyCalls: 2500,
     retryCount: 1,
     retryInterval: "30m",
     activeDays: [
@@ -190,6 +191,7 @@ async function run() {
     source: "+19032900844",
     callerId: "19995551234",
     hourlyRate: 25,
+    maxDailyCalls: 2500,
     retryCount: 1,
     retryInterval: "30m",
     activeDays: [
@@ -345,6 +347,7 @@ async function run() {
       source: "+19032900844",
       callerId: "19995551234",
       hourlyRate: 25,
+      maxDailyCalls: 2500,
       retryCount: 1,
       retryInterval: "30m",
       activeDays: [
@@ -403,6 +406,7 @@ async function run() {
       source: "+19032900844",
       callerId: "19995551234",
       hourlyRate: 25,
+      maxDailyCalls: 2500,
       retryCount: 1,
       retryInterval: "30m",
       activeDays: [
