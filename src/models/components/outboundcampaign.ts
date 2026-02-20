@@ -65,6 +65,10 @@ export type OutboundCampaign = {
    */
   hourlyRate?: number | undefined;
   /**
+   * Maximum number of outreach calls per day
+   */
+  maxDailyCalls?: number | null | undefined;
+  /**
    * Number of retries per target
    */
   retryCount?: number | undefined;
@@ -120,6 +124,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   source: z.nullable(z.string()).optional(),
   caller_id: z.nullable(z.string()),
   hourly_rate: z.number().int().default(1),
+  max_daily_calls: z.nullable(z.number().int()).optional(),
   retry_count: z.number().int().default(0),
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
@@ -140,6 +145,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
     "daily_end_time": "dailyEndTime",
     "caller_id": "callerId",
     "hourly_rate": "hourlyRate",
+    "max_daily_calls": "maxDailyCalls",
     "retry_count": "retryCount",
     "retry_interval": "retryInterval",
     "active_days": "activeDays",
@@ -164,6 +170,7 @@ export type OutboundCampaign$Outbound = {
   source?: string | null | undefined;
   caller_id: string | null;
   hourly_rate: number;
+  max_daily_calls?: number | null | undefined;
   retry_count: number;
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
@@ -193,6 +200,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   source: z.nullable(z.string()).optional(),
   callerId: z.nullable(z.string()),
   hourlyRate: z.number().int().default(1),
+  maxDailyCalls: z.nullable(z.number().int()).optional(),
   retryCount: z.number().int().default(0),
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
@@ -211,6 +219,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
     dailyEndTime: "daily_end_time",
     callerId: "caller_id",
     hourlyRate: "hourly_rate",
+    maxDailyCalls: "max_daily_calls",
     retryCount: "retry_count",
     retryInterval: "retry_interval",
     activeDays: "active_days",
