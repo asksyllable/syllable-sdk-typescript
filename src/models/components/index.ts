@@ -261,6 +261,7 @@ export * from "./userproperties.js";
 export * from "./userresponse.js";
 export * from "./userupdaterequest.js";
 export * from "./validationerror.js";
+export * from "./validationissue.js";
 export * from "./variable.js";
 export * from "./voicedisplayinfo.js";
 export * from "./voicegroupcreaterequest.js";
