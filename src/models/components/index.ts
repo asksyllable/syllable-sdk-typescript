@@ -187,6 +187,7 @@ export * from "./pronunciationoverride.js";
 export * from "./pronunciationoverridesdictionary.js";
 export * from "./pronunciationscsvuploadresponse.js";
 export * from "./requeststatus.js";
+export * from "./requeststatusbreakdown.js";
 export * from "./rolecreaterequest.js";
 export * from "./roleproperties.js";
 export * from "./roleresponse.js";
