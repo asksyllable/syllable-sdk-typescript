@@ -12,12 +12,6 @@ import {
   BatchStatus$inboundSchema,
   BatchStatus$outboundSchema,
 } from "./batchstatus.js";
-import {
-  RequestStatusBreakdown,
-  RequestStatusBreakdown$inboundSchema,
-  RequestStatusBreakdown$Outbound,
-  RequestStatusBreakdown$outboundSchema,
-} from "./requeststatusbreakdown.js";
 
 export type BatchDetails = {
   /**
@@ -72,13 +66,6 @@ export type BatchDetails = {
    * Counts of requests by status
    */
   statusCounts?: { [k: string]: number } | null | undefined;
-  /**
-   * Per request_status: total count and optional counts by channel_manager_status
-   */
-  detailedStatusCounts?:
-    | { [k: string]: RequestStatusBreakdown }
-    | null
-    | undefined;
 };
 
 /** @internal */
@@ -107,9 +94,6 @@ export const BatchDetails$inboundSchema: z.ZodType<
   last_updated_by: z.string(),
   error_message: z.nullable(z.string()).optional(),
   status_counts: z.nullable(z.record(z.number().int())).optional(),
-  detailed_status_counts: z.nullable(
-    z.record(RequestStatusBreakdown$inboundSchema),
-  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
@@ -123,7 +107,6 @@ export const BatchDetails$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
     "error_message": "errorMessage",
     "status_counts": "statusCounts",
-    "detailed_status_counts": "detailedStatusCounts",
   });
 });
 /** @internal */
@@ -141,10 +124,6 @@ export type BatchDetails$Outbound = {
   last_updated_by: string;
   error_message?: string | null | undefined;
   status_counts?: { [k: string]: number } | null | undefined;
-  detailed_status_counts?:
-    | { [k: string]: RequestStatusBreakdown$Outbound }
-    | null
-    | undefined;
 };
 
 /** @internal */
@@ -167,9 +146,6 @@ export const BatchDetails$outboundSchema: z.ZodType<
   lastUpdatedBy: z.string(),
   errorMessage: z.nullable(z.string()).optional(),
   statusCounts: z.nullable(z.record(z.number().int())).optional(),
-  detailedStatusCounts: z.nullable(
-    z.record(RequestStatusBreakdown$outboundSchema),
-  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
@@ -183,7 +159,6 @@ export const BatchDetails$outboundSchema: z.ZodType<
     lastUpdatedBy: "last_updated_by",
     errorMessage: "error_message",
     statusCounts: "status_counts",
-    detailedStatusCounts: "detailed_status_counts",
   });
 });
 

@@ -25,12 +25,6 @@ import {
   ToolPromptInfo$Outbound,
   ToolPromptInfo$outboundSchema,
 } from "./toolpromptinfo.js";
-import {
-  ValidationIssue,
-  ValidationIssue$inboundSchema,
-  ValidationIssue$Outbound,
-  ValidationIssue$outboundSchema,
-} from "./validationissue.js";
 
 /**
  * Response model for tool operations.
@@ -82,10 +76,6 @@ export type ToolResponse = {
    * The email of the user who last updated the tool
    */
   lastUpdatedBy: string;
-  /**
-   * Validation issues found in the tool definition. Warnings and infos are informational; errors block the save.
-   */
-  validationIssues?: Array<ValidationIssue> | null | undefined;
 };
 
 /** @internal */
@@ -106,8 +96,6 @@ export const ToolResponse$inboundSchema: z.ZodType<
     new Date(v)
   ),
   last_updated_by: z.string(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "service_id": "serviceId",
@@ -117,7 +105,6 @@ export const ToolResponse$inboundSchema: z.ZodType<
     "agents_info": "agentsInfo",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
-    "validation_issues": "validationIssues",
   });
 });
 /** @internal */
@@ -132,7 +119,6 @@ export type ToolResponse$Outbound = {
   agents_info?: Array<ToolAgentInfo$Outbound> | null | undefined;
   last_updated: string;
   last_updated_by: string;
-  validation_issues?: Array<ValidationIssue$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -151,8 +137,6 @@ export const ToolResponse$outboundSchema: z.ZodType<
   agentsInfo: z.nullable(z.array(ToolAgentInfo$outboundSchema)).optional(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
 }).transform((v) => {
   return remap$(v, {
     serviceId: "service_id",
@@ -162,7 +146,6 @@ export const ToolResponse$outboundSchema: z.ZodType<
     agentsInfo: "agents_info",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
-    validationIssues: "validation_issues",
   });
 });
 
