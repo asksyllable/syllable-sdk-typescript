@@ -34,9 +34,9 @@ export type OrganizationResponse = {
    */
   lastUpdatedComments?: string | null | undefined;
   /**
-   * The slug of the organization used for URLs in the Console UI
+   * The slug of the organization used for URLs in the Console UI. Null until slug backfill has been run.
    */
-  slug: string;
+  slug?: string | null | undefined;
   /**
    * The timestamp of the most recent update to the organization
    */
@@ -63,7 +63,7 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
   saml_provider_id: z.nullable(z.string()).optional(),
   id: z.number().int(),
   last_updated_comments: z.nullable(z.string()).optional(),
-  slug: z.string(),
+  slug: z.nullable(z.string()).optional(),
   last_updated: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ),
@@ -87,7 +87,7 @@ export type OrganizationResponse$Outbound = {
   saml_provider_id?: string | null | undefined;
   id: number;
   last_updated_comments?: string | null | undefined;
-  slug: string;
+  slug?: string | null | undefined;
   last_updated: string;
   last_updated_by?: string | null | undefined;
   logo_url?: string | null | undefined;
@@ -105,7 +105,7 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
   samlProviderId: z.nullable(z.string()).optional(),
   id: z.number().int(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
-  slug: z.string(),
+  slug: z.nullable(z.string()).optional(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()).optional(),
   logoUrl: z.nullable(z.string()).optional(),
