@@ -8,16 +8,18 @@ Operations related to directory
 
 * [list](#list) - Directory Member List
 * [create](#create) - Create Directory Member
+* [directoryMemberHistory](#directorymemberhistory) - Get Directory Member History
 * [getById](#getbyid) - Get Directory Member By Id
 * [update](#update) - Update Directory Member
 * [delete](#delete) - Delete Directory Member
 * [directoryMemberTestExtension](#directorymembertestextension) - Test Directory Member Extension
+* [directoryMemberRestore](#directorymemberrestore) - Restore Directory Member
 * [directoryMemberBulkLoad](#directorymemberbulkload) - Bulk Load Directory Members
 * [directoryMemberDownload](#directorymemberdownload) - Download Directory Members
 
 ## list
 
-List the existing directory_members
+List the directory_members
 
 ### Example Usage
 
@@ -231,6 +233,80 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
+## directoryMemberHistory
+
+Get version history for a directory member (contact), oldest first.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="directory_member_history" method="get" path="/api/v1/directory_members/{member_id}/history" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.directory.directoryMemberHistory({
+    memberId: 371893,
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { directoryDirectoryMemberHistory } from "syllable-sdk/funcs/directoryDirectoryMemberHistory.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await directoryDirectoryMemberHistory(syllableSDK, {
+    memberId: 371893,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("directoryDirectoryMemberHistory failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DirectoryMemberHistoryRequest](../../models/operations/directorymemberhistoryrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.ListResponseDirectoryMemberHistoryResponse](../../models/components/listresponsedirectorymemberhistoryresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
 ## getById
 
 Get a DirectoryMember by ID.
@@ -349,6 +425,7 @@ async function run() {
         ],
       },
       id: 1,
+      comments: "Updated phone number",
     },
   });
 
@@ -402,6 +479,7 @@ async function run() {
         ],
       },
       id: 1,
+      comments: "Updated phone number",
     },
   });
   if (res.ok) {
@@ -452,6 +530,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.directory.delete({
     memberId: 569311,
+    comment: "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
   });
 
   console.log(result);
@@ -477,6 +556,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await directoryDelete(syllableSDK, {
     memberId: 569311,
+    comment: "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -577,6 +657,80 @@ run();
 ### Response
 
 **Promise\<[components.DirectoryMemberTestResponse](../../models/components/directorymembertestresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## directoryMemberRestore
+
+Restore a soft-deleted directory member.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="directory_member_restore" method="put" path="/api/v1/directory_members/{member_id}/restore" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.directory.directoryMemberRestore({
+    memberId: 507482,
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { directoryDirectoryMemberRestore } from "syllable-sdk/funcs/directoryDirectoryMemberRestore.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await directoryDirectoryMemberRestore(syllableSDK, {
+    memberId: 507482,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("directoryDirectoryMemberRestore failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DirectoryMemberRestoreRequest](../../models/operations/directorymemberrestorerequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.DirectoryMember](../../models/components/directorymember.md)\>**
 
 ### Errors
 

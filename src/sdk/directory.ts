@@ -6,6 +6,8 @@ import { directoryCreate } from "../funcs/directoryCreate.js";
 import { directoryDelete } from "../funcs/directoryDelete.js";
 import { directoryDirectoryMemberBulkLoad } from "../funcs/directoryDirectoryMemberBulkLoad.js";
 import { directoryDirectoryMemberDownload } from "../funcs/directoryDirectoryMemberDownload.js";
+import { directoryDirectoryMemberHistory } from "../funcs/directoryDirectoryMemberHistory.js";
+import { directoryDirectoryMemberRestore } from "../funcs/directoryDirectoryMemberRestore.js";
 import { directoryDirectoryMemberTestExtension } from "../funcs/directoryDirectoryMemberTestExtension.js";
 import { directoryGetById } from "../funcs/directoryGetById.js";
 import { directoryList } from "../funcs/directoryList.js";
@@ -20,7 +22,7 @@ export class Directory extends ClientSDK {
    * Directory Member List
    *
    * @remarks
-   * List the existing directory_members
+   * List the directory_members
    */
   async list(
     request: operations.DirectoryMemberListRequest,
@@ -44,6 +46,23 @@ export class Directory extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.DirectoryMember> {
     return unwrapAsync(directoryCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Directory Member History
+   *
+   * @remarks
+   * Get version history for a directory member (contact), oldest first.
+   */
+  async directoryMemberHistory(
+    request: operations.DirectoryMemberHistoryRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListResponseDirectoryMemberHistoryResponse> {
+    return unwrapAsync(directoryDirectoryMemberHistory(
       this,
       request,
       options,
@@ -112,6 +131,23 @@ export class Directory extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.DirectoryMemberTestResponse> {
     return unwrapAsync(directoryDirectoryMemberTestExtension(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Restore Directory Member
+   *
+   * @remarks
+   * Restore a soft-deleted directory member.
+   */
+  async directoryMemberRestore(
+    request: operations.DirectoryMemberRestoreRequest,
+    options?: RequestOptions,
+  ): Promise<components.DirectoryMember> {
+    return unwrapAsync(directoryDirectoryMemberRestore(
       this,
       request,
       options,

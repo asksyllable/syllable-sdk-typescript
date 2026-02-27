@@ -1132,6 +1132,7 @@ actions:
             async function run() {
               const result = await syllableSDK.directory.delete({
                 memberId: 569311,
+                comment: "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
               });
 
               console.log(result);
@@ -1201,7 +1202,50 @@ actions:
                     ],
                   },
                   id: 1,
+                  comments: "Updated phone number",
                 },
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}/history"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberHistory({
+                memberId: 371893,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/directory_members/{member_id}/restore"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.directory.directoryMemberRestore({
+                memberId: 507482,
               });
 
               console.log(result);

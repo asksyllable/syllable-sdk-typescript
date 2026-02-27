@@ -311,10 +311,12 @@ run();
 
 * [list](docs/sdks/directory/README.md#list) - Directory Member List
 * [create](docs/sdks/directory/README.md#create) - Create Directory Member
+* [directoryMemberHistory](docs/sdks/directory/README.md#directorymemberhistory) - Get Directory Member History
 * [getById](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
 * [update](docs/sdks/directory/README.md#update) - Update Directory Member
 * [delete](docs/sdks/directory/README.md#delete) - Delete Directory Member
 * [directoryMemberTestExtension](docs/sdks/directory/README.md#directorymembertestextension) - Test Directory Member Extension
+* [directoryMemberRestore](docs/sdks/directory/README.md#directorymemberrestore) - Restore Directory Member
 * [directoryMemberBulkLoad](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
 * [directoryMemberDownload](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
 
@@ -572,6 +574,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`directoryDelete`](docs/sdks/directory/README.md#delete) - Delete Directory Member
 - [`directoryDirectoryMemberBulkLoad`](docs/sdks/directory/README.md#directorymemberbulkload) - Bulk Load Directory Members
 - [`directoryDirectoryMemberDownload`](docs/sdks/directory/README.md#directorymemberdownload) - Download Directory Members
+- [`directoryDirectoryMemberHistory`](docs/sdks/directory/README.md#directorymemberhistory) - Get Directory Member History
+- [`directoryDirectoryMemberRestore`](docs/sdks/directory/README.md#directorymemberrestore) - Restore Directory Member
 - [`directoryDirectoryMemberTestExtension`](docs/sdks/directory/README.md#directorymembertestextension) - Test Directory Member Extension
 - [`directoryGetById`](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
 - [`directoryList`](docs/sdks/directory/README.md#list) - Directory Member List

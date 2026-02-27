@@ -12,7 +12,9 @@ export const DirectoryMemberProperties = {
   Type: "type",
   Extensions: "extensions",
   ContactTags: "contact_tags",
+  CreatedAt: "created_at",
   UpdatedAt: "updated_at",
+  DeletedAt: "deleted_at",
 } as const;
 export type DirectoryMemberProperties = ClosedEnum<
   typeof DirectoryMemberProperties
