@@ -10,6 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberDeleteRequest = {
   memberId: number;
+  /**
+   * Comment stored in version history for this deletion
+   */
+  comment: string;
 };
 
 /** @internal */
@@ -19,6 +23,7 @@ export const DirectoryMemberDeleteRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   member_id: z.number().int(),
+  comment: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "member_id": "memberId",
@@ -27,6 +32,7 @@ export const DirectoryMemberDeleteRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type DirectoryMemberDeleteRequest$Outbound = {
   member_id: number;
+  comment: string;
 };
 
 /** @internal */
@@ -36,6 +42,7 @@ export const DirectoryMemberDeleteRequest$outboundSchema: z.ZodType<
   DirectoryMemberDeleteRequest
 > = z.object({
   memberId: z.number().int(),
+  comment: z.string(),
 }).transform((v) => {
   return remap$(v, {
     memberId: "member_id",

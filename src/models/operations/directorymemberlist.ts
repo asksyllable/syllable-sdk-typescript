@@ -11,6 +11,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberListRequest = {
   /**
+   * If true, include soft-deleted members in the list. Default excludes them.
+   */
+  includeDeleted?: boolean | undefined;
+  /**
    * Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values.
    */
   responseFormat?: components.DirectoryResponseFormat | undefined;
@@ -58,6 +62,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  include_deleted: z.boolean().default(false),
   response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
@@ -75,6 +80,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
   end_datetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "include_deleted": "includeDeleted",
     "response_format": "responseFormat",
     "search_fields": "searchFields",
     "search_field_values": "searchFieldValues",
@@ -86,6 +92,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type DirectoryMemberListRequest$Outbound = {
+  include_deleted: boolean;
   response_format?: string | undefined;
   page?: number | null | undefined;
   limit: number;
@@ -104,6 +111,7 @@ export const DirectoryMemberListRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DirectoryMemberListRequest
 > = z.object({
+  includeDeleted: z.boolean().default(false),
   responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
@@ -121,6 +129,7 @@ export const DirectoryMemberListRequest$outboundSchema: z.ZodType<
   endDatetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    includeDeleted: "include_deleted",
     responseFormat: "response_format",
     searchFields: "search_fields",
     searchFieldValues: "search_field_values",

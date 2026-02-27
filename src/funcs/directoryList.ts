@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  * Directory Member List
  *
  * @remarks
- * List the existing directory_members
+ * List the directory_members
  */
 export function directoryList(
   client: SyllableSDKCore,
@@ -95,6 +95,7 @@ async function $do(
   const query = encodeFormQuery({
     "end_datetime": payload.end_datetime,
     "fields": payload.fields,
+    "include_deleted": payload.include_deleted,
     "limit": payload.limit,
     "order_by": payload.order_by,
     "order_by_direction": payload.order_by_direction,

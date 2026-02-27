@@ -9,7 +9,7 @@ let value: DirectoryMemberUpdateRequest = {
   memberId: 394864,
   directoryMemberUpdate: {
     name: "Jane Doe",
-    type: "contact",
+    type: "Operator",
     extensions: [
       {
         name: "work",
@@ -34,6 +34,7 @@ let value: DirectoryMemberUpdateRequest = {
       ],
     },
     id: 1,
+    comments: "Updated phone number",
   },
 };
 ```

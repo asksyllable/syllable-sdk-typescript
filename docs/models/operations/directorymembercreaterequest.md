@@ -8,7 +8,7 @@ import { DirectoryMemberCreateRequest } from "syllable-sdk/models/operations";
 let value: DirectoryMemberCreateRequest = {
   directoryMemberCreate: {
     name: "Jane Doe",
-    type: "contact",
+    type: "Operator",
     extensions: [
       {
         name: "work",

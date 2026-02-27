@@ -9,7 +9,7 @@ let value: ListResponseDirectoryMember = {
   items: [
     {
       name: "Jane Doe",
-      type: "contact",
+      type: "Operator",
       extensions: [
         {
           name: "work",
@@ -34,6 +34,8 @@ let value: ListResponseDirectoryMember = {
         ],
       },
       id: 1,
+      comments: "Updated phone number",
+      createdAt: new Date("2024-01-01T00:00:00Z"),
       updatedAt: new Date("2024-01-01T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
     },

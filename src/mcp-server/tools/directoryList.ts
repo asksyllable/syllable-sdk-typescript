@@ -14,7 +14,7 @@ export const tool$directoryList: ToolDefinition<typeof args> = {
   name: "directory-list",
   description: `Directory Member List
 
-List the existing directory_members`,
+List the directory_members`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await directoryList(
