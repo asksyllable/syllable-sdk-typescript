@@ -39,6 +39,10 @@ export type CommunicationBatch = {
    */
   uploadFilename?: string | null | undefined;
   /**
+   * A unique identifier for dipatched job
+   */
+  dispatchId?: string | null | undefined;
+  /**
    * Timestamp of batch creation
    */
   createdAt?: Date | undefined;
@@ -78,6 +82,7 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
   paused: z.nullable(z.boolean()).optional(),
   status: BatchStatus$inboundSchema.optional(),
   upload_filename: z.nullable(z.string()).optional(),
+  dispatch_id: z.nullable(z.string()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   deleted_at: z.nullable(
@@ -95,6 +100,7 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
     "campaign_id": "campaignId",
     "expires_on": "expiresOn",
     "upload_filename": "uploadFilename",
+    "dispatch_id": "dispatchId",
     "created_at": "createdAt",
     "deleted_at": "deletedAt",
     "deleted_reason": "deletedReason",
@@ -111,6 +117,7 @@ export type CommunicationBatch$Outbound = {
   paused?: boolean | null | undefined;
   status?: string | undefined;
   upload_filename?: string | null | undefined;
+  dispatch_id?: string | null | undefined;
   created_at?: string | undefined;
   deleted_at?: string | null | undefined;
   deleted_reason?: string | null | undefined;
@@ -131,6 +138,7 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
   paused: z.nullable(z.boolean()).optional(),
   status: BatchStatus$outboundSchema.optional(),
   uploadFilename: z.nullable(z.string()).optional(),
+  dispatchId: z.nullable(z.string()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   deletedReason: z.nullable(z.string()).optional(),
@@ -144,6 +152,7 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
     campaignId: "campaign_id",
     expiresOn: "expires_on",
     uploadFilename: "upload_filename",
+    dispatchId: "dispatch_id",
     createdAt: "created_at",
     deletedAt: "deleted_at",
     deletedReason: "deleted_reason",
