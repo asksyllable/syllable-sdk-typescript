@@ -113,6 +113,24 @@ async function $do(
           blob,
           payload.Body_insights_folder_upload_file.file.fileName,
         );
+      } else if (
+        payload.Body_insights_folder_upload_file.file.content
+          instanceof Uint8Array
+      ) {
+        const contentType =
+          getContentTypeFromFileName(
+            payload.Body_insights_folder_upload_file.file.fileName,
+          ) || "application/octet-stream";
+        appendForm(
+          body,
+          "file",
+          new Blob([
+            new Uint8Array(
+              payload.Body_insights_folder_upload_file.file.content,
+            ).buffer,
+          ], { type: contentType }),
+          payload.Body_insights_folder_upload_file.file.fileName,
+        );
       } else {
         const contentType =
           getContentTypeFromFileName(

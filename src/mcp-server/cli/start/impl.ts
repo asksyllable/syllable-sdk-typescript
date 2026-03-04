@@ -47,7 +47,8 @@ async function startStdio(flags: StartCommandFlags) {
   const server = createMCPServer({
     logger,
     allowedTools: flags.tool,
-    ...{ apiKeyHeader: flags["api-key-header"] ?? "" },
+    apiKeyHeader: flags["api-key-header"] ?? "",
+
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
   });
@@ -67,7 +68,8 @@ async function startSSE(flags: StartCommandFlags) {
   const mcpServer = createMCPServer({
     logger,
     allowedTools: flags.tool,
-    ...{ apiKeyHeader: flags["api-key-header"] ?? "" },
+    apiKeyHeader: flags["api-key-header"] ?? "",
+
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
   });
