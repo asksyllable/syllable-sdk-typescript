@@ -1,4 +1,4 @@
-speakeasyVersion: 1.741.2
+speakeasyVersion: 1.741.3
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:d1830fff9894d7ae1448239f77d48b12bef09e74f04ab15f8e8045e02cd9bd31
         sourceBlobDigest: sha256:222f106c91a77758c938a75d6aecbbf48de5185567895dd77649243c7b0f55f6
         codeSamplesNamespace: code-samples-typescript-sdk-syllable-sdk-oas
-        codeSamplesRevisionDigest: sha256:a78e39757977496eeed0a718e55ebb9a53cc2765db76cb8c20eb5f04b87b5595
+        codeSamplesRevisionDigest: sha256:8668c2fe30320ca5a6c6bbebd754845bfcb71c9cef4aa24774c038bc0a82a8fa
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
