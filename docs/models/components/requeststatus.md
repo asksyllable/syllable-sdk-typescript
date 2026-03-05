@@ -13,5 +13,5 @@ let value: RequestStatus = "SENT";
 ## Values
 
 ```typescript
-"PENDING" | "DUPLICATE" | "INITIATED" | "CONNECTED" | "SENT" | "CALL_COMPLETED" | "FAILED" | "CANCELED" | "INVALID"
+"PENDING" | "DUPLICATE" | "INITIATED" | "CONNECTED" | "SENT" | "COMPLETED" | "FAILED" | "CANCELED" | "INVALID"
 ```

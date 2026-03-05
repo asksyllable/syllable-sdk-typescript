@@ -14,7 +14,7 @@ export const RequestStatus = {
   Initiated: "INITIATED",
   Connected: "CONNECTED",
   Sent: "SENT",
-  CallCompleted: "CALL_COMPLETED",
+  Completed: "COMPLETED",
   Failed: "FAILED",
   Canceled: "CANCELED",
   Invalid: "INVALID",
