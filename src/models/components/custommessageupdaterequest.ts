@@ -12,6 +12,11 @@ import {
   CustomMessageRule$Outbound,
   CustomMessageRule$outboundSchema,
 } from "./custommessagerule.js";
+import {
+  CustomMessageType,
+  CustomMessageType$inboundSchema,
+  CustomMessageType$outboundSchema,
+} from "./custommessagetype.js";
 
 /**
  * Request model to update an existing custom message.
@@ -22,13 +27,21 @@ export type CustomMessageUpdateRequest = {
    */
   name: string;
   /**
+   * Type of custom message. Greeting is for voice; email_template is for email (subject + body).
+   */
+  type?: CustomMessageType | undefined;
+  /**
    * An optional preamble that will be delivered before the main message, regardless of whether the current time and date match a rule or the system uses the default message. Cannot contain the "{{ language.mode }}" tag. In the case of a voice conversation, the user will not be able to interrupt the preamble. Can be used for e.g. legal disclaimers that the user must always see/hear.
    */
   preamble?: string | null | undefined;
   /**
-   * The default message that the agent will deliver if no rules are set or no rules match the current timestamp.
+   * The default message that the agent will deliver if no rules are set or no rules match the current timestamp. For email_template, this is the body.
    */
   text: string;
+  /**
+   * Email subject. Required for email_template (in type_config); ignored otherwise.
+   */
+  subject?: string | null | undefined;
   /**
    * The label of the custom message
    */
@@ -41,10 +54,6 @@ export type CustomMessageUpdateRequest = {
    * The ID of the custom message
    */
   id: number;
-  /**
-   * Type of the custom message (must be "greeting" for now)
-   */
-  type?: string | undefined;
 };
 
 /** @internal */
@@ -54,22 +63,24 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  type: CustomMessageType$inboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
   text: z.string(),
+  subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
   id: z.number().int(),
-  type: z.string().default("greeting"),
 });
 /** @internal */
 export type CustomMessageUpdateRequest$Outbound = {
   name: string;
+  type?: string | undefined;
   preamble?: string | null | undefined;
   text: string;
+  subject?: string | null | undefined;
   label?: string | null | undefined;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
   id: number;
-  type: string;
 };
 
 /** @internal */
@@ -79,12 +90,13 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
   CustomMessageUpdateRequest
 > = z.object({
   name: z.string(),
+  type: CustomMessageType$outboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
   text: z.string(),
+  subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
   id: z.number().int(),
-  type: z.string().default("greeting"),
 });
 
 export function customMessageUpdateRequestToJSON(

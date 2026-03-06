@@ -13,16 +13,20 @@ import {
   CustomMessageRule$Outbound,
   CustomMessageRule$outboundSchema,
 } from "./custommessagerule.js";
+import {
+  CustomMessageType,
+  CustomMessageType$inboundSchema,
+  CustomMessageType$outboundSchema,
+} from "./custommessagetype.js";
 
 /**
  * Response model for custom message operations.
  *
  * @remarks
- * A custom message is a pre-configured message delivered by an agent as a greeting at the
- * beginning of a conversation. Multiple agents can use the same custom mesasage. A custom message
- * has one or more rules defined, which allow for different messages to be dynamically selected and
- * delivered at runtime based on the current time and either date or day of the week. For more
- * information, see [Console docs](https://docs.syllable.ai/Resources/Messages).
+ * A custom message is a pre-configured message delivered by an agent (e.g. as a greeting at the
+ * beginning of a conversation, or as an email template with subject and body). Multiple agents can
+ * use the same custom message. Greeting-type messages may have rules for time-based variants; email
+ * templates have a subject and body only. For more information, see [Console docs](https://docs.syllable.ai/Resources/Messages).
  */
 export type CustomMessageResponse = {
   /**
@@ -30,13 +34,21 @@ export type CustomMessageResponse = {
    */
   name: string;
   /**
+   * Type of custom message. Greeting is for voice; email_template is for email (subject + body).
+   */
+  type?: CustomMessageType | undefined;
+  /**
    * An optional preamble that will be delivered before the main message, regardless of whether the current time and date match a rule or the system uses the default message. Cannot contain the "{{ language.mode }}" tag. In the case of a voice conversation, the user will not be able to interrupt the preamble. Can be used for e.g. legal disclaimers that the user must always see/hear.
    */
   preamble?: string | null | undefined;
   /**
-   * The default message that the agent will deliver if no rules are set or no rules match the current timestamp.
+   * The default message that the agent will deliver if no rules are set or no rules match the current timestamp. For email_template, this is the body.
    */
   text: string;
+  /**
+   * Email subject. Required for email_template (in type_config); ignored otherwise.
+   */
+  subject?: string | null | undefined;
   /**
    * The label of the custom message
    */
@@ -61,10 +73,6 @@ export type CustomMessageResponse = {
    * The email address of the user who most recently updated the custom message
    */
   lastUpdatedBy: string;
-  /**
-   * Type of the custom message (must be "greeting" for now)
-   */
-  type?: string | undefined;
 };
 
 /** @internal */
@@ -74,15 +82,16 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  type: CustomMessageType$inboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
   text: z.string(),
+  subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   agent_count: z.nullable(z.number().int()).optional(),
   last_updated_by: z.string(),
-  type: z.string().default("greeting"),
 }).transform((v) => {
   return remap$(v, {
     "updated_at": "updatedAt",
@@ -93,15 +102,16 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type CustomMessageResponse$Outbound = {
   name: string;
+  type?: string | undefined;
   preamble?: string | null | undefined;
   text: string;
+  subject?: string | null | undefined;
   label?: string | null | undefined;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
   id: number;
   updated_at: string;
   agent_count?: number | null | undefined;
   last_updated_by: string;
-  type: string;
 };
 
 /** @internal */
@@ -111,15 +121,16 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   CustomMessageResponse
 > = z.object({
   name: z.string(),
+  type: CustomMessageType$outboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
   text: z.string(),
+  subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   agentCount: z.nullable(z.number().int()).optional(),
   lastUpdatedBy: z.string(),
-  type: z.string().default("greeting"),
 }).transform((v) => {
   return remap$(v, {
     updatedAt: "updated_at",
