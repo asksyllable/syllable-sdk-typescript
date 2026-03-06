@@ -3549,6 +3549,9 @@ actions:
                     method: "post",
                     argumentLocation: "path",
                   },
+                  context: {
+                    task: [],
+                  },
                   defaults: "<value>",
                   staticParameters: [
                     {
@@ -3597,6 +3600,13 @@ actions:
                     url: "https://api.example.com",
                     method: "get",
                     argumentLocation: "form",
+                  },
+                  context: {
+                    task: {
+                      type: "import",
+                      version: "v1alpha",
+                      file: "<value>",
+                    },
                   },
                   defaults: "<value>",
                   staticParameters: [

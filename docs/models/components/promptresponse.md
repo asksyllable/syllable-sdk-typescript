@@ -45,7 +45,23 @@ let value: PromptResponse = {
         method: "delete",
         argumentLocation: "form",
       },
-      defaults: {},
+      context: {
+        task: {
+          type: "steps",
+        },
+      },
+      defaults: {
+        "key": {
+          "transform": {
+            "action": "default",
+            "when": {
+              "key": "key",
+              "value": "value",
+              "operator": "eq",
+            },
+          },
+        },
+      },
       staticParameters: [
         {
           name: "temperature_unit",
@@ -72,7 +88,7 @@ let value: PromptResponse = {
         name: "Test Agent",
       },
     ],
-    lastUpdated: new Date("2026-12-18T09:18:28.600Z"),
+    lastUpdated: new Date("2025-05-06T16:17:25.916Z"),
     lastUpdatedBy: "user@email.com",
   },
   agentCount: 5,
@@ -94,7 +110,23 @@ let value: PromptResponse = {
           method: "delete",
           argumentLocation: "form",
         },
-        defaults: {},
+        context: {
+          task: {
+            type: "steps",
+          },
+        },
+        defaults: {
+          "key": {
+            "transform": {
+              "action": "default",
+              "when": {
+                "key": "key",
+                "value": "value",
+                "operator": "eq",
+              },
+            },
+          },
+        },
         staticParameters: [
           {
             name: "temperature_unit",
@@ -121,7 +153,7 @@ let value: PromptResponse = {
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2025-10-08T13:31:38.455Z"),
+      lastUpdated: new Date("2026-03-31T11:48:39.784Z"),
       lastUpdatedBy: "user@email.com",
     },
   ],

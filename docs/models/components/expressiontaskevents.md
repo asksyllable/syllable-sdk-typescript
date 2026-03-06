@@ -7,7 +7,19 @@ Actions to perform when events occur (start, submit).
 ```typescript
 import { ExpressionTaskEvents } from "syllable-sdk/models/components";
 
-let value: ExpressionTaskEvents = {};
+let value: ExpressionTaskEvents = {
+  start: [
+    {
+      action: "call",
+      name: "<value>",
+    },
+  ],
+  submit: [
+    {
+      action: "save",
+    },
+  ],
+};
 ```
 
 ## Fields

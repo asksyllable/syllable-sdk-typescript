@@ -5,7 +5,16 @@
 ```typescript
 import { Context } from "syllable-sdk/models/components";
 
-let value: Context = {};
+let value: Context = {
+  task: [
+    {
+      type: "import",
+      file: [
+        "<value 1>",
+      ],
+    },
+  ],
+};
 ```
 
 ## Fields

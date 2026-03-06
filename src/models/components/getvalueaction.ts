@@ -32,7 +32,7 @@ export type GetValueActionValuefrom1 =
   | (JMESPathExpression & { type: "jp" });
 
 /**
- * Expression to compute initial value (mutually exclusive with value).
+ * Expression that computes the value. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}. Mutually exclusive with value.
  */
 export type GetValueActionValuefrom =
   | CaseExpression
@@ -47,7 +47,7 @@ export type GetValueActionIf1 =
   | (JMESPathExpression & { type: "jp" });
 
 /**
- * An expression that must evaluate to true for the action to be applied.
+ * Condition to decide whether this item executes. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}. Example JMESPath string: "inputs.can_sign_consent == `true`".
  */
 export type GetValueActionIf =
   | CaseExpression
@@ -74,7 +74,7 @@ export type GetValueAction = {
    */
   value?: any | null | undefined;
   /**
-   * Expression to compute initial value (mutually exclusive with value).
+   * Expression that computes the value. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}. Mutually exclusive with value.
    */
   valueFrom?:
     | CaseExpression
@@ -85,7 +85,7 @@ export type GetValueAction = {
     | null
     | undefined;
   /**
-   * An expression that must evaluate to true for the action to be applied.
+   * Condition to decide whether this item executes. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}. Example JMESPath string: "inputs.can_sign_consent == `true`".
    */
   if?:
     | CaseExpression

@@ -13,7 +13,17 @@ import {
   ConditionalValue$outboundSchema,
 } from "./conditionalvalue.js";
 
+/**
+ * Conditional branch expression.
+ *
+ * @remarks
+ *
+ * Note: CaseExpression is currently reserved and not yet executed at runtime.
+ */
 export type CaseExpression = {
+  /**
+   * Ordered conditional branches (reserved for future runtime support).
+   */
   case: Array<ConditionalValue>;
 };
 

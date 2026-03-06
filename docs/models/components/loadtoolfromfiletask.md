@@ -8,10 +8,14 @@ Bootstraps a tool from a file (for internal developer use only if ENV.local=True
 import { LoadToolFromFileTask } from "syllable-sdk/models/components";
 
 let value: LoadToolFromFileTask = {
-  type: "import",
-  file: [
-    "<value 1>",
+  variables: [
+    {
+      valueFrom: "inputs.provided_dob == patient_dob",
+      name: "<value>",
+    },
   ],
+  type: "import",
+  file: "<value>",
 };
 ```
 

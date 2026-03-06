@@ -6,7 +6,16 @@
 import { EventTask } from "syllable-sdk/models/components";
 
 let value: EventTask = {
+  variables: null,
   type: "event",
+  on: {
+    start: [
+      {
+        action: "set",
+        name: "<value>",
+      },
+    ],
+  },
 };
 ```
 

@@ -1,6 +1,6 @@
 # NextStepIf
 
-An expression that must evaluate to true for the action to be applied.
+Condition to decide whether this item executes. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}. Example JMESPath string: "inputs.can_sign_consent == `true`".
 
 
 ## Supported Types
@@ -9,7 +9,7 @@ An expression that must evaluate to true for the action to be applied.
 
 ```typescript
 const value: components.NextStepIf1 = {
-  expression: "<value>",
+  expression: "inputs.can_sign_consent == true",
   type: "cel",
 };
 ```
@@ -19,7 +19,10 @@ const value: components.NextStepIf1 = {
 ```typescript
 const value: components.CaseExpression = {
   case: [
-    {},
+    {
+      valueFrom: "inputs.provided_dob == patient_dob",
+      if: "inputs.can_sign_consent == `true`",
+    },
   ],
 };
 ```
@@ -27,6 +30,6 @@ const value: components.CaseExpression = {
 ### `string`
 
 ```typescript
-const value: string = "<value>";
+const value: string = "inputs.can_sign_consent == `true`";
 ```
 

@@ -21,18 +21,12 @@ let value: ToolDefinition = {
     method: "delete",
     argumentLocation: "form",
   },
-  defaults: {
-    "key": {
-      "transform": {
-        "action": "default",
-        "when": {
-          "key": "key",
-          "value": "value",
-          "operator": "eq",
-        },
-      },
+  context: {
+    task: {
+      type: "steps",
     },
   },
+  defaults: {},
   staticParameters: [
     {
       name: "temperature_unit",

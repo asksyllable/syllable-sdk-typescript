@@ -89,7 +89,23 @@ let value: ChannelTargetResponse = {
             method: "delete",
             argumentLocation: "form",
           },
-          defaults: {},
+          context: {
+            task: {
+              type: "steps",
+            },
+          },
+          defaults: {
+            "key": {
+              "transform": {
+                "action": "default",
+                "when": {
+                  "key": "key",
+                  "value": "value",
+                  "operator": "eq",
+                },
+              },
+            },
+          },
           staticParameters: [
             {
               name: "temperature_unit",
@@ -116,59 +132,12 @@ let value: ChannelTargetResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2026-12-18T09:18:28.600Z"),
+        lastUpdated: new Date("2025-05-06T16:17:25.916Z"),
         lastUpdatedBy: "user@email.com",
       },
       agentCount: 5,
       versionNumber: 1,
-      toolsFull: [
-        {
-          name: "Weather Fetcher",
-          definition: {
-            type: "endpoint",
-            tool: {
-              function: {
-                name: "get_weather",
-                description: "Get the weather for a city",
-                parameters: {},
-              },
-            },
-            endpoint: {
-              url: "https://api.example.com",
-              method: "delete",
-              argumentLocation: "form",
-            },
-            defaults: {},
-            staticParameters: [
-              {
-                name: "temperature_unit",
-                description:
-                  "Whether the temperature information should be fetched in Celsius or Fahrenheit",
-                required: false,
-                type: "string",
-                default: "fahrenheit",
-              },
-            ],
-          },
-          serviceId: 1,
-          id: 1,
-          lastUpdatedComments: "Updated to use new API endpoint",
-          promptsInfo: [
-            {
-              id: 1,
-              name: "Test Prompt",
-            },
-          ],
-          agentsInfo: [
-            {
-              id: 1,
-              name: "Test Agent",
-            },
-          ],
-          lastUpdated: new Date("2025-10-08T13:31:38.455Z"),
-          lastUpdatedBy: "user@email.com",
-        },
-      ],
+      toolsFull: null,
     },
     customMessage: {
       name: "Customer service greeting",
@@ -221,7 +190,23 @@ let value: ChannelTargetResponse = {
             method: "delete",
             argumentLocation: "form",
           },
-          defaults: {},
+          context: {
+            task: {
+              type: "steps",
+            },
+          },
+          defaults: {
+            "key": {
+              "transform": {
+                "action": "default",
+                "when": {
+                  "key": "key",
+                  "value": "value",
+                  "operator": "eq",
+                },
+              },
+            },
+          },
           staticParameters: [
             {
               name: "temperature_unit",
@@ -236,9 +221,19 @@ let value: ChannelTargetResponse = {
         serviceId: 1,
         id: 1,
         lastUpdatedComments: "Updated to use new API endpoint",
-        promptsInfo: null,
-        agentsInfo: null,
-        lastUpdated: new Date("2026-02-02T22:31:30.922Z"),
+        promptsInfo: [
+          {
+            id: 1,
+            name: "Test Prompt",
+          },
+        ],
+        agentsInfo: [
+          {
+            id: 1,
+            name: "Test Agent",
+          },
+        ],
+        lastUpdated: new Date("2026-05-25T14:07:16.046Z"),
         lastUpdatedBy: "user@email.com",
       },
     ],

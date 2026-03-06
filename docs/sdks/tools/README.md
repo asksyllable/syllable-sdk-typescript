@@ -135,6 +135,9 @@ async function run() {
         method: "post",
         argumentLocation: "path",
       },
+      context: {
+        task: [],
+      },
       defaults: "<value>",
       staticParameters: [
         {
@@ -187,6 +190,9 @@ async function run() {
         url: "https://api.example.com",
         method: "post",
         argumentLocation: "path",
+      },
+      context: {
+        task: [],
       },
       defaults: "<value>",
       staticParameters: [
@@ -265,6 +271,13 @@ async function run() {
         method: "get",
         argumentLocation: "form",
       },
+      context: {
+        task: {
+          type: "import",
+          version: "v1alpha",
+          file: "<value>",
+        },
+      },
       defaults: "<value>",
       staticParameters: [
         {
@@ -319,6 +332,13 @@ async function run() {
         url: "https://api.example.com",
         method: "get",
         argumentLocation: "form",
+      },
+      context: {
+        task: {
+          type: "import",
+          version: "v1alpha",
+          file: "<value>",
+        },
       },
       defaults: "<value>",
       staticParameters: [

@@ -8,15 +8,21 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
+ * Google CEL expression object.
+ *
+ * @remarks
+ *
+ * Use this object form when you want CEL syntax:
+ * {"type": "cel", "expression": "inputs.count + 1"}
  * See https://github.com/google/cel-spec/blob/master/doc/langdef.md
  */
 export type CelExpression = {
   /**
-   * The expression to evaluate.
+   * CEL expression string.
    */
   expression: string;
   /**
-   * Google Common Expression Language.
+   * CEL expression language selector. Use with object form {"type":"cel","expression":"..."}.
    */
   type: "cel";
 };

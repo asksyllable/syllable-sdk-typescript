@@ -60,6 +60,9 @@ export type Expression1 =
   | (JMESPathExpression & { type: "jmespath" })
   | (JMESPathExpression & { type: "jp" });
 
+/**
+ * Expression for task output/logic. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}.
+ */
 export type Expression =
   | CaseExpression
   | CelExpression
@@ -79,6 +82,9 @@ export type ExpressionTask = {
   type: "expression";
   version?: "v1alpha" | undefined;
   inputs?: Array<InputParameter> | undefined;
+  /**
+   * Expression for task output/logic. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}.
+   */
   expression?:
     | CaseExpression
     | CelExpression

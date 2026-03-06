@@ -41,7 +41,23 @@ let value: ListResponsePromptResponse = {
             method: "delete",
             argumentLocation: "form",
           },
-          defaults: {},
+          context: {
+            task: {
+              type: "steps",
+            },
+          },
+          defaults: {
+            "key": {
+              "transform": {
+                "action": "default",
+                "when": {
+                  "key": "key",
+                  "value": "value",
+                  "operator": "eq",
+                },
+              },
+            },
+          },
           staticParameters: [
             {
               name: "temperature_unit",
@@ -68,7 +84,7 @@ let value: ListResponsePromptResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2026-12-18T09:18:28.600Z"),
+        lastUpdated: new Date("2025-05-06T16:17:25.916Z"),
         lastUpdatedBy: "user@email.com",
       },
       agentCount: 5,
