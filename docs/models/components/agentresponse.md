@@ -134,6 +134,7 @@ let value: AgentResponse = {
     preamble: "If this is an emergency, please hang up and call 911.",
     text:
       "Hello and thank you for calling customer service. How can I help you today?",
+    subject: "Your appointment reminder",
     label: "Customer service",
     rules: [
       {

@@ -60,6 +60,7 @@ export * from "./custommessagecreaterequest.js";
 export * from "./custommessageproperties.js";
 export * from "./custommessageresponse.js";
 export * from "./custommessagerule.js";
+export * from "./custommessagetype.js";
 export * from "./custommessageupdaterequest.js";
 export * from "./daotoolresponse.js";
 export * from "./dashboard.js";
