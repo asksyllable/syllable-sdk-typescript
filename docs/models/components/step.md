@@ -8,6 +8,46 @@ import { Step } from "syllable-sdk/models/components";
 let value: Step = {
   id: "<id>",
   goal: "<value>",
+  instructions: [
+    {
+      if: "inputs.can_sign_consent == `true`",
+      text: "<value>",
+    },
+  ],
+  on: {
+    start: [
+      {
+        text: "<value>",
+        action: "say",
+        role: "assistant",
+      },
+    ],
+    enter: [
+      {
+        action: "inc",
+        name: "<value>",
+        by: 1,
+      },
+    ],
+    presubmit: [
+      {
+        action: "load",
+        overwrite: false,
+      },
+    ],
+    submit: [
+      {
+        action: "set",
+        name: "<value>",
+      },
+    ],
+  },
+  next: [
+    {
+      if: "inputs.can_sign_consent == `true`",
+      id: "<id>",
+    },
+  ],
 };
 ```
 

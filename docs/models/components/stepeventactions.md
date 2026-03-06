@@ -7,7 +7,29 @@ Actions to perform when events occur (enter, presubmit, submit).
 ```typescript
 import { StepEventActions } from "syllable-sdk/models/components";
 
-let value: StepEventActions = {};
+let value: StepEventActions = {
+  start: [
+    {
+      text: "<value>",
+      action: "say",
+      role: "assistant",
+    },
+  ],
+  enter: [
+    {
+      action: "inc",
+      name: "<value>",
+      by: 1,
+    },
+  ],
+  presubmit: null,
+  submit: [
+    {
+      action: "call",
+      name: "<value>",
+    },
+  ],
+};
 ```
 
 ## Fields

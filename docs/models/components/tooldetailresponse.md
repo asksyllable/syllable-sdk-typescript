@@ -27,7 +27,23 @@ let value: ToolDetailResponse = {
       method: "delete",
       argumentLocation: "form",
     },
-    defaults: {},
+    context: {
+      task: {
+        type: "steps",
+      },
+    },
+    defaults: {
+      "key": {
+        "transform": {
+          "action": "default",
+          "when": {
+            "key": "key",
+            "value": "value",
+            "operator": "eq",
+          },
+        },
+      },
+    },
     staticParameters: [
       {
         name: "temperature_unit",

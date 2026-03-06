@@ -6,7 +6,53 @@
 import { StepsTask } from "syllable-sdk/models/components";
 
 let value: StepsTask = {
+  variables: [
+    {
+      valueFrom: "inputs.provided_dob == patient_dob",
+      name: "<value>",
+    },
+  ],
   type: "steps",
+  steps: [
+    {
+      id: "<id>",
+      goal: "<value>",
+      instructions: [
+        "<value>",
+      ],
+      on: {
+        start: [
+          {
+            text: "<value>",
+            action: "say",
+            role: "assistant",
+          },
+        ],
+        enter: [
+          {
+            action: "inc",
+            name: "<value>",
+            by: 1,
+          },
+        ],
+        presubmit: [
+          {
+            action: "load",
+            overwrite: false,
+          },
+        ],
+        submit: [
+          {
+            action: "set",
+            name: "<value>",
+          },
+        ],
+      },
+      next: [
+        "<value>",
+      ],
+    },
+  ],
 };
 ```
 

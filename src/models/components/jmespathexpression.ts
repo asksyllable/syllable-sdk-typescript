@@ -9,27 +9,33 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * JMESPath expression.
+ * JMESPath expression language selector. Use with object form {"type":"jp"|"jmespath","expression":"..."}.
  */
 export const JMESPathExpressionType = {
   Jp: "jp",
   Jmespath: "jmespath",
 } as const;
 /**
- * JMESPath expression.
+ * JMESPath expression language selector. Use with object form {"type":"jp"|"jmespath","expression":"..."}.
  */
 export type JMESPathExpressionType = ClosedEnum<typeof JMESPathExpressionType>;
 
 /**
+ * JMESPath expression object.
+ *
+ * @remarks
+ *
+ * Use this object form to explicitly mark JMESPath syntax:
+ * {"type": "jp", "expression": "inputs.can_sign_consent == `true`"}
  * See https://jmespath.org/specification.html#grammar
  */
 export type JMESPathExpression = {
   /**
-   * The expression to evaluate.
+   * JMESPath expression string.
    */
   expression: string;
   /**
-   * JMESPath expression.
+   * JMESPath expression language selector. Use with object form {"type":"jp"|"jmespath","expression":"..."}.
    */
   type?: JMESPathExpressionType | undefined;
 };

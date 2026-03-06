@@ -7,7 +7,7 @@
 
 ```typescript
 const value: components.CelExpression = {
-  expression: "<value>",
+  expression: "inputs.provided_dob == patient_dob",
   type: "cel",
 };
 ```
@@ -16,7 +16,8 @@ const value: components.CelExpression = {
 
 ```typescript
 const value: components.JMESPathExpression = {
-  expression: "<value>",
+  expression: "inputs.provided_dob == patient_dob",
+  type: "jmespath",
 };
 ```
 
@@ -24,7 +25,8 @@ const value: components.JMESPathExpression = {
 
 ```typescript
 const value: components.JMESPathExpression = {
-  expression: "<value>",
+  expression: "inputs.provided_dob == patient_dob",
+  type: "jmespath",
 };
 ```
 

@@ -5,7 +5,15 @@
 ```typescript
 import { EventTaskEvents } from "syllable-sdk/models/components";
 
-let value: EventTaskEvents = {};
+let value: EventTaskEvents = {
+  start: [
+    {
+      action: "inc",
+      name: "<value>",
+      by: 1,
+    },
+  ],
+};
 ```
 
 ## Fields

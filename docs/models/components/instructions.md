@@ -7,6 +7,7 @@
 
 ```typescript
 const value: components.ConditionalText = {
+  if: "inputs.can_sign_consent == `true`",
   text: "<value>",
 };
 ```
