@@ -32,6 +32,7 @@ let value: DirectoryMemberCreateRequest = {
         "value2",
       ],
     },
+    comments: "Updated to add new extension",
   },
 };
 ```

@@ -33,6 +33,7 @@ let value: DirectoryMemberCreate = {
       "value2",
     ],
   },
+  comments: "Updated to add new extension",
 };
 ```
 
@@ -44,3 +45,4 @@ let value: DirectoryMemberCreate = {
 | `type`                                                                                                | *string*                                                                                              | :heavy_check_mark:                                                                                    | Type of the directory member                                                                          | Operator                                                                                              |
 | `extensions`                                                                                          | [components.DirectoryExtension](../../models/components/directoryextension.md)[]                      | :heavy_minus_sign:                                                                                    | List of extensions for the directory member                                                           | [<br/>{<br/>"name": "work",<br/>"numbers": [<br/>{<br/>"number": "+1234567890",<br/>"rules": [<br/>{<br/>"language": "en"<br/>}<br/>]<br/>}<br/>]<br/>}<br/>] |
 | `contactTags`                                                                                         | Record<string, *string*[]>                                                                            | :heavy_minus_sign:                                                                                    | Tags for the directory member                                                                         | {<br/>"tag1": [<br/>"value1"<br/>],<br/>"tag2": [<br/>"value2"<br/>]<br/>}                            |
+| `comments`                                                                                            | *string*                                                                                              | :heavy_minus_sign:                                                                                    | The comments for the most recent edit to the directory member                                         | Updated to add new extension                                                                          |

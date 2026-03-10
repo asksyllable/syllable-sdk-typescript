@@ -30,7 +30,8 @@ import { Result } from "../types/fp.js";
  * Get Directory Member History
  *
  * @remarks
- * Get version history for a directory member (contact), oldest first.
+ * Get version history for a directory member (contact).
+ * Version 1 is always the oldest; order_by_direction only controls response order.
  */
 export function directoryDirectoryMemberHistory(
   client: SyllableSDKCore,
@@ -103,6 +104,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "limit": payload.limit,
+    "order_by_direction": payload.order_by_direction,
     "page": payload.page,
   });
 

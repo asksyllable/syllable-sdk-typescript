@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -88,7 +88,9 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.DirectoryMemberRestore, {
+    explode: true,
+  });
 
   const pathParams = {
     member_id: encodeSimple("member_id", payload.member_id, {
@@ -106,6 +108,7 @@ async function $do(
   });
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 

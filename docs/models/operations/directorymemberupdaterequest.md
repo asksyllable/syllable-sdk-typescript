@@ -33,8 +33,8 @@ let value: DirectoryMemberUpdateRequest = {
         "value2",
       ],
     },
+    comments: "Updated to add new extension",
     id: 1,
-    comments: "Updated phone number",
   },
 };
 ```

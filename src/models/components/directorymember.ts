@@ -35,13 +35,13 @@ export type DirectoryMember = {
    */
   contactTags?: { [k: string]: Array<string> } | null | undefined;
   /**
+   * The comments for the most recent edit to the directory member
+   */
+  comments?: string | null | undefined;
+  /**
    * Internal ID of the directory member
    */
   id: number;
-  /**
-   * Optional comment stored in version history for this edit
-   */
-  comments?: string | null | undefined;
   /**
    * When the contact was created
    */
@@ -70,8 +70,8 @@ export const DirectoryMember$inboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
   contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
-  id: z.number().int(),
   comments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   deleted_at: z.nullable(
@@ -93,8 +93,8 @@ export type DirectoryMember$Outbound = {
   type: string;
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
   contact_tags?: { [k: string]: Array<string> } | null | undefined;
-  id: number;
   comments?: string | null | undefined;
+  id: number;
   created_at: string;
   updated_at: string;
   deleted_at?: string | null | undefined;
@@ -111,8 +111,8 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
   contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
-  id: z.number().int(),
   comments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
   createdAt: z.date().transform(v => v.toISOString()),
   updatedAt: z.date().transform(v => v.toISOString()),
   deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),

@@ -1071,6 +1071,7 @@ actions:
                       "value2",
                     ],
                   },
+                  comments: "Updated to add new extension",
                 },
               });
 
@@ -1203,8 +1204,8 @@ actions:
                       "value2",
                     ],
                   },
-                  id: 1,
                   comments: "Updated phone number",
+                  id: 1,
                 },
               });
 
@@ -1248,6 +1249,7 @@ actions:
             async function run() {
               const result = await syllableSDK.directory.directoryMemberRestore({
                 memberId: 507482,
+                directoryMemberRestore: {},
               });
 
               console.log(result);
