@@ -15,6 +15,7 @@ export type DirectoryMemberRestoreRequest = {
    * Directory response format for the restored member.
    */
   responseFormat?: components.DirectoryResponseFormat | undefined;
+  directoryMemberRestore: components.DirectoryMemberRestore;
 };
 
 /** @internal */
@@ -25,16 +26,19 @@ export const DirectoryMemberRestoreRequest$inboundSchema: z.ZodType<
 > = z.object({
   member_id: z.number().int(),
   response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
+  DirectoryMemberRestore: components.DirectoryMemberRestore$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "member_id": "memberId",
     "response_format": "responseFormat",
+    "DirectoryMemberRestore": "directoryMemberRestore",
   });
 });
 /** @internal */
 export type DirectoryMemberRestoreRequest$Outbound = {
   member_id: number;
   response_format?: string | undefined;
+  DirectoryMemberRestore: components.DirectoryMemberRestore$Outbound;
 };
 
 /** @internal */
@@ -45,10 +49,12 @@ export const DirectoryMemberRestoreRequest$outboundSchema: z.ZodType<
 > = z.object({
   memberId: z.number().int(),
   responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
+  directoryMemberRestore: components.DirectoryMemberRestore$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     memberId: "member_id",
     responseFormat: "response_format",
+    directoryMemberRestore: "DirectoryMemberRestore",
   });
 });
 

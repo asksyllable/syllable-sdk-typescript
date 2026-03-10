@@ -149,6 +149,7 @@ async function run() {
           "value2",
         ],
       },
+      comments: "Updated to add new extension",
     },
   });
 
@@ -200,6 +201,7 @@ async function run() {
           "value2",
         ],
       },
+      comments: "Updated to add new extension",
     },
   });
   if (res.ok) {
@@ -235,7 +237,8 @@ run();
 
 ## directoryMemberHistory
 
-Get version history for a directory member (contact), oldest first.
+Get version history for a directory member (contact).
+Version 1 is always the oldest; order_by_direction only controls response order.
 
 ### Example Usage
 
@@ -424,8 +427,8 @@ async function run() {
           "value2",
         ],
       },
-      id: 1,
       comments: "Updated phone number",
+      id: 1,
     },
   });
 
@@ -478,8 +481,8 @@ async function run() {
           "value2",
         ],
       },
-      id: 1,
       comments: "Updated phone number",
+      id: 1,
     },
   });
   if (res.ok) {
@@ -682,6 +685,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.directory.directoryMemberRestore({
     memberId: 507482,
+    directoryMemberRestore: {},
   });
 
   console.log(result);
@@ -707,6 +711,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await directoryDirectoryMemberRestore(syllableSDK, {
     memberId: 507482,
+    directoryMemberRestore: {},
   });
   if (res.ok) {
     const { value: result } = res;

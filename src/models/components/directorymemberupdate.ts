@@ -35,13 +35,13 @@ export type DirectoryMemberUpdate = {
    */
   contactTags?: { [k: string]: Array<string> } | null | undefined;
   /**
+   * The comments for the most recent edit to the directory member
+   */
+  comments?: string | null | undefined;
+  /**
    * Internal ID of the directory member
    */
   id: number;
-  /**
-   * Optional comment stored in version history for this edit
-   */
-  comments?: string | null | undefined;
 };
 
 /** @internal */
@@ -54,8 +54,8 @@ export const DirectoryMemberUpdate$inboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
   contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
-  id: z.number().int(),
   comments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     "contact_tags": "contactTags",
@@ -67,8 +67,8 @@ export type DirectoryMemberUpdate$Outbound = {
   type: string;
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
   contact_tags?: { [k: string]: Array<string> } | null | undefined;
-  id: number;
   comments?: string | null | undefined;
+  id: number;
 };
 
 /** @internal */
@@ -81,8 +81,8 @@ export const DirectoryMemberUpdate$outboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
   contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
-  id: z.number().int(),
   comments: z.nullable(z.string()).optional(),
+  id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     contactTags: "contact_tags",

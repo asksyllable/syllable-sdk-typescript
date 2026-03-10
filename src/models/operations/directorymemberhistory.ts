@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberHistoryRequest = {
@@ -18,6 +19,10 @@ export type DirectoryMemberHistoryRequest = {
    * Items per page
    */
   limit?: number | undefined;
+  /**
+   * Sort by oldest first (asc) or newest first (desc). Version 1 is always the oldest.
+   */
+  orderByDirection?: components.OrderByDirection | undefined;
 };
 
 /** @internal */
@@ -29,9 +34,11 @@ export const DirectoryMemberHistoryRequest$inboundSchema: z.ZodType<
   member_id: z.number().int(),
   page: z.number().int().default(0),
   limit: z.number().int().default(25),
+  order_by_direction: components.OrderByDirection$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "member_id": "memberId",
+    "order_by_direction": "orderByDirection",
   });
 });
 /** @internal */
@@ -39,6 +46,7 @@ export type DirectoryMemberHistoryRequest$Outbound = {
   member_id: number;
   page: number;
   limit: number;
+  order_by_direction?: string | undefined;
 };
 
 /** @internal */
@@ -50,9 +58,11 @@ export const DirectoryMemberHistoryRequest$outboundSchema: z.ZodType<
   memberId: z.number().int(),
   page: z.number().int().default(0),
   limit: z.number().int().default(25),
+  orderByDirection: components.OrderByDirection$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     memberId: "member_id",
+    orderByDirection: "order_by_direction",
   });
 });
 

@@ -15,7 +15,8 @@ export const tool$directoryDirectoryMemberHistory: ToolDefinition<typeof args> =
     name: "directory-directory-member-history",
     description: `Get Directory Member History
 
-Get version history for a directory member (contact), oldest first.`,
+Get version history for a directory member (contact).
+Version 1 is always the oldest; order_by_direction only controls response order.`,
     args,
     tool: async (client, args, ctx) => {
       const [result, apiCall] = await directoryDirectoryMemberHistory(

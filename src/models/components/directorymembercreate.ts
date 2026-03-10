@@ -34,6 +34,10 @@ export type DirectoryMemberCreate = {
    * Tags for the directory member
    */
   contactTags?: { [k: string]: Array<string> } | null | undefined;
+  /**
+   * The comments for the most recent edit to the directory member
+   */
+  comments?: string | null | undefined;
 };
 
 /** @internal */
@@ -46,6 +50,7 @@ export const DirectoryMemberCreate$inboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
   contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
+  comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "contact_tags": "contactTags",
@@ -57,6 +62,7 @@ export type DirectoryMemberCreate$Outbound = {
   type: string;
   extensions?: Array<DirectoryExtension$Outbound> | null | undefined;
   contact_tags?: { [k: string]: Array<string> } | null | undefined;
+  comments?: string | null | undefined;
 };
 
 /** @internal */
@@ -69,6 +75,7 @@ export const DirectoryMemberCreate$outboundSchema: z.ZodType<
   type: z.string(),
   extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
   contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
+  comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contactTags: "contact_tags",

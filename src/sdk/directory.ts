@@ -56,7 +56,8 @@ export class Directory extends ClientSDK {
    * Get Directory Member History
    *
    * @remarks
-   * Get version history for a directory member (contact), oldest first.
+   * Get version history for a directory member (contact).
+   * Version 1 is always the oldest; order_by_direction only controls response order.
    */
   async directoryMemberHistory(
     request: operations.DirectoryMemberHistoryRequest,

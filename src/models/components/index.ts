@@ -84,6 +84,7 @@ export * from "./directorymember.js";
 export * from "./directorymembercreate.js";
 export * from "./directorymemberhistoryresponse.js";
 export * from "./directorymemberproperties.js";
+export * from "./directorymemberrestore.js";
 export * from "./directorymembertestresponse.js";
 export * from "./directorymemberupdate.js";
 export * from "./directoryresponseformat.js";
