@@ -13,6 +13,7 @@ export const TargetModes = {
   Chat: "chat",
   Sms: "sms",
   Email: "email",
+  Whatsapp: "whatsapp",
 } as const;
 /**
  * Available modes (communication methods) for channel targets.

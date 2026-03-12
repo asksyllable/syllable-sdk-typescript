@@ -7,11 +7,11 @@ The communication service for a channel.
 ```typescript
 import { ChannelServices } from "syllable-sdk/models/components";
 
-let value: ChannelServices = "email";
+let value: ChannelServices = "webchat";
 ```
 
 ## Values
 
 ```typescript
-"sip" | "twilio" | "email" | "webchat" | "africastalking"
+"sip" | "twilio" | "email" | "webchat" | "africastalking" | "whatsapp"
 ```

@@ -11,7 +11,7 @@ let value: ChannelTargetsCreateRequest = {
     agentId: 1,
     channelId: 1,
     target: "+19995551234",
-    targetMode: "sms",
+    targetMode: "email",
     fallbackTarget: "+19995551235",
     isTest: true,
   },
