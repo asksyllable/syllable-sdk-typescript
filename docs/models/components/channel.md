@@ -7,7 +7,7 @@ import { Channel } from "syllable-sdk/models/components";
 
 let value: Channel = {
   name: "syllable-webchat",
-  channelService: "twilio",
+  channelService: "email",
   supportedModes: "chat,voice",
   isSystemChannel: false,
   id: 704730,

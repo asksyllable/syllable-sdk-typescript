@@ -14,6 +14,7 @@ export const ChannelServices = {
   Email: "email",
   Webchat: "webchat",
   Africastalking: "africastalking",
+  Whatsapp: "whatsapp",
 } as const;
 /**
  * The communication service for a channel.
