@@ -57,7 +57,7 @@ export type CommunicationRequestResult = {
    */
   requestStatus?: RequestStatus | undefined;
   /**
-   * Status of request in channel manager
+   * Status of request in channel manager (see ChannelManagerStatus)
    */
   channelManagerStatus?: string | null | undefined;
   /**
