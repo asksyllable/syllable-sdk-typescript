@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 789ae1ad3054e0ce34312c2b4661579f
+  docChecksum: 088e913d0b3b2916e3628a30c9308cd4
   docVersion: 0.0.3
   speakeasyVersion: 1.752.0
   generationVersion: 2.859.2
-  releaseVersion: 1.0.29-rc.1
-  configChecksum: 67bcd29bdcf254c92f8d87795a46519d
+  releaseVersion: 1.0.29-rc.2
+  configChecksum: ef3cfe21788bfd749a797d5124ae34d1
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: c01a0da8-9c4f-4bf0-983b-1dc34fd5d03c
-  pristine_commit_hash: 66ece9eeea567e75143b3ecf2d6c236d482d6f93
-  pristine_tree_hash: 4b8555eacc501ec02094bfd54485b6b5c2df62e9
+  generation_id: a4307cc2-b0ef-4872-ae07-57f988c86c83
+  pristine_commit_hash: a3f273c34e789a91b702371add20e54956d08b4b
+  pristine_tree_hash: d111fa7615ececf085c4203113e6e199ffc17c4d
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -300,8 +300,8 @@ trackedFiles:
     pristine_git_object: bcd40074b902666be73dfdd18710c00344485ead
   docs/models/components/communicationrequestresult.md:
     id: 416f1bd1469d
-    last_write_checksum: sha1:1d37e486cef5f52b0809344143a58ccf2b97c9e7
-    pristine_git_object: af2e968327ac27640136831d40cd2a8a2dfd74ce
+    last_write_checksum: sha1:9414718fdbc2368bc46bfe0f574c2198decbaccf
+    pristine_git_object: c4bf4b7a242c17c8d5df53dfa9c1afa54038dc00
   docs/models/components/conditionaltext.md:
     id: aa5e4b2f16cf
     last_write_checksum: sha1:ab45481b7fdfc2104377202d33540ba7590f573e
@@ -2016,12 +2016,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:fb3cb34196531f3b257490ded9c28de058c439aa
-    pristine_git_object: 6c974544216a3b20aee52072edeb90384722ddff
+    last_write_checksum: sha1:8e9c925d5416ac2e59f7c1b9629156873cb3992d
+    pristine_git_object: 7e66ff55ac54520d9d197d59fbaec0523482d523
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:135b9f402a661a0abe4c8d418b5996210f9407a2
-    pristine_git_object: 09abc648329b955df2a4230c83e6f1f6b35e5708
+    last_write_checksum: sha1:9b6022062a9d610e51e0773fd796c468cbd09bd7
+    pristine_git_object: 570aa6ecb0c6931cca013e535ee003f4c9f701ac
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2700,8 +2700,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:04e934e8dd629c16caaf8e12af0e00bae618c3f9
-    pristine_git_object: 356c65499cb82280e709856cc6880ca863f51577
+    last_write_checksum: sha1:7b61a8345b1cb20b9bf01c6559b8b541e50f129c
+    pristine_git_object: ef4749e76bc3688e7e303bae327be94b62eeb782
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2784,8 +2784,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:7d37d6f5b4a213b57dabb8c0d75c72e51ec97436
-    pristine_git_object: 24f7060698395ffe27f0f813d6890fd0f419a20b
+    last_write_checksum: sha1:f03c446df07148ca8a971dde04be92578f93b73a
+    pristine_git_object: 476dabc25807edcae94c1f3138ad8241f486be0b
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2800,8 +2800,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:b12978d9ec13772b4b5f51dc5150ca82068961cb
-    pristine_git_object: 90bbb0c47b6de1601444ab0999be62dd869ab1cd
+    last_write_checksum: sha1:c2b9fb07dc0cb7310da8d61df39f98801766ae49
+    pristine_git_object: 85770fabc0826c0b8ce2bf3dcfb79a79538ebe7c
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -3644,8 +3644,8 @@ trackedFiles:
     pristine_git_object: 3de6a81adb7c37896d47635dbbb769a6f064d226
   src/models/components/communicationrequestresult.ts:
     id: ca3c3d50c40b
-    last_write_checksum: sha1:3b6feac52843acd4afcbaf1fd6e93a6970f73b25
-    pristine_git_object: 7185c339f97fb2c92a68d98e18566c0e14df9679
+    last_write_checksum: sha1:8ffecceb1c37e20b17389ffe5ea76ae93148fdeb
+    pristine_git_object: 4ed03079fa96222cff73243bb10ef9ae3ad84965
   src/models/components/conditionaltext.ts:
     id: 2e1b9ac1a920
     last_write_checksum: sha1:b017d8e5da4df23729fc2ffc794e697dc2862343
@@ -6914,7 +6914,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.agents.list()`:  `response.items[].channelTargets[].targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.agents.create()`:  `response.channelTargets[].targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.agents.update()`:  `response.channelTargets[].targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.agents.getById()`:  `response.channelTargets[].targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.list()`:  `response.items[].channelService.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.create()`: \n  *  `request.channelService.enum(whatsapp)` **Added**\n  *  `response.channelService.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.update()`: \n  *  `request.channelService.enum(whatsapp)` **Added**\n  *  `response.channelService.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.twilio.getById()`:  `response.channelService.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.twilio.update()`:  `response.channelService.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.twilio.create()`:  `response.channelService.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.targets.list()`:  `response.items[].targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.targets.create()`: \n  *  `request.channelTargetCreateRequest.targetMode.enum(whatsapp)` **Added**\n  *  `response.targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.targets.getById()`:  `response.targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n* `syllablesdk.channels.targets.update()`: \n  *  `request.channelTargetUpdateRequest.targetMode.enum(whatsapp)` **Added**\n  *  `response.targetMode.enum(whatsapp)` **Added** (Breaking ⚠️)\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
