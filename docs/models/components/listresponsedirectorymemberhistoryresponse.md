@@ -24,6 +24,7 @@ let value: ListResponseDirectoryMemberHistoryResponse = {
       },
       userEmail: "user@email.com",
       comments: "Updated phone number",
+      operation: "update",
     },
   ],
   page: 0,

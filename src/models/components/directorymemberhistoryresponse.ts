@@ -54,6 +54,10 @@ export type DirectoryMemberHistoryResponse = {
    * Optional comment for this version
    */
   comments?: string | null | undefined;
+  /**
+   * What produced this row: create, update, delete, restore, bulk_load. Null for rows created before this field existed.
+   */
+  operation?: string | null | undefined;
 };
 
 /** @internal */
@@ -71,6 +75,7 @@ export const DirectoryMemberHistoryResponse$inboundSchema: z.ZodType<
   contact_tags: z.record(z.array(z.string())).optional(),
   user_email: z.string(),
   comments: z.nullable(z.string()).optional(),
+  operation: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "directory_member_id": "directoryMemberId",
@@ -89,6 +94,7 @@ export type DirectoryMemberHistoryResponse$Outbound = {
   contact_tags?: { [k: string]: Array<string> } | undefined;
   user_email: string;
   comments?: string | null | undefined;
+  operation?: string | null | undefined;
 };
 
 /** @internal */
@@ -106,6 +112,7 @@ export const DirectoryMemberHistoryResponse$outboundSchema: z.ZodType<
   contactTags: z.record(z.array(z.string())).optional(),
   userEmail: z.string(),
   comments: z.nullable(z.string()).optional(),
+  operation: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     directoryMemberId: "directory_member_id",
