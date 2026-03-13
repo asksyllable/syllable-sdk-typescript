@@ -106,6 +106,7 @@ async function $do(
     "limit": payload.limit,
     "order_by_direction": payload.order_by_direction,
     "page": payload.page,
+    "response_format": payload.response_format,
   });
 
   const headers = new Headers(compactMap({

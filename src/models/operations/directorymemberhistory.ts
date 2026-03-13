@@ -23,6 +23,10 @@ export type DirectoryMemberHistoryRequest = {
    * Sort by oldest first (asc) or newest first (desc). Version 1 is always the oldest.
    */
   orderByDirection?: components.OrderByDirection | undefined;
+  /**
+   * Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values.
+   */
+  responseFormat?: components.DirectoryResponseFormat | undefined;
 };
 
 /** @internal */
@@ -35,10 +39,12 @@ export const DirectoryMemberHistoryRequest$inboundSchema: z.ZodType<
   page: z.number().int().default(0),
   limit: z.number().int().default(25),
   order_by_direction: components.OrderByDirection$inboundSchema.optional(),
+  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "member_id": "memberId",
     "order_by_direction": "orderByDirection",
+    "response_format": "responseFormat",
   });
 });
 /** @internal */
@@ -47,6 +53,7 @@ export type DirectoryMemberHistoryRequest$Outbound = {
   page: number;
   limit: number;
   order_by_direction?: string | undefined;
+  response_format?: string | undefined;
 };
 
 /** @internal */
@@ -59,10 +66,12 @@ export const DirectoryMemberHistoryRequest$outboundSchema: z.ZodType<
   page: z.number().int().default(0),
   limit: z.number().int().default(25),
   orderByDirection: components.OrderByDirection$outboundSchema.optional(),
+  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     memberId: "member_id",
     orderByDirection: "order_by_direction",
+    responseFormat: "response_format",
   });
 });
 
