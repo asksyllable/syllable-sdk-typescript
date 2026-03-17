@@ -9870,7 +9870,6 @@ components:
             - "FAILED"
             - "CANCELED"
             - "INVALID"
-            - "UNSUBSCRIBED"
         channel_manager_status:
           anyOf:
             - type: "string"
@@ -16353,7 +16352,6 @@ components:
         - "FAILED"
         - "CANCELED"
         - "INVALID"
-        - "UNSUBSCRIBED"
       title: "RequestStatus"
       description: "Status of a communication request."
     RequestStatusBreakdown:
