@@ -5,6 +5,7 @@
 import { SyllableSDKCore } from "../core.js";
 import { appendForm } from "../lib/encodings.js";
 import {
+  bytesToBlob,
   getContentTypeFromFileName,
   readableStreamToArrayBuffer,
 } from "../lib/files.js";
@@ -108,17 +109,10 @@ async function $do(
       const buffer = await readableStreamToArrayBuffer(payload.logo.content);
       const contentType = getContentTypeFromFileName(payload.logo.fileName)
         || "application/octet-stream";
-      const blob = new Blob([buffer], { type: contentType });
-      appendForm(body, "logo", blob, payload.logo.fileName);
-    } else if (payload.logo.content instanceof Uint8Array) {
-      const contentType = getContentTypeFromFileName(payload.logo.fileName)
-        || "application/octet-stream";
       appendForm(
         body,
         "logo",
-        new Blob([new Uint8Array(payload.logo.content).buffer], {
-          type: contentType,
-        }),
+        bytesToBlob(buffer, contentType),
         payload.logo.fileName,
       );
     } else {
@@ -127,7 +121,7 @@ async function $do(
       appendForm(
         body,
         "logo",
-        new Blob([payload.logo.content], { type: contentType }),
+        bytesToBlob(payload.logo.content, contentType),
         payload.logo.fileName,
       );
     }

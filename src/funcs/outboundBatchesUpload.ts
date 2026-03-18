@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { SyllableSDKCore } from "../core.js";
 import { appendForm, encodeSimple } from "../lib/encodings.js";
 import {
+  bytesToBlob,
   getContentTypeFromFileName,
   readableStreamToArrayBuffer,
 } from "../lib/files.js";
@@ -106,27 +107,10 @@ async function $do(
           getContentTypeFromFileName(
             payload.Body_outbound_batch_upload.file.fileName,
           ) || "application/octet-stream";
-        const blob = new Blob([buffer], { type: contentType });
         appendForm(
           body,
           "file",
-          blob,
-          payload.Body_outbound_batch_upload.file.fileName,
-        );
-      } else if (
-        payload.Body_outbound_batch_upload.file.content instanceof Uint8Array
-      ) {
-        const contentType =
-          getContentTypeFromFileName(
-            payload.Body_outbound_batch_upload.file.fileName,
-          ) || "application/octet-stream";
-        appendForm(
-          body,
-          "file",
-          new Blob([
-            new Uint8Array(payload.Body_outbound_batch_upload.file.content)
-              .buffer,
-          ], { type: contentType }),
+          bytesToBlob(buffer, contentType),
           payload.Body_outbound_batch_upload.file.fileName,
         );
       } else {
@@ -137,9 +121,10 @@ async function $do(
         appendForm(
           body,
           "file",
-          new Blob([payload.Body_outbound_batch_upload.file.content], {
-            type: contentType,
-          }),
+          bytesToBlob(
+            payload.Body_outbound_batch_upload.file.content,
+            contentType,
+          ),
           payload.Body_outbound_batch_upload.file.fileName,
         );
       }
