@@ -38,6 +38,7 @@ let value: DirectoryMember = {
   createdAt: new Date("2024-01-01T00:00:00Z"),
   updatedAt: new Date("2024-01-01T00:00:00Z"),
   lastUpdatedBy: "user@email.com",
+  createdBy: "user@email.com",
 };
 ```
 
@@ -55,3 +56,4 @@ let value: DirectoryMember = {
 | `updatedAt`                                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)         | :heavy_check_mark:                                                                                    | Timestamp of most recent update                                                                       | 2024-01-01T00:00:00Z                                                                                  |
 | `deletedAt`                                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)         | :heavy_minus_sign:                                                                                    | When the contact was deleted, if deleted                                                              |                                                                                                       |
 | `lastUpdatedBy`                                                                                       | *string*                                                                                              | :heavy_minus_sign:                                                                                    | Email of the user who last updated the directory member                                               | user@email.com                                                                                        |
+| `createdBy`                                                                                           | *string*                                                                                              | :heavy_minus_sign:                                                                                    | Email of the user who created the directory member                                                    | user@email.com                                                                                        |

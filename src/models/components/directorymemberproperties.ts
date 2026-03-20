@@ -15,6 +15,7 @@ export const DirectoryMemberProperties = {
   CreatedAt: "created_at",
   UpdatedAt: "updated_at",
   DeletedAt: "deleted_at",
+  CreatedBy: "created_by",
 } as const;
 export type DirectoryMemberProperties = ClosedEnum<
   typeof DirectoryMemberProperties
