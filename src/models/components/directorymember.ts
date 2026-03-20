@@ -58,6 +58,10 @@ export type DirectoryMember = {
    * Email of the user who last updated the directory member
    */
   lastUpdatedBy?: string | null | undefined;
+  /**
+   * Email of the user who created the directory member
+   */
+  createdBy?: string | null | undefined;
 };
 
 /** @internal */
@@ -78,6 +82,7 @@ export const DirectoryMember$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   last_updated_by: z.nullable(z.string()).optional(),
+  created_by: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "contact_tags": "contactTags",
@@ -85,6 +90,7 @@ export const DirectoryMember$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
     "deleted_at": "deletedAt",
     "last_updated_by": "lastUpdatedBy",
+    "created_by": "createdBy",
   });
 });
 /** @internal */
@@ -99,6 +105,7 @@ export type DirectoryMember$Outbound = {
   updated_at: string;
   deleted_at?: string | null | undefined;
   last_updated_by?: string | null | undefined;
+  created_by?: string | null | undefined;
 };
 
 /** @internal */
@@ -117,6 +124,7 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   updatedAt: z.date().transform(v => v.toISOString()),
   deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   lastUpdatedBy: z.nullable(z.string()).optional(),
+  createdBy: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contactTags: "contact_tags",
@@ -124,6 +132,7 @@ export const DirectoryMember$outboundSchema: z.ZodType<
     updatedAt: "updated_at",
     deletedAt: "deleted_at",
     lastUpdatedBy: "last_updated_by",
+    createdBy: "created_by",
   });
 });
 

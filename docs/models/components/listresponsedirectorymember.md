@@ -38,6 +38,7 @@ let value: ListResponseDirectoryMember = {
       createdAt: new Date("2024-01-01T00:00:00Z"),
       updatedAt: new Date("2024-01-01T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
+      createdBy: "user@email.com",
     },
   ],
   page: 0,
