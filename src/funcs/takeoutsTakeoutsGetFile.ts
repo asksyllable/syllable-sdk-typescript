@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/takeouts/get/{job_id}/file/{file_name}")(
     pathParams,
   );

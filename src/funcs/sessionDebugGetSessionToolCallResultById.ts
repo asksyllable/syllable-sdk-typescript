@@ -99,7 +99,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/api/v1/session_debug/tool_result/{session_id}/{tool_call_id}",
   )(pathParams);

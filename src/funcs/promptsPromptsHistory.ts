@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/prompts/{prompt_id}/history")(pathParams);
 
   const headers = new Headers(compactMap({

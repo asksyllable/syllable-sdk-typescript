@@ -95,7 +95,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/users/{user_email}/send_email")(pathParams);
 
   const query = encodeFormQuery({

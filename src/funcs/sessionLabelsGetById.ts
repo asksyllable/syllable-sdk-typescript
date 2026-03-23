@@ -94,7 +94,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc("/api/v1/session_labels/{session_label_id}")(
     pathParams,
   );

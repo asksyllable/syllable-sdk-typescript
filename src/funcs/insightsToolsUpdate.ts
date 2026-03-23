@@ -95,7 +95,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/insights/tool-configurations/{tool_id}")(
     pathParams,
   );

@@ -99,7 +99,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc("/api/v1/language_groups/{language_group_id}")(
     pathParams,
   );
