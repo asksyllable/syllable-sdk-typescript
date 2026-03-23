@@ -94,7 +94,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/outbound/batches/{batch_id}/requests")(
     pathParams,
   );

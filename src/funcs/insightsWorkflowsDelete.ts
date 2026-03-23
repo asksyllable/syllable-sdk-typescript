@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/insights/workflows/{workflow_id}")(
     pathParams,
   );

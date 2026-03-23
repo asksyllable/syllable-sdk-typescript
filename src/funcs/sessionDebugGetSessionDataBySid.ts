@@ -99,7 +99,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc(
     "/api/v1/session_debug/sid/{channel_manager_service}/{channel_manager_sid}",
   )(pathParams);

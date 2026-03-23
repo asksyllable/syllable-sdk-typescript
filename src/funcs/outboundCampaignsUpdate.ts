@@ -95,7 +95,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/outbound/campaigns/{campaign_id}")(
     pathParams,
   );

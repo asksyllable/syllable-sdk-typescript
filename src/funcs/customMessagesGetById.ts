@@ -97,7 +97,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc("/api/v1/custom_messages/{custom_message_id}")(
     pathParams,
   );

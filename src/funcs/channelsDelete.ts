@@ -96,7 +96,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/v1/channels/{channel_id}")(pathParams);
 
   const query = encodeFormQuery({
