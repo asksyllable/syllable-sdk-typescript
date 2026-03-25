@@ -104,7 +104,9 @@ async function $do(
   }
   if (payload.logo !== undefined) {
     if (isBlobLike(payload.logo)) {
-      appendForm(body, "logo", payload.logo);
+      const blob = payload.logo;
+      const name = "name" in blob ? (blob.name as string) : undefined;
+      appendForm(body, "logo", blob, name);
     } else if (isReadableStream(payload.logo.content)) {
       const buffer = await readableStreamToArrayBuffer(payload.logo.content);
       const contentType = getContentTypeFromFileName(payload.logo.fileName)

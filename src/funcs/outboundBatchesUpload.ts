@@ -96,7 +96,9 @@ async function $do(
   if (payload.Body_outbound_batch_upload != null) {
     if (payload.Body_outbound_batch_upload.file !== undefined) {
       if (isBlobLike(payload.Body_outbound_batch_upload.file)) {
-        appendForm(body, "file", payload.Body_outbound_batch_upload.file);
+        const blob = payload.Body_outbound_batch_upload.file;
+        const name = "name" in blob ? (blob.name as string) : undefined;
+        appendForm(body, "file", blob, name);
       } else if (
         isReadableStream(payload.Body_outbound_batch_upload.file.content)
       ) {

@@ -96,7 +96,9 @@ async function $do(
   if (payload.Body_insights_folder_upload_file != null) {
     if (payload.Body_insights_folder_upload_file.file !== undefined) {
       if (isBlobLike(payload.Body_insights_folder_upload_file.file)) {
-        appendForm(body, "file", payload.Body_insights_folder_upload_file.file);
+        const blob = payload.Body_insights_folder_upload_file.file;
+        const name = "name" in blob ? (blob.name as string) : undefined;
+        appendForm(body, "file", blob, name);
       } else if (
         isReadableStream(payload.Body_insights_folder_upload_file.file.content)
       ) {
