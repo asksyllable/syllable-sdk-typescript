@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: e7cc51753680b9ccccb23b4a0c36484b
+  docChecksum: 84404526979759ce13046f9a3c8c34cb
   docVersion: 0.0.3
   speakeasyVersion: 1.759.3
   generationVersion: 2.869.25
-  releaseVersion: 1.0.32-rc.5
-  configChecksum: 91fe56d2f89faa13e8474542c222b068
+  releaseVersion: 1.0.32-rc.6
+  configChecksum: fe6749ee79c5b65283bc26551ae2edb1
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 3bec7076-3b85-4031-b069-571b4e904069
-  pristine_commit_hash: 49a2327a3a5da85f9d02d689b8b95ba0923533db
-  pristine_tree_hash: a99ca7e32584773f9a7ed2e786d63f33471e366e
+  generation_id: 394e8727-b8d8-46a5-abe0-376b78bb1a0f
+  pristine_commit_hash: 5ff0f162cda3a41219257cf3a19fa33e4bd8ddfc
+  pristine_tree_hash: e12a99375d29d8b284795e62f53b9cede393dc4b
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -924,8 +924,8 @@ trackedFiles:
     pristine_git_object: d08445d21ba32a15a66847531e061bd401d67a83
   docs/models/components/organizationresponse.md:
     id: 34a74db6cea4
-    last_write_checksum: sha1:b4885f5a0fcd37ba1a9d4fa77758aa22d2cc6241
-    pristine_git_object: f3e0b821eb7c03db805ceb6609d32f86db8a9c40
+    last_write_checksum: sha1:1ca0feca3df8887521157c024a0620601a2ecec6
+    pristine_git_object: dd67152a41fb499cb9bca3cf0fc8a01d9b5cbda6
   docs/models/components/outboundcampaign.md:
     id: 2c02f17c8ae5
     last_write_checksum: sha1:a9afe15bb3143f7bf3881401123d12c1e790b866
@@ -1068,8 +1068,8 @@ trackedFiles:
     pristine_git_object: 74883382992966c8ea2e7fe27d21fd4d3319f7c5
   docs/models/components/session.md:
     id: 0af1ad73cf6c
-    last_write_checksum: sha1:2f1d57d54e2a62999340d776ac284c0b44829aa7
-    pristine_git_object: afd0110329cbafb53dd14fe6fae85ffc4106ddb3
+    last_write_checksum: sha1:7609eed89afc03aa33669e70150e0674244926c6
+    pristine_git_object: c37ff6eb8fddc2f86e14391a6182c9038bed85f9
   docs/models/components/sessionaction.md:
     id: b236e846dcd3
     last_write_checksum: sha1:ba180616f84c49a11a8493ce60a3ac6eb5a63f0e
@@ -1208,8 +1208,8 @@ trackedFiles:
     pristine_git_object: fbc5694bb3dcea22ae4e6ce07b36274976fe9dc5
   docs/models/components/telephonyconfigurations.md:
     id: da5384f02fb2
-    last_write_checksum: sha1:06eb4bb49dd54c38a6153abb897179c6220adab0
-    pristine_git_object: aa56e205765155d967cff00d7914a095a0d7c245
+    last_write_checksum: sha1:9ba011bbf36e08ee6931d5745e2add37df10afc3
+    pristine_git_object: 14a036c3cdc56854fc4b93f05e780510859dd08e
   docs/models/components/testmessage.md:
     id: 15a4bd2df32b
     last_write_checksum: sha1:e37096b8c0c73bb17f73c561fa6aebe891179b7b
@@ -2016,12 +2016,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:9f8787e8a8c1891f3a5ef47a0573c66cb0f3460a
-    pristine_git_object: 5564a385818128b350b25db4b37fa1a337a27378
+    last_write_checksum: sha1:3cacf3621266f07e10fc794d42d4418c0d35064c
+    pristine_git_object: 84cfd0439c102984b76d88a1e0f87007c3a47f6b
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:f396112c0889ae420f76dde97b4d8d3e9845c6c0
-    pristine_git_object: f3076357288ee38eabe5b1f9846083ed06d815e3
+    last_write_checksum: sha1:41d3e0de1ad28f56330bd0ccc507e9b2ef4ba2ed
+    pristine_git_object: 03e56ebe0ddfed66c22b04c41ba618a5dc0d342e
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2700,8 +2700,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:a1d07b1c6dc20d72000c5d5e65496bac88800703
-    pristine_git_object: 530101e2227d79ec4c89178759b8e3d5e6465251
+    last_write_checksum: sha1:0ac91670719ba3a8bc7f21375ebe57276e82af54
+    pristine_git_object: af33db75dce8f6d609b7bc627461f1ffd43cc871
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2784,8 +2784,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:22a6cfa91bbfabc12aec9313490d8e165996c180
-    pristine_git_object: ee003c185ca8310021046593b28a88c9fd1396c0
+    last_write_checksum: sha1:62b81737a8aeb24f4f2b9b2671ae25791207ac9c
+    pristine_git_object: 5626f92ac66a4b1b490c8585a8cefa79ee6aef38
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2800,8 +2800,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:47fc0ca6c033b9da8e029c9032d57bd3837a2f5c
-    pristine_git_object: 4def766243aac53847427511747ecc324aac49a2
+    last_write_checksum: sha1:45ceb20c38160e67f356e3ac6500569a937b85f7
+    pristine_git_object: ed90c8dae468e6fba1460426caa8795868ce7e55
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -4156,8 +4156,8 @@ trackedFiles:
     pristine_git_object: 158335e34afa2a2fe17047894864e3fd5f6c5c10
   src/models/components/organizationresponse.ts:
     id: acf3bf1669aa
-    last_write_checksum: sha1:4ecef9baed2772baaa16a648d75ad71d87120d79
-    pristine_git_object: cb1b3055f756ed3cdb31522671e163d7ac774022
+    last_write_checksum: sha1:5e6954a3bae6228e0fca37f3810950c0f5b813ec
+    pristine_git_object: cebdc29f9ffd1e2db5cf492a396f418bd20fefcc
   src/models/components/outboundcampaign.ts:
     id: 73d4a19a8229
     last_write_checksum: sha1:dfc334983821dce99a9902b9db2e9ac6689b7e75
@@ -4272,8 +4272,8 @@ trackedFiles:
     pristine_git_object: 32a199ca2d04401c0c32a5533ba592a0961b9363
   src/models/components/session.ts:
     id: df291d2da0a7
-    last_write_checksum: sha1:99561a396e6a9a23cc330baee15725351cb5d761
-    pristine_git_object: 4b5ed9c89a08ed995f1b4f5bd79e0410ee71f46e
+    last_write_checksum: sha1:dfdd009f73e60ae1617fcc04c82aa724d2a7fb02
+    pristine_git_object: 0a3fca038e3289b9aba247862937174e3a18077e
   src/models/components/sessionaction.ts:
     id: cdfd55586176
     last_write_checksum: sha1:0364f7f02c41b54dfd85545b19e1b7e590a09abf
@@ -4368,8 +4368,8 @@ trackedFiles:
     pristine_git_object: 98e93387bb0953bc543b53b5d304b9b76209c795
   src/models/components/telephonyconfigurations.ts:
     id: 77164a7a07c2
-    last_write_checksum: sha1:62bd564e94e5fbb16ed889ce6e0d74c703a5375f
-    pristine_git_object: f96a2ab40a3cbaaedf186ff57119bc26d2e8ac3b
+    last_write_checksum: sha1:cbbc23b7115ad33f0bafc533a4391f498b989964
+    pristine_git_object: b57fed5acda367aea45e8f2d045bee485fc9fe36
   src/models/components/testmessage.ts:
     id: b76647b024a6
     last_write_checksum: sha1:1f205c0dd390ee6acde808e9da8da5feadb5dfd2
@@ -6352,14 +6352,14 @@ examples:
     speakeasy-default-organizations-get:
       responses:
         "200":
-          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "saml_provider_id": "saml.syllablesso", "id": 1, "last_updated_comments": "Updated to add an additional domain", "slug": "my-great-org", "last_updated": "2025-07-17T21:31:09.914Z", "logo_url": "https://image.png"}
+          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "saml_provider_id": "saml.syllablesso", "id": 1, "last_updated_comments": "Updated to add an additional domain", "name": "<value>", "slug": "my-great-org", "last_updated": "2025-07-17T21:31:09.914Z", "logo_url": "https://image.png"}
   organizations_update:
     speakeasy-default-organizations-update:
       requestBody:
         multipart/form-data: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI", "domains": "mygreatorg.com,mygreatorg.org", "saml_provider_id": "saml.syllablesso", "update_comments": "Updated the organization to add a new domain"}
       responses:
         "200":
-          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "saml_provider_id": "saml.syllablesso", "id": 1, "last_updated_comments": "Updated to add an additional domain", "slug": "my-great-org", "last_updated": "2024-05-09T13:26:35.066Z", "logo_url": "https://image.png"}
+          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "saml_provider_id": "saml.syllablesso", "id": 1, "last_updated_comments": "Updated to add an additional domain", "name": "<value>", "slug": "my-great-org", "last_updated": "2024-05-09T13:26:35.066Z", "logo_url": "https://image.png"}
         "422":
           application/json: {}
   organizations_create:
@@ -6368,7 +6368,7 @@ examples:
         multipart/form-data: {"logo": "x-file: example.file", "display_name": "My Great Org", "description": "An organization that does great things with agentic AI", "domains": "mygreatorg.com,mygreatorg.org", "saml_provider_id": "saml.syllablesso"}
       responses:
         "200":
-          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "saml_provider_id": "saml.syllablesso", "id": 1, "last_updated_comments": "Updated to add an additional domain", "slug": "my-great-org", "last_updated": "2023-11-14T09:08:12.354Z", "logo_url": "https://image.png"}
+          application/json: {"display_name": "My Great Org", "description": "An organization that does great things with agentic AI.", "domains": "mygreatorg.com,myothergreatorg.org", "saml_provider_id": "saml.syllablesso", "id": 1, "last_updated_comments": "Updated to add an additional domain", "name": "<value>", "slug": "my-great-org", "last_updated": "2023-11-14T09:08:12.354Z", "logo_url": "https://image.png"}
         "422":
           application/json: {}
   organizations_delete:
@@ -6914,6 +6914,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.channels.list()`:  `response.items[].config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n* `syllablesdk.channels.create()`: \n  *  `request.config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n  *  `response.config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n* `syllablesdk.channels.update()`: \n  *  `request.config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n  *  `response.config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n* `syllablesdk.channels.twilio.getById()`:  `response.config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n* `syllablesdk.channels.twilio.update()`:  `response.config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n* `syllablesdk.channels.twilio.create()`:  `response.config.telephony.transferLegVoicemailDetectionEnabled` **Added**\n* `syllablesdk.sessions.list()`:  `response.items[].transferVoicemailDetected` **Added**\n* `syllablesdk.sessions.getById()`:  `response.transferVoicemailDetected` **Added**\n* `syllablesdk.organizations.organizationsGet()`:  `response.name` **Added**\n* `syllablesdk.organizations.update()`:  `response.name` **Added**\n* `syllablesdk.organizations.create()`:  `response.name` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
