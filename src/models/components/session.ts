@@ -96,6 +96,10 @@ export type Session = {
    * Whether the voice session was ended by the recipient (outbound) / caller (inbound). False if the user was transferred or there was an error. Unset if the session was not a voice session.
    */
   userTerminated?: boolean | null | undefined;
+  /**
+   * Whether a voicemail was detected during the transfer leg of the session
+   */
+  transferVoicemailDetected?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -124,6 +128,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     is_legacy: z.nullable(z.boolean()).optional(),
     is_test: z.nullable(z.boolean()).optional(),
     user_terminated: z.nullable(z.boolean()).optional(),
+    transfer_voicemail_detected: z.nullable(z.boolean()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "session_id": "sessionId",
@@ -143,6 +148,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "is_legacy": "isLegacy",
       "is_test": "isTest",
       "user_terminated": "userTerminated",
+      "transfer_voicemail_detected": "transferVoicemailDetected",
     });
   });
 /** @internal */
@@ -168,6 +174,7 @@ export type Session$Outbound = {
   is_legacy?: boolean | null | undefined;
   is_test?: boolean | null | undefined;
   user_terminated?: boolean | null | undefined;
+  transfer_voicemail_detected?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -197,6 +204,7 @@ export const Session$outboundSchema: z.ZodType<
   isLegacy: z.nullable(z.boolean()).optional(),
   isTest: z.nullable(z.boolean()).optional(),
   userTerminated: z.nullable(z.boolean()).optional(),
+  transferVoicemailDetected: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
@@ -216,6 +224,7 @@ export const Session$outboundSchema: z.ZodType<
     isLegacy: "is_legacy",
     isTest: "is_test",
     userTerminated: "user_terminated",
+    transferVoicemailDetected: "transfer_voicemail_detected",
   });
 });
 
