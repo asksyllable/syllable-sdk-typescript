@@ -7,11 +7,11 @@ LLM API provider.
 ```typescript
 import { PromptLlmProvider } from "syllable-sdk/models/components";
 
-let value: PromptLlmProvider = "openai";
+let value: PromptLlmProvider = "google";
 ```
 
 ## Values
 
 ```typescript
-"azure_openai" | "google" | "openai"
+"anthropic" | "azure_openai" | "google" | "openai"
 ```

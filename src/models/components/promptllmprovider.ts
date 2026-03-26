@@ -9,6 +9,7 @@ import { ClosedEnum } from "../../types/enums.js";
  * LLM API provider.
  */
 export const PromptLlmProvider = {
+  Anthropic: "anthropic",
   AzureOpenai: "azure_openai",
   Google: "google",
   Openai: "openai",
