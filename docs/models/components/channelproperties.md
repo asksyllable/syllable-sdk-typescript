@@ -7,11 +7,11 @@ Names of channel fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { ChannelProperties } from "syllable-sdk/models/components";
 
-let value: ChannelProperties = "name_exact";
+let value: ChannelProperties = "channel_service";
 ```
 
 ## Values
 
 ```typescript
-"id" | "name" | "name_exact" | "channel_service" | "supported_modes"
+"id" | "name" | "name_exact" | "channel_service" | "supported_modes" | "config"
 ```

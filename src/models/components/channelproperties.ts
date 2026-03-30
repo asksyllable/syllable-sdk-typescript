@@ -14,6 +14,7 @@ export const ChannelProperties = {
   NameExact: "name_exact",
   ChannelService: "channel_service",
   SupportedModes: "supported_modes",
+  Config: "config",
 } as const;
 /**
  * Names of channel fields supported for filtering/sorting on list endpoint.
