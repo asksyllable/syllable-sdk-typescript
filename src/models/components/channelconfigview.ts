@@ -28,6 +28,10 @@ export type ChannelConfigView = {
    * Email configurations for email channels. Only applies to email channels.
    */
   email?: EmailConfigurations | null | undefined;
+  /**
+   * Exposed credentials for the channel - currently just account_sid_last_four for Twilio channels
+   */
+  credentials?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -38,11 +42,13 @@ export const ChannelConfigView$inboundSchema: z.ZodType<
 > = z.object({
   telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
   email: z.nullable(EmailConfigurations$inboundSchema).optional(),
+  credentials: z.nullable(z.record(z.string())).optional(),
 });
 /** @internal */
 export type ChannelConfigView$Outbound = {
   telephony?: TelephonyConfigurations$Outbound | null | undefined;
   email?: EmailConfigurations$Outbound | null | undefined;
+  credentials?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -53,6 +59,7 @@ export const ChannelConfigView$outboundSchema: z.ZodType<
 > = z.object({
   telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
   email: z.nullable(EmailConfigurations$outboundSchema).optional(),
+  credentials: z.nullable(z.record(z.string())).optional(),
 });
 
 export function channelConfigViewToJSON(
