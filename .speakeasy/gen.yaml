@@ -32,7 +32,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.33-rc.1
+  version: 1.0.33-rc.2
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -52,6 +52,7 @@ typescript:
   enumFormat: union
   envVarPrefix: SYLLABLESDK
   exportZodModelNamespace: false
+  fixEnumNameSanitization: false
   flatAdditionalProperties: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
