@@ -79,6 +79,10 @@ export type InsightWorkflowOutput = {
    */
   queueCount?: number | null | undefined;
   /**
+   * Number of workflow executions currently in FAILED status
+   */
+  failedCount?: number | null | undefined;
+  /**
    * Timestamp at which the insight workflow was created
    */
   createdAt?: Date | undefined;
@@ -114,6 +118,7 @@ export const InsightWorkflowOutput$inboundSchema: z.ZodType<
   status: z.string(),
   estimate: InsightWorkflowEstimate$inboundSchema,
   queue_count: z.nullable(z.number().int()).optional(),
+  failed_count: z.nullable(z.number().int()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -126,6 +131,7 @@ export const InsightWorkflowOutput$inboundSchema: z.ZodType<
     "end_datetime": "endDatetime",
     "insight_tools": "insightTools",
     "queue_count": "queueCount",
+    "failed_count": "failedCount",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
@@ -145,6 +151,7 @@ export type InsightWorkflowOutput$Outbound = {
   status: string;
   estimate: InsightWorkflowEstimate$Outbound;
   queue_count?: number | null | undefined;
+  failed_count?: number | null | undefined;
   created_at?: string | undefined;
   updated_at?: string | undefined;
   last_updated_by: string;
@@ -169,6 +176,7 @@ export const InsightWorkflowOutput$outboundSchema: z.ZodType<
   status: z.string(),
   estimate: InsightWorkflowEstimate$outboundSchema,
   queueCount: z.nullable(z.number().int()).optional(),
+  failedCount: z.nullable(z.number().int()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
   lastUpdatedBy: z.string(),
@@ -179,6 +187,7 @@ export const InsightWorkflowOutput$outboundSchema: z.ZodType<
     endDatetime: "end_datetime",
     insightTools: "insight_tools",
     queueCount: "queue_count",
+    failedCount: "failed_count",
     createdAt: "created_at",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",

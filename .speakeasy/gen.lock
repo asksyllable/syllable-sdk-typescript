@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 67d6f69a93e32430ffb628bb889150ec
+  docChecksum: 219cf762f13d0c921fe6ba7207d44742
   docVersion: 0.0.3
   speakeasyVersion: 1.761.1
   generationVersion: 2.879.6
-  releaseVersion: 1.0.34-rc.2
-  configChecksum: d5afe430b5eab308047a578927adedc3
+  releaseVersion: 1.0.34-rc.3
+  configChecksum: 141da0c5eea939df3b075908c1d86fe8
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: ff219ede-602b-42eb-b1a2-47fe4fcf4b3a
-  pristine_commit_hash: 6fb20b8275ca7dcce6228118660f3af5776e5363
-  pristine_tree_hash: c933cfd3c846d982896a7d2fef2ae6cf4d1dde2b
+  generation_id: 15c93e2c-e2ca-431e-a177-63b4ae392e54
+  pristine_commit_hash: 5bc9650569653b6025060741a25a615b4ba52007
+  pristine_tree_hash: 7eda3644a997ffa37bf4c561077309a7ad2a1caa
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -156,8 +156,8 @@ trackedFiles:
     pristine_git_object: ac70f6fc0da182bd237b75d16caaed294252babf
   docs/models/components/batchdetails.md:
     id: c0f28c9eb168
-    last_write_checksum: sha1:6423bee806eefd83192a48b0b9aed2e8cea2a9b1
-    pristine_git_object: 6aec16c7b3df7b86654697110c7815f712dc02b1
+    last_write_checksum: sha1:995c315de758af866015fa49b7c6fcac071bc0c7
+    pristine_git_object: 74584bf92b3cd100a25cc055c5849c83bfc6bb5e
   docs/models/components/batchproperties.md:
     id: 10b6f2db0ec9
     last_write_checksum: sha1:65646e4a87189cc17a0a61a6c000ac5628e00d5c
@@ -284,12 +284,12 @@ trackedFiles:
     pristine_git_object: 373d00b9a2607a1a35a8e46990bb48c29c9931b7
   docs/models/components/communicationbatch.md:
     id: db3dfb5d18b6
-    last_write_checksum: sha1:1667c74c3d7575843dffbe98d61de7b38055e539
-    pristine_git_object: c042c52620c3ae66e80bdbcca4b0a4809ee9b6e1
+    last_write_checksum: sha1:01a3a695620b30e40542538bf7bbf5910ae2f0cd
+    pristine_git_object: ddec9d4117cb5bd4938a15c6abd5e762e2819a8d
   docs/models/components/communicationbatchinput.md:
     id: b0ece958b0e8
-    last_write_checksum: sha1:e7ce8f2b4ed892c51155ec1513c9ede7a0c81d48
-    pristine_git_object: d15f6bd0c230d1dfcc007e7f89f494135c2d0868
+    last_write_checksum: sha1:699b0500c3570e32d25ecb425bf99f95a190bccd
+    pristine_git_object: af32d8d0c05ab014fc24927a4759e82169b12cb5
   docs/models/components/communicationbatchupdate.md:
     id: 8ee9b9717a56
     last_write_checksum: sha1:aef9a96d71eb1e8283b256be38180e23a6950a5e
@@ -300,8 +300,8 @@ trackedFiles:
     pristine_git_object: bcd40074b902666be73dfdd18710c00344485ead
   docs/models/components/communicationrequestresult.md:
     id: 416f1bd1469d
-    last_write_checksum: sha1:bab25043a95b7e6bc51923d4c92b98d89f7da3d2
-    pristine_git_object: 563436c8802b7b76cb55fabad1f1f8367540db5b
+    last_write_checksum: sha1:a56c3fdfbc6b1f416ad0309d5af75c4ce4a62fd9
+    pristine_git_object: 8be2347c3bd1afd83f1e4ea0a926c07c9b20dfc7
   docs/models/components/conditionaltext.md:
     id: aa5e4b2f16cf
     last_write_checksum: sha1:ab45481b7fdfc2104377202d33540ba7590f573e
@@ -524,8 +524,8 @@ trackedFiles:
     pristine_git_object: 0c8813bd30ff090d925a2f7b9d39209b629e7bc3
   docs/models/components/folderdetails.md:
     id: 182235c359da
-    last_write_checksum: sha1:510246cca80b654cdd2431f83fb1c1e8287de6bf
-    pristine_git_object: 3a7f8b6356964d9afee6ede646cd768beea70c31
+    last_write_checksum: sha1:0cf300143b11c8d4aa41fbc2d54ef94873e289d0
+    pristine_git_object: cb200bcd4d9efad797492b99ff6b02431da048fd
   docs/models/components/folderstats.md:
     id: a0d66957856e
     last_write_checksum: sha1:de5727e157eb71006e7565439f06b67e6a59eca5
@@ -604,8 +604,8 @@ trackedFiles:
     pristine_git_object: 507cba50f731f5602995535c9d4cfeb7dda5546a
   docs/models/components/insightsfolder.md:
     id: 834a22d829d6
-    last_write_checksum: sha1:72ccc1c72a8c13a9411f994a87e4098a2e71b078
-    pristine_git_object: 3ea3bb6f154f0c094bfb2039e880cbd6aa77ba07
+    last_write_checksum: sha1:751cf353a54c15756a543a645b00e2713e3e290a
+    pristine_git_object: 137ac4befddd0e1d1fc09bc5566fd85a38d423a7
   docs/models/components/insightsfolderfilemove.md:
     id: 0961a86b28f8
     last_write_checksum: sha1:fffb81159bad5007d21ba7b3364e55238cfede0c
@@ -620,16 +620,16 @@ trackedFiles:
     pristine_git_object: 8f00ed3f2a75f391d1c15c5c7820a06d0167f96b
   docs/models/components/insightsoutput.md:
     id: 104184c92077
-    last_write_checksum: sha1:b8aa54ea4af5fd025a1926ee85cd4b0193a97e33
-    pristine_git_object: fc7e6c2b5451352151792468f697bdd4d8280f08
+    last_write_checksum: sha1:aa63a6c132a28822d16797c1de2e5be0c81df517
+    pristine_git_object: 5159464281cbce177c9b9535ecdbe5f18e90c683
   docs/models/components/insightsproperties.md:
     id: 86c812877d9a
     last_write_checksum: sha1:7f0d2cb8485d6b7bc61c37c8dcb918591efbdd0c
     pristine_git_object: 31928acda5ce50cc5de494d9e5b64c528c95da38
   docs/models/components/insightsuploadfile.md:
     id: e346529032ff
-    last_write_checksum: sha1:b3c0dac1754d78a6dc583c536c65203faec84f35
-    pristine_git_object: 9087fa8e3f8e94f0db586e51cedff1a8abbd8f13
+    last_write_checksum: sha1:eb14c580474897737a8833b5e1503c3b1860e297
+    pristine_git_object: b91ff6aa9ad939edbaeaca4a695a82551e79e97c
   docs/models/components/insightsuploadfileproperties.md:
     id: ece9940ede09
     last_write_checksum: sha1:a47056288fb47d9a68796612d9e9b3c56bf2e305
@@ -648,8 +648,8 @@ trackedFiles:
     pristine_git_object: a3cf7e4d59b229b413f9bab4a258cccec4f4bf6a
   docs/models/components/insighttooloutput.md:
     id: 7ff243fe9e6b
-    last_write_checksum: sha1:36c5ebf3189b8e433918303aff8df9411f98f2ec
-    pristine_git_object: 6634ace03a7248b552e842a354e750a031de00e8
+    last_write_checksum: sha1:5dec872bdcbebb72a24f5662f7206283b82fc3c8
+    pristine_git_object: 0f4bb5ff1356eae4e536771c351274285bbe06ca
   docs/models/components/insighttoolproperties.md:
     id: 0d0383282f15
     last_write_checksum: sha1:9475568b6da320bfd924a5bee25d5e9b10fbd96c
@@ -672,12 +672,12 @@ trackedFiles:
     pristine_git_object: 98e875800351b1b245591fb18d6033fc8cef2f36
   docs/models/components/insightworkflowinput.md:
     id: 71cb3bf06901
-    last_write_checksum: sha1:4030f1b74f6965749f895b518585600cf8e03cba
-    pristine_git_object: e6033825237ba0f2b97efb32a84e26ade5f960d7
+    last_write_checksum: sha1:7e3b116fe57c8f2d3f6daa3d5f66265a104fe9b4
+    pristine_git_object: 21877eb76768ad56954a5d83c19dfd460c6c410e
   docs/models/components/insightworkflowoutput.md:
     id: 5c3c6aa9a9df
-    last_write_checksum: sha1:eb78b15b55ae7e66941544e05bfafa1cca4a87e6
-    pristine_git_object: 46b9f16643a28a450fe278a0379a8926b56f7dc7
+    last_write_checksum: sha1:c95ec1ea1c098def4864037df637b2f18f2f75ba
+    pristine_git_object: 1b9622cc9288a458a6c16f259b6a2e2f9c05468a
   docs/models/components/insightworkflowproperties.md:
     id: 4dd9bed048af
     last_write_checksum: sha1:571cf4f22f47d269fea1954f1bffc1e8e98aa620
@@ -820,8 +820,8 @@ trackedFiles:
     pristine_git_object: e4707595749b5e74f942c3066c7bc39a9c0055c0
   docs/models/components/listresponseinsightworkflowoutput.md:
     id: 7cf6e5563760
-    last_write_checksum: sha1:79d661877236a47a965f2afe88f7aa8f705b8075
-    pristine_git_object: 9b52209bfeb4477779a5df43450c06223b410afb
+    last_write_checksum: sha1:d03c8f6d066cfde45c43fd2fe52db533bbc7360d
+    pristine_git_object: 9a5e93ad636de43649f8845fd3edf20e6c93ce98
   docs/models/components/listresponselanguagegroupresponse.md:
     id: 331f33c587b2
     last_write_checksum: sha1:b236b3eee740c6a46910ea5059faeedd3d0974b8
@@ -928,8 +928,8 @@ trackedFiles:
     pristine_git_object: dd67152a41fb499cb9bca3cf0fc8a01d9b5cbda6
   docs/models/components/outboundcampaign.md:
     id: 2c02f17c8ae5
-    last_write_checksum: sha1:16000f6b3672829cdcf08effeb67a7406a9918b8
-    pristine_git_object: 2f85cecb26933759f08cceb7b0306847cf217ce2
+    last_write_checksum: sha1:27cdc036dc15adb0ece42b191cd708bbe2040b46
+    pristine_git_object: 01a0e3e643982375e7c163e8df561d0182984197
   docs/models/components/outboundcampaigninput.md:
     id: 67a9d38a267b
     last_write_checksum: sha1:e98a3364f4fcc3b808a9f3abbe68ac15f0cfc54b
@@ -1644,8 +1644,8 @@ trackedFiles:
     pristine_git_object: cd8eb87838a66b7529f109a2c0598ad756eaef2b
   docs/models/operations/insightsworkflowupdaterequest.md:
     id: ed9284dbb47c
-    last_write_checksum: sha1:11f0a714a1f14b986ba2b678a12c93173346f072
-    pristine_git_object: 5f7a891d75c98670048f1234ade61ce0d09d16d6
+    last_write_checksum: sha1:36759b743cdb7474f5739cb085799a4f5cc704e4
+    pristine_git_object: 7d6f68189424284d0cd1cd95cdb49a9896c4bb3d
   docs/models/operations/insighttoolgetbyidrequest.md:
     id: 430ed3521285
     last_write_checksum: sha1:3034a0dbd520478318f8d3a5962179030a303a4a
@@ -2016,12 +2016,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:9ec00e441093ba97758cae7f8881e04a7377ece7
-    pristine_git_object: 32b1ee79257659f18743cde9c6c5ce543949ac40
+    last_write_checksum: sha1:912589a80a6eb177d816672239530b42293f5c2f
+    pristine_git_object: 3572db3d51849da6309372b695d0142d0758e30d
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:aef7f38aa5779f149cb5f213b0fad36d385374e3
-    pristine_git_object: 2719ef0421408aaaca264b2d5ca6da51e61e49c8
+    last_write_checksum: sha1:8727e9285b961827de9f13f066b1c798b530f70a
+    pristine_git_object: 69ab57348acb41ee1b33b119367653530a70bd1b
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2700,8 +2700,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:f3dc297e65aa0de4ac55f6fbba004610261b9808
-    pristine_git_object: 32d219867800cabec51aca1df7a8474f02e456a0
+    last_write_checksum: sha1:36ff2ab34e64a8e77e662850d260868b21aab003
+    pristine_git_object: 692fcabf23ae5bf2dde29a6d0297f65b2adbbd7c
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2784,8 +2784,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:b9c906de783c91c983a7d15f4bdd1a1b13e479e2
-    pristine_git_object: 90dc9c8f22d9f6f8ebdcc593ebdabbd691df87a0
+    last_write_checksum: sha1:054de8b4ffc812fe49037fb5f8f8067712cbb130
+    pristine_git_object: 9c8dab8cc7c624892648ca91796b8cccaf3df48c
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2800,8 +2800,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:22519fd3bf7a1f50a4c48e4914017c030541de05
-    pristine_git_object: e3cde9a3690f3f4549b362e87f42d8f3fb3473e1
+    last_write_checksum: sha1:bb0bdab59ee591fed3b4a2a9bc5dcf4b317f3ec4
+    pristine_git_object: ee591939166ccfcfc535d3a105de922bd41f9256
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -3948,8 +3948,8 @@ trackedFiles:
     pristine_git_object: ed286b5687d66e54b88abba7c04588d1430e692a
   src/models/components/insightworkflowoutput.ts:
     id: ecea64076468
-    last_write_checksum: sha1:cf7a344523a06eef0033ca12101b5b905704dd4d
-    pristine_git_object: f4ad3b592b3b261fef3cf679ce0cae880fe15081
+    last_write_checksum: sha1:145510b1955a74f2b944d6e1140bed3732c23f3d
+    pristine_git_object: a75c807c1096500ea9d364ee8318e3f26e3cba42
   src/models/components/insightworkflowproperties.ts:
     id: "777987400220"
     last_write_checksum: sha1:d063acf1743c34800bc58215082e1b1c163ba63a
@@ -5731,7 +5731,7 @@ examples:
         application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_get_by_id:
@@ -5741,7 +5741,7 @@ examples:
           workflow_id: 788857
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_update:
@@ -5753,7 +5753,7 @@ examples:
         application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_delete:
@@ -5773,7 +5773,7 @@ examples:
           workflow_id: 248768
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_activate:
@@ -5785,7 +5785,7 @@ examples:
         application/json: {"is_acknowledged": true, "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com"}
         "422":
           application/json: {}
   insights_workflow_queue_work:
@@ -6914,6 +6914,14 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `syllablesdk.insights.workflows.list()`:  `response.items[].failedCount` **Added**
+  * `syllablesdk.insights.workflows.create()`:  `response.failedCount` **Added**
+  * `syllablesdk.insights.workflows.getById()`:  `response.failedCount` **Added**
+  * `syllablesdk.insights.workflows.update()`:  `response.failedCount` **Added**
+  * `syllablesdk.insights.workflows.inactivate()`:  `response.failedCount` **Added**
+  * `syllablesdk.insights.workflows.activate()`:  `response.failedCount` **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
