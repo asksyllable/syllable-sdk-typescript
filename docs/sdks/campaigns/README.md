@@ -150,6 +150,15 @@ async function run() {
       "voicemail_detection_post_speech_timeout": 1.75,
       "voicemail_detection_pre_speech_timeout": 3.5,
     },
+    webhooks: [
+      {
+        triggerStatuses: [
+          "COMPLETED",
+        ],
+        url: "https://example.com/hooks/syllable",
+        requestMethod: "POST",
+      },
+    ],
   });
 
   console.log(result);
@@ -206,6 +215,15 @@ async function run() {
       "voicemail_detection_post_speech_timeout": 1.75,
       "voicemail_detection_pre_speech_timeout": 3.5,
     },
+    webhooks: [
+      {
+        triggerStatuses: [
+          "COMPLETED",
+        ],
+        url: "https://example.com/hooks/syllable",
+        requestMethod: "POST",
+      },
+    ],
   });
   if (res.ok) {
     const { value: result } = res;
@@ -362,6 +380,15 @@ async function run() {
         "voicemail_detection_post_speech_timeout": 1.75,
         "voicemail_detection_pre_speech_timeout": 3.5,
       },
+      webhooks: [
+        {
+          triggerStatuses: [
+            "COMPLETED",
+          ],
+          url: "https://example.com/hooks/syllable",
+          requestMethod: "POST",
+        },
+      ],
     },
   });
 
@@ -421,6 +448,15 @@ async function run() {
         "voicemail_detection_post_speech_timeout": 1.75,
         "voicemail_detection_pre_speech_timeout": 3.5,
       },
+      webhooks: [
+        {
+          triggerStatuses: [
+            "COMPLETED",
+          ],
+          url: "https://example.com/hooks/syllable",
+          requestMethod: "POST",
+        },
+      ],
     },
   });
   if (res.ok) {
