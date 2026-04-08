@@ -12,6 +12,12 @@ import {
   DaysOfWeek$inboundSchema,
   DaysOfWeek$outboundSchema,
 } from "./daysofweek.js";
+import {
+  OutboundCampaignWebhookInput,
+  OutboundCampaignWebhookInput$inboundSchema,
+  OutboundCampaignWebhookInput$Outbound,
+  OutboundCampaignWebhookInput$outboundSchema,
+} from "./outboundcampaignwebhookinput.js";
 
 export type OutboundCampaignInput = {
   /**
@@ -84,6 +90,10 @@ export type OutboundCampaignInput = {
    * Config for voicemail detection for voice campaigns. Set to None to disable.
    */
   voicemailDetection?: { [k: string]: number } | null | undefined;
+  /**
+   * Webhooks for campaign (note: this is an in-development feature - webhooks will not yet trigger even if configured)
+   */
+  webhooks?: Array<OutboundCampaignWebhookInput> | undefined;
 };
 
 /** @internal */
@@ -109,6 +119,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
   voicemail_detection: z.nullable(z.record(z.number())).optional(),
+  webhooks: z.array(OutboundCampaignWebhookInput$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "campaign_name": "campaignName",
@@ -144,6 +155,7 @@ export type OutboundCampaignInput$Outbound = {
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
   voicemail_detection?: { [k: string]: number } | null | undefined;
+  webhooks?: Array<OutboundCampaignWebhookInput$Outbound> | undefined;
 };
 
 /** @internal */
@@ -169,6 +181,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
   voicemailDetection: z.nullable(z.record(z.number())).optional(),
+  webhooks: z.array(OutboundCampaignWebhookInput$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     campaignName: "campaign_name",

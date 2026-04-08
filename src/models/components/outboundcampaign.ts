@@ -12,6 +12,12 @@ import {
   DaysOfWeek$inboundSchema,
   DaysOfWeek$outboundSchema,
 } from "./daysofweek.js";
+import {
+  OutboundCampaignWebhookResponse,
+  OutboundCampaignWebhookResponse$inboundSchema,
+  OutboundCampaignWebhookResponse$Outbound,
+  OutboundCampaignWebhookResponse$outboundSchema,
+} from "./outboundcampaignwebhookresponse.js";
 
 export type OutboundCampaign = {
   /**
@@ -104,6 +110,10 @@ export type OutboundCampaign = {
    * Email of user who last updated campaign
    */
   lastUpdatedBy: string;
+  /**
+   * Webhooks for campaign (note: this is an in-development feature - webhooks will not yet trigger even if configured)
+   */
+  webhooks?: Array<OutboundCampaignWebhookResponse> | null | undefined;
 };
 
 /** @internal */
@@ -136,6 +146,8 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   last_updated_by: z.string(),
+  webhooks: z.nullable(z.array(OutboundCampaignWebhookResponse$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "campaign_name": "campaignName",
@@ -180,6 +192,7 @@ export type OutboundCampaign$Outbound = {
   created_at?: string | undefined;
   updated_at?: string | undefined;
   last_updated_by: string;
+  webhooks?: Array<OutboundCampaignWebhookResponse$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -210,6 +223,8 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
   lastUpdatedBy: z.string(),
+  webhooks: z.nullable(z.array(OutboundCampaignWebhookResponse$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     campaignName: "campaign_name",

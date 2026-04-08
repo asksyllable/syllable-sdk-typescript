@@ -38,6 +38,15 @@ let value: OutboundCampaignInput = {
     "voicemail_detection_post_speech_timeout": 1.75,
     "voicemail_detection_pre_speech_timeout": 3.5,
   },
+  webhooks: [
+    {
+      triggerStatuses: [
+        "COMPLETED",
+      ],
+      url: "https://example.com/hooks/syllable",
+      requestMethod: "POST",
+    },
+  ],
 };
 ```
 
@@ -62,3 +71,4 @@ let value: OutboundCampaignInput = {
 | `retryInterval`                                                                                                                                                               | *string*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                            | How long to wait before retrying                                                                                                                                              | **Example 1:** 30m<br/>**Example 2:** 12h<br/>**Example 3:** 7d                                                                                                               |
 | `activeDays`                                                                                                                                                                  | [components.DaysOfWeek](../../models/components/daysofweek.md)[]                                                                                                              | :heavy_check_mark:                                                                                                                                                            | Days of the week when campaign is active                                                                                                                                      | ["mon", "tue", "wed", "thu", "fri"]                                                                                                                                           |
 | `voicemailDetection`                                                                                                                                                          | Record<string, *number*>                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                            | Config for voicemail detection for voice campaigns. Set to None to disable.                                                                                                   | {<br/>"voicemail_detection_overall_timeout": 30,<br/>"voicemail_detection_post_speech_timeout": 1.75,<br/>"voicemail_detection_pre_speech_timeout": 3.5<br/>}                 |
+| `webhooks`                                                                                                                                                                    | [components.OutboundCampaignWebhookInput](../../models/components/outboundcampaignwebhookinput.md)[]                                                                          | :heavy_minus_sign:                                                                                                                                                            | Webhooks for campaign (note: this is an in-development feature - webhooks will not yet trigger even if configured)                                                            | {<br/>"request_method": "POST",<br/>"trigger_statuses": [<br/>"COMPLETED"<br/>],<br/>"url": "https://example.com/hooks/syllable"<br/>}                                        |
