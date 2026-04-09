@@ -35,6 +35,10 @@ export type InsightsOutput = {
    */
   insightToolVersion: number;
   /**
+   * Insight workflow that produced this row, if applicable
+   */
+  workflowId?: number | null | undefined;
+  /**
    * Key for insight tool result
    */
   insightKey: string;
@@ -104,6 +108,7 @@ export const InsightsOutput$inboundSchema: z.ZodType<
   upload_file_id: z.nullable(z.number().int()).optional(),
   insight_tool_id: z.number().int(),
   insight_tool_version: z.number().int(),
+  workflow_id: z.nullable(z.number().int()).optional(),
   insight_key: z.string(),
   string_value: z.nullable(z.string()).optional(),
   numeric_value: z.nullable(z.number()).optional(),
@@ -119,6 +124,7 @@ export const InsightsOutput$inboundSchema: z.ZodType<
     "upload_file_id": "uploadFileId",
     "insight_tool_id": "insightToolId",
     "insight_tool_version": "insightToolVersion",
+    "workflow_id": "workflowId",
     "insight_key": "insightKey",
     "string_value": "stringValue",
     "numeric_value": "numericValue",
@@ -135,6 +141,7 @@ export type InsightsOutput$Outbound = {
   upload_file_id?: number | null | undefined;
   insight_tool_id: number;
   insight_tool_version: number;
+  workflow_id?: number | null | undefined;
   insight_key: string;
   string_value?: string | null | undefined;
   numeric_value?: number | null | undefined;
@@ -155,6 +162,7 @@ export const InsightsOutput$outboundSchema: z.ZodType<
   uploadFileId: z.nullable(z.number().int()).optional(),
   insightToolId: z.number().int(),
   insightToolVersion: z.number().int(),
+  workflowId: z.nullable(z.number().int()).optional(),
   insightKey: z.string(),
   stringValue: z.nullable(z.string()).optional(),
   numericValue: z.nullable(z.number()).optional(),
@@ -168,6 +176,7 @@ export const InsightsOutput$outboundSchema: z.ZodType<
     uploadFileId: "upload_file_id",
     insightToolId: "insight_tool_id",
     insightToolVersion: "insight_tool_version",
+    workflowId: "workflow_id",
     insightKey: "insight_key",
     stringValue: "string_value",
     numericValue: "numeric_value",
