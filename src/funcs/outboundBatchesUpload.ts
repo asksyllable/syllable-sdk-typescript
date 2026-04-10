@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { SyllableSDKCore } from "../core.js";
-import { appendForm, encodeSimple } from "../lib/encodings.js";
+import { appendForm, encodeSimple, normalizeBlob } from "../lib/encodings.js";
 import {
   bytesToBlob,
   getContentTypeFromFileName,
@@ -96,8 +96,9 @@ async function $do(
   if (payload.Body_outbound_batch_upload != null) {
     if (payload.Body_outbound_batch_upload.file !== undefined) {
       if (isBlobLike(payload.Body_outbound_batch_upload.file)) {
-        const blob = payload.Body_outbound_batch_upload.file;
-        const name = "name" in blob ? (blob.name as string) : undefined;
+        const file = payload.Body_outbound_batch_upload.file;
+        const blob = await normalizeBlob(file);
+        const name = "name" in file ? (file.name as string) : undefined;
         appendForm(body, "file", blob, name);
       } else if (
         isReadableStream(payload.Body_outbound_batch_upload.file.content)
