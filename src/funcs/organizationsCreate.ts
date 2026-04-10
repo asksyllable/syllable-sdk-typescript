@@ -3,7 +3,7 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { appendForm } from "../lib/encodings.js";
+import { appendForm, normalizeBlob } from "../lib/encodings.js";
 import {
   bytesToBlob,
   getContentTypeFromFileName,
@@ -97,8 +97,9 @@ async function $do(
 
   appendForm(body, "display_name", payload.display_name);
   if (isBlobLike(payload.logo)) {
-    const blob = payload.logo;
-    const name = "name" in blob ? (blob.name as string) : undefined;
+    const file = payload.logo;
+    const blob = await normalizeBlob(file);
+    const name = "name" in file ? (file.name as string) : undefined;
     appendForm(body, "logo", blob, name);
   } else if (isReadableStream(payload.logo.content)) {
     const buffer = await readableStreamToArrayBuffer(payload.logo.content);

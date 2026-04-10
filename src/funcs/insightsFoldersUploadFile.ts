@@ -3,7 +3,12 @@
  */
 
 import { SyllableSDKCore } from "../core.js";
-import { appendForm, encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import {
+  appendForm,
+  encodeFormQuery,
+  encodeSimple,
+  normalizeBlob,
+} from "../lib/encodings.js";
 import {
   bytesToBlob,
   getContentTypeFromFileName,
@@ -96,8 +101,9 @@ async function $do(
   if (payload.Body_insights_folder_upload_file != null) {
     if (payload.Body_insights_folder_upload_file.file !== undefined) {
       if (isBlobLike(payload.Body_insights_folder_upload_file.file)) {
-        const blob = payload.Body_insights_folder_upload_file.file;
-        const name = "name" in blob ? (blob.name as string) : undefined;
+        const file = payload.Body_insights_folder_upload_file.file;
+        const blob = await normalizeBlob(file);
+        const name = "name" in file ? (file.name as string) : undefined;
         appendForm(body, "file", blob, name);
       } else if (
         isReadableStream(payload.Body_insights_folder_upload_file.file.content)
