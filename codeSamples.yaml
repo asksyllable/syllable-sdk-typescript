@@ -3570,6 +3570,7 @@ actions:
                     url: "https://api.example.com",
                     method: "post",
                     argumentLocation: "path",
+                    timeout: 45,
                   },
                   context: {
                     task: [],
@@ -3622,6 +3623,7 @@ actions:
                     url: "https://api.example.com",
                     method: "get",
                     argumentLocation: "form",
+                    timeout: 45,
                   },
                   context: {
                     task: {

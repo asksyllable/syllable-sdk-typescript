@@ -22,6 +22,7 @@ let value: ToolCreateRequest = {
       url: "https://api.example.com",
       method: "delete",
       argumentLocation: "form",
+      timeout: 45,
     },
     context: {
       task: {

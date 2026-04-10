@@ -88,6 +88,7 @@ let value: ChannelTargetResponse = {
             url: "https://api.example.com",
             method: "delete",
             argumentLocation: "form",
+            timeout: 45,
           },
           context: {
             task: {
@@ -190,6 +191,7 @@ let value: ChannelTargetResponse = {
             url: "https://api.example.com",
             method: "delete",
             argumentLocation: "form",
+            timeout: 45,
           },
           context: {
             task: {
