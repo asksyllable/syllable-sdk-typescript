@@ -134,6 +134,7 @@ async function run() {
         url: "https://api.example.com",
         method: "post",
         argumentLocation: "path",
+        timeout: 45,
       },
       context: {
         task: [],
@@ -190,6 +191,7 @@ async function run() {
         url: "https://api.example.com",
         method: "post",
         argumentLocation: "path",
+        timeout: 45,
       },
       context: {
         task: [],
@@ -270,6 +272,7 @@ async function run() {
         url: "https://api.example.com",
         method: "get",
         argumentLocation: "form",
+        timeout: 45,
       },
       context: {
         task: {
@@ -332,6 +335,7 @@ async function run() {
         url: "https://api.example.com",
         method: "get",
         argumentLocation: "form",
+        timeout: 45,
       },
       context: {
         task: {

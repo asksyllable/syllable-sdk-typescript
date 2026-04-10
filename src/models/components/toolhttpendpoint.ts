@@ -40,6 +40,10 @@ export type ToolHttpEndpoint = {
    * 'query' is used for query parameters in the URL.
    */
   argumentLocation: ToolArgumentLocation;
+  /**
+   * Timeout in seconds for the HTTP request. Default 20 seconds when not set.
+   */
+  timeout?: number | null | undefined;
 };
 
 /** @internal */
@@ -51,6 +55,7 @@ export const ToolHttpEndpoint$inboundSchema: z.ZodType<
   url: z.string(),
   method: ToolHttpMethod$inboundSchema,
   argument_location: ToolArgumentLocation$inboundSchema,
+  timeout: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "argument_location": "argumentLocation",
@@ -61,6 +66,7 @@ export type ToolHttpEndpoint$Outbound = {
   url: string;
   method: string;
   argument_location: string;
+  timeout?: number | null | undefined;
 };
 
 /** @internal */
@@ -72,6 +78,7 @@ export const ToolHttpEndpoint$outboundSchema: z.ZodType<
   url: z.string(),
   method: ToolHttpMethod$outboundSchema,
   argumentLocation: ToolArgumentLocation$outboundSchema,
+  timeout: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     argumentLocation: "argument_location",

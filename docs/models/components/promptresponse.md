@@ -44,6 +44,7 @@ let value: PromptResponse = {
         url: "https://api.example.com",
         method: "delete",
         argumentLocation: "form",
+        timeout: 45,
       },
       context: {
         task: {
@@ -109,6 +110,7 @@ let value: PromptResponse = {
           url: "https://api.example.com",
           method: "delete",
           argumentLocation: "form",
+          timeout: 45,
         },
         context: {
           task: {
