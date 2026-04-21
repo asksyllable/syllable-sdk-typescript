@@ -5,15 +5,15 @@ management:
   docVersion: 0.0.3
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 1.0.36-rc.3
-  configChecksum: a72c61a3fa4a1424f7f757f39b2d12a8
+  releaseVersion: 1.0.36
+  configChecksum: 6519374c7e1f601385d53a92665b678f
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 1862fece-06df-4bd9-95e7-328f3c156ee9
-  pristine_commit_hash: 7b959cb9d75cea9f6f6147ad06c792836a81f625
-  pristine_tree_hash: 919b2f42ea105728f6b434e249cb1c15dfc32018
+  generation_id: a14b93f6-2936-4b33-91b0-b9a29afc3ae6
+  pristine_commit_hash: 7a31f8b9414891e6dbdcdb25b17a04513997e8e1
+  pristine_tree_hash: d3f9a951bcd75a45231bebe5cdd9a841ffc22e32
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2024,12 +2024,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:63dd24ae9cb8c912120ed507e05018cd80211a16
-    pristine_git_object: 9a8bc271da89bfc8a545b36e849b173fdca127be
+    last_write_checksum: sha1:dc088b6fec26179bda73137cb42d6a84709bce14
+    pristine_git_object: 729279cd936dfa7c709652ff2c76bf00e116468e
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:b1ac2817c9d022486c6994bb8513e3ab5b1acb00
-    pristine_git_object: c956c2bae680035cdd13c73d1597c176aa143b4d
+    last_write_checksum: sha1:1225bb75ce7ae9c26fc5d0bf35c5b0e3cc251086
+    pristine_git_object: c3afb2d79b559ef2991e746fdc0504b75264bcdd
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2708,8 +2708,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:9ade3f9fddf60704149179e250da4f39a332f555
-    pristine_git_object: b82410ad3f95372152c0531c39ab8e30c86d0a70
+    last_write_checksum: sha1:5087812d4a4e0b0f4a563b48dbe4c7d0cdd6015e
+    pristine_git_object: 8ea59cc06ab4349bfc93235bd6fb520196dd4c86
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2792,8 +2792,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:904e14082bb20faf98e61711a611d1cd4e5ae272
-    pristine_git_object: 93cb4265c12d11ecec6134f58d650f15d66da863
+    last_write_checksum: sha1:29cd012766360d99052a54e452436e954116ec54
+    pristine_git_object: 940288c80a7e66b35f87c5a4dded2f76f2cf7fb5
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2808,8 +2808,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:33e9c96eaf786c1ab738f50ca6f987dda2440369
-    pristine_git_object: c649e11dd3285bedc01813c9262e34b3e549e701
+    last_write_checksum: sha1:3e9ca0cc98a0a00bcf9543de125e7dd3ed2056a1
+    pristine_git_object: 280c0dbec58da46cf119e9af0a0156cf24a4e918
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -6934,7 +6934,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.agents.list()`:  `response.items[].prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.agents.create()`:  `response.prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.agents.update()`:  `response.prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.agents.getById()`:  `response.prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.list()`:  `response.items[].agent.prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.prompts.list()`:  `response.items[].sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.prompts.create()`:  `response.sessionEndTool.definition.context.task.union(1).union(steps).steps[].on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.prompts.update()`:  `response.sessionEndTool.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.prompts.getById()`:  `response.sessionEndTool.definition.context.task.union(1).union(event).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.tools.list()`:  `response.items[].definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.tools.create()`: \n  *  `request.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n  *  `response.definition.context.task.union(Array<2>)[].union(steps).steps[].on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.tools.update()`: \n  *  `request.definition.context.task.union(1).union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n  *  `response.definition.context.task.union(Array<2>)[].union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n* `syllablesdk.tools.getByName()`:  `response.definition.context.task.union(Array<2>)[].union(expression).on.start[].union(call).autoPopulate` **Removed** (Breaking ⚠️)\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
