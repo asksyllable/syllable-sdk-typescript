@@ -40,11 +40,6 @@ export type CallActionIf =
   | (JMESPathExpression & { type: "jp" })
   | string;
 
-/**
- * Auto-population strategy: True (hybrid - synthetic or LLM), False (always LLM), "required" (synthetic only if all required args available, else LLM)
- */
-export type Autopopulate = boolean | string;
-
 export type CallAction = {
   /**
    * Condition to decide whether this item executes. Supported expression forms: (1) JMESPath string (default for plain strings), (2) typed JMESPath object {"type":"jp"|"jmespath","expression":"..."}, or (3) typed CEL object {"type":"cel","expression":"..."}. Example JMESPath string: "inputs.can_sign_consent == `true`".
@@ -66,10 +61,6 @@ export type CallAction = {
    * Optional arguments to pass to the tool (supports template strings)
    */
   arguments?: { [k: string]: any } | null | undefined;
-  /**
-   * Auto-population strategy: True (hybrid - synthetic or LLM), False (always LLM), "required" (synthetic only if all required args available, else LLM)
-   */
-  autoPopulate?: boolean | string | undefined;
 };
 
 /** @internal */
@@ -171,35 +162,6 @@ export function callActionIfFromJSON(
 }
 
 /** @internal */
-export const Autopopulate$inboundSchema: z.ZodType<
-  Autopopulate,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), z.string()]);
-/** @internal */
-export type Autopopulate$Outbound = boolean | string;
-
-/** @internal */
-export const Autopopulate$outboundSchema: z.ZodType<
-  Autopopulate$Outbound,
-  z.ZodTypeDef,
-  Autopopulate
-> = z.union([z.boolean(), z.string()]);
-
-export function autopopulateToJSON(autopopulate: Autopopulate): string {
-  return JSON.stringify(Autopopulate$outboundSchema.parse(autopopulate));
-}
-export function autopopulateFromJSON(
-  jsonString: string,
-): SafeParseResult<Autopopulate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Autopopulate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Autopopulate' from JSON`,
-  );
-}
-
-/** @internal */
 export const CallAction$inboundSchema: z.ZodType<
   CallAction,
   z.ZodTypeDef,
@@ -223,7 +185,6 @@ export const CallAction$inboundSchema: z.ZodType<
   action: z.literal("call"),
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
-  autoPopulate: z.union([z.boolean(), z.string()]).optional(),
 });
 /** @internal */
 export type CallAction$Outbound = {
@@ -238,7 +199,6 @@ export type CallAction$Outbound = {
   action: "call";
   name: string;
   arguments?: { [k: string]: any } | null | undefined;
-  autoPopulate?: boolean | string | undefined;
 };
 
 /** @internal */
@@ -265,7 +225,6 @@ export const CallAction$outboundSchema: z.ZodType<
   action: z.literal("call"),
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
-  autoPopulate: z.union([z.boolean(), z.string()]).optional(),
 });
 
 export function callActionToJSON(callAction: CallAction): string {
