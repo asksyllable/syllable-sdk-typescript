@@ -54,6 +54,10 @@ export type CustomMessageResponse = {
    */
   label?: string | null | undefined;
   /**
+   * If true, if the caller changes language using the language menu in the custom message, the message will be repeated in the new language (not including the language menu).
+   */
+  repeatAfterLanguageChange: boolean;
+  /**
    * Rules for time-specific message variants
    */
   rules?: Array<CustomMessageRule> | undefined;
@@ -87,6 +91,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   text: z.string(),
   subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  repeat_after_language_change: z.boolean(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -94,6 +99,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   last_updated_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    "repeat_after_language_change": "repeatAfterLanguageChange",
     "updated_at": "updatedAt",
     "agent_count": "agentCount",
     "last_updated_by": "lastUpdatedBy",
@@ -107,6 +113,7 @@ export type CustomMessageResponse$Outbound = {
   text: string;
   subject?: string | null | undefined;
   label?: string | null | undefined;
+  repeat_after_language_change: boolean;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
   id: number;
   updated_at: string;
@@ -126,6 +133,7 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   text: z.string(),
   subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  repeatAfterLanguageChange: z.boolean(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
@@ -133,6 +141,7 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    repeatAfterLanguageChange: "repeat_after_language_change",
     updatedAt: "updated_at",
     agentCount: "agent_count",
     lastUpdatedBy: "last_updated_by",
