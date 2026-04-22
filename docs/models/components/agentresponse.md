@@ -137,6 +137,7 @@ let value: AgentResponse = {
       "Hello and thank you for calling customer service. How can I help you today?",
     subject: "Your appointment reminder",
     label: "Customer service",
+    repeatAfterLanguageChange: true,
     rules: [
       {
         description: "Closed on New Year's Day",
@@ -164,7 +165,71 @@ let value: AgentResponse = {
     lastUpdatedBy: "user@email.com",
   },
   channelTargets: null,
-  tools: null,
+  tools: [
+    {
+      name: "Weather Fetcher",
+      definition: {
+        type: "endpoint",
+        tool: {
+          function: {
+            name: "get_weather",
+            description: "Get the weather for a city",
+            parameters: {},
+          },
+        },
+        endpoint: {
+          url: "https://api.example.com",
+          method: "delete",
+          argumentLocation: "form",
+          timeout: 45,
+        },
+        context: {
+          task: {
+            type: "steps",
+          },
+        },
+        defaults: {
+          "key": {
+            "transform": {
+              "action": "default",
+              "when": {
+                "key": "key",
+                "value": "value",
+                "operator": "eq",
+              },
+            },
+          },
+        },
+        staticParameters: [
+          {
+            name: "temperature_unit",
+            description:
+              "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+            required: false,
+            type: "string",
+            default: "fahrenheit",
+          },
+        ],
+      },
+      serviceId: 1,
+      id: 1,
+      lastUpdatedComments: "Updated to use new API endpoint",
+      promptsInfo: [
+        {
+          id: 1,
+          name: "Test Prompt",
+        },
+      ],
+      agentsInfo: [
+        {
+          id: 1,
+          name: "Test Agent",
+        },
+      ],
+      lastUpdated: new Date("2026-04-26T21:36:54.796Z"),
+      lastUpdatedBy: "user@email.com",
+    },
+  ],
   languageGroup: {
     name: "Call Center 1 Languages",
     description: "Languages spoken by operators at Call Center 1",

@@ -147,6 +147,7 @@ let value: ChannelTargetResponse = {
         "Hello and thank you for calling customer service. How can I help you today?",
       subject: "Your appointment reminder",
       label: "Customer service",
+      repeatAfterLanguageChange: true,
       rules: [
         {
           description: "Closed on New Year's Day",
@@ -236,7 +237,7 @@ let value: ChannelTargetResponse = {
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2026-05-25T14:07:16.046Z"),
+        lastUpdated: new Date("2026-04-26T21:36:54.796Z"),
         lastUpdatedBy: "user@email.com",
       },
     ],

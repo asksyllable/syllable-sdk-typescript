@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -47,6 +48,10 @@ export type CustomMessageCreateRequest = {
    */
   label?: string | null | undefined;
   /**
+   * If true, if the caller changes language using the language menu in the custom message, the message will be repeated in the new language (not including the language menu). If omitted or null on create, false is stored. If omitted or null on update, existing value will not be changed.
+   */
+  repeatAfterLanguageChange?: boolean | null | undefined;
+  /**
    * Rules for time-specific message variants
    */
   rules?: Array<CustomMessageRule> | undefined;
@@ -64,7 +69,12 @@ export const CustomMessageCreateRequest$inboundSchema: z.ZodType<
   text: z.string(),
   subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  repeat_after_language_change: z.nullable(z.boolean()).optional(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "repeat_after_language_change": "repeatAfterLanguageChange",
+  });
 });
 /** @internal */
 export type CustomMessageCreateRequest$Outbound = {
@@ -74,6 +84,7 @@ export type CustomMessageCreateRequest$Outbound = {
   text: string;
   subject?: string | null | undefined;
   label?: string | null | undefined;
+  repeat_after_language_change?: boolean | null | undefined;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
 };
 
@@ -89,7 +100,12 @@ export const CustomMessageCreateRequest$outboundSchema: z.ZodType<
   text: z.string(),
   subject: z.nullable(z.string()).optional(),
   label: z.nullable(z.string()).optional(),
+  repeatAfterLanguageChange: z.nullable(z.boolean()).optional(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    repeatAfterLanguageChange: "repeat_after_language_change",
+  });
 });
 
 export function customMessageCreateRequestToJSON(

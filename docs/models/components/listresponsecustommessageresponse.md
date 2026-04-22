@@ -14,6 +14,7 @@ let value: ListResponseCustomMessageResponse = {
         "Hello and thank you for calling customer service. How can I help you today?",
       subject: "Your appointment reminder",
       label: "Customer service",
+      repeatAfterLanguageChange: false,
       rules: [
         {
           description: "Closed on New Year's Day",
