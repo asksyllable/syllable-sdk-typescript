@@ -31,6 +31,7 @@ import { tool$channelsTargetsUpdate } from "./tools/channelsTargetsUpdate.js";
 import { tool$channelsTwilioCreate } from "./tools/channelsTwilioCreate.js";
 import { tool$channelsTwilioGetById } from "./tools/channelsTwilioGetById.js";
 import { tool$channelsTwilioNumbersAdd } from "./tools/channelsTwilioNumbersAdd.js";
+import { tool$channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck } from "./tools/channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck.js";
 import { tool$channelsTwilioNumbersList } from "./tools/channelsTwilioNumbersList.js";
 import { tool$channelsTwilioNumbersUpdate } from "./tools/channelsTwilioNumbersUpdate.js";
 import { tool$channelsTwilioUpdate } from "./tools/channelsTwilioUpdate.js";
@@ -187,7 +188,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.38-rc.1",
+    version: "1.0.38-rc.2",
   });
 
   const client = new SyllableSDKCore({
@@ -377,6 +378,7 @@ export function createMCPServer(deps: {
   tool(tool$outboundCampaignsGetById);
   tool(tool$outboundCampaignsUpdate);
   tool(tool$outboundCampaignsDelete);
+  tool(tool$channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck);
   tool(tool$channelsTwilioNumbersAdd);
   tool(tool$channelsTwilioNumbersUpdate);
   tool(tool$channelsTwilioNumbersList);

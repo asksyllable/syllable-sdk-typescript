@@ -484,6 +484,30 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/channels/twilio/{channel_id}/numbers/verify-a2p-compliance"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.channels.twilio.numbers.channelsTwilioNumbersA2pComplianceCheck({
+                channelId: 661482,
+                a2pMessagingPathCheckRequest: {
+                  phone: "+18042221111",
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/channels/{channel_id}"]["delete"]
     update:
       x-codeSamples:

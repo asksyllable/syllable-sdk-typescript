@@ -269,6 +269,7 @@ run();
 
 ##### [Channels.Twilio.Numbers](docs/sdks/numbers/README.md)
 
+* [channelsTwilioNumbersA2pComplianceCheck](docs/sdks/numbers/README.md#channelstwilionumbersa2pcompliancecheck) - Verify Twilio Us A2P Compliance
 * [add](docs/sdks/numbers/README.md#add) - Add Twilio Number
 * [update](docs/sdks/numbers/README.md#update) - Update Twilio Number
 * [list](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
@@ -552,6 +553,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`channelsTargetsUpdate`](docs/sdks/targets/README.md#update) - Edit Channel Target
 - [`channelsTwilioGetById`](docs/sdks/twilio/README.md#getbyid) - Get Twilio Channel By Id
 - [`channelsTwilioNumbersAdd`](docs/sdks/numbers/README.md#add) - Add Twilio Number
+- [`channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck`](docs/sdks/numbers/README.md#channelstwilionumbersa2pcompliancecheck) - Verify Twilio Us A2P Compliance
 - [`channelsTwilioNumbersList`](docs/sdks/numbers/README.md#list) - List Twilio Phone Numbers
 - [`channelsTwilioNumbersUpdate`](docs/sdks/numbers/README.md#update) - Update Twilio Number
 - [`channelsUpdate`](docs/sdks/channels/README.md#update) - Update Channel
