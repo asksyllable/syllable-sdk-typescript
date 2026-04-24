@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: f51284670a2c47bf971b95ec724d10f0
+  docChecksum: 372485cd9dfd204e7cb8cf1d0633346a
   docVersion: 0.0.3
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 1.0.38-rc.1
-  configChecksum: 10272091ca1add71de63dc6d9b7cf877
+  releaseVersion: 1.0.38-rc.2
+  configChecksum: 0798b02aa791289c794016286c1bd9fa
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 40a714bb-35e1-4762-8df1-cf3842eae9a6
-  pristine_commit_hash: ee579337f400bfef73198391d008b1b1a38b4988
-  pristine_tree_hash: 8962003051aad8fcda1376a2ff59992854c478b3
+  generation_id: 84648585-9f9f-42c4-a377-d4091383f6e1
+  pristine_commit_hash: aa0a0e6e85c196b656675887a834c175edd892ec
+  pristine_tree_hash: 8616fd20bf21386009e988d07a177fd17fc6dd42
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -74,6 +74,14 @@ trackedFiles:
     id: 0ce9707cb848
     last_write_checksum: sha1:bc4454e196fcd219f5a78da690375a884f5ed07b
     pristine_git_object: 08f95f4552349360b2c0b01802aa71ec3a55d2c2
+  docs/models/components/a2pmessagingpathcheckrequest.md:
+    id: f08c39022d6a
+    last_write_checksum: sha1:ca3bd59a3fec74f0f84c83a6b881c978ceb9fda6
+    pristine_git_object: e7b4e61041e4c24ff699f12117db1ea9550b48ea
+  docs/models/components/a2pmessagingpathcheckresponse.md:
+    id: 7374b8ffc9ef
+    last_write_checksum: sha1:879cab7fdcc3281f1a6acf1d7feee4cb559306e6
+    pristine_git_object: 75ce06ab9ae55e6bd651a14793a7a1780055a907
   docs/models/components/action.md:
     id: 4c3e678208a3
     last_write_checksum: sha1:f732a3d46a08adfb20fbde3166372b578744e14b
@@ -1458,6 +1466,10 @@ trackedFiles:
     id: 9efb3a414f4a
     last_write_checksum: sha1:320d82568d2ead75e50a54c20e54deb2bc471687
     pristine_git_object: 2ca28d07afeafc513a6282cbcf999b5fc7b649df
+  docs/models/operations/channelstwilionumbersa2pcompliancecheckrequest.md:
+    id: 10405617b9c5
+    last_write_checksum: sha1:882bee4701c7b3e710a0f223f687cc91c369e6be
+    pristine_git_object: ece3c88bc96a3d4c733a55739023eb38a578256f
   docs/models/operations/channelstwilionumbersaddrequest.md:
     id: 9ede8762fd09
     last_write_checksum: sha1:5e9c6e2493299e1d48c8c37d1c41c987231bc25b
@@ -1920,8 +1932,8 @@ trackedFiles:
     pristine_git_object: 35deadd4f19776f4315bc66fe89178d2d9d6ed19
   docs/sdks/numbers/README.md:
     id: 4f31e2dbe389
-    last_write_checksum: sha1:3cb85452a29868bd75de2a0bb0d2d5d8f1ea6925
-    pristine_git_object: 4080ba49bd420cbf87b1fc25f434570d40f21612
+    last_write_checksum: sha1:09d759a6eac3dafc4d99b37b536907c49e88d67e
+    pristine_git_object: ad01aa271ae152f93e7e3d8ee8a2199939543f6e
   docs/sdks/organizations/README.md:
     id: 3425667a2db5
     last_write_checksum: sha1:eca8b8d3adf5ac6c9e4f3d82fc52aa7a6476e4d7
@@ -2024,12 +2036,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:66c0eebc5b32b4777ebf9b415382a141760492b9
-    pristine_git_object: 988dafe3dd1a17d56941a729a08862e5baf2d528
+    last_write_checksum: sha1:ed03c13089ea30fe9873cd52eae2b788db39261d
+    pristine_git_object: cf94de1780725b8015fd124897665ddf6a3f2ad2
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:12aa29108eefc317a3186dda6706bfa15f576d31
-    pristine_git_object: fc61df1a9010ddc91f65f1b4df8416ba3b6513f8
+    last_write_checksum: sha1:2ce694ce11c4c885ab274334a4582013f9725967
+    pristine_git_object: 9ad4e28854d27576bda7dccb79456187b6235f32
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2106,6 +2118,10 @@ trackedFiles:
     id: 71aaab4f5719
     last_write_checksum: sha1:f7ff9e9685f90d9cc4d173ef14802284ebf0afd0
     pristine_git_object: ae5c97a876e66fc3ae9e9c0de75ea54d20abe24e
+  src/funcs/channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck.ts:
+    id: 2572fdc41754
+    last_write_checksum: sha1:a1e8337551b1a4efaad1ef8472c7909b1ede7b8e
+    pristine_git_object: c5d8b57331d6b700026334a98b6adcbbd9f7ce98
   src/funcs/channelsTwilioNumbersList.ts:
     id: b1595aebdf49
     last_write_checksum: sha1:bc4c45e315f85fa43cae6ee5084fd50e583e8ee7
@@ -2708,8 +2724,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:3e658f83d20fc4c1c7e3a10b69c248631f5ed838
-    pristine_git_object: b3f1f0da0570bf66f8fb8c90db564ae049a1343e
+    last_write_checksum: sha1:71cc8bf4cc112110ce1b536533e618d094079142
+    pristine_git_object: c03cea36666d1598d0482b4324e59a8afbdf5ba2
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2792,8 +2808,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:d28e8d60a71688c1974f04370bb866ddb263f51d
-    pristine_git_object: d9df0e4262bacb370e42cde19668479d45c853eb
+    last_write_checksum: sha1:f194c8ddea96036ede83a0e230f8c7d6a9b29d39
+    pristine_git_object: e7d0f016a5e9048bf4ccb3aaf9f3b5e8ed61c3c3
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2808,8 +2824,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:598dfce64595f38ae222bce26861d99aa29ca68f
-    pristine_git_object: 75250aaacb06e67d6220754ee831365690be5a50
+    last_write_checksum: sha1:29d95710956c5be12ad874e75cc7af52da1be1f7
+    pristine_git_object: 8e4c5e6c1f48c4353de1ae00fc5829026000524c
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -2890,6 +2906,10 @@ trackedFiles:
     id: ff6c96a60e8c
     last_write_checksum: sha1:7b44daf3cfdcf3d033192ba2cc0e992f087c234d
     pristine_git_object: 4f2aaf90513b07ce4c2be675c25b5400b7fd64a7
+  src/mcp-server/tools/channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck.ts:
+    id: 710e211d9b16
+    last_write_checksum: sha1:f427e5c3dad34c9be7bdc537b35148f87f4d2ebe
+    pristine_git_object: 9fe077372b63503910ca8c8f3e85725fba1dd44a
   src/mcp-server/tools/channelsTwilioNumbersList.ts:
     id: e3245e7410f7
     last_write_checksum: sha1:8eee90cd158b5e5cf211e755510d85ef8c5ca567
@@ -3470,6 +3490,14 @@ trackedFiles:
     id: 56723f94202e
     last_write_checksum: sha1:be993cdf6d9152cd32cccba4d786a5475e27facb
     pristine_git_object: f5a5f3766c706d4d0f0441702fdb0393b5a1cdea
+  src/models/components/a2pmessagingpathcheckrequest.ts:
+    id: 0f1dc2e454ab
+    last_write_checksum: sha1:2324067eb8062011f0cf3162abc3596930f6762a
+    pristine_git_object: a553ad7987d4cda1e846ad732f4c4a6e6f7dea3a
+  src/models/components/a2pmessagingpathcheckresponse.ts:
+    id: e8fd69eda9f6
+    last_write_checksum: sha1:f93006d8dabf6713c590e5eb224ad4fcfe95ec04
+    pristine_git_object: b5cf5e6836d999b0d6e4673be3b175472671c1a3
   src/models/components/agentcreate.ts:
     id: d05262f8130a
     last_write_checksum: sha1:2d98ffcff310ed56dcb31b6b3df87edef9a87184
@@ -3880,8 +3908,8 @@ trackedFiles:
     pristine_git_object: 9f63697edf7ec323285ba25d328a4e4a38cc609e
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:38d35b387aa72c0b05fd9e283a19f24d4e9a50b1
-    pristine_git_object: 6d0b05507b18906fefafe8d5e4afae95b5d20bdc
+    last_write_checksum: sha1:41af73e28960527912b6116163f3693b865966e5
+    pristine_git_object: cb2ffedea9ca3d3a95cdad44ee1b61d860857f04
   src/models/components/inputparameter.ts:
     id: 3e896f254d26
     last_write_checksum: sha1:6b78ad6ccb0d52e1257e19231f420b0a76658f19
@@ -4626,6 +4654,10 @@ trackedFiles:
     id: a17ab1773eaa
     last_write_checksum: sha1:8ab496842b13898b5aa18f4f146ed4fb35a8b64a
     pristine_git_object: 9db70a27401ab80e1cfe51844079c6e128560552
+  src/models/operations/channelstwilionumbersa2pcompliancecheck.ts:
+    id: 7e823a0e9ca1
+    last_write_checksum: sha1:e61cbbc23dd1720d271764bdd7e24349e50dd138
+    pristine_git_object: 4e723135ca5eec1757a3302bdc9a8a4a2e7442c5
   src/models/operations/channelstwilionumbersadd.ts:
     id: a9c26654f1a9
     last_write_checksum: sha1:d75205c261e8dc8f7aeef49257df11e7a69c207c
@@ -4760,8 +4792,8 @@ trackedFiles:
     pristine_git_object: 93a681b2bba2549e949bf9009d580723faa6467f
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:92f7724dd85a433f17de7d7670f93f371bb221e3
-    pristine_git_object: 1090a5f7efed45b181039ad72184225d5437b799
+    last_write_checksum: sha1:5c2b94de8a9a272a1db5f7640455892af85b86d2
+    pristine_git_object: b14c1bbaade7d81e2fabcd40a69c3c2f7792c7ca
   src/models/operations/insightsfolderdelete.ts:
     id: 3919a95ffe82
     last_write_checksum: sha1:be0efc8a494828b094ac655bcba4fb2dc0cfbdac
@@ -5096,8 +5128,8 @@ trackedFiles:
     pristine_git_object: 901a02dd3bfca7dfc0fa1a5b774ff78eb260e584
   src/sdk/numbers.ts:
     id: 3f3e8a131d49
-    last_write_checksum: sha1:d9f04873079a4bd27df3e148d9304ba20c7dd670
-    pristine_git_object: db0cc40cf273bc42ea654f252a6babb7e74bb097
+    last_write_checksum: sha1:b50a6a5aaed1493659ffbad3533a7b97189d1117
+    pristine_git_object: 5a7337e2b1abe5025da75c322b5eab8a082a5b6c
   src/sdk/organizations.ts:
     id: 727404ccd4e9
     last_write_checksum: sha1:fd4da0a13dbec485fa3478e08ce4de9e589769b6
@@ -6932,8 +6964,23 @@ examples:
           application/json: {"name": "Jane Doe", "type": "Operator", "extensions": [{"name": "work", "numbers": [{"number": "+1234567890", "rules": [{"language": "en"}]}]}], "contact_tags": {"tag1": ["value1"], "tag2": ["value2"]}, "comments": "Updated phone number", "id": 1, "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "created_by": "user@email.com"}
         "422":
           application/json: {}
+  channels_twilio_numbers_a2p_compliance_check:
+    speakeasy-default-channels-twilio-numbers-a2p-compliance-check:
+      parameters:
+        path:
+          channel_id: 661482
+      requestBody:
+        application/json: {"phone": "+18042221111"}
+      responses:
+        "200":
+          application/json: {"a2p_approved": false}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `syllablesdk.channels.twilio.numbers.channelsTwilioNumbersA2pComplianceCheck()`: **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

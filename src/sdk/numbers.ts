@@ -3,6 +3,7 @@
  */
 
 import { channelsTwilioNumbersAdd } from "../funcs/channelsTwilioNumbersAdd.js";
+import { channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck } from "../funcs/channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck.js";
 import { channelsTwilioNumbersList } from "../funcs/channelsTwilioNumbersList.js";
 import { channelsTwilioNumbersUpdate } from "../funcs/channelsTwilioNumbersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -11,6 +12,25 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Numbers extends ClientSDK {
+  /**
+   * Verify Twilio Us A2P Compliance
+   *
+   * @remarks
+   * Return whether Twilio shows this number on a US A2P messaging path with an approved brand.
+   */
+  async channelsTwilioNumbersA2pComplianceCheck(
+    request: operations.ChannelsTwilioNumbersA2pComplianceCheckRequest,
+    options?: RequestOptions,
+  ): Promise<components.A2pMessagingPathCheckResponse> {
+    return unwrapAsync(
+      channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
   /**
    * Add Twilio Number
    *
