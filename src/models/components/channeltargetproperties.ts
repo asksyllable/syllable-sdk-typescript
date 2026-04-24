@@ -21,6 +21,7 @@ export const ChannelTargetProperties = {
   FallbackTarget: "fallback_target",
   IsTest: "is_test",
   UpdatedAt: "updated_at",
+  A2pVerified: "a2p_verified",
 } as const;
 /**
  * Names of channel target fields supported for filtering/sorting on full channel targets list
