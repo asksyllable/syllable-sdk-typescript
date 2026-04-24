@@ -72,6 +72,10 @@ export type ChannelTargetResponse = {
    * Definition of the agent with which the channel target is associated.
    */
   agent?: AgentResponse | null | undefined;
+  /**
+   * Twilio US A2P messaging-path configuration snapshot from the last explicit verify; null if never checked.
+   */
+  a2pVerified?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -91,6 +95,7 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.string(),
   agent: z.nullable(z.lazy(() => AgentResponse$inboundSchema)).optional(),
+  a2p_verified: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "agent_id": "agentId",
@@ -101,6 +106,7 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
     "channel_name": "channelName",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
+    "a2p_verified": "a2pVerified",
   });
 });
 /** @internal */
@@ -116,6 +122,7 @@ export type ChannelTargetResponse$Outbound = {
   updated_at: string;
   last_updated_by: string;
   agent?: AgentResponse$Outbound | null | undefined;
+  a2p_verified?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -135,6 +142,7 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
   agent: z.nullable(z.lazy(() => AgentResponse$outboundSchema)).optional(),
+  a2pVerified: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     agentId: "agent_id",
@@ -145,6 +153,7 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
     channelName: "channel_name",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
+    a2pVerified: "a2p_verified",
   });
 });
 
