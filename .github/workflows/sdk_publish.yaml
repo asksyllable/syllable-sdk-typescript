@@ -19,7 +19,7 @@ jobs:
       is_rc: ${{ steps.check.outputs.is_rc }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       
       - name: Check if version is RC
         id: check

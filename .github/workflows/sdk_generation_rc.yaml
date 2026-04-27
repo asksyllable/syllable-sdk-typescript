@@ -30,7 +30,7 @@ jobs:
       rc_version: ${{ steps.compute.outputs.version }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       
       - name: Compute RC version
         id: compute
