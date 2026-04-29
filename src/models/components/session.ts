@@ -93,6 +93,10 @@ export type Session = {
    */
   isTest?: boolean | null | undefined;
   /**
+   * Whether the session direction is outbound (true) or inbound (false).
+   */
+  isOutbound?: boolean | null | undefined;
+  /**
    * Whether the voice session was ended by the recipient (outbound) / caller (inbound). False if the user was transferred or there was an error. Unset if the session was not a voice session.
    */
   userTerminated?: boolean | null | undefined;
@@ -127,6 +131,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     target: z.nullable(z.string()).optional(),
     is_legacy: z.nullable(z.boolean()).optional(),
     is_test: z.nullable(z.boolean()).optional(),
+    is_outbound: z.nullable(z.boolean()).optional(),
     user_terminated: z.nullable(z.boolean()).optional(),
     transfer_voicemail_detected: z.nullable(z.boolean()).optional(),
   }).transform((v) => {
@@ -147,6 +152,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "session_label_id": "sessionLabelId",
       "is_legacy": "isLegacy",
       "is_test": "isTest",
+      "is_outbound": "isOutbound",
       "user_terminated": "userTerminated",
       "transfer_voicemail_detected": "transferVoicemailDetected",
     });
@@ -173,6 +179,7 @@ export type Session$Outbound = {
   target?: string | null | undefined;
   is_legacy?: boolean | null | undefined;
   is_test?: boolean | null | undefined;
+  is_outbound?: boolean | null | undefined;
   user_terminated?: boolean | null | undefined;
   transfer_voicemail_detected?: boolean | null | undefined;
 };
@@ -203,6 +210,7 @@ export const Session$outboundSchema: z.ZodType<
   target: z.nullable(z.string()).optional(),
   isLegacy: z.nullable(z.boolean()).optional(),
   isTest: z.nullable(z.boolean()).optional(),
+  isOutbound: z.nullable(z.boolean()).optional(),
   userTerminated: z.nullable(z.boolean()).optional(),
   transferVoicemailDetected: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
@@ -223,6 +231,7 @@ export const Session$outboundSchema: z.ZodType<
     sessionLabelId: "session_label_id",
     isLegacy: "is_legacy",
     isTest: "is_test",
+    isOutbound: "is_outbound",
     userTerminated: "user_terminated",
     transferVoicemailDetected: "transfer_voicemail_detected",
   });
