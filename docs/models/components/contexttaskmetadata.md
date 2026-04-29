@@ -10,7 +10,6 @@ let value: ContextTaskMetadata = {};
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `priority`                                        | *number*                                          | :heavy_minus_sign:                                | N/A                                               |
-| `parentToolName`                                  | *string*                                          | :heavy_minus_sign:                                | Name of the ToolDefinition that defined this task |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `priority`         | *number*           | :heavy_minus_sign: | N/A                |
