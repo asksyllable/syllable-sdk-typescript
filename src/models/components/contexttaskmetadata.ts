@@ -9,10 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ContextTaskMetadata = {
   priority?: number | null | undefined;
-  /**
-   * Name of the ToolDefinition that defined this task
-   */
-  parentToolName?: string | null | undefined;
 };
 
 /** @internal */
@@ -22,12 +18,10 @@ export const ContextTaskMetadata$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   priority: z.nullable(z.number().int()).optional(),
-  parentToolName: z.nullable(z.string()).optional(),
 });
 /** @internal */
 export type ContextTaskMetadata$Outbound = {
   priority?: number | null | undefined;
-  parentToolName?: string | null | undefined;
 };
 
 /** @internal */
@@ -37,7 +31,6 @@ export const ContextTaskMetadata$outboundSchema: z.ZodType<
   ContextTaskMetadata
 > = z.object({
   priority: z.nullable(z.number().int()).optional(),
-  parentToolName: z.nullable(z.string()).optional(),
 });
 
 export function contextTaskMetadataToJSON(
