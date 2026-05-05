@@ -93,6 +93,7 @@ let value: ChannelTargetResponse = {
           context: {
             task: {
               type: "steps",
+              start: "auto",
             },
           },
           defaults: {
@@ -197,6 +198,7 @@ let value: ChannelTargetResponse = {
           context: {
             task: {
               type: "steps",
+              start: "auto",
             },
           },
           defaults: {

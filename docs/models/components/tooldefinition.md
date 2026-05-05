@@ -25,6 +25,7 @@ let value: ToolDefinition = {
   context: {
     task: {
       type: "steps",
+      start: "auto",
     },
   },
   defaults: {},

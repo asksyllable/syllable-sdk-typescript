@@ -27,6 +27,7 @@ let value: ToolUpdateRequest = {
     context: {
       task: {
         type: "steps",
+        start: "auto",
       },
     },
     defaults: {
