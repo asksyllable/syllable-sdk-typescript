@@ -31,6 +31,7 @@ let value: ToolResponse = {
     context: {
       task: {
         type: "steps",
+        start: "auto",
       },
     },
     defaults: {

@@ -10,6 +10,7 @@ Task implementation details
 ```typescript
 const value: components.Task1 = {
   type: "steps",
+  start: "auto",
 };
 ```
 

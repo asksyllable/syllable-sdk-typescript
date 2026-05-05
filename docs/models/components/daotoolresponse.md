@@ -25,6 +25,7 @@ let value: DaoToolResponse = {
     context: {
       task: {
         type: "steps",
+        start: "auto",
       },
     },
     defaults: {

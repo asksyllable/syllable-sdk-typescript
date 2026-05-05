@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 5fed2ce7191abf1d79ba4920b2672848
+  docChecksum: c861fb10938834bff3e073f797ce7c79
   docVersion: 0.0.3
   speakeasyVersion: 1.761.11
   generationVersion: 2.881.17
-  releaseVersion: 1.0.40-rc.3
-  configChecksum: fad2860b14d41ad773e63499d8f9609b
+  releaseVersion: 1.0.40-rc.4
+  configChecksum: 05200a7255f875b6b2b71b276a9431f7
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: dafd12ea-84b3-4971-ae2b-738b5943e968
-  pristine_commit_hash: e49a09de00f3e9e34a814c17ac9a2f5a8824f7ee
-  pristine_tree_hash: 435475c657525153abedd13b7ae865f39b7561ae
+  generation_id: 01d03dcc-e52c-4e33-afbb-e617ff70c0b0
+  pristine_commit_hash: 1ea1b3976bd216a2e15f10c24d26feabf970a926
+  pristine_tree_hash: bd31a335e9c16c826d2d49842ab317e41ce9f83b
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -104,8 +104,8 @@ trackedFiles:
     pristine_git_object: 573b96b57ff289679c645e4834344787a9401e40
   docs/models/components/agentresponse.md:
     id: 0d0cdb2565e6
-    last_write_checksum: sha1:71cb18c33901a342725ae9761b0f0effd6538c25
-    pristine_git_object: 517b2438b3546293225afedce146554d6d7ce15f
+    last_write_checksum: sha1:1a79aa7bfb53fe6507dfb2c1ad0a319636b1c8a5
+    pristine_git_object: a0b93106ef0a4153ef6bfcb3594828513dc1ac90
   docs/models/components/agentsttprovider.md:
     id: 0c5c5b238383
     last_write_checksum: sha1:98602a6ee7c9495f57694145e139e7636b41b193
@@ -160,8 +160,8 @@ trackedFiles:
     pristine_git_object: ac70f6fc0da182bd237b75d16caaed294252babf
   docs/models/components/batchdetails.md:
     id: c0f28c9eb168
-    last_write_checksum: sha1:0e1356d9eb0c674bf87bf3d810addbe955ca14fd
-    pristine_git_object: 732b0e93689982e24fcb3dea10d18cd11ea6e142
+    last_write_checksum: sha1:ec411662fa32080bea83e37057e46fc74a9d9b45
+    pristine_git_object: 7badc4e0302577b73abefa6126dc808f134edeb8
   docs/models/components/batchproperties.md:
     id: 10b6f2db0ec9
     last_write_checksum: sha1:65646e4a87189cc17a0a61a6c000ac5628e00d5c
@@ -284,20 +284,20 @@ trackedFiles:
     pristine_git_object: 2deb08cdcf4b951e04cdf617e5ca22338660bb6f
   docs/models/components/channeltargetresponse.md:
     id: 7f372c209f56
-    last_write_checksum: sha1:08b84c9c22f990e4f143ca58895e35062e9d0228
-    pristine_git_object: 440c0d688568bb843228addc6beb3d7d1ac92d3c
+    last_write_checksum: sha1:87840d7973a8969bde8c56bf50e63ec9d51dfec9
+    pristine_git_object: abc33a8388952e16e523ba7f27744b79dcbb838a
   docs/models/components/channeltargetupdaterequest.md:
     id: e6f96a6ee21e
     last_write_checksum: sha1:cf7c34f6e5f123e3b1c078581325419f03d82be0
     pristine_git_object: 373d00b9a2607a1a35a8e46990bb48c29c9931b7
   docs/models/components/communicationbatch.md:
     id: db3dfb5d18b6
-    last_write_checksum: sha1:077886125003a491be6f502ff6e25f02b7ad3a40
-    pristine_git_object: 29f442eb3f7e828a173268cf762415933adb85ca
+    last_write_checksum: sha1:e1b1eba156deb0e74bab978911be08842754e682
+    pristine_git_object: 4cea5747161bd37e31166225c3bcea205713ff80
   docs/models/components/communicationbatchinput.md:
     id: b0ece958b0e8
-    last_write_checksum: sha1:167a1cbea31734a4b623644b590325dd2a2d8db3
-    pristine_git_object: ecdb3dd96aa0580680daee146075d11f1fa150dd
+    last_write_checksum: sha1:961e320a875c032c19c1ba544f246ef67684bdbb
+    pristine_git_object: f5aa40bde945b62e77d90235f673ec9e5e41cd05
   docs/models/components/communicationbatchupdate.md:
     id: 8ee9b9717a56
     last_write_checksum: sha1:aef9a96d71eb1e8283b256be38180e23a6950a5e
@@ -308,8 +308,8 @@ trackedFiles:
     pristine_git_object: bcd40074b902666be73dfdd18710c00344485ead
   docs/models/components/communicationrequestresult.md:
     id: 416f1bd1469d
-    last_write_checksum: sha1:d575b46f7ddcffa9a68f27daa28098f4a56e6864
-    pristine_git_object: 04eda310e3cec7a32c9f403b213a1400908a0167
+    last_write_checksum: sha1:19411d100fabe58deaa5f318510f383a1c219098
+    pristine_git_object: 339c44fb7fcbd6fb326731e414c6f62101005087
   docs/models/components/conditionaltext.md:
     id: aa5e4b2f16cf
     last_write_checksum: sha1:ab45481b7fdfc2104377202d33540ba7590f573e
@@ -376,8 +376,8 @@ trackedFiles:
     pristine_git_object: 8a48a119a0e2d6014788b8832aa1c4587c881f16
   docs/models/components/daotoolresponse.md:
     id: 06b81fe1b6db
-    last_write_checksum: sha1:b0624dcedfadab36ff0adc3601552df53fb5ef84
-    pristine_git_object: 13e5df25f433a83356dfc7110cb05d416ff52376
+    last_write_checksum: sha1:df9543123a8992c3a6b9f2bc3db56f42fdd8f5e2
+    pristine_git_object: 86bd3033864051080dae0e807f2cbb522fc97548
   docs/models/components/dashboard.md:
     id: 24b393c26231
     last_write_checksum: sha1:0b40c285b00dd5be1ecdc61061c05c8122c637f4
@@ -532,8 +532,8 @@ trackedFiles:
     pristine_git_object: 0c8813bd30ff090d925a2f7b9d39209b629e7bc3
   docs/models/components/folderdetails.md:
     id: 182235c359da
-    last_write_checksum: sha1:7013d3f3b8e5eb47a6f3ec3f2d038e852a05e30b
-    pristine_git_object: d3ed32cc99a311f1651b007340bc0bb97d402152
+    last_write_checksum: sha1:b2e4b243e26b2e7de0d9e5f4403dc536c4287f21
+    pristine_git_object: 73c2347ea4c993456cb6dcbe95de3aa23e27da31
   docs/models/components/folderstats.md:
     id: a0d66957856e
     last_write_checksum: sha1:de5727e157eb71006e7565439f06b67e6a59eca5
@@ -612,8 +612,8 @@ trackedFiles:
     pristine_git_object: 507cba50f731f5602995535c9d4cfeb7dda5546a
   docs/models/components/insightsfolder.md:
     id: 834a22d829d6
-    last_write_checksum: sha1:c441bc7c4e0423d73e14fc103748e7403c318c35
-    pristine_git_object: 65e051747b7a5d49968ee84ea78544b90dcce38b
+    last_write_checksum: sha1:01cb0845d94046b3f39adb89bfb88cb863a61a13
+    pristine_git_object: 6266714c7ebc9f2d0128f1fb9b84eac666210631
   docs/models/components/insightsfolderfilemove.md:
     id: 0961a86b28f8
     last_write_checksum: sha1:fffb81159bad5007d21ba7b3364e55238cfede0c
@@ -628,16 +628,16 @@ trackedFiles:
     pristine_git_object: 8f00ed3f2a75f391d1c15c5c7820a06d0167f96b
   docs/models/components/insightsoutput.md:
     id: 104184c92077
-    last_write_checksum: sha1:0875119a4d96ec766af60e90a027f3c54b2910be
-    pristine_git_object: aaf8c4af390bc0cd645ebe9ec9a3f1913feab3d4
+    last_write_checksum: sha1:b26c4761fe270edb93b05d33e91e9e861d6d56a2
+    pristine_git_object: 46f2fd581a09ebe615d5f9314d6fa6c93564d777
   docs/models/components/insightsproperties.md:
     id: 86c812877d9a
     last_write_checksum: sha1:7f0d2cb8485d6b7bc61c37c8dcb918591efbdd0c
     pristine_git_object: 31928acda5ce50cc5de494d9e5b64c528c95da38
   docs/models/components/insightsuploadfile.md:
     id: e346529032ff
-    last_write_checksum: sha1:fa5d458df39c3a6ab589d0554fcc0ff1b1467973
-    pristine_git_object: 2ff064fe01f60df93b502d7347a287e4a5e351ea
+    last_write_checksum: sha1:eb768b723a3a3e5a3b667a588e7d9a0aefd74da1
+    pristine_git_object: 4a61748c1f6a5849042b7a74151562002de128d8
   docs/models/components/insightsuploadfileproperties.md:
     id: ece9940ede09
     last_write_checksum: sha1:a47056288fb47d9a68796612d9e9b3c56bf2e305
@@ -656,8 +656,8 @@ trackedFiles:
     pristine_git_object: a3cf7e4d59b229b413f9bab4a258cccec4f4bf6a
   docs/models/components/insighttooloutput.md:
     id: 7ff243fe9e6b
-    last_write_checksum: sha1:1ce09dbae01ed00ab3c28fd97a0fec413c1235b7
-    pristine_git_object: ed2b8d9617023d25c5dcb9ba8fc5de99550c22e0
+    last_write_checksum: sha1:25f704a97fa36d3dd1ce60d371d7ce1cb7979841
+    pristine_git_object: 7cc7bf869c6cba966195b86b1cadb08e4fd87f30
   docs/models/components/insighttoolproperties.md:
     id: 0d0383282f15
     last_write_checksum: sha1:9475568b6da320bfd924a5bee25d5e9b10fbd96c
@@ -680,12 +680,12 @@ trackedFiles:
     pristine_git_object: 98e875800351b1b245591fb18d6033fc8cef2f36
   docs/models/components/insightworkflowinput.md:
     id: 71cb3bf06901
-    last_write_checksum: sha1:c0ac5bc17fee76522607b32b5c9c86cc354c9018
-    pristine_git_object: 3cc6d77b275772e7965eba0ed979f3694f37e595
+    last_write_checksum: sha1:2f260ff939a086152accdaed1d0bfc5c87837a53
+    pristine_git_object: 801bedb78ca0a192f96fe39bb630ec15940a0378
   docs/models/components/insightworkflowoutput.md:
     id: 5c3c6aa9a9df
-    last_write_checksum: sha1:994107e9641ffa757438c158372349701d53207b
-    pristine_git_object: 754456fc677a5d6ac52f1d725af656dce7511691
+    last_write_checksum: sha1:a42566181f298126fb7cabf6d0c819a4e81f132a
+    pristine_git_object: 14ef76e87e352576468f13f3717a4199a980deb2
   docs/models/components/insightworkflowproperties.md:
     id: 4dd9bed048af
     last_write_checksum: sha1:571cf4f22f47d269fea1954f1bffc1e8e98aa620
@@ -828,8 +828,8 @@ trackedFiles:
     pristine_git_object: e4707595749b5e74f942c3066c7bc39a9c0055c0
   docs/models/components/listresponseinsightworkflowoutput.md:
     id: 7cf6e5563760
-    last_write_checksum: sha1:a31e11277c1766ec80d348f56e2922f06ccaa0dc
-    pristine_git_object: 52f6ad0eb8de0e0d7503fef96db55898bc399d41
+    last_write_checksum: sha1:81b1889b24e13121efb4d61c8c71ec3b441c3361
+    pristine_git_object: fda755209f4dac1187a34dc29141ea326907db80
   docs/models/components/listresponselanguagegroupresponse.md:
     id: 331f33c587b2
     last_write_checksum: sha1:b236b3eee740c6a46910ea5059faeedd3d0974b8
@@ -840,8 +840,8 @@ trackedFiles:
     pristine_git_object: aacf03c6af54a2f22ef1f9450badedca04b5f4f7
   docs/models/components/listresponsepromptresponse.md:
     id: 203e820f8148
-    last_write_checksum: sha1:8d9d893c3b84ecc09c4a443e9dd3c01fe9e2e773
-    pristine_git_object: b4dcd508ea0a34344eb158a52723954a57e29495
+    last_write_checksum: sha1:c242c00ae7e1bbdd434be8e5bba82b884f77a394
+    pristine_git_object: b90c746db05f183b9b849a6a3dbae6a5a1550bfc
   docs/models/components/listresponseroleresponse.md:
     id: ee41c9ccba27
     last_write_checksum: sha1:77a6e3a0ec220b6bbee4f4ecad651feddd50a83e
@@ -936,8 +936,8 @@ trackedFiles:
     pristine_git_object: dd67152a41fb499cb9bca3cf0fc8a01d9b5cbda6
   docs/models/components/outboundcampaign.md:
     id: 2c02f17c8ae5
-    last_write_checksum: sha1:6f2c6f5bbdfb28cfe0b05bd0c73481a49bd328d6
-    pristine_git_object: 8d1bbbf3a2c04efd741bf52ce4d22c2ca08567ef
+    last_write_checksum: sha1:75ac7f0b63b6c7f946ec15bbc5c8e2f2439fdae7
+    pristine_git_object: b5762be80c2523216b1b1a53e0ce0ba3643eb499
   docs/models/components/outboundcampaigninput.md:
     id: 67a9d38a267b
     last_write_checksum: sha1:1afc178900400d2feaecc41ed6d438e7f2fdec7c
@@ -988,8 +988,8 @@ trackedFiles:
     pristine_git_object: e85d42947bff023710dbf41721ee113efe4c0ffa
   docs/models/components/promptresponse.md:
     id: ad99a5be1217
-    last_write_checksum: sha1:6ea72766fc2c139650ded04f80b13623cbb9f695
-    pristine_git_object: d6cb1327ae606da4c3f29ea2c0e3868bd30847d6
+    last_write_checksum: sha1:526631878319da82eec73378ef44c0b89e68d81d
+    pristine_git_object: ffa3de62fc5ca32cc77756fbcc126110ade629b0
   docs/models/components/promptupdaterequest.md:
     id: 52cc56a136b4
     last_write_checksum: sha1:7343d7843d946f54573e42993b3aaaae9f2b7044
@@ -1184,8 +1184,12 @@ trackedFiles:
     pristine_git_object: 03880372fa2ab41da91f95c1b288a3b20283806d
   docs/models/components/stepstask.md:
     id: d1a3cd838f4c
-    last_write_checksum: sha1:8faff3e2646c4f89e3df2d39e2c1febb59c3541f
-    pristine_git_object: 5b088b188529a62341fda7fa80cc4a88cb032d4f
+    last_write_checksum: sha1:87b00e2c002b1e77136a253ee2567f15b6112e29
+    pristine_git_object: 125b7837ce16ec09bb333d2a82d3586c53abc354
+  docs/models/components/stepstaskstart.md:
+    id: 60d46c0a48ef
+    last_write_checksum: sha1:53bf1181422bf5f3baf0ec4b3772f1fe69fbe9c7
+    pristine_git_object: 7ba040624556be900cc97da07f7e912d9c4a5980
   docs/models/components/steptools.md:
     id: 39d38fd8cd01
     last_write_checksum: sha1:224ed079ea7d0169812172ee9c85a6419cd54291
@@ -1216,8 +1220,8 @@ trackedFiles:
     pristine_git_object: d64fa24e73018fd850a668e9ddbaf452482b2c82
   docs/models/components/task.md:
     id: 47bce0ba23e1
-    last_write_checksum: sha1:60c11f9cd97174793df4581b874871dae60f761f
-    pristine_git_object: d57e8697ee3a719c964679ac806e13874c14b776
+    last_write_checksum: sha1:c2339fcf6d3f1b70e05144c65f2da6f3d7757d7f
+    pristine_git_object: 41462695cea3aa8274b57b5aa99998dbbcfa2fea
   docs/models/components/task1.md:
     id: 74dbec52dba4
     last_write_checksum: sha1:4936145cbaa7a0b94275686e298d8678054d39a0
@@ -1248,16 +1252,16 @@ trackedFiles:
     pristine_git_object: b21b93e2a1a9767fb5c43a1d28e17f88bee581eb
   docs/models/components/toolcreaterequest.md:
     id: 0ab95f142286
-    last_write_checksum: sha1:e187d685baed12149a542892a2a4577ecc3fe474
-    pristine_git_object: 39ceed0b982f204248cfcb650364c8af36c222ba
+    last_write_checksum: sha1:380915e50684602d8cf7d8d6571b64f23d0f139c
+    pristine_git_object: 4544c924a91314e601803720d1005cb1f4fd15fb
   docs/models/components/tooldefinition.md:
     id: cf591c34b425
-    last_write_checksum: sha1:2fee53d0c8a0cad230ad4a657a7f86e0ff5781c2
-    pristine_git_object: 1d1fd1259e8f93b55abe73c5c72bde5b1a750c03
+    last_write_checksum: sha1:e662f4c48b9df5132a8b9196e46027ea57b68bac
+    pristine_git_object: 2377d4e163bef078597a000ec9f834e40fd4c6c7
   docs/models/components/tooldetailresponse.md:
     id: e7d5228b7a58
-    last_write_checksum: sha1:acc37d2a65275d5f6e3c0491e385c5b0e0f04ad0
-    pristine_git_object: 1b71e761e7ea91d63f2e01ea469dc8471ddb8d1e
+    last_write_checksum: sha1:c8a8f331c566ec54e8a1aaf87a06fb4192e5adb2
+    pristine_git_object: a4c7240f31ff32d830c28a82ee4d42547eca703d
   docs/models/components/toolfunction.md:
     id: 87631053aae6
     last_write_checksum: sha1:74c2b7743ee4091fbd92421f9dc26b6bf84420bc
@@ -1300,16 +1304,16 @@ trackedFiles:
     pristine_git_object: 3c1dce8f826518eb3f9d943e26ac09a4ceaebf86
   docs/models/components/toolresponse.md:
     id: 894dc448bf56
-    last_write_checksum: sha1:9b3bca1ea2e9f61b87bea91557299aaea5d2bbb0
-    pristine_git_object: cab03751a92ff2667b8ac77559b33d33fac2afda
+    last_write_checksum: sha1:9753423f6b65ea1cc1d9de95a4ed00e69dd5e9f2
+    pristine_git_object: 4daff6b05f417eac9b45956df7f75ba292e7011e
   docs/models/components/toolresultdata.md:
     id: 66ad0174b43d
     last_write_checksum: sha1:13e9c2c193b8512d7fc35c464a8417b1bd4e981f
     pristine_git_object: b35ef76ed0c27cf949f7d2638fa4065b3e2215fe
   docs/models/components/toolupdaterequest.md:
     id: 30cf80011e3b
-    last_write_checksum: sha1:69eaaee4d37fc766c163260906e783eac49c709b
-    pristine_git_object: 0b4642d3c0228254f0acbbddfd05e14fa2323ae5
+    last_write_checksum: sha1:7d74083cdabd4c3ccd234d93922ece6cd580517f
+    pristine_git_object: 5407006f3a1c4c53faed36863f0bfc2b7004dc00
   docs/models/components/ttsprovider.md:
     id: 6d6838b83259
     last_write_checksum: sha1:c8639d79ef232d1bc5c9924a9ec5e025d7e9c98f
@@ -1664,8 +1668,8 @@ trackedFiles:
     pristine_git_object: cd8eb87838a66b7529f109a2c0598ad756eaef2b
   docs/models/operations/insightsworkflowupdaterequest.md:
     id: ed9284dbb47c
-    last_write_checksum: sha1:d5d1e2b392d86a78bc061098bbc8fe70b5486472
-    pristine_git_object: 62835f6b73a1873c4fcee2ddf862959dacb5b4a9
+    last_write_checksum: sha1:de9eef00b2afee80e2aa2597a32b33fb1335acf9
+    pristine_git_object: c0163ba4fdca0125afce82afc9bf1a0237b057a6
   docs/models/operations/insighttoolgetbyidrequest.md:
     id: 430ed3521285
     last_write_checksum: sha1:3034a0dbd520478318f8d3a5962179030a303a4a
@@ -2036,12 +2040,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:ce06c10206acdb80fcf1b54262bcf24d4b1979ad
-    pristine_git_object: bb30f163be21afc8dd5c48487a40f923ae7e0892
+    last_write_checksum: sha1:adac85318d7ab9d55d649d70bc4d827faa889664
+    pristine_git_object: 4c012aab3af59244c18763c2588d76714c3c73c8
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:4c93c843963a30c4367bb1fed31d44ceec3a85a6
-    pristine_git_object: 2227d20b62764927b42c73d6fc49c6dfca5566a3
+    last_write_checksum: sha1:4a23b92a90f861ecfffc03581ede46a3c2d2951a
+    pristine_git_object: 437a13debcd550c1526158af5b1955172e1f6e9c
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2724,8 +2728,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:3bd77ab8731796d598ef6dbd052315062e2cc1be
-    pristine_git_object: 3969665018763da32a7528b59b501631cc24ca91
+    last_write_checksum: sha1:bceccf3a1a62dbb0394a07b4b02b9115bdd6c109
+    pristine_git_object: a762bc7d31b14d0e0a6cec0024ea9c33e558392e
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2808,8 +2812,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:9ae09bbaf7f0b848459d813545054e1216d7cbcb
-    pristine_git_object: a230ce0ab745ee48439774f03e0680a43ce13924
+    last_write_checksum: sha1:7551e3bdd828f52774044f0ac5281eb301130c18
+    pristine_git_object: 52a453b54f576fc60da5cef504356cb75818997f
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2824,8 +2828,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:be97a8b0176494e7418062c5024576558e5b6b95
-    pristine_git_object: bb02e231eaf38234b37d04db9213aa47d34fbca0
+    last_write_checksum: sha1:bdb4019270f2d5ea80a904fe2320aebbb887c0fb
+    pristine_git_object: 6a449474ba89f5c375dbb8061f484476cdc5e905
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -4388,8 +4392,8 @@ trackedFiles:
     pristine_git_object: 12bcfe2ba20c592dae1b2350c40caf05ccfcf792
   src/models/components/stepstask.ts:
     id: 6e7559ae0331
-    last_write_checksum: sha1:3a22ed6aaeb7c4db3657f34ad9c2b2042274d057
-    pristine_git_object: 0451e98757bb6e7c4911a57418372f949a38592a
+    last_write_checksum: sha1:8f1af69e9f155f4995a3becaeac205deda24180e
+    pristine_git_object: a6c7be6e16fa6c27c5fae1256d90266adec1622b
   src/models/components/steptools.ts:
     id: 49679487ef4d
     last_write_checksum: sha1:8252e6e249c26d46f3138575963031edb4aecbe7
@@ -5478,7 +5482,7 @@ examples:
         application/json: {"agent_id": 1, "channel_id": 1, "target": "+19995551234", "target_mode": "email", "fallback_target": "+19995551235", "is_test": true}
       responses:
         "200":
-          application/json: {"agent_id": 1, "channel_id": 1, "target": "+19995551234", "target_mode": "voice", "fallback_target": "+19995551235", "is_test": true, "id": 1, "channel_name": "+19995551234", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "agent": {"name": "Weather agent", "description": "Agent for answering questions about weather.", "labels": ["Information", "Weather"], "type": "ca_v1", "prompt_id": 1, "custom_message_id": 1, "language_group_id": 1, "timezone": "America/New_York", "prompt_tool_defaults": [{"tool_name": "get_weather", "default_values": [{"field_name": "temperature_unit", "default_value": "fahrenheit"}]}], "variables": {"vars.location_name": "Main Street Pizza"}, "tool_headers": {"some-header": "some-value"}, "agent_initiated": false, "stt_provider": "Google STT V2 (Chirp 2)", "wait_sound": "No Sound", "id": 1, "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "prompt": {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "session_end_enabled": false, "session_end_tool_id": 1, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "id": 1, "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "session_end_tool": {"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "query", "timeout": 45}, "context": {"task": {"type": "steps", "version": "v1alpha"}}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-12-22T21:25:59.469Z", "last_updated_by": "user@email.com"}, "agent_count": 5, "version_number": 1, "tools_full": null}, "custom_message": {"name": "Customer service greeting", "preamble": "If this is an emergency, please hang up and call 911.", "text": "Hello and thank you for calling customer service. How can I help you today?", "subject": "Your appointment reminder", "label": "Customer service", "repeat_after_language_change": false, "rules": [{"description": "Closed on New Year's Day", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed today."}, {"description": "Closed on weekends", "time_range_start": "09:00", "time_range_end": "17:00", "days_of_week": ["sa", "su"], "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed on weekends."}], "id": 1, "updated_at": "2024-01-01T00:00:00Z", "agent_count": 1, "last_updated_by": "user@email.com"}, "channel_targets": [{"agent_id": 1, "channel_id": 1, "target": "+19995551234", "target_mode": "sms", "fallback_target": "+19995551235", "is_test": true, "id": 1, "channel_name": "+19995551234", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "agent": {"name": "Weather agent", "description": "Agent for answering questions about weather.", "labels": ["Information", "Weather"], "type": "ca_v1", "prompt_id": 1, "custom_message_id": 1, "language_group_id": 1, "timezone": "America/New_York", "prompt_tool_defaults": [{"tool_name": "get_weather", "default_values": [{"field_name": "temperature_unit", "default_value": "fahrenheit"}]}], "variables": {"vars.location_name": "Main Street Pizza"}, "tool_headers": {"some-header": "some-value"}, "agent_initiated": false, "stt_provider": "Google STT V2 (Chirp 2)", "wait_sound": "No Sound", "id": 1, "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "prompt": {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "session_end_enabled": false, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "id": 1, "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "agent_count": 5, "version_number": 1, "tools_full": null}, "custom_message": {"name": "Customer service greeting", "type": "greeting", "text": "Hello and thank you for calling customer service. How can I help you today?", "label": "Customer service", "repeat_after_language_change": false, "rules": [{"description": "Closed on New Year's Day", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed today."}, {"description": "Closed on weekends", "time_range_start": "09:00", "time_range_end": "17:00", "days_of_week": ["sa", "su"], "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed on weekends."}], "id": 1, "updated_at": "2024-01-01T00:00:00Z", "agent_count": 1, "last_updated_by": "user@email.com"}, "channel_targets": null, "tools": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": null, "defaults": null, "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-07-25T13:44:12.237Z", "last_updated_by": "user@email.com"}], "language_group": {"name": "Call Center 1 Languages", "description": "Languages spoken by operators at Call Center 1", "language_configs": [{"language_code": "en-US", "voice_provider": "OpenAI", "voice_display_name": "Alloy", "dtmf_code": 1}, {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "es-US-Neural2-B", "dtmf_code": 2}], "skip_current_language_in_message": true, "id": 1, "edit_comments": "Added Spanish support.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@mail.com"}}}], "tools": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": null, "defaults": null, "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-07-25T13:44:12.237Z", "last_updated_by": "user@email.com"}], "language_group": {"name": "Call Center 1 Languages", "description": "Languages spoken by operators at Call Center 1", "language_configs": [{"language_code": "en-US", "voice_provider": "OpenAI", "voice_display_name": "Alloy", "dtmf_code": 1}, {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "es-US-Neural2-B", "dtmf_code": 2}], "skip_current_language_in_message": true, "id": 1, "edit_comments": "Added Spanish support.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@mail.com"}}}
+          application/json: {"agent_id": 1, "channel_id": 1, "target": "+19995551234", "target_mode": "voice", "fallback_target": "+19995551235", "is_test": true, "id": 1, "channel_name": "+19995551234", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "agent": {"name": "Weather agent", "description": "Agent for answering questions about weather.", "labels": ["Information", "Weather"], "type": "ca_v1", "prompt_id": 1, "custom_message_id": 1, "language_group_id": 1, "timezone": "America/New_York", "prompt_tool_defaults": [{"tool_name": "get_weather", "default_values": [{"field_name": "temperature_unit", "default_value": "fahrenheit"}]}], "variables": {"vars.location_name": "Main Street Pizza"}, "tool_headers": {"some-header": "some-value"}, "agent_initiated": false, "stt_provider": "Google STT V2 (Chirp 2)", "wait_sound": "No Sound", "id": 1, "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "prompt": {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "session_end_enabled": false, "session_end_tool_id": 1, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "id": 1, "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "session_end_tool": {"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "query", "timeout": 45}, "context": {"task": {"type": "steps", "version": "v1alpha", "start": "auto"}}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-12-22T21:25:59.469Z", "last_updated_by": "user@email.com"}, "agent_count": 5, "version_number": 1, "tools_full": null}, "custom_message": {"name": "Customer service greeting", "preamble": "If this is an emergency, please hang up and call 911.", "text": "Hello and thank you for calling customer service. How can I help you today?", "subject": "Your appointment reminder", "label": "Customer service", "repeat_after_language_change": false, "rules": [{"description": "Closed on New Year's Day", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed today."}, {"description": "Closed on weekends", "time_range_start": "09:00", "time_range_end": "17:00", "days_of_week": ["sa", "su"], "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed on weekends."}], "id": 1, "updated_at": "2024-01-01T00:00:00Z", "agent_count": 1, "last_updated_by": "user@email.com"}, "channel_targets": [{"agent_id": 1, "channel_id": 1, "target": "+19995551234", "target_mode": "sms", "fallback_target": "+19995551235", "is_test": true, "id": 1, "channel_name": "+19995551234", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "agent": {"name": "Weather agent", "description": "Agent for answering questions about weather.", "labels": ["Information", "Weather"], "type": "ca_v1", "prompt_id": 1, "custom_message_id": 1, "language_group_id": 1, "timezone": "America/New_York", "prompt_tool_defaults": [{"tool_name": "get_weather", "default_values": [{"field_name": "temperature_unit", "default_value": "fahrenheit"}]}], "variables": {"vars.location_name": "Main Street Pizza"}, "tool_headers": {"some-header": "some-value"}, "agent_initiated": false, "stt_provider": "Google STT V2 (Chirp 2)", "wait_sound": "No Sound", "id": 1, "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "prompt": {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "session_end_enabled": false, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "id": 1, "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "agent_count": 5, "version_number": 1, "tools_full": null}, "custom_message": {"name": "Customer service greeting", "type": "greeting", "text": "Hello and thank you for calling customer service. How can I help you today?", "label": "Customer service", "repeat_after_language_change": false, "rules": [{"description": "Closed on New Year's Day", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed today."}, {"description": "Closed on weekends", "time_range_start": "09:00", "time_range_end": "17:00", "days_of_week": ["sa", "su"], "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed on weekends."}], "id": 1, "updated_at": "2024-01-01T00:00:00Z", "agent_count": 1, "last_updated_by": "user@email.com"}, "channel_targets": null, "tools": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": null, "defaults": null, "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-07-25T13:44:12.237Z", "last_updated_by": "user@email.com"}], "language_group": {"name": "Call Center 1 Languages", "description": "Languages spoken by operators at Call Center 1", "language_configs": [{"language_code": "en-US", "voice_provider": "OpenAI", "voice_display_name": "Alloy", "dtmf_code": 1}, {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "es-US-Neural2-B", "dtmf_code": 2}], "skip_current_language_in_message": true, "id": 1, "edit_comments": "Added Spanish support.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@mail.com"}}}], "tools": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": null, "defaults": null, "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-07-25T13:44:12.237Z", "last_updated_by": "user@email.com"}], "language_group": {"name": "Call Center 1 Languages", "description": "Languages spoken by operators at Call Center 1", "language_configs": [{"language_code": "en-US", "voice_provider": "OpenAI", "voice_display_name": "Alloy", "dtmf_code": 1}, {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "es-US-Neural2-B", "dtmf_code": 2}], "skip_current_language_in_message": true, "id": 1, "edit_comments": "Added Spanish support.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@mail.com"}}}
         "422":
           application/json: {}
   channel_targets_get_by_id:
@@ -6978,6 +6982,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.agents.list()`:  `response.items[].prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.agents.create()`:  `response.prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.agents.update()`:  `response.prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.agents.getById()`:  `response.prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.channels.targets.list()`:  `response.items[].agent.prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.channels.targets.create()`:  `response.agent.prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.channels.targets.getById()`:  `response.agent.prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.channels.targets.update()`:  `response.agent.prompt.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.prompts.list()`:  `response.items[].sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.prompts.create()`:  `response.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.prompts.update()`:  `response.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.prompts.getById()`:  `response.sessionEndTool.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.tools.list()`:  `response.items[].definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.tools.create()`: \n  *  `request.definition.context.task.union(1).union(steps).start` **Added**\n  *  `response.definition.context.task.union(Array<2>)[].union(steps).start` **Added**\n* `syllablesdk.tools.update()`: \n  *  `request.definition.context.task.union(1).union(steps).start` **Added**\n  *  `response.definition.context.task.union(1).union(steps).start` **Added**\n* `syllablesdk.tools.getByName()`:  `response.definition.context.task.union(1).union(steps).start` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

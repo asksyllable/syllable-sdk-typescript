@@ -31,6 +31,7 @@ let value: ToolDetailResponse = {
     context: {
       task: {
         type: "steps",
+        start: "auto",
       },
     },
     defaults: {

@@ -83,6 +83,7 @@ let value: AgentResponse = {
         context: {
           task: {
             type: "steps",
+            start: "auto",
           },
         },
         defaults: {
@@ -186,6 +187,7 @@ let value: AgentResponse = {
         context: {
           task: {
             type: "steps",
+            start: "auto",
           },
         },
         defaults: {

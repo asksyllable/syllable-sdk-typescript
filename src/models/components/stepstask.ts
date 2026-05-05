@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,6 +32,18 @@ import {
   Variable$outboundSchema,
 } from "./variable.js";
 
+/**
+ * Controls when the workflow activation lifecycle runs. `auto` activates at session start; `manual` activates on first invocation.
+ */
+export const StepsTaskStart = {
+  Auto: "auto",
+  Manual: "manual",
+} as const;
+/**
+ * Controls when the workflow activation lifecycle runs. `auto` activates at session start; `manual` activates on first invocation.
+ */
+export type StepsTaskStart = ClosedEnum<typeof StepsTaskStart>;
+
 export type StepsTask = {
   /**
    * A unique identifier for the task.
@@ -42,8 +55,21 @@ export type StepsTask = {
   tool?: ContextToolInfo | null | undefined;
   type: "steps";
   version?: "v1alpha" | undefined;
+  /**
+   * Controls when the workflow activation lifecycle runs. `auto` activates at session start; `manual` activates on first invocation.
+   */
+  start?: StepsTaskStart | undefined;
   steps?: Array<Step> | undefined;
 };
+
+/** @internal */
+export const StepsTaskStart$inboundSchema: z.ZodNativeEnum<
+  typeof StepsTaskStart
+> = z.nativeEnum(StepsTaskStart);
+/** @internal */
+export const StepsTaskStart$outboundSchema: z.ZodNativeEnum<
+  typeof StepsTaskStart
+> = StepsTaskStart$inboundSchema;
 
 /** @internal */
 export const StepsTask$inboundSchema: z.ZodType<
@@ -58,6 +84,7 @@ export const StepsTask$inboundSchema: z.ZodType<
   tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
   type: z.literal("steps"),
   version: z.literal("v1alpha").default("v1alpha"),
+  start: StepsTaskStart$inboundSchema.default("auto"),
   steps: z.array(Step$inboundSchema).optional(),
 });
 /** @internal */
@@ -69,6 +96,7 @@ export type StepsTask$Outbound = {
   tool?: ContextToolInfo$Outbound | null | undefined;
   type: "steps";
   version: "v1alpha";
+  start: string;
   steps?: Array<Step$Outbound> | undefined;
 };
 
@@ -85,6 +113,7 @@ export const StepsTask$outboundSchema: z.ZodType<
   tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
   type: z.literal("steps"),
   version: z.literal("v1alpha").default("v1alpha" as const),
+  start: StepsTaskStart$outboundSchema.default("auto"),
   steps: z.array(Step$outboundSchema).optional(),
 });
 
