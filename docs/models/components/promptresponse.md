@@ -92,6 +92,7 @@ let value: PromptResponse = {
     ],
     lastUpdated: new Date("2025-05-06T16:17:25.916Z"),
     lastUpdatedBy: "user@email.com",
+    versionNumber: 1,
   },
   agentCount: 5,
   versionNumber: 1,
@@ -159,6 +160,7 @@ let value: PromptResponse = {
       ],
       lastUpdated: new Date("2026-03-31T11:48:39.784Z"),
       lastUpdatedBy: "user@email.com",
+      versionNumber: 1,
     },
   ],
 };

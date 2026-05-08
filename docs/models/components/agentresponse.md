@@ -126,6 +126,7 @@ let value: AgentResponse = {
       ],
       lastUpdated: new Date("2025-05-06T16:17:25.916Z"),
       lastUpdatedBy: "user@email.com",
+      versionNumber: 1,
     },
     agentCount: 5,
     versionNumber: 1,
@@ -230,6 +231,7 @@ let value: AgentResponse = {
       ],
       lastUpdated: new Date("2026-04-26T21:36:54.796Z"),
       lastUpdatedBy: "user@email.com",
+      versionNumber: 1,
     },
   ],
   languageGroup: {

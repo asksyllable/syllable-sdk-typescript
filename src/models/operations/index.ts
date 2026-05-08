@@ -99,6 +99,7 @@ export * from "./takeoutsgetbyjobid.js";
 export * from "./takeoutsgetfile.js";
 export * from "./tooldelete.js";
 export * from "./toolgetbyname.js";
+export * from "./toolhistory.js";
 export * from "./toollist.js";
 export * from "./updatebridgephrasesconfig.js";
 export * from "./usersgetbyemail.js";

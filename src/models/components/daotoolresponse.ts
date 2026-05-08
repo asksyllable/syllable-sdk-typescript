@@ -67,6 +67,10 @@ export type DaoToolResponse = {
    * The email of the user who last updated the tool
    */
   lastUpdatedBy: string;
+  /**
+   * Highest tools_history snapshot version for this tool; the tools row defaults to 1.
+   */
+  versionNumber: number;
 };
 
 /** @internal */
@@ -87,6 +91,7 @@ export const DaoToolResponse$inboundSchema: z.ZodType<
     new Date(v)
   ),
   last_updated_by: z.string(),
+  version_number: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     "service_id": "serviceId",
@@ -96,6 +101,7 @@ export const DaoToolResponse$inboundSchema: z.ZodType<
     "agents_info": "agentsInfo",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
+    "version_number": "versionNumber",
   });
 });
 /** @internal */
@@ -110,6 +116,7 @@ export type DaoToolResponse$Outbound = {
   agents_info?: Array<ToolAgentInfo$Outbound> | null | undefined;
   last_updated: string;
   last_updated_by: string;
+  version_number: number;
 };
 
 /** @internal */
@@ -128,6 +135,7 @@ export const DaoToolResponse$outboundSchema: z.ZodType<
   agentsInfo: z.nullable(z.array(ToolAgentInfo$outboundSchema)).optional(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
+  versionNumber: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     serviceId: "service_id",
@@ -137,6 +145,7 @@ export const DaoToolResponse$outboundSchema: z.ZodType<
     agentsInfo: "agents_info",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
+    versionNumber: "version_number",
   });
 });
 
