@@ -3676,6 +3676,27 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/tools/{tool_id}/history"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.tools.toolHistory({
+                toolId: 217978,
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/tools/{tool_name}"]["delete"]
     update:
       x-codeSamples:

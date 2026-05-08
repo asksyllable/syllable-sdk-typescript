@@ -6,6 +6,7 @@ import { toolsCreate } from "../funcs/toolsCreate.js";
 import { toolsDelete } from "../funcs/toolsDelete.js";
 import { toolsGetByName } from "../funcs/toolsGetByName.js";
 import { toolsList } from "../funcs/toolsList.js";
+import { toolsToolHistory } from "../funcs/toolsToolHistory.js";
 import { toolsUpdate } from "../funcs/toolsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -58,6 +59,23 @@ export class Tools extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ToolResponse> {
     return unwrapAsync(toolsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Tool History
+   *
+   * @remarks
+   * Get version history for a tool.
+   */
+  async toolHistory(
+    request: operations.ToolHistoryRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListResponseToolHistoryResponse> {
+    return unwrapAsync(toolsToolHistory(
       this,
       request,
       options,

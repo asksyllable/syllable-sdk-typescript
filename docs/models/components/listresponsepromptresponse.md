@@ -88,6 +88,7 @@ let value: ListResponsePromptResponse = {
         ],
         lastUpdated: new Date("2025-05-06T16:17:25.916Z"),
         lastUpdatedBy: "user@email.com",
+        versionNumber: 1,
       },
       agentCount: 5,
       versionNumber: 1,

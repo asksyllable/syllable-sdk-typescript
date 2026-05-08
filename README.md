@@ -486,6 +486,7 @@ run();
 * [list](docs/sdks/tools/README.md#list) - Tool List
 * [create](docs/sdks/tools/README.md#create) - Create Tool
 * [update](docs/sdks/tools/README.md#update) - Update Tool
+* [toolHistory](docs/sdks/tools/README.md#toolhistory) - Tool History
 * [getByName](docs/sdks/tools/README.md#getbyname) - Tool Info
 * [delete](docs/sdks/tools/README.md#delete) - Delete Tool
 
@@ -674,6 +675,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`toolsDelete`](docs/sdks/tools/README.md#delete) - Delete Tool
 - [`toolsGetByName`](docs/sdks/tools/README.md#getbyname) - Tool Info
 - [`toolsList`](docs/sdks/tools/README.md#list) - Tool List
+- [`toolsToolHistory`](docs/sdks/tools/README.md#toolhistory) - Tool History
 - [`toolsUpdate`](docs/sdks/tools/README.md#update) - Update Tool
 - [`usersCreate`](docs/sdks/users/README.md#create) - Create User
 - [`usersCreate`](docs/sdks/v1/README.md#create) - Create User

@@ -83,6 +83,10 @@ export type ToolResponse = {
    */
   lastUpdatedBy: string;
   /**
+   * Highest tools_history snapshot version for this tool; the tools row defaults to 1.
+   */
+  versionNumber: number;
+  /**
    * Validation issues found in the tool definition. Warnings and infos are informational; errors block the save.
    */
   validationIssues?: Array<ValidationIssue> | null | undefined;
@@ -106,6 +110,7 @@ export const ToolResponse$inboundSchema: z.ZodType<
     new Date(v)
   ),
   last_updated_by: z.string(),
+  version_number: z.number().int(),
   validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
     .optional(),
 }).transform((v) => {
@@ -117,6 +122,7 @@ export const ToolResponse$inboundSchema: z.ZodType<
     "agents_info": "agentsInfo",
     "last_updated": "lastUpdated",
     "last_updated_by": "lastUpdatedBy",
+    "version_number": "versionNumber",
     "validation_issues": "validationIssues",
   });
 });
@@ -132,6 +138,7 @@ export type ToolResponse$Outbound = {
   agents_info?: Array<ToolAgentInfo$Outbound> | null | undefined;
   last_updated: string;
   last_updated_by: string;
+  version_number: number;
   validation_issues?: Array<ValidationIssue$Outbound> | null | undefined;
 };
 
@@ -151,6 +158,7 @@ export const ToolResponse$outboundSchema: z.ZodType<
   agentsInfo: z.nullable(z.array(ToolAgentInfo$outboundSchema)).optional(),
   lastUpdated: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
+  versionNumber: z.number().int(),
   validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
     .optional(),
 }).transform((v) => {
@@ -162,6 +170,7 @@ export const ToolResponse$outboundSchema: z.ZodType<
     agentsInfo: "agents_info",
     lastUpdated: "last_updated",
     lastUpdatedBy: "last_updated_by",
+    versionNumber: "version_number",
     validationIssues: "validation_issues",
   });
 });

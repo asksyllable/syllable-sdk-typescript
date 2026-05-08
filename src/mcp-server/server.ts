@@ -163,6 +163,7 @@ import { tool$toolsCreate } from "./tools/toolsCreate.js";
 import { tool$toolsDelete } from "./tools/toolsDelete.js";
 import { tool$toolsGetByName } from "./tools/toolsGetByName.js";
 import { tool$toolsList } from "./tools/toolsList.js";
+import { tool$toolsToolHistory } from "./tools/toolsToolHistory.js";
 import { tool$toolsUpdate } from "./tools/toolsUpdate.js";
 import { tool$usersCreate } from "./tools/usersCreate.js";
 import { tool$usersDelete } from "./tools/usersDelete.js";
@@ -188,7 +189,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.42-rc.1",
+    version: "1.0.42-rc.2",
   });
 
   const client = new SyllableSDKCore({
@@ -285,6 +286,7 @@ export function createMCPServer(deps: {
   tool(tool$toolsList);
   tool(tool$toolsCreate);
   tool(tool$toolsUpdate);
+  tool(tool$toolsToolHistory);
   tool(tool$toolsGetByName);
   tool(tool$toolsDelete);
   tool(tool$directoryList);
