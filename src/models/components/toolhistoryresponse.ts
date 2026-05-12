@@ -7,26 +7,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-/**
- * Type-specific JSON configuration (e.g. HTTP endpoint, context, or action wiring)
- */
-export type Config = {};
-
-/**
- * Default parameter values for this tool when invoked
- */
-export type ToolHistoryResponseDefaults = {};
-
-/**
- * JSON describing the tool result shape or response schema
- */
-export type Result = {};
-
-/**
- * The definition of the tool (same shape as create/update; stored as JSON)
- */
-export type Definition = {};
+import {
+  ToolDefinition,
+  ToolDefinition$inboundSchema,
+  ToolDefinition$Outbound,
+  ToolDefinition$outboundSchema,
+} from "./tooldefinition.js";
 
 /**
  * API response for one row in GET /tools/{tool_id}/history.
@@ -81,138 +67,10 @@ export type ToolHistoryResponse = {
    */
   type: string;
   /**
-   * Type-specific JSON configuration (e.g. HTTP endpoint, context, or action wiring)
+   * A tool that can be called from an LLM during the conversation. See https://docs.syllable.ai/Resources/Tools.
    */
-  config?: Config | undefined;
-  /**
-   * Default parameter values for this tool when invoked
-   */
-  defaults?: ToolHistoryResponseDefaults | undefined;
-  /**
-   * JSON describing the tool result shape or response schema
-   */
-  result?: Result | undefined;
-  /**
-   * The definition of the tool (same shape as create/update; stored as JSON)
-   */
-  definition?: Definition | undefined;
+  definition: ToolDefinition;
 };
-
-/** @internal */
-export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
-  .object({});
-/** @internal */
-export type Config$Outbound = {};
-
-/** @internal */
-export const Config$outboundSchema: z.ZodType<
-  Config$Outbound,
-  z.ZodTypeDef,
-  Config
-> = z.object({});
-
-export function configToJSON(config: Config): string {
-  return JSON.stringify(Config$outboundSchema.parse(config));
-}
-export function configFromJSON(
-  jsonString: string,
-): SafeParseResult<Config, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Config$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Config' from JSON`,
-  );
-}
-
-/** @internal */
-export const ToolHistoryResponseDefaults$inboundSchema: z.ZodType<
-  ToolHistoryResponseDefaults,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type ToolHistoryResponseDefaults$Outbound = {};
-
-/** @internal */
-export const ToolHistoryResponseDefaults$outboundSchema: z.ZodType<
-  ToolHistoryResponseDefaults$Outbound,
-  z.ZodTypeDef,
-  ToolHistoryResponseDefaults
-> = z.object({});
-
-export function toolHistoryResponseDefaultsToJSON(
-  toolHistoryResponseDefaults: ToolHistoryResponseDefaults,
-): string {
-  return JSON.stringify(
-    ToolHistoryResponseDefaults$outboundSchema.parse(
-      toolHistoryResponseDefaults,
-    ),
-  );
-}
-export function toolHistoryResponseDefaultsFromJSON(
-  jsonString: string,
-): SafeParseResult<ToolHistoryResponseDefaults, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ToolHistoryResponseDefaults$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ToolHistoryResponseDefaults' from JSON`,
-  );
-}
-
-/** @internal */
-export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
-  .object({});
-/** @internal */
-export type Result$Outbound = {};
-
-/** @internal */
-export const Result$outboundSchema: z.ZodType<
-  Result$Outbound,
-  z.ZodTypeDef,
-  Result
-> = z.object({});
-
-export function resultToJSON(result: Result): string {
-  return JSON.stringify(Result$outboundSchema.parse(result));
-}
-export function resultFromJSON(
-  jsonString: string,
-): SafeParseResult<Result, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Result$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Result' from JSON`,
-  );
-}
-
-/** @internal */
-export const Definition$inboundSchema: z.ZodType<
-  Definition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type Definition$Outbound = {};
-
-/** @internal */
-export const Definition$outboundSchema: z.ZodType<
-  Definition$Outbound,
-  z.ZodTypeDef,
-  Definition
-> = z.object({});
-
-export function definitionToJSON(definition: Definition): string {
-  return JSON.stringify(Definition$outboundSchema.parse(definition));
-}
-export function definitionFromJSON(
-  jsonString: string,
-): SafeParseResult<Definition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Definition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Definition' from JSON`,
-  );
-}
 
 /** @internal */
 export const ToolHistoryResponse$inboundSchema: z.ZodType<
@@ -232,10 +90,7 @@ export const ToolHistoryResponse$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   type: z.string(),
-  config: z.lazy(() => Config$inboundSchema).optional(),
-  defaults: z.lazy(() => ToolHistoryResponseDefaults$inboundSchema).optional(),
-  result: z.lazy(() => Result$inboundSchema).optional(),
-  definition: z.lazy(() => Definition$inboundSchema).optional(),
+  definition: ToolDefinition$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "tool_id": "toolId",
@@ -261,10 +116,7 @@ export type ToolHistoryResponse$Outbound = {
   name: string;
   description: string;
   type: string;
-  config?: Config$Outbound | undefined;
-  defaults?: ToolHistoryResponseDefaults$Outbound | undefined;
-  result?: Result$Outbound | undefined;
-  definition?: Definition$Outbound | undefined;
+  definition: ToolDefinition$Outbound;
 };
 
 /** @internal */
@@ -285,10 +137,7 @@ export const ToolHistoryResponse$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.string(),
   type: z.string(),
-  config: z.lazy(() => Config$outboundSchema).optional(),
-  defaults: z.lazy(() => ToolHistoryResponseDefaults$outboundSchema).optional(),
-  result: z.lazy(() => Result$outboundSchema).optional(),
-  definition: z.lazy(() => Definition$outboundSchema).optional(),
+  definition: ToolDefinition$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     toolId: "tool_id",
