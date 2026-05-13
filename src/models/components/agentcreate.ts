@@ -96,6 +96,10 @@ export type AgentCreate = {
    * Sound to play while waiting for a response from the LLM.
    */
   waitSound?: AgentWaitSound | null | undefined;
+  /**
+   * When true and a voice group is configured, callers may switch among group languages by speaking (in addition to DTMF).
+   */
+  enableVerbalLanguageChange?: boolean | undefined;
 };
 
 /** @internal */
@@ -120,6 +124,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
   agent_initiated: z.boolean().default(false),
   stt_provider: z.nullable(AgentSttProvider$inboundSchema).optional(),
   wait_sound: z.nullable(AgentWaitSound$inboundSchema).optional(),
+  enable_verbal_language_change: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -130,6 +135,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
     "agent_initiated": "agentInitiated",
     "stt_provider": "sttProvider",
     "wait_sound": "waitSound",
+    "enable_verbal_language_change": "enableVerbalLanguageChange",
   });
 });
 /** @internal */
@@ -150,6 +156,7 @@ export type AgentCreate$Outbound = {
   agent_initiated: boolean;
   stt_provider?: string | null | undefined;
   wait_sound?: string | null | undefined;
+  enable_verbal_language_change: boolean;
 };
 
 /** @internal */
@@ -174,6 +181,7 @@ export const AgentCreate$outboundSchema: z.ZodType<
   agentInitiated: z.boolean().default(false),
   sttProvider: z.nullable(AgentSttProvider$outboundSchema).optional(),
   waitSound: z.nullable(AgentWaitSound$outboundSchema).optional(),
+  enableVerbalLanguageChange: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
@@ -184,6 +192,7 @@ export const AgentCreate$outboundSchema: z.ZodType<
     agentInitiated: "agent_initiated",
     sttProvider: "stt_provider",
     waitSound: "wait_sound",
+    enableVerbalLanguageChange: "enable_verbal_language_change",
   });
 });
 
