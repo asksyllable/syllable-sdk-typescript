@@ -123,6 +123,10 @@ export type AgentResponse = {
    */
   waitSound?: string | null | undefined;
   /**
+   * When true and a voice group is configured, callers may switch among group languages by speaking (in addition to DTMF).
+   */
+  enableVerbalLanguageChange?: boolean | undefined;
+  /**
    * Internal ID of the agent
    */
   id: number;
@@ -178,6 +182,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
   agent_initiated: z.boolean().default(false),
   stt_provider: z.nullable(z.string()).optional(),
   wait_sound: z.nullable(z.string()).optional(),
+  enable_verbal_language_change: z.boolean().default(false),
   id: z.number().int(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.nullable(z.string()),
@@ -198,6 +203,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
     "agent_initiated": "agentInitiated",
     "stt_provider": "sttProvider",
     "wait_sound": "waitSound",
+    "enable_verbal_language_change": "enableVerbalLanguageChange",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
     "custom_message": "customMessage",
@@ -223,6 +229,7 @@ export type AgentResponse$Outbound = {
   agent_initiated: boolean;
   stt_provider?: string | null | undefined;
   wait_sound?: string | null | undefined;
+  enable_verbal_language_change: boolean;
   id: number;
   updated_at: string;
   last_updated_by: string | null;
@@ -255,6 +262,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
   agentInitiated: z.boolean().default(false),
   sttProvider: z.nullable(z.string()).optional(),
   waitSound: z.nullable(z.string()).optional(),
+  enableVerbalLanguageChange: z.boolean().default(false),
   id: z.number().int(),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()),
@@ -275,6 +283,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
     agentInitiated: "agent_initiated",
     sttProvider: "stt_provider",
     waitSound: "wait_sound",
+    enableVerbalLanguageChange: "enable_verbal_language_change",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
     customMessage: "custom_message",

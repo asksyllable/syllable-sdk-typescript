@@ -55,7 +55,7 @@ export type PromptCreateRequest = {
    */
   editComments?: string | null | undefined;
   /**
-   * Whether to include the default tools (`hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well, otherwise the default tools will be added when updating the prompt.
+   * Whether to include the default tools (`hangup`) in the list of tools for the prompt. If you disable this during creation, you might want to disable it during updates as well; otherwise the default tools will be added when updating the prompt.
    */
   includeDefaultTools?: boolean | undefined;
 };
