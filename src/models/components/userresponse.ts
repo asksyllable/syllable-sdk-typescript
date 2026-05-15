@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DaoUtm,
+  DaoUtm$inboundSchema,
+  DaoUtm$Outbound,
+  DaoUtm$outboundSchema,
+} from "./daoutm.js";
+import {
   UserActivityStatus,
   UserActivityStatus$inboundSchema,
   UserActivityStatus$outboundSchema,
@@ -33,6 +39,10 @@ export type UserResponse = {
    * ID of the role assigned to the user
    */
   roleId: number;
+  /**
+   * Optional UTM campaign attribution to record in user_metadata.
+   */
+  utm?: DaoUtm | null | undefined;
   /**
    * Comments for the most recent edit to the user.
    */
@@ -74,6 +84,7 @@ export const UserResponse$inboundSchema: z.ZodType<
   first_name: z.nullable(z.string()).optional(),
   last_name: z.nullable(z.string()).optional(),
   role_id: z.number().int(),
+  utm: z.nullable(DaoUtm$inboundSchema).optional(),
   last_updated_comments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   role_name: z.string(),
@@ -106,6 +117,7 @@ export type UserResponse$Outbound = {
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
   role_id: number;
+  utm?: DaoUtm$Outbound | null | undefined;
   last_updated_comments?: string | null | undefined;
   id: number;
   role_name: string;
@@ -126,6 +138,7 @@ export const UserResponse$outboundSchema: z.ZodType<
   firstName: z.nullable(z.string()).optional(),
   lastName: z.nullable(z.string()).optional(),
   roleId: z.number().int(),
+  utm: z.nullable(DaoUtm$outboundSchema).optional(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
   id: z.number().int(),
   roleName: z.string(),

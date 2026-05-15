@@ -7,6 +7,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  DaoUtm,
+  DaoUtm$inboundSchema,
+  DaoUtm$Outbound,
+  DaoUtm$outboundSchema,
+} from "./daoutm.js";
 
 /**
  * Request model to update an existing user.
@@ -29,6 +35,10 @@ export type UserUpdateRequest = {
    */
   roleId: number;
   /**
+   * Optional UTM campaign attribution to record in user_metadata.
+   */
+  utm?: DaoUtm | null | undefined;
+  /**
    * Comments for the most recent edit to the user.
    */
   lastUpdatedComments?: string | null | undefined;
@@ -44,6 +54,7 @@ export const UserUpdateRequest$inboundSchema: z.ZodType<
   first_name: z.nullable(z.string()).optional(),
   last_name: z.nullable(z.string()).optional(),
   role_id: z.number().int(),
+  utm: z.nullable(DaoUtm$inboundSchema).optional(),
   last_updated_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -59,6 +70,7 @@ export type UserUpdateRequest$Outbound = {
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
   role_id: number;
+  utm?: DaoUtm$Outbound | null | undefined;
   last_updated_comments?: string | null | undefined;
 };
 
@@ -72,6 +84,7 @@ export const UserUpdateRequest$outboundSchema: z.ZodType<
   firstName: z.nullable(z.string()).optional(),
   lastName: z.nullable(z.string()).optional(),
   roleId: z.number().int(),
+  utm: z.nullable(DaoUtm$outboundSchema).optional(),
   lastUpdatedComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
