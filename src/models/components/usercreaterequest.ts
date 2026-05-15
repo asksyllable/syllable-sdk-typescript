@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DaoUtm,
+  DaoUtm$inboundSchema,
+  DaoUtm$Outbound,
+  DaoUtm$outboundSchema,
+} from "./daoutm.js";
+import {
   LoginType,
   LoginType$inboundSchema,
   LoginType$outboundSchema,
@@ -34,6 +40,10 @@ export type UserCreateRequest = {
    */
   roleId: number;
   /**
+   * Optional UTM campaign attribution to record in user_metadata.
+   */
+  utm?: DaoUtm | null | undefined;
+  /**
    * The type of login to use for the user. If not provided, defaults to google for @gmail.com email addresses, and username and password otherwise.
    */
   loginType?: LoginType | null | undefined;
@@ -53,6 +63,7 @@ export const UserCreateRequest$inboundSchema: z.ZodType<
   first_name: z.nullable(z.string()).optional(),
   last_name: z.nullable(z.string()).optional(),
   role_id: z.number().int(),
+  utm: z.nullable(DaoUtm$inboundSchema).optional(),
   login_type: z.nullable(LoginType$inboundSchema).optional(),
   skip_auth: z.boolean().default(false),
 }).transform((v) => {
@@ -70,6 +81,7 @@ export type UserCreateRequest$Outbound = {
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
   role_id: number;
+  utm?: DaoUtm$Outbound | null | undefined;
   login_type?: string | null | undefined;
   skip_auth: boolean;
 };
@@ -84,6 +96,7 @@ export const UserCreateRequest$outboundSchema: z.ZodType<
   firstName: z.nullable(z.string()).optional(),
   lastName: z.nullable(z.string()).optional(),
   roleId: z.number().int(),
+  utm: z.nullable(DaoUtm$outboundSchema).optional(),
   loginType: z.nullable(LoginType$outboundSchema).optional(),
   skipAuth: z.boolean().default(false),
 }).transform((v) => {
