@@ -238,6 +238,7 @@ run();
 * [list](docs/sdks/agents/README.md#list) - Agent List
 * [create](docs/sdks/agents/README.md#create) - Create Agent
 * [update](docs/sdks/agents/README.md#update) - Update Agent
+* [agentListActiveLabels](docs/sdks/agents/README.md#agentlistactivelabels) - List Active Agent Labels
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
 * [agentGetAvailableVoices](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
@@ -538,6 +539,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <summary>Available standalone functions</summary>
 
 - [`agentsAgentGetAvailableVoices`](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
+- [`agentsAgentListActiveLabels`](docs/sdks/agents/README.md#agentlistactivelabels) - List Active Agent Labels
 - [`agentsCreate`](docs/sdks/agents/README.md#create) - Create Agent
 - [`agentsDelete`](docs/sdks/agents/README.md#delete) - Delete Agent
 - [`agentsGetById`](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
