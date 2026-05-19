@@ -3,6 +3,7 @@
  */
 
 import { agentsAgentGetAvailableVoices } from "../funcs/agentsAgentGetAvailableVoices.js";
+import { agentsAgentListActiveLabels } from "../funcs/agentsAgentListActiveLabels.js";
 import { agentsCreate } from "../funcs/agentsCreate.js";
 import { agentsDelete } from "../funcs/agentsDelete.js";
 import { agentsGetById } from "../funcs/agentsGetById.js";
@@ -67,6 +68,21 @@ export class Agents extends ClientSDK {
     return unwrapAsync(agentsUpdate(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * List Active Agent Labels
+   *
+   * @remarks
+   * List all distinct labels in use across active agents.
+   */
+  async agentListActiveLabels(
+    options?: RequestOptions,
+  ): Promise<Array<string>> {
+    return unwrapAsync(agentsAgentListActiveLabels(
+      this,
       options,
     ));
   }
