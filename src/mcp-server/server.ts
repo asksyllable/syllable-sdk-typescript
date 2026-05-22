@@ -106,6 +106,10 @@ import { tool$languageGroupsUpdate } from "./tools/languageGroupsUpdate.js";
 import { tool$organizationsCreate } from "./tools/organizationsCreate.js";
 import { tool$organizationsDelete } from "./tools/organizationsDelete.js";
 import { tool$organizationsOrganizationsGet } from "./tools/organizationsOrganizationsGet.js";
+import { tool$organizationsSipIpRangesCreate } from "./tools/organizationsSipIpRangesCreate.js";
+import { tool$organizationsSipIpRangesDelete } from "./tools/organizationsSipIpRangesDelete.js";
+import { tool$organizationsSipIpRangesList } from "./tools/organizationsSipIpRangesList.js";
+import { tool$organizationsSipIpRangesUpdate } from "./tools/organizationsSipIpRangesUpdate.js";
 import { tool$organizationsUpdate } from "./tools/organizationsUpdate.js";
 import { tool$outboundBatchesAdd } from "./tools/outboundBatchesAdd.js";
 import { tool$outboundBatchesCreate } from "./tools/outboundBatchesCreate.js";
@@ -190,7 +194,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.42",
+    version: "1.0.43-rc.1",
   });
 
   const client = new SyllableSDKCore({
@@ -368,6 +372,10 @@ export function createMCPServer(deps: {
   tool(tool$sessionsTranscriptGetById);
   tool(tool$sessionsFullSummaryGetById);
   tool(tool$sessionsLatencyGetById);
+  tool(tool$organizationsSipIpRangesList);
+  tool(tool$organizationsSipIpRangesCreate);
+  tool(tool$organizationsSipIpRangesUpdate);
+  tool(tool$organizationsSipIpRangesDelete);
   tool(tool$outboundBatchesList);
   tool(tool$outboundBatchesCreate);
   tool(tool$outboundBatchesGetById);

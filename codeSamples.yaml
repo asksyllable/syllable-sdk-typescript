@@ -2229,6 +2229,92 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/organizations/sip_ip_ranges/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.sipIpRanges.list();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/organizations/sip_ip_ranges/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.sipIpRanges.create({
+                type: "media",
+                ipRange: "192.168.1.0/24",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/organizations/sip_ip_ranges/{sip_ip_range_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              await syllableSDK.organizations.sipIpRanges.delete({
+                sipIpRangeId: 394521,
+              });
+
+
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/organizations/sip_ip_ranges/{sip_ip_range_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.organizations.sipIpRanges.update({
+                sipIpRangeId: 165372,
+                organizationSipIpRangeUpdate: {
+                  ipRange: "192.168.1.0/24",
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/outbound/batches"]["get"]
     update:
       x-codeSamples:
