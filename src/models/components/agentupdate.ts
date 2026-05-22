@@ -97,7 +97,7 @@ export type AgentUpdate = {
    */
   waitSound?: AgentWaitSound | null | undefined;
   /**
-   * Enables Dynamic Language Switching - when true and a voice group is configured, callers may switch among group languages by speaking at any point in the conversation (in addition to DTMF in response to the language menu).
+   * When true and a voice group is configured, callers may switch among group languages by speaking (in addition to DTMF).
    */
   enableVerbalLanguageChange?: boolean | undefined;
   /**
