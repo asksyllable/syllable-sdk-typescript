@@ -59,7 +59,7 @@ export type PromptUpdateRequest = {
    */
   id: number;
   /**
-   * Whether to include the default tools (`hangup`) in the list of tools for the prompt (also includes set_current_language if any of the agents assigned to the prompt have Dynamic Language Switching enabled). If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
+   * Whether to include the default tools (`hangup`) in the list of tools for the prompt. If you remove one of the default tools from your prompt, you might want to disable this option so that the tool is not added again when updated.
    */
   includeDefaultTools?: boolean | undefined;
 };
