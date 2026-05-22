@@ -123,7 +123,7 @@ export type AgentResponse = {
    */
   waitSound?: string | null | undefined;
   /**
-   * When true and a voice group is configured, callers may switch among group languages by speaking (in addition to DTMF).
+   * Enables Dynamic Language Switching - when true and a voice group is configured, callers may switch among group languages by speaking at any point in the conversation (in addition to DTMF in response to the language menu).
    */
   enableVerbalLanguageChange?: boolean | undefined;
   /**

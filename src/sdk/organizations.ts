@@ -9,8 +9,14 @@ import { organizationsUpdate } from "../funcs/organizationsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { SipIpRanges } from "./sipipranges.js";
 
 export class Organizations extends ClientSDK {
+  private _sipIpRanges?: SipIpRanges;
+  get sipIpRanges(): SipIpRanges {
+    return (this._sipIpRanges ??= new SipIpRanges(this._options));
+  }
+
   /**
    * Get Current Organization
    *

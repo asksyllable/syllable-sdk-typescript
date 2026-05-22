@@ -387,6 +387,13 @@ run();
 * [create](docs/sdks/organizations/README.md#create) - Create Organization
 * [delete](docs/sdks/organizations/README.md#delete) - Delete Current Organization
 
+#### [Organizations.SipIpRanges](docs/sdks/sipipranges/README.md)
+
+* [list](docs/sdks/sipipranges/README.md#list) - List Organization Sip Ip Ranges
+* [create](docs/sdks/sipipranges/README.md#create) - Create Organization Sip Ip Range
+* [update](docs/sdks/sipipranges/README.md#update) - Update Organization Sip Ip Range
+* [delete](docs/sdks/sipipranges/README.md#delete) - Delete Organization Sip Ip Range
+
 ### [Outbound.Batches](docs/sdks/batches/README.md)
 
 * [list](docs/sdks/batches/README.md#list) - List Outbound Communication Batches
@@ -619,6 +626,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`organizationsCreate`](docs/sdks/organizations/README.md#create) - Create Organization
 - [`organizationsDelete`](docs/sdks/organizations/README.md#delete) - Delete Current Organization
 - [`organizationsOrganizationsGet`](docs/sdks/organizations/README.md#organizationsget) - Get Current Organization
+- [`organizationsSipIpRangesCreate`](docs/sdks/sipipranges/README.md#create) - Create Organization Sip Ip Range
+- [`organizationsSipIpRangesDelete`](docs/sdks/sipipranges/README.md#delete) - Delete Organization Sip Ip Range
+- [`organizationsSipIpRangesList`](docs/sdks/sipipranges/README.md#list) - List Organization Sip Ip Ranges
+- [`organizationsSipIpRangesUpdate`](docs/sdks/sipipranges/README.md#update) - Update Organization Sip Ip Range
 - [`organizationsUpdate`](docs/sdks/organizations/README.md#update) - Update Current Organization
 - [`outboundBatchesAdd`](docs/sdks/batches/README.md#add) - Create Outbound Communication Request
 - [`outboundBatchesCreate`](docs/sdks/batches/README.md#create) - Create Outbound Communication Batch

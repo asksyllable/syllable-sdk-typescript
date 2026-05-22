@@ -63,6 +63,8 @@ export * from "./insighttoollist.js";
 export * from "./languagegroupsdelete.js";
 export * from "./languagegroupsgetbyid.js";
 export * from "./languagegroupslist.js";
+export * from "./organizationsipiprangesdelete.js";
+export * from "./organizationsipiprangesupdate.js";
 export * from "./outboundbatchadd.js";
 export * from "./outboundbatchdelete.js";
 export * from "./outboundbatchgetbyid.js";
