@@ -13,6 +13,7 @@ export const CustomMessageProperties = {
   Label: "label",
   Type: "type",
   UpdatedAt: "updated_at",
+  AgentId: "agent_id",
 } as const;
 export type CustomMessageProperties = ClosedEnum<
   typeof CustomMessageProperties
