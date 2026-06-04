@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 24ccf2195fce638e2cfd61b1aba2f3ed
+  docChecksum: 19fafab6b62099829a9e657889cd9b91
   docVersion: 0.0.3
   speakeasyVersion: 1.770.0
   generationVersion: 2.893.0
-  releaseVersion: 1.0.46
-  configChecksum: 10f330b3b8cf85eef765218e99cb0279
+  releaseVersion: 1.0.47-rc.1
+  configChecksum: 9dd30305321386cbb48b2c173577c02c
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 6c8391d3-2793-4315-9ae5-7a98e3ae064f
-  pristine_commit_hash: 9d9db41597dd945e0bb4d08d3a2e1a8ae1ae960f
-  pristine_tree_hash: b1b725f6c72b9528c259a2774998c3c593319bd6
+  generation_id: 2139ea39-76ab-461e-b502-b359bd42e631
+  pristine_commit_hash: 225b0df6e6a6b17ee3aaf1504886d6f45534dc46
+  pristine_tree_hash: 46b721a191bbd759ade78295a5dcde1de6d58b38
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -228,8 +228,8 @@ trackedFiles:
     pristine_git_object: 0da3124683699f8dcd742dca6e70c577e7420f0b
   docs/models/components/bridgephrasesconfig.md:
     id: 8d0dbd7377fa
-    last_write_checksum: sha1:6cb62d32cf20192efbb0da1076dee4cf219e0920
-    pristine_git_object: cf483f9e3c357f8e860e493eca2d106048c5dfb2
+    last_write_checksum: sha1:b91b8ccd09d054a5c15a1ed9359e77c15385942a
+    pristine_git_object: 7caa56238919e769d9f92ac1f75e1b283d063cbf
   docs/models/components/callaction.md:
     id: 399a89ff8536
     last_write_checksum: sha1:fe047042ab2210672070e8255c2632177be72765
@@ -2084,12 +2084,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:6beb9c80c0ec881a01886d91515de914928136c4
-    pristine_git_object: 919a817684174cc8c6a5c96633396148aa24a89a
+    last_write_checksum: sha1:2a059950999791f3f2e1e4b57bb971a6ddf410e7
+    pristine_git_object: 6b63a7f0e4fd88013f504607a3f6c4266eb41579
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:3e09f5340be6732450606358446b326cc598bfab
-    pristine_git_object: a8469c0e0fd6eb7596ab1fb85f714703b644ff90
+    last_write_checksum: sha1:50bff8be19c8e7f9b0ef818e61fd25a004af10dc
+    pristine_git_object: 9192c922537f49365087dd16c573e5687a30e887
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2796,8 +2796,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:7904ae7922e2c503f93537b31fbde5767b41dee8
-    pristine_git_object: 6a64ccdb0d9f6a90509d7acee8859b2aa0e44dc2
+    last_write_checksum: sha1:f502cc5ded5af3fb9057a4750181fd3dbfba7278
+    pristine_git_object: 029b8e6bfe604b8208f6a38a8faec8515d28e225
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2880,8 +2880,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:359d2c5887c2b1889d04f86eecae2543dc90dc8b
-    pristine_git_object: b95997955210191f18363304c7ceba6d02e5175f
+    last_write_checksum: sha1:70fc6a1aa3683564b68637f4d258cf2968ec68f2
+    pristine_git_object: f04efd82bbef7389565da2423b14a234d4c90d49
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2896,8 +2896,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:528f18e4c73b3121f781363352153e01527a38b8
-    pristine_git_object: 4b47ac8162f2e84d35a2755f28029f6ab07fcc3c
+    last_write_checksum: sha1:b5166b302078b655b8672df91057d6f3f36d9c3d
+    pristine_git_object: 6bb8790540b140d717d63c0809137e11329bbe42
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -3708,8 +3708,8 @@ trackedFiles:
     pristine_git_object: b71e95f15b916dd50c6804d4b47febde9b0b3dbb
   src/models/components/bridgephrasesconfig.ts:
     id: 7a942c6f966c
-    last_write_checksum: sha1:e122a4bbdc28fbec0c1c8479ad2aaf9edae6a5a5
-    pristine_git_object: 8ccc9941c9aa099c80ca55567a4134d41b8dc526
+    last_write_checksum: sha1:e776292618139c62add2defd260db7538c254844
+    pristine_git_object: 187615f3111c6eb57a00ddad6559798f88e30e27
   src/models/components/callaction.ts:
     id: 982a0886d33e
     last_write_checksum: sha1:ca30990422a9643cfcc34b5836b3f3cd76e60033
@@ -7170,6 +7170,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.conversationConfig.getBridgePhrasesConfig()`:  `response.smartTurnTimeoutSeconds` **Added**\n* `syllablesdk.conversationConfig.updateBridgePhrasesConfig()`: \n  *  `request.bridgePhrasesConfig.smartTurnTimeoutSeconds` **Added**\n  *  `response.smartTurnTimeoutSeconds` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
