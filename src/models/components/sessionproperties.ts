@@ -23,7 +23,6 @@ export const SessionProperties = {
   Source: "source",
   Target: "target",
   Duration: "duration",
-  IsOutbound: "is_outbound",
   IsLegacy: "is_legacy",
   IsTest: "is_test",
 } as const;
