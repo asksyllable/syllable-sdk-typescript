@@ -8,9 +8,9 @@ Request model to generate a sample audio file for a given voice and language.
 import { VoiceSampleCreateRequest } from "syllable-sdk/models/components";
 
 let value: VoiceSampleCreateRequest = {
-  languageCode: "gu-IN",
+  languageCode: "sw-KE",
   voiceProvider: "ElevenLabs",
-  voiceDisplayName: "Achernar (Arabic)",
+  voiceDisplayName: "Achernar (Hindi)",
   voiceSpeed: 1,
   voicePitch: 0,
 };
