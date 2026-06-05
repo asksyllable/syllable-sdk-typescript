@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: aa050411796c02506f8d14fa04f16940
+  docChecksum: c0fff09bf303147230be070bc0ff55c4
   docVersion: 0.0.3
   speakeasyVersion: 1.771.0
   generationVersion: 2.893.0
-  releaseVersion: 1.0.47-rc.3
-  configChecksum: 1c4be58c7b98321dd07ed021e2ad9424
+  releaseVersion: 1.0.47-rc.4
+  configChecksum: 59ebaf4c75ddb64166c9ceb443104243
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: d14340d7-ac79-4e67-9e43-5d203de3ad2d
-  pristine_commit_hash: a836449e4b4e805442fc17877d85f752baad3789
-  pristine_tree_hash: 3cdde0228417959866facb29bcd49ae666d6ed9f
+  generation_id: 0f3afa72-60fd-4250-a1a3-0c8964314367
+  pristine_commit_hash: c41c46baeb66be0fc6d67c9734233c3cdd3db80e
+  pristine_tree_hash: 53d7d12a102024a29574fbf888c7c3a01eca68d5
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -92,8 +92,8 @@ trackedFiles:
     pristine_git_object: 5b8079d3f10385b5fdf679dd5074810f72c5a7a8
   docs/models/components/agentlanguage.md:
     id: 9641bba9f86c
-    last_write_checksum: sha1:96c1a0f8610738ef18ac60c6fa3baabad035999e
-    pristine_git_object: 01fc8f7eae710239771bb6e4b8d5e750e810f077
+    last_write_checksum: sha1:1a99ad9c36391425c6784a43bd2312df09b3c0af
+    pristine_git_object: 04ede40ef1ae17c3bad94fb4fb20665b0303fcd1
   docs/models/components/agentlist.md:
     id: e302b58babd6
     last_write_checksum: sha1:973ae99b190301a0ffff69e2a105c05424fa29e9
@@ -124,12 +124,12 @@ trackedFiles:
     pristine_git_object: 9f862b9df130ae1a21b35b4d94c2075a8d279341
   docs/models/components/agentvoice.md:
     id: 549cd77d0bb5
-    last_write_checksum: sha1:4c10a4c549d10fdcc418b187de08eafe5046915a
-    pristine_git_object: 7ba2ef2862d0e797c618b3bf8b17e539ad9bafc3
+    last_write_checksum: sha1:45308bd9165e317735bfaa112f6f4ac094d67403
+    pristine_git_object: 16f0482c0258fabaf683edc58c0976eb4528efef
   docs/models/components/agentvoicedisplayname.md:
     id: bacd614f2a07
-    last_write_checksum: sha1:5c9e5070036f518b9880bea278953e60eb2a4ffa
-    pristine_git_object: a835b5464d06bf12d46c4e49be0cbd799546d50f
+    last_write_checksum: sha1:e37f460e3670db5133902526026587c0237c6972
+    pristine_git_object: e1e6a82059a35a72096e91a2cf2a8f6ed8d544b6
   docs/models/components/agentvoicegender.md:
     id: 55cbd4bb835a
     last_write_checksum: sha1:8376a4d1a9d953c37138d57f181027c273bd6d9c
@@ -140,8 +140,8 @@ trackedFiles:
     pristine_git_object: 6bd809ad22be286d4a2983f1001ef5277eab0ad9
   docs/models/components/agentvoicevarname.md:
     id: fad0186632b6
-    last_write_checksum: sha1:d1657fdad3f953236fbd0a391cd3909365002574
-    pristine_git_object: b623bbffbc2bb941c93a6a9a09913367c3595e9f
+    last_write_checksum: sha1:761911a6b6e48bc619a05a97ee0a187037641fd1
+    pristine_git_object: 1f95090d81f71dacb3068d14c88c7db12640e65e
   docs/models/components/agentwaitsound.md:
     id: 2f3c9fd4e4d0
     last_write_checksum: sha1:75aa999f2acaa77ad66d8da7e460d710402c6599
@@ -224,12 +224,12 @@ trackedFiles:
     pristine_git_object: 52f39c0dd1af689f7f8d6e43e490aeb25ecfc79f
   docs/models/components/bridgephrasemessages.md:
     id: 6e8bdbda3894
-    last_write_checksum: sha1:f3bd1e0a7d32932b83f94dfb3fb90daa95b61d2a
-    pristine_git_object: 3e2a0e53512a27ffdf2e79bae39100c3844de0eb
+    last_write_checksum: sha1:51f998cbaffadece69fc83d41540fc41f510d546
+    pristine_git_object: 0da3124683699f8dcd742dca6e70c577e7420f0b
   docs/models/components/bridgephrasesconfig.md:
     id: 8d0dbd7377fa
-    last_write_checksum: sha1:97c00e8e9044a5aa8ec768789077151b03b76157
-    pristine_git_object: f3b345e094c9620bead935f08f5922d8b2413bd8
+    last_write_checksum: sha1:b91b8ccd09d054a5c15a1ed9359e77c15385942a
+    pristine_git_object: 7caa56238919e769d9f92ac1f75e1b283d063cbf
   docs/models/components/callaction.md:
     id: 399a89ff8536
     last_write_checksum: sha1:fe047042ab2210672070e8255c2632177be72765
@@ -278,10 +278,14 @@ trackedFiles:
     id: b1bd7f8614ee
     last_write_checksum: sha1:6f788ee206f419f08b2ee7de7f9751ef9a8dda9d
     pristine_git_object: ffea1a6e637300cc06c1966efbdce22e6711fa5a
+  docs/models/components/channeltargetorderproperties.md:
+    id: 4caa8ce6d1a6
+    last_write_checksum: sha1:7cba84136a95a6e53b2f6f93b7b7c98a85aa9c51
+    pristine_git_object: 71e7e5f68c668d639a402eba064cf6901beaec83
   docs/models/components/channeltargetproperties.md:
     id: d2ded70a5213
-    last_write_checksum: sha1:039a9bb70b91332823c06bce407cc6f36cc4c128
-    pristine_git_object: 2deb08cdcf4b951e04cdf617e5ca22338660bb6f
+    last_write_checksum: sha1:87b0d4820a1e5ae4c1c310857c4a13444df5fb11
+    pristine_git_object: 91caffd4c40ac8dbbf71a919923a6b05fe6cc656
   docs/models/components/channeltargetresponse.md:
     id: 7f372c209f56
     last_write_checksum: sha1:77ec5700cd803ce11607125452ae840d1363c1d4
@@ -720,12 +724,12 @@ trackedFiles:
     pristine_git_object: 41b857f2878477f7aad883437e96d6c2eef35af2
   docs/models/components/languagecode.md:
     id: ac599e2f36d4
-    last_write_checksum: sha1:99ccd867b55d8dbf0553f6e5a506caab5528bafb
-    pristine_git_object: 2cd077f9dd101ce2fa52b95adc3f89a3158dce76
+    last_write_checksum: sha1:e325994c67ccaa2b8ec987d2c081fd78e62ac21e
+    pristine_git_object: ef4bee1b88389f4b33d1b92c1346725cb1a2e0c6
   docs/models/components/languageconfig.md:
     id: 794c74ed41aa
-    last_write_checksum: sha1:273a6491026e1fee24996915b7ffd8e56493363c
-    pristine_git_object: 057775643f38731c57d67cf6a74c8801bc7b9117
+    last_write_checksum: sha1:2fa8e0cd56106c6c2a2791a902fb678978f008e5
+    pristine_git_object: 9fb3b0f5ead2b85ffd11fca6704a21cdba5b900c
   docs/models/components/languagegroupagentinfo.md:
     id: 1cf9a1222c7e
     last_write_checksum: sha1:f9aea44302d7eca84efbff4af4ebdd25a9126675
@@ -748,8 +752,8 @@ trackedFiles:
     pristine_git_object: f52d290f37cfb5207df56aa6c6d3e0efc4b46aaa
   docs/models/components/languagesamplecreaterequest.md:
     id: a21aa01a5f89
-    last_write_checksum: sha1:4d700500b1df760ab8f57e0874c9d616898da1a0
-    pristine_git_object: db0543be38042a9e5112701afc28a7004fe56f68
+    last_write_checksum: sha1:d4af9625de51e9973513c0ebddca700005447a74
+    pristine_git_object: bcc2be99ea1bb5f31fccba7f49b57666f866ed75
   docs/models/components/latencycategory.md:
     id: 419f504d5ace
     last_write_checksum: sha1:37903d40edca07ec1a9fb85fadbf3b27d34f25e1
@@ -1136,8 +1140,8 @@ trackedFiles:
     pristine_git_object: 663abab358d3b465475b52c3553052675eb449b3
   docs/models/components/sessionproperties.md:
     id: 96669ce12ecd
-    last_write_checksum: sha1:5531eecf9357cdae4a9c917596c42f5c6c0a8d9a
-    pristine_git_object: 6541fb70e25884028026097ee50dd13c04f8d5fb
+    last_write_checksum: sha1:91cc8a4ff2949b4c989d6669a13756ef004b59d0
+    pristine_git_object: ab551b8b1de7b695601c9d0da7f7a193e0340a02
   docs/models/components/sessionrecordingresponse.md:
     id: 9177a99575b2
     last_write_checksum: sha1:b316666ff6ac06eefcc49069371fe6ec5ba65773
@@ -1468,8 +1472,8 @@ trackedFiles:
     pristine_git_object: 039742ab96fe2f65cbe8d6cd87a2a52ee462c2c7
   docs/models/components/voicesamplecreaterequest.md:
     id: 63d8552422b6
-    last_write_checksum: sha1:2baccb2f44e263d8d86a403c2413fb6f08cf3cb1
-    pristine_git_object: 18fb76d586a6e4d4551f673175331dd18477345b
+    last_write_checksum: sha1:e2a27b539a4b9b12761778c73de971190a41a67f
+    pristine_git_object: 80ff8cd5030d23c5612a9b692c4cffaee30fac0a
   docs/models/errors/httpvalidationerror.md:
     id: 9365601abbd7
     last_write_checksum: sha1:1b7196c89413dcf10724c47ad4543d0115278567
@@ -1528,8 +1532,8 @@ trackedFiles:
     pristine_git_object: ed106217fb4cc702e99d1f0c6536a17413e5317a
   docs/models/operations/channeltargetslistrequest.md:
     id: 6e53a5fee81e
-    last_write_checksum: sha1:58d8c7d93acad31387255fe5e4bbd13048d20b51
-    pristine_git_object: f7bd7c92b07137b97ec85093708f72a82beb74f0
+    last_write_checksum: sha1:686d93758146108a9b7d4b7e0c4d4da587c14497
+    pristine_git_object: 6780e6a694af8d3d48a0cd2cce34aeb21e8c183d
   docs/models/operations/channeltargetsupdaterequest.md:
     id: 0be0cf3d0503
     last_write_checksum: sha1:0ea3b444a9811f5ab85d2d32c8867af6e4a3e4bd
@@ -2028,8 +2032,8 @@ trackedFiles:
     pristine_git_object: cbfe81cbaa4b23a698627e716539af2efa6adee4
   docs/sdks/targets/README.md:
     id: 99e3a57726e8
-    last_write_checksum: sha1:157d778e80cef720444bce0278669a478b13a112
-    pristine_git_object: ff9f4c230f095165bf554ad81aebc97e07b4eae5
+    last_write_checksum: sha1:d4d3c9ee740f1fae842c590e070143affcb34e67
+    pristine_git_object: 25147bfb85220bd062a9f9d68c51b3938b2eecdb
   docs/sdks/test/README.md:
     id: 761ebb8ebff2
     last_write_checksum: sha1:37ffdbe8a054bf553fa37b13ba8bc06aa24192aa
@@ -2084,12 +2088,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:c3be26db969b80c240d61f3da8299d8c33cf0774
-    pristine_git_object: d693b80c597425c42c166c7cee385fe3f8428824
+    last_write_checksum: sha1:577a11f4eb7b124e592747f216385ec4f231812d
+    pristine_git_object: ffb124d0f5d089c36bda01639bd3d505ff62bb86
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:e87dcb2d8f54b561457885ec66001edcf36e1894
-    pristine_git_object: 592c16caaa08de32a0e00ab27363e6b3fed6e4c4
+    last_write_checksum: sha1:00b33385b348c29aaf427a7d7ed3c97e2c7742d4
+    pristine_git_object: 4b82a345c1f21141e4ce1846fb41d65699098e8b
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2152,8 +2156,8 @@ trackedFiles:
     pristine_git_object: dc3bb1bde152b53dc9bb236e65a2bb2b48fbaeed
   src/funcs/channelsTargetsList.ts:
     id: 56b31ef96fdf
-    last_write_checksum: sha1:7c028c0127d568e5911df91c6959c01c68309fe2
-    pristine_git_object: 71ae0f6940a31678799dea3166f0fcc6c9526492
+    last_write_checksum: sha1:ba921d5af87e5800058e888cd4cc1633e573085d
+    pristine_git_object: 362615980ace92e0875e0cb13cc3d10bbd498d38
   src/funcs/channelsTargetsUpdate.ts:
     id: ec780df5563c
     last_write_checksum: sha1:6e5a16830aebcfc0c2b1e73d9b983ce310508232
@@ -2796,8 +2800,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:d8e04c89d120d1bbb42858a1ff5a333ebf5e7b38
-    pristine_git_object: bc2ffbd03df12e0ed6dd4ee8d9b2f31b28c04878
+    last_write_checksum: sha1:ad97fda65a90430f4b44130bf0a178566ccdf69e
+    pristine_git_object: ed58e671055fdd335992a6bec86718dc9868b459
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2880,8 +2884,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:77ad3327e59d8a9fa2836f7588121625dcb7ccfa
-    pristine_git_object: c7978e394a07beea1863459ba6931ee97bf742f9
+    last_write_checksum: sha1:d0ec2caaf2bde261d05aac1d745ed9925e9ccadd
+    pristine_git_object: 4e197925da1c439faf1dd527b3776be5670ee289
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2896,8 +2900,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:0462e321ea0cc2ea0a9d75c035787d619d3865c3
-    pristine_git_object: e66f90def30fae269b0d1a789a89f230c5198df5
+    last_write_checksum: sha1:f86b5b5927afe5e36aac6c0b1061c2a22a1a6457
+    pristine_git_object: e63427bd1e8c564d71de51a17bcafafbd8d49e2f
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -2964,8 +2968,8 @@ trackedFiles:
     pristine_git_object: 3f98eaf18aba266007a19fd26d9222b49670e280
   src/mcp-server/tools/channelsTargetsList.ts:
     id: 65354c3a6b97
-    last_write_checksum: sha1:2bd87a9f0c9eb3e11bcbeaa252842493143e56c4
-    pristine_git_object: ac04b73bd69e865d7f65f4208ceed1c1421f91eb
+    last_write_checksum: sha1:5c36c361b8d68170291c7982ce4e550b276fe0eb
+    pristine_git_object: ca2d00fa35590bd3c2e0f3aab91f466fd94f96f7
   src/mcp-server/tools/channelsTargetsUpdate.ts:
     id: 5dd37bbd6fa4
     last_write_checksum: sha1:a5a4d7a9bfda773b38a164012d95e2a4556a198e
@@ -3632,8 +3636,8 @@ trackedFiles:
     pristine_git_object: 1a511316a5067180ad92334ec7d980115be214c1
   src/models/components/agentvoicedisplayname.ts:
     id: 312d63b1bcbb
-    last_write_checksum: sha1:1ac9ce2a10808c244c380b88f0f48534d65a7172
-    pristine_git_object: 1a1055c963d206e556eace06588a9815ad32cfd0
+    last_write_checksum: sha1:bfe35bc0f5259081f201ab311c103595690dbee7
+    pristine_git_object: 8324b1e8401d3cf83224d1698e0e577d61c677a7
   src/models/components/agentvoicegender.ts:
     id: 1fca9d113ebe
     last_write_checksum: sha1:d79fd0f742799ed1d98b8c1777bc001d9377e36e
@@ -3644,8 +3648,8 @@ trackedFiles:
     pristine_git_object: 0c6c81ca964937803c30a717a3642a54ee9936fe
   src/models/components/agentvoicevarname.ts:
     id: f7bc751c03b0
-    last_write_checksum: sha1:174e2ada302683a1c5345cbf8552c4ee712d999f
-    pristine_git_object: 12cca5cf8a790f6129cfd08e1a107630f1fcbda0
+    last_write_checksum: sha1:048b94ddc9ad15b969618736fc35b6599b64f6b4
+    pristine_git_object: d37384b05b80df75e5af0fb66a89f87e1ead86cf
   src/models/components/agentwaitsound.ts:
     id: beaf6a7ef8bc
     last_write_checksum: sha1:2a2b7e9126de87a039b7d95fb63f3d7b173331a5
@@ -3704,12 +3708,12 @@ trackedFiles:
     pristine_git_object: 32c3b4d42d89c0786e2ce4892c48f20fd56563af
   src/models/components/bridgephrasemessages.ts:
     id: deac4305080b
-    last_write_checksum: sha1:8ec83f98b78fa8530e87987a7d4431454005f70e
-    pristine_git_object: 51156c03ed45943b2424110bc2109e2e6589c5e3
+    last_write_checksum: sha1:cf4e68f0fb3da8a0b2e5040591e1eadd54aaad04
+    pristine_git_object: b71e95f15b916dd50c6804d4b47febde9b0b3dbb
   src/models/components/bridgephrasesconfig.ts:
     id: 7a942c6f966c
-    last_write_checksum: sha1:63b2f15a4b2dd638904548096d195e80764ac103
-    pristine_git_object: ab850ca7fe7cc3d7ba249c4dd9ae9cba53fb81bf
+    last_write_checksum: sha1:e776292618139c62add2defd260db7538c254844
+    pristine_git_object: 187615f3111c6eb57a00ddad6559798f88e30e27
   src/models/components/callaction.ts:
     id: 982a0886d33e
     last_write_checksum: sha1:ca30990422a9643cfcc34b5836b3f3cd76e60033
@@ -3750,10 +3754,14 @@ trackedFiles:
     id: 0eb4a4dd1ed1
     last_write_checksum: sha1:f980bc3a423c23254a449a64100bcc6b9ff833cf
     pristine_git_object: 78aefe831b7ca1e62ffdb85f788a8f217a01ae08
+  src/models/components/channeltargetorderproperties.ts:
+    id: 8fa347e61370
+    last_write_checksum: sha1:e32944322e76dabfbaebede82f6ad6f227e0d3a9
+    pristine_git_object: f737406be8c088cc80e6651a6dcc78bba406319c
   src/models/components/channeltargetproperties.ts:
     id: d0c5073e3639
-    last_write_checksum: sha1:a88bd6d17802075f1018d0118e223a22036796e7
-    pristine_git_object: 0c99791b2f9cbdf006a2265c396e10f095c970b5
+    last_write_checksum: sha1:71a4af65d229c7a66faea3ac268d95642fba6516
+    pristine_git_object: d7fa99e507bcc35f1e400fd49a7f39cf7eb4b8c6
   src/models/components/channeltargetresponse.ts:
     id: 795592b0043d
     last_write_checksum: sha1:e274fda5c0db86d930ae1ac0ab014b3c0c6f5dcf
@@ -4008,8 +4016,8 @@ trackedFiles:
     pristine_git_object: 9f63697edf7ec323285ba25d328a4e4a38cc609e
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:654eb6fa1f4004b907252ffb86d05ae11aa13396
-    pristine_git_object: b7c0081869f37c09cb32273f1d9eaa43f3b53412
+    last_write_checksum: sha1:7d8975d73f93362bc91d502e36011dba07d10061
+    pristine_git_object: 7c06f71fb4fc6b0e23012f608b03e46182580b82
   src/models/components/inputparameter.ts:
     id: 3e896f254d26
     last_write_checksum: sha1:6b78ad6ccb0d52e1257e19231f420b0a76658f19
@@ -4108,8 +4116,8 @@ trackedFiles:
     pristine_git_object: d6643d157b2f9ead5155a61b63ea26afa8825e1b
   src/models/components/languagecode.ts:
     id: d4abcd94f029
-    last_write_checksum: sha1:078a849ab3bf16e319b3c3e1fc7dec7cbee68a44
-    pristine_git_object: e94427428946ad87031c8cce05331d6d49a99447
+    last_write_checksum: sha1:2a00f9c86fb0528b4e4dceaa03a065c18ea632ea
+    pristine_git_object: 98eb30cb3b00eeb95bf610725579b57f741ac8be
   src/models/components/languageconfig.ts:
     id: 0b37f2874166
     last_write_checksum: sha1:b9bd03a16823f797f322b7bb6bde69b09da4b326
@@ -4468,8 +4476,8 @@ trackedFiles:
     pristine_git_object: 30bd40b9f20ccbb1f4b39548ffce6785feeea5a0
   src/models/components/sessionproperties.ts:
     id: da6e725d396b
-    last_write_checksum: sha1:d86a50f88cf41ca232dd4e03e735a40a078c4248
-    pristine_git_object: 5d63f78c4df54c8407b3ecb76ccab17f3eb876c3
+    last_write_checksum: sha1:64a836d6c8c21838ccfadb058b9b36eceea200f2
+    pristine_git_object: 5efe706888c7899dab79b9decfd97fb648f4f6d1
   src/models/components/sessionrecordingresponse.ts:
     id: bfc3617dec1f
     last_write_checksum: sha1:da1479310d5c73088e6f560bcda36d235ad2e75a
@@ -4808,8 +4816,8 @@ trackedFiles:
     pristine_git_object: 3767c7c6659cf23f09535dcbb07bde184883bcdd
   src/models/operations/channeltargetslist.ts:
     id: ca8a9c994249
-    last_write_checksum: sha1:a9902c556574217f27bc151a5275fdfad38682f1
-    pristine_git_object: eb224e329fc2a2fb5b80a152cc2b90efea3df4bd
+    last_write_checksum: sha1:d14e7464ba8dc3ae110df36d906525107e4f9a27
+    pristine_git_object: db69ea8e0c8e6ef081a73a9afbfe9e0744bd1fc2
   src/models/operations/channeltargetsupdate.ts:
     id: 1502af98cf3b
     last_write_checksum: sha1:188f6ac3239d3be1a4e1e13ff26d3a3717f7fcf0
@@ -5324,8 +5332,8 @@ trackedFiles:
     pristine_git_object: 8b9fb7465cd7c2e63d24074359e35802c183af6c
   src/sdk/targets.ts:
     id: da4bda05eba6
-    last_write_checksum: sha1:d324ecda57b4139943912f2fa34aa5b5152d7763
-    pristine_git_object: d4daf1d5b775193399266f222c4cbb878b4278ea
+    last_write_checksum: sha1:d429f67ed46609c9376d647b56ae308be635b493
+    pristine_git_object: 846adb49954c9da7fcb1cdeedc863134cc01158f
   src/sdk/test.ts:
     id: dfe89454d192
     last_write_checksum: sha1:877b0da59d3a2d278bd5737ef90ea036646c5b3f
@@ -5604,6 +5612,7 @@ examples:
           search_field_values: ["Some Object Name"]
           start_datetime: "2023-01-01T00:00:00Z"
           end_datetime: "2024-01-01T00:00:00Z"
+          order_by: "target"
       responses:
         "200":
           application/json: {"items": [{"agent_id": 1, "channel_id": 1, "target": "+19995551234", "target_mode": "voice", "fallback_target": "+19995551235", "is_test": true, "id": 1, "channel_name": "+19995551234", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "agent": {"name": "Weather agent", "description": "Agent for answering questions about weather.", "labels": ["Information", "Weather"], "type": "ca_v1", "prompt_id": 1, "custom_message_id": 1, "language_group_id": 1, "timezone": "America/New_York", "prompt_tool_defaults": [{"tool_name": "get_weather", "default_values": [{"field_name": "temperature_unit", "default_value": "fahrenheit"}]}], "variables": {"vars.location_name": "Main Street Pizza"}, "tool_headers": {"some-header": "some-value"}, "agent_initiated": false, "stt_provider": "Google STT V2 (Chirp 2)", "wait_sound": "No Sound", "enable_verbal_language_change": false, "id": 1, "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "prompt": {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "session_end_enabled": false, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "id": 1, "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "agent_count": 5, "version_number": 1, "tools_full": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "query"}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2025-07-12T17:11:31.419Z", "last_updated_by": "user@email.com", "version_number": 1}]}, "custom_message": null, "channel_targets": [{"agent_id": 1, "channel_id": 1, "target": "+19995551234", "target_mode": "chat", "fallback_target": "+19995551235", "is_test": true, "id": 1, "channel_name": "+19995551234", "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "agent": {"name": "Weather agent", "description": "Agent for answering questions about weather.", "labels": ["Information", "Weather"], "type": "ca_v1", "prompt_id": 1, "custom_message_id": 1, "language_group_id": 1, "timezone": "America/New_York", "prompt_tool_defaults": [{"tool_name": "get_weather", "default_values": [{"field_name": "temperature_unit", "default_value": "fahrenheit"}]}], "variables": {"vars.location_name": "Main Street Pizza"}, "tool_headers": {"some-header": "some-value"}, "agent_initiated": false, "stt_provider": "Google STT V2 (Chirp 2)", "wait_sound": "No Sound", "enable_verbal_language_change": false, "id": 1, "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@email.com", "prompt": {"name": "Weather Agent Prompt", "description": "Prompt for a weather agent.", "type": "prompt_v1", "context": "You are a weather agent. Answer the user's questions about weather and nothing else.", "llm_config": {"model": "gpt-4o", "version": "2024-05-13", "api_version": "2024-06-01", "temperature": 1, "seed": 123}, "session_end_enabled": false, "edit_comments": "Updated prompt text to include requirement to not answer questions that aren't about weather.", "id": 1, "last_updated": "2024-01-01T12:00:00Z", "last_updated_by": "user@email.com", "agent_count": 5, "version_number": 1, "tools_full": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "query"}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2025-07-12T17:11:31.419Z", "last_updated_by": "user@email.com", "version_number": 1}]}, "custom_message": {"name": "Customer service greeting", "type": "greeting", "text": "Hello and thank you for calling customer service. How can I help you today?", "label": "Customer service", "repeat_after_language_change": true, "rules": [{"description": "Closed on New Year's Day", "time_range_start": "09:00", "time_range_end": "17:00", "date": "2025-01-01", "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed today."}, {"description": "Closed on weekends", "time_range_start": "09:00", "time_range_end": "17:00", "days_of_week": ["sa", "su"], "invert": false, "text": "Hello, thank you for calling. Sorry, we're closed on weekends."}], "id": 1, "updated_at": "2024-01-01T00:00:00Z", "agent_count": 1, "last_updated_by": "user@email.com"}, "tools": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "query"}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-02-25T06:24:16.473Z", "last_updated_by": "user@email.com", "version_number": 1}], "language_group": {"name": "Call Center 1 Languages", "description": "Languages spoken by operators at Call Center 1", "language_configs": [{"language_code": "en-US", "voice_provider": "OpenAI", "voice_display_name": "Alloy", "dtmf_code": 1}, {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "es-US-Neural2-B", "dtmf_code": 2}], "skip_current_language_in_message": true, "id": 1, "edit_comments": "Added Spanish support.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@mail.com"}}}], "tools": [{"name": "Weather Fetcher", "definition": {"type": "endpoint", "tool": {"type": "function", "function": {"name": "get_weather", "description": "Get the weather for a city", "parameters": {}}}, "endpoint": {"url": "https://api.example.com", "method": "get", "argument_location": "query"}, "defaults": "<value>", "static_parameters": [{"name": "temperature_unit", "description": "Whether the temperature information should be fetched in Celsius or Fahrenheit", "required": false, "type": "string", "default": "fahrenheit"}]}, "service_id": 1, "id": 1, "last_updated_comments": "Updated to use new API endpoint", "prompts_info": [{"id": 1, "name": "Test Prompt"}], "agents_info": [{"id": 1, "name": "Test Agent"}], "last_updated": "2024-02-25T06:24:16.473Z", "last_updated_by": "user@email.com", "version_number": 1}], "language_group": {"name": "Call Center 1 Languages", "description": "Languages spoken by operators at Call Center 1", "language_configs": [{"language_code": "en-US", "voice_provider": "OpenAI", "voice_display_name": "Alloy", "dtmf_code": 1}, {"language_code": "es-US", "voice_provider": "Google", "voice_display_name": "es-US-Neural2-B", "dtmf_code": 2}], "skip_current_language_in_message": true, "id": 1, "edit_comments": "Added Spanish support.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2024-01-01T00:00:00Z", "last_updated_by": "user@mail.com"}}}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
@@ -7067,16 +7076,16 @@ examples:
     speakeasy-default-get-bridge-phrases-config:
       responses:
         "200":
-          application/json: {}
+          application/json: {"randomize_messages": false}
         "422":
           application/json: {}
   update_bridge_phrases_config:
     speakeasy-default-update-bridge-phrases-config:
       requestBody:
-        application/json: {}
+        application/json: {"randomize_messages": false}
       responses:
         "200":
-          application/json: {}
+          application/json: {"randomize_messages": false}
         "422":
           application/json: {}
   directory_member_history:
@@ -7170,7 +7179,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.agents.list()`:  `response.items[].languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.create()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.update()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.getById()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.agentGetAvailableVoices()`:  `response.[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.list()`:  `response.items[].agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.create()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.getById()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.update()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.conversationConfig.getBridgePhrasesConfig()`:  `response` **Changed** (Breaking ⚠️)\n* `syllablesdk.conversationConfig.updateBridgePhrasesConfig()`: \n  *  `request.bridgePhrasesConfig` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n* `syllablesdk.sessions.list()`:  `request` **Changed** (Breaking ⚠️)\n* `syllablesdk.directory.directoryMemberTestExtension()`: \n  *  `request.languageCode` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.list()`:  `response.items[].languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.create()`: \n  *  `request.languageConfigs[]` **Changed** (Breaking ⚠️)\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.update()`: \n  *  `request.languageConfigs[]` **Changed** (Breaking ⚠️)\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.getById()`:  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.languageGroupsCreateVoiceSample()`:  `request` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.list()`:  `response.items[].languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.create()`: \n  *  `request.languageConfigs[]` **Changed** (Breaking ⚠️)\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.update()`: \n  *  `request.languageConfigs[]` **Changed** (Breaking ⚠️)\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.getById()`:  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.voiceGroupsCreateVoiceSample()`:  `request` **Changed** (Breaking ⚠️)\n"
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.languageGroups.update()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.update()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.update()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.getById()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.agentGetAvailableVoices()`:  `response.[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.list()`: \n  *  `request` **Changed**\n  *  `response.items[].agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.create()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.getById()`:  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.update()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.create()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.create()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.list()`:  `response.items[].languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.getById()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.list()`:  `response.items[].languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.create()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.list()`:  `response.items[].languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.getById()`:  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.languageGroupsCreateVoiceSample()`:  `request` **Changed**\n* `syllablesdk.conversationConfig.updateBridgePhrasesConfig()`: \n  *  `request.bridgePhrasesConfig` **Changed**\n  *  `response` **Changed**\n* `syllablesdk.conversationConfig.getBridgePhrasesConfig()`:  `response` **Changed**\n* `syllablesdk.sessions.list()`:  `request` **Changed**\n* `syllablesdk.directory.directoryMemberTestExtension()`: \n  *  `request.languageCode` **Changed**\n* `syllablesdk.voiceGroups.voiceGroupsCreateVoiceSample()`:  `request` **Changed**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

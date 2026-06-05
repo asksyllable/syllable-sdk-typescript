@@ -39,6 +39,9 @@ export const AgentVoiceVarName = {
   ElevenlabsWill: "elevenlabs:Will",
   WavenetFemaleEnUSChirp3HDAchernar: "wavenet:female/en-US-Chirp3-HD-Achernar",
   WavenetFemaleGuINChirp3HDAchernar: "wavenet:female/gu-IN-Chirp3-HD-Achernar",
+  WavenetFemaleArXAChirp3HDAchernar: "wavenet:female/ar-XA-Chirp3-HD-Achernar",
+  WavenetFemaleFRFRChirp3HDAchernar: "wavenet:female/fr-FR-Chirp3-HD-Achernar",
+  WavenetFemaleJaJPChirp3HDAchernar: "wavenet:female/ja-JP-Chirp3-HD-Achernar",
   WavenetFemaleHiINChirp3HDAchernar: "wavenet:female/hi-IN-Chirp3-HD-Achernar",
   WavenetFemaleKoKRChirp3HDAchernar: "wavenet:female/ko-KR-Chirp3-HD-Achernar",
   WavenetFemaleCmnCNChirp3HDAchernar:
@@ -48,6 +51,9 @@ export const AgentVoiceVarName = {
   WavenetFemaleViVNChirp3HDAchernar: "wavenet:female/vi-VN-Chirp3-HD-Achernar",
   WavenetFemaleEnUSChirp3HDAoede: "wavenet:female/en-US-Chirp3-HD-Aoede",
   WavenetFemaleGuINChirp3HDAoede: "wavenet:female/gu-IN-Chirp3-HD-Aoede",
+  WavenetFemaleArXAChirp3HDAoede: "wavenet:female/ar-XA-Chirp3-HD-Aoede",
+  WavenetFemaleFRFRChirp3HDAoede: "wavenet:female/fr-FR-Chirp3-HD-Aoede",
+  WavenetFemaleJaJPChirp3HDAoede: "wavenet:female/ja-JP-Chirp3-HD-Aoede",
   WavenetFemaleHiINChirp3HDAoede: "wavenet:female/hi-IN-Chirp3-HD-Aoede",
   WavenetFemaleKoKRChirp3HDAoede: "wavenet:female/ko-KR-Chirp3-HD-Aoede",
   WavenetFemaleCmnCNChirp3HDAoede: "wavenet:female/cmn-CN-Chirp3-HD-Aoede",
@@ -60,6 +66,12 @@ export const AgentVoiceVarName = {
     "wavenet:female/en-US-Chirp3-HD-Callirrhoe",
   WavenetFemaleGuINChirp3HDCallirrhoe:
     "wavenet:female/gu-IN-Chirp3-HD-Callirrhoe",
+  WavenetFemaleArXAChirp3HDCallirrhoe:
+    "wavenet:female/ar-XA-Chirp3-HD-Callirrhoe",
+  WavenetFemaleFRFRChirp3HDCallirrhoe:
+    "wavenet:female/fr-FR-Chirp3-HD-Callirrhoe",
+  WavenetFemaleJaJPChirp3HDCallirrhoe:
+    "wavenet:female/ja-JP-Chirp3-HD-Callirrhoe",
   WavenetFemaleHiINChirp3HDCallirrhoe:
     "wavenet:female/hi-IN-Chirp3-HD-Callirrhoe",
   WavenetFemaleKoKRChirp3HDCallirrhoe:
@@ -74,6 +86,9 @@ export const AgentVoiceVarName = {
     "wavenet:female/vi-VN-Chirp3-HD-Callirrhoe",
   WavenetMaleEnUSChirp3HDCharon: "wavenet:male/en-US-Chirp3-HD-Charon",
   WavenetMaleGuINChirp3HDCharon: "wavenet:male/gu-IN-Chirp3-HD-Charon",
+  WavenetMaleArXAChirp3HDCharon: "wavenet:male/ar-XA-Chirp3-HD-Charon",
+  WavenetMaleFRFRChirp3HDCharon: "wavenet:male/fr-FR-Chirp3-HD-Charon",
+  WavenetMaleJaJPChirp3HDCharon: "wavenet:male/ja-JP-Chirp3-HD-Charon",
   WavenetMaleHiINChirp3HDCharon: "wavenet:male/hi-IN-Chirp3-HD-Charon",
   WavenetMaleKoKRChirp3HDCharon: "wavenet:male/ko-KR-Chirp3-HD-Charon",
   WavenetMaleCmnCNChirp3HDCharon: "wavenet:male/cmn-CN-Chirp3-HD-Charon",
@@ -84,6 +99,9 @@ export const AgentVoiceVarName = {
   WavenetFemaleEnUSNeural2F: "wavenet:female/en-US-Neural2-F",
   WavenetMaleEnUSChirp3HDFenrir: "wavenet:male/en-US-Chirp3-HD-Fenrir",
   WavenetMaleGuINChirp3HDFenrir: "wavenet:male/gu-IN-Chirp3-HD-Fenrir",
+  WavenetMaleArXAChirp3HDFenrir: "wavenet:male/ar-XA-Chirp3-HD-Fenrir",
+  WavenetMaleFRFRChirp3HDFenrir: "wavenet:male/fr-FR-Chirp3-HD-Fenrir",
+  WavenetMaleJaJPChirp3HDFenrir: "wavenet:male/ja-JP-Chirp3-HD-Fenrir",
   WavenetMaleHiINChirp3HDFenrir: "wavenet:male/hi-IN-Chirp3-HD-Fenrir",
   WavenetMaleKoKRChirp3HDFenrir: "wavenet:male/ko-KR-Chirp3-HD-Fenrir",
   WavenetMaleCmnCNChirp3HDFenrir: "wavenet:male/cmn-CN-Chirp3-HD-Fenrir",
@@ -95,6 +113,9 @@ export const AgentVoiceVarName = {
   WavenetMaleEnUSNeural2D: "wavenet:male/en-US-Neural2-D",
   WavenetFemaleEnUSChirp3HDKore: "wavenet:female/en-US-Chirp3-HD-Kore",
   WavenetFemaleGuINChirp3HDKore: "wavenet:female/gu-IN-Chirp3-HD-Kore",
+  WavenetFemaleArXAChirp3HDKore: "wavenet:female/ar-XA-Chirp3-HD-Kore",
+  WavenetFemaleFRFRChirp3HDKore: "wavenet:female/fr-FR-Chirp3-HD-Kore",
+  WavenetFemaleJaJPChirp3HDKore: "wavenet:female/ja-JP-Chirp3-HD-Kore",
   WavenetFemaleHiINChirp3HDKore: "wavenet:female/hi-IN-Chirp3-HD-Kore",
   WavenetFemaleKoKRChirp3HDKore: "wavenet:female/ko-KR-Chirp3-HD-Kore",
   WavenetFemaleCmnCNChirp3HDKore: "wavenet:female/cmn-CN-Chirp3-HD-Kore",
@@ -104,6 +125,9 @@ export const AgentVoiceVarName = {
   WavenetFemaleViVNChirp3HDKore: "wavenet:female/vi-VN-Chirp3-HD-Kore",
   WavenetFemaleEnUSChirp3HDLeda: "wavenet:female/en-US-Chirp3-HD-Leda",
   WavenetFemaleGuINChirp3HDLeda: "wavenet:female/gu-IN-Chirp3-HD-Leda",
+  WavenetFemaleArXAChirp3HDLeda: "wavenet:female/ar-XA-Chirp3-HD-Leda",
+  WavenetFemaleFRFRChirp3HDLeda: "wavenet:female/fr-FR-Chirp3-HD-Leda",
+  WavenetFemaleJaJPChirp3HDLeda: "wavenet:female/ja-JP-Chirp3-HD-Leda",
   WavenetFemaleHiINChirp3HDLeda: "wavenet:female/hi-IN-Chirp3-HD-Leda",
   WavenetFemaleKoKRChirp3HDLeda: "wavenet:female/ko-KR-Chirp3-HD-Leda",
   WavenetFemaleCmnCNChirp3HDLeda: "wavenet:female/cmn-CN-Chirp3-HD-Leda",
@@ -117,6 +141,9 @@ export const AgentVoiceVarName = {
   WavenetFemaleEnUSStudioO: "wavenet:female/en-US-Studio-O",
   WavenetMaleEnUSChirp3HDOrus: "wavenet:male/en-US-Chirp3-HD-Orus",
   WavenetMaleGuINChirp3HDOrus: "wavenet:male/gu-IN-Chirp3-HD-Orus",
+  WavenetMaleArXAChirp3HDOrus: "wavenet:male/ar-XA-Chirp3-HD-Orus",
+  WavenetMaleFRFRChirp3HDOrus: "wavenet:male/fr-FR-Chirp3-HD-Orus",
+  WavenetMaleJaJPChirp3HDOrus: "wavenet:male/ja-JP-Chirp3-HD-Orus",
   WavenetMaleHiINChirp3HDOrus: "wavenet:male/hi-IN-Chirp3-HD-Orus",
   WavenetMaleKoKRChirp3HDOrus: "wavenet:male/ko-KR-Chirp3-HD-Orus",
   WavenetMaleCmnCNChirp3HDOrus: "wavenet:male/cmn-CN-Chirp3-HD-Orus",
@@ -126,6 +153,9 @@ export const AgentVoiceVarName = {
   WavenetMaleViVNChirp3HDOrus: "wavenet:male/vi-VN-Chirp3-HD-Orus",
   WavenetMaleEnUSChirp3HDPuck: "wavenet:male/en-US-Chirp3-HD-Puck",
   WavenetMaleGuINChirp3HDPuck: "wavenet:male/gu-IN-Chirp3-HD-Puck",
+  WavenetMaleArXAChirp3HDPuck: "wavenet:male/ar-XA-Chirp3-HD-Puck",
+  WavenetMaleFRFRChirp3HDPuck: "wavenet:male/fr-FR-Chirp3-HD-Puck",
+  WavenetMaleJaJPChirp3HDPuck: "wavenet:male/ja-JP-Chirp3-HD-Puck",
   WavenetMaleHiINChirp3HDPuck: "wavenet:male/hi-IN-Chirp3-HD-Puck",
   WavenetMaleKoKRChirp3HDPuck: "wavenet:male/ko-KR-Chirp3-HD-Puck",
   WavenetMaleCmnCNChirp3HDPuck: "wavenet:male/cmn-CN-Chirp3-HD-Puck",
@@ -137,6 +167,9 @@ export const AgentVoiceVarName = {
   WavenetFemaleViVNNeural2A: "wavenet:female/vi-VN-Neural2-A",
   WavenetMaleEnUSChirp3HDUmbriel: "wavenet:male/en-US-Chirp3-HD-Umbriel",
   WavenetMaleGuINChirp3HDUmbriel: "wavenet:male/gu-IN-Chirp3-HD-Umbriel",
+  WavenetMaleArXAChirp3HDUmbriel: "wavenet:male/ar-XA-Chirp3-HD-Umbriel",
+  WavenetMaleFRFRChirp3HDUmbriel: "wavenet:male/fr-FR-Chirp3-HD-Umbriel",
+  WavenetMaleJaJPChirp3HDUmbriel: "wavenet:male/ja-JP-Chirp3-HD-Umbriel",
   WavenetMaleHiINChirp3HDUmbriel: "wavenet:male/hi-IN-Chirp3-HD-Umbriel",
   WavenetMaleKoKRChirp3HDUmbriel: "wavenet:male/ko-KR-Chirp3-HD-Umbriel",
   WavenetMaleCmnCNChirp3HDUmbriel: "wavenet:male/cmn-CN-Chirp3-HD-Umbriel",
@@ -147,6 +180,12 @@ export const AgentVoiceVarName = {
     "wavenet:female/en-US-Chirp3-HD-Vindemiatrix",
   WavenetFemaleGuINChirp3HDVindemiatrix:
     "wavenet:female/gu-IN-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleArXAChirp3HDVindemiatrix:
+    "wavenet:female/ar-XA-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleFRFRChirp3HDVindemiatrix:
+    "wavenet:female/fr-FR-Chirp3-HD-Vindemiatrix",
+  WavenetFemaleJaJPChirp3HDVindemiatrix:
+    "wavenet:female/ja-JP-Chirp3-HD-Vindemiatrix",
   WavenetFemaleHiINChirp3HDVindemiatrix:
     "wavenet:female/hi-IN-Chirp3-HD-Vindemiatrix",
   WavenetFemaleKoKRChirp3HDVindemiatrix:
@@ -161,6 +200,9 @@ export const AgentVoiceVarName = {
     "wavenet:female/vi-VN-Chirp3-HD-Vindemiatrix",
   WavenetFemaleEnUSChirp3HDZephyr: "wavenet:female/en-US-Chirp3-HD-Zephyr",
   WavenetFemaleGuINChirp3HDZephyr: "wavenet:female/gu-IN-Chirp3-HD-Zephyr",
+  WavenetFemaleArXAChirp3HDZephyr: "wavenet:female/ar-XA-Chirp3-HD-Zephyr",
+  WavenetFemaleFRFRChirp3HDZephyr: "wavenet:female/fr-FR-Chirp3-HD-Zephyr",
+  WavenetFemaleJaJPChirp3HDZephyr: "wavenet:female/ja-JP-Chirp3-HD-Zephyr",
   WavenetFemaleHiINChirp3HDZephyr: "wavenet:female/hi-IN-Chirp3-HD-Zephyr",
   WavenetFemaleKoKRChirp3HDZephyr: "wavenet:female/ko-KR-Chirp3-HD-Zephyr",
   WavenetFemaleCmnCNChirp3HDZephyr: "wavenet:female/cmn-CN-Chirp3-HD-Zephyr",

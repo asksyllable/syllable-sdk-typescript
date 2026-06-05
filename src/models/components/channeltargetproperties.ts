@@ -6,10 +6,11 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * Names of channel target fields supported for filtering/sorting on full channel targets list
+ * Names of channel target fields supported for filtering on the full channel targets list
  *
  * @remarks
- * endpoint.
+ * endpoint. Superset of [[ChannelTargetOrderProperties]] — includes filter-only fields like
+ * ``target_mode_list`` that are not valid as ``order_by``.
  */
 export const ChannelTargetProperties = {
   Id: "id",
@@ -18,16 +19,18 @@ export const ChannelTargetProperties = {
   AgentId: "agent_id",
   Target: "target",
   TargetMode: "target_mode",
+  TargetModeList: "target_mode_list",
   FallbackTarget: "fallback_target",
   IsTest: "is_test",
   UpdatedAt: "updated_at",
   A2pVerified: "a2p_verified",
 } as const;
 /**
- * Names of channel target fields supported for filtering/sorting on full channel targets list
+ * Names of channel target fields supported for filtering on the full channel targets list
  *
  * @remarks
- * endpoint.
+ * endpoint. Superset of [[ChannelTargetOrderProperties]] — includes filter-only fields like
+ * ``target_mode_list`` that are not valid as ``order_by``.
  */
 export type ChannelTargetProperties = ClosedEnum<
   typeof ChannelTargetProperties

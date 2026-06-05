@@ -9,8 +9,8 @@ import { AgentVoice } from "syllable-sdk/models/components";
 
 let value: AgentVoice = {
   provider: "ElevenLabs",
-  displayName: "Fenrir (English)",
-  varName: "elevenlabs:Laura",
+  displayName: "Fenrir (Arabic)",
+  varName: "elevenlabs:Sarah",
   gender: "female",
   model: "Standard",
   supportedLanguages: [

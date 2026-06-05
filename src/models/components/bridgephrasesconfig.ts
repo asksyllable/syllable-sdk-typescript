@@ -24,6 +24,14 @@ import {
  */
 export type BridgePhrasesConfig = {
   /**
+   * Unified ordered bridge phrases. If empty, legacy fields are used.
+   */
+  messages?: Array<string> | undefined;
+  /**
+   * When true, unified messages are played in randomized no-repeat cycles. Ignored when unified messages are disabled.
+   */
+  randomizeMessages?: boolean | undefined;
+  /**
    * Messages to say when the agent is first delayed.
    */
   firstSlowMessages?: Array<string> | undefined;
@@ -39,6 +47,10 @@ export type BridgePhrasesConfig = {
    * Per-language overrides keyed by BCP-47 tag (e.g. "es-US").
    */
   localized?: { [k: string]: BridgePhraseMessages } | undefined;
+  /**
+   * Seconds of caller silence before injecting the first bridge phrase. Subsequent sleep intervals are 2x, 3x, 4x this base. When unset, the service-wide default applies.
+   */
+  smartTurnTimeoutSeconds?: number | null | undefined;
 };
 
 /** @internal */
@@ -47,23 +59,31 @@ export const BridgePhrasesConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  messages: z.array(z.string()).optional(),
+  randomize_messages: z.boolean().default(false),
   first_slow_messages: z.array(z.string()).optional(),
   very_slow_messages: z.array(z.string()).optional(),
   tool_responses: z.array(z.string()).optional(),
   localized: z.record(BridgePhraseMessages$inboundSchema).optional(),
+  smart_turn_timeout_seconds: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "randomize_messages": "randomizeMessages",
     "first_slow_messages": "firstSlowMessages",
     "very_slow_messages": "verySlowMessages",
     "tool_responses": "toolResponses",
+    "smart_turn_timeout_seconds": "smartTurnTimeoutSeconds",
   });
 });
 /** @internal */
 export type BridgePhrasesConfig$Outbound = {
+  messages?: Array<string> | undefined;
+  randomize_messages: boolean;
   first_slow_messages?: Array<string> | undefined;
   very_slow_messages?: Array<string> | undefined;
   tool_responses?: Array<string> | undefined;
   localized?: { [k: string]: BridgePhraseMessages$Outbound } | undefined;
+  smart_turn_timeout_seconds?: number | null | undefined;
 };
 
 /** @internal */
@@ -72,15 +92,20 @@ export const BridgePhrasesConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BridgePhrasesConfig
 > = z.object({
+  messages: z.array(z.string()).optional(),
+  randomizeMessages: z.boolean().default(false),
   firstSlowMessages: z.array(z.string()).optional(),
   verySlowMessages: z.array(z.string()).optional(),
   toolResponses: z.array(z.string()).optional(),
   localized: z.record(BridgePhraseMessages$outboundSchema).optional(),
+  smartTurnTimeoutSeconds: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    randomizeMessages: "randomize_messages",
     firstSlowMessages: "first_slow_messages",
     verySlowMessages: "very_slow_messages",
     toolResponses: "tool_responses",
+    smartTurnTimeoutSeconds: "smart_turn_timeout_seconds",
   });
 });
 
