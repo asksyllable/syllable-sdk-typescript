@@ -104,7 +104,14 @@ run();
 
 ## list
 
-Get Channel Targets
+List channel targets for the current suborg.
+
+Supports the standard `ListManager` filters via `search_fields`/`search_field_values`. In
+addition to `target_mode` (single value), `target_mode_list` accepts a comma-separated list of
+modes (e.g. `voice,sms`) and matches targets whose mode is any of the listed values. Whitespace
+around tokens is tolerated and empty tokens are ignored. If both `target_mode` and
+`target_mode_list` are supplied, the two filters are combined with AND. `target_mode_list` is
+filter-only and cannot be used as `order_by`.
 
 ### Example Usage
 
@@ -125,6 +132,7 @@ async function run() {
     searchFieldValues: [
       "Some Object Name",
     ],
+    orderBy: "target",
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });
@@ -158,6 +166,7 @@ async function run() {
     searchFieldValues: [
       "Some Object Name",
     ],
+    orderBy: "target",
     startDatetime: "2023-01-01T00:00:00Z",
     endDatetime: "2024-01-01T00:00:00Z",
   });

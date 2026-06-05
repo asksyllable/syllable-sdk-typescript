@@ -29,7 +29,7 @@ export type ChannelTargetsListRequest = {
   /**
    * The field whose value should be used to order the results
    */
-  orderBy?: components.ChannelTargetProperties | null | undefined;
+  orderBy?: components.ChannelTargetOrderProperties | null | undefined;
   /**
    * The direction in which to order the results
    */
@@ -59,7 +59,7 @@ export const ChannelTargetsListRequest$inboundSchema: z.ZodType<
   search_fields: z.array(components.ChannelTargetProperties$inboundSchema)
     .optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: z.nullable(components.ChannelTargetProperties$inboundSchema)
+  order_by: z.nullable(components.ChannelTargetOrderProperties$inboundSchema)
     .optional(),
   order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
@@ -101,7 +101,7 @@ export const ChannelTargetsListRequest$outboundSchema: z.ZodType<
   searchFields: z.array(components.ChannelTargetProperties$outboundSchema)
     .optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: z.nullable(components.ChannelTargetProperties$outboundSchema)
+  orderBy: z.nullable(components.ChannelTargetOrderProperties$outboundSchema)
     .optional(),
   orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),

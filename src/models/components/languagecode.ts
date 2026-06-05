@@ -22,6 +22,10 @@ export const LanguageCode = {
   RURU: "ru-RU",
   HiIN: "hi-IN",
   GuIN: "gu-IN",
+  ArXA: "ar-XA",
+  FRFR: "fr-FR",
+  JaJP: "ja-JP",
+  NeNP: "ne-NP",
 } as const;
 /**
  * BCP 47 codes of languages that Syllable supports.

@@ -43,6 +43,7 @@ export * from "./channelmanagerstatus.js";
 export * from "./channelproperties.js";
 export * from "./channelservices.js";
 export * from "./channeltargetcreaterequest.js";
+export * from "./channeltargetorderproperties.js";
 export * from "./channeltargetproperties.js";
 export * from "./channeltargetresponse.js";
 export * from "./channeltargetupdaterequest.js";

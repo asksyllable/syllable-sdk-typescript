@@ -403,6 +403,7 @@ actions:
                 searchFieldValues: [
                   "Some Object Name",
                 ],
+                orderBy: "target",
                 startDatetime: "2023-01-01T00:00:00Z",
                 endDatetime: "2024-01-01T00:00:00Z",
               });

@@ -9,7 +9,7 @@ import { AgentLanguage } from "syllable-sdk/models/components";
 
 let value: AgentLanguage = {
   name: "English",
-  code: "sw-KE",
+  code: "gu-IN",
 };
 ```
 
