@@ -40,6 +40,10 @@ let value: OutboundCampaignUpdateRequest = {
       "voicemail_detection_post_speech_timeout": 1.75,
       "voicemail_detection_pre_speech_timeout": 3.5,
     },
+    allowedLineTypes: [
+      "mobile",
+      "voip",
+    ],
     webhooks: [
       {
         triggerStatuses: [

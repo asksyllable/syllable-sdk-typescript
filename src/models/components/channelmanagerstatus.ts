@@ -13,6 +13,7 @@ export const ChannelManagerStatus = {
   Duplicate: "DUPLICATE",
   Invalid: "INVALID",
   Failed: "FAILED",
+  FilteredLineType: "FILTERED_LINE_TYPE",
   Processed: "PROCESSED",
   Dropped: "DROPPED",
   Deferred: "DEFERRED",
