@@ -3,17 +3,17 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: 0b6c75dfa173dc58740523e7ed59977a
   docVersion: 0.0.3
-  speakeasyVersion: 1.773.1
-  generationVersion: 2.897.1
-  releaseVersion: 1.0.47-rc.8
-  configChecksum: e388da99484924e267493c37a90b3914
+  speakeasyVersion: 1.774.0
+  generationVersion: 2.899.0
+  releaseVersion: 1.0.47
+  configChecksum: e2718b5016cee5ecf93645218952909c
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 46c747a4-3aca-44f7-90b6-f6de2cd94c6a
-  pristine_commit_hash: a187474e3482fca9fddec8087eb42c21a475018d
-  pristine_tree_hash: d775cd6735a7192992e997db4276f473330540f0
+  generation_id: 839d5a1e-74bf-430e-a7c4-d95e81b5be61
+  pristine_commit_hash: db30031c8d9375113a051a7ea0208907b3ff98e1
+  pristine_tree_hash: 13f79dd8a171611c8f0193a481191a5999ba6c25
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2092,12 +2092,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:7c3e225d705b39c32aa30b4a00e2951f40964c8c
-    pristine_git_object: 1aabb4a51b4c89c250b85e6ad741ecba991cfa3e
+    last_write_checksum: sha1:1d39f0b19ed831471d6e89e4405b29605bffa30e
+    pristine_git_object: 262678295ce765628703d58da722fbf18a32ba7e
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a6fad5ce3e265fd689137d98e9e06343f8305608
-    pristine_git_object: 54b5ab3eeade148923c1ca669c67689518052be1
+    last_write_checksum: sha1:5415a1d399ee499ae1ae0677492f0b89602637c1
+    pristine_git_object: f0f75314fd0e0df498c78ced849521b703adc574
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2804,8 +2804,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:4278a2b872c5445e55db55d1be5b2af4fc0e7e0d
-    pristine_git_object: 308dab0996bfbbeebccac07becbc79d6776e21a9
+    last_write_checksum: sha1:95d93daedef0e2f1ea689611f3b6c9423fd358be
+    pristine_git_object: 2a500cced22a7573d260c47bd727e62cbd3adead
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -2888,8 +2888,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:a410ac9243e407d2f335fb90074e8a4064cd141e
-    pristine_git_object: 70dae1c92fe89c90c5701c7759855f62b490c788
+    last_write_checksum: sha1:3eeb5c68ed47922e7ba49928ffb3ec329e9c46a7
+    pristine_git_object: b4b37e3eb98e65d41efda80e15bc528e72354282
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2904,8 +2904,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:f73984df30d7f3ae570e55d1fb01d9a90fa3da0b
-    pristine_git_object: ba50cc46937e72d9275d32d7277ac674ad2450c4
+    last_write_checksum: sha1:44ba7befb0144934b8bd1c9d9df005a3c4aab9fc
+    pristine_git_object: 34840e265fe5495e118d755d91747a8680316462
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7187,7 +7187,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.outbound.batches.results()`:  `response.[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.list()`:  `response.items[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.create()`: \n  *  `request` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.getById()`:  `response` **Changed** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.update()`: \n  *  `request.outboundCampaignInput` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
