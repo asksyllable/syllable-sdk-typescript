@@ -143,6 +143,7 @@ export * from "./languagesamplecreaterequest.js";
 export * from "./latencycategory.js";
 export * from "./latencyentry.js";
 export * from "./latencyunittype.js";
+export * from "./linetypebucket.js";
 export * from "./listresponseagentresponse.js";
 export * from "./listresponseavailabletarget.js";
 export * from "./listresponsechannel.js";

@@ -68,6 +68,10 @@ export type CommunicationRequestResult = {
    * Insights from call
    */
   insights?: { [k: string]: string | number | number } | null | undefined;
+  /**
+   * Line type of the target number from Twilio Lookup (e.g. 'mobile', 'landline', 'voip'); resolved at ingestion.
+   */
+  lineType?: string | null | undefined;
 };
 
 /** @internal */
@@ -123,6 +127,7 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
   insights: z.nullable(
     z.record(z.union([z.string(), z.number().int(), z.number()])),
   ).optional(),
+  line_type: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "reference_id": "referenceId",
@@ -136,6 +141,7 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
     "request_status": "requestStatus",
     "channel_manager_status": "channelManagerStatus",
     "insights_status": "insightsStatus",
+    "line_type": "lineType",
   });
 });
 /** @internal */
@@ -153,6 +159,7 @@ export type CommunicationRequestResult$Outbound = {
   channel_manager_status?: string | null | undefined;
   insights_status?: string | null | undefined;
   insights?: { [k: string]: string | number | number } | null | undefined;
+  line_type?: string | null | undefined;
 };
 
 /** @internal */
@@ -176,6 +183,7 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   insights: z.nullable(
     z.record(z.union([z.string(), z.number().int(), z.number()])),
   ).optional(),
+  lineType: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     referenceId: "reference_id",
@@ -189,6 +197,7 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
     requestStatus: "request_status",
     channelManagerStatus: "channel_manager_status",
     insightsStatus: "insights_status",
+    lineType: "line_type",
   });
 });
 

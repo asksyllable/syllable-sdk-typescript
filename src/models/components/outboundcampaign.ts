@@ -13,6 +13,11 @@ import {
   DaysOfWeek$outboundSchema,
 } from "./daysofweek.js";
 import {
+  LineTypeBucket,
+  LineTypeBucket$inboundSchema,
+  LineTypeBucket$outboundSchema,
+} from "./linetypebucket.js";
+import {
   OutboundCampaignWebhookResponse,
   OutboundCampaignWebhookResponse$inboundSchema,
   OutboundCampaignWebhookResponse$Outbound,
@@ -91,6 +96,14 @@ export type OutboundCampaign = {
    */
   voicemailDetection?: { [k: string]: number } | null | undefined;
   /**
+   * Line-type buckets this campaign is allowed to dial. Empty or omitted means no filter (all line types are dialed).
+   */
+  allowedLineTypes?: Array<LineTypeBucket> | null | undefined;
+  /**
+   * When a line-type filter is active, whether to also dial numbers whose line type is unknown or could not be classified. Has no effect when allowed_line_types is empty.
+   */
+  includeUnknownLineTypes?: boolean | undefined;
+  /**
    * Unique ID for campaign
    */
   id: number;
@@ -139,6 +152,9 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
   voicemail_detection: z.nullable(z.record(z.number())).optional(),
+  allowed_line_types: z.nullable(z.array(LineTypeBucket$inboundSchema))
+    .optional(),
+  include_unknown_line_types: z.boolean().default(true),
   id: z.number().int(),
   agent_id: z.nullable(z.number().int()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -162,6 +178,8 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
     "retry_interval": "retryInterval",
     "active_days": "activeDays",
     "voicemail_detection": "voicemailDetection",
+    "allowed_line_types": "allowedLineTypes",
+    "include_unknown_line_types": "includeUnknownLineTypes",
     "agent_id": "agentId",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
@@ -187,6 +205,8 @@ export type OutboundCampaign$Outbound = {
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
   voicemail_detection?: { [k: string]: number } | null | undefined;
+  allowed_line_types?: Array<string> | null | undefined;
+  include_unknown_line_types: boolean;
   id: number;
   agent_id?: number | null | undefined;
   created_at?: string | undefined;
@@ -218,6 +238,9 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
   voicemailDetection: z.nullable(z.record(z.number())).optional(),
+  allowedLineTypes: z.nullable(z.array(LineTypeBucket$outboundSchema))
+    .optional(),
+  includeUnknownLineTypes: z.boolean().default(true),
   id: z.number().int(),
   agentId: z.nullable(z.number().int()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
@@ -239,6 +262,8 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
     retryInterval: "retry_interval",
     activeDays: "active_days",
     voicemailDetection: "voicemail_detection",
+    allowedLineTypes: "allowed_line_types",
+    includeUnknownLineTypes: "include_unknown_line_types",
     agentId: "agent_id",
     createdAt: "created_at",
     updatedAt: "updated_at",

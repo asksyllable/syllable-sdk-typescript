@@ -17,6 +17,7 @@ export const RequestStatus = {
   Failed: "FAILED",
   Canceled: "CANCELED",
   Invalid: "INVALID",
+  Skipped: "SKIPPED",
 } as const;
 /**
  * Status of a communication request.
