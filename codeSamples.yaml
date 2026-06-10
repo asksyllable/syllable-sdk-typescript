@@ -2154,7 +2154,9 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.organizations.delete();
+              const result = await syllableSDK.organizations.delete({
+                deleteComments: "Deleted the organization because it was no longer needed",
+              });
 
               console.log(result);
             }
