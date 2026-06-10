@@ -260,7 +260,9 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.organizations.delete();
+  const result = await syllableSDK.organizations.delete({
+    deleteComments: "Deleted the organization because it was no longer needed",
+  });
 
   console.log(result);
 }
@@ -283,7 +285,9 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await organizationsDelete(syllableSDK);
+  const res = await organizationsDelete(syllableSDK, {
+    deleteComments: "Deleted the organization because it was no longer needed",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
