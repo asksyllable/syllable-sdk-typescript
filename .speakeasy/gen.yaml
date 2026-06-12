@@ -32,7 +32,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.48-rc.3
+  version: 1.0.48-rc.4
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -41,6 +41,7 @@ typescript:
   additionalPackageJSON: {}
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Syllable
   baseErrorName: SyllableSDKError
   clientServerStatusCodesAsErrors: true
