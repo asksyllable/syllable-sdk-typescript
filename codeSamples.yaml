@@ -3547,6 +3547,27 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/sessions/timeline/{session_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.sessions.timeline.getById({
+                sessionId: "<id>",
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/sessions/transcript/{session_id}"]["get"]
     update:
       x-codeSamples:
