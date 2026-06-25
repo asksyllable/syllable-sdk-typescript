@@ -479,10 +479,6 @@ run();
 
 * [getById](docs/sdks/latency/README.md#getbyid) - Inspect Latency For Session
 
-#### [Sessions.Timeline](docs/sdks/timeline/README.md)
-
-* [getById](docs/sdks/timeline/README.md#getbyid) - Get Session Timeline By Id
-
 #### [Sessions.Transcript](docs/sdks/transcript/README.md)
 
 * [getById](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
@@ -684,7 +680,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionsLatencyGetById`](docs/sdks/latency/README.md#getbyid) - Inspect Latency For Session
 - [`sessionsList`](docs/sdks/sessions/README.md#list) - Sessions List
 - [`sessionsSessionRecordingStream`](docs/sdks/sessions/README.md#sessionrecordingstream) - Stream Recording
-- [`sessionsTimelineGetById`](docs/sdks/timeline/README.md#getbyid) - Get Session Timeline By Id
 - [`sessionsTranscriptGetById`](docs/sdks/transcript/README.md#getbyid) - Get Session Transcript By Id
 - [`takeoutsCreate`](docs/sdks/takeouts/README.md#create) - Create Takeout
 - [`takeoutsTakeoutsGetByJobId`](docs/sdks/takeouts/README.md#takeoutsgetbyjobid) - Get Takeout

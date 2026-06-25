@@ -96,7 +96,6 @@ export * from "./sessionlabelslist.js";
 export * from "./sessionlatencygetbyid.js";
 export * from "./sessionrecordingstream.js";
 export * from "./sessionslist.js";
-export * from "./sessiontimelinegetbyid.js";
 export * from "./sessiontranscriptgetbyid.js";
 export * from "./takeoutsgetbyjobid.js";
 export * from "./takeoutsgetfile.js";
