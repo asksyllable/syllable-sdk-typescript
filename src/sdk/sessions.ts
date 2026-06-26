@@ -12,6 +12,7 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { FullSummary } from "./fullsummary.js";
 import { Latency } from "./latency.js";
+import { Timeline } from "./timeline.js";
 import { Transcript } from "./transcript.js";
 
 export class Sessions extends ClientSDK {
@@ -28,6 +29,11 @@ export class Sessions extends ClientSDK {
   private _latency?: Latency;
   get latency(): Latency {
     return (this._latency ??= new Latency(this._options));
+  }
+
+  private _timeline?: Timeline;
+  get timeline(): Timeline {
+    return (this._timeline ??= new Timeline(this._options));
   }
 
   /**
