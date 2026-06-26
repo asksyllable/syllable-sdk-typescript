@@ -160,6 +160,7 @@ import { tool$sessionsGetById } from "./tools/sessionsGetById.js";
 import { tool$sessionsLatencyGetById } from "./tools/sessionsLatencyGetById.js";
 import { tool$sessionsList } from "./tools/sessionsList.js";
 import { tool$sessionsSessionRecordingStream } from "./tools/sessionsSessionRecordingStream.js";
+import { tool$sessionsTimelineGetById } from "./tools/sessionsTimelineGetById.js";
 import { tool$sessionsTranscriptGetById } from "./tools/sessionsTranscriptGetById.js";
 import { tool$takeoutsCreate } from "./tools/takeoutsCreate.js";
 import { tool$takeoutsTakeoutsGetByJobId } from "./tools/takeoutsTakeoutsGetByJobId.js";
@@ -194,7 +195,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.49-rc.4",
+    version: "1.0.49-rc.5",
   });
 
   const client = new SyllableSDKCore({
@@ -372,6 +373,7 @@ export function createMCPServer(deps: {
   tool(tool$sessionsTranscriptGetById);
   tool(tool$sessionsFullSummaryGetById);
   tool(tool$sessionsLatencyGetById);
+  tool(tool$sessionsTimelineGetById);
   tool(tool$organizationsSipIpRangesList);
   tool(tool$organizationsSipIpRangesCreate);
   tool(tool$organizationsSipIpRangesUpdate);
