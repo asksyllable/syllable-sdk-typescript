@@ -7,7 +7,7 @@ import { OutboundCampaignWebhookResponse } from "syllable-sdk/models/components"
 
 let value: OutboundCampaignWebhookResponse = {
   triggerStatuses: [
-    "PRIOR_SPAM_REPORT",
+    "PRIOR_DROPPED",
   ],
   url: "https://example.com/hooks/syllable",
   requestMethod: "POST",

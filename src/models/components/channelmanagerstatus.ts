@@ -38,6 +38,7 @@ export const ChannelManagerStatus = {
   Busy: "BUSY",
   Canceled: "CANCELED",
   Completed: "COMPLETED",
+  Declined: "DECLINED",
   NoAnswer: "NO-ANSWER",
   Machine: "MACHINE",
   Human: "HUMAN",
