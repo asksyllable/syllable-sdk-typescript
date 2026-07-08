@@ -300,4 +300,5 @@ export * from "./voicegroupcreaterequest.js";
 export * from "./voicegroupproperties.js";
 export * from "./voicegroupresponse.js";
 export * from "./voicegroupupdaterequest.js";
+export * from "./voicemaildetectionconfig.js";
 export * from "./voicesamplecreaterequest.js";

@@ -36,9 +36,9 @@ let value: OutboundCampaignUpdateRequest = {
       "fri",
     ],
     voicemailDetection: {
-      "voicemail_detection_overall_timeout": 30,
-      "voicemail_detection_post_speech_timeout": 1.75,
-      "voicemail_detection_pre_speech_timeout": 3.5,
+      voicemailDetectionOverallTimeout: 30,
+      voicemailDetectionPreSpeechTimeout: 3.5,
+      voicemailDetectionPostSpeechTimeout: 1.75,
     },
     allowedLineTypes: [
       "mobile",
