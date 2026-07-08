@@ -21,6 +21,11 @@ import { tool$agentsGetById } from "./tools/agentsGetById.js";
 import { tool$agentsList } from "./tools/agentsList.js";
 import { tool$agentsTestSendTestMessage } from "./tools/agentsTestSendTestMessage.js";
 import { tool$agentsUpdate } from "./tools/agentsUpdate.js";
+import { tool$bridgePhrasesCreate } from "./tools/bridgePhrasesCreate.js";
+import { tool$bridgePhrasesDelete } from "./tools/bridgePhrasesDelete.js";
+import { tool$bridgePhrasesGetById } from "./tools/bridgePhrasesGetById.js";
+import { tool$bridgePhrasesList } from "./tools/bridgePhrasesList.js";
+import { tool$bridgePhrasesUpdate } from "./tools/bridgePhrasesUpdate.js";
 import { tool$channelsCreate } from "./tools/channelsCreate.js";
 import { tool$channelsDelete } from "./tools/channelsDelete.js";
 import { tool$channelsList } from "./tools/channelsList.js";
@@ -195,7 +200,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.51-rc.1",
+    version: "1.0.51-rc.2",
   });
 
   const client = new SyllableSDKCore({
@@ -232,6 +237,11 @@ export function createMCPServer(deps: {
   tool(tool$agentsGetById);
   tool(tool$agentsDelete);
   tool(tool$agentsAgentGetAvailableVoices);
+  tool(tool$bridgePhrasesList);
+  tool(tool$bridgePhrasesCreate);
+  tool(tool$bridgePhrasesUpdate);
+  tool(tool$bridgePhrasesGetById);
+  tool(tool$bridgePhrasesDelete);
   tool(tool$channelsList);
   tool(tool$channelsCreate);
   tool(tool$channelsUpdate);

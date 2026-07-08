@@ -1,13 +1,13 @@
-# BridgePhraseMessages
+# SchemasCortexV1BridgePhrasesBridgePhraseMessages
 
 Bridge phrase message lists for a single language.
 
 ## Example Usage
 
 ```typescript
-import { BridgePhraseMessages } from "syllable-sdk/models/components";
+import { SchemasCortexV1BridgePhrasesBridgePhraseMessages } from "syllable-sdk/models/components";
 
-let value: BridgePhraseMessages = {};
+let value: SchemasCortexV1BridgePhrasesBridgePhraseMessages = {};
 ```
 
 ## Fields

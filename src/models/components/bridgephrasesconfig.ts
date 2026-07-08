@@ -8,11 +8,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  BridgePhraseMessages,
-  BridgePhraseMessages$inboundSchema,
-  BridgePhraseMessages$Outbound,
-  BridgePhraseMessages$outboundSchema,
-} from "./bridgephrasemessages.js";
+  SchemasCortexV1BridgePhrasesBridgePhraseMessages,
+  SchemasCortexV1BridgePhrasesBridgePhraseMessages$inboundSchema,
+  SchemasCortexV1BridgePhrasesBridgePhraseMessages$Outbound,
+  SchemasCortexV1BridgePhrasesBridgePhraseMessages$outboundSchema,
+} from "./schemascortexv1bridgephrasesbridgephrasemessages.js";
 
 /**
  * Configuration for conversational bridge phrases.
@@ -46,7 +46,9 @@ export type BridgePhrasesConfig = {
   /**
    * Per-language overrides keyed by BCP-47 tag (e.g. "es-US").
    */
-  localized?: { [k: string]: BridgePhraseMessages } | undefined;
+  localized?:
+    | { [k: string]: SchemasCortexV1BridgePhrasesBridgePhraseMessages }
+    | undefined;
   /**
    * Seconds of caller silence before injecting the first bridge phrase. Subsequent sleep intervals are 2x, 3x, 4x this base. When unset, the service-wide default applies.
    */
@@ -64,7 +66,9 @@ export const BridgePhrasesConfig$inboundSchema: z.ZodType<
   first_slow_messages: z.array(z.string()).optional(),
   very_slow_messages: z.array(z.string()).optional(),
   tool_responses: z.array(z.string()).optional(),
-  localized: z.record(BridgePhraseMessages$inboundSchema).optional(),
+  localized: z.record(
+    SchemasCortexV1BridgePhrasesBridgePhraseMessages$inboundSchema,
+  ).optional(),
   smart_turn_timeout_seconds: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -82,7 +86,9 @@ export type BridgePhrasesConfig$Outbound = {
   first_slow_messages?: Array<string> | undefined;
   very_slow_messages?: Array<string> | undefined;
   tool_responses?: Array<string> | undefined;
-  localized?: { [k: string]: BridgePhraseMessages$Outbound } | undefined;
+  localized?: {
+    [k: string]: SchemasCortexV1BridgePhrasesBridgePhraseMessages$Outbound;
+  } | undefined;
   smart_turn_timeout_seconds?: number | null | undefined;
 };
 
@@ -97,7 +103,9 @@ export const BridgePhrasesConfig$outboundSchema: z.ZodType<
   firstSlowMessages: z.array(z.string()).optional(),
   verySlowMessages: z.array(z.string()).optional(),
   toolResponses: z.array(z.string()).optional(),
-  localized: z.record(BridgePhraseMessages$outboundSchema).optional(),
+  localized: z.record(
+    SchemasCortexV1BridgePhrasesBridgePhraseMessages$outboundSchema,
+  ).optional(),
   smartTurnTimeoutSeconds: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {

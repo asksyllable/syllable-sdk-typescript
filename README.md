@@ -247,6 +247,14 @@ run();
 
 * [sendTestMessage](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 
+### [BridgePhrases](docs/sdks/bridgephrases/README.md)
+
+* [list](docs/sdks/bridgephrases/README.md#list) - List Bridge Phrases
+* [create](docs/sdks/bridgephrases/README.md#create) - Create Bridge Phrases
+* [update](docs/sdks/bridgephrases/README.md#update) - Update Bridge Phrases
+* [getById](docs/sdks/bridgephrases/README.md#getbyid) - Get Bridge Phrases
+* [delete](docs/sdks/bridgephrases/README.md#delete) - Delete Bridge Phrases
+
 ### [Channels](docs/sdks/channels/README.md)
 
 * [list](docs/sdks/channels/README.md#list) - Get Channels
@@ -557,6 +565,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsList`](docs/sdks/agents/README.md#list) - Agent List
 - [`agentsTestSendTestMessage`](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 - [`agentsUpdate`](docs/sdks/agents/README.md#update) - Update Agent
+- [`bridgePhrasesCreate`](docs/sdks/bridgephrases/README.md#create) - Create Bridge Phrases
+- [`bridgePhrasesDelete`](docs/sdks/bridgephrases/README.md#delete) - Delete Bridge Phrases
+- [`bridgePhrasesGetById`](docs/sdks/bridgephrases/README.md#getbyid) - Get Bridge Phrases
+- [`bridgePhrasesList`](docs/sdks/bridgephrases/README.md#list) - List Bridge Phrases
+- [`bridgePhrasesUpdate`](docs/sdks/bridgephrases/README.md#update) - Update Bridge Phrases
 - [`channelsCreate`](docs/sdks/channels/README.md#create) - Create Channel
 - [`channelsDelete`](docs/sdks/channels/README.md#delete) - Delete Channel Target
 - [`channelsList`](docs/sdks/channels/README.md#list) - Get Channels
