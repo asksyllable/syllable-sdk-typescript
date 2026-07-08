@@ -4,6 +4,7 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Agents } from "./agents.js";
+import { BridgePhrases } from "./bridgephrases.js";
 import { Channels } from "./channels.js";
 import { ConversationConfig } from "./conversationconfig.js";
 import { Conversations } from "./conversations.js";
@@ -35,6 +36,11 @@ export class SyllableSDK extends ClientSDK {
   private _agents?: Agents;
   get agents(): Agents {
     return (this._agents ??= new Agents(this._options));
+  }
+
+  private _bridgePhrases?: BridgePhrases;
+  get bridgePhrases(): BridgePhrases {
+    return (this._bridgePhrases ??= new BridgePhrases(this._options));
   }
 
   private _channels?: Channels;

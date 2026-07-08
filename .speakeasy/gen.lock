@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: e676dbf8f29ff9ee2b494bfcae35588a
+  docChecksum: 1a59b4f93690a0d61ea407d06a4e608c
   docVersion: 0.0.3
   speakeasyVersion: 1.789.0
   generationVersion: 2.916.2
-  releaseVersion: 1.0.51-rc.1
-  configChecksum: 2bcfdc98053b7585e1465b23cf126265
+  releaseVersion: 1.0.51-rc.2
+  configChecksum: 34f6fb6782f5a050eb3342442fd8e6b7
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: e333444f-f6a1-48cf-a3af-228205541d2c
-  pristine_commit_hash: 3914563d2fa192a222120f525dc4ea861b92b92d
-  pristine_tree_hash: b226bd2bc933a07889c885865fc3ce0373869366
+  generation_id: 9056c1be-476b-4515-9bb9-a88b4a86e64b
+  pristine_commit_hash: 1c4d1d7dd115b61f5494ddb679c4ac5cbf3956e0
+  pristine_tree_hash: c2c980f014b2526376ce1bb11a6a51ff95096e07
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -222,14 +222,34 @@ trackedFiles:
     id: 7a086b0d8604
     last_write_checksum: sha1:ea04a0da5d506686662f93ef7233afbc619cb5aa
     pristine_git_object: 52f39c0dd1af689f7f8d6e43e490aeb25ecfc79f
-  docs/models/components/bridgephrasemessages.md:
-    id: 6e8bdbda3894
-    last_write_checksum: sha1:51f998cbaffadece69fc83d41540fc41f510d546
-    pristine_git_object: 0da3124683699f8dcd742dca6e70c577e7420f0b
+  docs/models/components/bridgephrasesagentinfo.md:
+    id: 717f38378056
+    last_write_checksum: sha1:85c152737e84a9ba6e42cfe49cd67fd113ac54da
+    pristine_git_object: 003515bb7c48836ac55faca874d83719f3e5c28f
   docs/models/components/bridgephrasesconfig.md:
     id: 8d0dbd7377fa
-    last_write_checksum: sha1:b91b8ccd09d054a5c15a1ed9359e77c15385942a
-    pristine_git_object: 7caa56238919e769d9f92ac1f75e1b283d063cbf
+    last_write_checksum: sha1:b9970ed9d50ed5997cc29c36e6b6008b7d08c09a
+    pristine_git_object: c91b114e96214d4e5d57958732bafc1a015bf7b6
+  docs/models/components/bridgephrasesconfigpayload.md:
+    id: 3cfe82897222
+    last_write_checksum: sha1:768de323fbe9c6fa55469a9c3b949d4f37961725
+    pristine_git_object: d3a867d3f41fb2087a28000335631320553b2b6e
+  docs/models/components/bridgephrasescreaterequest.md:
+    id: 95c4e29c59ca
+    last_write_checksum: sha1:61f0a918f05c89a074488b7e63e0b85c4855654e
+    pristine_git_object: aa4ebcf2353adea16e301c87cf3b23c4bec2d364
+  docs/models/components/bridgephrasesproperties.md:
+    id: ff5a9e8c93bc
+    last_write_checksum: sha1:c05ee99d76e1ad77ea3fe5fd06232869c94d6c3e
+    pristine_git_object: 6c29f5b545096e9a78be2ce41787e60556dad1df
+  docs/models/components/bridgephrasesresponse.md:
+    id: 7214701bec3a
+    last_write_checksum: sha1:74ef7ade6e366fb4b2937db0033e2eb8ccb4fe54
+    pristine_git_object: 93892ca6afeeab148f948ad2afb05596aba2f29f
+  docs/models/components/bridgephrasesupdaterequest.md:
+    id: f98474284363
+    last_write_checksum: sha1:d3ede856509fe78184deaed4f2ccd389b3dae19f
+    pristine_git_object: 394cb4babea85209fd685e3e2f2925a2f2e2a47b
   docs/models/components/callaction.md:
     id: 399a89ff8536
     last_write_checksum: sha1:fe047042ab2210672070e8255c2632177be72765
@@ -766,6 +786,10 @@ trackedFiles:
     id: 5a0c3609e9ed
     last_write_checksum: sha1:8b87fabc863a27720cd3a4d1476ac78b691bb164
     pristine_git_object: 77facbcf38f4073eecc00c58df544f40d42add10
+  docs/models/components/libdatabasedaoorganizationbridgephrasesdaobridgephrasemessages.md:
+    id: 25d495d3c304
+    last_write_checksum: sha1:ec364a26c4df459e60290476e818cd8dce7ae202
+    pristine_git_object: 7244b7c01f507ef24d5c11b2e5e40115f916f4e4
   docs/models/components/linetypebucket.md:
     id: 53739ea72782
     last_write_checksum: sha1:20039e88ef80e5ba55d5275651a3b7c83041b64f
@@ -778,6 +802,10 @@ trackedFiles:
     id: faa99d69f8c4
     last_write_checksum: sha1:a65b219a91b9dde7f373776f47e77beecb7fdeca
     pristine_git_object: 2f0677c6980d97f5cfd3d20ed1843a7d776ac98f
+  docs/models/components/listresponsebridgephrasesresponse.md:
+    id: 20d8fe6d209f
+    last_write_checksum: sha1:99db13c18df9bbe711e6bb1f74a735e48b846eb0
+    pristine_git_object: e1dd40c78487a9e6510f982771321d7ed47cda71
   docs/models/components/listresponsechannel.md:
     id: ee3e7cd001db
     last_write_checksum: sha1:2d4ce68278785c7f90b500c18592c936a63bd2dc
@@ -894,6 +922,10 @@ trackedFiles:
     id: 18d5ad9b7905
     last_write_checksum: sha1:90f22159dce166dc139e5f864e03f6636247043c
     pristine_git_object: 74021dec4c4f63e59f376e89fccff69600521b03
+  docs/models/components/localizedbridgephrases.md:
+    id: d75d449e8c77
+    last_write_checksum: sha1:25653394ff5a7a5b58632fdbde06e2c9a59222f3
+    pristine_git_object: 878bba75b7e1ffe0c79e738a658a451a7335c5ec
   docs/models/components/logintype.md:
     id: ab35abab84d5
     last_write_checksum: sha1:3ccd2f6cfc0c766462f65149fef44643bebd2471
@@ -1094,6 +1126,10 @@ trackedFiles:
     id: 8b3e05f0d006
     last_write_checksum: sha1:05dfdac16632e20ffcee712b3a84fc81c999c7df
     pristine_git_object: 5a9308923896a24dff28e420a5336a7071b0f73e
+  docs/models/components/schemascortexv1bridgephrasesbridgephrasemessages.md:
+    id: 0bef17887334
+    last_write_checksum: sha1:15637a02ba14535a995cd016d7a7e59dd0d61d3e
+    pristine_git_object: c69260b909473590c0adf3e2485cffa7b5bf7f37
   docs/models/components/security.md:
     id: 54906b49ea28
     last_write_checksum: sha1:766afc6a6897c4df19fb67b33bc9fbdb0f26b437
@@ -1294,6 +1330,10 @@ trackedFiles:
     id: f0c21a41c341
     last_write_checksum: sha1:ea497631b9e5558d9f59ec9c67081e1db4f65af1
     pristine_git_object: b21b93e2a1a9767fb5c43a1d28e17f88bee581eb
+  docs/models/components/toolbridgephraseconfig.md:
+    id: 27288c37e324
+    last_write_checksum: sha1:749943197622167f131d1a1ac7f03a6311936f8b
+    pristine_git_object: 16a70f51ad6a131a0bfe36fa10e89f5956628fa8
   docs/models/components/toolcreaterequest.md:
     id: 0ab95f142286
     last_write_checksum: sha1:380915e50684602d8cf7d8d6571b64f23d0f139c
@@ -1510,6 +1550,18 @@ trackedFiles:
     id: cc5f280ee910
     last_write_checksum: sha1:e3e3ce8288dfc307e404986bc8640fb8bc0ebf64
     pristine_git_object: 7dd10de4636dde423003868672ec4912a7375bd4
+  docs/models/operations/bridgephrasesdeleterequest.md:
+    id: 452ff5088280
+    last_write_checksum: sha1:3ad3cab4c268bc1e00eef09cad0c29433ba8d864
+    pristine_git_object: 08061ff46906241f9a337831a4775c0da4a66ad3
+  docs/models/operations/bridgephrasesgetbyidrequest.md:
+    id: 956c083b2f2e
+    last_write_checksum: sha1:5f3c81b1b1280f1ef243ead3ef3aa735224b654e
+    pristine_git_object: 19ec5742b9d3543964788ab5052cb20b76048399
+  docs/models/operations/bridgephraseslistrequest.md:
+    id: 78ea11e26bab
+    last_write_checksum: sha1:ee48b55d771678ba90b23dac237fff12a0f2f9c5
+    pristine_git_object: fc479a3b380a5f9007a4973ca6196dbff46c3a24
   docs/models/operations/channelslistrequest.md:
     id: 6cd62fd1c174
     last_write_checksum: sha1:0afc2ecc90c727c19e6264e77dd6c947fc4ea785
@@ -1938,6 +1990,10 @@ trackedFiles:
     id: affccbddb9a8
     last_write_checksum: sha1:a5baae38e3a036cd8113401986f6ba458080f0ce
     pristine_git_object: 4e66efb51e1d564b9424094c53f684a1ce678536
+  docs/sdks/bridgephrases/README.md:
+    id: 298da341f6fc
+    last_write_checksum: sha1:3f600a9e50843c4775241d5d8d902b2a59bdc351
+    pristine_git_object: 731ce388c4036c88c872abd3c7933002e4bd9838
   docs/sdks/campaigns/README.md:
     id: 18dcc3c717ca
     last_write_checksum: sha1:1d5e3aebb82c43dd9548ba5ebaf1ad78e63dbe76
@@ -2112,12 +2168,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:ff41d87a0643bbca8ea682709b87437908ef7469
-    pristine_git_object: c60a3df1309ef9cd6a6ea07881c65b4cda3e3e46
+    last_write_checksum: sha1:1008bb55d504f3de2e7fa26ea5731bd843f40d33
+    pristine_git_object: e09b19a758bb531853f546e0337a2e85e2d7401a
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:f40d37838faa0c031d62c2fd92e4ec2afb92ec48
-    pristine_git_object: 20da72f04c12754a746683dfd1677f1bba3b4c27
+    last_write_checksum: sha1:991f80fe0ff49dd676ee1941c709d79019855fd3
+    pristine_git_object: 6e99ac2e96ba489ee36cc265ecdb3305cfd3c81d
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2154,6 +2210,26 @@ trackedFiles:
     id: 17940b385bc3
     last_write_checksum: sha1:fac66acba5e3c77ceb5ea56e1805400a6151abad
     pristine_git_object: b6e57747847447886298522cc5ebb99ffa152801
+  src/funcs/bridgePhrasesCreate.ts:
+    id: d9a8d83b5107
+    last_write_checksum: sha1:f83d7da915cd63acd9b9d3cff525f800daba67a1
+    pristine_git_object: 73d68c92bc44428f1d3cfb314105cb48bb1f7f8c
+  src/funcs/bridgePhrasesDelete.ts:
+    id: 220832ea21fc
+    last_write_checksum: sha1:26be4815c5e326ee8890a2741c1d4c305b3a42bf
+    pristine_git_object: 51a8ed33744a94c5afb81a01a0c972a8313b2e2f
+  src/funcs/bridgePhrasesGetById.ts:
+    id: "7510536556e3"
+    last_write_checksum: sha1:d78f08bb39b21de20be768bb2a39e85fd0c656ab
+    pristine_git_object: 27421f0511ac9bedbb52a9ee12c7df80f9db1b06
+  src/funcs/bridgePhrasesList.ts:
+    id: 0b8d2975a994
+    last_write_checksum: sha1:faae8c15ba4518b7f0333c38096d49f6dad48726
+    pristine_git_object: 43368839fa632b5f3780926e1f597fe2475f0722
+  src/funcs/bridgePhrasesUpdate.ts:
+    id: 3bd631ca1c6e
+    last_write_checksum: sha1:daad5aa5d0cc224260ed73e37af64b27a5841de3
+    pristine_git_object: fe671e1281838ff58480c0ca33cdf5d184dfa622
   src/funcs/channelsCreate.ts:
     id: 68a25494680a
     last_write_checksum: sha1:756bccf4ac04eec37d8fc0752c1faffe81ad724b
@@ -2828,8 +2904,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:faa03fa589652134c214a2e72c0b45ee8d08da97
-    pristine_git_object: e59ebb54f426d26af6da2e21b5fe2d8428c8f6dc
+    last_write_checksum: sha1:a154a3b667de7dae73aae6582659d75756a25e13
+    pristine_git_object: 3f9b612e3db21bac442bbf2de09cf6c3d91ab764
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -2904,8 +2980,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:9b04e80b8789eb16bfd3276e48db627901379b7d
-    pristine_git_object: 6fb07d1886817a5d66a0c6074acba397db9936da
+    last_write_checksum: sha1:1dfef973412da96e58d5660c63d6c65b7eefe2b3
+    pristine_git_object: c0d0ec3b60e5978645b9f47764b171f699593870
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -2920,8 +2996,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:25c54654c9ff753c5efb273e801e2d058733e601
-    pristine_git_object: 6c59b9416923168be496af4b5cc0d72088f490b2
+    last_write_checksum: sha1:659c965642b037cbd86f1ed439ff750c5a464968
+    pristine_git_object: 85e1e102c36c71634d3df9f39865a8f5edf24cce
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -2962,6 +3038,26 @@ trackedFiles:
     id: 87f32d00d110
     last_write_checksum: sha1:1ef0e27c89bc4576cf63a2706562325d39817b8d
     pristine_git_object: a4ad370be069718f1468276dff4e97ea448dde2f
+  src/mcp-server/tools/bridgePhrasesCreate.ts:
+    id: e3de06ca1b2a
+    last_write_checksum: sha1:5111654c0d3f52f872c1fdd7c0006877982dcc03
+    pristine_git_object: 35e47f367d576540fc3dd50e866c70ffbc33638c
+  src/mcp-server/tools/bridgePhrasesDelete.ts:
+    id: ed180c8e4d0f
+    last_write_checksum: sha1:38cbc7df27dc09ceaaf4630d49463a5da741086e
+    pristine_git_object: dcc9f7b7827f71300dcc98b1f05e650cdf985d0e
+  src/mcp-server/tools/bridgePhrasesGetById.ts:
+    id: 3858ffae8476
+    last_write_checksum: sha1:c8fe58e5bcd1bb365beada31baaa2920a5b0b146
+    pristine_git_object: fd9acaf17c899b178a986e7902f40fe36b5b5c95
+  src/mcp-server/tools/bridgePhrasesList.ts:
+    id: 0c1eb7e8e179
+    last_write_checksum: sha1:91bb5adf042ed0ec327f115019714f7a5035fe43
+    pristine_git_object: e65770645e58df339cef4d0d3e8fb09b2e111849
+  src/mcp-server/tools/bridgePhrasesUpdate.ts:
+    id: 36876d302e31
+    last_write_checksum: sha1:445c1ea60954e8b5280acf4c91f68abb1e81a62e
+    pristine_git_object: eb95e31c8dab56bc58fade13b42105d498e94470
   src/mcp-server/tools/channelsCreate.ts:
     id: ef218d244bcd
     last_write_checksum: sha1:dc641c27c5901a7bca451fcf96bdc2bc9193baa5
@@ -3730,14 +3826,34 @@ trackedFiles:
     id: 06853ce24b0d
     last_write_checksum: sha1:595f143e4ad3d5475be183ed61b76e3e7493e6c6
     pristine_git_object: 32c3b4d42d89c0786e2ce4892c48f20fd56563af
-  src/models/components/bridgephrasemessages.ts:
-    id: deac4305080b
-    last_write_checksum: sha1:cf4e68f0fb3da8a0b2e5040591e1eadd54aaad04
-    pristine_git_object: b71e95f15b916dd50c6804d4b47febde9b0b3dbb
+  src/models/components/bridgephrasesagentinfo.ts:
+    id: eb1fa851a5d3
+    last_write_checksum: sha1:e2275c3d79221f1100be6aa384880e18aa62e134
+    pristine_git_object: 8d0fd3a9e3670c024ac3285be997c80400f91aa7
   src/models/components/bridgephrasesconfig.ts:
     id: 7a942c6f966c
-    last_write_checksum: sha1:e776292618139c62add2defd260db7538c254844
-    pristine_git_object: 187615f3111c6eb57a00ddad6559798f88e30e27
+    last_write_checksum: sha1:545ab9cf375923c8871278e18d957be1c247aef7
+    pristine_git_object: e7d9d8f7d05eb74e4514e1070eeb7ce7b7b0db1b
+  src/models/components/bridgephrasesconfigpayload.ts:
+    id: e8eb7424dfa9
+    last_write_checksum: sha1:381103b56a6db2d5eecb24c5ad6afffabbb39795
+    pristine_git_object: 952e29cd8cf431d6fd951ec1af1bd6b9c886bac7
+  src/models/components/bridgephrasescreaterequest.ts:
+    id: 9fe8dadfd7de
+    last_write_checksum: sha1:e8a6437c6372b486ce8216f5418e5032f72aa354
+    pristine_git_object: 85cd04a010302f50dfd9190ecc0645aa7f3ed187
+  src/models/components/bridgephrasesproperties.ts:
+    id: 7444e8c75407
+    last_write_checksum: sha1:90e9a7b7fe0c470ae841d7049c28d93213867a36
+    pristine_git_object: 355022e76502da66bc01992602b15cf08f11ae91
+  src/models/components/bridgephrasesresponse.ts:
+    id: ad03dd2199dc
+    last_write_checksum: sha1:26718207c743aa7348dcedbb30369d3667fc9f6d
+    pristine_git_object: 9ed8dd6429baa81885de2c9c4020276ffb226fbc
+  src/models/components/bridgephrasesupdaterequest.ts:
+    id: 5cfdae7acacf
+    last_write_checksum: sha1:a3a5d2587a36d2319784875f1b2010dc1c0c4710
+    pristine_git_object: 6f7cdba1fa4e1c9e8c470cc764efcc3b4fae929e
   src/models/components/callaction.ts:
     id: 982a0886d33e
     last_write_checksum: sha1:ca30990422a9643cfcc34b5836b3f3cd76e60033
@@ -4040,8 +4156,8 @@ trackedFiles:
     pristine_git_object: 9f63697edf7ec323285ba25d328a4e4a38cc609e
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:cf282f615b6cc72c19d71f3b3df196c569d8219e
-    pristine_git_object: 0316fe7b9931e212410287b0b779ff8cabd1aa38
+    last_write_checksum: sha1:1e11bb56d0e39de45b76e0d2cfac19faf30940a8
+    pristine_git_object: 028a2a9f9ba1daa82cdc0a6423c499c7edefdb5e
   src/models/components/inputparameter.ts:
     id: 3e896f254d26
     last_write_checksum: sha1:6b78ad6ccb0d52e1257e19231f420b0a76658f19
@@ -4182,6 +4298,10 @@ trackedFiles:
     id: 66861b0051d3
     last_write_checksum: sha1:3a442c05aa723aad7c5cd09db4f987b4f93a6fe4
     pristine_git_object: 38d217e825cdd8f796feb726d4790b4e8f13fed4
+  src/models/components/libdatabasedaoorganizationbridgephrasesdaobridgephrasemessages.ts:
+    id: 2db6a5e7e8d9
+    last_write_checksum: sha1:eb1ffba34983fe718e93f958907e2828c3e8ead8
+    pristine_git_object: 7e7faa1908670f9a11d069ec7aa7585957c9e5f8
   src/models/components/linetypebucket.ts:
     id: 2e9c0428263b
     last_write_checksum: sha1:95c4b48c3746cbd759ad63ad1f462be0046ce10f
@@ -4194,6 +4314,10 @@ trackedFiles:
     id: 2fcb7d87f8b6
     last_write_checksum: sha1:17f5bfea83e0ff9a105c947b3e15e1b2c027ffab
     pristine_git_object: 210ce4dd57c3579c1316c28ac15099fd0ccbe909
+  src/models/components/listresponsebridgephrasesresponse.ts:
+    id: d0236c5743cf
+    last_write_checksum: sha1:0d119e4c45ee0d83023bbd20a7ac0e2bd160cbd6
+    pristine_git_object: 50e414955d620da4b669c5d033572509dcb3634a
   src/models/components/listresponsechannel.ts:
     id: dfa6de4bac41
     last_write_checksum: sha1:c3990e10ffdab6b20521b3815cee407e7b1e535a
@@ -4306,6 +4430,10 @@ trackedFiles:
     id: 093954c21813
     last_write_checksum: sha1:c66ac0e606b617dca507aa997c39ae77f3ff23d7
     pristine_git_object: 1be6da9b08cab3e9c2e55dace541930b3cd61324
+  src/models/components/localizedbridgephrases.ts:
+    id: ce297bdb70b7
+    last_write_checksum: sha1:473ad3c644210634dbfb201e745b4fa8758ca874
+    pristine_git_object: 1c329ce708db499cd087aa312be112b757bf2bca
   src/models/components/logintype.ts:
     id: 5b5a3379e56e
     last_write_checksum: sha1:78d767f2433c5d8cf63dcb2e53729f3b06524b5b
@@ -4454,6 +4582,10 @@ trackedFiles:
     id: 9411d80d68fd
     last_write_checksum: sha1:5f491d30f620907adc8e41279d0f92391f4feb44
     pristine_git_object: d4d7975f5e7dc020016a95207329ece3f12d369b
+  src/models/components/schemascortexv1bridgephrasesbridgephrasemessages.ts:
+    id: cd337934a3d8
+    last_write_checksum: sha1:39c88fe5131064d9083dfed3f38e76c2bf35e3b3
+    pristine_git_object: 98ec42652564ece61f74441a215f26ba2ed9f7e9
   src/models/components/security.ts:
     id: 472dde81bb1c
     last_write_checksum: sha1:e0352610bbf253b18670102f107bf075100fd8bf
@@ -4606,6 +4738,10 @@ trackedFiles:
     id: 338d1769afd0
     last_write_checksum: sha1:396e92dc05d78464135e765b53cfb0cc02cd4ff5
     pristine_git_object: d99b839ae2d4dabaf4b39dfbd7b77b45388662da
+  src/models/components/toolbridgephraseconfig.ts:
+    id: 02ae948caac8
+    last_write_checksum: sha1:22ba01be2d883359b4fa05b4944dff21411c5e73
+    pristine_git_object: d14f66b1f4477e5b501f239ae37023ca836cd570
   src/models/components/toolcreaterequest.ts:
     id: 199f722ea4b1
     last_write_checksum: sha1:0540f42c8d005b210b40a54cc6b6628eb51159c0
@@ -4818,6 +4954,18 @@ trackedFiles:
     id: 8647e52f751a
     last_write_checksum: sha1:faf38ec70547377f9269525d429964d7ad3c904f
     pristine_git_object: fc6133d67f9c90d4b8b819e6c51418cb5ca50b3e
+  src/models/operations/bridgephrasesdelete.ts:
+    id: d392999f38b4
+    last_write_checksum: sha1:f6d417830153146f04d9f24db43065f611af46e9
+    pristine_git_object: 1b1f3e8cdc3dfc3a24f50c21f3a6210b80434b00
+  src/models/operations/bridgephrasesgetbyid.ts:
+    id: 44c0b2517844
+    last_write_checksum: sha1:f002f010663c9215441dfecd4a6d504b8aac4028
+    pristine_git_object: f39bbf0efd1c309b525a9b54bec7f9d2e84b5645
+  src/models/operations/bridgephraseslist.ts:
+    id: 476930e737ac
+    last_write_checksum: sha1:442534017e47342ee9c8561d86d6e2d2c4d2fc79
+    pristine_git_object: 4ed8a8d9c0c6b8f96e2fa30b2fd38d7fde8646e7
   src/models/operations/channelslist.ts:
     id: 0c2d36d17a8a
     last_write_checksum: sha1:1e0968f6b3e356fe853ebf2364f587f25db728ad
@@ -4964,8 +5112,8 @@ trackedFiles:
     pristine_git_object: 93a681b2bba2549e949bf9009d580723faa6467f
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:80bcfeb6d753d44ddf1e3286fb49072ef16a3518
-    pristine_git_object: ab8f5ae7b7eae54991a312c9df24003112f119d3
+    last_write_checksum: sha1:eb0dd5900a2dea0955eaa0390fed0ccba0ebbe2e
+    pristine_git_object: 4b9db1b1eba4138ad8c8ef7a70c64217d7443c45
   src/models/operations/insightsfolderdelete.ts:
     id: 3919a95ffe82
     last_write_checksum: sha1:be0efc8a494828b094ac655bcba4fb2dc0cfbdac
@@ -5250,6 +5398,10 @@ trackedFiles:
     id: 459079e1c845
     last_write_checksum: sha1:9679722cdc1bd3609426ef1230a62da9620690b0
     pristine_git_object: 1063c714f4d2b7fd8aa59f37d730d15b877f4e4d
+  src/sdk/bridgephrases.ts:
+    id: bfc5e3558215
+    last_write_checksum: sha1:7c14204f8bdacb87bbdeedfbdd0d01b72e08fa8a
+    pristine_git_object: 9cbf8b8126b2f3ce92fe76b02f71b3bbcb5a874b
   src/sdk/campaigns.ts:
     id: 026c94904537
     last_write_checksum: sha1:10ac6e74e9fc234efd7ec880383855cca5c0f02d
@@ -5344,8 +5496,8 @@ trackedFiles:
     pristine_git_object: 04fe8b3cb27cf89be08a493e569703f761913c5e
   src/sdk/sdk.ts:
     id: 784571af2f69
-    last_write_checksum: sha1:5c7c36478500d72ada36c31f6c71ca0dbb86c902
-    pristine_git_object: 28d5b4b13e5ae3a129c2d9ccd4f907ece1479725
+    last_write_checksum: sha1:c7a7658a72731a6a39bd17e0f531f783819e7bcf
+    pristine_git_object: c5db5ceed1cb10fde74dabfcb336d247a42bb2a8
   src/sdk/services.ts:
     id: 4a8815abe25f
     last_write_checksum: sha1:77b13b4aa19ef8486da7e5679f75e615f8403cf7
@@ -7237,8 +7389,70 @@ examples:
           application/json: {"session_id": "<id>", "events": []}
         "422":
           application/json: {}
+  bridge_phrases_list:
+    speakeasy-default-bridge-phrases-list:
+      parameters:
+        query:
+          page: 0
+          limit: 25
+          search_fields: ["name"]
+          search_field_values: ["Some Object Name"]
+          start_datetime: "2023-01-01T00:00:00Z"
+          end_datetime: "2024-01-01T00:00:00Z"
+      responses:
+        "200":
+          application/json: {"items": [], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+        "422":
+          application/json: {}
+  bridge_phrases_create:
+    speakeasy-default-bridge-phrases-create:
+      requestBody:
+        application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}}
+      responses:
+        "200":
+          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
+        "422":
+          application/json: {}
+  bridge_phrases_update:
+    speakeasy-default-bridge-phrases-update:
+      requestBody:
+        application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool."}
+      responses:
+        "200":
+          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
+        "422":
+          application/json: {}
+  bridge_phrases_get_by_id:
+    speakeasy-default-bridge-phrases-get-by-id:
+      parameters:
+        path:
+          bridge_phrases_id: 627472
+      responses:
+        "200":
+          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
+        "422":
+          application/json: {}
+  bridge_phrases_delete:
+    speakeasy-default-bridge-phrases-delete:
+      parameters:
+        path:
+          bridge_phrases_id: 722051
+        query:
+          reason: "<value>"
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `syllablesdk.bridgePhrases.list()`: **Added**
+  * `syllablesdk.bridgePhrases.create()`: **Added**
+  * `syllablesdk.bridgePhrases.update()`: **Added**
+  * `syllablesdk.bridgePhrases.getById()`: **Added**
+  * `syllablesdk.bridgePhrases.delete()`: **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
