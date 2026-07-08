@@ -89,6 +89,10 @@ export type AgentResponse = {
    */
   languageGroupId?: number | null | undefined;
   /**
+   * Internal ID of the bridge phrases config associated with the agent
+   */
+  bridgePhrasesId?: number | null | undefined;
+  /**
    * The time zone in which the agent operates
    */
   timezone: string;
@@ -174,6 +178,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
   prompt_id: z.number().int(),
   custom_message_id: z.nullable(z.number().int()).optional(),
   language_group_id: z.nullable(z.number().int()).optional(),
+  bridge_phrases_id: z.nullable(z.number().int()).optional(),
   timezone: z.string(),
   prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
   languages: z.array(z.string()).optional(),
@@ -198,6 +203,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
     "prompt_id": "promptId",
     "custom_message_id": "customMessageId",
     "language_group_id": "languageGroupId",
+    "bridge_phrases_id": "bridgePhrasesId",
     "prompt_tool_defaults": "promptToolDefaults",
     "tool_headers": "toolHeaders",
     "agent_initiated": "agentInitiated",
@@ -221,6 +227,7 @@ export type AgentResponse$Outbound = {
   prompt_id: number;
   custom_message_id?: number | null | undefined;
   language_group_id?: number | null | undefined;
+  bridge_phrases_id?: number | null | undefined;
   timezone: string;
   prompt_tool_defaults?: Array<AgentToolDefaults$Outbound> | undefined;
   languages?: Array<string> | undefined;
@@ -254,6 +261,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
   promptId: z.number().int(),
   customMessageId: z.nullable(z.number().int()).optional(),
   languageGroupId: z.nullable(z.number().int()).optional(),
+  bridgePhrasesId: z.nullable(z.number().int()).optional(),
   timezone: z.string(),
   promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
   languages: z.array(z.string()).optional(),
@@ -278,6 +286,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
     promptId: "prompt_id",
     customMessageId: "custom_message_id",
     languageGroupId: "language_group_id",
+    bridgePhrasesId: "bridge_phrases_id",
     promptToolDefaults: "prompt_tool_defaults",
     toolHeaders: "tool_headers",
     agentInitiated: "agent_initiated",

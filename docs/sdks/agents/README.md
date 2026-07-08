@@ -130,6 +130,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
+    bridgePhrasesId: 1,
     timezone: "America/New_York",
     promptToolDefaults: [
       {
@@ -184,6 +185,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
+    bridgePhrasesId: 1,
     timezone: "America/New_York",
     promptToolDefaults: [
       {
@@ -262,6 +264,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
+    bridgePhrasesId: 1,
     timezone: "America/New_York",
     promptToolDefaults: [
       {
@@ -317,6 +320,7 @@ async function run() {
     promptId: 1,
     customMessageId: 1,
     languageGroupId: 1,
+    bridgePhrasesId: 1,
     timezone: "America/New_York",
     promptToolDefaults: [
       {
