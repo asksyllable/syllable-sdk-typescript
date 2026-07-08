@@ -23,6 +23,12 @@ import {
   OutboundCampaignWebhookInput$Outbound,
   OutboundCampaignWebhookInput$outboundSchema,
 } from "./outboundcampaignwebhookinput.js";
+import {
+  VoicemailDetectionConfig,
+  VoicemailDetectionConfig$inboundSchema,
+  VoicemailDetectionConfig$Outbound,
+  VoicemailDetectionConfig$outboundSchema,
+} from "./voicemaildetectionconfig.js";
 
 export type OutboundCampaignInput = {
   /**
@@ -94,7 +100,7 @@ export type OutboundCampaignInput = {
   /**
    * Config for voicemail detection for voice campaigns. Set to None to disable.
    */
-  voicemailDetection?: { [k: string]: number } | null | undefined;
+  voicemailDetection?: VoicemailDetectionConfig | null | undefined;
   /**
    * Line-type buckets this campaign is allowed to dial. Empty or omitted means no filter (all line types are dialed).
    */
@@ -131,7 +137,8 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   retry_count: z.number().int().default(0),
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
-  voicemail_detection: z.nullable(z.record(z.number())).optional(),
+  voicemail_detection: z.nullable(VoicemailDetectionConfig$inboundSchema)
+    .optional(),
   allowed_line_types: z.nullable(z.array(LineTypeBucket$inboundSchema))
     .optional(),
   include_unknown_line_types: z.boolean().default(true),
@@ -172,7 +179,7 @@ export type OutboundCampaignInput$Outbound = {
   retry_count: number;
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
-  voicemail_detection?: { [k: string]: number } | null | undefined;
+  voicemail_detection?: VoicemailDetectionConfig$Outbound | null | undefined;
   allowed_line_types?: Array<string> | null | undefined;
   include_unknown_line_types: boolean;
   webhooks?: Array<OutboundCampaignWebhookInput$Outbound> | undefined;
@@ -200,7 +207,8 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   retryCount: z.number().int().default(0),
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
-  voicemailDetection: z.nullable(z.record(z.number())).optional(),
+  voicemailDetection: z.nullable(VoicemailDetectionConfig$outboundSchema)
+    .optional(),
   allowedLineTypes: z.nullable(z.array(LineTypeBucket$outboundSchema))
     .optional(),
   includeUnknownLineTypes: z.boolean().default(true),
