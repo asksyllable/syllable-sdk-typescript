@@ -130,7 +130,7 @@ export type OutboundCampaign = {
    */
   lastUpdatedBy: string;
   /**
-   * Webhooks for campaign (note: this is an in-development feature - webhooks will not yet trigger even if configured)
+   * Webhooks for campaign
    */
   webhooks?: Array<OutboundCampaignWebhookResponse> | null | undefined;
 };

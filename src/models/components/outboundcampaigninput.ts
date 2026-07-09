@@ -110,7 +110,7 @@ export type OutboundCampaignInput = {
    */
   includeUnknownLineTypes?: boolean | undefined;
   /**
-   * Webhooks for campaign (note: this is an in-development feature - webhooks will not yet trigger even if configured)
+   * Webhooks for campaign
    */
   webhooks?: Array<OutboundCampaignWebhookInput> | undefined;
 };
