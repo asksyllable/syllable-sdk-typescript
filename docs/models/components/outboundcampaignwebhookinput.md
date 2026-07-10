@@ -7,7 +7,7 @@ import { OutboundCampaignWebhookInput } from "syllable-sdk/models/components";
 
 let value: OutboundCampaignWebhookInput = {
   triggerStatuses: [
-    "UNDELIVERED",
+    "IN-PROGRESS",
   ],
   url: "https://example.com/hooks/syllable",
   requestMethod: "POST",
