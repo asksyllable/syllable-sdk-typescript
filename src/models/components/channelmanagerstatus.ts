@@ -12,7 +12,7 @@ export const ChannelManagerStatus = {
   Pending: "PENDING",
   Duplicate: "DUPLICATE",
   Invalid: "INVALID",
-  Failed: "FAILED",
+  UnexpectedError: "UNEXPECTED_ERROR",
   FilteredLineType: "FILTERED_LINE_TYPE",
   Processed: "PROCESSED",
   Dropped: "DROPPED",
@@ -43,6 +43,11 @@ export const ChannelManagerStatus = {
   Machine: "MACHINE",
   Human: "HUMAN",
   Unknown: "UNKNOWN",
+  Failed: "FAILED",
+  SipNotFound: "SIP_NOT_FOUND",
+  SipTemporarilyUnavailable: "SIP_TEMPORARILY_UNAVAILABLE",
+  SipLoopDetected: "SIP_LOOP_DETECTED",
+  SipDoesNotExistAnywhere: "SIP_DOES_NOT_EXIST_ANYWHERE",
 } as const;
 /**
  * Status of an outbound communication request (voice, SMS, or email).
