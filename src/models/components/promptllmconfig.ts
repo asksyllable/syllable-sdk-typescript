@@ -26,7 +26,9 @@ export type PromptLlmConfig = {
    */
   model?: string | undefined;
   /**
-   * Optional model version.
+   * Deprecated model version. This value is ignored and resolved automatically.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   version?: string | null | undefined;
   /**
