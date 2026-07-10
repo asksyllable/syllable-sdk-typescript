@@ -16,7 +16,6 @@ let value: PromptHistory = {
   promptDescription: "Prompt for a weather agent.",
   promptName: "Weather Agent Prompt",
   llmConfig: {
-    version: "2024-05-13",
     apiVersion: "2024-06-01",
     temperature: 1,
     seed: 123,

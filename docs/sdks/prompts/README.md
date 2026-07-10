@@ -126,7 +126,6 @@ async function run() {
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [],
     llmConfig: {
-      version: "2024-05-13",
       apiVersion: "2024-06-01",
       temperature: 1,
       seed: 123,
@@ -163,7 +162,6 @@ async function run() {
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [],
     llmConfig: {
-      version: "2024-05-13",
       apiVersion: "2024-06-01",
       temperature: 1,
       seed: 123,
@@ -224,7 +222,6 @@ async function run() {
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [],
     llmConfig: {
-      version: "2024-05-13",
       apiVersion: "2024-06-01",
       temperature: 1,
       seed: 123,
@@ -262,7 +259,6 @@ async function run() {
     context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
     tools: [],
     llmConfig: {
-      version: "2024-05-13",
       apiVersion: "2024-06-01",
       temperature: 1,
       seed: 123,
