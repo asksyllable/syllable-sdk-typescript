@@ -154,6 +154,27 @@ async function run() {
       "mobile",
       "voip",
     ],
+    targetFilters: {
+      match: "any",
+      rules: [
+        {
+          field: "line_type",
+          op: "in",
+          values: [
+            "landline",
+            "fixedVoip",
+            "nonFixedVoip",
+          ],
+        },
+        {
+          field: "carrier_name",
+          op: "in",
+          values: [
+            "Onvoy, LLC - Sinch",
+          ],
+        },
+      ],
+    },
     webhooks: [
       {
         triggerStatuses: [
@@ -223,6 +244,27 @@ async function run() {
       "mobile",
       "voip",
     ],
+    targetFilters: {
+      match: "any",
+      rules: [
+        {
+          field: "line_type",
+          op: "in",
+          values: [
+            "landline",
+            "fixedVoip",
+            "nonFixedVoip",
+          ],
+        },
+        {
+          field: "carrier_name",
+          op: "in",
+          values: [
+            "Onvoy, LLC - Sinch",
+          ],
+        },
+      ],
+    },
     webhooks: [
       {
         triggerStatuses: [
@@ -392,6 +434,27 @@ async function run() {
         "mobile",
         "voip",
       ],
+      targetFilters: {
+        match: "any",
+        rules: [
+          {
+            field: "line_type",
+            op: "in",
+            values: [
+              "landline",
+              "fixedVoip",
+              "nonFixedVoip",
+            ],
+          },
+          {
+            field: "carrier_name",
+            op: "in",
+            values: [
+              "Onvoy, LLC - Sinch",
+            ],
+          },
+        ],
+      },
       webhooks: [
         {
           triggerStatuses: [
@@ -464,6 +527,27 @@ async function run() {
         "mobile",
         "voip",
       ],
+      targetFilters: {
+        match: "any",
+        rules: [
+          {
+            field: "line_type",
+            op: "in",
+            values: [
+              "landline",
+              "fixedVoip",
+              "nonFixedVoip",
+            ],
+          },
+          {
+            field: "carrier_name",
+            op: "in",
+            values: [
+              "Onvoy, LLC - Sinch",
+            ],
+          },
+        ],
+      },
       webhooks: [
         {
           triggerStatuses: [

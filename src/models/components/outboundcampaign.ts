@@ -24,6 +24,12 @@ import {
   OutboundCampaignWebhookResponse$outboundSchema,
 } from "./outboundcampaignwebhookresponse.js";
 import {
+  TargetFilters,
+  TargetFilters$inboundSchema,
+  TargetFilters$Outbound,
+  TargetFilters$outboundSchema,
+} from "./targetfilters.js";
+import {
   VoicemailDetectionConfig,
   VoicemailDetectionConfig$inboundSchema,
   VoicemailDetectionConfig$Outbound,
@@ -110,6 +116,10 @@ export type OutboundCampaign = {
    */
   includeUnknownLineTypes?: boolean | undefined;
   /**
+   * Generic target filter (a flat rule list over request enrichment attributes such as line_type, carrier_name, mcc, mnc). When set, takes precedence over allowed_line_types / include_unknown_line_types. Omitted or null means those legacy fields are used instead.
+   */
+  targetFilters?: TargetFilters | null | undefined;
+  /**
    * Unique ID for campaign
    */
   id: number;
@@ -162,6 +172,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   allowed_line_types: z.nullable(z.array(LineTypeBucket$inboundSchema))
     .optional(),
   include_unknown_line_types: z.boolean().default(true),
+  target_filters: z.nullable(TargetFilters$inboundSchema).optional(),
   id: z.number().int(),
   agent_id: z.nullable(z.number().int()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -187,6 +198,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
     "voicemail_detection": "voicemailDetection",
     "allowed_line_types": "allowedLineTypes",
     "include_unknown_line_types": "includeUnknownLineTypes",
+    "target_filters": "targetFilters",
     "agent_id": "agentId",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
@@ -214,6 +226,7 @@ export type OutboundCampaign$Outbound = {
   voicemail_detection?: VoicemailDetectionConfig$Outbound | null | undefined;
   allowed_line_types?: Array<string> | null | undefined;
   include_unknown_line_types: boolean;
+  target_filters?: TargetFilters$Outbound | null | undefined;
   id: number;
   agent_id?: number | null | undefined;
   created_at?: string | undefined;
@@ -249,6 +262,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   allowedLineTypes: z.nullable(z.array(LineTypeBucket$outboundSchema))
     .optional(),
   includeUnknownLineTypes: z.boolean().default(true),
+  targetFilters: z.nullable(TargetFilters$outboundSchema).optional(),
   id: z.number().int(),
   agentId: z.nullable(z.number().int()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
@@ -272,6 +286,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
     voicemailDetection: "voicemail_detection",
     allowedLineTypes: "allowed_line_types",
     includeUnknownLineTypes: "include_unknown_line_types",
+    targetFilters: "target_filters",
     agentId: "agent_id",
     createdAt: "created_at",
     updatedAt: "updated_at",

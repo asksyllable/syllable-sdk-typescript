@@ -15,6 +15,8 @@ import {
 
 export type Insights = string | number | number;
 
+export type Enrichment = {};
+
 export type CommunicationRequestResult = {
   /**
    * ID for target outreach (unique within batch)
@@ -72,6 +74,10 @@ export type CommunicationRequestResult = {
    * Line type of the target number from Twilio Lookup (e.g. 'mobile', 'landline', 'voip'); resolved at ingestion.
    */
   lineType?: string | null | undefined;
+  /**
+   * Full Twilio Lookup v2 line_type_intelligence payload resolved at ingestion (line_type / carrier_name / mcc / mnc / error_code). None when no lookup was performed.
+   */
+  enrichment?: Enrichment | null | undefined;
 };
 
 /** @internal */
@@ -104,6 +110,35 @@ export function insightsFromJSON(
 }
 
 /** @internal */
+export const Enrichment$inboundSchema: z.ZodType<
+  Enrichment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type Enrichment$Outbound = {};
+
+/** @internal */
+export const Enrichment$outboundSchema: z.ZodType<
+  Enrichment$Outbound,
+  z.ZodTypeDef,
+  Enrichment
+> = z.object({});
+
+export function enrichmentToJSON(enrichment: Enrichment): string {
+  return JSON.stringify(Enrichment$outboundSchema.parse(enrichment));
+}
+export function enrichmentFromJSON(
+  jsonString: string,
+): SafeParseResult<Enrichment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Enrichment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Enrichment' from JSON`,
+  );
+}
+
+/** @internal */
 export const CommunicationRequestResult$inboundSchema: z.ZodType<
   CommunicationRequestResult,
   z.ZodTypeDef,
@@ -128,6 +163,7 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
     z.record(z.union([z.string(), z.number().int(), z.number()])),
   ).optional(),
   line_type: z.nullable(z.string()).optional(),
+  enrichment: z.nullable(z.lazy(() => Enrichment$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "reference_id": "referenceId",
@@ -160,6 +196,7 @@ export type CommunicationRequestResult$Outbound = {
   insights_status?: string | null | undefined;
   insights?: { [k: string]: string | number | number } | null | undefined;
   line_type?: string | null | undefined;
+  enrichment?: Enrichment$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -184,6 +221,7 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
     z.record(z.union([z.string(), z.number().int(), z.number()])),
   ).optional(),
   lineType: z.nullable(z.string()).optional(),
+  enrichment: z.nullable(z.lazy(() => Enrichment$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     referenceId: "reference_id",
