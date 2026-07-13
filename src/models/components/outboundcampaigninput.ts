@@ -24,6 +24,12 @@ import {
   OutboundCampaignWebhookInput$outboundSchema,
 } from "./outboundcampaignwebhookinput.js";
 import {
+  TargetFilters,
+  TargetFilters$inboundSchema,
+  TargetFilters$Outbound,
+  TargetFilters$outboundSchema,
+} from "./targetfilters.js";
+import {
   VoicemailDetectionConfig,
   VoicemailDetectionConfig$inboundSchema,
   VoicemailDetectionConfig$Outbound,
@@ -110,6 +116,10 @@ export type OutboundCampaignInput = {
    */
   includeUnknownLineTypes?: boolean | undefined;
   /**
+   * Generic target filter (a flat rule list over request enrichment attributes such as line_type, carrier_name, mcc, mnc). When set, takes precedence over allowed_line_types / include_unknown_line_types. Omitted or null means those legacy fields are used instead.
+   */
+  targetFilters?: TargetFilters | null | undefined;
+  /**
    * Webhooks for campaign
    */
   webhooks?: Array<OutboundCampaignWebhookInput> | undefined;
@@ -142,6 +152,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
   allowed_line_types: z.nullable(z.array(LineTypeBucket$inboundSchema))
     .optional(),
   include_unknown_line_types: z.boolean().default(true),
+  target_filters: z.nullable(TargetFilters$inboundSchema).optional(),
   webhooks: z.array(OutboundCampaignWebhookInput$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -159,6 +170,7 @@ export const OutboundCampaignInput$inboundSchema: z.ZodType<
     "voicemail_detection": "voicemailDetection",
     "allowed_line_types": "allowedLineTypes",
     "include_unknown_line_types": "includeUnknownLineTypes",
+    "target_filters": "targetFilters",
   });
 });
 /** @internal */
@@ -182,6 +194,7 @@ export type OutboundCampaignInput$Outbound = {
   voicemail_detection?: VoicemailDetectionConfig$Outbound | null | undefined;
   allowed_line_types?: Array<string> | null | undefined;
   include_unknown_line_types: boolean;
+  target_filters?: TargetFilters$Outbound | null | undefined;
   webhooks?: Array<OutboundCampaignWebhookInput$Outbound> | undefined;
 };
 
@@ -212,6 +225,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
   allowedLineTypes: z.nullable(z.array(LineTypeBucket$outboundSchema))
     .optional(),
   includeUnknownLineTypes: z.boolean().default(true),
+  targetFilters: z.nullable(TargetFilters$outboundSchema).optional(),
   webhooks: z.array(OutboundCampaignWebhookInput$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -229,6 +243,7 @@ export const OutboundCampaignInput$outboundSchema: z.ZodType<
     voicemailDetection: "voicemail_detection",
     allowedLineTypes: "allowed_line_types",
     includeUnknownLineTypes: "include_unknown_line_types",
+    targetFilters: "target_filters",
   });
 });
 
