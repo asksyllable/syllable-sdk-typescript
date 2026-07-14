@@ -3,17 +3,17 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: 86877f0ab065d8297193f30c7bf68663
   docVersion: 0.0.3
-  speakeasyVersion: 1.790.0
-  generationVersion: 2.917.0
-  releaseVersion: 1.0.51-rc.9
-  configChecksum: 71cbdcaf87e02772e6abebc0581b8489
+  speakeasyVersion: 1.790.1
+  generationVersion: 2.918.1
+  releaseVersion: 1.0.51
+  configChecksum: 0756f60e06fac10174da877e7817c660
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: cd29adc9-4cf6-4fa3-a66c-f44842a45041
-  pristine_commit_hash: 6dc642dc39aa61009d6073fc27bceb3dc2a3d7a4
-  pristine_tree_hash: b7893947c0589d075fded22beca40d904ea0786f
+  generation_id: 06392424-3ce3-4626-b20d-aca9bd056365
+  pristine_commit_hash: 0f2e431ef43f617cea8c00b8157a43f866057603
+  pristine_tree_hash: 9603014fc666cad467b5ce6d9b89b2d96fa6aac9
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2201,12 +2201,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:24ee15cf8db09df7494daafdd2c7e119412efd92
-    pristine_git_object: cd2e1aeab0f2d6537470718b8c253b438d7e01a1
+    last_write_checksum: sha1:164e1546dedd8308959dae54307af7b0ea1f327c
+    pristine_git_object: 20d375d56be75126ec8f8cde6c9001849d26b50b
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:4df77ebd74efdf8eac7672c753031ddcb478500a
-    pristine_git_object: e90e5051cba312de4ca92549f224b3db55f25e79
+    last_write_checksum: sha1:1c6b8d0d2a1106b591f26c09be744c63873d416c
+    pristine_git_object: 1c3a0161797c627bcfc2a54740cf48253bf5494a
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2937,8 +2937,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c646a6723023aeb3e70806f98e89dc811c2fc79c
-    pristine_git_object: 8f54dafd76e7bdaf47cd4b95eef033ed143eb232
+    last_write_checksum: sha1:e224c00a90b99b50b96745731f593f71d770aba3
+    pristine_git_object: 60ff89fba1a5d47911f1426806d7fb9441555c95
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3013,8 +3013,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:43f4468385ceca544357e29296cb43d65837dfd1
-    pristine_git_object: ea4e3d3d564f6cfaa8cd984c8d7cf04cf4efa6d0
+    last_write_checksum: sha1:592877d87a7e84272359be8b9064cd4fde68d070
+    pristine_git_object: 3820fc6a19e1a79dda160148e6c573b0ddf0ebd6
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3029,8 +3029,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:ebc7ff6b6c8020ab9dd0fe2303982cf69a6311db
-    pristine_git_object: 36464e24c4932872d8882af871888975aff4a48d
+    last_write_checksum: sha1:e6918a3f3e548699504a152a6aa60357c55985a1
+    pristine_git_object: b6e20b9afe6611ede67c6bc2158fb570ed754f14
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7495,7 +7495,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.outbound.batches.results()`:  `response.[].enrichment` **Added**\n* `syllablesdk.outbound.campaigns.list()`:  `response.items[].targetFilters` **Added**\n* `syllablesdk.outbound.campaigns.create()`: \n  *  `request.targetFilters` **Added**\n  *  `response.targetFilters` **Added**\n* `syllablesdk.outbound.campaigns.getById()`:  `response.targetFilters` **Added**\n* `syllablesdk.outbound.campaigns.update()`: \n  *  `request.outboundCampaignInput.targetFilters` **Added**\n  *  `response.targetFilters` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
