@@ -9,7 +9,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryExtensionNumber = {
   /**
-   * Phone number
+   * Phone number or SIP URI
    */
   number: string;
   /**

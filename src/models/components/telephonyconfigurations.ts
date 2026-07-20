@@ -7,6 +7,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  SipConfiguration,
+  SipConfiguration$inboundSchema,
+  SipConfiguration$Outbound,
+  SipConfiguration$outboundSchema,
+} from "./sipconfiguration.js";
 
 export type TelephonyConfigurations = {
   /**
@@ -49,6 +55,10 @@ export type TelephonyConfigurations = {
    * Whether transfer leg voicemail detection is enabled
    */
   transferLegVoicemailDetectionEnabled?: boolean | null | undefined;
+  /**
+   * SIP routing configuration applied when transferring calls on this channel
+   */
+  sipConfiguration?: SipConfiguration | null | undefined;
 };
 
 /** @internal */
@@ -67,6 +77,7 @@ export const TelephonyConfigurations$inboundSchema: z.ZodType<
   passive_input_start: z.nullable(z.number()).optional(),
   async_enabled: z.nullable(z.boolean()).optional(),
   transfer_leg_voicemail_detection_enabled: z.nullable(z.boolean()).optional(),
+  sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "pre_input_timeout": "preInputTimeout",
@@ -79,6 +90,7 @@ export const TelephonyConfigurations$inboundSchema: z.ZodType<
     "async_enabled": "asyncEnabled",
     "transfer_leg_voicemail_detection_enabled":
       "transferLegVoicemailDetectionEnabled",
+    "sip_configuration": "sipConfiguration",
   });
 });
 /** @internal */
@@ -93,6 +105,7 @@ export type TelephonyConfigurations$Outbound = {
   passive_input_start?: number | null | undefined;
   async_enabled?: boolean | null | undefined;
   transfer_leg_voicemail_detection_enabled?: boolean | null | undefined;
+  sip_configuration?: SipConfiguration$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -111,6 +124,7 @@ export const TelephonyConfigurations$outboundSchema: z.ZodType<
   passiveInputStart: z.nullable(z.number()).optional(),
   asyncEnabled: z.nullable(z.boolean()).optional(),
   transferLegVoicemailDetectionEnabled: z.nullable(z.boolean()).optional(),
+  sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     preInputTimeout: "pre_input_timeout",
@@ -123,6 +137,7 @@ export const TelephonyConfigurations$outboundSchema: z.ZodType<
     asyncEnabled: "async_enabled",
     transferLegVoicemailDetectionEnabled:
       "transfer_leg_voicemail_detection_enabled",
+    sipConfiguration: "sip_configuration",
   });
 });
 
