@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 20ec716f44fd89b37c00bd9e3a07927c
+  docChecksum: ba4bb82603351420b254825508e6dace
   docVersion: 0.0.3
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 1.0.53-rc.3
-  configChecksum: 555a1da6869c50ba97593af800f33cf1
+  releaseVersion: 1.0.53-rc.4
+  configChecksum: 1d46d9758ffeb99e8bf6515fe092218d
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 72b62797-6d65-46bc-8bb0-b2e306191a4d
-  pristine_commit_hash: 6866fcac3822fef31fc7401be04b53002058197f
-  pristine_tree_hash: 49dec061696c4e8c001021278ba012649292675f
+  generation_id: 8537fd76-c270-4294-a32e-08adbbc6d68e
+  pristine_commit_hash: e2d31ebcdb5cbb5f03e94aa2c634a7ef0ff7e966
+  pristine_tree_hash: dbfa53b000cd0be12beae33ec097957aabaa79fc
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -233,8 +233,8 @@ trackedFiles:
     pristine_git_object: c91b114e96214d4e5d57958732bafc1a015bf7b6
   docs/models/components/bridgephrasesconfigpayload.md:
     id: 3cfe82897222
-    last_write_checksum: sha1:768de323fbe9c6fa55469a9c3b949d4f37961725
-    pristine_git_object: d3a867d3f41fb2087a28000335631320553b2b6e
+    last_write_checksum: sha1:e18c124364cd92c0a6582d0896a12dae8f9b43a9
+    pristine_git_object: 8d90db140e2cd096f9663c832d57997e969b917a
   docs/models/components/bridgephrasescreaterequest.md:
     id: 95c4e29c59ca
     last_write_checksum: sha1:61f0a918f05c89a074488b7e63e0b85c4855654e
@@ -2217,12 +2217,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:ff27f8f1fab1908ffee58c83398ba9d94dac6bc5
-    pristine_git_object: 8f108bf3b06c81b9a7fd03aab471165f51ed309c
+    last_write_checksum: sha1:b367c72bea45543c6174d3d4b53514d2b913f17e
+    pristine_git_object: 36d3fceb7e974efdd78fdb65dbc3abd9f995c138
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:c29cfb89e0e6acecd99034d997e56aaf3512f040
-    pristine_git_object: 152b7ec53ab4ac80118af0b59c1d2bab9ce98844
+    last_write_checksum: sha1:2bbed5b28e34e6bf129fd2675cca73fbd28ffad4
+    pristine_git_object: b093f807a4c8d2adcf3c74cc066319c5ba276844
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2953,8 +2953,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:4b1b9d3f913483cb4c6794b51230d9dd7e0bf758
-    pristine_git_object: 9abf80a0ab7cd2acc7970ead4b69ec416407caf9
+    last_write_checksum: sha1:44f271f3ea1340e50c1fd3730d05de36ce0493c9
+    pristine_git_object: feef28df8903f4c0a80c3e9208e478ab722ff047
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3029,8 +3029,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:92ce09da14e5d6ecd37d0cc10de644c993dfc6ee
-    pristine_git_object: 0d4a16a3a49476b7643fe10ec77a2308b585c7d3
+    last_write_checksum: sha1:10744b959910ee0c9fd374d545c59192d9e954e7
+    pristine_git_object: 38b7d173a265e7708a187f7047b3e40f3ad886cd
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3045,8 +3045,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:0987395d6de27b37656b88713fb31be78b62355b
-    pristine_git_object: 461481fa3b0497078b21cb2bd5a0ce1af3ee516b
+    last_write_checksum: sha1:6f8c6a0ec28d8cb837d2b98b72ba324caef061ab
+    pristine_git_object: e393ea159acb2da4235d76d57abc6f077fdec9cc
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -3885,8 +3885,8 @@ trackedFiles:
     pristine_git_object: e7d9d8f7d05eb74e4514e1070eeb7ce7b7b0db1b
   src/models/components/bridgephrasesconfigpayload.ts:
     id: e8eb7424dfa9
-    last_write_checksum: sha1:381103b56a6db2d5eecb24c5ad6afffabbb39795
-    pristine_git_object: 952e29cd8cf431d6fd951ec1af1bd6b9c886bac7
+    last_write_checksum: sha1:d5ded5bde7ce78db0b6ab26d02f9832d59e84f80
+    pristine_git_object: 63e3148d741cbd0ccb25d9b80b96e144f4c74120
   src/models/components/bridgephrasescreaterequest.ts:
     id: 9fe8dadfd7de
     last_write_checksum: sha1:e8a6437c6372b486ce8216f5418e5032f72aa354
@@ -7527,7 +7527,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.channels.list()`:  `response.items[].config.telephony.sipConfiguration` **Added**\n* `syllablesdk.channels.create()`: \n  *  `request.config.telephony.sipConfiguration` **Added**\n  *  `response.config.telephony.sipConfiguration` **Added**\n* `syllablesdk.channels.update()`: \n  *  `request.config.telephony.sipConfiguration` **Added**\n  *  `response.config.telephony.sipConfiguration` **Added**\n* `syllablesdk.channels.twilio.getById()`:  `response.config.telephony.sipConfiguration` **Added**\n* `syllablesdk.channels.twilio.update()`:  `response.config.telephony.sipConfiguration` **Added**\n* `syllablesdk.channels.twilio.create()`:  `response.config.telephony.sipConfiguration` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
