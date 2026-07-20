@@ -41,7 +41,7 @@ export type BridgePhrasesConfigPayload = {
    */
   tools?: Array<ToolBridgePhraseConfig> | undefined;
   /**
-   * Seconds of caller silence before injecting the first bridge phrase. When unset, the service-wide default applies.
+   * Seconds of caller silence before injecting the first bridge phrase. Defaults to 2.75s when omitted on write.
    */
   smartTurnTimeoutSeconds?: number | null | undefined;
   /**
