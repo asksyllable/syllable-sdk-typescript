@@ -30,6 +30,7 @@ let value: ChannelTargetResponse = {
     ],
     type: "ca_v1",
     promptId: 1,
+    promptVersionNumber: 3,
     customMessageId: 1,
     languageGroupId: 1,
     bridgePhrasesId: 1,

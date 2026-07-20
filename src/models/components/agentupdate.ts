@@ -55,6 +55,10 @@ export type AgentUpdate = {
    */
   promptId: number;
   /**
+   * Optional pin to a specific version of the prompt (prompt history version number). When omitted or null, the agent tracks the latest/current version of the prompt. When set, the agent runs that specific prompt version. Must reference an existing version of the agent's prompt.
+   */
+  promptVersionNumber?: number | null | undefined;
+  /**
    * Internal ID of the custom message that should be delivered at the beginning of a conversation with the agent
    */
   customMessageId?: number | null | undefined;
@@ -122,6 +126,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
   labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   prompt_id: z.number().int(),
+  prompt_version_number: z.nullable(z.number().int()).optional(),
   custom_message_id: z.nullable(z.number().int()).optional(),
   language_group_id: z.nullable(z.number().int()).optional(),
   bridge_phrases_id: z.nullable(z.number().int()).optional(),
@@ -138,6 +143,7 @@ export const AgentUpdate$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
+    "prompt_version_number": "promptVersionNumber",
     "custom_message_id": "customMessageId",
     "language_group_id": "languageGroupId",
     "bridge_phrases_id": "bridgePhrasesId",
@@ -157,6 +163,7 @@ export type AgentUpdate$Outbound = {
   labels?: Array<string> | null | undefined;
   type: string;
   prompt_id: number;
+  prompt_version_number?: number | null | undefined;
   custom_message_id?: number | null | undefined;
   language_group_id?: number | null | undefined;
   bridge_phrases_id?: number | null | undefined;
@@ -184,6 +191,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
   labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   promptId: z.number().int(),
+  promptVersionNumber: z.nullable(z.number().int()).optional(),
   customMessageId: z.nullable(z.number().int()).optional(),
   languageGroupId: z.nullable(z.number().int()).optional(),
   bridgePhrasesId: z.nullable(z.number().int()).optional(),
@@ -200,6 +208,7 @@ export const AgentUpdate$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
+    promptVersionNumber: "prompt_version_number",
     customMessageId: "custom_message_id",
     languageGroupId: "language_group_id",
     bridgePhrasesId: "bridge_phrases_id",
