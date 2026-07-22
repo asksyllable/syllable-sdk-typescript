@@ -50,6 +50,10 @@ export type BridgePhrasesResponse = {
    */
   config?: BridgePhrasesConfigPayload | undefined;
   /**
+   * Whether this config is currently marked as the default for its suborg.
+   */
+  isDefault?: boolean | undefined;
+  /**
    * The ID of the bridge phrases config to update.
    */
   id: number;
@@ -80,6 +84,7 @@ export const BridgePhrasesResponse$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   config: BridgePhrasesConfigPayload$inboundSchema.optional(),
+  is_default: z.boolean().default(false),
   id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
   agents_info: z.nullable(z.array(BridgePhrasesAgentInfo$inboundSchema))
@@ -88,6 +93,7 @@ export const BridgePhrasesResponse$inboundSchema: z.ZodType<
   last_updated_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    "is_default": "isDefault",
     "edit_comments": "editComments",
     "agents_info": "agentsInfo",
     "updated_at": "updatedAt",
@@ -99,6 +105,7 @@ export type BridgePhrasesResponse$Outbound = {
   name: string;
   description?: string | null | undefined;
   config?: BridgePhrasesConfigPayload$Outbound | undefined;
+  is_default: boolean;
   id: number;
   edit_comments?: string | null | undefined;
   agents_info?: Array<BridgePhrasesAgentInfo$Outbound> | null | undefined;
@@ -115,6 +122,7 @@ export const BridgePhrasesResponse$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   config: BridgePhrasesConfigPayload$outboundSchema.optional(),
+  isDefault: z.boolean().default(false),
   id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
   agentsInfo: z.nullable(z.array(BridgePhrasesAgentInfo$outboundSchema))
@@ -123,6 +131,7 @@ export const BridgePhrasesResponse$outboundSchema: z.ZodType<
   lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    isDefault: "is_default",
     editComments: "edit_comments",
     agentsInfo: "agents_info",
     updatedAt: "updated_at",

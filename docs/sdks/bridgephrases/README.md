@@ -326,6 +326,7 @@ async function run() {
       ],
       randomizeBridgePhrases: true,
     },
+    isDefault: true,
     id: 1,
     editComments: "Added Spanish overrides for the transfer tool.",
   });
@@ -398,6 +399,7 @@ async function run() {
       ],
       randomizeBridgePhrases: true,
     },
+    isDefault: true,
     id: 1,
     editComments: "Added Spanish overrides for the transfer tool.",
   });
