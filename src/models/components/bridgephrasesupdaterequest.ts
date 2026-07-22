@@ -37,6 +37,10 @@ export type BridgePhrasesUpdateRequest = {
    */
   config?: BridgePhrasesConfigPayload | undefined;
   /**
+   * Whether this config should be marked as the default for its suborg. Omit (null) to preserve the existing value; pass true/false to set or unset it. At most one non-deleted config per suborg may be the default; the API returns a 400 if a second default is requested while another is already set.
+   */
+  isDefault?: boolean | null | undefined;
+  /**
    * The ID of the bridge phrases config to update.
    */
   id: number;
@@ -55,10 +59,12 @@ export const BridgePhrasesUpdateRequest$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   config: BridgePhrasesConfigPayload$inboundSchema.optional(),
+  is_default: z.nullable(z.boolean()).optional(),
   id: z.number().int(),
   edit_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "is_default": "isDefault",
     "edit_comments": "editComments",
   });
 });
@@ -67,6 +73,7 @@ export type BridgePhrasesUpdateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
   config?: BridgePhrasesConfigPayload$Outbound | undefined;
+  is_default?: boolean | null | undefined;
   id: number;
   edit_comments?: string | null | undefined;
 };
@@ -80,10 +87,12 @@ export const BridgePhrasesUpdateRequest$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   config: BridgePhrasesConfigPayload$outboundSchema.optional(),
+  isDefault: z.nullable(z.boolean()).optional(),
   id: z.number().int(),
   editComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    isDefault: "is_default",
     editComments: "edit_comments",
   });
 });

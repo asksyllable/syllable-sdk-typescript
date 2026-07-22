@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,6 +36,10 @@ export type BridgePhrasesCreateRequest = {
    * docs/bridge-phrases-table-migration.md §5.2.
    */
   config?: BridgePhrasesConfigPayload | undefined;
+  /**
+   * Whether this config should be marked as the default for its suborg. At most one non-deleted config per suborg may be the default; the API returns a 400 if a second default is requested while another is already set.
+   */
+  isDefault?: boolean | undefined;
 };
 
 /** @internal */
@@ -46,12 +51,18 @@ export const BridgePhrasesCreateRequest$inboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   config: BridgePhrasesConfigPayload$inboundSchema.optional(),
+  is_default: z.boolean().default(false),
+}).transform((v) => {
+  return remap$(v, {
+    "is_default": "isDefault",
+  });
 });
 /** @internal */
 export type BridgePhrasesCreateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
   config?: BridgePhrasesConfigPayload$Outbound | undefined;
+  is_default: boolean;
 };
 
 /** @internal */
@@ -63,6 +74,11 @@ export const BridgePhrasesCreateRequest$outboundSchema: z.ZodType<
   name: z.string(),
   description: z.nullable(z.string()).optional(),
   config: BridgePhrasesConfigPayload$outboundSchema.optional(),
+  isDefault: z.boolean().default(false),
+}).transform((v) => {
+  return remap$(v, {
+    isDefault: "is_default",
+  });
 });
 
 export function bridgePhrasesCreateRequestToJSON(

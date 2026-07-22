@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 7379a9f3a9633b826e76eff0d239de3c
+  docChecksum: 4da42ad630aecb96b21b9938973d63a5
   docVersion: 0.0.3
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 1.0.53-rc.5
-  configChecksum: 538485efca81c194002fddd71106355e
+  releaseVersion: 1.0.53-rc.6
+  configChecksum: 72c032c96ea53b4a09026469a2dea070
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 8c13a900-eeac-40bd-b020-f7640592f62e
-  pristine_commit_hash: 0d40430e0710a5248040eac464d35bd8c80f7a48
-  pristine_tree_hash: 2645888fe89a2d92cacdabe4ca95e6c38adc2a87
+  generation_id: 1ea20256-5465-4e8c-90f0-28118215e6ae
+  pristine_commit_hash: 543850911803e2e37e59bfa437627b474043de07
+  pristine_tree_hash: 127087c14022c3e7d349e9bd45271e3268f751f1
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -237,20 +237,20 @@ trackedFiles:
     pristine_git_object: 8d90db140e2cd096f9663c832d57997e969b917a
   docs/models/components/bridgephrasescreaterequest.md:
     id: 95c4e29c59ca
-    last_write_checksum: sha1:61f0a918f05c89a074488b7e63e0b85c4855654e
-    pristine_git_object: aa4ebcf2353adea16e301c87cf3b23c4bec2d364
+    last_write_checksum: sha1:af99d77ce6d594fca5781d36845a8e90ca8a5eda
+    pristine_git_object: 162bfe61cbf6bbc9088810e8498e2e022dd493cd
   docs/models/components/bridgephrasesproperties.md:
     id: ff5a9e8c93bc
     last_write_checksum: sha1:c05ee99d76e1ad77ea3fe5fd06232869c94d6c3e
     pristine_git_object: 6c29f5b545096e9a78be2ce41787e60556dad1df
   docs/models/components/bridgephrasesresponse.md:
     id: 7214701bec3a
-    last_write_checksum: sha1:74ef7ade6e366fb4b2937db0033e2eb8ccb4fe54
-    pristine_git_object: 93892ca6afeeab148f948ad2afb05596aba2f29f
+    last_write_checksum: sha1:99bba0b795607b7e3b4f5b2f3b157da552b78b28
+    pristine_git_object: dda1c76b45154e3154f97690c07cfd68077f4ebd
   docs/models/components/bridgephrasesupdaterequest.md:
     id: f98474284363
-    last_write_checksum: sha1:d3ede856509fe78184deaed4f2ccd389b3dae19f
-    pristine_git_object: 394cb4babea85209fd685e3e2f2925a2f2e2a47b
+    last_write_checksum: sha1:e5ecdff6b05e2061bcd2ddb7a4736c5c0272b197
+    pristine_git_object: c83afc43e51e45413b1e2813d6a90d618b6c92a2
   docs/models/components/callaction.md:
     id: 399a89ff8536
     last_write_checksum: sha1:fe047042ab2210672070e8255c2632177be72765
@@ -2041,8 +2041,8 @@ trackedFiles:
     pristine_git_object: 4e66efb51e1d564b9424094c53f684a1ce678536
   docs/sdks/bridgephrases/README.md:
     id: 298da341f6fc
-    last_write_checksum: sha1:3f600a9e50843c4775241d5d8d902b2a59bdc351
-    pristine_git_object: 731ce388c4036c88c872abd3c7933002e4bd9838
+    last_write_checksum: sha1:830b7dd095400403c13496a7b56d69de93ec9125
+    pristine_git_object: a80177b673dd8056cd6c65459db5138d3e9f6325
   docs/sdks/campaigns/README.md:
     id: 18dcc3c717ca
     last_write_checksum: sha1:7ec0f1fbd77da149023d2d58071fcf283d8df61c
@@ -2217,12 +2217,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:7932834f7d0152f96bc9c4baff4c8003890b64d7
-    pristine_git_object: 621c1c7379b5b35153462f6d2290227660a17282
+    last_write_checksum: sha1:b08798d94612faed1d7dd8aeb5d6337d9680ff7e
+    pristine_git_object: 8dd482f07972917ac2dab34a94c433a49a7e34e1
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:e6200ab91c15418b02ade94efe1265191bfd2d6a
-    pristine_git_object: 3370db4aeb675abc30f9080fa8f25937cfe7c322
+    last_write_checksum: sha1:3ab051d86a2c77f4ae3e738f1715741e42b428cc
+    pristine_git_object: 8c29012d289df007903104afdd5594e75924075f
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2953,8 +2953,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:af7b79295d01f211891091b1bbfba8c97f5f3a19
-    pristine_git_object: 2f72527e7fa7c4272f952c515ce503ae36cc6eca
+    last_write_checksum: sha1:c9e89a12727cf386bc29a4fbabe0543fcbe83b14
+    pristine_git_object: d93f9fc87f324081b764c25768a823990cdeb2e8
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3029,8 +3029,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:68ce6a680e8870bcda885f34b1734e13b5220980
-    pristine_git_object: 56956681195771127a1aa976d1dc9fa90594504d
+    last_write_checksum: sha1:62b91a7fe1db2057adb983f413d3d7db88e19e24
+    pristine_git_object: 4882da7eea43c6075e5a8a3c3fa464f19bb3da87
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3045,8 +3045,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:9f4effcb73d70683bb11eaf6a394f82dd123857c
-    pristine_git_object: 6dbfab0aa1f5e875541f3c95f57359febbb20141
+    last_write_checksum: sha1:bd13fab638c7bf86d5ec6173577f8e79e946a5ae
+    pristine_git_object: 79207c1626a748987ac491ac44060aac4155ccb0
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -3889,20 +3889,20 @@ trackedFiles:
     pristine_git_object: 63e3148d741cbd0ccb25d9b80b96e144f4c74120
   src/models/components/bridgephrasescreaterequest.ts:
     id: 9fe8dadfd7de
-    last_write_checksum: sha1:e8a6437c6372b486ce8216f5418e5032f72aa354
-    pristine_git_object: 85cd04a010302f50dfd9190ecc0645aa7f3ed187
+    last_write_checksum: sha1:f2b068a9c3db6cbbe53a5bb9d632c017e4a87086
+    pristine_git_object: 1b402becb2ff4c745cb3b3c0d4d52fe844e02e6d
   src/models/components/bridgephrasesproperties.ts:
     id: 7444e8c75407
     last_write_checksum: sha1:90e9a7b7fe0c470ae841d7049c28d93213867a36
     pristine_git_object: 355022e76502da66bc01992602b15cf08f11ae91
   src/models/components/bridgephrasesresponse.ts:
     id: ad03dd2199dc
-    last_write_checksum: sha1:26718207c743aa7348dcedbb30369d3667fc9f6d
-    pristine_git_object: 9ed8dd6429baa81885de2c9c4020276ffb226fbc
+    last_write_checksum: sha1:a2533c8b669fe93eb8c83160575b1be1532647af
+    pristine_git_object: b5988451a1926c4b53fc1a7dabe5b5f199b8db43
   src/models/components/bridgephrasesupdaterequest.ts:
     id: 5cfdae7acacf
-    last_write_checksum: sha1:a3a5d2587a36d2319784875f1b2010dc1c0c4710
-    pristine_git_object: 6f7cdba1fa4e1c9e8c470cc764efcc3b4fae929e
+    last_write_checksum: sha1:09cd2f42d697413912652cb9e9abf60bc0f89991
+    pristine_git_object: 391f5fac8c6e75b25428d2e03bd586e73d137392
   src/models/components/callaction.ts:
     id: 982a0886d33e
     last_write_checksum: sha1:ca30990422a9643cfcc34b5836b3f3cd76e60033
@@ -7488,19 +7488,19 @@ examples:
   bridge_phrases_create:
     speakeasy-default-bridge-phrases-create:
       requestBody:
-        application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}}
+        application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "is_default": false}
       responses:
         "200":
-          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
+          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "is_default": false, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
         "422":
           application/json: {}
   bridge_phrases_update:
     speakeasy-default-bridge-phrases-update:
       requestBody:
-        application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool."}
+        application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "is_default": true, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool."}
       responses:
         "200":
-          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
+          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "is_default": false, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
         "422":
           application/json: {}
   bridge_phrases_get_by_id:
@@ -7510,7 +7510,7 @@ examples:
           bridge_phrases_id: 627472
       responses:
         "200":
-          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
+          application/json: {"name": "Default Bridge Phrases", "description": "Standard hold phrases for inbound line.", "config": {"phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}, "tools": [{"tool_name": "<value>", "phrases": {"messages": ["One moment, please.", "Let me check on that for you."], "localized": {"es-US": {"messages": ["Un momento, por favor."]}, "fr-FR": {"messages": ["Un instant, je vous en prie."]}}}}], "randomize_bridge_phrases": true}, "is_default": false, "id": 1, "edit_comments": "Added Spanish overrides for the transfer tool.", "agents_info": [{"id": 1, "name": "Test Agent"}], "updated_at": "2026-07-02T00:00:00Z", "last_updated_by": "user@mail.com"}
         "422":
           application/json: {}
   bridge_phrases_delete:
@@ -7527,6 +7527,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.bridgePhrases.list()`:  `response.items[].isDefault` **Added**\n* `syllablesdk.bridgePhrases.create()`: \n  *  `request.isDefault` **Added**\n  *  `response.isDefault` **Added**\n* `syllablesdk.bridgePhrases.update()`: \n  *  `request.isDefault` **Added**\n  *  `response.isDefault` **Added**\n* `syllablesdk.bridgePhrases.getById()`:  `response.isDefault` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
