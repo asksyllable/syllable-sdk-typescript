@@ -23,7 +23,7 @@ export type SessionTimelineResponse = {
    */
   sessionId: string;
   /**
-   * Timestamp of the first event; the zero point for all offsets
+   * The call's start (placement) time; the zero point for all offsets. Falls back to the first transcript turn for legacy sessions with no session_start event.
    */
   sessionStart?: Date | null | undefined;
   /**
