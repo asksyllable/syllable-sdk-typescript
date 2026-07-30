@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CallResult,
+  CallResult$inboundSchema,
+  CallResult$Outbound,
+  CallResult$outboundSchema,
+} from "./callresult.js";
+import {
   CaseExpression,
   CaseExpression$inboundSchema,
   CaseExpression$Outbound,
@@ -61,6 +67,10 @@ export type CallAction = {
    * Optional arguments to pass to the tool (supports template strings)
    */
   arguments?: { [k: string]: any } | null | undefined;
+  /**
+   * Optional deterministic result-capture configuration. When present, selected fields from the tool response are saved into workflow state, so later transitions/conditions/validations can branch on them without the model re-deriving them from tool call history. Currently applied only when the call is routed in inject mode (arguments already complete); hinted/routed calls are not yet supported.
+   */
+  result?: CallResult | null | undefined;
 };
 
 /** @internal */
@@ -185,6 +195,7 @@ export const CallAction$inboundSchema: z.ZodType<
   action: z.literal("call"),
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
+  result: z.nullable(CallResult$inboundSchema).optional(),
 });
 /** @internal */
 export type CallAction$Outbound = {
@@ -199,6 +210,7 @@ export type CallAction$Outbound = {
   action: "call";
   name: string;
   arguments?: { [k: string]: any } | null | undefined;
+  result?: CallResult$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -225,6 +237,7 @@ export const CallAction$outboundSchema: z.ZodType<
   action: z.literal("call"),
   name: z.string(),
   arguments: z.nullable(z.record(z.any())).optional(),
+  result: z.nullable(CallResult$outboundSchema).optional(),
 });
 
 export function callActionToJSON(callAction: CallAction): string {
