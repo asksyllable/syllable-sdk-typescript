@@ -39,6 +39,8 @@ export * from "./bridgephrasesproperties.js";
 export * from "./bridgephrasesresponse.js";
 export * from "./bridgephrasesupdaterequest.js";
 export * from "./callaction.js";
+export * from "./callresult.js";
+export * from "./callresultsavemapping.js";
 export * from "./campaignproperties.js";
 export * from "./caseexpression.js";
 export * from "./celexpression.js";

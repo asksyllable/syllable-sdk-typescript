@@ -10,6 +10,14 @@ const value: components.CallAction = {
   if: "inputs.can_sign_consent == `true`",
   action: "call",
   name: "<value>",
+  result: {
+    save: [
+      {
+        from: "is_valid",
+        to: "<value>",
+      },
+    ],
+  },
 };
 ```
 
