@@ -104,6 +104,10 @@ export type Session = {
    * Whether a voicemail was detected during the transfer leg of the session
    */
   transferVoicemailDetected?: boolean | null | undefined;
+  /**
+   * ISO 8601 datetime used to override the session's current time. Set only for test sessions that supplied a datetime override; otherwise null.
+   */
+  overrideTimestamp?: string | null | undefined;
 };
 
 /** @internal */
@@ -134,6 +138,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     is_outbound: z.nullable(z.boolean()).optional(),
     user_terminated: z.nullable(z.boolean()).optional(),
     transfer_voicemail_detected: z.nullable(z.boolean()).optional(),
+    override_timestamp: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "session_id": "sessionId",
@@ -155,6 +160,7 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "is_outbound": "isOutbound",
       "user_terminated": "userTerminated",
       "transfer_voicemail_detected": "transferVoicemailDetected",
+      "override_timestamp": "overrideTimestamp",
     });
   });
 /** @internal */
@@ -182,6 +188,7 @@ export type Session$Outbound = {
   is_outbound?: boolean | null | undefined;
   user_terminated?: boolean | null | undefined;
   transfer_voicemail_detected?: boolean | null | undefined;
+  override_timestamp?: string | null | undefined;
 };
 
 /** @internal */
@@ -213,6 +220,7 @@ export const Session$outboundSchema: z.ZodType<
   isOutbound: z.nullable(z.boolean()).optional(),
   userTerminated: z.nullable(z.boolean()).optional(),
   transferVoicemailDetected: z.nullable(z.boolean()).optional(),
+  overrideTimestamp: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
@@ -234,6 +242,7 @@ export const Session$outboundSchema: z.ZodType<
     isOutbound: "is_outbound",
     userTerminated: "user_terminated",
     transferVoicemailDetected: "transfer_voicemail_detected",
+    overrideTimestamp: "override_timestamp",
   });
 });
 
