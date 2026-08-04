@@ -36,6 +36,10 @@ export type SipConfiguration = {
    * List of SIP endpoints to attempt for the transfer.
    */
   sipEndpoints?: Array<SipEndpoint> | null | undefined;
+  /**
+   * Where to place call information during a transfer. Supported values are `uri_parameters`, `to_parameters`, `from_parameters`, or `sip_header:<header-name>`.
+   */
+  callInfoPlacement?: string | null | undefined;
 };
 
 /** @internal */
@@ -46,16 +50,19 @@ export const SipConfiguration$inboundSchema: z.ZodType<
 > = z.object({
   sip_transfer_mode: z.nullable(SipTransferMode$inboundSchema).optional(),
   sip_endpoints: z.nullable(z.array(SipEndpoint$inboundSchema)).optional(),
+  call_info_placement: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "sip_transfer_mode": "sipTransferMode",
     "sip_endpoints": "sipEndpoints",
+    "call_info_placement": "callInfoPlacement",
   });
 });
 /** @internal */
 export type SipConfiguration$Outbound = {
   sip_transfer_mode?: string | null | undefined;
   sip_endpoints?: Array<SipEndpoint$Outbound> | null | undefined;
+  call_info_placement?: string | null | undefined;
 };
 
 /** @internal */
@@ -66,10 +73,12 @@ export const SipConfiguration$outboundSchema: z.ZodType<
 > = z.object({
   sipTransferMode: z.nullable(SipTransferMode$outboundSchema).optional(),
   sipEndpoints: z.nullable(z.array(SipEndpoint$outboundSchema)).optional(),
+  callInfoPlacement: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     sipTransferMode: "sip_transfer_mode",
     sipEndpoints: "sip_endpoints",
+    callInfoPlacement: "call_info_placement",
   });
 });
 
