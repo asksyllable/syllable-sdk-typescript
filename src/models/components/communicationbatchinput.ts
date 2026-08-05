@@ -25,6 +25,10 @@ export type CommunicationBatchInput = {
    * Whether the batch is on HOLD. When on HOLD, no outreach will be made.
    */
   paused?: boolean | null | undefined;
+  /**
+   * Target number of outreach attempts per hour for this batch. When omitted, the batch inherits the campaign's hourly_rate.
+   */
+  callRate?: number | null | undefined;
 };
 
 /** @internal */
@@ -39,11 +43,13 @@ export const CommunicationBatchInput$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   paused: z.nullable(z.boolean()).optional(),
+  call_rate: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
     "campaign_id": "campaignId",
     "expires_on": "expiresOn",
+    "call_rate": "callRate",
   });
 });
 /** @internal */
@@ -52,6 +58,7 @@ export type CommunicationBatchInput$Outbound = {
   campaign_id: number;
   expires_on?: string | null | undefined;
   paused?: boolean | null | undefined;
+  call_rate?: number | null | undefined;
 };
 
 /** @internal */
@@ -64,11 +71,13 @@ export const CommunicationBatchInput$outboundSchema: z.ZodType<
   campaignId: z.number().int(),
   expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   paused: z.nullable(z.boolean()).optional(),
+  callRate: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
     campaignId: "campaign_id",
     expiresOn: "expires_on",
+    callRate: "call_rate",
   });
 });
 

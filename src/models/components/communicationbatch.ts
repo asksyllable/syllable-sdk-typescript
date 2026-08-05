@@ -31,6 +31,10 @@ export type CommunicationBatch = {
    */
   paused?: boolean | null | undefined;
   /**
+   * Target number of outreach attempts per hour for this batch. When omitted, the batch inherits the campaign's hourly_rate.
+   */
+  callRate?: number | null | undefined;
+  /**
    * Status of a communication batch.
    */
   status?: BatchStatus | undefined;
@@ -80,6 +84,7 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   paused: z.nullable(z.boolean()).optional(),
+  call_rate: z.nullable(z.number().int()).optional(),
   status: BatchStatus$inboundSchema.optional(),
   upload_filename: z.nullable(z.string()).optional(),
   dispatch_id: z.nullable(z.string()).optional(),
@@ -99,6 +104,7 @@ export const CommunicationBatch$inboundSchema: z.ZodType<
     "batch_id": "batchId",
     "campaign_id": "campaignId",
     "expires_on": "expiresOn",
+    "call_rate": "callRate",
     "upload_filename": "uploadFilename",
     "dispatch_id": "dispatchId",
     "created_at": "createdAt",
@@ -115,6 +121,7 @@ export type CommunicationBatch$Outbound = {
   campaign_id: number;
   expires_on?: string | null | undefined;
   paused?: boolean | null | undefined;
+  call_rate?: number | null | undefined;
   status?: string | undefined;
   upload_filename?: string | null | undefined;
   dispatch_id?: string | null | undefined;
@@ -136,6 +143,7 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
   campaignId: z.number().int(),
   expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   paused: z.nullable(z.boolean()).optional(),
+  callRate: z.nullable(z.number().int()).optional(),
   status: BatchStatus$outboundSchema.optional(),
   uploadFilename: z.nullable(z.string()).optional(),
   dispatchId: z.nullable(z.string()).optional(),
@@ -151,6 +159,7 @@ export const CommunicationBatch$outboundSchema: z.ZodType<
     batchId: "batch_id",
     campaignId: "campaign_id",
     expiresOn: "expires_on",
+    callRate: "call_rate",
     uploadFilename: "upload_filename",
     dispatchId: "dispatch_id",
     createdAt: "created_at",

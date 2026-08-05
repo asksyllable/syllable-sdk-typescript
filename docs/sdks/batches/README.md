@@ -126,6 +126,7 @@ async function run() {
     campaignId: 1,
     expiresOn: new Date("2026-02-05T00:00:00Z"),
     paused: true,
+    callRate: 25,
   });
 
   console.log(result);
@@ -154,6 +155,7 @@ async function run() {
     campaignId: 1,
     expiresOn: new Date("2026-02-05T00:00:00Z"),
     paused: true,
+    callRate: 25,
   });
   if (res.ok) {
     const { value: result } = res;
@@ -280,6 +282,7 @@ async function run() {
     communicationBatchUpdate: {
       paused: true,
       expiresOn: new Date("2027-01-01T06:00:00Z"),
+      callRate: 25,
     },
   });
 
@@ -309,6 +312,7 @@ async function run() {
     communicationBatchUpdate: {
       paused: true,
       expiresOn: new Date("2027-01-01T06:00:00Z"),
+      callRate: 25,
     },
   });
   if (res.ok) {

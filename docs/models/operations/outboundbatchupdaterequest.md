@@ -10,6 +10,7 @@ let value: OutboundBatchUpdateRequest = {
   communicationBatchUpdate: {
     paused: true,
     expiresOn: new Date("2027-01-01T06:00:00Z"),
+    callRate: 25,
   },
 };
 ```
