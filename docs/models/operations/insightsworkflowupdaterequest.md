@@ -34,8 +34,8 @@ let value: InsightsWorkflowUpdateRequest = {
         "sheet_name": "Q1 Sales Data",
       },
     },
-    startDatetime: new Date("2026-08-04T00:00:00Z"),
-    endDatetime: new Date("2026-08-05T00:00:00Z"),
+    startDatetime: new Date("2026-08-07T00:00:00Z"),
+    endDatetime: new Date("2026-08-08T00:00:00Z"),
   },
 };
 ```
