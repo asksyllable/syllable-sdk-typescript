@@ -3,17 +3,17 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: e7e41ee5f05d9214268902ad9191305d
   docVersion: 0.0.3
-  speakeasyVersion: 1.793.0
+  speakeasyVersion: 1.793.1
   generationVersion: 2.928.0
-  releaseVersion: 1.0.56-rc.3
-  configChecksum: 4c738b0892266422b0355366d4267b82
+  releaseVersion: 1.0.56
+  configChecksum: baf86f5c3b9cd36bf340ab30923ad3c5
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 03db05f9-44bb-46b4-8ff6-d6e218294d6a
-  pristine_commit_hash: 7a77ad66a15daeaca1708397e462cc8bec44fba7
-  pristine_tree_hash: 275d69709fd6dfa33997f582492234973b07d559
+  generation_id: a69f7a43-6774-4fae-9f4b-3b30852c41df
+  pristine_commit_hash: ce2e803d48e504b9475062bfe256b69ef363fcd8
+  pristine_tree_hash: f12c889a0ba64d4cbe3d53347398713c580e5556
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2233,12 +2233,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:0509fe9cb12295de23722530ef7a61aceb533e30
-    pristine_git_object: 27712df70e49fe8d191eed27561c5f81269b93c2
+    last_write_checksum: sha1:aea7bc72b53b6c6feb604efaba4efb2e1b3ca53e
+    pristine_git_object: 6f64c3060919206e44bbdc8dc1e84714585cdced
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:3aa32a8f8453f1cb351e46df2532807f78f89cc6
-    pristine_git_object: d657ea06110bab44e35a41f62c0ba9e4bef18e6f
+    last_write_checksum: sha1:38bf194db3f5094870f9764e633ca96b129dc1e6
+    pristine_git_object: 8a1450c4117085b3e6c266b34e5cef7170f82c73
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2969,8 +2969,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:dfedbd1e6e5e8181a170a5b0d981127d9417142d
-    pristine_git_object: 7481143593b6950cc979a20fd3bfeb0bdae4abd9
+    last_write_checksum: sha1:124fb4923d84bb7faa5577af9a71967f7dacc716
+    pristine_git_object: 7a531ea91ef934e6ad6ffa35d04c2781a4140a37
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3045,8 +3045,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:3dd6d428e2bf964456461b2d448c17e105745a56
-    pristine_git_object: 97ce8a005b6ef2b0e9d55658b34e5936f225c2cf
+    last_write_checksum: sha1:08cdeb352a90070e0162aa5ef7f8c4d248604f78
+    pristine_git_object: 26d353269c976a5c7dbb735770e682e68e4e73f9
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3061,8 +3061,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:9a9aa5898e666c5abefe15da42ad12f887034f65
-    pristine_git_object: 131db53fb1007f67936280475fc4529adf95e59d
+    last_write_checksum: sha1:e90db3b2669a2bd14d3a9be7c326209a7c356e48
+    pristine_git_object: f3b0181ece914a08478de5e50a321e7cc13938cf
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
