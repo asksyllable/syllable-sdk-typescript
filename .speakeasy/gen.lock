@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 0dd643db48ba5033698dbf3a07abf42d
+  docChecksum: 29d82a74ae62dd989cec89f67e2ac457
   docVersion: 0.0.3
   speakeasyVersion: 1.793.1
   generationVersion: 2.928.0
-  releaseVersion: 1.0.57-rc.1
-  configChecksum: 1bb328247c04ce67a7ea384ac2ee6130
+  releaseVersion: 1.0.57-rc.2
+  configChecksum: 9054f852192068eb038c68c74f5f88e9
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 8eb23c2f-ef6c-4ec7-b848-8264125ba5f7
-  pristine_commit_hash: 431187fd404f12e0bbd03417a30b8fcd6754a6f1
-  pristine_tree_hash: 23f0b9724ab65cdc64e303df18161332e8b6376e
+  generation_id: 1c0dbda8-35aa-446b-b2e5-b803c30f4b39
+  pristine_commit_hash: 49aa043e088508e5e84b7711c623e750a7d9a271
+  pristine_tree_hash: 2d64aa792854dd72aef6702ba8269218aad557c5
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -293,8 +293,8 @@ trackedFiles:
     pristine_git_object: f71ad893de81b58c1475fa523539f275fa13c336
   docs/models/components/channelmanagerstatus.md:
     id: 12fb6ece14e1
-    last_write_checksum: sha1:8477a77bca2fa6af38077b8f2b0edd0416062e28
-    pristine_git_object: 45f80e9c11f2a1a67037b2b0b94dacfb9ab09666
+    last_write_checksum: sha1:45b0015b530691555bb353e9af827595f5746678
+    pristine_git_object: 440458fcc00e31d7a6d7d1aac48e91347bf1ed9f
   docs/models/components/channelproperties.md:
     id: c9c3d5b08275
     last_write_checksum: sha1:2c3fc2bb435f0a7da116ad63f31cb2a41ba07c5a
@@ -1049,8 +1049,8 @@ trackedFiles:
     pristine_git_object: 0a685885536eae139ba73036f8a3a1989885410e
   docs/models/components/outboundcampaignwebhookresponse.md:
     id: dd176e2b5711
-    last_write_checksum: sha1:4942d0ae360e074d3e1ae304db1e9c8a9f8300f0
-    pristine_git_object: ac4296d44eb88d5027b396439fd753f3d8a0c2e6
+    last_write_checksum: sha1:898e6a2f77fc99b7f347a7f1c49ad690436e9a36
+    pristine_git_object: 416f5e88ea93d3731758d0c4b0575c6d5d03b72f
   docs/models/components/permissiongroupresponse.md:
     id: 77c1c16a87ae
     last_write_checksum: sha1:6d6369ab2cd1b3d62f55a2090fc76c58fb1d7589
@@ -2233,12 +2233,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:640ce953707754420afd7112600cbef1dbd239eb
-    pristine_git_object: 039de32e0e5ff1c6cebaed316abe7df2259c41a2
+    last_write_checksum: sha1:504fbde1f17de557c1e997fdd85a268001da1900
+    pristine_git_object: 0a14871194323ad2df129a48300e09e090f9df61
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:8db93af9345bcd14d8ba19a2317d777512c22cb8
-    pristine_git_object: 7dcaca7a5c03a42a5b010f55baae94c8be9519a3
+    last_write_checksum: sha1:27ecf3c871c5281733529dbcfdc752d6bffe2606
+    pristine_git_object: 29a311cccd88d842a6344a98625cf3f360b2d347
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2969,8 +2969,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c85b68df58140be756baf52f6c7d708aac4460ec
-    pristine_git_object: 0a153710c0e52f4bd0c2b471592ad159e76f0964
+    last_write_checksum: sha1:0ed48b73e89029c1af45817b8faae5f98a61276d
+    pristine_git_object: 4653ba287a191f39d25d7135af7cc32562c9bf7e
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3045,8 +3045,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:c796a3f6ee26d174f81e2dc81aab68a4260a2db0
-    pristine_git_object: 81c128770493afc0560ee906fd144b98fe0e2a9e
+    last_write_checksum: sha1:217a32868bb4c09ad9e57300bb4beb50a5d5582a
+    pristine_git_object: cd6a74542045b3eedc520919493a2d2adf0d90c9
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3061,8 +3061,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:9ef678ab7244e49e4cf738cdfc21ac9d69f0939a
-    pristine_git_object: f6e2d70e2dd596d6824f6705bb27e94c12985a3d
+    last_write_checksum: sha1:fc3315254c518e0c4789bc6c96d28e99a0588c16
+    pristine_git_object: f236029dc051096e6ec72b39ab7840d2179a9811
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -3953,8 +3953,8 @@ trackedFiles:
     pristine_git_object: 2da3da8822a6c13545521f8303b63a22356e256b
   src/models/components/channelmanagerstatus.ts:
     id: 3847e920ac85
-    last_write_checksum: sha1:7d4a5028eab310627d22fa223666019f1adacb31
-    pristine_git_object: ee434560b5b7e95e17fd0dffddf384c71b7849a5
+    last_write_checksum: sha1:71e88331e9753392974e037a725c1d72f9ed6116
+    pristine_git_object: 96b46da804680b4add681d92a0fa5aab511c06a3
   src/models/components/channelproperties.ts:
     id: f0e5f2edfd28
     last_write_checksum: sha1:d9b7e92b13b10d2a0206ea139c2bc51400c14180
@@ -7551,6 +7551,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.outbound.campaigns.list()`:  `response.items[].webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.create()`: \n  *  `request.webhooks[].triggerStatuses[].enum(noOutcome)` **Added**\n  *  `response.webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.getById()`:  `response.webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.update()`: \n  *  `request.outboundCampaignInput.webhooks[].triggerStatuses[].enum(noOutcome)` **Added**\n  *  `response.webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

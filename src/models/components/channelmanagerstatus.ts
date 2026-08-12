@@ -14,6 +14,7 @@ export const ChannelManagerStatus = {
   Invalid: "INVALID",
   UnexpectedError: "UNEXPECTED_ERROR",
   FilteredLineType: "FILTERED_LINE_TYPE",
+  NoOutcome: "NO_OUTCOME",
   Processed: "PROCESSED",
   Dropped: "DROPPED",
   Deferred: "DEFERRED",
