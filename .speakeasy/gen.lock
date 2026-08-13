@@ -5,15 +5,15 @@ management:
   docVersion: 0.0.3
   speakeasyVersion: 1.793.1
   generationVersion: 2.928.0
-  releaseVersion: 1.0.57-rc.2
-  configChecksum: 9054f852192068eb038c68c74f5f88e9
+  releaseVersion: 1.0.57
+  configChecksum: b773d2d1fb9bb7b0bd198941bc424600
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 1c0dbda8-35aa-446b-b2e5-b803c30f4b39
-  pristine_commit_hash: 49aa043e088508e5e84b7711c623e750a7d9a271
-  pristine_tree_hash: 2d64aa792854dd72aef6702ba8269218aad557c5
+  generation_id: 5fd0200c-dc5a-4eaf-9624-b85ce3e69f2f
+  pristine_commit_hash: 5b5e6bc4c1567db63ec065e529390212e3e355af
+  pristine_tree_hash: 02425b9dc7faf39bc8183d1bc71bed394a3ba9da
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2233,12 +2233,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:504fbde1f17de557c1e997fdd85a268001da1900
-    pristine_git_object: 0a14871194323ad2df129a48300e09e090f9df61
+    last_write_checksum: sha1:43035cdeeff870f7b7475071c4e6627fc793f7fe
+    pristine_git_object: e767bd289dd59e50c2d8ff51c8703b979bc13be1
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:27ecf3c871c5281733529dbcfdc752d6bffe2606
-    pristine_git_object: 29a311cccd88d842a6344a98625cf3f360b2d347
+    last_write_checksum: sha1:5c19f2935ce1a5eb2e28b04696dacbbef3ae6dfc
+    pristine_git_object: 32b4be390cfc03443e1e5fd050066b87c00c56ee
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2969,8 +2969,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:0ed48b73e89029c1af45817b8faae5f98a61276d
-    pristine_git_object: 4653ba287a191f39d25d7135af7cc32562c9bf7e
+    last_write_checksum: sha1:8671d2330a2513b7e4e3f619a3a2a007bcfb7f3e
+    pristine_git_object: 936ba54a6b4b847cbbebff15e07df34ecce3802f
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3045,8 +3045,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:217a32868bb4c09ad9e57300bb4beb50a5d5582a
-    pristine_git_object: cd6a74542045b3eedc520919493a2d2adf0d90c9
+    last_write_checksum: sha1:37a5546b7e71b4f5786604628ae123bbba6cb097
+    pristine_git_object: 8316c08301c9d5f97a62fcbb35661191ac36aad9
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3061,8 +3061,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:fc3315254c518e0c4789bc6c96d28e99a0588c16
-    pristine_git_object: f236029dc051096e6ec72b39ab7840d2179a9811
+    last_write_checksum: sha1:cc9cbc5636fdeda3e717ffe111b81b36166e64b1
+    pristine_git_object: ba84b10d36131a944877b024642a630ff7073514
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7551,7 +7551,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.outbound.campaigns.list()`:  `response.items[].webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.create()`: \n  *  `request.webhooks[].triggerStatuses[].enum(noOutcome)` **Added**\n  *  `response.webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.getById()`:  `response.webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n* `syllablesdk.outbound.campaigns.update()`: \n  *  `request.outboundCampaignInput.webhooks[].triggerStatuses[].enum(noOutcome)` **Added**\n  *  `response.webhooks[].triggerStatuses[].enum(noOutcome)` **Added** (Breaking ⚠️)\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
