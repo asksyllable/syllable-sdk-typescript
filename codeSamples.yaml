@@ -2577,6 +2577,7 @@ actions:
                 expiresOn: new Date("2026-02-05T00:00:00Z"),
                 paused: true,
                 callRate: 25,
+                autoCallRate: true,
               });
 
               console.log(result);
@@ -2647,6 +2648,7 @@ actions:
                   paused: true,
                   expiresOn: new Date("2027-01-01T06:00:00Z"),
                   callRate: 25,
+                  autoCallRate: true,
                 },
               });
 

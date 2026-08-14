@@ -127,6 +127,7 @@ async function run() {
     expiresOn: new Date("2026-02-05T00:00:00Z"),
     paused: true,
     callRate: 25,
+    autoCallRate: true,
   });
 
   console.log(result);
@@ -156,6 +157,7 @@ async function run() {
     expiresOn: new Date("2026-02-05T00:00:00Z"),
     paused: true,
     callRate: 25,
+    autoCallRate: true,
   });
   if (res.ok) {
     const { value: result } = res;
@@ -283,6 +285,7 @@ async function run() {
       paused: true,
       expiresOn: new Date("2027-01-01T06:00:00Z"),
       callRate: 25,
+      autoCallRate: true,
     },
   });
 
@@ -313,6 +316,7 @@ async function run() {
       paused: true,
       expiresOn: new Date("2027-01-01T06:00:00Z"),
       callRate: 25,
+      autoCallRate: true,
     },
   });
   if (res.ok) {
