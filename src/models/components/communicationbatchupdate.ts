@@ -21,6 +21,10 @@ export type CommunicationBatchUpdate = {
    * Target number of outreach attempts per hour for this batch. Omitted leaves the current value unchanged; a batch that has never set one inherits the campaign's hourly_rate.
    */
   callRate?: number | null | undefined;
+  /**
+   * Pace this batch automatically to finish before expires_on. Omitted leaves the current setting unchanged. Enabling it requires the batch to have an expires_on, either already set or supplied in the same update.
+   */
+  autoCallRate?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -34,10 +38,12 @@ export const CommunicationBatchUpdate$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   call_rate: z.nullable(z.number().int()).optional(),
+  auto_call_rate: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "expires_on": "expiresOn",
     "call_rate": "callRate",
+    "auto_call_rate": "autoCallRate",
   });
 });
 /** @internal */
@@ -45,6 +51,7 @@ export type CommunicationBatchUpdate$Outbound = {
   paused?: boolean | null | undefined;
   expires_on?: string | null | undefined;
   call_rate?: number | null | undefined;
+  auto_call_rate?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -56,10 +63,12 @@ export const CommunicationBatchUpdate$outboundSchema: z.ZodType<
   paused: z.nullable(z.boolean()).optional(),
   expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   callRate: z.nullable(z.number().int()).optional(),
+  autoCallRate: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     expiresOn: "expires_on",
     callRate: "call_rate",
+    autoCallRate: "auto_call_rate",
   });
 });
 

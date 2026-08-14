@@ -41,9 +41,17 @@ export type BatchDetails = {
    */
   callRate?: number | null | undefined;
   /**
+   * Pace this batch automatically to finish before expires_on, counting only the campaign's valid hours (daily_start_time..daily_end_time on active_days). The derived rate takes precedence over call_rate and over the campaign hourly_rate. Requires expires_on.
+   */
+  autoCallRate?: boolean | undefined;
+  /**
    * Status of a communication batch.
    */
   status?: BatchStatus | undefined;
+  /**
+   * Read-only. The auto-paced rate first computed for this batch, set on its first dialing cycle. Subsequent cycles hold the rate within +/- 20% of it. Null until the batch has dialed, or when auto_call_rate is off.
+   */
+  autoCallRateBaseline?: number | null | undefined;
   /**
    * Name of file used to create batch
    */
@@ -102,7 +110,9 @@ export const BatchDetails$inboundSchema: z.ZodType<
   ).optional(),
   paused: z.nullable(z.boolean()).optional(),
   call_rate: z.nullable(z.number().int()).optional(),
+  auto_call_rate: z.boolean().default(false),
   status: BatchStatus$inboundSchema.optional(),
+  auto_call_rate_baseline: z.nullable(z.number()).optional(),
   upload_filename: z.nullable(z.string()).optional(),
   dispatch_id: z.nullable(z.string()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -126,6 +136,8 @@ export const BatchDetails$inboundSchema: z.ZodType<
     "campaign_id": "campaignId",
     "expires_on": "expiresOn",
     "call_rate": "callRate",
+    "auto_call_rate": "autoCallRate",
+    "auto_call_rate_baseline": "autoCallRateBaseline",
     "upload_filename": "uploadFilename",
     "dispatch_id": "dispatchId",
     "created_at": "createdAt",
@@ -145,7 +157,9 @@ export type BatchDetails$Outbound = {
   expires_on?: string | null | undefined;
   paused?: boolean | null | undefined;
   call_rate?: number | null | undefined;
+  auto_call_rate: boolean;
   status?: string | undefined;
+  auto_call_rate_baseline?: number | null | undefined;
   upload_filename?: string | null | undefined;
   dispatch_id?: string | null | undefined;
   created_at?: string | undefined;
@@ -172,7 +186,9 @@ export const BatchDetails$outboundSchema: z.ZodType<
   expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   paused: z.nullable(z.boolean()).optional(),
   callRate: z.nullable(z.number().int()).optional(),
+  autoCallRate: z.boolean().default(false),
   status: BatchStatus$outboundSchema.optional(),
+  autoCallRateBaseline: z.nullable(z.number()).optional(),
   uploadFilename: z.nullable(z.string()).optional(),
   dispatchId: z.nullable(z.string()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
@@ -192,6 +208,8 @@ export const BatchDetails$outboundSchema: z.ZodType<
     campaignId: "campaign_id",
     expiresOn: "expires_on",
     callRate: "call_rate",
+    autoCallRate: "auto_call_rate",
+    autoCallRateBaseline: "auto_call_rate_baseline",
     uploadFilename: "upload_filename",
     dispatchId: "dispatch_id",
     createdAt: "created_at",

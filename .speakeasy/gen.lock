@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: c42f79e815232bee51243c60c82ade90
+  docChecksum: e2aab5896f1351f1d31af586376bc59c
   docVersion: 0.0.3
-  speakeasyVersion: 1.793.1
-  generationVersion: 2.928.0
-  releaseVersion: 1.0.58-rc.1
-  configChecksum: a7f0a69486237d941e55ec81e6eaa42b
+  speakeasyVersion: 1.794.0
+  generationVersion: 2.930.0
+  releaseVersion: 1.0.58-rc.2
+  configChecksum: 42118d5547aed2173b5abcc1ff12b496
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 06a3e34d-95cd-441a-ab40-2a6f6bf63a74
-  pristine_commit_hash: 33b4fa9f71280edddc7a01f2918eb6141da444a0
-  pristine_tree_hash: 2652eba4bc1777b1444db01bd631e1ca93d0efb6
+  generation_id: b2ab66c5-b336-4cd8-9eac-157b445a0aa6
+  pristine_commit_hash: 973faf2c279c2335787dec76bad81342448701f7
+  pristine_tree_hash: 7ab4afbb2342bf61142041221dc7d02b28b0f766
 features:
   typescript:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.4
     constsAndDefaults: 0.1.14
-    core: 3.31.4
+    core: 3.31.5
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -36,7 +36,7 @@ features:
     responseFormat: 0.3.0
     retries: 2.83.1
     sdkHooks: 0.4.0
-    unions: 2.86.4
+    unions: 2.86.5
     uploadStreams: 0.1.1
 trackedFiles:
   .devcontainer/README.md:
@@ -161,8 +161,8 @@ trackedFiles:
     pristine_git_object: ac70f6fc0da182bd237b75d16caaed294252babf
   docs/models/components/batchdetails.md:
     id: c0f28c9eb168
-    last_write_checksum: sha1:e729cb646290beb2e9538453bd19e9186a06a831
-    pristine_git_object: 821579f5a103cfe58481393a7855696e23d0aad6
+    last_write_checksum: sha1:c4b4f2c0dfe548d168ec3213e9be0571de7362bf
+    pristine_git_object: cbd7e58ddda60d219aa2213e52e4a26a05aeaa93
   docs/models/components/batchproperties.md:
     id: 10b6f2db0ec9
     last_write_checksum: sha1:65646e4a87189cc17a0a61a6c000ac5628e00d5c
@@ -325,16 +325,16 @@ trackedFiles:
     pristine_git_object: 373d00b9a2607a1a35a8e46990bb48c29c9931b7
   docs/models/components/communicationbatch.md:
     id: db3dfb5d18b6
-    last_write_checksum: sha1:0832eb062b2bd66d84d361fa5c3e8b43b93029e8
-    pristine_git_object: c46930d79c2803d493d9c591bf638bfdee53c625
+    last_write_checksum: sha1:39f89aeaaf5dda3658c6f5a9099b541386d59263
+    pristine_git_object: cbe944502d34b5f65957c86a5d1c6ac52ee3a9ff
   docs/models/components/communicationbatchinput.md:
     id: b0ece958b0e8
-    last_write_checksum: sha1:b8016f6feb54255efae458af4fa4dd33ceac7b62
-    pristine_git_object: aca735eb264442cdb57bf943e5313bf12dab7cd9
+    last_write_checksum: sha1:c6f3c2504a8799089a46f56f365ea3a1668d84a2
+    pristine_git_object: 0b0159691b5ff27d695421f346732ec120e51c6c
   docs/models/components/communicationbatchupdate.md:
     id: 8ee9b9717a56
-    last_write_checksum: sha1:86a06e9bfba6f9c1bf5c780a256b6ef60e902b9d
-    pristine_git_object: c233e0220d9fb427ea541cb9ded594d78df83d09
+    last_write_checksum: sha1:86bd0104ad279365cd1a75b53b592b83a6419ddb
+    pristine_git_object: 78875b3f362d9160a7ba1dc5893749afcff12a8b
   docs/models/components/communicationrequest.md:
     id: 8c60072b8f6f
     last_write_checksum: sha1:702f65ef488253923b577d2214619ee736902331
@@ -1889,8 +1889,8 @@ trackedFiles:
     pristine_git_object: e51a4292d5aba1bba76d2f4a5b83fd551d8893ad
   docs/models/operations/outboundbatchupdaterequest.md:
     id: a0cc402ba260
-    last_write_checksum: sha1:92dec1c97993320b787eb952339edc23cb8103a9
-    pristine_git_object: b41106a4fceace0bbaf5cfd43442a0785789c697
+    last_write_checksum: sha1:99d3af618de5d340789e3db4b9df3fbb56ffea1f
+    pristine_git_object: 171120281814de495ced14e68e70ba415651b5e4
   docs/models/operations/outboundbatchuploadrequest.md:
     id: 486c3aab909e
     last_write_checksum: sha1:78d1c9a222d6c00381e7ad6b5d68af56233df5cd
@@ -2053,8 +2053,8 @@ trackedFiles:
     pristine_git_object: 35a7819eb613126ff1864ae125e4032942e26893
   docs/sdks/batches/README.md:
     id: affccbddb9a8
-    last_write_checksum: sha1:f2226d25d9aabe768414d403f1612ed50401fcdb
-    pristine_git_object: 2885b070f28f6d066b883445e19944e268db08f8
+    last_write_checksum: sha1:4b3198acf42ab7c85b0a6685fce40448bfa037fb
+    pristine_git_object: 368dca65421054e5cd274e24ea9958999921d051
   docs/sdks/bridgephrases/README.md:
     id: 298da341f6fc
     last_write_checksum: sha1:830b7dd095400403c13496a7b56d69de93ec9125
@@ -2233,12 +2233,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:50afb685d99d36a592235976fc97f1aed269e4a9
-    pristine_git_object: 296bea424db819ae1211c0acbea75a83c65aa39b
+    last_write_checksum: sha1:9199afdb6558f9d7590deb61127f0f0892eef642
+    pristine_git_object: ef2c676c3a5ee2e982fc9c2954f323e68e69500b
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:5edea82bd0566a943f959ba1b0582a2f9021f201
-    pristine_git_object: 57ed88f11af10d916ead0f26823f29cddff820d8
+    last_write_checksum: sha1:81fce16ea90d3e7da319281d16176f5ffb3d5923
+    pristine_git_object: 060397042dc548e62943ed15f3c61d53f07a061d
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2969,8 +2969,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:21a5350e38a416e754083277a21f5bd71784b0fb
-    pristine_git_object: 0435b05125bae2e2669b29bb95075743b32c9b24
+    last_write_checksum: sha1:ada3a87d2c2032b7f305f4e14309081474da7761
+    pristine_git_object: bbbf37f48b5c679097fef206931a4d610f7e0e6c
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3045,8 +3045,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:67fd8f71b7965845f84869c1b21e2ea1eec28290
-    pristine_git_object: af890b1439d30309ca8a087a220b58543c808596
+    last_write_checksum: sha1:031c8f660436303fdb5d1461f8b98150765f71bd
+    pristine_git_object: d5c415ac1b0958081e491ec411a0813f88db6181
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3061,8 +3061,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:484b14f96ceeb035d9c4b3c840876c71772ff57e
-    pristine_git_object: 3c585671d78a77d2b30eca3cf69f5f593cbdd885
+    last_write_checksum: sha1:2da0838a7083d8900309170fddbc140fe5c028ce
+    pristine_git_object: f3f16efa99658b42089d99ce01142c7578dfb0ae
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -3849,8 +3849,8 @@ trackedFiles:
     pristine_git_object: fdc79280b96489db4757f017f8907226f2e7bbb2
   src/models/components/batchdetails.ts:
     id: d1b52e704d93
-    last_write_checksum: sha1:81574b5765294195d702d23689f79a626509d8cb
-    pristine_git_object: dfb76ea114b2454841bd72aae3029951e07e7220
+    last_write_checksum: sha1:9c98db8759d7056df42a23f0bc295bd71db9295a
+    pristine_git_object: ac3d976af18762e3dacfcd229e35a09092a42bdc
   src/models/components/batchproperties.ts:
     id: 3b5012f735e0
     last_write_checksum: sha1:689d726b28cc855a294fb4f228683788e32fe1f9
@@ -3985,16 +3985,16 @@ trackedFiles:
     pristine_git_object: 05cdcd99f9edfb5c1de679ddd6d01c853d137c72
   src/models/components/communicationbatch.ts:
     id: 04d2d6bf1c6d
-    last_write_checksum: sha1:354b877ccb01bf575ee39b1d8548b13358090568
-    pristine_git_object: 936ca553d9a5081bc19cefffb34eb3a02f1e7e4a
+    last_write_checksum: sha1:294a014abb470da41b0912444425e5065ec9085e
+    pristine_git_object: 49b7c8f6d9260c502774d08b8e4d15da5ab5b13b
   src/models/components/communicationbatchinput.ts:
     id: d3e063e815b9
-    last_write_checksum: sha1:3d4a5237f0078b4d674df69c1625f79fb08c2914
-    pristine_git_object: b9261c54928fdeb04a4d333162395111879bffab
+    last_write_checksum: sha1:8c44c25d028a96ed30c4b339afff9a77f67e41f1
+    pristine_git_object: f31762aba680056b97b544f96511f05fd68e46ac
   src/models/components/communicationbatchupdate.ts:
     id: 01ec86e5449c
-    last_write_checksum: sha1:550f3323e782921f512cea31fa7cd72309408f07
-    pristine_git_object: 804f8cc982ef515420b5d36af96ba48c282b2530
+    last_write_checksum: sha1:782a56d101dc1bf5abc76779aee9c62d31591994
+    pristine_git_object: 6cf0e376f189b3a1fcf2126e6307db694b213bf6
   src/models/components/communicationrequest.ts:
     id: ed3e3fe60d1d
     last_write_checksum: sha1:4a4752f6f5a24f6cdb4e92ec3a519dcffe8a3fc8
@@ -6904,10 +6904,10 @@ examples:
   outbound_batch_create:
     speakeasy-default-outbound-batch-create:
       requestBody:
-        application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25}
+        application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25, "auto_call_rate": true}
       responses:
         "200":
-          application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25, "upload_filename": "LATE_PAYMENTS_20250401.csv", "dispatch_id": "5ac42327fbd7e03b441650b79ae91ae1", "created_at": "2026-02-04T00:00:00Z", "deleted_at": "2026-02-04T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
+          application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25, "auto_call_rate": true, "auto_call_rate_baseline": 25, "upload_filename": "LATE_PAYMENTS_20250401.csv", "dispatch_id": "5ac42327fbd7e03b441650b79ae91ae1", "created_at": "2026-02-04T00:00:00Z", "deleted_at": "2026-02-04T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
         "422":
           application/json: {}
   outbound_batch_get_by_id:
@@ -6917,7 +6917,7 @@ examples:
           batch_id: "<id>"
       responses:
         "200":
-          application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25, "upload_filename": "LATE_PAYMENTS_20250401.csv", "dispatch_id": "5ac42327fbd7e03b441650b79ae91ae1", "created_at": "2026-02-04T00:00:00Z", "deleted_at": "2026-02-04T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format", "status_counts": {"CANCELED": 7, "CONNECTED": 100, "DUPLICATE": 5, "FAILED": 10, "INITIATED": 20, "PENDING": 10}, "detailed_status_counts": {"CONNECTED": {"total_count": 100, "counts": {"COMPLETED": 95, "NO-ANSWER": 5}}, "PENDING": {"total_count": 10, "counts": {"PENDING": 8, "SENT": 2}}, "QUEUED": {"total_count": 200}}}
+          application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25, "auto_call_rate": true, "auto_call_rate_baseline": 25, "upload_filename": "LATE_PAYMENTS_20250401.csv", "dispatch_id": "5ac42327fbd7e03b441650b79ae91ae1", "created_at": "2026-02-04T00:00:00Z", "deleted_at": "2026-02-04T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format", "status_counts": {"CANCELED": 7, "CONNECTED": 100, "DUPLICATE": 5, "FAILED": 10, "INITIATED": 20, "PENDING": 10}, "detailed_status_counts": {"CONNECTED": {"total_count": 100, "counts": {"COMPLETED": 95, "NO-ANSWER": 5}}, "PENDING": {"total_count": 10, "counts": {"PENDING": 8, "SENT": 2}}, "QUEUED": {"total_count": 200}}}
         "422":
           application/json: {}
   outbound_batch_update:
@@ -6926,10 +6926,10 @@ examples:
         path:
           batch_id: "<id>"
       requestBody:
-        application/json: {"paused": true, "expires_on": "2027-01-01T06:00:00Z", "call_rate": 25}
+        application/json: {"paused": true, "expires_on": "2027-01-01T06:00:00Z", "call_rate": 25, "auto_call_rate": true}
       responses:
         "200":
-          application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25, "upload_filename": "LATE_PAYMENTS_20250401.csv", "dispatch_id": "5ac42327fbd7e03b441650b79ae91ae1", "created_at": "2026-02-04T00:00:00Z", "deleted_at": "2026-02-04T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
+          application/json: {"batch_id": "20260204.9", "campaign_id": 1, "expires_on": "2026-02-05T00:00:00Z", "paused": true, "call_rate": 25, "auto_call_rate": true, "auto_call_rate_baseline": 25, "upload_filename": "LATE_PAYMENTS_20250401.csv", "dispatch_id": "5ac42327fbd7e03b441650b79ae91ae1", "created_at": "2026-02-04T00:00:00Z", "deleted_at": "2026-02-04T00:00:00Z", "deleted_reason": "User request", "last_updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "error_message": "Invalid file format"}
         "422":
           application/json: {}
   outbound_batch_delete:
@@ -7551,6 +7551,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.outbound.batches.list()`:  `response.items[]` **Changed**\n* `syllablesdk.outbound.batches.create()`: \n  *  `request.autoCallRate` **Added**\n  *  `response` **Changed**\n* `syllablesdk.outbound.batches.getById()`:  `response` **Changed**\n* `syllablesdk.outbound.batches.update()`: \n  *  `request.communicationBatchUpdate.autoCallRate` **Added**\n  *  `response` **Changed**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
