@@ -10,8 +10,8 @@ import { LanguageConfig } from "syllable-sdk/models/components";
 
 let value: LanguageConfig = {
   languageCode: "bs-BA",
-  voiceProvider: "ElevenLabs",
-  voiceDisplayName: "es-US-Neural2-B",
+  voiceProvider: "Google",
+  voiceDisplayName: "Fenrir (Japanese)",
   voiceSpeed: 1,
   voicePitch: 0,
   dtmfCode: 1,

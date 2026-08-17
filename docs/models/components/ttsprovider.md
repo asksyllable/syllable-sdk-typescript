@@ -7,11 +7,11 @@ TTS provider for an agent voice.
 ```typescript
 import { TtsProvider } from "syllable-sdk/models/components";
 
-let value: TtsProvider = "OpenAI";
+let value: TtsProvider = "ElevenLabs";
 ```
 
 ## Values
 
 ```typescript
-"OpenAI" | "ElevenLabs" | "Google"
+"OpenAI" | "ElevenLabs" | "Google" | "Cartesia"
 ```
