@@ -33,7 +33,7 @@ export type OrganizationChannelConfig = {
    */
   authToken?: string | null | undefined;
   /**
-   * Provider-specific credentials. Initially to be used for AfricasTalking creds.In a future this would be used for Twilio creds too (removing the account_sid and auth_token fields).
+   * Provider-specific credentials. Initially to be used for AfricasTalking creds. In a future this would be used for Twilio creds too (removing the account_sid and auth_token fields).
    */
   providerCredentials?: { [k: string]: string } | null | undefined;
   /**
