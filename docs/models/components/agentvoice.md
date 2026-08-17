@@ -8,9 +8,9 @@ Voice option for an agent.
 import { AgentVoice } from "syllable-sdk/models/components";
 
 let value: AgentVoice = {
-  provider: "ElevenLabs",
-  displayName: "Fenrir (Arabic)",
-  varName: "elevenlabs:Sarah",
+  provider: "Google",
+  displayName: "Fenrir (Spanish)",
+  varName: "wavenet:female/en-US-Chirp3-HD-Achernar",
   gender: "female",
   model: "Standard",
   supportedLanguages: [

@@ -17,6 +17,7 @@ export const AgentVoiceModel = {
   WaveNet: "WaveNet",
   Tts1: "tts-1",
   Gpt4oMiniTts: "gpt-4o-mini-tts",
+  Sonic35: "sonic-3.5",
 } as const;
 /**
  * Model for an agent voice.
