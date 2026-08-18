@@ -3,17 +3,17 @@ id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
   docChecksum: b0153d8ab5da8da4330c4c18b93de7f2
   docVersion: 0.0.3
-  speakeasyVersion: 1.794.1
+  speakeasyVersion: 1.795.0
   generationVersion: 2.931.0
-  releaseVersion: 1.0.58-rc.5
-  configChecksum: 332022cf6bfb92677e6af2786a3be2a0
+  releaseVersion: 1.0.58
+  configChecksum: d00184a6cae61896a103410190954aaf
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 0e5fe6a1-b8c8-4560-8b53-709a6a6902a9
-  pristine_commit_hash: 3148792d9590d38373b03514b9d9ce720380d70b
-  pristine_tree_hash: d0c7ffc831df9a20340002fb9b4e41045fa853eb
+  generation_id: 02ce37a1-4d6f-491f-88d6-be7f61737cef
+  pristine_commit_hash: b0550d414ac68b0f1da01f20ee96f2667948bd6d
+  pristine_tree_hash: ae0c6617cd2157b5e7c7e0ca078373bde5352511
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2233,12 +2233,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:46be904825792a7c7d218e77d2c68ffb75e9ba45
-    pristine_git_object: 22a75c878ce93ab084b96366149dd6774cbf8caa
+    last_write_checksum: sha1:790dbc524ae7a78f5cc429cb8f20230a7ec8ebe3
+    pristine_git_object: 2dd2c52c8f5c0f282343f0632d7f1bc2dfa1d127
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:cab7e9bf1409a301ed68b968255b5a89b6171eb3
-    pristine_git_object: a73ea672432d88a85c719627334394e87d34fcaa
+    last_write_checksum: sha1:b2babf1e8bc29b90bb74852a4264ec5be1c978c6
+    pristine_git_object: 6fe17ae14f1dd3c755353190b3bd39e98a8c92f1
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -2969,8 +2969,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:16b6ab7a62de0deb81f2584541b92c6117625800
-    pristine_git_object: 6b0855bfef36abdd2f68fe8bcdade4646b304644
+    last_write_checksum: sha1:ac2a96dab746b65edd861e5e59adc138a7f16b05
+    pristine_git_object: a1ebfe40ff316a7ee8955d92760ef1b7e1e89d2b
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -3045,8 +3045,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:50db6946859f54d5eef3aef753e9277309cf10dd
-    pristine_git_object: 08701a362b0d8e612fe70cc6e6c15d309a235446
+    last_write_checksum: sha1:27437190edfd6bb3e725bf4d002c70d5ac0a2ddb
+    pristine_git_object: 449fe6c6879a6fb8a33451c4a6688ba92059cab9
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3061,8 +3061,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:bdad9e645ed6869a1673537af3be79cca29020d1
-    pristine_git_object: 5057bdadd7369f68f3603e9797e6e608fb1c24c7
+    last_write_checksum: sha1:26145dfa7bfd4d9c5086ff1b8890753247406d70
+    pristine_git_object: 164e9a09de689d48e4af61f09855e7c7a8f26041
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -7551,7 +7551,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.channels.targets.update()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.create()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.update()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.list()`:  `response.items[].languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.agentGetAvailableVoices()`:  `response.[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.list()`:  `response.items[].agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.create()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.channels.targets.getById()`:  `response.agent.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.create()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.list()`:  `response.items[].languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.agents.getById()`:  `response.languageGroup.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.update()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.getById()`:  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.getById()`:  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.list()`:  `response.items[].languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.create()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.voiceGroups.update()`: \n  *  `request.languageConfigs[]` **Changed**\n  *  `response.languageConfigs[]` **Changed** (Breaking ⚠️)\n* `syllablesdk.languageGroups.languageGroupsCreateVoiceSample()`:  `request` **Changed**\n* `syllablesdk.voiceGroups.voiceGroupsCreateVoiceSample()`:  `request` **Changed**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
