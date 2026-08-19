@@ -6,7 +6,13 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  LifecycleStatus,
+  LifecycleStatus$inboundSchema,
+  LifecycleStatus$outboundSchema,
+} from "./lifecyclestatus.js";
 import {
   PromptLlmProvider,
   PromptLlmProvider$inboundSchema,
@@ -40,9 +46,25 @@ export type SupportedLlm = {
    */
   apiVersion?: string | null | undefined;
   /**
-   * Whether the LLM config is deprecated and should not be used.
+   * Whether the model is in the deprecation warning window.
    */
   deprecated: boolean;
+  /**
+   * Date the model becomes retired and can no longer be saved or selected.
+   */
+  sunsetDate?: RFCDate | null | undefined;
+  /**
+   * Whether the model is force-retired regardless of sunset_date.
+   */
+  removed?: boolean | undefined;
+  /**
+   * Model substituted at runtime for critical features once this one is retired.
+   */
+  fallback?: string | null | undefined;
+  /**
+   * Effective lifecycle status, resolved server-side against the current date. Populated on API responses; unset in the static catalog.
+   */
+  status?: LifecycleStatus | null | undefined;
 };
 
 /** @internal */
@@ -57,10 +79,15 @@ export const SupportedLlm$inboundSchema: z.ZodType<
   version: z.nullable(z.string()).optional(),
   api_version: z.nullable(z.string()).optional(),
   deprecated: z.boolean(),
+  sunset_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
+  removed: z.boolean().default(false),
+  fallback: z.nullable(z.string()).optional(),
+  status: z.nullable(LifecycleStatus$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
     "api_version": "apiVersion",
+    "sunset_date": "sunsetDate",
   });
 });
 /** @internal */
@@ -71,6 +98,10 @@ export type SupportedLlm$Outbound = {
   version?: string | null | undefined;
   api_version?: string | null | undefined;
   deprecated: boolean;
+  sunset_date?: string | null | undefined;
+  removed: boolean;
+  fallback?: string | null | undefined;
+  status?: string | null | undefined;
 };
 
 /** @internal */
@@ -85,10 +116,16 @@ export const SupportedLlm$outboundSchema: z.ZodType<
   version: z.nullable(z.string()).optional(),
   apiVersion: z.nullable(z.string()).optional(),
   deprecated: z.boolean(),
+  sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
+    .optional(),
+  removed: z.boolean().default(false),
+  fallback: z.nullable(z.string()).optional(),
+  status: z.nullable(LifecycleStatus$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
     apiVersion: "api_version",
+    sunsetDate: "sunset_date",
   });
 });
 

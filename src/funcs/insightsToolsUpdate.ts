@@ -39,7 +39,7 @@ export function insightsToolsUpdate(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.InsightToolOutput,
+    components.InsightToolResponse,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -65,7 +65,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      components.InsightToolOutput,
+      components.InsightToolResponse,
       | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
@@ -156,7 +156,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.InsightToolOutput,
+    components.InsightToolResponse,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -167,7 +167,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.InsightToolOutput$inboundSchema),
+    M.json(200, components.InsightToolResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail([400, 404, 412, "4XX"]),
     M.fail([500, "5XX"]),

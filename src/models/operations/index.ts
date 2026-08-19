@@ -82,6 +82,7 @@ export * from "./outboundcampaignlist.js";
 export * from "./outboundcampaignupdate.js";
 export * from "./postgetdashboard.js";
 export * from "./postlistdashboard.js";
+export * from "./promptgetsupportedllms.js";
 export * from "./promptsdelete.js";
 export * from "./promptsgetbyid.js";
 export * from "./promptshistory.js";
