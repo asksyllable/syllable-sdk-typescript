@@ -159,7 +159,7 @@ export class Directory extends ClientSDK {
    * Bulk Load Directory Members
    *
    * @remarks
-   * Update Directory Members in chunks of 100.
+   * Load Directory Members in chunks of 100.
    */
   async directoryMemberBulkLoad(
     request: components.BodyDirectoryMemberBulkLoad,

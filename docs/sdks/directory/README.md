@@ -746,7 +746,7 @@ run();
 
 ## directoryMemberBulkLoad
 
-Update Directory Members in chunks of 100.
+Load Directory Members in chunks of 100.
 
 ### Example Usage
 
