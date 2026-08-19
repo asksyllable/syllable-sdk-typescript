@@ -38,7 +38,7 @@ import { isReadableStream } from "../types/streams.js";
  * Bulk Load Directory Members
  *
  * @remarks
- * Update Directory Members in chunks of 100.
+ * Load Directory Members in chunks of 100.
  */
 export function directoryDirectoryMemberBulkLoad(
   client: SyllableSDKCore,
