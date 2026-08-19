@@ -41,7 +41,7 @@ export class SyllableSDKTools extends ClientSDK {
   async create(
     request: components.InsightToolInput,
     options?: RequestOptions,
-  ): Promise<components.InsightToolOutput> {
+  ): Promise<components.InsightToolResponse> {
     return unwrapAsync(insightsToolsCreate(
       this,
       request,
@@ -92,7 +92,7 @@ export class SyllableSDKTools extends ClientSDK {
   async update(
     request: operations.InsightsToolUpdateRequest,
     options?: RequestOptions,
-  ): Promise<components.InsightToolOutput> {
+  ): Promise<components.InsightToolResponse> {
     return unwrapAsync(insightsToolsUpdate(
       this,
       request,
