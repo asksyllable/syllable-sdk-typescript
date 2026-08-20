@@ -25,12 +25,6 @@ import {
   ToolResponse$Outbound,
   ToolResponse$outboundSchema,
 } from "./toolresponse.js";
-import {
-  ValidationIssue,
-  ValidationIssue$inboundSchema,
-  ValidationIssue$Outbound,
-  ValidationIssue$outboundSchema,
-} from "./validationissue.js";
 
 /**
  * Response model for prompt operations.
@@ -108,10 +102,6 @@ export type PromptResponse = {
    * Full definitions of tools to which the prompt has access
    */
   toolsFull?: Array<ToolResponse> | null | undefined;
-  /**
-   * Non-blocking findings for the saved prompt (e.g. a deprecated model warning). Warnings and infos are informational; errors block the save.
-   */
-  validationIssues?: Array<ValidationIssue> | null | undefined;
 };
 
 /** @internal */
@@ -136,8 +126,6 @@ export const PromptResponse$inboundSchema: z.ZodType<
   agent_count: z.nullable(z.number().int()).optional(),
   version_number: z.nullable(z.number().int()).optional(),
   tools_full: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "llm_config": "llmConfig",
@@ -150,7 +138,6 @@ export const PromptResponse$inboundSchema: z.ZodType<
     "agent_count": "agentCount",
     "version_number": "versionNumber",
     "tools_full": "toolsFull",
-    "validation_issues": "validationIssues",
   });
 });
 /** @internal */
@@ -171,7 +158,6 @@ export type PromptResponse$Outbound = {
   agent_count?: number | null | undefined;
   version_number?: number | null | undefined;
   tools_full?: Array<ToolResponse$Outbound> | null | undefined;
-  validation_issues?: Array<ValidationIssue$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -196,8 +182,6 @@ export const PromptResponse$outboundSchema: z.ZodType<
   agentCount: z.nullable(z.number().int()).optional(),
   versionNumber: z.nullable(z.number().int()).optional(),
   toolsFull: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
 }).transform((v) => {
   return remap$(v, {
     llmConfig: "llm_config",
@@ -210,7 +194,6 @@ export const PromptResponse$outboundSchema: z.ZodType<
     agentCount: "agent_count",
     versionNumber: "version_number",
     toolsFull: "tools_full",
-    validationIssues: "validation_issues",
   });
 });
 

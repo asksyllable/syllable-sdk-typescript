@@ -181,7 +181,7 @@ run();
 
 ### Response
 
-**Promise\<[components.InsightToolResponse](../../models/components/insighttoolresponse.md)\>**
+**Promise\<[components.InsightToolOutput](../../models/components/insighttooloutput.md)\>**
 
 ### Errors
 
@@ -421,7 +421,7 @@ run();
 
 ### Response
 
-**Promise\<[components.InsightToolResponse](../../models/components/insighttoolresponse.md)\>**
+**Promise\<[components.InsightToolOutput](../../models/components/insighttooloutput.md)\>**
 
 ### Errors
 

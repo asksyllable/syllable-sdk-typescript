@@ -122,18 +122,12 @@ export class Prompts extends ClientSDK {
    *
    * @remarks
    * Get supported LLM configs.
-   *
-   * Each config's `status` is resolved against the current date. Retired models are omitted unless
-   * they match `selected_model`, so a saved config still referencing a retired model can render it
-   * as a locked field.
    */
   async promptGetSupportedLlms(
-    request: operations.PromptGetSupportedLlmsRequest,
     options?: RequestOptions,
   ): Promise<Array<components.SupportedLlm>> {
     return unwrapAsync(promptsPromptGetSupportedLlms(
       this,
-      request,
       options,
     ));
   }

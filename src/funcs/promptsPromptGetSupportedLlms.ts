@@ -4,11 +4,9 @@
 
 import * as z from "zod/v3";
 import { SyllableSDKCore } from "../core.js";
-import { encodeFormQuery } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -20,11 +18,9 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { SyllableSDKError } from "../models/errors/syllablesdkerror.js";
-import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -33,19 +29,13 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Get supported LLM configs.
- *
- * Each config's `status` is resolved against the current date. Retired models are omitted unless
- * they match `selected_model`, so a saved config still referencing a retired model can render it
- * as a locked field.
  */
 export function promptsPromptGetSupportedLlms(
   client: SyllableSDKCore,
-  request: operations.PromptGetSupportedLlmsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     Array<components.SupportedLlm>,
-    | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -58,20 +48,17 @@ export function promptsPromptGetSupportedLlms(
 > {
   return new APIPromise($do(
     client,
-    request,
     options,
   ));
 }
 
 async function $do(
   client: SyllableSDKCore,
-  request: operations.PromptGetSupportedLlmsRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       Array<components.SupportedLlm>,
-      | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
       | ConnectionError
@@ -84,23 +71,7 @@ async function $do(
     APICall,
   ]
 > {
-  const parsed = safeParse(
-    request,
-    (value) =>
-      operations.PromptGetSupportedLlmsRequest$outboundSchema.parse(value),
-    "Input validation failed",
-  );
-  if (!parsed.ok) {
-    return [parsed, { status: "invalid" }];
-  }
-  const payload = parsed.value;
-  const body = null;
-
   const path = pathToFunc("/api/v1/prompts/llms/supported")();
-
-  const query = encodeFormQuery({
-    "selected_model": payload.selected_model,
-  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -131,8 +102,6 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
-    body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -153,13 +122,8 @@ async function $do(
   }
   const response = doResult.value;
 
-  const responseFields = {
-    HttpMeta: { Response: response, Request: req },
-  };
-
   const [result] = await M.match<
     Array<components.SupportedLlm>,
-    | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -170,10 +134,9 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, z.array(components.SupportedLlm$inboundSchema)),
-    M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, req, { extraFields: responseFields });
+  )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

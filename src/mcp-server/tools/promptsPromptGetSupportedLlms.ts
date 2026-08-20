@@ -3,27 +3,16 @@
  */
 
 import { promptsPromptGetSupportedLlms } from "../../funcs/promptsPromptGetSupportedLlms.js";
-import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-const args = {
-  request: operations.PromptGetSupportedLlmsRequest$inboundSchema,
-};
-
-export const tool$promptsPromptGetSupportedLlms: ToolDefinition<typeof args> = {
+export const tool$promptsPromptGetSupportedLlms: ToolDefinition = {
   name: "prompts-prompt-get-supported-llms",
   description: `Get Supported Llm Configs
 
-Get supported LLM configs.
-
-Each config's \`status\` is resolved against the current date. Retired models are omitted unless
-they match \`selected_model\`, so a saved config still referencing a retired model can render it
-as a locked field.`,
-  args,
-  tool: async (client, args, ctx) => {
+Get supported LLM configs.`,
+  tool: async (client, ctx) => {
     const [result, apiCall] = await promptsPromptGetSupportedLlms(
       client,
-      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

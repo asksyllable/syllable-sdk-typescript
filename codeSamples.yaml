@@ -3123,7 +3123,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.prompts.promptGetSupportedLlms({});
+              const result = await syllableSDK.prompts.promptGetSupportedLlms();
 
               console.log(result);
             }
