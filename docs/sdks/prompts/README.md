@@ -526,6 +526,10 @@ run();
 
 Get supported LLM configs.
 
+Each config's `status` is resolved against the current date. Retired models are omitted unless
+they match `selected_model`, so a saved config still referencing a retired model can render it
+as a locked field.
+
 ### Example Usage
 
 <!-- UsageSnippet language="typescript" operationID="prompt_get_supported_llms" method="get" path="/api/v1/prompts/llms/supported" -->
@@ -537,7 +541,7 @@ const syllableSDK = new SyllableSDK({
 });
 
 async function run() {
-  const result = await syllableSDK.prompts.promptGetSupportedLlms();
+  const result = await syllableSDK.prompts.promptGetSupportedLlms({});
 
   console.log(result);
 }
@@ -560,7 +564,7 @@ const syllableSDK = new SyllableSDKCore({
 });
 
 async function run() {
-  const res = await promptsPromptGetSupportedLlms(syllableSDK);
+  const res = await promptsPromptGetSupportedLlms(syllableSDK, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -576,6 +580,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PromptGetSupportedLlmsRequest](../../models/operations/promptgetsupportedllmsrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -586,6 +591,7 @@ run();
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |

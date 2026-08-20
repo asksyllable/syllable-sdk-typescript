@@ -16,7 +16,7 @@ export const tool$directoryDirectoryMemberBulkLoad: ToolDefinition<
   name: "directory-directory-member-bulk-load",
   description: `Bulk Load Directory Members
 
-Update Directory Members in chunks of 100.`,
+Load Directory Members in chunks of 100.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await directoryDirectoryMemberBulkLoad(
