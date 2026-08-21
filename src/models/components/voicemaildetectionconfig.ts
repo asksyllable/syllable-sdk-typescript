@@ -36,6 +36,7 @@ export type VoicemailDetectionConfig = {
   voicemailDetectionPreSpeechTimeout?: number | null | undefined;
   voicemailDetectionPostSpeechTimeout?: number | null | undefined;
   voicemailDetectionSpeechThreshold?: number | null | undefined;
+  voicemailDetectionV2PreSpeechTimeout?: number | null | undefined;
   additionalProperties?: { [k: string]: any } | undefined;
 };
 
@@ -59,6 +60,8 @@ export const VoicemailDetectionConfig$inboundSchema: z.ZodType<
     voicemail_detection_pre_speech_timeout: z.nullable(z.number()).optional(),
     voicemail_detection_post_speech_timeout: z.nullable(z.number()).optional(),
     voicemail_detection_speech_threshold: z.nullable(z.number()).optional(),
+    voicemail_detection_v2_pre_speech_timeout: z.nullable(z.number())
+      .optional(),
   }).catchall(z.any()),
   "additionalProperties",
   true,
@@ -70,6 +73,8 @@ export const VoicemailDetectionConfig$inboundSchema: z.ZodType<
     "voicemail_detection_post_speech_timeout":
       "voicemailDetectionPostSpeechTimeout",
     "voicemail_detection_speech_threshold": "voicemailDetectionSpeechThreshold",
+    "voicemail_detection_v2_pre_speech_timeout":
+      "voicemailDetectionV2PreSpeechTimeout",
   });
 });
 /** @internal */
@@ -79,6 +84,7 @@ export type VoicemailDetectionConfig$Outbound = {
   voicemail_detection_pre_speech_timeout?: number | null | undefined;
   voicemail_detection_post_speech_timeout?: number | null | undefined;
   voicemail_detection_speech_threshold?: number | null | undefined;
+  voicemail_detection_v2_pre_speech_timeout?: number | null | undefined;
   [additionalProperties: string]: unknown;
 };
 
@@ -93,6 +99,7 @@ export const VoicemailDetectionConfig$outboundSchema: z.ZodType<
   voicemailDetectionPreSpeechTimeout: z.nullable(z.number()).optional(),
   voicemailDetectionPostSpeechTimeout: z.nullable(z.number()).optional(),
   voicemailDetectionSpeechThreshold: z.nullable(z.number()).optional(),
+  voicemailDetectionV2PreSpeechTimeout: z.nullable(z.number()).optional(),
   additionalProperties: z.record(z.any()).optional(),
 }).transform((v) => {
   return {
@@ -104,6 +111,8 @@ export const VoicemailDetectionConfig$outboundSchema: z.ZodType<
       voicemailDetectionPostSpeechTimeout:
         "voicemail_detection_post_speech_timeout",
       voicemailDetectionSpeechThreshold: "voicemail_detection_speech_threshold",
+      voicemailDetectionV2PreSpeechTimeout:
+        "voicemail_detection_v2_pre_speech_timeout",
       additionalProperties: null,
     }),
   };
