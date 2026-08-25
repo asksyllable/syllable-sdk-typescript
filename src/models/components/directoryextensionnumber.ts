@@ -3,9 +3,15 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  SipTransferMode,
+  SipTransferMode$inboundSchema,
+  SipTransferMode$outboundSchema,
+} from "./siptransfermode.js";
 
 export type DirectoryExtensionNumber = {
   /**
@@ -16,6 +22,10 @@ export type DirectoryExtensionNumber = {
    * Directory extension number rules. To include a language rule, use key "language" with a language code value.
    */
   rules?: Array<{ [k: string]: string }> | null | undefined;
+  /**
+   * How to perform the SIP transfer, INVITE or REFER.
+   */
+  sipTransferMode?: SipTransferMode | null | undefined;
 };
 
 /** @internal */
@@ -26,11 +36,17 @@ export const DirectoryExtensionNumber$inboundSchema: z.ZodType<
 > = z.object({
   number: z.string(),
   rules: z.nullable(z.array(z.record(z.string()))).optional(),
+  sip_transfer_mode: z.nullable(SipTransferMode$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "sip_transfer_mode": "sipTransferMode",
+  });
 });
 /** @internal */
 export type DirectoryExtensionNumber$Outbound = {
   number: string;
   rules?: Array<{ [k: string]: string }> | null | undefined;
+  sip_transfer_mode?: string | null | undefined;
 };
 
 /** @internal */
@@ -41,6 +57,11 @@ export const DirectoryExtensionNumber$outboundSchema: z.ZodType<
 > = z.object({
   number: z.string(),
   rules: z.nullable(z.array(z.record(z.string()))).optional(),
+  sipTransferMode: z.nullable(SipTransferMode$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sipTransferMode: "sip_transfer_mode",
+  });
 });
 
 export function directoryExtensionNumberToJSON(

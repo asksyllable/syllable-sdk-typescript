@@ -15,6 +15,7 @@ let value: DirectoryExtension = {
           "language": "en",
         },
       ],
+      sipTransferMode: "refer",
     },
   ],
 };
