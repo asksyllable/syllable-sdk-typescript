@@ -8,6 +8,7 @@ import { agentsCreate } from "../funcs/agentsCreate.js";
 import { agentsDelete } from "../funcs/agentsDelete.js";
 import { agentsGetById } from "../funcs/agentsGetById.js";
 import { agentsList } from "../funcs/agentsList.js";
+import { agentsPostCardClickEvent } from "../funcs/agentsPostCardClickEvent.js";
 import { agentsUpdate } from "../funcs/agentsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -129,6 +130,23 @@ export class Agents extends ClientSDK {
   ): Promise<Array<components.AgentVoice>> {
     return unwrapAsync(agentsAgentGetAvailableVoices(
       this,
+      options,
+    ));
+  }
+
+  /**
+   * Create Card Click Event
+   *
+   * @remarks
+   * Log an EventLog for a client-side card click interaction.
+   */
+  async postCardClickEvent(
+    request: operations.PostCardClickEventRequest,
+    options?: RequestOptions,
+  ): Promise<components.CardClickResponse> {
+    return unwrapAsync(agentsPostCardClickEvent(
+      this,
+      request,
       options,
     ));
   }

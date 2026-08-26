@@ -181,6 +181,31 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/agents/test/{test_id}/card-click"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.postCardClickEvent({
+                testId: "<id>",
+                cardClickRequest: {
+                  actionId: "<id>",
+                  actionType: "action",
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/agents/voices/available"]["get"]
     update:
       x-codeSamples:

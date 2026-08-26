@@ -242,6 +242,7 @@ run();
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
 * [agentGetAvailableVoices](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
+* [postCardClickEvent](docs/sdks/agents/README.md#postcardclickevent) - Create Card Click Event
 
 #### [Agents.Test](docs/sdks/test/README.md)
 
@@ -563,6 +564,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsDelete`](docs/sdks/agents/README.md#delete) - Delete Agent
 - [`agentsGetById`](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 - [`agentsList`](docs/sdks/agents/README.md#list) - Agent List
+- [`agentsPostCardClickEvent`](docs/sdks/agents/README.md#postcardclickevent) - Create Card Click Event
 - [`agentsTestSendTestMessage`](docs/sdks/test/README.md#sendtestmessage) - Send New Message
 - [`agentsUpdate`](docs/sdks/agents/README.md#update) - Update Agent
 - [`bridgePhrasesCreate`](docs/sdks/bridgephrases/README.md#create) - Create Bridge Phrases

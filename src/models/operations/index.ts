@@ -80,6 +80,7 @@ export * from "./outboundcampaigndelete.js";
 export * from "./outboundcampaigngetbyid.js";
 export * from "./outboundcampaignlist.js";
 export * from "./outboundcampaignupdate.js";
+export * from "./postcardclickevent.js";
 export * from "./postgetdashboard.js";
 export * from "./postlistdashboard.js";
 export * from "./promptgetsupportedllms.js";
