@@ -39,6 +39,10 @@ export type SessionTranscriptionResponse = {
    * Tool invocations that occurred during the session
    */
   actions: Array<SessionAction>;
+  /**
+   * True when every record the session reported writing is present, across both the spoken transcript and the tool activity in `actions`. False means the record cannot be confirmed complete. Callers should re-request until this is true, or until their own time limit passes. A limit is required rather than advisable, because three of the cases behind a False never turn true: a session still in progress, a session whose channel reports no expected count - only voice does today, so this is every web chat, SMS and email session - and any session that ended before this field was introduced.
+   */
+  transcriptComplete?: boolean | undefined;
 };
 
 /** @internal */
@@ -50,9 +54,11 @@ export const SessionTranscriptionResponse$inboundSchema: z.ZodType<
   session_id: z.string(),
   transcription: z.array(SessionText$inboundSchema),
   actions: z.array(SessionAction$inboundSchema),
+  transcript_complete: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "session_id": "sessionId",
+    "transcript_complete": "transcriptComplete",
   });
 });
 /** @internal */
@@ -60,6 +66,7 @@ export type SessionTranscriptionResponse$Outbound = {
   session_id: string;
   transcription: Array<SessionText$Outbound>;
   actions: Array<SessionAction$Outbound>;
+  transcript_complete: boolean;
 };
 
 /** @internal */
@@ -71,9 +78,11 @@ export const SessionTranscriptionResponse$outboundSchema: z.ZodType<
   sessionId: z.string(),
   transcription: z.array(SessionText$outboundSchema),
   actions: z.array(SessionAction$outboundSchema),
+  transcriptComplete: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
+    transcriptComplete: "transcript_complete",
   });
 });
 
