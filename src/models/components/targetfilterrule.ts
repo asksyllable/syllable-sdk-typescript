@@ -17,8 +17,13 @@ import {
  *
  * @remarks
  *
- * ``field`` names a key in the request's enrichment payload (e.g. ``line_type``, ``carrier_name``,
- * ``mcc``, ``mnc``). Any attribute captured at lookup time can be filtered on with no code change.
+ * ``field`` names a key in the request's enrichment payload (e.g. ``line_type``, ``caller_type``,
+ * ``caller_name``, ``carrier_name``, ``mcc``, ``mnc``). Any attribute captured at lookup time can be
+ * filtered on with no code change.
+ *
+ * Which Twilio Lookup data packages get requested (and billed) for a campaign is derived from the
+ * fields its rules reference, so a rule on ``caller_type`` / ``caller_name`` is what turns on the
+ * separately billed ``caller_name`` package.
  */
 export type TargetFilterRule = {
   /**
