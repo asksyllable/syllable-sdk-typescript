@@ -21,6 +21,12 @@ import {
   InternalTool$outboundSchema,
 } from "./internaltool.js";
 import {
+  ResponseDisplayConfig,
+  ResponseDisplayConfig$inboundSchema,
+  ResponseDisplayConfig$Outbound,
+  ResponseDisplayConfig$outboundSchema,
+} from "./responsedisplayconfig.js";
+import {
   StaticToolParameter,
   StaticToolParameter$inboundSchema,
   StaticToolParameter$Outbound,
@@ -94,6 +100,10 @@ export type ToolDefinition = {
    * The options for the tool. Ie allows to propagate the tool result to the caller via propagate_tool_result flag.
    */
   options?: ToolOptions | null | undefined;
+  /**
+   * Optional mapping used to format propagated results in live chat responses.
+   */
+  responseDisplay?: ResponseDisplayConfig | null | undefined;
 };
 
 /** @internal */
@@ -152,9 +162,11 @@ export const ToolDefinition$inboundSchema: z.ZodType<
     .optional(),
   result: z.nullable(z.any()).optional(),
   options: z.nullable(ToolOptions$inboundSchema).optional(),
+  response_display: z.nullable(ResponseDisplayConfig$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "static_parameters": "staticParameters",
+    "response_display": "responseDisplay",
   });
 });
 /** @internal */
@@ -171,6 +183,7 @@ export type ToolDefinition$Outbound = {
   static_parameters?: Array<StaticToolParameter$Outbound> | null | undefined;
   result?: any | null | undefined;
   options?: ToolOptions$Outbound | null | undefined;
+  response_display?: ResponseDisplayConfig$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -190,9 +203,11 @@ export const ToolDefinition$outboundSchema: z.ZodType<
     .optional(),
   result: z.nullable(z.any()).optional(),
   options: z.nullable(ToolOptions$outboundSchema).optional(),
+  responseDisplay: z.nullable(ResponseDisplayConfig$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     staticParameters: "static_parameters",
+    responseDisplay: "response_display",
   });
 });
 
