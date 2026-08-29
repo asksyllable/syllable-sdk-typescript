@@ -156,6 +156,25 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/agents/stt/available"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.agents.agentGetAvailableSttProviders({});
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/agents/test/messages"]["post"]
     update:
       x-codeSamples:
@@ -219,7 +238,7 @@ actions:
             });
 
             async function run() {
-              const result = await syllableSDK.agents.agentGetAvailableVoices();
+              const result = await syllableSDK.agents.agentGetAvailableVoices({});
 
               console.log(result);
             }

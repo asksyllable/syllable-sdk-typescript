@@ -43,6 +43,12 @@ import {
   ToolResponse$Outbound,
   ToolResponse$outboundSchema,
 } from "./toolresponse.js";
+import {
+  ValidationIssue,
+  ValidationIssue$inboundSchema,
+  ValidationIssue$Outbound,
+  ValidationIssue$outboundSchema,
+} from "./validationissue.js";
 
 /**
  * Response model for agent operations.
@@ -166,6 +172,10 @@ export type AgentResponse = {
    * The language group associated with the agent
    */
   languageGroup?: LanguageGroupResponse | null | undefined;
+  /**
+   * Non-blocking findings for the saved agent (e.g. a deprecated STT provider warning). Warnings and infos are informational; errors block the save.
+   */
+  validationIssues?: Array<ValidationIssue> | null | undefined;
 };
 
 /** @internal */
@@ -203,6 +213,8 @@ export const AgentResponse$inboundSchema: z.ZodType<
   ).optional(),
   tools: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
   language_group: z.nullable(LanguageGroupResponse$inboundSchema).optional(),
+  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -221,6 +233,7 @@ export const AgentResponse$inboundSchema: z.ZodType<
     "custom_message": "customMessage",
     "channel_targets": "channelTargets",
     "language_group": "languageGroup",
+    "validation_issues": "validationIssues",
   });
 });
 /** @internal */
@@ -252,6 +265,7 @@ export type AgentResponse$Outbound = {
   channel_targets?: Array<ChannelTargetResponse$Outbound> | null | undefined;
   tools?: Array<ToolResponse$Outbound> | null | undefined;
   language_group?: LanguageGroupResponse$Outbound | null | undefined;
+  validation_issues?: Array<ValidationIssue$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -289,6 +303,8 @@ export const AgentResponse$outboundSchema: z.ZodType<
   ).optional(),
   tools: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
   languageGroup: z.nullable(LanguageGroupResponse$outboundSchema).optional(),
+  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
@@ -307,6 +323,7 @@ export const AgentResponse$outboundSchema: z.ZodType<
     customMessage: "custom_message",
     channelTargets: "channel_targets",
     languageGroup: "language_group",
+    validationIssues: "validation_issues",
   });
 });
 

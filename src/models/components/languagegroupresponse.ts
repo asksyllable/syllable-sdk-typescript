@@ -19,6 +19,12 @@ import {
   LanguageGroupAgentInfo$Outbound,
   LanguageGroupAgentInfo$outboundSchema,
 } from "./languagegroupagentinfo.js";
+import {
+  ValidationIssue,
+  ValidationIssue$inboundSchema,
+  ValidationIssue$Outbound,
+  ValidationIssue$outboundSchema,
+} from "./validationissue.js";
 
 /**
  * Response model for voice group operations.
@@ -65,6 +71,10 @@ export type LanguageGroupResponse = {
    * Email of the user who last updated the language group.
    */
   lastUpdatedBy: string;
+  /**
+   * Non-blocking findings for the saved voice group (e.g. a deprecated voice warning). Warnings and infos are informational; errors block the save.
+   */
+  validationIssues?: Array<ValidationIssue> | null | undefined;
 };
 
 /** @internal */
@@ -83,6 +93,8 @@ export const LanguageGroupResponse$inboundSchema: z.ZodType<
     .optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.string(),
+  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "language_configs": "languageConfigs",
@@ -91,6 +103,7 @@ export const LanguageGroupResponse$inboundSchema: z.ZodType<
     "agents_info": "agentsInfo",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
+    "validation_issues": "validationIssues",
   });
 });
 /** @internal */
@@ -104,6 +117,7 @@ export type LanguageGroupResponse$Outbound = {
   agents_info?: Array<LanguageGroupAgentInfo$Outbound> | null | undefined;
   updated_at: string;
   last_updated_by: string;
+  validation_issues?: Array<ValidationIssue$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -122,6 +136,8 @@ export const LanguageGroupResponse$outboundSchema: z.ZodType<
     .optional(),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
+  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     languageConfigs: "language_configs",
@@ -130,6 +146,7 @@ export const LanguageGroupResponse$outboundSchema: z.ZodType<
     agentsInfo: "agents_info",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
+    validationIssues: "validation_issues",
   });
 });
 

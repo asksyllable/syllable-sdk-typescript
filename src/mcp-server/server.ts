@@ -13,6 +13,7 @@ import {
 } from "./resources.js";
 import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
+import { tool$agentsAgentGetAvailableSttProviders } from "./tools/agentsAgentGetAvailableSttProviders.js";
 import { tool$agentsAgentGetAvailableVoices } from "./tools/agentsAgentGetAvailableVoices.js";
 import { tool$agentsAgentListActiveLabels } from "./tools/agentsAgentListActiveLabels.js";
 import { tool$agentsCreate } from "./tools/agentsCreate.js";
@@ -201,7 +202,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.60-rc.9",
+    version: "1.0.60-rc.10",
   });
 
   const client = new SyllableSDKCore({
@@ -238,6 +239,7 @@ export function createMCPServer(deps: {
   tool(tool$agentsGetById);
   tool(tool$agentsDelete);
   tool(tool$agentsAgentGetAvailableVoices);
+  tool(tool$agentsAgentGetAvailableSttProviders);
   tool(tool$agentsPostCardClickEvent);
   tool(tool$bridgePhrasesList);
   tool(tool$bridgePhrasesCreate);

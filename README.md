@@ -242,6 +242,7 @@ run();
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
 * [agentGetAvailableVoices](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
+* [agentGetAvailableSttProviders](docs/sdks/agents/README.md#agentgetavailablesttproviders) - Get Available Agent Stt Providers
 * [postCardClickEvent](docs/sdks/agents/README.md#postcardclickevent) - Create Card Click Event
 
 #### [Agents.Test](docs/sdks/test/README.md)
@@ -558,6 +559,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`agentsAgentGetAvailableSttProviders`](docs/sdks/agents/README.md#agentgetavailablesttproviders) - Get Available Agent Stt Providers
 - [`agentsAgentGetAvailableVoices`](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
 - [`agentsAgentListActiveLabels`](docs/sdks/agents/README.md#agentlistactivelabels) - List Active Agent Labels
 - [`agentsCreate`](docs/sdks/agents/README.md#create) - Create Agent
