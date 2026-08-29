@@ -3,16 +3,28 @@
  */
 
 import { agentsAgentGetAvailableVoices } from "../../funcs/agentsAgentGetAvailableVoices.js";
+import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-export const tool$agentsAgentGetAvailableVoices: ToolDefinition = {
+const args = {
+  request: operations.AgentGetAvailableVoicesRequest$inboundSchema,
+};
+
+export const tool$agentsAgentGetAvailableVoices: ToolDefinition<typeof args> = {
   name: "agents-agent-get-available-voices",
   description: `Get Available Agent Voices
 
-Get available agent voices.`,
-  tool: async (client, ctx) => {
+Get available agent voices.
+
+Each voice's \`status\` is resolved against the current date. Retired voices are omitted unless
+their display name is passed in \`selected_voice\`, so a saved config still referencing a retired
+voice can render it as a locked field. A voice group holds one voice per language, so the
+parameter is repeatable.`,
+  args,
+  tool: async (client, args, ctx) => {
     const [result, apiCall] = await agentsAgentGetAvailableVoices(
       client,
+      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

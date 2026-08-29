@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentLanguage,
@@ -33,6 +34,11 @@ import {
   AgentVoiceVarName$inboundSchema,
   AgentVoiceVarName$outboundSchema,
 } from "./agentvoicevarname.js";
+import {
+  LifecycleStatus,
+  LifecycleStatus$inboundSchema,
+  LifecycleStatus$outboundSchema,
+} from "./lifecyclestatus.js";
 import {
   TtsProvider,
   TtsProvider$inboundSchema,
@@ -68,9 +74,25 @@ export type AgentVoice = {
    */
   supportedLanguages: Array<AgentLanguage>;
   /**
-   * Whether the voice is deprecated and should not be used
+   * Whether the voice is in the deprecation warning window
    */
   deprecated: boolean;
+  /**
+   * Date the voice becomes retired and can no longer be saved or selected
+   */
+  sunsetDate?: RFCDate | null | undefined;
+  /**
+   * Whether the voice is force-retired regardless of sunset_date
+   */
+  removed?: boolean | undefined;
+  /**
+   * Voice substituted at runtime for critical features once this one is retired
+   */
+  fallback?: string | null | undefined;
+  /**
+   * Effective lifecycle status, resolved server-side against the current date. Populated on API responses; unset in the static catalog.
+   */
+  status?: LifecycleStatus | null | undefined;
 };
 
 /** @internal */
@@ -86,11 +108,16 @@ export const AgentVoice$inboundSchema: z.ZodType<
   model: AgentVoiceModel$inboundSchema,
   supported_languages: z.array(AgentLanguage$inboundSchema),
   deprecated: z.boolean(),
+  sunset_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
+  removed: z.boolean().default(false),
+  fallback: z.nullable(z.string()).optional(),
+  status: z.nullable(LifecycleStatus$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
     "var_name": "varName",
     "supported_languages": "supportedLanguages",
+    "sunset_date": "sunsetDate",
   });
 });
 /** @internal */
@@ -102,6 +129,10 @@ export type AgentVoice$Outbound = {
   model: string;
   supported_languages: Array<AgentLanguage$Outbound>;
   deprecated: boolean;
+  sunset_date?: string | null | undefined;
+  removed: boolean;
+  fallback?: string | null | undefined;
+  status?: string | null | undefined;
 };
 
 /** @internal */
@@ -117,11 +148,17 @@ export const AgentVoice$outboundSchema: z.ZodType<
   model: AgentVoiceModel$outboundSchema,
   supportedLanguages: z.array(AgentLanguage$outboundSchema),
   deprecated: z.boolean(),
+  sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
+    .optional(),
+  removed: z.boolean().default(false),
+  fallback: z.nullable(z.string()).optional(),
+  status: z.nullable(LifecycleStatus$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
     varName: "var_name",
     supportedLanguages: "supported_languages",
+    sunsetDate: "sunset_date",
   });
 });
 

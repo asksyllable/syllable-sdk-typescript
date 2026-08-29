@@ -263,6 +263,7 @@ export * from "./stepstask.js";
 export * from "./steptools.js";
 export * from "./summaryentry.js";
 export * from "./supportedllm.js";
+export * from "./supportedsttprovider.js";
 export * from "./takeoutrequeststatus.js";
 export * from "./takeoutstatusresponse.js";
 export * from "./targetfilterrule.js";

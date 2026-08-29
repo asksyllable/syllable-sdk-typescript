@@ -3,6 +3,8 @@
  */
 
 export * from "./agentdelete.js";
+export * from "./agentgetavailablesttproviders.js";
+export * from "./agentgetavailablevoices.js";
 export * from "./agentgetbyid.js";
 export * from "./agentlist.js";
 export * from "./availabletargets.js";

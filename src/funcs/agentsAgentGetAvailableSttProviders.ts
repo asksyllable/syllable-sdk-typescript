@@ -29,23 +29,22 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Available Agent Voices
+ * Get Available Agent Stt Providers
  *
  * @remarks
- * Get available agent voices.
+ * Get the speech-to-text providers available to agents.
  *
- * Each voice's `status` is resolved against the current date. Retired voices are omitted unless
- * their display name is passed in `selected_voice`, so a saved config still referencing a retired
- * voice can render it as a locked field. A voice group holds one voice per language, so the
- * parameter is repeatable.
+ * Each provider's `status` is resolved against the current date. Retired providers are omitted
+ * unless they match `selected_provider`, so an agent still saved on a retired provider can render
+ * it as a locked field.
  */
-export function agentsAgentGetAvailableVoices(
+export function agentsAgentGetAvailableSttProviders(
   client: SyllableSDKCore,
-  request: operations.AgentGetAvailableVoicesRequest,
+  request: operations.AgentGetAvailableSttProvidersRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<components.AgentVoice>,
+    Array<components.SupportedSttProvider>,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -66,12 +65,12 @@ export function agentsAgentGetAvailableVoices(
 
 async function $do(
   client: SyllableSDKCore,
-  request: operations.AgentGetAvailableVoicesRequest,
+  request: operations.AgentGetAvailableSttProvidersRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      Array<components.AgentVoice>,
+      Array<components.SupportedSttProvider>,
       | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
@@ -88,7 +87,9 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.AgentGetAvailableVoicesRequest$outboundSchema.parse(value),
+      operations.AgentGetAvailableSttProvidersRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -97,10 +98,10 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/api/v1/agents/voices/available")();
+  const path = pathToFunc("/api/v1/agents/stt/available")();
 
   const query = encodeFormQuery({
-    "selected_voice": payload.selected_voice,
+    "selected_provider": payload.selected_provider,
   });
 
   const headers = new Headers(compactMap({
@@ -114,7 +115,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "agent_get_available_voices",
+    operationID: "agent_get_available_stt_providers",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -159,7 +160,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<components.AgentVoice>,
+    Array<components.SupportedSttProvider>,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -170,7 +171,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.array(components.AgentVoice$inboundSchema)),
+    M.json(200, z.array(components.SupportedSttProvider$inboundSchema)),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
