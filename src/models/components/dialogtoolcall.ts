@@ -26,6 +26,10 @@ export type DialogToolCall = {
    */
   toolResult?: any | null | undefined;
   /**
+   * Display-only presentation data for this tool result
+   */
+  displayResult?: any | null | undefined;
+  /**
    * Tool call timestamp
    */
   timestamp: Date;
@@ -41,6 +45,7 @@ export const DialogToolCall$inboundSchema: z.ZodType<
   tool_name: z.string(),
   tool_arguments: z.any().optional(),
   tool_result: z.nullable(z.any()).optional(),
+  display_result: z.nullable(z.any()).optional(),
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 }).transform((v) => {
   return remap$(v, {
@@ -48,6 +53,7 @@ export const DialogToolCall$inboundSchema: z.ZodType<
     "tool_name": "toolName",
     "tool_arguments": "toolArguments",
     "tool_result": "toolResult",
+    "display_result": "displayResult",
   });
 });
 /** @internal */
@@ -56,6 +62,7 @@ export type DialogToolCall$Outbound = {
   tool_name: string;
   tool_arguments?: any | undefined;
   tool_result?: any | null | undefined;
+  display_result?: any | null | undefined;
   timestamp: string;
 };
 
@@ -69,6 +76,7 @@ export const DialogToolCall$outboundSchema: z.ZodType<
   toolName: z.string(),
   toolArguments: z.any().optional(),
   toolResult: z.nullable(z.any()).optional(),
+  displayResult: z.nullable(z.any()).optional(),
   timestamp: z.date().transform(v => v.toISOString()),
 }).transform((v) => {
   return remap$(v, {
@@ -76,6 +84,7 @@ export const DialogToolCall$outboundSchema: z.ZodType<
     toolName: "tool_name",
     toolArguments: "tool_arguments",
     toolResult: "tool_result",
+    displayResult: "display_result",
   });
 });
 
