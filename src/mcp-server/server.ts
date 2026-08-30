@@ -202,7 +202,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.60-rc.11",
+    version: "1.0.60-rc.12",
   });
 
   const client = new SyllableSDKCore({
