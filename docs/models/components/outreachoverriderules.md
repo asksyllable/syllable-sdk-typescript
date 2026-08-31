@@ -1,0 +1,42 @@
+# OutreachOverrideRules
+
+Weekday- and date-specific outreach rules for a campaign.
+
+The most specific rule wins: a rule for the calendar date, then a rule for the weekday, then the
+campaign defaults (``daily_start_time`` / ``daily_end_time`` / ``max_daily_calls`` /
+``active_days``). Resolution is per field, so a date rule that only moves the end time still uses
+the weekday cap. All days, dates and times are in the time zone of the agent the campaign dials
+from -- see ``lib.outbound.schedule``.
+
+## Example Usage
+
+```typescript
+import { OutreachOverrideRules } from "syllable-sdk/models/components";
+
+let value: OutreachOverrideRules = {
+  days: {
+    "fri": {
+      dailyEndTime: "15:00:00",
+      maxDailyCalls: 1300,
+    },
+    "sat": {
+      maxDailyCalls: 0,
+    },
+    "thu": {
+      maxDailyCalls: 1300,
+    },
+  },
+  dates: {
+    "2026-11-26": {
+      active: false,
+    },
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                          | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    | Example                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `days`                                                                                                                                                         | Record<string, [components.ScheduleOverride](../../models/components/scheduleoverride.md)>                                                                     | :heavy_minus_sign:                                                                                                                                             | Rules by weekday. Full names (monday) and short names (mon) are both accepted; they are stored as short names. Days that are absent use the campaign defaults. | {<br/>"sat": {<br/>"max_daily_calls": 0<br/>},<br/>"thu": {<br/>"max_daily_calls": 1300<br/>}<br/>}                                                            |
+| `dates`                                                                                                                                                        | Record<string, [components.ScheduleOverride](../../models/components/scheduleoverride.md)>                                                                     | :heavy_minus_sign:                                                                                                                                             | Rules by calendar date, keyed YYYY-MM-DD. A date rule wins over the weekday rule for that date.                                                                | {<br/>"2026-11-26": {<br/>"active": false<br/>}<br/>}                                                                                                          |

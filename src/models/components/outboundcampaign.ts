@@ -24,6 +24,12 @@ import {
   OutboundCampaignWebhookResponse$outboundSchema,
 } from "./outboundcampaignwebhookresponse.js";
 import {
+  OutreachOverrideRules,
+  OutreachOverrideRules$inboundSchema,
+  OutreachOverrideRules$Outbound,
+  OutreachOverrideRules$outboundSchema,
+} from "./outreachoverriderules.js";
+import {
   TargetFilters,
   TargetFilters$inboundSchema,
   TargetFilters$Outbound,
@@ -104,6 +110,10 @@ export type OutboundCampaign = {
    */
   activeDays: Array<DaysOfWeek>;
   /**
+   * Weekday- and date-specific outreach windows and daily maximums. The most specific rule wins: date, then weekday, then the campaign defaults above. Omitted or null means the campaign defaults apply to every active day.
+   */
+  outreachOverrideRules?: OutreachOverrideRules | null | undefined;
+  /**
    * Config for voicemail detection for voice campaigns. Set to None to disable.
    */
   voicemailDetection?: VoicemailDetectionConfig | null | undefined;
@@ -167,6 +177,8 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   retry_count: z.number().int().default(0),
   retry_interval: z.nullable(z.string()).optional(),
   active_days: z.array(DaysOfWeek$inboundSchema),
+  outreach_override_rules: z.nullable(OutreachOverrideRules$inboundSchema)
+    .optional(),
   voicemail_detection: z.nullable(VoicemailDetectionConfig$inboundSchema)
     .optional(),
   allowed_line_types: z.nullable(z.array(LineTypeBucket$inboundSchema))
@@ -195,6 +207,7 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
     "retry_count": "retryCount",
     "retry_interval": "retryInterval",
     "active_days": "activeDays",
+    "outreach_override_rules": "outreachOverrideRules",
     "voicemail_detection": "voicemailDetection",
     "allowed_line_types": "allowedLineTypes",
     "include_unknown_line_types": "includeUnknownLineTypes",
@@ -223,6 +236,7 @@ export type OutboundCampaign$Outbound = {
   retry_count: number;
   retry_interval?: string | null | undefined;
   active_days: Array<string>;
+  outreach_override_rules?: OutreachOverrideRules$Outbound | null | undefined;
   voicemail_detection?: VoicemailDetectionConfig$Outbound | null | undefined;
   allowed_line_types?: Array<string> | null | undefined;
   include_unknown_line_types: boolean;
@@ -257,6 +271,8 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   retryCount: z.number().int().default(0),
   retryInterval: z.nullable(z.string()).optional(),
   activeDays: z.array(DaysOfWeek$outboundSchema),
+  outreachOverrideRules: z.nullable(OutreachOverrideRules$outboundSchema)
+    .optional(),
   voicemailDetection: z.nullable(VoicemailDetectionConfig$outboundSchema)
     .optional(),
   allowedLineTypes: z.nullable(z.array(LineTypeBucket$outboundSchema))
@@ -283,6 +299,7 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
     retryCount: "retry_count",
     retryInterval: "retry_interval",
     activeDays: "active_days",
+    outreachOverrideRules: "outreach_override_rules",
     voicemailDetection: "voicemail_detection",
     allowedLineTypes: "allowed_line_types",
     includeUnknownLineTypes: "include_unknown_line_types",

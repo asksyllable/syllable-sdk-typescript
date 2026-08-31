@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 6ac01e6090553b5d649e971d8afebfb6
+  docChecksum: e7bc1cb845b6f2aa55f541c308bd503c
   docVersion: 0.0.3
   speakeasyVersion: 1.796.2
   generationVersion: 2.933.0
-  releaseVersion: 1.0.60-rc.13
-  configChecksum: 55d959601cacbe18be88dd6ffd024ce1
+  releaseVersion: 1.0.60-rc.14
+  configChecksum: 64c012a355a08347eb24ba1ea29db1fa
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 54595204-0989-425f-9e59-c71a2f6f22a7
-  pristine_commit_hash: fca7c483e1c642c891f89e3b65c8f487c74ee587
-  pristine_tree_hash: 5e76971331813150620762aa8edae244544a25ec
+  generation_id: b55bada9-4f24-4a6b-ac35-4ceb23f859b2
+  pristine_commit_hash: 38a29a39f59c908a94f21d8ef5fde9e8adf3b602
+  pristine_tree_hash: f2183cd462b18482f694712ba1d0b2e11b51b2a0
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1149,12 +1149,12 @@ trackedFiles:
     pristine_git_object: 47168cf600fa33c80364a0189f1c3d6b9c7d68dd
   docs/models/components/outboundcampaign.md:
     id: 2c02f17c8ae5
-    last_write_checksum: sha1:f5b558669b732bb569520e6b43a33d86bd1fd7fe
-    pristine_git_object: ac30c1c9c1abdf15082a3e69dd1b34ea2203b4ea
+    last_write_checksum: sha1:e852b39962f750a584f8358ce16e9e77344c785b
+    pristine_git_object: 692d18cc07ce8ebebb3b98b76c0c2c39255dabb7
   docs/models/components/outboundcampaigninput.md:
     id: 67a9d38a267b
-    last_write_checksum: sha1:656779aaea8f64d01c7e739fe489fb6c9659fe2a
-    pristine_git_object: 4ed68c41569986fa2f6153cd91995e9b0d0646d4
+    last_write_checksum: sha1:6a2e1c9ae1158109b25363acc64d815c0a952f5d
+    pristine_git_object: ac740fa4ca9d0fbb53255fdbaf5bb547b6968295
   docs/models/components/outboundcampaignwebhookinput.md:
     id: da463741e13e
     last_write_checksum: sha1:45abb301429130fe0e23bb66390cc4478c1d260a
@@ -1163,6 +1163,10 @@ trackedFiles:
     id: dd176e2b5711
     last_write_checksum: sha1:898e6a2f77fc99b7f347a7f1c49ad690436e9a36
     pristine_git_object: 416f5e88ea93d3731758d0c4b0575c6d5d03b72f
+  docs/models/components/outreachoverriderules.md:
+    id: bf03bcfe9aec
+    last_write_checksum: sha1:a34a272093932cdcc7745d9e792721b43c923722
+    pristine_git_object: 2b9164ffa92c506a8bf8b21ba6a5d16e00daefe8
   docs/models/components/permissiongroupresponse.md:
     id: 77c1c16a87ae
     last_write_checksum: sha1:6d6369ab2cd1b3d62f55a2090fc76c58fb1d7589
@@ -1279,6 +1283,10 @@ trackedFiles:
     id: 8b3e05f0d006
     last_write_checksum: sha1:05dfdac16632e20ffcee712b3a84fc81c999c7df
     pristine_git_object: 5a9308923896a24dff28e420a5336a7071b0f73e
+  docs/models/components/scheduleoverride.md:
+    id: 33e72e9db440
+    last_write_checksum: sha1:a663c93b854780f868458dbbd7b4d2da7889d3d9
+    pristine_git_object: b8452e8c3d22b661d3eae9fe1f972c72a10101b9
   docs/models/components/schemascortexv1bridgephrasesbridgephrasemessages.md:
     id: 0bef17887334
     last_write_checksum: sha1:15637a02ba14535a995cd016d7a7e59dd0d61d3e
@@ -2041,8 +2049,8 @@ trackedFiles:
     pristine_git_object: fc32a97a1b266ba066353f7202101ad6e9d88ab6
   docs/models/operations/outboundcampaignupdaterequest.md:
     id: 81f2af2f8382
-    last_write_checksum: sha1:45216aae9b6d275f5fc4fd01d64ab690c979657b
-    pristine_git_object: bfe6d370454b454bae56976ac96c56e1709f8971
+    last_write_checksum: sha1:e71f19921c6279507a36a816a9499209448b1d89
+    pristine_git_object: ee0da7e1725dd5df2bc93adeda1fdcda8cccceba
   docs/models/operations/postcardclickeventrequest.md:
     id: bccc1dabf7b8
     last_write_checksum: sha1:6354be4ac8b9abf03bb3491c891886121eac8bd2
@@ -2201,8 +2209,8 @@ trackedFiles:
     pristine_git_object: a80177b673dd8056cd6c65459db5138d3e9f6325
   docs/sdks/campaigns/README.md:
     id: 18dcc3c717ca
-    last_write_checksum: sha1:7ec0f1fbd77da149023d2d58071fcf283d8df61c
-    pristine_git_object: da8c5261ca9a0c3ccbf56344dc8a12eacf5bca5e
+    last_write_checksum: sha1:c2bfec45a060562a47b6d1d2f4ade5a833745b8e
+    pristine_git_object: dbdfc32696636810d80bfb0f69900144c026eda2
   docs/sdks/channels/README.md:
     id: 721bbf4c03d7
     last_write_checksum: sha1:79cc5dcc7658f43be25e6d04e0d3cc5ff5e0b8b2
@@ -2377,12 +2385,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:aa995fdd4ba55f5900b0b5aca2fe4a6ebccc3646
-    pristine_git_object: 864e5700eb229afdd5bcaf4a52bd11d6004e7540
+    last_write_checksum: sha1:208a6312f7b69d3b1f7e19d15a572ea4cc394cfe
+    pristine_git_object: 200046a9763c9add725f47eb69204c71be0843c9
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:57615e41c965a5681040b7414ab4d85a70a4c271
-    pristine_git_object: 7bd94492d50d247242d4308b0213e2d57394cba1
+    last_write_checksum: sha1:4efd7f6b8f5763fade2ead1ae3bdc034999845d8
+    pristine_git_object: 48d0fb1f2f4191d818e6098db8642380a58f1217
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -3121,8 +3129,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:87154ce919bfb16514e47af736efab5534f3cf5a
-    pristine_git_object: 440016d7b3fbd81dbd8ef10dc2bbc53138c557aa
+    last_write_checksum: sha1:9e435476135ea47ac5ea1526e0ba1461599213ee
+    pristine_git_object: 33419500c6dea5f01e5d97e72fc4332f8fad761a
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -3197,8 +3205,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:4db996e0b5d078c0c74611684c46db9fd19842a8
-    pristine_git_object: f1aab3bfad2ad0a801c6fd542e255b5fc4e8fe50
+    last_write_checksum: sha1:3bd7cc35d708dede57c7243dc6e6adb6000dced5
+    pristine_git_object: 653148ca345ad38e6198591859474577de857e69
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3213,8 +3221,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:69a0c99410bc8fad54a73d9bd87b1bc9e622940c
-    pristine_git_object: 8f868f204860b6d8c5bcb592bfa2ee97e395cde2
+    last_write_checksum: sha1:69355f8414a0f04e912685ea270c5384d4490fe3
+    pristine_git_object: 39dc8d3b1b82d47f63322fe12a258ab1593ea19c
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -4417,8 +4425,8 @@ trackedFiles:
     pristine_git_object: 9f63697edf7ec323285ba25d328a4e4a38cc609e
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:4a9a5305b2011d78357628e2be74427a925fd854
-    pristine_git_object: 98b9cf3fd29a601dc49d03e5595294222bd1cb0a
+    last_write_checksum: sha1:f47d27e7fa64cbcf65d2223b1943919cf6c7eb83
+    pristine_git_object: da54b4c0bc17eabf562cdd6728db012301d4dad0
   src/models/components/inputparameter.ts:
     id: 3e896f254d26
     last_write_checksum: sha1:6b78ad6ccb0d52e1257e19231f420b0a76658f19
@@ -4753,12 +4761,12 @@ trackedFiles:
     pristine_git_object: 5a9b42c7c9aecce4126034d7aa8295c6ef65a6e6
   src/models/components/outboundcampaign.ts:
     id: 73d4a19a8229
-    last_write_checksum: sha1:5fd3bc5caffd2434cec101c023fe5b15bc8e109a
-    pristine_git_object: 011b4edc828561a2a383b771ef7461e26308c657
+    last_write_checksum: sha1:597835636b6a432e8ca5f3bd756356044c9d0de3
+    pristine_git_object: b9a1a0026b5bb7f0b42e5160fa8a8a8ce3f2d757
   src/models/components/outboundcampaigninput.ts:
     id: 2fd4acb579ed
-    last_write_checksum: sha1:77dbfc7c3bf5b3906a648cc3cb30b9c173d67623
-    pristine_git_object: a83b4dac7857ede5b954166ef637ba25fc0290b4
+    last_write_checksum: sha1:b165df44466763c6df28f0171717a1c92e972098
+    pristine_git_object: 954972f24a4074cd18b61e270c92a0a694e68ee3
   src/models/components/outboundcampaignwebhookinput.ts:
     id: ddf070d309d1
     last_write_checksum: sha1:0ceff4922b5ffed82d6bf06e2be4bea60bb89733
@@ -4767,6 +4775,10 @@ trackedFiles:
     id: 04824e2f1a70
     last_write_checksum: sha1:f144167823c9656ba09917f03846ba64ca121b4b
     pristine_git_object: 43b747294bd1990a7fcfe1741e198dae52c37135
+  src/models/components/outreachoverriderules.ts:
+    id: 0ca0d0a10fbf
+    last_write_checksum: sha1:5cbcfc8f3e98345e1716df5935ef48658c73b3a6
+    pristine_git_object: e73f96daea39b87164674c53f320b296d37f6467
   src/models/components/permissiongroupresponse.ts:
     id: 3db2a1770d1c
     last_write_checksum: sha1:0e64550ba321294e65ea1524600397ca3524075c
@@ -4855,6 +4867,10 @@ trackedFiles:
     id: 9411d80d68fd
     last_write_checksum: sha1:5f491d30f620907adc8e41279d0f92391f4feb44
     pristine_git_object: d4d7975f5e7dc020016a95207329ece3f12d369b
+  src/models/components/scheduleoverride.ts:
+    id: 3d3765d470e0
+    last_write_checksum: sha1:453422330fd5cc7d4639898bdd11b95149dd50f2
+    pristine_git_object: 34f57bc0b3fb44dc06cb34020e4713fe502edefc
   src/models/components/schemascortexv1bridgephrasesbridgephrasemessages.ts:
     id: cd337934a3d8
     last_write_checksum: sha1:39c88fe5131064d9083dfed3f38e76c2bf35e3b3
@@ -7226,10 +7242,10 @@ examples:
   outbound_campaign_create:
     speakeasy-default-outbound-campaign-create:
       requestBody:
-        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "webhooks": [{"trigger_statuses": ["COMPLETED"], "url": "https://example.com/hooks/syllable", "request_method": "POST"}]}
+        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "outreach_override_rules": {"days": {"fri": {"daily_end_time": "15:00:00", "max_daily_calls": 1300}, "sat": {"max_daily_calls": 0}, "thu": {"max_daily_calls": 1300}}, "dates": {"2026-11-26": {"active": false}}}, "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "webhooks": [{"trigger_statuses": ["COMPLETED"], "url": "https://example.com/hooks/syllable", "request_method": "POST"}]}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "id": 1, "created_at": "2026-02-04T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "webhooks": [{"trigger_statuses": ["CLICKED"], "url": "https://example.com/hooks/syllable", "request_method": "POST", "id": 1, "auth_value_keys": ["hmac_secret"]}]}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "outreach_override_rules": {"days": {"fri": {"daily_end_time": "15:00:00", "max_daily_calls": 1300}, "sat": {"max_daily_calls": 0}, "thu": {"max_daily_calls": 1300}}, "dates": {"2026-11-26": {"active": false}}}, "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "id": 1, "created_at": "2026-02-04T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "webhooks": [{"trigger_statuses": ["CLICKED"], "url": "https://example.com/hooks/syllable", "request_method": "POST", "id": 1, "auth_value_keys": ["hmac_secret"]}]}
         "422":
           application/json: {}
   outbound_campaign_get_by_id:
@@ -7239,7 +7255,7 @@ examples:
           campaign_id: 11227
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "id": 1, "created_at": "2026-02-04T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "webhooks": null}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "outreach_override_rules": {"days": {"fri": {"daily_end_time": "15:00:00", "max_daily_calls": 1300}, "sat": {"max_daily_calls": 0}, "thu": {"max_daily_calls": 1300}}, "dates": {"2026-11-26": {"active": false}}}, "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "id": 1, "created_at": "2026-02-04T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "webhooks": null}
         "422":
           application/json: {}
   outbound_campaign_update:
@@ -7248,10 +7264,10 @@ examples:
         path:
           campaign_id: 679645
       requestBody:
-        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "webhooks": [{"trigger_statuses": ["COMPLETED"], "url": "https://example.com/hooks/syllable", "request_method": "POST"}]}
+        application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "outreach_override_rules": {"days": {"fri": {"daily_end_time": "15:00:00", "max_daily_calls": 1300}, "sat": {"max_daily_calls": 0}, "thu": {"max_daily_calls": 1300}}, "dates": {"2026-11-26": {"active": false}}}, "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "webhooks": [{"trigger_statuses": ["COMPLETED"], "url": "https://example.com/hooks/syllable", "request_method": "POST"}]}
       responses:
         "200":
-          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "id": 1, "created_at": "2026-02-04T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "webhooks": [{"trigger_statuses": ["UNDELIVERED"], "url": "https://example.com/hooks/syllable", "request_method": "POST", "id": 1, "auth_value_keys": ["hmac_secret"]}]}
+          application/json: {"campaign_name": "Outbound Campaign 1", "description": "This is a test campaign", "mode": "voice", "sms_session_ttl": 720, "labels": ["test", "demo"], "campaign_variables": {"key": "value", "key2": "value2"}, "daily_start_time": "09:00:00", "daily_end_time": "17:00:00", "source": "+19032900844", "caller_id": "19995551234", "hourly_rate": 25, "max_daily_calls": 2500, "retry_count": 1, "retry_interval": "30m", "active_days": ["mon", "tue", "wed", "thu", "fri"], "outreach_override_rules": {"days": {"fri": {"daily_end_time": "15:00:00", "max_daily_calls": 1300}, "sat": {"max_daily_calls": 0}, "thu": {"max_daily_calls": 1300}}, "dates": {"2026-11-26": {"active": false}}}, "voicemail_detection": {"voicemail_detection_overall_timeout": 30, "voicemail_detection_pre_speech_timeout": 3.5, "voicemail_detection_post_speech_timeout": 1.75}, "allowed_line_types": ["mobile", "voip"], "include_unknown_line_types": true, "target_filters": {"match": "any", "on_unknown": "include", "rules": [{"field": "line_type", "op": "in", "values": ["landline", "fixedVoip", "nonFixedVoip"]}, {"field": "carrier_name", "op": "in", "values": ["Onvoy, LLC - Sinch"]}]}, "id": 1, "created_at": "2026-02-04T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "webhooks": [{"trigger_statuses": ["UNDELIVERED"], "url": "https://example.com/hooks/syllable", "request_method": "POST", "id": 1, "auth_value_keys": ["hmac_secret"]}]}
         "422":
           application/json: {}
   outbound_campaign_delete:
@@ -7790,6 +7806,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.outbound.campaigns.list()`:  `response.items[].outreachOverrideRules` **Added**\n* `syllablesdk.outbound.campaigns.create()`: \n  *  `request.outreachOverrideRules` **Added**\n  *  `response.outreachOverrideRules` **Added**\n* `syllablesdk.outbound.campaigns.getById()`:  `response.outreachOverrideRules` **Added**\n* `syllablesdk.outbound.campaigns.update()`: \n  *  `request.outboundCampaignInput.outreachOverrideRules` **Added**\n  *  `response.outreachOverrideRules` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
