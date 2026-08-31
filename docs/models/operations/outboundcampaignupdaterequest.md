@@ -35,6 +35,25 @@ let value: OutboundCampaignUpdateRequest = {
       "thu",
       "fri",
     ],
+    outreachOverrideRules: {
+      days: {
+        "fri": {
+          dailyEndTime: "15:00:00",
+          maxDailyCalls: 1300,
+        },
+        "sat": {
+          maxDailyCalls: 0,
+        },
+        "thu": {
+          maxDailyCalls: 1300,
+        },
+      },
+      dates: {
+        "2026-11-26": {
+          active: false,
+        },
+      },
+    },
     voicemailDetection: {
       voicemailDetectionOverallTimeout: 30,
       voicemailDetectionPreSpeechTimeout: 3.5,
