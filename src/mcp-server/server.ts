@@ -99,9 +99,12 @@ import { tool$insightsToolsUpdate } from "./tools/insightsToolsUpdate.js";
 import { tool$insightsWorkflowsActivate } from "./tools/insightsWorkflowsActivate.js";
 import { tool$insightsWorkflowsCreate } from "./tools/insightsWorkflowsCreate.js";
 import { tool$insightsWorkflowsDelete } from "./tools/insightsWorkflowsDelete.js";
+import { tool$insightsWorkflowsExecutionsSummary } from "./tools/insightsWorkflowsExecutionsSummary.js";
 import { tool$insightsWorkflowsGetById } from "./tools/insightsWorkflowsGetById.js";
 import { tool$insightsWorkflowsInactivate } from "./tools/insightsWorkflowsInactivate.js";
 import { tool$insightsWorkflowsList } from "./tools/insightsWorkflowsList.js";
+import { tool$insightsWorkflowsListExecutions } from "./tools/insightsWorkflowsListExecutions.js";
+import { tool$insightsWorkflowsListSessions } from "./tools/insightsWorkflowsListSessions.js";
 import { tool$insightsWorkflowsQueueWork } from "./tools/insightsWorkflowsQueueWork.js";
 import { tool$insightsWorkflowsUpdate } from "./tools/insightsWorkflowsUpdate.js";
 import { tool$languageGroupsCreate } from "./tools/languageGroupsCreate.js";
@@ -202,7 +205,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.61-rc.1",
+    version: "1.0.61-rc.2",
   });
 
   const client = new SyllableSDKCore({
@@ -374,6 +377,9 @@ export function createMCPServer(deps: {
   tool(tool$insightsWorkflowsGetById);
   tool(tool$insightsWorkflowsUpdate);
   tool(tool$insightsWorkflowsDelete);
+  tool(tool$insightsWorkflowsListExecutions);
+  tool(tool$insightsWorkflowsListSessions);
+  tool(tool$insightsWorkflowsExecutionsSummary);
   tool(tool$insightsWorkflowsInactivate);
   tool(tool$insightsWorkflowsActivate);
   tool(tool$insightsWorkflowsQueueWork);

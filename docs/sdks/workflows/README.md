@@ -11,6 +11,9 @@ Operations related to insights workflows. An workflow is series of tool         
 * [getById](#getbyid) - Get Insight Workflow By Id
 * [update](#update) - Update Insights Workflow
 * [delete](#delete) - Delete Insights Workflow
+* [listExecutions](#listexecutions) - List Insight Workflow Executions
+* [listSessions](#listsessions) - List Insight Workflow Sessions
+* [executionsSummary](#executionssummary) - Insight Workflow Executions Summary
 * [inactivate](#inactivate) - Inactivate Insights Workflow
 * [activate](#activate) - Activate Insights Workflow
 * [queueWork](#queuework) - Queue Insights Workflow For Sessions/Files
@@ -507,6 +510,286 @@ run();
 ### Response
 
 **Promise\<[any](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## listExecutions
+
+List a workflow's execution rows.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_executions" method="get" path="/api/v1/insights/workflows/{workflow_id}/executions" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.insights.workflows.listExecutions({
+    workflowId: 304703,
+    page: 0,
+    searchFields: [
+      "status",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    orderBy: "id",
+    fields: [
+      "session_id",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { insightsWorkflowsListExecutions } from "syllable-sdk/funcs/insightsWorkflowsListExecutions.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await insightsWorkflowsListExecutions(syllableSDK, {
+    workflowId: 304703,
+    page: 0,
+    searchFields: [
+      "status",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    orderBy: "id",
+    fields: [
+      "session_id",
+    ],
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsListExecutions failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.InsightsWorkflowExecutionsRequest](../../models/operations/insightsworkflowexecutionsrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.ListResponseInsightWorkflowExecutionOutput](../../models/components/listresponseinsightworkflowexecutionoutput.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## listSessions
+
+List the sessions under a workflow, one row per session, with each tool's
+results grouped into a ``results`` dict keyed by tool name.
+
+Sessions come from the workflow's execution queue, so pending, processing and
+failed sessions show up too, not just completed ones. A session that was
+queued more than once appears only once. Insights reused from another
+workflow still show up here.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_sessions" method="get" path="/api/v1/insights/workflows/{workflow_id}/sessions" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.insights.workflows.listSessions({
+    workflowId: 939810,
+    page: 0,
+    searchFields: [
+      "session_id",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    orderBy: "session_id",
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { insightsWorkflowsListSessions } from "syllable-sdk/funcs/insightsWorkflowsListSessions.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await insightsWorkflowsListSessions(syllableSDK, {
+    workflowId: 939810,
+    page: 0,
+    searchFields: [
+      "session_id",
+    ],
+    searchFieldValues: [
+      "Some Object Name",
+    ],
+    orderBy: "session_id",
+    startDatetime: "2023-01-01T00:00:00Z",
+    endDatetime: "2024-01-01T00:00:00Z",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsListSessions failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.InsightsWorkflowSessionsRequest](../../models/operations/insightsworkflowsessionsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.ListResponseWorkflowSessionRow](../../models/components/listresponseworkflowsessionrow.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## executionsSummary
+
+Return how many of a workflow's executions are in each status, optionally
+within a created_at range (for example, since the workflow's `updated_at`
+passed as `start_datetime`).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="insights_workflow_executions_summary" method="get" path="/api/v1/insights/workflows/{workflow_id}/executions/summary" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.insights.workflows.executionsSummary({
+    workflowId: 163523,
+    startDatetime: "2026-08-27T13:57:00.123456+00:00",
+    endDatetime: "2026-08-28T00:00:00Z",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { insightsWorkflowsExecutionsSummary } from "syllable-sdk/funcs/insightsWorkflowsExecutionsSummary.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await insightsWorkflowsExecutionsSummary(syllableSDK, {
+    workflowId: 163523,
+    startDatetime: "2026-08-27T13:57:00.123456+00:00",
+    endDatetime: "2026-08-28T00:00:00Z",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("insightsWorkflowsExecutionsSummary failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.InsightsWorkflowExecutionsSummaryRequest](../../models/operations/insightsworkflowexecutionssummaryrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.InsightWorkflowExecutionSummary](../../models/components/insightworkflowexecutionsummary.md)\>**
 
 ### Errors
 

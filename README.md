@@ -377,6 +377,9 @@ run();
 * [getById](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 * [update](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 * [delete](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
+* [listExecutions](docs/sdks/workflows/README.md#listexecutions) - List Insight Workflow Executions
+* [listSessions](docs/sdks/workflows/README.md#listsessions) - List Insight Workflow Sessions
+* [executionsSummary](docs/sdks/workflows/README.md#executionssummary) - Insight Workflow Executions Summary
 * [inactivate](docs/sdks/workflows/README.md#inactivate) - Inactivate Insights Workflow
 * [activate](docs/sdks/workflows/README.md#activate) - Activate Insights Workflow
 * [queueWork](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
@@ -639,9 +642,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsWorkflowsActivate`](docs/sdks/workflows/README.md#activate) - Activate Insights Workflow
 - [`insightsWorkflowsCreate`](docs/sdks/workflows/README.md#create) - Create Insight Workflow
 - [`insightsWorkflowsDelete`](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
+- [`insightsWorkflowsExecutionsSummary`](docs/sdks/workflows/README.md#executionssummary) - Insight Workflow Executions Summary
 - [`insightsWorkflowsGetById`](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 - [`insightsWorkflowsInactivate`](docs/sdks/workflows/README.md#inactivate) - Inactivate Insights Workflow
 - [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
+- [`insightsWorkflowsListExecutions`](docs/sdks/workflows/README.md#listexecutions) - List Insight Workflow Executions
+- [`insightsWorkflowsListSessions`](docs/sdks/workflows/README.md#listsessions) - List Insight Workflow Sessions
 - [`insightsWorkflowsQueueWork`](docs/sdks/workflows/README.md#queuework) - Queue Insights Workflow For Sessions/Files
 - [`insightsWorkflowsUpdate`](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 - [`organizationsCreate`](docs/sdks/organizations/README.md#create) - Create Organization
