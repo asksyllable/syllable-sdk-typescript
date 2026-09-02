@@ -1,0 +1,39 @@
+# InsightWorkflowExecutionOutput
+
+Response model for a row in the insight_workflow_execution table.
+
+## Example Usage
+
+```typescript
+import { InsightWorkflowExecutionOutput } from "syllable-sdk/models/components";
+
+let value: InsightWorkflowExecutionOutput = {
+  id: 1,
+  workflowId: 42,
+  status: "PENDING",
+  priority: 0,
+  sessionId: 12341,
+  uploadFileId: 12535,
+  retryCount: 0,
+  errorMessage: "LLM timeout",
+  startedAt: new Date("2026-09-02T00:00:00Z"),
+  createdAt: new Date("2026-09-01T00:00:00Z"),
+  eventType: "BACKFILL",
+};
+```
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 | Example                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                        | *number*                                                                                                    | :heavy_check_mark:                                                                                          | Unique ID of the workflow execution row                                                                     | 1                                                                                                           |
+| `workflowId`                                                                                                | *number*                                                                                                    | :heavy_check_mark:                                                                                          | ID of the workflow this execution belongs to                                                                | 42                                                                                                          |
+| `status`                                                                                                    | *string*                                                                                                    | :heavy_check_mark:                                                                                          | Status of the workflow execution                                                                            | **Example 1:** PENDING<br/>**Example 2:** PROCESSING<br/>**Example 3:** COMPLETED<br/>**Example 4:** FAILED |
+| `priority`                                                                                                  | *number*                                                                                                    | :heavy_check_mark:                                                                                          | Priority of the workflow execution                                                                          | 0                                                                                                           |
+| `sessionId`                                                                                                 | *number*                                                                                                    | :heavy_minus_sign:                                                                                          | Session ID processed by this execution, if applicable                                                       | 12341                                                                                                       |
+| `uploadFileId`                                                                                              | *number*                                                                                                    | :heavy_minus_sign:                                                                                          | Upload file ID processed by this execution, if applicable                                                   | 12535                                                                                                       |
+| `retryCount`                                                                                                | *number*                                                                                                    | :heavy_check_mark:                                                                                          | Number of times this execution has been retried                                                             | 0                                                                                                           |
+| `errorMessage`                                                                                              | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | Error message from the last processing attempt, if any                                                      | LLM timeout                                                                                                 |
+| `startedAt`                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)               | :heavy_minus_sign:                                                                                          | Timestamp at which the most recent processing attempt started                                               | 2026-09-02T00:00:00Z                                                                                        |
+| `createdAt`                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)               | :heavy_check_mark:                                                                                          | Timestamp at which the execution row was created (i.e. when the work was queued)                            | 2026-09-01T00:00:00Z                                                                                        |
+| `eventType`                                                                                                 | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | Event type that triggered the execution, if applicable                                                      | BACKFILL                                                                                                    |

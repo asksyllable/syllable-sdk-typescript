@@ -5,9 +5,12 @@
 import { insightsWorkflowsActivate } from "../funcs/insightsWorkflowsActivate.js";
 import { insightsWorkflowsCreate } from "../funcs/insightsWorkflowsCreate.js";
 import { insightsWorkflowsDelete } from "../funcs/insightsWorkflowsDelete.js";
+import { insightsWorkflowsExecutionsSummary } from "../funcs/insightsWorkflowsExecutionsSummary.js";
 import { insightsWorkflowsGetById } from "../funcs/insightsWorkflowsGetById.js";
 import { insightsWorkflowsInactivate } from "../funcs/insightsWorkflowsInactivate.js";
 import { insightsWorkflowsList } from "../funcs/insightsWorkflowsList.js";
+import { insightsWorkflowsListExecutions } from "../funcs/insightsWorkflowsListExecutions.js";
+import { insightsWorkflowsListSessions } from "../funcs/insightsWorkflowsListSessions.js";
 import { insightsWorkflowsQueueWork } from "../funcs/insightsWorkflowsQueueWork.js";
 import { insightsWorkflowsUpdate } from "../funcs/insightsWorkflowsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -95,6 +98,65 @@ export class Workflows extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(insightsWorkflowsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Insight Workflow Executions
+   *
+   * @remarks
+   * List a workflow's execution rows.
+   */
+  async listExecutions(
+    request: operations.InsightsWorkflowExecutionsRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListResponseInsightWorkflowExecutionOutput> {
+    return unwrapAsync(insightsWorkflowsListExecutions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Insight Workflow Sessions
+   *
+   * @remarks
+   * List the sessions under a workflow, one row per session, with each tool's
+   * results grouped into a ``results`` dict keyed by tool name.
+   *
+   * Sessions come from the workflow's execution queue, so pending, processing and
+   * failed sessions show up too, not just completed ones. A session that was
+   * queued more than once appears only once. Insights reused from another
+   * workflow still show up here.
+   */
+  async listSessions(
+    request: operations.InsightsWorkflowSessionsRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListResponseWorkflowSessionRow> {
+    return unwrapAsync(insightsWorkflowsListSessions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Insight Workflow Executions Summary
+   *
+   * @remarks
+   * Return how many of a workflow's executions are in each status, optionally
+   * within a created_at range (for example, since the workflow's `updated_at`
+   * passed as `start_datetime`).
+   */
+  async executionsSummary(
+    request: operations.InsightsWorkflowExecutionsSummaryRequest,
+    options?: RequestOptions,
+  ): Promise<components.InsightWorkflowExecutionSummary> {
+    return unwrapAsync(insightsWorkflowsExecutionsSummary(
       this,
       request,
       options,
