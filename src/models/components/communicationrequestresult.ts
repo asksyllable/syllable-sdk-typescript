@@ -71,7 +71,7 @@ export type CommunicationRequestResult = {
    */
   insights?: { [k: string]: string | number | number } | null | undefined;
   /**
-   * Line type of the target number from Twilio Lookup (e.g. 'mobile', 'landline', 'voip'); resolved at ingestion.
+   * Raw Twilio Lookup v2 line type of the target number (e.g. 'mobile', 'landline', 'fixedVoip', 'tollFree'); resolved at ingestion. 'unknown' means Twilio answered but could not determine the line type; None means no lookup data at all. See ALL_LINE_TYPES in lib/twilio/line_type_lookup.py for the full vocabulary.
    */
   lineType?: string | null | undefined;
   /**
