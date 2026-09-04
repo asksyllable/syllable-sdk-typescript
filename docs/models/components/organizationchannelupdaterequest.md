@@ -25,6 +25,7 @@ let value: OrganizationChannelUpdateRequest = {
       interruptibility: "dtmf_only",
       passiveSpeechInputEnabled: true,
       passiveInputStart: 0.5,
+      asyncEnabled: true,
     },
     email: {
       sendingDomain: "mail.example.com",

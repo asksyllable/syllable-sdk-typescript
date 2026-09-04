@@ -11,6 +11,7 @@ let value: TelephonyConfigurations = {
   interruptibility: "dtmf_only",
   passiveSpeechInputEnabled: true,
   passiveInputStart: 0.5,
+  asyncEnabled: true,
 };
 ```
 
