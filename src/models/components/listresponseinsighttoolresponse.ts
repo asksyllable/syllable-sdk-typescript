@@ -8,17 +8,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  InsightToolOutput,
-  InsightToolOutput$inboundSchema,
-  InsightToolOutput$Outbound,
-  InsightToolOutput$outboundSchema,
-} from "./insighttooloutput.js";
+  InsightToolResponse,
+  InsightToolResponse$inboundSchema,
+  InsightToolResponse$Outbound,
+  InsightToolResponse$outboundSchema,
+} from "./insighttoolresponse.js";
 
-export type ListResponseInsightToolOutput = {
+export type ListResponseInsightToolResponse = {
   /**
    * List of items returned from the query
    */
-  items: Array<InsightToolOutput>;
+  items: Array<InsightToolResponse>;
   /**
    * The page number of the results (0-based)
    */
@@ -38,12 +38,12 @@ export type ListResponseInsightToolOutput = {
 };
 
 /** @internal */
-export const ListResponseInsightToolOutput$inboundSchema: z.ZodType<
-  ListResponseInsightToolOutput,
+export const ListResponseInsightToolResponse$inboundSchema: z.ZodType<
+  ListResponseInsightToolResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.array(InsightToolOutput$inboundSchema),
+  items: z.array(InsightToolResponse$inboundSchema),
   page: z.number().int(),
   page_size: z.number().int(),
   total_pages: z.nullable(z.number().int()).optional(),
@@ -56,8 +56,8 @@ export const ListResponseInsightToolOutput$inboundSchema: z.ZodType<
   });
 });
 /** @internal */
-export type ListResponseInsightToolOutput$Outbound = {
-  items: Array<InsightToolOutput$Outbound>;
+export type ListResponseInsightToolResponse$Outbound = {
+  items: Array<InsightToolResponse$Outbound>;
   page: number;
   page_size: number;
   total_pages?: number | null | undefined;
@@ -65,12 +65,12 @@ export type ListResponseInsightToolOutput$Outbound = {
 };
 
 /** @internal */
-export const ListResponseInsightToolOutput$outboundSchema: z.ZodType<
-  ListResponseInsightToolOutput$Outbound,
+export const ListResponseInsightToolResponse$outboundSchema: z.ZodType<
+  ListResponseInsightToolResponse$Outbound,
   z.ZodTypeDef,
-  ListResponseInsightToolOutput
+  ListResponseInsightToolResponse
 > = z.object({
-  items: z.array(InsightToolOutput$outboundSchema),
+  items: z.array(InsightToolResponse$outboundSchema),
   page: z.number().int(),
   pageSize: z.number().int(),
   totalPages: z.nullable(z.number().int()).optional(),
@@ -83,21 +83,21 @@ export const ListResponseInsightToolOutput$outboundSchema: z.ZodType<
   });
 });
 
-export function listResponseInsightToolOutputToJSON(
-  listResponseInsightToolOutput: ListResponseInsightToolOutput,
+export function listResponseInsightToolResponseToJSON(
+  listResponseInsightToolResponse: ListResponseInsightToolResponse,
 ): string {
   return JSON.stringify(
-    ListResponseInsightToolOutput$outboundSchema.parse(
-      listResponseInsightToolOutput,
+    ListResponseInsightToolResponse$outboundSchema.parse(
+      listResponseInsightToolResponse,
     ),
   );
 }
-export function listResponseInsightToolOutputFromJSON(
+export function listResponseInsightToolResponseFromJSON(
   jsonString: string,
-): SafeParseResult<ListResponseInsightToolOutput, SDKValidationError> {
+): SafeParseResult<ListResponseInsightToolResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListResponseInsightToolOutput$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListResponseInsightToolOutput' from JSON`,
+    (x) => ListResponseInsightToolResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseInsightToolResponse' from JSON`,
   );
 }

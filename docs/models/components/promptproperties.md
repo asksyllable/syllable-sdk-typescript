@@ -13,5 +13,5 @@ let value: PromptProperties = "name_description";
 ## Values
 
 ```typescript
-"id" | "name" | "name_exact" | "description" | "name_description" | "context" | "tools" | "llm_config" | "last_updated" | "last_updated_by" | "agent_count" | "session_end_enabled"
+"id" | "name" | "name_exact" | "description" | "name_description" | "context" | "tools" | "llm_config" | "last_updated" | "last_updated_by" | "agent_count" | "session_end_enabled" | "lifecycle_status"
 ```

@@ -14,6 +14,7 @@ export const VoiceGroupProperties = {
   SkipCurrentLanguageInMessage: "skip_current_language_in_message",
   UpdatedAt: "updated_at",
   LastUpdatedBy: "last_updated_by",
+  LifecycleStatus: "lifecycle_status",
 } as const;
 /**
  * Names of voice group fields supported for filtering/sorting on list endpoint.

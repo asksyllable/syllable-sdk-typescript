@@ -513,7 +513,7 @@ run();
 
 ### Response
 
-**Promise\<[components.PromptHistory[]](../../models/.md)\>**
+**Promise\<[components.PromptHistoryResponse[]](../../models/.md)\>**
 
 ### Errors
 

@@ -95,7 +95,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponseInsightToolOutput](../../models/components/listresponseinsighttooloutput.md)\>**
+**Promise\<[components.ListResponseInsightToolResponse](../../models/components/listresponseinsighttoolresponse.md)\>**
 
 ### Errors
 
@@ -255,7 +255,7 @@ run();
 
 ### Response
 
-**Promise\<[components.InsightToolOutput](../../models/components/insighttooloutput.md)\>**
+**Promise\<[components.InsightToolResponse](../../models/components/insighttoolresponse.md)\>**
 
 ### Errors
 

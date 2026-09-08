@@ -21,6 +21,7 @@ export const PromptProperties = {
   LastUpdatedBy: "last_updated_by",
   AgentCount: "agent_count",
   SessionEndEnabled: "session_end_enabled",
+  LifecycleStatus: "lifecycle_status",
 } as const;
 /**
  * Names of prompt fields supported for filtering/sorting on list endpoint.

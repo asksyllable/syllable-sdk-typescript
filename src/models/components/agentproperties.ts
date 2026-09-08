@@ -27,6 +27,7 @@ export const AgentProperties = {
   ToolHeaders: "tool_headers",
   UpdatedAt: "updated_at",
   LastUpdatedBy: "last_updated_by",
+  LifecycleStatus: "lifecycle_status",
 } as const;
 /**
  * Names of agent fields supported for filtering/sorting on list endpoint.
