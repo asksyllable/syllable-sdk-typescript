@@ -7,11 +7,11 @@ Deprecated enum mirroring `VoiceGroupProperties` values.
 ```typescript
 import { LanguageGroupProperties } from "syllable-sdk/models/components";
 
-let value: LanguageGroupProperties = "skip_current_language_in_message";
+let value: LanguageGroupProperties = "updated_at";
 ```
 
 ## Values
 
 ```typescript
-"name" | "description" | "skip_current_language_in_message" | "updated_at" | "last_updated_by"
+"name" | "description" | "skip_current_language_in_message" | "updated_at" | "last_updated_by" | "lifecycle_status"
 ```

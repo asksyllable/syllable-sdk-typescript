@@ -24,7 +24,7 @@ export class SyllableSDKTools extends ClientSDK {
   async list(
     request: operations.InsightToolListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseInsightToolOutput> {
+  ): Promise<components.ListResponseInsightToolResponse> {
     return unwrapAsync(insightsToolsList(
       this,
       request,
@@ -58,7 +58,7 @@ export class SyllableSDKTools extends ClientSDK {
   async getById(
     request: operations.InsightToolGetByIdRequest,
     options?: RequestOptions,
-  ): Promise<components.InsightToolOutput> {
+  ): Promise<components.InsightToolResponse> {
     return unwrapAsync(insightsToolsGetById(
       this,
       request,

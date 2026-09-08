@@ -19,11 +19,22 @@ import {
   PromptLlmConfig$Outbound,
   PromptLlmConfig$outboundSchema,
 } from "./promptllmconfig.js";
+import {
+  ValidationIssue,
+  ValidationIssue$inboundSchema,
+  ValidationIssue$Outbound,
+  ValidationIssue$outboundSchema,
+} from "./validationissue.js";
 
 /**
- * Record of a specific version of a prompt.
+ * A historical prompt version, with the lifecycle of the model it was pinned to.
+ *
+ * @remarks
+ *
+ * Agents pinned to an old version run that version's model, so a retired model in the history is
+ * as much of a problem as one on the current version.
  */
-export type PromptHistory = {
+export type PromptHistoryResponse = {
   /**
    * Timestamp of the change resulting in this version
    */
@@ -72,11 +83,15 @@ export type PromptHistory = {
    * Whether this version of the prompt was created before history of tool-prompt linking was tracked
    */
   isPreEnhancements: boolean;
+  /**
+   * Lifecycle findings for the model this version was saved on.
+   */
+  validationIssues?: Array<ValidationIssue> | null | undefined;
 };
 
 /** @internal */
-export const PromptHistory$inboundSchema: z.ZodType<
-  PromptHistory,
+export const PromptHistoryResponse$inboundSchema: z.ZodType<
+  PromptHistoryResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -93,6 +108,8 @@ export const PromptHistory$inboundSchema: z.ZodType<
   session_end_tool: z.nullable(PromptHistoryLinkedTool$inboundSchema)
     .optional(),
   is_pre_enhancements: z.boolean(),
+  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -105,10 +122,11 @@ export const PromptHistory$inboundSchema: z.ZodType<
     "linked_tools": "linkedTools",
     "session_end_tool": "sessionEndTool",
     "is_pre_enhancements": "isPreEnhancements",
+    "validation_issues": "validationIssues",
   });
 });
 /** @internal */
-export type PromptHistory$Outbound = {
+export type PromptHistoryResponse$Outbound = {
   timestamp: string;
   prompt_id: string;
   version_number: number;
@@ -121,13 +139,14 @@ export type PromptHistory$Outbound = {
   linked_tools?: Array<PromptHistoryLinkedTool$Outbound> | undefined;
   session_end_tool?: PromptHistoryLinkedTool$Outbound | null | undefined;
   is_pre_enhancements: boolean;
+  validation_issues?: Array<ValidationIssue$Outbound> | null | undefined;
 };
 
 /** @internal */
-export const PromptHistory$outboundSchema: z.ZodType<
-  PromptHistory$Outbound,
+export const PromptHistoryResponse$outboundSchema: z.ZodType<
+  PromptHistoryResponse$Outbound,
   z.ZodTypeDef,
-  PromptHistory
+  PromptHistoryResponse
 > = z.object({
   timestamp: z.date().transform(v => v.toISOString()),
   promptId: z.string(),
@@ -141,6 +160,8 @@ export const PromptHistory$outboundSchema: z.ZodType<
   linkedTools: z.array(PromptHistoryLinkedTool$outboundSchema).optional(),
   sessionEndTool: z.nullable(PromptHistoryLinkedTool$outboundSchema).optional(),
   isPreEnhancements: z.boolean(),
+  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
@@ -153,18 +174,23 @@ export const PromptHistory$outboundSchema: z.ZodType<
     linkedTools: "linked_tools",
     sessionEndTool: "session_end_tool",
     isPreEnhancements: "is_pre_enhancements",
+    validationIssues: "validation_issues",
   });
 });
 
-export function promptHistoryToJSON(promptHistory: PromptHistory): string {
-  return JSON.stringify(PromptHistory$outboundSchema.parse(promptHistory));
+export function promptHistoryResponseToJSON(
+  promptHistoryResponse: PromptHistoryResponse,
+): string {
+  return JSON.stringify(
+    PromptHistoryResponse$outboundSchema.parse(promptHistoryResponse),
+  );
 }
-export function promptHistoryFromJSON(
+export function promptHistoryResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PromptHistory, SDKValidationError> {
+): SafeParseResult<PromptHistoryResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PromptHistory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PromptHistory' from JSON`,
+    (x) => PromptHistoryResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PromptHistoryResponse' from JSON`,
   );
 }

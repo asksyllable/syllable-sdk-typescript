@@ -109,7 +109,7 @@ export class Prompts extends ClientSDK {
   async promptsHistory(
     request: operations.PromptsHistoryRequest,
     options?: RequestOptions,
-  ): Promise<Array<components.PromptHistory>> {
+  ): Promise<Array<components.PromptHistoryResponse>> {
     return unwrapAsync(promptsPromptsHistory(
       this,
       request,

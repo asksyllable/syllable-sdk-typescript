@@ -7,11 +7,11 @@ Names of voice group fields supported for filtering/sorting on list endpoint.
 ```typescript
 import { VoiceGroupProperties } from "syllable-sdk/models/components";
 
-let value: VoiceGroupProperties = "last_updated_by";
+let value: VoiceGroupProperties = "lifecycle_status";
 ```
 
 ## Values
 
 ```typescript
-"name" | "description" | "skip_current_language_in_message" | "updated_at" | "last_updated_by"
+"name" | "description" | "skip_current_language_in_message" | "updated_at" | "last_updated_by" | "lifecycle_status"
 ```

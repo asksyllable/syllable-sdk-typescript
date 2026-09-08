@@ -1,13 +1,16 @@
-# PromptHistory
+# PromptHistoryResponse
 
-Record of a specific version of a prompt.
+A historical prompt version, with the lifecycle of the model it was pinned to.
+
+Agents pinned to an old version run that version's model, so a retired model in the history is
+as much of a problem as one on the current version.
 
 ## Example Usage
 
 ```typescript
-import { PromptHistory } from "syllable-sdk/models/components";
+import { PromptHistoryResponse } from "syllable-sdk/models/components";
 
-let value: PromptHistory = {
+let value: PromptHistoryResponse = {
   timestamp: new Date("2024-01-01T12:00:00Z"),
   promptId: "1",
   versionNumber: 1,
@@ -57,3 +60,4 @@ let value: PromptHistory = {
 | `linkedTools`                                                                                       | [components.PromptHistoryLinkedTool](../../models/components/prompthistorylinkedtool.md)[]          | :heavy_minus_sign:                                                                                  | Tools that were linked to this version of the prompt                                                |                                                                                                     |
 | `sessionEndTool`                                                                                    | [components.PromptHistoryLinkedTool](../../models/components/prompthistorylinkedtool.md)            | :heavy_minus_sign:                                                                                  | Session end tool that was configured on this version of the prompt, if any                          |                                                                                                     |
 | `isPreEnhancements`                                                                                 | *boolean*                                                                                           | :heavy_check_mark:                                                                                  | Whether this version of the prompt was created before history of tool-prompt linking was tracked    | true                                                                                                |
+| `validationIssues`                                                                                  | [components.ValidationIssue](../../models/components/validationissue.md)[]                          | :heavy_minus_sign:                                                                                  | Lifecycle findings for the model this version was saved on.                                         |                                                                                                     |

@@ -40,7 +40,7 @@ export function promptsPromptsHistory(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<components.PromptHistory>,
+    Array<components.PromptHistoryResponse>,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -66,7 +66,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      Array<components.PromptHistory>,
+      Array<components.PromptHistoryResponse>,
       | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
@@ -154,7 +154,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<components.PromptHistory>,
+    Array<components.PromptHistoryResponse>,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -165,7 +165,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.array(components.PromptHistory$inboundSchema)),
+    M.json(200, z.array(components.PromptHistoryResponse$inboundSchema)),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
