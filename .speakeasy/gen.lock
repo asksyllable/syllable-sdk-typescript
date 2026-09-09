@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 5512c296c10b6259f81a281df6025921
+  docChecksum: 81b4fbe79080014d4c98f79e86f6e678
   docVersion: 0.0.3
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 1.0.61-rc.7
-  configChecksum: b8fa350a6b573261d009a23c5ae66388
+  releaseVersion: 1.0.61-rc.8
+  configChecksum: 604ec172f6b5c58f1efbb956bfa5c6b9
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 57037bf3-307c-49c6-90cf-3a7ebc3217e4
-  pristine_commit_hash: ead9bd2c35fc8e7ab5f8d635d8452e3dc16139f3
-  pristine_tree_hash: 3eefc23ead8f0e4a8b28178afe3440ce8aa77da1
+  generation_id: 3c955bab-d419-4622-8134-4b44bb2ba509
+  pristine_commit_hash: bf08a60592ac6addc46070f88c902395187eebad
+  pristine_tree_hash: 88fcae4cb1929dfe3b29367aa736d2c53dbfc6ff
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2445,12 +2445,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:0558cce85b6aee6d63dbb2999ec8e6fdd4838702
-    pristine_git_object: 988379f3be156da849b627988f794e027fcea45a
+    last_write_checksum: sha1:5833abf48cd3320fb32c883a9ca2e0fee02221f9
+    pristine_git_object: aa26f5064bc23a18fa7e44927594e1307fee962d
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:6812c282f13055901a68c9362ce0f771f7f8b4ea
-    pristine_git_object: 63853aaf709dda63ea8f4e3e6b29e39739215e4a
+    last_write_checksum: sha1:48eb12f7c47dfe105939658f183a9dd2d88b9ea9
+    pristine_git_object: f1644904175c2e4367d20f7f22bd42503ca81cb0
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -3205,8 +3205,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:2b05412b92079ed501e1c552c8feff98bc0bc309
-    pristine_git_object: 419ab89ed3e9dc86a372d892dd22b7f2efe45ddd
+    last_write_checksum: sha1:ae294a10ca5bbe8a263b6bc73a9a0c540cccaa34
+    pristine_git_object: 1f122c444c0f84379186617d93170957dda734d2
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -3281,8 +3281,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:d641c23a2692da3127fbc62f2a21a02566ad9796
-    pristine_git_object: 3bbfe57cac7e76cfbc68ccb607349e7e07819177
+    last_write_checksum: sha1:fdf6d5887dc8a790a8133206d388b84167fbe056
+    pristine_git_object: af061920ce59b8477e3c24b1a3ccef4636db4535
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:cf5b4faae12a0b629bf6e4961c52e0117797d4c3
@@ -3297,8 +3297,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:0bc4707834483536b66f76b6263e91721542063d
-    pristine_git_object: 6a6521205fadf199ef5981416671b712ec75c77b
+    last_write_checksum: sha1:2a3f080ef20f1be0299b368915ff74bb86aec580
+    pristine_git_object: 752ded3b6c67af89e49e5aed00516f888be1b9a7
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:d89576cea2bef3856b7fc3e65b868875528be042
@@ -8014,15 +8014,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes:
-  * `syllablesdk.insights.workflows.insightsWorkflowFiles()`: **Added**
-  * `syllablesdk.insights.workflows.list()`:  `response.items[].lastFolderUploadAt` **Added**
-  * `syllablesdk.insights.workflows.create()`:  `response.lastFolderUploadAt` **Added**
-  * `syllablesdk.insights.workflows.getById()`:  `response.lastFolderUploadAt` **Added**
-  * `syllablesdk.insights.workflows.update()`:  `response.lastFolderUploadAt` **Added**
-  * `syllablesdk.insights.workflows.inactivate()`:  `response.lastFolderUploadAt` **Added**
-  * `syllablesdk.insights.workflows.activate()`:  `response.lastFolderUploadAt` **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
