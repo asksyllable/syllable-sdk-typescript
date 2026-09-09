@@ -61,6 +61,7 @@ export * from "./insightsworkflowactivate.js";
 export * from "./insightsworkflowdelete.js";
 export * from "./insightsworkflowexecutions.js";
 export * from "./insightsworkflowexecutionssummary.js";
+export * from "./insightsworkflowfiles.js";
 export * from "./insightsworkflowgetbyid.js";
 export * from "./insightsworkflowinactivate.js";
 export * from "./insightsworkflowlist.js";

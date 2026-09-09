@@ -94,6 +94,10 @@ export type InsightWorkflowOutput = {
    * Email of user who last updated Insight Workflow
    */
   lastUpdatedBy: string;
+  /**
+   * Timestamp of the most recent file upload to any folder associated with this workflow (null for non-upload workflows or until a file has been uploaded)
+   */
+  lastFolderUploadAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -124,6 +128,9 @@ export const InsightWorkflowOutput$inboundSchema: z.ZodType<
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   last_updated_by: z.string(),
+  last_folder_upload_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "insight_tool_ids": "insightToolIds",
@@ -135,6 +142,7 @@ export const InsightWorkflowOutput$inboundSchema: z.ZodType<
     "created_at": "createdAt",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
+    "last_folder_upload_at": "lastFolderUploadAt",
   });
 });
 /** @internal */
@@ -155,6 +163,7 @@ export type InsightWorkflowOutput$Outbound = {
   created_at?: string | undefined;
   updated_at?: string | undefined;
   last_updated_by: string;
+  last_folder_upload_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -180,6 +189,8 @@ export const InsightWorkflowOutput$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
   lastUpdatedBy: z.string(),
+  lastFolderUploadAt: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     insightToolIds: "insight_tool_ids",
@@ -191,6 +202,7 @@ export const InsightWorkflowOutput$outboundSchema: z.ZodType<
     createdAt: "created_at",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
+    lastFolderUploadAt: "last_folder_upload_at",
   });
 });
 

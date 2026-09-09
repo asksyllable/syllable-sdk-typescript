@@ -2434,6 +2434,37 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/insights/workflows/{workflow_id}/files"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.insights.workflows.insightsWorkflowFiles({
+                workflowId: 769070,
+                page: 0,
+                searchFields: [
+                  "status",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                orderBy: "upload_file_id",
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/insights/workflows/{workflow_id}/inactivate"]["put"]
     update:
       x-codeSamples:
