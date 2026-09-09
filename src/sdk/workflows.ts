@@ -8,6 +8,7 @@ import { insightsWorkflowsDelete } from "../funcs/insightsWorkflowsDelete.js";
 import { insightsWorkflowsExecutionsSummary } from "../funcs/insightsWorkflowsExecutionsSummary.js";
 import { insightsWorkflowsGetById } from "../funcs/insightsWorkflowsGetById.js";
 import { insightsWorkflowsInactivate } from "../funcs/insightsWorkflowsInactivate.js";
+import { insightsWorkflowsInsightsWorkflowFiles } from "../funcs/insightsWorkflowsInsightsWorkflowFiles.js";
 import { insightsWorkflowsList } from "../funcs/insightsWorkflowsList.js";
 import { insightsWorkflowsListExecutions } from "../funcs/insightsWorkflowsListExecutions.js";
 import { insightsWorkflowsListSessions } from "../funcs/insightsWorkflowsListSessions.js";
@@ -138,6 +139,29 @@ export class Workflows extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ListResponseWorkflowSessionRow> {
     return unwrapAsync(insightsWorkflowsListSessions(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Insight Workflow Files
+   *
+   * @remarks
+   * List the uploaded files under a workflow, one row per file, with each
+   * tool's results grouped into a ``results`` dict keyed by tool name.
+   *
+   * Files come from the workflow's execution queue, so pending, processing and
+   * failed files show up too, not just completed ones. A file that was queued
+   * more than once appears only once. Insights reused from another workflow
+   * still show up here.
+   */
+  async insightsWorkflowFiles(
+    request: operations.InsightsWorkflowFilesRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListResponseWorkflowFileRow> {
+    return unwrapAsync(insightsWorkflowsInsightsWorkflowFiles(
       this,
       request,
       options,

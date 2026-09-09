@@ -81,6 +81,7 @@ let value: ListResponseInsightWorkflowOutput = {
       createdAt: new Date("2026-09-08T00:00:00Z"),
       updatedAt: new Date("2026-09-09T00:00:00Z"),
       lastUpdatedBy: "user@email.com",
+      lastFolderUploadAt: new Date("2026-09-09T00:00:00Z"),
     },
   ],
   page: 0,
