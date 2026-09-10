@@ -336,6 +336,16 @@ run();
 
 * [list](docs/sdks/events/README.md#list) - Events List
 
+### [Experiments](docs/sdks/experiments/README.md)
+
+* [list](docs/sdks/experiments/README.md#list) - Experiments List
+* [create](docs/sdks/experiments/README.md#create) - Create Experiment
+* [getById](docs/sdks/experiments/README.md#getbyid) - Get Experiment By Id
+* [update](docs/sdks/experiments/README.md#update) - Update Experiment
+* [delete](docs/sdks/experiments/README.md#delete) - Delete Experiment
+* [experimentsStart](docs/sdks/experiments/README.md#experimentsstart) - Start Experiment
+* [experimentsStop](docs/sdks/experiments/README.md#experimentsstop) - Stop Experiment
+
 ### [Incidents](docs/sdks/incidents/README.md)
 
 * [list](docs/sdks/incidents/README.md#list) - List Incidents
@@ -618,6 +628,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`directoryList`](docs/sdks/directory/README.md#list) - Directory Member List
 - [`directoryUpdate`](docs/sdks/directory/README.md#update) - Update Directory Member
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
+- [`experimentsCreate`](docs/sdks/experiments/README.md#create) - Create Experiment
+- [`experimentsDelete`](docs/sdks/experiments/README.md#delete) - Delete Experiment
+- [`experimentsExperimentsStart`](docs/sdks/experiments/README.md#experimentsstart) - Start Experiment
+- [`experimentsExperimentsStop`](docs/sdks/experiments/README.md#experimentsstop) - Stop Experiment
+- [`experimentsGetById`](docs/sdks/experiments/README.md#getbyid) - Get Experiment By Id
+- [`experimentsList`](docs/sdks/experiments/README.md#list) - Experiments List
+- [`experimentsUpdate`](docs/sdks/experiments/README.md#update) - Update Experiment
 - [`incidentsCreate`](docs/sdks/incidents/README.md#create) - Create Incident
 - [`incidentsDelete`](docs/sdks/incidents/README.md#delete) - Delete Incident
 - [`incidentsGetById`](docs/sdks/incidents/README.md#getbyid) - Get Incident By Id

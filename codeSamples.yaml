@@ -1608,6 +1608,179 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/experiments/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.list({
+                page: 0,
+                searchFields: [
+                  "name",
+                ],
+                searchFieldValues: [
+                  "Some Object Name",
+                ],
+                startDatetime: "2023-01-01T00:00:00Z",
+                endDatetime: "2024-01-01T00:00:00Z",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/experiments/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.create({
+                name: "Shorter greeting",
+                variants: [
+                  {
+                    name: "b",
+                    weight: 10,
+                    agentId: 1,
+                  },
+                ],
+                targetId: 1,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/experiments/{experiment_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.delete({
+                experimentId: 487333,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/experiments/{experiment_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.getById({
+                experimentId: 34744,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/experiments/{experiment_id}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.update({
+                experimentId: 571406,
+                experimentUpdateRequest: {
+                  name: "Shorter greeting",
+                  variants: [
+                    {
+                      name: "b",
+                      weight: 10,
+                      agentId: 1,
+                    },
+                  ],
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/experiments/{experiment_id}/start"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.experimentsStart({
+                experimentId: 381743,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/experiments/{experiment_id}/stop"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.experimentsStop({
+                experimentId: 891925,
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/incidents/"]["get"]
     update:
       x-codeSamples:
