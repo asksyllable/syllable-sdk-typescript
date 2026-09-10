@@ -13,6 +13,7 @@ import { Dashboards } from "./dashboards.js";
 import { DataSources } from "./datasources.js";
 import { Directory } from "./directory.js";
 import { Events } from "./events.js";
+import { Experiments } from "./experiments.js";
 import { Incidents } from "./incidents.js";
 import { Insights } from "./insights.js";
 import { LanguageGroups } from "./languagegroups.js";
@@ -66,6 +67,11 @@ export class SyllableSDK extends ClientSDK {
   private _events?: Events;
   get events(): Events {
     return (this._events ??= new Events(this._options));
+  }
+
+  private _experiments?: Experiments;
+  get experiments(): Experiments {
+    return (this._experiments ??= new Experiments(this._options));
   }
 
   private _incidents?: Incidents;

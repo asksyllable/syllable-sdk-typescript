@@ -74,6 +74,13 @@ import { tool$directoryGetById } from "./tools/directoryGetById.js";
 import { tool$directoryList } from "./tools/directoryList.js";
 import { tool$directoryUpdate } from "./tools/directoryUpdate.js";
 import { tool$eventsList } from "./tools/eventsList.js";
+import { tool$experimentsCreate } from "./tools/experimentsCreate.js";
+import { tool$experimentsDelete } from "./tools/experimentsDelete.js";
+import { tool$experimentsExperimentsStart } from "./tools/experimentsExperimentsStart.js";
+import { tool$experimentsExperimentsStop } from "./tools/experimentsExperimentsStop.js";
+import { tool$experimentsGetById } from "./tools/experimentsGetById.js";
+import { tool$experimentsList } from "./tools/experimentsList.js";
+import { tool$experimentsUpdate } from "./tools/experimentsUpdate.js";
 import { tool$incidentsCreate } from "./tools/incidentsCreate.js";
 import { tool$incidentsDelete } from "./tools/incidentsDelete.js";
 import { tool$incidentsGetById } from "./tools/incidentsGetById.js";
@@ -206,7 +213,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.61",
+    version: "1.0.62-rc.1",
   });
 
   const client = new SyllableSDKCore({
@@ -263,6 +270,13 @@ export function createMCPServer(deps: {
   tool(tool$dataSourcesGetById);
   tool(tool$dataSourcesDelete);
   tool(tool$eventsList);
+  tool(tool$experimentsList);
+  tool(tool$experimentsCreate);
+  tool(tool$experimentsGetById);
+  tool(tool$experimentsUpdate);
+  tool(tool$experimentsDelete);
+  tool(tool$experimentsExperimentsStart);
+  tool(tool$experimentsExperimentsStop);
   tool(tool$incidentsList);
   tool(tool$incidentsCreate);
   tool(tool$incidentsUpdate);
