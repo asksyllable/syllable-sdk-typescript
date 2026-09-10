@@ -302,6 +302,8 @@ export * from "./toolproperties.js";
 export * from "./toolresponse.js";
 export * from "./toolresultdata.js";
 export * from "./toolupdaterequest.js";
+export * from "./transcriptconfidence.js";
+export * from "./transcriptwordconfidence.js";
 export * from "./ttsprovider.js";
 export * from "./twiliochannelconfigcreate.js";
 export * from "./twiliochannelconfigupdate.js";

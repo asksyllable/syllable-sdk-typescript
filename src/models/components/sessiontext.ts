@@ -3,9 +3,16 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  TranscriptConfidence,
+  TranscriptConfidence$inboundSchema,
+  TranscriptConfidence$Outbound,
+  TranscriptConfidence$outboundSchema,
+} from "./transcriptconfidence.js";
 
 /**
  * Information about a given message from a user to an agent or vice-versa.
@@ -27,6 +34,10 @@ export type SessionText = {
    * Content of the message
    */
   text?: string | null | undefined;
+  /**
+   * The STT provider's confidence for a user utterance. Absent on agent turns, and on user turns whose backend reported nothing -- absence means "not captured", never "the provider was certain this was wrong". NOT one comparable quantity: read `provider` and `utterance_source` before interpreting a value, and do not aggregate across providers. Deepgram reports a genuine acoustic confidence and a per-word breakdown; Google reports an utterance score its own documentation disclaims and no words; on Deepgram Flux the utterance score is the weakest word, computed by us rather than reported.
+   */
+  sttConfidence?: TranscriptConfidence | null | undefined;
 };
 
 /** @internal */
@@ -39,6 +50,11 @@ export const SessionText$inboundSchema: z.ZodType<
   lang: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
   text: z.nullable(z.string()).optional(),
+  stt_confidence: z.nullable(TranscriptConfidence$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "stt_confidence": "sttConfidence",
+  });
 });
 /** @internal */
 export type SessionText$Outbound = {
@@ -46,6 +62,7 @@ export type SessionText$Outbound = {
   lang?: string | null | undefined;
   source?: string | null | undefined;
   text?: string | null | undefined;
+  stt_confidence?: TranscriptConfidence$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -58,6 +75,11 @@ export const SessionText$outboundSchema: z.ZodType<
   lang: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
   text: z.nullable(z.string()).optional(),
+  sttConfidence: z.nullable(TranscriptConfidence$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sttConfidence: "stt_confidence",
+  });
 });
 
 export function sessionTextToJSON(sessionText: SessionText): string {
