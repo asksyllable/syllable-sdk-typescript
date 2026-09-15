@@ -167,7 +167,7 @@ async function $do(
   >(
     M.json(200, components.SessionTimelineResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail("4XX"),
+    M.fail([404, "4XX"]),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
