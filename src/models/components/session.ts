@@ -69,6 +69,22 @@ export type Session = {
    */
   promptVersionNumber?: number | null | undefined;
   /**
+   * ID of the agent experiment that was running on the channel target when the session started. Null when no experiment was running, which is the usual case.
+   */
+  experimentId?: string | null | undefined;
+  /**
+   * ID of the experiment variant that answered the session
+   */
+  experimentVariantId?: string | null | undefined;
+  /**
+   * Name of the experiment variant that answered the session.
+   */
+  experimentVariant?: string | null | undefined;
+  /**
+   * Whether the experiment variant that answered the session is the control
+   */
+  experimentVariantIsControl?: boolean | null | undefined;
+  /**
    * Duration of the session in seconds
    */
   duration?: number | null | undefined;
@@ -129,6 +145,10 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     prompt_name: z.nullable(z.string()).optional(),
     prompt_version: z.nullable(z.string()).optional(),
     prompt_version_number: z.nullable(z.number().int()).optional(),
+    experiment_id: z.nullable(z.string()).optional(),
+    experiment_variant_id: z.nullable(z.string()).optional(),
+    experiment_variant: z.nullable(z.string()).optional(),
+    experiment_variant_is_control: z.nullable(z.boolean()).optional(),
     duration: z.nullable(z.number()).optional(),
     session_label_id: z.nullable(z.string()).optional(),
     source: z.nullable(z.string()).optional(),
@@ -154,6 +174,10 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "prompt_name": "promptName",
       "prompt_version": "promptVersion",
       "prompt_version_number": "promptVersionNumber",
+      "experiment_id": "experimentId",
+      "experiment_variant_id": "experimentVariantId",
+      "experiment_variant": "experimentVariant",
+      "experiment_variant_is_control": "experimentVariantIsControl",
       "session_label_id": "sessionLabelId",
       "is_legacy": "isLegacy",
       "is_test": "isTest",
@@ -179,6 +203,10 @@ export type Session$Outbound = {
   prompt_name?: string | null | undefined;
   prompt_version?: string | null | undefined;
   prompt_version_number?: number | null | undefined;
+  experiment_id?: string | null | undefined;
+  experiment_variant_id?: string | null | undefined;
+  experiment_variant?: string | null | undefined;
+  experiment_variant_is_control?: boolean | null | undefined;
   duration?: number | null | undefined;
   session_label_id?: string | null | undefined;
   source?: string | null | undefined;
@@ -211,6 +239,10 @@ export const Session$outboundSchema: z.ZodType<
   promptName: z.nullable(z.string()).optional(),
   promptVersion: z.nullable(z.string()).optional(),
   promptVersionNumber: z.nullable(z.number().int()).optional(),
+  experimentId: z.nullable(z.string()).optional(),
+  experimentVariantId: z.nullable(z.string()).optional(),
+  experimentVariant: z.nullable(z.string()).optional(),
+  experimentVariantIsControl: z.nullable(z.boolean()).optional(),
   duration: z.nullable(z.number()).optional(),
   sessionLabelId: z.nullable(z.string()).optional(),
   source: z.nullable(z.string()).optional(),
@@ -236,6 +268,10 @@ export const Session$outboundSchema: z.ZodType<
     promptName: "prompt_name",
     promptVersion: "prompt_version",
     promptVersionNumber: "prompt_version_number",
+    experimentId: "experiment_id",
+    experimentVariantId: "experiment_variant_id",
+    experimentVariant: "experiment_variant",
+    experimentVariantIsControl: "experiment_variant_is_control",
     sessionLabelId: "session_label_id",
     isLegacy: "is_legacy",
     isTest: "is_test",

@@ -20,6 +20,8 @@ export const SessionProperties = {
   AgentName: "agent_name",
   PromptId: "prompt_id",
   PromptName: "prompt_name",
+  ExperimentId: "experiment_id",
+  ExperimentVariantId: "experiment_variant_id",
   Source: "source",
   Target: "target",
   Duration: "duration",
