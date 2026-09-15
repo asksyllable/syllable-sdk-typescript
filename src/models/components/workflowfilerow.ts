@@ -24,6 +24,10 @@ export type WorkflowFileRow = {
    */
   uploadFileId: number;
   /**
+   * Name of the uploaded file; null only when the file is entirely deleted
+   */
+  filename?: string | null | undefined;
+  /**
    * When the workflow execution started processing this file; null while the row is still PENDING
    */
   analyzedAt?: Date | null | undefined;
@@ -52,6 +56,7 @@ export const WorkflowFileRow$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   upload_file_id: z.number().int(),
+  filename: z.nullable(z.string()).optional(),
   analyzed_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -70,6 +75,7 @@ export const WorkflowFileRow$inboundSchema: z.ZodType<
 /** @internal */
 export type WorkflowFileRow$Outbound = {
   upload_file_id: number;
+  filename?: string | null | undefined;
   analyzed_at?: string | null | undefined;
   queued_at: string;
   status: string;
@@ -84,6 +90,7 @@ export const WorkflowFileRow$outboundSchema: z.ZodType<
   WorkflowFileRow
 > = z.object({
   uploadFileId: z.number().int(),
+  filename: z.nullable(z.string()).optional(),
   analyzedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   queuedAt: z.date().transform(v => v.toISOString()),
   status: z.string(),
