@@ -19,7 +19,7 @@ export type SearchFields = ClosedEnum<typeof SearchFields>;
 /**
  * The field whose value should be used to order the results
  */
-export const OrderBy = {
+export const QueryParamOrderBy = {
   SessionId: "session_id",
   Status: "status",
   StartedAt: "started_at",
@@ -28,7 +28,7 @@ export const OrderBy = {
 /**
  * The field whose value should be used to order the results
  */
-export type OrderBy = ClosedEnum<typeof OrderBy>;
+export type QueryParamOrderBy = ClosedEnum<typeof QueryParamOrderBy>;
 
 export type InsightsWorkflowSessionsRequest = {
   workflowId: number;
@@ -51,7 +51,7 @@ export type InsightsWorkflowSessionsRequest = {
   /**
    * The field whose value should be used to order the results
    */
-  orderBy?: OrderBy | null | undefined;
+  orderBy?: QueryParamOrderBy | null | undefined;
   /**
    * The direction in which to order the results
    */
@@ -74,11 +74,13 @@ export const SearchFields$outboundSchema: z.ZodNativeEnum<typeof SearchFields> =
   SearchFields$inboundSchema;
 
 /** @internal */
-export const OrderBy$inboundSchema: z.ZodNativeEnum<typeof OrderBy> = z
-  .nativeEnum(OrderBy);
+export const QueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamOrderBy
+> = z.nativeEnum(QueryParamOrderBy);
 /** @internal */
-export const OrderBy$outboundSchema: z.ZodNativeEnum<typeof OrderBy> =
-  OrderBy$inboundSchema;
+export const QueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamOrderBy
+> = QueryParamOrderBy$inboundSchema;
 
 /** @internal */
 export const InsightsWorkflowSessionsRequest$inboundSchema: z.ZodType<
@@ -91,7 +93,7 @@ export const InsightsWorkflowSessionsRequest$inboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   search_fields: z.array(SearchFields$inboundSchema).optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: z.nullable(OrderBy$inboundSchema).optional(),
+  order_by: z.nullable(QueryParamOrderBy$inboundSchema).optional(),
   order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   start_datetime: z.nullable(z.string()).optional(),
@@ -131,7 +133,7 @@ export const InsightsWorkflowSessionsRequest$outboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   searchFields: z.array(SearchFields$outboundSchema).optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: z.nullable(OrderBy$outboundSchema).optional(),
+  orderBy: z.nullable(QueryParamOrderBy$outboundSchema).optional(),
   orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   startDatetime: z.nullable(z.string()).optional(),

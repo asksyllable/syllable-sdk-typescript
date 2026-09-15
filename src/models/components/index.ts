@@ -151,7 +151,6 @@ export * from "./insightworkflowactivate.js";
 export * from "./insightworkflowcondition.js";
 export * from "./insightworkflowestimate.js";
 export * from "./insightworkflowexecutionoutput.js";
-export * from "./insightworkflowexecutionproperties.js";
 export * from "./insightworkflowexecutionsummary.js";
 export * from "./insightworkflowinput.js";
 export * from "./insightworkflowoutput.js";

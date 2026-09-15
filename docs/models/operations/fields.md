@@ -1,13 +1,11 @@
-# OrderBy
-
-The field whose value should be used to order the results
+# Fields
 
 ## Example Usage
 
 ```typescript
-import { OrderBy } from "syllable-sdk/models/operations";
+import { Fields } from "syllable-sdk/models/operations";
 
-let value: OrderBy = "created_at";
+let value: Fields = "created_at";
 ```
 
 ## Values

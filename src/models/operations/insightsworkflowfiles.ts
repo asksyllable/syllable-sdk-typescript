@@ -10,10 +10,16 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export const QueryParamSearchFields = {
+  Status: "status",
+  Filename: "filename",
+} as const;
+export type QueryParamSearchFields = ClosedEnum<typeof QueryParamSearchFields>;
+
 /**
  * The field whose value should be used to order the results
  */
-export const QueryParamOrderBy = {
+export const InsightsWorkflowFilesQueryParamOrderBy = {
   UploadFileId: "upload_file_id",
   Status: "status",
   StartedAt: "started_at",
@@ -22,7 +28,9 @@ export const QueryParamOrderBy = {
 /**
  * The field whose value should be used to order the results
  */
-export type QueryParamOrderBy = ClosedEnum<typeof QueryParamOrderBy>;
+export type InsightsWorkflowFilesQueryParamOrderBy = ClosedEnum<
+  typeof InsightsWorkflowFilesQueryParamOrderBy
+>;
 
 export type InsightsWorkflowFilesRequest = {
   workflowId: number;
@@ -37,7 +45,7 @@ export type InsightsWorkflowFilesRequest = {
   /**
    * String names of fields to search. Correspond by index to search field values
    */
-  searchFields?: Array<string> | undefined;
+  searchFields?: Array<QueryParamSearchFields> | undefined;
   /**
    * Values of fields to search. Correspond by index to search fields. Unless field name contains "list", an individual search field value cannot be a list
    */
@@ -45,7 +53,7 @@ export type InsightsWorkflowFilesRequest = {
   /**
    * The field whose value should be used to order the results
    */
-  orderBy?: QueryParamOrderBy | null | undefined;
+  orderBy?: InsightsWorkflowFilesQueryParamOrderBy | null | undefined;
   /**
    * The direction in which to order the results
    */
@@ -61,13 +69,23 @@ export type InsightsWorkflowFilesRequest = {
 };
 
 /** @internal */
-export const QueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
-  typeof QueryParamOrderBy
-> = z.nativeEnum(QueryParamOrderBy);
+export const QueryParamSearchFields$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSearchFields
+> = z.nativeEnum(QueryParamSearchFields);
 /** @internal */
-export const QueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamOrderBy
-> = QueryParamOrderBy$inboundSchema;
+export const QueryParamSearchFields$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamSearchFields
+> = QueryParamSearchFields$inboundSchema;
+
+/** @internal */
+export const InsightsWorkflowFilesQueryParamOrderBy$inboundSchema:
+  z.ZodNativeEnum<typeof InsightsWorkflowFilesQueryParamOrderBy> = z.nativeEnum(
+    InsightsWorkflowFilesQueryParamOrderBy,
+  );
+/** @internal */
+export const InsightsWorkflowFilesQueryParamOrderBy$outboundSchema:
+  z.ZodNativeEnum<typeof InsightsWorkflowFilesQueryParamOrderBy> =
+    InsightsWorkflowFilesQueryParamOrderBy$inboundSchema;
 
 /** @internal */
 export const InsightsWorkflowFilesRequest$inboundSchema: z.ZodType<
@@ -78,9 +96,10 @@ export const InsightsWorkflowFilesRequest$inboundSchema: z.ZodType<
   workflow_id: z.number().int(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
-  search_fields: z.array(z.string()).optional(),
+  search_fields: z.array(QueryParamSearchFields$inboundSchema).optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: z.nullable(QueryParamOrderBy$inboundSchema).optional(),
+  order_by: z.nullable(InsightsWorkflowFilesQueryParamOrderBy$inboundSchema)
+    .optional(),
   order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
   start_datetime: z.nullable(z.string()).optional(),
@@ -118,9 +137,10 @@ export const InsightsWorkflowFilesRequest$outboundSchema: z.ZodType<
   workflowId: z.number().int(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
-  searchFields: z.array(z.string()).optional(),
+  searchFields: z.array(QueryParamSearchFields$outboundSchema).optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: z.nullable(QueryParamOrderBy$outboundSchema).optional(),
+  orderBy: z.nullable(InsightsWorkflowFilesQueryParamOrderBy$outboundSchema)
+    .optional(),
   orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
   startDatetime: z.nullable(z.string()).optional(),
