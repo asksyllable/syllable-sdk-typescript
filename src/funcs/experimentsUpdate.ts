@@ -169,7 +169,7 @@ async function $do(
   >(
     M.json(200, components.ExperimentResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail([400, 404, "4XX"]),
+    M.fail([400, 404, 409, "4XX"]),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
