@@ -5,9 +5,40 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+/**
+ * The field whose value should be used to order the results
+ */
+export const OrderBy = {
+  Id: "id",
+  Status: "status",
+  CreatedAt: "created_at",
+  StartedAt: "started_at",
+  Priority: "priority",
+  SessionId: "session_id",
+  UploadFileId: "upload_file_id",
+  EventType: "event_type",
+} as const;
+/**
+ * The field whose value should be used to order the results
+ */
+export type OrderBy = ClosedEnum<typeof OrderBy>;
+
+export const Fields = {
+  Id: "id",
+  Status: "status",
+  CreatedAt: "created_at",
+  StartedAt: "started_at",
+  Priority: "priority",
+  SessionId: "session_id",
+  UploadFileId: "upload_file_id",
+  EventType: "event_type",
+} as const;
+export type Fields = ClosedEnum<typeof Fields>;
 
 export type InsightsWorkflowExecutionsRequest = {
   workflowId: number;
@@ -30,7 +61,7 @@ export type InsightsWorkflowExecutionsRequest = {
   /**
    * The field whose value should be used to order the results
    */
-  orderBy?: components.InsightWorkflowExecutionProperties | null | undefined;
+  orderBy?: OrderBy | null | undefined;
   /**
    * The direction in which to order the results
    */
@@ -38,10 +69,7 @@ export type InsightsWorkflowExecutionsRequest = {
   /**
    * The fields to include in the response
    */
-  fields?:
-    | Array<components.InsightWorkflowExecutionProperties>
-    | null
-    | undefined;
+  fields?: Array<Fields> | null | undefined;
   /**
    * The start datetime for filtering results
    */
@@ -51,6 +79,20 @@ export type InsightsWorkflowExecutionsRequest = {
    */
   endDatetime?: string | null | undefined;
 };
+
+/** @internal */
+export const OrderBy$inboundSchema: z.ZodNativeEnum<typeof OrderBy> = z
+  .nativeEnum(OrderBy);
+/** @internal */
+export const OrderBy$outboundSchema: z.ZodNativeEnum<typeof OrderBy> =
+  OrderBy$inboundSchema;
+
+/** @internal */
+export const Fields$inboundSchema: z.ZodNativeEnum<typeof Fields> = z
+  .nativeEnum(Fields);
+/** @internal */
+export const Fields$outboundSchema: z.ZodNativeEnum<typeof Fields> =
+  Fields$inboundSchema;
 
 /** @internal */
 export const InsightsWorkflowExecutionsRequest$inboundSchema: z.ZodType<
@@ -63,14 +105,10 @@ export const InsightsWorkflowExecutionsRequest$inboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   search_fields: z.array(z.string()).optional(),
   search_field_values: z.array(z.string()).optional(),
-  order_by: z.nullable(
-    components.InsightWorkflowExecutionProperties$inboundSchema,
-  ).optional(),
+  order_by: z.nullable(OrderBy$inboundSchema).optional(),
   order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
     .optional(),
-  fields: z.nullable(
-    z.array(components.InsightWorkflowExecutionProperties$inboundSchema),
-  ).optional(),
+  fields: z.nullable(z.array(Fields$inboundSchema)).optional(),
   start_datetime: z.nullable(z.string()).optional(),
   end_datetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -109,14 +147,10 @@ export const InsightsWorkflowExecutionsRequest$outboundSchema: z.ZodType<
   limit: z.number().int().default(25),
   searchFields: z.array(z.string()).optional(),
   searchFieldValues: z.array(z.string()).optional(),
-  orderBy: z.nullable(
-    components.InsightWorkflowExecutionProperties$outboundSchema,
-  ).optional(),
+  orderBy: z.nullable(OrderBy$outboundSchema).optional(),
   orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
     .optional(),
-  fields: z.nullable(
-    z.array(components.InsightWorkflowExecutionProperties$outboundSchema),
-  ).optional(),
+  fields: z.nullable(z.array(Fields$outboundSchema)).optional(),
   startDatetime: z.nullable(z.string()).optional(),
   endDatetime: z.nullable(z.string()).optional(),
 }).transform((v) => {
