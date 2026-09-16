@@ -343,6 +343,7 @@ run();
 * [getById](docs/sdks/experiments/README.md#getbyid) - Get Experiment By Id
 * [update](docs/sdks/experiments/README.md#update) - Update Experiment
 * [delete](docs/sdks/experiments/README.md#delete) - Delete Experiment
+* [results](docs/sdks/experiments/README.md#results) - Get Experiment Results
 * [experimentsStart](docs/sdks/experiments/README.md#experimentsstart) - Start Experiment
 * [experimentsStop](docs/sdks/experiments/README.md#experimentsstop) - Stop Experiment
 
@@ -634,6 +635,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`experimentsExperimentsStop`](docs/sdks/experiments/README.md#experimentsstop) - Stop Experiment
 - [`experimentsGetById`](docs/sdks/experiments/README.md#getbyid) - Get Experiment By Id
 - [`experimentsList`](docs/sdks/experiments/README.md#list) - Experiments List
+- [`experimentsResults`](docs/sdks/experiments/README.md#results) - Get Experiment Results
 - [`experimentsUpdate`](docs/sdks/experiments/README.md#update) - Update Experiment
 - [`incidentsCreate`](docs/sdks/incidents/README.md#create) - Create Incident
 - [`incidentsDelete`](docs/sdks/incidents/README.md#delete) - Delete Incident

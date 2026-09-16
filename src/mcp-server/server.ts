@@ -80,6 +80,7 @@ import { tool$experimentsExperimentsStart } from "./tools/experimentsExperiments
 import { tool$experimentsExperimentsStop } from "./tools/experimentsExperimentsStop.js";
 import { tool$experimentsGetById } from "./tools/experimentsGetById.js";
 import { tool$experimentsList } from "./tools/experimentsList.js";
+import { tool$experimentsResults } from "./tools/experimentsResults.js";
 import { tool$experimentsUpdate } from "./tools/experimentsUpdate.js";
 import { tool$incidentsCreate } from "./tools/incidentsCreate.js";
 import { tool$incidentsDelete } from "./tools/incidentsDelete.js";
@@ -213,7 +214,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.62-rc.11",
+    version: "1.0.62-rc.12",
   });
 
   const client = new SyllableSDKCore({
@@ -275,6 +276,7 @@ export function createMCPServer(deps: {
   tool(tool$experimentsGetById);
   tool(tool$experimentsUpdate);
   tool(tool$experimentsDelete);
+  tool(tool$experimentsResults);
   tool(tool$experimentsExperimentsStart);
   tool(tool$experimentsExperimentsStop);
   tool(tool$incidentsList);
