@@ -1739,6 +1739,27 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/experiments/{experiment_id}/results"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.experiments.results({
+                experimentId: 151833,
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/experiments/{experiment_id}/start"]["post"]
     update:
       x-codeSamples:

@@ -42,6 +42,7 @@ export * from "./eventslist.js";
 export * from "./experimentsdelete.js";
 export * from "./experimentsgetbyid.js";
 export * from "./experimentslist.js";
+export * from "./experimentsresults.js";
 export * from "./experimentsstart.js";
 export * from "./experimentsstop.js";
 export * from "./experimentsupdate.js";

@@ -8,6 +8,7 @@ import { experimentsExperimentsStart } from "../funcs/experimentsExperimentsStar
 import { experimentsExperimentsStop } from "../funcs/experimentsExperimentsStop.js";
 import { experimentsGetById } from "../funcs/experimentsGetById.js";
 import { experimentsList } from "../funcs/experimentsList.js";
+import { experimentsResults } from "../funcs/experimentsResults.js";
 import { experimentsUpdate } from "../funcs/experimentsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -94,6 +95,23 @@ export class Experiments extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(experimentsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Experiment Results
+   *
+   * @remarks
+   * Get the number of sessions each variant of an experiment has handled.
+   */
+  async results(
+    request: operations.ExperimentsResultsRequest,
+    options?: RequestOptions,
+  ): Promise<components.ExperimentResultsResponse> {
+    return unwrapAsync(experimentsResults(
       this,
       request,
       options,
