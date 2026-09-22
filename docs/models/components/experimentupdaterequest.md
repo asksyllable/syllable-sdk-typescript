@@ -12,7 +12,7 @@ let value: ExperimentUpdateRequest = {
   variants: [
     {
       name: "b",
-      weight: 10,
+      weight: 50,
       agentId: 1,
     },
   ],

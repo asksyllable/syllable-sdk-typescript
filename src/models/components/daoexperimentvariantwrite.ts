@@ -24,7 +24,7 @@ export type DaoExperimentVariantWrite = {
    */
   name: string;
   /**
-   * The relative weight of the variant, not a percentage. (E.g., if two variants both have a weight of 10, they are equally likely to be selected.)
+   * The percentage of the channel target's traffic this variant answers. The weights of an experiment's variants must add up to 100. (E.g., two variants with a weight of 50 each split the traffic evenly.)
    */
   weight: number;
   /**
