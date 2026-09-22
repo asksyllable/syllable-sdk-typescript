@@ -15,7 +15,7 @@ let value: ListResponseExperimentResponse = {
         {
           id: 1,
           name: "b",
-          weight: 10,
+          weight: 50,
           isControl: false,
           agentId: 1,
           agentName: "Front desk",
