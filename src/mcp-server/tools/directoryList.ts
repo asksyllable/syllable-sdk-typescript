@@ -14,7 +14,10 @@ export const tool$directoryList: ToolDefinition<typeof args> = {
   name: "directory-list",
   description: `Directory Member List
 
-List the directory_members`,
+List directory members.
+
+Filter by contact tags with \`tags.<key>=<value>\`. Repeat a key to match any of its
+values; filters for different keys must all match. Unknown keys return no matches.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await directoryList(
