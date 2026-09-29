@@ -62,6 +62,10 @@ export type SupportedLlm = {
    */
   fallback?: string | null | undefined;
   /**
+   * Provider-recommended replacement for this model version; no automatic substitution.
+   */
+  replacement?: string | null | undefined;
+  /**
    * Effective lifecycle status, resolved server-side against the current date. Populated on API responses; unset in the static catalog.
    */
   status?: LifecycleStatus | null | undefined;
@@ -82,6 +86,7 @@ export const SupportedLlm$inboundSchema: z.ZodType<
   sunset_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
   removed: z.boolean().default(false),
   fallback: z.nullable(z.string()).optional(),
+  replacement: z.nullable(z.string()).optional(),
   status: z.nullable(LifecycleStatus$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -101,6 +106,7 @@ export type SupportedLlm$Outbound = {
   sunset_date?: string | null | undefined;
   removed: boolean;
   fallback?: string | null | undefined;
+  replacement?: string | null | undefined;
   status?: string | null | undefined;
 };
 
@@ -120,6 +126,7 @@ export const SupportedLlm$outboundSchema: z.ZodType<
     .optional(),
   removed: z.boolean().default(false),
   fallback: z.nullable(z.string()).optional(),
+  replacement: z.nullable(z.string()).optional(),
   status: z.nullable(LifecycleStatus$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
