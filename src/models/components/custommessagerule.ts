@@ -12,6 +12,11 @@ import {
   DayOfWeek$inboundSchema,
   DayOfWeek$outboundSchema,
 } from "./dayofweek.js";
+import {
+  Holiday,
+  Holiday$inboundSchema,
+  Holiday$outboundSchema,
+} from "./holiday.js";
 
 /**
  * A rule used to determine whether a custom message should present a variant message based on
@@ -37,6 +42,10 @@ export type CustomMessageRule = {
    */
   date?: string | null | undefined;
   /**
+   * Named holidays for the rule. Matches if the current date is any of them, resolved in the assigned agent timezone, so no per-year rule is needed. Accepts the same names the @hours rule engine accepts and stores them canonically.
+   */
+  holidays?: Array<Holiday> | null | undefined;
+  /**
    * The days of the week for the rule
    */
   daysOfWeek?: Array<DayOfWeek> | null | undefined;
@@ -60,6 +69,7 @@ export const CustomMessageRule$inboundSchema: z.ZodType<
   time_range_start: z.nullable(z.string()).optional(),
   time_range_end: z.nullable(z.string()).optional(),
   date: z.nullable(z.string()).optional(),
+  holidays: z.nullable(z.array(Holiday$inboundSchema)).optional(),
   days_of_week: z.nullable(z.array(DayOfWeek$inboundSchema)).optional(),
   invert: z.boolean(),
   text: z.string(),
@@ -76,6 +86,7 @@ export type CustomMessageRule$Outbound = {
   time_range_start?: string | null | undefined;
   time_range_end?: string | null | undefined;
   date?: string | null | undefined;
+  holidays?: Array<string> | null | undefined;
   days_of_week?: Array<string> | null | undefined;
   invert: boolean;
   text: string;
@@ -91,6 +102,7 @@ export const CustomMessageRule$outboundSchema: z.ZodType<
   timeRangeStart: z.nullable(z.string()).optional(),
   timeRangeEnd: z.nullable(z.string()).optional(),
   date: z.nullable(z.string()).optional(),
+  holidays: z.nullable(z.array(Holiday$outboundSchema)).optional(),
   daysOfWeek: z.nullable(z.array(DayOfWeek$outboundSchema)).optional(),
   invert: z.boolean(),
   text: z.string(),

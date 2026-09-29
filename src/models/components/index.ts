@@ -127,6 +127,7 @@ export * from "./expressiontaskevents.js";
 export * from "./filterop.js";
 export * from "./folderdetails.js";
 export * from "./getvalueaction.js";
+export * from "./holiday.js";
 export * from "./incidentcreaterequest.js";
 export * from "./incidentorganizationresponse.js";
 export * from "./incidentproperties.js";
