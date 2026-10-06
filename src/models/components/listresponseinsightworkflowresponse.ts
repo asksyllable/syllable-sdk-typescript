@@ -8,17 +8,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  InsightWorkflowOutput,
-  InsightWorkflowOutput$inboundSchema,
-  InsightWorkflowOutput$Outbound,
-  InsightWorkflowOutput$outboundSchema,
-} from "./insightworkflowoutput.js";
+  InsightWorkflowResponse,
+  InsightWorkflowResponse$inboundSchema,
+  InsightWorkflowResponse$Outbound,
+  InsightWorkflowResponse$outboundSchema,
+} from "./insightworkflowresponse.js";
 
-export type ListResponseInsightWorkflowOutput = {
+export type ListResponseInsightWorkflowResponse = {
   /**
    * List of items returned from the query
    */
-  items: Array<InsightWorkflowOutput>;
+  items: Array<InsightWorkflowResponse>;
   /**
    * The page number of the results (0-based)
    */
@@ -38,12 +38,12 @@ export type ListResponseInsightWorkflowOutput = {
 };
 
 /** @internal */
-export const ListResponseInsightWorkflowOutput$inboundSchema: z.ZodType<
-  ListResponseInsightWorkflowOutput,
+export const ListResponseInsightWorkflowResponse$inboundSchema: z.ZodType<
+  ListResponseInsightWorkflowResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: z.array(InsightWorkflowOutput$inboundSchema),
+  items: z.array(InsightWorkflowResponse$inboundSchema),
   page: z.number().int(),
   page_size: z.number().int(),
   total_pages: z.nullable(z.number().int()).optional(),
@@ -56,8 +56,8 @@ export const ListResponseInsightWorkflowOutput$inboundSchema: z.ZodType<
   });
 });
 /** @internal */
-export type ListResponseInsightWorkflowOutput$Outbound = {
-  items: Array<InsightWorkflowOutput$Outbound>;
+export type ListResponseInsightWorkflowResponse$Outbound = {
+  items: Array<InsightWorkflowResponse$Outbound>;
   page: number;
   page_size: number;
   total_pages?: number | null | undefined;
@@ -65,12 +65,12 @@ export type ListResponseInsightWorkflowOutput$Outbound = {
 };
 
 /** @internal */
-export const ListResponseInsightWorkflowOutput$outboundSchema: z.ZodType<
-  ListResponseInsightWorkflowOutput$Outbound,
+export const ListResponseInsightWorkflowResponse$outboundSchema: z.ZodType<
+  ListResponseInsightWorkflowResponse$Outbound,
   z.ZodTypeDef,
-  ListResponseInsightWorkflowOutput
+  ListResponseInsightWorkflowResponse
 > = z.object({
-  items: z.array(InsightWorkflowOutput$outboundSchema),
+  items: z.array(InsightWorkflowResponse$outboundSchema),
   page: z.number().int(),
   pageSize: z.number().int(),
   totalPages: z.nullable(z.number().int()).optional(),
@@ -83,21 +83,22 @@ export const ListResponseInsightWorkflowOutput$outboundSchema: z.ZodType<
   });
 });
 
-export function listResponseInsightWorkflowOutputToJSON(
-  listResponseInsightWorkflowOutput: ListResponseInsightWorkflowOutput,
+export function listResponseInsightWorkflowResponseToJSON(
+  listResponseInsightWorkflowResponse: ListResponseInsightWorkflowResponse,
 ): string {
   return JSON.stringify(
-    ListResponseInsightWorkflowOutput$outboundSchema.parse(
-      listResponseInsightWorkflowOutput,
+    ListResponseInsightWorkflowResponse$outboundSchema.parse(
+      listResponseInsightWorkflowResponse,
     ),
   );
 }
-export function listResponseInsightWorkflowOutputFromJSON(
+export function listResponseInsightWorkflowResponseFromJSON(
   jsonString: string,
-): SafeParseResult<ListResponseInsightWorkflowOutput, SDKValidationError> {
+): SafeParseResult<ListResponseInsightWorkflowResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ListResponseInsightWorkflowOutput$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListResponseInsightWorkflowOutput' from JSON`,
+    (x) =>
+      ListResponseInsightWorkflowResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResponseInsightWorkflowResponse' from JSON`,
   );
 }

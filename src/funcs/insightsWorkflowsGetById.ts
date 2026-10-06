@@ -39,7 +39,7 @@ export function insightsWorkflowsGetById(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.InsightWorkflowOutput,
+    components.InsightWorkflowResponse,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -65,7 +65,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      components.InsightWorkflowOutput,
+      components.InsightWorkflowResponse,
       | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
@@ -156,7 +156,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.InsightWorkflowOutput,
+    components.InsightWorkflowResponse,
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -167,7 +167,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.InsightWorkflowOutput$inboundSchema),
+    M.json(200, components.InsightWorkflowResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

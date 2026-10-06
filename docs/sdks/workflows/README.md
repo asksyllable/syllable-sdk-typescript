@@ -100,7 +100,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ListResponseInsightWorkflowOutput](../../models/components/listresponseinsightworkflowoutput.md)\>**
+**Promise\<[components.ListResponseInsightWorkflowResponse](../../models/components/listresponseinsightworkflowresponse.md)\>**
 
 ### Errors
 
@@ -302,7 +302,7 @@ run();
 
 ### Response
 
-**Promise\<[components.InsightWorkflowOutput](../../models/components/insightworkflowoutput.md)\>**
+**Promise\<[components.InsightWorkflowResponse](../../models/components/insightworkflowresponse.md)\>**
 
 ### Errors
 

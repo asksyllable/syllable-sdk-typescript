@@ -29,7 +29,7 @@ export class Workflows extends ClientSDK {
   async list(
     request: operations.InsightsWorkflowListRequest,
     options?: RequestOptions,
-  ): Promise<components.ListResponseInsightWorkflowOutput> {
+  ): Promise<components.ListResponseInsightWorkflowResponse> {
     return unwrapAsync(insightsWorkflowsList(
       this,
       request,
@@ -63,7 +63,7 @@ export class Workflows extends ClientSDK {
   async getById(
     request: operations.InsightsWorkflowGetByIdRequest,
     options?: RequestOptions,
-  ): Promise<components.InsightWorkflowOutput> {
+  ): Promise<components.InsightWorkflowResponse> {
     return unwrapAsync(insightsWorkflowsGetById(
       this,
       request,

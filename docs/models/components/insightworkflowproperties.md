@@ -11,5 +11,5 @@ let value: InsightWorkflowProperties = "name_exact";
 ## Values
 
 ```typescript
-"id" | "name" | "name_exact" | "description" | "status" | "conditions" | "insight_tool_ids" | "updated_at"
+"id" | "name" | "name_exact" | "description" | "status" | "conditions" | "insight_tool_ids" | "updated_at" | "lifecycle_status"
 ```
