@@ -14,6 +14,7 @@ export const InsightWorkflowProperties = {
   Conditions: "conditions",
   InsightToolIds: "insight_tool_ids",
   UpdatedAt: "updated_at",
+  LifecycleStatus: "lifecycle_status",
 } as const;
 export type InsightWorkflowProperties = ClosedEnum<
   typeof InsightWorkflowProperties

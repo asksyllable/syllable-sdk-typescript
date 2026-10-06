@@ -13,6 +13,7 @@ export const InsightToolProperties = {
   ToolArguments: "tool_arguments",
   InsightToolDefinitionId: "insight_tool_definition_id",
   UpdatedAt: "updated_at",
+  LifecycleStatus: "lifecycle_status",
 } as const;
 export type InsightToolProperties = ClosedEnum<typeof InsightToolProperties>;
 
