@@ -20,6 +20,12 @@ import {
   DisplayCtaMapping$outboundSchema,
 } from "./displayctamapping.js";
 import {
+  DisplayPhraseMapping,
+  DisplayPhraseMapping$inboundSchema,
+  DisplayPhraseMapping$Outbound,
+  DisplayPhraseMapping$outboundSchema,
+} from "./displayphrasemapping.js";
+import {
   DisplayValueSource,
   DisplayValueSource$inboundSchema,
   DisplayValueSource$Outbound,
@@ -167,6 +173,10 @@ export type DisplayCardMapping = {
     | undefined;
   actions?: Array<DisplayActionMapping> | undefined;
   cta?: DisplayCtaMapping | null | undefined;
+  /**
+   * Localized phrase metadata keyed by output card field path.
+   */
+  i18n?: { [k: string]: DisplayPhraseMapping } | undefined;
 };
 
 /** @internal */
@@ -696,6 +706,7 @@ export const DisplayCardMapping$inboundSchema: z.ZodType<
   ).optional(),
   actions: z.array(DisplayActionMapping$inboundSchema).optional(),
   cta: z.nullable(DisplayCtaMapping$inboundSchema).optional(),
+  i18n: z.record(DisplayPhraseMapping$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "media.imageUrl": "mediaImageUrl",
@@ -785,6 +796,7 @@ export type DisplayCardMapping$Outbound = {
     | undefined;
   actions?: Array<DisplayActionMapping$Outbound> | undefined;
   cta?: DisplayCtaMapping$Outbound | null | undefined;
+  i18n?: { [k: string]: DisplayPhraseMapping$Outbound } | undefined;
 };
 
 /** @internal */
@@ -876,6 +888,7 @@ export const DisplayCardMapping$outboundSchema: z.ZodType<
   ).optional(),
   actions: z.array(DisplayActionMapping$outboundSchema).optional(),
   cta: z.nullable(DisplayCtaMapping$outboundSchema).optional(),
+  i18n: z.record(DisplayPhraseMapping$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     mediaImageUrl: "media.imageUrl",
