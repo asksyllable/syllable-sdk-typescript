@@ -2,8 +2,8 @@ speakeasyVersion: 1.800.1
 sources:
     SyllableSDK-OAS:
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:d7914d67b29809cc184c1363935b95310eea2dd5f25665ef80b94a2407e56bdd
-        sourceBlobDigest: sha256:7cf277b9d7fbb8f18b2b81de8f4596fe54056422a001d1cb552eae395ced0e82
+        sourceRevisionDigest: sha256:fe40301ef11e5bec8b64b9a56e9b628a5e07c5bfa4641b4ea2a3b22e563def72
+        sourceBlobDigest: sha256:9a1a1424d02f22bbd4d6a528e884b9b7ecdfeb8f57782743363e444849aa12cb
         tags:
             - latest
             - 0.0.3
@@ -11,10 +11,10 @@ targets:
     syllable-sdk:
         source: SyllableSDK-OAS
         sourceNamespace: syllable-sdk-oas
-        sourceRevisionDigest: sha256:d7914d67b29809cc184c1363935b95310eea2dd5f25665ef80b94a2407e56bdd
-        sourceBlobDigest: sha256:7cf277b9d7fbb8f18b2b81de8f4596fe54056422a001d1cb552eae395ced0e82
+        sourceRevisionDigest: sha256:fe40301ef11e5bec8b64b9a56e9b628a5e07c5bfa4641b4ea2a3b22e563def72
+        sourceBlobDigest: sha256:9a1a1424d02f22bbd4d6a528e884b9b7ecdfeb8f57782743363e444849aa12cb
         codeSamplesNamespace: code-samples-typescript-sdk-syllable-sdk-oas
-        codeSamplesRevisionDigest: sha256:2853442d24fa76a1f5bd8334d6744048250ec4cb4a472581cee2fefae7271b9e
+        codeSamplesRevisionDigest: sha256:80a50d0cfe0852f007aca4a426e047c813782a456ba4ff3a22f46ad8039503df
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
