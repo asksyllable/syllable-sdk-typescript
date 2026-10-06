@@ -108,6 +108,8 @@ export * from "./directoryresponseformat.js";
 export * from "./displayactionmapping.js";
 export * from "./displaycardmapping.js";
 export * from "./displayctamapping.js";
+export * from "./displaydatemapping.js";
+export * from "./displayphrasemapping.js";
 export * from "./displayvaluesource.js";
 export * from "./emailconfigurations.js";
 export * from "./event.js";
