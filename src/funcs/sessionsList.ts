@@ -37,6 +37,7 @@ export function sessionsList(
 ): APIPromise<
   Result<
     components.ListResponseSession,
+    | errors.SessionsListResponseBody
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -63,6 +64,7 @@ async function $do(
   [
     Result<
       components.ListResponseSession,
+      | errors.SessionsListResponseBody
       | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
@@ -158,6 +160,7 @@ async function $do(
 
   const [result] = await M.match<
     components.ListResponseSession,
+    | errors.SessionsListResponseBody
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -169,6 +172,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, components.ListResponseSession$inboundSchema),
+    M.jsonErr(400, errors.SessionsListResponseBody$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

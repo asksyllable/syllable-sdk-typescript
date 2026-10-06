@@ -956,7 +956,7 @@ run();
 * [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (6)</summary>
+<details><summary>Less common errors (10)</summary>
 
 <br />
 
@@ -969,6 +969,10 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

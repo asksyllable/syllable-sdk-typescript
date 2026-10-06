@@ -97,10 +97,11 @@ run();
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.HTTPValidationError | 422                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| errors.OutboundCampaignListResponseBody | 400                                     | application/json                        |
+| errors.HTTPValidationError              | 422                                     | application/json                        |
+| errors.SDKError                         | 4XX, 5XX                                | \*/\*                                   |
 
 ## create
 
