@@ -110,6 +110,7 @@ async function $do(
     "search_field_values": payload.search_field_values,
     "search_fields": payload.search_fields,
     "start_datetime": payload.start_datetime,
+    "status": payload.status,
   });
 
   const headers = new Headers(compactMap({
