@@ -24,8 +24,9 @@ export class Directory extends ClientSDK {
    * @remarks
    * List directory members.
    *
-   * Filter by contact tags with `tags.<key>=<value>`. Repeat a key to match any of its
-   * values; filters for different keys must all match. Unknown keys return no matches.
+   * Filter by contact tags with `tags.<key>=<value>`. Values use case-insensitive literal
+   * substring matching within the selected key. Repeat a key to match any supplied value;
+   * filters for different keys must all match. Unknown keys and empty values return no matches.
    */
   async list(
     request: operations.DirectoryMemberListRequest,
