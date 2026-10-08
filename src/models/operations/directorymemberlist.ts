@@ -11,9 +11,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DirectoryMemberListRequest = {
   /**
-   * If true, include soft-deleted members in the list. Default excludes them.
+   * If true, include soft-deleted members in the list. Default excludes them. Ignored when status is explicitly supplied.
    */
   includeDeleted?: boolean | undefined;
+  /**
+   * Filter contacts by deletion status: all includes active and deleted contacts; active excludes deleted contacts; deleted includes only deleted contacts. When supplied, overrides include_deleted. When omitted, include_deleted controls inclusion.
+   */
+  status?: components.DirectoryMemberStatus | null | undefined;
   /**
    * Directory response format: normalized (default) strips @hours and formats times; raw returns stored @hours values.
    */
@@ -63,6 +67,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   include_deleted: z.boolean().default(false),
+  status: z.nullable(components.DirectoryMemberStatus$inboundSchema).optional(),
   response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
@@ -93,6 +98,7 @@ export const DirectoryMemberListRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type DirectoryMemberListRequest$Outbound = {
   include_deleted: boolean;
+  status?: string | null | undefined;
   response_format?: string | undefined;
   page?: number | null | undefined;
   limit: number;
@@ -112,6 +118,8 @@ export const DirectoryMemberListRequest$outboundSchema: z.ZodType<
   DirectoryMemberListRequest
 > = z.object({
   includeDeleted: z.boolean().default(false),
+  status: z.nullable(components.DirectoryMemberStatus$outboundSchema)
+    .optional(),
   responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
   page: z.nullable(z.number().int()).optional(),
   limit: z.number().int().default(25),
