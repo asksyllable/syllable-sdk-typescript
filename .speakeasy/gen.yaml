@@ -32,7 +32,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.67-rc.1
+  version: 1.0.67-rc.2
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -80,6 +80,7 @@ typescript:
   modelPropertyCasing: camel
   moduleFormat: commonjs
   multipartArrayFormat: legacy
+  numericEnumMemberNames: legacy
   outputModelSuffix: output
   packageName: syllable-sdk
   preApplyUnionDiscriminators: true
