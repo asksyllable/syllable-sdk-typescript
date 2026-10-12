@@ -47,7 +47,7 @@ export type InsightWorkflowCondition = {
    */
   folderList?: Array<number> | null | undefined;
   /**
-   * Information about the sheet to be used for the workflow
+   * Legacy sheet metadata, retained for viewing retired workflows
    */
   sheetInfo?: { [k: string]: string } | null | undefined;
 };
