@@ -7137,3 +7137,13 @@ Based on:
 - [typescript v1.0.68-rc.5] .
 ### Releases
 - [NPM v1.0.68-rc.5] https://www.npmjs.com/package/syllable-sdk/v/1.0.68-rc.5 - .
+
+## 2026-10-13 17:09:02
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.802.0 (2.948.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.0.68-rc.6] .
+### Releases
+- [NPM v1.0.68-rc.6] https://www.npmjs.com/package/syllable-sdk/v/1.0.68-rc.6 - .
