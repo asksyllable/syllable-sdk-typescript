@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:b9f5c34aa11cf7544024ba2eae9645e9cc0e3d69bc909fd7480148a4929757c6
         sourceBlobDigest: sha256:940ca87bd5227c55da8477581d74b912b7f1953866017fbed50b2f102d5c8a18
         codeSamplesNamespace: code-samples-typescript-sdk-syllable-sdk-oas
-        codeSamplesRevisionDigest: sha256:ed7dc0bf268247762a177c27b8bbc4d423337bf2dc0fb04abcca35460a1b74f2
+        codeSamplesRevisionDigest: sha256:f23589b7e2693e61d8f121c1fec82907027ac111bc73f3f8087a880f30e94114
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
