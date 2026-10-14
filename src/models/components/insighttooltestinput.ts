@@ -9,6 +9,16 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
+ * The session ID of the session against which to run the tool
+ */
+export type SessionId = number | string;
+
+/**
+ * The file ID of the uploaded file against which to run the tool
+ */
+export type UploadFileId = number | string;
+
+/**
  * Request model to test an insight tool.
  */
 export type InsightToolTestInput = {
@@ -19,12 +29,70 @@ export type InsightToolTestInput = {
   /**
    * The session ID of the session against which to run the tool
    */
-  sessionId?: number | null | undefined;
+  sessionId?: number | string | null | undefined;
   /**
    * The file ID of the uploaded file against which to run the tool
    */
-  uploadFileId?: number | null | undefined;
+  uploadFileId?: number | string | null | undefined;
 };
+
+/** @internal */
+export const SessionId$inboundSchema: z.ZodType<
+  SessionId,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number().int(), z.string()]);
+/** @internal */
+export type SessionId$Outbound = number | string;
+
+/** @internal */
+export const SessionId$outboundSchema: z.ZodType<
+  SessionId$Outbound,
+  z.ZodTypeDef,
+  SessionId
+> = z.union([z.number().int(), z.string()]);
+
+export function sessionIdToJSON(sessionId: SessionId): string {
+  return JSON.stringify(SessionId$outboundSchema.parse(sessionId));
+}
+export function sessionIdFromJSON(
+  jsonString: string,
+): SafeParseResult<SessionId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SessionId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SessionId' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadFileId$inboundSchema: z.ZodType<
+  UploadFileId,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number().int(), z.string()]);
+/** @internal */
+export type UploadFileId$Outbound = number | string;
+
+/** @internal */
+export const UploadFileId$outboundSchema: z.ZodType<
+  UploadFileId$Outbound,
+  z.ZodTypeDef,
+  UploadFileId
+> = z.union([z.number().int(), z.string()]);
+
+export function uploadFileIdToJSON(uploadFileId: UploadFileId): string {
+  return JSON.stringify(UploadFileId$outboundSchema.parse(uploadFileId));
+}
+export function uploadFileIdFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadFileId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadFileId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadFileId' from JSON`,
+  );
+}
 
 /** @internal */
 export const InsightToolTestInput$inboundSchema: z.ZodType<
@@ -33,8 +101,9 @@ export const InsightToolTestInput$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   tool_name: z.string(),
-  session_id: z.nullable(z.number().int()).optional(),
-  upload_file_id: z.nullable(z.number().int()).optional(),
+  session_id: z.nullable(z.union([z.number().int(), z.string()])).optional(),
+  upload_file_id: z.nullable(z.union([z.number().int(), z.string()]))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "tool_name": "toolName",
@@ -45,8 +114,8 @@ export const InsightToolTestInput$inboundSchema: z.ZodType<
 /** @internal */
 export type InsightToolTestInput$Outbound = {
   tool_name: string;
-  session_id?: number | null | undefined;
-  upload_file_id?: number | null | undefined;
+  session_id?: number | string | null | undefined;
+  upload_file_id?: number | string | null | undefined;
 };
 
 /** @internal */
@@ -56,8 +125,8 @@ export const InsightToolTestInput$outboundSchema: z.ZodType<
   InsightToolTestInput
 > = z.object({
   toolName: z.string(),
-  sessionId: z.nullable(z.number().int()).optional(),
-  uploadFileId: z.nullable(z.number().int()).optional(),
+  sessionId: z.nullable(z.union([z.number().int(), z.string()])).optional(),
+  uploadFileId: z.nullable(z.union([z.number().int(), z.string()])).optional(),
 }).transform((v) => {
   return remap$(v, {
     toolName: "tool_name",

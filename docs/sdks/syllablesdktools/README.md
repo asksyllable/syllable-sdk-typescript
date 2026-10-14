@@ -432,7 +432,7 @@ run();
 
 ## insightsToolTest
 
-Manually run the given insight tool against a session and return the response.
+Run the saved tool against one session or uploaded file without persisting insights.
 
 ### Example Usage
 
@@ -447,6 +447,8 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.insights.tools.insightsToolTest({
     toolName: "summary-tool",
+    sessionId: 283467,
+    uploadFileId: 283467,
   });
 
   console.log(result);
@@ -472,6 +474,8 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await insightsToolsInsightsToolTest(syllableSDK, {
     toolName: "summary-tool",
+    sessionId: 283467,
+    uploadFileId: 283467,
   });
   if (res.ok) {
     const { value: result } = res;
@@ -495,7 +499,7 @@ run();
 
 ### Response
 
-**Promise\<[any](../../models/.md)\>**
+**Promise\<[operations.InsightsToolTestResponseInsightsToolTest](../../models/operations/insightstooltestresponseinsightstooltest.md)\>**
 
 ### Errors
 
