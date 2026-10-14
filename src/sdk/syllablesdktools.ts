@@ -104,12 +104,12 @@ export class SyllableSDKTools extends ClientSDK {
    * Test Insights Tool
    *
    * @remarks
-   * Manually run the given insight tool against a session and return the response.
+   * Run the saved tool against one session or uploaded file without persisting insights.
    */
   async insightsToolTest(
     request: components.InsightToolTestInput,
     options?: RequestOptions,
-  ): Promise<any> {
+  ): Promise<operations.InsightsToolTestResponseInsightsToolTest> {
     return unwrapAsync(insightsToolsInsightsToolTest(
       this,
       request,

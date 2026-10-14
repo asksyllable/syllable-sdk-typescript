@@ -14,7 +14,7 @@ export const tool$insightsToolsInsightsToolTest: ToolDefinition<typeof args> = {
   name: "insights-tools-insights-tool-test",
   description: `Test Insights Tool
 
-Manually run the given insight tool against a session and return the response.`,
+Run the saved tool against one session or uploaded file without persisting insights.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await insightsToolsInsightsToolTest(

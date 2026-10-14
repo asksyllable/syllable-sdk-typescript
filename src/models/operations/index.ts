@@ -61,6 +61,7 @@ export * from "./insightsfolderupdate.js";
 export * from "./insightsfolderuploadfile.js";
 export * from "./insightslist.js";
 export * from "./insightstooldelete.js";
+export * from "./insightstooltest.js";
 export * from "./insightstoolupdate.js";
 export * from "./insightsuploadlistfiles.js";
 export * from "./insightsuploadmovefiles.js";
