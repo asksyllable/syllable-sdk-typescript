@@ -120,14 +120,21 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.experiments.create({
     name: "Shorter greeting",
+    description: "Test whether a shorter greeting reduces call duration.",
     variants: [
       {
-        name: "b",
-        weight: 10,
-        agentId: 1,
+        name: "control",
+        weight: 50,
+        isControl: true,
+        agentId: 10,
+      },
+      {
+        name: "short greeting",
+        weight: 50,
+        agentId: 11,
       },
     ],
-    targetId: 1,
+    targetId: 7,
   });
 
   console.log(result);
@@ -153,14 +160,21 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await experimentsCreate(syllableSDK, {
     name: "Shorter greeting",
+    description: "Test whether a shorter greeting reduces call duration.",
     variants: [
       {
-        name: "b",
-        weight: 10,
-        agentId: 1,
+        name: "control",
+        weight: 50,
+        isControl: true,
+        agentId: 10,
+      },
+      {
+        name: "short greeting",
+        weight: 50,
+        agentId: 11,
       },
     ],
-    targetId: 1,
+    targetId: 7,
   });
   if (res.ok) {
     const { value: result } = res;
@@ -286,11 +300,18 @@ async function run() {
     experimentId: 571406,
     experimentUpdateRequest: {
       name: "Shorter greeting",
+      description: "Test whether a shorter greeting reduces call duration.",
       variants: [
         {
-          name: "b",
-          weight: 10,
-          agentId: 1,
+          name: "control",
+          weight: 50,
+          isControl: true,
+          agentId: 10,
+        },
+        {
+          name: "short greeting",
+          weight: 50,
+          agentId: 11,
         },
       ],
     },
@@ -321,11 +342,18 @@ async function run() {
     experimentId: 571406,
     experimentUpdateRequest: {
       name: "Shorter greeting",
+      description: "Test whether a shorter greeting reduces call duration.",
       variants: [
         {
-          name: "b",
-          weight: 10,
-          agentId: 1,
+          name: "control",
+          weight: 50,
+          isControl: true,
+          agentId: 10,
+        },
+        {
+          name: "short greeting",
+          weight: 50,
+          agentId: 11,
         },
       ],
     },
