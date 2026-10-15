@@ -15,7 +15,11 @@ import {
 } from "./daoexperimentvariantwrite.js";
 
 /**
- * Request model to create an experiment.
+ * Create an experiment with at least two distinct agents and one control variant.
+ *
+ * @remarks
+ *
+ * Variant weights are positive whole-number percentages that must total 100.
  */
 export type ExperimentCreateRequest = {
   /**
@@ -27,9 +31,9 @@ export type ExperimentCreateRequest = {
    */
   description?: string | null | undefined;
   /**
-   * The variants of the experiment, as a complete set. Two or more, each on a different agent, exactly one of them the control.
+   * The complete set of variants for this experiment. Include at least 2 variants that use distinct agents, mark exactly one variant as the control, and assign positive whole number weights that total 100.
    */
-  variants?: Array<DaoExperimentVariantWrite> | undefined;
+  variants: Array<DaoExperimentVariantWrite>;
   /**
    * The channel target being split
    */
@@ -44,7 +48,7 @@ export const ExperimentCreateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
-  variants: z.array(DaoExperimentVariantWrite$inboundSchema).optional(),
+  variants: z.array(DaoExperimentVariantWrite$inboundSchema),
   target_id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
@@ -55,7 +59,7 @@ export const ExperimentCreateRequest$inboundSchema: z.ZodType<
 export type ExperimentCreateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
-  variants?: Array<DaoExperimentVariantWrite$Outbound> | undefined;
+  variants: Array<DaoExperimentVariantWrite$Outbound>;
   target_id: number;
 };
 
@@ -67,7 +71,7 @@ export const ExperimentCreateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
-  variants: z.array(DaoExperimentVariantWrite$outboundSchema).optional(),
+  variants: z.array(DaoExperimentVariantWrite$outboundSchema),
   targetId: z.number().int(),
 }).transform((v) => {
   return remap$(v, {

@@ -14,7 +14,12 @@ import {
 } from "./daoexperimentvariantwrite.js";
 
 /**
- * Request model to update an experiment.
+ * Replace an experiment's name, hypothesis, and complete variant set.
+ *
+ * @remarks
+ *
+ * Include at least two variants that use distinct agents. Mark exactly one as the control and use
+ * positive whole-number weights that total 100.
  */
 export type ExperimentUpdateRequest = {
   /**
@@ -26,9 +31,9 @@ export type ExperimentUpdateRequest = {
    */
   description?: string | null | undefined;
   /**
-   * The variants of the experiment, as a complete set. Two or more, each on a different agent, exactly one of them the control.
+   * The complete set of variants for this experiment. Include at least 2 variants that use distinct agents, mark exactly one variant as the control, and assign positive whole number weights that total 100.
    */
-  variants?: Array<DaoExperimentVariantWrite> | undefined;
+  variants: Array<DaoExperimentVariantWrite>;
 };
 
 /** @internal */
@@ -39,13 +44,13 @@ export const ExperimentUpdateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
-  variants: z.array(DaoExperimentVariantWrite$inboundSchema).optional(),
+  variants: z.array(DaoExperimentVariantWrite$inboundSchema),
 });
 /** @internal */
 export type ExperimentUpdateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
-  variants?: Array<DaoExperimentVariantWrite$Outbound> | undefined;
+  variants: Array<DaoExperimentVariantWrite$Outbound>;
 };
 
 /** @internal */
@@ -56,7 +61,7 @@ export const ExperimentUpdateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
-  variants: z.array(DaoExperimentVariantWrite$outboundSchema).optional(),
+  variants: z.array(DaoExperimentVariantWrite$outboundSchema),
 });
 
 export function experimentUpdateRequestToJSON(
