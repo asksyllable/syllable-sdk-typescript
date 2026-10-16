@@ -66,7 +66,6 @@ let value: ChannelTargetResponse = {
       llmConfig: {
         apiVersion: "2024-06-01",
         temperature: 1,
-        seed: 123,
       },
       sessionEndToolId: 1,
       editComments:
