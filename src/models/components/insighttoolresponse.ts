@@ -37,7 +37,7 @@ export type InsightToolResponse = {
    */
   version: number;
   /**
-   * Arguments for calling the insight tool
+   * Arguments for calling the insight tool. LLM tools carry their configuration in llm_config. Its optional integer seed is deprecated by Syllable and should be left unset for new configurations. Seed does not guarantee identical responses; support depends on provider, model and endpoint. OpenAI/Azure Responses and Anthropic sampling do not support seed. Configured values (including zero) produce nonblocking llm-seed-deprecated findings at $.tool_arguments.llm_config.seed in configuration responses. Unset/null values do not. Saved values do not establish past request handling.
    */
   toolArguments?: any | undefined;
   /**
@@ -65,7 +65,7 @@ export type InsightToolResponse = {
    */
   lastUpdatedBy: string;
   /**
-   * Non-blocking findings for the saved insight tool (e.g. a deprecated model warning). Warnings and infos are informational; errors block the save.
+   * Current findings for the saved insight tool. Configured seed (including zero) returns llm-seed-deprecated at $.tool_arguments.llm_config.seed; unset/null seed does not. Known Anthropic seed restrictions are reported separately as llm-seed-unsupported. Seed warnings do not block saves or establish past request handling. Model lifecycle findings are also included; retired models block saves but can appear on reads. Explicitly projected lists can omit findings; their absence does not establish that seed is unset or supported.
    */
   validationIssues?: Array<ValidationIssue> | null | undefined;
 };

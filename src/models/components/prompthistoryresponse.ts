@@ -60,7 +60,7 @@ export type PromptHistoryResponse = {
    */
   promptName: string;
   /**
-   * String representation of LLM config for the prompt at this version
+   * Saved LLM configuration for the prompt at this version
    */
   llmConfig?: PromptLlmConfig | null | undefined;
   /**
@@ -84,7 +84,7 @@ export type PromptHistoryResponse = {
    */
   isPreEnhancements: boolean;
   /**
-   * Lifecycle findings for the model this version was saved on.
+   * Current model lifecycle and seed policy findings for this historical version. llm-seed-deprecated points to $.llm_config.seed when configured, including zero; unset/null seed does not produce a warning. Saved Anthropic seed values also return llm-seed-unsupported. These findings do not establish the endpoint or seed handling of historical requests.
    */
   validationIssues?: Array<ValidationIssue> | null | undefined;
 };
