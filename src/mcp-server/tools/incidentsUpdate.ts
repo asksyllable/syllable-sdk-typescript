@@ -20,7 +20,7 @@ Update an existing incident`,
     const [result, apiCall] = await incidentsUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

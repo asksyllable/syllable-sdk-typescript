@@ -20,7 +20,7 @@ Send a new message`,
     const [result, apiCall] = await agentsTestSendTestMessage(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

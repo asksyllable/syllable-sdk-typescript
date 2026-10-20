@@ -20,7 +20,7 @@ Consolidated, time-ordered timeline of a session's events.`,
     const [result, apiCall] = await sessionsTimelineGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

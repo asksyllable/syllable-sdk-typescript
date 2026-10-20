@@ -20,7 +20,7 @@ Deprecated alias for \`DELETE /api/v1/voice_groups/{voice_group_id}\`.`,
     const [result, apiCall] = await languageGroupsDelete(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

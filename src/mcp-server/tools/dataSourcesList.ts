@@ -20,7 +20,7 @@ Fetch metadata about all data sources, not including their text.`,
     const [result, apiCall] = await dataSourcesList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -21,7 +21,7 @@ Update a SIP IP range. The verified status is managed by Syllable only.`,
       const [result, apiCall] = await organizationsSipIpRangesUpdate(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

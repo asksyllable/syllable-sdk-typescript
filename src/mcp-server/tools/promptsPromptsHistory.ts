@@ -20,7 +20,7 @@ Get a list of historical versions of a prompt by its ID`,
     const [result, apiCall] = await promptsPromptsHistory(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

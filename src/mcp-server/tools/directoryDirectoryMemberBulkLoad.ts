@@ -28,7 +28,7 @@ upload with a 400 naming the offending record(s); nothing is written.`,
     const [result, apiCall] = await directoryDirectoryMemberBulkLoad(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -21,7 +21,7 @@ Restore a soft-deleted directory member.`,
       const [result, apiCall] = await directoryDirectoryMemberRestore(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

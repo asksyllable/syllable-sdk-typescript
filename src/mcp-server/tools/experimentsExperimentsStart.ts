@@ -20,7 +20,7 @@ Start an experiment. (Only an experiment in 'draft' status can be started.)`,
     const [result, apiCall] = await experimentsExperimentsStart(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

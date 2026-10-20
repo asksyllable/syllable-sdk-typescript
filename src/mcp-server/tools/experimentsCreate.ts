@@ -20,7 +20,7 @@ Create a new experiment.`,
     const [result, apiCall] = await experimentsCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -20,7 +20,7 @@ Send a welcome email to a user.`,
     const [result, apiCall] = await usersUsersSendEmail(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

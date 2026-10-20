@@ -20,7 +20,7 @@ Get a prompt by ID`,
     const [result, apiCall] = await promptsGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -20,7 +20,7 @@ Update an Insights tool.`,
     const [result, apiCall] = await insightsToolsUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -23,7 +23,7 @@ RETURNS: List of dashboards`,
     const [result, apiCall] = await dashboardsPostListDashboard(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

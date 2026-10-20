@@ -20,7 +20,7 @@ List service incidents with pagination and filtering`,
     const [result, apiCall] = await incidentsList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -20,7 +20,7 @@ Delete a service. A service with linked tools cannot be deleted.`,
     const [result, apiCall] = await servicesDelete(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

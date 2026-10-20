@@ -20,7 +20,7 @@ Get a InsightWorkflow by ID.`,
     const [result, apiCall] = await insightsWorkflowsGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

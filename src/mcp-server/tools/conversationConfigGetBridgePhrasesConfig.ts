@@ -22,7 +22,7 @@ Get the bridge phrases configuration.`,
     const [result, apiCall] = await conversationConfigGetBridgePhrasesConfig(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

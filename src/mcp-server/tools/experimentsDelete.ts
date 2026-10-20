@@ -20,7 +20,7 @@ Delete a (non-running) experiment.`,
     const [result, apiCall] = await experimentsDelete(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

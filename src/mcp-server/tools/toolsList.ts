@@ -20,7 +20,7 @@ List the existing tools`,
     const [result, apiCall] = await toolsList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

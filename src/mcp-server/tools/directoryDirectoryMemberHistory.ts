@@ -22,7 +22,7 @@ Version 1 is always the oldest; order_by_direction only controls response order.
       const [result, apiCall] = await directoryDirectoryMemberHistory(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

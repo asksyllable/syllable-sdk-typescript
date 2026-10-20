@@ -20,7 +20,7 @@ Create a new incident`,
     const [result, apiCall] = await incidentsCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

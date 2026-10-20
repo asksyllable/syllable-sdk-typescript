@@ -13,7 +13,7 @@ Fetch the current organization.`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await organizationsOrganizationsGet(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

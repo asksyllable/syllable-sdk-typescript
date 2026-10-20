@@ -20,7 +20,7 @@ Create a new service.`,
     const [result, apiCall] = await servicesCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

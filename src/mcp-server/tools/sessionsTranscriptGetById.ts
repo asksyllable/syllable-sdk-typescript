@@ -32,7 +32,7 @@ caller polling without a limit would never stop.`,
     const [result, apiCall] = await sessionsTranscriptGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

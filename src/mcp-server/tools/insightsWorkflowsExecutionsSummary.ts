@@ -24,7 +24,7 @@ passed as \`start_datetime\`).`,
     const [result, apiCall] = await insightsWorkflowsExecutionsSummary(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

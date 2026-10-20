@@ -20,7 +20,7 @@ List the existing custom_messages`,
     const [result, apiCall] = await customMessagesList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

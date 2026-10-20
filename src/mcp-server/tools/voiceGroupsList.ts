@@ -20,7 +20,7 @@ Fetch voice groups.`,
     const [result, apiCall] = await voiceGroupsList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

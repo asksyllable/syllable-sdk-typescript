@@ -20,7 +20,7 @@ Delete an Insights workflow.`,
     const [result, apiCall] = await insightsWorkflowsDelete(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

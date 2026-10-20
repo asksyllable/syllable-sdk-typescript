@@ -20,7 +20,7 @@ List the existing insight_tools`,
     const [result, apiCall] = await insightsToolsList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

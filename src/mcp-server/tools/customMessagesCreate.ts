@@ -20,7 +20,7 @@ Create a new custom message`,
     const [result, apiCall] = await customMessagesCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

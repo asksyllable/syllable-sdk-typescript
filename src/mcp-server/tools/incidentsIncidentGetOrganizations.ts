@@ -13,7 +13,7 @@ Get all organizations`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await incidentsIncidentGetOrganizations(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

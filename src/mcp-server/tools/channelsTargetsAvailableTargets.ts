@@ -21,7 +21,7 @@ List the available phone numbers`,
       const [result, apiCall] = await channelsTargetsAvailableTargets(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

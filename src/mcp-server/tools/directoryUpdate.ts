@@ -20,7 +20,7 @@ Update a DirectoryMember.`,
     const [result, apiCall] = await directoryUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {
