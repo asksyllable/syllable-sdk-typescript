@@ -11,7 +11,7 @@ export const tool$takeoutsCreate: ToolDefinition = {
   tool: async (client, ctx) => {
     const [result, apiCall] = await takeoutsCreate(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -20,7 +20,7 @@ Delete a role. Optionally, reassign existing users with that role to a new role.
     const [result, apiCall] = await rolesDelete(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

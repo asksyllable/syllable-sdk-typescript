@@ -22,7 +22,7 @@ Generate voice sample.`,
     const [result, apiCall] = await voiceGroupsVoiceGroupsCreateVoiceSample(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

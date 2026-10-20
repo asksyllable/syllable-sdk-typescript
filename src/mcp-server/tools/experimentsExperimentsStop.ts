@@ -20,7 +20,7 @@ Stop a running experiment.`,
     const [result, apiCall] = await experimentsExperimentsStop(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

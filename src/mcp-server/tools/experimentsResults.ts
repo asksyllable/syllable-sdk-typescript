@@ -20,7 +20,7 @@ Get the number of sessions each variant of an experiment has handled.`,
     const [result, apiCall] = await experimentsResults(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

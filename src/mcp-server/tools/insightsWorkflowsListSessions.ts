@@ -26,7 +26,7 @@ workflow still show up here.`,
     const [result, apiCall] = await insightsWorkflowsListSessions(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

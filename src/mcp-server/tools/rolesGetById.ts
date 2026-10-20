@@ -20,7 +20,7 @@ Fetch a given role.`,
     const [result, apiCall] = await rolesGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

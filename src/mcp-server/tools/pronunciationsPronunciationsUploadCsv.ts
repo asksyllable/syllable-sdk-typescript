@@ -20,7 +20,7 @@ export const tool$pronunciationsPronunciationsUploadCsv: ToolDefinition<
     const [result, apiCall] = await pronunciationsPronunciationsUploadCsv(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

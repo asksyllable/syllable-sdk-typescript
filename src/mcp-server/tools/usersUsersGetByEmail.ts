@@ -20,7 +20,7 @@ Fetch a given user.`,
     const [result, apiCall] = await usersUsersGetByEmail(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

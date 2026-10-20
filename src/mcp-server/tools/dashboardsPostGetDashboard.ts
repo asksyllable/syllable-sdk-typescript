@@ -23,7 +23,7 @@ RETURNS: Dashboard info for embedding`,
     const [result, apiCall] = await dashboardsPostGetDashboard(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

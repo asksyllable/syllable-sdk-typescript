@@ -18,7 +18,7 @@ export const tool$outboundBatchesUpload: ToolDefinition<typeof args> = {
     const [result, apiCall] = await outboundBatchesUpload(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

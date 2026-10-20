@@ -20,7 +20,7 @@ List the existing agents`,
     const [result, apiCall] = await agentsList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

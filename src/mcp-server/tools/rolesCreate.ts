@@ -20,7 +20,7 @@ Create a new role.`,
     const [result, apiCall] = await rolesCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

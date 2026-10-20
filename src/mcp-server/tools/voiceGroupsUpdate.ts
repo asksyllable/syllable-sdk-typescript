@@ -20,7 +20,7 @@ Update an existing voice group`,
     const [result, apiCall] = await voiceGroupsUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

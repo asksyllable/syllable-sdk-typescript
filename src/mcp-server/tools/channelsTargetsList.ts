@@ -27,7 +27,7 @@ filter-only and cannot be used as \`order_by\`.`,
     const [result, apiCall] = await channelsTargetsList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

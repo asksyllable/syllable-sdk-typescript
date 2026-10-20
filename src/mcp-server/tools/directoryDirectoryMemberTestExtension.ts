@@ -22,7 +22,7 @@ Test directory member extension at a specific timestamp and language.`,
     const [result, apiCall] = await directoryDirectoryMemberTestExtension(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

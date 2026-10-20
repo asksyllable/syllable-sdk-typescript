@@ -20,7 +20,7 @@ Create a new member in the directory`,
     const [result, apiCall] = await directoryCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

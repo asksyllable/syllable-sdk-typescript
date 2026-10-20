@@ -20,7 +20,7 @@ Fetch a given bridge phrases config.`,
     const [result, apiCall] = await bridgePhrasesGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

@@ -20,7 +20,7 @@ Manually queue sessions for insights workflow evaluation.`,
     const [result, apiCall] = await insightsWorkflowsQueueWork(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

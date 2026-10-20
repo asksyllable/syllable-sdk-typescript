@@ -17,7 +17,7 @@ DEPRECATED: This endpoint is deprecated. Please use /dashboard/list instead`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await dashboardsPostSessionEventsDashboard(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

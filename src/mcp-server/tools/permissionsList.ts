@@ -13,7 +13,7 @@ Get all available permissions in the system.`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await permissionsList(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

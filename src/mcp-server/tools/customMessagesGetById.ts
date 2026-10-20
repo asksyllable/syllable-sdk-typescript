@@ -20,7 +20,7 @@ Get the custom message by its ID`,
     const [result, apiCall] = await customMessagesGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

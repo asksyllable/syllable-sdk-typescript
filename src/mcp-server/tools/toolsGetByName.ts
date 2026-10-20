@@ -20,7 +20,7 @@ Get the details of a specific tool`,
     const [result, apiCall] = await toolsGetByName(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

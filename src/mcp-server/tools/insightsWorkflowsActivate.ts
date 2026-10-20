@@ -20,7 +20,7 @@ Activate an InsightWorkflow.`,
     const [result, apiCall] = await insightsWorkflowsActivate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

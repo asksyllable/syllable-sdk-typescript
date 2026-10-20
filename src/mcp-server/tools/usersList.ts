@@ -20,7 +20,7 @@ List the existing users.`,
     const [result, apiCall] = await usersList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

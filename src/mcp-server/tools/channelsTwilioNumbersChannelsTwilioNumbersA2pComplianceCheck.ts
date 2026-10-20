@@ -24,7 +24,7 @@ Return whether Twilio shows this number on a US A2P messaging path with an appro
         await channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck(
           client,
           args.request,
-          { fetchOptions: { signal: ctx.signal } },
+          { fetchOptions: { signal: ctx.mcpReq.signal } },
         ).$inspect();
 
       if (!result.ok) {

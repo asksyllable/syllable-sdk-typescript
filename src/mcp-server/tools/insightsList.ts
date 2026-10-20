@@ -20,7 +20,7 @@ List the evaluated insights for sessions.`,
     const [result, apiCall] = await insightsList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

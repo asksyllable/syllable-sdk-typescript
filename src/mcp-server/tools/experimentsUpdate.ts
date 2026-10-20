@@ -20,7 +20,7 @@ Update an experiment. Only an experiment in 'draft' status can be updated.`,
     const [result, apiCall] = await experimentsUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

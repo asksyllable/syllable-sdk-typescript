@@ -21,7 +21,7 @@ Delete a SIP signaling/media IP range for the current organization.`,
       const [result, apiCall] = await organizationsSipIpRangesDelete(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
       if (!result.ok) {

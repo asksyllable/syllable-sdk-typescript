@@ -25,7 +25,7 @@ parameter is repeatable.`,
     const [result, apiCall] = await agentsAgentGetAvailableVoices(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

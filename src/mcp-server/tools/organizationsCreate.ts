@@ -20,7 +20,7 @@ Create a new organization.`,
     const [result, apiCall] = await organizationsCreate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

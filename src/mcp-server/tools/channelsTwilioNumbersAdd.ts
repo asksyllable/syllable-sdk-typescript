@@ -20,7 +20,7 @@ Purchase a Twilio number and associate it with a channel.`,
     const [result, apiCall] = await channelsTwilioNumbersAdd(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

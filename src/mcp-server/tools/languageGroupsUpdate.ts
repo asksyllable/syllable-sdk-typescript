@@ -20,7 +20,7 @@ Deprecated alias for \`PUT /api/v1/voice_groups/\`.`,
     const [result, apiCall] = await languageGroupsUpdate(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

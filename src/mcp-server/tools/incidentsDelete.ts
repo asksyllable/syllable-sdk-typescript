@@ -20,7 +20,7 @@ Delete an incident by ID`,
     const [result, apiCall] = await incidentsDelete(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

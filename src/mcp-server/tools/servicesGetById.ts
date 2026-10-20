@@ -20,7 +20,7 @@ Get a service by its ID`,
     const [result, apiCall] = await servicesGetById(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

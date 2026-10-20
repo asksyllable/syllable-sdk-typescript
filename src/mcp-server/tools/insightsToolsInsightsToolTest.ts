@@ -20,7 +20,7 @@ Run the saved tool against one session or uploaded file without persisting insig
     const [result, apiCall] = await insightsToolsInsightsToolTest(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

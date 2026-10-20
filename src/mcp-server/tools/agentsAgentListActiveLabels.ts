@@ -13,7 +13,7 @@ List all distinct labels in use across active agents.`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await agentsAgentListActiveLabels(
       client,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {

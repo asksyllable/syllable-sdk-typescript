@@ -23,7 +23,7 @@ Deprecated alias for \`POST /api/v1/voice_groups/voices/sample\`.`,
       await languageGroupsLanguageGroupsCreateVoiceSample(
         client,
         args.request,
-        { fetchOptions: { signal: ctx.signal } },
+        { fetchOptions: { signal: ctx.mcpReq.signal } },
       ).$inspect();
 
     if (!result.ok) {

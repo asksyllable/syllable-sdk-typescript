@@ -23,7 +23,7 @@ values; filters for different keys must all match. Unknown keys return no matche
     const [result, apiCall] = await directoryList(
       client,
       args.request,
-      { fetchOptions: { signal: ctx.signal } },
+      { fetchOptions: { signal: ctx.mcpReq.signal } },
     ).$inspect();
 
     if (!result.ok) {
