@@ -8,6 +8,7 @@ import { promptsGetById } from "../funcs/promptsGetById.js";
 import { promptsList } from "../funcs/promptsList.js";
 import { promptsPromptGetSupportedLlms } from "../funcs/promptsPromptGetSupportedLlms.js";
 import { promptsPromptsHistory } from "../funcs/promptsPromptsHistory.js";
+import { promptsPromptsListActiveLabels } from "../funcs/promptsPromptsListActiveLabels.js";
 import { promptsUpdate } from "../funcs/promptsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -62,6 +63,21 @@ export class Prompts extends ClientSDK {
     return unwrapAsync(promptsUpdate(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * List Active Prompt Labels
+   *
+   * @remarks
+   * List all distinct labels in use across active prompts.
+   */
+  async promptsListActiveLabels(
+    options?: RequestOptions,
+  ): Promise<Array<string>> {
+    return unwrapAsync(promptsPromptsListActiveLabels(
+      this,
       options,
     ));
   }

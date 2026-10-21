@@ -56,6 +56,10 @@ export type PromptHistoryResponse = {
    */
   promptDescription?: string | null | undefined;
   /**
+   * Labels of the prompt at this version
+   */
+  labels?: Array<string> | null | undefined;
+  /**
    * Name of the prompt at this version
    */
   promptName: string;
@@ -100,6 +104,7 @@ export const PromptHistoryResponse$inboundSchema: z.ZodType<
   version_number: z.number().int(),
   prompt_text: z.string(),
   prompt_description: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   prompt_name: z.string(),
   llm_config: z.nullable(PromptLlmConfig$inboundSchema).optional(),
   comments: z.nullable(z.string()).optional(),
@@ -132,6 +137,7 @@ export type PromptHistoryResponse$Outbound = {
   version_number: number;
   prompt_text: string;
   prompt_description?: string | null | undefined;
+  labels?: Array<string> | null | undefined;
   prompt_name: string;
   llm_config?: PromptLlmConfig$Outbound | null | undefined;
   comments?: string | null | undefined;
@@ -153,6 +159,7 @@ export const PromptHistoryResponse$outboundSchema: z.ZodType<
   versionNumber: z.number().int(),
   promptText: z.string(),
   promptDescription: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   promptName: z.string(),
   llmConfig: z.nullable(PromptLlmConfig$outboundSchema).optional(),
   comments: z.nullable(z.string()).optional(),

@@ -3474,6 +3474,10 @@ actions:
               const result = await syllableSDK.prompts.create({
                 name: "Weather Agent Prompt",
                 description: "Prompt for a weather agent.",
+                labels: [
+                  "Outbound",
+                  "Hospital",
+                ],
                 type: "prompt_v1",
                 context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
                 tools: [],
@@ -3505,6 +3509,10 @@ actions:
               const result = await syllableSDK.prompts.update({
                 name: "Weather Agent Prompt",
                 description: "Prompt for a weather agent.",
+                labels: [
+                  "Outbound",
+                  "Hospital",
+                ],
                 type: "prompt_v1",
                 context: "You are a weather agent. Answer the user's questions about weather and nothing else.",
                 tools: [],
@@ -3516,6 +3524,25 @@ actions:
                 editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
                 id: 1,
               });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/prompts/labels"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.prompts.promptsListActiveLabels();
 
               console.log(result);
             }

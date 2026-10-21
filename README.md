@@ -468,6 +468,7 @@ run();
 * [list](docs/sdks/prompts/README.md#list) - Prompt List
 * [create](docs/sdks/prompts/README.md#create) - Create Prompt
 * [update](docs/sdks/prompts/README.md#update) - Update Prompt
+* [promptsListActiveLabels](docs/sdks/prompts/README.md#promptslistactivelabels) - List Active Prompt Labels
 * [getById](docs/sdks/prompts/README.md#getbyid) - Get Prompt By Id
 * [delete](docs/sdks/prompts/README.md#delete) - Delete Prompt
 * [promptsHistory](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
@@ -720,6 +721,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`promptsList`](docs/sdks/prompts/README.md#list) - Prompt List
 - [`promptsPromptGetSupportedLlms`](docs/sdks/prompts/README.md#promptgetsupportedllms) - Get Supported Llm Configs
 - [`promptsPromptsHistory`](docs/sdks/prompts/README.md#promptshistory) - Get Prompt History
+- [`promptsPromptsListActiveLabels`](docs/sdks/prompts/README.md#promptslistactivelabels) - List Active Prompt Labels
 - [`promptsUpdate`](docs/sdks/prompts/README.md#update) - Update Prompt
 - [`pronunciationsPronunciationsDeleteCsv`](docs/sdks/pronunciations/README.md#pronunciationsdeletecsv) - Delete Pronunciations Dictionary
 - [`pronunciationsPronunciationsDownloadCsv`](docs/sdks/pronunciations/README.md#pronunciationsdownloadcsv) - Download Pronunciations Csv
@@ -989,10 +991,10 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
-* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
-* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 197 methods.*
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

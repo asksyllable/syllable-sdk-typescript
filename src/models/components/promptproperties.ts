@@ -14,6 +14,7 @@ export const PromptProperties = {
   NameExact: "name_exact",
   Description: "description",
   NameDescription: "name_description",
+  Labels: "labels",
   Context: "context",
   Tools: "tools",
   LlmConfig: "llm_config",
