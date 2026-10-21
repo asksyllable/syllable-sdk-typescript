@@ -151,6 +151,7 @@ import { tool$promptsGetById } from "./tools/promptsGetById.js";
 import { tool$promptsList } from "./tools/promptsList.js";
 import { tool$promptsPromptGetSupportedLlms } from "./tools/promptsPromptGetSupportedLlms.js";
 import { tool$promptsPromptsHistory } from "./tools/promptsPromptsHistory.js";
+import { tool$promptsPromptsListActiveLabels } from "./tools/promptsPromptsListActiveLabels.js";
 import { tool$promptsUpdate } from "./tools/promptsUpdate.js";
 import { tool$pronunciationsPronunciationsDeleteCsv } from "./tools/pronunciationsPronunciationsDeleteCsv.js";
 import { tool$pronunciationsPronunciationsDownloadCsv } from "./tools/pronunciationsPronunciationsDownloadCsv.js";
@@ -214,7 +215,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.71-rc.1",
+    version: "1.0.71-rc.2",
   });
 
   const client = new SyllableSDKCore({
@@ -295,6 +296,7 @@ export function createMCPServer(deps: {
   tool(tool$promptsList);
   tool(tool$promptsCreate);
   tool(tool$promptsUpdate);
+  tool(tool$promptsPromptsListActiveLabels);
   tool(tool$promptsGetById);
   tool(tool$promptsDelete);
   tool(tool$promptsPromptsHistory);

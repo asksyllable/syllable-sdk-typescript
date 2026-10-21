@@ -27,6 +27,10 @@ export type PromptUpdateRequest = {
    */
   description?: string | null | undefined;
   /**
+   * The prompt labels. Omit this field to keep the existing labels; send an empty list or null to remove them.
+   */
+  labels?: Array<string> | null | undefined;
+  /**
    * The type of the prompt
    */
   type: string;
@@ -72,6 +76,7 @@ export const PromptUpdateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
@@ -94,6 +99,7 @@ export const PromptUpdateRequest$inboundSchema: z.ZodType<
 export type PromptUpdateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
+  labels?: Array<string> | null | undefined;
   type: string;
   context?: string | null | undefined;
   tools?: Array<string> | undefined;
@@ -113,6 +119,7 @@ export const PromptUpdateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),

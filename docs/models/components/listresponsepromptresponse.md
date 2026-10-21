@@ -10,6 +10,10 @@ let value: ListResponsePromptResponse = {
     {
       name: "Weather Agent Prompt",
       description: "Prompt for a weather agent.",
+      labels: [
+        "Outbound",
+        "Hospital",
+      ],
       type: "prompt_v1",
       context:
         "You are a weather agent. Answer the user's questions about weather and nothing else.",

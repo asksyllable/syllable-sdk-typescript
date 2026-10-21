@@ -27,6 +27,10 @@ export type PromptCreateRequest = {
    */
   description?: string | null | undefined;
   /**
+   * The prompt labels
+   */
+  labels?: Array<string> | null | undefined;
+  /**
    * The type of the prompt
    */
   type: string;
@@ -68,6 +72,7 @@ export const PromptCreateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
@@ -89,6 +94,7 @@ export const PromptCreateRequest$inboundSchema: z.ZodType<
 export type PromptCreateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
+  labels?: Array<string> | null | undefined;
   type: string;
   context?: string | null | undefined;
   tools?: Array<string> | undefined;
@@ -107,6 +113,7 @@ export const PromptCreateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  labels: z.nullable(z.array(z.string())).optional(),
   type: z.string(),
   context: z.nullable(z.string()).optional(),
   tools: z.array(z.string()).optional(),
