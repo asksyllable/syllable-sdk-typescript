@@ -9,6 +9,7 @@ import { directoryDirectoryMemberDownload } from "../funcs/directoryDirectoryMem
 import { directoryDirectoryMemberHistory } from "../funcs/directoryDirectoryMemberHistory.js";
 import { directoryDirectoryMemberRestore } from "../funcs/directoryDirectoryMemberRestore.js";
 import { directoryDirectoryMemberTestExtension } from "../funcs/directoryDirectoryMemberTestExtension.js";
+import { directoryDirectoryTagKeyExists } from "../funcs/directoryDirectoryTagKeyExists.js";
 import { directoryGetById } from "../funcs/directoryGetById.js";
 import { directoryList } from "../funcs/directoryList.js";
 import { directoryUpdate } from "../funcs/directoryUpdate.js";
@@ -19,13 +20,31 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Directory extends ClientSDK {
   /**
+   * Directory Tag Key Exists
+   *
+   * @remarks
+   * Check active contacts in the current sub-organization, independent of list filters.
+   */
+  async directoryTagKeyExists(
+    request: operations.DirectoryTagKeyExistsRequest,
+    options?: RequestOptions,
+  ): Promise<{ [k: string]: boolean }> {
+    return unwrapAsync(directoryDirectoryTagKeyExists(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Directory Member List
    *
    * @remarks
    * List directory members.
    *
-   * Filter by contact tags with `tags.<key>=<value>`. Repeat a key to match any of its
-   * values; filters for different keys must all match. Unknown keys return no matches.
+   * Filter by contact tags with `tags.<key>=<value>`. Values use case-insensitive literal
+   * substring matching within the selected key. Repeat a key to match any supplied value;
+   * filters for different keys must all match. Unknown keys and empty values return no matches.
    */
   async list(
     request: operations.DirectoryMemberListRequest,

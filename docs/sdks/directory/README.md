@@ -6,6 +6,7 @@ Operations related to directory
 
 ### Available Operations
 
+* [directoryTagKeyExists](#directorytagkeyexists) - Directory Tag Key Exists
 * [list](#list) - Directory Member List
 * [create](#create) - Create Directory Member
 * [directoryMemberHistory](#directorymemberhistory) - Get Directory Member History
@@ -17,12 +18,87 @@ Operations related to directory
 * [directoryMemberBulkLoad](#directorymemberbulkload) - Bulk Load Directory Members
 * [directoryMemberDownload](#directorymemberdownload) - Download Directory Members
 
+## directoryTagKeyExists
+
+Check active contacts in the current sub-organization, independent of list filters.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="directory_tag_key_exists" method="get" path="/api/v1/directory_members/tag-key-exists" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.directory.directoryTagKeyExists({
+    key: "<key>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { directoryDirectoryTagKeyExists } from "syllable-sdk/funcs/directoryDirectoryTagKeyExists.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await directoryDirectoryTagKeyExists(syllableSDK, {
+    key: "<key>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("directoryDirectoryTagKeyExists failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DirectoryTagKeyExistsRequest](../../models/operations/directorytagkeyexistsrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[{ [k: string]: boolean }](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
 ## list
 
 List directory members.
 
-Filter by contact tags with `tags.<key>=<value>`. Repeat a key to match any of its
-values; filters for different keys must all match. Unknown keys return no matches.
+Filter by contact tags with `tags.<key>=<value>`. Values use case-insensitive literal
+substring matching within the selected key. Repeat a key to match any supplied value;
+filters for different keys must all match. Unknown keys and empty values return no matches.
 
 ### Example Usage
 
