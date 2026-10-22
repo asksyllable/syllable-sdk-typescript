@@ -10,7 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelTargetsDeleteRequest = {
   channelId: string;
-  targetId: string;
+  /**
+   * Target record ID, rather than a phone number
+   */
+  targetId: number;
 };
 
 /** @internal */
@@ -20,7 +23,7 @@ export const ChannelTargetsDeleteRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   channel_id: z.string(),
-  target_id: z.string(),
+  target_id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     "channel_id": "channelId",
@@ -30,7 +33,7 @@ export const ChannelTargetsDeleteRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type ChannelTargetsDeleteRequest$Outbound = {
   channel_id: string;
-  target_id: string;
+  target_id: number;
 };
 
 /** @internal */
@@ -40,7 +43,7 @@ export const ChannelTargetsDeleteRequest$outboundSchema: z.ZodType<
   ChannelTargetsDeleteRequest
 > = z.object({
   channelId: z.string(),
-  targetId: z.string(),
+  targetId: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
     channelId: "channel_id",

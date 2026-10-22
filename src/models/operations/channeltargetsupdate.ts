@@ -11,6 +11,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelTargetsUpdateRequest = {
   channelId: number;
+  /**
+   * Target record ID, rather than a phone number
+   */
   targetId: number;
   channelTargetUpdateRequest: components.ChannelTargetUpdateRequest;
 };
