@@ -499,7 +499,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.InsightsToolTestResponseInsightsToolTest](../../models/operations/insightstooltestresponseinsightstooltest.md)\>**
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 
