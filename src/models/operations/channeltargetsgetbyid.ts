@@ -10,6 +10,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelTargetsGetByIdRequest = {
   channelId: number;
+  /**
+   * Target record ID, rather than a phone number
+   */
   targetId: number;
 };
 

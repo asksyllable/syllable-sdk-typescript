@@ -356,7 +356,7 @@ const syllableSDK = new SyllableSDK({
 async function run() {
   const result = await syllableSDK.channels.delete({
     channelId: "<id>",
-    targetId: "<id>",
+    targetId: 675883,
   });
 
   console.log(result);
@@ -382,7 +382,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await channelsDelete(syllableSDK, {
     channelId: "<id>",
-    targetId: "<id>",
+    targetId: 937279,
   });
   if (res.ok) {
     const { value: result } = res;

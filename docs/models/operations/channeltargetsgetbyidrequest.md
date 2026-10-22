@@ -13,7 +13,7 @@ let value: ChannelTargetsGetByIdRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `channelId`        | *number*           | :heavy_check_mark: | N/A                |
-| `targetId`         | *number*           | :heavy_check_mark: | N/A                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `channelId`                                  | *number*                                     | :heavy_check_mark:                           | N/A                                          |
+| `targetId`                                   | *number*                                     | :heavy_check_mark:                           | Target record ID, rather than a phone number |

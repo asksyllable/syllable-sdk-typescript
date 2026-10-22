@@ -800,7 +800,7 @@ actions:
             async function run() {
               const result = await syllableSDK.channels.delete({
                 channelId: "<id>",
-                targetId: "<id>",
+                targetId: 675883,
               });
 
               console.log(result);
