@@ -48,7 +48,7 @@ export type UserCreateRequest = {
    */
   loginType?: LoginType | null | undefined;
   /**
-   * Whether to skip authentication for the user.
+   * Compatibility no-op; accepted but ignored.
    */
   skipAuth?: boolean | undefined;
 };

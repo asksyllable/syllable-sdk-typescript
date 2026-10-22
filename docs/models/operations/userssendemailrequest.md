@@ -12,7 +12,7 @@ let value: UsersSendEmailRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `userEmail`        | *string*           | :heavy_check_mark: | N/A                |
-| `skipAuth`         | *boolean*          | :heavy_minus_sign: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `userEmail`                                | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `skipAuth`                                 | *boolean*                                  | :heavy_minus_sign:                         | Compatibility no-op; accepted but ignored. |
