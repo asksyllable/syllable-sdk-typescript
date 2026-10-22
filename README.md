@@ -343,6 +343,7 @@ run();
 
 ### [Directory](docs/sdks/directory/README.md)
 
+* [directoryTagKeyExists](docs/sdks/directory/README.md#directorytagkeyexists) - Directory Tag Key Exists
 * [list](docs/sdks/directory/README.md#list) - Directory Member List
 * [create](docs/sdks/directory/README.md#create) - Create Directory Member
 * [directoryMemberHistory](docs/sdks/directory/README.md#directorymemberhistory) - Get Directory Member History
@@ -650,6 +651,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`directoryDirectoryMemberHistory`](docs/sdks/directory/README.md#directorymemberhistory) - Get Directory Member History
 - [`directoryDirectoryMemberRestore`](docs/sdks/directory/README.md#directorymemberrestore) - Restore Directory Member
 - [`directoryDirectoryMemberTestExtension`](docs/sdks/directory/README.md#directorymembertestextension) - Test Directory Member Extension
+- [`directoryDirectoryTagKeyExists`](docs/sdks/directory/README.md#directorytagkeyexists) - Directory Tag Key Exists
 - [`directoryGetById`](docs/sdks/directory/README.md#getbyid) - Get Directory Member By Id
 - [`directoryList`](docs/sdks/directory/README.md#list) - Directory Member List
 - [`directoryUpdate`](docs/sdks/directory/README.md#update) - Update Directory Member
@@ -995,11 +997,11 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 200 methods.*
-* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
-* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
-* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
+* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 201 methods.*
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

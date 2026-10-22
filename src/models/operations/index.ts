@@ -40,6 +40,7 @@ export * from "./directorymemberlist.js";
 export * from "./directorymemberrestore.js";
 export * from "./directorymembertestextension.js";
 export * from "./directorymemberupdate.js";
+export * from "./directorytagkeyexists.js";
 export * from "./eventslist.js";
 export * from "./experimentsdelete.js";
 export * from "./experimentsgetbyid.js";
