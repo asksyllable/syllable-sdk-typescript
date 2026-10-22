@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: b3cf8aa09f388edc427b2d803afdd719
+  docChecksum: d7b912052834b09b2fef5069472675e9
   docVersion: 0.0.3
   speakeasyVersion: 1.803.1
   generationVersion: 2.950.2
-  releaseVersion: 1.0.71-rc.5
-  configChecksum: 7ae4774980478235e0d700b821986fce
+  releaseVersion: 1.0.71-rc.6
+  configChecksum: faa0c14b567c41adc462e0cbcdca16ca
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 65bd6314-6a47-4a88-ae17-e48fb5e9c57c
-  pristine_commit_hash: 2228b08b418103e07ca0658c7245616f80cb1d1c
-  pristine_tree_hash: 6feabc3d05f318e2c64e7f31c7c5891807cca770
+  generation_id: 8f897056-1234-4e48-883b-729845ae3459
+  pristine_commit_hash: 36fb938d0a49600906205ed0ad87c9e957ee237b
+  pristine_tree_hash: d8c2e27343b1239749168342c8094d9c09507c03
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2445,8 +2445,8 @@ trackedFiles:
     pristine_git_object: 6f03d001fa13d1e1acf7ec81966940729aa0182a
   docs/models/operations/usersgetbyemailrequest.md:
     id: 8d90b937edb9
-    last_write_checksum: sha1:170bfcf6874dc16f8ad7d4cb85a22e8cc2c4b85f
-    pristine_git_object: 25872aa5770871aba82fef0db3a55b2ae899fd5b
+    last_write_checksum: sha1:4d255c66c57f8b209886edcb0ba9ddc9946f4a2a
+    pristine_git_object: ac94641fbe8d1d9ce02eaeecf95395f6f7c5df2a
   docs/models/operations/userslistrequest.md:
     id: 34a2cde05c19
     last_write_checksum: sha1:1c1ce9a26451b83065b76728c60c080239119100
@@ -2661,12 +2661,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:f1e881d869bb14b0e1f3329832a5914e6fc5567a
-    pristine_git_object: b1d327ed206da317c1e8a180d10d7fbde1ae96d7
+    last_write_checksum: sha1:10aa27ebbedad2dc2b9cfcea7df9899ba29fd74d
+    pristine_git_object: 8d58a6334c562d12880040c3fec6f038c9141725
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:19a09f2f4e678c242cb529519dd5674b00f0718d
-    pristine_git_object: 28cac5c13e3eba42a89cc25eb1205f9ba5e52364
+    last_write_checksum: sha1:963469cbd2fd5e4188b2f8457f0276e8f97c4e65
+    pristine_git_object: db13c6a7d269e8264f9b59478e96f03dfecdf08f
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -3469,8 +3469,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:519cea669248b592974f11a219ef696e6735bb90
-    pristine_git_object: 5fac67ae0c048c847ef2d1831efa609e8af22b8b
+    last_write_checksum: sha1:38655b918d9821694f98b18d53c0747ac9b5f192
+    pristine_git_object: e384d8f1073a975fcc38006ed077a19283361212
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -3545,8 +3545,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:343eb1c8977824ecfe210d8134527a2595deea5f
-    pristine_git_object: 53f615be6050b8080a7312a54f114a53478a718b
+    last_write_checksum: sha1:8041059085fe24cb86a3e283a70b00dc12907639
+    pristine_git_object: ae5c9fbbbb37590bc1ee0bf6cf4b3a9caec17cd5
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:c49f9f30688900b044232213b9da00931498aed0
@@ -3561,8 +3561,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:76fd1eb734f5b1e7bc47bea7d49e36326e2f9ad5
-    pristine_git_object: 77ecf8e997bc2929997330beeac524ae4edcc8fb
+    last_write_checksum: sha1:e5480e8169db85ab6006d7cb71eff2ecd1a64445
+    pristine_git_object: 9eaaba67fbdd3af3d93e4bbe82c6166c37daa71d
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:c4c1d8169a3a283584b8f13ea1533e438fe6fd69
@@ -8619,9 +8619,6 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes:
-  * `syllablesdk.insights.tools.insightsToolTest()`:  `response` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

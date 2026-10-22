@@ -6,7 +6,7 @@
 import { UsersGetByEmailRequest } from "syllable-sdk/models/operations";
 
 let value: UsersGetByEmailRequest = {
-  userEmail: "<value>",
+  userEmail: "Chad.Rowe-Franey@yahoo.com",
 };
 ```
 
