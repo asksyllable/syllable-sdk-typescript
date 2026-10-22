@@ -21,9 +21,9 @@ export type TestMessage = {
    */
   source: string;
   /**
-   * The text of the message
+   * The text of the message; use an empty string to start a session without text
    */
-  text?: string | null | undefined;
+  text: string;
   /**
    * Channel-manager-side ID of the session (see Session.channel_manager_sid)
    */
@@ -56,7 +56,7 @@ export const TestMessage$inboundSchema: z.ZodType<
 > = z.object({
   service_name: z.string(),
   source: z.string(),
-  text: z.nullable(z.string()).optional(),
+  text: z.string(),
   test_id: z.string(),
   agent_id: z.string(),
   org_name: z.nullable(z.string()).optional(),
@@ -76,7 +76,7 @@ export const TestMessage$inboundSchema: z.ZodType<
 export type TestMessage$Outbound = {
   service_name: string;
   source: string;
-  text?: string | null | undefined;
+  text: string;
   test_id: string;
   agent_id: string;
   org_name?: string | null | undefined;
@@ -92,7 +92,7 @@ export const TestMessage$outboundSchema: z.ZodType<
 > = z.object({
   serviceName: z.string(),
   source: z.string(),
-  text: z.nullable(z.string()).optional(),
+  text: z.string(),
   testId: z.string(),
   agentId: z.string(),
   orgName: z.nullable(z.string()).optional(),
