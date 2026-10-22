@@ -20,6 +20,11 @@ import {
 } from "./custommessagetype.js";
 
 /**
+ * Persisted type-specific configuration
+ */
+export type TypeConfig = {};
+
+/**
  * Response model for custom message operations.
  *
  * @remarks
@@ -29,6 +34,7 @@ import {
  * templates have a subject and body only. For more information, see [Console docs](https://docs.syllable.ai/Resources/Messages).
  */
 export type CustomMessageResponse = {
+  editComments?: string | null | undefined;
   /**
    * The name of the custom message
    */
@@ -61,10 +67,15 @@ export type CustomMessageResponse = {
    * Rules for time-specific message variants
    */
   rules?: Array<CustomMessageRule> | undefined;
-  /**
-   * The ID of the custom message
-   */
   id: number;
+  /**
+   * Current saved Message version
+   */
+  versionNumber?: number | undefined;
+  /**
+   * Persisted type-specific configuration
+   */
+  typeConfig?: TypeConfig | undefined;
   /**
    * Timestamp of the most recent update to the custom message
    */
@@ -80,11 +91,41 @@ export type CustomMessageResponse = {
 };
 
 /** @internal */
+export const TypeConfig$inboundSchema: z.ZodType<
+  TypeConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type TypeConfig$Outbound = {};
+
+/** @internal */
+export const TypeConfig$outboundSchema: z.ZodType<
+  TypeConfig$Outbound,
+  z.ZodTypeDef,
+  TypeConfig
+> = z.object({});
+
+export function typeConfigToJSON(typeConfig: TypeConfig): string {
+  return JSON.stringify(TypeConfig$outboundSchema.parse(typeConfig));
+}
+export function typeConfigFromJSON(
+  jsonString: string,
+): SafeParseResult<TypeConfig, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TypeConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TypeConfig' from JSON`,
+  );
+}
+
+/** @internal */
 export const CustomMessageResponse$inboundSchema: z.ZodType<
   CustomMessageResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  edit_comments: z.nullable(z.string()).optional(),
   name: z.string(),
   type: CustomMessageType$inboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
@@ -94,12 +135,17 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   repeat_after_language_change: z.boolean(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
   id: z.number().int(),
+  version_number: z.number().int().default(1),
+  type_config: z.lazy(() => TypeConfig$inboundSchema).optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   agent_count: z.nullable(z.number().int()).optional(),
   last_updated_by: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    "edit_comments": "editComments",
     "repeat_after_language_change": "repeatAfterLanguageChange",
+    "version_number": "versionNumber",
+    "type_config": "typeConfig",
     "updated_at": "updatedAt",
     "agent_count": "agentCount",
     "last_updated_by": "lastUpdatedBy",
@@ -107,6 +153,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type CustomMessageResponse$Outbound = {
+  edit_comments?: string | null | undefined;
   name: string;
   type?: string | undefined;
   preamble?: string | null | undefined;
@@ -116,6 +163,8 @@ export type CustomMessageResponse$Outbound = {
   repeat_after_language_change: boolean;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
   id: number;
+  version_number: number;
+  type_config?: TypeConfig$Outbound | undefined;
   updated_at: string;
   agent_count?: number | null | undefined;
   last_updated_by: string;
@@ -127,6 +176,7 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomMessageResponse
 > = z.object({
+  editComments: z.nullable(z.string()).optional(),
   name: z.string(),
   type: CustomMessageType$outboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
@@ -136,12 +186,17 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   repeatAfterLanguageChange: z.boolean(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
   id: z.number().int(),
+  versionNumber: z.number().int().default(1),
+  typeConfig: z.lazy(() => TypeConfig$outboundSchema).optional(),
   updatedAt: z.date().transform(v => v.toISOString()),
   agentCount: z.nullable(z.number().int()).optional(),
   lastUpdatedBy: z.string(),
 }).transform((v) => {
   return remap$(v, {
+    editComments: "edit_comments",
     repeatAfterLanguageChange: "repeat_after_language_change",
+    versionNumber: "version_number",
+    typeConfig: "type_config",
     updatedAt: "updated_at",
     agentCount: "agent_count",
     lastUpdatedBy: "last_updated_by",

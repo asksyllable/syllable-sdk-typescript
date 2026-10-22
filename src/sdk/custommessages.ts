@@ -3,6 +3,8 @@
  */
 
 import { customMessagesCreate } from "../funcs/customMessagesCreate.js";
+import { customMessagesCustomMessageHistory } from "../funcs/customMessagesCustomMessageHistory.js";
+import { customMessagesCustomMessageVersion } from "../funcs/customMessagesCustomMessageVersion.js";
 import { customMessagesDelete } from "../funcs/customMessagesDelete.js";
 import { customMessagesGetById } from "../funcs/customMessagesGetById.js";
 import { customMessagesList } from "../funcs/customMessagesList.js";
@@ -58,6 +60,40 @@ export class CustomMessages extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.CustomMessageResponse> {
     return unwrapAsync(customMessagesUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Custom Message History
+   *
+   * @remarks
+   * Page saved versions of an active Message in the current sub-organization.
+   */
+  async customMessageHistory(
+    request: operations.CustomMessageHistoryRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListResponseCustomMessageHistoryMetadata> {
+    return unwrapAsync(customMessagesCustomMessageHistory(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Custom Message Version
+   *
+   * @remarks
+   * Read a complete saved snapshot without applying current create-time validation.
+   */
+  async customMessageVersion(
+    request: operations.CustomMessageVersionRequest,
+    options?: RequestOptions,
+  ): Promise<components.CustomMessageHistoryResponse> {
+    return unwrapAsync(customMessagesCustomMessageVersion(
       this,
       request,
       options,

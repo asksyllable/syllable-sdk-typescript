@@ -24,6 +24,10 @@ import {
  */
 export type CustomMessageCreateRequest = {
   /**
+   * Optional comment for this saved version
+   */
+  editComments?: string | null | undefined;
+  /**
    * The name of the custom message
    */
   name: string;
@@ -63,6 +67,7 @@ export const CustomMessageCreateRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  edit_comments: z.nullable(z.string()).optional(),
   name: z.string(),
   type: CustomMessageType$inboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
@@ -73,11 +78,13 @@ export const CustomMessageCreateRequest$inboundSchema: z.ZodType<
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "edit_comments": "editComments",
     "repeat_after_language_change": "repeatAfterLanguageChange",
   });
 });
 /** @internal */
 export type CustomMessageCreateRequest$Outbound = {
+  edit_comments?: string | null | undefined;
   name: string;
   type?: string | undefined;
   preamble?: string | null | undefined;
@@ -94,6 +101,7 @@ export const CustomMessageCreateRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomMessageCreateRequest
 > = z.object({
+  editComments: z.nullable(z.string()).optional(),
   name: z.string(),
   type: CustomMessageType$outboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
@@ -104,6 +112,7 @@ export const CustomMessageCreateRequest$outboundSchema: z.ZodType<
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
+    editComments: "edit_comments",
     repeatAfterLanguageChange: "repeat_after_language_change",
   });
 });
