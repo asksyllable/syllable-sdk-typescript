@@ -109,7 +109,7 @@ export class SyllableSDKTools extends ClientSDK {
   async insightsToolTest(
     request: components.InsightToolTestInput,
     options?: RequestOptions,
-  ): Promise<operations.InsightsToolTestResponseInsightsToolTest> {
+  ): Promise<any> {
     return unwrapAsync(insightsToolsInsightsToolTest(
       this,
       request,
