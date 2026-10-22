@@ -39,6 +39,7 @@ export function customMessagesCreate(
 ): APIPromise<
   Result<
     components.CustomMessageResponse,
+    | errors.CustomMessageErrorResponse
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -65,6 +66,7 @@ async function $do(
   [
     Result<
       components.CustomMessageResponse,
+      | errors.CustomMessageErrorResponse
       | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
@@ -149,6 +151,7 @@ async function $do(
 
   const [result] = await M.match<
     components.CustomMessageResponse,
+    | errors.CustomMessageErrorResponse
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -160,7 +163,9 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, components.CustomMessageResponse$inboundSchema),
+    M.jsonErr([400, 403], errors.CustomMessageErrorResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
+    M.jsonErr(500, errors.CustomMessageErrorResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

@@ -48,6 +48,8 @@ import { tool$conversationConfigGetBridgePhrasesConfig } from "./tools/conversat
 import { tool$conversationConfigUpdateBridgePhrasesConfig } from "./tools/conversationConfigUpdateBridgePhrasesConfig.js";
 import { tool$conversationsList } from "./tools/conversationsList.js";
 import { tool$customMessagesCreate } from "./tools/customMessagesCreate.js";
+import { tool$customMessagesCustomMessageHistory } from "./tools/customMessagesCustomMessageHistory.js";
+import { tool$customMessagesCustomMessageVersion } from "./tools/customMessagesCustomMessageVersion.js";
 import { tool$customMessagesDelete } from "./tools/customMessagesDelete.js";
 import { tool$customMessagesGetById } from "./tools/customMessagesGetById.js";
 import { tool$customMessagesList } from "./tools/customMessagesList.js";
@@ -215,7 +217,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.71-rc.2",
+    version: "1.0.71-rc.3",
   });
 
   const client = new SyllableSDKCore({
@@ -290,6 +292,8 @@ export function createMCPServer(deps: {
   tool(tool$customMessagesList);
   tool(tool$customMessagesCreate);
   tool(tool$customMessagesUpdate);
+  tool(tool$customMessagesCustomMessageHistory);
+  tool(tool$customMessagesCustomMessageVersion);
   tool(tool$customMessagesGetById);
   tool(tool$customMessagesDelete);
   tool(tool$permissionsList);

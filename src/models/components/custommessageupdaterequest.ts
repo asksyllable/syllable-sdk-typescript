@@ -24,6 +24,10 @@ import {
  */
 export type CustomMessageUpdateRequest = {
   /**
+   * Optional comment for this saved version
+   */
+  editComments?: string | null | undefined;
+  /**
    * The name of the custom message
    */
   name: string;
@@ -56,6 +60,14 @@ export type CustomMessageUpdateRequest = {
    */
   rules?: Array<CustomMessageRule> | undefined;
   /**
+   * Latest live version explicitly acknowledged at save confirmation. A stale value returns 409 without saving; after warning and confirmation, resubmit retained edits with the newly acknowledged version.
+   */
+  expectedVersion?: number | null | undefined;
+  /**
+   * Historical version used as the source of an editable restore
+   */
+  restoredFromVersion?: number | null | undefined;
+  /**
    * The ID of the custom message
    */
   id: number;
@@ -67,6 +79,7 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  edit_comments: z.nullable(z.string()).optional(),
   name: z.string(),
   type: CustomMessageType$inboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
@@ -75,14 +88,20 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
   label: z.nullable(z.string()).optional(),
   repeat_after_language_change: z.nullable(z.boolean()).optional(),
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
+  expected_version: z.nullable(z.number().int()).optional(),
+  restored_from_version: z.nullable(z.number().int()).optional(),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
+    "edit_comments": "editComments",
     "repeat_after_language_change": "repeatAfterLanguageChange",
+    "expected_version": "expectedVersion",
+    "restored_from_version": "restoredFromVersion",
   });
 });
 /** @internal */
 export type CustomMessageUpdateRequest$Outbound = {
+  edit_comments?: string | null | undefined;
   name: string;
   type?: string | undefined;
   preamble?: string | null | undefined;
@@ -91,6 +110,8 @@ export type CustomMessageUpdateRequest$Outbound = {
   label?: string | null | undefined;
   repeat_after_language_change?: boolean | null | undefined;
   rules?: Array<CustomMessageRule$Outbound> | undefined;
+  expected_version?: number | null | undefined;
+  restored_from_version?: number | null | undefined;
   id: number;
 };
 
@@ -100,6 +121,7 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CustomMessageUpdateRequest
 > = z.object({
+  editComments: z.nullable(z.string()).optional(),
   name: z.string(),
   type: CustomMessageType$outboundSchema.optional(),
   preamble: z.nullable(z.string()).optional(),
@@ -108,10 +130,15 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
   label: z.nullable(z.string()).optional(),
   repeatAfterLanguageChange: z.nullable(z.boolean()).optional(),
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
+  expectedVersion: z.nullable(z.number().int()).optional(),
+  restoredFromVersion: z.nullable(z.number().int()).optional(),
   id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
+    editComments: "edit_comments",
     repeatAfterLanguageChange: "repeat_after_language_change",
+    expectedVersion: "expected_version",
+    restoredFromVersion: "restored_from_version",
   });
 });
 

@@ -319,6 +319,8 @@ run();
 * [list](docs/sdks/custommessages/README.md#list) - Custom Messages List
 * [create](docs/sdks/custommessages/README.md#create) - Create Custom Message
 * [update](docs/sdks/custommessages/README.md#update) - Update Custom Message
+* [customMessageHistory](docs/sdks/custommessages/README.md#custommessagehistory) - Custom Message History
+* [customMessageVersion](docs/sdks/custommessages/README.md#custommessageversion) - Custom Message Version
 * [getById](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 * [delete](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
 
@@ -628,6 +630,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`conversationConfigUpdateBridgePhrasesConfig`](docs/sdks/conversationconfig/README.md#updatebridgephrasesconfig) - Update Bridge Phrases Config
 - [`conversationsList`](docs/sdks/conversations/README.md#list) - Conversations List
 - [`customMessagesCreate`](docs/sdks/custommessages/README.md#create) - Create Custom Message
+- [`customMessagesCustomMessageHistory`](docs/sdks/custommessages/README.md#custommessagehistory) - Custom Message History
+- [`customMessagesCustomMessageVersion`](docs/sdks/custommessages/README.md#custommessageversion) - Custom Message Version
 - [`customMessagesDelete`](docs/sdks/custommessages/README.md#delete) - Delete Custom Message
 - [`customMessagesGetById`](docs/sdks/custommessages/README.md#getbyid) - Get Custom Message By Id
 - [`customMessagesList`](docs/sdks/custommessages/README.md#list) - Custom Messages List
@@ -978,7 +982,7 @@ run();
 * [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (10)</summary>
+<details><summary>Less common errors (11)</summary>
 
 <br />
 
@@ -991,10 +995,11 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
-* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
-* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 198 methods.*
+* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 200 methods.*
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 200 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

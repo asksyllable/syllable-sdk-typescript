@@ -1123,6 +1123,49 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}/history"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.customMessageHistory({
+                customMessageId: 783407,
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/custom_messages/{custom_message_id}/history/{version}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.customMessages.customMessageVersion({
+                customMessageId: 577632,
+                version: 407238,
+              });
+
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/api/v1/dashboards/fetch_info"]["post"]
     update:
       x-codeSamples:

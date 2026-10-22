@@ -176,12 +176,11 @@ let value: ChannelTargetResponse = {
             "Hello, thank you for calling. Sorry, we're closed on weekends.",
         },
       ],
-      id: 1,
+      id: 29221,
       updatedAt: new Date("2024-01-01T00:00:00Z"),
       agentCount: 1,
       lastUpdatedBy: "user@email.com",
     },
-    channelTargets: null,
     tools: [
       {
         name: "Weather Fetcher",
@@ -232,19 +231,14 @@ let value: ChannelTargetResponse = {
         serviceId: 1,
         id: 1,
         lastUpdatedComments: "Updated to use new API endpoint",
-        promptsInfo: [
-          {
-            id: 1,
-            name: "Test Prompt",
-          },
-        ],
+        promptsInfo: null,
         agentsInfo: [
           {
             id: 1,
             name: "Test Agent",
           },
         ],
-        lastUpdated: new Date("2026-04-26T21:36:54.796Z"),
+        lastUpdated: new Date("2025-11-10T19:23:40.633Z"),
         lastUpdatedBy: "user@email.com",
         versionNumber: 1,
       },

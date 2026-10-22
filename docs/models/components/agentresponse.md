@@ -165,12 +165,277 @@ let value: AgentResponse = {
         text: "Hello, thank you for calling. Sorry, we're closed on weekends.",
       },
     ],
-    id: 1,
+    id: 29221,
     updatedAt: new Date("2024-01-01T00:00:00Z"),
     agentCount: 1,
     lastUpdatedBy: "user@email.com",
   },
-  channelTargets: null,
+  channelTargets: [
+    {
+      agentId: 1,
+      channelId: 1,
+      target: "+19995551234",
+      targetMode: "whatsapp",
+      fallbackTarget: "+19995551235",
+      isTest: true,
+      id: 1,
+      channelName: "+19995551234",
+      updatedAt: new Date("2024-01-01T00:00:00Z"),
+      lastUpdatedBy: "user@email.com",
+      agent: {
+        name: "Weather agent",
+        description: "Agent for answering questions about weather.",
+        labels: [
+          "Information",
+          "Weather",
+        ],
+        type: "ca_v1",
+        promptId: 1,
+        promptVersionNumber: 3,
+        customMessageId: 1,
+        languageGroupId: 1,
+        bridgePhrasesId: 1,
+        timezone: "America/New_York",
+        promptToolDefaults: [
+          {
+            toolName: "get_weather",
+            defaultValues: [
+              {
+                fieldName: "temperature_unit",
+                defaultValue: "fahrenheit",
+              },
+            ],
+          },
+        ],
+        variables: {
+          "vars.location_name": "Main Street Pizza",
+        },
+        toolHeaders: {
+          "some-header": "some-value",
+        },
+        sttProvider: "Google STT V2 (Chirp 2)",
+        waitSound: "No Sound",
+        id: 1,
+        updatedAt: new Date("2024-01-01T00:00:00Z"),
+        lastUpdatedBy: "user@email.com",
+        prompt: {
+          name: "Weather Agent Prompt",
+          description: "Prompt for a weather agent.",
+          labels: [
+            "Outbound",
+            "Hospital",
+          ],
+          type: "prompt_v1",
+          context:
+            "You are a weather agent. Answer the user's questions about weather and nothing else.",
+          llmConfig: {
+            apiVersion: "2024-06-01",
+            temperature: 1,
+          },
+          sessionEndToolId: 1,
+          editComments:
+            "Updated prompt text to include requirement to not answer questions that aren't about weather.",
+          id: 1,
+          lastUpdated: "2024-01-01T12:00:00Z",
+          lastUpdatedBy: "user@email.com",
+          sessionEndTool: {
+            name: "Weather Fetcher",
+            definition: {
+              type: "endpoint",
+              tool: {
+                function: {
+                  name: "get_weather",
+                  description: "Get the weather for a city",
+                  parameters: {},
+                },
+              },
+              endpoint: {
+                url: "https://api.example.com",
+                method: "delete",
+                argumentLocation: "form",
+                timeout: 45,
+              },
+              context: {
+                task: {
+                  type: "steps",
+                  start: "auto",
+                },
+              },
+              defaults: {
+                "key": {
+                  "transform": {
+                    "action": "default",
+                    "when": {
+                      "key": "key",
+                      "value": "value",
+                      "operator": "eq",
+                    },
+                  },
+                },
+              },
+              staticParameters: [
+                {
+                  name: "temperature_unit",
+                  description:
+                    "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+                  required: false,
+                  type: "string",
+                  default: "fahrenheit",
+                },
+              ],
+            },
+            serviceId: 1,
+            id: 1,
+            lastUpdatedComments: "Updated to use new API endpoint",
+            promptsInfo: [
+              {
+                id: 1,
+                name: "Test Prompt",
+              },
+            ],
+            agentsInfo: [
+              {
+                id: 1,
+                name: "Test Agent",
+              },
+            ],
+            lastUpdated: new Date("2025-05-06T16:17:25.916Z"),
+            lastUpdatedBy: "user@email.com",
+            versionNumber: 1,
+          },
+          agentCount: 5,
+          versionNumber: 1,
+          toolsFull: null,
+        },
+        customMessage: {
+          name: "Customer service greeting",
+          preamble: "If this is an emergency, please hang up and call 911.",
+          text:
+            "Hello and thank you for calling customer service. How can I help you today?",
+          subject: "Your appointment reminder",
+          label: "Customer service",
+          repeatAfterLanguageChange: true,
+          rules: [
+            {
+              description: "Closed on New Year's Day",
+              timeRangeStart: "09:00",
+              timeRangeEnd: "17:00",
+              date: "2025-01-01",
+              invert: false,
+              text: "Hello, thank you for calling. Sorry, we're closed today.",
+            },
+            {
+              description: "Closed on weekends",
+              timeRangeStart: "09:00",
+              timeRangeEnd: "17:00",
+              daysOfWeek: [
+                "sa",
+                "su",
+              ],
+              invert: false,
+              text:
+                "Hello, thank you for calling. Sorry, we're closed on weekends.",
+            },
+          ],
+          id: 29221,
+          updatedAt: new Date("2024-01-01T00:00:00Z"),
+          agentCount: 1,
+          lastUpdatedBy: "user@email.com",
+        },
+        tools: [
+          {
+            name: "Weather Fetcher",
+            definition: {
+              type: "endpoint",
+              tool: {
+                function: {
+                  name: "get_weather",
+                  description: "Get the weather for a city",
+                  parameters: {},
+                },
+              },
+              endpoint: {
+                url: "https://api.example.com",
+                method: "delete",
+                argumentLocation: "form",
+                timeout: 45,
+              },
+              context: {
+                task: {
+                  type: "steps",
+                  start: "auto",
+                },
+              },
+              defaults: {
+                "key": {
+                  "transform": {
+                    "action": "default",
+                    "when": {
+                      "key": "key",
+                      "value": "value",
+                      "operator": "eq",
+                    },
+                  },
+                },
+              },
+              staticParameters: [
+                {
+                  name: "temperature_unit",
+                  description:
+                    "Whether the temperature information should be fetched in Celsius or Fahrenheit",
+                  required: false,
+                  type: "string",
+                  default: "fahrenheit",
+                },
+              ],
+            },
+            serviceId: 1,
+            id: 1,
+            lastUpdatedComments: "Updated to use new API endpoint",
+            promptsInfo: null,
+            agentsInfo: [
+              {
+                id: 1,
+                name: "Test Agent",
+              },
+            ],
+            lastUpdated: new Date("2025-11-10T19:23:40.633Z"),
+            lastUpdatedBy: "user@email.com",
+            versionNumber: 1,
+          },
+        ],
+        languageGroup: {
+          name: "Call Center 1 Languages",
+          description: "Languages spoken by operators at Call Center 1",
+          languageConfigs: [
+            {
+              languageCode: "en-US",
+              voiceProvider: "OpenAI",
+              voiceDisplayName: "Alloy",
+              dtmfCode: 1,
+            },
+            {
+              languageCode: "es-US",
+              voiceProvider: "Google",
+              voiceDisplayName: "es-US-Neural2-B",
+              dtmfCode: 2,
+            },
+          ],
+          skipCurrentLanguageInMessage: true,
+          id: 1,
+          editComments: "Added Spanish support.",
+          agentsInfo: [
+            {
+              id: 1,
+              name: "Test Agent",
+            },
+          ],
+          updatedAt: new Date("2024-01-01T00:00:00Z"),
+          lastUpdatedBy: "user@mail.com",
+        },
+      },
+    },
+  ],
   tools: [
     {
       name: "Weather Fetcher",
@@ -221,19 +486,14 @@ let value: AgentResponse = {
       serviceId: 1,
       id: 1,
       lastUpdatedComments: "Updated to use new API endpoint",
-      promptsInfo: [
-        {
-          id: 1,
-          name: "Test Prompt",
-        },
-      ],
+      promptsInfo: null,
       agentsInfo: [
         {
           id: 1,
           name: "Test Agent",
         },
       ],
-      lastUpdated: new Date("2026-04-26T21:36:54.796Z"),
+      lastUpdated: new Date("2025-11-10T19:23:40.633Z"),
       lastUpdatedBy: "user@email.com",
       versionNumber: 1,
     },
