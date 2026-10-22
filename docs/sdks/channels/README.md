@@ -382,7 +382,7 @@ const syllableSDK = new SyllableSDKCore({
 async function run() {
   const res = await channelsDelete(syllableSDK, {
     channelId: "<id>",
-    targetId: 937279,
+    targetId: 675883,
   });
   if (res.ok) {
     const { value: result } = res;

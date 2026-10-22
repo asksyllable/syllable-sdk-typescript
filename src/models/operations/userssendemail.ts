@@ -10,6 +10,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UsersSendEmailRequest = {
   userEmail: string;
+  /**
+   * Compatibility no-op; accepted but ignored.
+   */
   skipAuth?: boolean | undefined;
 };
 
