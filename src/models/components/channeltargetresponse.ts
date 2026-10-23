@@ -14,6 +14,12 @@ import {
   AgentResponse$outboundSchema,
 } from "./agentresponse.js";
 import {
+  SipConfiguration,
+  SipConfiguration$inboundSchema,
+  SipConfiguration$Outbound,
+  SipConfiguration$outboundSchema,
+} from "./sipconfiguration.js";
+import {
   TargetModes,
   TargetModes$inboundSchema,
   TargetModes$outboundSchema,
@@ -76,6 +82,10 @@ export type ChannelTargetResponse = {
    * Twilio US A2P messaging-path configuration snapshot from the last explicit verify; null if never checked.
    */
   a2pVerified?: boolean | null | undefined;
+  /**
+   * SIP configuration applied when transferring calls
+   */
+  sipConfiguration?: SipConfiguration | null | undefined;
 };
 
 /** @internal */
@@ -96,6 +106,7 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
   last_updated_by: z.string(),
   agent: z.nullable(z.lazy(() => AgentResponse$inboundSchema)).optional(),
   a2p_verified: z.nullable(z.boolean()).optional(),
+  sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "agent_id": "agentId",
@@ -107,6 +118,7 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
     "a2p_verified": "a2pVerified",
+    "sip_configuration": "sipConfiguration",
   });
 });
 /** @internal */
@@ -123,6 +135,7 @@ export type ChannelTargetResponse$Outbound = {
   last_updated_by: string;
   agent?: AgentResponse$Outbound | null | undefined;
   a2p_verified?: boolean | null | undefined;
+  sip_configuration?: SipConfiguration$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -143,6 +156,7 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
   lastUpdatedBy: z.string(),
   agent: z.nullable(z.lazy(() => AgentResponse$outboundSchema)).optional(),
   a2pVerified: z.nullable(z.boolean()).optional(),
+  sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     agentId: "agent_id",
@@ -154,6 +168,7 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
     a2pVerified: "a2p_verified",
+    sipConfiguration: "sip_configuration",
   });
 });
 
