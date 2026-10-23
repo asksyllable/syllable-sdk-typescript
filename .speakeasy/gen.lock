@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 607a9c39858bc6f0f446523fa988740a
+  docChecksum: a247ff67b7489ca130af46fec1fece80
   docVersion: 0.0.3
-  speakeasyVersion: 1.803.1
-  generationVersion: 2.950.2
-  releaseVersion: 1.0.72-rc.2
-  configChecksum: 9a3572b79fd106bd9bede69519570121
+  speakeasyVersion: 1.803.2
+  generationVersion: 2.950.13
+  releaseVersion: 1.0.72-rc.3
+  configChecksum: edac9a95d31404502fafd8239fdc0a64
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 7a4f6da9-3f82-4e8f-9b06-3308062cdea8
-  pristine_commit_hash: 82c990755a4adda6eee7a57536daac4fb33ef749
-  pristine_tree_hash: 22703be637ec102d83c252d5fc2872aeea43f0a8
+  generation_id: 880259b0-128e-4482-bac8-243d596c8f8f
+  pristine_commit_hash: c145ee34967936cb0e962cb6fa6547138c6d92fa
+  pristine_tree_hash: 4ee61aa9912b39db135e48133ab3dcd2ad1418f5
 features:
   typescript:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.4
     constsAndDefaults: 0.1.14
-    core: 3.31.6
+    core: 3.31.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -881,8 +881,8 @@ trackedFiles:
     pristine_git_object: e24b2932152ec1291233c4dff7130b600e7ab749
   docs/models/components/insightworkflowcondition.md:
     id: dbdb45dcd15f
-    last_write_checksum: sha1:de556d41654502b300d2914085db26f56f620c03
-    pristine_git_object: da1ff78c9dd4ba11199c7c3f552b1db4fd557030
+    last_write_checksum: sha1:b1ee3bfda5b5c1c05b44fc08957a5d3f3c6cfb6e
+    pristine_git_object: 6595c7bd5bc2ed95717a70531e3f5d44ecbc9d2d
   docs/models/components/insightworkflowestimate.md:
     id: dc92bd5b692d
     last_write_checksum: sha1:e9d9d450eb7cd507b14310cdfec870a66c7c86b1
@@ -897,20 +897,20 @@ trackedFiles:
     pristine_git_object: 318b6fb971fe803d0adc4fdbebee05bb556baae7
   docs/models/components/insightworkflowinput.md:
     id: 71cb3bf06901
-    last_write_checksum: sha1:063a62db767d80863259e99f26f49776a0c7c802
-    pristine_git_object: 1487d4d0b99c8a73c5cd44e0b378da6d02c211c6
+    last_write_checksum: sha1:3362ee240d8512ade334388e95cb0e2efc336a50
+    pristine_git_object: aa6bc2b97e0c1fd75b6d83e477c918bf0f749a2d
   docs/models/components/insightworkflowoutput.md:
     id: 5c3c6aa9a9df
-    last_write_checksum: sha1:adaa9d897c872ee4aa336803a8a8b1abb7e28ed1
-    pristine_git_object: 11bee90a3bb0fb193c54a4e34f6e5b9f96eaa915
+    last_write_checksum: sha1:24e8ce41893c397ec1268feb80ce18f92f2aed89
+    pristine_git_object: d7aac82ccf2aa7123f4c8b6962f36c00b263fef2
   docs/models/components/insightworkflowproperties.md:
     id: 4dd9bed048af
     last_write_checksum: sha1:90ab5404d9fa0b3d26ea6adf837ee7ae37bcaee0
     pristine_git_object: fe87fc8096a99f4b69361f79816e5dd7d1f0ee6e
   docs/models/components/insightworkflowresponse.md:
     id: 0f2f084290a1
-    last_write_checksum: sha1:e614c049c72df8ddadfa5fd0b57a29631e8e767b
-    pristine_git_object: 348d6aa33aa53b16a54aa4beaf0559a4fd30dfcb
+    last_write_checksum: sha1:e6fa3c39146669707ae049e0b335b9d9076c04a9
+    pristine_git_object: 826a73e72dddb4455cf43feace335c1449a6248b
   docs/models/components/inspectlatencyresponse.md:
     id: affa64ca27e4
     last_write_checksum: sha1:e19f2b29a170ed64d848073e42ffc60ae8039329
@@ -2229,8 +2229,8 @@ trackedFiles:
     pristine_git_object: 60680aafc311e6ac3afcbda70869aed750c30423
   docs/models/operations/insightsworkflowupdaterequest.md:
     id: ed9284dbb47c
-    last_write_checksum: sha1:dde544cb5d04c2cb8f7f1ba10cea364fdd05b977
-    pristine_git_object: 1ca5a646beaa233698298cb77cc6f2cf58c80bae
+    last_write_checksum: sha1:47b4ea1a87f2de661c26613eb39fe7d8083ee4fc
+    pristine_git_object: b4979d954891497d32c4e4084e5d3bf7788b3bd8
   docs/models/operations/insighttoolgetbyidrequest.md:
     id: 430ed3521285
     last_write_checksum: sha1:3034a0dbd520478318f8d3a5962179030a303a4a
@@ -2633,8 +2633,8 @@ trackedFiles:
     pristine_git_object: 62059296d629b329af14a48e47721399a4e43c86
   docs/sdks/workflows/README.md:
     id: 80c76ce944c0
-    last_write_checksum: sha1:3b3adef230fdc3d501c3b5dd3b7095391d803ddd
-    pristine_git_object: af53c3c3bad5afd3bed605f4c7785cfd7f2f7be5
+    last_write_checksum: sha1:72a19ee9dc04ee1fd2b63aaa42ab1405c53199f7
+    pristine_git_object: adeef8feb34e5de8d6a15f24da2367ca312bd273
   docs/types/rfcdate.md:
     id: 5f9756408fae
     last_write_checksum: sha1:57b4b3cec635cbd12767ed8672f96e257ef88845
@@ -2661,12 +2661,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:4fd6f19b5a556bd84737c038cbd389d467364247
-    pristine_git_object: 70245e260e8928406d74be43a5740fca42ea6cb7
+    last_write_checksum: sha1:4a84ab25262e91bc680fbb802c9d60142ed3b1af
+    pristine_git_object: c1e04d1b4a5540c163c687d6aa7b151246cfd290
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:fb88d77e9f76110c6698e9b30b025d5d258bc220
-    pristine_git_object: e4a95298b3bd7fde1c4e8255901307802c22a311
+    last_write_checksum: sha1:956a333778139e0bb3c05865f456469edcab150a
+    pristine_git_object: 0c00decd8c07eb062dfde818ad3bc36265802eda
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -3469,8 +3469,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:7e0ad74f6dc59e123bff51d75da4cd822bdd33ce
-    pristine_git_object: 28617fcd8a0ae3b6d1cd5d757961ff28d497d883
+    last_write_checksum: sha1:f6c82c9165f7f51279dbee8228513b38b533059a
+    pristine_git_object: d6a300d1f7520479c6b30ad915def546e45043c0
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -3545,8 +3545,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:5f4587399aa74ab07dee159382c1da98aa019b2b
-    pristine_git_object: 0620a81fb186b1625bd6f703d80e41c26c1074c5
+    last_write_checksum: sha1:9795d8573d04ef038f392d41b2a4de0d07ffdfa2
+    pristine_git_object: b07812192fe9f1809c64197add8fd94c1c94fc3c
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:c49f9f30688900b044232213b9da00931498aed0
@@ -3561,8 +3561,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:a5ac1a7ee95ea6ccea52dcac9ea4f60eff30d210
-    pristine_git_object: 9cbe85128ef842f39210b0d1401ec170563644bb
+    last_write_checksum: sha1:8a28b256f7d180a893808b3ab7f0ef23b4caba8e
+    pristine_git_object: 6c2fb86c07ccb6c920632e4f7305cf923e48957b
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:c4c1d8169a3a283584b8f13ea1533e438fe6fd69
@@ -4969,8 +4969,8 @@ trackedFiles:
     pristine_git_object: bf76e514d9f6dd734dacec4aa19eb10353eb65db
   src/models/components/insightworkflowcondition.ts:
     id: 9b6927439f01
-    last_write_checksum: sha1:d46aa29f92506d493fa12272fd6aa3b14eb6d222
-    pristine_git_object: 3f00dcfff47ce0e54aab6b013762ee92de7ffa31
+    last_write_checksum: sha1:5681f70b7e8bb430162e7e1236a02d182ab0fe6c
+    pristine_git_object: 637e0105c372b91dcbe06d82cf089d628ae3be2f
   src/models/components/insightworkflowestimate.ts:
     id: b067b62989d6
     last_write_checksum: sha1:3ca6f0b2235095637e154e9250c1b3451c59402d
@@ -7068,10 +7068,10 @@ examples:
   insights_workflow_create:
     speakeasy-default-insights-workflow-create:
       requestBody:
-        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
+        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_get_by_id:
@@ -7081,7 +7081,7 @@ examples:
           workflow_id: 788857
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_update:
@@ -7090,10 +7090,10 @@ examples:
         path:
           workflow_id: 673493
       requestBody:
-        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
+        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_delete:
@@ -7113,7 +7113,7 @@ examples:
           workflow_id: 248768
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_activate:
@@ -7125,7 +7125,7 @@ examples:
         application/json: {"is_acknowledged": true, "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_queue_work:
@@ -8619,16 +8619,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Typescript SDK Changes:
-  * `syllablesdk.agents.list()`:  `response.items[].channelTargets[].sipConfiguration` **Added**
-  * `syllablesdk.agents.create()`:  `response.channelTargets[].sipConfiguration` **Added**
-  * `syllablesdk.agents.update()`:  `response.channelTargets[].sipConfiguration` **Added**
-  * `syllablesdk.agents.getById()`:  `response.channelTargets[].sipConfiguration` **Added**
-  * `syllablesdk.channels.targets.list()`:  `response.items[].sipConfiguration` **Added**
-  * `syllablesdk.channels.targets.create()`:  `response.sipConfiguration` **Added**
-  * `syllablesdk.channels.targets.getById()`:  `response.sipConfiguration` **Added**
-  * `syllablesdk.channels.targets.update()`:  `response.sipConfiguration` **Added**
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.insights.workflows.list()`:  `response.items[].conditions` **Changed**\n* `syllablesdk.insights.workflows.create()`: \n  *  `request.conditions` **Changed**\n  *  `response.conditions` **Changed**\n* `syllablesdk.insights.workflows.getById()`:  `response.conditions` **Changed**\n* `syllablesdk.insights.workflows.update()`: \n  *  `request.insightWorkflowInput.conditions` **Changed**\n  *  `response.conditions` **Changed**\n* `syllablesdk.insights.workflows.inactivate()`:  `response.conditions` **Changed**\n* `syllablesdk.insights.workflows.activate()`:  `response.conditions` **Changed**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

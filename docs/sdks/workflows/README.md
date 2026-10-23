@@ -142,6 +142,14 @@ async function run() {
       promptList: [
         "123324",
       ],
+      agentLabels: [
+        "Outbound",
+        "Hospital",
+      ],
+      promptLabels: [
+        "Practice",
+        "Hospital",
+      ],
       folderList: [
         16754,
         67535,
@@ -193,6 +201,14 @@ async function run() {
       ],
       promptList: [
         "123324",
+      ],
+      agentLabels: [
+        "Outbound",
+        "Hospital",
+      ],
+      promptLabels: [
+        "Practice",
+        "Hospital",
       ],
       folderList: [
         16754,
@@ -346,6 +362,14 @@ async function run() {
         promptList: [
           "123324",
         ],
+        agentLabels: [
+          "Outbound",
+          "Hospital",
+        ],
+        promptLabels: [
+          "Practice",
+          "Hospital",
+        ],
         folderList: [
           16754,
           67535,
@@ -400,6 +424,14 @@ async function run() {
         ],
         promptList: [
           "123324",
+        ],
+        agentLabels: [
+          "Outbound",
+          "Hospital",
+        ],
+        promptLabels: [
+          "Practice",
+          "Hospital",
         ],
         folderList: [
           16754,

@@ -43,6 +43,14 @@ export type InsightWorkflowCondition = {
    */
   promptList?: Array<string> | null | undefined;
   /**
+   * Match any of these labels on the session agent in its current state. Combined with other conditions using AND; an empty list applies no filter.
+   */
+  agentLabels?: Array<string> | null | undefined;
+  /**
+   * Match any of these labels on the prompt version used by the session. Combined with other conditions using AND; an empty list applies no filter.
+   */
+  promptLabels?: Array<string> | null | undefined;
+  /**
    * List of folder IDs
    */
   folderList?: Array<number> | null | undefined;
@@ -123,6 +131,8 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
     z.union([z.array(z.number().int()), z.array(z.string())]),
   ).optional(),
   prompt_list: z.nullable(z.array(z.string())).optional(),
+  agent_labels: z.nullable(z.array(z.string())).optional(),
+  prompt_labels: z.nullable(z.array(z.string())).optional(),
   folder_list: z.nullable(z.array(z.number().int())).optional(),
   sheet_info: z.nullable(z.record(z.string())).optional(),
 }).transform((v) => {
@@ -132,6 +142,8 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
     "sample_rate": "sampleRate",
     "agent_list": "agentList",
     "prompt_list": "promptList",
+    "agent_labels": "agentLabels",
+    "prompt_labels": "promptLabels",
     "folder_list": "folderList",
     "sheet_info": "sheetInfo",
   });
@@ -143,6 +155,8 @@ export type InsightWorkflowCondition$Outbound = {
   sample_rate?: number | number | null | undefined;
   agent_list?: Array<number> | Array<string> | null | undefined;
   prompt_list?: Array<string> | null | undefined;
+  agent_labels?: Array<string> | null | undefined;
+  prompt_labels?: Array<string> | null | undefined;
   folder_list?: Array<number> | null | undefined;
   sheet_info?: { [k: string]: string } | null | undefined;
 };
@@ -160,6 +174,8 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
     z.union([z.array(z.number().int()), z.array(z.string())]),
   ).optional(),
   promptList: z.nullable(z.array(z.string())).optional(),
+  agentLabels: z.nullable(z.array(z.string())).optional(),
+  promptLabels: z.nullable(z.array(z.string())).optional(),
   folderList: z.nullable(z.array(z.number().int())).optional(),
   sheetInfo: z.nullable(z.record(z.string())).optional(),
 }).transform((v) => {
@@ -169,6 +185,8 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
     sampleRate: "sample_rate",
     agentList: "agent_list",
     promptList: "prompt_list",
+    agentLabels: "agent_labels",
+    promptLabels: "prompt_labels",
     folderList: "folder_list",
     sheetInfo: "sheet_info",
   });

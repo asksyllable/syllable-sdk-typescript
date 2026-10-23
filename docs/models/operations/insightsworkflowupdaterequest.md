@@ -25,6 +25,14 @@ let value: InsightsWorkflowUpdateRequest = {
       promptList: [
         "123324",
       ],
+      agentLabels: [
+        "Outbound",
+        "Hospital",
+      ],
+      promptLabels: [
+        "Practice",
+        "Hospital",
+      ],
       folderList: [
         16754,
         67535,
