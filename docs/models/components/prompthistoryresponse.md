@@ -25,6 +25,7 @@ let value: PromptHistoryResponse = {
   llmConfig: {
     apiVersion: "2024-06-01",
     temperature: 1,
+    reasoningEffort: "low",
   },
   comments:
     "Updated prompt text to include requirement to not answer questions that aren't about weather.",

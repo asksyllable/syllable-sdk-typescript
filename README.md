@@ -984,7 +984,7 @@ run();
 * [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (11)</summary>
+<details><summary>Less common errors (13)</summary>
 
 <br />
 
@@ -998,6 +998,8 @@ run();
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
 * [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 201 methods.*
+* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 201 methods.*
+* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 201 methods.*
 * [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
 * [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
 * [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*

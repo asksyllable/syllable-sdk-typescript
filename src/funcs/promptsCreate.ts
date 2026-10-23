@@ -39,7 +39,7 @@ export function promptsCreate(
 ): APIPromise<
   Result<
     components.PromptResponse,
-    | errors.HTTPValidationError
+    | errors.PromptsCreateResponse422PromptsCreate
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -65,7 +65,7 @@ async function $do(
   [
     Result<
       components.PromptResponse,
-      | errors.HTTPValidationError
+      | errors.PromptsCreateResponse422PromptsCreate
       | SyllableSDKError
       | ResponseValidationError
       | ConnectionError
@@ -148,7 +148,7 @@ async function $do(
 
   const [result] = await M.match<
     components.PromptResponse,
-    | errors.HTTPValidationError
+    | errors.PromptsCreateResponse422PromptsCreate
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -159,7 +159,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, components.PromptResponse$inboundSchema),
-    M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
+    M.jsonErr(422, errors.PromptsCreateResponse422PromptsCreate$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
