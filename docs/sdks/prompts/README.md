@@ -133,6 +133,7 @@ async function run() {
     llmConfig: {
       apiVersion: "2024-06-01",
       temperature: 1,
+      reasoningEffort: "low",
     },
     sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
@@ -172,6 +173,7 @@ async function run() {
     llmConfig: {
       apiVersion: "2024-06-01",
       temperature: 1,
+      reasoningEffort: "low",
     },
     sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
@@ -202,10 +204,11 @@ run();
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.HTTPValidationError | 422                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.PromptReasoningErrorResponse        | 422                                        | application/json                           |
+| errors.PromptSchemaValidationErrorResponse | 422                                        | application/json                           |
+| errors.SDKError                            | 4XX, 5XX                                   | \*/\*                                      |
 
 ## update
 
@@ -235,6 +238,7 @@ async function run() {
     llmConfig: {
       apiVersion: "2024-06-01",
       temperature: 1,
+      reasoningEffort: "low",
     },
     sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
@@ -275,6 +279,7 @@ async function run() {
     llmConfig: {
       apiVersion: "2024-06-01",
       temperature: 1,
+      reasoningEffort: "low",
     },
     sessionEndToolId: 1,
     editComments: "Updated prompt text to include requirement to not answer questions that aren't about weather.",
@@ -306,10 +311,11 @@ run();
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.HTTPValidationError | 422                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.PromptReasoningErrorResponse        | 422                                        | application/json                           |
+| errors.PromptSchemaValidationErrorResponse | 422                                        | application/json                           |
+| errors.SDKError                            | 4XX, 5XX                                   | \*/\*                                      |
 
 ## promptsListActiveLabels
 

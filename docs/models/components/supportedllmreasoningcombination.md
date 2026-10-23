@@ -1,0 +1,29 @@
+# SupportedLlmReasoningCombination
+
+Reviewed effort restrictions for one endpoint and tool mode.
+
+## Example Usage
+
+```typescript
+import { SupportedLlmReasoningCombination } from "syllable-sdk/models/components";
+
+let value: SupportedLlmReasoningCombination = {
+  endpoint: "chat",
+  toolMode: "function",
+  allowedEfforts: [
+    "low",
+  ],
+  unverifiedEfforts: [
+    "low",
+  ],
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                     | Type                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                  | Description                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `endpoint`                                                                                                                                                                                                                | [components.ReasoningEndpoint](../../models/components/reasoningendpoint.md)                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                        | N/A                                                                                                                                                                                                                       |
+| `toolMode`                                                                                                                                                                                                                | [components.ReasoningToolMode](../../models/components/reasoningtoolmode.md)                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                        | Function covers automatic/required selection; forced function selects a named tool.<br/><br/>Parallel function is retained as shorthand for function with parallel calls enabled.                                         |
+| `allowedEfforts`                                                                                                                                                                                                          | [components.ReasoningEffort](../../models/components/reasoningeffort.md)[]                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                        | Verified provider-supported efforts for this endpoint/tool mode. An empty list with no unverified efforts means reviewed non-support. A missing combination means unknown support. These values do not activate a cohort. |
+| `unverifiedEfforts`                                                                                                                                                                                                       | [components.ReasoningEffort](../../models/components/reasoningeffort.md)[]                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                        | Candidate efforts that remain unverified for this combination and are excluded from allowed_efforts.                                                                                                                      |

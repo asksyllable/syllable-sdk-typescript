@@ -12,6 +12,11 @@ import {
   PromptLlmProvider$inboundSchema,
   PromptLlmProvider$outboundSchema,
 } from "./promptllmprovider.js";
+import {
+  ReasoningEffort,
+  ReasoningEffort$inboundSchema,
+  ReasoningEffort$outboundSchema,
+} from "./reasoningeffort.js";
 
 /**
  * LLM configuration for a prompt.
@@ -40,6 +45,10 @@ export type PromptLlmConfig = {
    */
   temperature?: number | null | undefined;
   /**
+   * Requested reasoning effort. Missing or null on create inherits existing service/model policy. On update, omit to preserve the saved choice or send null to reset. Explicit choices require an enabled consuming Cortex reasoning profile and compatible model capabilities; none is distinct from minimal and from inheritance.
+   */
+  reasoningEffort?: ReasoningEffort | null | undefined;
+  /**
    * Deprecated by Syllable; leave unset for new configurations. Retained for backward compatibility where supported, without a guarantee of identical responses. OpenAI and Azure OpenAI Chat Completions offer best-effort seed support on supported models; Responses does not support seed. Anthropic does not support seed as a sampling parameter. Google support depends on the model and API. A saved value does not establish the endpoint or seed handling of a past request, and sending seed does not prove that a provider honored it.
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -58,10 +67,12 @@ export const PromptLlmConfig$inboundSchema: z.ZodType<
   version: z.nullable(z.string()).optional(),
   api_version: z.nullable(z.string()).optional(),
   temperature: z.nullable(z.number()).optional(),
+  reasoning_effort: z.nullable(ReasoningEffort$inboundSchema).optional(),
   seed: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "api_version": "apiVersion",
+    "reasoning_effort": "reasoningEffort",
   });
 });
 /** @internal */
@@ -71,6 +82,7 @@ export type PromptLlmConfig$Outbound = {
   version?: string | null | undefined;
   api_version?: string | null | undefined;
   temperature?: number | null | undefined;
+  reasoning_effort?: string | null | undefined;
   seed?: number | null | undefined;
 };
 
@@ -85,10 +97,12 @@ export const PromptLlmConfig$outboundSchema: z.ZodType<
   version: z.nullable(z.string()).optional(),
   apiVersion: z.nullable(z.string()).optional(),
   temperature: z.nullable(z.number()).optional(),
+  reasoningEffort: z.nullable(ReasoningEffort$outboundSchema).optional(),
   seed: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     apiVersion: "api_version",
+    reasoningEffort: "reasoning_effort",
   });
 });
 

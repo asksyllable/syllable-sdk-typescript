@@ -18,6 +18,12 @@ import {
   PromptLlmProvider$inboundSchema,
   PromptLlmProvider$outboundSchema,
 } from "./promptllmprovider.js";
+import {
+  SupportedLlmReasoningCapabilities,
+  SupportedLlmReasoningCapabilities$inboundSchema,
+  SupportedLlmReasoningCapabilities$Outbound,
+  SupportedLlmReasoningCapabilities$outboundSchema,
+} from "./supportedllmreasoningcapabilities.js";
 
 /**
  * LLM config option that can be used on a prompt.
@@ -69,6 +75,14 @@ export type SupportedLlm = {
    * Effective lifecycle status, resolved server-side against the current date. Populated on API responses; unset in the static catalog.
    */
   status?: LifecycleStatus | null | undefined;
+  /**
+   * Concrete provider model or Azure deployment name for this catalog version. Custom deployment names require a reviewed catalog mapping.
+   */
+  deployment?: string | null | undefined;
+  /**
+   * Reviewed reasoning capabilities for this provider/model/version/deployment. Null means capabilities are unknown. Metadata does not enable explicit reasoning choices or establish consuming-service rollout readiness.
+   */
+  reasoningCapabilities?: SupportedLlmReasoningCapabilities | null | undefined;
 };
 
 /** @internal */
@@ -88,11 +102,16 @@ export const SupportedLlm$inboundSchema: z.ZodType<
   fallback: z.nullable(z.string()).optional(),
   replacement: z.nullable(z.string()).optional(),
   status: z.nullable(LifecycleStatus$inboundSchema).optional(),
+  deployment: z.nullable(z.string()).optional(),
+  reasoning_capabilities: z.nullable(
+    SupportedLlmReasoningCapabilities$inboundSchema,
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
     "api_version": "apiVersion",
     "sunset_date": "sunsetDate",
+    "reasoning_capabilities": "reasoningCapabilities",
   });
 });
 /** @internal */
@@ -108,6 +127,11 @@ export type SupportedLlm$Outbound = {
   fallback?: string | null | undefined;
   replacement?: string | null | undefined;
   status?: string | null | undefined;
+  deployment?: string | null | undefined;
+  reasoning_capabilities?:
+    | SupportedLlmReasoningCapabilities$Outbound
+    | null
+    | undefined;
 };
 
 /** @internal */
@@ -128,11 +152,16 @@ export const SupportedLlm$outboundSchema: z.ZodType<
   fallback: z.nullable(z.string()).optional(),
   replacement: z.nullable(z.string()).optional(),
   status: z.nullable(LifecycleStatus$outboundSchema).optional(),
+  deployment: z.nullable(z.string()).optional(),
+  reasoningCapabilities: z.nullable(
+    SupportedLlmReasoningCapabilities$outboundSchema,
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
     apiVersion: "api_version",
     sunsetDate: "sunset_date",
+    reasoningCapabilities: "reasoning_capabilities",
   });
 });
 

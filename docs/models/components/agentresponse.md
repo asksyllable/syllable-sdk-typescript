@@ -60,6 +60,7 @@ let value: AgentResponse = {
     llmConfig: {
       apiVersion: "2024-06-01",
       temperature: 1,
+      reasoningEffort: "low",
     },
     sessionEndToolId: 1,
     editComments:
@@ -231,6 +232,7 @@ let value: AgentResponse = {
           llmConfig: {
             apiVersion: "2024-06-01",
             temperature: 1,
+            reasoningEffort: "low",
           },
           sessionEndToolId: 1,
           editComments:
