@@ -15,7 +15,7 @@ export type InsightsListRequest = {
    */
   page?: number | null | undefined;
   /**
-   * The maximum number of items to return
+   * The maximum number of insights to return
    */
   limit?: number | undefined;
   /**
