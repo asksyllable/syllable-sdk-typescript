@@ -31,7 +31,10 @@ import { Result } from "../types/fp.js";
  * Insights List
  *
  * @remarks
- * List the evaluated insights for sessions.
+ * List evaluated insights, with at most 1,000 items and an offset (page * limit) up to 100,000.
+ *
+ * Filter by start_datetime (inclusive) and end_datetime (exclusive) on insight creation time
+ * to narrow results. Use order_by_direction=desc to read the newest insights first.
  */
 export function insightsList(
   client: SyllableSDKCore,

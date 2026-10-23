@@ -14,7 +14,10 @@ export const tool$insightsList: ToolDefinition<typeof args> = {
   name: "insights-list",
   description: `Insights List
 
-List the evaluated insights for sessions.`,
+List evaluated insights, with at most 1,000 items and an offset (page * limit) up to 100,000.
+
+Filter by start_datetime (inclusive) and end_datetime (exclusive) on insight creation time
+to narrow results. Use order_by_direction=desc to read the newest insights first.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await insightsList(
