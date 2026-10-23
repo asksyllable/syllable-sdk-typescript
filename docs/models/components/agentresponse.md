@@ -434,6 +434,22 @@ let value: AgentResponse = {
           lastUpdatedBy: "user@mail.com",
         },
       },
+      sipConfiguration: {
+        sipTransferMode: "refer",
+        sipEndpoints: [
+          {
+            host: "10.0.0.1",
+            port: "5060",
+            transport: "tcp",
+          },
+          {
+            host: "pbx.example.com",
+            port: "5071",
+            transport: "tls",
+          },
+        ],
+        callInfoPlacement: "uri_parameters",
+      },
     },
   ],
   tools: [
