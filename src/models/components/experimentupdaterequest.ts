@@ -20,6 +20,8 @@ import {
  *
  * Include at least two variants that use distinct agents. Mark exactly one as the control and use
  * positive whole-number weights that total 100.
+ *
+ * For a running experiment, only the weights can be changed on an update.
  */
 export type ExperimentUpdateRequest = {
   /**

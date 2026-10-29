@@ -71,7 +71,12 @@ export class Experiments extends ClientSDK {
    * Update Experiment
    *
    * @remarks
-   * Update an experiment. Only an experiment in 'draft' status can be updated.
+   * Update a draft experiment, or change only variant weights on a running experiment.
+   *
+   * Send the complete variant set and experiment details. While running, only weights may change;
+   * the name, hypothesis, variant names, agents, and control flags must remain unchanged. Weights
+   * must be positive whole-number percentages totaling 100. New sessions use the updated weights;
+   * sessions already in progress keep their assigned variant. Stopped experiments cannot be edited.
    */
   async update(
     request: operations.ExperimentsUpdateRequest,
