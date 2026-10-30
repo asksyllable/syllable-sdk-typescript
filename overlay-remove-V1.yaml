@@ -8,3 +8,12 @@ actions:
   - target: $["paths"]["/api/v1/channels/{channel_id}"]["delete"]["tags"]
     update:
       - "channels"
+  - target: $["components"]["schemas"]["CustomMessageHistoryResponse"]["properties"]["rules"]["items"]
+    update:
+      additionalProperties: true
+  - target: $["components"]["schemas"]["CustomMessageHistoryResponse"]["properties"]["type_config"]
+    update:
+      additionalProperties: true
+  - target: $["components"]["schemas"]["CustomMessageResponse"]["properties"]["type_config"]
+    update:
+      additionalProperties: true
