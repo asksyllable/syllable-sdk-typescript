@@ -14,7 +14,7 @@ import {
 } from "./experimentresponse.js";
 
 /**
- * A started experiment.
+ * A started or resumed experiment.
  */
 export type ExperimentStartResponse = {
   /**

@@ -14,7 +14,7 @@ import {
 } from "./daoexperimentvariantwrite.js";
 
 /**
- * Replace an experiment's name, hypothesis, and complete variant set.
+ * Replace a draft or paused experiment's name, hypothesis, and complete variant set.
  *
  * @remarks
  *
@@ -22,6 +22,7 @@ import {
  * the agent linked to the channel target, and use positive whole-number weights that total 100.
  *
  * For a running experiment, only the weights can be changed on an update.
+ * Stopped experiments cannot be edited.
  */
 export type ExperimentUpdateRequest = {
   /**

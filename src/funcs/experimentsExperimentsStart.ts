@@ -31,8 +31,9 @@ import { Result } from "../types/fp.js";
  * Start Experiment
  *
  * @remarks
- * Start an experiment. (Only an experiment in 'draft' status can be started.)
+ * Start a draft experiment or resume a paused experiment.
  *
+ * Resuming preserves the experiment's original start time and accumulated results.
  * The control must use the agent currently linked to the channel target.
  */
 export function experimentsExperimentsStart(

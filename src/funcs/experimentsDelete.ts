@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Delete Experiment
  *
  * @remarks
- * Delete a (non-running) experiment.
+ * Delete a draft or stopped experiment.
  */
 export function experimentsDelete(
   client: SyllableSDKCore,

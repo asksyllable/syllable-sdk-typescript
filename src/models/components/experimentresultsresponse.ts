@@ -23,7 +23,7 @@ export type ExperimentResultsResponse = {
    */
   experimentId: number;
   /**
-   * The variants of the experiment, in the same order as the experiment lists them
+   * Current variants in the same order as the experiment lists them, including variants with no sessions, followed by historical variants with recorded sessions sorted by variant ID
    */
   variants: Array<ExperimentVariantResult>;
 };

@@ -14,7 +14,7 @@ export const tool$experimentsDelete: ToolDefinition<typeof args> = {
   name: "experiments-delete",
   description: `Delete Experiment
 
-Delete a (non-running) experiment.`,
+Delete a draft or stopped experiment.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await experimentsDelete(
