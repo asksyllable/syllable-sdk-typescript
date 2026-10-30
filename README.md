@@ -368,6 +368,7 @@ run();
 * [delete](docs/sdks/experiments/README.md#delete) - Delete Experiment
 * [results](docs/sdks/experiments/README.md#results) - Get Experiment Results
 * [experimentsStart](docs/sdks/experiments/README.md#experimentsstart) - Start Experiment
+* [experimentsPause](docs/sdks/experiments/README.md#experimentspause) - Pause Experiment
 * [experimentsStop](docs/sdks/experiments/README.md#experimentsstop) - Stop Experiment
 
 ### [Incidents](docs/sdks/incidents/README.md)
@@ -658,6 +659,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`eventsList`](docs/sdks/events/README.md#list) - Events List
 - [`experimentsCreate`](docs/sdks/experiments/README.md#create) - Create Experiment
 - [`experimentsDelete`](docs/sdks/experiments/README.md#delete) - Delete Experiment
+- [`experimentsExperimentsPause`](docs/sdks/experiments/README.md#experimentspause) - Pause Experiment
 - [`experimentsExperimentsStart`](docs/sdks/experiments/README.md#experimentsstart) - Start Experiment
 - [`experimentsExperimentsStop`](docs/sdks/experiments/README.md#experimentsstop) - Stop Experiment
 - [`experimentsGetById`](docs/sdks/experiments/README.md#getbyid) - Get Experiment By Id
@@ -997,13 +999,13 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 201 methods.*
-* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 201 methods.*
-* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 201 methods.*
-* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
-* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
-* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 201 methods.*
+* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 202 methods.*
+* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 202 methods.*
+* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 202 methods.*
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

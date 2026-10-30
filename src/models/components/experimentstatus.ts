@@ -15,6 +15,7 @@ import { ClosedEnum } from "../../types/enums.js";
 export const ExperimentStatus = {
   Draft: "draft",
   Running: "running",
+  Paused: "paused",
   Stopped: "stopped",
 } as const;
 /**

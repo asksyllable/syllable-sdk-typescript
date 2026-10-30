@@ -14,7 +14,7 @@ export const tool$experimentsExperimentsStop: ToolDefinition<typeof args> = {
   name: "experiments-experiments-stop",
   description: `Stop Experiment
 
-Stop a running experiment.`,
+Stop a running or paused experiment.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await experimentsExperimentsStop(

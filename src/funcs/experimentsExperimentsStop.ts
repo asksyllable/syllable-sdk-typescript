@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Stop Experiment
  *
  * @remarks
- * Stop a running experiment.
+ * Stop a running or paused experiment.
  */
 export function experimentsExperimentsStop(
   client: SyllableSDKCore,

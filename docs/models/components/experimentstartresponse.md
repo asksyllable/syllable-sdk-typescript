@@ -1,6 +1,6 @@
 # ExperimentStartResponse
 
-A started experiment.
+A started or resumed experiment.
 
 ## Example Usage
 
@@ -13,7 +13,7 @@ let value: ExperimentStartResponse = {
     name: "Shorter greeting",
     targetId: 1,
     variants: [],
-    status: "running",
+    status: "paused",
     createdAt: new Date("2024-07-07T01:13:58.068Z"),
     updatedAt: new Date("2024-02-06T08:20:51.978Z"),
     lastUpdatedBy: "<value>",

@@ -4,6 +4,7 @@
 
 import { experimentsCreate } from "../funcs/experimentsCreate.js";
 import { experimentsDelete } from "../funcs/experimentsDelete.js";
+import { experimentsExperimentsPause } from "../funcs/experimentsExperimentsPause.js";
 import { experimentsExperimentsStart } from "../funcs/experimentsExperimentsStart.js";
 import { experimentsExperimentsStop } from "../funcs/experimentsExperimentsStop.js";
 import { experimentsGetById } from "../funcs/experimentsGetById.js";
@@ -71,12 +72,13 @@ export class Experiments extends ClientSDK {
    * Update Experiment
    *
    * @remarks
-   * Update a draft experiment, or change only variant weights on a running experiment.
+   * Update a draft or paused experiment, or change only variant weights on a running experiment.
    *
    * Send the complete variant set and experiment details. While running, only weights may change;
    * the name, hypothesis, variant names, agents, and control flags must remain unchanged. Weights
    * must be positive whole-number percentages totaling 100. New sessions use the updated weights;
    * sessions already in progress keep their assigned variant. Stopped experiments cannot be edited.
+   * Editing a paused experiment keeps it paused and preserves its original start time.
    * The control must use the agent linked to the channel target.
    */
   async update(
@@ -94,7 +96,7 @@ export class Experiments extends ClientSDK {
    * Delete Experiment
    *
    * @remarks
-   * Delete a (non-running) experiment.
+   * Delete a draft or stopped experiment.
    */
   async delete(
     request: operations.ExperimentsDeleteRequest,
@@ -128,8 +130,9 @@ export class Experiments extends ClientSDK {
    * Start Experiment
    *
    * @remarks
-   * Start an experiment. (Only an experiment in 'draft' status can be started.)
+   * Start a draft experiment or resume a paused experiment.
    *
+   * Resuming preserves the experiment's original start time and accumulated results.
    * The control must use the agent currently linked to the channel target.
    */
   async experimentsStart(
@@ -144,10 +147,27 @@ export class Experiments extends ClientSDK {
   }
 
   /**
+   * Pause Experiment
+   *
+   * @remarks
+   * Pause a running experiment. New sessions use the channel target's directly linked agent.
+   */
+  async experimentsPause(
+    request: operations.ExperimentsPauseRequest,
+    options?: RequestOptions,
+  ): Promise<components.ExperimentResponse> {
+    return unwrapAsync(experimentsExperimentsPause(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Stop Experiment
    *
    * @remarks
-   * Stop a running experiment.
+   * Stop a running or paused experiment.
    */
   async experimentsStop(
     request: operations.ExperimentsStopRequest,
