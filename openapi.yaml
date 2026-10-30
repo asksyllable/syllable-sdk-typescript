@@ -12868,11 +12868,13 @@ components:
         rules:
           items:
             type: "object"
+            additionalProperties: true
           type: "array"
           title: "Rules"
         type_config:
           type: "object"
           title: "Type Config"
+          additionalProperties: true
       type: "object"
       required:
         - "custom_message_id"
@@ -12993,6 +12995,7 @@ components:
           type: "object"
           title: "Type Config"
           description: "Persisted type-specific configuration"
+          additionalProperties: true
         updated_at:
           type: "string"
           format: "date-time"
