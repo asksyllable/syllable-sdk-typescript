@@ -31,7 +31,9 @@ import { Result } from "../types/fp.js";
  * Edit Channel Target
  *
  * @remarks
- * Update channel target by ID
+ * Update channel target by ID.
+ *
+ * Stop running experiments and delete drafts on the target before changing its linked agent.
  */
 export function channelsTargetsUpdate(
   client: SyllableSDKCore,
