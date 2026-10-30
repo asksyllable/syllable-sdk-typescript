@@ -14,7 +14,9 @@ export const tool$channelsTargetsUpdate: ToolDefinition<typeof args> = {
   name: "channels-targets-update",
   description: `Edit Channel Target
 
-Update channel target by ID`,
+Update channel target by ID.
+
+Stop running experiments and delete drafts on the target before changing its linked agent.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await channelsTargetsUpdate(

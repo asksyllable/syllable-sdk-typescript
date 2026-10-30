@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  * Create Experiment
  *
  * @remarks
- * Create a new experiment.
+ * Create a new experiment whose control uses the agent linked to the channel target.
  */
 export function experimentsCreate(
   client: SyllableSDKCore,

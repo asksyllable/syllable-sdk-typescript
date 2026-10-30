@@ -32,6 +32,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Start an experiment. (Only an experiment in 'draft' status can be started.)
+ *
+ * The control must use the agent currently linked to the channel target.
  */
 export function experimentsExperimentsStart(
   client: SyllableSDKCore,

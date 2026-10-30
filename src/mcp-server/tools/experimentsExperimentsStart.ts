@@ -14,7 +14,9 @@ export const tool$experimentsExperimentsStart: ToolDefinition<typeof args> = {
   name: "experiments-experiments-start",
   description: `Start Experiment
 
-Start an experiment. (Only an experiment in 'draft' status can be started.)`,
+Start an experiment. (Only an experiment in 'draft' status can be started.)
+
+The control must use the agent currently linked to the channel target.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await experimentsExperimentsStart(

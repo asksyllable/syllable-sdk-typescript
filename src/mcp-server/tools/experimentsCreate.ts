@@ -14,7 +14,7 @@ export const tool$experimentsCreate: ToolDefinition<typeof args> = {
   name: "experiments-create",
   description: `Create Experiment
 
-Create a new experiment.`,
+Create a new experiment whose control uses the agent linked to the channel target.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await experimentsCreate(

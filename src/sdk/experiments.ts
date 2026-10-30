@@ -37,7 +37,7 @@ export class Experiments extends ClientSDK {
    * Create Experiment
    *
    * @remarks
-   * Create a new experiment.
+   * Create a new experiment whose control uses the agent linked to the channel target.
    */
   async create(
     request: components.ExperimentCreateRequest,
@@ -77,6 +77,7 @@ export class Experiments extends ClientSDK {
    * the name, hypothesis, variant names, agents, and control flags must remain unchanged. Weights
    * must be positive whole-number percentages totaling 100. New sessions use the updated weights;
    * sessions already in progress keep their assigned variant. Stopped experiments cannot be edited.
+   * The control must use the agent linked to the channel target.
    */
   async update(
     request: operations.ExperimentsUpdateRequest,
@@ -128,6 +129,8 @@ export class Experiments extends ClientSDK {
    *
    * @remarks
    * Start an experiment. (Only an experiment in 'draft' status can be started.)
+   *
+   * The control must use the agent currently linked to the channel target.
    */
   async experimentsStart(
     request: operations.ExperimentsStartRequest,

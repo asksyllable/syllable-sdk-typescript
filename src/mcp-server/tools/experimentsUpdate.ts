@@ -19,7 +19,8 @@ Update a draft experiment, or change only variant weights on a running experimen
 Send the complete variant set and experiment details. While running, only weights may change;
 the name, hypothesis, variant names, agents, and control flags must remain unchanged. Weights
 must be positive whole-number percentages totaling 100. New sessions use the updated weights;
-sessions already in progress keep their assigned variant. Stopped experiments cannot be edited.`,
+sessions already in progress keep their assigned variant. Stopped experiments cannot be edited.
+The control must use the agent linked to the channel target.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await experimentsUpdate(

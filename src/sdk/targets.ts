@@ -86,7 +86,9 @@ export class Targets extends ClientSDK {
    * Edit Channel Target
    *
    * @remarks
-   * Update channel target by ID
+   * Update channel target by ID.
+   *
+   * Stop running experiments and delete drafts on the target before changing its linked agent.
    */
   async update(
     request: operations.ChannelTargetsUpdateRequest,

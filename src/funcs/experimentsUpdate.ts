@@ -37,6 +37,7 @@ import { Result } from "../types/fp.js";
  * the name, hypothesis, variant names, agents, and control flags must remain unchanged. Weights
  * must be positive whole-number percentages totaling 100. New sessions use the updated weights;
  * sessions already in progress keep their assigned variant. Stopped experiments cannot be edited.
+ * The control must use the agent linked to the channel target.
  */
 export function experimentsUpdate(
   client: SyllableSDKCore,
