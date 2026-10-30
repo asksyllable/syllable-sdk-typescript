@@ -20,11 +20,6 @@ import {
 } from "./custommessagetype.js";
 
 /**
- * Persisted type-specific configuration
- */
-export type TypeConfig = {};
-
-/**
  * Response model for custom message operations.
  *
  * @remarks
@@ -75,7 +70,7 @@ export type CustomMessageResponse = {
   /**
    * Persisted type-specific configuration
    */
-  typeConfig?: TypeConfig | undefined;
+  typeConfig?: { [k: string]: any } | undefined;
   /**
    * Timestamp of the most recent update to the custom message
    */
@@ -89,35 +84,6 @@ export type CustomMessageResponse = {
    */
   lastUpdatedBy: string;
 };
-
-/** @internal */
-export const TypeConfig$inboundSchema: z.ZodType<
-  TypeConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type TypeConfig$Outbound = {};
-
-/** @internal */
-export const TypeConfig$outboundSchema: z.ZodType<
-  TypeConfig$Outbound,
-  z.ZodTypeDef,
-  TypeConfig
-> = z.object({});
-
-export function typeConfigToJSON(typeConfig: TypeConfig): string {
-  return JSON.stringify(TypeConfig$outboundSchema.parse(typeConfig));
-}
-export function typeConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<TypeConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TypeConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TypeConfig' from JSON`,
-  );
-}
 
 /** @internal */
 export const CustomMessageResponse$inboundSchema: z.ZodType<
@@ -136,7 +102,7 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   rules: z.array(CustomMessageRule$inboundSchema).optional(),
   id: z.number().int(),
   version_number: z.number().int().default(1),
-  type_config: z.lazy(() => TypeConfig$inboundSchema).optional(),
+  type_config: z.record(z.any()).optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   agent_count: z.nullable(z.number().int()).optional(),
   last_updated_by: z.string(),
@@ -164,7 +130,7 @@ export type CustomMessageResponse$Outbound = {
   rules?: Array<CustomMessageRule$Outbound> | undefined;
   id: number;
   version_number: number;
-  type_config?: TypeConfig$Outbound | undefined;
+  type_config?: { [k: string]: any } | undefined;
   updated_at: string;
   agent_count?: number | null | undefined;
   last_updated_by: string;
@@ -187,7 +153,7 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   rules: z.array(CustomMessageRule$outboundSchema).optional(),
   id: z.number().int(),
   versionNumber: z.number().int().default(1),
-  typeConfig: z.lazy(() => TypeConfig$outboundSchema).optional(),
+  typeConfig: z.record(z.any()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()),
   agentCount: z.nullable(z.number().int()).optional(),
   lastUpdatedBy: z.string(),

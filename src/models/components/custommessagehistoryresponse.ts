@@ -8,10 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type Rules = {};
-
-export type CustomMessageHistoryResponseTypeConfig = {};
-
 /**
  * Complete immutable Message configuration; legacy values remain readable.
  */
@@ -30,72 +26,9 @@ export type CustomMessageHistoryResponse = {
   text: string;
   label: string | null;
   repeatAfterLanguageChange: boolean;
-  rules: Array<Rules>;
-  typeConfig: CustomMessageHistoryResponseTypeConfig;
+  rules: Array<{ [k: string]: any }>;
+  typeConfig: { [k: string]: any };
 };
-
-/** @internal */
-export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
-  .object({});
-/** @internal */
-export type Rules$Outbound = {};
-
-/** @internal */
-export const Rules$outboundSchema: z.ZodType<
-  Rules$Outbound,
-  z.ZodTypeDef,
-  Rules
-> = z.object({});
-
-export function rulesToJSON(rules: Rules): string {
-  return JSON.stringify(Rules$outboundSchema.parse(rules));
-}
-export function rulesFromJSON(
-  jsonString: string,
-): SafeParseResult<Rules, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Rules$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Rules' from JSON`,
-  );
-}
-
-/** @internal */
-export const CustomMessageHistoryResponseTypeConfig$inboundSchema: z.ZodType<
-  CustomMessageHistoryResponseTypeConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type CustomMessageHistoryResponseTypeConfig$Outbound = {};
-
-/** @internal */
-export const CustomMessageHistoryResponseTypeConfig$outboundSchema: z.ZodType<
-  CustomMessageHistoryResponseTypeConfig$Outbound,
-  z.ZodTypeDef,
-  CustomMessageHistoryResponseTypeConfig
-> = z.object({});
-
-export function customMessageHistoryResponseTypeConfigToJSON(
-  customMessageHistoryResponseTypeConfig:
-    CustomMessageHistoryResponseTypeConfig,
-): string {
-  return JSON.stringify(
-    CustomMessageHistoryResponseTypeConfig$outboundSchema.parse(
-      customMessageHistoryResponseTypeConfig,
-    ),
-  );
-}
-export function customMessageHistoryResponseTypeConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<CustomMessageHistoryResponseTypeConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CustomMessageHistoryResponseTypeConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CustomMessageHistoryResponseTypeConfig' from JSON`,
-  );
-}
 
 /** @internal */
 export const CustomMessageHistoryResponse$inboundSchema: z.ZodType<
@@ -117,10 +50,8 @@ export const CustomMessageHistoryResponse$inboundSchema: z.ZodType<
   text: z.string(),
   label: z.nullable(z.string()),
   repeat_after_language_change: z.boolean(),
-  rules: z.array(z.lazy(() => Rules$inboundSchema)),
-  type_config: z.lazy(() =>
-    CustomMessageHistoryResponseTypeConfig$inboundSchema
-  ),
+  rules: z.array(z.record(z.any())),
+  type_config: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     "custom_message_id": "customMessageId",
@@ -149,8 +80,8 @@ export type CustomMessageHistoryResponse$Outbound = {
   text: string;
   label: string | null;
   repeat_after_language_change: boolean;
-  rules: Array<Rules$Outbound>;
-  type_config: CustomMessageHistoryResponseTypeConfig$Outbound;
+  rules: Array<{ [k: string]: any }>;
+  type_config: { [k: string]: any };
 };
 
 /** @internal */
@@ -173,10 +104,8 @@ export const CustomMessageHistoryResponse$outboundSchema: z.ZodType<
   text: z.string(),
   label: z.nullable(z.string()),
   repeatAfterLanguageChange: z.boolean(),
-  rules: z.array(z.lazy(() => Rules$outboundSchema)),
-  typeConfig: z.lazy(() =>
-    CustomMessageHistoryResponseTypeConfig$outboundSchema
-  ),
+  rules: z.array(z.record(z.any())),
+  typeConfig: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     customMessageId: "custom_message_id",
