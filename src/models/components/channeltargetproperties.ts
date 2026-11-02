@@ -24,6 +24,7 @@ export const ChannelTargetProperties = {
   IsTest: "is_test",
   UpdatedAt: "updated_at",
   A2pVerified: "a2p_verified",
+  ExperimentStatus: "experiment_status",
 } as const;
 /**
  * Names of channel target fields supported for filtering on the full channel targets list

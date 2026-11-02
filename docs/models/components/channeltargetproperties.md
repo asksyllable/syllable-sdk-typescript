@@ -15,5 +15,5 @@ let value: ChannelTargetProperties = "agent_id";
 ## Values
 
 ```typescript
-"id" | "channel_id" | "channel_name" | "agent_id" | "target" | "target_mode" | "target_mode_list" | "fallback_target" | "is_test" | "updated_at" | "a2p_verified"
+"id" | "channel_id" | "channel_name" | "agent_id" | "target" | "target_mode" | "target_mode_list" | "fallback_target" | "is_test" | "updated_at" | "a2p_verified" | "experiment_status"
 ```
