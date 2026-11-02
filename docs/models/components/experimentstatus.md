@@ -9,7 +9,7 @@ The column is a varchar and not a database enum, so a new value here does not ne
 ```typescript
 import { ExperimentStatus } from "syllable-sdk/models/components";
 
-let value: ExperimentStatus = "paused";
+let value: ExperimentStatus = "running";
 ```
 
 ## Values

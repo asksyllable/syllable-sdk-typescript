@@ -452,6 +452,7 @@ let value: AgentResponse = {
         ],
         callInfoPlacement: "uri_parameters",
       },
+      experimentStatus: "running",
     },
   ],
   tools: [

@@ -14,6 +14,11 @@ import {
   AgentResponse$outboundSchema,
 } from "./agentresponse.js";
 import {
+  ExperimentStatus,
+  ExperimentStatus$inboundSchema,
+  ExperimentStatus$outboundSchema,
+} from "./experimentstatus.js";
+import {
   SipConfiguration,
   SipConfiguration$inboundSchema,
   SipConfiguration$Outbound,
@@ -86,6 +91,10 @@ export type ChannelTargetResponse = {
    * SIP configuration applied when transferring calls
    */
   sipConfiguration?: SipConfiguration | null | undefined;
+  /**
+   * Highest-priority status among the target's non-deleted experiments: running, paused, draft, then stopped. Calculated only for target list responses; null when there are no experiments or when not calculated.
+   */
+  experimentStatus?: ExperimentStatus | null | undefined;
 };
 
 /** @internal */
@@ -107,6 +116,7 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
   agent: z.nullable(z.lazy(() => AgentResponse$inboundSchema)).optional(),
   a2p_verified: z.nullable(z.boolean()).optional(),
   sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
+  experiment_status: z.nullable(ExperimentStatus$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "agent_id": "agentId",
@@ -119,6 +129,7 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
     "last_updated_by": "lastUpdatedBy",
     "a2p_verified": "a2pVerified",
     "sip_configuration": "sipConfiguration",
+    "experiment_status": "experimentStatus",
   });
 });
 /** @internal */
@@ -136,6 +147,7 @@ export type ChannelTargetResponse$Outbound = {
   agent?: AgentResponse$Outbound | null | undefined;
   a2p_verified?: boolean | null | undefined;
   sip_configuration?: SipConfiguration$Outbound | null | undefined;
+  experiment_status?: string | null | undefined;
 };
 
 /** @internal */
@@ -157,6 +169,7 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
   agent: z.nullable(z.lazy(() => AgentResponse$outboundSchema)).optional(),
   a2pVerified: z.nullable(z.boolean()).optional(),
   sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
+  experimentStatus: z.nullable(ExperimentStatus$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     agentId: "agent_id",
@@ -169,6 +182,7 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
     lastUpdatedBy: "last_updated_by",
     a2pVerified: "a2p_verified",
     sipConfiguration: "sip_configuration",
+    experimentStatus: "experiment_status",
   });
 });
 
