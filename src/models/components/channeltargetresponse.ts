@@ -92,7 +92,7 @@ export type ChannelTargetResponse = {
    */
   sipConfiguration?: SipConfiguration | null | undefined;
   /**
-   * Highest-priority status among the target's non-deleted experiments: running, paused, draft, then stopped. Calculated only for target list responses; null when there are no experiments or when not calculated.
+   * Highest-priority status among the target's non-deleted experiments: running, paused, draft, then stopped. Null when there are no experiments or when not calculated.
    */
   experimentStatus?: ExperimentStatus | null | undefined;
 };
