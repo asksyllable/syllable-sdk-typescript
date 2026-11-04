@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Get Experiment By Id
  *
  * @remarks
- * Get an experiment by its ID
+ * Get an experiment by its ID.
  */
 export function experimentsGetById(
   client: SyllableSDKCore,

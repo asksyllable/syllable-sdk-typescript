@@ -17,6 +17,8 @@ export const ExperimentProperties = {
   UpdatedAt: "updated_at",
   StartedAt: "started_at",
   StoppedAt: "stopped_at",
+  ScheduledStartTime: "scheduled_start_time",
+  ScheduledEndTime: "scheduled_end_time",
 } as const;
 export type ExperimentProperties = ClosedEnum<typeof ExperimentProperties>;
 

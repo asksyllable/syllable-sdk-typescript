@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -21,7 +22,13 @@ import {
  * Include at least two variants that use distinct agents. Mark exactly one as the control, using
  * the agent linked to the channel target, and use positive whole-number weights that total 100.
  *
- * For a running experiment, only the weights can be changed on an update.
+ * For a running experiment, only the weights and scheduled end can be changed on an update.
+ * The scheduled start of a draft must be in the future on every update. A draft that could not
+ * start at its scheduled start loses both schedule times, so it must get a new scheduled start.
+ * After the experiment first starts, its scheduled start cannot change. An experiment started
+ * manually may add a scheduled end without a scheduled start. A changed scheduled end must be
+ * in the future and after the scheduled or actual start. Omitted schedule fields keep their
+ * current values; explicit null clears a schedule field where editing it is allowed.
  * Stopped experiments cannot be edited.
  */
 export type ExperimentUpdateRequest = {
@@ -33,6 +40,14 @@ export type ExperimentUpdateRequest = {
    * The hypothesis under test
    */
   description?: string | null | undefined;
+  /**
+   * When to start the experiment automatically. Include a timezone. Cannot be changed after the experiment has started.
+   */
+  scheduledStartTime?: Date | null | undefined;
+  /**
+   * When to stop the experiment automatically. Include a timezone. A draft needs a scheduled start before an end can be set. The end can be changed after the experiment starts.
+   */
+  scheduledEndTime?: Date | null | undefined;
   /**
    * The complete set of variants for this experiment. Include at least 2 variants that use distinct agents, mark exactly one variant as the control using the channel target's linked agent, and assign positive whole number weights that total 100.
    */
@@ -47,12 +62,25 @@ export const ExperimentUpdateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  scheduled_start_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  scheduled_end_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   variants: z.array(DaoExperimentVariantWrite$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "scheduled_start_time": "scheduledStartTime",
+    "scheduled_end_time": "scheduledEndTime",
+  });
 });
 /** @internal */
 export type ExperimentUpdateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
+  scheduled_start_time?: string | null | undefined;
+  scheduled_end_time?: string | null | undefined;
   variants: Array<DaoExperimentVariantWrite$Outbound>;
 };
 
@@ -64,7 +92,16 @@ export const ExperimentUpdateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   variants: z.array(DaoExperimentVariantWrite$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    scheduledStartTime: "scheduled_start_time",
+    scheduledEndTime: "scheduled_end_time",
+  });
 });
 
 export function experimentUpdateRequestToJSON(

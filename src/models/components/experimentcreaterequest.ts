@@ -21,6 +21,8 @@ import {
  *
  * The control must use the agent linked to the channel target.
  * Variant weights are positive whole-number percentages that must total 100.
+ * An optional scheduled start must be in the future. A scheduled end requires a scheduled start
+ * and must follow it. Include a timezone in both timestamps.
  */
 export type ExperimentCreateRequest = {
   /**
@@ -31,6 +33,14 @@ export type ExperimentCreateRequest = {
    * The hypothesis under test
    */
   description?: string | null | undefined;
+  /**
+   * When to start the experiment automatically. Include a timezone. Cannot be changed after the experiment has started.
+   */
+  scheduledStartTime?: Date | null | undefined;
+  /**
+   * When to stop the experiment automatically. Include a timezone. A draft needs a scheduled start before an end can be set. The end can be changed after the experiment starts.
+   */
+  scheduledEndTime?: Date | null | undefined;
   /**
    * The complete set of variants for this experiment. Include at least 2 variants that use distinct agents, mark exactly one variant as the control using the channel target's linked agent, and assign positive whole number weights that total 100.
    */
@@ -49,10 +59,18 @@ export const ExperimentCreateRequest$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  scheduled_start_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  scheduled_end_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   variants: z.array(DaoExperimentVariantWrite$inboundSchema),
   target_id: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
+    "scheduled_start_time": "scheduledStartTime",
+    "scheduled_end_time": "scheduledEndTime",
     "target_id": "targetId",
   });
 });
@@ -60,6 +78,8 @@ export const ExperimentCreateRequest$inboundSchema: z.ZodType<
 export type ExperimentCreateRequest$Outbound = {
   name: string;
   description?: string | null | undefined;
+  scheduled_start_time?: string | null | undefined;
+  scheduled_end_time?: string | null | undefined;
   variants: Array<DaoExperimentVariantWrite$Outbound>;
   target_id: number;
 };
@@ -72,10 +92,16 @@ export const ExperimentCreateRequest$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   description: z.nullable(z.string()).optional(),
+  scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   variants: z.array(DaoExperimentVariantWrite$outboundSchema),
   targetId: z.number().int(),
 }).transform((v) => {
   return remap$(v, {
+    scheduledStartTime: "scheduled_start_time",
+    scheduledEndTime: "scheduled_end_time",
     targetId: "target_id",
   });
 });

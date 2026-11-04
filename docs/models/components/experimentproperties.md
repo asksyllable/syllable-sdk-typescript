@@ -11,5 +11,5 @@ let value: ExperimentProperties = "id";
 ## Values
 
 ```typescript
-"id" | "name" | "name_exact" | "description" | "status" | "target_id" | "agent_id" | "created_at" | "updated_at" | "started_at" | "stopped_at"
+"id" | "name" | "name_exact" | "description" | "status" | "target_id" | "agent_id" | "created_at" | "updated_at" | "started_at" | "stopped_at" | "scheduled_start_time" | "scheduled_end_time"
 ```
