@@ -5,13 +5,29 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+export const InsightWorkflowExecutionOutputFormatVersion = {
+  One: 1,
+  Two: 2,
+} as const;
+export type InsightWorkflowExecutionOutputFormatVersion = ClosedEnum<
+  typeof InsightWorkflowExecutionOutputFormatVersion
+>;
+
+export type StepOutcomes = {};
 
 /**
  * Response model for a row in the insight_workflow_execution table.
  */
 export type InsightWorkflowExecutionOutput = {
+  formatVersion?: InsightWorkflowExecutionOutputFormatVersion | undefined;
+  /**
+   * Execution outcomes in stable workflow step order
+   */
+  stepOutcomes?: Array<StepOutcomes> | undefined;
   /**
    * Unique ID of the workflow execution row
    */
@@ -59,11 +75,52 @@ export type InsightWorkflowExecutionOutput = {
 };
 
 /** @internal */
+export const InsightWorkflowExecutionOutputFormatVersion$inboundSchema:
+  z.ZodNativeEnum<typeof InsightWorkflowExecutionOutputFormatVersion> = z
+    .nativeEnum(InsightWorkflowExecutionOutputFormatVersion);
+/** @internal */
+export const InsightWorkflowExecutionOutputFormatVersion$outboundSchema:
+  z.ZodNativeEnum<typeof InsightWorkflowExecutionOutputFormatVersion> =
+    InsightWorkflowExecutionOutputFormatVersion$inboundSchema;
+
+/** @internal */
+export const StepOutcomes$inboundSchema: z.ZodType<
+  StepOutcomes,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type StepOutcomes$Outbound = {};
+
+/** @internal */
+export const StepOutcomes$outboundSchema: z.ZodType<
+  StepOutcomes$Outbound,
+  z.ZodTypeDef,
+  StepOutcomes
+> = z.object({});
+
+export function stepOutcomesToJSON(stepOutcomes: StepOutcomes): string {
+  return JSON.stringify(StepOutcomes$outboundSchema.parse(stepOutcomes));
+}
+export function stepOutcomesFromJSON(
+  jsonString: string,
+): SafeParseResult<StepOutcomes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StepOutcomes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StepOutcomes' from JSON`,
+  );
+}
+
+/** @internal */
 export const InsightWorkflowExecutionOutput$inboundSchema: z.ZodType<
   InsightWorkflowExecutionOutput,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  format_version: InsightWorkflowExecutionOutputFormatVersion$inboundSchema
+    .default(1),
+  step_outcomes: z.array(z.lazy(() => StepOutcomes$inboundSchema)).optional(),
   id: z.number().int(),
   workflow_id: z.number().int(),
   status: z.string(),
@@ -79,6 +136,8 @@ export const InsightWorkflowExecutionOutput$inboundSchema: z.ZodType<
   event_type: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "format_version": "formatVersion",
+    "step_outcomes": "stepOutcomes",
     "workflow_id": "workflowId",
     "session_id": "sessionId",
     "upload_file_id": "uploadFileId",
@@ -91,6 +150,8 @@ export const InsightWorkflowExecutionOutput$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type InsightWorkflowExecutionOutput$Outbound = {
+  format_version: number;
+  step_outcomes?: Array<StepOutcomes$Outbound> | undefined;
   id: number;
   workflow_id: number;
   status: string;
@@ -110,6 +171,9 @@ export const InsightWorkflowExecutionOutput$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InsightWorkflowExecutionOutput
 > = z.object({
+  formatVersion: InsightWorkflowExecutionOutputFormatVersion$outboundSchema
+    .default(1),
+  stepOutcomes: z.array(z.lazy(() => StepOutcomes$outboundSchema)).optional(),
   id: z.number().int(),
   workflowId: z.number().int(),
   status: z.string(),
@@ -123,6 +187,8 @@ export const InsightWorkflowExecutionOutput$outboundSchema: z.ZodType<
   eventType: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    formatVersion: "format_version",
+    stepOutcomes: "step_outcomes",
     workflowId: "workflow_id",
     sessionId: "session_id",
     uploadFileId: "upload_file_id",

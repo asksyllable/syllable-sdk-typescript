@@ -18,14 +18,14 @@ import {
 /**
  * How to combine rules: 'all' (AND) or 'any' (OR).
  */
-export const Match = {
+export const TargetFiltersMatch = {
   All: "all",
   Any: "any",
 } as const;
 /**
  * How to combine rules: 'all' (AND) or 'any' (OR).
  */
-export type Match = ClosedEnum<typeof Match>;
+export type TargetFiltersMatch = ClosedEnum<typeof TargetFiltersMatch>;
 
 /**
  * Whether to dial requests whose enrichment is unresolved (no lookup data). Applied per rule: it decides what a rule contributes when *that rule's* attribute is unresolved, and never overrides a rule the request definitively failed -- so a request that fails one rule is still skipped even if a different rule's attribute is missing. "Unresolved" covers a missing value and also the value Twilio returns to mean "looked up, could not answer": for line_type that is 'unknown' (a valid number whose line type it could not determine), and for caller_type both no CNAM data at all (non-US numbers) and 'UNDETERMINED' (a US number it looked up but could not classify).
@@ -53,7 +53,7 @@ export type TargetFilters = {
   /**
    * How to combine rules: 'all' (AND) or 'any' (OR).
    */
-  match?: Match | undefined;
+  match?: TargetFiltersMatch | undefined;
   /**
    * Whether to dial requests whose enrichment is unresolved (no lookup data). Applied per rule: it decides what a rule contributes when *that rule's* attribute is unresolved, and never overrides a rule the request definitively failed -- so a request that fails one rule is still skipped even if a different rule's attribute is missing. "Unresolved" covers a missing value and also the value Twilio returns to mean "looked up, could not answer": for line_type that is 'unknown' (a valid number whose line type it could not determine), and for caller_type both no CNAM data at all (non-US numbers) and 'UNDETERMINED' (a US number it looked up but could not classify).
    */
@@ -65,12 +65,13 @@ export type TargetFilters = {
 };
 
 /** @internal */
-export const Match$inboundSchema: z.ZodNativeEnum<typeof Match> = z.nativeEnum(
-  Match,
-);
+export const TargetFiltersMatch$inboundSchema: z.ZodNativeEnum<
+  typeof TargetFiltersMatch
+> = z.nativeEnum(TargetFiltersMatch);
 /** @internal */
-export const Match$outboundSchema: z.ZodNativeEnum<typeof Match> =
-  Match$inboundSchema;
+export const TargetFiltersMatch$outboundSchema: z.ZodNativeEnum<
+  typeof TargetFiltersMatch
+> = TargetFiltersMatch$inboundSchema;
 
 /** @internal */
 export const OnUnknown$inboundSchema: z.ZodNativeEnum<typeof OnUnknown> = z
@@ -85,7 +86,7 @@ export const TargetFilters$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  match: Match$inboundSchema.default("all"),
+  match: TargetFiltersMatch$inboundSchema.default("all"),
   on_unknown: OnUnknown$inboundSchema.default("include"),
   rules: z.array(TargetFilterRule$inboundSchema).optional(),
 }).transform((v) => {
@@ -106,7 +107,7 @@ export const TargetFilters$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TargetFilters
 > = z.object({
-  match: Match$outboundSchema.default("all"),
+  match: TargetFiltersMatch$outboundSchema.default("all"),
   onUnknown: OnUnknown$outboundSchema.default("include"),
   rules: z.array(TargetFilterRule$outboundSchema).optional(),
 }).transform((v) => {

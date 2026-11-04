@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: e670aec5e13e5ff32b905e6e69730c55
+  docChecksum: 6d6be66d1bedac6a39c36e6641e1e76b
   docVersion: 0.0.3
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 1.0.73-rc.11
-  configChecksum: a9502aed39dcc9af255b129ef3cf6a53
+  releaseVersion: 1.0.73-rc.12
+  configChecksum: 2a11468087e2ea9862f75ebd01d2a4b9
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: e0eaa4e9-8915-4abc-91a9-79ad8e79f60f
-  pristine_commit_hash: 3a2fc995dca9b896964371a38695452bd9d8d722
-  pristine_tree_hash: 1629f69afc78adb906c8d3a43bedcd00ef642e00
+  generation_id: 6f7aee11-9e86-4d79-ad9c-9ef6fe761133
+  pristine_commit_hash: c87d7a67ca4f9293b8880d3b83fae8f4ed9e60f2
+  pristine_tree_hash: 486f4c22fcb947d1f11ff4d5b8eef42b35eea5db
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -358,8 +358,8 @@ trackedFiles:
     pristine_git_object: bcd40074b902666be73dfdd18710c00344485ead
   docs/models/components/communicationrequestresult.md:
     id: 416f1bd1469d
-    last_write_checksum: sha1:2b8cd00fdef44e8f424fc3acd71739753b9f5d29
-    pristine_git_object: a739faa04a11811184abd671cc9454f676e91e49
+    last_write_checksum: sha1:75c1cd59f4d21229fdc86331e2e8c2bcffc809d0
+    pristine_git_object: d645c1888f28a8aa931977f7d1bac9891695345f
   docs/models/components/conditionaltext.md:
     id: aa5e4b2f16cf
     last_write_checksum: sha1:ab45481b7fdfc2104377202d33540ba7590f573e
@@ -724,6 +724,10 @@ trackedFiles:
     id: a0d66957856e
     last_write_checksum: sha1:de5727e157eb71006e7565439f06b67e6a59eca5
     pristine_git_object: ec89210b4efa287f0b727a71536fb29c2a8134ee
+  docs/models/components/formatversion.md:
+    id: f30bc39c22ff
+    last_write_checksum: sha1:35087a3389c81cb9fd565b8f26d6f3d48a07f8a2
+    pristine_git_object: fba23bc71c98860e09a5f7796e23ebed1a9a71e2
   docs/models/components/from.md:
     id: a3072e2bcac7
     last_write_checksum: sha1:71bcd51252dba4b36f22d69b9680e54a2a5ab8c7
@@ -808,6 +812,22 @@ trackedFiles:
     id: 2e0580e9cbbd
     last_write_checksum: sha1:b5556ed452253f9d93c8793745b3400f54eb5972
     pristine_git_object: d792e77cf58165b8ae5b8c6b336fef6f7c002f76
+  docs/models/components/insightconditionrule.md:
+    id: 845ce0fe4641
+    last_write_checksum: sha1:93c75044109e9d9fe24244cdad78805fca6fb76e
+    pristine_git_object: 8b91c566e1005d699c216894e82be99b93ce2f76
+  docs/models/components/insightconditionsource.md:
+    id: d708f44f67b1
+    last_write_checksum: sha1:2237e5a88c98d4001093068411a7e4fea9fc8833
+    pristine_git_object: b3643ab18902a5f64e1a9ca0d01a61f0a4ca8538
+  docs/models/components/insightfiletesttranscript.md:
+    id: b1e270b7cce6
+    last_write_checksum: sha1:de17fc674120d56cad71285e07eacef7a8176f99
+    pristine_git_object: e3cb9654b324bcf818848d8653dbae9720f75950
+  docs/models/components/insightresultformat.md:
+    id: a524f893b93a
+    last_write_checksum: sha1:4c3916ddf124efe70b669baaec059bbc9f82a040
+    pristine_git_object: b9e64c6bbabac81bd596d7f7a7b053eaab6ed902
   docs/models/components/insights.md:
     id: a53a40709e70
     last_write_checksum: sha1:7bb776420753b6069ea95131118710b2fe901b6c
@@ -848,6 +868,10 @@ trackedFiles:
     id: f7af94a15605
     last_write_checksum: sha1:534256ad1afef191414b4c08c4b8225a7c55a1bb
     pristine_git_object: 01370a1214770b05c32a8036219a8ab54e8ff956
+  docs/models/components/insighttoolconditiongroup.md:
+    id: 3c1035b60e27
+    last_write_checksum: sha1:67813247baecffe9412282aea2d7c55b740e2bbc
+    pristine_git_object: 5e886dd97cf1da9ce7e56264589d888b08d12c6e
   docs/models/components/insighttooldefinition.md:
     id: 87d9b7a00ad2
     last_write_checksum: sha1:864ac89368c911084d5e5d24fea17ed6d5dd79b6
@@ -886,28 +910,44 @@ trackedFiles:
     pristine_git_object: 98e875800351b1b245591fb18d6033fc8cef2f36
   docs/models/components/insightworkflowexecutionoutput.md:
     id: 00689a1ffe65
-    last_write_checksum: sha1:adb3ec259d9323ef59f7bb5c22f16523b7605266
-    pristine_git_object: 4f4fc2ac896c26ce712d1cb2da27a0e402aab83b
+    last_write_checksum: sha1:58920e930a85ac3aaebe12d537c2632bdbb5c438
+    pristine_git_object: cbd274a4bc2dfc472e3c33d7182c277b599f8254
+  docs/models/components/insightworkflowexecutionoutputformatversion.md:
+    id: 17cc941e33a9
+    last_write_checksum: sha1:40c4a3405e306fd6872f48c5d39b27f867b0350f
+    pristine_git_object: c14d97df687e4fbbce7bc09960350076738a0d8f
   docs/models/components/insightworkflowexecutionsummary.md:
     id: d315f2d426e9
-    last_write_checksum: sha1:56e354fb730c76cc6189db7a81f495468344fb6b
-    pristine_git_object: 318b6fb971fe803d0adc4fdbebee05bb556baae7
+    last_write_checksum: sha1:2820c60ac7bb9f825bb7d0bfd7674a4d5d7edbda
+    pristine_git_object: e89e00876942dd435fdd8a7994b8cb8ea4a74c1d
   docs/models/components/insightworkflowinput.md:
     id: 71cb3bf06901
-    last_write_checksum: sha1:538f2d080e20b262bd2f363ed0623c50edd9b0f6
-    pristine_git_object: 753ed7b47f49c2270d610756f44f1d9f5a6515a6
+    last_write_checksum: sha1:3c82163cac581827687168f519a14811be4e032d
+    pristine_git_object: cab3f701f957de64bcb035659a315cddf91f14db
+  docs/models/components/insightworkflowinputformatversion.md:
+    id: 3c214cc92181
+    last_write_checksum: sha1:ec6e13907ca5ae040243e4ac507feb63e99e9909
+    pristine_git_object: 4d47b7083c49c8cb00f9b7626761e77fab3cf65b
   docs/models/components/insightworkflowoutput.md:
     id: 5c3c6aa9a9df
-    last_write_checksum: sha1:d5447f0f6c3479a34204b11fc25270ca4647b707
-    pristine_git_object: 9601fb0c27ada1ad789837f4ec9b8e1d6f43abee
+    last_write_checksum: sha1:e8285abd2be6e915adc4dd5a36eb0dba8037f29e
+    pristine_git_object: 260bf581905cf9f02d3dffcef4954091fede712c
+  docs/models/components/insightworkflowoutputformatversion.md:
+    id: 92d5a51a77d6
+    last_write_checksum: sha1:119ca913627da56f3443b83b079f307ee967d583
+    pristine_git_object: fa42a9e2ebb3541b2ddd96e04bbf216f95175537
   docs/models/components/insightworkflowproperties.md:
     id: 4dd9bed048af
     last_write_checksum: sha1:90ab5404d9fa0b3d26ea6adf837ee7ae37bcaee0
     pristine_git_object: fe87fc8096a99f4b69361f79816e5dd7d1f0ee6e
   docs/models/components/insightworkflowresponse.md:
     id: 0f2f084290a1
-    last_write_checksum: sha1:5c7fad524a22f86b43374d1614417e01b5b6b89e
-    pristine_git_object: 4ce3c33fbd202883de86426879f6edc93854a2fb
+    last_write_checksum: sha1:4f91ee347456ae3519e0571f242f67916ec8b6f1
+    pristine_git_object: 4d6edeefa5834872e511575cc74036cc3396ff4f
+  docs/models/components/insightworkflowstep.md:
+    id: 9abb3e96f6fc
+    last_write_checksum: sha1:bebe29c110e0c2d29609bf2b6ae36564bd0037d0
+    pristine_git_object: 00177b9dd7f87dfaa957aa0a8101eb064ff4d2e7
   docs/models/components/inspectlatencyresponse.md:
     id: affa64ca27e4
     last_write_checksum: sha1:e19f2b29a170ed64d848073e42ffc60ae8039329
@@ -1158,8 +1198,8 @@ trackedFiles:
     pristine_git_object: fa472f3025da8845ae68208bca567ca8294da7f0
   docs/models/components/match.md:
     id: 2b551716c96d
-    last_write_checksum: sha1:1ce88d3d09ff3b597b3e74a3ddb6817ea2555321
-    pristine_git_object: a184341f3e4786a9306a840f61fd9f35afeea290
+    last_write_checksum: sha1:15cb393741fed3da9cbddc6809cc36510da64a27
+    pristine_git_object: 34c580ecdc823b045e4d92d2b6a746ce14439bec
   docs/models/components/matchtype.md:
     id: fdbaced5570e
     last_write_checksum: sha1:e6579707fbc13e20671acd36bb157d309edb1781
@@ -1216,6 +1256,10 @@ trackedFiles:
     id: 7adb61aea765
     last_write_checksum: sha1:510834155297137d5c19931aa71d2211449d5c98
     pristine_git_object: 3871f379e60ad0a18ea0b2981f36b7fca93d906e
+  docs/models/components/operator.md:
+    id: 53b616f52014
+    last_write_checksum: sha1:4a5d4683c02d7baf17fdf3fbfd9749650cde163e
+    pristine_git_object: 740919ac4c48d714d4764c12ecc614656ac2dffd
   docs/models/components/orderbydirection.md:
     id: dccc57705cce
     last_write_checksum: sha1:5f5202e1818d9dfa91ef2aa4c1e241beb756d8d4
@@ -1460,6 +1504,10 @@ trackedFiles:
     id: b236e846dcd3
     last_write_checksum: sha1:34bfbef164b4a574455f4d0f9668f38f07bffb87
     pristine_git_object: 68e3ba773c7330397c7553b3c9011a239e236c02
+  docs/models/components/sessionconditionsource.md:
+    id: b04eef147a32
+    last_write_checksum: sha1:bec566670683ab9515a02cceadb24d47ed037e65
+    pristine_git_object: 12ac40c53868b339ab9a08d44c33c63174c1953c
   docs/models/components/sessiondata.md:
     id: 99ea4957788a
     last_write_checksum: sha1:763a1d5c65231d8f2517a21c2be3f7ae90abcb05
@@ -1548,6 +1596,10 @@ trackedFiles:
     id: d3f152ea479e
     last_write_checksum: sha1:3ab432d1bdb6a72d7ca7ffa8a8b9256a9317848f
     pristine_git_object: 0edd813d4f3b8c9b3bcb1bb07094dece66191df7
+  docs/models/components/source.md:
+    id: 11d9227b9692
+    last_write_checksum: sha1:64f13415eb574d39474cfa9c14722824ae4c70da
+    pristine_git_object: bc32f6db2cfb22eaece65a3ce93c665c77b7c86d
   docs/models/components/start.md:
     id: ff75a5effd21
     last_write_checksum: sha1:3d10f608a609663758928c08b46b70665b9e7ba4
@@ -1576,6 +1628,10 @@ trackedFiles:
     id: cff76a3b399b
     last_write_checksum: sha1:d9a5206cde5a62e8168aaa895cd0549801540fe8
     pristine_git_object: 4186ed12530416f3326c750dc73f8fb5765d648b
+  docs/models/components/stepoutcomes.md:
+    id: 07ed451d05bd
+    last_write_checksum: sha1:ecc80cc3214cb6a768ff437720ddde3111ca33bc
+    pristine_git_object: 7cad093fd168c93c3abaf5f826fda4ede7f3d745
   docs/models/components/stepstask.md:
     id: d1a3cd838f4c
     last_write_checksum: sha1:87b00e2c002b1e77136a253ee2567f15b6112e29
@@ -1634,8 +1690,12 @@ trackedFiles:
     pristine_git_object: eb56d1446592abed1f01d28cb77135ea4e53bc57
   docs/models/components/targetfilters.md:
     id: 03ce9c913a7a
-    last_write_checksum: sha1:f2e800bf31f183b874ce5b4c1c7cdb4f2ec8b889
-    pristine_git_object: 5df58599c02ae526cc7f8fdfb2702e7ebc99ecd6
+    last_write_checksum: sha1:ae1835130913047b4864dfeb304dc51c136a94d5
+    pristine_git_object: 498c5df951aa29c654e2cbdbf4e2ca55105ea260
+  docs/models/components/targetfiltersmatch.md:
+    id: 3956d771f3cf
+    last_write_checksum: sha1:13c40997d11104071b1f61b078f316c1ae7631fe
+    pristine_git_object: b74b7ab66e4699520b9ba7e151134a40cba844cd
   docs/models/components/targetmodes.md:
     id: 7e1066c884ff
     last_write_checksum: sha1:33cdd333c5886f874317c26ef6060eb3a205e206
@@ -1688,6 +1748,10 @@ trackedFiles:
     id: 27288c37e324
     last_write_checksum: sha1:749943197622167f131d1a1ac7f03a6311936f8b
     pristine_git_object: 16a70f51ad6a131a0bfe36fa10e89f5956628fa8
+  docs/models/components/toolconditionsource.md:
+    id: 1df4a3eb291e
+    last_write_checksum: sha1:f3e8a37d6b3b624369ea5caed1f27c995792399d
+    pristine_git_object: 5c92785847cee947676be27fd67ee3f913612e54
   docs/models/components/toolcreaterequest.md:
     id: 0ab95f142286
     last_write_checksum: sha1:380915e50684602d8cf7d8d6571b64f23d0f139c
@@ -1756,10 +1820,18 @@ trackedFiles:
     id: 30cf80011e3b
     last_write_checksum: sha1:7d74083cdabd4c3ccd234d93922ece6cd580517f
     pristine_git_object: 5407006f3a1c4c53faed36863f0bfc2b7004dc00
+  docs/models/components/transcriptconditionsource.md:
+    id: c0688bb836bc
+    last_write_checksum: sha1:ba81d7ca1d21773b4ea9b6a71c8f06c3963f1377
+    pristine_git_object: 7b51344513372fe31db2065c7c6cb25d5917a84b
   docs/models/components/transcriptconfidence.md:
     id: dc2a285078c4
     last_write_checksum: sha1:575614259e9f4a1e17ade3d917fef4e3c0252926
     pristine_git_object: 65c1faa72b712899f08053cf38a11ff2610631a2
+  docs/models/components/transcription.md:
+    id: e477a3ca5563
+    last_write_checksum: sha1:dcc6d218388fae76600aee73e7713cbc7cd05a06
+    pristine_git_object: ab936d8fb2c4f73b8f62a7401f4b65d190d31d65
   docs/models/components/transcriptwordconfidence.md:
     id: 6aaa207e487b
     last_write_checksum: sha1:d09d007a9d5c39c0788b496055d8db0219cb994b
@@ -1816,6 +1888,10 @@ trackedFiles:
     id: 9f07f2d18a9f
     last_write_checksum: sha1:ad3cb798ad51c926dd76410b7545d4910665d147
     pristine_git_object: 135591f2bcffffb98bde1b4724ee408df3251b50
+  docs/models/components/unavailablereason.md:
+    id: 8d5c55be2ce3
+    last_write_checksum: sha1:6daee2c68b46b636d878f81070d3b14757149c4f
+    pristine_git_object: 703bbbc809f84dc6811802a191fb13fd8ab94f06
   docs/models/components/uploadfileid.md:
     id: 3b1a4c5a10ba
     last_write_checksum: sha1:165da8a734cc9fd30752ebc3d9458d17bdb005ec
@@ -1910,12 +1986,32 @@ trackedFiles:
     pristine_git_object: e093d08cf7ce1378d4939c447a53ce9272d89e6b
   docs/models/components/workflowfilerow.md:
     id: 0519a136156e
-    last_write_checksum: sha1:923a351a23b1645531210749de7b1999e0b2b0bb
-    pristine_git_object: 47411b2727f6c4506e0476ac9df33c63a9f1ab88
+    last_write_checksum: sha1:490b9df16755ed4fd71aa1f4b023386d403bc9d5
+    pristine_git_object: e38fb668f9c6df96ee9383d68aa42e604b8c8870
+  docs/models/components/workflowfilerowformatversion.md:
+    id: 87679afb94a7
+    last_write_checksum: sha1:8d4e2b7c9dfcafa23fda13a81ed275528f5fa48a
+    pristine_git_object: 8e85ead5592f42ad300d316273eac4eab1f2b36d
+  docs/models/components/workflowfilerowstepoutcomes.md:
+    id: d97ec0b9489c
+    last_write_checksum: sha1:2da821b3ba9d18b959159d46cc0f80ee508262ca
+    pristine_git_object: f19601264d0e212762a341686dab4976cc722a54
+  docs/models/components/workflowresults.md:
+    id: 17bdeea0a3f0
+    last_write_checksum: sha1:d0209fe119aa8b825fa6acb029d9ca30b22dfe9b
+    pristine_git_object: e4094cf5a967a4e2f82d3452ef71748fd90d6e43
   docs/models/components/workflowsessionrow.md:
     id: e0084e0f9562
-    last_write_checksum: sha1:dc75881dd1e1ed10175cf0a6f4c4faeac353cb9e
-    pristine_git_object: 61f868867fa2e230d88ae75f5533d5bcbcdd20ae
+    last_write_checksum: sha1:c3f5d087c96bb9c7abbf5f2dd1e5da410f45bd28
+    pristine_git_object: be003932d7cb940930fe3ca426234c688a3b7d68
+  docs/models/components/workflowsessionrowformatversion.md:
+    id: 7160bd208179
+    last_write_checksum: sha1:e7307aa01af94fe6d2c05156be331f44f2357e03
+    pristine_git_object: 802cc90734ab1dd1608ab943dd06e4132f1241d8
+  docs/models/components/workflowsessionrowstepoutcomes.md:
+    id: 31cb423eceae
+    last_write_checksum: sha1:df45278c6a77dba252a78b86c32bfa4a90970f7e
+    pristine_git_object: f2081c458dc965e7cf2e0fc087850c2c6491ea6d
   docs/models/errors/code.md:
     id: 28e8518e8835
     last_write_checksum: sha1:ce88af5aa1483169349fdd8fda5e4271017e52e3
@@ -2196,6 +2292,14 @@ trackedFiles:
     id: ccc1f75843a6
     last_write_checksum: sha1:e50d29de995750d37abf30a6cf5e632621aa9e16
     pristine_git_object: 16a9fd11ac6f80152f6fe9c195290b8aaf98aa5b
+  docs/models/operations/insightscurrentworkflowresultsrequest.md:
+    id: 313268f29edb
+    last_write_checksum: sha1:86bfa80f38eb744276ea9373cfd88bd131175fdf
+    pristine_git_object: b1c48f9a7467fbe8ff5b7040e04e2609d63d5627
+  docs/models/operations/insightsfiletesttranscriptrequest.md:
+    id: 73deda1768b9
+    last_write_checksum: sha1:d1e945bdeaf3fd9c6052ea2c3afcb6fe1d463b20
+    pristine_git_object: 027b7159d57a32699c72cad365e8cb498cebce3c
   docs/models/operations/insightsfolderdeleterequest.md:
     id: 7bd8ea9382e0
     last_write_checksum: sha1:dfffd6498476686da5667784de95561b2b4ef829
@@ -2240,6 +2344,10 @@ trackedFiles:
     id: 1d9ae78b0b0a
     last_write_checksum: sha1:d6696b2d2cf3160f119bfd7165bd13a6f32fe74b
     pristine_git_object: 88a3592bc9518641eeeae1b6af1aa67f2de8f4c1
+  docs/models/operations/insightsworkflowconditioncatalogresponseinsightsworkflowconditioncatalog.md:
+    id: ee82e69b5a59
+    last_write_checksum: sha1:e3e7bdef4ba411d0cb8a94036232d64787433555
+    pristine_git_object: bb744537013bac33a6c57ca91f9570ec9f7dc5fa
   docs/models/operations/insightsworkflowdeleterequest.md:
     id: 0a25cc814c8d
     last_write_checksum: sha1:0e365d1604cbd8d31512d9ad913e00e8b1fab15b
@@ -2250,36 +2358,36 @@ trackedFiles:
     pristine_git_object: cb7b186e6acae1fe558c48737917c6198d81b16a
   docs/models/operations/insightsworkflowexecutionssummaryrequest.md:
     id: 1f318433cb55
-    last_write_checksum: sha1:08f9446dcce982f3759021e4a652f4f7ca39d7ad
-    pristine_git_object: 1a4514a18822801a67d65c199bb2b7d7bd843e85
+    last_write_checksum: sha1:8292a4d8a6989c02fb25574f7decb59b735ace43
+    pristine_git_object: e69798a318686d03c319c0fbe9736bf294324ae3
   docs/models/operations/insightsworkflowfilesqueryparamorderby.md:
     id: a71949084110
     last_write_checksum: sha1:a549619a3b5efecdfce0f34cac164578f74fa468
     pristine_git_object: 405bd68a88711d5a723665e5fcfd6feddf8a2dd1
   docs/models/operations/insightsworkflowfilesrequest.md:
     id: 51c03d2a8a03
-    last_write_checksum: sha1:9936353c569f6187ef0a21d74a075321706ac3bd
-    pristine_git_object: d7db1a063d93874f10c9306c7cdf3f7837c79f25
+    last_write_checksum: sha1:55d5d8d22a136527d28248030f084e930000eef1
+    pristine_git_object: 2bae427deb404bb4aaf559c67469d67cf8eb74bb
   docs/models/operations/insightsworkflowgetbyidrequest.md:
     id: 0ccca6b4efae
     last_write_checksum: sha1:22e5b8a61542829d381314507456eed4ec2b017d
     pristine_git_object: 5b01fbe9ad3b60d23b0341e4011f8d100b7ebf97
   docs/models/operations/insightsworkflowinactivaterequest.md:
     id: da23c357e0ad
-    last_write_checksum: sha1:ad6c0b169eb4ca6762f2efca36af6b127f80dfac
-    pristine_git_object: 45353d5adcf2582a452dbe7de9a8eb525555004f
+    last_write_checksum: sha1:5cda15b477bf262b0ac94880930ee00a2fca65fc
+    pristine_git_object: 64b4d478570cdc2926ef1c97b743d840f25b9b1e
   docs/models/operations/insightsworkflowlistrequest.md:
     id: d7046f985afb
     last_write_checksum: sha1:0d93567cc7014943ac3db6470baec510f693df90
     pristine_git_object: cd8eb87838a66b7529f109a2c0598ad756eaef2b
   docs/models/operations/insightsworkflowsessionsrequest.md:
     id: aa1862176f41
-    last_write_checksum: sha1:d398151352ebbed5aeb11c4b779b46cccc617d84
-    pristine_git_object: 60680aafc311e6ac3afcbda70869aed750c30423
+    last_write_checksum: sha1:9ef58210da38da6da580b3782eb5c5c3476173c3
+    pristine_git_object: 5ae0bddcb6defffc6c175b33b0584fa218e10031
   docs/models/operations/insightsworkflowupdaterequest.md:
     id: ed9284dbb47c
-    last_write_checksum: sha1:af273c00676b74d27023c2c7905a2d9b91c387ea
-    pristine_git_object: 3cae29e23dbf390e689c32cd163a68464bea5b63
+    last_write_checksum: sha1:46af4980ba83ddfe3d0c73f841ce54d9830c773f
+    pristine_git_object: c74a8c2e4686f29cc839db481e4e5425f0defe68
   docs/models/operations/insighttoolgetbyidrequest.md:
     id: 430ed3521285
     last_write_checksum: sha1:3034a0dbd520478318f8d3a5962179030a303a4a
@@ -2334,8 +2442,8 @@ trackedFiles:
     pristine_git_object: 17ab9d3166f68208b832ced5b55ab3afdf8b8832
   docs/models/operations/outboundbatchresultsrequest.md:
     id: 0c3361ec24d4
-    last_write_checksum: sha1:b699bf8ca7f62501a9290171d848e6881e38e743
-    pristine_git_object: e51a4292d5aba1bba76d2f4a5b83fd551d8893ad
+    last_write_checksum: sha1:43052f358c93e1aca387c29207d8b0e04b7decda
+    pristine_git_object: e88a7765424be0b7f787adfcb9e414b4713564be
   docs/models/operations/outboundbatchupdaterequest.md:
     id: a0cc402ba260
     last_write_checksum: sha1:99d3af618de5d340789e3db4b9df3fbb56ffea1f
@@ -2400,6 +2508,10 @@ trackedFiles:
     id: 775d26479730
     last_write_checksum: sha1:8bdae73d77c89c3293e66385aa82c79b60c44c54
     pristine_git_object: 2a8b7a9114ce1aa586f5ba41700393c138edc813
+  docs/models/operations/responsebody.md:
+    id: 306a7d8429ef
+    last_write_checksum: sha1:8ee2d294390977854285e1d26212211948eeb62a
+    pristine_git_object: 5421a440e39fe993ae03ff9389055a541ebdf317
   docs/models/operations/rolesdeleterequest.md:
     id: a26070e8467d
     last_write_checksum: sha1:ab02a8a468546abe10ca58874a179677a44f50b6
@@ -2582,8 +2694,8 @@ trackedFiles:
     pristine_git_object: ecc8973d8cc1eec79a459e80af22b6a5615ad5c2
   docs/sdks/insights/README.md:
     id: cc2be3db9032
-    last_write_checksum: sha1:0027b2c7c6105b820e33b8595aeb561f862ede4b
-    pristine_git_object: 78bffa8e59a089074b5e6c37b7cb300538634e6f
+    last_write_checksum: sha1:cc1f03240595c226fa2ba1701555f66789ff1636
+    pristine_git_object: 5a2a26af26122d1dda12fb1b9aa5df8b859321a2
   docs/sdks/languagegroups/README.md:
     id: 18be036040c5
     last_write_checksum: sha1:a387ef6c49c6323304a84b53e3e2f514dc51663d
@@ -2682,8 +2794,8 @@ trackedFiles:
     pristine_git_object: 62059296d629b329af14a48e47721399a4e43c86
   docs/sdks/workflows/README.md:
     id: 80c76ce944c0
-    last_write_checksum: sha1:72a19ee9dc04ee1fd2b63aaa42ab1405c53199f7
-    pristine_git_object: adeef8feb34e5de8d6a15f24da2367ca312bd273
+    last_write_checksum: sha1:7c446247cf23b3ea9a4ba01c185db5e78bcd262d
+    pristine_git_object: 613ddcab4fedfa039af8784596d4ca52bab053a2
   docs/types/rfcdate.md:
     id: 5f9756408fae
     last_write_checksum: sha1:57b4b3cec635cbd12767ed8672f96e257ef88845
@@ -2710,12 +2822,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:dabb5d6fce48812adf22773147033d9c60c9d874
-    pristine_git_object: 52b8350965dfe70c07712c1aa33139648e55f3dc
+    last_write_checksum: sha1:93bd0c1634f01d5f69886657d7577a18f8cd89a5
+    pristine_git_object: b30593450e13dd0dc096e3f2921af290d1ddc370
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:7c7de4d9ca89d8027f703f5686f328f084e4a394
-    pristine_git_object: f472f10617554a79f78d53ae90dacc7746431f11
+    last_write_checksum: sha1:a9336855cc8ec4645c297ec452218e424ee761ba
+    pristine_git_object: a5bbe010b8d637fdfccb0d69f1d607fe4d35a28a
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -3068,10 +3180,18 @@ trackedFiles:
     id: 848e4451c303
     last_write_checksum: sha1:e33198780e4cc5284a786d25bf39c360c3391ac6
     pristine_git_object: 53984ccf477a323b1b6917f46085787fe56ade9f
+  src/funcs/insightsInsightsFileTestTranscript.ts:
+    id: e19ef9adb68a
+    last_write_checksum: sha1:ded3dd2ed8fdae626cff1c3526f09232019263d7
+    pristine_git_object: 91d06281c14970543e2e42ef9091751f26519202
   src/funcs/insightsList.ts:
     id: 489d80da8b01
-    last_write_checksum: sha1:d69f3c1b5cfb098f7ad3860bedb2df8324edaee3
-    pristine_git_object: 08911a745baf7bb710054eb18ba9de3ef81acff1
+    last_write_checksum: sha1:0451411d0ffa282de4961bd0c50f63e0b8259114
+    pristine_git_object: 7a315773652c9cd0674f4366c443c68f3c9b50a1
+  src/funcs/insightsResults.ts:
+    id: f01861cddb5e
+    last_write_checksum: sha1:d0aebeee536f90d96b1917a7309bc350418eaa88
+    pristine_git_object: 714d75faf70f5134b791479bf4d7583ddffb0156
   src/funcs/insightsToolsCreate.ts:
     id: 65fbdd8250f8
     last_write_checksum: sha1:181f4023f713c555ea95b0fb48e2c27246da613c
@@ -3114,20 +3234,24 @@ trackedFiles:
     pristine_git_object: c02969ebfe713f5544c0acc3487285315d6d4eef
   src/funcs/insightsWorkflowsExecutionsSummary.ts:
     id: 9ec3499a83a5
-    last_write_checksum: sha1:1b9a062c4981af477f8e882def769bd3f9ba8837
-    pristine_git_object: 9b357452352eed5ec0fbdb32f31a2b3a63713106
+    last_write_checksum: sha1:803e9c519bab9a139aeaa857dfc19ae99a1a0011
+    pristine_git_object: 825c9b768c33e79f6af4dffbd786606fbcddcd73
   src/funcs/insightsWorkflowsGetById.ts:
     id: cd44ba1ca759
     last_write_checksum: sha1:5c28251a8c7a23d9855820c524a1da299eabc90a
     pristine_git_object: 30c827af19296165d5665bd190a053c47b3161eb
   src/funcs/insightsWorkflowsInactivate.ts:
     id: c6a4ee78da85
-    last_write_checksum: sha1:cb34a59a00ea945227bb8b6389d1289d93505eb8
-    pristine_git_object: 474bea58bf4820d0a441aa435e54f55a8b3fb218
+    last_write_checksum: sha1:a32685143adb0ebacf9ff8c75ed518faefc9d60f
+    pristine_git_object: c4d7c630ed9c5728cd37ad264adcd8197852f67e
+  src/funcs/insightsWorkflowsInsightsWorkflowConditionCatalog.ts:
+    id: 03b74e5bb644
+    last_write_checksum: sha1:b050269e131e5f9af2f61ede67bee477cc5deef5
+    pristine_git_object: c2337c85024a4341a88a392e2f31c5e71371a95a
   src/funcs/insightsWorkflowsInsightsWorkflowFiles.ts:
     id: 43094b8a0499
-    last_write_checksum: sha1:c08a367dacea4edc8004b5fad2814440dd2d3bac
-    pristine_git_object: 98532de7ebe669e07bfbbbb36db0207c8ea4df1c
+    last_write_checksum: sha1:3db492224f66150e577b7e32fcd8e4f73504bd3c
+    pristine_git_object: 0c199120e7f0f4308abe3251f3b3c265214f77db
   src/funcs/insightsWorkflowsList.ts:
     id: efd7ab6859dc
     last_write_checksum: sha1:117f4ad8f94d02f59fcd24f67cf365d55d1170a5
@@ -3138,16 +3262,16 @@ trackedFiles:
     pristine_git_object: a440d4d7be053def22883336529f8edbe4788773
   src/funcs/insightsWorkflowsListSessions.ts:
     id: ea1d2fbd5df1
-    last_write_checksum: sha1:7b40854ef1d24052960dd08d9959d7c403b57fb0
-    pristine_git_object: d8d827c7a27a5b1af82c628c7f077b1c9d68f843
+    last_write_checksum: sha1:f5ac186f23d63f1326a01f68a6e559a25414e394
+    pristine_git_object: 07da160cb2f9ee9e1e0a527921fa9f681071122f
   src/funcs/insightsWorkflowsQueueWork.ts:
     id: 0c7417bfcb8c
     last_write_checksum: sha1:703494562d9e4b4a81f2c85adff5a968b4d95d70
     pristine_git_object: 8a3fd38e75cbc71af27827f8b957b38657cc28ba
   src/funcs/insightsWorkflowsUpdate.ts:
     id: e84910227a9c
-    last_write_checksum: sha1:5deaf63e76cd79ae538f423897de0eb7b3494e4c
-    pristine_git_object: 3618ae4d002e8c10c4a0812c980fe43268332820
+    last_write_checksum: sha1:a52fbfd8513e4c5753335b1b4de5bb8efec51620
+    pristine_git_object: 1255c07dde734d8ba9d2364576499548b900e6e1
   src/funcs/languageGroupsCreate.ts:
     id: ebd52fb57ee2
     last_write_checksum: sha1:059f5c4fc3ac7bb06b50975f2960db79519ad164
@@ -3230,8 +3354,8 @@ trackedFiles:
     pristine_git_object: a3f2b61f2adf34ec1fcaebfdc4ad7e803db427c8
   src/funcs/outboundBatchesResults.ts:
     id: 31721a72c568
-    last_write_checksum: sha1:593a8968e4bffc861d2e31935b7d1fbed3bdf201
-    pristine_git_object: 63e811b69f1e3c0e537acc13444a26765b2316f5
+    last_write_checksum: sha1:adda6f1cb87a4a698c65b58261c0b5d2e72618fb
+    pristine_git_object: 7607e66709f28b27f54db17e2194dd808a82d93a
   src/funcs/outboundBatchesUpdate.ts:
     id: eda215516022
     last_write_checksum: sha1:f37351e4606fc2f1027b20e2c26dbdf26a5253e5
@@ -3522,8 +3646,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:3b1af14b68cd2ddb0786386277c546a4dd638497
-    pristine_git_object: e74ce5663029e4173bcb8d7443be7fdb9fb97bc4
+    last_write_checksum: sha1:01c9a139b1c4bcb07c556f31266e2cf8fe86f145
+    pristine_git_object: 2c054c487e9dea6071fc23d631d0ebfc53a589d8
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -3598,8 +3722,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:6f4924275d4c15aabf0931afbfe0e8cc3caffd2d
-    pristine_git_object: 19f02400730ab6e9d326a180e34bb3ba1078fd18
+    last_write_checksum: sha1:3572853f8064060e2e31270b41cbcf8fe65d99ac
+    pristine_git_object: 0a877ebb12d992aa712d352475b158185fadb870
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:c49f9f30688900b044232213b9da00931498aed0
@@ -3614,8 +3738,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:d5a5f069126165e6b19e75832304cd3a26276fa2
-    pristine_git_object: f269e4c672479182ff10952de3b0b94c437c16c2
+    last_write_checksum: sha1:9262ce4ac9de881a804b0782bfa9b369a2a21295
+    pristine_git_object: e17e65b57bf564db41e1910e25d0e1460f657210
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:c4c1d8169a3a283584b8f13ea1533e438fe6fd69
@@ -3972,10 +4096,18 @@ trackedFiles:
     id: 7a02aa53d805
     last_write_checksum: sha1:55b481e98edb6a1f002176a48c19f7cd713d0ac9
     pristine_git_object: 071d21d56a9b01790a69ab7981c16ca520ce106e
+  src/mcp-server/tools/insightsInsightsFileTestTranscript.ts:
+    id: dfca57b456c0
+    last_write_checksum: sha1:9512b945e31109fde98516aaf19b10497375f270
+    pristine_git_object: abca3b8ddb0fc725f860e533e176cadbf6bfa106
   src/mcp-server/tools/insightsList.ts:
     id: 3934ba24be46
-    last_write_checksum: sha1:3c63376b16016d82c95a50d6b0a55c5a5ff98d32
-    pristine_git_object: ea76025d3c159ddaac9bb4b5ff84a3a0cad0b2b7
+    last_write_checksum: sha1:55776f473e1ebbdbdfcc5997670ce898e9ed1caf
+    pristine_git_object: eb04a4264b74cdaf2c92d9f7efab77fcd1552ceb
+  src/mcp-server/tools/insightsResults.ts:
+    id: 2277131c87f2
+    last_write_checksum: sha1:f66d17f9e3d9fb7ddc5352913b4a415dbdf84baa
+    pristine_git_object: b20c4d2a5df5625b69cf0b26964335795edfbe2d
   src/mcp-server/tools/insightsToolsCreate.ts:
     id: e673c61bcfb8
     last_write_checksum: sha1:fdfa351c021ef237da62e4f77a8848b1e6744656
@@ -4028,6 +4160,10 @@ trackedFiles:
     id: 6262dcb6ba38
     last_write_checksum: sha1:3029b4c6f331e53e32755b5b2324bb6c5b615216
     pristine_git_object: c7f59b2b024fb206284fd0846c4e970b443065bd
+  src/mcp-server/tools/insightsWorkflowsInsightsWorkflowConditionCatalog.ts:
+    id: befe947a87fd
+    last_write_checksum: sha1:f43643ff11dc8ad5fe54c26265e65d32714d0d41
+    pristine_git_object: 0d8acd4d3f9f89da180710013bd76105af980dba
   src/mcp-server/tools/insightsWorkflowsInsightsWorkflowFiles.ts:
     id: a2832ce98915
     last_write_checksum: sha1:ba0fa42dd757fb9324b95be2ab5a1fccb7ac1b35
@@ -4638,8 +4774,8 @@ trackedFiles:
     pristine_git_object: 3de6a81adb7c37896d47635dbbb769a6f064d226
   src/models/components/communicationrequestresult.ts:
     id: ca3c3d50c40b
-    last_write_checksum: sha1:66fba5415604a272af7d344464a7657a6f1409d0
-    pristine_git_object: 02fa8ce5c4c255f2fa8582b716bab36f652c558e
+    last_write_checksum: sha1:e4ddaa7503e6b6bd7a80e575d796030419d3082a
+    pristine_git_object: 635d9b237d5cbceeeb478c819c4f5c553efeac27
   src/models/components/conditionaltext.ts:
     id: 2e1b9ac1a920
     last_write_checksum: sha1:b017d8e5da4df23729fc2ffc794e697dc2862343
@@ -4954,12 +5090,28 @@ trackedFiles:
     pristine_git_object: 9f63697edf7ec323285ba25d328a4e4a38cc609e
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:f18f37a46ac1d64e05fd86f5155f11f325dcf3cf
-    pristine_git_object: 10b20cfe425a3f46461f02c31d118e7f52cdc6b8
+    last_write_checksum: sha1:2b1d46b319c5a38a87f4e1cf8960e4945b64ae32
+    pristine_git_object: 47ba1ff9105e6d3232a79c886bb4d154e4dd2d73
   src/models/components/inputparameter.ts:
     id: 3e896f254d26
     last_write_checksum: sha1:6b78ad6ccb0d52e1257e19231f420b0a76658f19
     pristine_git_object: 355c151e23555ee8753fa1f40341c1ca09cf885a
+  src/models/components/insightconditionrule.ts:
+    id: 02afb216abfe
+    last_write_checksum: sha1:ba800646431f953ebb4febad0affb40f40180f55
+    pristine_git_object: 0ec199e8535b84157862471fcec189f8ec8bcaca
+  src/models/components/insightconditionsource.ts:
+    id: 126c4925335b
+    last_write_checksum: sha1:c9091941b0954e81034d83634ec11870f852f72e
+    pristine_git_object: d2ab3e0767137234b11fb014b19d848e0cc9cc1b
+  src/models/components/insightfiletesttranscript.ts:
+    id: cf42d8beff02
+    last_write_checksum: sha1:4e0121d33471664f4b82349fca2b49f9547aa536
+    pristine_git_object: 15c0f00eae13b900ff8078df8f22b20a03d8262b
+  src/models/components/insightresultformat.ts:
+    id: 21e0e7e9f433
+    last_write_checksum: sha1:e3e159857444c26eaedade5075572e25da2d2104
+    pristine_git_object: 10a896dada79786ca7a5ea140e9fa620cdd78275
   src/models/components/insightsfolder.ts:
     id: 88eeafce2b51
     last_write_checksum: sha1:303a870b984c2e514b91a80e39f53f123f4cca19
@@ -4996,6 +5148,10 @@ trackedFiles:
     id: 9a4d8173408c
     last_write_checksum: sha1:ab03330d5b13871a07e0d4b8a8ea8913b19455cc
     pristine_git_object: 6a869af2dc699118f59692b333ae1cbb01b3c295
+  src/models/components/insighttoolconditiongroup.ts:
+    id: 85090fe7d73f
+    last_write_checksum: sha1:613a1842ea2b2412ccab6817ce553509a8a4dfbf
+    pristine_git_object: 9721bd8ce81ae5758bb8928f746690a012575834
   src/models/components/insighttooldefinition.ts:
     id: 5d355adafc9f
     last_write_checksum: sha1:ed764a1354fb3fe76dffb6d824bcd0bb8fe452ce
@@ -5034,28 +5190,32 @@ trackedFiles:
     pristine_git_object: e6e75225c344797d3dac76e9d715e191479706ff
   src/models/components/insightworkflowexecutionoutput.ts:
     id: 7bc3e5b1c02d
-    last_write_checksum: sha1:b45e91d767db5051c15d310619e80385c1b6c54a
-    pristine_git_object: 2fb6876d9c0b9cba2de51a96f463a6670288d90e
+    last_write_checksum: sha1:76725010e88f882f873625c3edda3cd2251b6b7f
+    pristine_git_object: 28e09ddf27e508e64252dc596257a4921142d69c
   src/models/components/insightworkflowexecutionsummary.ts:
     id: f38c6649a0db
-    last_write_checksum: sha1:c957923d846b373ac3cc2ac1963db2ad9ecaf494
-    pristine_git_object: b6ae4fe1ed99c44fd989699265dda740975c96c9
+    last_write_checksum: sha1:071198071b06d801812b73595f785899c5802380
+    pristine_git_object: c01f50dc86292fdd97babdb966f788a96cbfd760
   src/models/components/insightworkflowinput.ts:
     id: 91cfd38dcdcb
-    last_write_checksum: sha1:b3f8f9e57ade55fd480fd88e2dcd9e8ec00c9281
-    pristine_git_object: ed286b5687d66e54b88abba7c04588d1430e692a
+    last_write_checksum: sha1:a3bceb61304f1d1dae32c42dd20501a965931771
+    pristine_git_object: dfe91bb14783be738de89607ddb2e89d04b510cf
   src/models/components/insightworkflowoutput.ts:
     id: ecea64076468
-    last_write_checksum: sha1:0f0982fd9a52d4048a32c30227e4219d43384366
-    pristine_git_object: 31b6c7daf50ab8bceaf8f531c17a9f2a98438564
+    last_write_checksum: sha1:d16cb16199ce5898c47af5c7c0ce0c4346eaf13f
+    pristine_git_object: de71174f17caddbe4fe80430d75235553fad1ac4
   src/models/components/insightworkflowproperties.ts:
     id: "777987400220"
     last_write_checksum: sha1:2e84648ad59b8f5ff125e3ed15b213a98fc27c41
     pristine_git_object: 8bd29e038fc9002ea52190e92705c62d90a2ce28
   src/models/components/insightworkflowresponse.ts:
     id: 89b0773f1f31
-    last_write_checksum: sha1:03aa1deea8025b70216aaa70a9129aa2fb16569b
-    pristine_git_object: 53d1a262379a24fb96d00ae8e0eeec11e7164e76
+    last_write_checksum: sha1:8919c9a4e57d05faf9c33069a5802ca9969da993
+    pristine_git_object: f6c306a7cef43a3a7244524e3b10055f44239187
+  src/models/components/insightworkflowstep.ts:
+    id: 9f1a959e7a82
+    last_write_checksum: sha1:25e435dc9979f17b6223f62b35ff7e4f1869803e
+    pristine_git_object: 7b9da1f9e5d5f8e3271d3e5b5cbba14649e7505a
   src/models/components/inspectlatencyresponse.ts:
     id: e1cb0fa73c7f
     last_write_checksum: sha1:24605fff11f350469c75d57baf6cd9dd8573017d
@@ -5484,6 +5644,10 @@ trackedFiles:
     id: cdfd55586176
     last_write_checksum: sha1:ea11a7f5bea62f2ec83aa421a5854e04f8e1cf09
     pristine_git_object: 87a4fb7cc68331be7002b64c5131b89b7eef4bd7
+  src/models/components/sessionconditionsource.ts:
+    id: 664bfafb4c89
+    last_write_checksum: sha1:1e122dc5cc1be6739b69d72d926843075b0dc131
+    pristine_git_object: b3b6368da165ae5a55881a3abb4473a37bf64f64
   src/models/components/sessiondata.ts:
     id: 284baaa56f75
     last_write_checksum: sha1:4c06b2c3546ab7fc6f17c4772955a9f6821d3030
@@ -5610,8 +5774,8 @@ trackedFiles:
     pristine_git_object: 3b1300da6046b95ac7089f7f84030fb3bcef11b2
   src/models/components/targetfilters.ts:
     id: d7dcd113e20f
-    last_write_checksum: sha1:e9e71302585c67b98a91382cc4e2da5e9099f562
-    pristine_git_object: 36edc0d37ea9e0d3137ddffcc9cac9984b460284
+    last_write_checksum: sha1:5b923a67c9a08de207ec80c69d66fd033b5c8b1b
+    pristine_git_object: 7e3ecc11ab599587ab0bc9774e339cc91e53d06f
   src/models/components/targetmodes.ts:
     id: 978302c7cac3
     last_write_checksum: sha1:1ba598a34a5dc3ccbe9cc6a06047f77534e79443
@@ -5652,6 +5816,10 @@ trackedFiles:
     id: 02ae948caac8
     last_write_checksum: sha1:22ba01be2d883359b4fa05b4944dff21411c5e73
     pristine_git_object: d14f66b1f4477e5b501f239ae37023ca836cd570
+  src/models/components/toolconditionsource.ts:
+    id: 42badae9f1b1
+    last_write_checksum: sha1:04acbe4aa52882c185ae6f5a0f04480a39c24f95
+    pristine_git_object: cdccc87c2a9b42ea5ea8f9c2c1d3a316635c075e
   src/models/components/toolcreaterequest.ts:
     id: 199f722ea4b1
     last_write_checksum: sha1:0540f42c8d005b210b40a54cc6b6628eb51159c0
@@ -5716,6 +5884,10 @@ trackedFiles:
     id: 971d4cfd1e66
     last_write_checksum: sha1:c0027086670653a45364ae59a621abeff054ff32
     pristine_git_object: e9aa744b2b2c9ae69b68fbce45304ae41838852a
+  src/models/components/transcriptconditionsource.ts:
+    id: 6e4d6b0f280e
+    last_write_checksum: sha1:c41c1687c3d3fa25afa9cd91fa705f86a8df41de
+    pristine_git_object: 947ac12bb104b8609df0de919b75a655a9fd3cc9
   src/models/components/transcriptconfidence.ts:
     id: fc2571dbe72b
     last_write_checksum: sha1:46d6485a3c8c9a7b84bf7c9d2619476ab4b5aa9c
@@ -5834,12 +6006,12 @@ trackedFiles:
     pristine_git_object: b907565f4db48454d557f6c798da4870fd4c2796
   src/models/components/workflowfilerow.ts:
     id: 2299163192bc
-    last_write_checksum: sha1:1280d9a1901dc9f7232965846f658235b7b66bac
-    pristine_git_object: a3633cfb6be3a3403dc6671f36a0e056e54c34e2
+    last_write_checksum: sha1:85b49d32de44b3f95fea87b8073cf15d58359895
+    pristine_git_object: a1dbecfe15b7deacfc108e9dc8277859c0a0afc4
   src/models/components/workflowsessionrow.ts:
     id: 9fe1ca3429c2
-    last_write_checksum: sha1:c465dd5022b7680ee1abed74cd1a4b161e2c0ead
-    pristine_git_object: 90df3b84bd8987e75aa6d388364124f26cc273bd
+    last_write_checksum: sha1:b1f0c887800b8b84534503dbfe605ca91f7feae6
+    pristine_git_object: bdf44b717a1d5c7e50ec3ba764405d4ebf4410af
   src/models/errors/custommessageerrorresponse.ts:
     id: 4f7965efd203
     last_write_checksum: sha1:cfdf74e08c07d2414b0ef9bca7c115290110edf9
@@ -6130,8 +6302,16 @@ trackedFiles:
     pristine_git_object: 93a681b2bba2549e949bf9009d580723faa6467f
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:754f1768bb4da4255b1aa9f5cf572fbc08f65925
-    pristine_git_object: 58a43b0aec61842f67cfb1158200b2a15742d28c
+    last_write_checksum: sha1:8f0f433a7ea34a07660d62889ba7474fd501eb4f
+    pristine_git_object: 6830a6de5d5d7058a3be88d29bec153b1bc776f2
+  src/models/operations/insightscurrentworkflowresults.ts:
+    id: 102d23f5d38a
+    last_write_checksum: sha1:5c7c042346f0120835389fecfc03dcb0182d8e8c
+    pristine_git_object: e631aeb09dc7bca62a7f0c1e547c7c41f00ac860
+  src/models/operations/insightsfiletesttranscript.ts:
+    id: 262cf1c71fa0
+    last_write_checksum: sha1:83f461b2f42c58e92f51d5e1358bda6e8d493acd
+    pristine_git_object: 6784008a0ce78600b96e42d70dcb62001a2d31c3
   src/models/operations/insightsfolderdelete.ts:
     id: 3919a95ffe82
     last_write_checksum: sha1:be0efc8a494828b094ac655bcba4fb2dc0cfbdac
@@ -6176,6 +6356,10 @@ trackedFiles:
     id: d6944e36087f
     last_write_checksum: sha1:4ddedc5c0818f7486906132cb495214964052751
     pristine_git_object: 3b1b390651a459b4b5ec3fcd4ec7989fa596153f
+  src/models/operations/insightsworkflowconditioncatalog.ts:
+    id: d21a691ab8cd
+    last_write_checksum: sha1:67812d06e1fcbd7ab74b26b31f8c450ca72be29c
+    pristine_git_object: 3098fe635862ae9fab10dac8b5c3d2a6cafc382c
   src/models/operations/insightsworkflowdelete.ts:
     id: eb5dccbd8715
     last_write_checksum: sha1:7f7d56b67ff2cef03380ce50c5d44c523a3d5702
@@ -6186,32 +6370,32 @@ trackedFiles:
     pristine_git_object: 1d9d5551b8e7584843bd73c68fd4735ba3e75715
   src/models/operations/insightsworkflowexecutionssummary.ts:
     id: e6a7bf72dcc6
-    last_write_checksum: sha1:e60da9e1c5d08b633bfadd898d2df8ac3f15c57e
-    pristine_git_object: e9d052b2b8fface2a6f1ee713e3b547b3d345ae0
+    last_write_checksum: sha1:216eede3221c400b3c7fa07ec545d5998878a113
+    pristine_git_object: ea70ff53cb4b64273efcab04e3aeb9150eb619e3
   src/models/operations/insightsworkflowfiles.ts:
     id: 36c27946c3f3
-    last_write_checksum: sha1:9790d7e229ab7b66f8ff98ee1a9b55e1608f6da9
-    pristine_git_object: fc01150ca4609ca27c02642eeb557d2110309ce4
+    last_write_checksum: sha1:c0f5899efb06efc9141bca52205fe30bdd019c10
+    pristine_git_object: 331974b60573b015955967b2191e3bc674a91330
   src/models/operations/insightsworkflowgetbyid.ts:
     id: 00a8b7abd15b
     last_write_checksum: sha1:b9c32a7762a923f30c6c209cc5a1e084b6bc0d22
     pristine_git_object: 0bd64af68333788979d6c979af0253b783e31d5e
   src/models/operations/insightsworkflowinactivate.ts:
     id: 332f7d54e4c5
-    last_write_checksum: sha1:ae6d8c756a8625c1e4afcfefda5a26b96347bb29
-    pristine_git_object: 27ba0e8b0553a9ff30d453ca5dd1f0065e578b80
+    last_write_checksum: sha1:69e59f1c8fa7a9943f56a7b213fba8f59af7ed47
+    pristine_git_object: c1ccbe81c72d13862c2be7777da7236bfa30e8ff
   src/models/operations/insightsworkflowlist.ts:
     id: 3e278dc1845f
     last_write_checksum: sha1:6caf64b0312de1a5c8dc53837b520e6a8b274b51
     pristine_git_object: 6f8961b9c4d54d2abbb710e460af64bf07af9c3a
   src/models/operations/insightsworkflowsessions.ts:
     id: 2d8d0a72cd87
-    last_write_checksum: sha1:7d983bcef32ea41af7d9588fafd4ab184293694d
-    pristine_git_object: 14fbb069b2c386d144db5ec49d4a0af30abf61a5
+    last_write_checksum: sha1:039e7dcf6569ff890eace404281449f19c94a023
+    pristine_git_object: 0536231c33ba23fdc67fc7b194cac29eea463d6f
   src/models/operations/insightsworkflowupdate.ts:
     id: a11086b9be4f
-    last_write_checksum: sha1:d54e2feb8cb41686cae91227822d115c7babd1f7
-    pristine_git_object: 1b39eeb41d4063a699b49bed4f04eec0480dafaf
+    last_write_checksum: sha1:4c02bed1bbc207786f64ebc520a81da8a89daead
+    pristine_git_object: 5ac6f211f3d8ff60395f638cde4c40662fcdd6b5
   src/models/operations/insighttoolgetbyid.ts:
     id: 56d8cb3cf404
     last_write_checksum: sha1:71a9f7468bfe370aad97de84b232e2ccec69e4b3
@@ -6262,8 +6446,8 @@ trackedFiles:
     pristine_git_object: 2c960c58e78147c8e95f5bc7022c0852891e2ea6
   src/models/operations/outboundbatchresults.ts:
     id: 2c4d720ed968
-    last_write_checksum: sha1:a42d32a1e6c9cbfd4eea42782830488f1b859c43
-    pristine_git_object: 55e4ac76b21426e043b8efcdea00a58a303a5546
+    last_write_checksum: sha1:9b361152d8d907303bc5e4d6c6da29b50e5a7d55
+    pristine_git_object: 228d38f19067c9c05534ee62ff2c63d7d59922cb
   src/models/operations/outboundbatchupdate.ts:
     id: 8eac8aab8dbc
     last_write_checksum: sha1:1c6c0a84ab9d447aba8aedbfcdeeabc82b533214
@@ -6502,8 +6686,8 @@ trackedFiles:
     pristine_git_object: ecac2264817bb369ff2dbf0f0e9029807e67ff77
   src/sdk/insights.ts:
     id: 17a3c078d231
-    last_write_checksum: sha1:822882a1bf622560eafc20715f998792c5b771cb
-    pristine_git_object: 221d917887086ad256082724f8f08458185f611f
+    last_write_checksum: sha1:7a5f19756fe8f902da370ed8490017cdc2310c60
+    pristine_git_object: 430d33c4130ee466e00bcaf0ef6d59a844c355ae
   src/sdk/languagegroups.ts:
     id: 9656ce82b185
     last_write_checksum: sha1:30905f8e09caf99f7162585ea0d79cffd07e2be8
@@ -6610,8 +6794,8 @@ trackedFiles:
     pristine_git_object: 004089a36aad70a05e250d464b3d231837b8a539
   src/sdk/workflows.ts:
     id: e5d888426b1c
-    last_write_checksum: sha1:caf883d456492bd00c281adc3facca1d58e56097
-    pristine_git_object: b4b3cf761d633b43e9aaabcd2bce38e27e5ea9ac
+    last_write_checksum: sha1:c8ecc8f28ee7676c3f225ac5e43990678d7b0206
+    pristine_git_object: 90b6bf98b37398eed59e685d92ff86b568cea8f5
   src/types/async.ts:
     id: fac8da972f86
     last_write_checksum: sha1:675d04bb4b4081dc3482f18de98674f9b446e7b4
@@ -7177,10 +7361,10 @@ examples:
   insights_workflow_create:
     speakeasy-default-insights-workflow-create:
       requestBody:
-        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
+        application/json: {"format_version": 1, "name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"format_version": 1, "name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_get_by_id:
@@ -7190,7 +7374,7 @@ examples:
           workflow_id: 788857
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"format_version": 1, "name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_update:
@@ -7198,11 +7382,13 @@ examples:
       parameters:
         path:
           workflow_id: 673493
+        query:
+          deactivate: false
       requestBody:
-        application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
+        application/json: {"format_version": 1, "name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z"}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"format_version": 1, "name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [{"name": "summary-tool", "description": "This tool uses GPT4.1 to generate a summary of the call", "version": 1, "tool_arguments": {"prompt": "Provide a concise, accurate summary of the conversation's key points, focusing on the user's goal and how the agent responded"}, "insight_tool_definition_id": 1, "id": 1, "insight_tool_definition": {"id": 1, "name": "llm_tool", "type": "<value>", "description": "An LLM tool evaluates a transcript with a given prompt", "tool_parameters": {"prompt": "string"}, "tool_result_set": {"summary": "string"}}, "created_at": "2025-09-28T00:00:00Z", "updated_at": "2025-09-29T00:00:00Z", "last_updated_by": "user@email.com"}], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_delete:
@@ -7220,9 +7406,11 @@ examples:
       parameters:
         path:
           workflow_id: 248768
+        header:
+          X-Insight-Workflow-Format-Version: 1
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"format_version": 1, "name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_activate:
@@ -7234,7 +7422,7 @@ examples:
         application/json: {"is_acknowledged": true, "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}}
       responses:
         "200":
-          application/json: {"name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
+          application/json: {"format_version": 1, "name": "summary-workflow", "source": "agent", "description": "Default workflow - generates a summary of the call", "insight_tool_ids": [1], "conditions": {"min_duration": 120, "max_duration": 600, "sample_rate": 0.1, "agent_list": [866324, 826325], "prompt_list": ["123324"], "agent_labels": ["Outbound", "Hospital"], "prompt_labels": ["Practice", "Hospital"], "folder_list": [16754, 67535], "sheet_info": {"sheet_id": "1AGOCYz05AZYYOMzow2EYlgdDXSXaWIhyA3-zCxBm4go", "sheet_name": "Q1 Sales Data"}}, "start_datetime": "2026-02-03T00:00:00Z", "end_datetime": "2026-02-04T00:00:00Z", "id": 1, "insight_tools": [], "status": "ACTIVE", "estimate": {"backfill_count": 100, "backfill_duration": 1000, "estimated_daily_count": 10, "estimated_daily_duration": 3674.11, "estimated_daily_cost": 45.25, "estimated_backfill_cost": 4561}, "queue_count": 10, "failed_count": 2, "created_at": "2026-02-03T00:00:00Z", "updated_at": "2026-02-04T00:00:00Z", "last_updated_by": "user@email.com", "last_folder_upload_at": "2026-09-09T00:00:00Z"}
         "422":
           application/json: {}
   insights_workflow_queue_work:
@@ -8545,7 +8733,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"id": 1, "workflow_id": 42, "status": "PENDING", "priority": 0, "session_id": 12341, "upload_file_id": 12535, "retry_count": 0, "error_message": "LLM timeout", "started_at": "2026-09-02T00:00:00Z", "created_at": "2026-09-01T00:00:00Z", "event_type": "BACKFILL"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"format_version": 1, "id": 1, "workflow_id": 42, "status": "PENDING", "priority": 0, "session_id": 12341, "upload_file_id": 12535, "retry_count": 0, "error_message": "LLM timeout", "started_at": "2026-09-02T00:00:00Z", "created_at": "2026-09-01T00:00:00Z", "event_type": "BACKFILL"}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422":
           application/json: {}
   insights_workflow_sessions:
@@ -8563,7 +8751,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"session_id": 15702, "analyzed_at": "2026-09-02T00:00:00Z", "queued_at": "2026-09-02T00:00:00Z", "status": "PENDING", "error_message": "LLM timeout", "results": {"intent-v2": {"intents": ["Pharmacy/Refill", "Billing"]}, "summarizer-v1": {"summary": ["Caller returned a call about lab results."]}}}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"format_version": 1, "session_id": 15702, "analyzed_at": "2026-09-02T00:00:00Z", "queued_at": "2026-09-02T00:00:00Z", "status": "PENDING", "error_message": "LLM timeout", "results": {"intent-v2": {"intents": ["Pharmacy/Refill", "Billing"]}, "summarizer-v1": {"summary": ["Caller returned a call about lab results."]}}}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422":
           application/json: {}
   insights_workflow_executions_summary:
@@ -8576,7 +8764,7 @@ examples:
           end_datetime: "2026-08-28T00:00:00Z"
       responses:
         "200":
-          application/json: {"pending": 5, "processing": 2, "completed": 100, "failed": 3, "total": 110}
+          application/json: {"pending": 5, "processing": 2, "completed": 100, "failed": 3, "conditions_not_met": 0, "total": 110}
         "422":
           application/json: {}
   insights_workflow_files:
@@ -8594,7 +8782,7 @@ examples:
           end_datetime: "2024-01-01T00:00:00Z"
       responses:
         "200":
-          application/json: {"items": [{"upload_file_id": 88, "analyzed_at": "2026-09-09T00:00:00Z", "queued_at": "2026-09-09T00:00:00Z", "status": "PENDING", "error_message": "LLM timeout", "results": {"intent-v2": {"intents": ["Pharmacy/Refill", "Billing"]}, "summarizer-v1": {"summary": ["Caller left a voicemail about a prescription refill."]}}}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
+          application/json: {"items": [{"format_version": 1, "upload_file_id": 88, "analyzed_at": "2026-09-09T00:00:00Z", "queued_at": "2026-09-09T00:00:00Z", "status": "PENDING", "error_message": "LLM timeout", "results": {"intent-v2": {"intents": ["Pharmacy/Refill", "Billing"]}, "summarizer-v1": {"summary": ["Caller left a voicemail about a prescription refill."]}}}], "page": 0, "page_size": 25, "total_pages": 4, "total_count": 100}
         "422":
           application/json: {}
   experiments_list:
@@ -8736,8 +8924,35 @@ examples:
           application/json: {"id": 1, "name": "Shorter greeting", "target_id": 1, "variants": [], "status": "stopped", "created_at": "2025-04-22T20:33:26.857Z", "updated_at": "2026-07-13T19:06:39.094Z", "last_updated_by": "<value>", "target": null}
         "422":
           application/json: {}
+  insights_file_test_transcript:
+    speakeasy-default-insights-file-test-transcript:
+      parameters:
+        path:
+          file_id: 922317
+      responses:
+        "200":
+          application/json: {}
+        "422":
+          application/json: {}
+  insights_current_workflow_results:
+    speakeasy-default-insights-current-workflow-results:
+      parameters:
+        query:
+          limit: 100
+          offset: 0
+      responses:
+        "200":
+          application/json: [{}]
+        "422":
+          application/json: {}
+  insights_workflow_condition_catalog:
+    speakeasy-default-insights-workflow-condition-catalog:
+      responses:
+        "200":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Typescript SDK Changes:\n* `syllablesdk.insights.insightsFileTestTranscript()`: **Added**\n* `syllablesdk.insights.results()`: **Added**\n* `syllablesdk.insights.workflows.insightsWorkflowConditionCatalog()`: **Added**\n* `syllablesdk.insights.workflows.list()`:  `response.items[]` **Changed**\n* `syllablesdk.insights.workflows.create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `syllablesdk.insights.workflows.getById()`:  `response` **Changed**\n* `syllablesdk.insights.workflows.update()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `syllablesdk.insights.workflows.listExecutions()`:  `response.items[]` **Changed**\n* `syllablesdk.insights.workflows.listSessions()`: \n  *  `request.xInsightWorkflowFormatVersion` **Added**\n  *  `response.items[]` **Changed**\n* `syllablesdk.insights.workflows.insightsWorkflowFiles()`: \n  *  `request.xInsightWorkflowFormatVersion` **Added**\n  *  `response.items[]` **Changed**\n* `syllablesdk.insights.workflows.executionsSummary()`: \n  *  `request.xInsightWorkflowFormatVersion` **Added**\n  *  `response.conditionsNotMet` **Added**\n* `syllablesdk.insights.workflows.inactivate()`: \n  *  `request.xInsightWorkflowFormatVersion` **Added**\n  *  `response` **Changed**\n* `syllablesdk.insights.workflows.activate()`:  `response` **Changed**\n* `syllablesdk.outbound.batches.results()`: \n  *  `request.resultFormat` **Added**\n  *  `response.[].workflowResults` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

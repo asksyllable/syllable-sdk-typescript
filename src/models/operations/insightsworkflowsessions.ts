@@ -64,6 +64,7 @@ export type InsightsWorkflowSessionsRequest = {
    * The end datetime for filtering results
    */
   endDatetime?: string | null | undefined;
+  xInsightWorkflowFormatVersion?: number | null | undefined;
 };
 
 /** @internal */
@@ -98,6 +99,7 @@ export const InsightsWorkflowSessionsRequest$inboundSchema: z.ZodType<
     .optional(),
   start_datetime: z.nullable(z.string()).optional(),
   end_datetime: z.nullable(z.string()).optional(),
+  "X-Insight-Workflow-Format-Version": z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "workflow_id": "workflowId",
@@ -107,6 +109,7 @@ export const InsightsWorkflowSessionsRequest$inboundSchema: z.ZodType<
     "order_by_direction": "orderByDirection",
     "start_datetime": "startDatetime",
     "end_datetime": "endDatetime",
+    "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
   });
 });
 /** @internal */
@@ -120,6 +123,7 @@ export type InsightsWorkflowSessionsRequest$Outbound = {
   order_by_direction?: string | null | undefined;
   start_datetime?: string | null | undefined;
   end_datetime?: string | null | undefined;
+  "X-Insight-Workflow-Format-Version"?: number | null | undefined;
 };
 
 /** @internal */
@@ -138,6 +142,7 @@ export const InsightsWorkflowSessionsRequest$outboundSchema: z.ZodType<
     .optional(),
   startDatetime: z.nullable(z.string()).optional(),
   endDatetime: z.nullable(z.string()).optional(),
+  xInsightWorkflowFormatVersion: z.nullable(z.number().int()).optional(),
 }).transform((v) => {
   return remap$(v, {
     workflowId: "workflow_id",
@@ -147,6 +152,7 @@ export const InsightsWorkflowSessionsRequest$outboundSchema: z.ZodType<
     orderByDirection: "order_by_direction",
     startDatetime: "start_datetime",
     endDatetime: "end_datetime",
+    xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
   });
 });
 

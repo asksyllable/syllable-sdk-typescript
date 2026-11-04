@@ -12,6 +12,7 @@ let value: InsightsWorkflowInactivateRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `workflowId`       | *number*           | :heavy_check_mark: | N/A                |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `workflowId`                    | *number*                        | :heavy_check_mark:              | N/A                             |
+| `xInsightWorkflowFormatVersion` | *number*                        | :heavy_minus_sign:              | N/A                             |

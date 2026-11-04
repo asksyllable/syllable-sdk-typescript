@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OutboundBatchResultsRequest = {
@@ -13,6 +14,10 @@ export type OutboundBatchResultsRequest = {
   referenceId?: string | null | undefined;
   status?: string | null | undefined;
   insightsStatus?: string | null | undefined;
+  /**
+   * Legacy preserves flat stored insights and legacy execution statuses. Choose workflow for current conditional outcomes in workflow_results; legacy cached values are never substituted for conditional steps.
+   */
+  resultFormat?: components.InsightResultFormat | undefined;
 };
 
 /** @internal */
@@ -25,11 +30,13 @@ export const OutboundBatchResultsRequest$inboundSchema: z.ZodType<
   reference_id: z.nullable(z.string()).optional(),
   status: z.nullable(z.string()).optional(),
   insights_status: z.nullable(z.string()).optional(),
+  result_format: components.InsightResultFormat$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
     "reference_id": "referenceId",
     "insights_status": "insightsStatus",
+    "result_format": "resultFormat",
   });
 });
 /** @internal */
@@ -38,6 +45,7 @@ export type OutboundBatchResultsRequest$Outbound = {
   reference_id?: string | null | undefined;
   status?: string | null | undefined;
   insights_status?: string | null | undefined;
+  result_format?: string | undefined;
 };
 
 /** @internal */
@@ -50,11 +58,13 @@ export const OutboundBatchResultsRequest$outboundSchema: z.ZodType<
   referenceId: z.nullable(z.string()).optional(),
   status: z.nullable(z.string()).optional(),
   insightsStatus: z.nullable(z.string()).optional(),
+  resultFormat: components.InsightResultFormat$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
     referenceId: "reference_id",
     insightsStatus: "insights_status",
+    resultFormat: "result_format",
   });
 });
 

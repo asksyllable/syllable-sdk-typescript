@@ -100,7 +100,9 @@ import { tool$insightsFoldersListFiles } from "./tools/insightsFoldersListFiles.
 import { tool$insightsFoldersMoveFiles } from "./tools/insightsFoldersMoveFiles.js";
 import { tool$insightsFoldersUpdate } from "./tools/insightsFoldersUpdate.js";
 import { tool$insightsFoldersUploadFile } from "./tools/insightsFoldersUploadFile.js";
+import { tool$insightsInsightsFileTestTranscript } from "./tools/insightsInsightsFileTestTranscript.js";
 import { tool$insightsList } from "./tools/insightsList.js";
+import { tool$insightsResults } from "./tools/insightsResults.js";
 import { tool$insightsToolsCreate } from "./tools/insightsToolsCreate.js";
 import { tool$insightsToolsDelete } from "./tools/insightsToolsDelete.js";
 import { tool$insightsToolsGetById } from "./tools/insightsToolsGetById.js";
@@ -114,6 +116,7 @@ import { tool$insightsWorkflowsDelete } from "./tools/insightsWorkflowsDelete.js
 import { tool$insightsWorkflowsExecutionsSummary } from "./tools/insightsWorkflowsExecutionsSummary.js";
 import { tool$insightsWorkflowsGetById } from "./tools/insightsWorkflowsGetById.js";
 import { tool$insightsWorkflowsInactivate } from "./tools/insightsWorkflowsInactivate.js";
+import { tool$insightsWorkflowsInsightsWorkflowConditionCatalog } from "./tools/insightsWorkflowsInsightsWorkflowConditionCatalog.js";
 import { tool$insightsWorkflowsInsightsWorkflowFiles } from "./tools/insightsWorkflowsInsightsWorkflowFiles.js";
 import { tool$insightsWorkflowsList } from "./tools/insightsWorkflowsList.js";
 import { tool$insightsWorkflowsListExecutions } from "./tools/insightsWorkflowsListExecutions.js";
@@ -219,7 +222,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.73-rc.11",
+    version: "1.0.73-rc.12",
   });
 
   const client = new SyllableSDKCore({
@@ -291,6 +294,8 @@ export function createMCPServer(deps: {
   tool(tool$incidentsIncidentGetOrganizations);
   tool(tool$incidentsGetById);
   tool(tool$incidentsDelete);
+  tool(tool$insightsInsightsFileTestTranscript);
+  tool(tool$insightsResults);
   tool(tool$insightsList);
   tool(tool$customMessagesList);
   tool(tool$customMessagesCreate);
@@ -401,6 +406,7 @@ export function createMCPServer(deps: {
   tool(tool$insightsFoldersMoveFiles);
   tool(tool$insightsWorkflowsList);
   tool(tool$insightsWorkflowsCreate);
+  tool(tool$insightsWorkflowsInsightsWorkflowConditionCatalog);
   tool(tool$insightsWorkflowsGetById);
   tool(tool$insightsWorkflowsUpdate);
   tool(tool$insightsWorkflowsDelete);

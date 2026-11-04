@@ -5,8 +5,19 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+export const WorkflowFileRowFormatVersion = {
+  One: 1,
+  Two: 2,
+} as const;
+export type WorkflowFileRowFormatVersion = ClosedEnum<
+  typeof WorkflowFileRowFormatVersion
+>;
+
+export type WorkflowFileRowStepOutcomes = {};
 
 /**
  * One uploaded file under a workflow: its execution status plus the insight
@@ -19,6 +30,15 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * dict; ``status`` and ``error_message`` say why.
  */
 export type WorkflowFileRow = {
+  /**
+   * Workflow execution ID
+   */
+  executionId?: number | null | undefined;
+  formatVersion?: WorkflowFileRowFormatVersion | undefined;
+  /**
+   * Execution outcomes in stable workflow step order
+   */
+  stepOutcomes?: Array<WorkflowFileRowStepOutcomes> | undefined;
   /**
    * Upload file ID
    */
@@ -50,11 +70,60 @@ export type WorkflowFileRow = {
 };
 
 /** @internal */
+export const WorkflowFileRowFormatVersion$inboundSchema: z.ZodNativeEnum<
+  typeof WorkflowFileRowFormatVersion
+> = z.nativeEnum(WorkflowFileRowFormatVersion);
+/** @internal */
+export const WorkflowFileRowFormatVersion$outboundSchema: z.ZodNativeEnum<
+  typeof WorkflowFileRowFormatVersion
+> = WorkflowFileRowFormatVersion$inboundSchema;
+
+/** @internal */
+export const WorkflowFileRowStepOutcomes$inboundSchema: z.ZodType<
+  WorkflowFileRowStepOutcomes,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type WorkflowFileRowStepOutcomes$Outbound = {};
+
+/** @internal */
+export const WorkflowFileRowStepOutcomes$outboundSchema: z.ZodType<
+  WorkflowFileRowStepOutcomes$Outbound,
+  z.ZodTypeDef,
+  WorkflowFileRowStepOutcomes
+> = z.object({});
+
+export function workflowFileRowStepOutcomesToJSON(
+  workflowFileRowStepOutcomes: WorkflowFileRowStepOutcomes,
+): string {
+  return JSON.stringify(
+    WorkflowFileRowStepOutcomes$outboundSchema.parse(
+      workflowFileRowStepOutcomes,
+    ),
+  );
+}
+export function workflowFileRowStepOutcomesFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowFileRowStepOutcomes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowFileRowStepOutcomes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowFileRowStepOutcomes' from JSON`,
+  );
+}
+
+/** @internal */
 export const WorkflowFileRow$inboundSchema: z.ZodType<
   WorkflowFileRow,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  execution_id: z.nullable(z.number().int()).optional(),
+  format_version: WorkflowFileRowFormatVersion$inboundSchema.default(1),
+  step_outcomes: z.array(
+    z.lazy(() => WorkflowFileRowStepOutcomes$inboundSchema),
+  ).optional(),
   upload_file_id: z.number().int(),
   filename: z.nullable(z.string()).optional(),
   analyzed_at: z.nullable(
@@ -66,6 +135,9 @@ export const WorkflowFileRow$inboundSchema: z.ZodType<
   results: z.record(z.record(z.array(z.any()))).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "execution_id": "executionId",
+    "format_version": "formatVersion",
+    "step_outcomes": "stepOutcomes",
     "upload_file_id": "uploadFileId",
     "analyzed_at": "analyzedAt",
     "queued_at": "queuedAt",
@@ -74,6 +146,9 @@ export const WorkflowFileRow$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type WorkflowFileRow$Outbound = {
+  execution_id?: number | null | undefined;
+  format_version: number;
+  step_outcomes?: Array<WorkflowFileRowStepOutcomes$Outbound> | undefined;
   upload_file_id: number;
   filename?: string | null | undefined;
   analyzed_at?: string | null | undefined;
@@ -89,6 +164,11 @@ export const WorkflowFileRow$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WorkflowFileRow
 > = z.object({
+  executionId: z.nullable(z.number().int()).optional(),
+  formatVersion: WorkflowFileRowFormatVersion$outboundSchema.default(1),
+  stepOutcomes: z.array(
+    z.lazy(() => WorkflowFileRowStepOutcomes$outboundSchema),
+  ).optional(),
   uploadFileId: z.number().int(),
   filename: z.nullable(z.string()).optional(),
   analyzedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
@@ -98,6 +178,9 @@ export const WorkflowFileRow$outboundSchema: z.ZodType<
   results: z.record(z.record(z.array(z.any()))).optional(),
 }).transform((v) => {
   return remap$(v, {
+    executionId: "execution_id",
+    formatVersion: "format_version",
+    stepOutcomes: "step_outcomes",
     uploadFileId: "upload_file_id",
     analyzedAt: "analyzed_at",
     queuedAt: "queued_at",

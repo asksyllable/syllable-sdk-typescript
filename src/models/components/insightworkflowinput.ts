@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -13,11 +14,43 @@ import {
   InsightWorkflowCondition$Outbound,
   InsightWorkflowCondition$outboundSchema,
 } from "./insightworkflowcondition.js";
+import {
+  InsightWorkflowStep,
+  InsightWorkflowStep$inboundSchema,
+  InsightWorkflowStep$Outbound,
+  InsightWorkflowStep$outboundSchema,
+} from "./insightworkflowstep.js";
+
+/**
+ * Workflow configuration format version
+ */
+export const InsightWorkflowInputFormatVersion = {
+  One: 1,
+  Two: 2,
+} as const;
+/**
+ * Workflow configuration format version
+ */
+export type InsightWorkflowInputFormatVersion = ClosedEnum<
+  typeof InsightWorkflowInputFormatVersion
+>;
 
 /**
  * Request model to create/update an insight workflow.
  */
 export type InsightWorkflowInput = {
+  /**
+   * Workflow configuration format version
+   */
+  formatVersion?: InsightWorkflowInputFormatVersion | undefined;
+  /**
+   * Expected saved revision when updating a workflow
+   */
+  revision?: number | null | undefined;
+  /**
+   * Ordered steps with stable identities for version 2 workflows
+   */
+  steps?: Array<InsightWorkflowStep> | null | undefined;
   /**
    * Human-readable name of insight workflow
    */
@@ -49,11 +82,23 @@ export type InsightWorkflowInput = {
 };
 
 /** @internal */
+export const InsightWorkflowInputFormatVersion$inboundSchema: z.ZodNativeEnum<
+  typeof InsightWorkflowInputFormatVersion
+> = z.nativeEnum(InsightWorkflowInputFormatVersion);
+/** @internal */
+export const InsightWorkflowInputFormatVersion$outboundSchema: z.ZodNativeEnum<
+  typeof InsightWorkflowInputFormatVersion
+> = InsightWorkflowInputFormatVersion$inboundSchema;
+
+/** @internal */
 export const InsightWorkflowInput$inboundSchema: z.ZodType<
   InsightWorkflowInput,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  format_version: InsightWorkflowInputFormatVersion$inboundSchema.default(1),
+  revision: z.nullable(z.number().int()).optional(),
+  steps: z.nullable(z.array(InsightWorkflowStep$inboundSchema)).optional(),
   name: z.string(),
   source: z.string(),
   description: z.string(),
@@ -67,6 +112,7 @@ export const InsightWorkflowInput$inboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "format_version": "formatVersion",
     "insight_tool_ids": "insightToolIds",
     "start_datetime": "startDatetime",
     "end_datetime": "endDatetime",
@@ -74,6 +120,9 @@ export const InsightWorkflowInput$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type InsightWorkflowInput$Outbound = {
+  format_version: number;
+  revision?: number | null | undefined;
+  steps?: Array<InsightWorkflowStep$Outbound> | null | undefined;
   name: string;
   source: string;
   description: string;
@@ -89,6 +138,9 @@ export const InsightWorkflowInput$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InsightWorkflowInput
 > = z.object({
+  formatVersion: InsightWorkflowInputFormatVersion$outboundSchema.default(1),
+  revision: z.nullable(z.number().int()).optional(),
+  steps: z.nullable(z.array(InsightWorkflowStep$outboundSchema)).optional(),
   name: z.string(),
   source: z.string(),
   description: z.string(),
@@ -99,6 +151,7 @@ export const InsightWorkflowInput$outboundSchema: z.ZodType<
   endDatetime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    formatVersion: "format_version",
     insightToolIds: "insight_tool_ids",
     startDatetime: "start_datetime",
     endDatetime: "end_datetime",
