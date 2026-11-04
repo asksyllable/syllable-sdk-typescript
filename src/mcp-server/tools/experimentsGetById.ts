@@ -14,7 +14,7 @@ export const tool$experimentsGetById: ToolDefinition<typeof args> = {
   name: "experiments-get-by-id",
   description: `Get Experiment By Id
 
-Get an experiment by its ID`,
+Get an experiment by its ID.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await experimentsGetById(

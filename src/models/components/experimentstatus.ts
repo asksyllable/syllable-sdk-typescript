@@ -7,10 +7,6 @@ import { ClosedEnum } from "../../types/enums.js";
 
 /**
  * Status of an experiment.
- *
- * @remarks
- *
- * The column is a varchar and not a database enum, so a new value here does not need a migration.
  */
 export const ExperimentStatus = {
   Draft: "draft",
@@ -20,10 +16,6 @@ export const ExperimentStatus = {
 } as const;
 /**
  * Status of an experiment.
- *
- * @remarks
- *
- * The column is a varchar and not a database enum, so a new value here does not need a migration.
  */
 export type ExperimentStatus = ClosedEnum<typeof ExperimentStatus>;
 

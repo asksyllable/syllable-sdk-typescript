@@ -58,10 +58,6 @@ export type ExperimentResponse = {
   description?: string | null | undefined;
   /**
    * Status of an experiment.
-   *
-   * @remarks
-   *
-   * The column is a varchar and not a database enum, so a new value here does not need a migration.
    */
   status: ExperimentStatus;
   /**
@@ -72,6 +68,14 @@ export type ExperimentResponse = {
    * When the experiment stopped
    */
   stoppedAt?: Date | null | undefined;
+  /**
+   * The planned automatic start
+   */
+  scheduledStartTime?: Date | null | undefined;
+  /**
+   * The planned automatic stop
+   */
+  scheduledEndTime?: Date | null | undefined;
   /**
    * When the experiment was created
    */
@@ -108,6 +112,12 @@ export const ExperimentResponse$inboundSchema: z.ZodType<
   stopped_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  scheduled_start_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  scheduled_end_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.string(),
@@ -117,6 +127,8 @@ export const ExperimentResponse$inboundSchema: z.ZodType<
     "target_id": "targetId",
     "started_at": "startedAt",
     "stopped_at": "stoppedAt",
+    "scheduled_start_time": "scheduledStartTime",
+    "scheduled_end_time": "scheduledEndTime",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
@@ -132,6 +144,8 @@ export type ExperimentResponse$Outbound = {
   status: string;
   started_at?: string | null | undefined;
   stopped_at?: string | null | undefined;
+  scheduled_start_time?: string | null | undefined;
+  scheduled_end_time?: string | null | undefined;
   created_at: string;
   updated_at: string;
   last_updated_by: string;
@@ -152,6 +166,10 @@ export const ExperimentResponse$outboundSchema: z.ZodType<
   status: ExperimentStatus$outboundSchema,
   startedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   stoppedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   createdAt: z.date().transform(v => v.toISOString()),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.string(),
@@ -161,6 +179,8 @@ export const ExperimentResponse$outboundSchema: z.ZodType<
     targetId: "target_id",
     startedAt: "started_at",
     stoppedAt: "stopped_at",
+    scheduledStartTime: "scheduled_start_time",
+    scheduledEndTime: "scheduled_end_time",
     createdAt: "created_at",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
