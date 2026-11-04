@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,11 +26,41 @@ import {
   InsightWorkflowEstimate$Outbound,
   InsightWorkflowEstimate$outboundSchema,
 } from "./insightworkflowestimate.js";
+import {
+  InsightWorkflowStep,
+  InsightWorkflowStep$inboundSchema,
+  InsightWorkflowStep$Outbound,
+  InsightWorkflowStep$outboundSchema,
+} from "./insightworkflowstep.js";
+
+/**
+ * Workflow configuration format version
+ */
+export const FormatVersion = {
+  One: 1,
+  Two: 2,
+} as const;
+/**
+ * Workflow configuration format version
+ */
+export type FormatVersion = ClosedEnum<typeof FormatVersion>;
 
 /**
  * Workflow read response with lifecycle findings on every configured tool.
  */
 export type InsightWorkflowResponse = {
+  /**
+   * Workflow configuration format version
+   */
+  formatVersion?: FormatVersion | undefined;
+  /**
+   * Expected saved revision when updating a workflow
+   */
+  revision?: number | null | undefined;
+  /**
+   * Ordered steps with stable identities for version 2 workflows
+   */
+  steps?: Array<InsightWorkflowStep> | null | undefined;
   /**
    * Human-readable name of insight workflow
    */
@@ -101,11 +132,23 @@ export type InsightWorkflowResponse = {
 };
 
 /** @internal */
+export const FormatVersion$inboundSchema: z.ZodNativeEnum<
+  typeof FormatVersion
+> = z.nativeEnum(FormatVersion);
+/** @internal */
+export const FormatVersion$outboundSchema: z.ZodNativeEnum<
+  typeof FormatVersion
+> = FormatVersion$inboundSchema;
+
+/** @internal */
 export const InsightWorkflowResponse$inboundSchema: z.ZodType<
   InsightWorkflowResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  format_version: FormatVersion$inboundSchema.default(1),
+  revision: z.nullable(z.number().int()).optional(),
+  steps: z.nullable(z.array(InsightWorkflowStep$inboundSchema)).optional(),
   name: z.string(),
   source: z.string(),
   description: z.string(),
@@ -133,6 +176,7 @@ export const InsightWorkflowResponse$inboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "format_version": "formatVersion",
     "insight_tool_ids": "insightToolIds",
     "start_datetime": "startDatetime",
     "end_datetime": "endDatetime",
@@ -147,6 +191,9 @@ export const InsightWorkflowResponse$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type InsightWorkflowResponse$Outbound = {
+  format_version: number;
+  revision?: number | null | undefined;
+  steps?: Array<InsightWorkflowStep$Outbound> | null | undefined;
   name: string;
   source: string;
   description: string;
@@ -172,6 +219,9 @@ export const InsightWorkflowResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InsightWorkflowResponse
 > = z.object({
+  formatVersion: FormatVersion$outboundSchema.default(1),
+  revision: z.nullable(z.number().int()).optional(),
+  steps: z.nullable(z.array(InsightWorkflowStep$outboundSchema)).optional(),
   name: z.string(),
   source: z.string(),
   description: z.string(),
@@ -193,6 +243,7 @@ export const InsightWorkflowResponse$outboundSchema: z.ZodType<
     .optional(),
 }).transform((v) => {
   return remap$(v, {
+    formatVersion: "format_version",
     insightToolIds: "insight_tool_ids",
     startDatetime: "start_datetime",
     endDatetime: "end_datetime",

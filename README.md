@@ -382,6 +382,8 @@ run();
 
 ### [Insights](docs/sdks/insights/README.md)
 
+* [insightsFileTestTranscript](docs/sdks/insights/README.md#insightsfiletesttranscript) - Uploaded File Tester Transcript
+* [results](docs/sdks/insights/README.md#results) - Current Insight Workflow Results
 * [list](docs/sdks/insights/README.md#list) - Insights List
 
 #### [Insights.Folders](docs/sdks/folders/README.md)
@@ -409,6 +411,7 @@ run();
 
 * [list](docs/sdks/workflows/README.md#list) - Insight Workflow List
 * [create](docs/sdks/workflows/README.md#create) - Create Insight Workflow
+* [insightsWorkflowConditionCatalog](docs/sdks/workflows/README.md#insightsworkflowconditioncatalog) - Insight Workflow Condition Catalog
 * [getById](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 * [update](docs/sdks/workflows/README.md#update) - Update Insights Workflow
 * [delete](docs/sdks/workflows/README.md#delete) - Delete Insights Workflow
@@ -680,7 +683,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsFoldersMoveFiles`](docs/sdks/folders/README.md#movefiles) - Move Insights Upload Files
 - [`insightsFoldersUpdate`](docs/sdks/folders/README.md#update) - Update Insights Folder
 - [`insightsFoldersUploadFile`](docs/sdks/folders/README.md#uploadfile) - Upload Insights  Upload Folder
+- [`insightsInsightsFileTestTranscript`](docs/sdks/insights/README.md#insightsfiletesttranscript) - Uploaded File Tester Transcript
 - [`insightsList`](docs/sdks/insights/README.md#list) - Insights List
+- [`insightsResults`](docs/sdks/insights/README.md#results) - Current Insight Workflow Results
 - [`insightsToolsCreate`](docs/sdks/syllablesdktools/README.md#create) - Create Insight Tool Configuration
 - [`insightsToolsDelete`](docs/sdks/syllablesdktools/README.md#delete) - Delete Insight Tool Configuration
 - [`insightsToolsGetById`](docs/sdks/syllablesdktools/README.md#getbyid) - Get Insight Tool Config By Id
@@ -694,6 +699,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`insightsWorkflowsExecutionsSummary`](docs/sdks/workflows/README.md#executionssummary) - Insight Workflow Executions Summary
 - [`insightsWorkflowsGetById`](docs/sdks/workflows/README.md#getbyid) - Get Insight Workflow By Id
 - [`insightsWorkflowsInactivate`](docs/sdks/workflows/README.md#inactivate) - Inactivate Insights Workflow
+- [`insightsWorkflowsInsightsWorkflowConditionCatalog`](docs/sdks/workflows/README.md#insightsworkflowconditioncatalog) - Insight Workflow Condition Catalog
 - [`insightsWorkflowsInsightsWorkflowFiles`](docs/sdks/workflows/README.md#insightsworkflowfiles) - List Insight Workflow Files
 - [`insightsWorkflowsList`](docs/sdks/workflows/README.md#list) - Insight Workflow List
 - [`insightsWorkflowsListExecutions`](docs/sdks/workflows/README.md#listexecutions) - List Insight Workflow Executions
@@ -999,13 +1005,13 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 202 methods.*
-* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 202 methods.*
-* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 202 methods.*
-* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
-* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
-* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 202 methods.*
+* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 205 methods.*
+* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 205 methods.*
+* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 205 methods.*
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 205 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 205 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 205 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 205 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

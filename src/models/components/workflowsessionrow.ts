@@ -5,8 +5,19 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+export const WorkflowSessionRowFormatVersion = {
+  One: 1,
+  Two: 2,
+} as const;
+export type WorkflowSessionRowFormatVersion = ClosedEnum<
+  typeof WorkflowSessionRowFormatVersion
+>;
+
+export type WorkflowSessionRowStepOutcomes = {};
 
 /**
  * One session under a workflow: its execution status plus the insight results,
@@ -18,6 +29,15 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * ``results`` dict; ``status`` and ``error_message`` say why.
  */
 export type WorkflowSessionRow = {
+  /**
+   * Workflow execution ID
+   */
+  executionId?: number | null | undefined;
+  formatVersion?: WorkflowSessionRowFormatVersion | undefined;
+  /**
+   * Execution outcomes in stable workflow step order
+   */
+  stepOutcomes?: Array<WorkflowSessionRowStepOutcomes> | undefined;
   /**
    * Session ID
    */
@@ -45,11 +65,60 @@ export type WorkflowSessionRow = {
 };
 
 /** @internal */
+export const WorkflowSessionRowFormatVersion$inboundSchema: z.ZodNativeEnum<
+  typeof WorkflowSessionRowFormatVersion
+> = z.nativeEnum(WorkflowSessionRowFormatVersion);
+/** @internal */
+export const WorkflowSessionRowFormatVersion$outboundSchema: z.ZodNativeEnum<
+  typeof WorkflowSessionRowFormatVersion
+> = WorkflowSessionRowFormatVersion$inboundSchema;
+
+/** @internal */
+export const WorkflowSessionRowStepOutcomes$inboundSchema: z.ZodType<
+  WorkflowSessionRowStepOutcomes,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type WorkflowSessionRowStepOutcomes$Outbound = {};
+
+/** @internal */
+export const WorkflowSessionRowStepOutcomes$outboundSchema: z.ZodType<
+  WorkflowSessionRowStepOutcomes$Outbound,
+  z.ZodTypeDef,
+  WorkflowSessionRowStepOutcomes
+> = z.object({});
+
+export function workflowSessionRowStepOutcomesToJSON(
+  workflowSessionRowStepOutcomes: WorkflowSessionRowStepOutcomes,
+): string {
+  return JSON.stringify(
+    WorkflowSessionRowStepOutcomes$outboundSchema.parse(
+      workflowSessionRowStepOutcomes,
+    ),
+  );
+}
+export function workflowSessionRowStepOutcomesFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowSessionRowStepOutcomes, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowSessionRowStepOutcomes$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowSessionRowStepOutcomes' from JSON`,
+  );
+}
+
+/** @internal */
 export const WorkflowSessionRow$inboundSchema: z.ZodType<
   WorkflowSessionRow,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  execution_id: z.nullable(z.number().int()).optional(),
+  format_version: WorkflowSessionRowFormatVersion$inboundSchema.default(1),
+  step_outcomes: z.array(
+    z.lazy(() => WorkflowSessionRowStepOutcomes$inboundSchema),
+  ).optional(),
   session_id: z.number().int(),
   analyzed_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -60,6 +129,9 @@ export const WorkflowSessionRow$inboundSchema: z.ZodType<
   results: z.record(z.record(z.array(z.any()))).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "execution_id": "executionId",
+    "format_version": "formatVersion",
+    "step_outcomes": "stepOutcomes",
     "session_id": "sessionId",
     "analyzed_at": "analyzedAt",
     "queued_at": "queuedAt",
@@ -68,6 +140,9 @@ export const WorkflowSessionRow$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type WorkflowSessionRow$Outbound = {
+  execution_id?: number | null | undefined;
+  format_version: number;
+  step_outcomes?: Array<WorkflowSessionRowStepOutcomes$Outbound> | undefined;
   session_id: number;
   analyzed_at?: string | null | undefined;
   queued_at: string;
@@ -82,6 +157,11 @@ export const WorkflowSessionRow$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WorkflowSessionRow
 > = z.object({
+  executionId: z.nullable(z.number().int()).optional(),
+  formatVersion: WorkflowSessionRowFormatVersion$outboundSchema.default(1),
+  stepOutcomes: z.array(
+    z.lazy(() => WorkflowSessionRowStepOutcomes$outboundSchema),
+  ).optional(),
   sessionId: z.number().int(),
   analyzedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   queuedAt: z.date().transform(v => v.toISOString()),
@@ -90,6 +170,9 @@ export const WorkflowSessionRow$outboundSchema: z.ZodType<
   results: z.record(z.record(z.array(z.any()))).optional(),
 }).transform((v) => {
   return remap$(v, {
+    executionId: "execution_id",
+    formatVersion: "format_version",
+    stepOutcomes: "step_outcomes",
     sessionId: "session_id",
     analyzedAt: "analyzed_at",
     queuedAt: "queued_at",

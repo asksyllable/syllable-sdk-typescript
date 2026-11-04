@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -31,6 +32,10 @@ export type InsightWorkflowExecutionSummary = {
    */
   failed?: number | undefined;
   /**
+   * Accepted steps skipped because conditions were not met; each step counts once
+   */
+  conditionsNotMet?: number | undefined;
+  /**
    * Total rows across all statuses
    */
   total?: number | undefined;
@@ -46,7 +51,12 @@ export const InsightWorkflowExecutionSummary$inboundSchema: z.ZodType<
   processing: z.number().int().default(0),
   completed: z.number().int().default(0),
   failed: z.number().int().default(0),
+  conditions_not_met: z.number().int().default(0),
   total: z.number().int().default(0),
+}).transform((v) => {
+  return remap$(v, {
+    "conditions_not_met": "conditionsNotMet",
+  });
 });
 /** @internal */
 export type InsightWorkflowExecutionSummary$Outbound = {
@@ -54,6 +64,7 @@ export type InsightWorkflowExecutionSummary$Outbound = {
   processing: number;
   completed: number;
   failed: number;
+  conditions_not_met: number;
   total: number;
 };
 
@@ -67,7 +78,12 @@ export const InsightWorkflowExecutionSummary$outboundSchema: z.ZodType<
   processing: z.number().int().default(0),
   completed: z.number().int().default(0),
   failed: z.number().int().default(0),
+  conditionsNotMet: z.number().int().default(0),
   total: z.number().int().default(0),
+}).transform((v) => {
+  return remap$(v, {
+    conditionsNotMet: "conditions_not_met",
+  });
 });
 
 export function insightWorkflowExecutionSummaryToJSON(

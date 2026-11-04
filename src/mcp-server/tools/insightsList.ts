@@ -14,10 +14,14 @@ export const tool$insightsList: ToolDefinition<typeof args> = {
   name: "insights-list",
   description: `Insights List
 
-List evaluated insights, with at most 1,000 items and an offset (page * limit) up to 100,000.
+List stored legacy insight values, with at most 1,000 items and an offset up to 100,000.
 
 Filter by start_datetime (inclusive) and end_datetime (exclusive) on insight creation time
-to narrow results. Use order_by_direction=desc to read the newest insights first.`,
+to narrow results. Use order_by_direction=desc to read the newest stored values first.
+These are shared legacy cache values, not current conditional workflow outcomes. Conditional
+runs do not replace them. An explicit version 2 workflow filter returns 409; use
+/insights/workflow-results with a workflow, session, or file selector for execution-scoped
+results.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await insightsList(

@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InsightsWorkflowInactivateRequest = {
   workflowId: number;
+  xInsightWorkflowFormatVersion?: number | undefined;
 };
 
 /** @internal */
@@ -19,14 +20,17 @@ export const InsightsWorkflowInactivateRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   workflow_id: z.number().int(),
+  "X-Insight-Workflow-Format-Version": z.number().int().default(1),
 }).transform((v) => {
   return remap$(v, {
     "workflow_id": "workflowId",
+    "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
   });
 });
 /** @internal */
 export type InsightsWorkflowInactivateRequest$Outbound = {
   workflow_id: number;
+  "X-Insight-Workflow-Format-Version": number;
 };
 
 /** @internal */
@@ -36,9 +40,11 @@ export const InsightsWorkflowInactivateRequest$outboundSchema: z.ZodType<
   InsightsWorkflowInactivateRequest
 > = z.object({
   workflowId: z.number().int(),
+  xInsightWorkflowFormatVersion: z.number().int().default(1),
 }).transform((v) => {
   return remap$(v, {
     workflowId: "workflow_id",
+    xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
   });
 });
 

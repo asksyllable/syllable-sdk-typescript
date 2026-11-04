@@ -11,6 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InsightsWorkflowUpdateRequest = {
   workflowId: number;
+  deactivate?: boolean | undefined;
   insightWorkflowInput: components.InsightWorkflowInput;
 };
 
@@ -21,6 +22,7 @@ export const InsightsWorkflowUpdateRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   workflow_id: z.number().int(),
+  deactivate: z.boolean().default(false),
   InsightWorkflowInput: components.InsightWorkflowInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
@@ -31,6 +33,7 @@ export const InsightsWorkflowUpdateRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type InsightsWorkflowUpdateRequest$Outbound = {
   workflow_id: number;
+  deactivate: boolean;
   InsightWorkflowInput: components.InsightWorkflowInput$Outbound;
 };
 
@@ -41,6 +44,7 @@ export const InsightsWorkflowUpdateRequest$outboundSchema: z.ZodType<
   InsightsWorkflowUpdateRequest
 > = z.object({
   workflowId: z.number().int(),
+  deactivate: z.boolean().default(false),
   insightWorkflowInput: components.InsightWorkflowInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {

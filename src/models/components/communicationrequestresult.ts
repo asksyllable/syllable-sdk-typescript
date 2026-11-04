@@ -15,6 +15,8 @@ import {
 
 export type Insights = string | number | number;
 
+export type WorkflowResults = {};
+
 export type Enrichment = {};
 
 export type CommunicationRequestResult = {
@@ -63,13 +65,17 @@ export type CommunicationRequestResult = {
    */
   channelManagerStatus?: string | null | undefined;
   /**
-   * Status of session in insight workflow
+   * In legacy result format, status is derived only from legacy executions. In workflow result format, conditional sessions aggregate the latest execution of each workflow with precedence PROCESSING, PENDING, FAILED, COMPLETED. Executions whose conditions skipped all steps remain COMPLETED.
    */
   insightsStatus?: string | null | undefined;
   /**
-   * Insights from call
+   * Legacy flat stored insights from the call; these may remain after a workflow upgrade and do not represent current version 2 execution outcomes. In workflow result format, empty for sessions with conditional execution history; use workflow_results for scoped step outcomes and typed values.
    */
   insights?: { [k: string]: string | number | number } | null | undefined;
+  /**
+   * Populated only in workflow result format for sessions with conditional execution history. Latest execution of each workflow for this session, including workflow_id, execution_id, format_version, status, and ordered step_outcomes. Version 2 step outcomes preserve succeeded, skipped, failed, pending, and not_reached states; only succeeded steps contain results. Legacy executions may have no step_outcomes.
+   */
+  workflowResults?: Array<WorkflowResults> | undefined;
   /**
    * Raw Twilio Lookup v2 line type of the target number (e.g. 'mobile', 'landline', 'fixedVoip', 'tollFree'); resolved at ingestion. 'unknown' means Twilio answered but could not determine the line type; None means no lookup data at all. See ALL_LINE_TYPES in lib/twilio/line_type_lookup.py for the full vocabulary.
    */
@@ -106,6 +112,37 @@ export function insightsFromJSON(
     jsonString,
     (x) => Insights$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Insights' from JSON`,
+  );
+}
+
+/** @internal */
+export const WorkflowResults$inboundSchema: z.ZodType<
+  WorkflowResults,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+/** @internal */
+export type WorkflowResults$Outbound = {};
+
+/** @internal */
+export const WorkflowResults$outboundSchema: z.ZodType<
+  WorkflowResults$Outbound,
+  z.ZodTypeDef,
+  WorkflowResults
+> = z.object({});
+
+export function workflowResultsToJSON(
+  workflowResults: WorkflowResults,
+): string {
+  return JSON.stringify(WorkflowResults$outboundSchema.parse(workflowResults));
+}
+export function workflowResultsFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowResults, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowResults$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowResults' from JSON`,
   );
 }
 
@@ -162,6 +199,8 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
   insights: z.nullable(
     z.record(z.union([z.string(), z.number().int(), z.number()])),
   ).optional(),
+  workflow_results: z.array(z.lazy(() => WorkflowResults$inboundSchema))
+    .optional(),
   line_type: z.nullable(z.string()).optional(),
   enrichment: z.nullable(z.lazy(() => Enrichment$inboundSchema)).optional(),
 }).transform((v) => {
@@ -177,6 +216,7 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
     "request_status": "requestStatus",
     "channel_manager_status": "channelManagerStatus",
     "insights_status": "insightsStatus",
+    "workflow_results": "workflowResults",
     "line_type": "lineType",
   });
 });
@@ -195,6 +235,7 @@ export type CommunicationRequestResult$Outbound = {
   channel_manager_status?: string | null | undefined;
   insights_status?: string | null | undefined;
   insights?: { [k: string]: string | number | number } | null | undefined;
+  workflow_results?: Array<WorkflowResults$Outbound> | undefined;
   line_type?: string | null | undefined;
   enrichment?: Enrichment$Outbound | null | undefined;
 };
@@ -220,6 +261,8 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   insights: z.nullable(
     z.record(z.union([z.string(), z.number().int(), z.number()])),
   ).optional(),
+  workflowResults: z.array(z.lazy(() => WorkflowResults$outboundSchema))
+    .optional(),
   lineType: z.nullable(z.string()).optional(),
   enrichment: z.nullable(z.lazy(() => Enrichment$outboundSchema)).optional(),
 }).transform((v) => {
@@ -235,6 +278,7 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
     requestStatus: "request_status",
     channelManagerStatus: "channel_manager_status",
     insightsStatus: "insights_status",
+    workflowResults: "workflow_results",
     lineType: "line_type",
   });
 });

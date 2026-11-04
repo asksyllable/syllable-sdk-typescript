@@ -103,6 +103,11 @@ async function $do(
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
+    "X-Insight-Workflow-Format-Version": encodeSimple(
+      "X-Insight-Workflow-Format-Version",
+      payload["X-Insight-Workflow-Format-Version"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
   const secConfig = await extractSecurity(client._options.apiKeyHeader);

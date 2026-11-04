@@ -8,6 +8,7 @@ import { insightsWorkflowsDelete } from "../funcs/insightsWorkflowsDelete.js";
 import { insightsWorkflowsExecutionsSummary } from "../funcs/insightsWorkflowsExecutionsSummary.js";
 import { insightsWorkflowsGetById } from "../funcs/insightsWorkflowsGetById.js";
 import { insightsWorkflowsInactivate } from "../funcs/insightsWorkflowsInactivate.js";
+import { insightsWorkflowsInsightsWorkflowConditionCatalog } from "../funcs/insightsWorkflowsInsightsWorkflowConditionCatalog.js";
 import { insightsWorkflowsInsightsWorkflowFiles } from "../funcs/insightsWorkflowsInsightsWorkflowFiles.js";
 import { insightsWorkflowsList } from "../funcs/insightsWorkflowsList.js";
 import { insightsWorkflowsListExecutions } from "../funcs/insightsWorkflowsListExecutions.js";
@@ -50,6 +51,20 @@ export class Workflows extends ClientSDK {
     return unwrapAsync(insightsWorkflowsCreate(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Insight Workflow Condition Catalog
+   */
+  async insightsWorkflowConditionCatalog(
+    options?: RequestOptions,
+  ): Promise<
+    operations.InsightsWorkflowConditionCatalogResponseInsightsWorkflowConditionCatalog
+  > {
+    return unwrapAsync(insightsWorkflowsInsightsWorkflowConditionCatalog(
+      this,
       options,
     ));
   }
