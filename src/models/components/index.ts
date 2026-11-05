@@ -6,6 +6,7 @@ export * from "./a2pmessagingpathcheckrequest.js";
 export * from "./a2pmessagingpathcheckresponse.js";
 export * from "./agentcreate.js";
 export * from "./agentlanguage.js";
+export * from "./agentlifecyclesummary.js";
 export * from "./agentproperties.js";
 export * from "./agentresponse.js";
 export * from "./agentsttprovider.js";
