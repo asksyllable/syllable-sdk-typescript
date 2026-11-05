@@ -4,8 +4,10 @@
 
 import { agentsAgentGetAvailableSttProviders } from "../funcs/agentsAgentGetAvailableSttProviders.js";
 import { agentsAgentGetAvailableVoices } from "../funcs/agentsAgentGetAvailableVoices.js";
+import { agentsAgentHistory } from "../funcs/agentsAgentHistory.js";
 import { agentsAgentLifecycleSummary } from "../funcs/agentsAgentLifecycleSummary.js";
 import { agentsAgentListActiveLabels } from "../funcs/agentsAgentListActiveLabels.js";
+import { agentsAgentVersion } from "../funcs/agentsAgentVersion.js";
 import { agentsCreate } from "../funcs/agentsCreate.js";
 import { agentsDelete } from "../funcs/agentsDelete.js";
 import { agentsGetById } from "../funcs/agentsGetById.js";
@@ -101,6 +103,34 @@ export class Agents extends ClientSDK {
   ): Promise<Array<string>> {
     return unwrapAsync(agentsAgentListActiveLabels(
       this,
+      options,
+    ));
+  }
+
+  /**
+   * Agent History
+   */
+  async agentHistory(
+    request: operations.AgentHistoryRequest,
+    options?: RequestOptions,
+  ): Promise<components.ListResponseAgentHistoryMetadata> {
+    return unwrapAsync(agentsAgentHistory(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Agent Version
+   */
+  async agentVersion(
+    request: operations.AgentVersionRequest,
+    options?: RequestOptions,
+  ): Promise<components.AgentHistoryResponse> {
+    return unwrapAsync(agentsAgentVersion(
+      this,
+      request,
       options,
     ));
   }

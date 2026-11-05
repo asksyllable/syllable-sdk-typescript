@@ -15,8 +15,10 @@ import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$agentsAgentGetAvailableSttProviders } from "./tools/agentsAgentGetAvailableSttProviders.js";
 import { tool$agentsAgentGetAvailableVoices } from "./tools/agentsAgentGetAvailableVoices.js";
+import { tool$agentsAgentHistory } from "./tools/agentsAgentHistory.js";
 import { tool$agentsAgentLifecycleSummary } from "./tools/agentsAgentLifecycleSummary.js";
 import { tool$agentsAgentListActiveLabels } from "./tools/agentsAgentListActiveLabels.js";
+import { tool$agentsAgentVersion } from "./tools/agentsAgentVersion.js";
 import { tool$agentsCreate } from "./tools/agentsCreate.js";
 import { tool$agentsDelete } from "./tools/agentsDelete.js";
 import { tool$agentsGetById } from "./tools/agentsGetById.js";
@@ -223,7 +225,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.73-rc.15",
+    version: "1.0.73-rc.16",
   });
 
   const client = new SyllableSDKCore({
@@ -258,6 +260,8 @@ export function createMCPServer(deps: {
   tool(tool$agentsUpdate);
   tool(tool$agentsAgentLifecycleSummary);
   tool(tool$agentsAgentListActiveLabels);
+  tool(tool$agentsAgentHistory);
+  tool(tool$agentsAgentVersion);
   tool(tool$agentsGetById);
   tool(tool$agentsDelete);
   tool(tool$agentsAgentGetAvailableVoices);

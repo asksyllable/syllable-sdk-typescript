@@ -7,7 +7,7 @@ Status of an experiment.
 ```typescript
 import { ExperimentStatus } from "syllable-sdk/models/components";
 
-let value: ExperimentStatus = "running";
+let value: ExperimentStatus = "paused";
 ```
 
 ## Values

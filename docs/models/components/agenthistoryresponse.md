@@ -1,0 +1,28 @@
+# AgentHistoryResponse
+
+## Example Usage
+
+```typescript
+import { AgentHistoryResponse } from "syllable-sdk/models/components";
+
+let value: AgentHistoryResponse = {
+  agentId: 390006,
+  versionNumber: 461756,
+  createdAt: new Date("2025-02-15T00:06:31.197Z"),
+  updatedBy: "<value>",
+  comments:
+    "yahoo whose circa dazzling for squiggly characterization attend who fantastic ick after",
+  configuration: {},
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                       | Type                                                                                                                                                        | Required                                                                                                                                                    | Description                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `agentId`                                                                                                                                                   | *number*                                                                                                                                                    | :heavy_check_mark:                                                                                                                                          | N/A                                                                                                                                                         |
+| `versionNumber`                                                                                                                                             | *number*                                                                                                                                                    | :heavy_check_mark:                                                                                                                                          | N/A                                                                                                                                                         |
+| `createdAt`                                                                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                               | :heavy_check_mark:                                                                                                                                          | N/A                                                                                                                                                         |
+| `updatedBy`                                                                                                                                                 | *string*                                                                                                                                                    | :heavy_check_mark:                                                                                                                                          | N/A                                                                                                                                                         |
+| `comments`                                                                                                                                                  | *string*                                                                                                                                                    | :heavy_check_mark:                                                                                                                                          | N/A                                                                                                                                                         |
+| `configuration`                                                                                                                                             | Record<string, *any*>                                                                                                                                       | :heavy_check_mark:                                                                                                                                          | Saved Agent settings and resource references, without joined live resources. Legacy JSON fields are decoded without applying current Agent save validation. |
