@@ -4,6 +4,7 @@
 
 import { agentsAgentGetAvailableSttProviders } from "../funcs/agentsAgentGetAvailableSttProviders.js";
 import { agentsAgentGetAvailableVoices } from "../funcs/agentsAgentGetAvailableVoices.js";
+import { agentsAgentLifecycleSummary } from "../funcs/agentsAgentLifecycleSummary.js";
 import { agentsAgentListActiveLabels } from "../funcs/agentsAgentListActiveLabels.js";
 import { agentsCreate } from "../funcs/agentsCreate.js";
 import { agentsDelete } from "../funcs/agentsDelete.js";
@@ -70,6 +71,21 @@ export class Agents extends ClientSDK {
     return unwrapAsync(agentsUpdate(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Agent Lifecycle Summary
+   *
+   * @remarks
+   * Summarize model findings across active agents, independently of table filters and pages.
+   */
+  async agentLifecycleSummary(
+    options?: RequestOptions,
+  ): Promise<components.AgentLifecycleSummary> {
+    return unwrapAsync(agentsAgentLifecycleSummary(
+      this,
       options,
     ));
   }
