@@ -39,6 +39,7 @@ export function agentsCreate(
 ): APIPromise<
   Result<
     components.AgentResponse,
+    | errors.AgentErrorResponse
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -65,6 +66,7 @@ async function $do(
   [
     Result<
       components.AgentResponse,
+      | errors.AgentErrorResponse
       | errors.HTTPValidationError
       | SyllableSDKError
       | ResponseValidationError
@@ -148,6 +150,7 @@ async function $do(
 
   const [result] = await M.match<
     components.AgentResponse,
+    | errors.AgentErrorResponse
     | errors.HTTPValidationError
     | SyllableSDKError
     | ResponseValidationError
@@ -159,9 +162,11 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, components.AgentResponse$inboundSchema),
+    M.jsonErr([400, 403, 404, 409], errors.AgentErrorResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail([400, "4XX"]),
-    M.fail([500, "5XX"]),
+    M.jsonErr(500, errors.AgentErrorResponse$inboundSchema),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

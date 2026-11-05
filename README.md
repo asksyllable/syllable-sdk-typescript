@@ -260,6 +260,8 @@ run();
 * [update](docs/sdks/agents/README.md#update) - Update Agent
 * [agentLifecycleSummary](docs/sdks/agents/README.md#agentlifecyclesummary) - Agent Lifecycle Summary
 * [agentListActiveLabels](docs/sdks/agents/README.md#agentlistactivelabels) - List Active Agent Labels
+* [agentHistory](docs/sdks/agents/README.md#agenthistory) - Agent History
+* [agentVersion](docs/sdks/agents/README.md#agentversion) - Agent Version
 * [getById](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
 * [delete](docs/sdks/agents/README.md#delete) - Delete Agent
 * [agentGetAvailableVoices](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
@@ -605,8 +607,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`agentsAgentGetAvailableSttProviders`](docs/sdks/agents/README.md#agentgetavailablesttproviders) - Get Available Agent Stt Providers
 - [`agentsAgentGetAvailableVoices`](docs/sdks/agents/README.md#agentgetavailablevoices) - Get Available Agent Voices
+- [`agentsAgentHistory`](docs/sdks/agents/README.md#agenthistory) - Agent History
 - [`agentsAgentLifecycleSummary`](docs/sdks/agents/README.md#agentlifecyclesummary) - Agent Lifecycle Summary
 - [`agentsAgentListActiveLabels`](docs/sdks/agents/README.md#agentlistactivelabels) - List Active Agent Labels
+- [`agentsAgentVersion`](docs/sdks/agents/README.md#agentversion) - Agent Version
 - [`agentsCreate`](docs/sdks/agents/README.md#create) - Create Agent
 - [`agentsDelete`](docs/sdks/agents/README.md#delete) - Delete Agent
 - [`agentsGetById`](docs/sdks/agents/README.md#getbyid) - Get Agent By Id
@@ -994,7 +998,7 @@ run();
 * [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (13)</summary>
+<details><summary>Less common errors (14)</summary>
 
 <br />
 
@@ -1007,13 +1011,14 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 206 methods.*
-* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 206 methods.*
-* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 206 methods.*
-* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 206 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 206 methods.*
-* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 206 methods.*
-* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 206 methods.*
+* [`AgentErrorResponse`](./src/models/errors/agenterrorresponse.ts): Applicable to 4 of 208 methods.*
+* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 208 methods.*
+* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 208 methods.*
+* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 208 methods.*
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

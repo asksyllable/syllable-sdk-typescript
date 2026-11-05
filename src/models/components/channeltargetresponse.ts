@@ -14,6 +14,12 @@ import {
   AgentResponse$outboundSchema,
 } from "./agentresponse.js";
 import {
+  ChannelTargetExperimentSummary,
+  ChannelTargetExperimentSummary$inboundSchema,
+  ChannelTargetExperimentSummary$Outbound,
+  ChannelTargetExperimentSummary$outboundSchema,
+} from "./channeltargetexperimentsummary.js";
+import {
   ExperimentStatus,
   ExperimentStatus$inboundSchema,
   ExperimentStatus$outboundSchema,
@@ -92,7 +98,13 @@ export type ChannelTargetResponse = {
    */
   sipConfiguration?: SipConfiguration | null | undefined;
   /**
-   * Highest-priority status among the target's non-deleted experiments: running, paused, draft, then stopped. Null when there are no experiments or when not calculated.
+   * The target's non-deleted experiment with the highest-priority status: running, paused, draft, then stopped. Null when there are no experiments or when not calculated.
+   */
+  experiment?: ChannelTargetExperimentSummary | null | undefined;
+  /**
+   * (DEPRECATED - use the status in the experiment object instead.) The status of that experiment. Null when there are no experiments or when not calculated.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   experimentStatus?: ExperimentStatus | null | undefined;
 };
@@ -116,6 +128,8 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
   agent: z.nullable(z.lazy(() => AgentResponse$inboundSchema)).optional(),
   a2p_verified: z.nullable(z.boolean()).optional(),
   sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
+  experiment: z.nullable(ChannelTargetExperimentSummary$inboundSchema)
+    .optional(),
   experiment_status: z.nullable(ExperimentStatus$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -147,6 +161,7 @@ export type ChannelTargetResponse$Outbound = {
   agent?: AgentResponse$Outbound | null | undefined;
   a2p_verified?: boolean | null | undefined;
   sip_configuration?: SipConfiguration$Outbound | null | undefined;
+  experiment?: ChannelTargetExperimentSummary$Outbound | null | undefined;
   experiment_status?: string | null | undefined;
 };
 
@@ -169,6 +184,8 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
   agent: z.nullable(z.lazy(() => AgentResponse$outboundSchema)).optional(),
   a2pVerified: z.nullable(z.boolean()).optional(),
   sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
+  experiment: z.nullable(ChannelTargetExperimentSummary$outboundSchema)
+    .optional(),
   experimentStatus: z.nullable(ExperimentStatus$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {

@@ -11,6 +11,8 @@ Operations related to agent configuration. When a user interacts with the       
 * [update](#update) - Update Agent
 * [agentLifecycleSummary](#agentlifecyclesummary) - Agent Lifecycle Summary
 * [agentListActiveLabels](#agentlistactivelabels) - List Active Agent Labels
+* [agentHistory](#agenthistory) - Agent History
+* [agentVersion](#agentversion) - Agent Version
 * [getById](#getbyid) - Get Agent By Id
 * [delete](#delete) - Delete Agent
 * [agentGetAvailableVoices](#agentgetavailablevoices) - Get Available Agent Voices
@@ -240,7 +242,9 @@ run();
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
+| errors.AgentErrorResponse  | 400, 403, 404, 409         | application/json           |
 | errors.HTTPValidationError | 422                        | application/json           |
+| errors.AgentErrorResponse  | 500                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update
@@ -378,7 +382,9 @@ run();
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
+| errors.AgentErrorResponse  | 400, 403, 404, 409         | application/json           |
 | errors.HTTPValidationError | 422                        | application/json           |
+| errors.AgentErrorResponse  | 500                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## agentLifecycleSummary
@@ -516,6 +522,158 @@ run();
 | Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## agentHistory
+
+Agent History
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="agent_history" method="get" path="/api/v1/agents/{agent_id}/history" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.agents.agentHistory({
+    agentId: 35429,
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { agentsAgentHistory } from "syllable-sdk/funcs/agentsAgentHistory.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await agentsAgentHistory(syllableSDK, {
+    agentId: 35429,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsAgentHistory failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AgentHistoryRequest](../../models/operations/agenthistoryrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.ListResponseAgentHistoryMetadata](../../models/components/listresponseagenthistorymetadata.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.AgentErrorResponse  | 403, 404                   | application/json           |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## agentVersion
+
+Agent Version
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="agent_version" method="get" path="/api/v1/agents/{agent_id}/history/{version}" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.agents.agentVersion({
+    agentId: 885699,
+    version: 114838,
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { agentsAgentVersion } from "syllable-sdk/funcs/agentsAgentVersion.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await agentsAgentVersion(syllableSDK, {
+    agentId: 885699,
+    version: 114838,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsAgentVersion failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AgentVersionRequest](../../models/operations/agentversionrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.AgentHistoryResponse](../../models/components/agenthistoryresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.AgentErrorResponse  | 403, 404                   | application/json           |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## getById
 

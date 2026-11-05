@@ -108,6 +108,10 @@ export type AgentCreate = {
    * Enables Dynamic Language Switching - when true and a voice group is configured, callers may switch among group languages by speaking at any point in the conversation (in addition to DTMF in response to the language menu).
    */
   enableVerbalLanguageChange?: boolean | undefined;
+  /**
+   * Optional comment on this configuration save
+   */
+  editComments?: string | null | undefined;
 };
 
 /** @internal */
@@ -135,6 +139,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
   stt_provider: z.nullable(AgentSttProvider$inboundSchema).optional(),
   wait_sound: z.nullable(AgentWaitSound$inboundSchema).optional(),
   enable_verbal_language_change: z.boolean().default(false),
+  edit_comments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "prompt_id": "promptId",
@@ -148,6 +153,7 @@ export const AgentCreate$inboundSchema: z.ZodType<
     "stt_provider": "sttProvider",
     "wait_sound": "waitSound",
     "enable_verbal_language_change": "enableVerbalLanguageChange",
+    "edit_comments": "editComments",
   });
 });
 /** @internal */
@@ -171,6 +177,7 @@ export type AgentCreate$Outbound = {
   stt_provider?: string | null | undefined;
   wait_sound?: string | null | undefined;
   enable_verbal_language_change: boolean;
+  edit_comments?: string | null | undefined;
 };
 
 /** @internal */
@@ -198,6 +205,7 @@ export const AgentCreate$outboundSchema: z.ZodType<
   sttProvider: z.nullable(AgentSttProvider$outboundSchema).optional(),
   waitSound: z.nullable(AgentWaitSound$outboundSchema).optional(),
   enableVerbalLanguageChange: z.boolean().default(false),
+  editComments: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     promptId: "prompt_id",
@@ -211,6 +219,7 @@ export const AgentCreate$outboundSchema: z.ZodType<
     sttProvider: "stt_provider",
     waitSound: "wait_sound",
     enableVerbalLanguageChange: "enable_verbal_language_change",
+    editComments: "edit_comments",
   });
 });
 

@@ -145,6 +145,10 @@ export type AgentResponse = {
    */
   id: number;
   /**
+   * Current Agent configuration version
+   */
+  versionNumber?: number | undefined;
+  /**
    * Timestamp of most recent update
    */
   updatedAt: Date;
@@ -164,6 +168,10 @@ export type AgentResponse = {
    * Channel targets associated with the agent
    */
   channelTargets?: Array<ChannelTargetResponse> | null | undefined;
+  /**
+   * Channel targets of other agents with a draft, running, or paused experiment that uses this agent as a non-control variant. The experiment of each target is the one with the highest-priority status among those experiments, and its weight is the share of this agent. Only set when getting a single agent.
+   */
+  variantChannelTargets?: Array<ChannelTargetResponse> | null | undefined;
   /**
    * Tools associated with the agent
    */
@@ -204,11 +212,15 @@ export const AgentResponse$inboundSchema: z.ZodType<
   wait_sound: z.nullable(z.string()).optional(),
   enable_verbal_language_change: z.boolean().default(false),
   id: z.number().int(),
+  version_number: z.number().int().default(1),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   last_updated_by: z.nullable(z.string()),
   prompt: z.nullable(PromptResponse$inboundSchema).optional(),
   custom_message: z.nullable(CustomMessageResponse$inboundSchema).optional(),
   channel_targets: z.nullable(
+    z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
+  ).optional(),
+  variant_channel_targets: z.nullable(
     z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
   ).optional(),
   tools: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
@@ -228,10 +240,12 @@ export const AgentResponse$inboundSchema: z.ZodType<
     "stt_provider": "sttProvider",
     "wait_sound": "waitSound",
     "enable_verbal_language_change": "enableVerbalLanguageChange",
+    "version_number": "versionNumber",
     "updated_at": "updatedAt",
     "last_updated_by": "lastUpdatedBy",
     "custom_message": "customMessage",
     "channel_targets": "channelTargets",
+    "variant_channel_targets": "variantChannelTargets",
     "language_group": "languageGroup",
     "validation_issues": "validationIssues",
   });
@@ -258,11 +272,16 @@ export type AgentResponse$Outbound = {
   wait_sound?: string | null | undefined;
   enable_verbal_language_change: boolean;
   id: number;
+  version_number: number;
   updated_at: string;
   last_updated_by: string | null;
   prompt?: PromptResponse$Outbound | null | undefined;
   custom_message?: CustomMessageResponse$Outbound | null | undefined;
   channel_targets?: Array<ChannelTargetResponse$Outbound> | null | undefined;
+  variant_channel_targets?:
+    | Array<ChannelTargetResponse$Outbound>
+    | null
+    | undefined;
   tools?: Array<ToolResponse$Outbound> | null | undefined;
   language_group?: LanguageGroupResponse$Outbound | null | undefined;
   validation_issues?: Array<ValidationIssue$Outbound> | null | undefined;
@@ -294,11 +313,15 @@ export const AgentResponse$outboundSchema: z.ZodType<
   waitSound: z.nullable(z.string()).optional(),
   enableVerbalLanguageChange: z.boolean().default(false),
   id: z.number().int(),
+  versionNumber: z.number().int().default(1),
   updatedAt: z.date().transform(v => v.toISOString()),
   lastUpdatedBy: z.nullable(z.string()),
   prompt: z.nullable(PromptResponse$outboundSchema).optional(),
   customMessage: z.nullable(CustomMessageResponse$outboundSchema).optional(),
   channelTargets: z.nullable(
+    z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
+  ).optional(),
+  variantChannelTargets: z.nullable(
     z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
   ).optional(),
   tools: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
@@ -318,10 +341,12 @@ export const AgentResponse$outboundSchema: z.ZodType<
     sttProvider: "stt_provider",
     waitSound: "wait_sound",
     enableVerbalLanguageChange: "enable_verbal_language_change",
+    versionNumber: "version_number",
     updatedAt: "updated_at",
     lastUpdatedBy: "last_updated_by",
     customMessage: "custom_message",
     channelTargets: "channel_targets",
+    variantChannelTargets: "variant_channel_targets",
     languageGroup: "language_group",
     validationIssues: "validation_issues",
   });

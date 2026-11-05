@@ -160,7 +160,7 @@ async function $do(
   >(
     M.json(200, components.PromptResponse$inboundSchema),
     M.jsonErr(422, errors.PromptsUpdateResponse422PromptsUpdate$inboundSchema),
-    M.fail("4XX"),
+    M.fail([409, "4XX"]),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
