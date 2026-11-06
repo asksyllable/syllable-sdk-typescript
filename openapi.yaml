@@ -6225,6 +6225,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListResponse_Session_"
+        "504":
+          description: "The request timed out"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                required:
+                  - "error"
+                properties:
+                  error:
+                    type: "string"
+              example:
+                error: "Gateway Timeout"
         "400":
           description: "Bad request, including malformed datetime query parameters"
           content:

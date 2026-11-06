@@ -998,7 +998,7 @@ run();
 * [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (15)</summary>
+<details><summary>Less common errors (16)</summary>
 
 <br />
 
@@ -1016,10 +1016,11 @@ run();
 * [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 208 methods.*
 * [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 208 methods.*
 * [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
+* [`SessionsListSessionsResponseBody`](./src/models/errors/sessionslistsessionsresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
 * [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
 * [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
 * [`SessionSummaryErrorResponse`](./src/models/errors/sessionsummaryerrorresponse.ts): Summary service unavailable or returned an invalid response. Applicable to 1 of 208 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): The request timed out. Status code `504`. Applicable to 1 of 208 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

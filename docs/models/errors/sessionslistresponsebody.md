@@ -1,6 +1,6 @@
 # SessionsListResponseBody
 
-Bad request, including malformed datetime query parameters
+The request timed out
 
 ## Example Usage
 
@@ -12,6 +12,6 @@ import { SessionsListResponseBody } from "syllable-sdk/models/errors";
 
 ## Fields
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `detail`                                                        | *errors.Detail*                                                 | :heavy_check_mark:                                              | An invalid request message or a legacy transcript link redirect |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `error`            | *string*           | :heavy_check_mark: | N/A                |
