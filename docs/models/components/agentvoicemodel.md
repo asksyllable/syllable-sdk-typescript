@@ -7,11 +7,11 @@ Model for an agent voice.
 ```typescript
 import { AgentVoiceModel } from "syllable-sdk/models/components";
 
-let value: AgentVoiceModel = "gpt-4o-mini-tts";
+let value: AgentVoiceModel = "aura";
 ```
 
 ## Values
 
 ```typescript
-"Chirp 3 HD" | "eleven_flash_v2_5" | "Neural2" | "Standard" | "Studio" | "WaveNet" | "tts-1" | "gpt-4o-mini-tts" | "sonic-3.5"
+"Chirp 3 HD" | "eleven_flash_v2_5" | "Neural2" | "Standard" | "Studio" | "WaveNet" | "tts-1" | "gpt-4o-mini-tts" | "sonic-3.5" | "aura" | "aura-2"
 ```

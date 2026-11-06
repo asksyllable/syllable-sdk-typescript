@@ -13,6 +13,7 @@ export const TtsProvider = {
   ElevenLabs: "ElevenLabs",
   Google: "Google",
   Cartesia: "Cartesia",
+  Deepgram: "Deepgram",
 } as const;
 /**
  * TTS provider for an agent voice.

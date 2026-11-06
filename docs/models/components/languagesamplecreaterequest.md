@@ -9,8 +9,8 @@ import { LanguageSampleCreateRequest } from "syllable-sdk/models/components";
 
 let value: LanguageSampleCreateRequest = {
   languageCode: "gu-IN",
-  voiceProvider: "Google",
-  voiceDisplayName: "Fenrir (Mandarin)",
+  voiceProvider: "Cartesia",
+  voiceDisplayName: "Leda (Spanish)",
   voiceSpeed: 1,
   voicePitch: 0,
 };

@@ -9,8 +9,8 @@ import { VoiceSampleCreateRequest } from "syllable-sdk/models/components";
 
 let value: VoiceSampleCreateRequest = {
   languageCode: "gu-IN",
-  voiceProvider: "Google",
-  voiceDisplayName: "Achernar (Arabic)",
+  voiceProvider: "Cartesia",
+  voiceDisplayName: "Achernar (Japanese)",
   voiceSpeed: 1,
   voicePitch: 0,
 };

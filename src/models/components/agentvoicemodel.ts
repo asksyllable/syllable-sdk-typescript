@@ -18,6 +18,8 @@ export const AgentVoiceModel = {
   Tts1: "tts-1",
   Gpt4oMiniTts: "gpt-4o-mini-tts",
   Sonic35: "sonic-3.5",
+  Aura: "aura",
+  Aura2: "aura-2",
 } as const;
 /**
  * Model for an agent voice.

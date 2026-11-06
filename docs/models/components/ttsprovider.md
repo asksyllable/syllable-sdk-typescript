@@ -13,5 +13,5 @@ let value: TtsProvider = "ElevenLabs";
 ## Values
 
 ```typescript
-"OpenAI" | "ElevenLabs" | "Google" | "Cartesia"
+"OpenAI" | "ElevenLabs" | "Google" | "Cartesia" | "Deepgram"
 ```

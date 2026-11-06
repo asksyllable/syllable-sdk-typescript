@@ -11,7 +11,7 @@ import { LanguageConfig } from "syllable-sdk/models/components";
 let value: LanguageConfig = {
   languageCode: "bs-BA",
   voiceProvider: "Google",
-  voiceDisplayName: "Fenrir (Japanese)",
+  voiceDisplayName: "Leda (Hindi)",
   voiceSpeed: 1,
   voicePitch: 0,
   dtmfCode: 1,
