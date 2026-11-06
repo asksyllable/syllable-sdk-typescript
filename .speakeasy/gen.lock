@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 2c8088bca853b7be1841df642c6c9c1c
+  docChecksum: f8fffca65b3bcc44d6a1dcffd35dc2e3
   docVersion: 0.0.3
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 1.0.73-rc.17
-  configChecksum: f5072b2999c96eeb8e3d6c645e2421a5
+  releaseVersion: 1.0.73-rc.18
+  configChecksum: 185c35fbc5cebb2774ad81ecba33cb98
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 260e55c6-50ba-4c9c-8af8-dbe92651dc82
-  pristine_commit_hash: 7a9032951d9ba6dad0cae362e2b12576b8980272
-  pristine_tree_hash: d0ea141db3d5285e1a0abd953eeb258054871fe0
+  generation_id: dbc65790-2c03-4c9d-b199-21d822d27441
+  pristine_commit_hash: f7c7720e8863189290b06e9fb25d5b6cd0f4ef7c
+  pristine_tree_hash: f6550959351e21cdeee360e65e6eac39e0b5b8ad
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2082,8 +2082,12 @@ trackedFiles:
     pristine_git_object: e63ff4b2a9e589418c76e2d1c4f9a551967db84e
   docs/models/errors/sessionslistresponsebody.md:
     id: 5460d7705a8f
-    last_write_checksum: sha1:0f1b1cde3fefdded0321775ec06f82d77b5c5b7c
-    pristine_git_object: 72b4ddc46af10718f7ace3c133ba8c7ea9664459
+    last_write_checksum: sha1:9d94056b1b0a27d33148bd7a205fec2fe8d097a4
+    pristine_git_object: 9bab26be386d82e85bb6f4e5ebf6167a02354635
+  docs/models/errors/sessionslistsessionsresponsebody.md:
+    id: f6b88f05fdbb
+    last_write_checksum: sha1:492e29acd9b303d3bacbb20336a55ea6d1bd10e3
+    pristine_git_object: 6c46bc69ebd69ec102a1596343c1177fdede38a4
   docs/models/errors/sessionsummaryerrorresponse.md:
     id: 09df51b80fb6
     last_write_checksum: sha1:f3912a8e585f7ea3570d2d0c1bc40fcb906546a7
@@ -2782,8 +2786,8 @@ trackedFiles:
     pristine_git_object: 7b8d08274c91713a81a06abb4ca6e8bc6c49b108
   docs/sdks/sessions/README.md:
     id: 57ad62844f79
-    last_write_checksum: sha1:d30527f2074b60301df5c9fa5f2c79209619d0c2
-    pristine_git_object: 572798769609769898e663c96f10ad046d62addd
+    last_write_checksum: sha1:f2ba3a66af42b4b6e43faa27d30eb4fcd606e8d1
+    pristine_git_object: 4e33330ade3897517fa89b8128a091b1ab67b205
   docs/sdks/sipipranges/README.md:
     id: 7e9da402c87a
     last_write_checksum: sha1:443bf852cc659fe3653ebc7a6e9179649dfae2ef
@@ -2862,12 +2866,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:b8dc04a6d47af2d9bd3a1b4f325ef4fd4a9c62dc
-    pristine_git_object: 7be13b3639fa54e03cb3020c64a79c4927956aa1
+    last_write_checksum: sha1:e2ffdaddc5499741344bad0527aa94548ca58a8c
+    pristine_git_object: e3b74a951faafd1e2cd03955f35ac3e78e4d207f
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:1410dab83c02d87614ac134b32b0874231448318
-    pristine_git_object: c787914a1902736e9f76bd3fd1aa2db4f1e85d9e
+    last_write_checksum: sha1:697f721d466a9c7c35913b14482b6a33a5667d6d
+    pristine_git_object: 7670d88b4d33fb8902311d3aa364ee00e0f015ee
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -3574,8 +3578,8 @@ trackedFiles:
     pristine_git_object: 74026f18bbd4f81e01fc8ea2ac1c34b0c1e503ac
   src/funcs/sessionsList.ts:
     id: 32d4229c4c83
-    last_write_checksum: sha1:bcc96c3bc1d48ec1fc2b97337f994f037f4539cf
-    pristine_git_object: 05d707128ca8a65c72304ef38e142c6aa43f3625
+    last_write_checksum: sha1:4ddaf594b0ad55dbdb8edd9295bf117806380ce1
+    pristine_git_object: de825dad9a7cb09abeef5bfc77d5975520a66dfa
   src/funcs/sessionsSessionRecordingStream.ts:
     id: 5b2023c97b3c
     last_write_checksum: sha1:98f60825d0e1c9e7388f256b581640611aecf170
@@ -3698,8 +3702,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:d4a850a19c059422828e250eb5f4362353a05a3e
-    pristine_git_object: ce2357e9e0564ab4711af061022126a6093577cc
+    last_write_checksum: sha1:fc95d2e8a9e23a448508d93b14627465857a0049
+    pristine_git_object: 612a56737f43840cb60718dd45dc085512d0bc93
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -3774,8 +3778,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:5bc9e8651b5b4a963264f5225445d50123d8908b
-    pristine_git_object: 38eb34be860a174b07d4b27a56948cd40c856c64
+    last_write_checksum: sha1:3b3ae57bd8bf7a1c46f8c0ce1cae883cc4e7c8af
+    pristine_git_object: 2cd61f7f1374aef28f83e7f9cdc68484289affc5
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:c49f9f30688900b044232213b9da00931498aed0
@@ -3790,8 +3794,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:86d646a0d4e27a22932ebcaebf362e4831b34ba1
-    pristine_git_object: 2759c5c08e9bcc75b9fef1fa4f61d507e6a740fc
+    last_write_checksum: sha1:603fe74727ed4e1736ca77b25cfecd92d8b396f0
+    pristine_git_object: d606d2f9d6d53216c6526868e79822cfca8474ed
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:c4c1d8169a3a283584b8f13ea1533e438fe6fd69
@@ -6158,8 +6162,8 @@ trackedFiles:
     pristine_git_object: 3c7eb705d55b8b3b17b11cb8d0d47baeb3eb2f5b
   src/models/errors/sessionslist.ts:
     id: eb0984f57522
-    last_write_checksum: sha1:564d80357a6079d6f4fecb8a43db035b9c0cb5f0
-    pristine_git_object: 5a7292b0d6cb918a452c9b2758c303a6cc63a931
+    last_write_checksum: sha1:1d857e70746ddea4c6d37fc285501703d5cd67be
+    pristine_git_object: db29b50dfffbfd3e01414fbbdd1e5f08ded6427d
   src/models/errors/sessionsummaryerrorresponse.ts:
     id: f0c1820f83a4
     last_write_checksum: sha1:be6859fb5a224ddc34ca1db378202058476ccd9e
@@ -7915,6 +7919,8 @@ examples:
           application/json: {}
         "400":
           application/json: {"detail": "<value>"}
+        "504":
+          application/json: {"error": "<value>"}
   session_get_by_id:
     speakeasy-default-session-get-by-id:
       parameters:
@@ -9098,7 +9104,7 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Typescript SDK Changes:
-  * `syllablesdk.sessions.fullSummary.getById()`:  `error` **Changed**
+  * `syllablesdk.sessions.list()`:  `error.status[504]` **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

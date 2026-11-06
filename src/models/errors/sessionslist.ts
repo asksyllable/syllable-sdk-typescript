@@ -11,6 +11,37 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
 /**
+ * The request timed out
+ */
+export type SessionsListResponseBodyData = {
+  error: string;
+};
+
+/**
+ * The request timed out
+ */
+export class SessionsListResponseBody extends SyllableSDKError {
+  error: string;
+
+  /** The original data that was passed to this error instance. */
+  data$: SessionsListResponseBodyData;
+
+  constructor(
+    err: SessionsListResponseBodyData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
+    this.data$ = err;
+    this.error = err.error;
+
+    this.name = "SessionsListResponseBody";
+  }
+}
+
+/**
  * Identifies a legacy session link
  */
 export const Code = {
@@ -48,7 +79,7 @@ export type Detail = Two | string;
 /**
  * Bad request, including malformed datetime query parameters
  */
-export type SessionsListResponseBodyData = {
+export type SessionsListSessionsResponseBodyData = {
   /**
    * An invalid request message or a legacy transcript link redirect
    */
@@ -58,17 +89,17 @@ export type SessionsListResponseBodyData = {
 /**
  * Bad request, including malformed datetime query parameters
  */
-export class SessionsListResponseBody extends SyllableSDKError {
+export class SessionsListSessionsResponseBody extends SyllableSDKError {
   /**
    * An invalid request message or a legacy transcript link redirect
    */
   detail: Two | string;
 
   /** The original data that was passed to this error instance. */
-  data$: SessionsListResponseBodyData;
+  data$: SessionsListSessionsResponseBodyData;
 
   constructor(
-    err: SessionsListResponseBodyData,
+    err: SessionsListSessionsResponseBodyData,
     httpMeta: { response: Response; request: Request; body: string },
   ) {
     const message = "message" in err && typeof err.message === "string"
@@ -78,9 +109,44 @@ export class SessionsListResponseBody extends SyllableSDKError {
     this.data$ = err;
     this.detail = err.detail;
 
-    this.name = "SessionsListResponseBody";
+    this.name = "SessionsListSessionsResponseBody";
   }
 }
+
+/** @internal */
+export const SessionsListResponseBody$inboundSchema: z.ZodType<
+  SessionsListResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  error: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
+})
+  .transform((v) => {
+    return new SessionsListResponseBody(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
+  });
+
+/** @internal */
+export type SessionsListResponseBody$Outbound = {
+  error: string;
+};
+
+/** @internal */
+export const SessionsListResponseBody$outboundSchema: z.ZodType<
+  SessionsListResponseBody$Outbound,
+  z.ZodTypeDef,
+  SessionsListResponseBody
+> = z.instanceof(SessionsListResponseBody)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    error: z.string(),
+  }));
 
 /** @internal */
 export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
@@ -165,8 +231,8 @@ export function detailFromJSON(
 }
 
 /** @internal */
-export const SessionsListResponseBody$inboundSchema: z.ZodType<
-  SessionsListResponseBody,
+export const SessionsListSessionsResponseBody$inboundSchema: z.ZodType<
+  SessionsListSessionsResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -176,7 +242,7 @@ export const SessionsListResponseBody$inboundSchema: z.ZodType<
   body$: z.string(),
 })
   .transform((v) => {
-    return new SessionsListResponseBody(v, {
+    return new SessionsListSessionsResponseBody(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -184,16 +250,16 @@ export const SessionsListResponseBody$inboundSchema: z.ZodType<
   });
 
 /** @internal */
-export type SessionsListResponseBody$Outbound = {
+export type SessionsListSessionsResponseBody$Outbound = {
   detail: Two$Outbound | string;
 };
 
 /** @internal */
-export const SessionsListResponseBody$outboundSchema: z.ZodType<
-  SessionsListResponseBody$Outbound,
+export const SessionsListSessionsResponseBody$outboundSchema: z.ZodType<
+  SessionsListSessionsResponseBody$Outbound,
   z.ZodTypeDef,
-  SessionsListResponseBody
-> = z.instanceof(SessionsListResponseBody)
+  SessionsListSessionsResponseBody
+> = z.instanceof(SessionsListSessionsResponseBody)
   .transform(v => v.data$)
   .pipe(z.object({
     detail: z.union([z.lazy(() => Two$outboundSchema), z.string()]),
