@@ -38,6 +38,7 @@ export function sessionsFullSummaryGetById(
   Result<
     components.SessionSummaryResponse,
     | errors.HTTPValidationError
+    | errors.SessionSummaryErrorResponse
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -64,6 +65,7 @@ async function $do(
     Result<
       components.SessionSummaryResponse,
       | errors.HTTPValidationError
+      | errors.SessionSummaryErrorResponse
       | SyllableSDKError
       | ResponseValidationError
       | ConnectionError
@@ -155,6 +157,7 @@ async function $do(
   const [result] = await M.match<
     components.SessionSummaryResponse,
     | errors.HTTPValidationError
+    | errors.SessionSummaryErrorResponse
     | SyllableSDKError
     | ResponseValidationError
     | ConnectionError
@@ -166,6 +169,7 @@ async function $do(
   >(
     M.json(200, components.SessionSummaryResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
+    M.jsonErr([502, 504], errors.SessionSummaryErrorResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

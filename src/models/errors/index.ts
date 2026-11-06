@@ -17,4 +17,5 @@ export * from "./sdkerror.js";
 export * from "./sdkvalidationerror.js";
 export * from "./sessionlabelslist.js";
 export * from "./sessionslist.js";
+export * from "./sessionsummaryerrorresponse.js";
 export * from "./syllablesdkerror.js";
