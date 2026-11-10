@@ -13,8 +13,14 @@ export interface Env {
 export const envSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z.object({
   SYLLABLESDK_API_KEY_HEADER: z.string().optional(),
 
-  SYLLABLESDK_DEBUG: z.coerce.boolean().optional(),
+  SYLLABLESDK_DEBUG: z.unknown().transform(parseEnvFlag).optional(),
 });
+
+function parseEnvFlag(value: unknown): boolean {
+  return ["true", "1", "yes", "on"].includes(
+    String(value).trim().toLowerCase(),
+  );
+}
 
 /**
  * Checks for the existence of the Deno global object to determine the environment.
