@@ -8,8 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type CallStartVariables = {};
-
 /**
  * A session is a building block of a conversation.
  */
@@ -126,44 +124,7 @@ export type Session = {
    * ISO 8601 datetime used to override the session's current time. Set only for test sessions that supplied a datetime override; otherwise null.
    */
   overrideTimestamp?: string | null | undefined;
-  /**
-   * Variables supplied when the call was created, keyed by the name the agent sees them under: for an outbound call, the campaign variables and the variables of its outbound request or batch row (a request variable wins over a campaign variable of the same name). These are the inputs the session started with, not the current runtime variables, so later changes to the campaign, the agent or the conversation do not change them. For outbound sessions created before this field was added, the values come from the outbound request instead: the campaign variables are the current ones, and an earlier attempt of a retried request returns an empty object. An empty object when no variables were supplied. Returned only by the get-session-by-ID endpoint, and only to callers with the outbound_read permission; null otherwise and in session lists.
-   */
-  callStartVariables?: CallStartVariables | null | undefined;
 };
-
-/** @internal */
-export const CallStartVariables$inboundSchema: z.ZodType<
-  CallStartVariables,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-/** @internal */
-export type CallStartVariables$Outbound = {};
-
-/** @internal */
-export const CallStartVariables$outboundSchema: z.ZodType<
-  CallStartVariables$Outbound,
-  z.ZodTypeDef,
-  CallStartVariables
-> = z.object({});
-
-export function callStartVariablesToJSON(
-  callStartVariables: CallStartVariables,
-): string {
-  return JSON.stringify(
-    CallStartVariables$outboundSchema.parse(callStartVariables),
-  );
-}
-export function callStartVariablesFromJSON(
-  jsonString: string,
-): SafeParseResult<CallStartVariables, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CallStartVariables$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CallStartVariables' from JSON`,
-  );
-}
 
 /** @internal */
 export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
@@ -198,9 +159,6 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     user_terminated: z.nullable(z.boolean()).optional(),
     transfer_voicemail_detected: z.nullable(z.boolean()).optional(),
     override_timestamp: z.nullable(z.string()).optional(),
-    call_start_variables: z.nullable(
-      z.lazy(() => CallStartVariables$inboundSchema),
-    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       "session_id": "sessionId",
@@ -227,7 +185,6 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
       "user_terminated": "userTerminated",
       "transfer_voicemail_detected": "transferVoicemailDetected",
       "override_timestamp": "overrideTimestamp",
-      "call_start_variables": "callStartVariables",
     });
   });
 /** @internal */
@@ -260,7 +217,6 @@ export type Session$Outbound = {
   user_terminated?: boolean | null | undefined;
   transfer_voicemail_detected?: boolean | null | undefined;
   override_timestamp?: string | null | undefined;
-  call_start_variables?: CallStartVariables$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -297,9 +253,6 @@ export const Session$outboundSchema: z.ZodType<
   userTerminated: z.nullable(z.boolean()).optional(),
   transferVoicemailDetected: z.nullable(z.boolean()).optional(),
   overrideTimestamp: z.nullable(z.string()).optional(),
-  callStartVariables: z.nullable(
-    z.lazy(() => CallStartVariables$outboundSchema),
-  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
@@ -326,7 +279,6 @@ export const Session$outboundSchema: z.ZodType<
     userTerminated: "user_terminated",
     transferVoicemailDetected: "transfer_voicemail_detected",
     overrideTimestamp: "override_timestamp",
-    callStartVariables: "call_start_variables",
   });
 });
 
