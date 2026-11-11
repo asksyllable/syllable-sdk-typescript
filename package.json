@@ -1,6 +1,6 @@
 {
   "name": "syllable-sdk",
-  "version": "1.0.73-rc.27",
+  "version": "1.0.73",
   "author": "Syllable",
   "engines": {
     "node": ">=20"
