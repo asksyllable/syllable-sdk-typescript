@@ -19,6 +19,12 @@ import {
   PromptLlmProvider$outboundSchema,
 } from "./promptllmprovider.js";
 import {
+  PromptReasoningPolicy,
+  PromptReasoningPolicy$inboundSchema,
+  PromptReasoningPolicy$Outbound,
+  PromptReasoningPolicy$outboundSchema,
+} from "./promptreasoningpolicy.js";
+import {
   SupportedLlmReasoningCapabilities,
   SupportedLlmReasoningCapabilities$inboundSchema,
   SupportedLlmReasoningCapabilities$Outbound,
@@ -83,6 +89,10 @@ export type SupportedLlm = {
    * Reviewed reasoning capabilities for this provider/model/version/deployment. Null means capabilities are unknown. Metadata does not enable explicit reasoning choices or establish consuming-service rollout readiness.
    */
   reasoningCapabilities?: SupportedLlmReasoningCapabilities | null | undefined;
+  /**
+   * Scope-specific GPT-6+ SDK/API and Console new-choice eligibility, selectable efforts and explicit default from the audited consuming Cortex policy, evaluated without tools or temperature. Intersect with the actual prompt capabilities before use. This does not redefine native model support or invalidate existing saved values. Use reasoning_policy.allowed_efforts for new choices; native reasoning_capabilities also describe legacy saved values. Missing metadata disables new Console choices.
+   */
+  reasoningPolicy?: PromptReasoningPolicy | null | undefined;
 };
 
 /** @internal */
@@ -106,12 +116,14 @@ export const SupportedLlm$inboundSchema: z.ZodType<
   reasoning_capabilities: z.nullable(
     SupportedLlmReasoningCapabilities$inboundSchema,
   ).optional(),
+  reasoning_policy: z.nullable(PromptReasoningPolicy$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "display_name": "displayName",
     "api_version": "apiVersion",
     "sunset_date": "sunsetDate",
     "reasoning_capabilities": "reasoningCapabilities",
+    "reasoning_policy": "reasoningPolicy",
   });
 });
 /** @internal */
@@ -132,6 +144,7 @@ export type SupportedLlm$Outbound = {
     | SupportedLlmReasoningCapabilities$Outbound
     | null
     | undefined;
+  reasoning_policy?: PromptReasoningPolicy$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -156,12 +169,14 @@ export const SupportedLlm$outboundSchema: z.ZodType<
   reasoningCapabilities: z.nullable(
     SupportedLlmReasoningCapabilities$outboundSchema,
   ).optional(),
+  reasoningPolicy: z.nullable(PromptReasoningPolicy$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     displayName: "display_name",
     apiVersion: "api_version",
     sunsetDate: "sunset_date",
     reasoningCapabilities: "reasoning_capabilities",
+    reasoningPolicy: "reasoning_policy",
   });
 });
 

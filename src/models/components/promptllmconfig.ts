@@ -45,7 +45,7 @@ export type PromptLlmConfig = {
    */
   temperature?: number | null | undefined;
   /**
-   * Requested reasoning effort. Missing or null on create inherits existing service/model policy. On update, omit to preserve the saved choice or send null to reset. Explicit choices require an enabled consuming Cortex reasoning profile and compatible model capabilities; none is distinct from minimal and from inheritance.
+   * Requested reasoning effort. Missing or null on create inherits existing service/model policy. On update, omit to preserve the saved choice or send null to reset. New explicit choices require a supported GPT-6+ OpenAI/Azure model, an enabled consuming Cortex reasoning profile and compatible capabilities. Existing older-model choices may be retained unchanged on the same provider/model. Use reasoning_policy.allowed_efforts from supported-LLMs metadata for new choices; none is distinct from minimal and inheritance.
    */
   reasoningEffort?: ReasoningEffort | null | undefined;
   /**
