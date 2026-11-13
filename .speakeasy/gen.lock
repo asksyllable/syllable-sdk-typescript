@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: a9998797-242d-43f8-a716-12c3814c32c2
 management:
-  docChecksum: 5faae1367ba42f59d194228c0171112e
+  docChecksum: edf0bad5ba088757f7ccac214c7426f7
   docVersion: 0.0.3
-  speakeasyVersion: 1.808.1
-  generationVersion: 2.960.8
-  releaseVersion: 1.0.74-rc.2
-  configChecksum: d9f6814e932ba984f63bc0b41f2cf1b8
+  speakeasyVersion: 1.809.0
+  generationVersion: 2.961.1
+  releaseVersion: 1.0.74-rc.3
+  configChecksum: 1f9d09dee02022fb629d4da2e3d50286
   repoURL: https://github.com/asksyllable/syllable-sdk-typescript.git
   installationURL: https://github.com/asksyllable/syllable-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: db768253-dcbd-4aa5-96c7-41722a4dbb92
-  pristine_commit_hash: 5711836272f917f2a07a615863b867b4af1e03a1
-  pristine_tree_hash: fef284060b4f6ff6275ce3d20ad2aa4ad4b33a1b
+  generation_id: deb121d0-54a8-4e7c-8ec0-d9d43aa3a438
+  pristine_commit_hash: 635c4eb973c61aee38e65d440fc9026245c09bc7
+  pristine_tree_hash: 1a2ef8b227dcf00eda6ee8040c2f6becf36a7a13
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1366,8 +1366,8 @@ trackedFiles:
     pristine_git_object: 84bf4a72f2c18c27fd4593c46b5bf8b62f5dd0d6
   docs/models/components/promptllmconfig.md:
     id: 25370b9a8f05
-    last_write_checksum: sha1:6c300b9034fa134f1f35aadcff5e5ffe154d4c7c
-    pristine_git_object: deb8ffce122a321396f12072e9231404122762e1
+    last_write_checksum: sha1:9218f4c154b6d453f768580e255c6c62bffb5dff
+    pristine_git_object: 27c705f30a3c46778def2849c4f1833e0c64cf77
   docs/models/components/promptllmprovider.md:
     id: cbb870d93168
     last_write_checksum: sha1:adfabcfbab01c435ce15aa6ea5f6cf21d607a844
@@ -1376,6 +1376,10 @@ trackedFiles:
     id: e59dff436b00
     last_write_checksum: sha1:a86e1678d37e17c6fb24e71025778582a971a24f
     pristine_git_object: 7bc979871df8199d286f70d6d97dfdda67913f21
+  docs/models/components/promptreasoningpolicy.md:
+    id: 05b66bd03965
+    last_write_checksum: sha1:4bf5b360295204bed8e5073fde24073a9908120c
+    pristine_git_object: 2a9df1f09d7c26ef4343afb830ac025823d44149
   docs/models/components/promptrequestvalidationerrordetail.md:
     id: f0156ecfa605
     last_write_checksum: sha1:8af86464d9ba9a6c0b20c9eb5354c6c8e4724404
@@ -1422,8 +1426,8 @@ trackedFiles:
     pristine_git_object: 08ccef31ec5f2d9d7b8ea282f49e02b5844c481f
   docs/models/components/reasoningvalidationissue.md:
     id: 4abd35f52b1a
-    last_write_checksum: sha1:fd29683614a8bccf267375bb87f3c47daa06dc27
-    pristine_git_object: f582754f8be327e61218dab31e9d7d6d00a7b624
+    last_write_checksum: sha1:e750db8abcbdea82ec8a4adc6ba3a90a35f61f5f
+    pristine_git_object: 3f62c8001b573e40c61c44dddfd5bfcd4a3fb2d4
   docs/models/components/reasoningvalidationissueseverity.md:
     id: 448bb3191d0f
     last_write_checksum: sha1:46f1dea9f0d85b5cc6d1879a8480d8e304589cfa
@@ -1678,8 +1682,8 @@ trackedFiles:
     pristine_git_object: c4fc8e6eac8e133699ff20be548fbb2784436f62
   docs/models/components/supportedllm.md:
     id: eab28bf5430d
-    last_write_checksum: sha1:1e815850a8d6fb8d5aa12649de3fa879c0c660ed
-    pristine_git_object: 3d8610bc446e51ed146e43f274b8da8a00b4f9ab
+    last_write_checksum: sha1:3d50e2de10c34b4a934df68df8b46b04805a66d8
+    pristine_git_object: 86a888cf1242481aea9011209fd7a0b69fbfafa0
   docs/models/components/supportedllmreasoningcapabilities.md:
     id: 234afb18de5c
     last_write_checksum: sha1:6a0293f7249c2ac5da731cf1f88b603f97119ba7
@@ -2866,12 +2870,12 @@ trackedFiles:
     pristine_git_object: 5dc0a5e4b31996a601a1741090be222f9bdfef55
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:421742ffe751cc97ada96ea5433b02bda16f58c1
-    pristine_git_object: 883cf1a1ab91cef4485ee29a3f0ec69edf5c6884
+    last_write_checksum: sha1:cf3865460aca50d0b2bbf5c977cf8c82e1e578a7
+    pristine_git_object: 0cbb16f680c1dd02b2d6148cbd773d7829dea013
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:bd95fda22d3d5457e082caf518b060a56467472b
-    pristine_git_object: b3e4fa899db10e7b4cde1986cdd78e27d5df38af
+    last_write_checksum: sha1:6328079f921f9531a90e5a9ae9c788109df3b308
+    pristine_git_object: 681cac68635d1b9bb162ec69a0e47678f44a2d4a
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:62b92302e738951af03cf7805bc050745f4ad44c
@@ -3702,8 +3706,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:413fc2346085530889d4626a6b64d8c598a320b2
-    pristine_git_object: 8aa861e9d731d7f42f8def3fddbc6e33ac347384
+    last_write_checksum: sha1:d80dafb26a77f0b57870fa65f0316476884ffdb8
+    pristine_git_object: bf09b563f100980aa13265859bc6eed2e0c18e48
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a257d6f6108693db2197617c579400bc8f0da914
@@ -3778,8 +3782,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:45a4a2fea3b4dc44bf7ae70d7f8ea43a5047dd73
-    pristine_git_object: 7719a95705a5f6a9a77b18a65e2812e6acca5009
+    last_write_checksum: sha1:3cc7baf424bc52734c0a881e9d703531e765777c
+    pristine_git_object: ef5ddcf09c3772f3482565ac74a981fd65fab48b
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:c49f9f30688900b044232213b9da00931498aed0
@@ -3794,8 +3798,8 @@ trackedFiles:
     pristine_git_object: c25696d4c4f70e081fa5d87ad6891874c509a577
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:b7753e227333b6d8dd19c579c3ef34b1f36c7ed2
-    pristine_git_object: 927dcbe7fd41d2ae741565f14f278be634dc77bd
+    last_write_checksum: sha1:abad1d45efefffeefa99cf768c52b2d41041b405
+    pristine_git_object: f16d6ba7ea545779b4f76e8182fc8bbfcf69ef2a
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:c4c1d8169a3a283584b8f13ea1533e438fe6fd69
@@ -5174,8 +5178,8 @@ trackedFiles:
     pristine_git_object: 9f63697edf7ec323285ba25d328a4e4a38cc609e
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:89a46d1cc1fa49d240836813713949845d8bc03d
-    pristine_git_object: 6c888ae2181ae3736a55b7041de6d1cbf281b70e
+    last_write_checksum: sha1:9aa2e25e4a9d7de8f6bf7a3e35d28bc2733ea5ed
+    pristine_git_object: 0faba11413bd51d065e76bcd4a1bcf526529cc9f
   src/models/components/inputparameter.ts:
     id: 3e896f254d26
     last_write_checksum: sha1:6b78ad6ccb0d52e1257e19231f420b0a76658f19
@@ -5610,8 +5614,8 @@ trackedFiles:
     pristine_git_object: 4fdd1bfb0d22b97e072726a60fdededae555e0b4
   src/models/components/promptllmconfig.ts:
     id: b86cd06c2f4e
-    last_write_checksum: sha1:e4aec8c241dd55eb3d9d350617184bb71c9498e5
-    pristine_git_object: 5dc0b1dad01e37b6c27fb4a8041642504266fc3b
+    last_write_checksum: sha1:72b21b948ac29ce3a9c43d7931ba57e58d796656
+    pristine_git_object: ff5b430eeb946d080bbface358f665d24a5fe163
   src/models/components/promptllmprovider.ts:
     id: 2b4064859b56
     last_write_checksum: sha1:4dfa9722d162c27cd017c050cf5313bbcf2f460c
@@ -5620,6 +5624,10 @@ trackedFiles:
     id: 4186e558fbe3
     last_write_checksum: sha1:4b47d653ee6191b288a4921695fb895d55c4dc4e
     pristine_git_object: fd5c3d1d7531ef55a1205f638d062c8539bad419
+  src/models/components/promptreasoningpolicy.ts:
+    id: 84670477afdc
+    last_write_checksum: sha1:190ed8c919167ef53880a07310a3fed546931677
+    pristine_git_object: 7077344166a7ca0a69c316407d74568a6cd4a1eb
   src/models/components/promptrequestvalidationerrordetail.ts:
     id: 375e9121c142
     last_write_checksum: sha1:18d38b4d550b685eb466c29fbe9e1e53505449c0
@@ -5658,8 +5666,8 @@ trackedFiles:
     pristine_git_object: 5e98226e477f1b4cefbe95876b8d6768d3267c46
   src/models/components/reasoningvalidationissue.ts:
     id: fa0e540a7ae6
-    last_write_checksum: sha1:8f86316549a2b8b68b27031bc7ab419cbf4fe0f5
-    pristine_git_object: ff07db0a35ca64d62f8170b675d794591ce14ddc
+    last_write_checksum: sha1:0b27691dae5aeccf088994b2ea9cb0bc8387ca9e
+    pristine_git_object: 2d6d2abb1c5087e7c77050c84709e0c14d69e492
   src/models/components/requeststatus.ts:
     id: 648aed625827
     last_write_checksum: sha1:dd06a7da63ebe637357edc744582e1453215cc96
@@ -5830,8 +5838,8 @@ trackedFiles:
     pristine_git_object: cbc6be92b7f3a810830a950c3dbc5468141a096d
   src/models/components/supportedllm.ts:
     id: 02397721cb26
-    last_write_checksum: sha1:a7354c67fa5646eb1a8805968cb7a47a3db08d36
-    pristine_git_object: f85e735815669640a1fbbffd156c3a3971526080
+    last_write_checksum: sha1:6dfa97fa781e336f4018542f3bc9781d1f864262
+    pristine_git_object: 3adadc8e185df29d721382e0ba8f9c7e41dd0b78
   src/models/components/supportedllmreasoningcapabilities.ts:
     id: ab487abd54dc
     last_write_checksum: sha1:af869656eeccd200529c6955e0dfd2eab9042a84
@@ -9102,6 +9110,9 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `syllablesdk.prompts.promptGetSupportedLlms()`:  `response.[].reasoningPolicy` **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

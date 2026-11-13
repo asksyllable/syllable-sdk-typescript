@@ -37,7 +37,7 @@ export type ReasoningValidationIssue = {
    */
   value?: string | null | undefined;
   /**
-   * Accepted enum vocabulary for schema failures; confirmed compatible alternatives for domain failures. Empty means no alternatives are confirmed.
+   * Enum vocabulary for eligible model families on schema failures; compatible alternatives for domain failures. Empty means no alternatives are confirmed.
    */
   allowedValues?: Array<string> | undefined;
 };

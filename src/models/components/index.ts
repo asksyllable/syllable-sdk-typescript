@@ -254,6 +254,7 @@ export * from "./prompthistoryresponse.js";
 export * from "./promptllmconfig.js";
 export * from "./promptllmprovider.js";
 export * from "./promptproperties.js";
+export * from "./promptreasoningpolicy.js";
 export * from "./promptrequestvalidationerrordetail.js";
 export * from "./promptresponse.js";
 export * from "./promptupdaterequest.js";
