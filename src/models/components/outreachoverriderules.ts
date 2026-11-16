@@ -14,15 +14,15 @@ import {
 } from "./scheduleoverride.js";
 
 /**
- * Weekday- and date-specific outreach rules for a campaign.
+ * Weekday-, holiday- and date-specific outreach rules for a campaign.
  *
  * @remarks
  *
- * The most specific rule wins: a rule for the calendar date, then a rule for the weekday, then the
- * campaign defaults (``daily_start_time`` / ``daily_end_time`` / ``max_daily_calls`` /
- * ``active_days``). Resolution is per field, so a date rule that only moves the end time still uses
- * the weekday cap. All days, dates and times are in the time zone of the agent the campaign dials
- * from -- see ``lib.outbound.schedule``.
+ * The most specific rule wins: a rule for the calendar date, then a rule for a named holiday on
+ * that date, then a rule for the weekday, then the campaign defaults (``daily_start_time`` /
+ * ``daily_end_time`` / ``max_daily_calls`` / ``active_days``). Resolution is per field, so a date
+ * rule that only moves the end time still uses the weekday cap. All days, dates and times are in
+ * the time zone of the agent the campaign dials from.
  */
 export type OutreachOverrideRules = {
   /**
@@ -30,9 +30,13 @@ export type OutreachOverrideRules = {
    */
   days?: { [k: string]: ScheduleOverride } | undefined;
   /**
-   * Rules by calendar date, keyed YYYY-MM-DD. A date rule wins over the weekday rule for that date.
+   * Rules by calendar date, keyed YYYY-MM-DD. A date rule wins over the holiday and weekday rules for that date.
    */
   dates?: { [k: string]: ScheduleOverride } | undefined;
+  /**
+   * Rules by named US holiday, including the Observed variants. They apply every year on the date the holiday falls, so no new rule is needed each year. Holiday names and aliases are the same as in message rules (for example christmas, July 4th) and are stored as the canonical name. A holiday rule wins over the weekday rule, and a date rule wins over the holiday rule. When two holidays with rules fall on the same date, the most restrictive value of each field applies. Set active to false or max_daily_calls to 0 to exclude the holiday. On update, the stored holiday rules are kept when this field is omitted, and also when outreach_override_rules is null. Set this field to {} to remove them.
+   */
+  holidays?: { [k: string]: ScheduleOverride } | undefined;
 };
 
 /** @internal */
@@ -43,11 +47,13 @@ export const OutreachOverrideRules$inboundSchema: z.ZodType<
 > = z.object({
   days: z.record(ScheduleOverride$inboundSchema).optional(),
   dates: z.record(ScheduleOverride$inboundSchema).optional(),
+  holidays: z.record(ScheduleOverride$inboundSchema).optional(),
 });
 /** @internal */
 export type OutreachOverrideRules$Outbound = {
   days?: { [k: string]: ScheduleOverride$Outbound } | undefined;
   dates?: { [k: string]: ScheduleOverride$Outbound } | undefined;
+  holidays?: { [k: string]: ScheduleOverride$Outbound } | undefined;
 };
 
 /** @internal */
@@ -58,6 +64,7 @@ export const OutreachOverrideRules$outboundSchema: z.ZodType<
 > = z.object({
   days: z.record(ScheduleOverride$outboundSchema).optional(),
   dates: z.record(ScheduleOverride$outboundSchema).optional(),
+  holidays: z.record(ScheduleOverride$outboundSchema).optional(),
 });
 
 export function outreachOverrideRulesToJSON(
