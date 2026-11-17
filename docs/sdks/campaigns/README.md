@@ -11,6 +11,7 @@ Operations related to outbound message campaigns
 * [getById](#getbyid) - Get Outbound Communication Campaign
 * [update](#update) - Update Outbound Communication Campaign
 * [delete](#delete) - Delete Outbound Communication Campaign
+* [outboundCampaignExcludedDates](#outboundcampaignexcludeddates) - List Outbound Communication Campaign Excluded Dates
 
 ## list
 
@@ -164,6 +165,11 @@ async function run() {
           active: false,
         },
       },
+      holidays: {
+        "christmas-day": {
+          active: false,
+        },
+      },
     },
     voicemailDetection: {
       voicemailDetectionOverallTimeout: 30,
@@ -270,6 +276,11 @@ async function run() {
       },
       dates: {
         "2026-11-26": {
+          active: false,
+        },
+      },
+      holidays: {
+        "christmas-day": {
           active: false,
         },
       },
@@ -482,6 +493,11 @@ async function run() {
             active: false,
           },
         },
+        holidays: {
+          "christmas-day": {
+            active: false,
+          },
+        },
       },
       voicemailDetection: {
         voicemailDetectionOverallTimeout: 30,
@@ -591,6 +607,11 @@ async function run() {
         },
         dates: {
           "2026-11-26": {
+            active: false,
+          },
+        },
+        holidays: {
+          "christmas-day": {
             active: false,
           },
         },
@@ -733,6 +754,142 @@ run();
 ### Response
 
 **Promise\<[any](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## outboundCampaignExcludedDates
+
+The dates on which a date or holiday rule stops all outreach, with the names of the matching holidays. The rules and the active days come from the request body, so the dates can be shown for a campaign that is not saved yet. A date on which the campaign does not run anyway is not listed. Nothing is stored. With no range, the next 12 months from today in the given time zone are returned. The range can be at most 5 years.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="outbound_campaign_excluded_dates" method="post" path="/api/v1/outbound/campaigns/excluded_dates" -->
+```typescript
+import { SyllableSDK } from "syllable-sdk";
+
+const syllableSDK = new SyllableSDK({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const result = await syllableSDK.outbound.campaigns.outboundCampaignExcludedDates({
+    outreachOverrideRules: {
+      days: {
+        "fri": {
+          dailyEndTime: "15:00:00",
+          maxDailyCalls: 1300,
+        },
+        "sat": {
+          maxDailyCalls: 0,
+        },
+        "thu": {
+          maxDailyCalls: 1300,
+        },
+      },
+      dates: {
+        "2026-11-26": {
+          active: false,
+        },
+      },
+      holidays: {
+        "christmas-day": {
+          active: false,
+        },
+      },
+    },
+    activeDays: [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+    ],
+    timezone: "America/New_York",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SyllableSDKCore } from "syllable-sdk/core.js";
+import { outboundCampaignsOutboundCampaignExcludedDates } from "syllable-sdk/funcs/outboundCampaignsOutboundCampaignExcludedDates.js";
+
+// Use `SyllableSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const syllableSDK = new SyllableSDKCore({
+  apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+});
+
+async function run() {
+  const res = await outboundCampaignsOutboundCampaignExcludedDates(syllableSDK, {
+    outreachOverrideRules: {
+      days: {
+        "fri": {
+          dailyEndTime: "15:00:00",
+          maxDailyCalls: 1300,
+        },
+        "sat": {
+          maxDailyCalls: 0,
+        },
+        "thu": {
+          maxDailyCalls: 1300,
+        },
+      },
+      dates: {
+        "2026-11-26": {
+          active: false,
+        },
+      },
+      holidays: {
+        "christmas-day": {
+          active: false,
+        },
+      },
+    },
+    activeDays: [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+    ],
+    timezone: "America/New_York",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("outboundCampaignsOutboundCampaignExcludedDates failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.CampaignExcludedDatesRequest](../../models/components/campaignexcludeddatesrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.CampaignExcludedDates](../../models/components/campaignexcludeddates.md)\>**
 
 ### Errors
 

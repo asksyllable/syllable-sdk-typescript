@@ -153,6 +153,7 @@ import { tool$outboundCampaignsCreate } from "./tools/outboundCampaignsCreate.js
 import { tool$outboundCampaignsDelete } from "./tools/outboundCampaignsDelete.js";
 import { tool$outboundCampaignsGetById } from "./tools/outboundCampaignsGetById.js";
 import { tool$outboundCampaignsList } from "./tools/outboundCampaignsList.js";
+import { tool$outboundCampaignsOutboundCampaignExcludedDates } from "./tools/outboundCampaignsOutboundCampaignExcludedDates.js";
 import { tool$outboundCampaignsUpdate } from "./tools/outboundCampaignsUpdate.js";
 import { tool$permissionsList } from "./tools/permissionsList.js";
 import { tool$promptsCreate } from "./tools/promptsCreate.js";
@@ -225,7 +226,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "SyllableSDK",
-    version: "1.0.74-rc.8",
+    version: "1.0.74-rc.9",
   });
 
   const client = new SyllableSDKCore({
@@ -452,6 +453,7 @@ export function createMCPServer(deps: {
   tool(tool$outboundCampaignsGetById);
   tool(tool$outboundCampaignsUpdate);
   tool(tool$outboundCampaignsDelete);
+  tool(tool$outboundCampaignsOutboundCampaignExcludedDates);
   tool(tool$channelsTwilioNumbersChannelsTwilioNumbersA2pComplianceCheck);
   tool(tool$channelsTwilioNumbersAdd);
   tool(tool$channelsTwilioNumbersUpdate);

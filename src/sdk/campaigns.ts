@@ -6,6 +6,7 @@ import { outboundCampaignsCreate } from "../funcs/outboundCampaignsCreate.js";
 import { outboundCampaignsDelete } from "../funcs/outboundCampaignsDelete.js";
 import { outboundCampaignsGetById } from "../funcs/outboundCampaignsGetById.js";
 import { outboundCampaignsList } from "../funcs/outboundCampaignsList.js";
+import { outboundCampaignsOutboundCampaignExcludedDates } from "../funcs/outboundCampaignsOutboundCampaignExcludedDates.js";
 import { outboundCampaignsUpdate } from "../funcs/outboundCampaignsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -77,6 +78,23 @@ export class Campaigns extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(outboundCampaignsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Outbound Communication Campaign Excluded Dates
+   *
+   * @remarks
+   * The dates on which a date or holiday rule stops all outreach, with the names of the matching holidays. The rules and the active days come from the request body, so the dates can be shown for a campaign that is not saved yet. A date on which the campaign does not run anyway is not listed. Nothing is stored. With no range, the next 12 months from today in the given time zone are returned. The range can be at most 5 years.
+   */
+  async outboundCampaignExcludedDates(
+    request: components.CampaignExcludedDatesRequest,
+    options?: RequestOptions,
+  ): Promise<components.CampaignExcludedDates> {
+    return unwrapAsync(outboundCampaignsOutboundCampaignExcludedDates(
       this,
       request,
       options,

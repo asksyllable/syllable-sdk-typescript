@@ -3438,6 +3438,11 @@ actions:
                       active: false,
                     },
                   },
+                  holidays: {
+                    "christmas-day": {
+                      active: false,
+                    },
+                  },
                 },
                 voicemailDetection: {
                   voicemailDetectionOverallTimeout: 30,
@@ -3478,6 +3483,58 @@ actions:
                     requestMethod: "POST",
                   },
                 ],
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/api/v1/outbound/campaigns/excluded_dates"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: Typescript (SDK)
+          source: |-
+            import { SyllableSDK } from "syllable-sdk";
+
+            const syllableSDK = new SyllableSDK({
+              apiKeyHeader: process.env["SYLLABLESDK_API_KEY_HEADER"] ?? "",
+            });
+
+            async function run() {
+              const result = await syllableSDK.outbound.campaigns.outboundCampaignExcludedDates({
+                outreachOverrideRules: {
+                  days: {
+                    "fri": {
+                      dailyEndTime: "15:00:00",
+                      maxDailyCalls: 1300,
+                    },
+                    "sat": {
+                      maxDailyCalls: 0,
+                    },
+                    "thu": {
+                      maxDailyCalls: 1300,
+                    },
+                  },
+                  dates: {
+                    "2026-11-26": {
+                      active: false,
+                    },
+                  },
+                  holidays: {
+                    "christmas-day": {
+                      active: false,
+                    },
+                  },
+                },
+                activeDays: [
+                  "mon",
+                  "tue",
+                  "wed",
+                  "thu",
+                  "fri",
+                ],
+                timezone: "America/New_York",
               });
 
               console.log(result);
@@ -3584,6 +3641,11 @@ actions:
                     },
                     dates: {
                       "2026-11-26": {
+                        active: false,
+                      },
+                    },
+                    holidays: {
+                      "christmas-day": {
                         active: false,
                       },
                     },
