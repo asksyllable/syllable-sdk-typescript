@@ -37,6 +37,31 @@ export const AgentVoiceVarName = {
   ElevenlabsRoger: "elevenlabs:Roger",
   ElevenlabsSarah: "elevenlabs:Sarah",
   ElevenlabsWill: "elevenlabs:Will",
+  ElevenlabsWyattSeasonedMentor: "elevenlabs:Wyatt-Seasoned_Mentor",
+  ElevenlabsFlorenceAtmosphericStoryteller:
+    "elevenlabs:Florence-Atmospheric_Storyteller",
+  ElevenlabsFinleyArticulateAnchor: "elevenlabs:Finley-Articulate_Anchor",
+  ElevenlabsSawyerMidnightStoryteller: "elevenlabs:Sawyer-Midnight_Storyteller",
+  ElevenlabsEddieNaturalAndHelpful: "elevenlabs:Eddie-Natural_and_Helpful",
+  ElevenlabsJadeUpbeatAndNatural: "elevenlabs:Jade-Upbeat_and_Natural",
+  ElevenlabsWarrenEffortlessAndCool: "elevenlabs:Warren-Effortless_and_Cool",
+  ElevenlabsMaisieFriendlyCasualNeighbor:
+    "elevenlabs:Maisie-Friendly_Casual_Neighbor",
+  ElevenlabsAliciaPolishedGlobalAnchor:
+    "elevenlabs:Alicia-Polished_Global_Anchor",
+  ElevenlabsLawrenceBrightAndInformative:
+    "elevenlabs:Lawrence-Bright_and_Informative",
+  ElevenlabsKaelenAmateurWarrior: "elevenlabs:Kaelen-Amateur_Warrior",
+  ElevenlabsElowenUpbeatModernNarrator:
+    "elevenlabs:Elowen-Upbeat_Modern_Narrator",
+  ElevenlabsEldrinCrispBritishBaritone:
+    "elevenlabs:Eldrin-Crisp_British_Baritone",
+  ElevenlabsBaxterDryCalmAussie: "elevenlabs:Baxter-Dry_Calm_Aussie",
+  ElevenlabsElaraCrispProNarrator: "elevenlabs:Elara-Crisp_Pro_Narrator",
+  ElevenlabsTaliaWarmSoftGuide: "elevenlabs:Talia-Warm_Soft_Guide",
+  ElevenlabsDarianWarmGroundedStoryteller:
+    "elevenlabs:Darian-Warm_Grounded_Storyteller",
+  ElevenlabsCalebTrustedGuide: "elevenlabs:Caleb-Trusted_Guide",
   WavenetFemaleEnUSChirp3HDAchernar: "wavenet:female/en-US-Chirp3-HD-Achernar",
   WavenetFemaleGuINChirp3HDAchernar: "wavenet:female/gu-IN-Chirp3-HD-Achernar",
   WavenetFemaleArXAChirp3HDAchernar: "wavenet:female/ar-XA-Chirp3-HD-Achernar",

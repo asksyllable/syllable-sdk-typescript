@@ -9,8 +9,8 @@ import { AgentVoice } from "syllable-sdk/models/components";
 
 let value: AgentVoice = {
   provider: "Google",
-  displayName: "Leda (Vietnamese)",
-  varName: "wavenet:female/gu-IN-Chirp3-HD-Aoede",
+  displayName: "Orus (Gujarati)",
+  varName: "elevenlabs:Elara-Crisp_Pro_Narrator",
   gender: "female",
   model: "Studio",
   supportedLanguages: [
