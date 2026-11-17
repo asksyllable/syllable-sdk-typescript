@@ -998,7 +998,7 @@ run();
 * [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (17)</summary>
+<details><summary>Less common errors (16)</summary>
 
 <br />
 
@@ -1018,7 +1018,6 @@ run();
 * [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
 * [`SessionsListSessionsResponseBody`](./src/models/errors/sessionslistsessionsresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
 * [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
-* [`BatchFileCheckResult`](./src/models/errors/batchfilecheckresult.ts): Results of the check of a batch file. The check runs before any request is created. Status code `400`. Applicable to 1 of 208 methods.*
 * [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
 * [`SessionSummaryErrorResponse`](./src/models/errors/sessionsummaryerrorresponse.ts): Summary service unavailable or returned an invalid response. Applicable to 1 of 208 methods.*
 * [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): The request timed out. Status code `504`. Applicable to 1 of 208 methods.*
