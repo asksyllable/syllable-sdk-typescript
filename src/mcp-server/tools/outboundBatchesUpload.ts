@@ -12,7 +12,16 @@ const args = {
 
 export const tool$outboundBatchesUpload: ToolDefinition<typeof args> = {
   name: "outbound-batches-upload",
-  description: `Upload Outbound Communication Batch`,
+  description: `Upload Outbound Communication Batch
+
+Check a batch file, then create a request for each row that can be called.
+
+The check runs before the response, so the response contains the results. A file with a problem
+that stops the whole file returns 400, and the batch is marked FAILED with the reason. Requests
+are created in the background after the response.
+
+In validate-only mode, the response is always 200: the check itself succeeded, and accepted tells
+whether the file would be accepted.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await outboundBatchesUpload(

@@ -3,6 +3,7 @@
  */
 
 export * from "./agenterrorresponse.js";
+export * from "./batchfilecheckresult.js";
 export * from "./custommessageerrorresponse.js";
 export * from "./directorymemberlist.js";
 export * from "./httpclienterrors.js";
