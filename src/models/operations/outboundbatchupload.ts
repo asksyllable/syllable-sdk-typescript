@@ -11,6 +11,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OutboundBatchUploadRequest = {
   batchId: string;
+  /**
+   * Check the file and return the results with status 200, also when the file is not accepted. The file is not saved and no requests are created.
+   */
+  validateOnly?: boolean | undefined;
   bodyOutboundBatchUpload?: components.BodyOutboundBatchUpload | undefined;
 };
 
@@ -21,17 +25,20 @@ export const OutboundBatchUploadRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   batch_id: z.string(),
+  validate_only: z.boolean().default(false),
   Body_outbound_batch_upload: components.BodyOutboundBatchUpload$inboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {
     "batch_id": "batchId",
+    "validate_only": "validateOnly",
     "Body_outbound_batch_upload": "bodyOutboundBatchUpload",
   });
 });
 /** @internal */
 export type OutboundBatchUploadRequest$Outbound = {
   batch_id: string;
+  validate_only: boolean;
   Body_outbound_batch_upload?:
     | components.BodyOutboundBatchUpload$Outbound
     | undefined;
@@ -44,11 +51,13 @@ export const OutboundBatchUploadRequest$outboundSchema: z.ZodType<
   OutboundBatchUploadRequest
 > = z.object({
   batchId: z.string(),
+  validateOnly: z.boolean().default(false),
   bodyOutboundBatchUpload: components.BodyOutboundBatchUpload$outboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {
     batchId: "batch_id",
+    validateOnly: "validate_only",
     bodyOutboundBatchUpload: "Body_outbound_batch_upload",
   });
 });

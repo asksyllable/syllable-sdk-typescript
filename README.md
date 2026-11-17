@@ -468,6 +468,7 @@ run();
 * [getById](docs/sdks/campaigns/README.md#getbyid) - Get Outbound Communication Campaign
 * [update](docs/sdks/campaigns/README.md#update) - Update Outbound Communication Campaign
 * [delete](docs/sdks/campaigns/README.md#delete) - Delete Outbound Communication Campaign
+* [outboundCampaignExcludedDates](docs/sdks/campaigns/README.md#outboundcampaignexcludeddates) - List Outbound Communication Campaign Excluded Dates
 
 ### [Permissions](docs/sdks/permissions/README.md)
 
@@ -733,6 +734,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`outboundCampaignsDelete`](docs/sdks/campaigns/README.md#delete) - Delete Outbound Communication Campaign
 - [`outboundCampaignsGetById`](docs/sdks/campaigns/README.md#getbyid) - Get Outbound Communication Campaign
 - [`outboundCampaignsList`](docs/sdks/campaigns/README.md#list) - List Outbound Communication Campaigns
+- [`outboundCampaignsOutboundCampaignExcludedDates`](docs/sdks/campaigns/README.md#outboundcampaignexcludeddates) - List Outbound Communication Campaign Excluded Dates
 - [`outboundCampaignsUpdate`](docs/sdks/campaigns/README.md#update) - Update Outbound Communication Campaign
 - [`permissionsList`](docs/sdks/permissions/README.md#list) - List Permissions
 - [`promptsCreate`](docs/sdks/prompts/README.md#create) - Create Prompt
@@ -998,7 +1000,7 @@ run();
 * [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/models/errors/httpvalidationerror.ts): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (16)</summary>
+<details><summary>Less common errors (17)</summary>
 
 <br />
 
@@ -1011,16 +1013,17 @@ run();
 
 
 **Inherit from [`SyllableSDKError`](./src/models/errors/syllablesdkerror.ts)**:
-* [`AgentErrorResponse`](./src/models/errors/agenterrorresponse.ts): Applicable to 4 of 208 methods.*
-* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 208 methods.*
-* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 208 methods.*
-* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 208 methods.*
-* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
-* [`SessionsListSessionsResponseBody`](./src/models/errors/sessionslistsessionsresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
-* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
-* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 208 methods.*
-* [`SessionSummaryErrorResponse`](./src/models/errors/sessionsummaryerrorresponse.ts): Summary service unavailable or returned an invalid response. Applicable to 1 of 208 methods.*
-* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): The request timed out. Status code `504`. Applicable to 1 of 208 methods.*
+* [`AgentErrorResponse`](./src/models/errors/agenterrorresponse.ts): Applicable to 4 of 209 methods.*
+* [`CustomMessageErrorResponse`](./src/models/errors/custommessageerrorresponse.ts): Applicable to 4 of 209 methods.*
+* [`PromptReasoningErrorResponse`](./src/models/errors/promptreasoningerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 209 methods.*
+* [`PromptSchemaValidationErrorResponse`](./src/models/errors/promptschemavalidationerrorresponse.ts): Unprocessable Entity. Status code `422`. Applicable to 2 of 209 methods.*
+* [`SessionLabelsListResponseBody`](./src/models/errors/sessionlabelslistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 209 methods.*
+* [`SessionsListSessionsResponseBody`](./src/models/errors/sessionslistsessionsresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 209 methods.*
+* [`DirectoryMemberListResponseBody`](./src/models/errors/directorymemberlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 209 methods.*
+* [`BatchFileCheckResult`](./src/models/errors/batchfilecheckresult.ts): Results of the check of a batch file. The check runs before any request is created. Status code `400`. Applicable to 1 of 209 methods.*
+* [`OutboundCampaignListResponseBody`](./src/models/errors/outboundcampaignlistresponsebody.ts): Bad request, including malformed datetime query parameters. Status code `400`. Applicable to 1 of 209 methods.*
+* [`SessionSummaryErrorResponse`](./src/models/errors/sessionsummaryerrorresponse.ts): Summary service unavailable or returned an invalid response. Applicable to 1 of 209 methods.*
+* [`SessionsListResponseBody`](./src/models/errors/sessionslistresponsebody.ts): The request timed out. Status code `504`. Applicable to 1 of 209 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
