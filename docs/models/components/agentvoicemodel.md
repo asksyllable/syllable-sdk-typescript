@@ -13,5 +13,5 @@ let value: AgentVoiceModel = "aura";
 ## Values
 
 ```typescript
-"Chirp 3 HD" | "eleven_flash_v2_5" | "Neural2" | "Standard" | "Studio" | "WaveNet" | "tts-1" | "gpt-4o-mini-tts" | "sonic-3.5" | "aura" | "aura-2"
+"Chirp 3 HD" | "eleven_flash_v2_5" | "eleven_turbo_v2_5" | "Neural2" | "Standard" | "Studio" | "WaveNet" | "tts-1" | "gpt-4o-mini-tts" | "sonic-3.5" | "aura" | "aura-2"
 ```
