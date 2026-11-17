@@ -432,14 +432,7 @@ run();
 
 ## upload
 
-Check a batch file, then create a request for each row that can be called.
-
-The check runs before the response, so the response contains the results. A file with a problem
-that stops the whole file returns 400, and the batch is marked FAILED with the reason. Requests
-are created in the background after the response.
-
-In validate-only mode, the response is always 200: the check itself succeeded, and accepted tells
-whether the file would be accepted.
+Upload Outbound Communication Batch
 
 ### Example Usage
 
@@ -502,15 +495,14 @@ run();
 
 ### Response
 
-**Promise\<[components.BatchFileCheckResult](../../models/components/batchfilecheckresult.md)\>**
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.BatchFileCheckResult | 400                         | application/json            |
-| errors.HTTPValidationError  | 422                         | application/json            |
-| errors.SDKError             | 4XX, 5XX                    | \*/\*                       |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## results
 

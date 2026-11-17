@@ -53,11 +53,6 @@ let value: OutboundCampaignUpdateRequest = {
           active: false,
         },
       },
-      holidays: {
-        "christmas-day": {
-          active: false,
-        },
-      },
     },
     voicemailDetection: {
       voicemailDetectionOverallTimeout: 30,

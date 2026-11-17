@@ -164,11 +164,6 @@ async function run() {
           active: false,
         },
       },
-      holidays: {
-        "christmas-day": {
-          active: false,
-        },
-      },
     },
     voicemailDetection: {
       voicemailDetectionOverallTimeout: 30,
@@ -275,11 +270,6 @@ async function run() {
       },
       dates: {
         "2026-11-26": {
-          active: false,
-        },
-      },
-      holidays: {
-        "christmas-day": {
           active: false,
         },
       },
@@ -492,11 +482,6 @@ async function run() {
             active: false,
           },
         },
-        holidays: {
-          "christmas-day": {
-            active: false,
-          },
-        },
       },
       voicemailDetection: {
         voicemailDetectionOverallTimeout: 30,
@@ -606,11 +591,6 @@ async function run() {
         },
         dates: {
           "2026-11-26": {
-            active: false,
-          },
-        },
-        holidays: {
-          "christmas-day": {
             active: false,
           },
         },

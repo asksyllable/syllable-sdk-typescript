@@ -9,19 +9,20 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Outreach window and/or daily cap for one weekday, one named holiday or one calendar date.
+ * Outreach window and/or daily cap for one weekday or one calendar date.
  *
  * @remarks
  *
  * Every field may be omitted, and an omitted field inherits the campaign default: an override that
  * only sets ``max_daily_calls`` keeps the campaign window, and one that only sets the times keeps
- * the campaign cap. ``max_daily_calls: 0`` is not inheritance -- it means no outreach on this day.
- * It closes the day for retries as well as for first attempts, the same way ``active: false``
- * does; a non-zero maximum bounds first attempts only and lets retries run on.
+ * the campaign cap. ``max_daily_calls: 0`` is not inheritance -- it is an explicit "no outreach on
+ * this day", which is the shape the Outbound Scheduler daily_limit config already uses. It closes
+ * the day for retries as well as for first attempts, the same way ``active: false`` does; a
+ * non-zero maximum bounds first attempts only and lets retries run on.
  */
 export type ScheduleOverride = {
   /**
-   * Whether the campaign does outreach on this day. Omitted inherits: a weekday rule inherits from active_days, a holiday rule from the weekday rule, and a date rule from the holiday rule. Set it to false to exclude the day: no outreach goes out, retries included.
+   * Whether the campaign does outreach on this day. Omitted inherits: a weekday rule inherits from active_days, a date rule inherits from the weekday rule. Set it to false to close one date, for example a holiday, without a change to active_days.
    */
   active?: boolean | null | undefined;
   /**

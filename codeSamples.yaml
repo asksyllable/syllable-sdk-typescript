@@ -3438,11 +3438,6 @@ actions:
                       active: false,
                     },
                   },
-                  holidays: {
-                    "christmas-day": {
-                      active: false,
-                    },
-                  },
                 },
                 voicemailDetection: {
                   voicemailDetectionOverallTimeout: 30,
@@ -3589,11 +3584,6 @@ actions:
                     },
                     dates: {
                       "2026-11-26": {
-                        active: false,
-                      },
-                    },
-                    holidays: {
-                      "christmas-day": {
                         active: false,
                       },
                     },
