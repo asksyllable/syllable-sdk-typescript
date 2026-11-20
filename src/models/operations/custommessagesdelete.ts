@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,14 +18,16 @@ export const CustomMessagesDeleteRequest$inboundSchema: z.ZodType<
   CustomMessagesDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  custom_message_id: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_message_id": "customMessageId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_message_id: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_message_id": "customMessageId",
+    });
+  })
+);
 /** @internal */
 export type CustomMessagesDeleteRequest$Outbound = {
   custom_message_id: number;
@@ -37,14 +39,16 @@ export const CustomMessagesDeleteRequest$outboundSchema: z.ZodType<
   CustomMessagesDeleteRequest$Outbound,
   z.ZodTypeDef,
   CustomMessagesDeleteRequest
-> = z.object({
-  customMessageId: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    customMessageId: "custom_message_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customMessageId: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      customMessageId: "custom_message_id",
+    });
+  })
+);
 
 export function customMessagesDeleteRequestToJSON(
   customMessagesDeleteRequest: CustomMessagesDeleteRequest,

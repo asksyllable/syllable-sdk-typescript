@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,10 +37,12 @@ export const InternalTool$inboundSchema: z.ZodType<
   InternalTool,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("function").default("function"),
-  function: ToolFunction$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("function").default("function"),
+    function: ToolFunction$inboundSchema,
+  })
+);
 /** @internal */
 export type InternalTool$Outbound = {
   type: "function";
@@ -52,10 +54,12 @@ export const InternalTool$outboundSchema: z.ZodType<
   InternalTool$Outbound,
   z.ZodTypeDef,
   InternalTool
-> = z.object({
-  type: z.literal("function").default("function" as const),
-  function: ToolFunction$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("function").default("function" as const),
+    function: ToolFunction$outboundSchema,
+  })
+);
 
 export function internalToolToJSON(internalTool: InternalTool): string {
   return JSON.stringify(InternalTool$outboundSchema.parse(internalTool));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,13 +23,15 @@ export const TwilioNumberUpdateResponse$inboundSchema: z.ZodType<
   TwilioNumberUpdateResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  phone_number: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "phone_number": "phoneNumber",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone_number: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "phone_number": "phoneNumber",
+    });
+  })
+);
 /** @internal */
 export type TwilioNumberUpdateResponse$Outbound = {
   phone_number: string;
@@ -40,13 +42,15 @@ export const TwilioNumberUpdateResponse$outboundSchema: z.ZodType<
   TwilioNumberUpdateResponse$Outbound,
   z.ZodTypeDef,
   TwilioNumberUpdateResponse
-> = z.object({
-  phoneNumber: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    phoneNumber: "phone_number",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phoneNumber: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      phoneNumber: "phone_number",
+    });
+  })
+);
 
 export function twilioNumberUpdateResponseToJSON(
   twilioNumberUpdateResponse: TwilioNumberUpdateResponse,

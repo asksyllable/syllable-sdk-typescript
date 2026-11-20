@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,19 +41,21 @@ export const OutboundCampaignWebhookInput$inboundSchema: z.ZodType<
   OutboundCampaignWebhookInput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  trigger_statuses: z.array(ChannelManagerStatus$inboundSchema),
-  url: z.string(),
-  request_method: z.string(),
-  id: z.nullable(z.number().int()).optional(),
-  auth_values: z.nullable(z.record(z.nullable(z.string()))).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "trigger_statuses": "triggerStatuses",
-    "request_method": "requestMethod",
-    "auth_values": "authValues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trigger_statuses: z.array(ChannelManagerStatus$inboundSchema),
+    url: z.string(),
+    request_method: z.string(),
+    id: z.nullable(z.number().int()).optional(),
+    auth_values: z.nullable(z.record(z.nullable(z.string()))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "trigger_statuses": "triggerStatuses",
+      "request_method": "requestMethod",
+      "auth_values": "authValues",
+    });
+  })
+);
 /** @internal */
 export type OutboundCampaignWebhookInput$Outbound = {
   trigger_statuses: Array<string>;
@@ -68,19 +70,21 @@ export const OutboundCampaignWebhookInput$outboundSchema: z.ZodType<
   OutboundCampaignWebhookInput$Outbound,
   z.ZodTypeDef,
   OutboundCampaignWebhookInput
-> = z.object({
-  triggerStatuses: z.array(ChannelManagerStatus$outboundSchema),
-  url: z.string(),
-  requestMethod: z.string(),
-  id: z.nullable(z.number().int()).optional(),
-  authValues: z.nullable(z.record(z.nullable(z.string()))).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    triggerStatuses: "trigger_statuses",
-    requestMethod: "request_method",
-    authValues: "auth_values",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    triggerStatuses: z.array(ChannelManagerStatus$outboundSchema),
+    url: z.string(),
+    requestMethod: z.string(),
+    id: z.nullable(z.number().int()).optional(),
+    authValues: z.nullable(z.record(z.nullable(z.string()))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      triggerStatuses: "trigger_statuses",
+      requestMethod: "request_method",
+      authValues: "auth_values",
+    });
+  })
+);
 
 export function outboundCampaignWebhookInputToJSON(
   outboundCampaignWebhookInput: OutboundCampaignWebhookInput,

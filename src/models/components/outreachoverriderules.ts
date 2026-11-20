@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -44,11 +44,13 @@ export const OutreachOverrideRules$inboundSchema: z.ZodType<
   OutreachOverrideRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  days: z.record(ScheduleOverride$inboundSchema).optional(),
-  dates: z.record(ScheduleOverride$inboundSchema).optional(),
-  holidays: z.record(ScheduleOverride$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    days: z.record(ScheduleOverride$inboundSchema).optional(),
+    dates: z.record(ScheduleOverride$inboundSchema).optional(),
+    holidays: z.record(ScheduleOverride$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type OutreachOverrideRules$Outbound = {
   days?: { [k: string]: ScheduleOverride$Outbound } | undefined;
@@ -61,11 +63,13 @@ export const OutreachOverrideRules$outboundSchema: z.ZodType<
   OutreachOverrideRules$Outbound,
   z.ZodTypeDef,
   OutreachOverrideRules
-> = z.object({
-  days: z.record(ScheduleOverride$outboundSchema).optional(),
-  dates: z.record(ScheduleOverride$outboundSchema).optional(),
-  holidays: z.record(ScheduleOverride$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    days: z.record(ScheduleOverride$outboundSchema).optional(),
+    dates: z.record(ScheduleOverride$outboundSchema).optional(),
+    holidays: z.record(ScheduleOverride$outboundSchema).optional(),
+  })
+);
 
 export function outreachOverrideRulesToJSON(
   outreachOverrideRules: OutreachOverrideRules,

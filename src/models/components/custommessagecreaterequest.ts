@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -66,22 +66,24 @@ export const CustomMessageCreateRequest$inboundSchema: z.ZodType<
   CustomMessageCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  edit_comments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  type: CustomMessageType$inboundSchema.optional(),
-  preamble: z.nullable(z.string()).optional(),
-  text: z.string(),
-  subject: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  repeat_after_language_change: z.nullable(z.boolean()).optional(),
-  rules: z.array(CustomMessageRule$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "edit_comments": "editComments",
-    "repeat_after_language_change": "repeatAfterLanguageChange",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edit_comments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    type: CustomMessageType$inboundSchema.optional(),
+    preamble: z.nullable(z.string()).optional(),
+    text: z.string(),
+    subject: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    repeat_after_language_change: z.nullable(z.boolean()).optional(),
+    rules: z.array(CustomMessageRule$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "edit_comments": "editComments",
+      "repeat_after_language_change": "repeatAfterLanguageChange",
+    });
+  })
+);
 /** @internal */
 export type CustomMessageCreateRequest$Outbound = {
   edit_comments?: string | null | undefined;
@@ -100,22 +102,24 @@ export const CustomMessageCreateRequest$outboundSchema: z.ZodType<
   CustomMessageCreateRequest$Outbound,
   z.ZodTypeDef,
   CustomMessageCreateRequest
-> = z.object({
-  editComments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  type: CustomMessageType$outboundSchema.optional(),
-  preamble: z.nullable(z.string()).optional(),
-  text: z.string(),
-  subject: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  repeatAfterLanguageChange: z.nullable(z.boolean()).optional(),
-  rules: z.array(CustomMessageRule$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    editComments: "edit_comments",
-    repeatAfterLanguageChange: "repeat_after_language_change",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    editComments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    type: CustomMessageType$outboundSchema.optional(),
+    preamble: z.nullable(z.string()).optional(),
+    text: z.string(),
+    subject: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    repeatAfterLanguageChange: z.nullable(z.boolean()).optional(),
+    rules: z.array(CustomMessageRule$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      editComments: "edit_comments",
+      repeatAfterLanguageChange: "repeat_after_language_change",
+    });
+  })
+);
 
 export function customMessageCreateRequestToJSON(
   customMessageCreateRequest: CustomMessageCreateRequest,

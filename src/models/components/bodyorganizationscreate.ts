@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -42,15 +42,17 @@ export const BodyOrganizationsCreateLogo$inboundSchema: z.ZodType<
   BodyOrganizationsCreateLogo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 /** @internal */
 export type BodyOrganizationsCreateLogo$Outbound = {
   fileName: string;
@@ -62,15 +64,17 @@ export const BodyOrganizationsCreateLogo$outboundSchema: z.ZodType<
   BodyOrganizationsCreateLogo$Outbound,
   z.ZodTypeDef,
   BodyOrganizationsCreateLogo
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function bodyOrganizationsCreateLogoToJSON(
   bodyOrganizationsCreateLogo: BodyOrganizationsCreateLogo,
@@ -96,18 +100,20 @@ export const BodyOrganizationsCreate$inboundSchema: z.ZodType<
   BodyOrganizationsCreate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  logo: z.lazy(() => BodyOrganizationsCreateLogo$inboundSchema),
-  display_name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  domains: z.nullable(z.string()).optional(),
-  saml_provider_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-    "saml_provider_id": "samlProviderId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    logo: z.lazy(() => BodyOrganizationsCreateLogo$inboundSchema),
+    display_name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    domains: z.nullable(z.string()).optional(),
+    saml_provider_id: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+      "saml_provider_id": "samlProviderId",
+    });
+  })
+);
 /** @internal */
 export type BodyOrganizationsCreate$Outbound = {
   logo: BodyOrganizationsCreateLogo$Outbound | Blob;
@@ -122,20 +128,22 @@ export const BodyOrganizationsCreate$outboundSchema: z.ZodType<
   BodyOrganizationsCreate$Outbound,
   z.ZodTypeDef,
   BodyOrganizationsCreate
-> = z.object({
-  logo: z.lazy(() => BodyOrganizationsCreateLogo$outboundSchema).or(
-    blobLikeSchema,
-  ),
-  displayName: z.string(),
-  description: z.nullable(z.string()).optional(),
-  domains: z.nullable(z.string()).optional(),
-  samlProviderId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-    samlProviderId: "saml_provider_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    logo: z.lazy(() => BodyOrganizationsCreateLogo$outboundSchema).or(
+      blobLikeSchema,
+    ),
+    displayName: z.string(),
+    description: z.nullable(z.string()).optional(),
+    domains: z.nullable(z.string()).optional(),
+    samlProviderId: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+      samlProviderId: "saml_provider_id",
+    });
+  })
+);
 
 export function bodyOrganizationsCreateToJSON(
   bodyOrganizationsCreate: BodyOrganizationsCreate,

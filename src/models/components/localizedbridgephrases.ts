@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,9 +22,11 @@ export const LocalizedBridgePhrases$inboundSchema: z.ZodType<
   LocalizedBridgePhrases,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  messages: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    messages: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type LocalizedBridgePhrases$Outbound = {
   messages?: Array<string> | undefined;
@@ -35,9 +37,11 @@ export const LocalizedBridgePhrases$outboundSchema: z.ZodType<
   LocalizedBridgePhrases$Outbound,
   z.ZodTypeDef,
   LocalizedBridgePhrases
-> = z.object({
-  messages: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    messages: z.array(z.string()).optional(),
+  })
+);
 
 export function localizedBridgePhrasesToJSON(
   localizedBridgePhrases: LocalizedBridgePhrases,

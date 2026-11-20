@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -191,65 +191,69 @@ export const AgentResponse$inboundSchema: z.ZodType<
   AgentResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  type: z.string(),
-  prompt_id: z.number().int(),
-  prompt_version_number: z.nullable(z.number().int()).optional(),
-  custom_message_id: z.nullable(z.number().int()).optional(),
-  language_group_id: z.nullable(z.number().int()).optional(),
-  bridge_phrases_id: z.nullable(z.number().int()).optional(),
-  timezone: z.string(),
-  prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
-  languages: z.array(z.string()).optional(),
-  variables: z.record(z.string()),
-  tool_headers: z.nullable(z.record(z.string())),
-  agent_initiated: z.boolean().default(false),
-  stt_provider: z.nullable(z.string()).optional(),
-  wait_sound: z.nullable(z.string()).optional(),
-  enable_verbal_language_change: z.boolean().default(false),
-  id: z.number().int(),
-  version_number: z.number().int().default(1),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  last_updated_by: z.nullable(z.string()),
-  prompt: z.nullable(PromptResponse$inboundSchema).optional(),
-  custom_message: z.nullable(CustomMessageResponse$inboundSchema).optional(),
-  channel_targets: z.nullable(
-    z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
-  ).optional(),
-  variant_channel_targets: z.nullable(
-    z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
-  ).optional(),
-  tools: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
-  language_group: z.nullable(LanguageGroupResponse$inboundSchema).optional(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "prompt_id": "promptId",
-    "prompt_version_number": "promptVersionNumber",
-    "custom_message_id": "customMessageId",
-    "language_group_id": "languageGroupId",
-    "bridge_phrases_id": "bridgePhrasesId",
-    "prompt_tool_defaults": "promptToolDefaults",
-    "tool_headers": "toolHeaders",
-    "agent_initiated": "agentInitiated",
-    "stt_provider": "sttProvider",
-    "wait_sound": "waitSound",
-    "enable_verbal_language_change": "enableVerbalLanguageChange",
-    "version_number": "versionNumber",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "custom_message": "customMessage",
-    "channel_targets": "channelTargets",
-    "variant_channel_targets": "variantChannelTargets",
-    "language_group": "languageGroup",
-    "validation_issues": "validationIssues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    type: z.string(),
+    prompt_id: z.number().int(),
+    prompt_version_number: z.nullable(z.number().int()).optional(),
+    custom_message_id: z.nullable(z.number().int()).optional(),
+    language_group_id: z.nullable(z.number().int()).optional(),
+    bridge_phrases_id: z.nullable(z.number().int()).optional(),
+    timezone: z.string(),
+    prompt_tool_defaults: z.array(AgentToolDefaults$inboundSchema).optional(),
+    languages: z.array(z.string()).optional(),
+    variables: z.record(z.string()),
+    tool_headers: z.nullable(z.record(z.string())),
+    agent_initiated: z.boolean().default(false),
+    stt_provider: z.nullable(z.string()).optional(),
+    wait_sound: z.nullable(z.string()).optional(),
+    enable_verbal_language_change: z.boolean().default(false),
+    id: z.number().int(),
+    version_number: z.number().int().default(1),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.nullable(z.string()),
+    prompt: z.nullable(PromptResponse$inboundSchema).optional(),
+    custom_message: z.nullable(CustomMessageResponse$inboundSchema).optional(),
+    channel_targets: z.nullable(
+      z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
+    ).optional(),
+    variant_channel_targets: z.nullable(
+      z.array(z.lazy(() => ChannelTargetResponse$inboundSchema)),
+    ).optional(),
+    tools: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
+    language_group: z.nullable(LanguageGroupResponse$inboundSchema).optional(),
+    validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "prompt_id": "promptId",
+      "prompt_version_number": "promptVersionNumber",
+      "custom_message_id": "customMessageId",
+      "language_group_id": "languageGroupId",
+      "bridge_phrases_id": "bridgePhrasesId",
+      "prompt_tool_defaults": "promptToolDefaults",
+      "tool_headers": "toolHeaders",
+      "agent_initiated": "agentInitiated",
+      "stt_provider": "sttProvider",
+      "wait_sound": "waitSound",
+      "enable_verbal_language_change": "enableVerbalLanguageChange",
+      "version_number": "versionNumber",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "custom_message": "customMessage",
+      "channel_targets": "channelTargets",
+      "variant_channel_targets": "variantChannelTargets",
+      "language_group": "languageGroup",
+      "validation_issues": "validationIssues",
+    });
+  })
+);
 /** @internal */
 export type AgentResponse$Outbound = {
   name: string;
@@ -292,65 +296,67 @@ export const AgentResponse$outboundSchema: z.ZodType<
   AgentResponse$Outbound,
   z.ZodTypeDef,
   AgentResponse
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  type: z.string(),
-  promptId: z.number().int(),
-  promptVersionNumber: z.nullable(z.number().int()).optional(),
-  customMessageId: z.nullable(z.number().int()).optional(),
-  languageGroupId: z.nullable(z.number().int()).optional(),
-  bridgePhrasesId: z.nullable(z.number().int()).optional(),
-  timezone: z.string(),
-  promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
-  languages: z.array(z.string()).optional(),
-  variables: z.record(z.string()),
-  toolHeaders: z.nullable(z.record(z.string())),
-  agentInitiated: z.boolean().default(false),
-  sttProvider: z.nullable(z.string()).optional(),
-  waitSound: z.nullable(z.string()).optional(),
-  enableVerbalLanguageChange: z.boolean().default(false),
-  id: z.number().int(),
-  versionNumber: z.number().int().default(1),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.nullable(z.string()),
-  prompt: z.nullable(PromptResponse$outboundSchema).optional(),
-  customMessage: z.nullable(CustomMessageResponse$outboundSchema).optional(),
-  channelTargets: z.nullable(
-    z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
-  ).optional(),
-  variantChannelTargets: z.nullable(
-    z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
-  ).optional(),
-  tools: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
-  languageGroup: z.nullable(LanguageGroupResponse$outboundSchema).optional(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    promptId: "prompt_id",
-    promptVersionNumber: "prompt_version_number",
-    customMessageId: "custom_message_id",
-    languageGroupId: "language_group_id",
-    bridgePhrasesId: "bridge_phrases_id",
-    promptToolDefaults: "prompt_tool_defaults",
-    toolHeaders: "tool_headers",
-    agentInitiated: "agent_initiated",
-    sttProvider: "stt_provider",
-    waitSound: "wait_sound",
-    enableVerbalLanguageChange: "enable_verbal_language_change",
-    versionNumber: "version_number",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-    customMessage: "custom_message",
-    channelTargets: "channel_targets",
-    variantChannelTargets: "variant_channel_targets",
-    languageGroup: "language_group",
-    validationIssues: "validation_issues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    type: z.string(),
+    promptId: z.number().int(),
+    promptVersionNumber: z.nullable(z.number().int()).optional(),
+    customMessageId: z.nullable(z.number().int()).optional(),
+    languageGroupId: z.nullable(z.number().int()).optional(),
+    bridgePhrasesId: z.nullable(z.number().int()).optional(),
+    timezone: z.string(),
+    promptToolDefaults: z.array(AgentToolDefaults$outboundSchema).optional(),
+    languages: z.array(z.string()).optional(),
+    variables: z.record(z.string()),
+    toolHeaders: z.nullable(z.record(z.string())),
+    agentInitiated: z.boolean().default(false),
+    sttProvider: z.nullable(z.string()).optional(),
+    waitSound: z.nullable(z.string()).optional(),
+    enableVerbalLanguageChange: z.boolean().default(false),
+    id: z.number().int(),
+    versionNumber: z.number().int().default(1),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.nullable(z.string()),
+    prompt: z.nullable(PromptResponse$outboundSchema).optional(),
+    customMessage: z.nullable(CustomMessageResponse$outboundSchema).optional(),
+    channelTargets: z.nullable(
+      z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
+    ).optional(),
+    variantChannelTargets: z.nullable(
+      z.array(z.lazy(() => ChannelTargetResponse$outboundSchema)),
+    ).optional(),
+    tools: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
+    languageGroup: z.nullable(LanguageGroupResponse$outboundSchema).optional(),
+    validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      promptId: "prompt_id",
+      promptVersionNumber: "prompt_version_number",
+      customMessageId: "custom_message_id",
+      languageGroupId: "language_group_id",
+      bridgePhrasesId: "bridge_phrases_id",
+      promptToolDefaults: "prompt_tool_defaults",
+      toolHeaders: "tool_headers",
+      agentInitiated: "agent_initiated",
+      sttProvider: "stt_provider",
+      waitSound: "wait_sound",
+      enableVerbalLanguageChange: "enable_verbal_language_change",
+      versionNumber: "version_number",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+      customMessage: "custom_message",
+      channelTargets: "channel_targets",
+      variantChannelTargets: "variant_channel_targets",
+      languageGroup: "language_group",
+      validationIssues: "validation_issues",
+    });
+  })
+);
 
 export function agentResponseToJSON(agentResponse: AgentResponse): string {
   return JSON.stringify(AgentResponse$outboundSchema.parse(agentResponse));

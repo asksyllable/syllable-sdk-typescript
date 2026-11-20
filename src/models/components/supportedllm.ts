@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -100,32 +100,36 @@ export const SupportedLlm$inboundSchema: z.ZodType<
   SupportedLlm,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  provider: PromptLlmProvider$inboundSchema.optional(),
-  model: z.string().default("gpt-4o"),
-  display_name: z.string(),
-  version: z.nullable(z.string()).optional(),
-  api_version: z.nullable(z.string()).optional(),
-  deprecated: z.boolean(),
-  sunset_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
-  removed: z.boolean().default(false),
-  fallback: z.nullable(z.string()).optional(),
-  replacement: z.nullable(z.string()).optional(),
-  status: z.nullable(LifecycleStatus$inboundSchema).optional(),
-  deployment: z.nullable(z.string()).optional(),
-  reasoning_capabilities: z.nullable(
-    SupportedLlmReasoningCapabilities$inboundSchema,
-  ).optional(),
-  reasoning_policy: z.nullable(PromptReasoningPolicy$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-    "api_version": "apiVersion",
-    "sunset_date": "sunsetDate",
-    "reasoning_capabilities": "reasoningCapabilities",
-    "reasoning_policy": "reasoningPolicy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: PromptLlmProvider$inboundSchema.optional(),
+    model: z.string().default("gpt-4o"),
+    display_name: z.string(),
+    version: z.nullable(z.string()).optional(),
+    api_version: z.nullable(z.string()).optional(),
+    deprecated: z.boolean(),
+    sunset_date: z.nullable(z.string().transform(v => new RFCDate(v)))
+      .optional(),
+    removed: z.boolean().default(false),
+    fallback: z.nullable(z.string()).optional(),
+    replacement: z.nullable(z.string()).optional(),
+    status: z.nullable(LifecycleStatus$inboundSchema).optional(),
+    deployment: z.nullable(z.string()).optional(),
+    reasoning_capabilities: z.nullable(
+      SupportedLlmReasoningCapabilities$inboundSchema,
+    ).optional(),
+    reasoning_policy: z.nullable(PromptReasoningPolicy$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+      "api_version": "apiVersion",
+      "sunset_date": "sunsetDate",
+      "reasoning_capabilities": "reasoningCapabilities",
+      "reasoning_policy": "reasoningPolicy",
+    });
+  })
+);
 /** @internal */
 export type SupportedLlm$Outbound = {
   provider?: string | undefined;
@@ -152,33 +156,36 @@ export const SupportedLlm$outboundSchema: z.ZodType<
   SupportedLlm$Outbound,
   z.ZodTypeDef,
   SupportedLlm
-> = z.object({
-  provider: PromptLlmProvider$outboundSchema.optional(),
-  model: z.string().default("gpt-4o"),
-  displayName: z.string(),
-  version: z.nullable(z.string()).optional(),
-  apiVersion: z.nullable(z.string()).optional(),
-  deprecated: z.boolean(),
-  sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
-    .optional(),
-  removed: z.boolean().default(false),
-  fallback: z.nullable(z.string()).optional(),
-  replacement: z.nullable(z.string()).optional(),
-  status: z.nullable(LifecycleStatus$outboundSchema).optional(),
-  deployment: z.nullable(z.string()).optional(),
-  reasoningCapabilities: z.nullable(
-    SupportedLlmReasoningCapabilities$outboundSchema,
-  ).optional(),
-  reasoningPolicy: z.nullable(PromptReasoningPolicy$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-    apiVersion: "api_version",
-    sunsetDate: "sunset_date",
-    reasoningCapabilities: "reasoning_capabilities",
-    reasoningPolicy: "reasoning_policy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: PromptLlmProvider$outboundSchema.optional(),
+    model: z.string().default("gpt-4o"),
+    displayName: z.string(),
+    version: z.nullable(z.string()).optional(),
+    apiVersion: z.nullable(z.string()).optional(),
+    deprecated: z.boolean(),
+    sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
+      .optional(),
+    removed: z.boolean().default(false),
+    fallback: z.nullable(z.string()).optional(),
+    replacement: z.nullable(z.string()).optional(),
+    status: z.nullable(LifecycleStatus$outboundSchema).optional(),
+    deployment: z.nullable(z.string()).optional(),
+    reasoningCapabilities: z.nullable(
+      SupportedLlmReasoningCapabilities$outboundSchema,
+    ).optional(),
+    reasoningPolicy: z.nullable(PromptReasoningPolicy$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+      apiVersion: "api_version",
+      sunsetDate: "sunset_date",
+      reasoningCapabilities: "reasoning_capabilities",
+      reasoningPolicy: "reasoning_policy",
+    });
+  })
+);
 
 export function supportedLlmToJSON(supportedLlm: SupportedLlm): string {
   return JSON.stringify(SupportedLlm$outboundSchema.parse(supportedLlm));

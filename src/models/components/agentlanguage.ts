@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,10 +31,12 @@ export const AgentLanguage$inboundSchema: z.ZodType<
   AgentLanguage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  code: LanguageCode$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    code: LanguageCode$inboundSchema,
+  })
+);
 /** @internal */
 export type AgentLanguage$Outbound = {
   name: string;
@@ -46,10 +48,12 @@ export const AgentLanguage$outboundSchema: z.ZodType<
   AgentLanguage$Outbound,
   z.ZodTypeDef,
   AgentLanguage
-> = z.object({
-  name: z.string(),
-  code: LanguageCode$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    code: LanguageCode$outboundSchema,
+  })
+);
 
 export function agentLanguageToJSON(agentLanguage: AgentLanguage): string {
   return JSON.stringify(AgentLanguage$outboundSchema.parse(agentLanguage));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -69,13 +69,15 @@ export type ExpressionTaskEvents = {
 };
 
 /** @internal */
-export const Start$inboundSchema: z.ZodType<Start, z.ZodTypeDef, unknown> = z
-  .union([
-    CallAction$inboundSchema,
-    IncrementAction$inboundSchema,
-    SayAction$inboundSchema,
-    SetValueAction$inboundSchema,
-  ]);
+export const Start$inboundSchema: z.ZodType<Start, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      CallAction$inboundSchema,
+      IncrementAction$inboundSchema,
+      SayAction$inboundSchema,
+      SetValueAction$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Start$Outbound =
   | CallAction$Outbound
@@ -88,12 +90,14 @@ export const Start$outboundSchema: z.ZodType<
   Start$Outbound,
   z.ZodTypeDef,
   Start
-> = z.union([
-  CallAction$outboundSchema,
-  IncrementAction$outboundSchema,
-  SayAction$outboundSchema,
-  SetValueAction$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CallAction$outboundSchema,
+    IncrementAction$outboundSchema,
+    SayAction$outboundSchema,
+    SetValueAction$outboundSchema,
+  ])
+);
 
 export function startToJSON(start: Start): string {
   return JSON.stringify(Start$outboundSchema.parse(start));
@@ -109,14 +113,16 @@ export function startFromJSON(
 }
 
 /** @internal */
-export const Submit$inboundSchema: z.ZodType<Submit, z.ZodTypeDef, unknown> = z
-  .union([
-    CallAction$inboundSchema,
-    IncrementAction$inboundSchema,
-    SaveAction$inboundSchema,
-    SayAction$inboundSchema,
-    SetValueAction$inboundSchema,
-  ]);
+export const Submit$inboundSchema: z.ZodType<Submit, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      CallAction$inboundSchema,
+      IncrementAction$inboundSchema,
+      SaveAction$inboundSchema,
+      SayAction$inboundSchema,
+      SetValueAction$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Submit$Outbound =
   | CallAction$Outbound
@@ -130,13 +136,15 @@ export const Submit$outboundSchema: z.ZodType<
   Submit$Outbound,
   z.ZodTypeDef,
   Submit
-> = z.union([
-  CallAction$outboundSchema,
-  IncrementAction$outboundSchema,
-  SaveAction$outboundSchema,
-  SayAction$outboundSchema,
-  SetValueAction$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CallAction$outboundSchema,
+    IncrementAction$outboundSchema,
+    SaveAction$outboundSchema,
+    SayAction$outboundSchema,
+    SetValueAction$outboundSchema,
+  ])
+);
 
 export function submitToJSON(submit: Submit): string {
   return JSON.stringify(Submit$outboundSchema.parse(submit));
@@ -156,29 +164,31 @@ export const ExpressionTaskEvents$inboundSchema: z.ZodType<
   ExpressionTaskEvents,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  start: z.nullable(
-    z.array(
-      z.union([
-        CallAction$inboundSchema,
-        IncrementAction$inboundSchema,
-        SayAction$inboundSchema,
-        SetValueAction$inboundSchema,
-      ]),
-    ),
-  ).optional(),
-  submit: z.nullable(
-    z.array(
-      z.union([
-        CallAction$inboundSchema,
-        IncrementAction$inboundSchema,
-        SaveAction$inboundSchema,
-        SayAction$inboundSchema,
-        SetValueAction$inboundSchema,
-      ]),
-    ),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    start: z.nullable(
+      z.array(
+        z.union([
+          CallAction$inboundSchema,
+          IncrementAction$inboundSchema,
+          SayAction$inboundSchema,
+          SetValueAction$inboundSchema,
+        ]),
+      ),
+    ).optional(),
+    submit: z.nullable(
+      z.array(
+        z.union([
+          CallAction$inboundSchema,
+          IncrementAction$inboundSchema,
+          SaveAction$inboundSchema,
+          SayAction$inboundSchema,
+          SetValueAction$inboundSchema,
+        ]),
+      ),
+    ).optional(),
+  })
+);
 /** @internal */
 export type ExpressionTaskEvents$Outbound = {
   start?:
@@ -207,29 +217,31 @@ export const ExpressionTaskEvents$outboundSchema: z.ZodType<
   ExpressionTaskEvents$Outbound,
   z.ZodTypeDef,
   ExpressionTaskEvents
-> = z.object({
-  start: z.nullable(
-    z.array(
-      z.union([
-        CallAction$outboundSchema,
-        IncrementAction$outboundSchema,
-        SayAction$outboundSchema,
-        SetValueAction$outboundSchema,
-      ]),
-    ),
-  ).optional(),
-  submit: z.nullable(
-    z.array(
-      z.union([
-        CallAction$outboundSchema,
-        IncrementAction$outboundSchema,
-        SaveAction$outboundSchema,
-        SayAction$outboundSchema,
-        SetValueAction$outboundSchema,
-      ]),
-    ),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    start: z.nullable(
+      z.array(
+        z.union([
+          CallAction$outboundSchema,
+          IncrementAction$outboundSchema,
+          SayAction$outboundSchema,
+          SetValueAction$outboundSchema,
+        ]),
+      ),
+    ).optional(),
+    submit: z.nullable(
+      z.array(
+        z.union([
+          CallAction$outboundSchema,
+          IncrementAction$outboundSchema,
+          SaveAction$outboundSchema,
+          SayAction$outboundSchema,
+          SetValueAction$outboundSchema,
+        ]),
+      ),
+    ).optional(),
+  })
+);
 
 export function expressionTaskEventsToJSON(
   expressionTaskEvents: ExpressionTaskEvents,

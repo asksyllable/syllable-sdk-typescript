@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -39,11 +39,13 @@ export const ChannelConfigView$inboundSchema: z.ZodType<
   ChannelConfigView,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
-  email: z.nullable(EmailConfigurations$inboundSchema).optional(),
-  credentials: z.nullable(z.record(z.string())).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
+    email: z.nullable(EmailConfigurations$inboundSchema).optional(),
+    credentials: z.nullable(z.record(z.string())).optional(),
+  })
+);
 /** @internal */
 export type ChannelConfigView$Outbound = {
   telephony?: TelephonyConfigurations$Outbound | null | undefined;
@@ -56,11 +58,13 @@ export const ChannelConfigView$outboundSchema: z.ZodType<
   ChannelConfigView$Outbound,
   z.ZodTypeDef,
   ChannelConfigView
-> = z.object({
-  telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
-  email: z.nullable(EmailConfigurations$outboundSchema).optional(),
-  credentials: z.nullable(z.record(z.string())).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
+    email: z.nullable(EmailConfigurations$outboundSchema).optional(),
+    credentials: z.nullable(z.record(z.string())).optional(),
+  })
+);
 
 export function channelConfigViewToJSON(
   channelConfigView: ChannelConfigView,

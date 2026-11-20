@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const PostCardClickEventRequest$inboundSchema: z.ZodType<
   PostCardClickEventRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  test_id: z.string(),
-  CardClickRequest: components.CardClickRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "test_id": "testId",
-    "CardClickRequest": "cardClickRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    test_id: z.string(),
+    CardClickRequest: components.CardClickRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "test_id": "testId",
+      "CardClickRequest": "cardClickRequest",
+    });
+  })
+);
 /** @internal */
 export type PostCardClickEventRequest$Outbound = {
   test_id: string;
@@ -39,15 +41,17 @@ export const PostCardClickEventRequest$outboundSchema: z.ZodType<
   PostCardClickEventRequest$Outbound,
   z.ZodTypeDef,
   PostCardClickEventRequest
-> = z.object({
-  testId: z.string(),
-  cardClickRequest: components.CardClickRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    testId: "test_id",
-    cardClickRequest: "CardClickRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    testId: z.string(),
+    cardClickRequest: components.CardClickRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      testId: "test_id",
+      cardClickRequest: "CardClickRequest",
+    });
+  })
+);
 
 export function postCardClickEventRequestToJSON(
   postCardClickEventRequest: PostCardClickEventRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,15 +21,17 @@ export const ChannelTargetsGetByIdRequest$inboundSchema: z.ZodType<
   ChannelTargetsGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel_id: z.number().int(),
-  target_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "channel_id": "channelId",
-    "target_id": "targetId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel_id: z.number().int(),
+    target_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_id": "channelId",
+      "target_id": "targetId",
+    });
+  })
+);
 /** @internal */
 export type ChannelTargetsGetByIdRequest$Outbound = {
   channel_id: number;
@@ -41,15 +43,17 @@ export const ChannelTargetsGetByIdRequest$outboundSchema: z.ZodType<
   ChannelTargetsGetByIdRequest$Outbound,
   z.ZodTypeDef,
   ChannelTargetsGetByIdRequest
-> = z.object({
-  channelId: z.number().int(),
-  targetId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    channelId: "channel_id",
-    targetId: "target_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channelId: z.number().int(),
+    targetId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      channelId: "channel_id",
+      targetId: "target_id",
+    });
+  })
+);
 
 export function channelTargetsGetByIdRequestToJSON(
   channelTargetsGetByIdRequest: ChannelTargetsGetByIdRequest,

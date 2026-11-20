@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,18 +42,20 @@ export const SessionData$inboundSchema: z.ZodType<
   SessionData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.number().int(),
-  source: z.string(),
-  target: z.string(),
-  is_test: z.boolean(),
-  messages: z.array(SessionMessage$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-    "is_test": "isTest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.number().int(),
+    source: z.string(),
+    target: z.string(),
+    is_test: z.boolean(),
+    messages: z.array(SessionMessage$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+      "is_test": "isTest",
+    });
+  })
+);
 /** @internal */
 export type SessionData$Outbound = {
   session_id: number;
@@ -68,18 +70,20 @@ export const SessionData$outboundSchema: z.ZodType<
   SessionData$Outbound,
   z.ZodTypeDef,
   SessionData
-> = z.object({
-  sessionId: z.number().int(),
-  source: z.string(),
-  target: z.string(),
-  isTest: z.boolean(),
-  messages: z.array(SessionMessage$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    isTest: "is_test",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.number().int(),
+    source: z.string(),
+    target: z.string(),
+    isTest: z.boolean(),
+    messages: z.array(SessionMessage$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      isTest: "is_test",
+    });
+  })
+);
 
 export function sessionDataToJSON(sessionData: SessionData): string {
   return JSON.stringify(SessionData$outboundSchema.parse(sessionData));

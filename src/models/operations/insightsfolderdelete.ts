@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const InsightsFolderDeleteRequest$inboundSchema: z.ZodType<
   InsightsFolderDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  folder_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "folder_id": "folderId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folder_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "folder_id": "folderId",
+    });
+  })
+);
 /** @internal */
 export type InsightsFolderDeleteRequest$Outbound = {
   folder_id: number;
@@ -34,13 +36,15 @@ export const InsightsFolderDeleteRequest$outboundSchema: z.ZodType<
   InsightsFolderDeleteRequest$Outbound,
   z.ZodTypeDef,
   InsightsFolderDeleteRequest
-> = z.object({
-  folderId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    folderId: "folder_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folderId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      folderId: "folder_id",
+    });
+  })
+);
 
 export function insightsFolderDeleteRequestToJSON(
   insightsFolderDeleteRequest: InsightsFolderDeleteRequest,

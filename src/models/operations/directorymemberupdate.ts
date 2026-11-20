@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,17 +23,20 @@ export const DirectoryMemberUpdateRequest$inboundSchema: z.ZodType<
   DirectoryMemberUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  member_id: z.number().int(),
-  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
-  DirectoryMemberUpdate: components.DirectoryMemberUpdate$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "member_id": "memberId",
-    "response_format": "responseFormat",
-    "DirectoryMemberUpdate": "directoryMemberUpdate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    member_id: z.number().int(),
+    response_format: components.DirectoryResponseFormat$inboundSchema
+      .optional(),
+    DirectoryMemberUpdate: components.DirectoryMemberUpdate$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "member_id": "memberId",
+      "response_format": "responseFormat",
+      "DirectoryMemberUpdate": "directoryMemberUpdate",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberUpdateRequest$Outbound = {
   member_id: number;
@@ -46,17 +49,20 @@ export const DirectoryMemberUpdateRequest$outboundSchema: z.ZodType<
   DirectoryMemberUpdateRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberUpdateRequest
-> = z.object({
-  memberId: z.number().int(),
-  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
-  directoryMemberUpdate: components.DirectoryMemberUpdate$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    memberId: "member_id",
-    responseFormat: "response_format",
-    directoryMemberUpdate: "DirectoryMemberUpdate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memberId: z.number().int(),
+    responseFormat: components.DirectoryResponseFormat$outboundSchema
+      .optional(),
+    directoryMemberUpdate: components.DirectoryMemberUpdate$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      memberId: "member_id",
+      responseFormat: "response_format",
+      directoryMemberUpdate: "DirectoryMemberUpdate",
+    });
+  })
+);
 
 export function directoryMemberUpdateRequestToJSON(
   directoryMemberUpdateRequest: DirectoryMemberUpdateRequest,

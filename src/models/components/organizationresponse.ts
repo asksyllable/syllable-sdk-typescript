@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -60,30 +60,32 @@ export const OrganizationResponse$inboundSchema: z.ZodType<
   OrganizationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  display_name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  domains: z.nullable(z.string()).optional(),
-  saml_provider_id: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  slug: z.nullable(z.string()).optional(),
-  last_updated: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  last_updated_by: z.nullable(z.string()).optional(),
-  logo_url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-    "saml_provider_id": "samlProviderId",
-    "last_updated_comments": "lastUpdatedComments",
-    "last_updated": "lastUpdated",
-    "last_updated_by": "lastUpdatedBy",
-    "logo_url": "logoUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    display_name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    domains: z.nullable(z.string()).optional(),
+    saml_provider_id: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    slug: z.nullable(z.string()).optional(),
+    last_updated: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.nullable(z.string()).optional(),
+    logo_url: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+      "saml_provider_id": "samlProviderId",
+      "last_updated_comments": "lastUpdatedComments",
+      "last_updated": "lastUpdated",
+      "last_updated_by": "lastUpdatedBy",
+      "logo_url": "logoUrl",
+    });
+  })
+);
 /** @internal */
 export type OrganizationResponse$Outbound = {
   display_name: string;
@@ -104,28 +106,30 @@ export const OrganizationResponse$outboundSchema: z.ZodType<
   OrganizationResponse$Outbound,
   z.ZodTypeDef,
   OrganizationResponse
-> = z.object({
-  displayName: z.string(),
-  description: z.nullable(z.string()).optional(),
-  domains: z.nullable(z.string()).optional(),
-  samlProviderId: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  slug: z.nullable(z.string()).optional(),
-  lastUpdated: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.nullable(z.string()).optional(),
-  logoUrl: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-    samlProviderId: "saml_provider_id",
-    lastUpdatedComments: "last_updated_comments",
-    lastUpdated: "last_updated",
-    lastUpdatedBy: "last_updated_by",
-    logoUrl: "logo_url",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayName: z.string(),
+    description: z.nullable(z.string()).optional(),
+    domains: z.nullable(z.string()).optional(),
+    samlProviderId: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    slug: z.nullable(z.string()).optional(),
+    lastUpdated: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.nullable(z.string()).optional(),
+    logoUrl: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+      samlProviderId: "saml_provider_id",
+      lastUpdatedComments: "last_updated_comments",
+      lastUpdated: "last_updated",
+      lastUpdatedBy: "last_updated_by",
+      logoUrl: "logo_url",
+    });
+  })
+);
 
 export function organizationResponseToJSON(
   organizationResponse: OrganizationResponse,

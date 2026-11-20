@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,19 +42,21 @@ export const ListResponseAgentResponse$inboundSchema: z.ZodType<
   ListResponseAgentResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(AgentResponse$inboundSchema),
-  page: z.number().int(),
-  page_size: z.number().int(),
-  total_pages: z.nullable(z.number().int()).optional(),
-  total_count: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "total_pages": "totalPages",
-    "total_count": "totalCount",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(AgentResponse$inboundSchema),
+    page: z.number().int(),
+    page_size: z.number().int(),
+    total_pages: z.nullable(z.number().int()).optional(),
+    total_count: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "page_size": "pageSize",
+      "total_pages": "totalPages",
+      "total_count": "totalCount",
+    });
+  })
+);
 /** @internal */
 export type ListResponseAgentResponse$Outbound = {
   items: Array<AgentResponse$Outbound>;
@@ -69,19 +71,21 @@ export const ListResponseAgentResponse$outboundSchema: z.ZodType<
   ListResponseAgentResponse$Outbound,
   z.ZodTypeDef,
   ListResponseAgentResponse
-> = z.object({
-  items: z.array(AgentResponse$outboundSchema),
-  page: z.number().int(),
-  pageSize: z.number().int(),
-  totalPages: z.nullable(z.number().int()).optional(),
-  totalCount: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    pageSize: "page_size",
-    totalPages: "total_pages",
-    totalCount: "total_count",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(AgentResponse$outboundSchema),
+    page: z.number().int(),
+    pageSize: z.number().int(),
+    totalPages: z.nullable(z.number().int()).optional(),
+    totalCount: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      pageSize: "page_size",
+      totalPages: "total_pages",
+      totalCount: "total_count",
+    });
+  })
+);
 
 export function listResponseAgentResponseToJSON(
   listResponseAgentResponse: ListResponseAgentResponse,

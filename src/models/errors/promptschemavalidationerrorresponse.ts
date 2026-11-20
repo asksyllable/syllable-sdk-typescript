@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
@@ -36,19 +37,23 @@ export const PromptSchemaValidationErrorResponse$inboundSchema: z.ZodType<
   PromptSchemaValidationErrorResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.array(components.PromptRequestValidationErrorDetail$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new PromptSchemaValidationErrorResponse(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.array(
+      components.PromptRequestValidationErrorDetail$inboundSchema,
+    ),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new PromptSchemaValidationErrorResponse(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type PromptSchemaValidationErrorResponse$Outbound = {
@@ -60,10 +65,12 @@ export const PromptSchemaValidationErrorResponse$outboundSchema: z.ZodType<
   PromptSchemaValidationErrorResponse$Outbound,
   z.ZodTypeDef,
   PromptSchemaValidationErrorResponse
-> = z.instanceof(PromptSchemaValidationErrorResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    detail: z.array(
-      components.PromptRequestValidationErrorDetail$outboundSchema,
-    ),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(PromptSchemaValidationErrorResponse)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      detail: z.array(
+        components.PromptRequestValidationErrorDetail$outboundSchema,
+      ),
+    }))
+);

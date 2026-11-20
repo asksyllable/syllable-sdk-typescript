@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -38,18 +38,20 @@ export const AvailableTarget$inboundSchema: z.ZodType<
   AvailableTarget,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organization_id: z.number().int(),
-  channel_id: z.number().int(),
-  channel_name: z.nullable(z.string()),
-  target: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "organization_id": "organizationId",
-    "channel_id": "channelId",
-    "channel_name": "channelName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_id: z.number().int(),
+    channel_id: z.number().int(),
+    channel_name: z.nullable(z.string()),
+    target: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "organization_id": "organizationId",
+      "channel_id": "channelId",
+      "channel_name": "channelName",
+    });
+  })
+);
 /** @internal */
 export type AvailableTarget$Outbound = {
   organization_id: number;
@@ -63,18 +65,20 @@ export const AvailableTarget$outboundSchema: z.ZodType<
   AvailableTarget$Outbound,
   z.ZodTypeDef,
   AvailableTarget
-> = z.object({
-  organizationId: z.number().int(),
-  channelId: z.number().int(),
-  channelName: z.nullable(z.string()),
-  target: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    organizationId: "organization_id",
-    channelId: "channel_id",
-    channelName: "channel_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: z.number().int(),
+    channelId: z.number().int(),
+    channelName: z.nullable(z.string()),
+    target: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      organizationId: "organization_id",
+      channelId: "channel_id",
+      channelName: "channel_name",
+    });
+  })
+);
 
 export function availableTargetToJSON(
   availableTarget: AvailableTarget,

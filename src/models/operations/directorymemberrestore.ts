@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,17 +23,20 @@ export const DirectoryMemberRestoreRequest$inboundSchema: z.ZodType<
   DirectoryMemberRestoreRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  member_id: z.number().int(),
-  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
-  DirectoryMemberRestore: components.DirectoryMemberRestore$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "member_id": "memberId",
-    "response_format": "responseFormat",
-    "DirectoryMemberRestore": "directoryMemberRestore",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    member_id: z.number().int(),
+    response_format: components.DirectoryResponseFormat$inboundSchema
+      .optional(),
+    DirectoryMemberRestore: components.DirectoryMemberRestore$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "member_id": "memberId",
+      "response_format": "responseFormat",
+      "DirectoryMemberRestore": "directoryMemberRestore",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberRestoreRequest$Outbound = {
   member_id: number;
@@ -46,17 +49,20 @@ export const DirectoryMemberRestoreRequest$outboundSchema: z.ZodType<
   DirectoryMemberRestoreRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberRestoreRequest
-> = z.object({
-  memberId: z.number().int(),
-  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
-  directoryMemberRestore: components.DirectoryMemberRestore$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    memberId: "member_id",
-    responseFormat: "response_format",
-    directoryMemberRestore: "DirectoryMemberRestore",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memberId: z.number().int(),
+    responseFormat: components.DirectoryResponseFormat$outboundSchema
+      .optional(),
+    directoryMemberRestore: components.DirectoryMemberRestore$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      memberId: "member_id",
+      responseFormat: "response_format",
+      directoryMemberRestore: "DirectoryMemberRestore",
+    });
+  })
+);
 
 export function directoryMemberRestoreRequestToJSON(
   directoryMemberRestoreRequest: DirectoryMemberRestoreRequest,

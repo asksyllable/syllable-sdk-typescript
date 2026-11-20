@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,10 +28,12 @@ export const CampaignExcludedDateHoliday$inboundSchema: z.ZodType<
   CampaignExcludedDateHoliday,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  holiday: Holiday$inboundSchema,
-  label: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    holiday: Holiday$inboundSchema,
+    label: z.string(),
+  })
+);
 /** @internal */
 export type CampaignExcludedDateHoliday$Outbound = {
   holiday: string;
@@ -43,10 +45,12 @@ export const CampaignExcludedDateHoliday$outboundSchema: z.ZodType<
   CampaignExcludedDateHoliday$Outbound,
   z.ZodTypeDef,
   CampaignExcludedDateHoliday
-> = z.object({
-  holiday: Holiday$outboundSchema,
-  label: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    holiday: Holiday$outboundSchema,
+    label: z.string(),
+  })
+);
 
 export function campaignExcludedDateHolidayToJSON(
   campaignExcludedDateHoliday: CampaignExcludedDateHoliday,

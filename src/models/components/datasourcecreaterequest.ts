@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -43,18 +43,20 @@ export const DataSourceCreateRequest$inboundSchema: z.ZodType<
   DataSourceCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.array(z.string()).optional(),
-  chunk: z.boolean(),
-  chunk_delimiter: z.nullable(z.string()).optional(),
-  text: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "chunk_delimiter": "chunkDelimiter",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.array(z.string()).optional(),
+    chunk: z.boolean(),
+    chunk_delimiter: z.nullable(z.string()).optional(),
+    text: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "chunk_delimiter": "chunkDelimiter",
+    });
+  })
+);
 /** @internal */
 export type DataSourceCreateRequest$Outbound = {
   name: string;
@@ -70,18 +72,20 @@ export const DataSourceCreateRequest$outboundSchema: z.ZodType<
   DataSourceCreateRequest$Outbound,
   z.ZodTypeDef,
   DataSourceCreateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.array(z.string()).optional(),
-  chunk: z.boolean(),
-  chunkDelimiter: z.nullable(z.string()).optional(),
-  text: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    chunkDelimiter: "chunk_delimiter",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.array(z.string()).optional(),
+    chunk: z.boolean(),
+    chunkDelimiter: z.nullable(z.string()).optional(),
+    text: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      chunkDelimiter: "chunk_delimiter",
+    });
+  })
+);
 
 export function dataSourceCreateRequestToJSON(
   dataSourceCreateRequest: DataSourceCreateRequest,

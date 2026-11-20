@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,7 +30,7 @@ export const Transcription$inboundSchema: z.ZodType<
   Transcription,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type Transcription$Outbound = {};
 
@@ -39,7 +39,7 @@ export const Transcription$outboundSchema: z.ZodType<
   Transcription$Outbound,
   z.ZodTypeDef,
   Transcription
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function transcriptionToJSON(transcription: Transcription): string {
   return JSON.stringify(Transcription$outboundSchema.parse(transcription));
@@ -57,7 +57,7 @@ export function transcriptionFromJSON(
 /** @internal */
 export const UnavailableReason$inboundSchema: z.ZodNativeEnum<
   typeof UnavailableReason
-> = z.nativeEnum(UnavailableReason);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UnavailableReason));
 /** @internal */
 export const UnavailableReason$outboundSchema: z.ZodNativeEnum<
   typeof UnavailableReason
@@ -68,14 +68,17 @@ export const InsightFileTestTranscript$inboundSchema: z.ZodType<
   InsightFileTestTranscript,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transcription: z.array(z.lazy(() => Transcription$inboundSchema)).optional(),
-  unavailable_reason: z.nullable(UnavailableReason$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "unavailable_reason": "unavailableReason",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transcription: z.array(z.lazy(() => Transcription$inboundSchema))
+      .optional(),
+    unavailable_reason: z.nullable(UnavailableReason$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "unavailable_reason": "unavailableReason",
+    });
+  })
+);
 /** @internal */
 export type InsightFileTestTranscript$Outbound = {
   transcription?: Array<Transcription$Outbound> | undefined;
@@ -87,14 +90,17 @@ export const InsightFileTestTranscript$outboundSchema: z.ZodType<
   InsightFileTestTranscript$Outbound,
   z.ZodTypeDef,
   InsightFileTestTranscript
-> = z.object({
-  transcription: z.array(z.lazy(() => Transcription$outboundSchema)).optional(),
-  unavailableReason: z.nullable(UnavailableReason$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    unavailableReason: "unavailable_reason",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    transcription: z.array(z.lazy(() => Transcription$outboundSchema))
+      .optional(),
+    unavailableReason: z.nullable(UnavailableReason$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      unavailableReason: "unavailable_reason",
+    });
+  })
+);
 
 export function insightFileTestTranscriptToJSON(
   insightFileTestTranscript: InsightFileTestTranscript,

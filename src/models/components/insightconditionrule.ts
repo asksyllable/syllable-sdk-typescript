@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -67,13 +67,15 @@ export type InsightConditionRule = {
 };
 
 /** @internal */
-export const Source$inboundSchema: z.ZodType<Source, z.ZodTypeDef, unknown> = z
-  .union([
-    InsightConditionSource$inboundSchema,
-    SessionConditionSource$inboundSchema,
-    ToolConditionSource$inboundSchema,
-    TranscriptConditionSource$inboundSchema,
-  ]);
+export const Source$inboundSchema: z.ZodType<Source, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      InsightConditionSource$inboundSchema,
+      SessionConditionSource$inboundSchema,
+      ToolConditionSource$inboundSchema,
+      TranscriptConditionSource$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Source$Outbound =
   | InsightConditionSource$Outbound
@@ -86,12 +88,14 @@ export const Source$outboundSchema: z.ZodType<
   Source$Outbound,
   z.ZodTypeDef,
   Source
-> = z.union([
-  InsightConditionSource$outboundSchema,
-  SessionConditionSource$outboundSchema,
-  ToolConditionSource$outboundSchema,
-  TranscriptConditionSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    InsightConditionSource$outboundSchema,
+    SessionConditionSource$outboundSchema,
+    ToolConditionSource$outboundSchema,
+    TranscriptConditionSource$outboundSchema,
+  ])
+);
 
 export function sourceToJSON(source: Source): string {
   return JSON.stringify(Source$outboundSchema.parse(source));
@@ -107,8 +111,8 @@ export function sourceFromJSON(
 }
 
 /** @internal */
-export const Operator$inboundSchema: z.ZodNativeEnum<typeof Operator> = z
-  .nativeEnum(Operator);
+export const Operator$inboundSchema: z.ZodNativeEnum<typeof Operator> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Operator));
 /** @internal */
 export const Operator$outboundSchema: z.ZodNativeEnum<typeof Operator> =
   Operator$inboundSchema;
@@ -118,22 +122,24 @@ export const InsightConditionRule$inboundSchema: z.ZodType<
   InsightConditionRule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rule_id: z.string(),
-  source: z.union([
-    InsightConditionSource$inboundSchema,
-    SessionConditionSource$inboundSchema,
-    ToolConditionSource$inboundSchema,
-    TranscriptConditionSource$inboundSchema,
-  ]),
-  field: z.nullable(z.string()).optional(),
-  operator: z.nullable(Operator$inboundSchema).optional(),
-  value: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "rule_id": "ruleId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rule_id: z.string(),
+    source: z.union([
+      InsightConditionSource$inboundSchema,
+      SessionConditionSource$inboundSchema,
+      ToolConditionSource$inboundSchema,
+      TranscriptConditionSource$inboundSchema,
+    ]),
+    field: z.nullable(z.string()).optional(),
+    operator: z.nullable(Operator$inboundSchema).optional(),
+    value: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "rule_id": "ruleId",
+    });
+  })
+);
 /** @internal */
 export type InsightConditionRule$Outbound = {
   rule_id: string;
@@ -152,22 +158,24 @@ export const InsightConditionRule$outboundSchema: z.ZodType<
   InsightConditionRule$Outbound,
   z.ZodTypeDef,
   InsightConditionRule
-> = z.object({
-  ruleId: z.string(),
-  source: z.union([
-    InsightConditionSource$outboundSchema,
-    SessionConditionSource$outboundSchema,
-    ToolConditionSource$outboundSchema,
-    TranscriptConditionSource$outboundSchema,
-  ]),
-  field: z.nullable(z.string()).optional(),
-  operator: z.nullable(Operator$outboundSchema).optional(),
-  value: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ruleId: "rule_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ruleId: z.string(),
+    source: z.union([
+      InsightConditionSource$outboundSchema,
+      SessionConditionSource$outboundSchema,
+      ToolConditionSource$outboundSchema,
+      TranscriptConditionSource$outboundSchema,
+    ]),
+    field: z.nullable(z.string()).optional(),
+    operator: z.nullable(Operator$outboundSchema).optional(),
+    value: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      ruleId: "rule_id",
+    });
+  })
+);
 
 export function insightConditionRuleToJSON(
   insightConditionRule: InsightConditionRule,

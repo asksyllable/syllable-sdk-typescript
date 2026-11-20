@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
@@ -53,28 +54,32 @@ export const PromptReasoningErrorResponse$inboundSchema: z.ZodType<
   PromptReasoningErrorResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.string(),
-  validation_issues: z.array(components.ReasoningValidationIssue$inboundSchema),
-  request_errors: z.array(
-    components.PromptRequestValidationErrorDetail$inboundSchema,
-  ).optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    const remapped = remap$(v, {
-      "validation_issues": "validationIssues",
-      "request_errors": "requestErrors",
-    });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.string(),
+    validation_issues: z.array(
+      components.ReasoningValidationIssue$inboundSchema,
+    ),
+    request_errors: z.array(
+      components.PromptRequestValidationErrorDetail$inboundSchema,
+    ).optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      const remapped = remap$(v, {
+        "validation_issues": "validationIssues",
+        "request_errors": "requestErrors",
+      });
 
-    return new PromptReasoningErrorResponse(remapped, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+      return new PromptReasoningErrorResponse(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type PromptReasoningErrorResponse$Outbound = {
@@ -90,21 +95,23 @@ export const PromptReasoningErrorResponse$outboundSchema: z.ZodType<
   PromptReasoningErrorResponse$Outbound,
   z.ZodTypeDef,
   PromptReasoningErrorResponse
-> = z.instanceof(PromptReasoningErrorResponse)
-  .transform(v => v.data$)
-  .pipe(
-    z.object({
-      detail: z.string(),
-      validationIssues: z.array(
-        components.ReasoningValidationIssue$outboundSchema,
-      ),
-      requestErrors: z.array(
-        components.PromptRequestValidationErrorDetail$outboundSchema,
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        validationIssues: "validation_issues",
-        requestErrors: "request_errors",
-      });
-    }),
-  );
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(PromptReasoningErrorResponse)
+    .transform(v => v.data$)
+    .pipe(
+      z.object({
+        detail: z.string(),
+        validationIssues: z.array(
+          components.ReasoningValidationIssue$outboundSchema,
+        ),
+        requestErrors: z.array(
+          components.PromptRequestValidationErrorDetail$outboundSchema,
+        ).optional(),
+      }).transform((v) => {
+        return remap$(v, {
+          validationIssues: "validation_issues",
+          requestErrors: "request_errors",
+        });
+      }),
+    )
+);

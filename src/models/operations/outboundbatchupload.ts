@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,18 +23,20 @@ export const OutboundBatchUploadRequest$inboundSchema: z.ZodType<
   OutboundBatchUploadRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-  validate_only: z.boolean().default(false),
-  Body_outbound_batch_upload: components.BodyOutboundBatchUpload$inboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-    "validate_only": "validateOnly",
-    "Body_outbound_batch_upload": "bodyOutboundBatchUpload",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+    validate_only: z.boolean().default(false),
+    Body_outbound_batch_upload: components.BodyOutboundBatchUpload$inboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+      "validate_only": "validateOnly",
+      "Body_outbound_batch_upload": "bodyOutboundBatchUpload",
+    });
+  })
+);
 /** @internal */
 export type OutboundBatchUploadRequest$Outbound = {
   batch_id: string;
@@ -49,18 +51,20 @@ export const OutboundBatchUploadRequest$outboundSchema: z.ZodType<
   OutboundBatchUploadRequest$Outbound,
   z.ZodTypeDef,
   OutboundBatchUploadRequest
-> = z.object({
-  batchId: z.string(),
-  validateOnly: z.boolean().default(false),
-  bodyOutboundBatchUpload: components.BodyOutboundBatchUpload$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-    validateOnly: "validate_only",
-    bodyOutboundBatchUpload: "Body_outbound_batch_upload",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+    validateOnly: z.boolean().default(false),
+    bodyOutboundBatchUpload: components.BodyOutboundBatchUpload$outboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+      validateOnly: "validate_only",
+      bodyOutboundBatchUpload: "Body_outbound_batch_upload",
+    });
+  })
+);
 
 export function outboundBatchUploadRequestToJSON(
   outboundBatchUploadRequest: OutboundBatchUploadRequest,

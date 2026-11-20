@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const ExperimentsUpdateRequest$inboundSchema: z.ZodType<
   ExperimentsUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  experiment_id: z.number().int(),
-  ExperimentUpdateRequest: components.ExperimentUpdateRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "experiment_id": "experimentId",
-    "ExperimentUpdateRequest": "experimentUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experiment_id: z.number().int(),
+    ExperimentUpdateRequest: components.ExperimentUpdateRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "experiment_id": "experimentId",
+      "ExperimentUpdateRequest": "experimentUpdateRequest",
+    });
+  })
+);
 /** @internal */
 export type ExperimentsUpdateRequest$Outbound = {
   experiment_id: number;
@@ -39,15 +41,17 @@ export const ExperimentsUpdateRequest$outboundSchema: z.ZodType<
   ExperimentsUpdateRequest$Outbound,
   z.ZodTypeDef,
   ExperimentsUpdateRequest
-> = z.object({
-  experimentId: z.number().int(),
-  experimentUpdateRequest: components.ExperimentUpdateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    experimentId: "experiment_id",
-    experimentUpdateRequest: "ExperimentUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experimentId: z.number().int(),
+    experimentUpdateRequest: components.ExperimentUpdateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      experimentId: "experiment_id",
+      experimentUpdateRequest: "ExperimentUpdateRequest",
+    });
+  })
+);
 
 export function experimentsUpdateRequestToJSON(
   experimentsUpdateRequest: ExperimentsUpdateRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const PromptGetSupportedLlmsRequest$inboundSchema: z.ZodType<
   PromptGetSupportedLlmsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  selected_model: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "selected_model": "selectedModel",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    selected_model: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "selected_model": "selectedModel",
+    });
+  })
+);
 /** @internal */
 export type PromptGetSupportedLlmsRequest$Outbound = {
   selected_model?: string | null | undefined;
@@ -34,13 +36,15 @@ export const PromptGetSupportedLlmsRequest$outboundSchema: z.ZodType<
   PromptGetSupportedLlmsRequest$Outbound,
   z.ZodTypeDef,
   PromptGetSupportedLlmsRequest
-> = z.object({
-  selectedModel: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    selectedModel: "selected_model",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    selectedModel: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      selectedModel: "selected_model",
+    });
+  })
+);
 
 export function promptGetSupportedLlmsRequestToJSON(
   promptGetSupportedLlmsRequest: PromptGetSupportedLlmsRequest,

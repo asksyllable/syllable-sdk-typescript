@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -48,20 +48,22 @@ export const ServiceUpdateRequest$inboundSchema: z.ZodType<
   ServiceUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  auth_type: z.nullable(ToolAuthType$inboundSchema).optional(),
-  auth_values: z.nullable(z.any()).optional(),
-  id: z.number().int(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "auth_type": "authType",
-    "auth_values": "authValues",
-    "last_updated_comments": "lastUpdatedComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    auth_type: z.nullable(ToolAuthType$inboundSchema).optional(),
+    auth_values: z.nullable(z.any()).optional(),
+    id: z.number().int(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "auth_type": "authType",
+      "auth_values": "authValues",
+      "last_updated_comments": "lastUpdatedComments",
+    });
+  })
+);
 /** @internal */
 export type ServiceUpdateRequest$Outbound = {
   name: string;
@@ -77,20 +79,22 @@ export const ServiceUpdateRequest$outboundSchema: z.ZodType<
   ServiceUpdateRequest$Outbound,
   z.ZodTypeDef,
   ServiceUpdateRequest
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  authType: z.nullable(ToolAuthType$outboundSchema).optional(),
-  authValues: z.nullable(z.any()).optional(),
-  id: z.number().int(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    authType: "auth_type",
-    authValues: "auth_values",
-    lastUpdatedComments: "last_updated_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    authType: z.nullable(ToolAuthType$outboundSchema).optional(),
+    authValues: z.nullable(z.any()).optional(),
+    id: z.number().int(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      authType: "auth_type",
+      authValues: "auth_values",
+      lastUpdatedComments: "last_updated_comments",
+    });
+  })
+);
 
 export function serviceUpdateRequestToJSON(
   serviceUpdateRequest: ServiceUpdateRequest,

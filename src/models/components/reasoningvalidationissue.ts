@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -45,7 +45,9 @@ export type ReasoningValidationIssue = {
 /** @internal */
 export const ReasoningValidationIssueSeverity$inboundSchema: z.ZodNativeEnum<
   typeof ReasoningValidationIssueSeverity
-> = z.nativeEnum(ReasoningValidationIssueSeverity);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ReasoningValidationIssueSeverity)
+);
 /** @internal */
 export const ReasoningValidationIssueSeverity$outboundSchema: z.ZodNativeEnum<
   typeof ReasoningValidationIssueSeverity
@@ -56,18 +58,20 @@ export const ReasoningValidationIssue$inboundSchema: z.ZodType<
   ReasoningValidationIssue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  severity: ReasoningValidationIssueSeverity$inboundSchema.default("error"),
-  message: z.string(),
-  path: z.nullable(z.string()).optional(),
-  value: z.nullable(z.string()).optional(),
-  allowed_values: z.array(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "allowed_values": "allowedValues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    severity: ReasoningValidationIssueSeverity$inboundSchema.default("error"),
+    message: z.string(),
+    path: z.nullable(z.string()).optional(),
+    value: z.nullable(z.string()).optional(),
+    allowed_values: z.array(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "allowed_values": "allowedValues",
+    });
+  })
+);
 /** @internal */
 export type ReasoningValidationIssue$Outbound = {
   id: string;
@@ -83,18 +87,20 @@ export const ReasoningValidationIssue$outboundSchema: z.ZodType<
   ReasoningValidationIssue$Outbound,
   z.ZodTypeDef,
   ReasoningValidationIssue
-> = z.object({
-  id: z.string(),
-  severity: ReasoningValidationIssueSeverity$outboundSchema.default("error"),
-  message: z.string(),
-  path: z.nullable(z.string()).optional(),
-  value: z.nullable(z.string()).optional(),
-  allowedValues: z.array(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    allowedValues: "allowed_values",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    severity: ReasoningValidationIssueSeverity$outboundSchema.default("error"),
+    message: z.string(),
+    path: z.nullable(z.string()).optional(),
+    value: z.nullable(z.string()).optional(),
+    allowedValues: z.array(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      allowedValues: "allowed_values",
+    });
+  })
+);
 
 export function reasoningValidationIssueToJSON(
   reasoningValidationIssue: ReasoningValidationIssue,

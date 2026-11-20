@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,7 +25,7 @@ export type AgentHistoryRequest = {
 /** @internal */
 export const OrderByDirection$inboundSchema: z.ZodNativeEnum<
   typeof OrderByDirection
-> = z.nativeEnum(OrderByDirection);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OrderByDirection));
 /** @internal */
 export const OrderByDirection$outboundSchema: z.ZodNativeEnum<
   typeof OrderByDirection
@@ -36,17 +36,19 @@ export const AgentHistoryRequest$inboundSchema: z.ZodType<
   AgentHistoryRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  order_by_direction: OrderByDirection$inboundSchema.default("desc"),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-    "order_by_direction": "orderByDirection",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    order_by_direction: OrderByDirection$inboundSchema.default("desc"),
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+      "order_by_direction": "orderByDirection",
+    });
+  })
+);
 /** @internal */
 export type AgentHistoryRequest$Outbound = {
   agent_id: number;
@@ -60,17 +62,19 @@ export const AgentHistoryRequest$outboundSchema: z.ZodType<
   AgentHistoryRequest$Outbound,
   z.ZodTypeDef,
   AgentHistoryRequest
-> = z.object({
-  agentId: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  orderByDirection: OrderByDirection$outboundSchema.default("desc"),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-    orderByDirection: "order_by_direction",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    orderByDirection: OrderByDirection$outboundSchema.default("desc"),
+  }).transform((v) => {
+    return remap$(v, {
+      agentId: "agent_id",
+      orderByDirection: "order_by_direction",
+    });
+  })
+);
 
 export function agentHistoryRequestToJSON(
   agentHistoryRequest: AgentHistoryRequest,

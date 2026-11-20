@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,15 +18,17 @@ export const InsightsWorkflowInactivateRequest$inboundSchema: z.ZodType<
   InsightsWorkflowInactivateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow_id: z.number().int(),
-  "X-Insight-Workflow-Format-Version": z.number().int().default(1),
-}).transform((v) => {
-  return remap$(v, {
-    "workflow_id": "workflowId",
-    "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow_id: z.number().int(),
+    "X-Insight-Workflow-Format-Version": z.number().int().default(1),
+  }).transform((v) => {
+    return remap$(v, {
+      "workflow_id": "workflowId",
+      "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
+    });
+  })
+);
 /** @internal */
 export type InsightsWorkflowInactivateRequest$Outbound = {
   workflow_id: number;
@@ -38,15 +40,17 @@ export const InsightsWorkflowInactivateRequest$outboundSchema: z.ZodType<
   InsightsWorkflowInactivateRequest$Outbound,
   z.ZodTypeDef,
   InsightsWorkflowInactivateRequest
-> = z.object({
-  workflowId: z.number().int(),
-  xInsightWorkflowFormatVersion: z.number().int().default(1),
-}).transform((v) => {
-  return remap$(v, {
-    workflowId: "workflow_id",
-    xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowId: z.number().int(),
+    xInsightWorkflowFormatVersion: z.number().int().default(1),
+  }).transform((v) => {
+    return remap$(v, {
+      workflowId: "workflow_id",
+      xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
+    });
+  })
+);
 
 export function insightsWorkflowInactivateRequestToJSON(
   insightsWorkflowInactivateRequest: InsightsWorkflowInactivateRequest,

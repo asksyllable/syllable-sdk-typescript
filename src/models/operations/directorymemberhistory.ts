@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -34,19 +34,22 @@ export const DirectoryMemberHistoryRequest$inboundSchema: z.ZodType<
   DirectoryMemberHistoryRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  member_id: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  order_by_direction: components.OrderByDirection$inboundSchema.optional(),
-  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "member_id": "memberId",
-    "order_by_direction": "orderByDirection",
-    "response_format": "responseFormat",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    member_id: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    order_by_direction: components.OrderByDirection$inboundSchema.optional(),
+    response_format: components.DirectoryResponseFormat$inboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "member_id": "memberId",
+      "order_by_direction": "orderByDirection",
+      "response_format": "responseFormat",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberHistoryRequest$Outbound = {
   member_id: number;
@@ -61,19 +64,22 @@ export const DirectoryMemberHistoryRequest$outboundSchema: z.ZodType<
   DirectoryMemberHistoryRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberHistoryRequest
-> = z.object({
-  memberId: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  orderByDirection: components.OrderByDirection$outboundSchema.optional(),
-  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    memberId: "member_id",
-    orderByDirection: "order_by_direction",
-    responseFormat: "response_format",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memberId: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    orderByDirection: components.OrderByDirection$outboundSchema.optional(),
+    responseFormat: components.DirectoryResponseFormat$outboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      memberId: "member_id",
+      orderByDirection: "order_by_direction",
+      responseFormat: "response_format",
+    });
+  })
+);
 
 export function directoryMemberHistoryRequestToJSON(
   directoryMemberHistoryRequest: DirectoryMemberHistoryRequest,

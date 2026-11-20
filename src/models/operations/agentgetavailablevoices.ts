@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const AgentGetAvailableVoicesRequest$inboundSchema: z.ZodType<
   AgentGetAvailableVoicesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  selected_voice: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "selected_voice": "selectedVoice",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    selected_voice: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "selected_voice": "selectedVoice",
+    });
+  })
+);
 /** @internal */
 export type AgentGetAvailableVoicesRequest$Outbound = {
   selected_voice?: Array<string> | null | undefined;
@@ -34,13 +36,15 @@ export const AgentGetAvailableVoicesRequest$outboundSchema: z.ZodType<
   AgentGetAvailableVoicesRequest$Outbound,
   z.ZodTypeDef,
   AgentGetAvailableVoicesRequest
-> = z.object({
-  selectedVoice: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    selectedVoice: "selected_voice",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    selectedVoice: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      selectedVoice: "selected_voice",
+    });
+  })
+);
 
 export function agentGetAvailableVoicesRequestToJSON(
   agentGetAvailableVoicesRequest: AgentGetAvailableVoicesRequest,

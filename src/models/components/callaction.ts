@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -78,13 +78,15 @@ export const CallActionIf1$inboundSchema: z.ZodType<
   CallActionIf1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CelExpression$inboundSchema,
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$inboundSchema,
+    JMESPathExpression$inboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 /** @internal */
 export type CallActionIf1$Outbound =
   | CelExpression$Outbound
@@ -96,13 +98,15 @@ export const CallActionIf1$outboundSchema: z.ZodType<
   CallActionIf1$Outbound,
   z.ZodTypeDef,
   CallActionIf1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function callActionIf1ToJSON(callActionIf1: CallActionIf1): string {
   return JSON.stringify(CallActionIf1$outboundSchema.parse(callActionIf1));
@@ -122,17 +126,19 @@ export const CallActionIf$inboundSchema: z.ZodType<
   CallActionIf,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type CallActionIf$Outbound =
   | CaseExpression$Outbound
@@ -146,17 +152,21 @@ export const CallActionIf$outboundSchema: z.ZodType<
   CallActionIf$Outbound,
   z.ZodTypeDef,
   CallActionIf
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function callActionIfToJSON(callActionIf: CallActionIf): string {
   return JSON.stringify(CallActionIf$outboundSchema.parse(callActionIf));
@@ -176,27 +186,29 @@ export const CallAction$inboundSchema: z.ZodType<
   CallAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: z.literal("call"),
-  name: z.string(),
-  arguments: z.nullable(z.record(z.any())).optional(),
-  result: z.nullable(CallResult$inboundSchema).optional(),
-});
+    ).optional(),
+    action: z.literal("call"),
+    name: z.string(),
+    arguments: z.nullable(z.record(z.any())).optional(),
+    result: z.nullable(CallResult$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CallAction$Outbound = {
   if?:
@@ -218,27 +230,29 @@ export const CallAction$outboundSchema: z.ZodType<
   CallAction$Outbound,
   z.ZodTypeDef,
   CallAction
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: z.literal("call"),
-  name: z.string(),
-  arguments: z.nullable(z.record(z.any())).optional(),
-  result: z.nullable(CallResult$outboundSchema).optional(),
-});
+    ).optional(),
+    action: z.literal("call"),
+    name: z.string(),
+    arguments: z.nullable(z.record(z.any())).optional(),
+    result: z.nullable(CallResult$outboundSchema).optional(),
+  })
+);
 
 export function callActionToJSON(callAction: CallAction): string {
   return JSON.stringify(CallAction$outboundSchema.parse(callAction));

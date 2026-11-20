@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,17 +39,19 @@ export const CampaignExcludedDates$inboundSchema: z.ZodType<
   CampaignExcludedDates,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timezone: z.string(),
-  start_date: z.string().transform(v => new RFCDate(v)),
-  end_date: z.string().transform(v => new RFCDate(v)),
-  dates: z.array(CampaignExcludedDate$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "start_date": "startDate",
-    "end_date": "endDate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: z.string(),
+    start_date: z.string().transform(v => new RFCDate(v)),
+    end_date: z.string().transform(v => new RFCDate(v)),
+    dates: z.array(CampaignExcludedDate$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "start_date": "startDate",
+      "end_date": "endDate",
+    });
+  })
+);
 /** @internal */
 export type CampaignExcludedDates$Outbound = {
   timezone: string;
@@ -63,17 +65,19 @@ export const CampaignExcludedDates$outboundSchema: z.ZodType<
   CampaignExcludedDates$Outbound,
   z.ZodTypeDef,
   CampaignExcludedDates
-> = z.object({
-  timezone: z.string(),
-  startDate: z.instanceof(RFCDate).transform(v => v.toString()),
-  endDate: z.instanceof(RFCDate).transform(v => v.toString()),
-  dates: z.array(CampaignExcludedDate$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    startDate: "start_date",
-    endDate: "end_date",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timezone: z.string(),
+    startDate: z.instanceof(RFCDate).transform(v => v.toString()),
+    endDate: z.instanceof(RFCDate).transform(v => v.toString()),
+    dates: z.array(CampaignExcludedDate$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      startDate: "start_date",
+      endDate: "end_date",
+    });
+  })
+);
 
 export function campaignExcludedDatesToJSON(
   campaignExcludedDates: CampaignExcludedDates,

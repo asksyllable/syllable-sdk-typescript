@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -43,20 +43,22 @@ export const DaoExperimentVariantDetail$inboundSchema: z.ZodType<
   DaoExperimentVariantDetail,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  weight: z.number().int(),
-  is_control: z.boolean(),
-  agent_id: z.number().int(),
-  agent_name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "is_control": "isControl",
-    "agent_id": "agentId",
-    "agent_name": "agentName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    weight: z.number().int(),
+    is_control: z.boolean(),
+    agent_id: z.number().int(),
+    agent_name: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "is_control": "isControl",
+      "agent_id": "agentId",
+      "agent_name": "agentName",
+    });
+  })
+);
 /** @internal */
 export type DaoExperimentVariantDetail$Outbound = {
   id: number;
@@ -72,20 +74,22 @@ export const DaoExperimentVariantDetail$outboundSchema: z.ZodType<
   DaoExperimentVariantDetail$Outbound,
   z.ZodTypeDef,
   DaoExperimentVariantDetail
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  weight: z.number().int(),
-  isControl: z.boolean(),
-  agentId: z.number().int(),
-  agentName: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    isControl: "is_control",
-    agentId: "agent_id",
-    agentName: "agent_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    weight: z.number().int(),
+    isControl: z.boolean(),
+    agentId: z.number().int(),
+    agentName: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      isControl: "is_control",
+      agentId: "agent_id",
+      agentName: "agent_name",
+    });
+  })
+);
 
 export function daoExperimentVariantDetailToJSON(
   daoExperimentVariantDetail: DaoExperimentVariantDetail,

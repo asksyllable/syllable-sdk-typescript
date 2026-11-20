@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -64,14 +64,15 @@ export type Context = {
 };
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z.union(
-  [
-    EventTask$inboundSchema,
-    ExpressionTask$inboundSchema,
-    LoadToolFromFileTask$inboundSchema,
-    StepsTask$inboundSchema,
-  ],
-);
+export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      EventTask$inboundSchema,
+      ExpressionTask$inboundSchema,
+      LoadToolFromFileTask$inboundSchema,
+      StepsTask$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Two$Outbound =
   | EventTask$Outbound
@@ -80,13 +81,15 @@ export type Two$Outbound =
   | StepsTask$Outbound;
 
 /** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-  .union([
-    EventTask$outboundSchema,
-    ExpressionTask$outboundSchema,
-    LoadToolFromFileTask$outboundSchema,
-    StepsTask$outboundSchema,
-  ]);
+export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      EventTask$outboundSchema,
+      ExpressionTask$outboundSchema,
+      LoadToolFromFileTask$outboundSchema,
+      StepsTask$outboundSchema,
+    ])
+  );
 
 export function twoToJSON(two: Two): string {
   return JSON.stringify(Two$outboundSchema.parse(two));
@@ -102,13 +105,15 @@ export function twoFromJSON(
 }
 
 /** @internal */
-export const Task1$inboundSchema: z.ZodType<Task1, z.ZodTypeDef, unknown> = z
-  .union([
-    EventTask$inboundSchema,
-    ExpressionTask$inboundSchema,
-    LoadToolFromFileTask$inboundSchema,
-    StepsTask$inboundSchema,
-  ]);
+export const Task1$inboundSchema: z.ZodType<Task1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      EventTask$inboundSchema,
+      ExpressionTask$inboundSchema,
+      LoadToolFromFileTask$inboundSchema,
+      StepsTask$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Task1$Outbound =
   | EventTask$Outbound
@@ -121,12 +126,14 @@ export const Task1$outboundSchema: z.ZodType<
   Task1$Outbound,
   z.ZodTypeDef,
   Task1
-> = z.union([
-  EventTask$outboundSchema,
-  ExpressionTask$outboundSchema,
-  LoadToolFromFileTask$outboundSchema,
-  StepsTask$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    EventTask$outboundSchema,
+    ExpressionTask$outboundSchema,
+    LoadToolFromFileTask$outboundSchema,
+    StepsTask$outboundSchema,
+  ])
+);
 
 export function task1ToJSON(task1: Task1): string {
   return JSON.stringify(Task1$outboundSchema.parse(task1));
@@ -142,23 +149,25 @@ export function task1FromJSON(
 }
 
 /** @internal */
-export const Task$inboundSchema: z.ZodType<Task, z.ZodTypeDef, unknown> = z
-  .union([
+export const Task$inboundSchema: z.ZodType<Task, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
     z.union([
-      EventTask$inboundSchema,
-      ExpressionTask$inboundSchema,
-      LoadToolFromFileTask$inboundSchema,
-      StepsTask$inboundSchema,
-    ]),
-    z.array(
       z.union([
         EventTask$inboundSchema,
         ExpressionTask$inboundSchema,
         LoadToolFromFileTask$inboundSchema,
         StepsTask$inboundSchema,
       ]),
-    ),
-  ]);
+      z.array(
+        z.union([
+          EventTask$inboundSchema,
+          ExpressionTask$inboundSchema,
+          LoadToolFromFileTask$inboundSchema,
+          StepsTask$inboundSchema,
+        ]),
+      ),
+    ])
+  );
 /** @internal */
 export type Task$Outbound =
   | EventTask$Outbound
@@ -174,22 +183,24 @@ export type Task$Outbound =
 
 /** @internal */
 export const Task$outboundSchema: z.ZodType<Task$Outbound, z.ZodTypeDef, Task> =
-  z.union([
+  /* @__PURE__ */ lazySchema$(() =>
     z.union([
-      EventTask$outboundSchema,
-      ExpressionTask$outboundSchema,
-      LoadToolFromFileTask$outboundSchema,
-      StepsTask$outboundSchema,
-    ]),
-    z.array(
       z.union([
         EventTask$outboundSchema,
         ExpressionTask$outboundSchema,
         LoadToolFromFileTask$outboundSchema,
         StepsTask$outboundSchema,
       ]),
-    ),
-  ]);
+      z.array(
+        z.union([
+          EventTask$outboundSchema,
+          ExpressionTask$outboundSchema,
+          LoadToolFromFileTask$outboundSchema,
+          StepsTask$outboundSchema,
+        ]),
+      ),
+    ])
+  );
 
 export function taskToJSON(task: Task): string {
   return JSON.stringify(Task$outboundSchema.parse(task));
@@ -206,26 +217,28 @@ export function taskFromJSON(
 
 /** @internal */
 export const Context$inboundSchema: z.ZodType<Context, z.ZodTypeDef, unknown> =
-  z.object({
-    task: z.nullable(
-      z.union([
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      task: z.nullable(
         z.union([
-          EventTask$inboundSchema,
-          ExpressionTask$inboundSchema,
-          LoadToolFromFileTask$inboundSchema,
-          StepsTask$inboundSchema,
-        ]),
-        z.array(
           z.union([
             EventTask$inboundSchema,
             ExpressionTask$inboundSchema,
             LoadToolFromFileTask$inboundSchema,
             StepsTask$inboundSchema,
           ]),
-        ),
-      ]),
-    ).optional(),
-  });
+          z.array(
+            z.union([
+              EventTask$inboundSchema,
+              ExpressionTask$inboundSchema,
+              LoadToolFromFileTask$inboundSchema,
+              StepsTask$inboundSchema,
+            ]),
+          ),
+        ]),
+      ).optional(),
+    })
+  );
 /** @internal */
 export type Context$Outbound = {
   task?:
@@ -248,26 +261,28 @@ export const Context$outboundSchema: z.ZodType<
   Context$Outbound,
   z.ZodTypeDef,
   Context
-> = z.object({
-  task: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    task: z.nullable(
       z.union([
-        EventTask$outboundSchema,
-        ExpressionTask$outboundSchema,
-        LoadToolFromFileTask$outboundSchema,
-        StepsTask$outboundSchema,
-      ]),
-      z.array(
         z.union([
           EventTask$outboundSchema,
           ExpressionTask$outboundSchema,
           LoadToolFromFileTask$outboundSchema,
           StepsTask$outboundSchema,
         ]),
-      ),
-    ]),
-  ).optional(),
-});
+        z.array(
+          z.union([
+            EventTask$outboundSchema,
+            ExpressionTask$outboundSchema,
+            LoadToolFromFileTask$outboundSchema,
+            StepsTask$outboundSchema,
+          ]),
+        ),
+      ]),
+    ).optional(),
+  })
+);
 
 export function contextToJSON(context: Context): string {
   return JSON.stringify(Context$outboundSchema.parse(context));

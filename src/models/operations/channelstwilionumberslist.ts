@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const ChannelsTwilioNumbersListRequest$inboundSchema: z.ZodType<
   ChannelsTwilioNumbersListRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "channel_id": "channelId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_id": "channelId",
+    });
+  })
+);
 /** @internal */
 export type ChannelsTwilioNumbersListRequest$Outbound = {
   channel_id: number;
@@ -34,13 +36,15 @@ export const ChannelsTwilioNumbersListRequest$outboundSchema: z.ZodType<
   ChannelsTwilioNumbersListRequest$Outbound,
   z.ZodTypeDef,
   ChannelsTwilioNumbersListRequest
-> = z.object({
-  channelId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    channelId: "channel_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channelId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      channelId: "channel_id",
+    });
+  })
+);
 
 export function channelsTwilioNumbersListRequestToJSON(
   channelsTwilioNumbersListRequest: ChannelsTwilioNumbersListRequest,

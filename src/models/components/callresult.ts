@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,9 +28,11 @@ export const CallResult$inboundSchema: z.ZodType<
   CallResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  save: z.array(CallResultSaveMapping$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    save: z.array(CallResultSaveMapping$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CallResult$Outbound = {
   save?: Array<CallResultSaveMapping$Outbound> | undefined;
@@ -41,9 +43,11 @@ export const CallResult$outboundSchema: z.ZodType<
   CallResult$Outbound,
   z.ZodTypeDef,
   CallResult
-> = z.object({
-  save: z.array(CallResultSaveMapping$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    save: z.array(CallResultSaveMapping$outboundSchema).optional(),
+  })
+);
 
 export function callResultToJSON(callResult: CallResult): string {
   return JSON.stringify(CallResult$outboundSchema.parse(callResult));

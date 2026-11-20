@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,32 +61,34 @@ export const IncidentUpdateRequest$inboundSchema: z.ZodType<
   IncidentUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: z.string(),
-  start_datetime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  resolution_datetime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  impact_category: z.string(),
-  sessions_impacted: z.number().int(),
-  markdown: z.string(),
-  organization_id: z.nullable(z.number().int()).optional(),
-  sub_organization_id: z.nullable(z.number().int()).optional(),
-  sub_organization: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "start_datetime": "startDatetime",
-    "resolution_datetime": "resolutionDatetime",
-    "impact_category": "impactCategory",
-    "sessions_impacted": "sessionsImpacted",
-    "organization_id": "organizationId",
-    "sub_organization_id": "subOrganizationId",
-    "sub_organization": "subOrganization",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string(),
+    start_datetime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    resolution_datetime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    impact_category: z.string(),
+    sessions_impacted: z.number().int(),
+    markdown: z.string(),
+    organization_id: z.nullable(z.number().int()).optional(),
+    sub_organization_id: z.nullable(z.number().int()).optional(),
+    sub_organization: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "start_datetime": "startDatetime",
+      "resolution_datetime": "resolutionDatetime",
+      "impact_category": "impactCategory",
+      "sessions_impacted": "sessionsImpacted",
+      "organization_id": "organizationId",
+      "sub_organization_id": "subOrganizationId",
+      "sub_organization": "subOrganization",
+    });
+  })
+);
 /** @internal */
 export type IncidentUpdateRequest$Outbound = {
   description: string;
@@ -106,28 +108,30 @@ export const IncidentUpdateRequest$outboundSchema: z.ZodType<
   IncidentUpdateRequest$Outbound,
   z.ZodTypeDef,
   IncidentUpdateRequest
-> = z.object({
-  description: z.string(),
-  startDatetime: z.date().transform(v => v.toISOString()),
-  resolutionDatetime: z.date().transform(v => v.toISOString()),
-  impactCategory: z.string(),
-  sessionsImpacted: z.number().int(),
-  markdown: z.string(),
-  organizationId: z.nullable(z.number().int()).optional(),
-  subOrganizationId: z.nullable(z.number().int()).optional(),
-  subOrganization: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    startDatetime: "start_datetime",
-    resolutionDatetime: "resolution_datetime",
-    impactCategory: "impact_category",
-    sessionsImpacted: "sessions_impacted",
-    organizationId: "organization_id",
-    subOrganizationId: "sub_organization_id",
-    subOrganization: "sub_organization",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string(),
+    startDatetime: z.date().transform(v => v.toISOString()),
+    resolutionDatetime: z.date().transform(v => v.toISOString()),
+    impactCategory: z.string(),
+    sessionsImpacted: z.number().int(),
+    markdown: z.string(),
+    organizationId: z.nullable(z.number().int()).optional(),
+    subOrganizationId: z.nullable(z.number().int()).optional(),
+    subOrganization: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      startDatetime: "start_datetime",
+      resolutionDatetime: "resolution_datetime",
+      impactCategory: "impact_category",
+      sessionsImpacted: "sessions_impacted",
+      organizationId: "organization_id",
+      subOrganizationId: "sub_organization_id",
+      subOrganization: "sub_organization",
+    });
+  })
+);
 
 export function incidentUpdateRequestToJSON(
   incidentUpdateRequest: IncidentUpdateRequest,

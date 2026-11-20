@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const PostGetDashboardRequest$inboundSchema: z.ZodType<
   PostGetDashboardRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dashboard_name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "dashboard_name": "dashboardName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dashboard_name: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "dashboard_name": "dashboardName",
+    });
+  })
+);
 /** @internal */
 export type PostGetDashboardRequest$Outbound = {
   dashboard_name: string;
@@ -34,13 +36,15 @@ export const PostGetDashboardRequest$outboundSchema: z.ZodType<
   PostGetDashboardRequest$Outbound,
   z.ZodTypeDef,
   PostGetDashboardRequest
-> = z.object({
-  dashboardName: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    dashboardName: "dashboard_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dashboardName: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      dashboardName: "dashboard_name",
+    });
+  })
+);
 
 export function postGetDashboardRequestToJSON(
   postGetDashboardRequest: PostGetDashboardRequest,

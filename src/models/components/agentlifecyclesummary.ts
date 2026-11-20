@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,17 +19,19 @@ export const AgentLifecycleSummary$inboundSchema: z.ZodType<
   AgentLifecycleSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  flagged_count: z.number().int(),
-  has_deprecated: z.boolean(),
-  has_retired: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    "flagged_count": "flaggedCount",
-    "has_deprecated": "hasDeprecated",
-    "has_retired": "hasRetired",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    flagged_count: z.number().int(),
+    has_deprecated: z.boolean(),
+    has_retired: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      "flagged_count": "flaggedCount",
+      "has_deprecated": "hasDeprecated",
+      "has_retired": "hasRetired",
+    });
+  })
+);
 /** @internal */
 export type AgentLifecycleSummary$Outbound = {
   flagged_count: number;
@@ -42,17 +44,19 @@ export const AgentLifecycleSummary$outboundSchema: z.ZodType<
   AgentLifecycleSummary$Outbound,
   z.ZodTypeDef,
   AgentLifecycleSummary
-> = z.object({
-  flaggedCount: z.number().int(),
-  hasDeprecated: z.boolean(),
-  hasRetired: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    flaggedCount: "flagged_count",
-    hasDeprecated: "has_deprecated",
-    hasRetired: "has_retired",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    flaggedCount: z.number().int(),
+    hasDeprecated: z.boolean(),
+    hasRetired: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      flaggedCount: "flagged_count",
+      hasDeprecated: "has_deprecated",
+      hasRetired: "has_retired",
+    });
+  })
+);
 
 export function agentLifecycleSummaryToJSON(
   agentLifecycleSummary: AgentLifecycleSummary,

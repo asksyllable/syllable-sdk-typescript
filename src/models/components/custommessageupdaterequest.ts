@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -78,27 +78,29 @@ export const CustomMessageUpdateRequest$inboundSchema: z.ZodType<
   CustomMessageUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  edit_comments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  type: CustomMessageType$inboundSchema.optional(),
-  preamble: z.nullable(z.string()).optional(),
-  text: z.string(),
-  subject: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  repeat_after_language_change: z.nullable(z.boolean()).optional(),
-  rules: z.array(CustomMessageRule$inboundSchema).optional(),
-  expected_version: z.nullable(z.number().int()).optional(),
-  restored_from_version: z.nullable(z.number().int()).optional(),
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "edit_comments": "editComments",
-    "repeat_after_language_change": "repeatAfterLanguageChange",
-    "expected_version": "expectedVersion",
-    "restored_from_version": "restoredFromVersion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edit_comments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    type: CustomMessageType$inboundSchema.optional(),
+    preamble: z.nullable(z.string()).optional(),
+    text: z.string(),
+    subject: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    repeat_after_language_change: z.nullable(z.boolean()).optional(),
+    rules: z.array(CustomMessageRule$inboundSchema).optional(),
+    expected_version: z.nullable(z.number().int()).optional(),
+    restored_from_version: z.nullable(z.number().int()).optional(),
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "edit_comments": "editComments",
+      "repeat_after_language_change": "repeatAfterLanguageChange",
+      "expected_version": "expectedVersion",
+      "restored_from_version": "restoredFromVersion",
+    });
+  })
+);
 /** @internal */
 export type CustomMessageUpdateRequest$Outbound = {
   edit_comments?: string | null | undefined;
@@ -120,27 +122,29 @@ export const CustomMessageUpdateRequest$outboundSchema: z.ZodType<
   CustomMessageUpdateRequest$Outbound,
   z.ZodTypeDef,
   CustomMessageUpdateRequest
-> = z.object({
-  editComments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  type: CustomMessageType$outboundSchema.optional(),
-  preamble: z.nullable(z.string()).optional(),
-  text: z.string(),
-  subject: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  repeatAfterLanguageChange: z.nullable(z.boolean()).optional(),
-  rules: z.array(CustomMessageRule$outboundSchema).optional(),
-  expectedVersion: z.nullable(z.number().int()).optional(),
-  restoredFromVersion: z.nullable(z.number().int()).optional(),
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    editComments: "edit_comments",
-    repeatAfterLanguageChange: "repeat_after_language_change",
-    expectedVersion: "expected_version",
-    restoredFromVersion: "restored_from_version",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    editComments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    type: CustomMessageType$outboundSchema.optional(),
+    preamble: z.nullable(z.string()).optional(),
+    text: z.string(),
+    subject: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    repeatAfterLanguageChange: z.nullable(z.boolean()).optional(),
+    rules: z.array(CustomMessageRule$outboundSchema).optional(),
+    expectedVersion: z.nullable(z.number().int()).optional(),
+    restoredFromVersion: z.nullable(z.number().int()).optional(),
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      editComments: "edit_comments",
+      repeatAfterLanguageChange: "repeat_after_language_change",
+      expectedVersion: "expected_version",
+      restoredFromVersion: "restored_from_version",
+    });
+  })
+);
 
 export function customMessageUpdateRequestToJSON(
   customMessageUpdateRequest: CustomMessageUpdateRequest,

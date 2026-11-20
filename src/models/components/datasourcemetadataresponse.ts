@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -60,24 +60,28 @@ export const DataSourceMetadataResponse$inboundSchema: z.ZodType<
   DataSourceMetadataResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.array(z.string()).optional(),
-  chunk: z.boolean(),
-  chunk_delimiter: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  edit_comments: z.nullable(z.string()).optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  last_updated_by: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "chunk_delimiter": "chunkDelimiter",
-    "edit_comments": "editComments",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.array(z.string()).optional(),
+    chunk: z.boolean(),
+    chunk_delimiter: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    edit_comments: z.nullable(z.string()).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.nullable(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "chunk_delimiter": "chunkDelimiter",
+      "edit_comments": "editComments",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type DataSourceMetadataResponse$Outbound = {
   name: string;
@@ -96,24 +100,26 @@ export const DataSourceMetadataResponse$outboundSchema: z.ZodType<
   DataSourceMetadataResponse$Outbound,
   z.ZodTypeDef,
   DataSourceMetadataResponse
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.array(z.string()).optional(),
-  chunk: z.boolean(),
-  chunkDelimiter: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  editComments: z.nullable(z.string()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    chunkDelimiter: "chunk_delimiter",
-    editComments: "edit_comments",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.array(z.string()).optional(),
+    chunk: z.boolean(),
+    chunkDelimiter: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    editComments: z.nullable(z.string()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.nullable(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      chunkDelimiter: "chunk_delimiter",
+      editComments: "edit_comments",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function dataSourceMetadataResponseToJSON(
   dataSourceMetadataResponse: DataSourceMetadataResponse,

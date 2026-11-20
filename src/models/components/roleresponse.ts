@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -51,25 +51,27 @@ export const RoleResponse$inboundSchema: z.ZodType<
   RoleResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  permissions: z.array(z.string()),
-  id: z.number().int(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-  is_system_role: z.boolean(),
-  last_updated: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  last_updated_by: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "last_updated_comments": "lastUpdatedComments",
-    "is_system_role": "isSystemRole",
-    "last_updated": "lastUpdated",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    permissions: z.array(z.string()),
+    id: z.number().int(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+    is_system_role: z.boolean(),
+    last_updated: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "last_updated_comments": "lastUpdatedComments",
+      "is_system_role": "isSystemRole",
+      "last_updated": "lastUpdated",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type RoleResponse$Outbound = {
   name: string;
@@ -87,23 +89,25 @@ export const RoleResponse$outboundSchema: z.ZodType<
   RoleResponse$Outbound,
   z.ZodTypeDef,
   RoleResponse
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  permissions: z.array(z.string()),
-  id: z.number().int(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-  isSystemRole: z.boolean(),
-  lastUpdated: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    lastUpdatedComments: "last_updated_comments",
-    isSystemRole: "is_system_role",
-    lastUpdated: "last_updated",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    permissions: z.array(z.string()),
+    id: z.number().int(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+    isSystemRole: z.boolean(),
+    lastUpdated: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      lastUpdatedComments: "last_updated_comments",
+      isSystemRole: "is_system_role",
+      lastUpdated: "last_updated",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function roleResponseToJSON(roleResponse: RoleResponse): string {
   return JSON.stringify(RoleResponse$outboundSchema.parse(roleResponse));

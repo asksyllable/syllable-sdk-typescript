@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,15 +18,17 @@ export const GetSessionDataBySidRequest$inboundSchema: z.ZodType<
   GetSessionDataBySidRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel_manager_service: z.string(),
-  channel_manager_sid: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "channel_manager_service": "channelManagerService",
-    "channel_manager_sid": "channelManagerSid",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel_manager_service: z.string(),
+    channel_manager_sid: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_manager_service": "channelManagerService",
+      "channel_manager_sid": "channelManagerSid",
+    });
+  })
+);
 /** @internal */
 export type GetSessionDataBySidRequest$Outbound = {
   channel_manager_service: string;
@@ -38,15 +40,17 @@ export const GetSessionDataBySidRequest$outboundSchema: z.ZodType<
   GetSessionDataBySidRequest$Outbound,
   z.ZodTypeDef,
   GetSessionDataBySidRequest
-> = z.object({
-  channelManagerService: z.string(),
-  channelManagerSid: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    channelManagerService: "channel_manager_service",
-    channelManagerSid: "channel_manager_sid",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channelManagerService: z.string(),
+    channelManagerSid: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      channelManagerService: "channel_manager_service",
+      channelManagerSid: "channel_manager_sid",
+    });
+  })
+);
 
 export function getSessionDataBySidRequestToJSON(
   getSessionDataBySidRequest: GetSessionDataBySidRequest,

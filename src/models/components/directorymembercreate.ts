@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,17 +45,20 @@ export const DirectoryMemberCreate$inboundSchema: z.ZodType<
   DirectoryMemberCreate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  type: z.string(),
-  extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
-  contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
-  comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "contact_tags": "contactTags",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: z.string(),
+    extensions: z.nullable(z.array(DirectoryExtension$inboundSchema))
+      .optional(),
+    contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
+    comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "contact_tags": "contactTags",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberCreate$Outbound = {
   name: string;
@@ -70,17 +73,20 @@ export const DirectoryMemberCreate$outboundSchema: z.ZodType<
   DirectoryMemberCreate$Outbound,
   z.ZodTypeDef,
   DirectoryMemberCreate
-> = z.object({
-  name: z.string(),
-  type: z.string(),
-  extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
-  contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
-  comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contactTags: "contact_tags",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: z.string(),
+    extensions: z.nullable(z.array(DirectoryExtension$outboundSchema))
+      .optional(),
+    contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
+    comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      contactTags: "contact_tags",
+    });
+  })
+);
 
 export function directoryMemberCreateToJSON(
   directoryMemberCreate: DirectoryMemberCreate,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -49,20 +49,22 @@ export const VoiceGroupUpdateRequest$inboundSchema: z.ZodType<
   VoiceGroupUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  language_configs: z.array(LanguageConfig$inboundSchema),
-  skip_current_language_in_message: z.boolean(),
-  id: z.number().int(),
-  edit_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "language_configs": "languageConfigs",
-    "skip_current_language_in_message": "skipCurrentLanguageInMessage",
-    "edit_comments": "editComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    language_configs: z.array(LanguageConfig$inboundSchema),
+    skip_current_language_in_message: z.boolean(),
+    id: z.number().int(),
+    edit_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "language_configs": "languageConfigs",
+      "skip_current_language_in_message": "skipCurrentLanguageInMessage",
+      "edit_comments": "editComments",
+    });
+  })
+);
 /** @internal */
 export type VoiceGroupUpdateRequest$Outbound = {
   name: string;
@@ -78,20 +80,22 @@ export const VoiceGroupUpdateRequest$outboundSchema: z.ZodType<
   VoiceGroupUpdateRequest$Outbound,
   z.ZodTypeDef,
   VoiceGroupUpdateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  languageConfigs: z.array(LanguageConfig$outboundSchema),
-  skipCurrentLanguageInMessage: z.boolean(),
-  id: z.number().int(),
-  editComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    languageConfigs: "language_configs",
-    skipCurrentLanguageInMessage: "skip_current_language_in_message",
-    editComments: "edit_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    languageConfigs: z.array(LanguageConfig$outboundSchema),
+    skipCurrentLanguageInMessage: z.boolean(),
+    id: z.number().int(),
+    editComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      languageConfigs: "language_configs",
+      skipCurrentLanguageInMessage: "skip_current_language_in_message",
+      editComments: "edit_comments",
+    });
+  })
+);
 
 export function voiceGroupUpdateRequestToJSON(
   voiceGroupUpdateRequest: VoiceGroupUpdateRequest,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const BatchProperties = {
@@ -17,7 +18,7 @@ export type BatchProperties = ClosedEnum<typeof BatchProperties>;
 /** @internal */
 export const BatchProperties$inboundSchema: z.ZodNativeEnum<
   typeof BatchProperties
-> = z.nativeEnum(BatchProperties);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BatchProperties));
 /** @internal */
 export const BatchProperties$outboundSchema: z.ZodNativeEnum<
   typeof BatchProperties

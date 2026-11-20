@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
 export type AgentErrorResponseData = {
@@ -35,19 +36,21 @@ export const AgentErrorResponse$inboundSchema: z.ZodType<
   AgentErrorResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new AgentErrorResponse(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new AgentErrorResponse(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type AgentErrorResponse$Outbound = {
@@ -59,8 +62,10 @@ export const AgentErrorResponse$outboundSchema: z.ZodType<
   AgentErrorResponse$Outbound,
   z.ZodTypeDef,
   AgentErrorResponse
-> = z.instanceof(AgentErrorResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    detail: z.string(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(AgentErrorResponse)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      detail: z.string(),
+    }))
+);

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -39,19 +39,21 @@ export const TestMessageResponse$inboundSchema: z.ZodType<
   TestMessageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  test_id: z.string(),
-  agent_id: z.string(),
-  text: z.string().optional(),
-  response: z.nullable(z.any()).optional(),
-  response_text: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "test_id": "testId",
-    "agent_id": "agentId",
-    "response_text": "responseText",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    test_id: z.string(),
+    agent_id: z.string(),
+    text: z.string().optional(),
+    response: z.nullable(z.any()).optional(),
+    response_text: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "test_id": "testId",
+      "agent_id": "agentId",
+      "response_text": "responseText",
+    });
+  })
+);
 /** @internal */
 export type TestMessageResponse$Outbound = {
   test_id: string;
@@ -66,19 +68,21 @@ export const TestMessageResponse$outboundSchema: z.ZodType<
   TestMessageResponse$Outbound,
   z.ZodTypeDef,
   TestMessageResponse
-> = z.object({
-  testId: z.string(),
-  agentId: z.string(),
-  text: z.string().optional(),
-  response: z.nullable(z.any()).optional(),
-  responseText: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    testId: "test_id",
-    agentId: "agent_id",
-    responseText: "response_text",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    testId: z.string(),
+    agentId: z.string(),
+    text: z.string().optional(),
+    response: z.nullable(z.any()).optional(),
+    responseText: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      testId: "test_id",
+      agentId: "agent_id",
+      responseText: "response_text",
+    });
+  })
+);
 
 export function testMessageResponseToJSON(
   testMessageResponse: TestMessageResponse,

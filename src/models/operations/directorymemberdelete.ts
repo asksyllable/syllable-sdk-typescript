@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,14 +21,16 @@ export const DirectoryMemberDeleteRequest$inboundSchema: z.ZodType<
   DirectoryMemberDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  member_id: z.number().int(),
-  comment: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "member_id": "memberId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    member_id: z.number().int(),
+    comment: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "member_id": "memberId",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberDeleteRequest$Outbound = {
   member_id: number;
@@ -40,14 +42,16 @@ export const DirectoryMemberDeleteRequest$outboundSchema: z.ZodType<
   DirectoryMemberDeleteRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberDeleteRequest
-> = z.object({
-  memberId: z.number().int(),
-  comment: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    memberId: "member_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memberId: z.number().int(),
+    comment: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      memberId: "member_id",
+    });
+  })
+);
 
 export function directoryMemberDeleteRequestToJSON(
   directoryMemberDeleteRequest: DirectoryMemberDeleteRequest,

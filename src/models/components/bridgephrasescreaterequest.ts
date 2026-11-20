@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -47,16 +47,18 @@ export const BridgePhrasesCreateRequest$inboundSchema: z.ZodType<
   BridgePhrasesCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  config: BridgePhrasesConfigPayload$inboundSchema.optional(),
-  is_default: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "is_default": "isDefault",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    config: BridgePhrasesConfigPayload$inboundSchema.optional(),
+    is_default: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "is_default": "isDefault",
+    });
+  })
+);
 /** @internal */
 export type BridgePhrasesCreateRequest$Outbound = {
   name: string;
@@ -70,16 +72,18 @@ export const BridgePhrasesCreateRequest$outboundSchema: z.ZodType<
   BridgePhrasesCreateRequest$Outbound,
   z.ZodTypeDef,
   BridgePhrasesCreateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  config: BridgePhrasesConfigPayload$outboundSchema.optional(),
-  isDefault: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    isDefault: "is_default",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    config: BridgePhrasesConfigPayload$outboundSchema.optional(),
+    isDefault: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      isDefault: "is_default",
+    });
+  })
+);
 
 export function bridgePhrasesCreateRequestToJSON(
   bridgePhrasesCreateRequest: BridgePhrasesCreateRequest,

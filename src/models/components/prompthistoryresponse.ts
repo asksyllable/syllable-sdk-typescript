@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -98,38 +98,42 @@ export const PromptHistoryResponse$inboundSchema: z.ZodType<
   PromptHistoryResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  prompt_id: z.string(),
-  version_number: z.number().int(),
-  prompt_text: z.string(),
-  prompt_description: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  prompt_name: z.string(),
-  llm_config: z.nullable(PromptLlmConfig$inboundSchema).optional(),
-  comments: z.nullable(z.string()).optional(),
-  user_email: z.string(),
-  linked_tools: z.array(PromptHistoryLinkedTool$inboundSchema).optional(),
-  session_end_tool: z.nullable(PromptHistoryLinkedTool$inboundSchema)
-    .optional(),
-  is_pre_enhancements: z.boolean(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "prompt_id": "promptId",
-    "version_number": "versionNumber",
-    "prompt_text": "promptText",
-    "prompt_description": "promptDescription",
-    "prompt_name": "promptName",
-    "llm_config": "llmConfig",
-    "user_email": "userEmail",
-    "linked_tools": "linkedTools",
-    "session_end_tool": "sessionEndTool",
-    "is_pre_enhancements": "isPreEnhancements",
-    "validation_issues": "validationIssues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    prompt_id: z.string(),
+    version_number: z.number().int(),
+    prompt_text: z.string(),
+    prompt_description: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    prompt_name: z.string(),
+    llm_config: z.nullable(PromptLlmConfig$inboundSchema).optional(),
+    comments: z.nullable(z.string()).optional(),
+    user_email: z.string(),
+    linked_tools: z.array(PromptHistoryLinkedTool$inboundSchema).optional(),
+    session_end_tool: z.nullable(PromptHistoryLinkedTool$inboundSchema)
+      .optional(),
+    is_pre_enhancements: z.boolean(),
+    validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "prompt_id": "promptId",
+      "version_number": "versionNumber",
+      "prompt_text": "promptText",
+      "prompt_description": "promptDescription",
+      "prompt_name": "promptName",
+      "llm_config": "llmConfig",
+      "user_email": "userEmail",
+      "linked_tools": "linkedTools",
+      "session_end_tool": "sessionEndTool",
+      "is_pre_enhancements": "isPreEnhancements",
+      "validation_issues": "validationIssues",
+    });
+  })
+);
 /** @internal */
 export type PromptHistoryResponse$Outbound = {
   timestamp: string;
@@ -153,37 +157,40 @@ export const PromptHistoryResponse$outboundSchema: z.ZodType<
   PromptHistoryResponse$Outbound,
   z.ZodTypeDef,
   PromptHistoryResponse
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  promptId: z.string(),
-  versionNumber: z.number().int(),
-  promptText: z.string(),
-  promptDescription: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  promptName: z.string(),
-  llmConfig: z.nullable(PromptLlmConfig$outboundSchema).optional(),
-  comments: z.nullable(z.string()).optional(),
-  userEmail: z.string(),
-  linkedTools: z.array(PromptHistoryLinkedTool$outboundSchema).optional(),
-  sessionEndTool: z.nullable(PromptHistoryLinkedTool$outboundSchema).optional(),
-  isPreEnhancements: z.boolean(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    promptId: "prompt_id",
-    versionNumber: "version_number",
-    promptText: "prompt_text",
-    promptDescription: "prompt_description",
-    promptName: "prompt_name",
-    llmConfig: "llm_config",
-    userEmail: "user_email",
-    linkedTools: "linked_tools",
-    sessionEndTool: "session_end_tool",
-    isPreEnhancements: "is_pre_enhancements",
-    validationIssues: "validation_issues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    promptId: z.string(),
+    versionNumber: z.number().int(),
+    promptText: z.string(),
+    promptDescription: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    promptName: z.string(),
+    llmConfig: z.nullable(PromptLlmConfig$outboundSchema).optional(),
+    comments: z.nullable(z.string()).optional(),
+    userEmail: z.string(),
+    linkedTools: z.array(PromptHistoryLinkedTool$outboundSchema).optional(),
+    sessionEndTool: z.nullable(PromptHistoryLinkedTool$outboundSchema)
+      .optional(),
+    isPreEnhancements: z.boolean(),
+    validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      promptId: "prompt_id",
+      versionNumber: "version_number",
+      promptText: "prompt_text",
+      promptDescription: "prompt_description",
+      promptName: "prompt_name",
+      llmConfig: "llm_config",
+      userEmail: "user_email",
+      linkedTools: "linked_tools",
+      sessionEndTool: "session_end_tool",
+      isPreEnhancements: "is_pre_enhancements",
+      validationIssues: "validation_issues",
+    });
+  })
+);
 
 export function promptHistoryResponseToJSON(
   promptHistoryResponse: PromptHistoryResponse,

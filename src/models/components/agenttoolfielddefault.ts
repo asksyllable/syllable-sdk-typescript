@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -30,15 +30,17 @@ export const AgentToolFieldDefault$inboundSchema: z.ZodType<
   AgentToolFieldDefault,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  field_name: z.string(),
-  default_value: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "field_name": "fieldName",
-    "default_value": "defaultValue",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field_name: z.string(),
+    default_value: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "field_name": "fieldName",
+      "default_value": "defaultValue",
+    });
+  })
+);
 /** @internal */
 export type AgentToolFieldDefault$Outbound = {
   field_name: string;
@@ -50,15 +52,17 @@ export const AgentToolFieldDefault$outboundSchema: z.ZodType<
   AgentToolFieldDefault$Outbound,
   z.ZodTypeDef,
   AgentToolFieldDefault
-> = z.object({
-  fieldName: z.string(),
-  defaultValue: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    fieldName: "field_name",
-    defaultValue: "default_value",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fieldName: z.string(),
+    defaultValue: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      fieldName: "field_name",
+      defaultValue: "default_value",
+    });
+  })
+);
 
 export function agentToolFieldDefaultToJSON(
   agentToolFieldDefault: AgentToolFieldDefault,

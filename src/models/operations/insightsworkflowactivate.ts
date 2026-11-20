@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const InsightsWorkflowActivateRequest$inboundSchema: z.ZodType<
   InsightsWorkflowActivateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow_id: z.number().int(),
-  InsightWorkflowActivate: components.InsightWorkflowActivate$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "workflow_id": "workflowId",
-    "InsightWorkflowActivate": "insightWorkflowActivate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow_id: z.number().int(),
+    InsightWorkflowActivate: components.InsightWorkflowActivate$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "workflow_id": "workflowId",
+      "InsightWorkflowActivate": "insightWorkflowActivate",
+    });
+  })
+);
 /** @internal */
 export type InsightsWorkflowActivateRequest$Outbound = {
   workflow_id: number;
@@ -39,15 +41,17 @@ export const InsightsWorkflowActivateRequest$outboundSchema: z.ZodType<
   InsightsWorkflowActivateRequest$Outbound,
   z.ZodTypeDef,
   InsightsWorkflowActivateRequest
-> = z.object({
-  workflowId: z.number().int(),
-  insightWorkflowActivate: components.InsightWorkflowActivate$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    workflowId: "workflow_id",
-    insightWorkflowActivate: "InsightWorkflowActivate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowId: z.number().int(),
+    insightWorkflowActivate: components.InsightWorkflowActivate$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      workflowId: "workflow_id",
+      insightWorkflowActivate: "InsightWorkflowActivate",
+    });
+  })
+);
 
 export function insightsWorkflowActivateRequestToJSON(
   insightsWorkflowActivateRequest: InsightsWorkflowActivateRequest,

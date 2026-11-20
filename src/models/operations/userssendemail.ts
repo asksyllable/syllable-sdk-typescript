@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,15 +21,17 @@ export const UsersSendEmailRequest$inboundSchema: z.ZodType<
   UsersSendEmailRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user_email: z.string(),
-  skip_auth: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "user_email": "userEmail",
-    "skip_auth": "skipAuth",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_email: z.string(),
+    skip_auth: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "user_email": "userEmail",
+      "skip_auth": "skipAuth",
+    });
+  })
+);
 /** @internal */
 export type UsersSendEmailRequest$Outbound = {
   user_email: string;
@@ -41,15 +43,17 @@ export const UsersSendEmailRequest$outboundSchema: z.ZodType<
   UsersSendEmailRequest$Outbound,
   z.ZodTypeDef,
   UsersSendEmailRequest
-> = z.object({
-  userEmail: z.string(),
-  skipAuth: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    userEmail: "user_email",
-    skipAuth: "skip_auth",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    userEmail: z.string(),
+    skipAuth: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      userEmail: "user_email",
+      skipAuth: "skip_auth",
+    });
+  })
+);
 
 export function usersSendEmailRequestToJSON(
   usersSendEmailRequest: UsersSendEmailRequest,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const SessionLabelProperties = {
@@ -19,7 +20,7 @@ export type SessionLabelProperties = ClosedEnum<typeof SessionLabelProperties>;
 /** @internal */
 export const SessionLabelProperties$inboundSchema: z.ZodNativeEnum<
   typeof SessionLabelProperties
-> = z.nativeEnum(SessionLabelProperties);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SessionLabelProperties));
 /** @internal */
 export const SessionLabelProperties$outboundSchema: z.ZodNativeEnum<
   typeof SessionLabelProperties

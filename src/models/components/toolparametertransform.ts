@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -60,7 +60,9 @@ export type ToolParameterTransform = {
 /** @internal */
 export const ToolParameterTransformAction$inboundSchema: z.ZodNativeEnum<
   typeof ToolParameterTransformAction
-> = z.nativeEnum(ToolParameterTransformAction);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ToolParameterTransformAction)
+);
 /** @internal */
 export const ToolParameterTransformAction$outboundSchema: z.ZodNativeEnum<
   typeof ToolParameterTransformAction
@@ -71,12 +73,14 @@ export const ToolParameterTransform$inboundSchema: z.ZodType<
   ToolParameterTransform,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: ToolParameterTransformAction$inboundSchema.default("default"),
-  when: z.nullable(ToolParameterTransformCondition$inboundSchema).optional(),
-  value: z.nullable(z.any()).optional(),
-  format: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: ToolParameterTransformAction$inboundSchema.default("default"),
+    when: z.nullable(ToolParameterTransformCondition$inboundSchema).optional(),
+    value: z.nullable(z.any()).optional(),
+    format: z.nullable(z.string()).optional(),
+  })
+);
 /** @internal */
 export type ToolParameterTransform$Outbound = {
   action: string;
@@ -90,12 +94,14 @@ export const ToolParameterTransform$outboundSchema: z.ZodType<
   ToolParameterTransform$Outbound,
   z.ZodTypeDef,
   ToolParameterTransform
-> = z.object({
-  action: ToolParameterTransformAction$outboundSchema.default("default"),
-  when: z.nullable(ToolParameterTransformCondition$outboundSchema).optional(),
-  value: z.nullable(z.any()).optional(),
-  format: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: ToolParameterTransformAction$outboundSchema.default("default"),
+    when: z.nullable(ToolParameterTransformCondition$outboundSchema).optional(),
+    value: z.nullable(z.any()).optional(),
+    format: z.nullable(z.string()).optional(),
+  })
+);
 
 export function toolParameterTransformToJSON(
   toolParameterTransform: ToolParameterTransform,

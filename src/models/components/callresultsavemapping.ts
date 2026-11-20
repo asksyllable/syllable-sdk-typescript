@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -65,14 +65,16 @@ export type CallResultSaveMapping = {
 };
 
 /** @internal */
-export const From1$inboundSchema: z.ZodType<From1, z.ZodTypeDef, unknown> = z
-  .union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]);
+export const From1$inboundSchema: z.ZodType<From1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ])
+  );
 /** @internal */
 export type From1$Outbound =
   | CelExpression$Outbound
@@ -84,13 +86,15 @@ export const From1$outboundSchema: z.ZodType<
   From1$Outbound,
   z.ZodTypeDef,
   From1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function from1ToJSON(from1: From1): string {
   return JSON.stringify(From1$outboundSchema.parse(from1));
@@ -106,18 +110,22 @@ export function from1FromJSON(
 }
 
 /** @internal */
-export const From$inboundSchema: z.ZodType<From, z.ZodTypeDef, unknown> = z
-  .union([
-    CaseExpression$inboundSchema,
+export const From$inboundSchema: z.ZodType<From, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
     z.union([
-      CelExpression$inboundSchema,
-      JMESPathExpression$inboundSchema.and(
-        z.object({ type: z.literal("jmespath") }),
-      ),
-      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-    ]),
-    z.string(),
-  ]);
+      CaseExpression$inboundSchema,
+      z.union([
+        CelExpression$inboundSchema,
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
+        ),
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jp") }),
+        ),
+      ]),
+      z.string(),
+    ])
+  );
 /** @internal */
 export type From$Outbound =
   | CaseExpression$Outbound
@@ -128,19 +136,21 @@ export type From$Outbound =
 
 /** @internal */
 export const From$outboundSchema: z.ZodType<From$Outbound, z.ZodTypeDef, From> =
-  z.union([
-    CaseExpression$outboundSchema,
+  /* @__PURE__ */ lazySchema$(() =>
     z.union([
-      CelExpression$outboundSchema,
-      JMESPathExpression$outboundSchema.and(
-        z.object({ type: z.literal("jmespath") }),
-      ),
-      JMESPathExpression$outboundSchema.and(
-        z.object({ type: z.literal("jp") }),
-      ),
-    ]),
-    z.string(),
-  ]);
+      CaseExpression$outboundSchema,
+      z.union([
+        CelExpression$outboundSchema,
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
+        ),
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jp") }),
+        ),
+      ]),
+      z.string(),
+    ])
+  );
 
 export function fromToJSON(from: From): string {
   return JSON.stringify(From$outboundSchema.parse(from));
@@ -160,20 +170,24 @@ export const CallResultSaveMapping$inboundSchema: z.ZodType<
   CallResultSaveMapping,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  from: z.union([
-    CaseExpression$inboundSchema,
-    z.union([
-      CelExpression$inboundSchema,
-      JMESPathExpression$inboundSchema.and(
-        z.object({ type: z.literal("jmespath") }),
-      ),
-      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: z.union([
+      CaseExpression$inboundSchema,
+      z.union([
+        CelExpression$inboundSchema,
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
+        ),
+        JMESPathExpression$inboundSchema.and(
+          z.object({ type: z.literal("jp") }),
+        ),
+      ]),
+      z.string(),
     ]),
-    z.string(),
-  ]),
-  to: z.string(),
-});
+    to: z.string(),
+  })
+);
 /** @internal */
 export type CallResultSaveMapping$Outbound = {
   from:
@@ -190,22 +204,24 @@ export const CallResultSaveMapping$outboundSchema: z.ZodType<
   CallResultSaveMapping$Outbound,
   z.ZodTypeDef,
   CallResultSaveMapping
-> = z.object({
-  from: z.union([
-    CaseExpression$outboundSchema,
-    z.union([
-      CelExpression$outboundSchema,
-      JMESPathExpression$outboundSchema.and(
-        z.object({ type: z.literal("jmespath") }),
-      ),
-      JMESPathExpression$outboundSchema.and(
-        z.object({ type: z.literal("jp") }),
-      ),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: z.union([
+      CaseExpression$outboundSchema,
+      z.union([
+        CelExpression$outboundSchema,
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jmespath") }),
+        ),
+        JMESPathExpression$outboundSchema.and(
+          z.object({ type: z.literal("jp") }),
+        ),
+      ]),
+      z.string(),
     ]),
-    z.string(),
-  ]),
-  to: z.string(),
-});
+    to: z.string(),
+  })
+);
 
 export function callResultSaveMappingToJSON(
   callResultSaveMapping: CallResultSaveMapping,

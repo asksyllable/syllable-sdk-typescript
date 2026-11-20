@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
@@ -69,7 +69,7 @@ export type InsightsWorkflowSessionsRequest = {
 
 /** @internal */
 export const SearchFields$inboundSchema: z.ZodNativeEnum<typeof SearchFields> =
-  z.nativeEnum(SearchFields);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SearchFields));
 /** @internal */
 export const SearchFields$outboundSchema: z.ZodNativeEnum<typeof SearchFields> =
   SearchFields$inboundSchema;
@@ -77,7 +77,7 @@ export const SearchFields$outboundSchema: z.ZodNativeEnum<typeof SearchFields> =
 /** @internal */
 export const QueryParamOrderBy$inboundSchema: z.ZodNativeEnum<
   typeof QueryParamOrderBy
-> = z.nativeEnum(QueryParamOrderBy);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamOrderBy));
 /** @internal */
 export const QueryParamOrderBy$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamOrderBy
@@ -88,30 +88,33 @@ export const InsightsWorkflowSessionsRequest$inboundSchema: z.ZodType<
   InsightsWorkflowSessionsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow_id: z.number().int(),
-  page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(25),
-  search_fields: z.array(SearchFields$inboundSchema).optional(),
-  search_field_values: z.array(z.string()).optional(),
-  order_by: z.nullable(QueryParamOrderBy$inboundSchema).optional(),
-  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
-    .optional(),
-  start_datetime: z.nullable(z.string()).optional(),
-  end_datetime: z.nullable(z.string()).optional(),
-  "X-Insight-Workflow-Format-Version": z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "workflow_id": "workflowId",
-    "search_fields": "searchFields",
-    "search_field_values": "searchFieldValues",
-    "order_by": "orderBy",
-    "order_by_direction": "orderByDirection",
-    "start_datetime": "startDatetime",
-    "end_datetime": "endDatetime",
-    "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow_id: z.number().int(),
+    page: z.nullable(z.number().int()).optional(),
+    limit: z.number().int().default(25),
+    search_fields: z.array(SearchFields$inboundSchema).optional(),
+    search_field_values: z.array(z.string()).optional(),
+    order_by: z.nullable(QueryParamOrderBy$inboundSchema).optional(),
+    order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
+      .optional(),
+    start_datetime: z.nullable(z.string()).optional(),
+    end_datetime: z.nullable(z.string()).optional(),
+    "X-Insight-Workflow-Format-Version": z.nullable(z.number().int())
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "workflow_id": "workflowId",
+      "search_fields": "searchFields",
+      "search_field_values": "searchFieldValues",
+      "order_by": "orderBy",
+      "order_by_direction": "orderByDirection",
+      "start_datetime": "startDatetime",
+      "end_datetime": "endDatetime",
+      "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
+    });
+  })
+);
 /** @internal */
 export type InsightsWorkflowSessionsRequest$Outbound = {
   workflow_id: number;
@@ -131,30 +134,32 @@ export const InsightsWorkflowSessionsRequest$outboundSchema: z.ZodType<
   InsightsWorkflowSessionsRequest$Outbound,
   z.ZodTypeDef,
   InsightsWorkflowSessionsRequest
-> = z.object({
-  workflowId: z.number().int(),
-  page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(25),
-  searchFields: z.array(SearchFields$outboundSchema).optional(),
-  searchFieldValues: z.array(z.string()).optional(),
-  orderBy: z.nullable(QueryParamOrderBy$outboundSchema).optional(),
-  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
-    .optional(),
-  startDatetime: z.nullable(z.string()).optional(),
-  endDatetime: z.nullable(z.string()).optional(),
-  xInsightWorkflowFormatVersion: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    workflowId: "workflow_id",
-    searchFields: "search_fields",
-    searchFieldValues: "search_field_values",
-    orderBy: "order_by",
-    orderByDirection: "order_by_direction",
-    startDatetime: "start_datetime",
-    endDatetime: "end_datetime",
-    xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowId: z.number().int(),
+    page: z.nullable(z.number().int()).optional(),
+    limit: z.number().int().default(25),
+    searchFields: z.array(SearchFields$outboundSchema).optional(),
+    searchFieldValues: z.array(z.string()).optional(),
+    orderBy: z.nullable(QueryParamOrderBy$outboundSchema).optional(),
+    orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
+      .optional(),
+    startDatetime: z.nullable(z.string()).optional(),
+    endDatetime: z.nullable(z.string()).optional(),
+    xInsightWorkflowFormatVersion: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      workflowId: "workflow_id",
+      searchFields: "search_fields",
+      searchFieldValues: "search_field_values",
+      orderBy: "order_by",
+      orderByDirection: "order_by_direction",
+      startDatetime: "start_datetime",
+      endDatetime: "end_datetime",
+      xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
+    });
+  })
+);
 
 export function insightsWorkflowSessionsRequestToJSON(
   insightsWorkflowSessionsRequest: InsightsWorkflowSessionsRequest,

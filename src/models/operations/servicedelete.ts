@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,14 +18,16 @@ export const ServiceDeleteRequest$inboundSchema: z.ZodType<
   ServiceDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  service_id: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "service_id": "serviceId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    service_id: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "service_id": "serviceId",
+    });
+  })
+);
 /** @internal */
 export type ServiceDeleteRequest$Outbound = {
   service_id: number;
@@ -37,14 +39,16 @@ export const ServiceDeleteRequest$outboundSchema: z.ZodType<
   ServiceDeleteRequest$Outbound,
   z.ZodTypeDef,
   ServiceDeleteRequest
-> = z.object({
-  serviceId: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    serviceId: "service_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    serviceId: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      serviceId: "service_id",
+    });
+  })
+);
 
 export function serviceDeleteRequestToJSON(
   serviceDeleteRequest: ServiceDeleteRequest,

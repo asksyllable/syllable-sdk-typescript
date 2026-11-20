@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -78,13 +78,15 @@ export const DisplayCtaMappingText$inboundSchema: z.ZodType<
   DisplayCtaMappingText,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type DisplayCtaMappingText$Outbound =
   | string
@@ -98,13 +100,15 @@ export const DisplayCtaMappingText$outboundSchema: z.ZodType<
   DisplayCtaMappingText$Outbound,
   z.ZodTypeDef,
   DisplayCtaMappingText
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function displayCtaMappingTextToJSON(
   displayCtaMappingText: DisplayCtaMappingText,
@@ -126,7 +130,7 @@ export function displayCtaMappingTextFromJSON(
 /** @internal */
 export const DisplayCtaMappingIcon$inboundSchema: z.ZodNativeEnum<
   typeof DisplayCtaMappingIcon
-> = z.nativeEnum(DisplayCtaMappingIcon);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DisplayCtaMappingIcon));
 /** @internal */
 export const DisplayCtaMappingIcon$outboundSchema: z.ZodNativeEnum<
   typeof DisplayCtaMappingIcon
@@ -137,13 +141,15 @@ export const DisplayCtaMappingLink$inboundSchema: z.ZodType<
   DisplayCtaMappingLink,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type DisplayCtaMappingLink$Outbound =
   | string
@@ -157,13 +163,15 @@ export const DisplayCtaMappingLink$outboundSchema: z.ZodType<
   DisplayCtaMappingLink$Outbound,
   z.ZodTypeDef,
   DisplayCtaMappingLink
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function displayCtaMappingLinkToJSON(
   displayCtaMappingLink: DisplayCtaMappingLink,
@@ -187,13 +195,15 @@ export const DisplayCtaMappingActionid$inboundSchema: z.ZodType<
   DisplayCtaMappingActionid,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type DisplayCtaMappingActionid$Outbound =
   | string
@@ -207,13 +217,15 @@ export const DisplayCtaMappingActionid$outboundSchema: z.ZodType<
   DisplayCtaMappingActionid$Outbound,
   z.ZodTypeDef,
   DisplayCtaMappingActionid
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function displayCtaMappingActionidToJSON(
   displayCtaMappingActionid: DisplayCtaMappingActionid,
@@ -237,13 +249,15 @@ export const DisplayCtaMappingMessage$inboundSchema: z.ZodType<
   DisplayCtaMappingMessage,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type DisplayCtaMappingMessage$Outbound =
   | string
@@ -257,13 +271,15 @@ export const DisplayCtaMappingMessage$outboundSchema: z.ZodType<
   DisplayCtaMappingMessage$Outbound,
   z.ZodTypeDef,
   DisplayCtaMappingMessage
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function displayCtaMappingMessageToJSON(
   displayCtaMappingMessage: DisplayCtaMappingMessage,
@@ -287,41 +303,43 @@ export const DisplayCtaMapping$inboundSchema: z.ZodType<
   DisplayCtaMapping,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  text: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]).optional(),
-  icon: DisplayCtaMappingIcon$inboundSchema.default("arrow"),
-  link: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]).optional(),
-  actionId: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  message: z.nullable(
-    z.union([
+    ]).optional(),
+    icon: DisplayCtaMappingIcon$inboundSchema.default("arrow"),
+    link: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-});
+    ]).optional(),
+    actionId: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    message: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+  })
+);
 /** @internal */
 export type DisplayCtaMapping$Outbound = {
   text?:
@@ -362,41 +380,43 @@ export const DisplayCtaMapping$outboundSchema: z.ZodType<
   DisplayCtaMapping$Outbound,
   z.ZodTypeDef,
   DisplayCtaMapping
-> = z.object({
-  text: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$outboundSchema,
-  ]).optional(),
-  icon: DisplayCtaMappingIcon$outboundSchema.default("arrow"),
-  link: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$outboundSchema,
-  ]).optional(),
-  actionId: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  message: z.nullable(
-    z.union([
+    ]).optional(),
+    icon: DisplayCtaMappingIcon$outboundSchema.default("arrow"),
+    link: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-});
+    ]).optional(),
+    actionId: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    message: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+  })
+);
 
 export function displayCtaMappingToJSON(
   displayCtaMapping: DisplayCtaMapping,

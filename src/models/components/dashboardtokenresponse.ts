@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -47,22 +47,24 @@ export const DashboardTokenResponse$inboundSchema: z.ZodType<
   DashboardTokenResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  embedded_id: z.string(),
-  guest_token: z.string(),
-  name: z.string(),
-  display_name: z.string(),
-  superset_url: z.string(),
-  rank: z.number().int(),
-  label: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "embedded_id": "embeddedId",
-    "guest_token": "guestToken",
-    "display_name": "displayName",
-    "superset_url": "supersetUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    embedded_id: z.string(),
+    guest_token: z.string(),
+    name: z.string(),
+    display_name: z.string(),
+    superset_url: z.string(),
+    rank: z.number().int(),
+    label: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "embedded_id": "embeddedId",
+      "guest_token": "guestToken",
+      "display_name": "displayName",
+      "superset_url": "supersetUrl",
+    });
+  })
+);
 /** @internal */
 export type DashboardTokenResponse$Outbound = {
   embedded_id: string;
@@ -79,22 +81,24 @@ export const DashboardTokenResponse$outboundSchema: z.ZodType<
   DashboardTokenResponse$Outbound,
   z.ZodTypeDef,
   DashboardTokenResponse
-> = z.object({
-  embeddedId: z.string(),
-  guestToken: z.string(),
-  name: z.string(),
-  displayName: z.string(),
-  supersetUrl: z.string(),
-  rank: z.number().int(),
-  label: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    embeddedId: "embedded_id",
-    guestToken: "guest_token",
-    displayName: "display_name",
-    supersetUrl: "superset_url",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    embeddedId: z.string(),
+    guestToken: z.string(),
+    name: z.string(),
+    displayName: z.string(),
+    supersetUrl: z.string(),
+    rank: z.number().int(),
+    label: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      embeddedId: "embedded_id",
+      guestToken: "guest_token",
+      displayName: "display_name",
+      supersetUrl: "superset_url",
+    });
+  })
+);
 
 export function dashboardTokenResponseToJSON(
   dashboardTokenResponse: DashboardTokenResponse,

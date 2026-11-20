@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,9 +16,11 @@ export const SessionConditionSource$inboundSchema: z.ZodType<
   SessionConditionSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: z.literal("session"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("session"),
+  })
+);
 /** @internal */
 export type SessionConditionSource$Outbound = {
   kind: "session";
@@ -29,9 +31,11 @@ export const SessionConditionSource$outboundSchema: z.ZodType<
   SessionConditionSource$Outbound,
   z.ZodTypeDef,
   SessionConditionSource
-> = z.object({
-  kind: z.literal("session"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("session"),
+  })
+);
 
 export function sessionConditionSourceToJSON(
   sessionConditionSource: SessionConditionSource,

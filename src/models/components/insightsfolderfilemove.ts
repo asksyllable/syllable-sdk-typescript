@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,15 +27,17 @@ export const InsightsFolderFileMove$inboundSchema: z.ZodType<
   InsightsFolderFileMove,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  destination_folder_id: z.number().int(),
-  file_id_list: z.array(z.number().int()),
-}).transform((v) => {
-  return remap$(v, {
-    "destination_folder_id": "destinationFolderId",
-    "file_id_list": "fileIdList",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    destination_folder_id: z.number().int(),
+    file_id_list: z.array(z.number().int()),
+  }).transform((v) => {
+    return remap$(v, {
+      "destination_folder_id": "destinationFolderId",
+      "file_id_list": "fileIdList",
+    });
+  })
+);
 /** @internal */
 export type InsightsFolderFileMove$Outbound = {
   destination_folder_id: number;
@@ -47,15 +49,17 @@ export const InsightsFolderFileMove$outboundSchema: z.ZodType<
   InsightsFolderFileMove$Outbound,
   z.ZodTypeDef,
   InsightsFolderFileMove
-> = z.object({
-  destinationFolderId: z.number().int(),
-  fileIdList: z.array(z.number().int()),
-}).transform((v) => {
-  return remap$(v, {
-    destinationFolderId: "destination_folder_id",
-    fileIdList: "file_id_list",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    destinationFolderId: z.number().int(),
+    fileIdList: z.array(z.number().int()),
+  }).transform((v) => {
+    return remap$(v, {
+      destinationFolderId: "destination_folder_id",
+      fileIdList: "file_id_list",
+    });
+  })
+);
 
 export function insightsFolderFileMoveToJSON(
   insightsFolderFileMove: InsightsFolderFileMove,

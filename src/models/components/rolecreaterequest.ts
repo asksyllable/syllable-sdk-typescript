@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -30,11 +30,13 @@ export const RoleCreateRequest$inboundSchema: z.ZodType<
   RoleCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  permissions: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    permissions: z.array(z.string()),
+  })
+);
 /** @internal */
 export type RoleCreateRequest$Outbound = {
   name: string;
@@ -47,11 +49,13 @@ export const RoleCreateRequest$outboundSchema: z.ZodType<
   RoleCreateRequest$Outbound,
   z.ZodTypeDef,
   RoleCreateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  permissions: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    permissions: z.array(z.string()),
+  })
+);
 
 export function roleCreateRequestToJSON(
   roleCreateRequest: RoleCreateRequest,

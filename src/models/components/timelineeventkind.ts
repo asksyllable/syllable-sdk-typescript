@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const TimelineEventKind = {
@@ -15,7 +16,7 @@ export type TimelineEventKind = ClosedEnum<typeof TimelineEventKind>;
 /** @internal */
 export const TimelineEventKind$inboundSchema: z.ZodNativeEnum<
   typeof TimelineEventKind
-> = z.nativeEnum(TimelineEventKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TimelineEventKind));
 /** @internal */
 export const TimelineEventKind$outboundSchema: z.ZodNativeEnum<
   typeof TimelineEventKind

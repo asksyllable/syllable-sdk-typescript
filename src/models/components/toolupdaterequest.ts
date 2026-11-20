@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,18 +45,20 @@ export const ToolUpdateRequest$inboundSchema: z.ZodType<
   ToolUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  definition: ToolDefinition$inboundSchema,
-  service_id: z.number().int(),
-  id: z.number().int(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "service_id": "serviceId",
-    "last_updated_comments": "lastUpdatedComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    definition: ToolDefinition$inboundSchema,
+    service_id: z.number().int(),
+    id: z.number().int(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "service_id": "serviceId",
+      "last_updated_comments": "lastUpdatedComments",
+    });
+  })
+);
 /** @internal */
 export type ToolUpdateRequest$Outbound = {
   name: string;
@@ -71,18 +73,20 @@ export const ToolUpdateRequest$outboundSchema: z.ZodType<
   ToolUpdateRequest$Outbound,
   z.ZodTypeDef,
   ToolUpdateRequest
-> = z.object({
-  name: z.string(),
-  definition: ToolDefinition$outboundSchema,
-  serviceId: z.number().int(),
-  id: z.number().int(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    serviceId: "service_id",
-    lastUpdatedComments: "last_updated_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    definition: ToolDefinition$outboundSchema,
+    serviceId: z.number().int(),
+    id: z.number().int(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      serviceId: "service_id",
+      lastUpdatedComments: "last_updated_comments",
+    });
+  })
+);
 
 export function toolUpdateRequestToJSON(
   toolUpdateRequest: ToolUpdateRequest,

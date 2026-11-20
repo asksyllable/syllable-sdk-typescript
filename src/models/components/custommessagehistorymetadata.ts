@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,25 +27,29 @@ export const CustomMessageHistoryMetadata$inboundSchema: z.ZodType<
   CustomMessageHistoryMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  custom_message_id: z.number().int(),
-  version_number: z.number().int(),
-  snapshot_schema_version: z.number().int(),
-  operation: z.string(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_by: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  restored_from_version: z.nullable(z.number().int()),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_message_id": "customMessageId",
-    "version_number": "versionNumber",
-    "snapshot_schema_version": "snapshotSchemaVersion",
-    "created_at": "createdAt",
-    "updated_by": "updatedBy",
-    "restored_from_version": "restoredFromVersion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_message_id: z.number().int(),
+    version_number: z.number().int(),
+    snapshot_schema_version: z.number().int(),
+    operation: z.string(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_by: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    restored_from_version: z.nullable(z.number().int()),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_message_id": "customMessageId",
+      "version_number": "versionNumber",
+      "snapshot_schema_version": "snapshotSchemaVersion",
+      "created_at": "createdAt",
+      "updated_by": "updatedBy",
+      "restored_from_version": "restoredFromVersion",
+    });
+  })
+);
 /** @internal */
 export type CustomMessageHistoryMetadata$Outbound = {
   custom_message_id: number;
@@ -63,25 +67,27 @@ export const CustomMessageHistoryMetadata$outboundSchema: z.ZodType<
   CustomMessageHistoryMetadata$Outbound,
   z.ZodTypeDef,
   CustomMessageHistoryMetadata
-> = z.object({
-  customMessageId: z.number().int(),
-  versionNumber: z.number().int(),
-  snapshotSchemaVersion: z.number().int(),
-  operation: z.string(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  updatedBy: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  restoredFromVersion: z.nullable(z.number().int()),
-}).transform((v) => {
-  return remap$(v, {
-    customMessageId: "custom_message_id",
-    versionNumber: "version_number",
-    snapshotSchemaVersion: "snapshot_schema_version",
-    createdAt: "created_at",
-    updatedBy: "updated_by",
-    restoredFromVersion: "restored_from_version",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customMessageId: z.number().int(),
+    versionNumber: z.number().int(),
+    snapshotSchemaVersion: z.number().int(),
+    operation: z.string(),
+    createdAt: z.date().transform(v => v.toISOString()),
+    updatedBy: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    restoredFromVersion: z.nullable(z.number().int()),
+  }).transform((v) => {
+    return remap$(v, {
+      customMessageId: "custom_message_id",
+      versionNumber: "version_number",
+      snapshotSchemaVersion: "snapshot_schema_version",
+      createdAt: "created_at",
+      updatedBy: "updated_by",
+      restoredFromVersion: "restored_from_version",
+    });
+  })
+);
 
 export function customMessageHistoryMetadataToJSON(
   customMessageHistoryMetadata: CustomMessageHistoryMetadata,

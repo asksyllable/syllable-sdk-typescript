@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -73,7 +73,9 @@ export const JsonValue$inboundSchema: z.ZodType<
   JsonValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 /** @internal */
 export type JsonValue$Outbound = string | number | number;
 
@@ -82,7 +84,9 @@ export const JsonValue$outboundSchema: z.ZodType<
   JsonValue$Outbound,
   z.ZodTypeDef,
   JsonValue
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 
 export function jsonValueToJSON(jsonValue: JsonValue): string {
   return JSON.stringify(JsonValue$outboundSchema.parse(jsonValue));
@@ -102,38 +106,42 @@ export const InsightsOutput$inboundSchema: z.ZodType<
   InsightsOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  session_id: z.nullable(z.number().int()).optional(),
-  upload_file_id: z.nullable(z.number().int()).optional(),
-  insight_tool_id: z.number().int(),
-  insight_tool_version: z.number().int(),
-  workflow_id: z.nullable(z.number().int()).optional(),
-  insight_key: z.string(),
-  string_value: z.nullable(z.string()).optional(),
-  numeric_value: z.nullable(z.number()).optional(),
-  json_value: z.record(z.union([z.string(), z.number().int(), z.number()])),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  upload_file_metadata: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-    "upload_file_id": "uploadFileId",
-    "insight_tool_id": "insightToolId",
-    "insight_tool_version": "insightToolVersion",
-    "workflow_id": "workflowId",
-    "insight_key": "insightKey",
-    "string_value": "stringValue",
-    "numeric_value": "numericValue",
-    "json_value": "jsonValue",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "upload_file_metadata": "uploadFileMetadata",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    session_id: z.nullable(z.number().int()).optional(),
+    upload_file_id: z.nullable(z.number().int()).optional(),
+    insight_tool_id: z.number().int(),
+    insight_tool_version: z.number().int(),
+    workflow_id: z.nullable(z.number().int()).optional(),
+    insight_key: z.string(),
+    string_value: z.nullable(z.string()).optional(),
+    numeric_value: z.nullable(z.number()).optional(),
+    json_value: z.record(z.union([z.string(), z.number().int(), z.number()])),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    upload_file_metadata: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+      "upload_file_id": "uploadFileId",
+      "insight_tool_id": "insightToolId",
+      "insight_tool_version": "insightToolVersion",
+      "workflow_id": "workflowId",
+      "insight_key": "insightKey",
+      "string_value": "stringValue",
+      "numeric_value": "numericValue",
+      "json_value": "jsonValue",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "upload_file_metadata": "uploadFileMetadata",
+    });
+  })
+);
 /** @internal */
 export type InsightsOutput$Outbound = {
   id: number;
@@ -156,36 +164,38 @@ export const InsightsOutput$outboundSchema: z.ZodType<
   InsightsOutput$Outbound,
   z.ZodTypeDef,
   InsightsOutput
-> = z.object({
-  id: z.number().int(),
-  sessionId: z.nullable(z.number().int()).optional(),
-  uploadFileId: z.nullable(z.number().int()).optional(),
-  insightToolId: z.number().int(),
-  insightToolVersion: z.number().int(),
-  workflowId: z.nullable(z.number().int()).optional(),
-  insightKey: z.string(),
-  stringValue: z.nullable(z.string()).optional(),
-  numericValue: z.nullable(z.number()).optional(),
-  jsonValue: z.record(z.union([z.string(), z.number().int(), z.number()])),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
-  uploadFileMetadata: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    uploadFileId: "upload_file_id",
-    insightToolId: "insight_tool_id",
-    insightToolVersion: "insight_tool_version",
-    workflowId: "workflow_id",
-    insightKey: "insight_key",
-    stringValue: "string_value",
-    numericValue: "numeric_value",
-    jsonValue: "json_value",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    uploadFileMetadata: "upload_file_metadata",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    sessionId: z.nullable(z.number().int()).optional(),
+    uploadFileId: z.nullable(z.number().int()).optional(),
+    insightToolId: z.number().int(),
+    insightToolVersion: z.number().int(),
+    workflowId: z.nullable(z.number().int()).optional(),
+    insightKey: z.string(),
+    stringValue: z.nullable(z.string()).optional(),
+    numericValue: z.nullable(z.number()).optional(),
+    jsonValue: z.record(z.union([z.string(), z.number().int(), z.number()])),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()).optional(),
+    uploadFileMetadata: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      uploadFileId: "upload_file_id",
+      insightToolId: "insight_tool_id",
+      insightToolVersion: "insight_tool_version",
+      workflowId: "workflow_id",
+      insightKey: "insight_key",
+      stringValue: "string_value",
+      numericValue: "numeric_value",
+      jsonValue: "json_value",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      uploadFileMetadata: "upload_file_metadata",
+    });
+  })
+);
 
 export function insightsOutputToJSON(insightsOutput: InsightsOutput): string {
   return JSON.stringify(InsightsOutput$outboundSchema.parse(insightsOutput));

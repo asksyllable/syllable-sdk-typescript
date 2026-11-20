@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -101,36 +101,38 @@ export const ToolDetailResponse$inboundSchema: z.ZodType<
   ToolDetailResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  definition: ToolDefinition$inboundSchema,
-  service_id: z.number().int(),
-  id: z.number().int(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-  service_name: z.nullable(z.string()).optional(),
-  prompts_info: z.nullable(z.array(ToolPromptInfo$inboundSchema)).optional(),
-  agents_info: z.nullable(z.array(ToolAgentInfo$inboundSchema)).optional(),
-  last_updated: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  last_updated_by: z.string(),
-  version_number: z.number().int(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
-  fields: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "service_id": "serviceId",
-    "last_updated_comments": "lastUpdatedComments",
-    "service_name": "serviceName",
-    "prompts_info": "promptsInfo",
-    "agents_info": "agentsInfo",
-    "last_updated": "lastUpdated",
-    "last_updated_by": "lastUpdatedBy",
-    "version_number": "versionNumber",
-    "validation_issues": "validationIssues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    definition: ToolDefinition$inboundSchema,
+    service_id: z.number().int(),
+    id: z.number().int(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+    service_name: z.nullable(z.string()).optional(),
+    prompts_info: z.nullable(z.array(ToolPromptInfo$inboundSchema)).optional(),
+    agents_info: z.nullable(z.array(ToolAgentInfo$inboundSchema)).optional(),
+    last_updated: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.string(),
+    version_number: z.number().int(),
+    validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+      .optional(),
+    fields: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "service_id": "serviceId",
+      "last_updated_comments": "lastUpdatedComments",
+      "service_name": "serviceName",
+      "prompts_info": "promptsInfo",
+      "agents_info": "agentsInfo",
+      "last_updated": "lastUpdated",
+      "last_updated_by": "lastUpdatedBy",
+      "version_number": "versionNumber",
+      "validation_issues": "validationIssues",
+    });
+  })
+);
 /** @internal */
 export type ToolDetailResponse$Outbound = {
   name: string;
@@ -153,34 +155,36 @@ export const ToolDetailResponse$outboundSchema: z.ZodType<
   ToolDetailResponse$Outbound,
   z.ZodTypeDef,
   ToolDetailResponse
-> = z.object({
-  name: z.string(),
-  definition: ToolDefinition$outboundSchema,
-  serviceId: z.number().int(),
-  id: z.number().int(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-  serviceName: z.nullable(z.string()).optional(),
-  promptsInfo: z.nullable(z.array(ToolPromptInfo$outboundSchema)).optional(),
-  agentsInfo: z.nullable(z.array(ToolAgentInfo$outboundSchema)).optional(),
-  lastUpdated: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.string(),
-  versionNumber: z.number().int(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
-  fields: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    serviceId: "service_id",
-    lastUpdatedComments: "last_updated_comments",
-    serviceName: "service_name",
-    promptsInfo: "prompts_info",
-    agentsInfo: "agents_info",
-    lastUpdated: "last_updated",
-    lastUpdatedBy: "last_updated_by",
-    versionNumber: "version_number",
-    validationIssues: "validation_issues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    definition: ToolDefinition$outboundSchema,
+    serviceId: z.number().int(),
+    id: z.number().int(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+    serviceName: z.nullable(z.string()).optional(),
+    promptsInfo: z.nullable(z.array(ToolPromptInfo$outboundSchema)).optional(),
+    agentsInfo: z.nullable(z.array(ToolAgentInfo$outboundSchema)).optional(),
+    lastUpdated: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.string(),
+    versionNumber: z.number().int(),
+    validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+      .optional(),
+    fields: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      serviceId: "service_id",
+      lastUpdatedComments: "last_updated_comments",
+      serviceName: "service_name",
+      promptsInfo: "prompts_info",
+      agentsInfo: "agents_info",
+      lastUpdated: "last_updated",
+      lastUpdatedBy: "last_updated_by",
+      versionNumber: "version_number",
+      validationIssues: "validation_issues",
+    });
+  })
+);
 
 export function toolDetailResponseToJSON(
   toolDetailResponse: ToolDetailResponse,

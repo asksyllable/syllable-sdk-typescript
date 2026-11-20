@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,9 +16,11 @@ export const ContextTaskMetadata$inboundSchema: z.ZodType<
   ContextTaskMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  priority: z.nullable(z.number().int()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    priority: z.nullable(z.number().int()).optional(),
+  })
+);
 /** @internal */
 export type ContextTaskMetadata$Outbound = {
   priority?: number | null | undefined;
@@ -29,9 +31,11 @@ export const ContextTaskMetadata$outboundSchema: z.ZodType<
   ContextTaskMetadata$Outbound,
   z.ZodTypeDef,
   ContextTaskMetadata
-> = z.object({
-  priority: z.nullable(z.number().int()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    priority: z.nullable(z.number().int()).optional(),
+  })
+);
 
 export function contextTaskMetadataToJSON(
   contextTaskMetadata: ContextTaskMetadata,

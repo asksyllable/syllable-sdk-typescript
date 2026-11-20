@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,15 +33,17 @@ export const ToolBridgePhraseConfig$inboundSchema: z.ZodType<
   ToolBridgePhraseConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_name: z.string(),
-  phrases:
-    LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "tool_name": "toolName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_name: z.string(),
+    phrases:
+      LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_name": "toolName",
+    });
+  })
+);
 /** @internal */
 export type ToolBridgePhraseConfig$Outbound = {
   tool_name: string;
@@ -54,15 +56,17 @@ export const ToolBridgePhraseConfig$outboundSchema: z.ZodType<
   ToolBridgePhraseConfig$Outbound,
   z.ZodTypeDef,
   ToolBridgePhraseConfig
-> = z.object({
-  toolName: z.string(),
-  phrases:
-    LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    toolName: "tool_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolName: z.string(),
+    phrases:
+      LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      toolName: "tool_name",
+    });
+  })
+);
 
 export function toolBridgePhraseConfigToJSON(
   toolBridgePhraseConfig: ToolBridgePhraseConfig,

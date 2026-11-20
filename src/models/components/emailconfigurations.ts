@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,13 +23,15 @@ export const EmailConfigurations$inboundSchema: z.ZodType<
   EmailConfigurations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sending_domain: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "sending_domain": "sendingDomain",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sending_domain: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "sending_domain": "sendingDomain",
+    });
+  })
+);
 /** @internal */
 export type EmailConfigurations$Outbound = {
   sending_domain: string;
@@ -40,13 +42,15 @@ export const EmailConfigurations$outboundSchema: z.ZodType<
   EmailConfigurations$Outbound,
   z.ZodTypeDef,
   EmailConfigurations
-> = z.object({
-  sendingDomain: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    sendingDomain: "sending_domain",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sendingDomain: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      sendingDomain: "sending_domain",
+    });
+  })
+);
 
 export function emailConfigurationsToJSON(
   emailConfigurations: EmailConfigurations,

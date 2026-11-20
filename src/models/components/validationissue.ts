@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -39,8 +39,8 @@ export type ValidationIssue = {
 };
 
 /** @internal */
-export const Severity$inboundSchema: z.ZodNativeEnum<typeof Severity> = z
-  .nativeEnum(Severity);
+export const Severity$inboundSchema: z.ZodNativeEnum<typeof Severity> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Severity));
 /** @internal */
 export const Severity$outboundSchema: z.ZodNativeEnum<typeof Severity> =
   Severity$inboundSchema;
@@ -50,13 +50,15 @@ export const ValidationIssue$inboundSchema: z.ZodType<
   ValidationIssue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  severity: Severity$inboundSchema.default("error"),
-  message: z.string(),
-  path: z.nullable(z.string()).optional(),
-  value: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    severity: Severity$inboundSchema.default("error"),
+    message: z.string(),
+    path: z.nullable(z.string()).optional(),
+    value: z.nullable(z.string()).optional(),
+  })
+);
 /** @internal */
 export type ValidationIssue$Outbound = {
   id: string;
@@ -71,13 +73,15 @@ export const ValidationIssue$outboundSchema: z.ZodType<
   ValidationIssue$Outbound,
   z.ZodTypeDef,
   ValidationIssue
-> = z.object({
-  id: z.string(),
-  severity: Severity$outboundSchema.default("error"),
-  message: z.string(),
-  path: z.nullable(z.string()).optional(),
-  value: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    severity: Severity$outboundSchema.default("error"),
+    message: z.string(),
+    path: z.nullable(z.string()).optional(),
+    value: z.nullable(z.string()).optional(),
+  })
+);
 
 export function validationIssueToJSON(
   validationIssue: ValidationIssue,

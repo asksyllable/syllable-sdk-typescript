@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,13 +20,15 @@ export const BodyOrganizationsDelete$inboundSchema: z.ZodType<
   BodyOrganizationsDelete,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  delete_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "delete_comments": "deleteComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    delete_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "delete_comments": "deleteComments",
+    });
+  })
+);
 /** @internal */
 export type BodyOrganizationsDelete$Outbound = {
   delete_comments?: string | null | undefined;
@@ -37,13 +39,15 @@ export const BodyOrganizationsDelete$outboundSchema: z.ZodType<
   BodyOrganizationsDelete$Outbound,
   z.ZodTypeDef,
   BodyOrganizationsDelete
-> = z.object({
-  deleteComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    deleteComments: "delete_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deleteComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      deleteComments: "delete_comments",
+    });
+  })
+);
 
 export function bodyOrganizationsDeleteToJSON(
   bodyOrganizationsDelete: BodyOrganizationsDelete,

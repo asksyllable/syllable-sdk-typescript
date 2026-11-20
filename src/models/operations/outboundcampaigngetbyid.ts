@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const OutboundCampaignGetByIdRequest$inboundSchema: z.ZodType<
   OutboundCampaignGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  campaign_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "campaign_id": "campaignId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    campaign_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "campaign_id": "campaignId",
+    });
+  })
+);
 /** @internal */
 export type OutboundCampaignGetByIdRequest$Outbound = {
   campaign_id: number;
@@ -34,13 +36,15 @@ export const OutboundCampaignGetByIdRequest$outboundSchema: z.ZodType<
   OutboundCampaignGetByIdRequest$Outbound,
   z.ZodTypeDef,
   OutboundCampaignGetByIdRequest
-> = z.object({
-  campaignId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    campaignId: "campaign_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    campaignId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      campaignId: "campaign_id",
+    });
+  })
+);
 
 export function outboundCampaignGetByIdRequestToJSON(
   outboundCampaignGetByIdRequest: OutboundCampaignGetByIdRequest,

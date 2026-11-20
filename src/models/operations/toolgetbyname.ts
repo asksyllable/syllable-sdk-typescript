@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const ToolGetByNameRequest$inboundSchema: z.ZodType<
   ToolGetByNameRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_name": "toolName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_name: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_name": "toolName",
+    });
+  })
+);
 /** @internal */
 export type ToolGetByNameRequest$Outbound = {
   tool_name: string;
@@ -34,13 +36,15 @@ export const ToolGetByNameRequest$outboundSchema: z.ZodType<
   ToolGetByNameRequest$Outbound,
   z.ZodTypeDef,
   ToolGetByNameRequest
-> = z.object({
-  toolName: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    toolName: "tool_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolName: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolName: "tool_name",
+    });
+  })
+);
 
 export function toolGetByNameRequestToJSON(
   toolGetByNameRequest: ToolGetByNameRequest,

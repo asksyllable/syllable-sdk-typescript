@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const AgentGetByIdRequest$inboundSchema: z.ZodType<
   AgentGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+    });
+  })
+);
 /** @internal */
 export type AgentGetByIdRequest$Outbound = {
   agent_id: number;
@@ -34,13 +36,15 @@ export const AgentGetByIdRequest$outboundSchema: z.ZodType<
   AgentGetByIdRequest$Outbound,
   z.ZodTypeDef,
   AgentGetByIdRequest
-> = z.object({
-  agentId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      agentId: "agent_id",
+    });
+  })
+);
 
 export function agentGetByIdRequestToJSON(
   agentGetByIdRequest: AgentGetByIdRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const OrganizationSipIpRangesDeleteRequest$inboundSchema: z.ZodType<
   OrganizationSipIpRangesDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sip_ip_range_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "sip_ip_range_id": "sipIpRangeId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sip_ip_range_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "sip_ip_range_id": "sipIpRangeId",
+    });
+  })
+);
 /** @internal */
 export type OrganizationSipIpRangesDeleteRequest$Outbound = {
   sip_ip_range_id: number;
@@ -34,13 +36,15 @@ export const OrganizationSipIpRangesDeleteRequest$outboundSchema: z.ZodType<
   OrganizationSipIpRangesDeleteRequest$Outbound,
   z.ZodTypeDef,
   OrganizationSipIpRangesDeleteRequest
-> = z.object({
-  sipIpRangeId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    sipIpRangeId: "sip_ip_range_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sipIpRangeId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      sipIpRangeId: "sip_ip_range_id",
+    });
+  })
+);
 
 export function organizationSipIpRangesDeleteRequestToJSON(
   organizationSipIpRangesDeleteRequest: OrganizationSipIpRangesDeleteRequest,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const LatencyCategory = {
@@ -17,7 +18,7 @@ export type LatencyCategory = ClosedEnum<typeof LatencyCategory>;
 /** @internal */
 export const LatencyCategory$inboundSchema: z.ZodNativeEnum<
   typeof LatencyCategory
-> = z.nativeEnum(LatencyCategory);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(LatencyCategory));
 /** @internal */
 export const LatencyCategory$outboundSchema: z.ZodNativeEnum<
   typeof LatencyCategory

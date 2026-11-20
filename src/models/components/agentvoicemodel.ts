@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -30,7 +31,7 @@ export type AgentVoiceModel = ClosedEnum<typeof AgentVoiceModel>;
 /** @internal */
 export const AgentVoiceModel$inboundSchema: z.ZodNativeEnum<
   typeof AgentVoiceModel
-> = z.nativeEnum(AgentVoiceModel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AgentVoiceModel));
 /** @internal */
 export const AgentVoiceModel$outboundSchema: z.ZodNativeEnum<
   typeof AgentVoiceModel

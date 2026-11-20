@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,20 +32,22 @@ export const CommunicationBatchUpdate$inboundSchema: z.ZodType<
   CommunicationBatchUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paused: z.nullable(z.boolean()).optional(),
-  expires_on: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  call_rate: z.nullable(z.number().int()).optional(),
-  auto_call_rate: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "expires_on": "expiresOn",
-    "call_rate": "callRate",
-    "auto_call_rate": "autoCallRate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paused: z.nullable(z.boolean()).optional(),
+    expires_on: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    call_rate: z.nullable(z.number().int()).optional(),
+    auto_call_rate: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "expires_on": "expiresOn",
+      "call_rate": "callRate",
+      "auto_call_rate": "autoCallRate",
+    });
+  })
+);
 /** @internal */
 export type CommunicationBatchUpdate$Outbound = {
   paused?: boolean | null | undefined;
@@ -59,18 +61,20 @@ export const CommunicationBatchUpdate$outboundSchema: z.ZodType<
   CommunicationBatchUpdate$Outbound,
   z.ZodTypeDef,
   CommunicationBatchUpdate
-> = z.object({
-  paused: z.nullable(z.boolean()).optional(),
-  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  callRate: z.nullable(z.number().int()).optional(),
-  autoCallRate: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    expiresOn: "expires_on",
-    callRate: "call_rate",
-    autoCallRate: "auto_call_rate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paused: z.nullable(z.boolean()).optional(),
+    expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    callRate: z.nullable(z.number().int()).optional(),
+    autoCallRate: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      expiresOn: "expires_on",
+      callRate: "call_rate",
+      autoCallRate: "auto_call_rate",
+    });
+  })
+);
 
 export function communicationBatchUpdateToJSON(
   communicationBatchUpdate: CommunicationBatchUpdate,

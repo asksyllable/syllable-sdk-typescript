@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -43,18 +43,20 @@ export const ScheduleOverride$inboundSchema: z.ZodType<
   ScheduleOverride,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: z.nullable(z.boolean()).optional(),
-  daily_start_time: z.nullable(z.string()).optional(),
-  daily_end_time: z.nullable(z.string()).optional(),
-  max_daily_calls: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "daily_start_time": "dailyStartTime",
-    "daily_end_time": "dailyEndTime",
-    "max_daily_calls": "maxDailyCalls",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: z.nullable(z.boolean()).optional(),
+    daily_start_time: z.nullable(z.string()).optional(),
+    daily_end_time: z.nullable(z.string()).optional(),
+    max_daily_calls: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "daily_start_time": "dailyStartTime",
+      "daily_end_time": "dailyEndTime",
+      "max_daily_calls": "maxDailyCalls",
+    });
+  })
+);
 /** @internal */
 export type ScheduleOverride$Outbound = {
   active?: boolean | null | undefined;
@@ -68,18 +70,20 @@ export const ScheduleOverride$outboundSchema: z.ZodType<
   ScheduleOverride$Outbound,
   z.ZodTypeDef,
   ScheduleOverride
-> = z.object({
-  active: z.nullable(z.boolean()).optional(),
-  dailyStartTime: z.nullable(z.string()).optional(),
-  dailyEndTime: z.nullable(z.string()).optional(),
-  maxDailyCalls: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    dailyStartTime: "daily_start_time",
-    dailyEndTime: "daily_end_time",
-    maxDailyCalls: "max_daily_calls",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: z.nullable(z.boolean()).optional(),
+    dailyStartTime: z.nullable(z.string()).optional(),
+    dailyEndTime: z.nullable(z.string()).optional(),
+    maxDailyCalls: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      dailyStartTime: "daily_start_time",
+      dailyEndTime: "daily_end_time",
+      maxDailyCalls: "max_daily_calls",
+    });
+  })
+);
 
 export function scheduleOverrideToJSON(
   scheduleOverride: ScheduleOverride,

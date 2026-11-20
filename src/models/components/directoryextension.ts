@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,11 +29,13 @@ export const DirectoryExtension$inboundSchema: z.ZodType<
   DirectoryExtension,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  numbers: z.nullable(z.array(DirectoryExtensionNumber$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    numbers: z.nullable(z.array(DirectoryExtensionNumber$inboundSchema))
+      .optional(),
+  })
+);
 /** @internal */
 export type DirectoryExtension$Outbound = {
   name: string;
@@ -45,11 +47,13 @@ export const DirectoryExtension$outboundSchema: z.ZodType<
   DirectoryExtension$Outbound,
   z.ZodTypeDef,
   DirectoryExtension
-> = z.object({
-  name: z.string(),
-  numbers: z.nullable(z.array(DirectoryExtensionNumber$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    numbers: z.nullable(z.array(DirectoryExtensionNumber$outboundSchema))
+      .optional(),
+  })
+);
 
 export function directoryExtensionToJSON(
   directoryExtension: DirectoryExtension,

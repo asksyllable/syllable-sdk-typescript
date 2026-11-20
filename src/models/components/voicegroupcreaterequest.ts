@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,17 +41,19 @@ export const VoiceGroupCreateRequest$inboundSchema: z.ZodType<
   VoiceGroupCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  language_configs: z.array(LanguageConfig$inboundSchema),
-  skip_current_language_in_message: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    "language_configs": "languageConfigs",
-    "skip_current_language_in_message": "skipCurrentLanguageInMessage",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    language_configs: z.array(LanguageConfig$inboundSchema),
+    skip_current_language_in_message: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      "language_configs": "languageConfigs",
+      "skip_current_language_in_message": "skipCurrentLanguageInMessage",
+    });
+  })
+);
 /** @internal */
 export type VoiceGroupCreateRequest$Outbound = {
   name: string;
@@ -65,17 +67,19 @@ export const VoiceGroupCreateRequest$outboundSchema: z.ZodType<
   VoiceGroupCreateRequest$Outbound,
   z.ZodTypeDef,
   VoiceGroupCreateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  languageConfigs: z.array(LanguageConfig$outboundSchema),
-  skipCurrentLanguageInMessage: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    languageConfigs: "language_configs",
-    skipCurrentLanguageInMessage: "skip_current_language_in_message",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    languageConfigs: z.array(LanguageConfig$outboundSchema),
+    skipCurrentLanguageInMessage: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      languageConfigs: "language_configs",
+      skipCurrentLanguageInMessage: "skip_current_language_in_message",
+    });
+  })
+);
 
 export function voiceGroupCreateRequestToJSON(
   voiceGroupCreateRequest: VoiceGroupCreateRequest,

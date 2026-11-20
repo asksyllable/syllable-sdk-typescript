@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -105,13 +105,15 @@ export const Expression1$inboundSchema: z.ZodType<
   Expression1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CelExpression$inboundSchema,
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$inboundSchema,
+    JMESPathExpression$inboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 /** @internal */
 export type Expression1$Outbound =
   | CelExpression$Outbound
@@ -123,13 +125,15 @@ export const Expression1$outboundSchema: z.ZodType<
   Expression1$Outbound,
   z.ZodTypeDef,
   Expression1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function expression1ToJSON(expression1: Expression1): string {
   return JSON.stringify(Expression1$outboundSchema.parse(expression1));
@@ -149,17 +153,19 @@ export const Expression$inboundSchema: z.ZodType<
   Expression,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type Expression$Outbound =
   | CaseExpression$Outbound
@@ -173,17 +179,21 @@ export const Expression$outboundSchema: z.ZodType<
   Expression$Outbound,
   z.ZodTypeDef,
   Expression
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function expressionToJSON(expression: Expression): string {
   return JSON.stringify(Expression$outboundSchema.parse(expression));
@@ -203,33 +213,35 @@ export const ExpressionTask$inboundSchema: z.ZodType<
   ExpressionTask,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("expression"),
-  version: z.literal("v1alpha").default("v1alpha"),
-  inputs: z.array(InputParameter$inboundSchema).optional(),
-  expression: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
+    type: z.literal("expression"),
+    version: z.literal("v1alpha").default("v1alpha"),
+    inputs: z.array(InputParameter$inboundSchema).optional(),
+    expression: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  output: z.nullable(z.any()).optional(),
-  on: ExpressionTaskEvents$inboundSchema.optional(),
-});
+    ).optional(),
+    output: z.nullable(z.any()).optional(),
+    on: ExpressionTaskEvents$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ExpressionTask$Outbound = {
   id?: string | null | undefined;
@@ -257,33 +269,35 @@ export const ExpressionTask$outboundSchema: z.ZodType<
   ExpressionTask$Outbound,
   z.ZodTypeDef,
   ExpressionTask
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("expression"),
-  version: z.literal("v1alpha").default("v1alpha" as const),
-  inputs: z.array(InputParameter$outboundSchema).optional(),
-  expression: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
+    type: z.literal("expression"),
+    version: z.literal("v1alpha").default("v1alpha" as const),
+    inputs: z.array(InputParameter$outboundSchema).optional(),
+    expression: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  output: z.nullable(z.any()).optional(),
-  on: ExpressionTaskEvents$outboundSchema.optional(),
-});
+    ).optional(),
+    output: z.nullable(z.any()).optional(),
+    on: ExpressionTaskEvents$outboundSchema.optional(),
+  })
+);
 
 export function expressionTaskToJSON(expressionTask: ExpressionTask): string {
   return JSON.stringify(ExpressionTask$outboundSchema.parse(expressionTask));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,21 +38,23 @@ export const PromptReasoningPolicy$inboundSchema: z.ZodType<
   PromptReasoningPolicy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eligible: z.boolean().default(false),
-  endpoint: z.nullable(ReasoningEndpoint$inboundSchema).optional(),
-  parallel_tool_calls: z.boolean().default(false),
-  allowed_efforts: z.array(ReasoningEffort$inboundSchema).optional(),
-  default_effort: z.nullable(ReasoningEffort$inboundSchema).optional(),
-  disabled_reason: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "parallel_tool_calls": "parallelToolCalls",
-    "allowed_efforts": "allowedEfforts",
-    "default_effort": "defaultEffort",
-    "disabled_reason": "disabledReason",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eligible: z.boolean().default(false),
+    endpoint: z.nullable(ReasoningEndpoint$inboundSchema).optional(),
+    parallel_tool_calls: z.boolean().default(false),
+    allowed_efforts: z.array(ReasoningEffort$inboundSchema).optional(),
+    default_effort: z.nullable(ReasoningEffort$inboundSchema).optional(),
+    disabled_reason: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "parallel_tool_calls": "parallelToolCalls",
+      "allowed_efforts": "allowedEfforts",
+      "default_effort": "defaultEffort",
+      "disabled_reason": "disabledReason",
+    });
+  })
+);
 /** @internal */
 export type PromptReasoningPolicy$Outbound = {
   eligible: boolean;
@@ -68,21 +70,23 @@ export const PromptReasoningPolicy$outboundSchema: z.ZodType<
   PromptReasoningPolicy$Outbound,
   z.ZodTypeDef,
   PromptReasoningPolicy
-> = z.object({
-  eligible: z.boolean().default(false),
-  endpoint: z.nullable(ReasoningEndpoint$outboundSchema).optional(),
-  parallelToolCalls: z.boolean().default(false),
-  allowedEfforts: z.array(ReasoningEffort$outboundSchema).optional(),
-  defaultEffort: z.nullable(ReasoningEffort$outboundSchema).optional(),
-  disabledReason: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    parallelToolCalls: "parallel_tool_calls",
-    allowedEfforts: "allowed_efforts",
-    defaultEffort: "default_effort",
-    disabledReason: "disabled_reason",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eligible: z.boolean().default(false),
+    endpoint: z.nullable(ReasoningEndpoint$outboundSchema).optional(),
+    parallelToolCalls: z.boolean().default(false),
+    allowedEfforts: z.array(ReasoningEffort$outboundSchema).optional(),
+    defaultEffort: z.nullable(ReasoningEffort$outboundSchema).optional(),
+    disabledReason: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      parallelToolCalls: "parallel_tool_calls",
+      allowedEfforts: "allowed_efforts",
+      defaultEffort: "default_effort",
+      disabledReason: "disabled_reason",
+    });
+  })
+);
 
 export function promptReasoningPolicyToJSON(
   promptReasoningPolicy: PromptReasoningPolicy,

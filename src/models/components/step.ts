@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -77,7 +77,9 @@ export const Instructions$inboundSchema: z.ZodType<
   Instructions,
   z.ZodTypeDef,
   unknown
-> = z.union([ConditionalText$inboundSchema, z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([ConditionalText$inboundSchema, z.string()])
+);
 /** @internal */
 export type Instructions$Outbound = ConditionalText$Outbound | string;
 
@@ -86,7 +88,9 @@ export const Instructions$outboundSchema: z.ZodType<
   Instructions$Outbound,
   z.ZodTypeDef,
   Instructions
-> = z.union([ConditionalText$outboundSchema, z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([ConditionalText$outboundSchema, z.string()])
+);
 
 export function instructionsToJSON(instructions: Instructions): string {
   return JSON.stringify(Instructions$outboundSchema.parse(instructions));
@@ -102,14 +106,18 @@ export function instructionsFromJSON(
 }
 
 /** @internal */
-export const Next$inboundSchema: z.ZodType<Next, z.ZodTypeDef, unknown> = z
-  .union([NextStep$inboundSchema, z.string()]);
+export const Next$inboundSchema: z.ZodType<Next, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([NextStep$inboundSchema, z.string()])
+  );
 /** @internal */
 export type Next$Outbound = NextStep$Outbound | string;
 
 /** @internal */
 export const Next$outboundSchema: z.ZodType<Next$Outbound, z.ZodTypeDef, Next> =
-  z.union([NextStep$outboundSchema, z.string()]);
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([NextStep$outboundSchema, z.string()])
+  );
 
 export function nextToJSON(next: Next): string {
   return JSON.stringify(Next$outboundSchema.parse(next));
@@ -125,17 +133,20 @@ export function nextFromJSON(
 }
 
 /** @internal */
-export const Step$inboundSchema: z.ZodType<Step, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    goal: z.string(),
-    instructions: z.array(z.union([ConditionalText$inboundSchema, z.string()]))
-      .optional(),
-    tools: StepTools$inboundSchema.optional(),
-    inputs: z.array(InputParameter$inboundSchema).optional(),
-    on: StepEventActions$inboundSchema.optional(),
-    next: z.array(z.union([NextStep$inboundSchema, z.string()])).optional(),
-  });
+export const Step$inboundSchema: z.ZodType<Step, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      goal: z.string(),
+      instructions: z.array(
+        z.union([ConditionalText$inboundSchema, z.string()]),
+      ).optional(),
+      tools: StepTools$inboundSchema.optional(),
+      inputs: z.array(InputParameter$inboundSchema).optional(),
+      on: StepEventActions$inboundSchema.optional(),
+      next: z.array(z.union([NextStep$inboundSchema, z.string()])).optional(),
+    })
+  );
 /** @internal */
 export type Step$Outbound = {
   id: string;
@@ -149,16 +160,19 @@ export type Step$Outbound = {
 
 /** @internal */
 export const Step$outboundSchema: z.ZodType<Step$Outbound, z.ZodTypeDef, Step> =
-  z.object({
-    id: z.string(),
-    goal: z.string(),
-    instructions: z.array(z.union([ConditionalText$outboundSchema, z.string()]))
-      .optional(),
-    tools: StepTools$outboundSchema.optional(),
-    inputs: z.array(InputParameter$outboundSchema).optional(),
-    on: StepEventActions$outboundSchema.optional(),
-    next: z.array(z.union([NextStep$outboundSchema, z.string()])).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      goal: z.string(),
+      instructions: z.array(
+        z.union([ConditionalText$outboundSchema, z.string()]),
+      ).optional(),
+      tools: StepTools$outboundSchema.optional(),
+      inputs: z.array(InputParameter$outboundSchema).optional(),
+      on: StepEventActions$outboundSchema.optional(),
+      next: z.array(z.union([NextStep$outboundSchema, z.string()])).optional(),
+    })
+  );
 
 export function stepToJSON(step: Step): string {
   return JSON.stringify(Step$outboundSchema.parse(step));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,11 +21,13 @@ export const DictionaryMetadata$inboundSchema: z.ZodType<
   DictionaryMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entries: z.number().int(),
-  hash: z.string(),
-  source: z.string().default(""),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entries: z.number().int(),
+    hash: z.string(),
+    source: z.string().default(""),
+  })
+);
 /** @internal */
 export type DictionaryMetadata$Outbound = {
   entries: number;
@@ -38,11 +40,13 @@ export const DictionaryMetadata$outboundSchema: z.ZodType<
   DictionaryMetadata$Outbound,
   z.ZodTypeDef,
   DictionaryMetadata
-> = z.object({
-  entries: z.number().int(),
-  hash: z.string(),
-  source: z.string().default(""),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entries: z.number().int(),
+    hash: z.string(),
+    source: z.string().default(""),
+  })
+);
 
 export function dictionaryMetadataToJSON(
   dictionaryMetadata: DictionaryMetadata,

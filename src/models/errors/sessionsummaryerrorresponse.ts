@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
 export type SessionSummaryErrorResponseData = {
@@ -35,19 +36,21 @@ export const SessionSummaryErrorResponse$inboundSchema: z.ZodType<
   SessionSummaryErrorResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new SessionSummaryErrorResponse(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new SessionSummaryErrorResponse(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type SessionSummaryErrorResponse$Outbound = {
@@ -59,8 +62,10 @@ export const SessionSummaryErrorResponse$outboundSchema: z.ZodType<
   SessionSummaryErrorResponse$Outbound,
   z.ZodTypeDef,
   SessionSummaryErrorResponse
-> = z.instanceof(SessionSummaryErrorResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    detail: z.string(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(SessionSummaryErrorResponse)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      detail: z.string(),
+    }))
+);

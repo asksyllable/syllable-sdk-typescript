@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -51,18 +51,20 @@ export const SupportedLlmReasoningCombination$inboundSchema: z.ZodType<
   SupportedLlmReasoningCombination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endpoint: ReasoningEndpoint$inboundSchema,
-  tool_mode: ReasoningToolMode$inboundSchema,
-  allowed_efforts: z.array(ReasoningEffort$inboundSchema),
-  unverified_efforts: z.array(ReasoningEffort$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_mode": "toolMode",
-    "allowed_efforts": "allowedEfforts",
-    "unverified_efforts": "unverifiedEfforts",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endpoint: ReasoningEndpoint$inboundSchema,
+    tool_mode: ReasoningToolMode$inboundSchema,
+    allowed_efforts: z.array(ReasoningEffort$inboundSchema),
+    unverified_efforts: z.array(ReasoningEffort$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_mode": "toolMode",
+      "allowed_efforts": "allowedEfforts",
+      "unverified_efforts": "unverifiedEfforts",
+    });
+  })
+);
 /** @internal */
 export type SupportedLlmReasoningCombination$Outbound = {
   endpoint: string;
@@ -76,18 +78,20 @@ export const SupportedLlmReasoningCombination$outboundSchema: z.ZodType<
   SupportedLlmReasoningCombination$Outbound,
   z.ZodTypeDef,
   SupportedLlmReasoningCombination
-> = z.object({
-  endpoint: ReasoningEndpoint$outboundSchema,
-  toolMode: ReasoningToolMode$outboundSchema,
-  allowedEfforts: z.array(ReasoningEffort$outboundSchema),
-  unverifiedEfforts: z.array(ReasoningEffort$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    toolMode: "tool_mode",
-    allowedEfforts: "allowed_efforts",
-    unverifiedEfforts: "unverified_efforts",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endpoint: ReasoningEndpoint$outboundSchema,
+    toolMode: ReasoningToolMode$outboundSchema,
+    allowedEfforts: z.array(ReasoningEffort$outboundSchema),
+    unverifiedEfforts: z.array(ReasoningEffort$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolMode: "tool_mode",
+      allowedEfforts: "allowed_efforts",
+      unverifiedEfforts: "unverified_efforts",
+    });
+  })
+);
 
 export function supportedLlmReasoningCombinationToJSON(
   supportedLlmReasoningCombination: SupportedLlmReasoningCombination,

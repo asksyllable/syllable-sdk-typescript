@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,15 +25,17 @@ export const BodyPronunciationsUploadCsvFile$inboundSchema: z.ZodType<
   BodyPronunciationsUploadCsvFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 /** @internal */
 export type BodyPronunciationsUploadCsvFile$Outbound = {
   fileName: string;
@@ -45,15 +47,17 @@ export const BodyPronunciationsUploadCsvFile$outboundSchema: z.ZodType<
   BodyPronunciationsUploadCsvFile$Outbound,
   z.ZodTypeDef,
   BodyPronunciationsUploadCsvFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function bodyPronunciationsUploadCsvFileToJSON(
   bodyPronunciationsUploadCsvFile: BodyPronunciationsUploadCsvFile,
@@ -79,9 +83,11 @@ export const BodyPronunciationsUploadCsv$inboundSchema: z.ZodType<
   BodyPronunciationsUploadCsv,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file: z.lazy(() => BodyPronunciationsUploadCsvFile$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyPronunciationsUploadCsvFile$inboundSchema),
+  })
+);
 /** @internal */
 export type BodyPronunciationsUploadCsv$Outbound = {
   file: BodyPronunciationsUploadCsvFile$Outbound | Blob;
@@ -92,11 +98,13 @@ export const BodyPronunciationsUploadCsv$outboundSchema: z.ZodType<
   BodyPronunciationsUploadCsv$Outbound,
   z.ZodTypeDef,
   BodyPronunciationsUploadCsv
-> = z.object({
-  file: z.lazy(() => BodyPronunciationsUploadCsvFile$outboundSchema).or(
-    blobLikeSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyPronunciationsUploadCsvFile$outboundSchema).or(
+      blobLikeSchema,
+    ),
+  })
+);
 
 export function bodyPronunciationsUploadCsvToJSON(
   bodyPronunciationsUploadCsv: BodyPronunciationsUploadCsv,

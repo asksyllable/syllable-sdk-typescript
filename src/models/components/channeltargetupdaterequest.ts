@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -52,23 +52,25 @@ export const ChannelTargetUpdateRequest$inboundSchema: z.ZodType<
   ChannelTargetUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.number().int(),
-  channel_id: z.number().int(),
-  target: z.string(),
-  target_mode: TargetModes$inboundSchema,
-  fallback_target: z.nullable(z.string()).optional(),
-  is_test: z.boolean().default(false),
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-    "channel_id": "channelId",
-    "target_mode": "targetMode",
-    "fallback_target": "fallbackTarget",
-    "is_test": "isTest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.number().int(),
+    channel_id: z.number().int(),
+    target: z.string(),
+    target_mode: TargetModes$inboundSchema,
+    fallback_target: z.nullable(z.string()).optional(),
+    is_test: z.boolean().default(false),
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+      "channel_id": "channelId",
+      "target_mode": "targetMode",
+      "fallback_target": "fallbackTarget",
+      "is_test": "isTest",
+    });
+  })
+);
 /** @internal */
 export type ChannelTargetUpdateRequest$Outbound = {
   agent_id: number;
@@ -85,23 +87,25 @@ export const ChannelTargetUpdateRequest$outboundSchema: z.ZodType<
   ChannelTargetUpdateRequest$Outbound,
   z.ZodTypeDef,
   ChannelTargetUpdateRequest
-> = z.object({
-  agentId: z.number().int(),
-  channelId: z.number().int(),
-  target: z.string(),
-  targetMode: TargetModes$outboundSchema,
-  fallbackTarget: z.nullable(z.string()).optional(),
-  isTest: z.boolean().default(false),
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-    channelId: "channel_id",
-    targetMode: "target_mode",
-    fallbackTarget: "fallback_target",
-    isTest: "is_test",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.number().int(),
+    channelId: z.number().int(),
+    target: z.string(),
+    targetMode: TargetModes$outboundSchema,
+    fallbackTarget: z.nullable(z.string()).optional(),
+    isTest: z.boolean().default(false),
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      agentId: "agent_id",
+      channelId: "channel_id",
+      targetMode: "target_mode",
+      fallbackTarget: "fallback_target",
+      isTest: "is_test",
+    });
+  })
+);
 
 export function channelTargetUpdateRequestToJSON(
   channelTargetUpdateRequest: ChannelTargetUpdateRequest,

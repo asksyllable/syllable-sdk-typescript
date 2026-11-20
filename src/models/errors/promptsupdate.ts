@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import {
   PromptReasoningErrorResponse,
@@ -31,10 +31,12 @@ export const PromptsUpdateResponse422PromptsUpdate$inboundSchema: z.ZodType<
   PromptsUpdateResponse422PromptsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  PromptReasoningErrorResponse$inboundSchema,
-  PromptSchemaValidationErrorResponse$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    PromptReasoningErrorResponse$inboundSchema,
+    PromptSchemaValidationErrorResponse$inboundSchema,
+  ])
+);
 /** @internal */
 export type PromptsUpdateResponse422PromptsUpdate$Outbound =
   | PromptReasoningErrorResponse$Outbound
@@ -45,10 +47,12 @@ export const PromptsUpdateResponse422PromptsUpdate$outboundSchema: z.ZodType<
   PromptsUpdateResponse422PromptsUpdate$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  PromptReasoningErrorResponse$outboundSchema,
-  PromptSchemaValidationErrorResponse$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    PromptReasoningErrorResponse$outboundSchema,
+    PromptSchemaValidationErrorResponse$outboundSchema,
+  ])
+);
 
 export function promptsUpdateResponse422PromptsUpdateToJSON(
   promptsUpdateResponse422PromptsUpdate: PromptsUpdateResponse422PromptsUpdate,

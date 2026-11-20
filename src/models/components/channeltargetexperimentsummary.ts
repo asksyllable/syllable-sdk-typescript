@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -52,27 +52,29 @@ export const ChannelTargetExperimentSummary$inboundSchema: z.ZodType<
   ChannelTargetExperimentSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  status: ExperimentStatus$inboundSchema,
-  weight: z.nullable(z.number().int()).optional(),
-  started_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  scheduled_start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  scheduled_end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "started_at": "startedAt",
-    "scheduled_start_time": "scheduledStartTime",
-    "scheduled_end_time": "scheduledEndTime",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    status: ExperimentStatus$inboundSchema,
+    weight: z.nullable(z.number().int()).optional(),
+    started_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    scheduled_start_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    scheduled_end_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "started_at": "startedAt",
+      "scheduled_start_time": "scheduledStartTime",
+      "scheduled_end_time": "scheduledEndTime",
+    });
+  })
+);
 /** @internal */
 export type ChannelTargetExperimentSummary$Outbound = {
   id: number;
@@ -89,23 +91,25 @@ export const ChannelTargetExperimentSummary$outboundSchema: z.ZodType<
   ChannelTargetExperimentSummary$Outbound,
   z.ZodTypeDef,
   ChannelTargetExperimentSummary
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  status: ExperimentStatus$outboundSchema,
-  weight: z.nullable(z.number().int()).optional(),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    startedAt: "started_at",
-    scheduledStartTime: "scheduled_start_time",
-    scheduledEndTime: "scheduled_end_time",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    status: ExperimentStatus$outboundSchema,
+    weight: z.nullable(z.number().int()).optional(),
+    startedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      startedAt: "started_at",
+      scheduledStartTime: "scheduled_start_time",
+      scheduledEndTime: "scheduled_end_time",
+    });
+  })
+);
 
 export function channelTargetExperimentSummaryToJSON(
   channelTargetExperimentSummary: ChannelTargetExperimentSummary,

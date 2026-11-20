@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,16 +35,18 @@ export const DashboardResponse$inboundSchema: z.ZodType<
   DashboardResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  display_name: z.string(),
-  rank: z.number().int(),
-  label: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    display_name: z.string(),
+    rank: z.number().int(),
+    label: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+    });
+  })
+);
 /** @internal */
 export type DashboardResponse$Outbound = {
   name: string;
@@ -58,16 +60,18 @@ export const DashboardResponse$outboundSchema: z.ZodType<
   DashboardResponse$Outbound,
   z.ZodTypeDef,
   DashboardResponse
-> = z.object({
-  name: z.string(),
-  displayName: z.string(),
-  rank: z.number().int(),
-  label: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    displayName: z.string(),
+    rank: z.number().int(),
+    label: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+    });
+  })
+);
 
 export function dashboardResponseToJSON(
   dashboardResponse: DashboardResponse,

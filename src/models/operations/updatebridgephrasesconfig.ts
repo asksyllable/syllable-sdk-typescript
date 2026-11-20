@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,17 +26,19 @@ export const UpdateBridgePhrasesConfigRequest$inboundSchema: z.ZodType<
   UpdateBridgePhrasesConfigRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.nullable(z.number().int()).optional(),
-  tool_name: z.nullable(z.string()).optional(),
-  BridgePhrasesConfig: components.BridgePhrasesConfig$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-    "tool_name": "toolName",
-    "BridgePhrasesConfig": "bridgePhrasesConfig",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.nullable(z.number().int()).optional(),
+    tool_name: z.nullable(z.string()).optional(),
+    BridgePhrasesConfig: components.BridgePhrasesConfig$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+      "tool_name": "toolName",
+      "BridgePhrasesConfig": "bridgePhrasesConfig",
+    });
+  })
+);
 /** @internal */
 export type UpdateBridgePhrasesConfigRequest$Outbound = {
   agent_id?: number | null | undefined;
@@ -49,17 +51,19 @@ export const UpdateBridgePhrasesConfigRequest$outboundSchema: z.ZodType<
   UpdateBridgePhrasesConfigRequest$Outbound,
   z.ZodTypeDef,
   UpdateBridgePhrasesConfigRequest
-> = z.object({
-  agentId: z.nullable(z.number().int()).optional(),
-  toolName: z.nullable(z.string()).optional(),
-  bridgePhrasesConfig: components.BridgePhrasesConfig$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-    toolName: "tool_name",
-    bridgePhrasesConfig: "BridgePhrasesConfig",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.nullable(z.number().int()).optional(),
+    toolName: z.nullable(z.string()).optional(),
+    bridgePhrasesConfig: components.BridgePhrasesConfig$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      agentId: "agent_id",
+      toolName: "tool_name",
+      bridgePhrasesConfig: "BridgePhrasesConfig",
+    });
+  })
+);
 
 export function updateBridgePhrasesConfigRequestToJSON(
   updateBridgePhrasesConfigRequest: UpdateBridgePhrasesConfigRequest,

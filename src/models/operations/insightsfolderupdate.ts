@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const InsightsFolderUpdateRequest$inboundSchema: z.ZodType<
   InsightsFolderUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  folder_id: z.number().int(),
-  InsightsFolderInput: components.InsightsFolderInput$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "folder_id": "folderId",
-    "InsightsFolderInput": "insightsFolderInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folder_id: z.number().int(),
+    InsightsFolderInput: components.InsightsFolderInput$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "folder_id": "folderId",
+      "InsightsFolderInput": "insightsFolderInput",
+    });
+  })
+);
 /** @internal */
 export type InsightsFolderUpdateRequest$Outbound = {
   folder_id: number;
@@ -39,15 +41,17 @@ export const InsightsFolderUpdateRequest$outboundSchema: z.ZodType<
   InsightsFolderUpdateRequest$Outbound,
   z.ZodTypeDef,
   InsightsFolderUpdateRequest
-> = z.object({
-  folderId: z.number().int(),
-  insightsFolderInput: components.InsightsFolderInput$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    folderId: "folder_id",
-    insightsFolderInput: "InsightsFolderInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folderId: z.number().int(),
+    insightsFolderInput: components.InsightsFolderInput$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      folderId: "folder_id",
+      insightsFolderInput: "InsightsFolderInput",
+    });
+  })
+);
 
 export function insightsFolderUpdateRequestToJSON(
   insightsFolderUpdateRequest: InsightsFolderUpdateRequest,

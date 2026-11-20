@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,18 +26,20 @@ export const InsightWorkflowStep$inboundSchema: z.ZodType<
   InsightWorkflowStep,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  step_id: z.string(),
-  insight_tool_id: z.number().int(),
-  conditions: z.nullable(InsightToolConditionGroup$inboundSchema).optional(),
-  transcript_source_step_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "step_id": "stepId",
-    "insight_tool_id": "insightToolId",
-    "transcript_source_step_id": "transcriptSourceStepId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    step_id: z.string(),
+    insight_tool_id: z.number().int(),
+    conditions: z.nullable(InsightToolConditionGroup$inboundSchema).optional(),
+    transcript_source_step_id: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "step_id": "stepId",
+      "insight_tool_id": "insightToolId",
+      "transcript_source_step_id": "transcriptSourceStepId",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowStep$Outbound = {
   step_id: string;
@@ -51,18 +53,20 @@ export const InsightWorkflowStep$outboundSchema: z.ZodType<
   InsightWorkflowStep$Outbound,
   z.ZodTypeDef,
   InsightWorkflowStep
-> = z.object({
-  stepId: z.string(),
-  insightToolId: z.number().int(),
-  conditions: z.nullable(InsightToolConditionGroup$outboundSchema).optional(),
-  transcriptSourceStepId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    stepId: "step_id",
-    insightToolId: "insight_tool_id",
-    transcriptSourceStepId: "transcript_source_step_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    stepId: z.string(),
+    insightToolId: z.number().int(),
+    conditions: z.nullable(InsightToolConditionGroup$outboundSchema).optional(),
+    transcriptSourceStepId: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      stepId: "step_id",
+      insightToolId: "insight_tool_id",
+      transcriptSourceStepId: "transcript_source_step_id",
+    });
+  })
+);
 
 export function insightWorkflowStepToJSON(
   insightWorkflowStep: InsightWorkflowStep,

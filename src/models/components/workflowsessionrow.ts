@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -67,7 +67,9 @@ export type WorkflowSessionRow = {
 /** @internal */
 export const WorkflowSessionRowFormatVersion$inboundSchema: z.ZodNativeEnum<
   typeof WorkflowSessionRowFormatVersion
-> = z.nativeEnum(WorkflowSessionRowFormatVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(WorkflowSessionRowFormatVersion)
+);
 /** @internal */
 export const WorkflowSessionRowFormatVersion$outboundSchema: z.ZodNativeEnum<
   typeof WorkflowSessionRowFormatVersion
@@ -78,7 +80,7 @@ export const WorkflowSessionRowStepOutcomes$inboundSchema: z.ZodType<
   WorkflowSessionRowStepOutcomes,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type WorkflowSessionRowStepOutcomes$Outbound = {};
 
@@ -87,7 +89,7 @@ export const WorkflowSessionRowStepOutcomes$outboundSchema: z.ZodType<
   WorkflowSessionRowStepOutcomes$Outbound,
   z.ZodTypeDef,
   WorkflowSessionRowStepOutcomes
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function workflowSessionRowStepOutcomesToJSON(
   workflowSessionRowStepOutcomes: WorkflowSessionRowStepOutcomes,
@@ -113,31 +115,35 @@ export const WorkflowSessionRow$inboundSchema: z.ZodType<
   WorkflowSessionRow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  execution_id: z.nullable(z.number().int()).optional(),
-  format_version: WorkflowSessionRowFormatVersion$inboundSchema.default(1),
-  step_outcomes: z.array(
-    z.lazy(() => WorkflowSessionRowStepOutcomes$inboundSchema),
-  ).optional(),
-  session_id: z.number().int(),
-  analyzed_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  queued_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: z.string(),
-  error_message: z.nullable(z.string()).optional(),
-  results: z.record(z.record(z.array(z.any()))).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "execution_id": "executionId",
-    "format_version": "formatVersion",
-    "step_outcomes": "stepOutcomes",
-    "session_id": "sessionId",
-    "analyzed_at": "analyzedAt",
-    "queued_at": "queuedAt",
-    "error_message": "errorMessage",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    execution_id: z.nullable(z.number().int()).optional(),
+    format_version: WorkflowSessionRowFormatVersion$inboundSchema.default(1),
+    step_outcomes: z.array(
+      z.lazy(() => WorkflowSessionRowStepOutcomes$inboundSchema),
+    ).optional(),
+    session_id: z.number().int(),
+    analyzed_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    queued_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: z.string(),
+    error_message: z.nullable(z.string()).optional(),
+    results: z.record(z.record(z.array(z.any()))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "execution_id": "executionId",
+      "format_version": "formatVersion",
+      "step_outcomes": "stepOutcomes",
+      "session_id": "sessionId",
+      "analyzed_at": "analyzedAt",
+      "queued_at": "queuedAt",
+      "error_message": "errorMessage",
+    });
+  })
+);
 /** @internal */
 export type WorkflowSessionRow$Outbound = {
   execution_id?: number | null | undefined;
@@ -156,29 +162,31 @@ export const WorkflowSessionRow$outboundSchema: z.ZodType<
   WorkflowSessionRow$Outbound,
   z.ZodTypeDef,
   WorkflowSessionRow
-> = z.object({
-  executionId: z.nullable(z.number().int()).optional(),
-  formatVersion: WorkflowSessionRowFormatVersion$outboundSchema.default(1),
-  stepOutcomes: z.array(
-    z.lazy(() => WorkflowSessionRowStepOutcomes$outboundSchema),
-  ).optional(),
-  sessionId: z.number().int(),
-  analyzedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  queuedAt: z.date().transform(v => v.toISOString()),
-  status: z.string(),
-  errorMessage: z.nullable(z.string()).optional(),
-  results: z.record(z.record(z.array(z.any()))).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    executionId: "execution_id",
-    formatVersion: "format_version",
-    stepOutcomes: "step_outcomes",
-    sessionId: "session_id",
-    analyzedAt: "analyzed_at",
-    queuedAt: "queued_at",
-    errorMessage: "error_message",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    executionId: z.nullable(z.number().int()).optional(),
+    formatVersion: WorkflowSessionRowFormatVersion$outboundSchema.default(1),
+    stepOutcomes: z.array(
+      z.lazy(() => WorkflowSessionRowStepOutcomes$outboundSchema),
+    ).optional(),
+    sessionId: z.number().int(),
+    analyzedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    queuedAt: z.date().transform(v => v.toISOString()),
+    status: z.string(),
+    errorMessage: z.nullable(z.string()).optional(),
+    results: z.record(z.record(z.array(z.any()))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      executionId: "execution_id",
+      formatVersion: "format_version",
+      stepOutcomes: "step_outcomes",
+      sessionId: "session_id",
+      analyzedAt: "analyzed_at",
+      queuedAt: "queued_at",
+      errorMessage: "error_message",
+    });
+  })
+);
 
 export function workflowSessionRowToJSON(
   workflowSessionRow: WorkflowSessionRow,

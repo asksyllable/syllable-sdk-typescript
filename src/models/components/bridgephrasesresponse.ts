@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -80,26 +80,30 @@ export const BridgePhrasesResponse$inboundSchema: z.ZodType<
   BridgePhrasesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  config: BridgePhrasesConfigPayload$inboundSchema.optional(),
-  is_default: z.boolean().default(false),
-  id: z.number().int(),
-  edit_comments: z.nullable(z.string()).optional(),
-  agents_info: z.nullable(z.array(BridgePhrasesAgentInfo$inboundSchema))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  last_updated_by: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "is_default": "isDefault",
-    "edit_comments": "editComments",
-    "agents_info": "agentsInfo",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    config: BridgePhrasesConfigPayload$inboundSchema.optional(),
+    is_default: z.boolean().default(false),
+    id: z.number().int(),
+    edit_comments: z.nullable(z.string()).optional(),
+    agents_info: z.nullable(z.array(BridgePhrasesAgentInfo$inboundSchema))
+      .optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "is_default": "isDefault",
+      "edit_comments": "editComments",
+      "agents_info": "agentsInfo",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type BridgePhrasesResponse$Outbound = {
   name: string;
@@ -118,26 +122,28 @@ export const BridgePhrasesResponse$outboundSchema: z.ZodType<
   BridgePhrasesResponse$Outbound,
   z.ZodTypeDef,
   BridgePhrasesResponse
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  config: BridgePhrasesConfigPayload$outboundSchema.optional(),
-  isDefault: z.boolean().default(false),
-  id: z.number().int(),
-  editComments: z.nullable(z.string()).optional(),
-  agentsInfo: z.nullable(z.array(BridgePhrasesAgentInfo$outboundSchema))
-    .optional(),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    isDefault: "is_default",
-    editComments: "edit_comments",
-    agentsInfo: "agents_info",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    config: BridgePhrasesConfigPayload$outboundSchema.optional(),
+    isDefault: z.boolean().default(false),
+    id: z.number().int(),
+    editComments: z.nullable(z.string()).optional(),
+    agentsInfo: z.nullable(z.array(BridgePhrasesAgentInfo$outboundSchema))
+      .optional(),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      isDefault: "is_default",
+      editComments: "edit_comments",
+      agentsInfo: "agents_info",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function bridgePhrasesResponseToJSON(
   bridgePhrasesResponse: BridgePhrasesResponse,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,19 +24,22 @@ export const PronunciationsCsvUploadResponse$inboundSchema: z.ZodType<
   PronunciationsCsvUploadResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  revision: z.number().int(),
-  hash: z.string(),
-  entries: z.number().int(),
-  uploaded_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  uploaded_by: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "uploaded_at": "uploadedAt",
-    "uploaded_by": "uploadedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    revision: z.number().int(),
+    hash: z.string(),
+    entries: z.number().int(),
+    uploaded_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    uploaded_by: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "uploaded_at": "uploadedAt",
+      "uploaded_by": "uploadedBy",
+    });
+  })
+);
 /** @internal */
 export type PronunciationsCsvUploadResponse$Outbound = {
   revision: number;
@@ -51,18 +54,20 @@ export const PronunciationsCsvUploadResponse$outboundSchema: z.ZodType<
   PronunciationsCsvUploadResponse$Outbound,
   z.ZodTypeDef,
   PronunciationsCsvUploadResponse
-> = z.object({
-  revision: z.number().int(),
-  hash: z.string(),
-  entries: z.number().int(),
-  uploadedAt: z.date().transform(v => v.toISOString()).optional(),
-  uploadedBy: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    uploadedAt: "uploaded_at",
-    uploadedBy: "uploaded_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    revision: z.number().int(),
+    hash: z.string(),
+    entries: z.number().int(),
+    uploadedAt: z.date().transform(v => v.toISOString()).optional(),
+    uploadedBy: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      uploadedAt: "uploaded_at",
+      uploadedBy: "uploaded_by",
+    });
+  })
+);
 
 export function pronunciationsCsvUploadResponseToJSON(
   pronunciationsCsvUploadResponse: PronunciationsCsvUploadResponse,

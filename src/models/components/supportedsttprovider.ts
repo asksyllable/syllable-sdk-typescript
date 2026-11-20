@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -53,20 +53,23 @@ export const SupportedSttProvider$inboundSchema: z.ZodType<
   SupportedSttProvider,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  provider: z.string(),
-  display_name: z.string(),
-  deprecated: z.boolean().default(false),
-  sunset_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
-  removed: z.boolean().default(false),
-  fallback: z.nullable(z.string()).optional(),
-  status: z.nullable(LifecycleStatus$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-    "sunset_date": "sunsetDate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: z.string(),
+    display_name: z.string(),
+    deprecated: z.boolean().default(false),
+    sunset_date: z.nullable(z.string().transform(v => new RFCDate(v)))
+      .optional(),
+    removed: z.boolean().default(false),
+    fallback: z.nullable(z.string()).optional(),
+    status: z.nullable(LifecycleStatus$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+      "sunset_date": "sunsetDate",
+    });
+  })
+);
 /** @internal */
 export type SupportedSttProvider$Outbound = {
   provider: string;
@@ -83,21 +86,23 @@ export const SupportedSttProvider$outboundSchema: z.ZodType<
   SupportedSttProvider$Outbound,
   z.ZodTypeDef,
   SupportedSttProvider
-> = z.object({
-  provider: z.string(),
-  displayName: z.string(),
-  deprecated: z.boolean().default(false),
-  sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
-    .optional(),
-  removed: z.boolean().default(false),
-  fallback: z.nullable(z.string()).optional(),
-  status: z.nullable(LifecycleStatus$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-    sunsetDate: "sunset_date",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: z.string(),
+    displayName: z.string(),
+    deprecated: z.boolean().default(false),
+    sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
+      .optional(),
+    removed: z.boolean().default(false),
+    fallback: z.nullable(z.string()).optional(),
+    status: z.nullable(LifecycleStatus$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+      sunsetDate: "sunset_date",
+    });
+  })
+);
 
 export function supportedSttProviderToJSON(
   supportedSttProvider: SupportedSttProvider,

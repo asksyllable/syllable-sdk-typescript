@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const TakeoutsGetByJobIdRequest$inboundSchema: z.ZodType<
   TakeoutsGetByJobIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  job_id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "job_id": "jobId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    job_id: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "job_id": "jobId",
+    });
+  })
+);
 /** @internal */
 export type TakeoutsGetByJobIdRequest$Outbound = {
   job_id: string;
@@ -34,13 +36,15 @@ export const TakeoutsGetByJobIdRequest$outboundSchema: z.ZodType<
   TakeoutsGetByJobIdRequest$Outbound,
   z.ZodTypeDef,
   TakeoutsGetByJobIdRequest
-> = z.object({
-  jobId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    jobId: "job_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    jobId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      jobId: "job_id",
+    });
+  })
+);
 
 export function takeoutsGetByJobIdRequestToJSON(
   takeoutsGetByJobIdRequest: TakeoutsGetByJobIdRequest,

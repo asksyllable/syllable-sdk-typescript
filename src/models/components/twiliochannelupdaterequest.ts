@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const TwilioChannelUpdateRequest$inboundSchema: z.ZodType<
   TwilioChannelUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.nullable(z.string()).optional(),
-  config: z.nullable(TwilioChannelConfigUpdate$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.nullable(z.string()).optional(),
+    config: z.nullable(TwilioChannelConfigUpdate$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type TwilioChannelUpdateRequest$Outbound = {
   id: number;
@@ -53,11 +55,13 @@ export const TwilioChannelUpdateRequest$outboundSchema: z.ZodType<
   TwilioChannelUpdateRequest$Outbound,
   z.ZodTypeDef,
   TwilioChannelUpdateRequest
-> = z.object({
-  id: z.number().int(),
-  name: z.nullable(z.string()).optional(),
-  config: z.nullable(TwilioChannelConfigUpdate$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.nullable(z.string()).optional(),
+    config: z.nullable(TwilioChannelConfigUpdate$outboundSchema).optional(),
+  })
+);
 
 export function twilioChannelUpdateRequestToJSON(
   twilioChannelUpdateRequest: TwilioChannelUpdateRequest,

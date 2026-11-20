@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -30,11 +30,13 @@ export const StepTools$inboundSchema: z.ZodType<
   StepTools,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  call: z.nullable(z.boolean()).optional(),
-  allow: z.nullable(z.array(z.string())).optional(),
-  allowGoToStep: z.nullable(z.boolean()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    call: z.nullable(z.boolean()).optional(),
+    allow: z.nullable(z.array(z.string())).optional(),
+    allowGoToStep: z.nullable(z.boolean()).optional(),
+  })
+);
 /** @internal */
 export type StepTools$Outbound = {
   call?: boolean | null | undefined;
@@ -47,11 +49,13 @@ export const StepTools$outboundSchema: z.ZodType<
   StepTools$Outbound,
   z.ZodTypeDef,
   StepTools
-> = z.object({
-  call: z.nullable(z.boolean()).optional(),
-  allow: z.nullable(z.array(z.string())).optional(),
-  allowGoToStep: z.nullable(z.boolean()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    call: z.nullable(z.boolean()).optional(),
+    allow: z.nullable(z.array(z.string())).optional(),
+    allowGoToStep: z.nullable(z.boolean()).optional(),
+  })
+);
 
 export function stepToolsToJSON(stepTools: StepTools): string {
   return JSON.stringify(StepTools$outboundSchema.parse(stepTools));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -22,15 +22,18 @@ export const DirectoryMemberCreateRequest$inboundSchema: z.ZodType<
   DirectoryMemberCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
-  DirectoryMemberCreate: components.DirectoryMemberCreate$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "response_format": "responseFormat",
-    "DirectoryMemberCreate": "directoryMemberCreate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    response_format: components.DirectoryResponseFormat$inboundSchema
+      .optional(),
+    DirectoryMemberCreate: components.DirectoryMemberCreate$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "response_format": "responseFormat",
+      "DirectoryMemberCreate": "directoryMemberCreate",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberCreateRequest$Outbound = {
   response_format?: string | undefined;
@@ -42,15 +45,18 @@ export const DirectoryMemberCreateRequest$outboundSchema: z.ZodType<
   DirectoryMemberCreateRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberCreateRequest
-> = z.object({
-  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
-  directoryMemberCreate: components.DirectoryMemberCreate$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    responseFormat: "response_format",
-    directoryMemberCreate: "DirectoryMemberCreate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    responseFormat: components.DirectoryResponseFormat$outboundSchema
+      .optional(),
+    directoryMemberCreate: components.DirectoryMemberCreate$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      responseFormat: "response_format",
+      directoryMemberCreate: "DirectoryMemberCreate",
+    });
+  })
+);
 
 export function directoryMemberCreateRequestToJSON(
   directoryMemberCreateRequest: DirectoryMemberCreateRequest,

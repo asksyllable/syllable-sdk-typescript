@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,14 +36,16 @@ export const OrganizationSipIpRangeCreate$inboundSchema: z.ZodType<
   OrganizationSipIpRangeCreate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: OrganizationSipIpRangeType$inboundSchema,
-  ip_range: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "ip_range": "ipRange",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: OrganizationSipIpRangeType$inboundSchema,
+    ip_range: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ip_range": "ipRange",
+    });
+  })
+);
 /** @internal */
 export type OrganizationSipIpRangeCreate$Outbound = {
   type: string;
@@ -55,14 +57,16 @@ export const OrganizationSipIpRangeCreate$outboundSchema: z.ZodType<
   OrganizationSipIpRangeCreate$Outbound,
   z.ZodTypeDef,
   OrganizationSipIpRangeCreate
-> = z.object({
-  type: OrganizationSipIpRangeType$outboundSchema,
-  ipRange: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    ipRange: "ip_range",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: OrganizationSipIpRangeType$outboundSchema,
+    ipRange: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      ipRange: "ip_range",
+    });
+  })
+);
 
 export function organizationSipIpRangeCreateToJSON(
   organizationSipIpRangeCreate: OrganizationSipIpRangeCreate,

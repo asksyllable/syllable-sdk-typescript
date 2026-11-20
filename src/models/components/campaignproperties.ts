@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const CampaignProperties = {
@@ -24,7 +25,7 @@ export type CampaignProperties = ClosedEnum<typeof CampaignProperties>;
 /** @internal */
 export const CampaignProperties$inboundSchema: z.ZodNativeEnum<
   typeof CampaignProperties
-> = z.nativeEnum(CampaignProperties);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CampaignProperties));
 /** @internal */
 export const CampaignProperties$outboundSchema: z.ZodNativeEnum<
   typeof CampaignProperties

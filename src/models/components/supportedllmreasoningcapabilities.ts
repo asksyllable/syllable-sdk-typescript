@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,15 +35,17 @@ export const SupportedLlmReasoningCapabilities$inboundSchema: z.ZodType<
   SupportedLlmReasoningCapabilities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  combinations: z.array(SupportedLlmReasoningCombination$inboundSchema),
-  parameters: z.array(SupportedLlmReasoningParameterConstraint$inboundSchema),
-  reviewed_on: z.string().transform(v => new RFCDate(v)),
-}).transform((v) => {
-  return remap$(v, {
-    "reviewed_on": "reviewedOn",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    combinations: z.array(SupportedLlmReasoningCombination$inboundSchema),
+    parameters: z.array(SupportedLlmReasoningParameterConstraint$inboundSchema),
+    reviewed_on: z.string().transform(v => new RFCDate(v)),
+  }).transform((v) => {
+    return remap$(v, {
+      "reviewed_on": "reviewedOn",
+    });
+  })
+);
 /** @internal */
 export type SupportedLlmReasoningCapabilities$Outbound = {
   combinations: Array<SupportedLlmReasoningCombination$Outbound>;
@@ -56,15 +58,19 @@ export const SupportedLlmReasoningCapabilities$outboundSchema: z.ZodType<
   SupportedLlmReasoningCapabilities$Outbound,
   z.ZodTypeDef,
   SupportedLlmReasoningCapabilities
-> = z.object({
-  combinations: z.array(SupportedLlmReasoningCombination$outboundSchema),
-  parameters: z.array(SupportedLlmReasoningParameterConstraint$outboundSchema),
-  reviewedOn: z.instanceof(RFCDate).transform(v => v.toString()),
-}).transform((v) => {
-  return remap$(v, {
-    reviewedOn: "reviewed_on",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    combinations: z.array(SupportedLlmReasoningCombination$outboundSchema),
+    parameters: z.array(
+      SupportedLlmReasoningParameterConstraint$outboundSchema,
+    ),
+    reviewedOn: z.instanceof(RFCDate).transform(v => v.toString()),
+  }).transform((v) => {
+    return remap$(v, {
+      reviewedOn: "reviewed_on",
+    });
+  })
+);
 
 export function supportedLlmReasoningCapabilitiesToJSON(
   supportedLlmReasoningCapabilities: SupportedLlmReasoningCapabilities,

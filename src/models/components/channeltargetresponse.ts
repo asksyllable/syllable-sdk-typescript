@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -114,38 +114,42 @@ export const ChannelTargetResponse$inboundSchema: z.ZodType<
   ChannelTargetResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.number().int(),
-  channel_id: z.number().int(),
-  target: z.string(),
-  target_mode: TargetModes$inboundSchema,
-  fallback_target: z.nullable(z.string()).optional(),
-  is_test: z.boolean().default(false),
-  id: z.number().int(),
-  channel_name: z.string(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  last_updated_by: z.string(),
-  agent: z.nullable(z.lazy(() => AgentResponse$inboundSchema)).optional(),
-  a2p_verified: z.nullable(z.boolean()).optional(),
-  sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
-  experiment: z.nullable(ChannelTargetExperimentSummary$inboundSchema)
-    .optional(),
-  experiment_status: z.nullable(ExperimentStatus$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-    "channel_id": "channelId",
-    "target_mode": "targetMode",
-    "fallback_target": "fallbackTarget",
-    "is_test": "isTest",
-    "channel_name": "channelName",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "a2p_verified": "a2pVerified",
-    "sip_configuration": "sipConfiguration",
-    "experiment_status": "experimentStatus",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.number().int(),
+    channel_id: z.number().int(),
+    target: z.string(),
+    target_mode: TargetModes$inboundSchema,
+    fallback_target: z.nullable(z.string()).optional(),
+    is_test: z.boolean().default(false),
+    id: z.number().int(),
+    channel_name: z.string(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.string(),
+    agent: z.nullable(z.lazy(() => AgentResponse$inboundSchema)).optional(),
+    a2p_verified: z.nullable(z.boolean()).optional(),
+    sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
+    experiment: z.nullable(ChannelTargetExperimentSummary$inboundSchema)
+      .optional(),
+    experiment_status: z.nullable(ExperimentStatus$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+      "channel_id": "channelId",
+      "target_mode": "targetMode",
+      "fallback_target": "fallbackTarget",
+      "is_test": "isTest",
+      "channel_name": "channelName",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "a2p_verified": "a2pVerified",
+      "sip_configuration": "sipConfiguration",
+      "experiment_status": "experimentStatus",
+    });
+  })
+);
 /** @internal */
 export type ChannelTargetResponse$Outbound = {
   agent_id: number;
@@ -170,38 +174,40 @@ export const ChannelTargetResponse$outboundSchema: z.ZodType<
   ChannelTargetResponse$Outbound,
   z.ZodTypeDef,
   ChannelTargetResponse
-> = z.object({
-  agentId: z.number().int(),
-  channelId: z.number().int(),
-  target: z.string(),
-  targetMode: TargetModes$outboundSchema,
-  fallbackTarget: z.nullable(z.string()).optional(),
-  isTest: z.boolean().default(false),
-  id: z.number().int(),
-  channelName: z.string(),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.string(),
-  agent: z.nullable(z.lazy(() => AgentResponse$outboundSchema)).optional(),
-  a2pVerified: z.nullable(z.boolean()).optional(),
-  sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
-  experiment: z.nullable(ChannelTargetExperimentSummary$outboundSchema)
-    .optional(),
-  experimentStatus: z.nullable(ExperimentStatus$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-    channelId: "channel_id",
-    targetMode: "target_mode",
-    fallbackTarget: "fallback_target",
-    isTest: "is_test",
-    channelName: "channel_name",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-    a2pVerified: "a2p_verified",
-    sipConfiguration: "sip_configuration",
-    experimentStatus: "experiment_status",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.number().int(),
+    channelId: z.number().int(),
+    target: z.string(),
+    targetMode: TargetModes$outboundSchema,
+    fallbackTarget: z.nullable(z.string()).optional(),
+    isTest: z.boolean().default(false),
+    id: z.number().int(),
+    channelName: z.string(),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.string(),
+    agent: z.nullable(z.lazy(() => AgentResponse$outboundSchema)).optional(),
+    a2pVerified: z.nullable(z.boolean()).optional(),
+    sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
+    experiment: z.nullable(ChannelTargetExperimentSummary$outboundSchema)
+      .optional(),
+    experimentStatus: z.nullable(ExperimentStatus$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      agentId: "agent_id",
+      channelId: "channel_id",
+      targetMode: "target_mode",
+      fallbackTarget: "fallback_target",
+      isTest: "is_test",
+      channelName: "channel_name",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+      a2pVerified: "a2p_verified",
+      sipConfiguration: "sip_configuration",
+      experimentStatus: "experiment_status",
+    });
+  })
+);
 
 export function channelTargetResponseToJSON(
   channelTargetResponse: ChannelTargetResponse,

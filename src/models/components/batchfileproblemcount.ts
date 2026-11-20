@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -39,12 +39,14 @@ export const BatchFileProblemCount$inboundSchema: z.ZodType<
   BatchFileProblemCount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  problem: BatchFileProblem$inboundSchema,
-  count: z.number().int(),
-  called: z.boolean(),
-  outcome: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    problem: BatchFileProblem$inboundSchema,
+    count: z.number().int(),
+    called: z.boolean(),
+    outcome: z.string(),
+  })
+);
 /** @internal */
 export type BatchFileProblemCount$Outbound = {
   problem: string;
@@ -58,12 +60,14 @@ export const BatchFileProblemCount$outboundSchema: z.ZodType<
   BatchFileProblemCount$Outbound,
   z.ZodTypeDef,
   BatchFileProblemCount
-> = z.object({
-  problem: BatchFileProblem$outboundSchema,
-  count: z.number().int(),
-  called: z.boolean(),
-  outcome: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    problem: BatchFileProblem$outboundSchema,
+    count: z.number().int(),
+    called: z.boolean(),
+    outcome: z.string(),
+  })
+);
 
 export function batchFileProblemCountToJSON(
   batchFileProblemCount: BatchFileProblemCount,

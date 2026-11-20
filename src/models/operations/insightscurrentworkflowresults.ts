@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,19 +23,21 @@ export const InsightsCurrentWorkflowResultsRequest$inboundSchema: z.ZodType<
   InsightsCurrentWorkflowResultsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.nullable(z.number().int()).optional(),
-  upload_file_id: z.nullable(z.number().int()).optional(),
-  workflow_id: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(100),
-  offset: z.number().int().default(0),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-    "upload_file_id": "uploadFileId",
-    "workflow_id": "workflowId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.nullable(z.number().int()).optional(),
+    upload_file_id: z.nullable(z.number().int()).optional(),
+    workflow_id: z.nullable(z.number().int()).optional(),
+    limit: z.number().int().default(100),
+    offset: z.number().int().default(0),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+      "upload_file_id": "uploadFileId",
+      "workflow_id": "workflowId",
+    });
+  })
+);
 /** @internal */
 export type InsightsCurrentWorkflowResultsRequest$Outbound = {
   session_id?: number | null | undefined;
@@ -50,19 +52,21 @@ export const InsightsCurrentWorkflowResultsRequest$outboundSchema: z.ZodType<
   InsightsCurrentWorkflowResultsRequest$Outbound,
   z.ZodTypeDef,
   InsightsCurrentWorkflowResultsRequest
-> = z.object({
-  sessionId: z.nullable(z.number().int()).optional(),
-  uploadFileId: z.nullable(z.number().int()).optional(),
-  workflowId: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(100),
-  offset: z.number().int().default(0),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    uploadFileId: "upload_file_id",
-    workflowId: "workflow_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.nullable(z.number().int()).optional(),
+    uploadFileId: z.nullable(z.number().int()).optional(),
+    workflowId: z.nullable(z.number().int()).optional(),
+    limit: z.number().int().default(100),
+    offset: z.number().int().default(0),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      uploadFileId: "upload_file_id",
+      workflowId: "workflow_id",
+    });
+  })
+);
 
 export function insightsCurrentWorkflowResultsRequestToJSON(
   insightsCurrentWorkflowResultsRequest: InsightsCurrentWorkflowResultsRequest,
@@ -89,7 +93,7 @@ export const ResponseBody$inboundSchema: z.ZodType<
   ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type ResponseBody$Outbound = {};
 
@@ -98,7 +102,7 @@ export const ResponseBody$outboundSchema: z.ZodType<
   ResponseBody$Outbound,
   z.ZodTypeDef,
   ResponseBody
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function responseBodyToJSON(responseBody: ResponseBody): string {
   return JSON.stringify(ResponseBody$outboundSchema.parse(responseBody));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,10 +26,12 @@ export const LanguageGroupAgentInfo$inboundSchema: z.ZodType<
   LanguageGroupAgentInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+  })
+);
 /** @internal */
 export type LanguageGroupAgentInfo$Outbound = {
   id: number;
@@ -41,10 +43,12 @@ export const LanguageGroupAgentInfo$outboundSchema: z.ZodType<
   LanguageGroupAgentInfo$Outbound,
   z.ZodTypeDef,
   LanguageGroupAgentInfo
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+  })
+);
 
 export function languageGroupAgentInfoToJSON(
   languageGroupAgentInfo: LanguageGroupAgentInfo,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -73,42 +73,44 @@ export const IncidentResponse$inboundSchema: z.ZodType<
   IncidentResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: z.string(),
-  start_datetime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  resolution_datetime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  impact_category: z.string(),
-  sessions_impacted: z.number().int(),
-  markdown: z.string(),
-  organization_id: z.nullable(z.number().int()).optional(),
-  sub_organization_id: z.nullable(z.number().int()).optional(),
-  sub_organization: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  last_updated_by: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "start_datetime": "startDatetime",
-    "resolution_datetime": "resolutionDatetime",
-    "impact_category": "impactCategory",
-    "sessions_impacted": "sessionsImpacted",
-    "organization_id": "organizationId",
-    "sub_organization_id": "subOrganizationId",
-    "sub_organization": "subOrganization",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string(),
+    start_datetime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    resolution_datetime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    impact_category: z.string(),
+    sessions_impacted: z.number().int(),
+    markdown: z.string(),
+    organization_id: z.nullable(z.number().int()).optional(),
+    sub_organization_id: z.nullable(z.number().int()).optional(),
+    sub_organization: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    last_updated_by: z.nullable(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "start_datetime": "startDatetime",
+      "resolution_datetime": "resolutionDatetime",
+      "impact_category": "impactCategory",
+      "sessions_impacted": "sessionsImpacted",
+      "organization_id": "organizationId",
+      "sub_organization_id": "subOrganizationId",
+      "sub_organization": "subOrganization",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type IncidentResponse$Outbound = {
   description: string;
@@ -131,34 +133,36 @@ export const IncidentResponse$outboundSchema: z.ZodType<
   IncidentResponse$Outbound,
   z.ZodTypeDef,
   IncidentResponse
-> = z.object({
-  description: z.string(),
-  startDatetime: z.date().transform(v => v.toISOString()),
-  resolutionDatetime: z.date().transform(v => v.toISOString()),
-  impactCategory: z.string(),
-  sessionsImpacted: z.number().int(),
-  markdown: z.string(),
-  organizationId: z.nullable(z.number().int()).optional(),
-  subOrganizationId: z.nullable(z.number().int()).optional(),
-  subOrganization: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  lastUpdatedBy: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    startDatetime: "start_datetime",
-    resolutionDatetime: "resolution_datetime",
-    impactCategory: "impact_category",
-    sessionsImpacted: "sessions_impacted",
-    organizationId: "organization_id",
-    subOrganizationId: "sub_organization_id",
-    subOrganization: "sub_organization",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string(),
+    startDatetime: z.date().transform(v => v.toISOString()),
+    resolutionDatetime: z.date().transform(v => v.toISOString()),
+    impactCategory: z.string(),
+    sessionsImpacted: z.number().int(),
+    markdown: z.string(),
+    organizationId: z.nullable(z.number().int()).optional(),
+    subOrganizationId: z.nullable(z.number().int()).optional(),
+    subOrganization: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    lastUpdatedBy: z.nullable(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      startDatetime: "start_datetime",
+      resolutionDatetime: "resolution_datetime",
+      impactCategory: "impact_category",
+      sessionsImpacted: "sessions_impacted",
+      organizationId: "organization_id",
+      subOrganizationId: "sub_organization_id",
+      subOrganization: "sub_organization",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function incidentResponseToJSON(
   incidentResponse: IncidentResponse,

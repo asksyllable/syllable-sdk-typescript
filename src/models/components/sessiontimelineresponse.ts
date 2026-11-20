@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,18 +37,20 @@ export const SessionTimelineResponse$inboundSchema: z.ZodType<
   SessionTimelineResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.string(),
-  session_start: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  events: z.array(TimelineEvent$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-    "session_start": "sessionStart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.string(),
+    session_start: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    events: z.array(TimelineEvent$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+      "session_start": "sessionStart",
+    });
+  })
+);
 /** @internal */
 export type SessionTimelineResponse$Outbound = {
   session_id: string;
@@ -61,16 +63,19 @@ export const SessionTimelineResponse$outboundSchema: z.ZodType<
   SessionTimelineResponse$Outbound,
   z.ZodTypeDef,
   SessionTimelineResponse
-> = z.object({
-  sessionId: z.string(),
-  sessionStart: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  events: z.array(TimelineEvent$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    sessionStart: "session_start",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    sessionStart: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    events: z.array(TimelineEvent$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      sessionStart: "session_start",
+    });
+  })
+);
 
 export function sessionTimelineResponseToJSON(
   sessionTimelineResponse: SessionTimelineResponse,

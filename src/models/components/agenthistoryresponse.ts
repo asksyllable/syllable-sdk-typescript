@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -25,21 +25,25 @@ export const AgentHistoryResponse$inboundSchema: z.ZodType<
   AgentHistoryResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.number().int(),
-  version_number: z.number().int(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_by: z.string(),
-  comments: z.nullable(z.string()),
-  configuration: z.record(z.any()),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-    "version_number": "versionNumber",
-    "created_at": "createdAt",
-    "updated_by": "updatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.number().int(),
+    version_number: z.number().int(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_by: z.string(),
+    comments: z.nullable(z.string()),
+    configuration: z.record(z.any()),
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+      "version_number": "versionNumber",
+      "created_at": "createdAt",
+      "updated_by": "updatedBy",
+    });
+  })
+);
 /** @internal */
 export type AgentHistoryResponse$Outbound = {
   agent_id: number;
@@ -55,21 +59,23 @@ export const AgentHistoryResponse$outboundSchema: z.ZodType<
   AgentHistoryResponse$Outbound,
   z.ZodTypeDef,
   AgentHistoryResponse
-> = z.object({
-  agentId: z.number().int(),
-  versionNumber: z.number().int(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  updatedBy: z.string(),
-  comments: z.nullable(z.string()),
-  configuration: z.record(z.any()),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-    versionNumber: "version_number",
-    createdAt: "created_at",
-    updatedBy: "updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.number().int(),
+    versionNumber: z.number().int(),
+    createdAt: z.date().transform(v => v.toISOString()),
+    updatedBy: z.string(),
+    comments: z.nullable(z.string()),
+    configuration: z.record(z.any()),
+  }).transform((v) => {
+    return remap$(v, {
+      agentId: "agent_id",
+      versionNumber: "version_number",
+      createdAt: "created_at",
+      updatedBy: "updated_by",
+    });
+  })
+);
 
 export function agentHistoryResponseToJSON(
   agentHistoryResponse: AgentHistoryResponse,

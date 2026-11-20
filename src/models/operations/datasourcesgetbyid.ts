@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const DataSourcesGetByIdRequest$inboundSchema: z.ZodType<
   DataSourcesGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data_source_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "data_source_id": "dataSourceId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data_source_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "data_source_id": "dataSourceId",
+    });
+  })
+);
 /** @internal */
 export type DataSourcesGetByIdRequest$Outbound = {
   data_source_id: number;
@@ -34,13 +36,15 @@ export const DataSourcesGetByIdRequest$outboundSchema: z.ZodType<
   DataSourcesGetByIdRequest$Outbound,
   z.ZodTypeDef,
   DataSourcesGetByIdRequest
-> = z.object({
-  dataSourceId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    dataSourceId: "data_source_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dataSourceId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      dataSourceId: "data_source_id",
+    });
+  })
+);
 
 export function dataSourcesGetByIdRequestToJSON(
   dataSourcesGetByIdRequest: DataSourcesGetByIdRequest,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,11 +21,13 @@ export const DisplayValueSource$inboundSchema: z.ZodType<
   DisplayValueSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  path: z.nullable(z.string()).optional(),
-  template: z.nullable(z.string()).optional(),
-  default: z.nullable(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    path: z.nullable(z.string()).optional(),
+    template: z.nullable(z.string()).optional(),
+    default: z.nullable(z.any()).optional(),
+  })
+);
 /** @internal */
 export type DisplayValueSource$Outbound = {
   path?: string | null | undefined;
@@ -38,11 +40,13 @@ export const DisplayValueSource$outboundSchema: z.ZodType<
   DisplayValueSource$Outbound,
   z.ZodTypeDef,
   DisplayValueSource
-> = z.object({
-  path: z.nullable(z.string()).optional(),
-  template: z.nullable(z.string()).optional(),
-  default: z.nullable(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    path: z.nullable(z.string()).optional(),
+    template: z.nullable(z.string()).optional(),
+    default: z.nullable(z.any()).optional(),
+  })
+);
 
 export function displayValueSourceToJSON(
   displayValueSource: DisplayValueSource,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -38,18 +38,20 @@ export const Dashboard$inboundSchema: z.ZodType<
   Dashboard,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  embedded_id: z.string(),
-  guest_token: z.string(),
-  name: z.string(),
-  superset_url: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "embedded_id": "embeddedId",
-    "guest_token": "guestToken",
-    "superset_url": "supersetUrl",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    embedded_id: z.string(),
+    guest_token: z.string(),
+    name: z.string(),
+    superset_url: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "embedded_id": "embeddedId",
+      "guest_token": "guestToken",
+      "superset_url": "supersetUrl",
+    });
+  })
+);
 /** @internal */
 export type Dashboard$Outbound = {
   embedded_id: string;
@@ -63,18 +65,20 @@ export const Dashboard$outboundSchema: z.ZodType<
   Dashboard$Outbound,
   z.ZodTypeDef,
   Dashboard
-> = z.object({
-  embeddedId: z.string(),
-  guestToken: z.string(),
-  name: z.string(),
-  supersetUrl: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    embeddedId: "embedded_id",
-    guestToken: "guest_token",
-    supersetUrl: "superset_url",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    embeddedId: z.string(),
+    guestToken: z.string(),
+    name: z.string(),
+    supersetUrl: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      embeddedId: "embedded_id",
+      guestToken: "guest_token",
+      supersetUrl: "superset_url",
+    });
+  })
+);
 
 export function dashboardToJSON(dashboard: Dashboard): string {
   return JSON.stringify(Dashboard$outboundSchema.parse(dashboard));

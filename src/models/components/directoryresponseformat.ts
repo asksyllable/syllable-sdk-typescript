@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -22,7 +23,7 @@ export type DirectoryResponseFormat = ClosedEnum<
 /** @internal */
 export const DirectoryResponseFormat$inboundSchema: z.ZodNativeEnum<
   typeof DirectoryResponseFormat
-> = z.nativeEnum(DirectoryResponseFormat);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DirectoryResponseFormat));
 /** @internal */
 export const DirectoryResponseFormat$outboundSchema: z.ZodNativeEnum<
   typeof DirectoryResponseFormat

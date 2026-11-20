@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,9 +32,11 @@ export const CaseExpression$inboundSchema: z.ZodType<
   CaseExpression,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  case: z.array(z.lazy(() => ConditionalValue$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    case: z.array(z.lazy(() => ConditionalValue$inboundSchema)),
+  })
+);
 /** @internal */
 export type CaseExpression$Outbound = {
   case: Array<ConditionalValue$Outbound>;
@@ -45,9 +47,11 @@ export const CaseExpression$outboundSchema: z.ZodType<
   CaseExpression$Outbound,
   z.ZodTypeDef,
   CaseExpression
-> = z.object({
-  case: z.array(z.lazy(() => ConditionalValue$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    case: z.array(z.lazy(() => ConditionalValue$outboundSchema)),
+  })
+);
 
 export function caseExpressionToJSON(caseExpression: CaseExpression): string {
   return JSON.stringify(CaseExpression$outboundSchema.parse(caseExpression));

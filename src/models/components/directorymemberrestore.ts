@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,9 +22,11 @@ export const DirectoryMemberRestore$inboundSchema: z.ZodType<
   DirectoryMemberRestore,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comments: z.string().default("Restored"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comments: z.string().default("Restored"),
+  })
+);
 /** @internal */
 export type DirectoryMemberRestore$Outbound = {
   comments: string;
@@ -35,9 +37,11 @@ export const DirectoryMemberRestore$outboundSchema: z.ZodType<
   DirectoryMemberRestore$Outbound,
   z.ZodTypeDef,
   DirectoryMemberRestore
-> = z.object({
-  comments: z.string().default("Restored"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comments: z.string().default("Restored"),
+  })
+);
 
 export function directoryMemberRestoreToJSON(
   directoryMemberRestore: DirectoryMemberRestore,

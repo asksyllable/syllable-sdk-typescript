@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -54,20 +54,22 @@ export const OrganizationChannelUpdateRequest$inboundSchema: z.ZodType<
   OrganizationChannelUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  channel_service: ChannelServices$inboundSchema,
-  supported_modes: z.nullable(z.string()).optional(),
-  is_system_channel: z.boolean().default(true),
-  config: OrganizationChannelConfig$inboundSchema,
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "channel_service": "channelService",
-    "supported_modes": "supportedModes",
-    "is_system_channel": "isSystemChannel",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    channel_service: ChannelServices$inboundSchema,
+    supported_modes: z.nullable(z.string()).optional(),
+    is_system_channel: z.boolean().default(true),
+    config: OrganizationChannelConfig$inboundSchema,
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_service": "channelService",
+      "supported_modes": "supportedModes",
+      "is_system_channel": "isSystemChannel",
+    });
+  })
+);
 /** @internal */
 export type OrganizationChannelUpdateRequest$Outbound = {
   name: string;
@@ -83,20 +85,22 @@ export const OrganizationChannelUpdateRequest$outboundSchema: z.ZodType<
   OrganizationChannelUpdateRequest$Outbound,
   z.ZodTypeDef,
   OrganizationChannelUpdateRequest
-> = z.object({
-  name: z.string(),
-  channelService: ChannelServices$outboundSchema,
-  supportedModes: z.nullable(z.string()).optional(),
-  isSystemChannel: z.boolean().default(true),
-  config: OrganizationChannelConfig$outboundSchema,
-  id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    channelService: "channel_service",
-    supportedModes: "supported_modes",
-    isSystemChannel: "is_system_channel",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    channelService: ChannelServices$outboundSchema,
+    supportedModes: z.nullable(z.string()).optional(),
+    isSystemChannel: z.boolean().default(true),
+    config: OrganizationChannelConfig$outboundSchema,
+    id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      channelService: "channel_service",
+      supportedModes: "supported_modes",
+      isSystemChannel: "is_system_channel",
+    });
+  })
+);
 
 export function organizationChannelUpdateRequestToJSON(
   organizationChannelUpdateRequest: OrganizationChannelUpdateRequest,

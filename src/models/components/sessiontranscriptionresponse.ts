@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -50,17 +50,19 @@ export const SessionTranscriptionResponse$inboundSchema: z.ZodType<
   SessionTranscriptionResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.string(),
-  transcription: z.array(SessionText$inboundSchema),
-  actions: z.array(SessionAction$inboundSchema),
-  transcript_complete: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-    "transcript_complete": "transcriptComplete",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.string(),
+    transcription: z.array(SessionText$inboundSchema),
+    actions: z.array(SessionAction$inboundSchema),
+    transcript_complete: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+      "transcript_complete": "transcriptComplete",
+    });
+  })
+);
 /** @internal */
 export type SessionTranscriptionResponse$Outbound = {
   session_id: string;
@@ -74,17 +76,19 @@ export const SessionTranscriptionResponse$outboundSchema: z.ZodType<
   SessionTranscriptionResponse$Outbound,
   z.ZodTypeDef,
   SessionTranscriptionResponse
-> = z.object({
-  sessionId: z.string(),
-  transcription: z.array(SessionText$outboundSchema),
-  actions: z.array(SessionAction$outboundSchema),
-  transcriptComplete: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    transcriptComplete: "transcript_complete",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    transcription: z.array(SessionText$outboundSchema),
+    actions: z.array(SessionAction$outboundSchema),
+    transcriptComplete: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      transcriptComplete: "transcript_complete",
+    });
+  })
+);
 
 export function sessionTranscriptionResponseToJSON(
   sessionTranscriptionResponse: SessionTranscriptionResponse,

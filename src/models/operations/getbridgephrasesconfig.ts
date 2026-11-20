@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,15 +24,17 @@ export const GetBridgePhrasesConfigRequest$inboundSchema: z.ZodType<
   GetBridgePhrasesConfigRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.nullable(z.number().int()).optional(),
-  tool_name: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-    "tool_name": "toolName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.nullable(z.number().int()).optional(),
+    tool_name: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+      "tool_name": "toolName",
+    });
+  })
+);
 /** @internal */
 export type GetBridgePhrasesConfigRequest$Outbound = {
   agent_id?: number | null | undefined;
@@ -44,15 +46,17 @@ export const GetBridgePhrasesConfigRequest$outboundSchema: z.ZodType<
   GetBridgePhrasesConfigRequest$Outbound,
   z.ZodTypeDef,
   GetBridgePhrasesConfigRequest
-> = z.object({
-  agentId: z.nullable(z.number().int()).optional(),
-  toolName: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-    toolName: "tool_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.nullable(z.number().int()).optional(),
+    toolName: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      agentId: "agent_id",
+      toolName: "tool_name",
+    });
+  })
+);
 
 export function getBridgePhrasesConfigRequestToJSON(
   getBridgePhrasesConfigRequest: GetBridgePhrasesConfigRequest,

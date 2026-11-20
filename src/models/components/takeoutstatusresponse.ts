@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,18 +28,22 @@ export const TakeoutStatusResponse$inboundSchema: z.ZodType<
   TakeoutStatusResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  job_id: z.string(),
-  status: TakeoutRequestStatus$inboundSchema,
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  file_names: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "job_id": "jobId",
-    "updated_at": "updatedAt",
-    "file_names": "fileNames",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    job_id: z.string(),
+    status: TakeoutRequestStatus$inboundSchema,
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    file_names: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "job_id": "jobId",
+      "updated_at": "updatedAt",
+      "file_names": "fileNames",
+    });
+  })
+);
 /** @internal */
 export type TakeoutStatusResponse$Outbound = {
   job_id: string;
@@ -53,18 +57,20 @@ export const TakeoutStatusResponse$outboundSchema: z.ZodType<
   TakeoutStatusResponse$Outbound,
   z.ZodTypeDef,
   TakeoutStatusResponse
-> = z.object({
-  jobId: z.string(),
-  status: TakeoutRequestStatus$outboundSchema,
-  updatedAt: z.date().transform(v => v.toISOString()),
-  fileNames: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    jobId: "job_id",
-    updatedAt: "updated_at",
-    fileNames: "file_names",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    jobId: z.string(),
+    status: TakeoutRequestStatus$outboundSchema,
+    updatedAt: z.date().transform(v => v.toISOString()),
+    fileNames: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      jobId: "job_id",
+      updatedAt: "updated_at",
+      fileNames: "file_names",
+    });
+  })
+);
 
 export function takeoutStatusResponseToJSON(
   takeoutStatusResponse: TakeoutStatusResponse,

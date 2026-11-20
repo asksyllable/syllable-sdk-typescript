@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -53,7 +53,9 @@ export const FolderStats$inboundSchema: z.ZodType<
   FolderStats,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 /** @internal */
 export type FolderStats$Outbound = string | number | number;
 
@@ -62,7 +64,9 @@ export const FolderStats$outboundSchema: z.ZodType<
   FolderStats$Outbound,
   z.ZodTypeDef,
   FolderStats
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 
 export function folderStatsToJSON(folderStats: FolderStats): string {
   return JSON.stringify(FolderStats$outboundSchema.parse(folderStats));
@@ -82,25 +86,29 @@ export const FolderDetails$inboundSchema: z.ZodType<
   FolderDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  label: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  last_updated_by: z.string(),
-  folder_stats: z.record(z.union([z.string(), z.number().int(), z.number()])),
-}).transform((v) => {
-  return remap$(v, {
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "folder_stats": "folderStats",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    label: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    last_updated_by: z.string(),
+    folder_stats: z.record(z.union([z.string(), z.number().int(), z.number()])),
+  }).transform((v) => {
+    return remap$(v, {
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "folder_stats": "folderStats",
+    });
+  })
+);
 /** @internal */
 export type FolderDetails$Outbound = {
   name: string;
@@ -118,23 +126,25 @@ export const FolderDetails$outboundSchema: z.ZodType<
   FolderDetails$Outbound,
   z.ZodTypeDef,
   FolderDetails
-> = z.object({
-  name: z.string(),
-  label: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
-  lastUpdatedBy: z.string(),
-  folderStats: z.record(z.union([z.string(), z.number().int(), z.number()])),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-    folderStats: "folder_stats",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    label: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()).optional(),
+    lastUpdatedBy: z.string(),
+    folderStats: z.record(z.union([z.string(), z.number().int(), z.number()])),
+  }).transform((v) => {
+    return remap$(v, {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+      folderStats: "folder_stats",
+    });
+  })
+);
 
 export function folderDetailsToJSON(folderDetails: FolderDetails): string {
   return JSON.stringify(FolderDetails$outboundSchema.parse(folderDetails));

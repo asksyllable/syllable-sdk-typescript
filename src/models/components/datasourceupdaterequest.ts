@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -51,21 +51,23 @@ export const DataSourceUpdateRequest$inboundSchema: z.ZodType<
   DataSourceUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.array(z.string()).optional(),
-  chunk: z.boolean(),
-  chunk_delimiter: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  edit_comments: z.nullable(z.string()).optional(),
-  text: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "chunk_delimiter": "chunkDelimiter",
-    "edit_comments": "editComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.array(z.string()).optional(),
+    chunk: z.boolean(),
+    chunk_delimiter: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    edit_comments: z.nullable(z.string()).optional(),
+    text: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "chunk_delimiter": "chunkDelimiter",
+      "edit_comments": "editComments",
+    });
+  })
+);
 /** @internal */
 export type DataSourceUpdateRequest$Outbound = {
   name: string;
@@ -83,21 +85,23 @@ export const DataSourceUpdateRequest$outboundSchema: z.ZodType<
   DataSourceUpdateRequest$Outbound,
   z.ZodTypeDef,
   DataSourceUpdateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.array(z.string()).optional(),
-  chunk: z.boolean(),
-  chunkDelimiter: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  editComments: z.nullable(z.string()).optional(),
-  text: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    chunkDelimiter: "chunk_delimiter",
-    editComments: "edit_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.array(z.string()).optional(),
+    chunk: z.boolean(),
+    chunkDelimiter: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    editComments: z.nullable(z.string()).optional(),
+    text: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      chunkDelimiter: "chunk_delimiter",
+      editComments: "edit_comments",
+    });
+  })
+);
 
 export function dataSourceUpdateRequestToJSON(
   dataSourceUpdateRequest: DataSourceUpdateRequest,

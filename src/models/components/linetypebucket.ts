@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -31,7 +32,7 @@ export type LineTypeBucket = ClosedEnum<typeof LineTypeBucket>;
 /** @internal */
 export const LineTypeBucket$inboundSchema: z.ZodNativeEnum<
   typeof LineTypeBucket
-> = z.nativeEnum(LineTypeBucket);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(LineTypeBucket));
 /** @internal */
 export const LineTypeBucket$outboundSchema: z.ZodNativeEnum<
   typeof LineTypeBucket

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const UsersGetByEmailRequest$inboundSchema: z.ZodType<
   UsersGetByEmailRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user_email: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "user_email": "userEmail",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_email: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "user_email": "userEmail",
+    });
+  })
+);
 /** @internal */
 export type UsersGetByEmailRequest$Outbound = {
   user_email: string;
@@ -34,13 +36,15 @@ export const UsersGetByEmailRequest$outboundSchema: z.ZodType<
   UsersGetByEmailRequest$Outbound,
   z.ZodTypeDef,
   UsersGetByEmailRequest
-> = z.object({
-  userEmail: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    userEmail: "user_email",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    userEmail: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      userEmail: "user_email",
+    });
+  })
+);
 
 export function usersGetByEmailRequestToJSON(
   usersGetByEmailRequest: UsersGetByEmailRequest,

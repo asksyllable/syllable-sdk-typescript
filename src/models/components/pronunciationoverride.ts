@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,22 +36,24 @@ export const PronunciationOverride$inboundSchema: z.ZodType<
   PronunciationOverride,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  text: z.string(),
-  replacement: z.string(),
-  languages: z.array(z.string()).optional(),
-  provider: z.string().default(""),
-  voice: z.string().default(""),
-  match_type: MatchType$inboundSchema.optional(),
-  match_options: z.array(z.string()).optional(),
-  enabled: z.boolean().default(true),
-  notes: z.string().default(""),
-}).transform((v) => {
-  return remap$(v, {
-    "match_type": "matchType",
-    "match_options": "matchOptions",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    replacement: z.string(),
+    languages: z.array(z.string()).optional(),
+    provider: z.string().default(""),
+    voice: z.string().default(""),
+    match_type: MatchType$inboundSchema.optional(),
+    match_options: z.array(z.string()).optional(),
+    enabled: z.boolean().default(true),
+    notes: z.string().default(""),
+  }).transform((v) => {
+    return remap$(v, {
+      "match_type": "matchType",
+      "match_options": "matchOptions",
+    });
+  })
+);
 /** @internal */
 export type PronunciationOverride$Outbound = {
   text: string;
@@ -70,22 +72,24 @@ export const PronunciationOverride$outboundSchema: z.ZodType<
   PronunciationOverride$Outbound,
   z.ZodTypeDef,
   PronunciationOverride
-> = z.object({
-  text: z.string(),
-  replacement: z.string(),
-  languages: z.array(z.string()).optional(),
-  provider: z.string().default(""),
-  voice: z.string().default(""),
-  matchType: MatchType$outboundSchema.optional(),
-  matchOptions: z.array(z.string()).optional(),
-  enabled: z.boolean().default(true),
-  notes: z.string().default(""),
-}).transform((v) => {
-  return remap$(v, {
-    matchType: "match_type",
-    matchOptions: "match_options",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    replacement: z.string(),
+    languages: z.array(z.string()).optional(),
+    provider: z.string().default(""),
+    voice: z.string().default(""),
+    matchType: MatchType$outboundSchema.optional(),
+    matchOptions: z.array(z.string()).optional(),
+    enabled: z.boolean().default(true),
+    notes: z.string().default(""),
+  }).transform((v) => {
+    return remap$(v, {
+      matchType: "match_type",
+      matchOptions: "match_options",
+    });
+  })
+);
 
 export function pronunciationOverrideToJSON(
   pronunciationOverride: PronunciationOverride,

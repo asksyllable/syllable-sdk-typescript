@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -22,15 +22,17 @@ export const BodyDirectoryMemberBulkLoadFile$inboundSchema: z.ZodType<
   BodyDirectoryMemberBulkLoadFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 /** @internal */
 export type BodyDirectoryMemberBulkLoadFile$Outbound = {
   fileName: string;
@@ -42,15 +44,17 @@ export const BodyDirectoryMemberBulkLoadFile$outboundSchema: z.ZodType<
   BodyDirectoryMemberBulkLoadFile$Outbound,
   z.ZodTypeDef,
   BodyDirectoryMemberBulkLoadFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function bodyDirectoryMemberBulkLoadFileToJSON(
   bodyDirectoryMemberBulkLoadFile: BodyDirectoryMemberBulkLoadFile,
@@ -76,9 +80,11 @@ export const BodyDirectoryMemberBulkLoad$inboundSchema: z.ZodType<
   BodyDirectoryMemberBulkLoad,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file: z.lazy(() => BodyDirectoryMemberBulkLoadFile$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyDirectoryMemberBulkLoadFile$inboundSchema),
+  })
+);
 /** @internal */
 export type BodyDirectoryMemberBulkLoad$Outbound = {
   file: BodyDirectoryMemberBulkLoadFile$Outbound | Blob;
@@ -89,11 +95,13 @@ export const BodyDirectoryMemberBulkLoad$outboundSchema: z.ZodType<
   BodyDirectoryMemberBulkLoad$Outbound,
   z.ZodTypeDef,
   BodyDirectoryMemberBulkLoad
-> = z.object({
-  file: z.lazy(() => BodyDirectoryMemberBulkLoadFile$outboundSchema).or(
-    blobLikeSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyDirectoryMemberBulkLoadFile$outboundSchema).or(
+      blobLikeSchema,
+    ),
+  })
+);
 
 export function bodyDirectoryMemberBulkLoadToJSON(
   bodyDirectoryMemberBulkLoad: BodyDirectoryMemberBulkLoad,

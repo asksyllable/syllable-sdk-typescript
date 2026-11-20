@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,11 +35,13 @@ export const SipEndpoint$inboundSchema: z.ZodType<
   SipEndpoint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  host: z.string(),
-  port: z.nullable(z.string()).optional(),
-  transport: z.nullable(SipTransport$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    host: z.string(),
+    port: z.nullable(z.string()).optional(),
+    transport: z.nullable(SipTransport$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type SipEndpoint$Outbound = {
   host: string;
@@ -52,11 +54,13 @@ export const SipEndpoint$outboundSchema: z.ZodType<
   SipEndpoint$Outbound,
   z.ZodTypeDef,
   SipEndpoint
-> = z.object({
-  host: z.string(),
-  port: z.nullable(z.string()).optional(),
-  transport: z.nullable(SipTransport$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    host: z.string(),
+    port: z.nullable(z.string()).optional(),
+    transport: z.nullable(SipTransport$outboundSchema).optional(),
+  })
+);
 
 export function sipEndpointToJSON(sipEndpoint: SipEndpoint): string {
   return JSON.stringify(SipEndpoint$outboundSchema.parse(sipEndpoint));

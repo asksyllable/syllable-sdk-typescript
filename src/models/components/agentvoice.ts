@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -100,26 +100,29 @@ export const AgentVoice$inboundSchema: z.ZodType<
   AgentVoice,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  provider: TtsProvider$inboundSchema,
-  display_name: AgentVoiceDisplayName$inboundSchema,
-  var_name: AgentVoiceVarName$inboundSchema,
-  gender: AgentVoiceGender$inboundSchema,
-  model: AgentVoiceModel$inboundSchema,
-  supported_languages: z.array(AgentLanguage$inboundSchema),
-  deprecated: z.boolean(),
-  sunset_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
-  removed: z.boolean().default(false),
-  fallback: z.nullable(z.string()).optional(),
-  status: z.nullable(LifecycleStatus$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-    "var_name": "varName",
-    "supported_languages": "supportedLanguages",
-    "sunset_date": "sunsetDate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: TtsProvider$inboundSchema,
+    display_name: AgentVoiceDisplayName$inboundSchema,
+    var_name: AgentVoiceVarName$inboundSchema,
+    gender: AgentVoiceGender$inboundSchema,
+    model: AgentVoiceModel$inboundSchema,
+    supported_languages: z.array(AgentLanguage$inboundSchema),
+    deprecated: z.boolean(),
+    sunset_date: z.nullable(z.string().transform(v => new RFCDate(v)))
+      .optional(),
+    removed: z.boolean().default(false),
+    fallback: z.nullable(z.string()).optional(),
+    status: z.nullable(LifecycleStatus$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+      "var_name": "varName",
+      "supported_languages": "supportedLanguages",
+      "sunset_date": "sunsetDate",
+    });
+  })
+);
 /** @internal */
 export type AgentVoice$Outbound = {
   provider: string;
@@ -140,27 +143,29 @@ export const AgentVoice$outboundSchema: z.ZodType<
   AgentVoice$Outbound,
   z.ZodTypeDef,
   AgentVoice
-> = z.object({
-  provider: TtsProvider$outboundSchema,
-  displayName: AgentVoiceDisplayName$outboundSchema,
-  varName: AgentVoiceVarName$outboundSchema,
-  gender: AgentVoiceGender$outboundSchema,
-  model: AgentVoiceModel$outboundSchema,
-  supportedLanguages: z.array(AgentLanguage$outboundSchema),
-  deprecated: z.boolean(),
-  sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
-    .optional(),
-  removed: z.boolean().default(false),
-  fallback: z.nullable(z.string()).optional(),
-  status: z.nullable(LifecycleStatus$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-    varName: "var_name",
-    supportedLanguages: "supported_languages",
-    sunsetDate: "sunset_date",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: TtsProvider$outboundSchema,
+    displayName: AgentVoiceDisplayName$outboundSchema,
+    varName: AgentVoiceVarName$outboundSchema,
+    gender: AgentVoiceGender$outboundSchema,
+    model: AgentVoiceModel$outboundSchema,
+    supportedLanguages: z.array(AgentLanguage$outboundSchema),
+    deprecated: z.boolean(),
+    sunsetDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
+      .optional(),
+    removed: z.boolean().default(false),
+    fallback: z.nullable(z.string()).optional(),
+    status: z.nullable(LifecycleStatus$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+      varName: "var_name",
+      supportedLanguages: "supported_languages",
+      sunsetDate: "sunset_date",
+    });
+  })
+);
 
 export function agentVoiceToJSON(agentVoice: AgentVoice): string {
   return JSON.stringify(AgentVoice$outboundSchema.parse(agentVoice));

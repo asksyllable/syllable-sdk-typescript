@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const InsightsUploadMoveFilesRequest$inboundSchema: z.ZodType<
   InsightsUploadMoveFilesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  folder_id: z.number().int(),
-  InsightsFolderFileMove: components.InsightsFolderFileMove$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "folder_id": "folderId",
-    "InsightsFolderFileMove": "insightsFolderFileMove",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folder_id: z.number().int(),
+    InsightsFolderFileMove: components.InsightsFolderFileMove$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "folder_id": "folderId",
+      "InsightsFolderFileMove": "insightsFolderFileMove",
+    });
+  })
+);
 /** @internal */
 export type InsightsUploadMoveFilesRequest$Outbound = {
   folder_id: number;
@@ -39,15 +41,17 @@ export const InsightsUploadMoveFilesRequest$outboundSchema: z.ZodType<
   InsightsUploadMoveFilesRequest$Outbound,
   z.ZodTypeDef,
   InsightsUploadMoveFilesRequest
-> = z.object({
-  folderId: z.number().int(),
-  insightsFolderFileMove: components.InsightsFolderFileMove$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    folderId: "folder_id",
-    insightsFolderFileMove: "InsightsFolderFileMove",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folderId: z.number().int(),
+    insightsFolderFileMove: components.InsightsFolderFileMove$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      folderId: "folder_id",
+      insightsFolderFileMove: "InsightsFolderFileMove",
+    });
+  })
+);
 
 export function insightsUploadMoveFilesRequestToJSON(
   insightsUploadMoveFilesRequest: InsightsUploadMoveFilesRequest,

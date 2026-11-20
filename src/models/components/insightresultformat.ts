@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const InsightResultFormat = {
@@ -14,7 +15,7 @@ export type InsightResultFormat = ClosedEnum<typeof InsightResultFormat>;
 /** @internal */
 export const InsightResultFormat$inboundSchema: z.ZodNativeEnum<
   typeof InsightResultFormat
-> = z.nativeEnum(InsightResultFormat);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InsightResultFormat));
 /** @internal */
 export const InsightResultFormat$outboundSchema: z.ZodNativeEnum<
   typeof InsightResultFormat

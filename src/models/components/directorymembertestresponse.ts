@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,15 +28,17 @@ export const DirectoryMemberTestResponse$inboundSchema: z.ZodType<
   DirectoryMemberTestResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  extension: z.nullable(z.string()).optional(),
-  status: z.nullable(z.string()).optional(),
-  sip_transfer_mode: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "sip_transfer_mode": "sipTransferMode",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    extension: z.nullable(z.string()).optional(),
+    status: z.nullable(z.string()).optional(),
+    sip_transfer_mode: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "sip_transfer_mode": "sipTransferMode",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberTestResponse$Outbound = {
   extension?: string | null | undefined;
@@ -49,15 +51,17 @@ export const DirectoryMemberTestResponse$outboundSchema: z.ZodType<
   DirectoryMemberTestResponse$Outbound,
   z.ZodTypeDef,
   DirectoryMemberTestResponse
-> = z.object({
-  extension: z.nullable(z.string()).optional(),
-  status: z.nullable(z.string()).optional(),
-  sipTransferMode: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sipTransferMode: "sip_transfer_mode",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    extension: z.nullable(z.string()).optional(),
+    status: z.nullable(z.string()).optional(),
+    sipTransferMode: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sipTransferMode: "sip_transfer_mode",
+    });
+  })
+);
 
 export function directoryMemberTestResponseToJSON(
   directoryMemberTestResponse: DirectoryMemberTestResponse,

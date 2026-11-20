@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,16 +19,18 @@ export const ChannelTargetsCreateRequest$inboundSchema: z.ZodType<
   ChannelTargetsCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel_id: z.number().int(),
-  ChannelTargetCreateRequest:
-    components.ChannelTargetCreateRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "channel_id": "channelId",
-    "ChannelTargetCreateRequest": "channelTargetCreateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel_id: z.number().int(),
+    ChannelTargetCreateRequest:
+      components.ChannelTargetCreateRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_id": "channelId",
+      "ChannelTargetCreateRequest": "channelTargetCreateRequest",
+    });
+  })
+);
 /** @internal */
 export type ChannelTargetsCreateRequest$Outbound = {
   channel_id: number;
@@ -40,16 +42,18 @@ export const ChannelTargetsCreateRequest$outboundSchema: z.ZodType<
   ChannelTargetsCreateRequest$Outbound,
   z.ZodTypeDef,
   ChannelTargetsCreateRequest
-> = z.object({
-  channelId: z.number().int(),
-  channelTargetCreateRequest:
-    components.ChannelTargetCreateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    channelId: "channel_id",
-    channelTargetCreateRequest: "ChannelTargetCreateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channelId: z.number().int(),
+    channelTargetCreateRequest:
+      components.ChannelTargetCreateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      channelId: "channel_id",
+      channelTargetCreateRequest: "ChannelTargetCreateRequest",
+    });
+  })
+);
 
 export function channelTargetsCreateRequestToJSON(
   channelTargetsCreateRequest: ChannelTargetsCreateRequest,

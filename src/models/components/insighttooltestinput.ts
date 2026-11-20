@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -41,7 +41,7 @@ export const SessionId$inboundSchema: z.ZodType<
   SessionId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number().int(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.number().int(), z.string()]));
 /** @internal */
 export type SessionId$Outbound = number | string;
 
@@ -50,7 +50,7 @@ export const SessionId$outboundSchema: z.ZodType<
   SessionId$Outbound,
   z.ZodTypeDef,
   SessionId
-> = z.union([z.number().int(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.number().int(), z.string()]));
 
 export function sessionIdToJSON(sessionId: SessionId): string {
   return JSON.stringify(SessionId$outboundSchema.parse(sessionId));
@@ -70,7 +70,7 @@ export const UploadFileId$inboundSchema: z.ZodType<
   UploadFileId,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number().int(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.number().int(), z.string()]));
 /** @internal */
 export type UploadFileId$Outbound = number | string;
 
@@ -79,7 +79,7 @@ export const UploadFileId$outboundSchema: z.ZodType<
   UploadFileId$Outbound,
   z.ZodTypeDef,
   UploadFileId
-> = z.union([z.number().int(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.number().int(), z.string()]));
 
 export function uploadFileIdToJSON(uploadFileId: UploadFileId): string {
   return JSON.stringify(UploadFileId$outboundSchema.parse(uploadFileId));
@@ -99,18 +99,20 @@ export const InsightToolTestInput$inboundSchema: z.ZodType<
   InsightToolTestInput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_name: z.string(),
-  session_id: z.nullable(z.union([z.number().int(), z.string()])).optional(),
-  upload_file_id: z.nullable(z.union([z.number().int(), z.string()]))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_name": "toolName",
-    "session_id": "sessionId",
-    "upload_file_id": "uploadFileId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_name: z.string(),
+    session_id: z.nullable(z.union([z.number().int(), z.string()])).optional(),
+    upload_file_id: z.nullable(z.union([z.number().int(), z.string()]))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_name": "toolName",
+      "session_id": "sessionId",
+      "upload_file_id": "uploadFileId",
+    });
+  })
+);
 /** @internal */
 export type InsightToolTestInput$Outbound = {
   tool_name: string;
@@ -123,17 +125,20 @@ export const InsightToolTestInput$outboundSchema: z.ZodType<
   InsightToolTestInput$Outbound,
   z.ZodTypeDef,
   InsightToolTestInput
-> = z.object({
-  toolName: z.string(),
-  sessionId: z.nullable(z.union([z.number().int(), z.string()])).optional(),
-  uploadFileId: z.nullable(z.union([z.number().int(), z.string()])).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    toolName: "tool_name",
-    sessionId: "session_id",
-    uploadFileId: "upload_file_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolName: z.string(),
+    sessionId: z.nullable(z.union([z.number().int(), z.string()])).optional(),
+    uploadFileId: z.nullable(z.union([z.number().int(), z.string()]))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolName: "tool_name",
+      sessionId: "session_id",
+      uploadFileId: "upload_file_id",
+    });
+  })
+);
 
 export function insightToolTestInputToJSON(
   insightToolTestInput: InsightToolTestInput,

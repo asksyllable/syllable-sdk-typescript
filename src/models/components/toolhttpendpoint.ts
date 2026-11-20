@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -51,16 +51,18 @@ export const ToolHttpEndpoint$inboundSchema: z.ZodType<
   ToolHttpEndpoint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  method: ToolHttpMethod$inboundSchema,
-  argument_location: ToolArgumentLocation$inboundSchema,
-  timeout: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "argument_location": "argumentLocation",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    method: ToolHttpMethod$inboundSchema,
+    argument_location: ToolArgumentLocation$inboundSchema,
+    timeout: z.nullable(z.number()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "argument_location": "argumentLocation",
+    });
+  })
+);
 /** @internal */
 export type ToolHttpEndpoint$Outbound = {
   url: string;
@@ -74,16 +76,18 @@ export const ToolHttpEndpoint$outboundSchema: z.ZodType<
   ToolHttpEndpoint$Outbound,
   z.ZodTypeDef,
   ToolHttpEndpoint
-> = z.object({
-  url: z.string(),
-  method: ToolHttpMethod$outboundSchema,
-  argumentLocation: ToolArgumentLocation$outboundSchema,
-  timeout: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    argumentLocation: "argument_location",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    method: ToolHttpMethod$outboundSchema,
+    argumentLocation: ToolArgumentLocation$outboundSchema,
+    timeout: z.nullable(z.number()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      argumentLocation: "argument_location",
+    });
+  })
+);
 
 export function toolHttpEndpointToJSON(
   toolHttpEndpoint: ToolHttpEndpoint,

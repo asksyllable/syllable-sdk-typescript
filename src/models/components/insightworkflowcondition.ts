@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -65,7 +65,7 @@ export const SampleRate$inboundSchema: z.ZodType<
   SampleRate,
   z.ZodTypeDef,
   unknown
-> = z.union([z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.number().int(), z.number()]));
 /** @internal */
 export type SampleRate$Outbound = number | number;
 
@@ -74,7 +74,7 @@ export const SampleRate$outboundSchema: z.ZodType<
   SampleRate$Outbound,
   z.ZodTypeDef,
   SampleRate
-> = z.union([z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.number().int(), z.number()]));
 
 export function sampleRateToJSON(sampleRate: SampleRate): string {
   return JSON.stringify(SampleRate$outboundSchema.parse(sampleRate));
@@ -94,7 +94,9 @@ export const AgentList$inboundSchema: z.ZodType<
   AgentList,
   z.ZodTypeDef,
   unknown
-> = z.union([z.array(z.number().int()), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.array(z.number().int()), z.array(z.string())])
+);
 /** @internal */
 export type AgentList$Outbound = Array<number> | Array<string>;
 
@@ -103,7 +105,9 @@ export const AgentList$outboundSchema: z.ZodType<
   AgentList$Outbound,
   z.ZodTypeDef,
   AgentList
-> = z.union([z.array(z.number().int()), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.array(z.number().int()), z.array(z.string())])
+);
 
 export function agentListToJSON(agentList: AgentList): string {
   return JSON.stringify(AgentList$outboundSchema.parse(agentList));
@@ -123,31 +127,33 @@ export const InsightWorkflowCondition$inboundSchema: z.ZodType<
   InsightWorkflowCondition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  min_duration: z.nullable(z.number().int()).optional(),
-  max_duration: z.nullable(z.number().int()).optional(),
-  sample_rate: z.nullable(z.union([z.number().int(), z.number()])).optional(),
-  agent_list: z.nullable(
-    z.union([z.array(z.number().int()), z.array(z.string())]),
-  ).optional(),
-  prompt_list: z.nullable(z.array(z.string())).optional(),
-  agent_labels: z.nullable(z.array(z.string())).optional(),
-  prompt_labels: z.nullable(z.array(z.string())).optional(),
-  folder_list: z.nullable(z.array(z.number().int())).optional(),
-  sheet_info: z.nullable(z.record(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "min_duration": "minDuration",
-    "max_duration": "maxDuration",
-    "sample_rate": "sampleRate",
-    "agent_list": "agentList",
-    "prompt_list": "promptList",
-    "agent_labels": "agentLabels",
-    "prompt_labels": "promptLabels",
-    "folder_list": "folderList",
-    "sheet_info": "sheetInfo",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    min_duration: z.nullable(z.number().int()).optional(),
+    max_duration: z.nullable(z.number().int()).optional(),
+    sample_rate: z.nullable(z.union([z.number().int(), z.number()])).optional(),
+    agent_list: z.nullable(
+      z.union([z.array(z.number().int()), z.array(z.string())]),
+    ).optional(),
+    prompt_list: z.nullable(z.array(z.string())).optional(),
+    agent_labels: z.nullable(z.array(z.string())).optional(),
+    prompt_labels: z.nullable(z.array(z.string())).optional(),
+    folder_list: z.nullable(z.array(z.number().int())).optional(),
+    sheet_info: z.nullable(z.record(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "min_duration": "minDuration",
+      "max_duration": "maxDuration",
+      "sample_rate": "sampleRate",
+      "agent_list": "agentList",
+      "prompt_list": "promptList",
+      "agent_labels": "agentLabels",
+      "prompt_labels": "promptLabels",
+      "folder_list": "folderList",
+      "sheet_info": "sheetInfo",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowCondition$Outbound = {
   min_duration?: number | null | undefined;
@@ -166,31 +172,33 @@ export const InsightWorkflowCondition$outboundSchema: z.ZodType<
   InsightWorkflowCondition$Outbound,
   z.ZodTypeDef,
   InsightWorkflowCondition
-> = z.object({
-  minDuration: z.nullable(z.number().int()).optional(),
-  maxDuration: z.nullable(z.number().int()).optional(),
-  sampleRate: z.nullable(z.union([z.number().int(), z.number()])).optional(),
-  agentList: z.nullable(
-    z.union([z.array(z.number().int()), z.array(z.string())]),
-  ).optional(),
-  promptList: z.nullable(z.array(z.string())).optional(),
-  agentLabels: z.nullable(z.array(z.string())).optional(),
-  promptLabels: z.nullable(z.array(z.string())).optional(),
-  folderList: z.nullable(z.array(z.number().int())).optional(),
-  sheetInfo: z.nullable(z.record(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    minDuration: "min_duration",
-    maxDuration: "max_duration",
-    sampleRate: "sample_rate",
-    agentList: "agent_list",
-    promptList: "prompt_list",
-    agentLabels: "agent_labels",
-    promptLabels: "prompt_labels",
-    folderList: "folder_list",
-    sheetInfo: "sheet_info",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    minDuration: z.nullable(z.number().int()).optional(),
+    maxDuration: z.nullable(z.number().int()).optional(),
+    sampleRate: z.nullable(z.union([z.number().int(), z.number()])).optional(),
+    agentList: z.nullable(
+      z.union([z.array(z.number().int()), z.array(z.string())]),
+    ).optional(),
+    promptList: z.nullable(z.array(z.string())).optional(),
+    agentLabels: z.nullable(z.array(z.string())).optional(),
+    promptLabels: z.nullable(z.array(z.string())).optional(),
+    folderList: z.nullable(z.array(z.number().int())).optional(),
+    sheetInfo: z.nullable(z.record(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      minDuration: "min_duration",
+      maxDuration: "max_duration",
+      sampleRate: "sample_rate",
+      agentList: "agent_list",
+      promptList: "prompt_list",
+      agentLabels: "agent_labels",
+      promptLabels: "prompt_labels",
+      folderList: "folder_list",
+      sheetInfo: "sheet_info",
+    });
+  })
+);
 
 export function insightWorkflowConditionToJSON(
   insightWorkflowCondition: InsightWorkflowCondition,

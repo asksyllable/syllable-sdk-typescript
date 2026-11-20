@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -43,22 +43,26 @@ export const SessionAction$inboundSchema: z.ZodType<
   SessionAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  tool_name: z.nullable(z.string()).optional(),
-  tool_request: z.nullable(z.string()).optional(),
-  tool_result: z.nullable(z.string()).optional(),
-  tool_error: z.nullable(z.string()).optional(),
-  duration_ms: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_name": "toolName",
-    "tool_request": "toolRequest",
-    "tool_result": "toolResult",
-    "tool_error": "toolError",
-    "duration_ms": "durationMs",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    tool_name: z.nullable(z.string()).optional(),
+    tool_request: z.nullable(z.string()).optional(),
+    tool_result: z.nullable(z.string()).optional(),
+    tool_error: z.nullable(z.string()).optional(),
+    duration_ms: z.nullable(z.number()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_name": "toolName",
+      "tool_request": "toolRequest",
+      "tool_result": "toolResult",
+      "tool_error": "toolError",
+      "duration_ms": "durationMs",
+    });
+  })
+);
 /** @internal */
 export type SessionAction$Outbound = {
   timestamp: string;
@@ -74,22 +78,24 @@ export const SessionAction$outboundSchema: z.ZodType<
   SessionAction$Outbound,
   z.ZodTypeDef,
   SessionAction
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  toolName: z.nullable(z.string()).optional(),
-  toolRequest: z.nullable(z.string()).optional(),
-  toolResult: z.nullable(z.string()).optional(),
-  toolError: z.nullable(z.string()).optional(),
-  durationMs: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    toolName: "tool_name",
-    toolRequest: "tool_request",
-    toolResult: "tool_result",
-    toolError: "tool_error",
-    durationMs: "duration_ms",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    toolName: z.nullable(z.string()).optional(),
+    toolRequest: z.nullable(z.string()).optional(),
+    toolResult: z.nullable(z.string()).optional(),
+    toolError: z.nullable(z.string()).optional(),
+    durationMs: z.nullable(z.number()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolName: "tool_name",
+      toolRequest: "tool_request",
+      toolResult: "tool_result",
+      toolError: "tool_error",
+      durationMs: "duration_ms",
+    });
+  })
+);
 
 export function sessionActionToJSON(sessionAction: SessionAction): string {
   return JSON.stringify(SessionAction$outboundSchema.parse(sessionAction));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -42,16 +42,18 @@ export type BodyOrganizationsUpdate = {
 };
 
 /** @internal */
-export const Logo$inboundSchema: z.ZodType<Logo, z.ZodTypeDef, unknown> = z
-  .object({
-    fileName: z.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
+export const Logo$inboundSchema: z.ZodType<Logo, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fileName: z.string(),
+      content: z.union([
+        z.instanceof(ReadableStream<Uint8Array>),
+        z.instanceof(Blob),
+        z.instanceof(ArrayBuffer),
+        z.instanceof(Uint8Array),
+      ]),
+    })
+  );
 /** @internal */
 export type Logo$Outbound = {
   fileName: string;
@@ -60,15 +62,17 @@ export type Logo$Outbound = {
 
 /** @internal */
 export const Logo$outboundSchema: z.ZodType<Logo$Outbound, z.ZodTypeDef, Logo> =
-  z.object({
-    fileName: z.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fileName: z.string(),
+      content: z.union([
+        z.instanceof(ReadableStream<Uint8Array>),
+        z.instanceof(Blob),
+        z.instanceof(ArrayBuffer),
+        z.instanceof(Uint8Array),
+      ]),
+    })
+  );
 
 export function logoToJSON(logo: Logo): string {
   return JSON.stringify(Logo$outboundSchema.parse(logo));
@@ -88,20 +92,22 @@ export const BodyOrganizationsUpdate$inboundSchema: z.ZodType<
   BodyOrganizationsUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  logo: z.lazy(() => Logo$inboundSchema).optional(),
-  display_name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  domains: z.nullable(z.string()).optional(),
-  saml_provider_id: z.nullable(z.string()).optional(),
-  update_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-    "saml_provider_id": "samlProviderId",
-    "update_comments": "updateComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    logo: z.lazy(() => Logo$inboundSchema).optional(),
+    display_name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    domains: z.nullable(z.string()).optional(),
+    saml_provider_id: z.nullable(z.string()).optional(),
+    update_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+      "saml_provider_id": "samlProviderId",
+      "update_comments": "updateComments",
+    });
+  })
+);
 /** @internal */
 export type BodyOrganizationsUpdate$Outbound = {
   logo?: Logo$Outbound | Blob | undefined;
@@ -117,20 +123,22 @@ export const BodyOrganizationsUpdate$outboundSchema: z.ZodType<
   BodyOrganizationsUpdate$Outbound,
   z.ZodTypeDef,
   BodyOrganizationsUpdate
-> = z.object({
-  logo: z.lazy(() => Logo$outboundSchema).or(blobLikeSchema).optional(),
-  displayName: z.string(),
-  description: z.nullable(z.string()).optional(),
-  domains: z.nullable(z.string()).optional(),
-  samlProviderId: z.nullable(z.string()).optional(),
-  updateComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-    samlProviderId: "saml_provider_id",
-    updateComments: "update_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    logo: z.lazy(() => Logo$outboundSchema).or(blobLikeSchema).optional(),
+    displayName: z.string(),
+    description: z.nullable(z.string()).optional(),
+    domains: z.nullable(z.string()).optional(),
+    samlProviderId: z.nullable(z.string()).optional(),
+    updateComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+      samlProviderId: "saml_provider_id",
+      updateComments: "update_comments",
+    });
+  })
+);
 
 export function bodyOrganizationsUpdateToJSON(
   bodyOrganizationsUpdate: BodyOrganizationsUpdate,

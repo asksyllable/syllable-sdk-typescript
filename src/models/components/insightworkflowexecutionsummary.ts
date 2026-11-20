@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -46,18 +46,20 @@ export const InsightWorkflowExecutionSummary$inboundSchema: z.ZodType<
   InsightWorkflowExecutionSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pending: z.number().int().default(0),
-  processing: z.number().int().default(0),
-  completed: z.number().int().default(0),
-  failed: z.number().int().default(0),
-  conditions_not_met: z.number().int().default(0),
-  total: z.number().int().default(0),
-}).transform((v) => {
-  return remap$(v, {
-    "conditions_not_met": "conditionsNotMet",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pending: z.number().int().default(0),
+    processing: z.number().int().default(0),
+    completed: z.number().int().default(0),
+    failed: z.number().int().default(0),
+    conditions_not_met: z.number().int().default(0),
+    total: z.number().int().default(0),
+  }).transform((v) => {
+    return remap$(v, {
+      "conditions_not_met": "conditionsNotMet",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowExecutionSummary$Outbound = {
   pending: number;
@@ -73,18 +75,20 @@ export const InsightWorkflowExecutionSummary$outboundSchema: z.ZodType<
   InsightWorkflowExecutionSummary$Outbound,
   z.ZodTypeDef,
   InsightWorkflowExecutionSummary
-> = z.object({
-  pending: z.number().int().default(0),
-  processing: z.number().int().default(0),
-  completed: z.number().int().default(0),
-  failed: z.number().int().default(0),
-  conditionsNotMet: z.number().int().default(0),
-  total: z.number().int().default(0),
-}).transform((v) => {
-  return remap$(v, {
-    conditionsNotMet: "conditions_not_met",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pending: z.number().int().default(0),
+    processing: z.number().int().default(0),
+    completed: z.number().int().default(0),
+    failed: z.number().int().default(0),
+    conditionsNotMet: z.number().int().default(0),
+    total: z.number().int().default(0),
+  }).transform((v) => {
+    return remap$(v, {
+      conditionsNotMet: "conditions_not_met",
+    });
+  })
+);
 
 export function insightWorkflowExecutionSummaryToJSON(
   insightWorkflowExecutionSummary: InsightWorkflowExecutionSummary,

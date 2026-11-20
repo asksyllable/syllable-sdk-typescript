@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -53,28 +53,31 @@ export const ChannelsListRequest$inboundSchema: z.ZodType<
   ChannelsListRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(25),
-  search_fields: z.array(components.ChannelProperties$inboundSchema).optional(),
-  search_field_values: z.array(z.string()).optional(),
-  order_by: z.nullable(components.ChannelProperties$inboundSchema).optional(),
-  order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
-    .optional(),
-  fields: z.nullable(z.array(components.ChannelProperties$inboundSchema))
-    .optional(),
-  start_datetime: z.nullable(z.string()).optional(),
-  end_datetime: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "search_fields": "searchFields",
-    "search_field_values": "searchFieldValues",
-    "order_by": "orderBy",
-    "order_by_direction": "orderByDirection",
-    "start_datetime": "startDatetime",
-    "end_datetime": "endDatetime",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page: z.nullable(z.number().int()).optional(),
+    limit: z.number().int().default(25),
+    search_fields: z.array(components.ChannelProperties$inboundSchema)
+      .optional(),
+    search_field_values: z.array(z.string()).optional(),
+    order_by: z.nullable(components.ChannelProperties$inboundSchema).optional(),
+    order_by_direction: z.nullable(components.OrderByDirection$inboundSchema)
+      .optional(),
+    fields: z.nullable(z.array(components.ChannelProperties$inboundSchema))
+      .optional(),
+    start_datetime: z.nullable(z.string()).optional(),
+    end_datetime: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "search_fields": "searchFields",
+      "search_field_values": "searchFieldValues",
+      "order_by": "orderBy",
+      "order_by_direction": "orderByDirection",
+      "start_datetime": "startDatetime",
+      "end_datetime": "endDatetime",
+    });
+  })
+);
 /** @internal */
 export type ChannelsListRequest$Outbound = {
   page?: number | null | undefined;
@@ -93,28 +96,31 @@ export const ChannelsListRequest$outboundSchema: z.ZodType<
   ChannelsListRequest$Outbound,
   z.ZodTypeDef,
   ChannelsListRequest
-> = z.object({
-  page: z.nullable(z.number().int()).optional(),
-  limit: z.number().int().default(25),
-  searchFields: z.array(components.ChannelProperties$outboundSchema).optional(),
-  searchFieldValues: z.array(z.string()).optional(),
-  orderBy: z.nullable(components.ChannelProperties$outboundSchema).optional(),
-  orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
-    .optional(),
-  fields: z.nullable(z.array(components.ChannelProperties$outboundSchema))
-    .optional(),
-  startDatetime: z.nullable(z.string()).optional(),
-  endDatetime: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    searchFields: "search_fields",
-    searchFieldValues: "search_field_values",
-    orderBy: "order_by",
-    orderByDirection: "order_by_direction",
-    startDatetime: "start_datetime",
-    endDatetime: "end_datetime",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page: z.nullable(z.number().int()).optional(),
+    limit: z.number().int().default(25),
+    searchFields: z.array(components.ChannelProperties$outboundSchema)
+      .optional(),
+    searchFieldValues: z.array(z.string()).optional(),
+    orderBy: z.nullable(components.ChannelProperties$outboundSchema).optional(),
+    orderByDirection: z.nullable(components.OrderByDirection$outboundSchema)
+      .optional(),
+    fields: z.nullable(z.array(components.ChannelProperties$outboundSchema))
+      .optional(),
+    startDatetime: z.nullable(z.string()).optional(),
+    endDatetime: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      searchFields: "search_fields",
+      searchFieldValues: "search_field_values",
+      orderBy: "order_by",
+      orderByDirection: "order_by_direction",
+      startDatetime: "start_datetime",
+      endDatetime: "end_datetime",
+    });
+  })
+);
 
 export function channelsListRequestToJSON(
   channelsListRequest: ChannelsListRequest,

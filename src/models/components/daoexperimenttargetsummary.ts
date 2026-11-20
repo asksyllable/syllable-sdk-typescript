@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -49,19 +49,21 @@ export const DaoExperimentTargetSummary$inboundSchema: z.ZodType<
   DaoExperimentTargetSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  target: z.string(),
-  target_mode: TargetModes$inboundSchema,
-  channel_id: z.number().int(),
-  channel_name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "target_mode": "targetMode",
-    "channel_id": "channelId",
-    "channel_name": "channelName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    target: z.string(),
+    target_mode: TargetModes$inboundSchema,
+    channel_id: z.number().int(),
+    channel_name: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "target_mode": "targetMode",
+      "channel_id": "channelId",
+      "channel_name": "channelName",
+    });
+  })
+);
 /** @internal */
 export type DaoExperimentTargetSummary$Outbound = {
   id: number;
@@ -76,19 +78,21 @@ export const DaoExperimentTargetSummary$outboundSchema: z.ZodType<
   DaoExperimentTargetSummary$Outbound,
   z.ZodTypeDef,
   DaoExperimentTargetSummary
-> = z.object({
-  id: z.number().int(),
-  target: z.string(),
-  targetMode: TargetModes$outboundSchema,
-  channelId: z.number().int(),
-  channelName: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    targetMode: "target_mode",
-    channelId: "channel_id",
-    channelName: "channel_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    target: z.string(),
+    targetMode: TargetModes$outboundSchema,
+    channelId: z.number().int(),
+    channelName: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      targetMode: "target_mode",
+      channelId: "channel_id",
+      channelName: "channel_name",
+    });
+  })
+);
 
 export function daoExperimentTargetSummaryToJSON(
   daoExperimentTargetSummary: DaoExperimentTargetSummary,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -47,23 +47,27 @@ export const InsightsFolder$inboundSchema: z.ZodType<
   InsightsFolder,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  label: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  last_updated_by: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    label: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    last_updated_by: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type InsightsFolder$Outbound = {
   name: string;
@@ -80,21 +84,23 @@ export const InsightsFolder$outboundSchema: z.ZodType<
   InsightsFolder$Outbound,
   z.ZodTypeDef,
   InsightsFolder
-> = z.object({
-  name: z.string(),
-  label: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
-  lastUpdatedBy: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    label: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()).optional(),
+    lastUpdatedBy: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function insightsFolderToJSON(insightsFolder: InsightsFolder): string {
   return JSON.stringify(InsightsFolder$outboundSchema.parse(insightsFolder));

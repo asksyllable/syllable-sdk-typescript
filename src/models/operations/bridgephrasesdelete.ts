@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,14 +18,16 @@ export const BridgePhrasesDeleteRequest$inboundSchema: z.ZodType<
   BridgePhrasesDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bridge_phrases_id: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "bridge_phrases_id": "bridgePhrasesId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bridge_phrases_id: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "bridge_phrases_id": "bridgePhrasesId",
+    });
+  })
+);
 /** @internal */
 export type BridgePhrasesDeleteRequest$Outbound = {
   bridge_phrases_id: number;
@@ -37,14 +39,16 @@ export const BridgePhrasesDeleteRequest$outboundSchema: z.ZodType<
   BridgePhrasesDeleteRequest$Outbound,
   z.ZodTypeDef,
   BridgePhrasesDeleteRequest
-> = z.object({
-  bridgePhrasesId: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    bridgePhrasesId: "bridge_phrases_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bridgePhrasesId: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      bridgePhrasesId: "bridge_phrases_id",
+    });
+  })
+);
 
 export function bridgePhrasesDeleteRequestToJSON(
   bridgePhrasesDeleteRequest: BridgePhrasesDeleteRequest,

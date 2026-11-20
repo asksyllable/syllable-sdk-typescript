@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
 export type CustomMessageErrorResponseData = {
@@ -35,19 +36,21 @@ export const CustomMessageErrorResponse$inboundSchema: z.ZodType<
   CustomMessageErrorResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CustomMessageErrorResponse(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CustomMessageErrorResponse(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type CustomMessageErrorResponse$Outbound = {
@@ -59,8 +62,10 @@ export const CustomMessageErrorResponse$outboundSchema: z.ZodType<
   CustomMessageErrorResponse$Outbound,
   z.ZodTypeDef,
   CustomMessageErrorResponse
-> = z.instanceof(CustomMessageErrorResponse)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    detail: z.string(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(CustomMessageErrorResponse)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      detail: z.string(),
+    }))
+);

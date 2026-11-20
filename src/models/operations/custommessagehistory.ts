@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -24,17 +24,19 @@ export const CustomMessageHistoryRequest$inboundSchema: z.ZodType<
   CustomMessageHistoryRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  custom_message_id: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  order_by_direction: components.OrderByDirection$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_message_id": "customMessageId",
-    "order_by_direction": "orderByDirection",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_message_id: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    order_by_direction: components.OrderByDirection$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_message_id": "customMessageId",
+      "order_by_direction": "orderByDirection",
+    });
+  })
+);
 /** @internal */
 export type CustomMessageHistoryRequest$Outbound = {
   custom_message_id: number;
@@ -48,17 +50,19 @@ export const CustomMessageHistoryRequest$outboundSchema: z.ZodType<
   CustomMessageHistoryRequest$Outbound,
   z.ZodTypeDef,
   CustomMessageHistoryRequest
-> = z.object({
-  customMessageId: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  orderByDirection: components.OrderByDirection$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    customMessageId: "custom_message_id",
-    orderByDirection: "order_by_direction",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customMessageId: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    orderByDirection: components.OrderByDirection$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      customMessageId: "custom_message_id",
+      orderByDirection: "order_by_direction",
+    });
+  })
+);
 
 export function customMessageHistoryRequestToJSON(
   customMessageHistoryRequest: CustomMessageHistoryRequest,

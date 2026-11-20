@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -40,24 +40,26 @@ export const CommunicationBatchInput$inboundSchema: z.ZodType<
   CommunicationBatchInput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-  campaign_id: z.number().int(),
-  expires_on: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  paused: z.nullable(z.boolean()).optional(),
-  call_rate: z.nullable(z.number().int()).optional(),
-  auto_call_rate: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-    "campaign_id": "campaignId",
-    "expires_on": "expiresOn",
-    "call_rate": "callRate",
-    "auto_call_rate": "autoCallRate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+    campaign_id: z.number().int(),
+    expires_on: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    paused: z.nullable(z.boolean()).optional(),
+    call_rate: z.nullable(z.number().int()).optional(),
+    auto_call_rate: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+      "campaign_id": "campaignId",
+      "expires_on": "expiresOn",
+      "call_rate": "callRate",
+      "auto_call_rate": "autoCallRate",
+    });
+  })
+);
 /** @internal */
 export type CommunicationBatchInput$Outbound = {
   batch_id: string;
@@ -73,22 +75,24 @@ export const CommunicationBatchInput$outboundSchema: z.ZodType<
   CommunicationBatchInput$Outbound,
   z.ZodTypeDef,
   CommunicationBatchInput
-> = z.object({
-  batchId: z.string(),
-  campaignId: z.number().int(),
-  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  paused: z.nullable(z.boolean()).optional(),
-  callRate: z.nullable(z.number().int()).optional(),
-  autoCallRate: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-    campaignId: "campaign_id",
-    expiresOn: "expires_on",
-    callRate: "call_rate",
-    autoCallRate: "auto_call_rate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+    campaignId: z.number().int(),
+    expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    paused: z.nullable(z.boolean()).optional(),
+    callRate: z.nullable(z.number().int()).optional(),
+    autoCallRate: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+      campaignId: "campaign_id",
+      expiresOn: "expires_on",
+      callRate: "call_rate",
+      autoCallRate: "auto_call_rate",
+    });
+  })
+);
 
 export function communicationBatchInputToJSON(
   communicationBatchInput: CommunicationBatchInput,

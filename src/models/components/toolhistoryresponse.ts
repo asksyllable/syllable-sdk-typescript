@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -77,31 +77,35 @@ export const ToolHistoryResponse$inboundSchema: z.ZodType<
   ToolHistoryResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_id: z.number().int(),
-  version_number: z.number().int(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_by: z.string(),
-  comments: z.nullable(z.string()).optional(),
-  operation: z.string(),
-  deleted_reason: z.nullable(z.string()).optional(),
-  service_id: z.number().int(),
-  service_name: z.nullable(z.string()).optional(),
-  name: z.string(),
-  description: z.string(),
-  type: z.string(),
-  definition: ToolDefinition$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "tool_id": "toolId",
-    "version_number": "versionNumber",
-    "created_at": "createdAt",
-    "updated_by": "updatedBy",
-    "deleted_reason": "deletedReason",
-    "service_id": "serviceId",
-    "service_name": "serviceName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_id: z.number().int(),
+    version_number: z.number().int(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_by: z.string(),
+    comments: z.nullable(z.string()).optional(),
+    operation: z.string(),
+    deleted_reason: z.nullable(z.string()).optional(),
+    service_id: z.number().int(),
+    service_name: z.nullable(z.string()).optional(),
+    name: z.string(),
+    description: z.string(),
+    type: z.string(),
+    definition: ToolDefinition$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_id": "toolId",
+      "version_number": "versionNumber",
+      "created_at": "createdAt",
+      "updated_by": "updatedBy",
+      "deleted_reason": "deletedReason",
+      "service_id": "serviceId",
+      "service_name": "serviceName",
+    });
+  })
+);
 /** @internal */
 export type ToolHistoryResponse$Outbound = {
   tool_id: number;
@@ -124,31 +128,33 @@ export const ToolHistoryResponse$outboundSchema: z.ZodType<
   ToolHistoryResponse$Outbound,
   z.ZodTypeDef,
   ToolHistoryResponse
-> = z.object({
-  toolId: z.number().int(),
-  versionNumber: z.number().int(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  updatedBy: z.string(),
-  comments: z.nullable(z.string()).optional(),
-  operation: z.string(),
-  deletedReason: z.nullable(z.string()).optional(),
-  serviceId: z.number().int(),
-  serviceName: z.nullable(z.string()).optional(),
-  name: z.string(),
-  description: z.string(),
-  type: z.string(),
-  definition: ToolDefinition$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    toolId: "tool_id",
-    versionNumber: "version_number",
-    createdAt: "created_at",
-    updatedBy: "updated_by",
-    deletedReason: "deleted_reason",
-    serviceId: "service_id",
-    serviceName: "service_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolId: z.number().int(),
+    versionNumber: z.number().int(),
+    createdAt: z.date().transform(v => v.toISOString()),
+    updatedBy: z.string(),
+    comments: z.nullable(z.string()).optional(),
+    operation: z.string(),
+    deletedReason: z.nullable(z.string()).optional(),
+    serviceId: z.number().int(),
+    serviceName: z.nullable(z.string()).optional(),
+    name: z.string(),
+    description: z.string(),
+    type: z.string(),
+    definition: ToolDefinition$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      toolId: "tool_id",
+      versionNumber: "version_number",
+      createdAt: "created_at",
+      updatedBy: "updated_by",
+      deletedReason: "deleted_reason",
+      serviceId: "service_id",
+      serviceName: "service_name",
+    });
+  })
+);
 
 export function toolHistoryResponseToJSON(
   toolHistoryResponse: ToolHistoryResponse,

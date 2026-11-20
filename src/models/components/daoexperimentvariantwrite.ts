@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -40,17 +40,19 @@ export const DaoExperimentVariantWrite$inboundSchema: z.ZodType<
   DaoExperimentVariantWrite,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  weight: z.number().int(),
-  is_control: z.boolean().default(false),
-  agent_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "is_control": "isControl",
-    "agent_id": "agentId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    weight: z.number().int(),
+    is_control: z.boolean().default(false),
+    agent_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "is_control": "isControl",
+      "agent_id": "agentId",
+    });
+  })
+);
 /** @internal */
 export type DaoExperimentVariantWrite$Outbound = {
   name: string;
@@ -64,17 +66,19 @@ export const DaoExperimentVariantWrite$outboundSchema: z.ZodType<
   DaoExperimentVariantWrite$Outbound,
   z.ZodTypeDef,
   DaoExperimentVariantWrite
-> = z.object({
-  name: z.string(),
-  weight: z.number().int(),
-  isControl: z.boolean().default(false),
-  agentId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    isControl: "is_control",
-    agentId: "agent_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    weight: z.number().int(),
+    isControl: z.boolean().default(false),
+    agentId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      isControl: "is_control",
+      agentId: "agent_id",
+    });
+  })
+);
 
 export function daoExperimentVariantWriteToJSON(
   daoExperimentVariantWrite: DaoExperimentVariantWrite,

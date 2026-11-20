@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -47,17 +47,19 @@ export const SipConfiguration$inboundSchema: z.ZodType<
   SipConfiguration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sip_transfer_mode: z.nullable(SipTransferMode$inboundSchema).optional(),
-  sip_endpoints: z.nullable(z.array(SipEndpoint$inboundSchema)).optional(),
-  call_info_placement: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "sip_transfer_mode": "sipTransferMode",
-    "sip_endpoints": "sipEndpoints",
-    "call_info_placement": "callInfoPlacement",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sip_transfer_mode: z.nullable(SipTransferMode$inboundSchema).optional(),
+    sip_endpoints: z.nullable(z.array(SipEndpoint$inboundSchema)).optional(),
+    call_info_placement: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "sip_transfer_mode": "sipTransferMode",
+      "sip_endpoints": "sipEndpoints",
+      "call_info_placement": "callInfoPlacement",
+    });
+  })
+);
 /** @internal */
 export type SipConfiguration$Outbound = {
   sip_transfer_mode?: string | null | undefined;
@@ -70,17 +72,19 @@ export const SipConfiguration$outboundSchema: z.ZodType<
   SipConfiguration$Outbound,
   z.ZodTypeDef,
   SipConfiguration
-> = z.object({
-  sipTransferMode: z.nullable(SipTransferMode$outboundSchema).optional(),
-  sipEndpoints: z.nullable(z.array(SipEndpoint$outboundSchema)).optional(),
-  callInfoPlacement: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sipTransferMode: "sip_transfer_mode",
-    sipEndpoints: "sip_endpoints",
-    callInfoPlacement: "call_info_placement",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sipTransferMode: z.nullable(SipTransferMode$outboundSchema).optional(),
+    sipEndpoints: z.nullable(z.array(SipEndpoint$outboundSchema)).optional(),
+    callInfoPlacement: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sipTransferMode: "sip_transfer_mode",
+      sipEndpoints: "sip_endpoints",
+      callInfoPlacement: "call_info_placement",
+    });
+  })
+);
 
 export function sipConfigurationToJSON(
   sipConfiguration: SipConfiguration,

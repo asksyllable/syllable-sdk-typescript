@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const ReasoningEffort = {
@@ -18,7 +19,7 @@ export type ReasoningEffort = ClosedEnum<typeof ReasoningEffort>;
 /** @internal */
 export const ReasoningEffort$inboundSchema: z.ZodNativeEnum<
   typeof ReasoningEffort
-> = z.nativeEnum(ReasoningEffort);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ReasoningEffort));
 /** @internal */
 export const ReasoningEffort$outboundSchema: z.ZodNativeEnum<
   typeof ReasoningEffort

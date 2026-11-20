@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -102,54 +102,57 @@ export const BatchDetails$inboundSchema: z.ZodType<
   BatchDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-  campaign_id: z.number().int(),
-  expires_on: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  paused: z.nullable(z.boolean()).optional(),
-  call_rate: z.nullable(z.number().int()).optional(),
-  auto_call_rate: z.boolean().default(false),
-  status: BatchStatus$inboundSchema.optional(),
-  auto_call_rate_baseline: z.nullable(z.number()).optional(),
-  upload_filename: z.nullable(z.string()).optional(),
-  dispatch_id: z.nullable(z.string()).optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  deleted_reason: z.nullable(z.string()).optional(),
-  last_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  last_updated_by: z.string(),
-  error_message: z.nullable(z.string()).optional(),
-  status_counts: z.nullable(z.record(z.number().int())).optional(),
-  detailed_status_counts: z.nullable(
-    z.record(RequestStatusBreakdown$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-    "campaign_id": "campaignId",
-    "expires_on": "expiresOn",
-    "call_rate": "callRate",
-    "auto_call_rate": "autoCallRate",
-    "auto_call_rate_baseline": "autoCallRateBaseline",
-    "upload_filename": "uploadFilename",
-    "dispatch_id": "dispatchId",
-    "created_at": "createdAt",
-    "deleted_at": "deletedAt",
-    "deleted_reason": "deletedReason",
-    "last_updated_at": "lastUpdatedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "error_message": "errorMessage",
-    "status_counts": "statusCounts",
-    "detailed_status_counts": "detailedStatusCounts",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+    campaign_id: z.number().int(),
+    expires_on: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    paused: z.nullable(z.boolean()).optional(),
+    call_rate: z.nullable(z.number().int()).optional(),
+    auto_call_rate: z.boolean().default(false),
+    status: BatchStatus$inboundSchema.optional(),
+    auto_call_rate_baseline: z.nullable(z.number()).optional(),
+    upload_filename: z.nullable(z.string()).optional(),
+    dispatch_id: z.nullable(z.string()).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    deleted_reason: z.nullable(z.string()).optional(),
+    last_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    last_updated_by: z.string(),
+    error_message: z.nullable(z.string()).optional(),
+    status_counts: z.nullable(z.record(z.number().int())).optional(),
+    detailed_status_counts: z.nullable(
+      z.record(RequestStatusBreakdown$inboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+      "campaign_id": "campaignId",
+      "expires_on": "expiresOn",
+      "call_rate": "callRate",
+      "auto_call_rate": "autoCallRate",
+      "auto_call_rate_baseline": "autoCallRateBaseline",
+      "upload_filename": "uploadFilename",
+      "dispatch_id": "dispatchId",
+      "created_at": "createdAt",
+      "deleted_at": "deletedAt",
+      "deleted_reason": "deletedReason",
+      "last_updated_at": "lastUpdatedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "error_message": "errorMessage",
+      "status_counts": "statusCounts",
+      "detailed_status_counts": "detailedStatusCounts",
+    });
+  })
+);
 /** @internal */
 export type BatchDetails$Outbound = {
   batch_id: string;
@@ -180,48 +183,50 @@ export const BatchDetails$outboundSchema: z.ZodType<
   BatchDetails$Outbound,
   z.ZodTypeDef,
   BatchDetails
-> = z.object({
-  batchId: z.string(),
-  campaignId: z.number().int(),
-  expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  paused: z.nullable(z.boolean()).optional(),
-  callRate: z.nullable(z.number().int()).optional(),
-  autoCallRate: z.boolean().default(false),
-  status: BatchStatus$outboundSchema.optional(),
-  autoCallRateBaseline: z.nullable(z.number()).optional(),
-  uploadFilename: z.nullable(z.string()).optional(),
-  dispatchId: z.nullable(z.string()).optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  deletedReason: z.nullable(z.string()).optional(),
-  lastUpdatedAt: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  lastUpdatedBy: z.string(),
-  errorMessage: z.nullable(z.string()).optional(),
-  statusCounts: z.nullable(z.record(z.number().int())).optional(),
-  detailedStatusCounts: z.nullable(
-    z.record(RequestStatusBreakdown$outboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-    campaignId: "campaign_id",
-    expiresOn: "expires_on",
-    callRate: "call_rate",
-    autoCallRate: "auto_call_rate",
-    autoCallRateBaseline: "auto_call_rate_baseline",
-    uploadFilename: "upload_filename",
-    dispatchId: "dispatch_id",
-    createdAt: "created_at",
-    deletedAt: "deleted_at",
-    deletedReason: "deleted_reason",
-    lastUpdatedAt: "last_updated_at",
-    lastUpdatedBy: "last_updated_by",
-    errorMessage: "error_message",
-    statusCounts: "status_counts",
-    detailedStatusCounts: "detailed_status_counts",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+    campaignId: z.number().int(),
+    expiresOn: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    paused: z.nullable(z.boolean()).optional(),
+    callRate: z.nullable(z.number().int()).optional(),
+    autoCallRate: z.boolean().default(false),
+    status: BatchStatus$outboundSchema.optional(),
+    autoCallRateBaseline: z.nullable(z.number()).optional(),
+    uploadFilename: z.nullable(z.string()).optional(),
+    dispatchId: z.nullable(z.string()).optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    deletedReason: z.nullable(z.string()).optional(),
+    lastUpdatedAt: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    lastUpdatedBy: z.string(),
+    errorMessage: z.nullable(z.string()).optional(),
+    statusCounts: z.nullable(z.record(z.number().int())).optional(),
+    detailedStatusCounts: z.nullable(
+      z.record(RequestStatusBreakdown$outboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+      campaignId: "campaign_id",
+      expiresOn: "expires_on",
+      callRate: "call_rate",
+      autoCallRate: "auto_call_rate",
+      autoCallRateBaseline: "auto_call_rate_baseline",
+      uploadFilename: "upload_filename",
+      dispatchId: "dispatch_id",
+      createdAt: "created_at",
+      deletedAt: "deleted_at",
+      deletedReason: "deleted_reason",
+      lastUpdatedAt: "last_updated_at",
+      lastUpdatedBy: "last_updated_by",
+      errorMessage: "error_message",
+      statusCounts: "status_counts",
+      detailedStatusCounts: "detailed_status_counts",
+    });
+  })
+);
 
 export function batchDetailsToJSON(batchDetails: BatchDetails): string {
   return JSON.stringify(BatchDetails$outboundSchema.parse(batchDetails));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -22,15 +22,17 @@ export const BodyOutboundBatchUploadFile$inboundSchema: z.ZodType<
   BodyOutboundBatchUploadFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 /** @internal */
 export type BodyOutboundBatchUploadFile$Outbound = {
   fileName: string;
@@ -42,15 +44,17 @@ export const BodyOutboundBatchUploadFile$outboundSchema: z.ZodType<
   BodyOutboundBatchUploadFile$Outbound,
   z.ZodTypeDef,
   BodyOutboundBatchUploadFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function bodyOutboundBatchUploadFileToJSON(
   bodyOutboundBatchUploadFile: BodyOutboundBatchUploadFile,
@@ -76,9 +80,11 @@ export const BodyOutboundBatchUpload$inboundSchema: z.ZodType<
   BodyOutboundBatchUpload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file: z.lazy(() => BodyOutboundBatchUploadFile$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyOutboundBatchUploadFile$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type BodyOutboundBatchUpload$Outbound = {
   file?: BodyOutboundBatchUploadFile$Outbound | Blob | undefined;
@@ -89,11 +95,13 @@ export const BodyOutboundBatchUpload$outboundSchema: z.ZodType<
   BodyOutboundBatchUpload$Outbound,
   z.ZodTypeDef,
   BodyOutboundBatchUpload
-> = z.object({
-  file: z.lazy(() => BodyOutboundBatchUploadFile$outboundSchema).or(
-    blobLikeSchema,
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyOutboundBatchUploadFile$outboundSchema).or(
+      blobLikeSchema,
+    ).optional(),
+  })
+);
 
 export function bodyOutboundBatchUploadToJSON(
   bodyOutboundBatchUpload: BodyOutboundBatchUpload,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -60,25 +60,27 @@ export const BridgePhrasesConfig$inboundSchema: z.ZodType<
   BridgePhrasesConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  messages: z.array(z.string()).optional(),
-  randomize_messages: z.boolean().default(false),
-  first_slow_messages: z.array(z.string()).optional(),
-  very_slow_messages: z.array(z.string()).optional(),
-  tool_responses: z.array(z.string()).optional(),
-  localized: z.record(
-    SchemasCortexV1BridgePhrasesBridgePhraseMessages$inboundSchema,
-  ).optional(),
-  smart_turn_timeout_seconds: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "randomize_messages": "randomizeMessages",
-    "first_slow_messages": "firstSlowMessages",
-    "very_slow_messages": "verySlowMessages",
-    "tool_responses": "toolResponses",
-    "smart_turn_timeout_seconds": "smartTurnTimeoutSeconds",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    messages: z.array(z.string()).optional(),
+    randomize_messages: z.boolean().default(false),
+    first_slow_messages: z.array(z.string()).optional(),
+    very_slow_messages: z.array(z.string()).optional(),
+    tool_responses: z.array(z.string()).optional(),
+    localized: z.record(
+      SchemasCortexV1BridgePhrasesBridgePhraseMessages$inboundSchema,
+    ).optional(),
+    smart_turn_timeout_seconds: z.nullable(z.number()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "randomize_messages": "randomizeMessages",
+      "first_slow_messages": "firstSlowMessages",
+      "very_slow_messages": "verySlowMessages",
+      "tool_responses": "toolResponses",
+      "smart_turn_timeout_seconds": "smartTurnTimeoutSeconds",
+    });
+  })
+);
 /** @internal */
 export type BridgePhrasesConfig$Outbound = {
   messages?: Array<string> | undefined;
@@ -97,25 +99,27 @@ export const BridgePhrasesConfig$outboundSchema: z.ZodType<
   BridgePhrasesConfig$Outbound,
   z.ZodTypeDef,
   BridgePhrasesConfig
-> = z.object({
-  messages: z.array(z.string()).optional(),
-  randomizeMessages: z.boolean().default(false),
-  firstSlowMessages: z.array(z.string()).optional(),
-  verySlowMessages: z.array(z.string()).optional(),
-  toolResponses: z.array(z.string()).optional(),
-  localized: z.record(
-    SchemasCortexV1BridgePhrasesBridgePhraseMessages$outboundSchema,
-  ).optional(),
-  smartTurnTimeoutSeconds: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    randomizeMessages: "randomize_messages",
-    firstSlowMessages: "first_slow_messages",
-    verySlowMessages: "very_slow_messages",
-    toolResponses: "tool_responses",
-    smartTurnTimeoutSeconds: "smart_turn_timeout_seconds",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    messages: z.array(z.string()).optional(),
+    randomizeMessages: z.boolean().default(false),
+    firstSlowMessages: z.array(z.string()).optional(),
+    verySlowMessages: z.array(z.string()).optional(),
+    toolResponses: z.array(z.string()).optional(),
+    localized: z.record(
+      SchemasCortexV1BridgePhrasesBridgePhraseMessages$outboundSchema,
+    ).optional(),
+    smartTurnTimeoutSeconds: z.nullable(z.number()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      randomizeMessages: "randomize_messages",
+      firstSlowMessages: "first_slow_messages",
+      verySlowMessages: "very_slow_messages",
+      toolResponses: "tool_responses",
+      smartTurnTimeoutSeconds: "smart_turn_timeout_seconds",
+    });
+  })
+);
 
 export function bridgePhrasesConfigToJSON(
   bridgePhrasesConfig: BridgePhrasesConfig,

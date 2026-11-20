@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,16 +20,18 @@ export const ChannelsTwilioNumbersA2pComplianceCheckRequest$inboundSchema:
     ChannelsTwilioNumbersA2pComplianceCheckRequest,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    channel_id: z.number().int(),
-    A2pMessagingPathCheckRequest:
-      components.A2pMessagingPathCheckRequest$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "channel_id": "channelId",
-      "A2pMessagingPathCheckRequest": "a2pMessagingPathCheckRequest",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      channel_id: z.number().int(),
+      A2pMessagingPathCheckRequest:
+        components.A2pMessagingPathCheckRequest$inboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        "channel_id": "channelId",
+        "A2pMessagingPathCheckRequest": "a2pMessagingPathCheckRequest",
+      });
+    })
+  );
 /** @internal */
 export type ChannelsTwilioNumbersA2pComplianceCheckRequest$Outbound = {
   channel_id: number;
@@ -43,16 +45,18 @@ export const ChannelsTwilioNumbersA2pComplianceCheckRequest$outboundSchema:
     ChannelsTwilioNumbersA2pComplianceCheckRequest$Outbound,
     z.ZodTypeDef,
     ChannelsTwilioNumbersA2pComplianceCheckRequest
-  > = z.object({
-    channelId: z.number().int(),
-    a2pMessagingPathCheckRequest:
-      components.A2pMessagingPathCheckRequest$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      channelId: "channel_id",
-      a2pMessagingPathCheckRequest: "A2pMessagingPathCheckRequest",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      channelId: z.number().int(),
+      a2pMessagingPathCheckRequest:
+        components.A2pMessagingPathCheckRequest$outboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        channelId: "channel_id",
+        a2pMessagingPathCheckRequest: "A2pMessagingPathCheckRequest",
+      });
+    })
+  );
 
 export function channelsTwilioNumbersA2pComplianceCheckRequestToJSON(
   channelsTwilioNumbersA2pComplianceCheckRequest:

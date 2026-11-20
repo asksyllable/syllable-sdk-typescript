@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,17 +40,19 @@ export const BatchFileProblemRow$inboundSchema: z.ZodType<
   BatchFileProblemRow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  row_number: z.number().int(),
-  reference_id: z.nullable(z.string()).optional(),
-  problem: BatchFileProblem$inboundSchema,
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "row_number": "rowNumber",
-    "reference_id": "referenceId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    row_number: z.number().int(),
+    reference_id: z.nullable(z.string()).optional(),
+    problem: BatchFileProblem$inboundSchema,
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "row_number": "rowNumber",
+      "reference_id": "referenceId",
+    });
+  })
+);
 /** @internal */
 export type BatchFileProblemRow$Outbound = {
   row_number: number;
@@ -64,17 +66,19 @@ export const BatchFileProblemRow$outboundSchema: z.ZodType<
   BatchFileProblemRow$Outbound,
   z.ZodTypeDef,
   BatchFileProblemRow
-> = z.object({
-  rowNumber: z.number().int(),
-  referenceId: z.nullable(z.string()).optional(),
-  problem: BatchFileProblem$outboundSchema,
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    rowNumber: "row_number",
-    referenceId: "reference_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rowNumber: z.number().int(),
+    referenceId: z.nullable(z.string()).optional(),
+    problem: BatchFileProblem$outboundSchema,
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      rowNumber: "row_number",
+      referenceId: "reference_id",
+    });
+  })
+);
 
 export function batchFileProblemRowToJSON(
   batchFileProblemRow: BatchFileProblemRow,

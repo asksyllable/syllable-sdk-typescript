@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -40,22 +40,26 @@ export const DialogToolCall$inboundSchema: z.ZodType<
   DialogToolCall,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_call_id: z.string(),
-  tool_name: z.string(),
-  tool_arguments: z.any().optional(),
-  tool_result: z.nullable(z.any()).optional(),
-  display_result: z.nullable(z.any()).optional(),
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_call_id": "toolCallId",
-    "tool_name": "toolName",
-    "tool_arguments": "toolArguments",
-    "tool_result": "toolResult",
-    "display_result": "displayResult",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_call_id: z.string(),
+    tool_name: z.string(),
+    tool_arguments: z.any().optional(),
+    tool_result: z.nullable(z.any()).optional(),
+    display_result: z.nullable(z.any()).optional(),
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_call_id": "toolCallId",
+      "tool_name": "toolName",
+      "tool_arguments": "toolArguments",
+      "tool_result": "toolResult",
+      "display_result": "displayResult",
+    });
+  })
+);
 /** @internal */
 export type DialogToolCall$Outbound = {
   tool_call_id: string;
@@ -71,22 +75,24 @@ export const DialogToolCall$outboundSchema: z.ZodType<
   DialogToolCall$Outbound,
   z.ZodTypeDef,
   DialogToolCall
-> = z.object({
-  toolCallId: z.string(),
-  toolName: z.string(),
-  toolArguments: z.any().optional(),
-  toolResult: z.nullable(z.any()).optional(),
-  displayResult: z.nullable(z.any()).optional(),
-  timestamp: z.date().transform(v => v.toISOString()),
-}).transform((v) => {
-  return remap$(v, {
-    toolCallId: "tool_call_id",
-    toolName: "tool_name",
-    toolArguments: "tool_arguments",
-    toolResult: "tool_result",
-    displayResult: "display_result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolCallId: z.string(),
+    toolName: z.string(),
+    toolArguments: z.any().optional(),
+    toolResult: z.nullable(z.any()).optional(),
+    displayResult: z.nullable(z.any()).optional(),
+    timestamp: z.date().transform(v => v.toISOString()),
+  }).transform((v) => {
+    return remap$(v, {
+      toolCallId: "tool_call_id",
+      toolName: "tool_name",
+      toolArguments: "tool_arguments",
+      toolResult: "tool_result",
+      displayResult: "display_result",
+    });
+  })
+);
 
 export function dialogToolCallToJSON(dialogToolCall: DialogToolCall): string {
   return JSON.stringify(DialogToolCall$outboundSchema.parse(dialogToolCall));

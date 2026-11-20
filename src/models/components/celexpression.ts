@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,10 +32,12 @@ export const CelExpression$inboundSchema: z.ZodType<
   CelExpression,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expression: z.string(),
-  type: z.literal("cel"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expression: z.string(),
+    type: z.literal("cel"),
+  })
+);
 /** @internal */
 export type CelExpression$Outbound = {
   expression: string;
@@ -47,10 +49,12 @@ export const CelExpression$outboundSchema: z.ZodType<
   CelExpression$Outbound,
   z.ZodTypeDef,
   CelExpression
-> = z.object({
-  expression: z.string(),
-  type: z.literal("cel"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expression: z.string(),
+    type: z.literal("cel"),
+  })
+);
 
 export function celExpressionToJSON(celExpression: CelExpression): string {
   return JSON.stringify(CelExpression$outboundSchema.parse(celExpression));
