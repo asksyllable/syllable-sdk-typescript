@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,18 +32,20 @@ export const TwilioPhoneNumber$inboundSchema: z.ZodType<
   TwilioPhoneNumber,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sid: z.string(),
-  phone_number: z.string(),
-  friendly_name: z.string(),
-  trunk_sid: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "phone_number": "phoneNumber",
-    "friendly_name": "friendlyName",
-    "trunk_sid": "trunkSid",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sid: z.string(),
+    phone_number: z.string(),
+    friendly_name: z.string(),
+    trunk_sid: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "phone_number": "phoneNumber",
+      "friendly_name": "friendlyName",
+      "trunk_sid": "trunkSid",
+    });
+  })
+);
 /** @internal */
 export type TwilioPhoneNumber$Outbound = {
   sid: string;
@@ -57,18 +59,20 @@ export const TwilioPhoneNumber$outboundSchema: z.ZodType<
   TwilioPhoneNumber$Outbound,
   z.ZodTypeDef,
   TwilioPhoneNumber
-> = z.object({
-  sid: z.string(),
-  phoneNumber: z.string(),
-  friendlyName: z.string(),
-  trunkSid: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    phoneNumber: "phone_number",
-    friendlyName: "friendly_name",
-    trunkSid: "trunk_sid",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sid: z.string(),
+    phoneNumber: z.string(),
+    friendlyName: z.string(),
+    trunkSid: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      phoneNumber: "phone_number",
+      friendlyName: "friendly_name",
+      trunkSid: "trunk_sid",
+    });
+  })
+);
 
 export function twilioPhoneNumberToJSON(
   twilioPhoneNumber: TwilioPhoneNumber,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -56,21 +56,24 @@ export const CampaignExcludedDatesRequest$inboundSchema: z.ZodType<
   CampaignExcludedDatesRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  outreach_override_rules: z.nullable(OutreachOverrideRules$inboundSchema)
-    .optional(),
-  active_days: z.nullable(z.array(DaysOfWeek$inboundSchema)).optional(),
-  start_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
-  end_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
-  timezone: z.string().default("UTC"),
-}).transform((v) => {
-  return remap$(v, {
-    "outreach_override_rules": "outreachOverrideRules",
-    "active_days": "activeDays",
-    "start_date": "startDate",
-    "end_date": "endDate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    outreach_override_rules: z.nullable(OutreachOverrideRules$inboundSchema)
+      .optional(),
+    active_days: z.nullable(z.array(DaysOfWeek$inboundSchema)).optional(),
+    start_date: z.nullable(z.string().transform(v => new RFCDate(v)))
+      .optional(),
+    end_date: z.nullable(z.string().transform(v => new RFCDate(v))).optional(),
+    timezone: z.string().default("UTC"),
+  }).transform((v) => {
+    return remap$(v, {
+      "outreach_override_rules": "outreachOverrideRules",
+      "active_days": "activeDays",
+      "start_date": "startDate",
+      "end_date": "endDate",
+    });
+  })
+);
 /** @internal */
 export type CampaignExcludedDatesRequest$Outbound = {
   outreach_override_rules?: OutreachOverrideRules$Outbound | null | undefined;
@@ -85,23 +88,25 @@ export const CampaignExcludedDatesRequest$outboundSchema: z.ZodType<
   CampaignExcludedDatesRequest$Outbound,
   z.ZodTypeDef,
   CampaignExcludedDatesRequest
-> = z.object({
-  outreachOverrideRules: z.nullable(OutreachOverrideRules$outboundSchema)
-    .optional(),
-  activeDays: z.nullable(z.array(DaysOfWeek$outboundSchema)).optional(),
-  startDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
-    .optional(),
-  endDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
-    .optional(),
-  timezone: z.string().default("UTC"),
-}).transform((v) => {
-  return remap$(v, {
-    outreachOverrideRules: "outreach_override_rules",
-    activeDays: "active_days",
-    startDate: "start_date",
-    endDate: "end_date",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    outreachOverrideRules: z.nullable(OutreachOverrideRules$outboundSchema)
+      .optional(),
+    activeDays: z.nullable(z.array(DaysOfWeek$outboundSchema)).optional(),
+    startDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
+      .optional(),
+    endDate: z.nullable(z.instanceof(RFCDate).transform(v => v.toString()))
+      .optional(),
+    timezone: z.string().default("UTC"),
+  }).transform((v) => {
+    return remap$(v, {
+      outreachOverrideRules: "outreach_override_rules",
+      activeDays: "active_days",
+      startDate: "start_date",
+      endDate: "end_date",
+    });
+  })
+);
 
 export function campaignExcludedDatesRequestToJSON(
   campaignExcludedDatesRequest: CampaignExcludedDatesRequest,

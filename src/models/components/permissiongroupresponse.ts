@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const PermissionGroupResponse$inboundSchema: z.ZodType<
   PermissionGroupResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  permissions: z.array(PermissionResponse$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    permissions: z.array(PermissionResponse$inboundSchema),
+  })
+);
 /** @internal */
 export type PermissionGroupResponse$Outbound = {
   name: string;
@@ -53,11 +55,13 @@ export const PermissionGroupResponse$outboundSchema: z.ZodType<
   PermissionGroupResponse$Outbound,
   z.ZodTypeDef,
   PermissionGroupResponse
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  permissions: z.array(PermissionResponse$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    permissions: z.array(PermissionResponse$outboundSchema),
+  })
+);
 
 export function permissionGroupResponseToJSON(
   permissionGroupResponse: PermissionGroupResponse,

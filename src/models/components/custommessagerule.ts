@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -64,22 +64,24 @@ export const CustomMessageRule$inboundSchema: z.ZodType<
   CustomMessageRule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: z.string(),
-  time_range_start: z.nullable(z.string()).optional(),
-  time_range_end: z.nullable(z.string()).optional(),
-  date: z.nullable(z.string()).optional(),
-  holidays: z.nullable(z.array(Holiday$inboundSchema)).optional(),
-  days_of_week: z.nullable(z.array(DayOfWeek$inboundSchema)).optional(),
-  invert: z.boolean(),
-  text: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "time_range_start": "timeRangeStart",
-    "time_range_end": "timeRangeEnd",
-    "days_of_week": "daysOfWeek",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string(),
+    time_range_start: z.nullable(z.string()).optional(),
+    time_range_end: z.nullable(z.string()).optional(),
+    date: z.nullable(z.string()).optional(),
+    holidays: z.nullable(z.array(Holiday$inboundSchema)).optional(),
+    days_of_week: z.nullable(z.array(DayOfWeek$inboundSchema)).optional(),
+    invert: z.boolean(),
+    text: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "time_range_start": "timeRangeStart",
+      "time_range_end": "timeRangeEnd",
+      "days_of_week": "daysOfWeek",
+    });
+  })
+);
 /** @internal */
 export type CustomMessageRule$Outbound = {
   description: string;
@@ -97,22 +99,24 @@ export const CustomMessageRule$outboundSchema: z.ZodType<
   CustomMessageRule$Outbound,
   z.ZodTypeDef,
   CustomMessageRule
-> = z.object({
-  description: z.string(),
-  timeRangeStart: z.nullable(z.string()).optional(),
-  timeRangeEnd: z.nullable(z.string()).optional(),
-  date: z.nullable(z.string()).optional(),
-  holidays: z.nullable(z.array(Holiday$outboundSchema)).optional(),
-  daysOfWeek: z.nullable(z.array(DayOfWeek$outboundSchema)).optional(),
-  invert: z.boolean(),
-  text: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    timeRangeStart: "time_range_start",
-    timeRangeEnd: "time_range_end",
-    daysOfWeek: "days_of_week",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: z.string(),
+    timeRangeStart: z.nullable(z.string()).optional(),
+    timeRangeEnd: z.nullable(z.string()).optional(),
+    date: z.nullable(z.string()).optional(),
+    holidays: z.nullable(z.array(Holiday$outboundSchema)).optional(),
+    daysOfWeek: z.nullable(z.array(DayOfWeek$outboundSchema)).optional(),
+    invert: z.boolean(),
+    text: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      timeRangeStart: "time_range_start",
+      timeRangeEnd: "time_range_end",
+      daysOfWeek: "days_of_week",
+    });
+  })
+);
 
 export function customMessageRuleToJSON(
   customMessageRule: CustomMessageRule,

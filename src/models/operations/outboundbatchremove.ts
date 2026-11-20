@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,15 +18,17 @@ export const OutboundBatchRemoveRequest$inboundSchema: z.ZodType<
   OutboundBatchRemoveRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-  RequestBody: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-    "RequestBody": "requestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+    RequestBody: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+      "RequestBody": "requestBody",
+    });
+  })
+);
 /** @internal */
 export type OutboundBatchRemoveRequest$Outbound = {
   batch_id: string;
@@ -38,15 +40,17 @@ export const OutboundBatchRemoveRequest$outboundSchema: z.ZodType<
   OutboundBatchRemoveRequest$Outbound,
   z.ZodTypeDef,
   OutboundBatchRemoveRequest
-> = z.object({
-  batchId: z.string(),
-  requestBody: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+    requestBody: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function outboundBatchRemoveRequestToJSON(
   outboundBatchRemoveRequest: OutboundBatchRemoveRequest,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
 /**
@@ -47,19 +48,21 @@ export const SessionLabelsListResponseBody$inboundSchema: z.ZodType<
   SessionLabelsListResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new SessionLabelsListResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new SessionLabelsListResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type SessionLabelsListResponseBody$Outbound = {
@@ -71,8 +74,10 @@ export const SessionLabelsListResponseBody$outboundSchema: z.ZodType<
   SessionLabelsListResponseBody$Outbound,
   z.ZodTypeDef,
   SessionLabelsListResponseBody
-> = z.instanceof(SessionLabelsListResponseBody)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    detail: z.string(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(SessionLabelsListResponseBody)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      detail: z.string(),
+    }))
+);

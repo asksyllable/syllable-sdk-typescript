@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -62,24 +62,26 @@ export const LanguageSampleCreateRequest$inboundSchema: z.ZodType<
   LanguageSampleCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  language_code: LanguageCode$inboundSchema,
-  voice_provider: TtsProvider$inboundSchema,
-  voice_display_name: AgentVoiceDisplayName$inboundSchema,
-  voice_speed: z.nullable(z.number()).optional(),
-  voice_pitch: z.nullable(z.number()).optional(),
-  text: z.string().default(""),
-  apply_pronunciation_overrides: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "language_code": "languageCode",
-    "voice_provider": "voiceProvider",
-    "voice_display_name": "voiceDisplayName",
-    "voice_speed": "voiceSpeed",
-    "voice_pitch": "voicePitch",
-    "apply_pronunciation_overrides": "applyPronunciationOverrides",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    language_code: LanguageCode$inboundSchema,
+    voice_provider: TtsProvider$inboundSchema,
+    voice_display_name: AgentVoiceDisplayName$inboundSchema,
+    voice_speed: z.nullable(z.number()).optional(),
+    voice_pitch: z.nullable(z.number()).optional(),
+    text: z.string().default(""),
+    apply_pronunciation_overrides: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "language_code": "languageCode",
+      "voice_provider": "voiceProvider",
+      "voice_display_name": "voiceDisplayName",
+      "voice_speed": "voiceSpeed",
+      "voice_pitch": "voicePitch",
+      "apply_pronunciation_overrides": "applyPronunciationOverrides",
+    });
+  })
+);
 /** @internal */
 export type LanguageSampleCreateRequest$Outbound = {
   language_code: string;
@@ -96,24 +98,26 @@ export const LanguageSampleCreateRequest$outboundSchema: z.ZodType<
   LanguageSampleCreateRequest$Outbound,
   z.ZodTypeDef,
   LanguageSampleCreateRequest
-> = z.object({
-  languageCode: LanguageCode$outboundSchema,
-  voiceProvider: TtsProvider$outboundSchema,
-  voiceDisplayName: AgentVoiceDisplayName$outboundSchema,
-  voiceSpeed: z.nullable(z.number()).optional(),
-  voicePitch: z.nullable(z.number()).optional(),
-  text: z.string().default(""),
-  applyPronunciationOverrides: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    languageCode: "language_code",
-    voiceProvider: "voice_provider",
-    voiceDisplayName: "voice_display_name",
-    voiceSpeed: "voice_speed",
-    voicePitch: "voice_pitch",
-    applyPronunciationOverrides: "apply_pronunciation_overrides",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    languageCode: LanguageCode$outboundSchema,
+    voiceProvider: TtsProvider$outboundSchema,
+    voiceDisplayName: AgentVoiceDisplayName$outboundSchema,
+    voiceSpeed: z.nullable(z.number()).optional(),
+    voicePitch: z.nullable(z.number()).optional(),
+    text: z.string().default(""),
+    applyPronunciationOverrides: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      languageCode: "language_code",
+      voiceProvider: "voice_provider",
+      voiceDisplayName: "voice_display_name",
+      voiceSpeed: "voice_speed",
+      voicePitch: "voice_pitch",
+      applyPronunciationOverrides: "apply_pronunciation_overrides",
+    });
+  })
+);
 
 export function languageSampleCreateRequestToJSON(
   languageSampleCreateRequest: LanguageSampleCreateRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -123,41 +123,43 @@ export const PromptResponse$inboundSchema: z.ZodType<
   PromptResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  type: z.string(),
-  context: z.nullable(z.string()).optional(),
-  tools: z.array(z.string()).optional(),
-  llm_config: PromptLlmConfig$inboundSchema,
-  session_end_enabled: z.boolean().default(false),
-  session_end_tool_id: z.nullable(z.number().int()).optional(),
-  edit_comments: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  last_updated: z.nullable(z.string()),
-  last_updated_by: z.nullable(z.string()).optional(),
-  session_end_tool: z.nullable(DaoToolResponse$inboundSchema).optional(),
-  agent_count: z.nullable(z.number().int()).optional(),
-  version_number: z.nullable(z.number().int()).optional(),
-  tools_full: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "llm_config": "llmConfig",
-    "session_end_enabled": "sessionEndEnabled",
-    "session_end_tool_id": "sessionEndToolId",
-    "edit_comments": "editComments",
-    "last_updated": "lastUpdated",
-    "last_updated_by": "lastUpdatedBy",
-    "session_end_tool": "sessionEndTool",
-    "agent_count": "agentCount",
-    "version_number": "versionNumber",
-    "tools_full": "toolsFull",
-    "validation_issues": "validationIssues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    type: z.string(),
+    context: z.nullable(z.string()).optional(),
+    tools: z.array(z.string()).optional(),
+    llm_config: PromptLlmConfig$inboundSchema,
+    session_end_enabled: z.boolean().default(false),
+    session_end_tool_id: z.nullable(z.number().int()).optional(),
+    edit_comments: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    last_updated: z.nullable(z.string()),
+    last_updated_by: z.nullable(z.string()).optional(),
+    session_end_tool: z.nullable(DaoToolResponse$inboundSchema).optional(),
+    agent_count: z.nullable(z.number().int()).optional(),
+    version_number: z.nullable(z.number().int()).optional(),
+    tools_full: z.nullable(z.array(ToolResponse$inboundSchema)).optional(),
+    validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "llm_config": "llmConfig",
+      "session_end_enabled": "sessionEndEnabled",
+      "session_end_tool_id": "sessionEndToolId",
+      "edit_comments": "editComments",
+      "last_updated": "lastUpdated",
+      "last_updated_by": "lastUpdatedBy",
+      "session_end_tool": "sessionEndTool",
+      "agent_count": "agentCount",
+      "version_number": "versionNumber",
+      "tools_full": "toolsFull",
+      "validation_issues": "validationIssues",
+    });
+  })
+);
 /** @internal */
 export type PromptResponse$Outbound = {
   name: string;
@@ -185,41 +187,43 @@ export const PromptResponse$outboundSchema: z.ZodType<
   PromptResponse$Outbound,
   z.ZodTypeDef,
   PromptResponse
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  type: z.string(),
-  context: z.nullable(z.string()).optional(),
-  tools: z.array(z.string()).optional(),
-  llmConfig: PromptLlmConfig$outboundSchema,
-  sessionEndEnabled: z.boolean().default(false),
-  sessionEndToolId: z.nullable(z.number().int()).optional(),
-  editComments: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  lastUpdated: z.nullable(z.string()),
-  lastUpdatedBy: z.nullable(z.string()).optional(),
-  sessionEndTool: z.nullable(DaoToolResponse$outboundSchema).optional(),
-  agentCount: z.nullable(z.number().int()).optional(),
-  versionNumber: z.nullable(z.number().int()).optional(),
-  toolsFull: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    llmConfig: "llm_config",
-    sessionEndEnabled: "session_end_enabled",
-    sessionEndToolId: "session_end_tool_id",
-    editComments: "edit_comments",
-    lastUpdated: "last_updated",
-    lastUpdatedBy: "last_updated_by",
-    sessionEndTool: "session_end_tool",
-    agentCount: "agent_count",
-    versionNumber: "version_number",
-    toolsFull: "tools_full",
-    validationIssues: "validation_issues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    type: z.string(),
+    context: z.nullable(z.string()).optional(),
+    tools: z.array(z.string()).optional(),
+    llmConfig: PromptLlmConfig$outboundSchema,
+    sessionEndEnabled: z.boolean().default(false),
+    sessionEndToolId: z.nullable(z.number().int()).optional(),
+    editComments: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    lastUpdated: z.nullable(z.string()),
+    lastUpdatedBy: z.nullable(z.string()).optional(),
+    sessionEndTool: z.nullable(DaoToolResponse$outboundSchema).optional(),
+    agentCount: z.nullable(z.number().int()).optional(),
+    versionNumber: z.nullable(z.number().int()).optional(),
+    toolsFull: z.nullable(z.array(ToolResponse$outboundSchema)).optional(),
+    validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      llmConfig: "llm_config",
+      sessionEndEnabled: "session_end_enabled",
+      sessionEndToolId: "session_end_tool_id",
+      editComments: "edit_comments",
+      lastUpdated: "last_updated",
+      lastUpdatedBy: "last_updated_by",
+      sessionEndTool: "session_end_tool",
+      agentCount: "agent_count",
+      versionNumber: "version_number",
+      toolsFull: "tools_full",
+      validationIssues: "validation_issues",
+    });
+  })
+);
 
 export function promptResponseToJSON(promptResponse: PromptResponse): string {
   return JSON.stringify(PromptResponse$outboundSchema.parse(promptResponse));

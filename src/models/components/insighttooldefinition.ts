@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -46,19 +46,21 @@ export const InsightToolDefinition$inboundSchema: z.ZodType<
   InsightToolDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  type: z.string(),
-  description: z.string(),
-  tool_parameters: z.any().optional(),
-  tool_result_set: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_parameters": "toolParameters",
-    "tool_result_set": "toolResultSet",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    type: z.string(),
+    description: z.string(),
+    tool_parameters: z.any().optional(),
+    tool_result_set: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_parameters": "toolParameters",
+      "tool_result_set": "toolResultSet",
+    });
+  })
+);
 /** @internal */
 export type InsightToolDefinition$Outbound = {
   id: number;
@@ -74,19 +76,21 @@ export const InsightToolDefinition$outboundSchema: z.ZodType<
   InsightToolDefinition$Outbound,
   z.ZodTypeDef,
   InsightToolDefinition
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  type: z.string(),
-  description: z.string(),
-  toolParameters: z.any().optional(),
-  toolResultSet: z.any().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    toolParameters: "tool_parameters",
-    toolResultSet: "tool_result_set",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    type: z.string(),
+    description: z.string(),
+    toolParameters: z.any().optional(),
+    toolResultSet: z.any().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolParameters: "tool_parameters",
+      toolResultSet: "tool_result_set",
+    });
+  })
+);
 
 export function insightToolDefinitionToJSON(
   insightToolDefinition: InsightToolDefinition,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,9 +19,11 @@ export const DialogMessage$inboundSchema: z.ZodType<
   DialogMessage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  text: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+  })
+);
 /** @internal */
 export type DialogMessage$Outbound = {
   text: string;
@@ -32,9 +34,11 @@ export const DialogMessage$outboundSchema: z.ZodType<
   DialogMessage$Outbound,
   z.ZodTypeDef,
   DialogMessage
-> = z.object({
-  text: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+  })
+);
 
 export function dialogMessageToJSON(dialogMessage: DialogMessage): string {
   return JSON.stringify(DialogMessage$outboundSchema.parse(dialogMessage));

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,10 +26,12 @@ export const ToolPromptInfo$inboundSchema: z.ZodType<
   ToolPromptInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+  })
+);
 /** @internal */
 export type ToolPromptInfo$Outbound = {
   id: number;
@@ -41,10 +43,12 @@ export const ToolPromptInfo$outboundSchema: z.ZodType<
   ToolPromptInfo$Outbound,
   z.ZodTypeDef,
   ToolPromptInfo
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+  })
+);
 
 export function toolPromptInfoToJSON(toolPromptInfo: ToolPromptInfo): string {
   return JSON.stringify(ToolPromptInfo$outboundSchema.parse(toolPromptInfo));

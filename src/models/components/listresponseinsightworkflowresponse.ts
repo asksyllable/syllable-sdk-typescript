@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,19 +42,21 @@ export const ListResponseInsightWorkflowResponse$inboundSchema: z.ZodType<
   ListResponseInsightWorkflowResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(InsightWorkflowResponse$inboundSchema),
-  page: z.number().int(),
-  page_size: z.number().int(),
-  total_pages: z.nullable(z.number().int()).optional(),
-  total_count: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "page_size": "pageSize",
-    "total_pages": "totalPages",
-    "total_count": "totalCount",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(InsightWorkflowResponse$inboundSchema),
+    page: z.number().int(),
+    page_size: z.number().int(),
+    total_pages: z.nullable(z.number().int()).optional(),
+    total_count: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "page_size": "pageSize",
+      "total_pages": "totalPages",
+      "total_count": "totalCount",
+    });
+  })
+);
 /** @internal */
 export type ListResponseInsightWorkflowResponse$Outbound = {
   items: Array<InsightWorkflowResponse$Outbound>;
@@ -69,19 +71,21 @@ export const ListResponseInsightWorkflowResponse$outboundSchema: z.ZodType<
   ListResponseInsightWorkflowResponse$Outbound,
   z.ZodTypeDef,
   ListResponseInsightWorkflowResponse
-> = z.object({
-  items: z.array(InsightWorkflowResponse$outboundSchema),
-  page: z.number().int(),
-  pageSize: z.number().int(),
-  totalPages: z.nullable(z.number().int()).optional(),
-  totalCount: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    pageSize: "page_size",
-    totalPages: "total_pages",
-    totalCount: "total_count",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(InsightWorkflowResponse$outboundSchema),
+    page: z.number().int(),
+    pageSize: z.number().int(),
+    totalPages: z.nullable(z.number().int()).optional(),
+    totalCount: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      pageSize: "page_size",
+      totalPages: "total_pages",
+      totalCount: "total_count",
+    });
+  })
+);
 
 export function listResponseInsightWorkflowResponseToJSON(
   listResponseInsightWorkflowResponse: ListResponseInsightWorkflowResponse,

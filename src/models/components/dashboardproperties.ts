@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -23,7 +24,7 @@ export type DashboardProperties = ClosedEnum<typeof DashboardProperties>;
 /** @internal */
 export const DashboardProperties$inboundSchema: z.ZodNativeEnum<
   typeof DashboardProperties
-> = z.nativeEnum(DashboardProperties);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DashboardProperties));
 /** @internal */
 export const DashboardProperties$outboundSchema: z.ZodNativeEnum<
   typeof DashboardProperties

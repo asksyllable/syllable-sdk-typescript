@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -55,22 +55,24 @@ export const SessionLabel$inboundSchema: z.ZodType<
   SessionLabel,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.number().int(),
-  type: z.string(),
-  code: z.string(),
-  user_email: z.string(),
-  comments: z.nullable(z.string()).optional(),
-  issue_categories: z.nullable(z.array(z.string())).optional(),
-  id: z.number().int(),
-  timestamp: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-    "user_email": "userEmail",
-    "issue_categories": "issueCategories",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.number().int(),
+    type: z.string(),
+    code: z.string(),
+    user_email: z.string(),
+    comments: z.nullable(z.string()).optional(),
+    issue_categories: z.nullable(z.array(z.string())).optional(),
+    id: z.number().int(),
+    timestamp: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+      "user_email": "userEmail",
+      "issue_categories": "issueCategories",
+    });
+  })
+);
 /** @internal */
 export type SessionLabel$Outbound = {
   session_id: number;
@@ -88,22 +90,24 @@ export const SessionLabel$outboundSchema: z.ZodType<
   SessionLabel$Outbound,
   z.ZodTypeDef,
   SessionLabel
-> = z.object({
-  sessionId: z.number().int(),
-  type: z.string(),
-  code: z.string(),
-  userEmail: z.string(),
-  comments: z.nullable(z.string()).optional(),
-  issueCategories: z.nullable(z.array(z.string())).optional(),
-  id: z.number().int(),
-  timestamp: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    userEmail: "user_email",
-    issueCategories: "issue_categories",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.number().int(),
+    type: z.string(),
+    code: z.string(),
+    userEmail: z.string(),
+    comments: z.nullable(z.string()).optional(),
+    issueCategories: z.nullable(z.array(z.string())).optional(),
+    id: z.number().int(),
+    timestamp: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      userEmail: "user_email",
+      issueCategories: "issue_categories",
+    });
+  })
+);
 
 export function sessionLabelToJSON(sessionLabel: SessionLabel): string {
   return JSON.stringify(SessionLabel$outboundSchema.parse(sessionLabel));

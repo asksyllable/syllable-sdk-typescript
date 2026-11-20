@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,7 +23,7 @@ export const PromptRequestValidationErrorDetailLoc$inboundSchema: z.ZodType<
   PromptRequestValidationErrorDetailLoc,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number().int()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number().int()]));
 /** @internal */
 export type PromptRequestValidationErrorDetailLoc$Outbound = string | number;
 
@@ -32,7 +32,7 @@ export const PromptRequestValidationErrorDetailLoc$outboundSchema: z.ZodType<
   PromptRequestValidationErrorDetailLoc$Outbound,
   z.ZodTypeDef,
   PromptRequestValidationErrorDetailLoc
-> = z.union([z.string(), z.number().int()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number().int()]));
 
 export function promptRequestValidationErrorDetailLocToJSON(
   promptRequestValidationErrorDetailLoc: PromptRequestValidationErrorDetailLoc,
@@ -59,11 +59,13 @@ export const PromptRequestValidationErrorDetail$inboundSchema: z.ZodType<
   PromptRequestValidationErrorDetail,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  loc: z.array(z.union([z.string(), z.number().int()])),
-  type: z.string(),
-  msg: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    loc: z.array(z.union([z.string(), z.number().int()])),
+    type: z.string(),
+    msg: z.string(),
+  })
+);
 /** @internal */
 export type PromptRequestValidationErrorDetail$Outbound = {
   loc: Array<string | number>;
@@ -76,11 +78,13 @@ export const PromptRequestValidationErrorDetail$outboundSchema: z.ZodType<
   PromptRequestValidationErrorDetail$Outbound,
   z.ZodTypeDef,
   PromptRequestValidationErrorDetail
-> = z.object({
-  loc: z.array(z.union([z.string(), z.number().int()])),
-  type: z.string(),
-  msg: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    loc: z.array(z.union([z.string(), z.number().int()])),
+    type: z.string(),
+    msg: z.string(),
+  })
+);
 
 export function promptRequestValidationErrorDetailToJSON(
   promptRequestValidationErrorDetail: PromptRequestValidationErrorDetail,

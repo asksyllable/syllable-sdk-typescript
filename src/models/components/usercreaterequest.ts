@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -58,23 +58,25 @@ export const UserCreateRequest$inboundSchema: z.ZodType<
   UserCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string(),
-  first_name: z.nullable(z.string()).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  role_id: z.number().int(),
-  utm: z.nullable(DaoUtm$inboundSchema).optional(),
-  login_type: z.nullable(LoginType$inboundSchema).optional(),
-  skip_auth: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "role_id": "roleId",
-    "login_type": "loginType",
-    "skip_auth": "skipAuth",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    first_name: z.nullable(z.string()).optional(),
+    last_name: z.nullable(z.string()).optional(),
+    role_id: z.number().int(),
+    utm: z.nullable(DaoUtm$inboundSchema).optional(),
+    login_type: z.nullable(LoginType$inboundSchema).optional(),
+    skip_auth: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "first_name": "firstName",
+      "last_name": "lastName",
+      "role_id": "roleId",
+      "login_type": "loginType",
+      "skip_auth": "skipAuth",
+    });
+  })
+);
 /** @internal */
 export type UserCreateRequest$Outbound = {
   email: string;
@@ -91,23 +93,25 @@ export const UserCreateRequest$outboundSchema: z.ZodType<
   UserCreateRequest$Outbound,
   z.ZodTypeDef,
   UserCreateRequest
-> = z.object({
-  email: z.string(),
-  firstName: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  roleId: z.number().int(),
-  utm: z.nullable(DaoUtm$outboundSchema).optional(),
-  loginType: z.nullable(LoginType$outboundSchema).optional(),
-  skipAuth: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    roleId: "role_id",
-    loginType: "login_type",
-    skipAuth: "skip_auth",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    firstName: z.nullable(z.string()).optional(),
+    lastName: z.nullable(z.string()).optional(),
+    roleId: z.number().int(),
+    utm: z.nullable(DaoUtm$outboundSchema).optional(),
+    loginType: z.nullable(LoginType$outboundSchema).optional(),
+    skipAuth: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      firstName: "first_name",
+      lastName: "last_name",
+      roleId: "role_id",
+      loginType: "login_type",
+      skipAuth: "skip_auth",
+    });
+  })
+);
 
 export function userCreateRequestToJSON(
   userCreateRequest: UserCreateRequest,

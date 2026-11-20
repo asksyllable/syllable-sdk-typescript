@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,17 +45,21 @@ export const SessionText$inboundSchema: z.ZodType<
   SessionText,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  lang: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  text: z.nullable(z.string()).optional(),
-  stt_confidence: z.nullable(TranscriptConfidence$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "stt_confidence": "sttConfidence",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    lang: z.nullable(z.string()).optional(),
+    source: z.nullable(z.string()).optional(),
+    text: z.nullable(z.string()).optional(),
+    stt_confidence: z.nullable(TranscriptConfidence$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "stt_confidence": "sttConfidence",
+    });
+  })
+);
 /** @internal */
 export type SessionText$Outbound = {
   timestamp: string;
@@ -70,17 +74,19 @@ export const SessionText$outboundSchema: z.ZodType<
   SessionText$Outbound,
   z.ZodTypeDef,
   SessionText
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  lang: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  text: z.nullable(z.string()).optional(),
-  sttConfidence: z.nullable(TranscriptConfidence$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sttConfidence: "stt_confidence",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    lang: z.nullable(z.string()).optional(),
+    source: z.nullable(z.string()).optional(),
+    text: z.nullable(z.string()).optional(),
+    sttConfidence: z.nullable(TranscriptConfidence$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sttConfidence: "stt_confidence",
+    });
+  })
+);
 
 export function sessionTextToJSON(sessionText: SessionText): string {
   return JSON.stringify(SessionText$outboundSchema.parse(sessionText));

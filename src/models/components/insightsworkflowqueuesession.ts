@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -31,17 +31,19 @@ export const InsightsWorkflowQueueSession$inboundSchema: z.ZodType<
   InsightsWorkflowQueueSession,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow_name: z.string(),
-  session_id_list: z.nullable(z.array(z.number().int())).optional(),
-  file_id_list: z.nullable(z.array(z.number().int())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "workflow_name": "workflowName",
-    "session_id_list": "sessionIdList",
-    "file_id_list": "fileIdList",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow_name: z.string(),
+    session_id_list: z.nullable(z.array(z.number().int())).optional(),
+    file_id_list: z.nullable(z.array(z.number().int())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "workflow_name": "workflowName",
+      "session_id_list": "sessionIdList",
+      "file_id_list": "fileIdList",
+    });
+  })
+);
 /** @internal */
 export type InsightsWorkflowQueueSession$Outbound = {
   workflow_name: string;
@@ -54,17 +56,19 @@ export const InsightsWorkflowQueueSession$outboundSchema: z.ZodType<
   InsightsWorkflowQueueSession$Outbound,
   z.ZodTypeDef,
   InsightsWorkflowQueueSession
-> = z.object({
-  workflowName: z.string(),
-  sessionIdList: z.nullable(z.array(z.number().int())).optional(),
-  fileIdList: z.nullable(z.array(z.number().int())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    workflowName: "workflow_name",
-    sessionIdList: "session_id_list",
-    fileIdList: "file_id_list",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowName: z.string(),
+    sessionIdList: z.nullable(z.array(z.number().int())).optional(),
+    fileIdList: z.nullable(z.array(z.number().int())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      workflowName: "workflow_name",
+      sessionIdList: "session_id_list",
+      fileIdList: "file_id_list",
+    });
+  })
+);
 
 export function insightsWorkflowQueueSessionToJSON(
   insightsWorkflowQueueSession: InsightsWorkflowQueueSession,

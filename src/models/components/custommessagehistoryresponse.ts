@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,35 +35,39 @@ export const CustomMessageHistoryResponse$inboundSchema: z.ZodType<
   CustomMessageHistoryResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  custom_message_id: z.number().int(),
-  version_number: z.number().int(),
-  snapshot_schema_version: z.number().int(),
-  operation: z.string(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_by: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  restored_from_version: z.nullable(z.number().int()),
-  name: z.string(),
-  type: z.string(),
-  preamble: z.nullable(z.string()),
-  text: z.string(),
-  label: z.nullable(z.string()),
-  repeat_after_language_change: z.boolean(),
-  rules: z.array(z.record(z.any())),
-  type_config: z.record(z.any()),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_message_id": "customMessageId",
-    "version_number": "versionNumber",
-    "snapshot_schema_version": "snapshotSchemaVersion",
-    "created_at": "createdAt",
-    "updated_by": "updatedBy",
-    "restored_from_version": "restoredFromVersion",
-    "repeat_after_language_change": "repeatAfterLanguageChange",
-    "type_config": "typeConfig",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_message_id: z.number().int(),
+    version_number: z.number().int(),
+    snapshot_schema_version: z.number().int(),
+    operation: z.string(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_by: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    restored_from_version: z.nullable(z.number().int()),
+    name: z.string(),
+    type: z.string(),
+    preamble: z.nullable(z.string()),
+    text: z.string(),
+    label: z.nullable(z.string()),
+    repeat_after_language_change: z.boolean(),
+    rules: z.array(z.record(z.any())),
+    type_config: z.record(z.any()),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_message_id": "customMessageId",
+      "version_number": "versionNumber",
+      "snapshot_schema_version": "snapshotSchemaVersion",
+      "created_at": "createdAt",
+      "updated_by": "updatedBy",
+      "restored_from_version": "restoredFromVersion",
+      "repeat_after_language_change": "repeatAfterLanguageChange",
+      "type_config": "typeConfig",
+    });
+  })
+);
 /** @internal */
 export type CustomMessageHistoryResponse$Outbound = {
   custom_message_id: number;
@@ -89,35 +93,37 @@ export const CustomMessageHistoryResponse$outboundSchema: z.ZodType<
   CustomMessageHistoryResponse$Outbound,
   z.ZodTypeDef,
   CustomMessageHistoryResponse
-> = z.object({
-  customMessageId: z.number().int(),
-  versionNumber: z.number().int(),
-  snapshotSchemaVersion: z.number().int(),
-  operation: z.string(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  updatedBy: z.nullable(z.string()),
-  comments: z.nullable(z.string()),
-  restoredFromVersion: z.nullable(z.number().int()),
-  name: z.string(),
-  type: z.string(),
-  preamble: z.nullable(z.string()),
-  text: z.string(),
-  label: z.nullable(z.string()),
-  repeatAfterLanguageChange: z.boolean(),
-  rules: z.array(z.record(z.any())),
-  typeConfig: z.record(z.any()),
-}).transform((v) => {
-  return remap$(v, {
-    customMessageId: "custom_message_id",
-    versionNumber: "version_number",
-    snapshotSchemaVersion: "snapshot_schema_version",
-    createdAt: "created_at",
-    updatedBy: "updated_by",
-    restoredFromVersion: "restored_from_version",
-    repeatAfterLanguageChange: "repeat_after_language_change",
-    typeConfig: "type_config",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customMessageId: z.number().int(),
+    versionNumber: z.number().int(),
+    snapshotSchemaVersion: z.number().int(),
+    operation: z.string(),
+    createdAt: z.date().transform(v => v.toISOString()),
+    updatedBy: z.nullable(z.string()),
+    comments: z.nullable(z.string()),
+    restoredFromVersion: z.nullable(z.number().int()),
+    name: z.string(),
+    type: z.string(),
+    preamble: z.nullable(z.string()),
+    text: z.string(),
+    label: z.nullable(z.string()),
+    repeatAfterLanguageChange: z.boolean(),
+    rules: z.array(z.record(z.any())),
+    typeConfig: z.record(z.any()),
+  }).transform((v) => {
+    return remap$(v, {
+      customMessageId: "custom_message_id",
+      versionNumber: "version_number",
+      snapshotSchemaVersion: "snapshot_schema_version",
+      createdAt: "created_at",
+      updatedBy: "updated_by",
+      restoredFromVersion: "restored_from_version",
+      repeatAfterLanguageChange: "repeat_after_language_change",
+      typeConfig: "type_config",
+    });
+  })
+);
 
 export function customMessageHistoryResponseToJSON(
   customMessageHistoryResponse: CustomMessageHistoryResponse,

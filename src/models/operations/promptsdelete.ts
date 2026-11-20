@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,14 +18,16 @@ export const PromptsDeleteRequest$inboundSchema: z.ZodType<
   PromptsDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  prompt_id: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "prompt_id": "promptId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    prompt_id: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "prompt_id": "promptId",
+    });
+  })
+);
 /** @internal */
 export type PromptsDeleteRequest$Outbound = {
   prompt_id: number;
@@ -37,14 +39,16 @@ export const PromptsDeleteRequest$outboundSchema: z.ZodType<
   PromptsDeleteRequest$Outbound,
   z.ZodTypeDef,
   PromptsDeleteRequest
-> = z.object({
-  promptId: z.number().int(),
-  reason: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    promptId: "prompt_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    promptId: z.number().int(),
+    reason: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      promptId: "prompt_id",
+    });
+  })
+);
 
 export function promptsDeleteRequestToJSON(
   promptsDeleteRequest: PromptsDeleteRequest,

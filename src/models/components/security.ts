@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const Security$inboundSchema: z.ZodType<
   Security,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  APIKeyHeader: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "APIKeyHeader": "apiKeyHeader",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    APIKeyHeader: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "APIKeyHeader": "apiKeyHeader",
+    });
+  })
+);
 /** @internal */
 export type Security$Outbound = {
   APIKeyHeader?: string | undefined;
@@ -34,13 +36,15 @@ export const Security$outboundSchema: z.ZodType<
   Security$Outbound,
   z.ZodTypeDef,
   Security
-> = z.object({
-  apiKeyHeader: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    apiKeyHeader: "APIKeyHeader",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiKeyHeader: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      apiKeyHeader: "APIKeyHeader",
+    });
+  })
+);
 
 export function securityToJSON(security: Security): string {
   return JSON.stringify(Security$outboundSchema.parse(security));

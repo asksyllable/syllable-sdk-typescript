@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -79,38 +79,40 @@ export const UserResponse$inboundSchema: z.ZodType<
   UserResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string(),
-  first_name: z.nullable(z.string()).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  role_id: z.number().int(),
-  utm: z.nullable(DaoUtm$inboundSchema).optional(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  role_name: z.string(),
-  email_sent: z.boolean(),
-  activity_status: UserActivityStatus$inboundSchema,
-  last_updated: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  last_updated_by: z.nullable(z.string()).optional(),
-  last_session_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "role_id": "roleId",
-    "last_updated_comments": "lastUpdatedComments",
-    "role_name": "roleName",
-    "email_sent": "emailSent",
-    "activity_status": "activityStatus",
-    "last_updated": "lastUpdated",
-    "last_updated_by": "lastUpdatedBy",
-    "last_session_at": "lastSessionAt",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    first_name: z.nullable(z.string()).optional(),
+    last_name: z.nullable(z.string()).optional(),
+    role_id: z.number().int(),
+    utm: z.nullable(DaoUtm$inboundSchema).optional(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    role_name: z.string(),
+    email_sent: z.boolean(),
+    activity_status: UserActivityStatus$inboundSchema,
+    last_updated: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.nullable(z.string()).optional(),
+    last_session_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "first_name": "firstName",
+      "last_name": "lastName",
+      "role_id": "roleId",
+      "last_updated_comments": "lastUpdatedComments",
+      "role_name": "roleName",
+      "email_sent": "emailSent",
+      "activity_status": "activityStatus",
+      "last_updated": "lastUpdated",
+      "last_updated_by": "lastUpdatedBy",
+      "last_session_at": "lastSessionAt",
+    });
+  })
+);
 /** @internal */
 export type UserResponse$Outbound = {
   email: string;
@@ -133,35 +135,37 @@ export const UserResponse$outboundSchema: z.ZodType<
   UserResponse$Outbound,
   z.ZodTypeDef,
   UserResponse
-> = z.object({
-  email: z.string(),
-  firstName: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  roleId: z.number().int(),
-  utm: z.nullable(DaoUtm$outboundSchema).optional(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  roleName: z.string(),
-  emailSent: z.boolean(),
-  activityStatus: UserActivityStatus$outboundSchema,
-  lastUpdated: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.nullable(z.string()).optional(),
-  lastSessionAt: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    roleId: "role_id",
-    lastUpdatedComments: "last_updated_comments",
-    roleName: "role_name",
-    emailSent: "email_sent",
-    activityStatus: "activity_status",
-    lastUpdated: "last_updated",
-    lastUpdatedBy: "last_updated_by",
-    lastSessionAt: "last_session_at",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    firstName: z.nullable(z.string()).optional(),
+    lastName: z.nullable(z.string()).optional(),
+    roleId: z.number().int(),
+    utm: z.nullable(DaoUtm$outboundSchema).optional(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    roleName: z.string(),
+    emailSent: z.boolean(),
+    activityStatus: UserActivityStatus$outboundSchema,
+    lastUpdated: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.nullable(z.string()).optional(),
+    lastSessionAt: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      firstName: "first_name",
+      lastName: "last_name",
+      roleId: "role_id",
+      lastUpdatedComments: "last_updated_comments",
+      roleName: "role_name",
+      emailSent: "email_sent",
+      activityStatus: "activity_status",
+      lastUpdated: "last_updated",
+      lastUpdatedBy: "last_updated_by",
+      lastSessionAt: "last_session_at",
+    });
+  })
+);
 
 export function userResponseToJSON(userResponse: UserResponse): string {
   return JSON.stringify(UserResponse$outboundSchema.parse(userResponse));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const BridgePhrasesGetByIdRequest$inboundSchema: z.ZodType<
   BridgePhrasesGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bridge_phrases_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "bridge_phrases_id": "bridgePhrasesId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bridge_phrases_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "bridge_phrases_id": "bridgePhrasesId",
+    });
+  })
+);
 /** @internal */
 export type BridgePhrasesGetByIdRequest$Outbound = {
   bridge_phrases_id: number;
@@ -34,13 +36,15 @@ export const BridgePhrasesGetByIdRequest$outboundSchema: z.ZodType<
   BridgePhrasesGetByIdRequest$Outbound,
   z.ZodTypeDef,
   BridgePhrasesGetByIdRequest
-> = z.object({
-  bridgePhrasesId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    bridgePhrasesId: "bridge_phrases_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bridgePhrasesId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      bridgePhrasesId: "bridge_phrases_id",
+    });
+  })
+);
 
 export function bridgePhrasesGetByIdRequestToJSON(
   bridgePhrasesGetByIdRequest: BridgePhrasesGetByIdRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -82,30 +82,34 @@ export const VoiceGroupResponse$inboundSchema: z.ZodType<
   VoiceGroupResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  language_configs: z.array(LanguageConfig$inboundSchema),
-  skip_current_language_in_message: z.boolean(),
-  id: z.number().int(),
-  edit_comments: z.nullable(z.string()).optional(),
-  agents_info: z.nullable(z.array(LanguageGroupAgentInfo$inboundSchema))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  last_updated_by: z.string(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "language_configs": "languageConfigs",
-    "skip_current_language_in_message": "skipCurrentLanguageInMessage",
-    "edit_comments": "editComments",
-    "agents_info": "agentsInfo",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "validation_issues": "validationIssues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    language_configs: z.array(LanguageConfig$inboundSchema),
+    skip_current_language_in_message: z.boolean(),
+    id: z.number().int(),
+    edit_comments: z.nullable(z.string()).optional(),
+    agents_info: z.nullable(z.array(LanguageGroupAgentInfo$inboundSchema))
+      .optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.string(),
+    validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "language_configs": "languageConfigs",
+      "skip_current_language_in_message": "skipCurrentLanguageInMessage",
+      "edit_comments": "editComments",
+      "agents_info": "agentsInfo",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "validation_issues": "validationIssues",
+    });
+  })
+);
 /** @internal */
 export type VoiceGroupResponse$Outbound = {
   name: string;
@@ -125,30 +129,32 @@ export const VoiceGroupResponse$outboundSchema: z.ZodType<
   VoiceGroupResponse$Outbound,
   z.ZodTypeDef,
   VoiceGroupResponse
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  languageConfigs: z.array(LanguageConfig$outboundSchema),
-  skipCurrentLanguageInMessage: z.boolean(),
-  id: z.number().int(),
-  editComments: z.nullable(z.string()).optional(),
-  agentsInfo: z.nullable(z.array(LanguageGroupAgentInfo$outboundSchema))
-    .optional(),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.string(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    languageConfigs: "language_configs",
-    skipCurrentLanguageInMessage: "skip_current_language_in_message",
-    editComments: "edit_comments",
-    agentsInfo: "agents_info",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-    validationIssues: "validation_issues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    languageConfigs: z.array(LanguageConfig$outboundSchema),
+    skipCurrentLanguageInMessage: z.boolean(),
+    id: z.number().int(),
+    editComments: z.nullable(z.string()).optional(),
+    agentsInfo: z.nullable(z.array(LanguageGroupAgentInfo$outboundSchema))
+      .optional(),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.string(),
+    validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      languageConfigs: "language_configs",
+      skipCurrentLanguageInMessage: "skip_current_language_in_message",
+      editComments: "edit_comments",
+      agentsInfo: "agents_info",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+      validationIssues: "validation_issues",
+    });
+  })
+);
 
 export function voiceGroupResponseToJSON(
   voiceGroupResponse: VoiceGroupResponse,

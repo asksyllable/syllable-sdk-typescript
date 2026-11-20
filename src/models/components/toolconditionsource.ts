@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,14 +18,16 @@ export const ToolConditionSource$inboundSchema: z.ZodType<
   ToolConditionSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: z.literal("tool"),
-  tool_name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_name": "toolName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("tool"),
+    tool_name: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_name": "toolName",
+    });
+  })
+);
 /** @internal */
 export type ToolConditionSource$Outbound = {
   kind: "tool";
@@ -37,14 +39,16 @@ export const ToolConditionSource$outboundSchema: z.ZodType<
   ToolConditionSource$Outbound,
   z.ZodTypeDef,
   ToolConditionSource
-> = z.object({
-  kind: z.literal("tool"),
-  toolName: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    toolName: "tool_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("tool"),
+    toolName: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolName: "tool_name",
+    });
+  })
+);
 
 export function toolConditionSourceToJSON(
   toolConditionSource: ToolConditionSource,

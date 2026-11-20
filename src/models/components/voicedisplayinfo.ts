@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,14 +21,16 @@ export const VoiceDisplayInfo$inboundSchema: z.ZodType<
   VoiceDisplayInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  display_name: z.string(),
-  provider: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    display_name: z.string(),
+    provider: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+    });
+  })
+);
 /** @internal */
 export type VoiceDisplayInfo$Outbound = {
   display_name: string;
@@ -40,14 +42,16 @@ export const VoiceDisplayInfo$outboundSchema: z.ZodType<
   VoiceDisplayInfo$Outbound,
   z.ZodTypeDef,
   VoiceDisplayInfo
-> = z.object({
-  displayName: z.string(),
-  provider: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayName: z.string(),
+    provider: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+    });
+  })
+);
 
 export function voiceDisplayInfoToJSON(
   voiceDisplayInfo: VoiceDisplayInfo,

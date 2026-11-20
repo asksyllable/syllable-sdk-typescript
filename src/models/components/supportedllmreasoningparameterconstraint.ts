@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,15 +35,17 @@ export const SupportedLlmReasoningParameterConstraint$inboundSchema: z.ZodType<
   SupportedLlmReasoningParameterConstraint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endpoint: ReasoningEndpoint$inboundSchema,
-  parameter: z.string(),
-  allowed_efforts: z.array(ReasoningEffort$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "allowed_efforts": "allowedEfforts",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endpoint: ReasoningEndpoint$inboundSchema,
+    parameter: z.string(),
+    allowed_efforts: z.array(ReasoningEffort$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "allowed_efforts": "allowedEfforts",
+    });
+  })
+);
 /** @internal */
 export type SupportedLlmReasoningParameterConstraint$Outbound = {
   endpoint: string;
@@ -56,15 +58,17 @@ export const SupportedLlmReasoningParameterConstraint$outboundSchema: z.ZodType<
   SupportedLlmReasoningParameterConstraint$Outbound,
   z.ZodTypeDef,
   SupportedLlmReasoningParameterConstraint
-> = z.object({
-  endpoint: ReasoningEndpoint$outboundSchema,
-  parameter: z.string(),
-  allowedEfforts: z.array(ReasoningEffort$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    allowedEfforts: "allowed_efforts",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endpoint: ReasoningEndpoint$outboundSchema,
+    parameter: z.string(),
+    allowedEfforts: z.array(ReasoningEffort$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      allowedEfforts: "allowed_efforts",
+    });
+  })
+);
 
 export function supportedLlmReasoningParameterConstraintToJSON(
   supportedLlmReasoningParameterConstraint:

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,26 +38,30 @@ export const LatencyEntry$inboundSchema: z.ZodType<
   LatencyEntry,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  measurement_start: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  category: LatencyCategory$inboundSchema,
-  label: z.string(),
-  metadata: z.nullable(z.array(z.string())).optional(),
-  unit_type: LatencyUnitType$inboundSchema,
-  value: z.number(),
-  value_str: z.string(),
-  time_delta: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "measurement_start": "measurementStart",
-    "unit_type": "unitType",
-    "value_str": "valueStr",
-    "time_delta": "timeDelta",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    measurement_start: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    category: LatencyCategory$inboundSchema,
+    label: z.string(),
+    metadata: z.nullable(z.array(z.string())).optional(),
+    unit_type: LatencyUnitType$inboundSchema,
+    value: z.number(),
+    value_str: z.string(),
+    time_delta: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "measurement_start": "measurementStart",
+      "unit_type": "unitType",
+      "value_str": "valueStr",
+      "time_delta": "timeDelta",
+    });
+  })
+);
 /** @internal */
 export type LatencyEntry$Outbound = {
   timestamp: string;
@@ -76,24 +80,26 @@ export const LatencyEntry$outboundSchema: z.ZodType<
   LatencyEntry$Outbound,
   z.ZodTypeDef,
   LatencyEntry
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  measurementStart: z.date().transform(v => v.toISOString()),
-  category: LatencyCategory$outboundSchema,
-  label: z.string(),
-  metadata: z.nullable(z.array(z.string())).optional(),
-  unitType: LatencyUnitType$outboundSchema,
-  value: z.number(),
-  valueStr: z.string(),
-  timeDelta: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    measurementStart: "measurement_start",
-    unitType: "unit_type",
-    valueStr: "value_str",
-    timeDelta: "time_delta",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    measurementStart: z.date().transform(v => v.toISOString()),
+    category: LatencyCategory$outboundSchema,
+    label: z.string(),
+    metadata: z.nullable(z.array(z.string())).optional(),
+    unitType: LatencyUnitType$outboundSchema,
+    value: z.number(),
+    valueStr: z.string(),
+    timeDelta: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      measurementStart: "measurement_start",
+      unitType: "unit_type",
+      valueStr: "value_str",
+      timeDelta: "time_delta",
+    });
+  })
+);
 
 export function latencyEntryToJSON(latencyEntry: LatencyEntry): string {
   return JSON.stringify(LatencyEntry$outboundSchema.parse(latencyEntry));

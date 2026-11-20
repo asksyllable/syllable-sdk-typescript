@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -66,33 +66,36 @@ export const TelephonyConfigurations$inboundSchema: z.ZodType<
   TelephonyConfigurations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pre_input_timeout: z.nullable(z.number()).optional(),
-  post_speech_input_timeout: z.nullable(z.number()).optional(),
-  post_dtmf_input_timeout: z.nullable(z.number()).optional(),
-  overall_input_timeout: z.nullable(z.number()).optional(),
-  output_padding: z.nullable(z.number()).optional(),
-  interruptibility: z.nullable(z.string()).optional(),
-  passive_speech_input_enabled: z.nullable(z.boolean()).optional(),
-  passive_input_start: z.nullable(z.number()).optional(),
-  async_enabled: z.nullable(z.boolean()).optional(),
-  transfer_leg_voicemail_detection_enabled: z.nullable(z.boolean()).optional(),
-  sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "pre_input_timeout": "preInputTimeout",
-    "post_speech_input_timeout": "postSpeechInputTimeout",
-    "post_dtmf_input_timeout": "postDtmfInputTimeout",
-    "overall_input_timeout": "overallInputTimeout",
-    "output_padding": "outputPadding",
-    "passive_speech_input_enabled": "passiveSpeechInputEnabled",
-    "passive_input_start": "passiveInputStart",
-    "async_enabled": "asyncEnabled",
-    "transfer_leg_voicemail_detection_enabled":
-      "transferLegVoicemailDetectionEnabled",
-    "sip_configuration": "sipConfiguration",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pre_input_timeout: z.nullable(z.number()).optional(),
+    post_speech_input_timeout: z.nullable(z.number()).optional(),
+    post_dtmf_input_timeout: z.nullable(z.number()).optional(),
+    overall_input_timeout: z.nullable(z.number()).optional(),
+    output_padding: z.nullable(z.number()).optional(),
+    interruptibility: z.nullable(z.string()).optional(),
+    passive_speech_input_enabled: z.nullable(z.boolean()).optional(),
+    passive_input_start: z.nullable(z.number()).optional(),
+    async_enabled: z.nullable(z.boolean()).optional(),
+    transfer_leg_voicemail_detection_enabled: z.nullable(z.boolean())
+      .optional(),
+    sip_configuration: z.nullable(SipConfiguration$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "pre_input_timeout": "preInputTimeout",
+      "post_speech_input_timeout": "postSpeechInputTimeout",
+      "post_dtmf_input_timeout": "postDtmfInputTimeout",
+      "overall_input_timeout": "overallInputTimeout",
+      "output_padding": "outputPadding",
+      "passive_speech_input_enabled": "passiveSpeechInputEnabled",
+      "passive_input_start": "passiveInputStart",
+      "async_enabled": "asyncEnabled",
+      "transfer_leg_voicemail_detection_enabled":
+        "transferLegVoicemailDetectionEnabled",
+      "sip_configuration": "sipConfiguration",
+    });
+  })
+);
 /** @internal */
 export type TelephonyConfigurations$Outbound = {
   pre_input_timeout?: number | null | undefined;
@@ -113,33 +116,35 @@ export const TelephonyConfigurations$outboundSchema: z.ZodType<
   TelephonyConfigurations$Outbound,
   z.ZodTypeDef,
   TelephonyConfigurations
-> = z.object({
-  preInputTimeout: z.nullable(z.number()).optional(),
-  postSpeechInputTimeout: z.nullable(z.number()).optional(),
-  postDtmfInputTimeout: z.nullable(z.number()).optional(),
-  overallInputTimeout: z.nullable(z.number()).optional(),
-  outputPadding: z.nullable(z.number()).optional(),
-  interruptibility: z.nullable(z.string()).optional(),
-  passiveSpeechInputEnabled: z.nullable(z.boolean()).optional(),
-  passiveInputStart: z.nullable(z.number()).optional(),
-  asyncEnabled: z.nullable(z.boolean()).optional(),
-  transferLegVoicemailDetectionEnabled: z.nullable(z.boolean()).optional(),
-  sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    preInputTimeout: "pre_input_timeout",
-    postSpeechInputTimeout: "post_speech_input_timeout",
-    postDtmfInputTimeout: "post_dtmf_input_timeout",
-    overallInputTimeout: "overall_input_timeout",
-    outputPadding: "output_padding",
-    passiveSpeechInputEnabled: "passive_speech_input_enabled",
-    passiveInputStart: "passive_input_start",
-    asyncEnabled: "async_enabled",
-    transferLegVoicemailDetectionEnabled:
-      "transfer_leg_voicemail_detection_enabled",
-    sipConfiguration: "sip_configuration",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preInputTimeout: z.nullable(z.number()).optional(),
+    postSpeechInputTimeout: z.nullable(z.number()).optional(),
+    postDtmfInputTimeout: z.nullable(z.number()).optional(),
+    overallInputTimeout: z.nullable(z.number()).optional(),
+    outputPadding: z.nullable(z.number()).optional(),
+    interruptibility: z.nullable(z.string()).optional(),
+    passiveSpeechInputEnabled: z.nullable(z.boolean()).optional(),
+    passiveInputStart: z.nullable(z.number()).optional(),
+    asyncEnabled: z.nullable(z.boolean()).optional(),
+    transferLegVoicemailDetectionEnabled: z.nullable(z.boolean()).optional(),
+    sipConfiguration: z.nullable(SipConfiguration$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      preInputTimeout: "pre_input_timeout",
+      postSpeechInputTimeout: "post_speech_input_timeout",
+      postDtmfInputTimeout: "post_dtmf_input_timeout",
+      overallInputTimeout: "overall_input_timeout",
+      outputPadding: "output_padding",
+      passiveSpeechInputEnabled: "passive_speech_input_enabled",
+      passiveInputStart: "passive_input_start",
+      asyncEnabled: "async_enabled",
+      transferLegVoicemailDetectionEnabled:
+        "transfer_leg_voicemail_detection_enabled",
+      sipConfiguration: "sip_configuration",
+    });
+  })
+);
 
 export function telephonyConfigurationsToJSON(
   telephonyConfigurations: TelephonyConfigurations,

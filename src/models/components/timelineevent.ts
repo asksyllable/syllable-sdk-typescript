@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -77,30 +77,34 @@ export const TimelineEvent$inboundSchema: z.ZodType<
   TimelineEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: TimelineEventKind$inboundSchema,
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  offset: z.string(),
-  turn_index: z.nullable(z.number().int()).optional(),
-  source: z.nullable(z.string()).optional(),
-  text: z.nullable(z.string()).optional(),
-  lang: z.nullable(z.string()).optional(),
-  category: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.array(z.string())).optional(),
-  duration_ms: z.nullable(z.number()).optional(),
-  tool_request: z.nullable(z.string()).optional(),
-  tool_result: z.nullable(z.string()).optional(),
-  tool_error: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "turn_index": "turnIndex",
-    "duration_ms": "durationMs",
-    "tool_request": "toolRequest",
-    "tool_result": "toolResult",
-    "tool_error": "toolError",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: TimelineEventKind$inboundSchema,
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    offset: z.string(),
+    turn_index: z.nullable(z.number().int()).optional(),
+    source: z.nullable(z.string()).optional(),
+    text: z.nullable(z.string()).optional(),
+    lang: z.nullable(z.string()).optional(),
+    category: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.array(z.string())).optional(),
+    duration_ms: z.nullable(z.number()).optional(),
+    tool_request: z.nullable(z.string()).optional(),
+    tool_result: z.nullable(z.string()).optional(),
+    tool_error: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "turn_index": "turnIndex",
+      "duration_ms": "durationMs",
+      "tool_request": "toolRequest",
+      "tool_result": "toolResult",
+      "tool_error": "toolError",
+    });
+  })
+);
 /** @internal */
 export type TimelineEvent$Outbound = {
   kind: string;
@@ -124,30 +128,32 @@ export const TimelineEvent$outboundSchema: z.ZodType<
   TimelineEvent$Outbound,
   z.ZodTypeDef,
   TimelineEvent
-> = z.object({
-  kind: TimelineEventKind$outboundSchema,
-  timestamp: z.date().transform(v => v.toISOString()),
-  offset: z.string(),
-  turnIndex: z.nullable(z.number().int()).optional(),
-  source: z.nullable(z.string()).optional(),
-  text: z.nullable(z.string()).optional(),
-  lang: z.nullable(z.string()).optional(),
-  category: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  metadata: z.nullable(z.array(z.string())).optional(),
-  durationMs: z.nullable(z.number()).optional(),
-  toolRequest: z.nullable(z.string()).optional(),
-  toolResult: z.nullable(z.string()).optional(),
-  toolError: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    turnIndex: "turn_index",
-    durationMs: "duration_ms",
-    toolRequest: "tool_request",
-    toolResult: "tool_result",
-    toolError: "tool_error",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: TimelineEventKind$outboundSchema,
+    timestamp: z.date().transform(v => v.toISOString()),
+    offset: z.string(),
+    turnIndex: z.nullable(z.number().int()).optional(),
+    source: z.nullable(z.string()).optional(),
+    text: z.nullable(z.string()).optional(),
+    lang: z.nullable(z.string()).optional(),
+    category: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    metadata: z.nullable(z.array(z.string())).optional(),
+    durationMs: z.nullable(z.number()).optional(),
+    toolRequest: z.nullable(z.string()).optional(),
+    toolResult: z.nullable(z.string()).optional(),
+    toolError: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      turnIndex: "turn_index",
+      durationMs: "duration_ms",
+      toolRequest: "tool_request",
+      toolResult: "tool_result",
+      toolError: "tool_error",
+    });
+  })
+);
 
 export function timelineEventToJSON(timelineEvent: TimelineEvent): string {
   return JSON.stringify(TimelineEvent$outboundSchema.parse(timelineEvent));

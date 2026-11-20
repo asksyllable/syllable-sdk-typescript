@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -68,13 +68,15 @@ export const IncrementActionIf1$inboundSchema: z.ZodType<
   IncrementActionIf1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CelExpression$inboundSchema,
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$inboundSchema,
+    JMESPathExpression$inboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 /** @internal */
 export type IncrementActionIf1$Outbound =
   | CelExpression$Outbound
@@ -86,13 +88,15 @@ export const IncrementActionIf1$outboundSchema: z.ZodType<
   IncrementActionIf1$Outbound,
   z.ZodTypeDef,
   IncrementActionIf1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function incrementActionIf1ToJSON(
   incrementActionIf1: IncrementActionIf1,
@@ -116,17 +120,19 @@ export const IncrementActionIf$inboundSchema: z.ZodType<
   IncrementActionIf,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type IncrementActionIf$Outbound =
   | CaseExpression$Outbound
@@ -140,17 +146,21 @@ export const IncrementActionIf$outboundSchema: z.ZodType<
   IncrementActionIf$Outbound,
   z.ZodTypeDef,
   IncrementActionIf
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function incrementActionIfToJSON(
   incrementActionIf: IncrementActionIf,
@@ -174,26 +184,28 @@ export const IncrementAction$inboundSchema: z.ZodType<
   IncrementAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: z.literal("inc"),
-  name: z.string(),
-  by: z.number().int().default(1),
-});
+    ).optional(),
+    action: z.literal("inc"),
+    name: z.string(),
+    by: z.number().int().default(1),
+  })
+);
 /** @internal */
 export type IncrementAction$Outbound = {
   if?:
@@ -214,26 +226,28 @@ export const IncrementAction$outboundSchema: z.ZodType<
   IncrementAction$Outbound,
   z.ZodTypeDef,
   IncrementAction
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: z.literal("inc"),
-  name: z.string(),
-  by: z.number().int().default(1),
-});
+    ).optional(),
+    action: z.literal("inc"),
+    name: z.string(),
+    by: z.number().int().default(1),
+  })
+);
 
 export function incrementActionToJSON(
   incrementAction: IncrementAction,

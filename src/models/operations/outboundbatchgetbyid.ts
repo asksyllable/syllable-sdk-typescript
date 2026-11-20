@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const OutboundBatchGetByIdRequest$inboundSchema: z.ZodType<
   OutboundBatchGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+    });
+  })
+);
 /** @internal */
 export type OutboundBatchGetByIdRequest$Outbound = {
   batch_id: string;
@@ -34,13 +36,15 @@ export const OutboundBatchGetByIdRequest$outboundSchema: z.ZodType<
   OutboundBatchGetByIdRequest$Outbound,
   z.ZodTypeDef,
   OutboundBatchGetByIdRequest
-> = z.object({
-  batchId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+    });
+  })
+);
 
 export function outboundBatchGetByIdRequestToJSON(
   outboundBatchGetByIdRequest: OutboundBatchGetByIdRequest,

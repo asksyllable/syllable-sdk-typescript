@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -49,21 +49,23 @@ export const UserUpdateRequest$inboundSchema: z.ZodType<
   UserUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string(),
-  first_name: z.nullable(z.string()).optional(),
-  last_name: z.nullable(z.string()).optional(),
-  role_id: z.number().int(),
-  utm: z.nullable(DaoUtm$inboundSchema).optional(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "role_id": "roleId",
-    "last_updated_comments": "lastUpdatedComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    first_name: z.nullable(z.string()).optional(),
+    last_name: z.nullable(z.string()).optional(),
+    role_id: z.number().int(),
+    utm: z.nullable(DaoUtm$inboundSchema).optional(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "first_name": "firstName",
+      "last_name": "lastName",
+      "role_id": "roleId",
+      "last_updated_comments": "lastUpdatedComments",
+    });
+  })
+);
 /** @internal */
 export type UserUpdateRequest$Outbound = {
   email: string;
@@ -79,21 +81,23 @@ export const UserUpdateRequest$outboundSchema: z.ZodType<
   UserUpdateRequest$Outbound,
   z.ZodTypeDef,
   UserUpdateRequest
-> = z.object({
-  email: z.string(),
-  firstName: z.nullable(z.string()).optional(),
-  lastName: z.nullable(z.string()).optional(),
-  roleId: z.number().int(),
-  utm: z.nullable(DaoUtm$outboundSchema).optional(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    roleId: "role_id",
-    lastUpdatedComments: "last_updated_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    firstName: z.nullable(z.string()).optional(),
+    lastName: z.nullable(z.string()).optional(),
+    roleId: z.number().int(),
+    utm: z.nullable(DaoUtm$outboundSchema).optional(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      firstName: "first_name",
+      lastName: "last_name",
+      roleId: "role_id",
+      lastUpdatedComments: "last_updated_comments",
+    });
+  })
+);
 
 export function userUpdateRequestToJSON(
   userUpdateRequest: UserUpdateRequest,

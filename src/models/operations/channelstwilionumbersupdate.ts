@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,18 @@ export const ChannelsTwilioNumbersUpdateRequest$inboundSchema: z.ZodType<
   ChannelsTwilioNumbersUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel_id: z.number().int(),
-  TwilioNumberUpdateRequest: components.TwilioNumberUpdateRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "channel_id": "channelId",
-    "TwilioNumberUpdateRequest": "twilioNumberUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel_id: z.number().int(),
+    TwilioNumberUpdateRequest:
+      components.TwilioNumberUpdateRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_id": "channelId",
+      "TwilioNumberUpdateRequest": "twilioNumberUpdateRequest",
+    });
+  })
+);
 /** @internal */
 export type ChannelsTwilioNumbersUpdateRequest$Outbound = {
   channel_id: number;
@@ -39,16 +42,18 @@ export const ChannelsTwilioNumbersUpdateRequest$outboundSchema: z.ZodType<
   ChannelsTwilioNumbersUpdateRequest$Outbound,
   z.ZodTypeDef,
   ChannelsTwilioNumbersUpdateRequest
-> = z.object({
-  channelId: z.number().int(),
-  twilioNumberUpdateRequest:
-    components.TwilioNumberUpdateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    channelId: "channel_id",
-    twilioNumberUpdateRequest: "TwilioNumberUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channelId: z.number().int(),
+    twilioNumberUpdateRequest:
+      components.TwilioNumberUpdateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      channelId: "channel_id",
+      twilioNumberUpdateRequest: "TwilioNumberUpdateRequest",
+    });
+  })
+);
 
 export function channelsTwilioNumbersUpdateRequestToJSON(
   channelsTwilioNumbersUpdateRequest: ChannelsTwilioNumbersUpdateRequest,

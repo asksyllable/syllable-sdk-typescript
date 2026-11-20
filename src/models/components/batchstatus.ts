@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -22,8 +23,8 @@ export const BatchStatus = {
 export type BatchStatus = ClosedEnum<typeof BatchStatus>;
 
 /** @internal */
-export const BatchStatus$inboundSchema: z.ZodNativeEnum<typeof BatchStatus> = z
-  .nativeEnum(BatchStatus);
+export const BatchStatus$inboundSchema: z.ZodNativeEnum<typeof BatchStatus> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BatchStatus));
 /** @internal */
 export const BatchStatus$outboundSchema: z.ZodNativeEnum<typeof BatchStatus> =
   BatchStatus$inboundSchema;

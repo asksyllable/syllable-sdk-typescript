@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,16 +20,18 @@ export const InsightsWorkflowUpdateRequest$inboundSchema: z.ZodType<
   InsightsWorkflowUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow_id: z.number().int(),
-  deactivate: z.boolean().default(false),
-  InsightWorkflowInput: components.InsightWorkflowInput$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "workflow_id": "workflowId",
-    "InsightWorkflowInput": "insightWorkflowInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow_id: z.number().int(),
+    deactivate: z.boolean().default(false),
+    InsightWorkflowInput: components.InsightWorkflowInput$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "workflow_id": "workflowId",
+      "InsightWorkflowInput": "insightWorkflowInput",
+    });
+  })
+);
 /** @internal */
 export type InsightsWorkflowUpdateRequest$Outbound = {
   workflow_id: number;
@@ -42,16 +44,18 @@ export const InsightsWorkflowUpdateRequest$outboundSchema: z.ZodType<
   InsightsWorkflowUpdateRequest$Outbound,
   z.ZodTypeDef,
   InsightsWorkflowUpdateRequest
-> = z.object({
-  workflowId: z.number().int(),
-  deactivate: z.boolean().default(false),
-  insightWorkflowInput: components.InsightWorkflowInput$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    workflowId: "workflow_id",
-    insightWorkflowInput: "InsightWorkflowInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowId: z.number().int(),
+    deactivate: z.boolean().default(false),
+    insightWorkflowInput: components.InsightWorkflowInput$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      workflowId: "workflow_id",
+      insightWorkflowInput: "InsightWorkflowInput",
+    });
+  })
+);
 
 export function insightsWorkflowUpdateRequestToJSON(
   insightsWorkflowUpdateRequest: InsightsWorkflowUpdateRequest,

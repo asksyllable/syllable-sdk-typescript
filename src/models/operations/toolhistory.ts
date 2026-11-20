@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,17 +30,19 @@ export const ToolHistoryRequest$inboundSchema: z.ZodType<
   ToolHistoryRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_id: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  order_by_direction: components.OrderByDirection$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_id": "toolId",
-    "order_by_direction": "orderByDirection",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_id: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    order_by_direction: components.OrderByDirection$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_id": "toolId",
+      "order_by_direction": "orderByDirection",
+    });
+  })
+);
 /** @internal */
 export type ToolHistoryRequest$Outbound = {
   tool_id: number;
@@ -54,17 +56,19 @@ export const ToolHistoryRequest$outboundSchema: z.ZodType<
   ToolHistoryRequest$Outbound,
   z.ZodTypeDef,
   ToolHistoryRequest
-> = z.object({
-  toolId: z.number().int(),
-  page: z.number().int().default(0),
-  limit: z.number().int().default(25),
-  orderByDirection: components.OrderByDirection$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    toolId: "tool_id",
-    orderByDirection: "order_by_direction",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolId: z.number().int(),
+    page: z.number().int().default(0),
+    limit: z.number().int().default(25),
+    orderByDirection: components.OrderByDirection$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolId: "tool_id",
+      orderByDirection: "order_by_direction",
+    });
+  })
+);
 
 export function toolHistoryRequestToJSON(
   toolHistoryRequest: ToolHistoryRequest,

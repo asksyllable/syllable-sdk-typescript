@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,14 +18,16 @@ export const TranscriptConditionSource$inboundSchema: z.ZodType<
   TranscriptConditionSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: z.literal("transcript"),
-  step_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "step_id": "stepId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("transcript"),
+    step_id: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "step_id": "stepId",
+    });
+  })
+);
 /** @internal */
 export type TranscriptConditionSource$Outbound = {
   kind: "transcript";
@@ -37,14 +39,16 @@ export const TranscriptConditionSource$outboundSchema: z.ZodType<
   TranscriptConditionSource$Outbound,
   z.ZodTypeDef,
   TranscriptConditionSource
-> = z.object({
-  kind: z.literal("transcript"),
-  stepId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    stepId: "step_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("transcript"),
+    stepId: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      stepId: "step_id",
+    });
+  })
+);
 
 export function transcriptConditionSourceToJSON(
   transcriptConditionSource: TranscriptConditionSource,

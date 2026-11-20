@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,20 +25,22 @@ export const OutboundBatchResultsRequest$inboundSchema: z.ZodType<
   OutboundBatchResultsRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-  reference_id: z.nullable(z.string()).optional(),
-  status: z.nullable(z.string()).optional(),
-  insights_status: z.nullable(z.string()).optional(),
-  result_format: components.InsightResultFormat$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-    "reference_id": "referenceId",
-    "insights_status": "insightsStatus",
-    "result_format": "resultFormat",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+    reference_id: z.nullable(z.string()).optional(),
+    status: z.nullable(z.string()).optional(),
+    insights_status: z.nullable(z.string()).optional(),
+    result_format: components.InsightResultFormat$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+      "reference_id": "referenceId",
+      "insights_status": "insightsStatus",
+      "result_format": "resultFormat",
+    });
+  })
+);
 /** @internal */
 export type OutboundBatchResultsRequest$Outbound = {
   batch_id: string;
@@ -53,20 +55,22 @@ export const OutboundBatchResultsRequest$outboundSchema: z.ZodType<
   OutboundBatchResultsRequest$Outbound,
   z.ZodTypeDef,
   OutboundBatchResultsRequest
-> = z.object({
-  batchId: z.string(),
-  referenceId: z.nullable(z.string()).optional(),
-  status: z.nullable(z.string()).optional(),
-  insightsStatus: z.nullable(z.string()).optional(),
-  resultFormat: components.InsightResultFormat$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-    referenceId: "reference_id",
-    insightsStatus: "insights_status",
-    resultFormat: "result_format",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+    referenceId: z.nullable(z.string()).optional(),
+    status: z.nullable(z.string()).optional(),
+    insightsStatus: z.nullable(z.string()).optional(),
+    resultFormat: components.InsightResultFormat$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+      referenceId: "reference_id",
+      insightsStatus: "insights_status",
+      resultFormat: "result_format",
+    });
+  })
+);
 
 export function outboundBatchResultsRequestToJSON(
   outboundBatchResultsRequest: OutboundBatchResultsRequest,

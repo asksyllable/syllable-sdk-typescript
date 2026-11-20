@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,15 +16,14 @@ export type ValidationError = {
 };
 
 /** @internal */
-export const Loc$inboundSchema: z.ZodType<Loc, z.ZodTypeDef, unknown> = z.union(
-  [z.string(), z.number().int()],
-);
+export const Loc$inboundSchema: z.ZodType<Loc, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number().int()]));
 /** @internal */
 export type Loc$Outbound = string | number;
 
 /** @internal */
-export const Loc$outboundSchema: z.ZodType<Loc$Outbound, z.ZodTypeDef, Loc> = z
-  .union([z.string(), z.number().int()]);
+export const Loc$outboundSchema: z.ZodType<Loc$Outbound, z.ZodTypeDef, Loc> =
+  /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number().int()]));
 
 export function locToJSON(loc: Loc): string {
   return JSON.stringify(Loc$outboundSchema.parse(loc));
@@ -44,11 +43,13 @@ export const ValidationError$inboundSchema: z.ZodType<
   ValidationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  loc: z.array(z.union([z.string(), z.number().int()])),
-  msg: z.string(),
-  type: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    loc: z.array(z.union([z.string(), z.number().int()])),
+    msg: z.string(),
+    type: z.string(),
+  })
+);
 /** @internal */
 export type ValidationError$Outbound = {
   loc: Array<string | number>;
@@ -61,11 +62,13 @@ export const ValidationError$outboundSchema: z.ZodType<
   ValidationError$Outbound,
   z.ZodTypeDef,
   ValidationError
-> = z.object({
-  loc: z.array(z.union([z.string(), z.number().int()])),
-  msg: z.string(),
-  type: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    loc: z.array(z.union([z.string(), z.number().int()])),
+    msg: z.string(),
+    type: z.string(),
+  })
+);
 
 export function validationErrorToJSON(
   validationError: ValidationError,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -55,19 +55,21 @@ export const BridgePhrasesConfigPayload$inboundSchema: z.ZodType<
   BridgePhrasesConfigPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  phrases:
-    LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$inboundSchema
-      .optional(),
-  tools: z.array(ToolBridgePhraseConfig$inboundSchema).optional(),
-  smart_turn_timeout_seconds: z.nullable(z.number()).optional(),
-  randomize_bridge_phrases: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "smart_turn_timeout_seconds": "smartTurnTimeoutSeconds",
-    "randomize_bridge_phrases": "randomizeBridgePhrases",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phrases:
+      LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$inboundSchema
+        .optional(),
+    tools: z.array(ToolBridgePhraseConfig$inboundSchema).optional(),
+    smart_turn_timeout_seconds: z.nullable(z.number()).optional(),
+    randomize_bridge_phrases: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "smart_turn_timeout_seconds": "smartTurnTimeoutSeconds",
+      "randomize_bridge_phrases": "randomizeBridgePhrases",
+    });
+  })
+);
 /** @internal */
 export type BridgePhrasesConfigPayload$Outbound = {
   phrases?:
@@ -83,19 +85,21 @@ export const BridgePhrasesConfigPayload$outboundSchema: z.ZodType<
   BridgePhrasesConfigPayload$Outbound,
   z.ZodTypeDef,
   BridgePhrasesConfigPayload
-> = z.object({
-  phrases:
-    LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$outboundSchema
-      .optional(),
-  tools: z.array(ToolBridgePhraseConfig$outboundSchema).optional(),
-  smartTurnTimeoutSeconds: z.nullable(z.number()).optional(),
-  randomizeBridgePhrases: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    smartTurnTimeoutSeconds: "smart_turn_timeout_seconds",
-    randomizeBridgePhrases: "randomize_bridge_phrases",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phrases:
+      LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$outboundSchema
+        .optional(),
+    tools: z.array(ToolBridgePhraseConfig$outboundSchema).optional(),
+    smartTurnTimeoutSeconds: z.nullable(z.number()).optional(),
+    randomizeBridgePhrases: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      smartTurnTimeoutSeconds: "smart_turn_timeout_seconds",
+      randomizeBridgePhrases: "randomize_bridge_phrases",
+    });
+  })
+);
 
 export function bridgePhrasesConfigPayloadToJSON(
   bridgePhrasesConfigPayload: BridgePhrasesConfigPayload,

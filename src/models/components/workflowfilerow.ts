@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -72,7 +72,9 @@ export type WorkflowFileRow = {
 /** @internal */
 export const WorkflowFileRowFormatVersion$inboundSchema: z.ZodNativeEnum<
   typeof WorkflowFileRowFormatVersion
-> = z.nativeEnum(WorkflowFileRowFormatVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(WorkflowFileRowFormatVersion)
+);
 /** @internal */
 export const WorkflowFileRowFormatVersion$outboundSchema: z.ZodNativeEnum<
   typeof WorkflowFileRowFormatVersion
@@ -83,7 +85,7 @@ export const WorkflowFileRowStepOutcomes$inboundSchema: z.ZodType<
   WorkflowFileRowStepOutcomes,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type WorkflowFileRowStepOutcomes$Outbound = {};
 
@@ -92,7 +94,7 @@ export const WorkflowFileRowStepOutcomes$outboundSchema: z.ZodType<
   WorkflowFileRowStepOutcomes$Outbound,
   z.ZodTypeDef,
   WorkflowFileRowStepOutcomes
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function workflowFileRowStepOutcomesToJSON(
   workflowFileRowStepOutcomes: WorkflowFileRowStepOutcomes,
@@ -118,32 +120,36 @@ export const WorkflowFileRow$inboundSchema: z.ZodType<
   WorkflowFileRow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  execution_id: z.nullable(z.number().int()).optional(),
-  format_version: WorkflowFileRowFormatVersion$inboundSchema.default(1),
-  step_outcomes: z.array(
-    z.lazy(() => WorkflowFileRowStepOutcomes$inboundSchema),
-  ).optional(),
-  upload_file_id: z.number().int(),
-  filename: z.nullable(z.string()).optional(),
-  analyzed_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  queued_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: z.string(),
-  error_message: z.nullable(z.string()).optional(),
-  results: z.record(z.record(z.array(z.any()))).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "execution_id": "executionId",
-    "format_version": "formatVersion",
-    "step_outcomes": "stepOutcomes",
-    "upload_file_id": "uploadFileId",
-    "analyzed_at": "analyzedAt",
-    "queued_at": "queuedAt",
-    "error_message": "errorMessage",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    execution_id: z.nullable(z.number().int()).optional(),
+    format_version: WorkflowFileRowFormatVersion$inboundSchema.default(1),
+    step_outcomes: z.array(
+      z.lazy(() => WorkflowFileRowStepOutcomes$inboundSchema),
+    ).optional(),
+    upload_file_id: z.number().int(),
+    filename: z.nullable(z.string()).optional(),
+    analyzed_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    queued_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: z.string(),
+    error_message: z.nullable(z.string()).optional(),
+    results: z.record(z.record(z.array(z.any()))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "execution_id": "executionId",
+      "format_version": "formatVersion",
+      "step_outcomes": "stepOutcomes",
+      "upload_file_id": "uploadFileId",
+      "analyzed_at": "analyzedAt",
+      "queued_at": "queuedAt",
+      "error_message": "errorMessage",
+    });
+  })
+);
 /** @internal */
 export type WorkflowFileRow$Outbound = {
   execution_id?: number | null | undefined;
@@ -163,30 +169,32 @@ export const WorkflowFileRow$outboundSchema: z.ZodType<
   WorkflowFileRow$Outbound,
   z.ZodTypeDef,
   WorkflowFileRow
-> = z.object({
-  executionId: z.nullable(z.number().int()).optional(),
-  formatVersion: WorkflowFileRowFormatVersion$outboundSchema.default(1),
-  stepOutcomes: z.array(
-    z.lazy(() => WorkflowFileRowStepOutcomes$outboundSchema),
-  ).optional(),
-  uploadFileId: z.number().int(),
-  filename: z.nullable(z.string()).optional(),
-  analyzedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  queuedAt: z.date().transform(v => v.toISOString()),
-  status: z.string(),
-  errorMessage: z.nullable(z.string()).optional(),
-  results: z.record(z.record(z.array(z.any()))).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    executionId: "execution_id",
-    formatVersion: "format_version",
-    stepOutcomes: "step_outcomes",
-    uploadFileId: "upload_file_id",
-    analyzedAt: "analyzed_at",
-    queuedAt: "queued_at",
-    errorMessage: "error_message",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    executionId: z.nullable(z.number().int()).optional(),
+    formatVersion: WorkflowFileRowFormatVersion$outboundSchema.default(1),
+    stepOutcomes: z.array(
+      z.lazy(() => WorkflowFileRowStepOutcomes$outboundSchema),
+    ).optional(),
+    uploadFileId: z.number().int(),
+    filename: z.nullable(z.string()).optional(),
+    analyzedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    queuedAt: z.date().transform(v => v.toISOString()),
+    status: z.string(),
+    errorMessage: z.nullable(z.string()).optional(),
+    results: z.record(z.record(z.array(z.any()))).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      executionId: "execution_id",
+      formatVersion: "format_version",
+      stepOutcomes: "step_outcomes",
+      uploadFileId: "upload_file_id",
+      analyzedAt: "analyzed_at",
+      queuedAt: "queued_at",
+      errorMessage: "error_message",
+    });
+  })
+);
 
 export function workflowFileRowToJSON(
   workflowFileRow: WorkflowFileRow,

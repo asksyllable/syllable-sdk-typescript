@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -69,27 +69,29 @@ export const PromptCreateRequest$inboundSchema: z.ZodType<
   PromptCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  type: z.string(),
-  context: z.nullable(z.string()).optional(),
-  tools: z.array(z.string()).optional(),
-  llm_config: PromptLlmConfig$inboundSchema,
-  session_end_enabled: z.boolean().default(false),
-  session_end_tool_id: z.nullable(z.number().int()).optional(),
-  edit_comments: z.nullable(z.string()).optional(),
-  include_default_tools: z.boolean().default(true),
-}).transform((v) => {
-  return remap$(v, {
-    "llm_config": "llmConfig",
-    "session_end_enabled": "sessionEndEnabled",
-    "session_end_tool_id": "sessionEndToolId",
-    "edit_comments": "editComments",
-    "include_default_tools": "includeDefaultTools",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    type: z.string(),
+    context: z.nullable(z.string()).optional(),
+    tools: z.array(z.string()).optional(),
+    llm_config: PromptLlmConfig$inboundSchema,
+    session_end_enabled: z.boolean().default(false),
+    session_end_tool_id: z.nullable(z.number().int()).optional(),
+    edit_comments: z.nullable(z.string()).optional(),
+    include_default_tools: z.boolean().default(true),
+  }).transform((v) => {
+    return remap$(v, {
+      "llm_config": "llmConfig",
+      "session_end_enabled": "sessionEndEnabled",
+      "session_end_tool_id": "sessionEndToolId",
+      "edit_comments": "editComments",
+      "include_default_tools": "includeDefaultTools",
+    });
+  })
+);
 /** @internal */
 export type PromptCreateRequest$Outbound = {
   name: string;
@@ -110,27 +112,29 @@ export const PromptCreateRequest$outboundSchema: z.ZodType<
   PromptCreateRequest$Outbound,
   z.ZodTypeDef,
   PromptCreateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  type: z.string(),
-  context: z.nullable(z.string()).optional(),
-  tools: z.array(z.string()).optional(),
-  llmConfig: PromptLlmConfig$outboundSchema,
-  sessionEndEnabled: z.boolean().default(false),
-  sessionEndToolId: z.nullable(z.number().int()).optional(),
-  editComments: z.nullable(z.string()).optional(),
-  includeDefaultTools: z.boolean().default(true),
-}).transform((v) => {
-  return remap$(v, {
-    llmConfig: "llm_config",
-    sessionEndEnabled: "session_end_enabled",
-    sessionEndToolId: "session_end_tool_id",
-    editComments: "edit_comments",
-    includeDefaultTools: "include_default_tools",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    type: z.string(),
+    context: z.nullable(z.string()).optional(),
+    tools: z.array(z.string()).optional(),
+    llmConfig: PromptLlmConfig$outboundSchema,
+    sessionEndEnabled: z.boolean().default(false),
+    sessionEndToolId: z.nullable(z.number().int()).optional(),
+    editComments: z.nullable(z.string()).optional(),
+    includeDefaultTools: z.boolean().default(true),
+  }).transform((v) => {
+    return remap$(v, {
+      llmConfig: "llm_config",
+      sessionEndEnabled: "session_end_enabled",
+      sessionEndToolId: "session_end_tool_id",
+      editComments: "edit_comments",
+      includeDefaultTools: "include_default_tools",
+    });
+  })
+);
 
 export function promptCreateRequestToJSON(
   promptCreateRequest: PromptCreateRequest,

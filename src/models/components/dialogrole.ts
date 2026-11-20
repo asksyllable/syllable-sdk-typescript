@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -18,8 +19,8 @@ export const DialogRole = {
 export type DialogRole = ClosedEnum<typeof DialogRole>;
 
 /** @internal */
-export const DialogRole$inboundSchema: z.ZodNativeEnum<typeof DialogRole> = z
-  .nativeEnum(DialogRole);
+export const DialogRole$inboundSchema: z.ZodNativeEnum<typeof DialogRole> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DialogRole));
 /** @internal */
 export const DialogRole$outboundSchema: z.ZodNativeEnum<typeof DialogRole> =
   DialogRole$inboundSchema;

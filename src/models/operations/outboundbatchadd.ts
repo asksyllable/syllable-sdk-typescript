@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const OutboundBatchAddRequest$inboundSchema: z.ZodType<
   OutboundBatchAddRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-  CommunicationRequest: components.CommunicationRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-    "CommunicationRequest": "communicationRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+    CommunicationRequest: components.CommunicationRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+      "CommunicationRequest": "communicationRequest",
+    });
+  })
+);
 /** @internal */
 export type OutboundBatchAddRequest$Outbound = {
   batch_id: string;
@@ -39,15 +41,17 @@ export const OutboundBatchAddRequest$outboundSchema: z.ZodType<
   OutboundBatchAddRequest$Outbound,
   z.ZodTypeDef,
   OutboundBatchAddRequest
-> = z.object({
-  batchId: z.string(),
-  communicationRequest: components.CommunicationRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-    communicationRequest: "CommunicationRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+    communicationRequest: components.CommunicationRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+      communicationRequest: "CommunicationRequest",
+    });
+  })
+);
 
 export function outboundBatchAddRequestToJSON(
   outboundBatchAddRequest: OutboundBatchAddRequest,

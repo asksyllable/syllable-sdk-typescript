@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,19 +40,21 @@ export type ListResponseDirectoryMemberHistoryResponse = {
 /** @internal */
 export const ListResponseDirectoryMemberHistoryResponse$inboundSchema:
   z.ZodType<ListResponseDirectoryMemberHistoryResponse, z.ZodTypeDef, unknown> =
-    z.object({
-      items: z.array(DirectoryMemberHistoryResponse$inboundSchema),
-      page: z.number().int(),
-      page_size: z.number().int(),
-      total_pages: z.nullable(z.number().int()).optional(),
-      total_count: z.nullable(z.number().int()).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "page_size": "pageSize",
-        "total_pages": "totalPages",
-        "total_count": "totalCount",
-      });
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        items: z.array(DirectoryMemberHistoryResponse$inboundSchema),
+        page: z.number().int(),
+        page_size: z.number().int(),
+        total_pages: z.nullable(z.number().int()).optional(),
+        total_count: z.nullable(z.number().int()).optional(),
+      }).transform((v) => {
+        return remap$(v, {
+          "page_size": "pageSize",
+          "total_pages": "totalPages",
+          "total_count": "totalCount",
+        });
+      })
+    );
 /** @internal */
 export type ListResponseDirectoryMemberHistoryResponse$Outbound = {
   items: Array<DirectoryMemberHistoryResponse$Outbound>;
@@ -68,19 +70,21 @@ export const ListResponseDirectoryMemberHistoryResponse$outboundSchema:
     ListResponseDirectoryMemberHistoryResponse$Outbound,
     z.ZodTypeDef,
     ListResponseDirectoryMemberHistoryResponse
-  > = z.object({
-    items: z.array(DirectoryMemberHistoryResponse$outboundSchema),
-    page: z.number().int(),
-    pageSize: z.number().int(),
-    totalPages: z.nullable(z.number().int()).optional(),
-    totalCount: z.nullable(z.number().int()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      pageSize: "page_size",
-      totalPages: "total_pages",
-      totalCount: "total_count",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      items: z.array(DirectoryMemberHistoryResponse$outboundSchema),
+      page: z.number().int(),
+      pageSize: z.number().int(),
+      totalPages: z.nullable(z.number().int()).optional(),
+      totalCount: z.nullable(z.number().int()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        pageSize: "page_size",
+        totalPages: "total_pages",
+        totalCount: "total_count",
+      });
+    })
+  );
 
 export function listResponseDirectoryMemberHistoryResponseToJSON(
   listResponseDirectoryMemberHistoryResponse:

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -43,23 +43,25 @@ export const InsightWorkflowEstimate$inboundSchema: z.ZodType<
   InsightWorkflowEstimate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  backfill_count: z.number().int(),
-  backfill_duration: z.number(),
-  estimated_daily_count: z.number().int(),
-  estimated_daily_duration: z.number(),
-  estimated_daily_cost: z.number(),
-  estimated_backfill_cost: z.number(),
-}).transform((v) => {
-  return remap$(v, {
-    "backfill_count": "backfillCount",
-    "backfill_duration": "backfillDuration",
-    "estimated_daily_count": "estimatedDailyCount",
-    "estimated_daily_duration": "estimatedDailyDuration",
-    "estimated_daily_cost": "estimatedDailyCost",
-    "estimated_backfill_cost": "estimatedBackfillCost",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    backfill_count: z.number().int(),
+    backfill_duration: z.number(),
+    estimated_daily_count: z.number().int(),
+    estimated_daily_duration: z.number(),
+    estimated_daily_cost: z.number(),
+    estimated_backfill_cost: z.number(),
+  }).transform((v) => {
+    return remap$(v, {
+      "backfill_count": "backfillCount",
+      "backfill_duration": "backfillDuration",
+      "estimated_daily_count": "estimatedDailyCount",
+      "estimated_daily_duration": "estimatedDailyDuration",
+      "estimated_daily_cost": "estimatedDailyCost",
+      "estimated_backfill_cost": "estimatedBackfillCost",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowEstimate$Outbound = {
   backfill_count: number;
@@ -75,23 +77,25 @@ export const InsightWorkflowEstimate$outboundSchema: z.ZodType<
   InsightWorkflowEstimate$Outbound,
   z.ZodTypeDef,
   InsightWorkflowEstimate
-> = z.object({
-  backfillCount: z.number().int(),
-  backfillDuration: z.number(),
-  estimatedDailyCount: z.number().int(),
-  estimatedDailyDuration: z.number(),
-  estimatedDailyCost: z.number(),
-  estimatedBackfillCost: z.number(),
-}).transform((v) => {
-  return remap$(v, {
-    backfillCount: "backfill_count",
-    backfillDuration: "backfill_duration",
-    estimatedDailyCount: "estimated_daily_count",
-    estimatedDailyDuration: "estimated_daily_duration",
-    estimatedDailyCost: "estimated_daily_cost",
-    estimatedBackfillCost: "estimated_backfill_cost",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    backfillCount: z.number().int(),
+    backfillDuration: z.number(),
+    estimatedDailyCount: z.number().int(),
+    estimatedDailyDuration: z.number(),
+    estimatedDailyCost: z.number(),
+    estimatedBackfillCost: z.number(),
+  }).transform((v) => {
+    return remap$(v, {
+      backfillCount: "backfill_count",
+      backfillDuration: "backfill_duration",
+      estimatedDailyCount: "estimated_daily_count",
+      estimatedDailyDuration: "estimated_daily_duration",
+      estimatedDailyCost: "estimated_daily_cost",
+      estimatedBackfillCost: "estimated_backfill_cost",
+    });
+  })
+);
 
 export function insightWorkflowEstimateToJSON(
   insightWorkflowEstimate: InsightWorkflowEstimate,

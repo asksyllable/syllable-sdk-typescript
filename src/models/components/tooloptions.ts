@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,13 +23,15 @@ export const ToolOptions$inboundSchema: z.ZodType<
   ToolOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  propagate_tool_result: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "propagate_tool_result": "propagateToolResult",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    propagate_tool_result: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "propagate_tool_result": "propagateToolResult",
+    });
+  })
+);
 /** @internal */
 export type ToolOptions$Outbound = {
   propagate_tool_result: boolean;
@@ -40,13 +42,15 @@ export const ToolOptions$outboundSchema: z.ZodType<
   ToolOptions$Outbound,
   z.ZodTypeDef,
   ToolOptions
-> = z.object({
-  propagateToolResult: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    propagateToolResult: "propagate_tool_result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    propagateToolResult: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      propagateToolResult: "propagate_tool_result",
+    });
+  })
+);
 
 export function toolOptionsToJSON(toolOptions: ToolOptions): string {
   return JSON.stringify(ToolOptions$outboundSchema.parse(toolOptions));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,24 +34,26 @@ export const SummaryEntry$inboundSchema: z.ZodType<
   SummaryEntry,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  category: LatencyCategory$inboundSchema,
-  sub_category: z.nullable(z.string()).optional(),
-  event_count: z.number().int(),
-  sum_ms: z.number(),
-  sum_str: z.string(),
-  average_ms: z.number(),
-  average_str: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "sub_category": "subCategory",
-    "event_count": "eventCount",
-    "sum_ms": "sumMs",
-    "sum_str": "sumStr",
-    "average_ms": "averageMs",
-    "average_str": "averageStr",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    category: LatencyCategory$inboundSchema,
+    sub_category: z.nullable(z.string()).optional(),
+    event_count: z.number().int(),
+    sum_ms: z.number(),
+    sum_str: z.string(),
+    average_ms: z.number(),
+    average_str: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "sub_category": "subCategory",
+      "event_count": "eventCount",
+      "sum_ms": "sumMs",
+      "sum_str": "sumStr",
+      "average_ms": "averageMs",
+      "average_str": "averageStr",
+    });
+  })
+);
 /** @internal */
 export type SummaryEntry$Outbound = {
   category: string;
@@ -68,24 +70,26 @@ export const SummaryEntry$outboundSchema: z.ZodType<
   SummaryEntry$Outbound,
   z.ZodTypeDef,
   SummaryEntry
-> = z.object({
-  category: LatencyCategory$outboundSchema,
-  subCategory: z.nullable(z.string()).optional(),
-  eventCount: z.number().int(),
-  sumMs: z.number(),
-  sumStr: z.string(),
-  averageMs: z.number(),
-  averageStr: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    subCategory: "sub_category",
-    eventCount: "event_count",
-    sumMs: "sum_ms",
-    sumStr: "sum_str",
-    averageMs: "average_ms",
-    averageStr: "average_str",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    category: LatencyCategory$outboundSchema,
+    subCategory: z.nullable(z.string()).optional(),
+    eventCount: z.number().int(),
+    sumMs: z.number(),
+    sumStr: z.string(),
+    averageMs: z.number(),
+    averageStr: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      subCategory: "sub_category",
+      eventCount: "event_count",
+      sumMs: "sum_ms",
+      sumStr: "sum_str",
+      averageMs: "average_ms",
+      averageStr: "average_str",
+    });
+  })
+);
 
 export function summaryEntryToJSON(summaryEntry: SummaryEntry): string {
   return JSON.stringify(SummaryEntry$outboundSchema.parse(summaryEntry));

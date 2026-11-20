@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,22 +17,24 @@ export type DaoUtm = {
 };
 
 /** @internal */
-export const DaoUtm$inboundSchema: z.ZodType<DaoUtm, z.ZodTypeDef, unknown> = z
-  .object({
-    utm_source: z.nullable(z.string()).optional(),
-    utm_medium: z.nullable(z.string()).optional(),
-    utm_campaign: z.nullable(z.string()).optional(),
-    utm_term: z.nullable(z.string()).optional(),
-    utm_content: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "utm_source": "utmSource",
-      "utm_medium": "utmMedium",
-      "utm_campaign": "utmCampaign",
-      "utm_term": "utmTerm",
-      "utm_content": "utmContent",
-    });
-  });
+export const DaoUtm$inboundSchema: z.ZodType<DaoUtm, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      utm_source: z.nullable(z.string()).optional(),
+      utm_medium: z.nullable(z.string()).optional(),
+      utm_campaign: z.nullable(z.string()).optional(),
+      utm_term: z.nullable(z.string()).optional(),
+      utm_content: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        "utm_source": "utmSource",
+        "utm_medium": "utmMedium",
+        "utm_campaign": "utmCampaign",
+        "utm_term": "utmTerm",
+        "utm_content": "utmContent",
+      });
+    })
+  );
 /** @internal */
 export type DaoUtm$Outbound = {
   utm_source?: string | null | undefined;
@@ -47,21 +49,23 @@ export const DaoUtm$outboundSchema: z.ZodType<
   DaoUtm$Outbound,
   z.ZodTypeDef,
   DaoUtm
-> = z.object({
-  utmSource: z.nullable(z.string()).optional(),
-  utmMedium: z.nullable(z.string()).optional(),
-  utmCampaign: z.nullable(z.string()).optional(),
-  utmTerm: z.nullable(z.string()).optional(),
-  utmContent: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    utmSource: "utm_source",
-    utmMedium: "utm_medium",
-    utmCampaign: "utm_campaign",
-    utmTerm: "utm_term",
-    utmContent: "utm_content",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    utmSource: z.nullable(z.string()).optional(),
+    utmMedium: z.nullable(z.string()).optional(),
+    utmCampaign: z.nullable(z.string()).optional(),
+    utmTerm: z.nullable(z.string()).optional(),
+    utmContent: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      utmSource: "utm_source",
+      utmMedium: "utm_medium",
+      utmCampaign: "utm_campaign",
+      utmTerm: "utm_term",
+      utmContent: "utm_content",
+    });
+  })
+);
 
 export function daoUtmToJSON(daoUtm: DaoUtm): string {
   return JSON.stringify(DaoUtm$outboundSchema.parse(daoUtm));

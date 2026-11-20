@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -25,12 +25,14 @@ export const TranscriptWordConfidence$inboundSchema: z.ZodType<
   TranscriptWordConfidence,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  word: z.string(),
-  confidence: z.nullable(z.number()).optional(),
-  start: z.nullable(z.number()).optional(),
-  end: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    word: z.string(),
+    confidence: z.nullable(z.number()).optional(),
+    start: z.nullable(z.number()).optional(),
+    end: z.nullable(z.number()).optional(),
+  })
+);
 /** @internal */
 export type TranscriptWordConfidence$Outbound = {
   word: string;
@@ -44,12 +46,14 @@ export const TranscriptWordConfidence$outboundSchema: z.ZodType<
   TranscriptWordConfidence$Outbound,
   z.ZodTypeDef,
   TranscriptWordConfidence
-> = z.object({
-  word: z.string(),
-  confidence: z.nullable(z.number()).optional(),
-  start: z.nullable(z.number()).optional(),
-  end: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    word: z.string(),
+    confidence: z.nullable(z.number()).optional(),
+    start: z.nullable(z.number()).optional(),
+    end: z.nullable(z.number()).optional(),
+  })
+);
 
 export function transcriptWordConfidenceToJSON(
   transcriptWordConfidence: TranscriptWordConfidence,

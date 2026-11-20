@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,15 +19,17 @@ export const InsightConditionSource$inboundSchema: z.ZodType<
   InsightConditionSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: z.literal("insight"),
-  step_id: z.string(),
-  key: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "step_id": "stepId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("insight"),
+    step_id: z.string(),
+    key: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "step_id": "stepId",
+    });
+  })
+);
 /** @internal */
 export type InsightConditionSource$Outbound = {
   kind: "insight";
@@ -40,15 +42,17 @@ export const InsightConditionSource$outboundSchema: z.ZodType<
   InsightConditionSource$Outbound,
   z.ZodTypeDef,
   InsightConditionSource
-> = z.object({
-  kind: z.literal("insight"),
-  stepId: z.string(),
-  key: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    stepId: "step_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.literal("insight"),
+    stepId: z.string(),
+    key: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      stepId: "step_id",
+    });
+  })
+);
 
 export function insightConditionSourceToJSON(
   insightConditionSource: InsightConditionSource,

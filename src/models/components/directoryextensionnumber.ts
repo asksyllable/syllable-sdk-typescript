@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,15 +33,17 @@ export const DirectoryExtensionNumber$inboundSchema: z.ZodType<
   DirectoryExtensionNumber,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  number: z.string(),
-  rules: z.nullable(z.array(z.record(z.string()))).optional(),
-  sip_transfer_mode: z.nullable(SipTransferMode$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "sip_transfer_mode": "sipTransferMode",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    number: z.string(),
+    rules: z.nullable(z.array(z.record(z.string()))).optional(),
+    sip_transfer_mode: z.nullable(SipTransferMode$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "sip_transfer_mode": "sipTransferMode",
+    });
+  })
+);
 /** @internal */
 export type DirectoryExtensionNumber$Outbound = {
   number: string;
@@ -54,15 +56,17 @@ export const DirectoryExtensionNumber$outboundSchema: z.ZodType<
   DirectoryExtensionNumber$Outbound,
   z.ZodTypeDef,
   DirectoryExtensionNumber
-> = z.object({
-  number: z.string(),
-  rules: z.nullable(z.array(z.record(z.string()))).optional(),
-  sipTransferMode: z.nullable(SipTransferMode$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sipTransferMode: "sip_transfer_mode",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    number: z.string(),
+    rules: z.nullable(z.array(z.record(z.string()))).optional(),
+    sipTransferMode: z.nullable(SipTransferMode$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sipTransferMode: "sip_transfer_mode",
+    });
+  })
+);
 
 export function directoryExtensionNumberToJSON(
   directoryExtensionNumber: DirectoryExtensionNumber,

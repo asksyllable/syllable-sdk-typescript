@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -107,9 +107,8 @@ export type ToolDefinition = {
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Type));
 /** @internal */
 export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
   Type$inboundSchema;
@@ -119,7 +118,9 @@ export const Defaults$inboundSchema: z.ZodType<
   Defaults,
   z.ZodTypeDef,
   unknown
-> = z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)])
+);
 /** @internal */
 export type Defaults$Outbound = any | {
   [k: string]: ToolParameterDefault$Outbound;
@@ -130,7 +131,9 @@ export const Defaults$outboundSchema: z.ZodType<
   Defaults$Outbound,
   z.ZodTypeDef,
   Defaults
-> = z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)])
+);
 
 export function defaultsToJSON(defaults: Defaults): string {
   return JSON.stringify(Defaults$outboundSchema.parse(defaults));
@@ -150,25 +153,28 @@ export const ToolDefinition$inboundSchema: z.ZodType<
   ToolDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.nullable(Type$inboundSchema).optional(),
-  tool: InternalTool$inboundSchema,
-  endpoint: z.nullable(ToolHttpEndpoint$inboundSchema).optional(),
-  context: z.nullable(Context$inboundSchema).optional(),
-  defaults: z.nullable(
-    z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]),
-  ).optional(),
-  static_parameters: z.nullable(z.array(StaticToolParameter$inboundSchema))
-    .optional(),
-  result: z.nullable(z.any()).optional(),
-  options: z.nullable(ToolOptions$inboundSchema).optional(),
-  response_display: z.nullable(ResponseDisplayConfig$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "static_parameters": "staticParameters",
-    "response_display": "responseDisplay",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.nullable(Type$inboundSchema).optional(),
+    tool: InternalTool$inboundSchema,
+    endpoint: z.nullable(ToolHttpEndpoint$inboundSchema).optional(),
+    context: z.nullable(Context$inboundSchema).optional(),
+    defaults: z.nullable(
+      z.union([z.any(), z.record(ToolParameterDefault$inboundSchema)]),
+    ).optional(),
+    static_parameters: z.nullable(z.array(StaticToolParameter$inboundSchema))
+      .optional(),
+    result: z.nullable(z.any()).optional(),
+    options: z.nullable(ToolOptions$inboundSchema).optional(),
+    response_display: z.nullable(ResponseDisplayConfig$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "static_parameters": "staticParameters",
+      "response_display": "responseDisplay",
+    });
+  })
+);
 /** @internal */
 export type ToolDefinition$Outbound = {
   type?: string | null | undefined;
@@ -191,25 +197,28 @@ export const ToolDefinition$outboundSchema: z.ZodType<
   ToolDefinition$Outbound,
   z.ZodTypeDef,
   ToolDefinition
-> = z.object({
-  type: z.nullable(Type$outboundSchema).optional(),
-  tool: InternalTool$outboundSchema,
-  endpoint: z.nullable(ToolHttpEndpoint$outboundSchema).optional(),
-  context: z.nullable(Context$outboundSchema).optional(),
-  defaults: z.nullable(
-    z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]),
-  ).optional(),
-  staticParameters: z.nullable(z.array(StaticToolParameter$outboundSchema))
-    .optional(),
-  result: z.nullable(z.any()).optional(),
-  options: z.nullable(ToolOptions$outboundSchema).optional(),
-  responseDisplay: z.nullable(ResponseDisplayConfig$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    staticParameters: "static_parameters",
-    responseDisplay: "response_display",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.nullable(Type$outboundSchema).optional(),
+    tool: InternalTool$outboundSchema,
+    endpoint: z.nullable(ToolHttpEndpoint$outboundSchema).optional(),
+    context: z.nullable(Context$outboundSchema).optional(),
+    defaults: z.nullable(
+      z.union([z.any(), z.record(ToolParameterDefault$outboundSchema)]),
+    ).optional(),
+    staticParameters: z.nullable(z.array(StaticToolParameter$outboundSchema))
+      .optional(),
+    result: z.nullable(z.any()).optional(),
+    options: z.nullable(ToolOptions$outboundSchema).optional(),
+    responseDisplay: z.nullable(ResponseDisplayConfig$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      staticParameters: "static_parameters",
+      responseDisplay: "response_display",
+    });
+  })
+);
 
 export function toolDefinitionToJSON(toolDefinition: ToolDefinition): string {
   return JSON.stringify(ToolDefinition$outboundSchema.parse(toolDefinition));

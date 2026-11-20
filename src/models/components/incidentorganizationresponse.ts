@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -19,15 +19,17 @@ export const IncidentOrganizationResponse$inboundSchema: z.ZodType<
   IncidentOrganizationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  display_name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "display_name": "displayName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    display_name: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "display_name": "displayName",
+    });
+  })
+);
 /** @internal */
 export type IncidentOrganizationResponse$Outbound = {
   id: number;
@@ -40,15 +42,17 @@ export const IncidentOrganizationResponse$outboundSchema: z.ZodType<
   IncidentOrganizationResponse$Outbound,
   z.ZodTypeDef,
   IncidentOrganizationResponse
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  displayName: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    displayName: "display_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    displayName: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      displayName: "display_name",
+    });
+  })
+);
 
 export function incidentOrganizationResponseToJSON(
   incidentOrganizationResponse: IncidentOrganizationResponse,

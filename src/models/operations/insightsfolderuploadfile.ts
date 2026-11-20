@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,32 +46,34 @@ export const InsightsFolderUploadFileRequest$inboundSchema: z.ZodType<
   InsightsFolderUploadFileRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  folder_id: z.number().int(),
-  call_id: z.string(),
-  agent_number: z.nullable(z.string()).optional(),
-  customer_number: z.nullable(z.string()).optional(),
-  start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  duration: z.nullable(z.number()).optional(),
-  metadata: z.nullable(z.string()).optional(),
-  Body_insights_folder_upload_file: components
-    .BodyInsightsFolderUploadFile$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "folder_id": "folderId",
-    "call_id": "callId",
-    "agent_number": "agentNumber",
-    "customer_number": "customerNumber",
-    "start_time": "startTime",
-    "end_time": "endTime",
-    "Body_insights_folder_upload_file": "bodyInsightsFolderUploadFile",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folder_id: z.number().int(),
+    call_id: z.string(),
+    agent_number: z.nullable(z.string()).optional(),
+    customer_number: z.nullable(z.string()).optional(),
+    start_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    end_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    duration: z.nullable(z.number()).optional(),
+    metadata: z.nullable(z.string()).optional(),
+    Body_insights_folder_upload_file: components
+      .BodyInsightsFolderUploadFile$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "folder_id": "folderId",
+      "call_id": "callId",
+      "agent_number": "agentNumber",
+      "customer_number": "customerNumber",
+      "start_time": "startTime",
+      "end_time": "endTime",
+      "Body_insights_folder_upload_file": "bodyInsightsFolderUploadFile",
+    });
+  })
+);
 /** @internal */
 export type InsightsFolderUploadFileRequest$Outbound = {
   folder_id: number;
@@ -92,28 +94,30 @@ export const InsightsFolderUploadFileRequest$outboundSchema: z.ZodType<
   InsightsFolderUploadFileRequest$Outbound,
   z.ZodTypeDef,
   InsightsFolderUploadFileRequest
-> = z.object({
-  folderId: z.number().int(),
-  callId: z.string(),
-  agentNumber: z.nullable(z.string()).optional(),
-  customerNumber: z.nullable(z.string()).optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  duration: z.nullable(z.number()).optional(),
-  metadata: z.nullable(z.string()).optional(),
-  bodyInsightsFolderUploadFile: components
-    .BodyInsightsFolderUploadFile$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    folderId: "folder_id",
-    callId: "call_id",
-    agentNumber: "agent_number",
-    customerNumber: "customer_number",
-    startTime: "start_time",
-    endTime: "end_time",
-    bodyInsightsFolderUploadFile: "Body_insights_folder_upload_file",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    folderId: z.number().int(),
+    callId: z.string(),
+    agentNumber: z.nullable(z.string()).optional(),
+    customerNumber: z.nullable(z.string()).optional(),
+    startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    duration: z.nullable(z.number()).optional(),
+    metadata: z.nullable(z.string()).optional(),
+    bodyInsightsFolderUploadFile: components
+      .BodyInsightsFolderUploadFile$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      folderId: "folder_id",
+      callId: "call_id",
+      agentNumber: "agent_number",
+      customerNumber: "customer_number",
+      startTime: "start_time",
+      endTime: "end_time",
+      bodyInsightsFolderUploadFile: "Body_insights_folder_upload_file",
+    });
+  })
+);
 
 export function insightsFolderUploadFileRequestToJSON(
   insightsFolderUploadFileRequest: InsightsFolderUploadFileRequest,

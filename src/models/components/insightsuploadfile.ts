@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -73,7 +73,9 @@ export const Metadata$inboundSchema: z.ZodType<
   Metadata,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 /** @internal */
 export type Metadata$Outbound = string | number | number;
 
@@ -82,7 +84,9 @@ export const Metadata$outboundSchema: z.ZodType<
   Metadata$Outbound,
   z.ZodTypeDef,
   Metadata
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 
 export function metadataToJSON(metadata: Metadata): string {
   return JSON.stringify(Metadata$outboundSchema.parse(metadata));
@@ -102,40 +106,43 @@ export const InsightsUploadFile$inboundSchema: z.ZodType<
   InsightsUploadFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  folder_id: z.number().int(),
-  filename: z.string(),
-  object_key: z.string(),
-  call_id: z.nullable(z.string()).optional(),
-  agent_number: z.nullable(z.string()).optional(),
-  customer_number: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.number()).optional(),
-  start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  error_message: z.nullable(z.string()).optional(),
-  metadata: z.nullable(
-    z.record(z.union([z.string(), z.number().int(), z.number()])),
-  ).optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "folder_id": "folderId",
-    "object_key": "objectKey",
-    "call_id": "callId",
-    "agent_number": "agentNumber",
-    "customer_number": "customerNumber",
-    "start_time": "startTime",
-    "end_time": "endTime",
-    "error_message": "errorMessage",
-    "created_at": "createdAt",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    folder_id: z.number().int(),
+    filename: z.string(),
+    object_key: z.string(),
+    call_id: z.nullable(z.string()).optional(),
+    agent_number: z.nullable(z.string()).optional(),
+    customer_number: z.nullable(z.string()).optional(),
+    duration: z.nullable(z.number()).optional(),
+    start_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    end_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    error_message: z.nullable(z.string()).optional(),
+    metadata: z.nullable(
+      z.record(z.union([z.string(), z.number().int(), z.number()])),
+    ).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "folder_id": "folderId",
+      "object_key": "objectKey",
+      "call_id": "callId",
+      "agent_number": "agentNumber",
+      "customer_number": "customerNumber",
+      "start_time": "startTime",
+      "end_time": "endTime",
+      "error_message": "errorMessage",
+      "created_at": "createdAt",
+    });
+  })
+);
 /** @internal */
 export type InsightsUploadFile$Outbound = {
   id: number;
@@ -158,35 +165,37 @@ export const InsightsUploadFile$outboundSchema: z.ZodType<
   InsightsUploadFile$Outbound,
   z.ZodTypeDef,
   InsightsUploadFile
-> = z.object({
-  id: z.number().int(),
-  folderId: z.number().int(),
-  filename: z.string(),
-  objectKey: z.string(),
-  callId: z.nullable(z.string()).optional(),
-  agentNumber: z.nullable(z.string()).optional(),
-  customerNumber: z.nullable(z.string()).optional(),
-  duration: z.nullable(z.number()).optional(),
-  startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  errorMessage: z.nullable(z.string()).optional(),
-  metadata: z.nullable(
-    z.record(z.union([z.string(), z.number().int(), z.number()])),
-  ).optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    folderId: "folder_id",
-    objectKey: "object_key",
-    callId: "call_id",
-    agentNumber: "agent_number",
-    customerNumber: "customer_number",
-    startTime: "start_time",
-    endTime: "end_time",
-    errorMessage: "error_message",
-    createdAt: "created_at",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    folderId: z.number().int(),
+    filename: z.string(),
+    objectKey: z.string(),
+    callId: z.nullable(z.string()).optional(),
+    agentNumber: z.nullable(z.string()).optional(),
+    customerNumber: z.nullable(z.string()).optional(),
+    duration: z.nullable(z.number()).optional(),
+    startTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    endTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    errorMessage: z.nullable(z.string()).optional(),
+    metadata: z.nullable(
+      z.record(z.union([z.string(), z.number().int(), z.number()])),
+    ).optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      folderId: "folder_id",
+      objectKey: "object_key",
+      callId: "call_id",
+      agentNumber: "agent_number",
+      customerNumber: "customer_number",
+      startTime: "start_time",
+      endTime: "end_time",
+      errorMessage: "error_message",
+      createdAt: "created_at",
+    });
+  })
+);
 
 export function insightsUploadFileToJSON(
   insightsUploadFile: InsightsUploadFile,

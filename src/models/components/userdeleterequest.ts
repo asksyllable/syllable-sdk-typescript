@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,10 +26,12 @@ export const UserDeleteRequest$inboundSchema: z.ZodType<
   UserDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string(),
-  reason: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    reason: z.string(),
+  })
+);
 /** @internal */
 export type UserDeleteRequest$Outbound = {
   email: string;
@@ -41,10 +43,12 @@ export const UserDeleteRequest$outboundSchema: z.ZodType<
   UserDeleteRequest$Outbound,
   z.ZodTypeDef,
   UserDeleteRequest
-> = z.object({
-  email: z.string(),
-  reason: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    reason: z.string(),
+  })
+);
 
 export function userDeleteRequestToJSON(
   userDeleteRequest: UserDeleteRequest,

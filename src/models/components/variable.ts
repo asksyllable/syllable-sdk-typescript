@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -82,15 +82,16 @@ export type Variable = {
 };
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z.union(
-  [
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ],
-);
+export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ])
+  );
 /** @internal */
 export type One$Outbound =
   | CelExpression$Outbound
@@ -98,14 +99,18 @@ export type One$Outbound =
   | (JMESPathExpression$Outbound & { type: "jp" });
 
 /** @internal */
-export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
-  .union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]);
+export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ])
+  );
 
 export function oneToJSON(one: One): string {
   return JSON.stringify(One$outboundSchema.parse(one));
@@ -125,17 +130,19 @@ export const VariableValuefrom$inboundSchema: z.ZodType<
   VariableValuefrom,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type VariableValuefrom$Outbound =
   | CaseExpression$Outbound
@@ -149,17 +156,21 @@ export const VariableValuefrom$outboundSchema: z.ZodType<
   VariableValuefrom$Outbound,
   z.ZodTypeDef,
   VariableValuefrom
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function variableValuefromToJSON(
   variableValuefrom: VariableValuefrom,
@@ -180,7 +191,7 @@ export function variableValuefromFromJSON(
 
 /** @internal */
 export const VariableType$inboundSchema: z.ZodNativeEnum<typeof VariableType> =
-  z.nativeEnum(VariableType);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VariableType));
 /** @internal */
 export const VariableType$outboundSchema: z.ZodNativeEnum<typeof VariableType> =
   VariableType$inboundSchema;
@@ -190,32 +201,34 @@ export const Variable$inboundSchema: z.ZodType<
   Variable,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: z.nullable(z.any()).optional(),
-  valueFrom: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.nullable(z.any()).optional(),
+    valueFrom: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  name: z.string(),
-  type: z.nullable(VariableType$inboundSchema).optional(),
-  description: z.nullable(z.string()).optional(),
-  title: z.nullable(z.string()).optional(),
-  format: z.nullable(z.string()).optional(),
-  pattern: z.nullable(z.string()).optional(),
-  enum: z.nullable(z.array(z.string())).optional(),
-  examples: z.nullable(z.array(z.any())).optional(),
-});
+    ).optional(),
+    name: z.string(),
+    type: z.nullable(VariableType$inboundSchema).optional(),
+    description: z.nullable(z.string()).optional(),
+    title: z.nullable(z.string()).optional(),
+    format: z.nullable(z.string()).optional(),
+    pattern: z.nullable(z.string()).optional(),
+    enum: z.nullable(z.array(z.string())).optional(),
+    examples: z.nullable(z.array(z.any())).optional(),
+  })
+);
 /** @internal */
 export type Variable$Outbound = {
   value?: any | null | undefined;
@@ -242,32 +255,34 @@ export const Variable$outboundSchema: z.ZodType<
   Variable$Outbound,
   z.ZodTypeDef,
   Variable
-> = z.object({
-  value: z.nullable(z.any()).optional(),
-  valueFrom: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.nullable(z.any()).optional(),
+    valueFrom: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  name: z.string(),
-  type: z.nullable(VariableType$outboundSchema).optional(),
-  description: z.nullable(z.string()).optional(),
-  title: z.nullable(z.string()).optional(),
-  format: z.nullable(z.string()).optional(),
-  pattern: z.nullable(z.string()).optional(),
-  enum: z.nullable(z.array(z.string())).optional(),
-  examples: z.nullable(z.array(z.any())).optional(),
-});
+    ).optional(),
+    name: z.string(),
+    type: z.nullable(VariableType$outboundSchema).optional(),
+    description: z.nullable(z.string()).optional(),
+    title: z.nullable(z.string()).optional(),
+    format: z.nullable(z.string()).optional(),
+    pattern: z.nullable(z.string()).optional(),
+    enum: z.nullable(z.array(z.string())).optional(),
+    examples: z.nullable(z.array(z.any())).optional(),
+  })
+);
 
 export function variableToJSON(variable: Variable): string {
   return JSON.stringify(Variable$outboundSchema.parse(variable));

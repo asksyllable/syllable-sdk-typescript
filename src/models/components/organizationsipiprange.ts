@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -60,30 +60,32 @@ export const OrganizationSipIpRange$inboundSchema: z.ZodType<
   OrganizationSipIpRange,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: OrganizationSipIpRangeType$inboundSchema,
-  ip_range: z.string(),
-  id: z.number().int(),
-  organization_id: z.number().int(),
-  verified: z.boolean(),
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ip_range": "ipRange",
-    "organization_id": "organizationId",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "deleted_at": "deletedAt",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: OrganizationSipIpRangeType$inboundSchema,
+    ip_range: z.string(),
+    id: z.number().int(),
+    organization_id: z.number().int(),
+    verified: z.boolean(),
+    created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ip_range": "ipRange",
+      "organization_id": "organizationId",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "deleted_at": "deletedAt",
+    });
+  })
+);
 /** @internal */
 export type OrganizationSipIpRange$Outbound = {
   type: string;
@@ -101,24 +103,26 @@ export const OrganizationSipIpRange$outboundSchema: z.ZodType<
   OrganizationSipIpRange$Outbound,
   z.ZodTypeDef,
   OrganizationSipIpRange
-> = z.object({
-  type: OrganizationSipIpRangeType$outboundSchema,
-  ipRange: z.string(),
-  id: z.number().int(),
-  organizationId: z.number().int(),
-  verified: z.boolean(),
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ipRange: "ip_range",
-    organizationId: "organization_id",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    deletedAt: "deleted_at",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: OrganizationSipIpRangeType$outboundSchema,
+    ipRange: z.string(),
+    id: z.number().int(),
+    organizationId: z.number().int(),
+    verified: z.boolean(),
+    createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      ipRange: "ip_range",
+      organizationId: "organization_id",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      deletedAt: "deleted_at",
+    });
+  })
+);
 
 export function organizationSipIpRangeToJSON(
   organizationSipIpRange: OrganizationSipIpRange,

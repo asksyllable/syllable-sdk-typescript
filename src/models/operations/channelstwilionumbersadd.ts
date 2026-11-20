@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const ChannelsTwilioNumbersAddRequest$inboundSchema: z.ZodType<
   ChannelsTwilioNumbersAddRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel_id: z.number().int(),
-  TwilioNumberAddRequest: components.TwilioNumberAddRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "channel_id": "channelId",
-    "TwilioNumberAddRequest": "twilioNumberAddRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel_id: z.number().int(),
+    TwilioNumberAddRequest: components.TwilioNumberAddRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_id": "channelId",
+      "TwilioNumberAddRequest": "twilioNumberAddRequest",
+    });
+  })
+);
 /** @internal */
 export type ChannelsTwilioNumbersAddRequest$Outbound = {
   channel_id: number;
@@ -39,15 +41,17 @@ export const ChannelsTwilioNumbersAddRequest$outboundSchema: z.ZodType<
   ChannelsTwilioNumbersAddRequest$Outbound,
   z.ZodTypeDef,
   ChannelsTwilioNumbersAddRequest
-> = z.object({
-  channelId: z.number().int(),
-  twilioNumberAddRequest: components.TwilioNumberAddRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    channelId: "channel_id",
-    twilioNumberAddRequest: "TwilioNumberAddRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channelId: z.number().int(),
+    twilioNumberAddRequest: components.TwilioNumberAddRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      channelId: "channel_id",
+      twilioNumberAddRequest: "TwilioNumberAddRequest",
+    });
+  })
+);
 
 export function channelsTwilioNumbersAddRequestToJSON(
   channelsTwilioNumbersAddRequest: ChannelsTwilioNumbersAddRequest,

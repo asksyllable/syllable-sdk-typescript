@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -63,12 +63,14 @@ export const PronunciationOverridesDictionary$inboundSchema: z.ZodType<
   PronunciationOverridesDictionary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.string().default("pronunciations_v1"),
-  pronunciations: z.array(PronunciationOverride$inboundSchema),
-  voices: z.record(VoiceDisplayInfo$inboundSchema).optional(),
-  metadata: DictionaryMetadata$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string().default("pronunciations_v1"),
+    pronunciations: z.array(PronunciationOverride$inboundSchema),
+    voices: z.record(VoiceDisplayInfo$inboundSchema).optional(),
+    metadata: DictionaryMetadata$inboundSchema,
+  })
+);
 /** @internal */
 export type PronunciationOverridesDictionary$Outbound = {
   type: string;
@@ -82,12 +84,14 @@ export const PronunciationOverridesDictionary$outboundSchema: z.ZodType<
   PronunciationOverridesDictionary$Outbound,
   z.ZodTypeDef,
   PronunciationOverridesDictionary
-> = z.object({
-  type: z.string().default("pronunciations_v1"),
-  pronunciations: z.array(PronunciationOverride$outboundSchema),
-  voices: z.record(VoiceDisplayInfo$outboundSchema).optional(),
-  metadata: DictionaryMetadata$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string().default("pronunciations_v1"),
+    pronunciations: z.array(PronunciationOverride$outboundSchema),
+    voices: z.record(VoiceDisplayInfo$outboundSchema).optional(),
+    metadata: DictionaryMetadata$outboundSchema,
+  })
+);
 
 export function pronunciationOverridesDictionaryToJSON(
   pronunciationOverridesDictionary: PronunciationOverridesDictionary,

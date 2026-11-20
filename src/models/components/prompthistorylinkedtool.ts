@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,18 +35,20 @@ export const PromptHistoryLinkedTool$inboundSchema: z.ZodType<
   PromptHistoryLinkedTool,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_id: z.number().int(),
-  current_tool_name: z.string(),
-  out_of_date: z.boolean(),
-  deleted: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_id": "toolId",
-    "current_tool_name": "currentToolName",
-    "out_of_date": "outOfDate",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_id: z.number().int(),
+    current_tool_name: z.string(),
+    out_of_date: z.boolean(),
+    deleted: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_id": "toolId",
+      "current_tool_name": "currentToolName",
+      "out_of_date": "outOfDate",
+    });
+  })
+);
 /** @internal */
 export type PromptHistoryLinkedTool$Outbound = {
   tool_id: number;
@@ -60,18 +62,20 @@ export const PromptHistoryLinkedTool$outboundSchema: z.ZodType<
   PromptHistoryLinkedTool$Outbound,
   z.ZodTypeDef,
   PromptHistoryLinkedTool
-> = z.object({
-  toolId: z.number().int(),
-  currentToolName: z.string(),
-  outOfDate: z.boolean(),
-  deleted: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    toolId: "tool_id",
-    currentToolName: "current_tool_name",
-    outOfDate: "out_of_date",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolId: z.number().int(),
+    currentToolName: z.string(),
+    outOfDate: z.boolean(),
+    deleted: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolId: "tool_id",
+      currentToolName: "current_tool_name",
+      outOfDate: "out_of_date",
+    });
+  })
+);
 
 export function promptHistoryLinkedToolToJSON(
   promptHistoryLinkedTool: PromptHistoryLinkedTool,

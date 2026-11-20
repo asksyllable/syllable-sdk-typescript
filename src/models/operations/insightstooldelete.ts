@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const InsightsToolDeleteRequest$inboundSchema: z.ZodType<
   InsightsToolDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_id": "toolId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_id": "toolId",
+    });
+  })
+);
 /** @internal */
 export type InsightsToolDeleteRequest$Outbound = {
   tool_id: number;
@@ -34,13 +36,15 @@ export const InsightsToolDeleteRequest$outboundSchema: z.ZodType<
   InsightsToolDeleteRequest$Outbound,
   z.ZodTypeDef,
   InsightsToolDeleteRequest
-> = z.object({
-  toolId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    toolId: "tool_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolId: "tool_id",
+    });
+  })
+);
 
 export function insightsToolDeleteRequestToJSON(
   insightsToolDeleteRequest: InsightsToolDeleteRequest,

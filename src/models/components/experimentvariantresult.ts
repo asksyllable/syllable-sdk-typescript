@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,15 +27,17 @@ export const ExperimentVariantResult$inboundSchema: z.ZodType<
   ExperimentVariantResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  variant_id: z.number().int(),
-  session_count: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "variant_id": "variantId",
-    "session_count": "sessionCount",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    variant_id: z.number().int(),
+    session_count: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "variant_id": "variantId",
+      "session_count": "sessionCount",
+    });
+  })
+);
 /** @internal */
 export type ExperimentVariantResult$Outbound = {
   variant_id: number;
@@ -47,15 +49,17 @@ export const ExperimentVariantResult$outboundSchema: z.ZodType<
   ExperimentVariantResult$Outbound,
   z.ZodTypeDef,
   ExperimentVariantResult
-> = z.object({
-  variantId: z.number().int(),
-  sessionCount: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    variantId: "variant_id",
-    sessionCount: "session_count",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    variantId: z.number().int(),
+    sessionCount: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      variantId: "variant_id",
+      sessionCount: "session_count",
+    });
+  })
+);
 
 export function experimentVariantResultToJSON(
   experimentVariantResult: ExperimentVariantResult,

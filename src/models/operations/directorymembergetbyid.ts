@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -22,15 +22,18 @@ export const DirectoryMemberGetByIdRequest$inboundSchema: z.ZodType<
   DirectoryMemberGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  member_id: z.number().int(),
-  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "member_id": "memberId",
-    "response_format": "responseFormat",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    member_id: z.number().int(),
+    response_format: components.DirectoryResponseFormat$inboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "member_id": "memberId",
+      "response_format": "responseFormat",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberGetByIdRequest$Outbound = {
   member_id: number;
@@ -42,15 +45,18 @@ export const DirectoryMemberGetByIdRequest$outboundSchema: z.ZodType<
   DirectoryMemberGetByIdRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberGetByIdRequest
-> = z.object({
-  memberId: z.number().int(),
-  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    memberId: "member_id",
-    responseFormat: "response_format",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memberId: z.number().int(),
+    responseFormat: components.DirectoryResponseFormat$outboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      memberId: "member_id",
+      responseFormat: "response_format",
+    });
+  })
+);
 
 export function directoryMemberGetByIdRequestToJSON(
   directoryMemberGetByIdRequest: DirectoryMemberGetByIdRequest,

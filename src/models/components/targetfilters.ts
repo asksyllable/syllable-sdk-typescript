@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -67,15 +67,15 @@ export type TargetFilters = {
 /** @internal */
 export const TargetFiltersMatch$inboundSchema: z.ZodNativeEnum<
   typeof TargetFiltersMatch
-> = z.nativeEnum(TargetFiltersMatch);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TargetFiltersMatch));
 /** @internal */
 export const TargetFiltersMatch$outboundSchema: z.ZodNativeEnum<
   typeof TargetFiltersMatch
 > = TargetFiltersMatch$inboundSchema;
 
 /** @internal */
-export const OnUnknown$inboundSchema: z.ZodNativeEnum<typeof OnUnknown> = z
-  .nativeEnum(OnUnknown);
+export const OnUnknown$inboundSchema: z.ZodNativeEnum<typeof OnUnknown> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OnUnknown));
 /** @internal */
 export const OnUnknown$outboundSchema: z.ZodNativeEnum<typeof OnUnknown> =
   OnUnknown$inboundSchema;
@@ -85,15 +85,17 @@ export const TargetFilters$inboundSchema: z.ZodType<
   TargetFilters,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  match: TargetFiltersMatch$inboundSchema.default("all"),
-  on_unknown: OnUnknown$inboundSchema.default("include"),
-  rules: z.array(TargetFilterRule$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "on_unknown": "onUnknown",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    match: TargetFiltersMatch$inboundSchema.default("all"),
+    on_unknown: OnUnknown$inboundSchema.default("include"),
+    rules: z.array(TargetFilterRule$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "on_unknown": "onUnknown",
+    });
+  })
+);
 /** @internal */
 export type TargetFilters$Outbound = {
   match: string;
@@ -106,15 +108,17 @@ export const TargetFilters$outboundSchema: z.ZodType<
   TargetFilters$Outbound,
   z.ZodTypeDef,
   TargetFilters
-> = z.object({
-  match: TargetFiltersMatch$outboundSchema.default("all"),
-  onUnknown: OnUnknown$outboundSchema.default("include"),
-  rules: z.array(TargetFilterRule$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    onUnknown: "on_unknown",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    match: TargetFiltersMatch$outboundSchema.default("all"),
+    onUnknown: OnUnknown$outboundSchema.default("include"),
+    rules: z.array(TargetFilterRule$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      onUnknown: "on_unknown",
+    });
+  })
+);
 
 export function targetFiltersToJSON(targetFilters: TargetFilters): string {
   return JSON.stringify(TargetFilters$outboundSchema.parse(targetFilters));

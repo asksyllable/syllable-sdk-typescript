@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -39,17 +39,19 @@ export const RoleUpdateRequest$inboundSchema: z.ZodType<
   RoleUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  permissions: z.array(z.string()),
-  id: z.number().int(),
-  last_updated_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "last_updated_comments": "lastUpdatedComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    permissions: z.array(z.string()),
+    id: z.number().int(),
+    last_updated_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "last_updated_comments": "lastUpdatedComments",
+    });
+  })
+);
 /** @internal */
 export type RoleUpdateRequest$Outbound = {
   name: string;
@@ -64,17 +66,19 @@ export const RoleUpdateRequest$outboundSchema: z.ZodType<
   RoleUpdateRequest$Outbound,
   z.ZodTypeDef,
   RoleUpdateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  permissions: z.array(z.string()),
-  id: z.number().int(),
-  lastUpdatedComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    lastUpdatedComments: "last_updated_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    permissions: z.array(z.string()),
+    id: z.number().int(),
+    lastUpdatedComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      lastUpdatedComments: "last_updated_comments",
+    });
+  })
+);
 
 export function roleUpdateRequestToJSON(
   roleUpdateRequest: RoleUpdateRequest,

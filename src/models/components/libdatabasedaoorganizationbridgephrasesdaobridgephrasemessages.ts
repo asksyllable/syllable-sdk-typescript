@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,10 +33,12 @@ export const LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$inbo
     LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    messages: z.array(z.string()).optional(),
-    localized: z.record(LocalizedBridgePhrases$inboundSchema).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      messages: z.array(z.string()).optional(),
+      localized: z.record(LocalizedBridgePhrases$inboundSchema).optional(),
+    })
+  );
 /** @internal */
 export type LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$Outbound =
   {
@@ -50,10 +52,12 @@ export const LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$outb
     LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages$Outbound,
     z.ZodTypeDef,
     LibDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages
-  > = z.object({
-    messages: z.array(z.string()).optional(),
-    localized: z.record(LocalizedBridgePhrases$outboundSchema).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      messages: z.array(z.string()).optional(),
+      localized: z.record(LocalizedBridgePhrases$outboundSchema).optional(),
+    })
+  );
 
 export function libDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessagesToJSON(
   libDatabaseDaoOrganizationBridgePhrasesDaoBridgePhraseMessages:

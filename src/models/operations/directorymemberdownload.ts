@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -21,13 +21,16 @@ export const DirectoryMemberDownloadRequest$inboundSchema: z.ZodType<
   DirectoryMemberDownloadRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  response_format: components.DirectoryResponseFormat$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "response_format": "responseFormat",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    response_format: components.DirectoryResponseFormat$inboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "response_format": "responseFormat",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberDownloadRequest$Outbound = {
   response_format?: string | undefined;
@@ -38,13 +41,16 @@ export const DirectoryMemberDownloadRequest$outboundSchema: z.ZodType<
   DirectoryMemberDownloadRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberDownloadRequest
-> = z.object({
-  responseFormat: components.DirectoryResponseFormat$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    responseFormat: "response_format",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    responseFormat: components.DirectoryResponseFormat$outboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      responseFormat: "response_format",
+    });
+  })
+);
 
 export function directoryMemberDownloadRequestToJSON(
   directoryMemberDownloadRequest: DirectoryMemberDownloadRequest,

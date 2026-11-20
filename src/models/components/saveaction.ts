@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -68,13 +68,15 @@ export const SaveActionIf1$inboundSchema: z.ZodType<
   SaveActionIf1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CelExpression$inboundSchema,
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$inboundSchema,
+    JMESPathExpression$inboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 /** @internal */
 export type SaveActionIf1$Outbound =
   | CelExpression$Outbound
@@ -86,13 +88,15 @@ export const SaveActionIf1$outboundSchema: z.ZodType<
   SaveActionIf1$Outbound,
   z.ZodTypeDef,
   SaveActionIf1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function saveActionIf1ToJSON(saveActionIf1: SaveActionIf1): string {
   return JSON.stringify(SaveActionIf1$outboundSchema.parse(saveActionIf1));
@@ -112,17 +116,19 @@ export const SaveActionIf$inboundSchema: z.ZodType<
   SaveActionIf,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type SaveActionIf$Outbound =
   | CaseExpression$Outbound
@@ -136,17 +142,21 @@ export const SaveActionIf$outboundSchema: z.ZodType<
   SaveActionIf$Outbound,
   z.ZodTypeDef,
   SaveActionIf
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function saveActionIfToJSON(saveActionIf: SaveActionIf): string {
   return JSON.stringify(SaveActionIf$outboundSchema.parse(saveActionIf));
@@ -166,26 +176,28 @@ export const SaveAction$inboundSchema: z.ZodType<
   SaveAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: z.literal("save"),
-  name: z.nullable(z.string()).optional(),
-  inputs: z.nullable(z.array(z.string())).optional(),
-});
+    ).optional(),
+    action: z.literal("save"),
+    name: z.nullable(z.string()).optional(),
+    inputs: z.nullable(z.array(z.string())).optional(),
+  })
+);
 /** @internal */
 export type SaveAction$Outbound = {
   if?:
@@ -206,26 +218,28 @@ export const SaveAction$outboundSchema: z.ZodType<
   SaveAction$Outbound,
   z.ZodTypeDef,
   SaveAction
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: z.literal("save"),
-  name: z.nullable(z.string()).optional(),
-  inputs: z.nullable(z.array(z.string())).optional(),
-});
+    ).optional(),
+    action: z.literal("save"),
+    name: z.nullable(z.string()).optional(),
+    inputs: z.nullable(z.array(z.string())).optional(),
+  })
+);
 
 export function saveActionToJSON(saveAction: SaveAction): string {
   return JSON.stringify(SaveAction$outboundSchema.parse(saveAction));

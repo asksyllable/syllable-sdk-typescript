@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -91,7 +91,9 @@ export const Insights$inboundSchema: z.ZodType<
   Insights,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 /** @internal */
 export type Insights$Outbound = string | number | number;
 
@@ -100,7 +102,9 @@ export const Insights$outboundSchema: z.ZodType<
   Insights$Outbound,
   z.ZodTypeDef,
   Insights
-> = z.union([z.string(), z.number().int(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.number().int(), z.number()])
+);
 
 export function insightsToJSON(insights: Insights): string {
   return JSON.stringify(Insights$outboundSchema.parse(insights));
@@ -120,7 +124,7 @@ export const WorkflowResults$inboundSchema: z.ZodType<
   WorkflowResults,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type WorkflowResults$Outbound = {};
 
@@ -129,7 +133,7 @@ export const WorkflowResults$outboundSchema: z.ZodType<
   WorkflowResults$Outbound,
   z.ZodTypeDef,
   WorkflowResults
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function workflowResultsToJSON(
   workflowResults: WorkflowResults,
@@ -151,7 +155,7 @@ export const Enrichment$inboundSchema: z.ZodType<
   Enrichment,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type Enrichment$Outbound = {};
 
@@ -160,7 +164,7 @@ export const Enrichment$outboundSchema: z.ZodType<
   Enrichment$Outbound,
   z.ZodTypeDef,
   Enrichment
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function enrichmentToJSON(enrichment: Enrichment): string {
   return JSON.stringify(Enrichment$outboundSchema.parse(enrichment));
@@ -180,46 +184,49 @@ export const CommunicationRequestResult$inboundSchema: z.ZodType<
   CommunicationRequestResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  reference_id: z.string(),
-  target: z.string(),
-  request_variables: z.record(z.string()),
-  channel_manager_sid: z.nullable(z.string()).optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  sent_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  attempt_count: z.number().int().default(0),
-  session_id: z.nullable(z.number().int()).optional(),
-  conversation_id: z.nullable(z.number().int()).optional(),
-  request_status: RequestStatus$inboundSchema.optional(),
-  channel_manager_status: z.nullable(z.string()).optional(),
-  insights_status: z.nullable(z.string()).optional(),
-  insights: z.nullable(
-    z.record(z.union([z.string(), z.number().int(), z.number()])),
-  ).optional(),
-  workflow_results: z.array(z.lazy(() => WorkflowResults$inboundSchema))
-    .optional(),
-  line_type: z.nullable(z.string()).optional(),
-  enrichment: z.nullable(z.lazy(() => Enrichment$inboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "reference_id": "referenceId",
-    "request_variables": "requestVariables",
-    "channel_manager_sid": "channelManagerSid",
-    "created_at": "createdAt",
-    "sent_at": "sentAt",
-    "attempt_count": "attemptCount",
-    "session_id": "sessionId",
-    "conversation_id": "conversationId",
-    "request_status": "requestStatus",
-    "channel_manager_status": "channelManagerStatus",
-    "insights_status": "insightsStatus",
-    "workflow_results": "workflowResults",
-    "line_type": "lineType",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reference_id: z.string(),
+    target: z.string(),
+    request_variables: z.record(z.string()),
+    channel_manager_sid: z.nullable(z.string()).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    sent_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    attempt_count: z.number().int().default(0),
+    session_id: z.nullable(z.number().int()).optional(),
+    conversation_id: z.nullable(z.number().int()).optional(),
+    request_status: RequestStatus$inboundSchema.optional(),
+    channel_manager_status: z.nullable(z.string()).optional(),
+    insights_status: z.nullable(z.string()).optional(),
+    insights: z.nullable(
+      z.record(z.union([z.string(), z.number().int(), z.number()])),
+    ).optional(),
+    workflow_results: z.array(z.lazy(() => WorkflowResults$inboundSchema))
+      .optional(),
+    line_type: z.nullable(z.string()).optional(),
+    enrichment: z.nullable(z.lazy(() => Enrichment$inboundSchema)).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "reference_id": "referenceId",
+      "request_variables": "requestVariables",
+      "channel_manager_sid": "channelManagerSid",
+      "created_at": "createdAt",
+      "sent_at": "sentAt",
+      "attempt_count": "attemptCount",
+      "session_id": "sessionId",
+      "conversation_id": "conversationId",
+      "request_status": "requestStatus",
+      "channel_manager_status": "channelManagerStatus",
+      "insights_status": "insightsStatus",
+      "workflow_results": "workflowResults",
+      "line_type": "lineType",
+    });
+  })
+);
 /** @internal */
 export type CommunicationRequestResult$Outbound = {
   reference_id: string;
@@ -245,43 +252,45 @@ export const CommunicationRequestResult$outboundSchema: z.ZodType<
   CommunicationRequestResult$Outbound,
   z.ZodTypeDef,
   CommunicationRequestResult
-> = z.object({
-  referenceId: z.string(),
-  target: z.string(),
-  requestVariables: z.record(z.string()),
-  channelManagerSid: z.nullable(z.string()).optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  sentAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  attemptCount: z.number().int().default(0),
-  sessionId: z.nullable(z.number().int()).optional(),
-  conversationId: z.nullable(z.number().int()).optional(),
-  requestStatus: RequestStatus$outboundSchema.optional(),
-  channelManagerStatus: z.nullable(z.string()).optional(),
-  insightsStatus: z.nullable(z.string()).optional(),
-  insights: z.nullable(
-    z.record(z.union([z.string(), z.number().int(), z.number()])),
-  ).optional(),
-  workflowResults: z.array(z.lazy(() => WorkflowResults$outboundSchema))
-    .optional(),
-  lineType: z.nullable(z.string()).optional(),
-  enrichment: z.nullable(z.lazy(() => Enrichment$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    referenceId: "reference_id",
-    requestVariables: "request_variables",
-    channelManagerSid: "channel_manager_sid",
-    createdAt: "created_at",
-    sentAt: "sent_at",
-    attemptCount: "attempt_count",
-    sessionId: "session_id",
-    conversationId: "conversation_id",
-    requestStatus: "request_status",
-    channelManagerStatus: "channel_manager_status",
-    insightsStatus: "insights_status",
-    workflowResults: "workflow_results",
-    lineType: "line_type",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    referenceId: z.string(),
+    target: z.string(),
+    requestVariables: z.record(z.string()),
+    channelManagerSid: z.nullable(z.string()).optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    sentAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    attemptCount: z.number().int().default(0),
+    sessionId: z.nullable(z.number().int()).optional(),
+    conversationId: z.nullable(z.number().int()).optional(),
+    requestStatus: RequestStatus$outboundSchema.optional(),
+    channelManagerStatus: z.nullable(z.string()).optional(),
+    insightsStatus: z.nullable(z.string()).optional(),
+    insights: z.nullable(
+      z.record(z.union([z.string(), z.number().int(), z.number()])),
+    ).optional(),
+    workflowResults: z.array(z.lazy(() => WorkflowResults$outboundSchema))
+      .optional(),
+    lineType: z.nullable(z.string()).optional(),
+    enrichment: z.nullable(z.lazy(() => Enrichment$outboundSchema)).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      referenceId: "reference_id",
+      requestVariables: "request_variables",
+      channelManagerSid: "channel_manager_sid",
+      createdAt: "created_at",
+      sentAt: "sent_at",
+      attemptCount: "attempt_count",
+      sessionId: "session_id",
+      conversationId: "conversation_id",
+      requestStatus: "request_status",
+      channelManagerStatus: "channel_manager_status",
+      insightsStatus: "insights_status",
+      workflowResults: "workflow_results",
+      lineType: "line_type",
+    });
+  })
+);
 
 export function communicationRequestResultToJSON(
   communicationRequestResult: CommunicationRequestResult,

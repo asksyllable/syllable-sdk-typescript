@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -61,23 +61,25 @@ export const LanguageConfig$inboundSchema: z.ZodType<
   LanguageConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  language_code: LanguageCode$inboundSchema,
-  voice_provider: TtsProvider$inboundSchema,
-  voice_display_name: AgentVoiceDisplayName$inboundSchema,
-  voice_speed: z.nullable(z.number()).optional(),
-  voice_pitch: z.nullable(z.number()).optional(),
-  dtmf_code: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "language_code": "languageCode",
-    "voice_provider": "voiceProvider",
-    "voice_display_name": "voiceDisplayName",
-    "voice_speed": "voiceSpeed",
-    "voice_pitch": "voicePitch",
-    "dtmf_code": "dtmfCode",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    language_code: LanguageCode$inboundSchema,
+    voice_provider: TtsProvider$inboundSchema,
+    voice_display_name: AgentVoiceDisplayName$inboundSchema,
+    voice_speed: z.nullable(z.number()).optional(),
+    voice_pitch: z.nullable(z.number()).optional(),
+    dtmf_code: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "language_code": "languageCode",
+      "voice_provider": "voiceProvider",
+      "voice_display_name": "voiceDisplayName",
+      "voice_speed": "voiceSpeed",
+      "voice_pitch": "voicePitch",
+      "dtmf_code": "dtmfCode",
+    });
+  })
+);
 /** @internal */
 export type LanguageConfig$Outbound = {
   language_code: string;
@@ -93,23 +95,25 @@ export const LanguageConfig$outboundSchema: z.ZodType<
   LanguageConfig$Outbound,
   z.ZodTypeDef,
   LanguageConfig
-> = z.object({
-  languageCode: LanguageCode$outboundSchema,
-  voiceProvider: TtsProvider$outboundSchema,
-  voiceDisplayName: AgentVoiceDisplayName$outboundSchema,
-  voiceSpeed: z.nullable(z.number()).optional(),
-  voicePitch: z.nullable(z.number()).optional(),
-  dtmfCode: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    languageCode: "language_code",
-    voiceProvider: "voice_provider",
-    voiceDisplayName: "voice_display_name",
-    voiceSpeed: "voice_speed",
-    voicePitch: "voice_pitch",
-    dtmfCode: "dtmf_code",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    languageCode: LanguageCode$outboundSchema,
+    voiceProvider: TtsProvider$outboundSchema,
+    voiceDisplayName: AgentVoiceDisplayName$outboundSchema,
+    voiceSpeed: z.nullable(z.number()).optional(),
+    voicePitch: z.nullable(z.number()).optional(),
+    dtmfCode: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      languageCode: "language_code",
+      voiceProvider: "voice_provider",
+      voiceDisplayName: "voice_display_name",
+      voiceSpeed: "voice_speed",
+      voicePitch: "voice_pitch",
+      dtmfCode: "dtmf_code",
+    });
+  })
+);
 
 export function languageConfigToJSON(languageConfig: LanguageConfig): string {
   return JSON.stringify(LanguageConfig$outboundSchema.parse(languageConfig));

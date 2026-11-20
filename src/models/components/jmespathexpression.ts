@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -43,7 +43,7 @@ export type JMESPathExpression = {
 /** @internal */
 export const JMESPathExpressionType$inboundSchema: z.ZodNativeEnum<
   typeof JMESPathExpressionType
-> = z.nativeEnum(JMESPathExpressionType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(JMESPathExpressionType));
 /** @internal */
 export const JMESPathExpressionType$outboundSchema: z.ZodNativeEnum<
   typeof JMESPathExpressionType
@@ -54,10 +54,12 @@ export const JMESPathExpression$inboundSchema: z.ZodType<
   JMESPathExpression,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expression: z.string(),
-  type: JMESPathExpressionType$inboundSchema.default("jp"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expression: z.string(),
+    type: JMESPathExpressionType$inboundSchema.default("jp"),
+  })
+);
 /** @internal */
 export type JMESPathExpression$Outbound = {
   expression: string;
@@ -69,10 +71,12 @@ export const JMESPathExpression$outboundSchema: z.ZodType<
   JMESPathExpression$Outbound,
   z.ZodTypeDef,
   JMESPathExpression
-> = z.object({
-  expression: z.string(),
-  type: JMESPathExpressionType$outboundSchema.default("jp"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expression: z.string(),
+    type: JMESPathExpressionType$outboundSchema.default("jp"),
+  })
+);
 
 export function jmesPathExpressionToJSON(
   jmesPathExpression: JMESPathExpression,

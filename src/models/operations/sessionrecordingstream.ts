@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,9 +16,11 @@ export const SessionRecordingStreamRequest$inboundSchema: z.ZodType<
   SessionRecordingStreamRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+  })
+);
 /** @internal */
 export type SessionRecordingStreamRequest$Outbound = {
   token: string;
@@ -29,9 +31,11 @@ export const SessionRecordingStreamRequest$outboundSchema: z.ZodType<
   SessionRecordingStreamRequest$Outbound,
   z.ZodTypeDef,
   SessionRecordingStreamRequest
-> = z.object({
-  token: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+  })
+);
 
 export function sessionRecordingStreamRequestToJSON(
   sessionRecordingStreamRequest: SessionRecordingStreamRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -51,19 +51,21 @@ export const OrganizationChannelConfig$inboundSchema: z.ZodType<
   OrganizationChannelConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  account_sid: z.nullable(z.string()).optional(),
-  auth_token: z.nullable(z.string()).optional(),
-  provider_credentials: z.nullable(z.record(z.string())).optional(),
-  telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
-  email: z.nullable(EmailConfigurations$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_sid": "accountSid",
-    "auth_token": "authToken",
-    "provider_credentials": "providerCredentials",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    account_sid: z.nullable(z.string()).optional(),
+    auth_token: z.nullable(z.string()).optional(),
+    provider_credentials: z.nullable(z.record(z.string())).optional(),
+    telephony: z.nullable(TelephonyConfigurations$inboundSchema).optional(),
+    email: z.nullable(EmailConfigurations$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "account_sid": "accountSid",
+      "auth_token": "authToken",
+      "provider_credentials": "providerCredentials",
+    });
+  })
+);
 /** @internal */
 export type OrganizationChannelConfig$Outbound = {
   account_sid?: string | null | undefined;
@@ -78,19 +80,21 @@ export const OrganizationChannelConfig$outboundSchema: z.ZodType<
   OrganizationChannelConfig$Outbound,
   z.ZodTypeDef,
   OrganizationChannelConfig
-> = z.object({
-  accountSid: z.nullable(z.string()).optional(),
-  authToken: z.nullable(z.string()).optional(),
-  providerCredentials: z.nullable(z.record(z.string())).optional(),
-  telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
-  email: z.nullable(EmailConfigurations$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountSid: "account_sid",
-    authToken: "auth_token",
-    providerCredentials: "provider_credentials",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountSid: z.nullable(z.string()).optional(),
+    authToken: z.nullable(z.string()).optional(),
+    providerCredentials: z.nullable(z.record(z.string())).optional(),
+    telephony: z.nullable(TelephonyConfigurations$outboundSchema).optional(),
+    email: z.nullable(EmailConfigurations$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      accountSid: "account_sid",
+      authToken: "auth_token",
+      providerCredentials: "provider_credentials",
+    });
+  })
+);
 
 export function organizationChannelConfigToJSON(
   organizationChannelConfig: OrganizationChannelConfig,

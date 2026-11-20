@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const LanguageGroupsGetByIdRequest$inboundSchema: z.ZodType<
   LanguageGroupsGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  language_group_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "language_group_id": "languageGroupId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    language_group_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "language_group_id": "languageGroupId",
+    });
+  })
+);
 /** @internal */
 export type LanguageGroupsGetByIdRequest$Outbound = {
   language_group_id: number;
@@ -34,13 +36,15 @@ export const LanguageGroupsGetByIdRequest$outboundSchema: z.ZodType<
   LanguageGroupsGetByIdRequest$Outbound,
   z.ZodTypeDef,
   LanguageGroupsGetByIdRequest
-> = z.object({
-  languageGroupId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    languageGroupId: "language_group_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    languageGroupId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      languageGroupId: "language_group_id",
+    });
+  })
+);
 
 export function languageGroupsGetByIdRequestToJSON(
   languageGroupsGetByIdRequest: LanguageGroupsGetByIdRequest,

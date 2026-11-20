@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -65,7 +65,7 @@ export type StepsTask = {
 /** @internal */
 export const StepsTaskStart$inboundSchema: z.ZodNativeEnum<
   typeof StepsTaskStart
-> = z.nativeEnum(StepsTaskStart);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StepsTaskStart));
 /** @internal */
 export const StepsTaskStart$outboundSchema: z.ZodNativeEnum<
   typeof StepsTaskStart
@@ -76,17 +76,19 @@ export const StepsTask$inboundSchema: z.ZodType<
   StepsTask,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("steps"),
-  version: z.literal("v1alpha").default("v1alpha"),
-  start: StepsTaskStart$inboundSchema.default("auto"),
-  steps: z.array(Step$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
+    type: z.literal("steps"),
+    version: z.literal("v1alpha").default("v1alpha"),
+    start: StepsTaskStart$inboundSchema.default("auto"),
+    steps: z.array(Step$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type StepsTask$Outbound = {
   id?: string | null | undefined;
@@ -105,17 +107,19 @@ export const StepsTask$outboundSchema: z.ZodType<
   StepsTask$Outbound,
   z.ZodTypeDef,
   StepsTask
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("steps"),
-  version: z.literal("v1alpha").default("v1alpha" as const),
-  start: StepsTaskStart$outboundSchema.default("auto"),
-  steps: z.array(Step$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
+    type: z.literal("steps"),
+    version: z.literal("v1alpha").default("v1alpha" as const),
+    start: StepsTaskStart$outboundSchema.default("auto"),
+    steps: z.array(Step$outboundSchema).optional(),
+  })
+);
 
 export function stepsTaskToJSON(stepsTask: StepsTask): string {
   return JSON.stringify(StepsTask$outboundSchema.parse(stepsTask));

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const PromptsHistoryRequest$inboundSchema: z.ZodType<
   PromptsHistoryRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  prompt_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "prompt_id": "promptId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    prompt_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "prompt_id": "promptId",
+    });
+  })
+);
 /** @internal */
 export type PromptsHistoryRequest$Outbound = {
   prompt_id: number;
@@ -34,13 +36,15 @@ export const PromptsHistoryRequest$outboundSchema: z.ZodType<
   PromptsHistoryRequest$Outbound,
   z.ZodTypeDef,
   PromptsHistoryRequest
-> = z.object({
-  promptId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    promptId: "prompt_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    promptId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      promptId: "prompt_id",
+    });
+  })
+);
 
 export function promptsHistoryRequestToJSON(
   promptsHistoryRequest: PromptsHistoryRequest,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -22,15 +22,17 @@ export const BodyInsightsFolderUploadFileFile$inboundSchema: z.ZodType<
   BodyInsightsFolderUploadFileFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 /** @internal */
 export type BodyInsightsFolderUploadFileFile$Outbound = {
   fileName: string;
@@ -42,15 +44,17 @@ export const BodyInsightsFolderUploadFileFile$outboundSchema: z.ZodType<
   BodyInsightsFolderUploadFileFile$Outbound,
   z.ZodTypeDef,
   BodyInsightsFolderUploadFileFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function bodyInsightsFolderUploadFileFileToJSON(
   bodyInsightsFolderUploadFileFile: BodyInsightsFolderUploadFileFile,
@@ -76,9 +80,12 @@ export const BodyInsightsFolderUploadFile$inboundSchema: z.ZodType<
   BodyInsightsFolderUploadFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file: z.lazy(() => BodyInsightsFolderUploadFileFile$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyInsightsFolderUploadFileFile$inboundSchema)
+      .optional(),
+  })
+);
 /** @internal */
 export type BodyInsightsFolderUploadFile$Outbound = {
   file?: BodyInsightsFolderUploadFileFile$Outbound | Blob | undefined;
@@ -89,11 +96,13 @@ export const BodyInsightsFolderUploadFile$outboundSchema: z.ZodType<
   BodyInsightsFolderUploadFile$Outbound,
   z.ZodTypeDef,
   BodyInsightsFolderUploadFile
-> = z.object({
-  file: z.lazy(() => BodyInsightsFolderUploadFileFile$outboundSchema).or(
-    blobLikeSchema,
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => BodyInsightsFolderUploadFileFile$outboundSchema).or(
+      blobLikeSchema,
+    ).optional(),
+  })
+);
 
 export function bodyInsightsFolderUploadFileToJSON(
   bodyInsightsFolderUploadFile: BodyInsightsFolderUploadFile,

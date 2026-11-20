@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -39,18 +39,20 @@ export const InsightToolInput$inboundSchema: z.ZodType<
   InsightToolInput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  version: z.number().int(),
-  tool_arguments: z.any().optional(),
-  insight_tool_definition_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_arguments": "toolArguments",
-    "insight_tool_definition_id": "insightToolDefinitionId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    version: z.number().int(),
+    tool_arguments: z.any().optional(),
+    insight_tool_definition_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_arguments": "toolArguments",
+      "insight_tool_definition_id": "insightToolDefinitionId",
+    });
+  })
+);
 /** @internal */
 export type InsightToolInput$Outbound = {
   name: string;
@@ -65,18 +67,20 @@ export const InsightToolInput$outboundSchema: z.ZodType<
   InsightToolInput$Outbound,
   z.ZodTypeDef,
   InsightToolInput
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  version: z.number().int(),
-  toolArguments: z.any().optional(),
-  insightToolDefinitionId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    toolArguments: "tool_arguments",
-    insightToolDefinitionId: "insight_tool_definition_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    version: z.number().int(),
+    toolArguments: z.any().optional(),
+    insightToolDefinitionId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolArguments: "tool_arguments",
+      insightToolDefinitionId: "insight_tool_definition_id",
+    });
+  })
+);
 
 export function insightToolInputToJSON(
   insightToolInput: InsightToolInput,

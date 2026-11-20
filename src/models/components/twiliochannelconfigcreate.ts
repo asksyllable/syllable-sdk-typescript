@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,15 +27,17 @@ export const TwilioChannelConfigCreate$inboundSchema: z.ZodType<
   TwilioChannelConfigCreate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  account_sid: z.string(),
-  auth_token: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_sid": "accountSid",
-    "auth_token": "authToken",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    account_sid: z.string(),
+    auth_token: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "account_sid": "accountSid",
+      "auth_token": "authToken",
+    });
+  })
+);
 /** @internal */
 export type TwilioChannelConfigCreate$Outbound = {
   account_sid: string;
@@ -47,15 +49,17 @@ export const TwilioChannelConfigCreate$outboundSchema: z.ZodType<
   TwilioChannelConfigCreate$Outbound,
   z.ZodTypeDef,
   TwilioChannelConfigCreate
-> = z.object({
-  accountSid: z.string(),
-  authToken: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    accountSid: "account_sid",
-    authToken: "auth_token",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountSid: z.string(),
+    authToken: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      accountSid: "account_sid",
+      authToken: "auth_token",
+    });
+  })
+);
 
 export function twilioChannelConfigCreateToJSON(
   twilioChannelConfigCreate: TwilioChannelConfigCreate,

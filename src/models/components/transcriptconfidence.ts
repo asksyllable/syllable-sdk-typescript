@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -47,7 +47,7 @@ export type TranscriptConfidence = {
 /** @internal */
 export const UtteranceSource$inboundSchema: z.ZodNativeEnum<
   typeof UtteranceSource
-> = z.nativeEnum(UtteranceSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UtteranceSource));
 /** @internal */
 export const UtteranceSource$outboundSchema: z.ZodNativeEnum<
   typeof UtteranceSource
@@ -58,19 +58,22 @@ export const TranscriptConfidence$inboundSchema: z.ZodType<
   TranscriptConfidence,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  provider: z.string(),
-  model: z.nullable(z.string()).optional(),
-  utterance: z.nullable(z.number()).optional(),
-  utterance_source: z.nullable(UtteranceSource$inboundSchema).optional(),
-  words: z.nullable(z.array(TranscriptWordConfidence$inboundSchema)).optional(),
-  words_truncated: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "utterance_source": "utteranceSource",
-    "words_truncated": "wordsTruncated",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: z.string(),
+    model: z.nullable(z.string()).optional(),
+    utterance: z.nullable(z.number()).optional(),
+    utterance_source: z.nullable(UtteranceSource$inboundSchema).optional(),
+    words: z.nullable(z.array(TranscriptWordConfidence$inboundSchema))
+      .optional(),
+    words_truncated: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "utterance_source": "utteranceSource",
+      "words_truncated": "wordsTruncated",
+    });
+  })
+);
 /** @internal */
 export type TranscriptConfidence$Outbound = {
   provider: string;
@@ -86,20 +89,22 @@ export const TranscriptConfidence$outboundSchema: z.ZodType<
   TranscriptConfidence$Outbound,
   z.ZodTypeDef,
   TranscriptConfidence
-> = z.object({
-  provider: z.string(),
-  model: z.nullable(z.string()).optional(),
-  utterance: z.nullable(z.number()).optional(),
-  utteranceSource: z.nullable(UtteranceSource$outboundSchema).optional(),
-  words: z.nullable(z.array(TranscriptWordConfidence$outboundSchema))
-    .optional(),
-  wordsTruncated: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    utteranceSource: "utterance_source",
-    wordsTruncated: "words_truncated",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: z.string(),
+    model: z.nullable(z.string()).optional(),
+    utterance: z.nullable(z.number()).optional(),
+    utteranceSource: z.nullable(UtteranceSource$outboundSchema).optional(),
+    words: z.nullable(z.array(TranscriptWordConfidence$outboundSchema))
+      .optional(),
+    wordsTruncated: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      utteranceSource: "utterance_source",
+      wordsTruncated: "words_truncated",
+    });
+  })
+);
 
 export function transcriptConfidenceToJSON(
   transcriptConfidence: TranscriptConfidence,

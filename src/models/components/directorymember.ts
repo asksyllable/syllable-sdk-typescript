@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -69,30 +69,37 @@ export const DirectoryMember$inboundSchema: z.ZodType<
   DirectoryMember,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  type: z.string(),
-  extensions: z.nullable(z.array(DirectoryExtension$inboundSchema)).optional(),
-  contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
-  comments: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  last_updated_by: z.nullable(z.string()).optional(),
-  created_by: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "contact_tags": "contactTags",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "deleted_at": "deletedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "created_by": "createdBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: z.string(),
+    extensions: z.nullable(z.array(DirectoryExtension$inboundSchema))
+      .optional(),
+    contact_tags: z.nullable(z.record(z.array(z.string()))).optional(),
+    comments: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    last_updated_by: z.nullable(z.string()).optional(),
+    created_by: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "contact_tags": "contactTags",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "deleted_at": "deletedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "created_by": "createdBy",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMember$Outbound = {
   name: string;
@@ -113,28 +120,31 @@ export const DirectoryMember$outboundSchema: z.ZodType<
   DirectoryMember$Outbound,
   z.ZodTypeDef,
   DirectoryMember
-> = z.object({
-  name: z.string(),
-  type: z.string(),
-  extensions: z.nullable(z.array(DirectoryExtension$outboundSchema)).optional(),
-  contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
-  comments: z.nullable(z.string()).optional(),
-  id: z.number().int(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  lastUpdatedBy: z.nullable(z.string()).optional(),
-  createdBy: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contactTags: "contact_tags",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    deletedAt: "deleted_at",
-    lastUpdatedBy: "last_updated_by",
-    createdBy: "created_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: z.string(),
+    extensions: z.nullable(z.array(DirectoryExtension$outboundSchema))
+      .optional(),
+    contactTags: z.nullable(z.record(z.array(z.string()))).optional(),
+    comments: z.nullable(z.string()).optional(),
+    id: z.number().int(),
+    createdAt: z.date().transform(v => v.toISOString()),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    deletedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    lastUpdatedBy: z.nullable(z.string()).optional(),
+    createdBy: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      contactTags: "contact_tags",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      deletedAt: "deleted_at",
+      lastUpdatedBy: "last_updated_by",
+      createdBy: "created_by",
+    });
+  })
+);
 
 export function directoryMemberToJSON(
   directoryMember: DirectoryMember,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -84,7 +84,9 @@ export type InsightWorkflowInput = {
 /** @internal */
 export const InsightWorkflowInputFormatVersion$inboundSchema: z.ZodNativeEnum<
   typeof InsightWorkflowInputFormatVersion
-> = z.nativeEnum(InsightWorkflowInputFormatVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(InsightWorkflowInputFormatVersion)
+);
 /** @internal */
 export const InsightWorkflowInputFormatVersion$outboundSchema: z.ZodNativeEnum<
   typeof InsightWorkflowInputFormatVersion
@@ -95,29 +97,31 @@ export const InsightWorkflowInput$inboundSchema: z.ZodType<
   InsightWorkflowInput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  format_version: InsightWorkflowInputFormatVersion$inboundSchema.default(1),
-  revision: z.nullable(z.number().int()).optional(),
-  steps: z.nullable(z.array(InsightWorkflowStep$inboundSchema)).optional(),
-  name: z.string(),
-  source: z.string(),
-  description: z.string(),
-  insight_tool_ids: z.array(z.number().int()),
-  conditions: InsightWorkflowCondition$inboundSchema,
-  start_datetime: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  end_datetime: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "format_version": "formatVersion",
-    "insight_tool_ids": "insightToolIds",
-    "start_datetime": "startDatetime",
-    "end_datetime": "endDatetime",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    format_version: InsightWorkflowInputFormatVersion$inboundSchema.default(1),
+    revision: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.array(InsightWorkflowStep$inboundSchema)).optional(),
+    name: z.string(),
+    source: z.string(),
+    description: z.string(),
+    insight_tool_ids: z.array(z.number().int()),
+    conditions: InsightWorkflowCondition$inboundSchema,
+    start_datetime: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    end_datetime: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "format_version": "formatVersion",
+      "insight_tool_ids": "insightToolIds",
+      "start_datetime": "startDatetime",
+      "end_datetime": "endDatetime",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowInput$Outbound = {
   format_version: number;
@@ -137,26 +141,29 @@ export const InsightWorkflowInput$outboundSchema: z.ZodType<
   InsightWorkflowInput$Outbound,
   z.ZodTypeDef,
   InsightWorkflowInput
-> = z.object({
-  formatVersion: InsightWorkflowInputFormatVersion$outboundSchema.default(1),
-  revision: z.nullable(z.number().int()).optional(),
-  steps: z.nullable(z.array(InsightWorkflowStep$outboundSchema)).optional(),
-  name: z.string(),
-  source: z.string(),
-  description: z.string(),
-  insightToolIds: z.array(z.number().int()),
-  conditions: InsightWorkflowCondition$outboundSchema,
-  startDatetime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  endDatetime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    formatVersion: "format_version",
-    insightToolIds: "insight_tool_ids",
-    startDatetime: "start_datetime",
-    endDatetime: "end_datetime",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    formatVersion: InsightWorkflowInputFormatVersion$outboundSchema.default(1),
+    revision: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.array(InsightWorkflowStep$outboundSchema)).optional(),
+    name: z.string(),
+    source: z.string(),
+    description: z.string(),
+    insightToolIds: z.array(z.number().int()),
+    conditions: InsightWorkflowCondition$outboundSchema,
+    startDatetime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    endDatetime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      formatVersion: "format_version",
+      insightToolIds: "insight_tool_ids",
+      startDatetime: "start_datetime",
+      endDatetime: "end_datetime",
+    });
+  })
+);
 
 export function insightWorkflowInputToJSON(
   insightWorkflowInput: InsightWorkflowInput,

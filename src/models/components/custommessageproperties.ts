@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const CustomMessageProperties = {
@@ -22,7 +23,7 @@ export type CustomMessageProperties = ClosedEnum<
 /** @internal */
 export const CustomMessageProperties$inboundSchema: z.ZodNativeEnum<
   typeof CustomMessageProperties
-> = z.nativeEnum(CustomMessageProperties);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CustomMessageProperties));
 /** @internal */
 export const CustomMessageProperties$outboundSchema: z.ZodNativeEnum<
   typeof CustomMessageProperties

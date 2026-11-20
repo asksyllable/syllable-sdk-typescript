@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -118,19 +118,21 @@ export const SessionsListResponseBody$inboundSchema: z.ZodType<
   SessionsListResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new SessionsListResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new SessionsListResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type SessionsListResponseBody$Outbound = {
@@ -142,33 +144,36 @@ export const SessionsListResponseBody$outboundSchema: z.ZodType<
   SessionsListResponseBody$Outbound,
   z.ZodTypeDef,
   SessionsListResponseBody
-> = z.instanceof(SessionsListResponseBody)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    error: z.string(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(SessionsListResponseBody)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      error: z.string(),
+    }))
+);
 
 /** @internal */
-export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
-  Code,
-);
+export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Code));
 /** @internal */
 export const Code$outboundSchema: z.ZodNativeEnum<typeof Code> =
   Code$inboundSchema;
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    code: Code$inboundSchema,
-    session_id: z.string(),
-    redirect_to: z.string(),
-    message: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "session_id": "sessionId",
-      "redirect_to": "redirectTo",
-    });
-  });
+export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: Code$inboundSchema,
+      session_id: z.string(),
+      redirect_to: z.string(),
+      message: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        "session_id": "sessionId",
+        "redirect_to": "redirectTo",
+      });
+    })
+  );
 /** @internal */
 export type Two$Outbound = {
   code: string;
@@ -178,18 +183,20 @@ export type Two$Outbound = {
 };
 
 /** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-  .object({
-    code: Code$outboundSchema,
-    sessionId: z.string(),
-    redirectTo: z.string(),
-    message: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      sessionId: "session_id",
-      redirectTo: "redirect_to",
-    });
-  });
+export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: Code$outboundSchema,
+      sessionId: z.string(),
+      redirectTo: z.string(),
+      message: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        sessionId: "session_id",
+        redirectTo: "redirect_to",
+      });
+    })
+  );
 
 export function twoToJSON(two: Two): string {
   return JSON.stringify(Two$outboundSchema.parse(two));
@@ -205,8 +212,10 @@ export function twoFromJSON(
 }
 
 /** @internal */
-export const Detail$inboundSchema: z.ZodType<Detail, z.ZodTypeDef, unknown> = z
-  .union([z.lazy(() => Two$inboundSchema), z.string()]);
+export const Detail$inboundSchema: z.ZodType<Detail, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([z.lazy(() => Two$inboundSchema), z.string()])
+  );
 /** @internal */
 export type Detail$Outbound = Two$Outbound | string;
 
@@ -215,7 +224,9 @@ export const Detail$outboundSchema: z.ZodType<
   Detail$Outbound,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => Two$outboundSchema), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.lazy(() => Two$outboundSchema), z.string()])
+);
 
 export function detailToJSON(detail: Detail): string {
   return JSON.stringify(Detail$outboundSchema.parse(detail));
@@ -235,19 +246,21 @@ export const SessionsListSessionsResponseBody$inboundSchema: z.ZodType<
   SessionsListSessionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.union([z.lazy(() => Two$inboundSchema), z.string()]),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new SessionsListSessionsResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.union([z.lazy(() => Two$inboundSchema), z.string()]),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new SessionsListSessionsResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type SessionsListSessionsResponseBody$Outbound = {
@@ -259,8 +272,10 @@ export const SessionsListSessionsResponseBody$outboundSchema: z.ZodType<
   SessionsListSessionsResponseBody$Outbound,
   z.ZodTypeDef,
   SessionsListSessionsResponseBody
-> = z.instanceof(SessionsListSessionsResponseBody)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    detail: z.union([z.lazy(() => Two$outboundSchema), z.string()]),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(SessionsListSessionsResponseBody)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      detail: z.union([z.lazy(() => Two$outboundSchema), z.string()]),
+    }))
+);

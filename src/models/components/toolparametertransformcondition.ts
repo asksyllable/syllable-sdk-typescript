@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -30,11 +30,13 @@ export const ToolParameterTransformCondition$inboundSchema: z.ZodType<
   ToolParameterTransformCondition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: z.string(),
-  value: z.string(),
-  operator: z.nullable(z.literal("eq")).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string(),
+    value: z.string(),
+    operator: z.nullable(z.literal("eq")).optional(),
+  })
+);
 /** @internal */
 export type ToolParameterTransformCondition$Outbound = {
   key: string;
@@ -47,11 +49,13 @@ export const ToolParameterTransformCondition$outboundSchema: z.ZodType<
   ToolParameterTransformCondition$Outbound,
   z.ZodTypeDef,
   ToolParameterTransformCondition
-> = z.object({
-  key: z.string(),
-  value: z.string(),
-  operator: z.nullable(z.literal("eq")).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string(),
+    value: z.string(),
+    operator: z.nullable(z.literal("eq")).optional(),
+  })
+);
 
 export function toolParameterTransformConditionToJSON(
   toolParameterTransformCondition: ToolParameterTransformCondition,

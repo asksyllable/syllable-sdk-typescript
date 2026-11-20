@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const InsightsToolUpdateRequest$inboundSchema: z.ZodType<
   InsightsToolUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_id: z.number().int(),
-  InsightToolInput: components.InsightToolInput$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "tool_id": "toolId",
-    "InsightToolInput": "insightToolInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_id: z.number().int(),
+    InsightToolInput: components.InsightToolInput$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_id": "toolId",
+      "InsightToolInput": "insightToolInput",
+    });
+  })
+);
 /** @internal */
 export type InsightsToolUpdateRequest$Outbound = {
   tool_id: number;
@@ -39,15 +41,17 @@ export const InsightsToolUpdateRequest$outboundSchema: z.ZodType<
   InsightsToolUpdateRequest$Outbound,
   z.ZodTypeDef,
   InsightsToolUpdateRequest
-> = z.object({
-  toolId: z.number().int(),
-  insightToolInput: components.InsightToolInput$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    toolId: "tool_id",
-    insightToolInput: "InsightToolInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolId: z.number().int(),
+    insightToolInput: components.InsightToolInput$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      toolId: "tool_id",
+      insightToolInput: "InsightToolInput",
+    });
+  })
+);
 
 export function insightsToolUpdateRequestToJSON(
   insightsToolUpdateRequest: InsightsToolUpdateRequest,

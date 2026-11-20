@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,19 +26,22 @@ export const InsightsWorkflowExecutionsSummaryRequest$inboundSchema: z.ZodType<
   InsightsWorkflowExecutionsSummaryRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow_id: z.number().int(),
-  start_datetime: z.nullable(z.string()).optional(),
-  end_datetime: z.nullable(z.string()).optional(),
-  "X-Insight-Workflow-Format-Version": z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "workflow_id": "workflowId",
-    "start_datetime": "startDatetime",
-    "end_datetime": "endDatetime",
-    "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow_id: z.number().int(),
+    start_datetime: z.nullable(z.string()).optional(),
+    end_datetime: z.nullable(z.string()).optional(),
+    "X-Insight-Workflow-Format-Version": z.nullable(z.number().int())
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "workflow_id": "workflowId",
+      "start_datetime": "startDatetime",
+      "end_datetime": "endDatetime",
+      "X-Insight-Workflow-Format-Version": "xInsightWorkflowFormatVersion",
+    });
+  })
+);
 /** @internal */
 export type InsightsWorkflowExecutionsSummaryRequest$Outbound = {
   workflow_id: number;
@@ -52,19 +55,21 @@ export const InsightsWorkflowExecutionsSummaryRequest$outboundSchema: z.ZodType<
   InsightsWorkflowExecutionsSummaryRequest$Outbound,
   z.ZodTypeDef,
   InsightsWorkflowExecutionsSummaryRequest
-> = z.object({
-  workflowId: z.number().int(),
-  startDatetime: z.nullable(z.string()).optional(),
-  endDatetime: z.nullable(z.string()).optional(),
-  xInsightWorkflowFormatVersion: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    workflowId: "workflow_id",
-    startDatetime: "start_datetime",
-    endDatetime: "end_datetime",
-    xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowId: z.number().int(),
+    startDatetime: z.nullable(z.string()).optional(),
+    endDatetime: z.nullable(z.string()).optional(),
+    xInsightWorkflowFormatVersion: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      workflowId: "workflow_id",
+      startDatetime: "start_datetime",
+      endDatetime: "end_datetime",
+      xInsightWorkflowFormatVersion: "X-Insight-Workflow-Format-Version",
+    });
+  })
+);
 
 export function insightsWorkflowExecutionsSummaryRequestToJSON(
   insightsWorkflowExecutionsSummaryRequest:

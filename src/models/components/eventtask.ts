@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -50,16 +50,18 @@ export const EventTask$inboundSchema: z.ZodType<
   EventTask,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("event"),
-  version: z.literal("v1alpha").default("v1alpha"),
-  on: EventTaskEvents$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
+    type: z.literal("event"),
+    version: z.literal("v1alpha").default("v1alpha"),
+    on: EventTaskEvents$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type EventTask$Outbound = {
   id?: string | null | undefined;
@@ -77,16 +79,18 @@ export const EventTask$outboundSchema: z.ZodType<
   EventTask$Outbound,
   z.ZodTypeDef,
   EventTask
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("event"),
-  version: z.literal("v1alpha").default("v1alpha" as const),
-  on: EventTaskEvents$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
+    type: z.literal("event"),
+    version: z.literal("v1alpha").default("v1alpha" as const),
+    on: EventTaskEvents$outboundSchema.optional(),
+  })
+);
 
 export function eventTaskToJSON(eventTask: EventTask): string {
   return JSON.stringify(EventTask$outboundSchema.parse(eventTask));

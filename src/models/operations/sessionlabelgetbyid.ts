@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const SessionLabelGetByIdRequest$inboundSchema: z.ZodType<
   SessionLabelGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_label_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "session_label_id": "sessionLabelId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_label_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_label_id": "sessionLabelId",
+    });
+  })
+);
 /** @internal */
 export type SessionLabelGetByIdRequest$Outbound = {
   session_label_id: number;
@@ -34,13 +36,15 @@ export const SessionLabelGetByIdRequest$outboundSchema: z.ZodType<
   SessionLabelGetByIdRequest$Outbound,
   z.ZodTypeDef,
   SessionLabelGetByIdRequest
-> = z.object({
-  sessionLabelId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionLabelId: "session_label_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionLabelId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionLabelId: "session_label_id",
+    });
+  })
+);
 
 export function sessionLabelGetByIdRequestToJSON(
   sessionLabelGetByIdRequest: SessionLabelGetByIdRequest,

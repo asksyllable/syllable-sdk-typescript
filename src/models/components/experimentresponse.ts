@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -99,41 +99,47 @@ export const ExperimentResponse$inboundSchema: z.ZodType<
   ExperimentResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  target_id: z.nullable(z.number().int()),
-  variants: z.array(DaoExperimentVariantDetail$inboundSchema),
-  description: z.nullable(z.string()).optional(),
-  status: ExperimentStatus$inboundSchema,
-  started_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  stopped_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  scheduled_start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  scheduled_end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  last_updated_by: z.string(),
-  target: z.nullable(DaoExperimentTargetSummary$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "target_id": "targetId",
-    "started_at": "startedAt",
-    "stopped_at": "stoppedAt",
-    "scheduled_start_time": "scheduledStartTime",
-    "scheduled_end_time": "scheduledEndTime",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    target_id: z.nullable(z.number().int()),
+    variants: z.array(DaoExperimentVariantDetail$inboundSchema),
+    description: z.nullable(z.string()).optional(),
+    status: ExperimentStatus$inboundSchema,
+    started_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    stopped_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    scheduled_start_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    scheduled_end_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    last_updated_by: z.string(),
+    target: z.nullable(DaoExperimentTargetSummary$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "target_id": "targetId",
+      "started_at": "startedAt",
+      "stopped_at": "stoppedAt",
+      "scheduled_start_time": "scheduledStartTime",
+      "scheduled_end_time": "scheduledEndTime",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type ExperimentResponse$Outbound = {
   id: number;
@@ -157,35 +163,37 @@ export const ExperimentResponse$outboundSchema: z.ZodType<
   ExperimentResponse$Outbound,
   z.ZodTypeDef,
   ExperimentResponse
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-  targetId: z.nullable(z.number().int()),
-  variants: z.array(DaoExperimentVariantDetail$outboundSchema),
-  description: z.nullable(z.string()).optional(),
-  status: ExperimentStatus$outboundSchema,
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  stoppedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  lastUpdatedBy: z.string(),
-  target: z.nullable(DaoExperimentTargetSummary$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    targetId: "target_id",
-    startedAt: "started_at",
-    stoppedAt: "stopped_at",
-    scheduledStartTime: "scheduled_start_time",
-    scheduledEndTime: "scheduled_end_time",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+    targetId: z.nullable(z.number().int()),
+    variants: z.array(DaoExperimentVariantDetail$outboundSchema),
+    description: z.nullable(z.string()).optional(),
+    status: ExperimentStatus$outboundSchema,
+    startedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    stoppedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    createdAt: z.date().transform(v => v.toISOString()),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    lastUpdatedBy: z.string(),
+    target: z.nullable(DaoExperimentTargetSummary$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      targetId: "target_id",
+      startedAt: "started_at",
+      stoppedAt: "stopped_at",
+      scheduledStartTime: "scheduled_start_time",
+      scheduledEndTime: "scheduled_end_time",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function experimentResponseToJSON(
   experimentResponse: ExperimentResponse,

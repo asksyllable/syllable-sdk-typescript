@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -63,13 +63,15 @@ export const ConditionalTextIf1$inboundSchema: z.ZodType<
   ConditionalTextIf1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CelExpression$inboundSchema,
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$inboundSchema,
+    JMESPathExpression$inboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 /** @internal */
 export type ConditionalTextIf1$Outbound =
   | CelExpression$Outbound
@@ -81,13 +83,15 @@ export const ConditionalTextIf1$outboundSchema: z.ZodType<
   ConditionalTextIf1$Outbound,
   z.ZodTypeDef,
   ConditionalTextIf1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function conditionalTextIf1ToJSON(
   conditionalTextIf1: ConditionalTextIf1,
@@ -111,17 +115,19 @@ export const ConditionalTextIf$inboundSchema: z.ZodType<
   ConditionalTextIf,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type ConditionalTextIf$Outbound =
   | CaseExpression$Outbound
@@ -135,17 +141,21 @@ export const ConditionalTextIf$outboundSchema: z.ZodType<
   ConditionalTextIf$Outbound,
   z.ZodTypeDef,
   ConditionalTextIf
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function conditionalTextIfToJSON(
   conditionalTextIf: ConditionalTextIf,
@@ -169,24 +179,26 @@ export const ConditionalText$inboundSchema: z.ZodType<
   ConditionalText,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  text: z.string(),
-});
+    ).optional(),
+    text: z.string(),
+  })
+);
 /** @internal */
 export type ConditionalText$Outbound = {
   if?:
@@ -205,24 +217,26 @@ export const ConditionalText$outboundSchema: z.ZodType<
   ConditionalText$Outbound,
   z.ZodTypeDef,
   ConditionalText
-> = z.object({
-  if: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    if: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  text: z.string(),
-});
+    ).optional(),
+    text: z.string(),
+  })
+);
 
 export function conditionalTextToJSON(
   conditionalText: ConditionalText,

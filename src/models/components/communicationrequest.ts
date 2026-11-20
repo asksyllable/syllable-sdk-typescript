@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,16 +28,18 @@ export const CommunicationRequest$inboundSchema: z.ZodType<
   CommunicationRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  reference_id: z.string(),
-  target: z.string(),
-  request_variables: z.record(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "reference_id": "referenceId",
-    "request_variables": "requestVariables",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reference_id: z.string(),
+    target: z.string(),
+    request_variables: z.record(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "reference_id": "referenceId",
+      "request_variables": "requestVariables",
+    });
+  })
+);
 /** @internal */
 export type CommunicationRequest$Outbound = {
   reference_id: string;
@@ -50,16 +52,18 @@ export const CommunicationRequest$outboundSchema: z.ZodType<
   CommunicationRequest$Outbound,
   z.ZodTypeDef,
   CommunicationRequest
-> = z.object({
-  referenceId: z.string(),
-  target: z.string(),
-  requestVariables: z.record(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    referenceId: "reference_id",
-    requestVariables: "request_variables",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    referenceId: z.string(),
+    target: z.string(),
+    requestVariables: z.record(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      referenceId: "reference_id",
+      requestVariables: "request_variables",
+    });
+  })
+);
 
 export function communicationRequestToJSON(
   communicationRequest: CommunicationRequest,

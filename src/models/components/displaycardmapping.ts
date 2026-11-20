@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -184,13 +184,15 @@ export const MediaImageurl$inboundSchema: z.ZodType<
   MediaImageurl,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type MediaImageurl$Outbound =
   | string
@@ -204,13 +206,15 @@ export const MediaImageurl$outboundSchema: z.ZodType<
   MediaImageurl$Outbound,
   z.ZodTypeDef,
   MediaImageurl
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function mediaImageurlToJSON(mediaImageurl: MediaImageurl): string {
   return JSON.stringify(MediaImageurl$outboundSchema.parse(mediaImageurl));
@@ -230,13 +234,15 @@ export const MediaOriginalimagewidth$inboundSchema: z.ZodType<
   MediaOriginalimagewidth,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type MediaOriginalimagewidth$Outbound =
   | string
@@ -250,13 +256,15 @@ export const MediaOriginalimagewidth$outboundSchema: z.ZodType<
   MediaOriginalimagewidth$Outbound,
   z.ZodTypeDef,
   MediaOriginalimagewidth
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function mediaOriginalimagewidthToJSON(
   mediaOriginalimagewidth: MediaOriginalimagewidth,
@@ -280,13 +288,15 @@ export const MediaOriginalimageheight$inboundSchema: z.ZodType<
   MediaOriginalimageheight,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type MediaOriginalimageheight$Outbound =
   | string
@@ -300,13 +310,15 @@ export const MediaOriginalimageheight$outboundSchema: z.ZodType<
   MediaOriginalimageheight$Outbound,
   z.ZodTypeDef,
   MediaOriginalimageheight
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function mediaOriginalimageheightToJSON(
   mediaOriginalimageheight: MediaOriginalimageheight,
@@ -330,13 +342,15 @@ export const MediaMaxheight$inboundSchema: z.ZodType<
   MediaMaxheight,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type MediaMaxheight$Outbound =
   | string
@@ -350,13 +364,15 @@ export const MediaMaxheight$outboundSchema: z.ZodType<
   MediaMaxheight$Outbound,
   z.ZodTypeDef,
   MediaMaxheight
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function mediaMaxheightToJSON(mediaMaxheight: MediaMaxheight): string {
   return JSON.stringify(MediaMaxheight$outboundSchema.parse(mediaMaxheight));
@@ -376,13 +392,15 @@ export const ContentHeader$inboundSchema: z.ZodType<
   ContentHeader,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type ContentHeader$Outbound =
   | string
@@ -396,13 +414,15 @@ export const ContentHeader$outboundSchema: z.ZodType<
   ContentHeader$Outbound,
   z.ZodTypeDef,
   ContentHeader
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function contentHeaderToJSON(contentHeader: ContentHeader): string {
   return JSON.stringify(ContentHeader$outboundSchema.parse(contentHeader));
@@ -422,13 +442,15 @@ export const ContentSubheader$inboundSchema: z.ZodType<
   ContentSubheader,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type ContentSubheader$Outbound =
   | string
@@ -442,13 +464,15 @@ export const ContentSubheader$outboundSchema: z.ZodType<
   ContentSubheader$Outbound,
   z.ZodTypeDef,
   ContentSubheader
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function contentSubheaderToJSON(
   contentSubheader: ContentSubheader,
@@ -472,13 +496,15 @@ export const ContentDescription$inboundSchema: z.ZodType<
   ContentDescription,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type ContentDescription$Outbound =
   | string
@@ -492,13 +518,15 @@ export const ContentDescription$outboundSchema: z.ZodType<
   ContentDescription$Outbound,
   z.ZodTypeDef,
   ContentDescription
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function contentDescriptionToJSON(
   contentDescription: ContentDescription,
@@ -522,13 +550,15 @@ export const ContentAvatarimageurl$inboundSchema: z.ZodType<
   ContentAvatarimageurl,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type ContentAvatarimageurl$Outbound =
   | string
@@ -542,13 +572,15 @@ export const ContentAvatarimageurl$outboundSchema: z.ZodType<
   ContentAvatarimageurl$Outbound,
   z.ZodTypeDef,
   ContentAvatarimageurl
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function contentAvatarimageurlToJSON(
   contentAvatarimageurl: ContentAvatarimageurl,
@@ -572,13 +604,15 @@ export const ContentContentalwaysleft$inboundSchema: z.ZodType<
   ContentContentalwaysleft,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type ContentContentalwaysleft$Outbound =
   | string
@@ -592,13 +626,15 @@ export const ContentContentalwaysleft$outboundSchema: z.ZodType<
   ContentContentalwaysleft$Outbound,
   z.ZodTypeDef,
   ContentContentalwaysleft
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function contentContentalwaysleftToJSON(
   contentContentalwaysleft: ContentContentalwaysleft,
@@ -622,104 +658,106 @@ export const DisplayCardMapping$inboundSchema: z.ZodType<
   DisplayCardMapping,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "media.imageUrl": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "media.originalImageWidth": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "media.originalImageHeight": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "media.maxHeight": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "content.header": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "content.subheader": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "content.description": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "content.avatarImageUrl": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  "content.contentAlwaysLeft": z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  actions: z.array(DisplayActionMapping$inboundSchema).optional(),
-  cta: z.nullable(DisplayCtaMapping$inboundSchema).optional(),
-  i18n: z.record(DisplayPhraseMapping$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "media.imageUrl": "mediaImageUrl",
-    "media.originalImageWidth": "mediaOriginalImageWidth",
-    "media.originalImageHeight": "mediaOriginalImageHeight",
-    "media.maxHeight": "mediaMaxHeight",
-    "content.header": "contentHeader",
-    "content.subheader": "contentSubheader",
-    "content.description": "contentDescription",
-    "content.avatarImageUrl": "contentAvatarImageUrl",
-    "content.contentAlwaysLeft": "contentContentAlwaysLeft",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "media.imageUrl": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "media.originalImageWidth": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "media.originalImageHeight": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "media.maxHeight": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "content.header": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "content.subheader": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "content.description": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "content.avatarImageUrl": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    "content.contentAlwaysLeft": z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    actions: z.array(DisplayActionMapping$inboundSchema).optional(),
+    cta: z.nullable(DisplayCtaMapping$inboundSchema).optional(),
+    i18n: z.record(DisplayPhraseMapping$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "media.imageUrl": "mediaImageUrl",
+      "media.originalImageWidth": "mediaOriginalImageWidth",
+      "media.originalImageHeight": "mediaOriginalImageHeight",
+      "media.maxHeight": "mediaMaxHeight",
+      "content.header": "contentHeader",
+      "content.subheader": "contentSubheader",
+      "content.description": "contentDescription",
+      "content.avatarImageUrl": "contentAvatarImageUrl",
+      "content.contentAlwaysLeft": "contentContentAlwaysLeft",
+    });
+  })
+);
 /** @internal */
 export type DisplayCardMapping$Outbound = {
   "media.imageUrl"?:
@@ -804,104 +842,106 @@ export const DisplayCardMapping$outboundSchema: z.ZodType<
   DisplayCardMapping$Outbound,
   z.ZodTypeDef,
   DisplayCardMapping
-> = z.object({
-  mediaImageUrl: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  mediaOriginalImageWidth: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  mediaOriginalImageHeight: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  mediaMaxHeight: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  contentHeader: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  contentSubheader: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  contentDescription: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  contentAvatarImageUrl: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  contentContentAlwaysLeft: z.nullable(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  actions: z.array(DisplayActionMapping$outboundSchema).optional(),
-  cta: z.nullable(DisplayCtaMapping$outboundSchema).optional(),
-  i18n: z.record(DisplayPhraseMapping$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    mediaImageUrl: "media.imageUrl",
-    mediaOriginalImageWidth: "media.originalImageWidth",
-    mediaOriginalImageHeight: "media.originalImageHeight",
-    mediaMaxHeight: "media.maxHeight",
-    contentHeader: "content.header",
-    contentSubheader: "content.subheader",
-    contentDescription: "content.description",
-    contentAvatarImageUrl: "content.avatarImageUrl",
-    contentContentAlwaysLeft: "content.contentAlwaysLeft",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mediaImageUrl: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    mediaOriginalImageWidth: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    mediaOriginalImageHeight: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    mediaMaxHeight: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    contentHeader: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    contentSubheader: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    contentDescription: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    contentAvatarImageUrl: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    contentContentAlwaysLeft: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    actions: z.array(DisplayActionMapping$outboundSchema).optional(),
+    cta: z.nullable(DisplayCtaMapping$outboundSchema).optional(),
+    i18n: z.record(DisplayPhraseMapping$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      mediaImageUrl: "media.imageUrl",
+      mediaOriginalImageWidth: "media.originalImageWidth",
+      mediaOriginalImageHeight: "media.originalImageHeight",
+      mediaMaxHeight: "media.maxHeight",
+      contentHeader: "content.header",
+      contentSubheader: "content.subheader",
+      contentDescription: "content.description",
+      contentAvatarImageUrl: "content.avatarImageUrl",
+      contentContentAlwaysLeft: "content.contentAlwaysLeft",
+    });
+  })
+);
 
 export function displayCardMappingToJSON(
   displayCardMapping: DisplayCardMapping,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,15 +37,17 @@ export const ToolCreateRequest$inboundSchema: z.ZodType<
   ToolCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  definition: ToolDefinition$inboundSchema,
-  service_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "service_id": "serviceId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    definition: ToolDefinition$inboundSchema,
+    service_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "service_id": "serviceId",
+    });
+  })
+);
 /** @internal */
 export type ToolCreateRequest$Outbound = {
   name: string;
@@ -58,15 +60,17 @@ export const ToolCreateRequest$outboundSchema: z.ZodType<
   ToolCreateRequest$Outbound,
   z.ZodTypeDef,
   ToolCreateRequest
-> = z.object({
-  name: z.string(),
-  definition: ToolDefinition$outboundSchema,
-  serviceId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    serviceId: "service_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    definition: ToolDefinition$outboundSchema,
+    serviceId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      serviceId: "service_id",
+    });
+  })
+);
 
 export function toolCreateRequestToJSON(
   toolCreateRequest: ToolCreateRequest,

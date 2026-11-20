@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
@@ -41,9 +42,8 @@ export type VoicemailDetectionConfig = {
 };
 
 /** @internal */
-export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
-  Mode,
-);
+export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Mode));
 /** @internal */
 export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
   Mode$inboundSchema;
@@ -53,30 +53,34 @@ export const VoicemailDetectionConfig$inboundSchema: z.ZodType<
   VoicemailDetectionConfig,
   z.ZodTypeDef,
   unknown
-> = collectExtraKeys$(
-  z.object({
-    mode: z.nullable(Mode$inboundSchema).optional(),
-    voicemail_detection_overall_timeout: z.nullable(z.number()).optional(),
-    voicemail_detection_pre_speech_timeout: z.nullable(z.number()).optional(),
-    voicemail_detection_post_speech_timeout: z.nullable(z.number()).optional(),
-    voicemail_detection_speech_threshold: z.nullable(z.number()).optional(),
-    voicemail_detection_v2_pre_speech_timeout: z.nullable(z.number())
-      .optional(),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-).transform((v) => {
-  return remap$(v, {
-    "voicemail_detection_overall_timeout": "voicemailDetectionOverallTimeout",
-    "voicemail_detection_pre_speech_timeout":
-      "voicemailDetectionPreSpeechTimeout",
-    "voicemail_detection_post_speech_timeout":
-      "voicemailDetectionPostSpeechTimeout",
-    "voicemail_detection_speech_threshold": "voicemailDetectionSpeechThreshold",
-    "voicemail_detection_v2_pre_speech_timeout":
-      "voicemailDetectionV2PreSpeechTimeout",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  collectExtraKeys$(
+    z.object({
+      mode: z.nullable(Mode$inboundSchema).optional(),
+      voicemail_detection_overall_timeout: z.nullable(z.number()).optional(),
+      voicemail_detection_pre_speech_timeout: z.nullable(z.number()).optional(),
+      voicemail_detection_post_speech_timeout: z.nullable(z.number())
+        .optional(),
+      voicemail_detection_speech_threshold: z.nullable(z.number()).optional(),
+      voicemail_detection_v2_pre_speech_timeout: z.nullable(z.number())
+        .optional(),
+    }).catchall(z.any()),
+    "additionalProperties",
+    true,
+  ).transform((v) => {
+    return remap$(v, {
+      "voicemail_detection_overall_timeout": "voicemailDetectionOverallTimeout",
+      "voicemail_detection_pre_speech_timeout":
+        "voicemailDetectionPreSpeechTimeout",
+      "voicemail_detection_post_speech_timeout":
+        "voicemailDetectionPostSpeechTimeout",
+      "voicemail_detection_speech_threshold":
+        "voicemailDetectionSpeechThreshold",
+      "voicemail_detection_v2_pre_speech_timeout":
+        "voicemailDetectionV2PreSpeechTimeout",
+    });
+  })
+);
 /** @internal */
 export type VoicemailDetectionConfig$Outbound = {
   mode?: string | null | undefined;
@@ -93,30 +97,33 @@ export const VoicemailDetectionConfig$outboundSchema: z.ZodType<
   VoicemailDetectionConfig$Outbound,
   z.ZodTypeDef,
   VoicemailDetectionConfig
-> = z.object({
-  mode: z.nullable(Mode$outboundSchema).optional(),
-  voicemailDetectionOverallTimeout: z.nullable(z.number()).optional(),
-  voicemailDetectionPreSpeechTimeout: z.nullable(z.number()).optional(),
-  voicemailDetectionPostSpeechTimeout: z.nullable(z.number()).optional(),
-  voicemailDetectionSpeechThreshold: z.nullable(z.number()).optional(),
-  voicemailDetectionV2PreSpeechTimeout: z.nullable(z.number()).optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      voicemailDetectionOverallTimeout: "voicemail_detection_overall_timeout",
-      voicemailDetectionPreSpeechTimeout:
-        "voicemail_detection_pre_speech_timeout",
-      voicemailDetectionPostSpeechTimeout:
-        "voicemail_detection_post_speech_timeout",
-      voicemailDetectionSpeechThreshold: "voicemail_detection_speech_threshold",
-      voicemailDetectionV2PreSpeechTimeout:
-        "voicemail_detection_v2_pre_speech_timeout",
-      additionalProperties: null,
-    }),
-  };
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: z.nullable(Mode$outboundSchema).optional(),
+    voicemailDetectionOverallTimeout: z.nullable(z.number()).optional(),
+    voicemailDetectionPreSpeechTimeout: z.nullable(z.number()).optional(),
+    voicemailDetectionPostSpeechTimeout: z.nullable(z.number()).optional(),
+    voicemailDetectionSpeechThreshold: z.nullable(z.number()).optional(),
+    voicemailDetectionV2PreSpeechTimeout: z.nullable(z.number()).optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        voicemailDetectionOverallTimeout: "voicemail_detection_overall_timeout",
+        voicemailDetectionPreSpeechTimeout:
+          "voicemail_detection_pre_speech_timeout",
+        voicemailDetectionPostSpeechTimeout:
+          "voicemail_detection_post_speech_timeout",
+        voicemailDetectionSpeechThreshold:
+          "voicemail_detection_speech_threshold",
+        voicemailDetectionV2PreSpeechTimeout:
+          "voicemail_detection_v2_pre_speech_timeout",
+        additionalProperties: null,
+      }),
+    };
+  })
+);
 
 export function voicemailDetectionConfigToJSON(
   voicemailDetectionConfig: VoicemailDetectionConfig,

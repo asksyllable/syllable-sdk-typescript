@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { SyllableSDKError } from "./syllablesdkerror.js";
 
 /**
@@ -47,19 +48,21 @@ export const DirectoryMemberListResponseBody$inboundSchema: z.ZodType<
   DirectoryMemberListResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  detail: z.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DirectoryMemberListResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    detail: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DirectoryMemberListResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export type DirectoryMemberListResponseBody$Outbound = {
@@ -71,8 +74,10 @@ export const DirectoryMemberListResponseBody$outboundSchema: z.ZodType<
   DirectoryMemberListResponseBody$Outbound,
   z.ZodTypeDef,
   DirectoryMemberListResponseBody
-> = z.instanceof(DirectoryMemberListResponseBody)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    detail: z.string(),
-  }));
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.instanceof(DirectoryMemberListResponseBody)
+    .transform(v => v.data$)
+    .pipe(z.object({
+      detail: z.string(),
+    }))
+);

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -31,16 +31,18 @@ export const BatchFileSampleRow$inboundSchema: z.ZodType<
   BatchFileSampleRow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  reference_id: z.string(),
-  target: z.string(),
-  request_variables: z.record(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "reference_id": "referenceId",
-    "request_variables": "requestVariables",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reference_id: z.string(),
+    target: z.string(),
+    request_variables: z.record(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "reference_id": "referenceId",
+      "request_variables": "requestVariables",
+    });
+  })
+);
 /** @internal */
 export type BatchFileSampleRow$Outbound = {
   reference_id: string;
@@ -53,16 +55,18 @@ export const BatchFileSampleRow$outboundSchema: z.ZodType<
   BatchFileSampleRow$Outbound,
   z.ZodTypeDef,
   BatchFileSampleRow
-> = z.object({
-  referenceId: z.string(),
-  target: z.string(),
-  requestVariables: z.record(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    referenceId: "reference_id",
-    requestVariables: "request_variables",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    referenceId: z.string(),
+    target: z.string(),
+    requestVariables: z.record(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      referenceId: "reference_id",
+      requestVariables: "request_variables",
+    });
+  })
+);
 
 export function batchFileSampleRowToJSON(
   batchFileSampleRow: BatchFileSampleRow,

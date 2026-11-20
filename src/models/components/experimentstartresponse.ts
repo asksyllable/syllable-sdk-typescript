@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -39,10 +39,12 @@ export const ExperimentStartResponse$inboundSchema: z.ZodType<
   ExperimentStartResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  experiment: ExperimentResponse$inboundSchema,
-  warnings: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experiment: ExperimentResponse$inboundSchema,
+    warnings: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type ExperimentStartResponse$Outbound = {
   experiment: ExperimentResponse$Outbound;
@@ -54,10 +56,12 @@ export const ExperimentStartResponse$outboundSchema: z.ZodType<
   ExperimentStartResponse$Outbound,
   z.ZodTypeDef,
   ExperimentStartResponse
-> = z.object({
-  experiment: ExperimentResponse$outboundSchema,
-  warnings: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experiment: ExperimentResponse$outboundSchema,
+    warnings: z.array(z.string()).optional(),
+  })
+);
 
 export function experimentStartResponseToJSON(
   experimentStartResponse: ExperimentStartResponse,

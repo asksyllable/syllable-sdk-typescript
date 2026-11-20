@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -81,30 +81,32 @@ export const BatchFileCheckResult$inboundSchema: z.ZodType<
   BatchFileCheckResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accepted: z.boolean(),
-  error_message: z.nullable(z.string()).optional(),
-  columns: z.array(z.string()),
-  reference_id_column: z.boolean(),
-  request_variable_columns: z.array(z.string()),
-  total_rows: z.number().int(),
-  rows_to_call: z.number().int(),
-  problem_counts: z.array(BatchFileProblemCount$inboundSchema),
-  warnings: z.array(z.string()),
-  problem_rows: z.array(BatchFileProblemRow$inboundSchema),
-  sample_rows: z.array(BatchFileSampleRow$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "error_message": "errorMessage",
-    "reference_id_column": "referenceIdColumn",
-    "request_variable_columns": "requestVariableColumns",
-    "total_rows": "totalRows",
-    "rows_to_call": "rowsToCall",
-    "problem_counts": "problemCounts",
-    "problem_rows": "problemRows",
-    "sample_rows": "sampleRows",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accepted: z.boolean(),
+    error_message: z.nullable(z.string()).optional(),
+    columns: z.array(z.string()),
+    reference_id_column: z.boolean(),
+    request_variable_columns: z.array(z.string()),
+    total_rows: z.number().int(),
+    rows_to_call: z.number().int(),
+    problem_counts: z.array(BatchFileProblemCount$inboundSchema),
+    warnings: z.array(z.string()),
+    problem_rows: z.array(BatchFileProblemRow$inboundSchema),
+    sample_rows: z.array(BatchFileSampleRow$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "error_message": "errorMessage",
+      "reference_id_column": "referenceIdColumn",
+      "request_variable_columns": "requestVariableColumns",
+      "total_rows": "totalRows",
+      "rows_to_call": "rowsToCall",
+      "problem_counts": "problemCounts",
+      "problem_rows": "problemRows",
+      "sample_rows": "sampleRows",
+    });
+  })
+);
 /** @internal */
 export type BatchFileCheckResult$Outbound = {
   accepted: boolean;
@@ -125,30 +127,32 @@ export const BatchFileCheckResult$outboundSchema: z.ZodType<
   BatchFileCheckResult$Outbound,
   z.ZodTypeDef,
   BatchFileCheckResult
-> = z.object({
-  accepted: z.boolean(),
-  errorMessage: z.nullable(z.string()).optional(),
-  columns: z.array(z.string()),
-  referenceIdColumn: z.boolean(),
-  requestVariableColumns: z.array(z.string()),
-  totalRows: z.number().int(),
-  rowsToCall: z.number().int(),
-  problemCounts: z.array(BatchFileProblemCount$outboundSchema),
-  warnings: z.array(z.string()),
-  problemRows: z.array(BatchFileProblemRow$outboundSchema),
-  sampleRows: z.array(BatchFileSampleRow$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    errorMessage: "error_message",
-    referenceIdColumn: "reference_id_column",
-    requestVariableColumns: "request_variable_columns",
-    totalRows: "total_rows",
-    rowsToCall: "rows_to_call",
-    problemCounts: "problem_counts",
-    problemRows: "problem_rows",
-    sampleRows: "sample_rows",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accepted: z.boolean(),
+    errorMessage: z.nullable(z.string()).optional(),
+    columns: z.array(z.string()),
+    referenceIdColumn: z.boolean(),
+    requestVariableColumns: z.array(z.string()),
+    totalRows: z.number().int(),
+    rowsToCall: z.number().int(),
+    problemCounts: z.array(BatchFileProblemCount$outboundSchema),
+    warnings: z.array(z.string()),
+    problemRows: z.array(BatchFileProblemRow$outboundSchema),
+    sampleRows: z.array(BatchFileSampleRow$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      errorMessage: "error_message",
+      referenceIdColumn: "reference_id_column",
+      requestVariableColumns: "request_variable_columns",
+      totalRows: "total_rows",
+      rowsToCall: "rows_to_call",
+      problemCounts: "problem_counts",
+      problemRows: "problem_rows",
+      sampleRows: "sample_rows",
+    });
+  })
+);
 
 export function batchFileCheckResultToJSON(
   batchFileCheckResult: BatchFileCheckResult,

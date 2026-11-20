@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -45,11 +45,13 @@ export const TargetFilterRule$inboundSchema: z.ZodType<
   TargetFilterRule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  field: z.string(),
-  op: FilterOp$inboundSchema,
-  values: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: z.string(),
+    op: FilterOp$inboundSchema,
+    values: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type TargetFilterRule$Outbound = {
   field: string;
@@ -62,11 +64,13 @@ export const TargetFilterRule$outboundSchema: z.ZodType<
   TargetFilterRule$Outbound,
   z.ZodTypeDef,
   TargetFilterRule
-> = z.object({
-  field: z.string(),
-  op: FilterOp$outboundSchema,
-  values: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: z.string(),
+    op: FilterOp$outboundSchema,
+    values: z.array(z.string()).optional(),
+  })
+);
 
 export function targetFilterRuleToJSON(
   targetFilterRule: TargetFilterRule,

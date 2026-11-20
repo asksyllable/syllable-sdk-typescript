@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const InsightsFileTestTranscriptRequest$inboundSchema: z.ZodType<
   InsightsFileTestTranscriptRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  file_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "file_id": "fileId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "file_id": "fileId",
+    });
+  })
+);
 /** @internal */
 export type InsightsFileTestTranscriptRequest$Outbound = {
   file_id: number;
@@ -34,13 +36,15 @@ export const InsightsFileTestTranscriptRequest$outboundSchema: z.ZodType<
   InsightsFileTestTranscriptRequest$Outbound,
   z.ZodTypeDef,
   InsightsFileTestTranscriptRequest
-> = z.object({
-  fileId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    fileId: "file_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      fileId: "file_id",
+    });
+  })
+);
 
 export function insightsFileTestTranscriptRequestToJSON(
   insightsFileTestTranscriptRequest: InsightsFileTestTranscriptRequest,

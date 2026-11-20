@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,16 +26,18 @@ export const DirectoryMemberTestExtensionRequest$inboundSchema: z.ZodType<
   DirectoryMemberTestExtensionRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  member_id: z.number().int(),
-  timestamp: z.string(),
-  language_code: z.nullable(components.LanguageCode$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "member_id": "memberId",
-    "language_code": "languageCode",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    member_id: z.number().int(),
+    timestamp: z.string(),
+    language_code: z.nullable(components.LanguageCode$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "member_id": "memberId",
+      "language_code": "languageCode",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberTestExtensionRequest$Outbound = {
   member_id: number;
@@ -48,16 +50,18 @@ export const DirectoryMemberTestExtensionRequest$outboundSchema: z.ZodType<
   DirectoryMemberTestExtensionRequest$Outbound,
   z.ZodTypeDef,
   DirectoryMemberTestExtensionRequest
-> = z.object({
-  memberId: z.number().int(),
-  timestamp: z.string(),
-  languageCode: z.nullable(components.LanguageCode$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    memberId: "member_id",
-    languageCode: "language_code",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memberId: z.number().int(),
+    timestamp: z.string(),
+    languageCode: z.nullable(components.LanguageCode$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      memberId: "member_id",
+      languageCode: "language_code",
+    });
+  })
+);
 
 export function directoryMemberTestExtensionRequestToJSON(
   directoryMemberTestExtensionRequest: DirectoryMemberTestExtensionRequest,

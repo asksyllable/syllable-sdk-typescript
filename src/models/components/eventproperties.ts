@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const EventProperties = {
@@ -22,7 +23,7 @@ export type EventProperties = ClosedEnum<typeof EventProperties>;
 /** @internal */
 export const EventProperties$inboundSchema: z.ZodNativeEnum<
   typeof EventProperties
-> = z.nativeEnum(EventProperties);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EventProperties));
 /** @internal */
 export const EventProperties$outboundSchema: z.ZodNativeEnum<
   typeof EventProperties

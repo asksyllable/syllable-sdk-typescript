@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,10 +26,12 @@ export const ToolAgentInfo$inboundSchema: z.ZodType<
   ToolAgentInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+  })
+);
 /** @internal */
 export type ToolAgentInfo$Outbound = {
   id: number;
@@ -41,10 +43,12 @@ export const ToolAgentInfo$outboundSchema: z.ZodType<
   ToolAgentInfo$Outbound,
   z.ZodTypeDef,
   ToolAgentInfo
-> = z.object({
-  id: z.number().int(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    name: z.string(),
+  })
+);
 
 export function toolAgentInfoToJSON(toolAgentInfo: ToolAgentInfo): string {
   return JSON.stringify(ToolAgentInfo$outboundSchema.parse(toolAgentInfo));

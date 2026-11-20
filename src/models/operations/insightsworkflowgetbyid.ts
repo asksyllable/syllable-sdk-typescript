@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const InsightsWorkflowGetByIdRequest$inboundSchema: z.ZodType<
   InsightsWorkflowGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "workflow_id": "workflowId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "workflow_id": "workflowId",
+    });
+  })
+);
 /** @internal */
 export type InsightsWorkflowGetByIdRequest$Outbound = {
   workflow_id: number;
@@ -34,13 +36,15 @@ export const InsightsWorkflowGetByIdRequest$outboundSchema: z.ZodType<
   InsightsWorkflowGetByIdRequest$Outbound,
   z.ZodTypeDef,
   InsightsWorkflowGetByIdRequest
-> = z.object({
-  workflowId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    workflowId: "workflow_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      workflowId: "workflow_id",
+    });
+  })
+);
 
 export function insightsWorkflowGetByIdRequestToJSON(
   insightsWorkflowGetByIdRequest: InsightsWorkflowGetByIdRequest,

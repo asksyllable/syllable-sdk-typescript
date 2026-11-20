@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,13 +28,15 @@ export const A2pMessagingPathCheckResponse$inboundSchema: z.ZodType<
   A2pMessagingPathCheckResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  a2p_approved: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    "a2p_approved": "a2pApproved",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    a2p_approved: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      "a2p_approved": "a2pApproved",
+    });
+  })
+);
 /** @internal */
 export type A2pMessagingPathCheckResponse$Outbound = {
   a2p_approved: boolean;
@@ -45,13 +47,15 @@ export const A2pMessagingPathCheckResponse$outboundSchema: z.ZodType<
   A2pMessagingPathCheckResponse$Outbound,
   z.ZodTypeDef,
   A2pMessagingPathCheckResponse
-> = z.object({
-  a2pApproved: z.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    a2pApproved: "a2p_approved",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    a2pApproved: z.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      a2pApproved: "a2p_approved",
+    });
+  })
+);
 
 export function a2pMessagingPathCheckResponseToJSON(
   a2pMessagingPathCheckResponse: A2pMessagingPathCheckResponse,

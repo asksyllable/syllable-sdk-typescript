@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,18 @@ export const OutboundBatchDeleteRequest$inboundSchema: z.ZodType<
   OutboundBatchDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  batch_id: z.string(),
-  Body_outbound_batch_delete: components.BodyOutboundBatchDelete$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "batch_id": "batchId",
-    "Body_outbound_batch_delete": "bodyOutboundBatchDelete",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batch_id: z.string(),
+    Body_outbound_batch_delete:
+      components.BodyOutboundBatchDelete$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "batch_id": "batchId",
+      "Body_outbound_batch_delete": "bodyOutboundBatchDelete",
+    });
+  })
+);
 /** @internal */
 export type OutboundBatchDeleteRequest$Outbound = {
   batch_id: string;
@@ -39,15 +42,17 @@ export const OutboundBatchDeleteRequest$outboundSchema: z.ZodType<
   OutboundBatchDeleteRequest$Outbound,
   z.ZodTypeDef,
   OutboundBatchDeleteRequest
-> = z.object({
-  batchId: z.string(),
-  bodyOutboundBatchDelete: components.BodyOutboundBatchDelete$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    batchId: "batch_id",
-    bodyOutboundBatchDelete: "Body_outbound_batch_delete",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    batchId: z.string(),
+    bodyOutboundBatchDelete: components.BodyOutboundBatchDelete$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      batchId: "batch_id",
+      bodyOutboundBatchDelete: "Body_outbound_batch_delete",
+    });
+  })
+);
 
 export function outboundBatchDeleteRequestToJSON(
   outboundBatchDeleteRequest: OutboundBatchDeleteRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,16 +46,20 @@ export const SessionMessage$inboundSchema: z.ZodType<
   SessionMessage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  role: DialogRole$inboundSchema,
-  dialog: DialogMessage$inboundSchema,
-  tool_calls: z.array(DialogToolCall$inboundSchema),
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_calls": "toolCalls",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: DialogRole$inboundSchema,
+    dialog: DialogMessage$inboundSchema,
+    tool_calls: z.array(DialogToolCall$inboundSchema),
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_calls": "toolCalls",
+    });
+  })
+);
 /** @internal */
 export type SessionMessage$Outbound = {
   role: string;
@@ -69,16 +73,18 @@ export const SessionMessage$outboundSchema: z.ZodType<
   SessionMessage$Outbound,
   z.ZodTypeDef,
   SessionMessage
-> = z.object({
-  role: DialogRole$outboundSchema,
-  dialog: DialogMessage$outboundSchema,
-  toolCalls: z.array(DialogToolCall$outboundSchema),
-  timestamp: z.date().transform(v => v.toISOString()),
-}).transform((v) => {
-  return remap$(v, {
-    toolCalls: "tool_calls",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: DialogRole$outboundSchema,
+    dialog: DialogMessage$outboundSchema,
+    toolCalls: z.array(DialogToolCall$outboundSchema),
+    timestamp: z.date().transform(v => v.toISOString()),
+  }).transform((v) => {
+    return remap$(v, {
+      toolCalls: "tool_calls",
+    });
+  })
+);
 
 export function sessionMessageToJSON(sessionMessage: SessionMessage): string {
   return JSON.stringify(SessionMessage$outboundSchema.parse(sessionMessage));

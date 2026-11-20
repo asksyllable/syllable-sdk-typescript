@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -76,8 +76,10 @@ export type InsightWorkflowExecutionOutput = {
 
 /** @internal */
 export const InsightWorkflowExecutionOutputFormatVersion$inboundSchema:
-  z.ZodNativeEnum<typeof InsightWorkflowExecutionOutputFormatVersion> = z
-    .nativeEnum(InsightWorkflowExecutionOutputFormatVersion);
+  z.ZodNativeEnum<typeof InsightWorkflowExecutionOutputFormatVersion> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(InsightWorkflowExecutionOutputFormatVersion)
+    );
 /** @internal */
 export const InsightWorkflowExecutionOutputFormatVersion$outboundSchema:
   z.ZodNativeEnum<typeof InsightWorkflowExecutionOutputFormatVersion> =
@@ -88,7 +90,7 @@ export const StepOutcomes$inboundSchema: z.ZodType<
   StepOutcomes,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type StepOutcomes$Outbound = {};
 
@@ -97,7 +99,7 @@ export const StepOutcomes$outboundSchema: z.ZodType<
   StepOutcomes$Outbound,
   z.ZodTypeDef,
   StepOutcomes
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function stepOutcomesToJSON(stepOutcomes: StepOutcomes): string {
   return JSON.stringify(StepOutcomes$outboundSchema.parse(stepOutcomes));
@@ -117,37 +119,41 @@ export const InsightWorkflowExecutionOutput$inboundSchema: z.ZodType<
   InsightWorkflowExecutionOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  format_version: InsightWorkflowExecutionOutputFormatVersion$inboundSchema
-    .default(1),
-  step_outcomes: z.array(z.lazy(() => StepOutcomes$inboundSchema)).optional(),
-  id: z.number().int(),
-  workflow_id: z.number().int(),
-  status: z.string(),
-  priority: z.number().int(),
-  session_id: z.nullable(z.number().int()).optional(),
-  upload_file_id: z.nullable(z.number().int()).optional(),
-  retry_count: z.number().int(),
-  error_message: z.nullable(z.string()).optional(),
-  started_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  event_type: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "format_version": "formatVersion",
-    "step_outcomes": "stepOutcomes",
-    "workflow_id": "workflowId",
-    "session_id": "sessionId",
-    "upload_file_id": "uploadFileId",
-    "retry_count": "retryCount",
-    "error_message": "errorMessage",
-    "started_at": "startedAt",
-    "created_at": "createdAt",
-    "event_type": "eventType",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    format_version: InsightWorkflowExecutionOutputFormatVersion$inboundSchema
+      .default(1),
+    step_outcomes: z.array(z.lazy(() => StepOutcomes$inboundSchema)).optional(),
+    id: z.number().int(),
+    workflow_id: z.number().int(),
+    status: z.string(),
+    priority: z.number().int(),
+    session_id: z.nullable(z.number().int()).optional(),
+    upload_file_id: z.nullable(z.number().int()).optional(),
+    retry_count: z.number().int(),
+    error_message: z.nullable(z.string()).optional(),
+    started_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    event_type: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "format_version": "formatVersion",
+      "step_outcomes": "stepOutcomes",
+      "workflow_id": "workflowId",
+      "session_id": "sessionId",
+      "upload_file_id": "uploadFileId",
+      "retry_count": "retryCount",
+      "error_message": "errorMessage",
+      "started_at": "startedAt",
+      "created_at": "createdAt",
+      "event_type": "eventType",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowExecutionOutput$Outbound = {
   format_version: number;
@@ -170,35 +176,37 @@ export const InsightWorkflowExecutionOutput$outboundSchema: z.ZodType<
   InsightWorkflowExecutionOutput$Outbound,
   z.ZodTypeDef,
   InsightWorkflowExecutionOutput
-> = z.object({
-  formatVersion: InsightWorkflowExecutionOutputFormatVersion$outboundSchema
-    .default(1),
-  stepOutcomes: z.array(z.lazy(() => StepOutcomes$outboundSchema)).optional(),
-  id: z.number().int(),
-  workflowId: z.number().int(),
-  status: z.string(),
-  priority: z.number().int(),
-  sessionId: z.nullable(z.number().int()).optional(),
-  uploadFileId: z.nullable(z.number().int()).optional(),
-  retryCount: z.number().int(),
-  errorMessage: z.nullable(z.string()).optional(),
-  startedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  createdAt: z.date().transform(v => v.toISOString()),
-  eventType: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    formatVersion: "format_version",
-    stepOutcomes: "step_outcomes",
-    workflowId: "workflow_id",
-    sessionId: "session_id",
-    uploadFileId: "upload_file_id",
-    retryCount: "retry_count",
-    errorMessage: "error_message",
-    startedAt: "started_at",
-    createdAt: "created_at",
-    eventType: "event_type",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    formatVersion: InsightWorkflowExecutionOutputFormatVersion$outboundSchema
+      .default(1),
+    stepOutcomes: z.array(z.lazy(() => StepOutcomes$outboundSchema)).optional(),
+    id: z.number().int(),
+    workflowId: z.number().int(),
+    status: z.string(),
+    priority: z.number().int(),
+    sessionId: z.nullable(z.number().int()).optional(),
+    uploadFileId: z.nullable(z.number().int()).optional(),
+    retryCount: z.number().int(),
+    errorMessage: z.nullable(z.string()).optional(),
+    startedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+    createdAt: z.date().transform(v => v.toISOString()),
+    eventType: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      formatVersion: "format_version",
+      stepOutcomes: "step_outcomes",
+      workflowId: "workflow_id",
+      sessionId: "session_id",
+      uploadFileId: "upload_file_id",
+      retryCount: "retry_count",
+      errorMessage: "error_message",
+      startedAt: "started_at",
+      createdAt: "created_at",
+      eventType: "event_type",
+    });
+  })
+);
 
 export function insightWorkflowExecutionOutputToJSON(
   insightWorkflowExecutionOutput: InsightWorkflowExecutionOutput,

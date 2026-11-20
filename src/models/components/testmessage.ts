@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -53,25 +53,27 @@ export const TestMessage$inboundSchema: z.ZodType<
   TestMessage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  service_name: z.string(),
-  source: z.string(),
-  text: z.string(),
-  test_id: z.string(),
-  agent_id: z.string(),
-  org_name: z.nullable(z.string()).optional(),
-  override_timestamp: z.nullable(z.string()).optional(),
-  session_start: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    "service_name": "serviceName",
-    "test_id": "testId",
-    "agent_id": "agentId",
-    "org_name": "orgName",
-    "override_timestamp": "overrideTimestamp",
-    "session_start": "sessionStart",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    service_name: z.string(),
+    source: z.string(),
+    text: z.string(),
+    test_id: z.string(),
+    agent_id: z.string(),
+    org_name: z.nullable(z.string()).optional(),
+    override_timestamp: z.nullable(z.string()).optional(),
+    session_start: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      "service_name": "serviceName",
+      "test_id": "testId",
+      "agent_id": "agentId",
+      "org_name": "orgName",
+      "override_timestamp": "overrideTimestamp",
+      "session_start": "sessionStart",
+    });
+  })
+);
 /** @internal */
 export type TestMessage$Outbound = {
   service_name: string;
@@ -89,25 +91,27 @@ export const TestMessage$outboundSchema: z.ZodType<
   TestMessage$Outbound,
   z.ZodTypeDef,
   TestMessage
-> = z.object({
-  serviceName: z.string(),
-  source: z.string(),
-  text: z.string(),
-  testId: z.string(),
-  agentId: z.string(),
-  orgName: z.nullable(z.string()).optional(),
-  overrideTimestamp: z.nullable(z.string()).optional(),
-  sessionStart: z.boolean().default(false),
-}).transform((v) => {
-  return remap$(v, {
-    serviceName: "service_name",
-    testId: "test_id",
-    agentId: "agent_id",
-    orgName: "org_name",
-    overrideTimestamp: "override_timestamp",
-    sessionStart: "session_start",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    serviceName: z.string(),
+    source: z.string(),
+    text: z.string(),
+    testId: z.string(),
+    agentId: z.string(),
+    orgName: z.nullable(z.string()).optional(),
+    overrideTimestamp: z.nullable(z.string()).optional(),
+    sessionStart: z.boolean().default(false),
+  }).transform((v) => {
+    return remap$(v, {
+      serviceName: "service_name",
+      testId: "test_id",
+      agentId: "agent_id",
+      orgName: "org_name",
+      overrideTimestamp: "override_timestamp",
+      sessionStart: "session_start",
+    });
+  })
+);
 
 export function testMessageToJSON(testMessage: TestMessage): string {
   return JSON.stringify(TestMessage$outboundSchema.parse(testMessage));

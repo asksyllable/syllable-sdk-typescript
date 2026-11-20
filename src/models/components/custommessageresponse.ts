@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -90,33 +90,37 @@ export const CustomMessageResponse$inboundSchema: z.ZodType<
   CustomMessageResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  edit_comments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  type: CustomMessageType$inboundSchema.optional(),
-  preamble: z.nullable(z.string()).optional(),
-  text: z.string(),
-  subject: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  repeat_after_language_change: z.boolean(),
-  rules: z.array(CustomMessageRule$inboundSchema).optional(),
-  id: z.number().int(),
-  version_number: z.number().int().default(1),
-  type_config: z.record(z.any()).optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  agent_count: z.nullable(z.number().int()).optional(),
-  last_updated_by: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "edit_comments": "editComments",
-    "repeat_after_language_change": "repeatAfterLanguageChange",
-    "version_number": "versionNumber",
-    "type_config": "typeConfig",
-    "updated_at": "updatedAt",
-    "agent_count": "agentCount",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edit_comments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    type: CustomMessageType$inboundSchema.optional(),
+    preamble: z.nullable(z.string()).optional(),
+    text: z.string(),
+    subject: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    repeat_after_language_change: z.boolean(),
+    rules: z.array(CustomMessageRule$inboundSchema).optional(),
+    id: z.number().int(),
+    version_number: z.number().int().default(1),
+    type_config: z.record(z.any()).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    agent_count: z.nullable(z.number().int()).optional(),
+    last_updated_by: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "edit_comments": "editComments",
+      "repeat_after_language_change": "repeatAfterLanguageChange",
+      "version_number": "versionNumber",
+      "type_config": "typeConfig",
+      "updated_at": "updatedAt",
+      "agent_count": "agentCount",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type CustomMessageResponse$Outbound = {
   edit_comments?: string | null | undefined;
@@ -141,33 +145,35 @@ export const CustomMessageResponse$outboundSchema: z.ZodType<
   CustomMessageResponse$Outbound,
   z.ZodTypeDef,
   CustomMessageResponse
-> = z.object({
-  editComments: z.nullable(z.string()).optional(),
-  name: z.string(),
-  type: CustomMessageType$outboundSchema.optional(),
-  preamble: z.nullable(z.string()).optional(),
-  text: z.string(),
-  subject: z.nullable(z.string()).optional(),
-  label: z.nullable(z.string()).optional(),
-  repeatAfterLanguageChange: z.boolean(),
-  rules: z.array(CustomMessageRule$outboundSchema).optional(),
-  id: z.number().int(),
-  versionNumber: z.number().int().default(1),
-  typeConfig: z.record(z.any()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()),
-  agentCount: z.nullable(z.number().int()).optional(),
-  lastUpdatedBy: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    editComments: "edit_comments",
-    repeatAfterLanguageChange: "repeat_after_language_change",
-    versionNumber: "version_number",
-    typeConfig: "type_config",
-    updatedAt: "updated_at",
-    agentCount: "agent_count",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    editComments: z.nullable(z.string()).optional(),
+    name: z.string(),
+    type: CustomMessageType$outboundSchema.optional(),
+    preamble: z.nullable(z.string()).optional(),
+    text: z.string(),
+    subject: z.nullable(z.string()).optional(),
+    label: z.nullable(z.string()).optional(),
+    repeatAfterLanguageChange: z.boolean(),
+    rules: z.array(CustomMessageRule$outboundSchema).optional(),
+    id: z.number().int(),
+    versionNumber: z.number().int().default(1),
+    typeConfig: z.record(z.any()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()),
+    agentCount: z.nullable(z.number().int()).optional(),
+    lastUpdatedBy: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      editComments: "edit_comments",
+      repeatAfterLanguageChange: "repeat_after_language_change",
+      versionNumber: "version_number",
+      typeConfig: "type_config",
+      updatedAt: "updated_at",
+      agentCount: "agent_count",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function customMessageResponseToJSON(
   customMessageResponse: CustomMessageResponse,

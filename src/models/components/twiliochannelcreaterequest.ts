@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,10 +32,12 @@ export const TwilioChannelCreateRequest$inboundSchema: z.ZodType<
   TwilioChannelCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  config: TwilioChannelConfigCreate$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    config: TwilioChannelConfigCreate$inboundSchema,
+  })
+);
 /** @internal */
 export type TwilioChannelCreateRequest$Outbound = {
   name: string;
@@ -47,10 +49,12 @@ export const TwilioChannelCreateRequest$outboundSchema: z.ZodType<
   TwilioChannelCreateRequest$Outbound,
   z.ZodTypeDef,
   TwilioChannelCreateRequest
-> = z.object({
-  name: z.string(),
-  config: TwilioChannelConfigCreate$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    config: TwilioChannelConfigCreate$outboundSchema,
+  })
+);
 
 export function twilioChannelCreateRequestToJSON(
   twilioChannelCreateRequest: TwilioChannelCreateRequest,

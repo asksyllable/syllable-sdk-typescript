@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,15 +38,17 @@ export const InspectLatencyResponse$inboundSchema: z.ZodType<
   InspectLatencyResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.string(),
-  timeline: z.array(LatencyEntry$inboundSchema),
-  summary: z.array(SummaryEntry$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.string(),
+    timeline: z.array(LatencyEntry$inboundSchema),
+    summary: z.array(SummaryEntry$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+    });
+  })
+);
 /** @internal */
 export type InspectLatencyResponse$Outbound = {
   session_id: string;
@@ -59,15 +61,17 @@ export const InspectLatencyResponse$outboundSchema: z.ZodType<
   InspectLatencyResponse$Outbound,
   z.ZodTypeDef,
   InspectLatencyResponse
-> = z.object({
-  sessionId: z.string(),
-  timeline: z.array(LatencyEntry$outboundSchema),
-  summary: z.array(SummaryEntry$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    timeline: z.array(LatencyEntry$outboundSchema),
+    summary: z.array(SummaryEntry$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+    });
+  })
+);
 
 export function inspectLatencyResponseToJSON(
   inspectLatencyResponse: InspectLatencyResponse,

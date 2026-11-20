@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -23,7 +24,7 @@ export type BatchFileProblem = ClosedEnum<typeof BatchFileProblem>;
 /** @internal */
 export const BatchFileProblem$inboundSchema: z.ZodNativeEnum<
   typeof BatchFileProblem
-> = z.nativeEnum(BatchFileProblem);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BatchFileProblem));
 /** @internal */
 export const BatchFileProblem$outboundSchema: z.ZodNativeEnum<
   typeof BatchFileProblem

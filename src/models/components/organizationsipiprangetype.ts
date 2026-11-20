@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -30,7 +31,7 @@ export type OrganizationSipIpRangeType = ClosedEnum<
 /** @internal */
 export const OrganizationSipIpRangeType$inboundSchema: z.ZodNativeEnum<
   typeof OrganizationSipIpRangeType
-> = z.nativeEnum(OrganizationSipIpRangeType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OrganizationSipIpRangeType));
 /** @internal */
 export const OrganizationSipIpRangeType$outboundSchema: z.ZodNativeEnum<
   typeof OrganizationSipIpRangeType

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -65,24 +65,28 @@ export const DirectoryMemberHistoryResponse$inboundSchema: z.ZodType<
   DirectoryMemberHistoryResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  directory_member_id: z.number().int(),
-  version: z.number().int(),
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  name: z.string(),
-  type: z.string(),
-  extensions: z.array(DirectoryExtension$inboundSchema).optional(),
-  contact_tags: z.record(z.array(z.string())).optional(),
-  user_email: z.string(),
-  comments: z.nullable(z.string()).optional(),
-  operation: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "directory_member_id": "directoryMemberId",
-    "contact_tags": "contactTags",
-    "user_email": "userEmail",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    directory_member_id: z.number().int(),
+    version: z.number().int(),
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    name: z.string(),
+    type: z.string(),
+    extensions: z.array(DirectoryExtension$inboundSchema).optional(),
+    contact_tags: z.record(z.array(z.string())).optional(),
+    user_email: z.string(),
+    comments: z.nullable(z.string()).optional(),
+    operation: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "directory_member_id": "directoryMemberId",
+      "contact_tags": "contactTags",
+      "user_email": "userEmail",
+    });
+  })
+);
 /** @internal */
 export type DirectoryMemberHistoryResponse$Outbound = {
   directory_member_id: number;
@@ -102,24 +106,26 @@ export const DirectoryMemberHistoryResponse$outboundSchema: z.ZodType<
   DirectoryMemberHistoryResponse$Outbound,
   z.ZodTypeDef,
   DirectoryMemberHistoryResponse
-> = z.object({
-  directoryMemberId: z.number().int(),
-  version: z.number().int(),
-  timestamp: z.date().transform(v => v.toISOString()),
-  name: z.string(),
-  type: z.string(),
-  extensions: z.array(DirectoryExtension$outboundSchema).optional(),
-  contactTags: z.record(z.array(z.string())).optional(),
-  userEmail: z.string(),
-  comments: z.nullable(z.string()).optional(),
-  operation: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    directoryMemberId: "directory_member_id",
-    contactTags: "contact_tags",
-    userEmail: "user_email",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    directoryMemberId: z.number().int(),
+    version: z.number().int(),
+    timestamp: z.date().transform(v => v.toISOString()),
+    name: z.string(),
+    type: z.string(),
+    extensions: z.array(DirectoryExtension$outboundSchema).optional(),
+    contactTags: z.record(z.array(z.string())).optional(),
+    userEmail: z.string(),
+    comments: z.nullable(z.string()).optional(),
+    operation: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      directoryMemberId: "directory_member_id",
+      contactTags: "contact_tags",
+      userEmail: "user_email",
+    });
+  })
+);
 
 export function directoryMemberHistoryResponseToJSON(
   directoryMemberHistoryResponse: DirectoryMemberHistoryResponse,

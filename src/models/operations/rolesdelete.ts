@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,16 +28,18 @@ export const RolesDeleteRequest$inboundSchema: z.ZodType<
   RolesDeleteRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  role_id: z.number().int(),
-  reason: z.string(),
-  new_role_id: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "role_id": "roleId",
-    "new_role_id": "newRoleId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role_id: z.number().int(),
+    reason: z.string(),
+    new_role_id: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "role_id": "roleId",
+      "new_role_id": "newRoleId",
+    });
+  })
+);
 /** @internal */
 export type RolesDeleteRequest$Outbound = {
   role_id: number;
@@ -50,16 +52,18 @@ export const RolesDeleteRequest$outboundSchema: z.ZodType<
   RolesDeleteRequest$Outbound,
   z.ZodTypeDef,
   RolesDeleteRequest
-> = z.object({
-  roleId: z.number().int(),
-  reason: z.string(),
-  newRoleId: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    roleId: "role_id",
-    newRoleId: "new_role_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    roleId: z.number().int(),
+    reason: z.string(),
+    newRoleId: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      roleId: "role_id",
+      newRoleId: "new_role_id",
+    });
+  })
+);
 
 export function rolesDeleteRequestToJSON(
   rolesDeleteRequest: RolesDeleteRequest,

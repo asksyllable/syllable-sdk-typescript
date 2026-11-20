@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -78,38 +78,42 @@ export const Conversation$inboundSchema: z.ZodType<
   Conversation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  conversation_id: z.string(),
-  agent_id: z.nullable(z.string()).optional(),
-  agent_name: z.nullable(z.string()).optional(),
-  agent_type: z.nullable(z.string()).optional(),
-  prompt_id: z.nullable(z.string()).optional(),
-  prompt_name: z.nullable(z.string()).optional(),
-  prompt_version: z.nullable(z.string()).optional(),
-  llm_provider: z.nullable(z.string()).optional(),
-  llm_model: z.nullable(z.string()).optional(),
-  llm_version: z.nullable(z.string()).optional(),
-  llm_temperature: z.nullable(z.number()).optional(),
-  llm_seed: z.nullable(z.number().int()).optional(),
-  is_legacy: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "conversation_id": "conversationId",
-    "agent_id": "agentId",
-    "agent_name": "agentName",
-    "agent_type": "agentType",
-    "prompt_id": "promptId",
-    "prompt_name": "promptName",
-    "prompt_version": "promptVersion",
-    "llm_provider": "llmProvider",
-    "llm_model": "llmModel",
-    "llm_version": "llmVersion",
-    "llm_temperature": "llmTemperature",
-    "llm_seed": "llmSeed",
-    "is_legacy": "isLegacy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    conversation_id: z.string(),
+    agent_id: z.nullable(z.string()).optional(),
+    agent_name: z.nullable(z.string()).optional(),
+    agent_type: z.nullable(z.string()).optional(),
+    prompt_id: z.nullable(z.string()).optional(),
+    prompt_name: z.nullable(z.string()).optional(),
+    prompt_version: z.nullable(z.string()).optional(),
+    llm_provider: z.nullable(z.string()).optional(),
+    llm_model: z.nullable(z.string()).optional(),
+    llm_version: z.nullable(z.string()).optional(),
+    llm_temperature: z.nullable(z.number()).optional(),
+    llm_seed: z.nullable(z.number().int()).optional(),
+    is_legacy: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "conversation_id": "conversationId",
+      "agent_id": "agentId",
+      "agent_name": "agentName",
+      "agent_type": "agentType",
+      "prompt_id": "promptId",
+      "prompt_name": "promptName",
+      "prompt_version": "promptVersion",
+      "llm_provider": "llmProvider",
+      "llm_model": "llmModel",
+      "llm_version": "llmVersion",
+      "llm_temperature": "llmTemperature",
+      "llm_seed": "llmSeed",
+      "is_legacy": "isLegacy",
+    });
+  })
+);
 /** @internal */
 export type Conversation$Outbound = {
   timestamp: string;
@@ -133,38 +137,40 @@ export const Conversation$outboundSchema: z.ZodType<
   Conversation$Outbound,
   z.ZodTypeDef,
   Conversation
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  conversationId: z.string(),
-  agentId: z.nullable(z.string()).optional(),
-  agentName: z.nullable(z.string()).optional(),
-  agentType: z.nullable(z.string()).optional(),
-  promptId: z.nullable(z.string()).optional(),
-  promptName: z.nullable(z.string()).optional(),
-  promptVersion: z.nullable(z.string()).optional(),
-  llmProvider: z.nullable(z.string()).optional(),
-  llmModel: z.nullable(z.string()).optional(),
-  llmVersion: z.nullable(z.string()).optional(),
-  llmTemperature: z.nullable(z.number()).optional(),
-  llmSeed: z.nullable(z.number().int()).optional(),
-  isLegacy: z.nullable(z.boolean()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    conversationId: "conversation_id",
-    agentId: "agent_id",
-    agentName: "agent_name",
-    agentType: "agent_type",
-    promptId: "prompt_id",
-    promptName: "prompt_name",
-    promptVersion: "prompt_version",
-    llmProvider: "llm_provider",
-    llmModel: "llm_model",
-    llmVersion: "llm_version",
-    llmTemperature: "llm_temperature",
-    llmSeed: "llm_seed",
-    isLegacy: "is_legacy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    conversationId: z.string(),
+    agentId: z.nullable(z.string()).optional(),
+    agentName: z.nullable(z.string()).optional(),
+    agentType: z.nullable(z.string()).optional(),
+    promptId: z.nullable(z.string()).optional(),
+    promptName: z.nullable(z.string()).optional(),
+    promptVersion: z.nullable(z.string()).optional(),
+    llmProvider: z.nullable(z.string()).optional(),
+    llmModel: z.nullable(z.string()).optional(),
+    llmVersion: z.nullable(z.string()).optional(),
+    llmTemperature: z.nullable(z.number()).optional(),
+    llmSeed: z.nullable(z.number().int()).optional(),
+    isLegacy: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      conversationId: "conversation_id",
+      agentId: "agent_id",
+      agentName: "agent_name",
+      agentType: "agent_type",
+      promptId: "prompt_id",
+      promptName: "prompt_name",
+      promptVersion: "prompt_version",
+      llmProvider: "llm_provider",
+      llmModel: "llm_model",
+      llmVersion: "llm_version",
+      llmTemperature: "llm_temperature",
+      llmSeed: "llm_seed",
+      isLegacy: "is_legacy",
+    });
+  })
+);
 
 export function conversationToJSON(conversation: Conversation): string {
   return JSON.stringify(Conversation$outboundSchema.parse(conversation));

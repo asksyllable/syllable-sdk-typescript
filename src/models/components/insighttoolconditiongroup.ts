@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -26,9 +26,8 @@ export type InsightToolConditionGroup = {
 };
 
 /** @internal */
-export const Match$inboundSchema: z.ZodNativeEnum<typeof Match> = z.nativeEnum(
-  Match,
-);
+export const Match$inboundSchema: z.ZodNativeEnum<typeof Match> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Match));
 /** @internal */
 export const Match$outboundSchema: z.ZodNativeEnum<typeof Match> =
   Match$inboundSchema;
@@ -38,10 +37,12 @@ export const InsightToolConditionGroup$inboundSchema: z.ZodType<
   InsightToolConditionGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  match: Match$inboundSchema.default("all"),
-  rules: z.array(InsightConditionRule$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    match: Match$inboundSchema.default("all"),
+    rules: z.array(InsightConditionRule$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type InsightToolConditionGroup$Outbound = {
   match: string;
@@ -53,10 +54,12 @@ export const InsightToolConditionGroup$outboundSchema: z.ZodType<
   InsightToolConditionGroup$Outbound,
   z.ZodTypeDef,
   InsightToolConditionGroup
-> = z.object({
-  match: Match$outboundSchema.default("all"),
-  rules: z.array(InsightConditionRule$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    match: Match$outboundSchema.default("all"),
+    rules: z.array(InsightConditionRule$outboundSchema).optional(),
+  })
+);
 
 export function insightToolConditionGroupToJSON(
   insightToolConditionGroup: InsightToolConditionGroup,

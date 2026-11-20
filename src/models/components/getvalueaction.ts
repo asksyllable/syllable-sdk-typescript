@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -114,13 +114,15 @@ export const GetValueActionValuefrom1$inboundSchema: z.ZodType<
   GetValueActionValuefrom1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CelExpression$inboundSchema,
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$inboundSchema,
+    JMESPathExpression$inboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 /** @internal */
 export type GetValueActionValuefrom1$Outbound =
   | CelExpression$Outbound
@@ -132,13 +134,15 @@ export const GetValueActionValuefrom1$outboundSchema: z.ZodType<
   GetValueActionValuefrom1$Outbound,
   z.ZodTypeDef,
   GetValueActionValuefrom1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function getValueActionValuefrom1ToJSON(
   getValueActionValuefrom1: GetValueActionValuefrom1,
@@ -162,17 +166,19 @@ export const GetValueActionValuefrom$inboundSchema: z.ZodType<
   GetValueActionValuefrom,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type GetValueActionValuefrom$Outbound =
   | CaseExpression$Outbound
@@ -186,17 +192,21 @@ export const GetValueActionValuefrom$outboundSchema: z.ZodType<
   GetValueActionValuefrom$Outbound,
   z.ZodTypeDef,
   GetValueActionValuefrom
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function getValueActionValuefromToJSON(
   getValueActionValuefrom: GetValueActionValuefrom,
@@ -220,13 +230,15 @@ export const GetValueActionIf1$inboundSchema: z.ZodType<
   GetValueActionIf1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CelExpression$inboundSchema,
-  JMESPathExpression$inboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$inboundSchema,
+    JMESPathExpression$inboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 /** @internal */
 export type GetValueActionIf1$Outbound =
   | CelExpression$Outbound
@@ -238,13 +250,15 @@ export const GetValueActionIf1$outboundSchema: z.ZodType<
   GetValueActionIf1$Outbound,
   z.ZodTypeDef,
   GetValueActionIf1
-> = z.union([
-  CelExpression$outboundSchema,
-  JMESPathExpression$outboundSchema.and(
-    z.object({ type: z.literal("jmespath") }),
-  ),
-  JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CelExpression$outboundSchema,
+    JMESPathExpression$outboundSchema.and(
+      z.object({ type: z.literal("jmespath") }),
+    ),
+    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
+  ])
+);
 
 export function getValueActionIf1ToJSON(
   getValueActionIf1: GetValueActionIf1,
@@ -268,17 +282,19 @@ export const GetValueActionIf$inboundSchema: z.ZodType<
   GetValueActionIf,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$inboundSchema,
-    JMESPathExpression$inboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$inboundSchema,
+    z.union([
+      CelExpression$inboundSchema,
+      JMESPathExpression$inboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$inboundSchema.and(z.object({ type: z.literal("jp") })),
+    ]),
+    z.string(),
+  ])
+);
 /** @internal */
 export type GetValueActionIf$Outbound =
   | CaseExpression$Outbound
@@ -292,17 +308,21 @@ export const GetValueActionIf$outboundSchema: z.ZodType<
   GetValueActionIf$Outbound,
   z.ZodTypeDef,
   GetValueActionIf
-> = z.union([
-  CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
   z.union([
-    CelExpression$outboundSchema,
-    JMESPathExpression$outboundSchema.and(
-      z.object({ type: z.literal("jmespath") }),
-    ),
-    JMESPathExpression$outboundSchema.and(z.object({ type: z.literal("jp") })),
-  ]),
-  z.string(),
-]);
+    CaseExpression$outboundSchema,
+    z.union([
+      CelExpression$outboundSchema,
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jmespath") }),
+      ),
+      JMESPathExpression$outboundSchema.and(
+        z.object({ type: z.literal("jp") }),
+      ),
+    ]),
+    z.string(),
+  ])
+);
 
 export function getValueActionIfToJSON(
   getValueActionIf: GetValueActionIf,
@@ -322,8 +342,8 @@ export function getValueActionIfFromJSON(
 }
 
 /** @internal */
-export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> = z
-  .nativeEnum(Action);
+export const Action$inboundSchema: z.ZodNativeEnum<typeof Action> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Action));
 /** @internal */
 export const Action$outboundSchema: z.ZodNativeEnum<typeof Action> =
   Action$inboundSchema;
@@ -333,42 +353,44 @@ export const GetValueAction$inboundSchema: z.ZodType<
   GetValueAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: z.nullable(z.any()).optional(),
-  valueFrom: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.nullable(z.any()).optional(),
+    valueFrom: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  if: z.nullable(
-    z.union([
-      CaseExpression$inboundSchema,
+    ).optional(),
+    if: z.nullable(
       z.union([
-        CelExpression$inboundSchema,
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$inboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$inboundSchema,
+        z.union([
+          CelExpression$inboundSchema,
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$inboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: Action$inboundSchema.default("get"),
-  inputs: z.nullable(z.array(z.string())).optional(),
-  overwrite: z.boolean().default(false),
-});
+    ).optional(),
+    action: Action$inboundSchema.default("get"),
+    inputs: z.nullable(z.array(z.string())).optional(),
+    overwrite: z.boolean().default(false),
+  })
+);
 /** @internal */
 export type GetValueAction$Outbound = {
   value?: any | null | undefined;
@@ -398,42 +420,44 @@ export const GetValueAction$outboundSchema: z.ZodType<
   GetValueAction$Outbound,
   z.ZodTypeDef,
   GetValueAction
-> = z.object({
-  value: z.nullable(z.any()).optional(),
-  valueFrom: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.nullable(z.any()).optional(),
+    valueFrom: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  if: z.nullable(
-    z.union([
-      CaseExpression$outboundSchema,
+    ).optional(),
+    if: z.nullable(
       z.union([
-        CelExpression$outboundSchema,
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jmespath") }),
-        ),
-        JMESPathExpression$outboundSchema.and(
-          z.object({ type: z.literal("jp") }),
-        ),
+        CaseExpression$outboundSchema,
+        z.union([
+          CelExpression$outboundSchema,
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jmespath") }),
+          ),
+          JMESPathExpression$outboundSchema.and(
+            z.object({ type: z.literal("jp") }),
+          ),
+        ]),
+        z.string(),
       ]),
-      z.string(),
-    ]),
-  ).optional(),
-  action: Action$outboundSchema.default("get"),
-  inputs: z.nullable(z.array(z.string())).optional(),
-  overwrite: z.boolean().default(false),
-});
+    ).optional(),
+    action: Action$outboundSchema.default("get"),
+    inputs: z.nullable(z.array(z.string())).optional(),
+    overwrite: z.boolean().default(false),
+  })
+);
 
 export function getValueActionToJSON(getValueAction: GetValueAction): string {
   return JSON.stringify(GetValueAction$outboundSchema.parse(getValueAction));

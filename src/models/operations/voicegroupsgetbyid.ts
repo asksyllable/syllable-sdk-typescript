@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const VoiceGroupsGetByIdRequest$inboundSchema: z.ZodType<
   VoiceGroupsGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  voice_group_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "voice_group_id": "voiceGroupId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    voice_group_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "voice_group_id": "voiceGroupId",
+    });
+  })
+);
 /** @internal */
 export type VoiceGroupsGetByIdRequest$Outbound = {
   voice_group_id: number;
@@ -34,13 +36,15 @@ export const VoiceGroupsGetByIdRequest$outboundSchema: z.ZodType<
   VoiceGroupsGetByIdRequest$Outbound,
   z.ZodTypeDef,
   VoiceGroupsGetByIdRequest
-> = z.object({
-  voiceGroupId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    voiceGroupId: "voice_group_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    voiceGroupId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      voiceGroupId: "voice_group_id",
+    });
+  })
+);
 
 export function voiceGroupsGetByIdRequestToJSON(
   voiceGroupsGetByIdRequest: VoiceGroupsGetByIdRequest,

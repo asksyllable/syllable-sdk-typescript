@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,15 +18,17 @@ export const GetSessionToolCallResultByIdRequest$inboundSchema: z.ZodType<
   GetSessionToolCallResultByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.number().int(),
-  tool_call_id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-    "tool_call_id": "toolCallId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.number().int(),
+    tool_call_id: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+      "tool_call_id": "toolCallId",
+    });
+  })
+);
 /** @internal */
 export type GetSessionToolCallResultByIdRequest$Outbound = {
   session_id: number;
@@ -38,15 +40,17 @@ export const GetSessionToolCallResultByIdRequest$outboundSchema: z.ZodType<
   GetSessionToolCallResultByIdRequest$Outbound,
   z.ZodTypeDef,
   GetSessionToolCallResultByIdRequest
-> = z.object({
-  sessionId: z.number().int(),
-  toolCallId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    toolCallId: "tool_call_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.number().int(),
+    toolCallId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      toolCallId: "tool_call_id",
+    });
+  })
+);
 
 export function getSessionToolCallResultByIdRequestToJSON(
   getSessionToolCallResultByIdRequest: GetSessionToolCallResultByIdRequest,

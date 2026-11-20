@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
@@ -43,9 +43,8 @@ export type CampaignExcludedDate = {
 };
 
 /** @internal */
-export const Rule$inboundSchema: z.ZodNativeEnum<typeof Rule> = z.nativeEnum(
-  Rule,
-);
+export const Rule$inboundSchema: z.ZodNativeEnum<typeof Rule> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Rule));
 /** @internal */
 export const Rule$outboundSchema: z.ZodNativeEnum<typeof Rule> =
   Rule$inboundSchema;
@@ -55,11 +54,13 @@ export const CampaignExcludedDate$inboundSchema: z.ZodType<
   CampaignExcludedDate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  date: z.string().transform(v => new RFCDate(v)),
-  rule: Rule$inboundSchema,
-  holidays: z.array(CampaignExcludedDateHoliday$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    date: z.string().transform(v => new RFCDate(v)),
+    rule: Rule$inboundSchema,
+    holidays: z.array(CampaignExcludedDateHoliday$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CampaignExcludedDate$Outbound = {
   date: string;
@@ -72,11 +73,13 @@ export const CampaignExcludedDate$outboundSchema: z.ZodType<
   CampaignExcludedDate$Outbound,
   z.ZodTypeDef,
   CampaignExcludedDate
-> = z.object({
-  date: z.instanceof(RFCDate).transform(v => v.toString()),
-  rule: Rule$outboundSchema,
-  holidays: z.array(CampaignExcludedDateHoliday$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    date: z.instanceof(RFCDate).transform(v => v.toString()),
+    rule: Rule$outboundSchema,
+    holidays: z.array(CampaignExcludedDateHoliday$outboundSchema).optional(),
+  })
+);
 
 export function campaignExcludedDateToJSON(
   campaignExcludedDate: CampaignExcludedDate,

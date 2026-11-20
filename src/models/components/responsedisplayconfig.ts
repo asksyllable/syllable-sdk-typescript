@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,16 +32,18 @@ export const ResponseDisplayConfig$inboundSchema: z.ZodType<
   ResponseDisplayConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: z.literal(1).default(1),
-  type: z.literal("card-list"),
-  items_path: z.string(),
-  mapping: DisplayCardMapping$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "items_path": "itemsPath",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.literal(1).default(1),
+    type: z.literal("card-list"),
+    items_path: z.string(),
+    mapping: DisplayCardMapping$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "items_path": "itemsPath",
+    });
+  })
+);
 /** @internal */
 export type ResponseDisplayConfig$Outbound = {
   version: 1;
@@ -55,16 +57,18 @@ export const ResponseDisplayConfig$outboundSchema: z.ZodType<
   ResponseDisplayConfig$Outbound,
   z.ZodTypeDef,
   ResponseDisplayConfig
-> = z.object({
-  version: z.literal(1).default(1 as const),
-  type: z.literal("card-list"),
-  itemsPath: z.string(),
-  mapping: DisplayCardMapping$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    itemsPath: "items_path",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.literal(1).default(1 as const),
+    type: z.literal("card-list"),
+    itemsPath: z.string(),
+    mapping: DisplayCardMapping$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      itemsPath: "items_path",
+    });
+  })
+);
 
 export function responseDisplayConfigToJSON(
   responseDisplayConfig: ResponseDisplayConfig,

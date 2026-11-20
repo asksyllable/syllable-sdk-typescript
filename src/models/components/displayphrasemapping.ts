@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,14 +38,16 @@ export type DisplayPhraseMapping = {
 };
 
 /** @internal */
-export const Params$inboundSchema: z.ZodType<Params, z.ZodTypeDef, unknown> = z
-  .union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]);
+export const Params$inboundSchema: z.ZodType<Params, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Params$Outbound =
   | string
@@ -59,13 +61,15 @@ export const Params$outboundSchema: z.ZodType<
   Params$Outbound,
   z.ZodTypeDef,
   Params
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function paramsToJSON(params: Params): string {
   return JSON.stringify(Params$outboundSchema.parse(params));
@@ -81,14 +85,16 @@ export function paramsFromJSON(
 }
 
 /** @internal */
-export const Prose$inboundSchema: z.ZodType<Prose, z.ZodTypeDef, unknown> = z
-  .union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]);
+export const Prose$inboundSchema: z.ZodType<Prose, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Prose$Outbound =
   | string
@@ -102,13 +108,15 @@ export const Prose$outboundSchema: z.ZodType<
   Prose$Outbound,
   z.ZodTypeDef,
   Prose
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function proseToJSON(prose: Prose): string {
   return JSON.stringify(Prose$outboundSchema.parse(prose));
@@ -128,28 +136,30 @@ export const DisplayPhraseMapping$inboundSchema: z.ZodType<
   DisplayPhraseMapping,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  template: z.string(),
-  params: z.record(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  prose: z.record(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  dates: z.record(DisplayDateMapping$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    template: z.string(),
+    params: z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    prose: z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    dates: z.record(DisplayDateMapping$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type DisplayPhraseMapping$Outbound = {
   template: string;
@@ -177,28 +187,30 @@ export const DisplayPhraseMapping$outboundSchema: z.ZodType<
   DisplayPhraseMapping$Outbound,
   z.ZodTypeDef,
   DisplayPhraseMapping
-> = z.object({
-  template: z.string(),
-  params: z.record(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  prose: z.record(
-    z.union([
-      z.string(),
-      z.number().int(),
-      z.number(),
-      z.boolean(),
-      DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  dates: z.record(DisplayDateMapping$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    template: z.string(),
+    params: z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    prose: z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    dates: z.record(DisplayDateMapping$outboundSchema).optional(),
+  })
+);
 
 export function displayPhraseMappingToJSON(
   displayPhraseMapping: DisplayPhraseMapping,

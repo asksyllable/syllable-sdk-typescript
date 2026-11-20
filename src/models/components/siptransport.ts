@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -20,7 +21,7 @@ export type SipTransport = ClosedEnum<typeof SipTransport>;
 
 /** @internal */
 export const SipTransport$inboundSchema: z.ZodNativeEnum<typeof SipTransport> =
-  z.nativeEnum(SipTransport);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SipTransport));
 /** @internal */
 export const SipTransport$outboundSchema: z.ZodNativeEnum<typeof SipTransport> =
   SipTransport$inboundSchema;

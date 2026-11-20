@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -51,8 +51,8 @@ export type LoadToolFromFileTask = {
 };
 
 /** @internal */
-export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-  .union([z.string(), z.array(z.string())]);
+export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.array(z.string())]));
 /** @internal */
 export type FileT$Outbound = string | Array<string>;
 
@@ -61,7 +61,9 @@ export const FileT$outboundSchema: z.ZodType<
   FileT$Outbound,
   z.ZodTypeDef,
   FileT
-> = z.union([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.string(), z.array(z.string())])
+);
 
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
@@ -81,16 +83,18 @@ export const LoadToolFromFileTask$inboundSchema: z.ZodType<
   LoadToolFromFileTask,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
-  type: z.literal("import"),
-  version: z.literal("v1alpha").default("v1alpha"),
-  file: z.union([z.string(), z.array(z.string())]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$inboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$inboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$inboundSchema).optional(),
+    type: z.literal("import"),
+    version: z.literal("v1alpha").default("v1alpha"),
+    file: z.union([z.string(), z.array(z.string())]),
+  })
+);
 /** @internal */
 export type LoadToolFromFileTask$Outbound = {
   id?: string | null | undefined;
@@ -108,16 +112,18 @@ export const LoadToolFromFileTask$outboundSchema: z.ZodType<
   LoadToolFromFileTask$Outbound,
   z.ZodTypeDef,
   LoadToolFromFileTask
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  config: z.nullable(z.record(z.any())).optional(),
-  variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
-  metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
-  tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
-  type: z.literal("import"),
-  version: z.literal("v1alpha").default("v1alpha" as const),
-  file: z.union([z.string(), z.array(z.string())]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()).optional(),
+    config: z.nullable(z.record(z.any())).optional(),
+    variables: z.nullable(z.array(Variable$outboundSchema)).optional(),
+    metadata: z.nullable(ContextTaskMetadata$outboundSchema).optional(),
+    tool: z.nullable(ContextToolInfo$outboundSchema).optional(),
+    type: z.literal("import"),
+    version: z.literal("v1alpha").default("v1alpha" as const),
+    file: z.union([z.string(), z.array(z.string())]),
+  })
+);
 
 export function loadToolFromFileTaskToJSON(
   loadToolFromFileTask: LoadToolFromFileTask,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -59,22 +59,24 @@ export const ExperimentUpdateRequest$inboundSchema: z.ZodType<
   ExperimentUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  scheduled_start_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  scheduled_end_time: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  variants: z.array(DaoExperimentVariantWrite$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "scheduled_start_time": "scheduledStartTime",
-    "scheduled_end_time": "scheduledEndTime",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    scheduled_start_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    scheduled_end_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    variants: z.array(DaoExperimentVariantWrite$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "scheduled_start_time": "scheduledStartTime",
+      "scheduled_end_time": "scheduledEndTime",
+    });
+  })
+);
 /** @internal */
 export type ExperimentUpdateRequest$Outbound = {
   name: string;
@@ -89,20 +91,22 @@ export const ExperimentUpdateRequest$outboundSchema: z.ZodType<
   ExperimentUpdateRequest$Outbound,
   z.ZodTypeDef,
   ExperimentUpdateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  variants: z.array(DaoExperimentVariantWrite$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    scheduledStartTime: "scheduled_start_time",
-    scheduledEndTime: "scheduled_end_time",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    scheduledStartTime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    scheduledEndTime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    variants: z.array(DaoExperimentVariantWrite$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      scheduledStartTime: "scheduled_start_time",
+      scheduledEndTime: "scheduled_end_time",
+    });
+  })
+);
 
 export function experimentUpdateRequestToJSON(
   experimentUpdateRequest: ExperimentUpdateRequest,

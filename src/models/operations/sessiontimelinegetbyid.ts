@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const SessionTimelineGetByIdRequest$inboundSchema: z.ZodType<
   SessionTimelineGetByIdRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+    });
+  })
+);
 /** @internal */
 export type SessionTimelineGetByIdRequest$Outbound = {
   session_id: string;
@@ -34,13 +36,15 @@ export const SessionTimelineGetByIdRequest$outboundSchema: z.ZodType<
   SessionTimelineGetByIdRequest$Outbound,
   z.ZodTypeDef,
   SessionTimelineGetByIdRequest
-> = z.object({
-  sessionId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+    });
+  })
+);
 
 export function sessionTimelineGetByIdRequestToJSON(
   sessionTimelineGetByIdRequest: SessionTimelineGetByIdRequest,

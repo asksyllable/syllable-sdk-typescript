@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,14 +33,16 @@ export const InsightWorkflowActivate$inboundSchema: z.ZodType<
   InsightWorkflowActivate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  is_acknowledged: z.boolean(),
-  estimate: InsightWorkflowEstimate$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "is_acknowledged": "isAcknowledged",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    is_acknowledged: z.boolean(),
+    estimate: InsightWorkflowEstimate$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "is_acknowledged": "isAcknowledged",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowActivate$Outbound = {
   is_acknowledged: boolean;
@@ -52,14 +54,16 @@ export const InsightWorkflowActivate$outboundSchema: z.ZodType<
   InsightWorkflowActivate$Outbound,
   z.ZodTypeDef,
   InsightWorkflowActivate
-> = z.object({
-  isAcknowledged: z.boolean(),
-  estimate: InsightWorkflowEstimate$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    isAcknowledged: "is_acknowledged",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isAcknowledged: z.boolean(),
+    estimate: InsightWorkflowEstimate$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      isAcknowledged: "is_acknowledged",
+    });
+  })
+);
 
 export function insightWorkflowActivateToJSON(
   insightWorkflowActivate: InsightWorkflowActivate,

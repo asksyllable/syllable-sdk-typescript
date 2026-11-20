@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -61,20 +61,22 @@ export const PromptLlmConfig$inboundSchema: z.ZodType<
   PromptLlmConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  provider: PromptLlmProvider$inboundSchema.optional(),
-  model: z.string().default("gpt-4o"),
-  version: z.nullable(z.string()).optional(),
-  api_version: z.nullable(z.string()).optional(),
-  temperature: z.nullable(z.number()).optional(),
-  reasoning_effort: z.nullable(ReasoningEffort$inboundSchema).optional(),
-  seed: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "api_version": "apiVersion",
-    "reasoning_effort": "reasoningEffort",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: PromptLlmProvider$inboundSchema.optional(),
+    model: z.string().default("gpt-4o"),
+    version: z.nullable(z.string()).optional(),
+    api_version: z.nullable(z.string()).optional(),
+    temperature: z.nullable(z.number()).optional(),
+    reasoning_effort: z.nullable(ReasoningEffort$inboundSchema).optional(),
+    seed: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "api_version": "apiVersion",
+      "reasoning_effort": "reasoningEffort",
+    });
+  })
+);
 /** @internal */
 export type PromptLlmConfig$Outbound = {
   provider?: string | undefined;
@@ -91,20 +93,22 @@ export const PromptLlmConfig$outboundSchema: z.ZodType<
   PromptLlmConfig$Outbound,
   z.ZodTypeDef,
   PromptLlmConfig
-> = z.object({
-  provider: PromptLlmProvider$outboundSchema.optional(),
-  model: z.string().default("gpt-4o"),
-  version: z.nullable(z.string()).optional(),
-  apiVersion: z.nullable(z.string()).optional(),
-  temperature: z.nullable(z.number()).optional(),
-  reasoningEffort: z.nullable(ReasoningEffort$outboundSchema).optional(),
-  seed: z.nullable(z.number().int()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    apiVersion: "api_version",
-    reasoningEffort: "reasoning_effort",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: PromptLlmProvider$outboundSchema.optional(),
+    model: z.string().default("gpt-4o"),
+    version: z.nullable(z.string()).optional(),
+    apiVersion: z.nullable(z.string()).optional(),
+    temperature: z.nullable(z.number()).optional(),
+    reasoningEffort: z.nullable(ReasoningEffort$outboundSchema).optional(),
+    seed: z.nullable(z.number().int()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      apiVersion: "api_version",
+      reasoningEffort: "reasoning_effort",
+    });
+  })
+);
 
 export function promptLlmConfigToJSON(
   promptLlmConfig: PromptLlmConfig,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -42,14 +42,16 @@ export type DisplayDateMapping = {
 };
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]);
+export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Value$Outbound =
   | string
@@ -63,13 +65,15 @@ export const Value$outboundSchema: z.ZodType<
   Value$Outbound,
   z.ZodTypeDef,
   Value
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
@@ -85,17 +89,15 @@ export function valueFromJSON(
 }
 
 /** @internal */
-export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
-  Kind,
-);
+export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Kind));
 /** @internal */
 export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
   Kind$inboundSchema;
 
 /** @internal */
-export const Style$inboundSchema: z.ZodNativeEnum<typeof Style> = z.nativeEnum(
-  Style,
-);
+export const Style$inboundSchema: z.ZodNativeEnum<typeof Style> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Style));
 /** @internal */
 export const Style$outboundSchema: z.ZodNativeEnum<typeof Style> =
   Style$inboundSchema;
@@ -105,18 +107,20 @@ export const DisplayDateMapping$inboundSchema: z.ZodType<
   DisplayDateMapping,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]),
-  skeleton: z.nullable(z.string()).optional(),
-  kind: z.nullable(Kind$inboundSchema).optional(),
-  style: z.nullable(Style$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$inboundSchema,
+    ]),
+    skeleton: z.nullable(z.string()).optional(),
+    kind: z.nullable(Kind$inboundSchema).optional(),
+    style: z.nullable(Style$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type DisplayDateMapping$Outbound = {
   value: string | number | number | boolean | DisplayValueSource$Outbound;
@@ -130,18 +134,20 @@ export const DisplayDateMapping$outboundSchema: z.ZodType<
   DisplayDateMapping$Outbound,
   z.ZodTypeDef,
   DisplayDateMapping
-> = z.object({
-  value: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$outboundSchema,
-  ]),
-  skeleton: z.nullable(z.string()).optional(),
-  kind: z.nullable(Kind$outboundSchema).optional(),
-  style: z.nullable(Style$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$outboundSchema,
+    ]),
+    skeleton: z.nullable(z.string()).optional(),
+    kind: z.nullable(Kind$outboundSchema).optional(),
+    style: z.nullable(Style$outboundSchema).optional(),
+  })
+);
 
 export function displayDateMappingToJSON(
   displayDateMapping: DisplayDateMapping,

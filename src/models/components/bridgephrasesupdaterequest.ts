@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -55,19 +55,21 @@ export const BridgePhrasesUpdateRequest$inboundSchema: z.ZodType<
   BridgePhrasesUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  config: BridgePhrasesConfigPayload$inboundSchema.optional(),
-  is_default: z.nullable(z.boolean()).optional(),
-  id: z.number().int(),
-  edit_comments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "is_default": "isDefault",
-    "edit_comments": "editComments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    config: BridgePhrasesConfigPayload$inboundSchema.optional(),
+    is_default: z.nullable(z.boolean()).optional(),
+    id: z.number().int(),
+    edit_comments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "is_default": "isDefault",
+      "edit_comments": "editComments",
+    });
+  })
+);
 /** @internal */
 export type BridgePhrasesUpdateRequest$Outbound = {
   name: string;
@@ -83,19 +85,21 @@ export const BridgePhrasesUpdateRequest$outboundSchema: z.ZodType<
   BridgePhrasesUpdateRequest$Outbound,
   z.ZodTypeDef,
   BridgePhrasesUpdateRequest
-> = z.object({
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  config: BridgePhrasesConfigPayload$outboundSchema.optional(),
-  isDefault: z.nullable(z.boolean()).optional(),
-  id: z.number().int(),
-  editComments: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    isDefault: "is_default",
-    editComments: "edit_comments",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    config: BridgePhrasesConfigPayload$outboundSchema.optional(),
+    isDefault: z.nullable(z.boolean()).optional(),
+    id: z.number().int(),
+    editComments: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      isDefault: "is_default",
+      editComments: "edit_comments",
+    });
+  })
+);
 
 export function bridgePhrasesUpdateRequestToJSON(
   bridgePhrasesUpdateRequest: BridgePhrasesUpdateRequest,

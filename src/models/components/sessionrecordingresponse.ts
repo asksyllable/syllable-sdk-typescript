@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,14 +27,16 @@ export const SessionRecordingResponse$inboundSchema: z.ZodType<
   SessionRecordingResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session_id: z.nullable(z.string()).optional(),
-  recordings: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "session_id": "sessionId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session_id: z.nullable(z.string()).optional(),
+    recordings: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "session_id": "sessionId",
+    });
+  })
+);
 /** @internal */
 export type SessionRecordingResponse$Outbound = {
   session_id?: string | null | undefined;
@@ -46,14 +48,16 @@ export const SessionRecordingResponse$outboundSchema: z.ZodType<
   SessionRecordingResponse$Outbound,
   z.ZodTypeDef,
   SessionRecordingResponse
-> = z.object({
-  sessionId: z.nullable(z.string()).optional(),
-  recordings: z.nullable(z.array(z.string())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.nullable(z.string()).optional(),
+    recordings: z.nullable(z.array(z.string())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+    });
+  })
+);
 
 export function sessionRecordingResponseToJSON(
   sessionRecordingResponse: SessionRecordingResponse,

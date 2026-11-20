@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,15 +19,17 @@ export const OutboundCampaignUpdateRequest$inboundSchema: z.ZodType<
   OutboundCampaignUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  campaign_id: z.number().int(),
-  OutboundCampaignInput: components.OutboundCampaignInput$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "campaign_id": "campaignId",
-    "OutboundCampaignInput": "outboundCampaignInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    campaign_id: z.number().int(),
+    OutboundCampaignInput: components.OutboundCampaignInput$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "campaign_id": "campaignId",
+      "OutboundCampaignInput": "outboundCampaignInput",
+    });
+  })
+);
 /** @internal */
 export type OutboundCampaignUpdateRequest$Outbound = {
   campaign_id: number;
@@ -39,15 +41,17 @@ export const OutboundCampaignUpdateRequest$outboundSchema: z.ZodType<
   OutboundCampaignUpdateRequest$Outbound,
   z.ZodTypeDef,
   OutboundCampaignUpdateRequest
-> = z.object({
-  campaignId: z.number().int(),
-  outboundCampaignInput: components.OutboundCampaignInput$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    campaignId: "campaign_id",
-    outboundCampaignInput: "OutboundCampaignInput",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    campaignId: z.number().int(),
+    outboundCampaignInput: components.OutboundCampaignInput$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      campaignId: "campaign_id",
+      outboundCampaignInput: "OutboundCampaignInput",
+    });
+  })
+);
 
 export function outboundCampaignUpdateRequestToJSON(
   outboundCampaignUpdateRequest: OutboundCampaignUpdateRequest,

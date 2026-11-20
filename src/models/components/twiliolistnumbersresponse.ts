@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,13 +29,15 @@ export const TwilioListNumbersResponse$inboundSchema: z.ZodType<
   TwilioListNumbersResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  phone_numbers: z.array(TwilioPhoneNumber$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "phone_numbers": "phoneNumbers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone_numbers: z.array(TwilioPhoneNumber$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "phone_numbers": "phoneNumbers",
+    });
+  })
+);
 /** @internal */
 export type TwilioListNumbersResponse$Outbound = {
   phone_numbers: Array<TwilioPhoneNumber$Outbound>;
@@ -46,13 +48,15 @@ export const TwilioListNumbersResponse$outboundSchema: z.ZodType<
   TwilioListNumbersResponse$Outbound,
   z.ZodTypeDef,
   TwilioListNumbersResponse
-> = z.object({
-  phoneNumbers: z.array(TwilioPhoneNumber$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    phoneNumbers: "phone_numbers",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phoneNumbers: z.array(TwilioPhoneNumber$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      phoneNumbers: "phone_numbers",
+    });
+  })
+);
 
 export function twilioListNumbersResponseToJSON(
   twilioListNumbersResponse: TwilioListNumbersResponse,

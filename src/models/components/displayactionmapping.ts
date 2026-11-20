@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -67,21 +67,23 @@ export type DisplayActionMapping = {
 /** @internal */
 export const DisplayActionMappingType$inboundSchema: z.ZodNativeEnum<
   typeof DisplayActionMappingType
-> = z.nativeEnum(DisplayActionMappingType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DisplayActionMappingType));
 /** @internal */
 export const DisplayActionMappingType$outboundSchema: z.ZodNativeEnum<
   typeof DisplayActionMappingType
 > = DisplayActionMappingType$inboundSchema;
 
 /** @internal */
-export const Text$inboundSchema: z.ZodType<Text, z.ZodTypeDef, unknown> = z
-  .union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]);
+export const Text$inboundSchema: z.ZodType<Text, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Text$Outbound =
   | string
@@ -92,13 +94,15 @@ export type Text$Outbound =
 
 /** @internal */
 export const Text$outboundSchema: z.ZodType<Text$Outbound, z.ZodTypeDef, Text> =
-  z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$outboundSchema,
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$outboundSchema,
+    ])
+  );
 
 export function textToJSON(text: Text): string {
   return JSON.stringify(Text$outboundSchema.parse(text));
@@ -114,22 +118,23 @@ export function textFromJSON(
 }
 
 /** @internal */
-export const Icon$inboundSchema: z.ZodNativeEnum<typeof Icon> = z.nativeEnum(
-  Icon,
-);
+export const Icon$inboundSchema: z.ZodNativeEnum<typeof Icon> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Icon));
 /** @internal */
 export const Icon$outboundSchema: z.ZodNativeEnum<typeof Icon> =
   Icon$inboundSchema;
 
 /** @internal */
-export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
-  .union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]);
+export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Link$Outbound =
   | string
@@ -140,13 +145,15 @@ export type Link$Outbound =
 
 /** @internal */
 export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
-  z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$outboundSchema,
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$outboundSchema,
+    ])
+  );
 
 export function linkToJSON(link: Link): string {
   return JSON.stringify(Link$outboundSchema.parse(link));
@@ -166,13 +173,15 @@ export const Actionid$inboundSchema: z.ZodType<
   Actionid,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$inboundSchema,
+  ])
+);
 /** @internal */
 export type Actionid$Outbound =
   | string
@@ -186,13 +195,15 @@ export const Actionid$outboundSchema: z.ZodType<
   Actionid$Outbound,
   z.ZodTypeDef,
   Actionid
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function actionidToJSON(actionid: Actionid): string {
   return JSON.stringify(Actionid$outboundSchema.parse(actionid));
@@ -209,13 +220,15 @@ export function actionidFromJSON(
 
 /** @internal */
 export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
-  z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      DisplayValueSource$inboundSchema,
+    ])
+  );
 /** @internal */
 export type Message$Outbound =
   | string
@@ -229,13 +242,15 @@ export const Message$outboundSchema: z.ZodType<
   Message$Outbound,
   z.ZodTypeDef,
   Message
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  DisplayValueSource$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    DisplayValueSource$outboundSchema,
+  ])
+);
 
 export function messageToJSON(message: Message): string {
   return JSON.stringify(Message$outboundSchema.parse(message));
@@ -255,42 +270,44 @@ export const DisplayActionMapping$inboundSchema: z.ZodType<
   DisplayActionMapping,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: DisplayActionMappingType$inboundSchema,
-  text: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]).optional(),
-  icon: Icon$inboundSchema.default("arrow"),
-  link: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$inboundSchema,
-  ]).optional(),
-  actionId: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: DisplayActionMappingType$inboundSchema,
+    text: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-  message: z.nullable(
-    z.union([
+    ]).optional(),
+    icon: Icon$inboundSchema.default("arrow"),
+    link: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$inboundSchema,
-    ]),
-  ).optional(),
-});
+    ]).optional(),
+    actionId: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+    message: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$inboundSchema,
+      ]),
+    ).optional(),
+  })
+);
 /** @internal */
 export type DisplayActionMapping$Outbound = {
   type: string;
@@ -332,42 +349,44 @@ export const DisplayActionMapping$outboundSchema: z.ZodType<
   DisplayActionMapping$Outbound,
   z.ZodTypeDef,
   DisplayActionMapping
-> = z.object({
-  type: DisplayActionMappingType$outboundSchema,
-  text: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$outboundSchema,
-  ]).optional(),
-  icon: Icon$outboundSchema.default("arrow"),
-  link: z.union([
-    z.string(),
-    z.number().int(),
-    z.number(),
-    z.boolean(),
-    DisplayValueSource$outboundSchema,
-  ]).optional(),
-  actionId: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: DisplayActionMappingType$outboundSchema,
+    text: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-  message: z.nullable(
-    z.union([
+    ]).optional(),
+    icon: Icon$outboundSchema.default("arrow"),
+    link: z.union([
       z.string(),
       z.number().int(),
       z.number(),
       z.boolean(),
       DisplayValueSource$outboundSchema,
-    ]),
-  ).optional(),
-});
+    ]).optional(),
+    actionId: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+    message: z.nullable(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        DisplayValueSource$outboundSchema,
+      ]),
+    ).optional(),
+  })
+);
 
 export function displayActionMappingToJSON(
   displayActionMapping: DisplayActionMapping,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -37,7 +37,7 @@ export type InputParameter = {
 /** @internal */
 export const InputParameterType$inboundSchema: z.ZodNativeEnum<
   typeof InputParameterType
-> = z.nativeEnum(InputParameterType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InputParameterType));
 /** @internal */
 export const InputParameterType$outboundSchema: z.ZodNativeEnum<
   typeof InputParameterType
@@ -48,17 +48,19 @@ export const InputParameter$inboundSchema: z.ZodType<
   InputParameter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  type: z.nullable(InputParameterType$inboundSchema).optional(),
-  description: z.nullable(z.string()).optional(),
-  title: z.nullable(z.string()).optional(),
-  format: z.nullable(z.string()).optional(),
-  pattern: z.nullable(z.string()).optional(),
-  enum: z.nullable(z.array(z.string())).optional(),
-  examples: z.nullable(z.array(z.any())).optional(),
-  required: z.boolean().default(true),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: z.nullable(InputParameterType$inboundSchema).optional(),
+    description: z.nullable(z.string()).optional(),
+    title: z.nullable(z.string()).optional(),
+    format: z.nullable(z.string()).optional(),
+    pattern: z.nullable(z.string()).optional(),
+    enum: z.nullable(z.array(z.string())).optional(),
+    examples: z.nullable(z.array(z.any())).optional(),
+    required: z.boolean().default(true),
+  })
+);
 /** @internal */
 export type InputParameter$Outbound = {
   name: string;
@@ -77,17 +79,19 @@ export const InputParameter$outboundSchema: z.ZodType<
   InputParameter$Outbound,
   z.ZodTypeDef,
   InputParameter
-> = z.object({
-  name: z.string(),
-  type: z.nullable(InputParameterType$outboundSchema).optional(),
-  description: z.nullable(z.string()).optional(),
-  title: z.nullable(z.string()).optional(),
-  format: z.nullable(z.string()).optional(),
-  pattern: z.nullable(z.string()).optional(),
-  enum: z.nullable(z.array(z.string())).optional(),
-  examples: z.nullable(z.array(z.any())).optional(),
-  required: z.boolean().default(true),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: z.nullable(InputParameterType$outboundSchema).optional(),
+    description: z.nullable(z.string()).optional(),
+    title: z.nullable(z.string()).optional(),
+    format: z.nullable(z.string()).optional(),
+    pattern: z.nullable(z.string()).optional(),
+    enum: z.nullable(z.array(z.string())).optional(),
+    examples: z.nullable(z.array(z.any())).optional(),
+    required: z.boolean().default(true),
+  })
+);
 
 export function inputParameterToJSON(inputParameter: InputParameter): string {
   return JSON.stringify(InputParameter$outboundSchema.parse(inputParameter));

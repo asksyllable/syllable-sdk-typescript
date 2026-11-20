@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,14 +32,16 @@ export const OrganizationSipIpRangeUpdate$inboundSchema: z.ZodType<
   OrganizationSipIpRangeUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.nullable(OrganizationSipIpRangeType$inboundSchema).optional(),
-  ip_range: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "ip_range": "ipRange",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.nullable(OrganizationSipIpRangeType$inboundSchema).optional(),
+    ip_range: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "ip_range": "ipRange",
+    });
+  })
+);
 /** @internal */
 export type OrganizationSipIpRangeUpdate$Outbound = {
   type?: string | null | undefined;
@@ -51,14 +53,16 @@ export const OrganizationSipIpRangeUpdate$outboundSchema: z.ZodType<
   OrganizationSipIpRangeUpdate$Outbound,
   z.ZodTypeDef,
   OrganizationSipIpRangeUpdate
-> = z.object({
-  type: z.nullable(OrganizationSipIpRangeType$outboundSchema).optional(),
-  ipRange: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ipRange: "ip_range",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.nullable(OrganizationSipIpRangeType$outboundSchema).optional(),
+    ipRange: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      ipRange: "ip_range",
+    });
+  })
+);
 
 export function organizationSipIpRangeUpdateToJSON(
   organizationSipIpRangeUpdate: OrganizationSipIpRangeUpdate,

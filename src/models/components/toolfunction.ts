@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,11 +35,13 @@ export const ToolFunction$inboundSchema: z.ZodType<
   ToolFunction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  parameters: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    parameters: z.any().optional(),
+  })
+);
 /** @internal */
 export type ToolFunction$Outbound = {
   name: string;
@@ -52,11 +54,13 @@ export const ToolFunction$outboundSchema: z.ZodType<
   ToolFunction$Outbound,
   z.ZodTypeDef,
   ToolFunction
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  parameters: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    parameters: z.any().optional(),
+  })
+);
 
 export function toolFunctionToJSON(toolFunction: ToolFunction): string {
   return JSON.stringify(ToolFunction$outboundSchema.parse(toolFunction));

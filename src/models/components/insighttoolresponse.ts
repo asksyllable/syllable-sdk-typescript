@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -75,33 +75,37 @@ export const InsightToolResponse$inboundSchema: z.ZodType<
   InsightToolResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  version: z.number().int(),
-  tool_arguments: z.any().optional(),
-  insight_tool_definition_id: z.number().int(),
-  id: z.number().int(),
-  insight_tool_definition: z.nullable(InsightToolDefinition$inboundSchema)
-    .optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  last_updated_by: z.string(),
-  validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_arguments": "toolArguments",
-    "insight_tool_definition_id": "insightToolDefinitionId",
-    "insight_tool_definition": "insightToolDefinition",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "validation_issues": "validationIssues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    version: z.number().int(),
+    tool_arguments: z.any().optional(),
+    insight_tool_definition_id: z.number().int(),
+    id: z.number().int(),
+    insight_tool_definition: z.nullable(InsightToolDefinition$inboundSchema)
+      .optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    last_updated_by: z.string(),
+    validation_issues: z.nullable(z.array(ValidationIssue$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "tool_arguments": "toolArguments",
+      "insight_tool_definition_id": "insightToolDefinitionId",
+      "insight_tool_definition": "insightToolDefinition",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "validation_issues": "validationIssues",
+    });
+  })
+);
 /** @internal */
 export type InsightToolResponse$Outbound = {
   name: string;
@@ -122,31 +126,33 @@ export const InsightToolResponse$outboundSchema: z.ZodType<
   InsightToolResponse$Outbound,
   z.ZodTypeDef,
   InsightToolResponse
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  version: z.number().int(),
-  toolArguments: z.any().optional(),
-  insightToolDefinitionId: z.number().int(),
-  id: z.number().int(),
-  insightToolDefinition: z.nullable(InsightToolDefinition$outboundSchema)
-    .optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
-  lastUpdatedBy: z.string(),
-  validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    toolArguments: "tool_arguments",
-    insightToolDefinitionId: "insight_tool_definition_id",
-    insightToolDefinition: "insight_tool_definition",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-    validationIssues: "validation_issues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    version: z.number().int(),
+    toolArguments: z.any().optional(),
+    insightToolDefinitionId: z.number().int(),
+    id: z.number().int(),
+    insightToolDefinition: z.nullable(InsightToolDefinition$outboundSchema)
+      .optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()).optional(),
+    lastUpdatedBy: z.string(),
+    validationIssues: z.nullable(z.array(ValidationIssue$outboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      toolArguments: "tool_arguments",
+      insightToolDefinitionId: "insight_tool_definition_id",
+      insightToolDefinition: "insight_tool_definition",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+      validationIssues: "validation_issues",
+    });
+  })
+);
 
 export function insightToolResponseToJSON(
   insightToolResponse: InsightToolResponse,

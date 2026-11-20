@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -61,7 +61,7 @@ export const Attributes$inboundSchema: z.ZodType<
   Attributes,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 /** @internal */
 export type Attributes$Outbound = {};
 
@@ -70,7 +70,7 @@ export const Attributes$outboundSchema: z.ZodType<
   Attributes$Outbound,
   z.ZodTypeDef,
   Attributes
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function attributesToJSON(attributes: Attributes): string {
   return JSON.stringify(Attributes$outboundSchema.parse(attributes));
@@ -86,28 +86,30 @@ export function attributesFromJSON(
 }
 
 /** @internal */
-export const Event$inboundSchema: z.ZodType<Event, z.ZodTypeDef, unknown> = z
-  .object({
-    timestamp: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    session_id: z.nullable(z.string()).optional(),
-    conversation_id: z.nullable(z.string()).optional(),
-    source: z.nullable(z.string()).optional(),
-    source_id: z.nullable(z.string()).optional(),
-    category: z.nullable(z.string()).optional(),
-    type: z.nullable(z.string()).optional(),
-    user_id: z.nullable(z.string()).optional(),
-    description: z.nullable(z.string()).optional(),
-    attributes: z.nullable(z.lazy(() => Attributes$inboundSchema)).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "session_id": "sessionId",
-      "conversation_id": "conversationId",
-      "source_id": "sourceId",
-      "user_id": "userId",
-    });
-  });
+export const Event$inboundSchema: z.ZodType<Event, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      timestamp: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      session_id: z.nullable(z.string()).optional(),
+      conversation_id: z.nullable(z.string()).optional(),
+      source: z.nullable(z.string()).optional(),
+      source_id: z.nullable(z.string()).optional(),
+      category: z.nullable(z.string()).optional(),
+      type: z.nullable(z.string()).optional(),
+      user_id: z.nullable(z.string()).optional(),
+      description: z.nullable(z.string()).optional(),
+      attributes: z.nullable(z.lazy(() => Attributes$inboundSchema)).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        "session_id": "sessionId",
+        "conversation_id": "conversationId",
+        "source_id": "sourceId",
+        "user_id": "userId",
+      });
+    })
+  );
 /** @internal */
 export type Event$Outbound = {
   timestamp: string;
@@ -127,25 +129,27 @@ export const Event$outboundSchema: z.ZodType<
   Event$Outbound,
   z.ZodTypeDef,
   Event
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  sessionId: z.nullable(z.string()).optional(),
-  conversationId: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  sourceId: z.nullable(z.string()).optional(),
-  category: z.nullable(z.string()).optional(),
-  type: z.nullable(z.string()).optional(),
-  userId: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
-  attributes: z.nullable(z.lazy(() => Attributes$outboundSchema)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sessionId: "session_id",
-    conversationId: "conversation_id",
-    sourceId: "source_id",
-    userId: "user_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    sessionId: z.nullable(z.string()).optional(),
+    conversationId: z.nullable(z.string()).optional(),
+    source: z.nullable(z.string()).optional(),
+    sourceId: z.nullable(z.string()).optional(),
+    category: z.nullable(z.string()).optional(),
+    type: z.nullable(z.string()).optional(),
+    userId: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
+    attributes: z.nullable(z.lazy(() => Attributes$outboundSchema)).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sessionId: "session_id",
+      conversationId: "conversation_id",
+      sourceId: "source_id",
+      userId: "user_id",
+    });
+  })
+);
 
 export function eventToJSON(event: Event): string {
   return JSON.stringify(Event$outboundSchema.parse(event));

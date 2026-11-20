@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -160,64 +160,68 @@ export const OutboundCampaign$inboundSchema: z.ZodType<
   OutboundCampaign,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  campaign_name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  mode: z.nullable(z.string()).optional(),
-  sms_session_ttl: z.nullable(z.number().int()).optional(),
-  label: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  campaign_variables: z.record(z.string()),
-  daily_start_time: z.nullable(z.string()).optional(),
-  daily_end_time: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  caller_id: z.nullable(z.string()),
-  hourly_rate: z.number().int().default(1),
-  max_daily_calls: z.nullable(z.number().int()).optional(),
-  retry_count: z.number().int().default(0),
-  retry_interval: z.nullable(z.string()).optional(),
-  active_days: z.array(DaysOfWeek$inboundSchema),
-  outreach_override_rules: z.nullable(OutreachOverrideRules$inboundSchema)
-    .optional(),
-  voicemail_detection: z.nullable(VoicemailDetectionConfig$inboundSchema)
-    .optional(),
-  allowed_line_types: z.nullable(z.array(LineTypeBucket$inboundSchema))
-    .optional(),
-  include_unknown_line_types: z.boolean().default(true),
-  target_filters: z.nullable(TargetFilters$inboundSchema).optional(),
-  id: z.number().int(),
-  agent_id: z.nullable(z.number().int()).optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  last_updated_by: z.string(),
-  webhooks: z.nullable(z.array(OutboundCampaignWebhookResponse$inboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "campaign_name": "campaignName",
-    "sms_session_ttl": "smsSessionTtl",
-    "campaign_variables": "campaignVariables",
-    "daily_start_time": "dailyStartTime",
-    "daily_end_time": "dailyEndTime",
-    "caller_id": "callerId",
-    "hourly_rate": "hourlyRate",
-    "max_daily_calls": "maxDailyCalls",
-    "retry_count": "retryCount",
-    "retry_interval": "retryInterval",
-    "active_days": "activeDays",
-    "outreach_override_rules": "outreachOverrideRules",
-    "voicemail_detection": "voicemailDetection",
-    "allowed_line_types": "allowedLineTypes",
-    "include_unknown_line_types": "includeUnknownLineTypes",
-    "target_filters": "targetFilters",
-    "agent_id": "agentId",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    campaign_name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    mode: z.nullable(z.string()).optional(),
+    sms_session_ttl: z.nullable(z.number().int()).optional(),
+    label: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    campaign_variables: z.record(z.string()),
+    daily_start_time: z.nullable(z.string()).optional(),
+    daily_end_time: z.nullable(z.string()).optional(),
+    source: z.nullable(z.string()).optional(),
+    caller_id: z.nullable(z.string()),
+    hourly_rate: z.number().int().default(1),
+    max_daily_calls: z.nullable(z.number().int()).optional(),
+    retry_count: z.number().int().default(0),
+    retry_interval: z.nullable(z.string()).optional(),
+    active_days: z.array(DaysOfWeek$inboundSchema),
+    outreach_override_rules: z.nullable(OutreachOverrideRules$inboundSchema)
+      .optional(),
+    voicemail_detection: z.nullable(VoicemailDetectionConfig$inboundSchema)
+      .optional(),
+    allowed_line_types: z.nullable(z.array(LineTypeBucket$inboundSchema))
+      .optional(),
+    include_unknown_line_types: z.boolean().default(true),
+    target_filters: z.nullable(TargetFilters$inboundSchema).optional(),
+    id: z.number().int(),
+    agent_id: z.nullable(z.number().int()).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    last_updated_by: z.string(),
+    webhooks: z.nullable(z.array(OutboundCampaignWebhookResponse$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "campaign_name": "campaignName",
+      "sms_session_ttl": "smsSessionTtl",
+      "campaign_variables": "campaignVariables",
+      "daily_start_time": "dailyStartTime",
+      "daily_end_time": "dailyEndTime",
+      "caller_id": "callerId",
+      "hourly_rate": "hourlyRate",
+      "max_daily_calls": "maxDailyCalls",
+      "retry_count": "retryCount",
+      "retry_interval": "retryInterval",
+      "active_days": "activeDays",
+      "outreach_override_rules": "outreachOverrideRules",
+      "voicemail_detection": "voicemailDetection",
+      "allowed_line_types": "allowedLineTypes",
+      "include_unknown_line_types": "includeUnknownLineTypes",
+      "target_filters": "targetFilters",
+      "agent_id": "agentId",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+    });
+  })
+);
 /** @internal */
 export type OutboundCampaign$Outbound = {
   campaign_name: string;
@@ -254,62 +258,65 @@ export const OutboundCampaign$outboundSchema: z.ZodType<
   OutboundCampaign$Outbound,
   z.ZodTypeDef,
   OutboundCampaign
-> = z.object({
-  campaignName: z.string(),
-  description: z.nullable(z.string()).optional(),
-  mode: z.nullable(z.string()).optional(),
-  smsSessionTtl: z.nullable(z.number().int()).optional(),
-  label: z.nullable(z.string()).optional(),
-  labels: z.nullable(z.array(z.string())).optional(),
-  campaignVariables: z.record(z.string()),
-  dailyStartTime: z.nullable(z.string()).optional(),
-  dailyEndTime: z.nullable(z.string()).optional(),
-  source: z.nullable(z.string()).optional(),
-  callerId: z.nullable(z.string()),
-  hourlyRate: z.number().int().default(1),
-  maxDailyCalls: z.nullable(z.number().int()).optional(),
-  retryCount: z.number().int().default(0),
-  retryInterval: z.nullable(z.string()).optional(),
-  activeDays: z.array(DaysOfWeek$outboundSchema),
-  outreachOverrideRules: z.nullable(OutreachOverrideRules$outboundSchema)
-    .optional(),
-  voicemailDetection: z.nullable(VoicemailDetectionConfig$outboundSchema)
-    .optional(),
-  allowedLineTypes: z.nullable(z.array(LineTypeBucket$outboundSchema))
-    .optional(),
-  includeUnknownLineTypes: z.boolean().default(true),
-  targetFilters: z.nullable(TargetFilters$outboundSchema).optional(),
-  id: z.number().int(),
-  agentId: z.nullable(z.number().int()).optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
-  lastUpdatedBy: z.string(),
-  webhooks: z.nullable(z.array(OutboundCampaignWebhookResponse$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    campaignName: "campaign_name",
-    smsSessionTtl: "sms_session_ttl",
-    campaignVariables: "campaign_variables",
-    dailyStartTime: "daily_start_time",
-    dailyEndTime: "daily_end_time",
-    callerId: "caller_id",
-    hourlyRate: "hourly_rate",
-    maxDailyCalls: "max_daily_calls",
-    retryCount: "retry_count",
-    retryInterval: "retry_interval",
-    activeDays: "active_days",
-    outreachOverrideRules: "outreach_override_rules",
-    voicemailDetection: "voicemail_detection",
-    allowedLineTypes: "allowed_line_types",
-    includeUnknownLineTypes: "include_unknown_line_types",
-    targetFilters: "target_filters",
-    agentId: "agent_id",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    campaignName: z.string(),
+    description: z.nullable(z.string()).optional(),
+    mode: z.nullable(z.string()).optional(),
+    smsSessionTtl: z.nullable(z.number().int()).optional(),
+    label: z.nullable(z.string()).optional(),
+    labels: z.nullable(z.array(z.string())).optional(),
+    campaignVariables: z.record(z.string()),
+    dailyStartTime: z.nullable(z.string()).optional(),
+    dailyEndTime: z.nullable(z.string()).optional(),
+    source: z.nullable(z.string()).optional(),
+    callerId: z.nullable(z.string()),
+    hourlyRate: z.number().int().default(1),
+    maxDailyCalls: z.nullable(z.number().int()).optional(),
+    retryCount: z.number().int().default(0),
+    retryInterval: z.nullable(z.string()).optional(),
+    activeDays: z.array(DaysOfWeek$outboundSchema),
+    outreachOverrideRules: z.nullable(OutreachOverrideRules$outboundSchema)
+      .optional(),
+    voicemailDetection: z.nullable(VoicemailDetectionConfig$outboundSchema)
+      .optional(),
+    allowedLineTypes: z.nullable(z.array(LineTypeBucket$outboundSchema))
+      .optional(),
+    includeUnknownLineTypes: z.boolean().default(true),
+    targetFilters: z.nullable(TargetFilters$outboundSchema).optional(),
+    id: z.number().int(),
+    agentId: z.nullable(z.number().int()).optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()).optional(),
+    lastUpdatedBy: z.string(),
+    webhooks: z.nullable(
+      z.array(OutboundCampaignWebhookResponse$outboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      campaignName: "campaign_name",
+      smsSessionTtl: "sms_session_ttl",
+      campaignVariables: "campaign_variables",
+      dailyStartTime: "daily_start_time",
+      dailyEndTime: "daily_end_time",
+      callerId: "caller_id",
+      hourlyRate: "hourly_rate",
+      maxDailyCalls: "max_daily_calls",
+      retryCount: "retry_count",
+      retryInterval: "retry_interval",
+      activeDays: "active_days",
+      outreachOverrideRules: "outreach_override_rules",
+      voicemailDetection: "voicemail_detection",
+      allowedLineTypes: "allowed_line_types",
+      includeUnknownLineTypes: "include_unknown_line_types",
+      targetFilters: "target_filters",
+      agentId: "agent_id",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+    });
+  })
+);
 
 export function outboundCampaignToJSON(
   outboundCampaign: OutboundCampaign,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -33,8 +33,8 @@ export type CardClickRequest = {
 };
 
 /** @internal */
-export const ActionType$inboundSchema: z.ZodNativeEnum<typeof ActionType> = z
-  .nativeEnum(ActionType);
+export const ActionType$inboundSchema: z.ZodNativeEnum<typeof ActionType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ActionType));
 /** @internal */
 export const ActionType$outboundSchema: z.ZodNativeEnum<typeof ActionType> =
   ActionType$inboundSchema;
@@ -44,15 +44,17 @@ export const CardClickRequest$inboundSchema: z.ZodType<
   CardClickRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action_id: z.string(),
-  action_type: ActionType$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "action_id": "actionId",
-    "action_type": "actionType",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action_id: z.string(),
+    action_type: ActionType$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "action_id": "actionId",
+      "action_type": "actionType",
+    });
+  })
+);
 /** @internal */
 export type CardClickRequest$Outbound = {
   action_id: string;
@@ -64,15 +66,17 @@ export const CardClickRequest$outboundSchema: z.ZodType<
   CardClickRequest$Outbound,
   z.ZodTypeDef,
   CardClickRequest
-> = z.object({
-  actionId: z.string(),
-  actionType: ActionType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    actionId: "action_id",
-    actionType: "action_type",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actionId: z.string(),
+    actionType: ActionType$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      actionId: "action_id",
+      actionType: "action_type",
+    });
+  })
+);
 
 export function cardClickRequestToJSON(
   cardClickRequest: CardClickRequest,

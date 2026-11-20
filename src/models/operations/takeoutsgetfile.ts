@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,15 +18,17 @@ export const TakeoutsGetFileRequest$inboundSchema: z.ZodType<
   TakeoutsGetFileRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  job_id: z.string(),
-  file_name: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "job_id": "jobId",
-    "file_name": "fileName",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    job_id: z.string(),
+    file_name: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "job_id": "jobId",
+      "file_name": "fileName",
+    });
+  })
+);
 /** @internal */
 export type TakeoutsGetFileRequest$Outbound = {
   job_id: string;
@@ -38,15 +40,17 @@ export const TakeoutsGetFileRequest$outboundSchema: z.ZodType<
   TakeoutsGetFileRequest$Outbound,
   z.ZodTypeDef,
   TakeoutsGetFileRequest
-> = z.object({
-  jobId: z.string(),
-  fileName: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    jobId: "job_id",
-    fileName: "file_name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    jobId: z.string(),
+    fileName: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      jobId: "job_id",
+      fileName: "file_name",
+    });
+  })
+);
 
 export function takeoutsGetFileRequestToJSON(
   takeoutsGetFileRequest: TakeoutsGetFileRequest,

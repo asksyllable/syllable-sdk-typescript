@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -23,18 +23,20 @@ export const ChannelTargetsUpdateRequest$inboundSchema: z.ZodType<
   ChannelTargetsUpdateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel_id: z.number().int(),
-  target_id: z.number().int(),
-  ChannelTargetUpdateRequest:
-    components.ChannelTargetUpdateRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "channel_id": "channelId",
-    "target_id": "targetId",
-    "ChannelTargetUpdateRequest": "channelTargetUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel_id: z.number().int(),
+    target_id: z.number().int(),
+    ChannelTargetUpdateRequest:
+      components.ChannelTargetUpdateRequest$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "channel_id": "channelId",
+      "target_id": "targetId",
+      "ChannelTargetUpdateRequest": "channelTargetUpdateRequest",
+    });
+  })
+);
 /** @internal */
 export type ChannelTargetsUpdateRequest$Outbound = {
   channel_id: number;
@@ -47,18 +49,20 @@ export const ChannelTargetsUpdateRequest$outboundSchema: z.ZodType<
   ChannelTargetsUpdateRequest$Outbound,
   z.ZodTypeDef,
   ChannelTargetsUpdateRequest
-> = z.object({
-  channelId: z.number().int(),
-  targetId: z.number().int(),
-  channelTargetUpdateRequest:
-    components.ChannelTargetUpdateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    channelId: "channel_id",
-    targetId: "target_id",
-    channelTargetUpdateRequest: "ChannelTargetUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channelId: z.number().int(),
+    targetId: z.number().int(),
+    channelTargetUpdateRequest:
+      components.ChannelTargetUpdateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      channelId: "channel_id",
+      targetId: "target_id",
+      channelTargetUpdateRequest: "ChannelTargetUpdateRequest",
+    });
+  })
+);
 
 export function channelTargetsUpdateRequestToJSON(
   channelTargetsUpdateRequest: ChannelTargetsUpdateRequest,

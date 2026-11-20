@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,13 +17,15 @@ export const ExperimentsPauseRequest$inboundSchema: z.ZodType<
   ExperimentsPauseRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  experiment_id: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    "experiment_id": "experimentId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experiment_id: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      "experiment_id": "experimentId",
+    });
+  })
+);
 /** @internal */
 export type ExperimentsPauseRequest$Outbound = {
   experiment_id: number;
@@ -34,13 +36,15 @@ export const ExperimentsPauseRequest$outboundSchema: z.ZodType<
   ExperimentsPauseRequest$Outbound,
   z.ZodTypeDef,
   ExperimentsPauseRequest
-> = z.object({
-  experimentId: z.number().int(),
-}).transform((v) => {
-  return remap$(v, {
-    experimentId: "experiment_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experimentId: z.number().int(),
+  }).transform((v) => {
+    return remap$(v, {
+      experimentId: "experiment_id",
+    });
+  })
+);
 
 export function experimentsPauseRequestToJSON(
   experimentsPauseRequest: ExperimentsPauseRequest,

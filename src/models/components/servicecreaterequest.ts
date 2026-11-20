@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,17 +40,19 @@ export const ServiceCreateRequest$inboundSchema: z.ZodType<
   ServiceCreateRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  auth_type: z.nullable(ToolAuthType$inboundSchema).optional(),
-  auth_values: z.nullable(z.any()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "auth_type": "authType",
-    "auth_values": "authValues",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    auth_type: z.nullable(ToolAuthType$inboundSchema).optional(),
+    auth_values: z.nullable(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "auth_type": "authType",
+      "auth_values": "authValues",
+    });
+  })
+);
 /** @internal */
 export type ServiceCreateRequest$Outbound = {
   name: string;
@@ -64,17 +66,19 @@ export const ServiceCreateRequest$outboundSchema: z.ZodType<
   ServiceCreateRequest$Outbound,
   z.ZodTypeDef,
   ServiceCreateRequest
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  authType: z.nullable(ToolAuthType$outboundSchema).optional(),
-  authValues: z.nullable(z.any()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    authType: "auth_type",
-    authValues: "auth_values",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    authType: z.nullable(ToolAuthType$outboundSchema).optional(),
+    authValues: z.nullable(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      authType: "auth_type",
+      authValues: "auth_values",
+    });
+  })
+);
 
 export function serviceCreateRequestToJSON(
   serviceCreateRequest: ServiceCreateRequest,

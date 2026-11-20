@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,15 +18,19 @@ export const CreateTakeoutResponse$inboundSchema: z.ZodType<
   CreateTakeoutResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  job_id: z.string(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-}).transform((v) => {
-  return remap$(v, {
-    "job_id": "jobId",
-    "created_at": "createdAt",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    job_id: z.string(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "job_id": "jobId",
+      "created_at": "createdAt",
+    });
+  })
+);
 /** @internal */
 export type CreateTakeoutResponse$Outbound = {
   job_id: string;
@@ -38,15 +42,17 @@ export const CreateTakeoutResponse$outboundSchema: z.ZodType<
   CreateTakeoutResponse$Outbound,
   z.ZodTypeDef,
   CreateTakeoutResponse
-> = z.object({
-  jobId: z.string(),
-  createdAt: z.date().transform(v => v.toISOString()),
-}).transform((v) => {
-  return remap$(v, {
-    jobId: "job_id",
-    createdAt: "created_at",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    jobId: z.string(),
+    createdAt: z.date().transform(v => v.toISOString()),
+  }).transform((v) => {
+    return remap$(v, {
+      jobId: "job_id",
+      createdAt: "created_at",
+    });
+  })
+);
 
 export function createTakeoutResponseToJSON(
   createTakeoutResponse: CreateTakeoutResponse,

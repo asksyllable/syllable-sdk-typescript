@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,9 +22,11 @@ export const A2pMessagingPathCheckRequest$inboundSchema: z.ZodType<
   A2pMessagingPathCheckRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  phone: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone: z.string(),
+  })
+);
 /** @internal */
 export type A2pMessagingPathCheckRequest$Outbound = {
   phone: string;
@@ -35,9 +37,11 @@ export const A2pMessagingPathCheckRequest$outboundSchema: z.ZodType<
   A2pMessagingPathCheckRequest$Outbound,
   z.ZodTypeDef,
   A2pMessagingPathCheckRequest
-> = z.object({
-  phone: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    phone: z.string(),
+  })
+);
 
 export function a2pMessagingPathCheckRequestToJSON(
   a2pMessagingPathCheckRequest: A2pMessagingPathCheckRequest,

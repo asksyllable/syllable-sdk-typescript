@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -136,7 +136,9 @@ export type InsightWorkflowOutput = {
 /** @internal */
 export const InsightWorkflowOutputFormatVersion$inboundSchema: z.ZodNativeEnum<
   typeof InsightWorkflowOutputFormatVersion
-> = z.nativeEnum(InsightWorkflowOutputFormatVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(InsightWorkflowOutputFormatVersion)
+);
 /** @internal */
 export const InsightWorkflowOutputFormatVersion$outboundSchema: z.ZodNativeEnum<
   typeof InsightWorkflowOutputFormatVersion
@@ -147,50 +149,54 @@ export const InsightWorkflowOutput$inboundSchema: z.ZodType<
   InsightWorkflowOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  format_version: InsightWorkflowOutputFormatVersion$inboundSchema.default(1),
-  revision: z.nullable(z.number().int()).optional(),
-  steps: z.nullable(z.array(InsightWorkflowStep$inboundSchema)).optional(),
-  name: z.string(),
-  source: z.string(),
-  description: z.string(),
-  insight_tool_ids: z.array(z.number().int()),
-  conditions: InsightWorkflowCondition$inboundSchema,
-  start_datetime: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  end_datetime: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  id: z.number().int(),
-  insight_tools: z.array(InsightToolOutput$inboundSchema),
-  status: z.string(),
-  estimate: InsightWorkflowEstimate$inboundSchema,
-  queue_count: z.nullable(z.number().int()).optional(),
-  failed_count: z.nullable(z.number().int()).optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  last_updated_by: z.string(),
-  last_folder_upload_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "format_version": "formatVersion",
-    "insight_tool_ids": "insightToolIds",
-    "start_datetime": "startDatetime",
-    "end_datetime": "endDatetime",
-    "insight_tools": "insightTools",
-    "queue_count": "queueCount",
-    "failed_count": "failedCount",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "last_updated_by": "lastUpdatedBy",
-    "last_folder_upload_at": "lastFolderUploadAt",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    format_version: InsightWorkflowOutputFormatVersion$inboundSchema.default(1),
+    revision: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.array(InsightWorkflowStep$inboundSchema)).optional(),
+    name: z.string(),
+    source: z.string(),
+    description: z.string(),
+    insight_tool_ids: z.array(z.number().int()),
+    conditions: InsightWorkflowCondition$inboundSchema,
+    start_datetime: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    end_datetime: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+    id: z.number().int(),
+    insight_tools: z.array(InsightToolOutput$inboundSchema),
+    status: z.string(),
+    estimate: InsightWorkflowEstimate$inboundSchema,
+    queue_count: z.nullable(z.number().int()).optional(),
+    failed_count: z.nullable(z.number().int()).optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    last_updated_by: z.string(),
+    last_folder_upload_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "format_version": "formatVersion",
+      "insight_tool_ids": "insightToolIds",
+      "start_datetime": "startDatetime",
+      "end_datetime": "endDatetime",
+      "insight_tools": "insightTools",
+      "queue_count": "queueCount",
+      "failed_count": "failedCount",
+      "created_at": "createdAt",
+      "updated_at": "updatedAt",
+      "last_updated_by": "lastUpdatedBy",
+      "last_folder_upload_at": "lastFolderUploadAt",
+    });
+  })
+);
 /** @internal */
 export type InsightWorkflowOutput$Outbound = {
   format_version: number;
@@ -220,44 +226,47 @@ export const InsightWorkflowOutput$outboundSchema: z.ZodType<
   InsightWorkflowOutput$Outbound,
   z.ZodTypeDef,
   InsightWorkflowOutput
-> = z.object({
-  formatVersion: InsightWorkflowOutputFormatVersion$outboundSchema.default(1),
-  revision: z.nullable(z.number().int()).optional(),
-  steps: z.nullable(z.array(InsightWorkflowStep$outboundSchema)).optional(),
-  name: z.string(),
-  source: z.string(),
-  description: z.string(),
-  insightToolIds: z.array(z.number().int()),
-  conditions: InsightWorkflowCondition$outboundSchema,
-  startDatetime: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-  endDatetime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  id: z.number().int(),
-  insightTools: z.array(InsightToolOutput$outboundSchema),
-  status: z.string(),
-  estimate: InsightWorkflowEstimate$outboundSchema,
-  queueCount: z.nullable(z.number().int()).optional(),
-  failedCount: z.nullable(z.number().int()).optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
-  lastUpdatedBy: z.string(),
-  lastFolderUploadAt: z.nullable(z.date().transform(v => v.toISOString()))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    formatVersion: "format_version",
-    insightToolIds: "insight_tool_ids",
-    startDatetime: "start_datetime",
-    endDatetime: "end_datetime",
-    insightTools: "insight_tools",
-    queueCount: "queue_count",
-    failedCount: "failed_count",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    lastUpdatedBy: "last_updated_by",
-    lastFolderUploadAt: "last_folder_upload_at",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    formatVersion: InsightWorkflowOutputFormatVersion$outboundSchema.default(1),
+    revision: z.nullable(z.number().int()).optional(),
+    steps: z.nullable(z.array(InsightWorkflowStep$outboundSchema)).optional(),
+    name: z.string(),
+    source: z.string(),
+    description: z.string(),
+    insightToolIds: z.array(z.number().int()),
+    conditions: InsightWorkflowCondition$outboundSchema,
+    startDatetime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    endDatetime: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+    id: z.number().int(),
+    insightTools: z.array(InsightToolOutput$outboundSchema),
+    status: z.string(),
+    estimate: InsightWorkflowEstimate$outboundSchema,
+    queueCount: z.nullable(z.number().int()).optional(),
+    failedCount: z.nullable(z.number().int()).optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    updatedAt: z.date().transform(v => v.toISOString()).optional(),
+    lastUpdatedBy: z.string(),
+    lastFolderUploadAt: z.nullable(z.date().transform(v => v.toISOString()))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      formatVersion: "format_version",
+      insightToolIds: "insight_tool_ids",
+      startDatetime: "start_datetime",
+      endDatetime: "end_datetime",
+      insightTools: "insight_tools",
+      queueCount: "queue_count",
+      failedCount: "failed_count",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+      lastUpdatedBy: "last_updated_by",
+      lastFolderUploadAt: "last_folder_upload_at",
+    });
+  })
+);
 
 export function insightWorkflowOutputToJSON(
   insightWorkflowOutput: InsightWorkflowOutput,
