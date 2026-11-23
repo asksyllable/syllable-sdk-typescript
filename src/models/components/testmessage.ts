@@ -46,6 +46,10 @@ export type TestMessage = {
    * Whether this message is the start of a new session
    */
   sessionStart?: boolean | undefined;
+  /**
+   * Custom vars.* values that override saved agent defaults for this test session. Dotted names such as vars.facility-name are supported. Supply up to 64 variables with at most 65,536 UTF-8 bytes across all values. Supply only with session_start=true. Requires agents_write in addition to chat. The vars.session namespace is reserved. Look for session_variables_applied in the response content to confirm that the values were applied.
+   */
+  sessionVariables?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -63,6 +67,7 @@ export const TestMessage$inboundSchema: z.ZodType<
     org_name: z.nullable(z.string()).optional(),
     override_timestamp: z.nullable(z.string()).optional(),
     session_start: z.boolean().default(false),
+    session_variables: z.nullable(z.record(z.string())).optional(),
   }).transform((v) => {
     return remap$(v, {
       "service_name": "serviceName",
@@ -71,6 +76,7 @@ export const TestMessage$inboundSchema: z.ZodType<
       "org_name": "orgName",
       "override_timestamp": "overrideTimestamp",
       "session_start": "sessionStart",
+      "session_variables": "sessionVariables",
     });
   })
 );
@@ -84,6 +90,7 @@ export type TestMessage$Outbound = {
   org_name?: string | null | undefined;
   override_timestamp?: string | null | undefined;
   session_start: boolean;
+  session_variables?: { [k: string]: string } | null | undefined;
 };
 
 /** @internal */
@@ -101,6 +108,7 @@ export const TestMessage$outboundSchema: z.ZodType<
     orgName: z.nullable(z.string()).optional(),
     overrideTimestamp: z.nullable(z.string()).optional(),
     sessionStart: z.boolean().default(false),
+    sessionVariables: z.nullable(z.record(z.string())).optional(),
   }).transform((v) => {
     return remap$(v, {
       serviceName: "service_name",
@@ -109,6 +117,7 @@ export const TestMessage$outboundSchema: z.ZodType<
       orgName: "org_name",
       overrideTimestamp: "override_timestamp",
       sessionStart: "session_start",
+      sessionVariables: "session_variables",
     });
   })
 );
