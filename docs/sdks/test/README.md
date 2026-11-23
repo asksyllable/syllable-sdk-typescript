@@ -29,6 +29,9 @@ async function run() {
     text: "Hello",
     testId: "<id>",
     agentId: "<id>",
+    sessionVariables: {
+      "vars.facility-name": "Northside Clinic",
+    },
   });
 
   console.log(result);
@@ -58,6 +61,9 @@ async function run() {
     text: "Hello",
     testId: "<id>",
     agentId: "<id>",
+    sessionVariables: {
+      "vars.facility-name": "Northside Clinic",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
