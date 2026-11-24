@@ -316,7 +316,7 @@ run();
 
 ### Response
 
-**Promise\<[ReadableStream<Uint8Array>](../../models/bytes.md)\>**
+**Promise\<[operations.SessionRecordingStreamResponse](../../models/operations/sessionrecordingstreamresponse.md)\>**
 
 ### Errors
 
