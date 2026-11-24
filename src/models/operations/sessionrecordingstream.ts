@@ -3,12 +3,18 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SessionRecordingStreamRequest = {
   token: string;
+};
+
+export type SessionRecordingStreamResponse = {
+  headers: { [k: string]: Array<string> };
+  result: ReadableStream<Uint8Array>;
 };
 
 /** @internal */
@@ -53,5 +59,63 @@ export function sessionRecordingStreamRequestFromJSON(
     jsonString,
     (x) => SessionRecordingStreamRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SessionRecordingStreamRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const SessionRecordingStreamResponse$inboundSchema: z.ZodType<
+  SessionRecordingStreamResponse,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.instanceof(ReadableStream<Uint8Array>),
+  }).transform((v) => {
+    return remap$(v, {
+      "Headers": "headers",
+      "Result": "result",
+    });
+  })
+);
+/** @internal */
+export type SessionRecordingStreamResponse$Outbound = {
+  Headers: { [k: string]: Array<string> };
+  Result: ReadableStream<Uint8Array>;
+};
+
+/** @internal */
+export const SessionRecordingStreamResponse$outboundSchema: z.ZodType<
+  SessionRecordingStreamResponse$Outbound,
+  z.ZodTypeDef,
+  SessionRecordingStreamResponse
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.array(z.string())),
+    result: z.instanceof(ReadableStream<Uint8Array>),
+  }).transform((v) => {
+    return remap$(v, {
+      headers: "Headers",
+      result: "Result",
+    });
+  })
+);
+
+export function sessionRecordingStreamResponseToJSON(
+  sessionRecordingStreamResponse: SessionRecordingStreamResponse,
+): string {
+  return JSON.stringify(
+    SessionRecordingStreamResponse$outboundSchema.parse(
+      sessionRecordingStreamResponse,
+    ),
+  );
+}
+export function sessionRecordingStreamResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<SessionRecordingStreamResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SessionRecordingStreamResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SessionRecordingStreamResponse' from JSON`,
   );
 }
